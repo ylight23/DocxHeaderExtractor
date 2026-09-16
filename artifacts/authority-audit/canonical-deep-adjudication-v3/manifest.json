@@ -1,0 +1,63 @@
+{
+  "artifactKind": "A99_CANONICAL_DEEP_ADJUDICATION_V3_MANIFEST",
+  "schemaVersion": "a99-canonical-deep-adjudication-v3",
+  "status": "BATCH_V3_READY_FOR_USER_CANONICAL_APPROVAL",
+  "baselineCommit": "a5ac90b",
+  "generatedArtifacts": [
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/blockers.json",
+      "sha256": "1204e23927541390d54e0fd6721100917bc2862dfaeef0eab2b8374dfb85f756"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/blockers/DOC-0116.json",
+      "sha256": "da2b9fa42029c62e6ca9b0c2ce5db812eec59542980e60c70053b4a8ed0b781b"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/blockers/DOC-0122.json",
+      "sha256": "aaca20d890349e366804c660147f43b969f3154588b193dfc65fa40ab2421315"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/blockers/DOC-0216.json",
+      "sha256": "16e693cd79308390a5b574980a8664ae6984ee3128534727bace2d91ee88897c"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/blockers/DOC-0219.json",
+      "sha256": "9b838cbe391ba4ac9e199b7ee25bbc79d00cfde10fb2baa5de7696434a100d8c"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/report.md",
+      "sha256": "8646f43e91bd6a2dbfc7addd607b8c53f51587a9b0f25570a262aed3d9a7c943"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/source-scans/DOC-0116.json",
+      "sha256": "5f0332087010801f1831c6f23eb36f75434311c3c16d3e30bf06f8a9b7a1540e"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/source-scans/DOC-0122.json",
+      "sha256": "64d7c8c42bddf8597b6bf267af61ceae6ff92de46b1d4b9a40c838b0e321ef5b"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/source-scans/DOC-0216.json",
+      "sha256": "65cfb6dbcf8a6cad5cca301b8c739c7dd5e4fe5f074996cb839a07081670317f"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/source-scans/DOC-0219.json",
+      "sha256": "d46cdcb1b3cbadb0569a8afeef480933e4e9917e1555ef5ab0c5735d4cb90f9f"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/summary.json",
+      "sha256": "78348092ef9ac02db78e5270b5bf5e3245f8f9c9549c26324a2218be297cdd0b"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-deep-adjudication-v3/validation.json",
+      "sha256": "d83884665feb1e31f0b4a8170b502b973cd1e457ea89fa68bbded49639eac901"
+    }
+  ],
+  "newHierarchyProposals": 7,
+  "genuineHardBlockers": 4,
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "historicalLevelRead": false,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

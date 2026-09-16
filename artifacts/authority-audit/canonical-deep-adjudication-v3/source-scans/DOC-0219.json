@@ -1,0 +1,21 @@
+{
+  "artifactKind": "A99_CANONICAL_DEEP_ADJUDICATION_SOURCE_SCAN",
+  "schemaVersion": "a99-canonical-deep-adjudication-v3-source-scan",
+  "documentId": "DOC-0219",
+  "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx",
+  "sourceSHA256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+  "sourceFormat": "DOCX",
+  "sourceRepresentation": "DOCX_XML_SOURCE_CONTAINERS",
+  "paragraphCount": 3328,
+  "sourceRecordsInspected": 3328,
+  "sourceOnly": true,
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "containersReviewed": 3328,
+  "status": "GENUINE_HARD_BLOCKER",
+  "blockerReason": "GENUINE_SOURCE_SEMANTIC_AMBIGUITY_REQUIRING_USER_REVIEW"
+}

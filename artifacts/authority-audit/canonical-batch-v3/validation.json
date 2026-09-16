@@ -1,0 +1,17 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V3_VALIDATION",
+  "schemaVersion": "a99-canonical-batch-v3",
+  "status": "BATCH_V3_READY_FOR_USER_CANONICAL_APPROVAL",
+  "all11RemainingDocumentsAttempted": true,
+  "frozenExistingUnchanged": true,
+  "readyForUserApproval": 7,
+  "genuineHardBlockers": 4,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false,
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false
+}

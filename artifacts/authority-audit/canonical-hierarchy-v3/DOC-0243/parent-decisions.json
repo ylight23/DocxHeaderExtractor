@@ -1,0 +1,3257 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_DECISIONS",
+  "documentId": "DOC-0243",
+  "decisionCount": 121,
+  "decisions": [
+    {
+      "semanticNodeRef": "N0001",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[20]#heading-span-0-7",
+      "exactText": "Preface",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "FRONT_MATTER_OR_DOCUMENT_ROOT",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed FRONT_MATTER_OR_DOCUMENT_ROOT assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+      "exactText": "Part I",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[74]#heading-span-0-14",
+      "exactText": "Linear algebra",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "exactText": "CHAPTER 1",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[98]#heading-span-0-11",
+      "exactText": "Linear maps",
+      "selectedParentRef": "N0004",
+      "candidateParents": [
+        "ROOT",
+        "N0004"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[100]#heading-span-0-19",
+      "exactText": "1a. Spaces, vectors",
+      "selectedParentRef": "N0004",
+      "candidateParents": [
+        "ROOT",
+        "N0004"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[233]#heading-span-0-15",
+      "exactText": "1b. Linear maps",
+      "selectedParentRef": "N0004",
+      "candidateParents": [
+        "ROOT",
+        "N0004"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[349]#heading-span-0-22",
+      "exactText": "1c. Geometry, analysis",
+      "selectedParentRef": "N0004",
+      "candidateParents": [
+        "ROOT",
+        "N0004"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0009",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[570]#heading-span-0-19",
+      "exactText": "1d. Complex numbers",
+      "selectedParentRef": "N0004",
+      "candidateParents": [
+        "ROOT",
+        "N0004"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[733]#heading-span-0-13",
+      "exactText": "1e. Exercises",
+      "selectedParentRef": "N0004",
+      "candidateParents": [
+        "ROOT",
+        "N0004"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0011",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "exactText": "CHAPTER 2",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[752]#heading-span-0-13",
+      "exactText": "Matrix theory",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        "N0011"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[754]#heading-span-0-20",
+      "exactText": "2a. Matrix inversion",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        "N0011"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[922]#heading-span-0-19",
+      "exactText": "2b. The determinant",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        "N0011"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1174]#heading-span-0-21",
+      "exactText": "2c. Some applications",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        "N0011"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1301]#heading-span-0-19",
+      "exactText": "2d. Diagonalization",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        "N0011"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1405]#heading-span-0-13",
+      "exactText": "2e. Exercises",
+      "selectedParentRef": "N0011",
+      "candidateParents": [
+        "ROOT",
+        "N0011"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0018",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "exactText": "CHAPTER 3",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1424]#heading-span-0-17",
+      "exactText": "Spectral theorems",
+      "selectedParentRef": "N0018",
+      "candidateParents": [
+        "ROOT",
+        "N0018"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1426]#heading-span-0-17",
+      "exactText": "3a. Self-adjoints",
+      "selectedParentRef": "N0018",
+      "candidateParents": [
+        "ROOT",
+        "N0018"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1649]#heading-span-0-24",
+      "exactText": "3b. Rotations, unitaries",
+      "selectedParentRef": "N0018",
+      "candidateParents": [
+        "ROOT",
+        "N0018"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1832]#heading-span-0-19",
+      "exactText": "3c. Normal matrices",
+      "selectedParentRef": "N0018",
+      "candidateParents": [
+        "ROOT",
+        "N0018"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1905]#heading-span-0-21",
+      "exactText": "3d. Spectral measures",
+      "selectedParentRef": "N0018",
+      "candidateParents": [
+        "ROOT",
+        "N0018"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2079]#heading-span-0-13",
+      "exactText": "3e. Exercises",
+      "selectedParentRef": "N0018",
+      "candidateParents": [
+        "ROOT",
+        "N0018"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0025",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "exactText": "CHAPTER 4",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2093]#heading-span-0-18",
+      "exactText": "Polynomials, roots",
+      "selectedParentRef": "N0025",
+      "candidateParents": [
+        "ROOT",
+        "N0025"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2095]#heading-span-0-13",
+      "exactText": "4a. Resultant",
+      "selectedParentRef": "N0025",
+      "candidateParents": [
+        "ROOT",
+        "N0025"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2219]#heading-span-0-16",
+      "exactText": "4b. Discriminant",
+      "selectedParentRef": "N0025",
+      "candidateParents": [
+        "ROOT",
+        "N0025"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2501]#heading-span-0-17",
+      "exactText": "4c. Higher degree",
+      "selectedParentRef": "N0025",
+      "candidateParents": [
+        "ROOT",
+        "N0025"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2787]#heading-span-0-19",
+      "exactText": "4d. Density results",
+      "selectedParentRef": "N0025",
+      "candidateParents": [
+        "ROOT",
+        "N0025"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2850]#heading-span-0-13",
+      "exactText": "4e. Exercises",
+      "selectedParentRef": "N0025",
+      "candidateParents": [
+        "ROOT",
+        "N0025"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0032",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+      "exactText": "Part II",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2866]#heading-span-0-16",
+      "exactText": "Advanced results",
+      "selectedParentRef": "N0032",
+      "candidateParents": [
+        "ROOT",
+        "N0032"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "exactText": "CHAPTER 5",
+      "selectedParentRef": "N0032",
+      "candidateParents": [
+        "ROOT",
+        "N0032"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2891]#heading-span-0-11",
+      "exactText": "Jordan form",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2893]#heading-span-0-20",
+      "exactText": "5a. Linear equations",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2971]#heading-span-0-22",
+      "exactText": "5b. Matrix exponential",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3321]#heading-span-0-19",
+      "exactText": "5c. The Jordan form",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0039",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3519]#heading-span-0-22",
+      "exactText": "5d. Basic applications",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3683]#heading-span-0-13",
+      "exactText": "5e. Exercises",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0041",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "exactText": "CHAPTER 6",
+      "selectedParentRef": "N0032",
+      "candidateParents": [
+        "ROOT",
+        "N0032"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3702]#heading-span-0-15",
+      "exactText": "Singular values",
+      "selectedParentRef": "N0041",
+      "candidateParents": [
+        "ROOT",
+        "N0041"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3704]#heading-span-0-19",
+      "exactText": "6a. Singular values",
+      "selectedParentRef": "N0041",
+      "candidateParents": [
+        "ROOT",
+        "N0041"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3870]#heading-span-0-23",
+      "exactText": "6b. Functional calculus",
+      "selectedParentRef": "N0041",
+      "candidateParents": [
+        "ROOT",
+        "N0041"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4143]#heading-span-0-21",
+      "exactText": "6c. Complex functions",
+      "selectedParentRef": "N0041",
+      "candidateParents": [
+        "ROOT",
+        "N0041"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4393]#heading-span-0-19",
+      "exactText": "6d. Normal matrices",
+      "selectedParentRef": "N0041",
+      "candidateParents": [
+        "ROOT",
+        "N0041"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4514]#heading-span-0-13",
+      "exactText": "6e. Exercises",
+      "selectedParentRef": "N0041",
+      "candidateParents": [
+        "ROOT",
+        "N0041"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0048",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "exactText": "CHAPTER 7",
+      "selectedParentRef": "N0032",
+      "candidateParents": [
+        "ROOT",
+        "N0032"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4527]#heading-span-0-17",
+      "exactText": "Dynamical systems",
+      "selectedParentRef": "N0048",
+      "candidateParents": [
+        "ROOT",
+        "N0048"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4529]#heading-span-0-26",
+      "exactText": "7a. Differential equations",
+      "selectedParentRef": "N0048",
+      "candidateParents": [
+        "ROOT",
+        "N0048"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4648]#heading-span-0-23",
+      "exactText": "7b. Functional analysis",
+      "selectedParentRef": "N0048",
+      "candidateParents": [
+        "ROOT",
+        "N0048"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4926]#heading-span-0-25",
+      "exactText": "7c. Existence, uniqueness",
+      "selectedParentRef": "N0048",
+      "candidateParents": [
+        "ROOT",
+        "N0048"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5424]#heading-span-0-21",
+      "exactText": "7d. Dynamical systems",
+      "selectedParentRef": "N0048",
+      "candidateParents": [
+        "ROOT",
+        "N0048"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5514]#heading-span-0-13",
+      "exactText": "7e. Exercises",
+      "selectedParentRef": "N0048",
+      "candidateParents": [
+        "ROOT",
+        "N0048"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0055",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "exactText": "CHAPTER 8",
+      "selectedParentRef": "N0032",
+      "candidateParents": [
+        "ROOT",
+        "N0032"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5528]#heading-span-0-17",
+      "exactText": "Infinite matrices",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5530]#heading-span-0-21",
+      "exactText": "8a. Infinite matrices",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5662]#heading-span-0-19",
+      "exactText": "8b. Spectral radius",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5885]#heading-span-0-20",
+      "exactText": "8c. Normal operators",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6035]#heading-span-0-21",
+      "exactText": "8d. Compact operators",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6259]#heading-span-0-13",
+      "exactText": "8e. Exercises",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0062",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+      "exactText": "Part III",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+      "exactText": "Positive matrices",
+      "selectedParentRef": "N0062",
+      "candidateParents": [
+        "ROOT",
+        "N0062"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "exactText": "CHAPTER 9",
+      "selectedParentRef": "N0062",
+      "candidateParents": [
+        "ROOT",
+        "N0062"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+      "exactText": "Positive matrices",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        "N0064"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6304]#heading-span-0-21",
+      "exactText": "9a. Jacobian, Hessian",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        "N0064"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6577]#heading-span-0-21",
+      "exactText": "9b. Positive matrices",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        "N0064"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6713]#heading-span-0-21",
+      "exactText": "9c. Sylvester theorem",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        "N0064"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0069",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6845]#heading-span-0-21",
+      "exactText": "9d. Infinite matrices",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        "N0064"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6991]#heading-span-0-13",
+      "exactText": "9e. Exercises",
+      "selectedParentRef": "N0064",
+      "candidateParents": [
+        "ROOT",
+        "N0064"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0071",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "exactText": "CHAPTER 10",
+      "selectedParentRef": "N0062",
+      "candidateParents": [
+        "ROOT",
+        "N0062"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7004]#heading-span-0-16",
+      "exactText": "Forms, signature",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7006]#heading-span-0-19",
+      "exactText": "10a. Bilinear forms",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7068]#heading-span-0-21",
+      "exactText": "10b. Smooth manifolds",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7206]#heading-span-0-22",
+      "exactText": "10c. Relativity theory",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7490]#heading-span-0-21",
+      "exactText": "10d. Curved spacetime",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7793]#heading-span-0-14",
+      "exactText": "10e. Exercises",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0078",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "exactText": "CHAPTER 11",
+      "selectedParentRef": "N0062",
+      "candidateParents": [
+        "ROOT",
+        "N0062"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7806]#heading-span-0-16",
+      "exactText": "Special matrices",
+      "selectedParentRef": "N0078",
+      "candidateParents": [
+        "ROOT",
+        "N0078"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7808]#heading-span-0-23",
+      "exactText": "11a. Circulant matrices",
+      "selectedParentRef": "N0078",
+      "candidateParents": [
+        "ROOT",
+        "N0078"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7978]#heading-span-0-22",
+      "exactText": "11b. Hadamard matrices",
+      "selectedParentRef": "N0078",
+      "candidateParents": [
+        "ROOT",
+        "N0078"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8122]#heading-span-0-21",
+      "exactText": "11c. Complex Hadamard",
+      "selectedParentRef": "N0078",
+      "candidateParents": [
+        "ROOT",
+        "N0078"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8394]#heading-span-0-26",
+      "exactText": "11d. Bistochastic matrices",
+      "selectedParentRef": "N0078",
+      "candidateParents": [
+        "ROOT",
+        "N0078"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8535]#heading-span-0-14",
+      "exactText": "11e. Exercises",
+      "selectedParentRef": "N0078",
+      "candidateParents": [
+        "ROOT",
+        "N0078"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0085",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "exactText": "CHAPTER 12",
+      "selectedParentRef": "N0062",
+      "candidateParents": [
+        "ROOT",
+        "N0062"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8548]#heading-span-0-12",
+      "exactText": "Graph theory",
+      "selectedParentRef": "N0085",
+      "candidateParents": [
+        "ROOT",
+        "N0085"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8550]#heading-span-0-22",
+      "exactText": "12a. Graphs, Laplacian",
+      "selectedParentRef": "N0085",
+      "candidateParents": [
+        "ROOT",
+        "N0085"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8744]#heading-span-0-21",
+      "exactText": "12b. Kirchoff formula",
+      "selectedParentRef": "N0085",
+      "candidateParents": [
+        "ROOT",
+        "N0085"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8911]#heading-span-0-19",
+      "exactText": "12c. Into the waves",
+      "selectedParentRef": "N0085",
+      "candidateParents": [
+        "ROOT",
+        "N0085"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9090]#heading-span-0-18",
+      "exactText": "12d. Into the heat",
+      "selectedParentRef": "N0085",
+      "candidateParents": [
+        "ROOT",
+        "N0085"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9279]#heading-span-0-14",
+      "exactText": "12e. Exercises",
+      "selectedParentRef": "N0085",
+      "candidateParents": [
+        "ROOT",
+        "N0085"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0092",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+      "exactText": "Part IV",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9295]#heading-span-0-13",
+      "exactText": "Matrix groups",
+      "selectedParentRef": "N0092",
+      "candidateParents": [
+        "ROOT",
+        "N0092"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "exactText": "CHAPTER 13",
+      "selectedParentRef": "N0092",
+      "candidateParents": [
+        "ROOT",
+        "N0092"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9320]#heading-span-0-13",
+      "exactText": "Finite groups",
+      "selectedParentRef": "N0094",
+      "candidateParents": [
+        "ROOT",
+        "N0094"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9322]#heading-span-0-18",
+      "exactText": "13a. Finite groups",
+      "selectedParentRef": "N0094",
+      "candidateParents": [
+        "ROOT",
+        "N0094"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9460]#heading-span-0-21",
+      "exactText": "13b. Symmetric groups",
+      "selectedParentRef": "N0094",
+      "candidateParents": [
+        "ROOT",
+        "N0094"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9702]#heading-span-0-22",
+      "exactText": "13c. Reflection groups",
+      "selectedParentRef": "N0094",
+      "candidateParents": [
+        "ROOT",
+        "N0094"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0099",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9976]#heading-span-0-24",
+      "exactText": "13d. Complex reflections",
+      "selectedParentRef": "N0094",
+      "candidateParents": [
+        "ROOT",
+        "N0094"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10113]#heading-span-0-14",
+      "exactText": "13e. Exercises",
+      "selectedParentRef": "N0094",
+      "candidateParents": [
+        "ROOT",
+        "N0094"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0101",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "exactText": "CHAPTER 14",
+      "selectedParentRef": "N0092",
+      "candidateParents": [
+        "ROOT",
+        "N0092"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10125]#heading-span-0-14",
+      "exactText": "Compact groups",
+      "selectedParentRef": "N0101",
+      "candidateParents": [
+        "ROOT",
+        "N0101"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10127]#heading-span-0-15",
+      "exactText": "14a. Lie groups",
+      "selectedParentRef": "N0101",
+      "candidateParents": [
+        "ROOT",
+        "N0101"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10205]#heading-span-0-15",
+      "exactText": "14b. Peter-Weyl",
+      "selectedParentRef": "N0101",
+      "candidateParents": [
+        "ROOT",
+        "N0101"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10365]#heading-span-0-20",
+      "exactText": "14c. Brauer algebras",
+      "selectedParentRef": "N0101",
+      "candidateParents": [
+        "ROOT",
+        "N0101"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0106",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10618]#heading-span-0-21",
+      "exactText": "14d. Haar integration",
+      "selectedParentRef": "N0101",
+      "candidateParents": [
+        "ROOT",
+        "N0101"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0107",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10848]#heading-span-0-14",
+      "exactText": "14e. Exercises",
+      "selectedParentRef": "N0101",
+      "candidateParents": [
+        "ROOT",
+        "N0101"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0108",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "exactText": "CHAPTER 15",
+      "selectedParentRef": "N0092",
+      "candidateParents": [
+        "ROOT",
+        "N0092"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0109",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10862]#heading-span-0-13",
+      "exactText": "Spin matrices",
+      "selectedParentRef": "N0108",
+      "candidateParents": [
+        "ROOT",
+        "N0108"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0110",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10864]#heading-span-0-20",
+      "exactText": "15a. Quantum physics",
+      "selectedParentRef": "N0108",
+      "candidateParents": [
+        "ROOT",
+        "N0108"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0111",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11286]#heading-span-0-21",
+      "exactText": "15b. Angular momentum",
+      "selectedParentRef": "N0108",
+      "candidateParents": [
+        "ROOT",
+        "N0108"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0112",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11493]#heading-span-0-19",
+      "exactText": "15c. Pauli matrices",
+      "selectedParentRef": "N0108",
+      "candidateParents": [
+        "ROOT",
+        "N0108"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0113",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11572]#heading-span-0-19",
+      "exactText": "15d. Dirac matrices",
+      "selectedParentRef": "N0108",
+      "candidateParents": [
+        "ROOT",
+        "N0108"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0114",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11702]#heading-span-0-14",
+      "exactText": "15e. Exercises",
+      "selectedParentRef": "N0108",
+      "candidateParents": [
+        "ROOT",
+        "N0108"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0115",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "exactText": "CHAPTER 16",
+      "selectedParentRef": "N0092",
+      "candidateParents": [
+        "ROOT",
+        "N0092"
+      ],
+      "structuralScope": "CHAPTER_WITHIN_PART",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_WITHIN_PART assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0116",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11719]#heading-span-0-15",
+      "exactText": "Random matrices",
+      "selectedParentRef": "N0115",
+      "candidateParents": [
+        "ROOT",
+        "N0115"
+      ],
+      "structuralScope": "CHAPTER_OR_PART_TITLE",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed CHAPTER_OR_PART_TITLE assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0117",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11721]#heading-span-0-20",
+      "exactText": "16a. Random matrices",
+      "selectedParentRef": "N0115",
+      "candidateParents": [
+        "ROOT",
+        "N0115"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0118",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11904]#heading-span-0-22",
+      "exactText": "16b. Gaussian matrices",
+      "selectedParentRef": "N0115",
+      "candidateParents": [
+        "ROOT",
+        "N0115"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0119",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[12138]#heading-span-0-23",
+      "exactText": "16c. Wigner and Wishart",
+      "selectedParentRef": "N0115",
+      "candidateParents": [
+        "ROOT",
+        "N0115"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0120",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[12383]#heading-span-0-19",
+      "exactText": "16d. Back to groups",
+      "selectedParentRef": "N0115",
+      "candidateParents": [
+        "ROOT",
+        "N0115"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0121",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[12463]#heading-span-0-14",
+      "exactText": "16e. Exercises",
+      "selectedParentRef": "N0115",
+      "candidateParents": [
+        "ROOT",
+        "N0115"
+      ],
+      "structuralScope": "NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed NUMBERED_SUBSECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    }
+  ],
+  "unresolvedCount": 0,
+  "levelEnteredByReviewer": false,
+  "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

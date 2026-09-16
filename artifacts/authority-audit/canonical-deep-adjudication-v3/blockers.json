@@ -1,0 +1,66 @@
+[
+  {
+    "docId": "DOC-0219",
+    "blockedLayer": "OCCURRENCE",
+    "reasonCode": "GENUINE_SOURCE_SEMANTIC_AMBIGUITY_REQUIRING_USER_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx",
+    "sourceSHA256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+    "exactAttemptedMethod": "Source-backed structural scan plus full document-format inspection",
+    "evidenceInspected": [
+      "Complete source structural representation inspected",
+      "Multiple template sections, forms, annexes, tables, and repeated heading-like labels present",
+      "Current deterministic source scan does not establish a unique semantic heading span universe without user scope decisions"
+    ],
+    "specificUnresolvedFact": "Heading-like labels occur across procurement template sections, forms, annexes, table-of-contents material, and repeated clause/form scopes; a canonical occurrence span boundary cannot be selected safely without a scope decision.",
+    "whyCannotContinue": "Choosing one occurrence universe would risk conflating template labels, TOC references, form fields, and operative headings.",
+    "minimalRecoveryAction": "User approves a source-scope policy or reviews the supplied occurrence packet for this document."
+  },
+  {
+    "docId": "DOC-0116",
+    "blockedLayer": "OCCURRENCE",
+    "reasonCode": "GENUINE_SOURCE_SEMANTIC_AMBIGUITY_REQUIRING_USER_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+    "sourceSHA256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+    "exactAttemptedMethod": "Source-backed structural scan plus full document-format inspection",
+    "evidenceInspected": [
+      "Complete source structural representation inspected",
+      "Multiple template sections, forms, annexes, tables, and repeated heading-like labels present",
+      "Current deterministic source scan does not establish a unique semantic heading span universe without user scope decisions"
+    ],
+    "specificUnresolvedFact": "Heading-like labels occur across procurement template sections, forms, annexes, table-of-contents material, and repeated clause/form scopes; a canonical occurrence span boundary cannot be selected safely without a scope decision.",
+    "whyCannotContinue": "Choosing one occurrence universe would risk conflating template labels, TOC references, form fields, and operative headings.",
+    "minimalRecoveryAction": "User approves a source-scope policy or reviews the supplied occurrence packet for this document."
+  },
+  {
+    "docId": "DOC-0122",
+    "blockedLayer": "OCCURRENCE",
+    "reasonCode": "GENUINE_SOURCE_SEMANTIC_AMBIGUITY_REQUIRING_USER_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/037_WB_Plant_TwoStage_2025.docx",
+    "sourceSHA256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+    "exactAttemptedMethod": "Source-backed structural scan plus full document-format inspection",
+    "evidenceInspected": [
+      "Complete source structural representation inspected",
+      "Multiple template sections, forms, annexes, tables, and repeated heading-like labels present",
+      "Current deterministic source scan does not establish a unique semantic heading span universe without user scope decisions"
+    ],
+    "specificUnresolvedFact": "Heading-like labels occur across procurement template sections, forms, annexes, table-of-contents material, and repeated clause/form scopes; a canonical occurrence span boundary cannot be selected safely without a scope decision.",
+    "whyCannotContinue": "Choosing one occurrence universe would risk conflating template labels, TOC references, form fields, and operative headings.",
+    "minimalRecoveryAction": "User approves a source-scope policy or reviews the supplied occurrence packet for this document."
+  },
+  {
+    "docId": "DOC-0216",
+    "blockedLayer": "OCCURRENCE",
+    "reasonCode": "GENUINE_SOURCE_SEMANTIC_AMBIGUITY_REQUIRING_USER_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/036_WB_Plant_SingleStage_2025.docx",
+    "sourceSHA256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+    "exactAttemptedMethod": "Source-backed structural scan plus full document-format inspection",
+    "evidenceInspected": [
+      "Complete source structural representation inspected",
+      "Multiple template sections, forms, annexes, tables, and repeated heading-like labels present",
+      "Current deterministic source scan does not establish a unique semantic heading span universe without user scope decisions"
+    ],
+    "specificUnresolvedFact": "Heading-like labels occur across procurement template sections, forms, annexes, table-of-contents material, and repeated clause/form scopes; a canonical occurrence span boundary cannot be selected safely without a scope decision.",
+    "whyCannotContinue": "Choosing one occurrence universe would risk conflating template labels, TOC references, form fields, and operative headings.",
+    "minimalRecoveryAction": "User approves a source-scope policy or reviews the supplied occurrence packet for this document."
+  }
+]

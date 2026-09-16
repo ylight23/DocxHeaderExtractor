@@ -1,0 +1,75 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_AMBIGUITIES",
+  "documentId": "DOC-0265",
+  "cases": [
+    {
+      "normalizedText": "Section 2",
+      "occurrenceRefs": [
+        "DOC-0265:body[1]/p[178]#heading-span-0-9",
+        "DOC-0265:body[1]/p[300]#heading-span-0-9",
+        "DOC-0265:body[1]/p[421]#heading-span-0-9",
+        "DOC-0265:body[1]/p[769]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1020]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1418]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1622]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1861]#heading-span-0-9"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    },
+    {
+      "normalizedText": "Section 5",
+      "occurrenceRefs": [
+        "DOC-0265:body[1]/p[634]#heading-span-0-9",
+        "DOC-0265:body[1]/p[905]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1276]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1777]#heading-span-0-9"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    },
+    {
+      "normalizedText": "Section 4",
+      "occurrenceRefs": [
+        "DOC-0265:body[1]/p[573]#heading-span-0-9",
+        "DOC-0265:body[1]/p[848]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1237]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1538]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1726]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1942]#heading-span-0-9"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    },
+    {
+      "normalizedText": "Section 1",
+      "occurrenceRefs": [
+        "DOC-0265:body[1]/p[97]#heading-span-0-9",
+        "DOC-0265:body[1]/p[277]#heading-span-0-9",
+        "DOC-0265:body[1]/p[353]#heading-span-0-9",
+        "DOC-0265:body[1]/p[682]#heading-span-0-9",
+        "DOC-0265:body[1]/p[954]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1340]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1584]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1796]#heading-span-0-9"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    },
+    {
+      "normalizedText": "Section 3",
+      "occurrenceRefs": [
+        "DOC-0265:body[1]/p[468]#heading-span-0-9",
+        "DOC-0265:body[1]/p[796]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1179]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1481]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1689]#heading-span-0-9",
+        "DOC-0265:body[1]/p[1898]#heading-span-0-9"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    }
+  ],
+  "unresolvedCount": 0,
+  "policy": "KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+}

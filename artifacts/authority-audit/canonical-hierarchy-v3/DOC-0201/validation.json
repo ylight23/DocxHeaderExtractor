@@ -1,0 +1,23 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_VALIDATION",
+  "documentId": "DOC-0201",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "checks": {
+    "semanticNodesExactlyParentEdges": true,
+    "noCycles": true,
+    "noSelfParent": true,
+    "noDanglingParent": true,
+    "allReachableFromRoot": true,
+    "noReviewerEnteredLevel": true,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "historicalHierarchyUsedForDecision": false,
+    "historicalSemanticTotalUsedForDecision": false,
+    "providerCalls": 0,
+    "productionModelCalls": 0
+  },
+  "semanticNodeCount": 11,
+  "parentEdgeCount": 11,
+  "rootChildrenCount": 11,
+  "maxDepth": 1.0
+}

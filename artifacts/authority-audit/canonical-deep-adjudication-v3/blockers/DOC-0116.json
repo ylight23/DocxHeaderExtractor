@@ -1,0 +1,16 @@
+{
+  "docId": "DOC-0116",
+  "blockedLayer": "OCCURRENCE",
+  "reasonCode": "GENUINE_SOURCE_SEMANTIC_AMBIGUITY_REQUIRING_USER_REVIEW",
+  "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+  "sourceSHA256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "exactAttemptedMethod": "Source-backed structural scan plus full document-format inspection",
+  "evidenceInspected": [
+    "Complete source structural representation inspected",
+    "Multiple template sections, forms, annexes, tables, and repeated heading-like labels present",
+    "Current deterministic source scan does not establish a unique semantic heading span universe without user scope decisions"
+  ],
+  "specificUnresolvedFact": "Heading-like labels occur across procurement template sections, forms, annexes, table-of-contents material, and repeated clause/form scopes; a canonical occurrence span boundary cannot be selected safely without a scope decision.",
+  "whyCannotContinue": "Choosing one occurrence universe would risk conflating template labels, TOC references, form fields, and operative headings.",
+  "minimalRecoveryAction": "User approves a source-scope policy or reviews the supplied occurrence packet for this document."
+}

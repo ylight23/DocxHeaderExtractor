@@ -1,0 +1,22 @@
+{
+  "docId": "DOC-0219",
+  "blockedLayer": "OCCURRENCE",
+  "reasonCode": "GENUINE_SOURCE_SEMANTIC_AMBIGUITY_REQUIRING_USER_REVIEW",
+  "sourceAuthority": {
+    "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx",
+    "sha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221"
+  },
+  "exactAttemptedMethod": "Source-backed structural representation plus exhaustive source scan",
+  "evidenceInspected": [
+    "Source document",
+    "source-faithful structural records",
+    "format/container/heading-like scope evidence"
+  ],
+  "specificUnresolvedFact": "Multiple template/form/annex/TOC scopes require a user source-scope decision before canonical heading spans can be selected safely.",
+  "whyAdjudicationCannotSafelyContinue": "A guessed occurrence universe would conflate structurally independent template labels or reference material.",
+  "minimalRecoveryAction": "User reviews the source-scope packet or supplies the canonical scope policy.",
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "historicalLevelRead": false,
+  "historicalParentRead": false
+}

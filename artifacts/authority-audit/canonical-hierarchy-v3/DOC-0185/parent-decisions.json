@@ -1,0 +1,3179 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_DECISIONS",
+  "documentId": "DOC-0185",
+  "decisionCount": 119,
+  "decisions": [
+    {
+      "semanticNodeRef": "N0001",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[12]#heading-span-0-11",
+      "exactText": "BIDDING LAW",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "DOCUMENT_FRAMING",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed DOCUMENT_FRAMING assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[16]#heading-span-0-9",
+      "exactText": "Chapter I",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[18]#heading-span-0-30",
+      "exactText": "Article 1. Scope of regulation",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[20]#heading-span-0-34",
+      "exactText": "Article 2. Subjects of application",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[36]#heading-span-0-150",
+      "exactText": "Article 3. Application of Bidding Law, relevant laws, treaties, agreements on official development assistance and concessional loans of foreign donors",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[59]#heading-span-0-34",
+      "exactText": "Article 4. Interpretation of terms",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[108]#heading-span-0-51",
+      "exactText": "Article 5. Eligibility of contractors and investors",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[134]#heading-span-0-46",
+      "exactText": "Article 6. Assurance of competition in bidding",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0009",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[150]#heading-span-0-299",
+      "exactText": "Article 7. Bidding information 1. Information about contractor selection, including: a) Information on projects and plans for selection of contractors; b) Notices of invitation for expression of interest and notices of invitation to prequalification; c) Notice of invitation for bid; d) Short lists;",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[157]#heading-span-0-595",
+      "exactText": "Article 8. Provision and publishing of bidding information 1. The responsibility for posting information on contractor selection is regulated as follows: a) Project owners shall post information as prescribed at Points a, g, h, i, and k, Clause 1, Article 7 of this Law; b) Bid solicitors shall post the information specified at Points b, c, d and dd, Clause 1, Article 7 of this Law. For bidding packages subject to international bidding, the bid solicitor shall post the information specified at Points b, c and d, Clause 1, Article 7 of this Law in Vietnamese and English; for the information",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0011",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[168]#heading-span-0-92",
+      "exactText": "Article 9. Handling and archiving dossiers during the selection of contractors and investors",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[181]#heading-span-0-64",
+      "exactText": "Article 10. Preferences in selection of contractors or investors",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[217]#heading-span-0-33",
+      "exactText": "Article 11. International bidding",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[232]#heading-span-0-37",
+      "exactText": "Article 12. Languages used in bidding",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[235]#heading-span-0-30",
+      "exactText": "Article 13. Currencies of bids",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[245]#heading-span-0-24",
+      "exactText": "Article 14. Bid security",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[281]#heading-span-0-58",
+      "exactText": "Article 15. Expenses for contractor and investor selection",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0018",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[296]#heading-span-0-49",
+      "exactText": "Article 16. Prohibited acts in bidding activities",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[348]#heading-span-0-28",
+      "exactText": "Article 17. Bid cancellation",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[366]#heading-span-0-106",
+      "exactText": "Article 18. Cessation of bidding, non-recognition of the results of selection of contractors and investors",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[372]#heading-span-0-38",
+      "exactText": "Article 19. Expert and appraisal teams",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        "N0002"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[380]#heading-span-0-10",
+      "exactText": "Chapter II",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[382]#heading-span-0-40",
+      "exactText": "Section 1. FORMS OF CONTRACTOR SELECTION",
+      "selectedParentRef": "N0022",
+      "candidateParents": [
+        "ROOT",
+        "N0022"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[383]#heading-span-0-41",
+      "exactText": "Article 20. Forms of contractor selection",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0025",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[399]#heading-span-0-24",
+      "exactText": "Article 21. Open bidding",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[402]#heading-span-0-30",
+      "exactText": "Article 22. Restricted bidding",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[406]#heading-span-0-34",
+      "exactText": "Article 23. Contractor appointment",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[443]#heading-span-0-29",
+      "exactText": "Article 24. Competitive offer",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[449]#heading-span-0-30",
+      "exactText": "Article 25. Direct procurement",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[460]#heading-span-0-26",
+      "exactText": "Article 26. Self-execution",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[467]#heading-span-0-48",
+      "exactText": "Article 27. Community participation in execution",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0032",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[469]#heading-span-0-29",
+      "exactText": "Article 28. Price negotiation",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[477]#heading-span-0-53",
+      "exactText": "Article 29. Selection of contractors in special cases",
+      "selectedParentRef": "N0023",
+      "candidateParents": [
+        "ROOT",
+        "N0023"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[497]#heading-span-0-51",
+      "exactText": "Section 2. CONTRACTOR OR INVESTOR SELECTION METHODS",
+      "selectedParentRef": "N0022",
+      "candidateParents": [
+        "ROOT",
+        "N0022"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[498]#heading-span-0-47",
+      "exactText": "Article 30. Single-stage single-envelope method",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[509]#heading-span-0-44",
+      "exactText": "Article 31. Single-stage two-envelope method",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[515]#heading-span-0-44",
+      "exactText": "Article 32. Two-stage single-envelope method",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[526]#heading-span-0-41",
+      "exactText": "Article 33. Two-stage two-envelope method",
+      "selectedParentRef": "N0034",
+      "candidateParents": [
+        "ROOT",
+        "N0034"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0039",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[536]#heading-span-0-50",
+      "exactText": "Section 3. FORMS AND METHODS OF INVESTOR SELECTION",
+      "selectedParentRef": "N0022",
+      "candidateParents": [
+        "ROOT",
+        "N0022"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[537]#heading-span-0-39",
+      "exactText": "Article 34. Forms of investor selection",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        "N0039"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0041",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[542]#heading-span-0-41",
+      "exactText": "Article 35. Methods of investor selection",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        "N0039"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[557]#heading-span-0-11",
+      "exactText": "Chapter III",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[559]#heading-span-0-62",
+      "exactText": "Article 36. Master plan for contractor selection for a project",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        "N0039"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[572]#heading-span-0-62",
+      "exactText": "Article 37. Principles of making of contractor selection plans",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        "N0039"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[582]#heading-span-0-1082",
+      "exactText": "Article 38. Making of contractor selection plans 1. Grounds for making a contractor selection plan for a project: a) The project approval decision and relevant documents, except for the case that the bidding package needs to be implemented before approving the project. For a bidding package which needs to be executed before approving the project, the decision of the head of the project owner, or the head of the unit assigned to prepare the project in case the investor is not yet identified, may be used as a ground; b) Master plan for contractor selection (if any); c) The project assigned a medium-term public investment plan, except for urgent public investment projects as prescribed by the law on public investment; d) The plan on allocating capital for project implementation or capital source for project implementation, for projects other than those specified at Point c of this Clause; dd) Treaties and loan agreements for projects funded by ODA or concessional loans, except for the case of pre-bid as prescribed in Article 42 of this Law; e) Relevant legal documents.",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        "N0039"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[584]#heading-span-0-342",
+      "exactText": "Article 39. Contents of an contractor selection plan 1. Name of the bidding package: The name of the bidding package shows the characteristics, contents and scope of jobs of the bidding package. In case the bidding package consists of many separate parts, the contractor selection plan must state the name and principal contents of each part.",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        "N0039"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[614]#heading-span-0-65",
+      "exactText": "Article 40. Approval of a contractor selection plan for a project",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        "N0039"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0048",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[631]#heading-span-0-83",
+      "exactText": "Article 41. Approval of a contractor selection plan for a procurement cost estimate",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        "N0039"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[644]#heading-span-0-23",
+      "exactText": "Article 42. Pre-bidding",
+      "selectedParentRef": "N0039",
+      "candidateParents": [
+        "ROOT",
+        "N0039"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[648]#heading-span-0-10",
+      "exactText": "Chapter IV",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[650]#heading-span-0-58",
+      "exactText": "Section 1. PROCESS AND PROCEDURES FOR CONTRACTOR SELECTION",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        "N0050"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[651]#heading-span-0-59",
+      "exactText": "Article 43. Process and procedures for contractor selection",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        "N0051"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[674]#heading-span-0-478",
+      "exactText": "Article 44. Contents of bidding dossiers for contractor selection 1. A bidding dossier must comprise: a) Contractor instructions and additional purchase options (if any); b) Bid data sheet; c) Criteria for evaluation of the validity of bidding dossiers; contractor's capacity and experience; technical, financial, and commercial aspects; reputation of the contractor through participation in bids, performance of previous similar contracts and the quality of similar used goods.",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        "N0051"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[679]#heading-span-0-114",
+      "exactText": "Article 45. Time of contractor selection 1. Time for organization of contractor selection is regulated as follows:",
+      "selectedParentRef": "N0051",
+      "candidateParents": [
+        "ROOT",
+        "N0051"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0055",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[693]#heading-span-0-58",
+      "exactText": "Section 2. ORDER AND PROCEDURES FOR SELECTION OF INVESTORS",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        "N0050"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[694]#heading-span-0-936",
+      "exactText": "Article 46. Order and procedures for selection of investors 1. The procedures for investor selection include the following steps: a) Announcement of business investment projects; b) Preparation for the bidding to select investors, including making, appraisal and approval of bidding dossiers; c) Organization of the bidding to select investors, including invitation for bids; issuance, modification and clarification of bidding dossiers; preparation, submission, receipt, management, modification, withdrawal and replacement of bid dossiers; d) Evaluation of bid dossiers, including bid opening; examination and evaluation of the validity of bid dossiers; detailed evaluation of bid dossiers; dd) Submission, appraisal, approval and publicization of investor selection results; explanation of the reason for the investor’s failure to win the bid at the investor's request (if any); e) Negotiation, finalization and signing of contracts.",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[697]#heading-span-0-202",
+      "exactText": "Article 47. Announcement of business investment projects 1. Competent agencies shall announce business investment projects on the national bidding network as the basis for organizing investor selection.",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[703]#heading-span-0-619",
+      "exactText": "Article 48. Contents of a bidding dossier for investor selection 1. A bidding dossier must comprise: a) Instructions to investors; b) Bid data sheet; c) Contents of examination and evaluation of the validity of the bid dossiers; d) Investor’s capacity and experience evaluation criteria and method; business investment plan; efficiency in land use or efficiency in investment and development of sectors and fields; dd) Forms of bid invitation and bidding participation; e) Information and requirements for the implementation of business investment projects; g) Draft contract, contract form; h) Other relevant contents.",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[705]#heading-span-0-218",
+      "exactText": "Article 49. Time for investor selection organization 1. For national bidding, the time for preparing a bid dossier is at least 45 days from the first date on which the bidding dossier is issued to the bid closing date.",
+      "selectedParentRef": "N0055",
+      "candidateParents": [
+        "ROOT",
+        "N0055"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[711]#heading-span-0-25",
+      "exactText": "Section 3. ONLINE BIDDING",
+      "selectedParentRef": "N0050",
+      "candidateParents": [
+        "ROOT",
+        "N0050"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[712]#heading-span-0-547",
+      "exactText": "Article 50. Online selection of contractors or investors 1. Open bidding, restricted bidding, domestic competitive offer must be conducted on the national bidding network according to the following roadmap: a) From the effective date of this Law to the end of December 31, 2024, online or non-online bidding shall comply with the Government's regulations; b) From January 1, 2025, online bidding shall be applied to all bidding packages, except for the case of not bidding on the national bidding network as prescribed in Clause 5 of this Article.",
+      "selectedParentRef": "N0060",
+      "candidateParents": [
+        "ROOT",
+        "N0060"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0062",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[720]#heading-span-0-56",
+      "exactText": "Article 51. Requirements on the national bidding network",
+      "selectedParentRef": "N0060",
+      "candidateParents": [
+        "ROOT",
+        "N0060"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[727]#heading-span-0-87",
+      "exactText": "Article 52. Responsibilities of the organization operating the national bidding network",
+      "selectedParentRef": "N0060",
+      "candidateParents": [
+        "ROOT",
+        "N0060"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[739]#heading-span-0-9",
+      "exactText": "Chapter V",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[741]#heading-span-0-35",
+      "exactText": "Article 53. Centralized procurement",
+      "selectedParentRef": "N0060",
+      "candidateParents": [
+        "ROOT",
+        "N0060"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[763]#heading-span-0-32",
+      "exactText": "Article 54. Framework agreements",
+      "selectedParentRef": "N0060",
+      "candidateParents": [
+        "ROOT",
+        "N0060"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[768]#heading-span-0-107",
+      "exactText": "Article 55. Selection of contractors to provide medicines, medicals, testing supplies and medical equipment",
+      "selectedParentRef": "N0060",
+      "candidateParents": [
+        "ROOT",
+        "N0060"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[784]#heading-span-0-51",
+      "exactText": "Article 56. Preferences in procurement of medicines",
+      "selectedParentRef": "N0060",
+      "candidateParents": [
+        "ROOT",
+        "N0060"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0069",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[792]#heading-span-0-75",
+      "exactText": "Article 57. Selection of contractors providing public products and services",
+      "selectedParentRef": "N0060",
+      "candidateParents": [
+        "ROOT",
+        "N0060"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[797]#heading-span-0-10",
+      "exactText": "Chapter VI",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0071",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[799]#heading-span-0-118",
+      "exactText": "Section 1. METHODS OF EVALUATION OF BID DOSSIERS AND CONSIDERATION AND APPROVAL OF BID WINNERS IN CONTRACTOR SELECTION",
+      "selectedParentRef": "N0070",
+      "candidateParents": [
+        "ROOT",
+        "N0070"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[800]#heading-span-0-186",
+      "exactText": "Article 58. Methods of evaluation of bid dossiers for bidding packages to provide non-consultancy services, procure goods, or for construction and installation, or mixed bidding packages",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[820]#heading-span-0-102",
+      "exactText": "Article 59. Methods of evaluation of bid dossiers for bidding packages to provide consultancy services",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[836]#heading-span-0-962",
+      "exactText": "Article 60. Consideration and approval of bid winners for provision of consultancy services 1. An institutional consultancy contractor may be considered and proposed to be the bid winner when fully satisfying the following conditions: a) Having a valid bid dossier or dossier of proposals; b) Having technical proposals satisfying requirements of the bidding dossier or dossier of requirements; c) With regard to the lowest bid method: Having the lowest bid after error correction or deviation adjustment, minus the value of discounts (if any). With regard to bidding packages applied the type of lump-sum contract: Having the lowest bid after minus the value of discounts (if any). With regard to the fixed bid method and technique-based method: Having the highest technical points. With regard to the method of combined techniques and bids: Having the highest general points; d) Having the proposed winning bid not exceeding the approved bidding package price.",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[839]#heading-span-0-709",
+      "exactText": "Article 61. Consideration and approval of bid winners for bidding packages to provide non-consultancy services, procure goods or for construction and installation, or mixed bidding packages 1. A contractor to provide non-consultancy services, procure goods or for construction and installation, or execute a mixed bidding package may be considered or proposed to be the bid winner when fully satisfying the following conditions: a) Having a valid bid dossier or dossier of proposals; b) Having capacity and experience that satisfy requirements stating in bidding dossier or dossier of requirements; c) Having technical proposals that satisfy requirements stating in bidding dossier or dossier of requirements;",
+      "selectedParentRef": "N0071",
+      "candidateParents": [
+        "ROOT",
+        "N0071"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[847]#heading-span-0-113",
+      "exactText": "Section 2. METHODS OF EVALUATION OF BID DOSSIERS; CONSIDERATION AND APPROVAL OF BID WINNERS IN INVESTOR SELECTION",
+      "selectedParentRef": "N0070",
+      "candidateParents": [
+        "ROOT",
+        "N0070"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[848]#heading-span-0-49",
+      "exactText": "Article 62. Methods of evaluation of bid dossiers",
+      "selectedParentRef": "N0076",
+      "candidateParents": [
+        "ROOT",
+        "N0076"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0078",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[861]#heading-span-0-53",
+      "exactText": "Article 63. Consideration and approval of bid winners",
+      "selectedParentRef": "N0076",
+      "candidateParents": [
+        "ROOT",
+        "N0076"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[869]#heading-span-0-11",
+      "exactText": "Chapter VII",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[871]#heading-span-0-37",
+      "exactText": "Section 1. CONTRACTS WITH CONTRACTORS",
+      "selectedParentRef": "N0079",
+      "candidateParents": [
+        "ROOT",
+        "N0079"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[872]#heading-span-0-29",
+      "exactText": "Article 64. Types of contract",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        "N0080"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[905]#heading-span-0-50",
+      "exactText": "Article 65. Dossiers of contracts with contractors",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        "N0080"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[917]#heading-span-0-43",
+      "exactText": "Article 66. Conditions for contract signing",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        "N0080"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[924]#heading-span-0-55",
+      "exactText": "Article 67. Signing contracts with selected contractors",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        "N0080"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0085",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[930]#heading-span-0-41",
+      "exactText": "Article 68. Contract performance security",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        "N0080"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[949]#heading-span-0-46",
+      "exactText": "Article 69. Principles of contract performance",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        "N0080"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[953]#heading-span-0-37",
+      "exactText": "Article 70. Modification of contracts",
+      "selectedParentRef": "N0080",
+      "candidateParents": [
+        "ROOT",
+        "N0080"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[977]#heading-span-0-63",
+      "exactText": "Section 2. BUSINESS INVESTMENT PROJECT CONTRACTS WITH INVESTORS",
+      "selectedParentRef": "N0079",
+      "candidateParents": [
+        "ROOT",
+        "N0079"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[978]#heading-span-0-451",
+      "exactText": "Article 71. Signing and principles of performance of business investment project contracts 1. Signing of business investment project contracts must fully satisfy the following conditions: a) At the time of signing, bid dossiers of selected investors remain valid; b) At the time of signing, selected investors must satisfy requirements on technical and financial capacity for execution of business investment projects as specified in bidding dossiers.",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[982]#heading-span-0-388",
+      "exactText": "Article 72. Dossiers of business investment project contract A dossier of business investment project contract comprises the following documents: 1. Written contract; 2. Annex of the contract (if any); 3. A record on contract negotiation and completion; 4. Decision approving the investor selection result; 5. Bid dossier and other documents clarifying the selected investor’ bid dossier;",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[988]#heading-span-0-61",
+      "exactText": "Article 73. Contents of business investment project contracts",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0092",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[997]#heading-span-0-58",
+      "exactText": "Article 74. Terms of business investment project contracts",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1004]#heading-span-0-69",
+      "exactText": "Article 75. Business investment project contract performance security",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1014]#heading-span-0-65",
+      "exactText": "Article 76. Modification of business investment project contracts",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1027]#heading-span-0-12",
+      "exactText": "Chapter VIII",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1029]#heading-span-0-50",
+      "exactText": "Article 77. Responsibilities of a competent person",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1054]#heading-span-0-47",
+      "exactText": "Article 78. Responsibilities of a project owner",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1079]#heading-span-0-47",
+      "exactText": "Article 79. Responsibilities of a bid solicitor",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0099",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1097]#heading-span-0-195",
+      "exactText": "Article 80. Responsibilities of an expert team 1. To compile dossier of invitation for expression of interest, dossier of invitation to prequalification, bidding dossier, dossier of requirements.",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1106]#heading-span-0-120",
+      "exactText": "Article 81. Responsibilities of an appraisal team 1. To operate independently and objectively when conducting appraisal.",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0101",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1112]#heading-span-0-241",
+      "exactText": "Article 82. Responsibilities of a contractor or an investor 1. To request the bid solicitor to clarify the dossier of invitation for expression of interest, dossier of invitation to prequalification, bidding dossier, dossier of requirements.",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        "N0088"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1119]#heading-span-0-10",
+      "exactText": "Chapter IX",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1121]#heading-span-0-38",
+      "exactText": "Section 1. STATE MANAGEMENT OF BIDDING",
+      "selectedParentRef": "N0102",
+      "candidateParents": [
+        "ROOT",
+        "N0102"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1122]#heading-span-0-51",
+      "exactText": "Article 83. Contents of state management of bidding",
+      "selectedParentRef": "N0103",
+      "candidateParents": [
+        "ROOT",
+        "N0103"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1129]#heading-span-0-59",
+      "exactText": "Article 84. Responsibilities of state management of bidding",
+      "selectedParentRef": "N0103",
+      "candidateParents": [
+        "ROOT",
+        "N0103"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0106",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1141]#heading-span-0-108",
+      "exactText": "Article 85. Responsibilities of ministries, ministerial-level agencies and People’s Committees at all levels",
+      "selectedParentRef": "N0103",
+      "candidateParents": [
+        "ROOT",
+        "N0103"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0107",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1147]#heading-span-0-62",
+      "exactText": "Article 86. Inspection, examination and supervision of bidding",
+      "selectedParentRef": "N0103",
+      "candidateParents": [
+        "ROOT",
+        "N0103"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0108",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1168]#heading-span-0-34",
+      "exactText": "Article 87. Handling of violations",
+      "selectedParentRef": "N0103",
+      "candidateParents": [
+        "ROOT",
+        "N0103"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0109",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1180]#heading-span-0-81",
+      "exactText": "Section 2. RESPONSE TO ARISING EVENTUALITIES AND SETTLEMENT OF APPEALS IN BIDDING",
+      "selectedParentRef": "N0102",
+      "candidateParents": [
+        "ROOT",
+        "N0102"
+      ],
+      "structuralScope": "SECTION_WITHIN_CURRENT_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed SECTION_WITHIN_CURRENT_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0110",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1181]#heading-span-0-56",
+      "exactText": "Article 88. Response to arising eventualities in bidding",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        "N0109"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0111",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1192]#heading-span-0-44",
+      "exactText": "Article 89. Settlement of appeals in bidding",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        "N0109"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0112",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1196]#heading-span-0-66",
+      "exactText": "Article 90. Conditions for consideration and settlement of appeals",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        "N0109"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0113",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1213]#heading-span-0-72",
+      "exactText": "Article 91. Procedures for settlement of appeals in contractor selection",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        "N0109"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0114",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1233]#heading-span-0-70",
+      "exactText": "Article 92. Procedures for settlement of appeals in investor selection",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        "N0109"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0115",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1251]#heading-span-0-97",
+      "exactText": "Article 93. Composition, responsibilities and operation of appeal settlement consultancy councils",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        "N0109"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0116",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1276]#heading-span-0-97",
+      "exactText": "Article 94. Rights to initiate lawsuits and to request courts to apply interim emergency measures",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        "N0109"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0117",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1279]#heading-span-0-9",
+      "exactText": "Chapter X",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT"
+      ],
+      "structuralScope": "TOP_LEVEL_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": "NO_ENCLOSING_STRUCTURAL_PARENT_REQUIRED",
+      "decisionReason": "Source-backed TOP_LEVEL_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0118",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1281]#heading-span-0-18",
+      "exactText": "Article 95. Effect",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        "N0109"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    },
+    {
+      "semanticNodeRef": "N0119",
+      "headingOccurrenceRef": "DOC-0185:body[1]/p[1288]#heading-span-0-35",
+      "exactText": "Article 96. Transitional provisions",
+      "selectedParentRef": "N0109",
+      "candidateParents": [
+        "ROOT",
+        "N0109"
+      ],
+      "structuralScope": "ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER",
+      "positiveEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ],
+      "contradictionEvidence": [
+        "No competing enclosing heading with stronger structural scope"
+      ],
+      "structuralSubordinationEvidence": [
+        "EXPLICIT_DOCUMENT_OUTLINE_SUBORDINATION",
+        "CURRENT_OUTER_HEADING_SCOPE_ENCLOSES_THIS_SPAN"
+      ],
+      "decisionReason": "Source-backed ARTICLE_WITHIN_CURRENT_SECTION_OR_CHAPTER assignment from document order, explicit heading markers, and enclosing structural outline.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalLevelRead": false,
+      "historicalParentRead": false
+    }
+  ],
+  "unresolvedCount": 0,
+  "levelEnteredByReviewer": false,
+  "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

@@ -1,0 +1,2795 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_DECISIONS",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v3",
+  "documentId": "DOC-0205",
+  "sourceSha256": "128e10058b6648a316c864c49c4a4015098b6b4dad07c4ea95996a50bf5b5004",
+  "containerCount": 97,
+  "decisionCount": 97,
+  "acceptedSpanCount": 72,
+  "decisions": [
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[3]",
+      "sourceId": "body[1]/p[3]",
+      "documentOrder": 1,
+      "sourceContainerText": "NGHỊ ĐỊNH",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[4]",
+      "sourceId": "body[1]/p[4]",
+      "documentOrder": 2,
+      "sourceContainerText": "Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[4]#heading-span-0-59",
+          "start": 0,
+          "end": 59,
+          "text": "Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_DOCUMENT_FRAMING",
+            "CENTERED_OR_STANDALONE_TITLE",
+            "SEMANTIC_DOCUMENT_TITLE"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_DOCUMENT_FRAMING",
+        "CENTERED_OR_STANDALONE_TITLE",
+        "SEMANTIC_DOCUMENT_TITLE"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[14]",
+      "sourceId": "body[1]/p[14]",
+      "documentOrder": 3,
+      "sourceContainerText": "Chương I",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[14]#heading-span-0-8",
+          "start": 0,
+          "end": 8,
+          "text": "Chương I",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[15]",
+      "sourceId": "body[1]/p[15]",
+      "documentOrder": 4,
+      "sourceContainerText": "QUY ĐỊNH CHUNG",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[17]",
+      "sourceId": "body[1]/p[17]",
+      "documentOrder": 5,
+      "sourceContainerText": "Điều 1. Phạm vi điều chỉnh",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[17]#heading-span-0-26",
+          "start": 0,
+          "end": 26,
+          "text": "Điều 1. Phạm vi điều chỉnh",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[20]",
+      "sourceId": "body[1]/p[20]",
+      "documentOrder": 6,
+      "sourceContainerText": "Điều 2. Đối tượng áp dụng",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[20]#heading-span-0-25",
+          "start": 0,
+          "end": 25,
+          "text": "Điều 2. Đối tượng áp dụng",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[22]",
+      "sourceId": "body[1]/p[22]",
+      "documentOrder": 7,
+      "sourceContainerText": "Điều 3. Giải thích từ ngữ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[22]#heading-span-0-25",
+          "start": 0,
+          "end": 25,
+          "text": "Điều 3. Giải thích từ ngữ",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[34]",
+      "sourceId": "body[1]/p[34]",
+      "documentOrder": 8,
+      "sourceContainerText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[34]#heading-span-0-48",
+          "start": 0,
+          "end": 48,
+          "text": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[36]",
+      "sourceId": "body[1]/p[36]",
+      "documentOrder": 9,
+      "sourceContainerText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[36]#heading-span-0-63",
+          "start": 0,
+          "end": 63,
+          "text": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[45]",
+      "sourceId": "body[1]/p[45]",
+      "documentOrder": 10,
+      "sourceContainerText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[45]#heading-span-0-42",
+          "start": 0,
+          "end": 42,
+          "text": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[53]",
+      "sourceId": "body[1]/p[53]",
+      "documentOrder": 11,
+      "sourceContainerText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[53]#heading-span-0-60",
+          "start": 0,
+          "end": 60,
+          "text": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[61]",
+      "sourceId": "body[1]/p[61]",
+      "documentOrder": 12,
+      "sourceContainerText": "Điều 8. Các hành vi không được làm",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[61]#heading-span-0-34",
+          "start": 0,
+          "end": 34,
+          "text": "Điều 8. Các hành vi không được làm",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[68]",
+      "sourceId": "body[1]/p[68]",
+      "documentOrder": 13,
+      "sourceContainerText": "Chương II",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[68]#heading-span-0-9",
+          "start": 0,
+          "end": 9,
+          "text": "Chương II",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[69]",
+      "sourceId": "body[1]/p[69]",
+      "documentOrder": 14,
+      "sourceContainerText": "QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU, QUẢN TRỊ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC VÀ BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[71]",
+      "sourceId": "body[1]/p[71]",
+      "documentOrder": 15,
+      "sourceContainerText": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[71]#heading-span-0-60",
+          "start": 0,
+          "end": 60,
+          "text": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[73]",
+      "sourceId": "body[1]/p[73]",
+      "documentOrder": 16,
+      "sourceContainerText": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[73]#heading-span-0-72",
+          "start": 0,
+          "end": 72,
+          "text": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[77]",
+      "sourceId": "body[1]/p[77]",
+      "documentOrder": 17,
+      "sourceContainerText": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[77]#heading-span-0-48",
+          "start": 0,
+          "end": 48,
+          "text": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[78]",
+      "sourceId": "body[1]/p[78]",
+      "documentOrder": 18,
+      "sourceContainerText": "1. Nội dung tổ chức, quản lý dữ liệu:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[84]",
+      "sourceId": "body[1]/p[84]",
+      "documentOrder": 19,
+      "sourceContainerText": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[84]#heading-span-0-45",
+          "start": 0,
+          "end": 45,
+          "text": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[85]",
+      "sourceId": "body[1]/p[85]",
+      "documentOrder": 20,
+      "sourceContainerText": "1. Cơ sở dữ liệu trong cơ quan nhà nước bao gồm:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[98]",
+      "sourceId": "body[1]/p[98]",
+      "documentOrder": 21,
+      "sourceContainerText": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[98]#heading-span-0-81",
+          "start": 0,
+          "end": 81,
+          "text": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[112]",
+      "sourceId": "body[1]/p[112]",
+      "documentOrder": 22,
+      "sourceContainerText": "Điều 13. Cổng dữ liệu quốc gia",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[112]#heading-span-0-30",
+          "start": 0,
+          "end": 30,
+          "text": "Điều 13. Cổng dữ liệu quốc gia",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[119]",
+      "sourceId": "body[1]/p[119]",
+      "documentOrder": 23,
+      "sourceContainerText": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[119]#heading-span-0-60",
+          "start": 0,
+          "end": 60,
+          "text": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[121]",
+      "sourceId": "body[1]/p[121]",
+      "documentOrder": 24,
+      "sourceContainerText": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[121]#heading-span-0-72",
+          "start": 0,
+          "end": 72,
+          "text": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[130]",
+      "sourceId": "body[1]/p[130]",
+      "documentOrder": 25,
+      "sourceContainerText": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[130]#heading-span-0-73",
+          "start": 0,
+          "end": 73,
+          "text": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[133]",
+      "sourceId": "body[1]/p[133]",
+      "documentOrder": 26,
+      "sourceContainerText": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[133]#heading-span-0-44",
+          "start": 0,
+          "end": 44,
+          "text": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[135]",
+      "sourceId": "body[1]/p[135]",
+      "documentOrder": 27,
+      "sourceContainerText": "2. Nội dung kiểm tra, đánh giá dữ liệu dữ liệu bao gồm:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[149]",
+      "sourceId": "body[1]/p[149]",
+      "documentOrder": 28,
+      "sourceContainerText": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[149]#heading-span-0-38",
+          "start": 0,
+          "end": 38,
+          "text": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[151]",
+      "sourceId": "body[1]/p[151]",
+      "documentOrder": 29,
+      "sourceContainerText": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[151]#heading-span-0-60",
+          "start": 0,
+          "end": 60,
+          "text": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[162]",
+      "sourceId": "body[1]/p[162]",
+      "documentOrder": 30,
+      "sourceContainerText": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[162]#heading-span-0-57",
+          "start": 0,
+          "end": 57,
+          "text": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[168]",
+      "sourceId": "body[1]/p[168]",
+      "documentOrder": 31,
+      "sourceContainerText": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[168]#heading-span-0-67",
+          "start": 0,
+          "end": 67,
+          "text": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[176]",
+      "sourceId": "body[1]/p[176]",
+      "documentOrder": 32,
+      "sourceContainerText": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[176]#heading-span-0-67",
+          "start": 0,
+          "end": 67,
+          "text": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[181]",
+      "sourceId": "body[1]/p[181]",
+      "documentOrder": 33,
+      "sourceContainerText": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[181]#heading-span-0-71",
+          "start": 0,
+          "end": 71,
+          "text": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[187]",
+      "sourceId": "body[1]/p[187]",
+      "documentOrder": 34,
+      "sourceContainerText": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[187]#heading-span-0-57",
+          "start": 0,
+          "end": 57,
+          "text": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[189]",
+      "sourceId": "body[1]/p[189]",
+      "documentOrder": 35,
+      "sourceContainerText": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[189]#heading-span-0-51",
+          "start": 0,
+          "end": 51,
+          "text": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[192]",
+      "sourceId": "body[1]/p[192]",
+      "documentOrder": 36,
+      "sourceContainerText": "Điều 23. Phương thức chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[192]#heading-span-0-36",
+          "start": 0,
+          "end": 36,
+          "text": "Điều 23. Phương thức chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[193]",
+      "sourceId": "body[1]/p[193]",
+      "documentOrder": 37,
+      "sourceContainerText": "1. Phương thức chia sẻ dữ liệu bao gồm:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[200]",
+      "sourceId": "body[1]/p[200]",
+      "documentOrder": 38,
+      "sourceContainerText": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[200]#heading-span-0-32",
+          "start": 0,
+          "end": 32,
+          "text": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[203]",
+      "sourceId": "body[1]/p[203]",
+      "documentOrder": 39,
+      "sourceContainerText": "3. Nội dung thông tin về dịch vụ chia sẻ dữ liệu bao gồm:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[207]",
+      "sourceId": "body[1]/p[207]",
+      "documentOrder": 40,
+      "sourceContainerText": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[207]#heading-span-0-55",
+          "start": 0,
+          "end": 55,
+          "text": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[213]",
+      "sourceId": "body[1]/p[213]",
+      "documentOrder": 41,
+      "sourceContainerText": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[213]#heading-span-0-49",
+          "start": 0,
+          "end": 49,
+          "text": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[222]",
+      "sourceId": "body[1]/p[222]",
+      "documentOrder": 42,
+      "sourceContainerText": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[222]#heading-span-0-41",
+          "start": 0,
+          "end": 41,
+          "text": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[233]",
+      "sourceId": "body[1]/p[233]",
+      "documentOrder": 43,
+      "sourceContainerText": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[233]#heading-span-0-65",
+          "start": 0,
+          "end": 65,
+          "text": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[237]",
+      "sourceId": "body[1]/p[237]",
+      "documentOrder": 44,
+      "sourceContainerText": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[237]#heading-span-0-50",
+          "start": 0,
+          "end": 50,
+          "text": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[246]",
+      "sourceId": "body[1]/p[246]",
+      "documentOrder": 45,
+      "sourceContainerText": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[246]#heading-span-0-56",
+          "start": 0,
+          "end": 56,
+          "text": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[250]",
+      "sourceId": "body[1]/p[250]",
+      "documentOrder": 46,
+      "sourceContainerText": "Chương III",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[250]#heading-span-0-10",
+          "start": 0,
+          "end": 10,
+          "text": "Chương III",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[251]",
+      "sourceId": "body[1]/p[251]",
+      "documentOrder": 47,
+      "sourceContainerText": "THỰC HIỆN KẾT NỐI, CHIA SẺ, SỬ DỤNG DỮ LIỆU",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[253]",
+      "sourceId": "body[1]/p[253]",
+      "documentOrder": 48,
+      "sourceContainerText": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[253]#heading-span-0-39",
+          "start": 0,
+          "end": 39,
+          "text": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[255]",
+      "sourceId": "body[1]/p[255]",
+      "documentOrder": 49,
+      "sourceContainerText": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[255]#heading-span-0-131",
+          "start": 0,
+          "end": 131,
+          "text": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[257]",
+      "sourceId": "body[1]/p[257]",
+      "documentOrder": 50,
+      "sourceContainerText": "2. Bộ Thông tin và Truyền thông có trách nhiệm:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[263]",
+      "sourceId": "body[1]/p[263]",
+      "documentOrder": 51,
+      "sourceContainerText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[263]#heading-span-0-139",
+          "start": 0,
+          "end": 139,
+          "text": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[271]",
+      "sourceId": "body[1]/p[271]",
+      "documentOrder": 52,
+      "sourceContainerText": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[271]#heading-span-0-31",
+          "start": 0,
+          "end": 31,
+          "text": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[273]",
+      "sourceId": "body[1]/p[273]",
+      "documentOrder": 53,
+      "sourceContainerText": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[273]#heading-span-0-47",
+          "start": 0,
+          "end": 47,
+          "text": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[281]",
+      "sourceId": "body[1]/p[281]",
+      "documentOrder": 54,
+      "sourceContainerText": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[281]#heading-span-0-56",
+          "start": 0,
+          "end": 56,
+          "text": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[288]",
+      "sourceId": "body[1]/p[288]",
+      "documentOrder": 55,
+      "sourceContainerText": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[288]#heading-span-0-47",
+          "start": 0,
+          "end": 47,
+          "text": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[290]",
+      "sourceId": "body[1]/p[290]",
+      "documentOrder": 56,
+      "sourceContainerText": "2. Nội dung yêu cầu kết nối, sử dụng dữ liệu:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[300]",
+      "sourceId": "body[1]/p[300]",
+      "documentOrder": 57,
+      "sourceContainerText": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[300]#heading-span-0-43",
+          "start": 0,
+          "end": 43,
+          "text": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[302]",
+      "sourceId": "body[1]/p[302]",
+      "documentOrder": 58,
+      "sourceContainerText": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[302]#heading-span-0-56",
+          "start": 0,
+          "end": 56,
+          "text": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[308]",
+      "sourceId": "body[1]/p[308]",
+      "documentOrder": 59,
+      "sourceContainerText": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[308]#heading-span-0-51",
+          "start": 0,
+          "end": 51,
+          "text": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[314]",
+      "sourceId": "body[1]/p[314]",
+      "documentOrder": 60,
+      "sourceContainerText": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[314]#heading-span-0-44",
+          "start": 0,
+          "end": 44,
+          "text": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[327]",
+      "sourceId": "body[1]/p[327]",
+      "documentOrder": 61,
+      "sourceContainerText": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[327]#heading-span-0-52",
+          "start": 0,
+          "end": 52,
+          "text": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[330]",
+      "sourceId": "body[1]/p[330]",
+      "documentOrder": 62,
+      "sourceContainerText": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[330]#heading-span-0-39",
+          "start": 0,
+          "end": 39,
+          "text": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[332]",
+      "sourceId": "body[1]/p[332]",
+      "documentOrder": 63,
+      "sourceContainerText": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[332]#heading-span-0-47",
+          "start": 0,
+          "end": 47,
+          "text": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[336]",
+      "sourceId": "body[1]/p[336]",
+      "documentOrder": 64,
+      "sourceContainerText": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[336]#heading-span-0-51",
+          "start": 0,
+          "end": 51,
+          "text": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[338]",
+      "sourceId": "body[1]/p[338]",
+      "documentOrder": 65,
+      "sourceContainerText": "2. Thời hạn sử dụng dữ liệu được quy định như sau:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[342]",
+      "sourceId": "body[1]/p[342]",
+      "documentOrder": 66,
+      "sourceContainerText": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[342]#heading-span-0-47",
+          "start": 0,
+          "end": 47,
+          "text": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[347]",
+      "sourceId": "body[1]/p[347]",
+      "documentOrder": 67,
+      "sourceContainerText": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[347]#heading-span-0-85",
+          "start": 0,
+          "end": 85,
+          "text": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[359]",
+      "sourceId": "body[1]/p[359]",
+      "documentOrder": 68,
+      "sourceContainerText": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[359]#heading-span-0-62",
+          "start": 0,
+          "end": 62,
+          "text": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[367]",
+      "sourceId": "body[1]/p[367]",
+      "documentOrder": 69,
+      "sourceContainerText": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[367]#heading-span-0-40",
+          "start": 0,
+          "end": 40,
+          "text": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[369]",
+      "sourceId": "body[1]/p[369]",
+      "documentOrder": 70,
+      "sourceContainerText": "2. Nội dung thông tin lịch sử lưu trữ bao gồm:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[376]",
+      "sourceId": "body[1]/p[376]",
+      "documentOrder": 71,
+      "sourceContainerText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[376]#heading-span-0-41",
+          "start": 0,
+          "end": 41,
+          "text": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[381]",
+      "sourceId": "body[1]/p[381]",
+      "documentOrder": 72,
+      "sourceContainerText": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[381]#heading-span-0-52",
+          "start": 0,
+          "end": 52,
+          "text": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[383]",
+      "sourceId": "body[1]/p[383]",
+      "documentOrder": 73,
+      "sourceContainerText": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[383]#heading-span-0-60",
+          "start": 0,
+          "end": 60,
+          "text": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[391]",
+      "sourceId": "body[1]/p[391]",
+      "documentOrder": 74,
+      "sourceContainerText": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[391]#heading-span-0-51",
+          "start": 0,
+          "end": 51,
+          "text": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[396]",
+      "sourceId": "body[1]/p[396]",
+      "documentOrder": 75,
+      "sourceContainerText": "Điều 49. Trình tự xử lý vướng mắc",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[396]#heading-span-0-33",
+          "start": 0,
+          "end": 33,
+          "text": "Điều 49. Trình tự xử lý vướng mắc",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[402]",
+      "sourceId": "body[1]/p[402]",
+      "documentOrder": 76,
+      "sourceContainerText": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[402]#heading-span-0-78",
+          "start": 0,
+          "end": 78,
+          "text": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[403]",
+      "sourceId": "body[1]/p[403]",
+      "documentOrder": 77,
+      "sourceContainerText": "1. Nguyên tắc giải quyết vướng mắc:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[410]",
+      "sourceId": "body[1]/p[410]",
+      "documentOrder": 78,
+      "sourceContainerText": "Chương IV",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[410]#heading-span-0-9",
+          "start": 0,
+          "end": 9,
+          "text": "Chương IV",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[411]",
+      "sourceId": "body[1]/p[411]",
+      "documentOrder": 79,
+      "sourceContainerText": "QUYỀN, TRÁCH NHIỆM TRONG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[413]",
+      "sourceId": "body[1]/p[413]",
+      "documentOrder": 80,
+      "sourceContainerText": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[413]#heading-span-0-58",
+          "start": 0,
+          "end": 58,
+          "text": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[414]",
+      "sourceId": "body[1]/p[414]",
+      "documentOrder": 81,
+      "sourceContainerText": "1. Cơ quan cung cấp dữ liệu có quyền sau:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[418]",
+      "sourceId": "body[1]/p[418]",
+      "documentOrder": 82,
+      "sourceContainerText": "2. Cơ quan cung cấp dữ liệu có trách nhiệm sau:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[427]",
+      "sourceId": "body[1]/p[427]",
+      "documentOrder": 83,
+      "sourceContainerText": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[427]#heading-span-0-77",
+          "start": 0,
+          "end": 77,
+          "text": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[428]",
+      "sourceId": "body[1]/p[428]",
+      "documentOrder": 84,
+      "sourceContainerText": "1. Tổ chức, cá nhân khai thác, sử dụng dữ liệu có quyền sau:",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[436]",
+      "sourceId": "body[1]/p[436]",
+      "documentOrder": 85,
+      "sourceContainerText": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[436]#heading-span-0-74",
+          "start": 0,
+          "end": 74,
+          "text": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[437]",
+      "sourceId": "body[1]/p[437]",
+      "documentOrder": 86,
+      "sourceContainerText": "1. Bộ Thông tin và Truyền thông",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[443]",
+      "sourceId": "body[1]/p[443]",
+      "documentOrder": 87,
+      "sourceContainerText": "2. Bộ Kế hoạch và Đầu tư",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[445]",
+      "sourceId": "body[1]/p[445]",
+      "documentOrder": 88,
+      "sourceContainerText": "3. Bộ Tài chính",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[448]",
+      "sourceId": "body[1]/p[448]",
+      "documentOrder": 89,
+      "sourceContainerText": "4. Bộ Công an",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[450]",
+      "sourceId": "body[1]/p[450]",
+      "documentOrder": 90,
+      "sourceContainerText": "5. Các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[455]",
+      "sourceId": "body[1]/p[455]",
+      "documentOrder": 91,
+      "sourceContainerText": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[455]#heading-span-0-82",
+          "start": 0,
+          "end": 82,
+          "text": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[461]",
+      "sourceId": "body[1]/p[461]",
+      "documentOrder": 92,
+      "sourceContainerText": "Chương V",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[461]#heading-span-0-8",
+          "start": 0,
+          "end": 8,
+          "text": "Chương V",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD",
+            "SOURCE_CENTERED"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[462]",
+      "sourceId": "body[1]/p[462]",
+      "documentOrder": 93,
+      "sourceContainerText": "ĐIỀU KHOẢN THI HÀNH",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[464]",
+      "sourceId": "body[1]/p[464]",
+      "documentOrder": 94,
+      "sourceContainerText": "Điều 55. Điều khoản chuyển tiếp",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[464]#heading-span-0-31",
+          "start": 0,
+          "end": 31,
+          "text": "Điều 55. Điều khoản chuyển tiếp",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[469]",
+      "sourceId": "body[1]/p[469]",
+      "documentOrder": 95,
+      "sourceContainerText": "Điều 56. Hiệu lực thi hành",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[469]#heading-span-0-26",
+          "start": 0,
+          "end": 26,
+          "text": "Điều 56. Hiệu lực thi hành",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[471]",
+      "sourceId": "body[1]/p[471]",
+      "documentOrder": 96,
+      "sourceContainerText": "Điều 57. Trách nhiệm thi hành",
+      "decision": "TRUE_HEADING_SPAN",
+      "headingSpans": [
+        {
+          "occurrenceId": "DOC-0205:body[1]/p[471]#heading-span-0-29",
+          "start": 0,
+          "end": 29,
+          "text": "Điều 57. Trách nhiệm thi hành",
+          "decision": "TRUE_HEADING_SPAN",
+          "evidence": [
+            "SOURCE_STRUCTURAL_HEADING_MARKER",
+            "SOURCE_HEADING_CONTAINER",
+            "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+            "SOURCE_BOLD"
+          ]
+        }
+      ],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED",
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    },
+    {
+      "sourceOccurrenceId": "DOC-0205:body[1]/tbl[2]/tr[1]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[1]",
+      "documentOrder": 97,
+      "sourceContainerText": "TM. CHÍNH PHỦ THỦ TƯỚNG",
+      "decision": "NO_HEADING_SPAN",
+      "headingSpans": [],
+      "evidence": [
+        "SOURCE_CONTAINER_REVIEWED"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+      "historicalMembershipUsedForDecision": false,
+      "semanticTotalUsedForDecision": false,
+      "historicalLevelRead": false
+    }
+  ],
+  "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "productionModelCalls": 0
+}

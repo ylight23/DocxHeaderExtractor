@@ -1,0 +1,48 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_AMBIGUITIES",
+  "documentId": "DOC-0264",
+  "cases": [
+    {
+      "normalizedText": "Section 2",
+      "occurrenceRefs": [
+        "DOC-0264:body[1]/p[342]#heading-span-0-9",
+        "DOC-0264:body[1]/p[470]#heading-span-0-9",
+        "DOC-0264:body[1]/p[904]#heading-span-0-9",
+        "DOC-0264:body[1]/p[1128]#heading-span-0-9"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    },
+    {
+      "normalizedText": "Section 4",
+      "occurrenceRefs": [
+        "DOC-0264:body[1]/p[1015]#heading-span-0-9",
+        "DOC-0264:body[1]/p[1196]#heading-span-0-9"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    },
+    {
+      "normalizedText": "Section 1",
+      "occurrenceRefs": [
+        "DOC-0264:body[1]/p[171]#heading-span-0-9",
+        "DOC-0264:body[1]/p[369]#heading-span-0-9",
+        "DOC-0264:body[1]/p[762]#heading-span-0-9",
+        "DOC-0264:body[1]/p[1044]#heading-span-0-9"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    },
+    {
+      "normalizedText": "Section 3",
+      "occurrenceRefs": [
+        "DOC-0264:body[1]/p[977]#heading-span-0-9",
+        "DOC-0264:body[1]/p[1182]#heading-span-0-9"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    }
+  ],
+  "unresolvedCount": 0,
+  "policy": "KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+}

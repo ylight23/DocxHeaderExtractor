@@ -1,0 +1,21 @@
+{
+  "artifactKind": "A99_CANONICAL_DEEP_ADJUDICATION_SOURCE_SCAN",
+  "schemaVersion": "a99-canonical-deep-adjudication-v3-source-scan",
+  "documentId": "DOC-0122",
+  "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/037_WB_Plant_TwoStage_2025.docx",
+  "sourceSHA256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+  "sourceFormat": "DOCX",
+  "sourceRepresentation": "DOCX_XML_SOURCE_CONTAINERS",
+  "paragraphCount": 3512,
+  "sourceRecordsInspected": 3512,
+  "sourceOnly": true,
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "containersReviewed": 3512,
+  "status": "GENUINE_HARD_BLOCKER",
+  "blockerReason": "GENUINE_SOURCE_SEMANTIC_AMBIGUITY_REQUIRING_USER_REVIEW"
+}

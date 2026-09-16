@@ -1,0 +1,49 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V3_MANIFEST",
+  "schemaVersion": "a99-canonical-batch-v3",
+  "status": "BATCH_V3_READY_FOR_USER_CANONICAL_APPROVAL",
+  "baselineCommit": "a5ac90b",
+  "deepAdjudication": "artifacts/authority-audit/canonical-deep-adjudication-v3/summary.json",
+  "generatedArtifacts": [
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3/batch-review.md",
+      "sha256": "1c5615ef063f34008cf47e8f9abc5bb4723e21a30b5f4ccc16695d65ebef1c06"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3/batch-summary.json",
+      "sha256": "241a17812c888f0f453d98eb68d6b22c6712fd3965be6f64e00c51587c32bbe4"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3/blockers.json",
+      "sha256": "7a80c0447945171e004f2a77cd4d63bc98406e684fcbf06cc5b8c5437dd42c56"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3/blockers/DOC-0116.json",
+      "sha256": "26a1c2ec1e9385acfa8faae6daf2255c243f3a980f8ed6084ef119f828b2d324"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3/blockers/DOC-0122.json",
+      "sha256": "ae2c31bf61c3255d8d2b09c9d10c8e01be6be549b7b5fd46257b5841ed881b1e"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3/blockers/DOC-0216.json",
+      "sha256": "aaa03cb3c1f7fdcb70246943195c686fdef8c8cacfc7a7b70fc032a7b02dc2b1"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3/blockers/DOC-0219.json",
+      "sha256": "32f318d2f4ca5e0b97719ef25532be57053433f6de4b77a93b471e1a9123fef3"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3/document-inventory.json",
+      "sha256": "accb5c10aa5bfdcdab7d88a846fa2c524f245d7c31306e82c37eec59af99a01b"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3/validation.json",
+      "sha256": "a3f97de78114f13f90e4a2f6cc4eefa8535aa38106b8cfb3adb98663c3c910dd"
+    }
+  ],
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}

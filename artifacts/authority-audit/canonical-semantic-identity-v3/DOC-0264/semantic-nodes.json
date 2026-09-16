@@ -1,0 +1,2024 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_NODES",
+  "documentId": "DOC-0264",
+  "semanticNodeCount": 155,
+  "nodes": [
+    {
+      "semanticNodeRef": "N0001",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[16]#heading-span-0-17",
+      "canonicalText": "LAW ON SECURITIES",
+      "headingKind": "DOCUMENT_TITLE",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[16]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[21]#heading-span-0-9",
+      "canonicalText": "Chapter I",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[21]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[23]#heading-span-0-30",
+      "canonicalText": "Article 1. Scope of regulation",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[23]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[25]#heading-span-0-34",
+      "canonicalText": "Article 2. Subjects of application",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[25]#heading-span-0-34"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[29]#heading-span-0-62",
+      "canonicalText": "Article 3. Application of the Securities Law and relevant laws",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[29]#heading-span-0-62"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[31]#heading-span-0-34",
+      "canonicalText": "Article 4. Interpretation of terms",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[31]#heading-span-0-34"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[103]#heading-span-0-68",
+      "canonicalText": "Article 5. Principles of securities and securities market activities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[103]#heading-span-0-68"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[108]#heading-span-0-49",
+      "canonicalText": "Article 6. Securities market development policies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[108]#heading-span-0-49"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0009",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[112]#heading-span-0-74",
+      "canonicalText": "Article 7. Measures to ensure security and safety of the securities market",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[112]#heading-span-0-74"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[122]#heading-span-0-63",
+      "canonicalText": "Article 8. State management of securities and securities market",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[122]#heading-span-0-63"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0011",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[130]#heading-span-0-42",
+      "canonicalText": "Article 9. The State Securities Commission",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[130]#heading-span-0-42"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[150]#heading-span-0-63",
+      "canonicalText": "Article 10. Securities-related socio-professional organizations",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[150]#heading-span-0-63"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[153]#heading-span-0-45",
+      "canonicalText": "Article 11. Professional securities investors",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[153]#heading-span-0-45"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[161]#heading-span-0-74",
+      "canonicalText": "Article 12. Prohibited acts in securities and securities market activities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[161]#heading-span-0-74"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[169]#heading-span-0-10",
+      "canonicalText": "Chapter II",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[169]#heading-span-0-10"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[171]#heading-span-0-9",
+      "canonicalText": "Section 1",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[171]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[173]#heading-span-0-32",
+      "canonicalText": "Article 13. Securities par value",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[173]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0018",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[177]#heading-span-0-50",
+      "canonicalText": "Article 14. Forms of public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[177]#heading-span-0-50"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[180]#heading-span-0-56",
+      "canonicalText": "Article 15. Conditions for public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[180]#heading-span-0-56"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[213]#heading-span-0-57",
+      "canonicalText": "Article 16. Registration of public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[213]#heading-span-0-57"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[220]#heading-span-0-76",
+      "canonicalText": "Article 17. Conditions for issuance underwriting of securities to the public",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[220]#heading-span-0-76"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[226]#heading-span-0-69",
+      "canonicalText": "Article 18. Dossiers of registration of public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[226]#heading-span-0-69"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[268]#heading-span-0-22",
+      "canonicalText": "Article 19. Prospectus",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[268]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[285]#heading-span-0-32",
+      "canonicalText": "Article 20. Financial statements",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[285]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0025",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[291]#heading-span-0-67",
+      "canonicalText": "Article 21. Accredited audit firms and certified public accountants",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[291]#heading-span-0-67"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[300]#heading-span-0-105",
+      "canonicalText": "Article 22. Modification and supplementation of dossiers of registration of public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[300]#heading-span-0-105"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[306]#heading-span-0-129",
+      "canonicalText": "Article 23. Responsibilities of institutions and individuals related to dossiers of registration of public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[306]#heading-span-0-129"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[309]#heading-span-0-67",
+      "canonicalText": "Article 24. Use of information before public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[309]#heading-span-0-67"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[311]#heading-span-0-81",
+      "canonicalText": "Article 25. Grant of certificate of registration of public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[311]#heading-span-0-81"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[316]#heading-span-0-38",
+      "canonicalText": "Article 26. Distribution of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[316]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[324]#heading-span-0-55",
+      "canonicalText": "Article 27. Suspension of public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[324]#heading-span-0-55"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0032",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[331]#heading-span-0-57",
+      "canonicalText": "Article 28. Cancellation of public offering of securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[331]#heading-span-0-57"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[338]#heading-span-0-47",
+      "canonicalText": "Article 29. Obligations of issuing institutions",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[338]#heading-span-0-47"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[342]#heading-span-0-9",
+      "canonicalText": "Section 2",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[342]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[344]#heading-span-0-95",
+      "canonicalText": "Article 30. Private placement of securities of issuing institutions other than public companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[344]#heading-span-0-95"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[346]#heading-span-0-137",
+      "canonicalText": "Article 31. Private placement of securities of public companies, securities companies and securities investment fund management companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[346]#heading-span-0-137"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[367]#heading-span-0-11",
+      "canonicalText": "Chapter III",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[367]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[369]#heading-span-0-9",
+      "canonicalText": "Section 1",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[369]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0039",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[371]#heading-span-0-28",
+      "canonicalText": "Article 32. Public companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[371]#heading-span-0-28"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[377]#heading-span-0-48",
+      "canonicalText": "Article 33. Public company registration dossiers",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[377]#heading-span-0-48"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0041",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[386]#heading-span-0-54",
+      "canonicalText": "Article 34. Rights and obligations of public companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[386]#heading-span-0-54"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[394]#heading-span-0-22",
+      "canonicalText": "Article 35. Public bid",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[394]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[408]#heading-span-0-62",
+      "canonicalText": "Article 36. Redemption by public companies of their own stocks",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[408]#heading-span-0-62"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[437]#heading-span-0-99",
+      "canonicalText": "Article 37. Reports on stock redemption, information disclosure and performance of stock redemption",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[437]#heading-span-0-99"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[458]#heading-span-0-54",
+      "canonicalText": "Article 38. Cancellation of status of public companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[458]#heading-span-0-54"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[464]#heading-span-0-61",
+      "canonicalText": "Article 39. Dossiers of cancellation of public company status",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[464]#heading-span-0-61"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[470]#heading-span-0-9",
+      "canonicalText": "Section 2",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[470]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0048",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[472]#heading-span-0-77",
+      "canonicalText": "Article 40. Principles of corporate governance applicable to public companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[472]#heading-span-0-77"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[480]#heading-span-0-75",
+      "canonicalText": "Article 41. Contents of corporate governance applicable to public companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[480]#heading-span-0-75"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[513]#heading-span-0-10",
+      "canonicalText": "Chapter IV",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[513]#heading-span-0-10"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[515]#heading-span-0-55",
+      "canonicalText": "Article 42. Organization of a securities trading market",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[515]#heading-span-0-55"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[518]#heading-span-0-97",
+      "canonicalText": "Article 43. Organization and operation of the Vietnam Stock Exchange and its subsidiary companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[518]#heading-span-0-97"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[522]#heading-span-0-81",
+      "canonicalText": "Article 44. Organizational and managerial apparatus of the Vietnam Stock Exchange",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[522]#heading-span-0-81"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[526]#heading-span-0-49",
+      "canonicalText": "Article 45. Charter of the Vietnam Stock Exchange",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[526]#heading-span-0-49"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0055",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[544]#heading-span-0-64",
+      "canonicalText": "Article 46. Rights and obligations of the Vietnam Stock Exchange",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[544]#heading-span-0-64"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[568]#heading-span-0-49",
+      "canonicalText": "Article 47. Members of the Vietnam Stock Exchange",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[568]#heading-span-0-49"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[584]#heading-span-0-55",
+      "canonicalText": "Article 48. Securities listing and trading registration",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[584]#heading-span-0-55"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[589]#heading-span-0-131",
+      "canonicalText": "Article 49. Suspension, termination and resumption of trading activities of the Vietnam Stock Exchange and its subsidiary companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[589]#heading-span-0-131"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[594]#heading-span-0-30",
+      "canonicalText": "Article 50. Securities trading",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[594]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[600]#heading-span-0-120",
+      "canonicalText": "Article 51. Participation of foreign investors and foreign-invested economic institutions in Vietnam’s securities market",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[600]#heading-span-0-120"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[604]#heading-span-0-9",
+      "canonicalText": "Chapter V",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[604]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0062",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[606]#heading-span-0-101",
+      "canonicalText": "Article 52. Establishment and operation of the Vietnam Securities Depository and Clearing Corporation",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[606]#heading-span-0-101"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[610]#heading-span-0-113",
+      "canonicalText": "Article 53. Organizational and managerial structure of the Vietnam Securities Depository and Clearing Corporation",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[610]#heading-span-0-113"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[614]#heading-span-0-81",
+      "canonicalText": "Article 54. Charter of the Vietnam Securities Depository and Clearing Corporation",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[614]#heading-span-0-81"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[632]#heading-span-0-96",
+      "canonicalText": "Article 55. Rights and obligations of the Vietnam Securities Depository and Clearing Corporation",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[632]#heading-span-0-96"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[656]#heading-span-0-81",
+      "canonicalText": "Article 56. Members of the Vietnam Securities Depository and Clearing Corporation",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[656]#heading-span-0-81"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[680]#heading-span-0-75",
+      "canonicalText": "Article 57. Conditions for registration of securities depository activities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[680]#heading-span-0-75"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[686]#heading-span-0-73",
+      "canonicalText": "Article 58. Dossiers for registration of securities depository activities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[686]#heading-span-0-73"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0069",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[694]#heading-span-0-101",
+      "canonicalText": "Article 59. Time limits for grant of certificates of registration of securities depository activities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[694]#heading-span-0-101"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[697]#heading-span-0-141",
+      "canonicalText": "Article 60. Suspension of securities depository activities and revocation of certificates of registration of securities depository activities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[697]#heading-span-0-141"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0071",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[709]#heading-span-0-35",
+      "canonicalText": "Article 61. Securities registration",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[709]#heading-span-0-35"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[715]#heading-span-0-33",
+      "canonicalText": "Article 62. Securities depository",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[715]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[720]#heading-span-0-60",
+      "canonicalText": "Article 63. Clearing and payment for securities transactions",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[720]#heading-span-0-60"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[724]#heading-span-0-91",
+      "canonicalText": "Article 64. Establishment and transfer of ownership rights and other rights over securities",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[724]#heading-span-0-91"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[728]#heading-span-0-43",
+      "canonicalText": "Article 65. Protection of customers’ assets",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[728]#heading-span-0-43"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[731]#heading-span-0-33",
+      "canonicalText": "Article 66. Payment support funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[731]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[735]#heading-span-0-26",
+      "canonicalText": "Article 67. Clearing funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[735]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0078",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[739]#heading-span-0-161",
+      "canonicalText": "Article 68. Suspension, termination or resumption of securities registration, depository, clearing and payment activities of the Vietnam Securities Depository a…",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[739]#heading-span-0-161"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[744]#heading-span-0-25",
+      "canonicalText": "Article 69. Payment banks",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[744]#heading-span-0-25"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[760]#heading-span-0-10",
+      "canonicalText": "Chapter VI",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[760]#heading-span-0-10"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[762]#heading-span-0-9",
+      "canonicalText": "Section 1",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[762]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[764]#heading-span-0-107",
+      "canonicalText": "Article 70. Competence to grant, re-grant, modify and revoke establishment and securities business licenses",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[764]#heading-span-0-107"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[766]#heading-span-0-58",
+      "canonicalText": "Article 71. Enterprise registration, business registration",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[766]#heading-span-0-58"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[770]#heading-span-0-55",
+      "canonicalText": "Article 72. Business operations of securities companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[770]#heading-span-0-55"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0085",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[778]#heading-span-0-82",
+      "canonicalText": "Article 73. Business operations of securities investment fund management companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[778]#heading-span-0-82"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[784]#heading-span-0-107",
+      "canonicalText": "Article 74. Conditions for grant of establishment and securities business licenses for securities companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[784]#heading-span-0-107"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[805]#heading-span-0-134",
+      "canonicalText": "Article 75. Conditions for grant of establishment and securities business licenses for securities investment fund management companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[805]#heading-span-0-134"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[825]#heading-span-0-161",
+      "canonicalText": "Article 76. Conditions for grant of establishment and securities business licenses for Vietnam-based branches of foreign securities companies or fund management…",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[825]#heading-span-0-161"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[838]#heading-span-0-118",
+      "canonicalText": "Article 77. Foreign investors’ holding rate in securities companies or securities investment fund management companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[838]#heading-span-0-118"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[848]#heading-span-0-95",
+      "canonicalText": "Article 78. Representative offices of foreign securities companies or fund management companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[848]#heading-span-0-95"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[859]#heading-span-0-161",
+      "canonicalText": "Article 79. Dossiers and procedures for grant, re-grant, modification and revocation of establishment and securities business licenses and operation registratio…",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[859]#heading-span-0-161"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0092",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[862]#heading-span-0-94",
+      "canonicalText": "Article 80. Charter of securities companies or securities investment fund management companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[862]#heading-span-0-94"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[865]#heading-span-0-70",
+      "canonicalText": "Article 81. Contents of establishment and securities business licenses",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[865]#heading-span-0-70"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[880]#heading-span-0-93",
+      "canonicalText": "Article 82. Names of securities companies and securities investment fund management companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[880]#heading-span-0-93"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[891]#heading-span-0-47",
+      "canonicalText": "Article 83. Disclosure of operation information",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[891]#heading-span-0-47"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[895]#heading-span-0-54",
+      "canonicalText": "Article 84. Date of official commencement of operation",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[895]#heading-span-0-54"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[904]#heading-span-0-9",
+      "canonicalText": "Section 2",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[904]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[906]#heading-span-0-97",
+      "canonicalText": "Article 85. Maintenance of conditions for grant of establishment and securities business licenses",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[906]#heading-span-0-97"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0099",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[928]#heading-span-0-76",
+      "canonicalText": "Article 87. Activities requiring approval of the State Securities Commission",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[928]#heading-span-0-76"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[938]#heading-span-0-45",
+      "canonicalText": "Article 88. Management of assets of customers",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[938]#heading-span-0-45"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0101",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[943]#heading-span-0-106",
+      "canonicalText": "Article 89. Obligations of securities companies and Vietnam-based branches or foreign securities companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[943]#heading-span-0-106"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[956]#heading-span-0-138",
+      "canonicalText": "Article 90. Obligations of securities investment fund management companies and Vietnam-based branches of foreign fund management companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[956]#heading-span-0-138"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[961]#heading-span-0-161",
+      "canonicalText": "Article 91. Restrictions on securities companies, securities investment fund management companies and Vietnam-based branches of foreign securities companies and…",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[961]#heading-span-0-161"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[973]#heading-span-0-28",
+      "canonicalText": "Article 92. Financial safety",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[973]#heading-span-0-28"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[977]#heading-span-0-9",
+      "canonicalText": "Section 3",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[977]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0106",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[979]#heading-span-0-102",
+      "canonicalText": "Article 93. Reorganization of securities companies and securities investment fund management companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[979]#heading-span-0-102"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0107",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[987]#heading-span-0-160",
+      "canonicalText": "Article 94. Suspension from operation of securities companies, securities investment fund management companies, or Vietnam-based branches of foreign securities…",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[987]#heading-span-0-160"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0108",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1011]#heading-span-0-161",
+      "canonicalText": "Article 96. Dissolution or bankruptcy of securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securities…",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1011]#heading-span-0-161"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0109",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1015]#heading-span-0-9",
+      "canonicalText": "Section 4",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1015]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0110",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1017]#heading-span-0-44",
+      "canonicalText": "Article 97. Securities practice certificates",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1017]#heading-span-0-44"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0111",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1033]#heading-span-0-56",
+      "canonicalText": "Article 98. Responsibilities of securities practitioners",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1033]#heading-span-0-56"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0112",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1042]#heading-span-0-11",
+      "canonicalText": "Chapter VII",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1042]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0113",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1044]#heading-span-0-9",
+      "canonicalText": "Section 1",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1044]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0114",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1046]#heading-span-0-48",
+      "canonicalText": "Article 99. Types of securities investment funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1046]#heading-span-0-48"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0115",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1049]#heading-span-0-83",
+      "canonicalText": "Article 100. Formation and organization of operation of securities investment funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1049]#heading-span-0-83"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0116",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1054]#heading-span-0-93",
+      "canonicalText": "Article 101. Rights and obligations of investors participating in securities investment funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1054]#heading-span-0-93"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0117",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1067]#heading-span-0-71",
+      "canonicalText": "Article 102. Investors’ general meetings of securities investment funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1067]#heading-span-0-71"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0118",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1081]#heading-span-0-52",
+      "canonicalText": "Article 103. Charters of securities investment funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1081]#heading-span-0-52"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0119",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1102]#heading-span-0-55",
+      "canonicalText": "Article 104. Dissolution of securities investment funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1102]#heading-span-0-55"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0120",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1117]#heading-span-0-68",
+      "canonicalText": "Article 105. Consolidation and merger of securities investment funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1117]#heading-span-0-68"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0121",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1119]#heading-span-0-76",
+      "canonicalText": "Article 106. Determination of net asset value of securities investment funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1119]#heading-span-0-76"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0122",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1126]#heading-span-0-51",
+      "canonicalText": "Article 107. Reports on securities investment funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1126]#heading-span-0-51"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0123",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1128]#heading-span-0-9",
+      "canonicalText": "Section 2",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1128]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0124",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1130]#heading-span-0-66",
+      "canonicalText": "Article 108. Mobilization of capital for formation of public funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1130]#heading-span-0-66"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0125",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1136]#heading-span-0-47",
+      "canonicalText": "Article 109. Boards of Trustees of public funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1136]#heading-span-0-47"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0126",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1141]#heading-span-0-41",
+      "canonicalText": "Article 110. Restrictions on public funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1141]#heading-span-0-41"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0127",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1158]#heading-span-0-27",
+      "canonicalText": "Article 111. Open-end funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1158]#heading-span-0-27"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0128",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1165]#heading-span-0-29",
+      "canonicalText": "Article 112. Closed-end funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1165]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0129",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1175]#heading-span-0-38",
+      "canonicalText": "Article 113. Formation of member funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1175]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0130",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1182]#heading-span-0-9",
+      "canonicalText": "Section 3",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1182]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0131",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1184]#heading-span-0-44",
+      "canonicalText": "Article 114. Securities investment companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1184]#heading-span-0-44"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0132",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1187]#heading-span-0-75",
+      "canonicalText": "Article 115. Establishment and operation of securities investment companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1187]#heading-span-0-75"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0133",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1196]#heading-span-0-9",
+      "canonicalText": "Section 4",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1196]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0134",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1198]#heading-span-0-30",
+      "canonicalText": "Article 116. Supervisory banks",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1198]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0135",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1210]#heading-span-0-46",
+      "canonicalText": "Article 117. Restrictions on supervisory banks",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1210]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0136",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1214]#heading-span-0-12",
+      "canonicalText": "Chapter VIII",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1214]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0137",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1216]#heading-span-0-53",
+      "canonicalText": "Article 118. Subjects obliged to disclose information",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1216]#heading-span-0-53"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0138",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1230]#heading-span-0-49",
+      "canonicalText": "Article 119. Principles of information disclosure",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1230]#heading-span-0-49"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0139",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1236]#heading-span-0-58",
+      "canonicalText": "Article 120. Disclosure of information by public companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1236]#heading-span-0-58"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0140",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1259]#heading-span-0-92",
+      "canonicalText": "Article 121. Disclosure of information by institutions issuing corporate bonds to the public",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1259]#heading-span-0-92"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0141",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1268]#heading-span-0-78",
+      "canonicalText": "Article 122. Disclosure of information by institutions listing corporate bonds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1268]#heading-span-0-78"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0142",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1274]#heading-span-0-161",
+      "canonicalText": "Article 123. Disclosure of information by securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securitie…",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1274]#heading-span-0-161"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0143",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1288]#heading-span-0-57",
+      "canonicalText": "Article 124. Disclosure of information about public funds",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1288]#heading-span-0-57"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0144",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1306]#heading-span-0-83",
+      "canonicalText": "Article 125. Disclosure of information about public securities investment companies",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1306]#heading-span-0-83"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0145",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1316]#heading-span-0-156",
+      "canonicalText": "Article 126. Disclosure of information by the Vietnam Stock Exchange and its subsidiary companies and Vietnam Securities Depository and Clearing Corporation",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1316]#heading-span-0-156"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0146",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1336]#heading-span-0-79",
+      "canonicalText": "Article 128. Disclosure of information by insiders and their affiliated persons",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1336]#heading-span-0-79"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0147",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1340]#heading-span-0-10",
+      "canonicalText": "Chapter IX",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1340]#heading-span-0-10"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0148",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1342]#heading-span-0-36",
+      "canonicalText": "Article 129. Securities inspectorate",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1342]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0149",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1351]#heading-span-0-161",
+      "canonicalText": "Article 130. Tasks and powers of the State Securities Commission regarding inspection, examination, and handling of violations of the law on securities and secu…",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1351]#heading-span-0-161"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0150",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1359]#heading-span-0-161",
+      "canonicalText": "Article 131. Coordination among agencies, organizations and individuals in inspecting, examining, and handling violations of the law on securities and securitie…",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1359]#heading-span-0-161"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0151",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1365]#heading-span-0-35",
+      "canonicalText": "Article 132. Handling of violations",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1365]#heading-span-0-35"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0152",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1373]#heading-span-0-58",
+      "canonicalText": "Article 133. Settlement of disputes and payment of damages",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1373]#heading-span-0-58"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0153",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1378]#heading-span-0-9",
+      "canonicalText": "Chapter X",
+      "headingKind": "CHAPTER_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1378]#heading-span-0-9"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0154",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1380]#heading-span-0-19",
+      "canonicalText": "Article 134. Effect",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1380]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0155",
+      "canonicalOccurrenceRef": "DOC-0264:body[1]/p[1383]#heading-span-0-36",
+      "canonicalText": "Article 135. Transitional provisions",
+      "headingKind": "ARTICLE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0264:body[1]/p[1383]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY",
+        "STRUCTURAL_SCOPE_PRESERVED"
+      ]
+    }
+  ],
+  "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+  "goldUsed": false
+}

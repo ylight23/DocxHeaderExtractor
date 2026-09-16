@@ -1,0 +1,2546 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_EXACT_BINDINGS",
+  "schemaVersion": "a99-canonical-exhaustive-heading-occurrence-v3",
+  "documentId": "DOC-0205",
+  "authority": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "sourceSha256": "128e10058b6648a316c864c49c4a4015098b6b4dad07c4ea95996a50bf5b5004",
+  "bindingUnit": "SOURCE_CONTAINER_PLUS_EXACT_HEADING_SPAN",
+  "acceptedCanonicalBindings": [
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[4]#heading-span-0-59",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[4]",
+      "sourceId": "body[1]/p[4]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 59
+      },
+      "exactText": "Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+      "headingKind": "DOCUMENT_TITLE",
+      "documentOrder": 2,
+      "occurrenceOrder": 1,
+      "sourceContainerText": "Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Vnbnnidung1",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": null,
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_DOCUMENT_FRAMING",
+        "CENTERED_OR_STANDALONE_TITLE",
+        "SEMANTIC_DOCUMENT_TITLE"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[14]#heading-span-0-8",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[14]",
+      "sourceId": "body[1]/p[14]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "exactText": "Chương I",
+      "headingKind": "CHAPTER_HEADING",
+      "documentOrder": 3,
+      "occurrenceOrder": 2,
+      "sourceContainerText": "Chương I",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[17]#heading-span-0-26",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[17]",
+      "sourceId": "body[1]/p[17]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "exactText": "Điều 1. Phạm vi điều chỉnh",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 5,
+      "occurrenceOrder": 3,
+      "sourceContainerText": "Điều 1. Phạm vi điều chỉnh",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[20]#heading-span-0-25",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[20]",
+      "sourceId": "body[1]/p[20]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 25
+      },
+      "exactText": "Điều 2. Đối tượng áp dụng",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 6,
+      "occurrenceOrder": 4,
+      "sourceContainerText": "Điều 2. Đối tượng áp dụng",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[22]#heading-span-0-25",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[22]",
+      "sourceId": "body[1]/p[22]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 25
+      },
+      "exactText": "Điều 3. Giải thích từ ngữ",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 7,
+      "occurrenceOrder": 5,
+      "sourceContainerText": "Điều 3. Giải thích từ ngữ",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[34]#heading-span-0-48",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[34]",
+      "sourceId": "body[1]/p[34]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 48
+      },
+      "exactText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 8,
+      "occurrenceOrder": 6,
+      "sourceContainerText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[36]#heading-span-0-63",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[36]",
+      "sourceId": "body[1]/p[36]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 63
+      },
+      "exactText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 9,
+      "occurrenceOrder": 7,
+      "sourceContainerText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[45]#heading-span-0-42",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[45]",
+      "sourceId": "body[1]/p[45]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 42
+      },
+      "exactText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 10,
+      "occurrenceOrder": 8,
+      "sourceContainerText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[53]#heading-span-0-60",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[53]",
+      "sourceId": "body[1]/p[53]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "exactText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 11,
+      "occurrenceOrder": 9,
+      "sourceContainerText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[61]#heading-span-0-34",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[61]",
+      "sourceId": "body[1]/p[61]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 34
+      },
+      "exactText": "Điều 8. Các hành vi không được làm",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 12,
+      "occurrenceOrder": 10,
+      "sourceContainerText": "Điều 8. Các hành vi không được làm",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[68]#heading-span-0-9",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[68]",
+      "sourceId": "body[1]/p[68]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "Chương II",
+      "headingKind": "CHAPTER_HEADING",
+      "documentOrder": 13,
+      "occurrenceOrder": 11,
+      "sourceContainerText": "Chương II",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[71]#heading-span-0-60",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[71]",
+      "sourceId": "body[1]/p[71]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "exactText": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+      "headingKind": "SECTION_HEADING",
+      "documentOrder": 15,
+      "occurrenceOrder": 12,
+      "sourceContainerText": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[73]#heading-span-0-72",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[73]",
+      "sourceId": "body[1]/p[73]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 72
+      },
+      "exactText": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 16,
+      "occurrenceOrder": 13,
+      "sourceContainerText": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[77]#heading-span-0-48",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[77]",
+      "sourceId": "body[1]/p[77]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 48
+      },
+      "exactText": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 17,
+      "occurrenceOrder": 14,
+      "sourceContainerText": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[84]#heading-span-0-45",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[84]",
+      "sourceId": "body[1]/p[84]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 45
+      },
+      "exactText": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 19,
+      "occurrenceOrder": 15,
+      "sourceContainerText": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[98]#heading-span-0-81",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[98]",
+      "sourceId": "body[1]/p[98]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 81
+      },
+      "exactText": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 21,
+      "occurrenceOrder": 16,
+      "sourceContainerText": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[112]#heading-span-0-30",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[112]",
+      "sourceId": "body[1]/p[112]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 30
+      },
+      "exactText": "Điều 13. Cổng dữ liệu quốc gia",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 22,
+      "occurrenceOrder": 17,
+      "sourceContainerText": "Điều 13. Cổng dữ liệu quốc gia",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[119]#heading-span-0-60",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[119]",
+      "sourceId": "body[1]/p[119]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "exactText": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+      "headingKind": "SECTION_HEADING",
+      "documentOrder": 23,
+      "occurrenceOrder": 18,
+      "sourceContainerText": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[121]#heading-span-0-72",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[121]",
+      "sourceId": "body[1]/p[121]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 72
+      },
+      "exactText": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 24,
+      "occurrenceOrder": 19,
+      "sourceContainerText": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[130]#heading-span-0-73",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[130]",
+      "sourceId": "body[1]/p[130]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 73
+      },
+      "exactText": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 25,
+      "occurrenceOrder": 20,
+      "sourceContainerText": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[133]#heading-span-0-44",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[133]",
+      "sourceId": "body[1]/p[133]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 44
+      },
+      "exactText": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 26,
+      "occurrenceOrder": 21,
+      "sourceContainerText": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[149]#heading-span-0-38",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[149]",
+      "sourceId": "body[1]/p[149]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 38
+      },
+      "exactText": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+      "headingKind": "SECTION_HEADING",
+      "documentOrder": 28,
+      "occurrenceOrder": 22,
+      "sourceContainerText": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[151]#heading-span-0-60",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[151]",
+      "sourceId": "body[1]/p[151]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "exactText": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 29,
+      "occurrenceOrder": 23,
+      "sourceContainerText": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[162]#heading-span-0-57",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[162]",
+      "sourceId": "body[1]/p[162]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 57
+      },
+      "exactText": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 30,
+      "occurrenceOrder": 24,
+      "sourceContainerText": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[168]#heading-span-0-67",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[168]",
+      "sourceId": "body[1]/p[168]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 67
+      },
+      "exactText": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 31,
+      "occurrenceOrder": 25,
+      "sourceContainerText": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[176]#heading-span-0-67",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[176]",
+      "sourceId": "body[1]/p[176]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 67
+      },
+      "exactText": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 32,
+      "occurrenceOrder": 26,
+      "sourceContainerText": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[181]#heading-span-0-71",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[181]",
+      "sourceId": "body[1]/p[181]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 71
+      },
+      "exactText": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 33,
+      "occurrenceOrder": 27,
+      "sourceContainerText": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[187]#heading-span-0-57",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[187]",
+      "sourceId": "body[1]/p[187]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 57
+      },
+      "exactText": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "headingKind": "SECTION_HEADING",
+      "documentOrder": 34,
+      "occurrenceOrder": 28,
+      "sourceContainerText": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[189]#heading-span-0-51",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[189]",
+      "sourceId": "body[1]/p[189]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "exactText": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 35,
+      "occurrenceOrder": 29,
+      "sourceContainerText": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[192]#heading-span-0-36",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[192]",
+      "sourceId": "body[1]/p[192]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 36
+      },
+      "exactText": "Điều 23. Phương thức chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 36,
+      "occurrenceOrder": 30,
+      "sourceContainerText": "Điều 23. Phương thức chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[200]#heading-span-0-32",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[200]",
+      "sourceId": "body[1]/p[200]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 32
+      },
+      "exactText": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 38,
+      "occurrenceOrder": 31,
+      "sourceContainerText": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[207]#heading-span-0-55",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[207]",
+      "sourceId": "body[1]/p[207]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 55
+      },
+      "exactText": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 40,
+      "occurrenceOrder": 32,
+      "sourceContainerText": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[213]#heading-span-0-49",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[213]",
+      "sourceId": "body[1]/p[213]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 49
+      },
+      "exactText": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 41,
+      "occurrenceOrder": 33,
+      "sourceContainerText": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[222]#heading-span-0-41",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[222]",
+      "sourceId": "body[1]/p[222]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 41
+      },
+      "exactText": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 42,
+      "occurrenceOrder": 34,
+      "sourceContainerText": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[233]#heading-span-0-65",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[233]",
+      "sourceId": "body[1]/p[233]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 65
+      },
+      "exactText": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 43,
+      "occurrenceOrder": 35,
+      "sourceContainerText": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[237]#heading-span-0-50",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[237]",
+      "sourceId": "body[1]/p[237]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 50
+      },
+      "exactText": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 44,
+      "occurrenceOrder": 36,
+      "sourceContainerText": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[246]#heading-span-0-56",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[246]",
+      "sourceId": "body[1]/p[246]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 56
+      },
+      "exactText": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 45,
+      "occurrenceOrder": 37,
+      "sourceContainerText": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[250]#heading-span-0-10",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[250]",
+      "sourceId": "body[1]/p[250]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "exactText": "Chương III",
+      "headingKind": "CHAPTER_HEADING",
+      "documentOrder": 46,
+      "occurrenceOrder": 38,
+      "sourceContainerText": "Chương III",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[253]#heading-span-0-39",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[253]",
+      "sourceId": "body[1]/p[253]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "exactText": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "headingKind": "SECTION_HEADING",
+      "documentOrder": 48,
+      "occurrenceOrder": 39,
+      "sourceContainerText": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[255]#heading-span-0-131",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[255]",
+      "sourceId": "body[1]/p[255]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 131
+      },
+      "exactText": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 49,
+      "occurrenceOrder": 40,
+      "sourceContainerText": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[263]#heading-span-0-139",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[263]",
+      "sourceId": "body[1]/p[263]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 139
+      },
+      "exactText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 51,
+      "occurrenceOrder": 41,
+      "sourceContainerText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[271]#heading-span-0-31",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[271]",
+      "sourceId": "body[1]/p[271]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "exactText": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+      "headingKind": "SECTION_HEADING",
+      "documentOrder": 52,
+      "occurrenceOrder": 42,
+      "sourceContainerText": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[273]#heading-span-0-47",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[273]",
+      "sourceId": "body[1]/p[273]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 47
+      },
+      "exactText": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 53,
+      "occurrenceOrder": 43,
+      "sourceContainerText": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[281]#heading-span-0-56",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[281]",
+      "sourceId": "body[1]/p[281]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 56
+      },
+      "exactText": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 54,
+      "occurrenceOrder": 44,
+      "sourceContainerText": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[288]#heading-span-0-47",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[288]",
+      "sourceId": "body[1]/p[288]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 47
+      },
+      "exactText": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 55,
+      "occurrenceOrder": 45,
+      "sourceContainerText": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[300]#heading-span-0-43",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[300]",
+      "sourceId": "body[1]/p[300]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 43
+      },
+      "exactText": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+      "headingKind": "SECTION_HEADING",
+      "documentOrder": 57,
+      "occurrenceOrder": 46,
+      "sourceContainerText": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[302]#heading-span-0-56",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[302]",
+      "sourceId": "body[1]/p[302]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 56
+      },
+      "exactText": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 58,
+      "occurrenceOrder": 47,
+      "sourceContainerText": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[308]#heading-span-0-51",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[308]",
+      "sourceId": "body[1]/p[308]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "exactText": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 59,
+      "occurrenceOrder": 48,
+      "sourceContainerText": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[314]#heading-span-0-44",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[314]",
+      "sourceId": "body[1]/p[314]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 44
+      },
+      "exactText": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 60,
+      "occurrenceOrder": 49,
+      "sourceContainerText": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[327]#heading-span-0-52",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[327]",
+      "sourceId": "body[1]/p[327]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 52
+      },
+      "exactText": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 61,
+      "occurrenceOrder": 50,
+      "sourceContainerText": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[330]#heading-span-0-39",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[330]",
+      "sourceId": "body[1]/p[330]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 39
+      },
+      "exactText": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "headingKind": "SECTION_HEADING",
+      "documentOrder": 62,
+      "occurrenceOrder": 51,
+      "sourceContainerText": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[332]#heading-span-0-47",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[332]",
+      "sourceId": "body[1]/p[332]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 47
+      },
+      "exactText": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 63,
+      "occurrenceOrder": 52,
+      "sourceContainerText": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[336]#heading-span-0-51",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[336]",
+      "sourceId": "body[1]/p[336]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "exactText": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 64,
+      "occurrenceOrder": 53,
+      "sourceContainerText": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[342]#heading-span-0-47",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[342]",
+      "sourceId": "body[1]/p[342]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 47
+      },
+      "exactText": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 66,
+      "occurrenceOrder": 54,
+      "sourceContainerText": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[347]#heading-span-0-85",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[347]",
+      "sourceId": "body[1]/p[347]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 85
+      },
+      "exactText": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 67,
+      "occurrenceOrder": 55,
+      "sourceContainerText": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[359]#heading-span-0-62",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[359]",
+      "sourceId": "body[1]/p[359]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 62
+      },
+      "exactText": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 68,
+      "occurrenceOrder": 56,
+      "sourceContainerText": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[367]#heading-span-0-40",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[367]",
+      "sourceId": "body[1]/p[367]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 40
+      },
+      "exactText": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 69,
+      "occurrenceOrder": 57,
+      "sourceContainerText": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[376]#heading-span-0-41",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[376]",
+      "sourceId": "body[1]/p[376]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 41
+      },
+      "exactText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 71,
+      "occurrenceOrder": 58,
+      "sourceContainerText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[381]#heading-span-0-52",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[381]",
+      "sourceId": "body[1]/p[381]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 52
+      },
+      "exactText": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "headingKind": "SECTION_HEADING",
+      "documentOrder": 72,
+      "occurrenceOrder": 59,
+      "sourceContainerText": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[383]#heading-span-0-60",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[383]",
+      "sourceId": "body[1]/p[383]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 60
+      },
+      "exactText": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 73,
+      "occurrenceOrder": 60,
+      "sourceContainerText": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[391]#heading-span-0-51",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[391]",
+      "sourceId": "body[1]/p[391]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 51
+      },
+      "exactText": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 74,
+      "occurrenceOrder": 61,
+      "sourceContainerText": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[396]#heading-span-0-33",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[396]",
+      "sourceId": "body[1]/p[396]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 33
+      },
+      "exactText": "Điều 49. Trình tự xử lý vướng mắc",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 75,
+      "occurrenceOrder": 62,
+      "sourceContainerText": "Điều 49. Trình tự xử lý vướng mắc",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[402]#heading-span-0-78",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[402]",
+      "sourceId": "body[1]/p[402]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 78
+      },
+      "exactText": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 76,
+      "occurrenceOrder": 63,
+      "sourceContainerText": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[410]#heading-span-0-9",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[410]",
+      "sourceId": "body[1]/p[410]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "Chương IV",
+      "headingKind": "CHAPTER_HEADING",
+      "documentOrder": 78,
+      "occurrenceOrder": 64,
+      "sourceContainerText": "Chương IV",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[413]#heading-span-0-58",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[413]",
+      "sourceId": "body[1]/p[413]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 58
+      },
+      "exactText": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 80,
+      "occurrenceOrder": 65,
+      "sourceContainerText": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[427]#heading-span-0-77",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[427]",
+      "sourceId": "body[1]/p[427]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 77
+      },
+      "exactText": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 83,
+      "occurrenceOrder": 66,
+      "sourceContainerText": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[436]#heading-span-0-74",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[436]",
+      "sourceId": "body[1]/p[436]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 74
+      },
+      "exactText": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 85,
+      "occurrenceOrder": 67,
+      "sourceContainerText": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[455]#heading-span-0-82",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[455]",
+      "sourceId": "body[1]/p[455]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 82
+      },
+      "exactText": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 91,
+      "occurrenceOrder": 68,
+      "sourceContainerText": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[461]#heading-span-0-8",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[461]",
+      "sourceId": "body[1]/p[461]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "exactText": "Chương V",
+      "headingKind": "CHAPTER_HEADING",
+      "documentOrder": 92,
+      "occurrenceOrder": 69,
+      "sourceContainerText": "Chương V",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "center",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD",
+        "SOURCE_CENTERED"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[464]#heading-span-0-31",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[464]",
+      "sourceId": "body[1]/p[464]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 31
+      },
+      "exactText": "Điều 55. Điều khoản chuyển tiếp",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 94,
+      "occurrenceOrder": 70,
+      "sourceContainerText": "Điều 55. Điều khoản chuyển tiếp",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[469]#heading-span-0-26",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[469]",
+      "sourceId": "body[1]/p[469]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "exactText": "Điều 56. Hiệu lực thi hành",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 95,
+      "occurrenceOrder": 71,
+      "sourceContainerText": "Điều 56. Hiệu lực thi hành",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0205:body[1]/p[471]#heading-span-0-29",
+      "documentId": "DOC-0205",
+      "sourceOccurrenceId": "DOC-0205:body[1]/p[471]",
+      "sourceId": "body[1]/p[471]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 29
+      },
+      "exactText": "Điều 57. Trách nhiệm thi hành",
+      "headingKind": "ARTICLE_HEADING",
+      "documentOrder": 96,
+      "occurrenceOrder": 72,
+      "sourceContainerText": "Điều 57. Trách nhiệm thi hành",
+      "sourceContainerKind": "sourceParagraph",
+      "sourceEvidence": {
+        "paragraphStyleId": "Normal",
+        "boldObserved": true,
+        "italicObserved": false,
+        "capsObserved": false,
+        "alignment": "both",
+        "outlineLevel": "1",
+        "sourceRepresentation": "DHX_STRUCTURAL_SOURCE_FAITHFUL_DERIVATIVE",
+        "parserOwnedEvidenceOnly": true
+      },
+      "bindingMethod": "DHX_SOURCE_FAITHFUL_STRUCTURAL_DERIVATIVE_AND_SPAN",
+      "adjudicationEvidence": [
+        "SOURCE_STRUCTURAL_HEADING_MARKER",
+        "SOURCE_HEADING_CONTAINER",
+        "TEXT_FUNCTION_AND_REPEATED_DOCUMENT_PATTERN",
+        "SOURCE_BOLD"
+      ],
+      "adjudicationReason": "Agent source-backed semantic heading adjudication from text function, source formatting, document outline markers, and surrounding structural pattern.",
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    }
+  ],
+  "semanticNodeAssignments": false,
+  "parentAssignments": false,
+  "levelAssignments": false
+}

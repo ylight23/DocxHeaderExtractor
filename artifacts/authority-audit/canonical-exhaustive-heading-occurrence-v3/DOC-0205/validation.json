@@ -1,0 +1,18 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_VALIDATION",
+  "documentId": "DOC-0205",
+  "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "checks": {
+    "sourceHashVerified": true,
+    "sourceContainersReviewed": true,
+    "everyAcceptedSpanExact": true,
+    "noOverlappingAcceptedSpans": true,
+    "noUnknownSourceRefs": true,
+    "unresolvedHeadingSpanAmbiguity": 0,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "providerCalls": 0,
+    "productionModelCalls": 0
+  },
+  "acceptedOccurrenceCount": 72
+}

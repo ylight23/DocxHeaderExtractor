@@ -1,0 +1,616 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_NODE_INPUT",
+  "documentId": "DOC-0243",
+  "semanticNodeCount": 121,
+  "nodes": [
+    {
+      "semanticNodeRef": "N0001",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[20]#heading-span-0-7",
+      "exactText": "Preface"
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+      "exactText": "Part I"
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[74]#heading-span-0-14",
+      "exactText": "Linear algebra"
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "exactText": "CHAPTER 1"
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[98]#heading-span-0-11",
+      "exactText": "Linear maps"
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[100]#heading-span-0-19",
+      "exactText": "1a. Spaces, vectors"
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[233]#heading-span-0-15",
+      "exactText": "1b. Linear maps"
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[349]#heading-span-0-22",
+      "exactText": "1c. Geometry, analysis"
+    },
+    {
+      "semanticNodeRef": "N0009",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[570]#heading-span-0-19",
+      "exactText": "1d. Complex numbers"
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[733]#heading-span-0-13",
+      "exactText": "1e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0011",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "exactText": "CHAPTER 2"
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[752]#heading-span-0-13",
+      "exactText": "Matrix theory"
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[754]#heading-span-0-20",
+      "exactText": "2a. Matrix inversion"
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[922]#heading-span-0-19",
+      "exactText": "2b. The determinant"
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1174]#heading-span-0-21",
+      "exactText": "2c. Some applications"
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1301]#heading-span-0-19",
+      "exactText": "2d. Diagonalization"
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1405]#heading-span-0-13",
+      "exactText": "2e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0018",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "exactText": "CHAPTER 3"
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1424]#heading-span-0-17",
+      "exactText": "Spectral theorems"
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1426]#heading-span-0-17",
+      "exactText": "3a. Self-adjoints"
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1649]#heading-span-0-24",
+      "exactText": "3b. Rotations, unitaries"
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1832]#heading-span-0-19",
+      "exactText": "3c. Normal matrices"
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1905]#heading-span-0-21",
+      "exactText": "3d. Spectral measures"
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2079]#heading-span-0-13",
+      "exactText": "3e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0025",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "exactText": "CHAPTER 4"
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2093]#heading-span-0-18",
+      "exactText": "Polynomials, roots"
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2095]#heading-span-0-13",
+      "exactText": "4a. Resultant"
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2219]#heading-span-0-16",
+      "exactText": "4b. Discriminant"
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2501]#heading-span-0-17",
+      "exactText": "4c. Higher degree"
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2787]#heading-span-0-19",
+      "exactText": "4d. Density results"
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2850]#heading-span-0-13",
+      "exactText": "4e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0032",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+      "exactText": "Part II"
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2866]#heading-span-0-16",
+      "exactText": "Advanced results"
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "exactText": "CHAPTER 5"
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2891]#heading-span-0-11",
+      "exactText": "Jordan form"
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2893]#heading-span-0-20",
+      "exactText": "5a. Linear equations"
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2971]#heading-span-0-22",
+      "exactText": "5b. Matrix exponential"
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3321]#heading-span-0-19",
+      "exactText": "5c. The Jordan form"
+    },
+    {
+      "semanticNodeRef": "N0039",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3519]#heading-span-0-22",
+      "exactText": "5d. Basic applications"
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3683]#heading-span-0-13",
+      "exactText": "5e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0041",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "exactText": "CHAPTER 6"
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3702]#heading-span-0-15",
+      "exactText": "Singular values"
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3704]#heading-span-0-19",
+      "exactText": "6a. Singular values"
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3870]#heading-span-0-23",
+      "exactText": "6b. Functional calculus"
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4143]#heading-span-0-21",
+      "exactText": "6c. Complex functions"
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4393]#heading-span-0-19",
+      "exactText": "6d. Normal matrices"
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4514]#heading-span-0-13",
+      "exactText": "6e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0048",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "exactText": "CHAPTER 7"
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4527]#heading-span-0-17",
+      "exactText": "Dynamical systems"
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4529]#heading-span-0-26",
+      "exactText": "7a. Differential equations"
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4648]#heading-span-0-23",
+      "exactText": "7b. Functional analysis"
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4926]#heading-span-0-25",
+      "exactText": "7c. Existence, uniqueness"
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5424]#heading-span-0-21",
+      "exactText": "7d. Dynamical systems"
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5514]#heading-span-0-13",
+      "exactText": "7e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0055",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "exactText": "CHAPTER 8"
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5528]#heading-span-0-17",
+      "exactText": "Infinite matrices"
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5530]#heading-span-0-21",
+      "exactText": "8a. Infinite matrices"
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5662]#heading-span-0-19",
+      "exactText": "8b. Spectral radius"
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5885]#heading-span-0-20",
+      "exactText": "8c. Normal operators"
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6035]#heading-span-0-21",
+      "exactText": "8d. Compact operators"
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6259]#heading-span-0-13",
+      "exactText": "8e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0062",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+      "exactText": "Part III"
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+      "exactText": "Positive matrices"
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "exactText": "CHAPTER 9"
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+      "exactText": "Positive matrices"
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6304]#heading-span-0-21",
+      "exactText": "9a. Jacobian, Hessian"
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6577]#heading-span-0-21",
+      "exactText": "9b. Positive matrices"
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6713]#heading-span-0-21",
+      "exactText": "9c. Sylvester theorem"
+    },
+    {
+      "semanticNodeRef": "N0069",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6845]#heading-span-0-21",
+      "exactText": "9d. Infinite matrices"
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6991]#heading-span-0-13",
+      "exactText": "9e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0071",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "exactText": "CHAPTER 10"
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7004]#heading-span-0-16",
+      "exactText": "Forms, signature"
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7006]#heading-span-0-19",
+      "exactText": "10a. Bilinear forms"
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7068]#heading-span-0-21",
+      "exactText": "10b. Smooth manifolds"
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7206]#heading-span-0-22",
+      "exactText": "10c. Relativity theory"
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7490]#heading-span-0-21",
+      "exactText": "10d. Curved spacetime"
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7793]#heading-span-0-14",
+      "exactText": "10e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0078",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "exactText": "CHAPTER 11"
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7806]#heading-span-0-16",
+      "exactText": "Special matrices"
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7808]#heading-span-0-23",
+      "exactText": "11a. Circulant matrices"
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7978]#heading-span-0-22",
+      "exactText": "11b. Hadamard matrices"
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8122]#heading-span-0-21",
+      "exactText": "11c. Complex Hadamard"
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8394]#heading-span-0-26",
+      "exactText": "11d. Bistochastic matrices"
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8535]#heading-span-0-14",
+      "exactText": "11e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0085",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "exactText": "CHAPTER 12"
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8548]#heading-span-0-12",
+      "exactText": "Graph theory"
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8550]#heading-span-0-22",
+      "exactText": "12a. Graphs, Laplacian"
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8744]#heading-span-0-21",
+      "exactText": "12b. Kirchoff formula"
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8911]#heading-span-0-19",
+      "exactText": "12c. Into the waves"
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9090]#heading-span-0-18",
+      "exactText": "12d. Into the heat"
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9279]#heading-span-0-14",
+      "exactText": "12e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0092",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+      "exactText": "Part IV"
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9295]#heading-span-0-13",
+      "exactText": "Matrix groups"
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "exactText": "CHAPTER 13"
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9320]#heading-span-0-13",
+      "exactText": "Finite groups"
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9322]#heading-span-0-18",
+      "exactText": "13a. Finite groups"
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9460]#heading-span-0-21",
+      "exactText": "13b. Symmetric groups"
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9702]#heading-span-0-22",
+      "exactText": "13c. Reflection groups"
+    },
+    {
+      "semanticNodeRef": "N0099",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9976]#heading-span-0-24",
+      "exactText": "13d. Complex reflections"
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10113]#heading-span-0-14",
+      "exactText": "13e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0101",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "exactText": "CHAPTER 14"
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10125]#heading-span-0-14",
+      "exactText": "Compact groups"
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10127]#heading-span-0-15",
+      "exactText": "14a. Lie groups"
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10205]#heading-span-0-15",
+      "exactText": "14b. Peter-Weyl"
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10365]#heading-span-0-20",
+      "exactText": "14c. Brauer algebras"
+    },
+    {
+      "semanticNodeRef": "N0106",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10618]#heading-span-0-21",
+      "exactText": "14d. Haar integration"
+    },
+    {
+      "semanticNodeRef": "N0107",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10848]#heading-span-0-14",
+      "exactText": "14e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0108",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "exactText": "CHAPTER 15"
+    },
+    {
+      "semanticNodeRef": "N0109",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10862]#heading-span-0-13",
+      "exactText": "Spin matrices"
+    },
+    {
+      "semanticNodeRef": "N0110",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10864]#heading-span-0-20",
+      "exactText": "15a. Quantum physics"
+    },
+    {
+      "semanticNodeRef": "N0111",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11286]#heading-span-0-21",
+      "exactText": "15b. Angular momentum"
+    },
+    {
+      "semanticNodeRef": "N0112",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11493]#heading-span-0-19",
+      "exactText": "15c. Pauli matrices"
+    },
+    {
+      "semanticNodeRef": "N0113",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11572]#heading-span-0-19",
+      "exactText": "15d. Dirac matrices"
+    },
+    {
+      "semanticNodeRef": "N0114",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11702]#heading-span-0-14",
+      "exactText": "15e. Exercises"
+    },
+    {
+      "semanticNodeRef": "N0115",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "exactText": "CHAPTER 16"
+    },
+    {
+      "semanticNodeRef": "N0116",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11719]#heading-span-0-15",
+      "exactText": "Random matrices"
+    },
+    {
+      "semanticNodeRef": "N0117",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11721]#heading-span-0-20",
+      "exactText": "16a. Random matrices"
+    },
+    {
+      "semanticNodeRef": "N0118",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11904]#heading-span-0-22",
+      "exactText": "16b. Gaussian matrices"
+    },
+    {
+      "semanticNodeRef": "N0119",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[12138]#heading-span-0-23",
+      "exactText": "16c. Wigner and Wishart"
+    },
+    {
+      "semanticNodeRef": "N0120",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[12383]#heading-span-0-19",
+      "exactText": "16d. Back to groups"
+    },
+    {
+      "semanticNodeRef": "N0121",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[12463]#heading-span-0-14",
+      "exactText": "16e. Exercises"
+    }
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "providerCalls": 0,
+  "productionModelCalls": 0
+}

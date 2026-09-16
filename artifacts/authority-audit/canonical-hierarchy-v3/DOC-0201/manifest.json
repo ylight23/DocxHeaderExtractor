@@ -1,0 +1,44 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_MANIFEST",
+  "documentId": "DOC-0201",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_HIERARCHY",
+  "semanticNodeCount": 11,
+  "parentEdgeCount": 11,
+  "rootChildrenCount": 11,
+  "maxDepth": 1.0,
+  "files": [
+    {
+      "path": "artifacts/authority-audit/canonical-hierarchy-v3/DOC-0201/derived-levels.json",
+      "sha256": "70913e3475dcd42c423f27c9e3baa019df11af37eec18e95da0eb6857a61d186"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-hierarchy-v3/DOC-0201/global-consistency-audit.json",
+      "sha256": "dfdf8e6a5775dc66850e1f5c8aec8e4d878092ce9c3153a75477eb6173228186"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-hierarchy-v3/DOC-0201/node-input-manifest.json",
+      "sha256": "1da6c34c872e361bd96046b459b2125a205214dc7514dc07e26128d981e3d835"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-hierarchy-v3/DOC-0201/parent-decisions.json",
+      "sha256": "982b3c172d047314258ea3e4887a98d922863b17721b43d8619b1f9505e9b84f"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-hierarchy-v3/DOC-0201/parent-edges.json",
+      "sha256": "1f18bf5997add074d028389559694fef7f4273336117eb6f6179efaabffda4f6"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-hierarchy-v3/DOC-0201/report.md",
+      "sha256": "ce3cdea61fa4c0deaab8f1f762a28a3446b7496ea55cc88db8465df040eda3f5"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-hierarchy-v3/DOC-0201/validation.json",
+      "sha256": "fc437276e83348ea76325f38e55f84db4f149af8104313abe5189efec6cb5c76"
+    }
+  ],
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "userApprovalRequired": true
+}

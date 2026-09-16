@@ -1,0 +1,369 @@
+{
+  "artifactKind": "A99_CANONICAL_PARENT_HIERARCHY_EDGES",
+  "documentId": "DOC-0205",
+  "edgeCount": 72,
+  "rootRef": "ROOT",
+  "edges": [
+    {
+      "childSemanticNodeRef": "N0001",
+      "parentSemanticNodeRef": "ROOT",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0002",
+      "parentSemanticNodeRef": "ROOT",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0003",
+      "parentSemanticNodeRef": "N0002",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0004",
+      "parentSemanticNodeRef": "N0002",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0005",
+      "parentSemanticNodeRef": "N0002",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0006",
+      "parentSemanticNodeRef": "N0002",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0007",
+      "parentSemanticNodeRef": "N0002",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0008",
+      "parentSemanticNodeRef": "N0002",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0009",
+      "parentSemanticNodeRef": "N0002",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0010",
+      "parentSemanticNodeRef": "N0002",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0011",
+      "parentSemanticNodeRef": "ROOT",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0012",
+      "parentSemanticNodeRef": "N0011",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0013",
+      "parentSemanticNodeRef": "N0012",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0014",
+      "parentSemanticNodeRef": "N0012",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0015",
+      "parentSemanticNodeRef": "N0012",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0016",
+      "parentSemanticNodeRef": "N0012",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0017",
+      "parentSemanticNodeRef": "N0012",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0018",
+      "parentSemanticNodeRef": "N0011",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0019",
+      "parentSemanticNodeRef": "N0018",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0020",
+      "parentSemanticNodeRef": "N0018",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0021",
+      "parentSemanticNodeRef": "N0018",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0022",
+      "parentSemanticNodeRef": "N0011",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0023",
+      "parentSemanticNodeRef": "N0022",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0024",
+      "parentSemanticNodeRef": "N0022",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0025",
+      "parentSemanticNodeRef": "N0022",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0026",
+      "parentSemanticNodeRef": "N0022",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0027",
+      "parentSemanticNodeRef": "N0022",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0028",
+      "parentSemanticNodeRef": "N0011",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0029",
+      "parentSemanticNodeRef": "N0028",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0030",
+      "parentSemanticNodeRef": "N0028",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0031",
+      "parentSemanticNodeRef": "N0028",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0032",
+      "parentSemanticNodeRef": "N0028",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0033",
+      "parentSemanticNodeRef": "N0028",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0034",
+      "parentSemanticNodeRef": "N0028",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0035",
+      "parentSemanticNodeRef": "N0028",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0036",
+      "parentSemanticNodeRef": "N0028",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0037",
+      "parentSemanticNodeRef": "N0028",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0038",
+      "parentSemanticNodeRef": "ROOT",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0039",
+      "parentSemanticNodeRef": "N0038",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0040",
+      "parentSemanticNodeRef": "N0039",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0041",
+      "parentSemanticNodeRef": "N0039",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0042",
+      "parentSemanticNodeRef": "N0038",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0043",
+      "parentSemanticNodeRef": "N0042",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0044",
+      "parentSemanticNodeRef": "N0042",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0045",
+      "parentSemanticNodeRef": "N0042",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0046",
+      "parentSemanticNodeRef": "N0038",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0047",
+      "parentSemanticNodeRef": "N0046",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0048",
+      "parentSemanticNodeRef": "N0046",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0049",
+      "parentSemanticNodeRef": "N0046",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0050",
+      "parentSemanticNodeRef": "N0046",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0051",
+      "parentSemanticNodeRef": "N0038",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0052",
+      "parentSemanticNodeRef": "N0051",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0053",
+      "parentSemanticNodeRef": "N0051",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0054",
+      "parentSemanticNodeRef": "N0051",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0055",
+      "parentSemanticNodeRef": "N0051",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0056",
+      "parentSemanticNodeRef": "N0051",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0057",
+      "parentSemanticNodeRef": "N0051",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0058",
+      "parentSemanticNodeRef": "N0051",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0059",
+      "parentSemanticNodeRef": "N0038",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0060",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0061",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0062",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0063",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0064",
+      "parentSemanticNodeRef": "ROOT",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0065",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0066",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0067",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0068",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0069",
+      "parentSemanticNodeRef": "ROOT",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0070",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0071",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    },
+    {
+      "childSemanticNodeRef": "N0072",
+      "parentSemanticNodeRef": "N0059",
+      "edgeAuthority": "SOURCE_BACKED_PARENT_ADJUDICATION"
+    }
+  ],
+  "levelEnteredByReviewer": false
+}

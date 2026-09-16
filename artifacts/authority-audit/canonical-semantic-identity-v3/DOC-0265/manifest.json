@@ -1,0 +1,35 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_MANIFEST",
+  "documentId": "DOC-0265",
+  "status": "CANONICAL_SEMANTIC_IDENTITY_READY",
+  "occurrenceCount": 245,
+  "semanticNodeCount": 245,
+  "files": [
+    {
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v3/DOC-0265/ambiguities.json",
+      "sha256": "53ebd06855eb3ef2bb5828630f2bae7a898c507522f97ec75b99daa88f55a0d7"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v3/DOC-0265/identity-decisions.json",
+      "sha256": "6fefb353aa5df254bccbcd87fa871b3741a9bfaa0757ed3c20d642ed33336c5f"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v3/DOC-0265/occurrence-assignments.json",
+      "sha256": "f9506e2957a144a9122a9f21daac2dd10b228bb3c80ae930f343101b716b54cf"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v3/DOC-0265/occurrence-input-manifest.json",
+      "sha256": "bccda91a59ffa6dab20ccaf2403bd24c157d45c3694533be2e4206faaa308585"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v3/DOC-0265/semantic-nodes.json",
+      "sha256": "b71cbeebcbcff8ae5aa1fba33fb3fafc4421c9612a590eec4e48be14cf9f6bc3"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v3/DOC-0265/validation.json",
+      "sha256": "c60e88a910d77b205f0e63a96b263be6f15d20eea80a7ceebdf47db1f416f389"
+    }
+  ],
+  "providerCalls": 0,
+  "productionModelCalls": 0
+}

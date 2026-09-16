@@ -1,0 +1,138 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_DECISIONS",
+  "schemaVersion": "a99-canonical-semantic-identity-v3",
+  "documentId": "DOC-0201",
+  "occurrenceCount": 11,
+  "semanticNodeCount": 11,
+  "assignments": [
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[19]#heading-span-0-26",
+      "semanticNodeRef": "N0001",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[27]#heading-span-0-25",
+      "semanticNodeRef": "N0002",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[29]#heading-span-0-36",
+      "semanticNodeRef": "N0003",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[48]#heading-span-0-57",
+      "semanticNodeRef": "N0004",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[90]#heading-span-0-64",
+      "semanticNodeRef": "N0005",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[96]#heading-span-0-60",
+      "semanticNodeRef": "N0006",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[120]#heading-span-0-122",
+      "semanticNodeRef": "N0007",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[143]#heading-span-0-33",
+      "semanticNodeRef": "N0008",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[148]#heading-span-0-209",
+      "semanticNodeRef": "N0009",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[181]#heading-span-0-26",
+      "semanticNodeRef": "N0010",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0201:body[1]/p[202]#heading-span-0-25",
+      "semanticNodeRef": "N0011",
+      "occurrenceRole": "PRIMARY",
+      "identityDecision": "DISTINCT_SEMANTIC_NODE",
+      "evidence": [
+        "DEFAULT_KEEP_SPLIT",
+        "NO_SOURCE_BACKED_REPEAT_OR_CONTINUATION_PROOF"
+      ],
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    }
+  ],
+  "challengeCases": [],
+  "unresolvedCount": 0,
+  "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+  "goldUsed": false,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "providerCalls": 0,
+  "productionModelCalls": 0
+}

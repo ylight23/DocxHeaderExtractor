@@ -1,0 +1,17 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_AMBIGUITIES",
+  "documentId": "DOC-0243",
+  "cases": [
+    {
+      "normalizedText": "Positive matrices",
+      "occurrenceRefs": [
+        "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+        "DOC-0243:body[1]/p[6302]#heading-span-0-17"
+      ],
+      "decision": "DISTINCT_SEMANTIC_NODE",
+      "reason": "Repeated text occurs in separate source positions; fail-closed identity policy preserves separate structural occurrences absent explicit continuation/repeat evidence."
+    }
+  ],
+  "unresolvedCount": 0,
+  "policy": "KEEP_SPLIT_UNLESS_SOURCE_BACKED_IDENTITY_PROOF"
+}

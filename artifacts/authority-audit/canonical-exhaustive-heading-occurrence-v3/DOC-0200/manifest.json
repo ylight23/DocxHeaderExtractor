@@ -1,0 +1,31 @@
+{
+  "artifactKind": "A99_CANONICAL_EXHAUSTIVE_HEADING_OCCURRENCE_MANIFEST",
+  "documentId": "DOC-0200",
+  "status": "CANONICAL_EXHAUSTIVE_OCCURRENCE_READY",
+  "sourceSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+  "acceptedOccurrenceCount": 102,
+  "files": [
+    {
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v3/DOC-0200/exact-bindings.json",
+      "sha256": "1978f80b332f7a86285facb6b4e257b73a7e8aa7abad2632983964c1596ddad4"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v3/DOC-0200/occurrence-decisions.json",
+      "sha256": "a1aabef7f83244294cd8b8bb65871bb2e4aff15c50e4c6b831fa303d11360f5a"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v3/DOC-0200/source-authority.json",
+      "sha256": "7a1e039b8e879365808f1867d64f454435be3b8488c9a0ada508966ea466403e"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v3/DOC-0200/source-containers.json",
+      "sha256": "516d1fc867c10506ec810544b0d60338c4c28d7bfa337ebee2268fcb0263833b"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-exhaustive-heading-occurrence-v3/DOC-0200/validation.json",
+      "sha256": "b75e4ef607a255c95534495762a39637d3af711422fab3f40aa16dd5f705db73"
+    }
+  ],
+  "providerCalls": 0,
+  "productionModelCalls": 0
+}

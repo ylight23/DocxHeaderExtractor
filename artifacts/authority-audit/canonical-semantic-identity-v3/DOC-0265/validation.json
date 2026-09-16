@@ -1,0 +1,19 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_VALIDATION",
+  "documentId": "DOC-0265",
+  "status": "CANONICAL_SEMANTIC_IDENTITY_READY",
+  "checks": {
+    "everyOccurrenceAssigned": true,
+    "oneNodePerOccurrence": true,
+    "noUnknownRefs": true,
+    "noOverlappingMembership": true,
+    "unresolvedCount": 0,
+    "goldUsed": false,
+    "historicalLevelRead": false,
+    "historicalParentRead": false,
+    "providerCalls": 0,
+    "productionModelCalls": 0
+  },
+  "occurrenceCount": 245,
+  "semanticNodeCount": 245
+}

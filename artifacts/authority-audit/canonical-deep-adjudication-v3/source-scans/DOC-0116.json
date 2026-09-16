@@ -1,0 +1,21 @@
+{
+  "artifactKind": "A99_CANONICAL_DEEP_ADJUDICATION_SOURCE_SCAN",
+  "schemaVersion": "a99-canonical-deep-adjudication-v3-source-scan",
+  "documentId": "DOC-0116",
+  "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+  "sourceSHA256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "sourceFormat": "DOCX",
+  "sourceRepresentation": "DOCX_XML_SOURCE_CONTAINERS",
+  "paragraphCount": 1896,
+  "sourceRecordsInspected": 1896,
+  "sourceOnly": true,
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "containersReviewed": 1896,
+  "status": "GENUINE_HARD_BLOCKER",
+  "blockerReason": "GENUINE_SOURCE_SEMANTIC_AMBIGUITY_REQUIRING_USER_REVIEW"
+}
