@@ -1,0 +1,87 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-attempts-v1",
+  "documentId": "DOC-0001",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "requests": [
+    {
+      "requestId": "semantic-role:25fcaa211c3b660e",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[1]",
+        "body[1]/p[2]",
+        "body[1]/p[3]",
+        "body[1]/p[4]",
+        "body[1]/p[5]",
+        "body[1]/p[6]",
+        "body[1]/p[7]",
+        "body[1]/p[8]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "semantic-role:02640a6898db6f21",
+      "stage": "semantic-role",
+      "candidateIds": [
+        "body[1]/p[9]",
+        "body[1]/p[10]",
+        "body[1]/p[11]",
+        "body[1]/p[12]",
+        "body[1]/p[13]",
+        "body[1]/p[14]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:b9bfbeabf6a58893",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[1]",
+        "body[1]/p[3]",
+        "body[1]/p[5]",
+        "body[1]/p[7]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "heading-span:fbea0d8491222178",
+      "stage": "heading-span",
+      "candidateIds": [
+        "body[1]/p[9]",
+        "body[1]/p[11]",
+        "body[1]/p[13]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    },
+    {
+      "requestId": "hierarchy:ab72be83cb7b5d97",
+      "stage": "hierarchy",
+      "candidateIds": [
+        "body[1]/p[1]",
+        "body[1]/p[3]",
+        "body[1]/p[5]",
+        "body[1]/p[11]",
+        "body[1]/p[13]"
+      ],
+      "providerCallAttempted": true,
+      "responseObserved": true,
+      "status": "COMPLETED"
+    }
+  ],
+  "responseCount": 5,
+  "requestContractCount": 5,
+  "providerCalls": 5,
+  "parseStatus": "PRODUCTION_PIPELINE_COMPLETED",
+  "bindingStatus": "PRODUCTION_PIPELINE_BOUND",
+  "retryLineage": {
+    "retries": 0,
+    "pipelineOwnedRetries": "captured_in_provider_route_if_any"
+  }
+}

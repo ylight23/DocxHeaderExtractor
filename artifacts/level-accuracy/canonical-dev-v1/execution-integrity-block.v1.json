@@ -1,0 +1,12 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-integrity-block-v1",
+  "status": "RUN_CONFIGURATION_DRIFT",
+  "documentId": "DOC-0001",
+  "reason": "DOC-0001_RUN_CONFIGURATION_HASH_MISSING_OR_MISMATCH",
+  "existingPredictionPath": "artifacts/level-accuracy/canonical-dev-v1/DOC-0001/prediction.v1.json",
+  "existingAttemptsPath": "artifacts/level-accuracy/canonical-dev-v1/DOC-0001/attempts.v1.json",
+  "existingArtifactsPreserved": true,
+  "goldReadCount": 0,
+  "providerCalls": 0,
+  "created": "2026-09-16T09:23:52.8898259+00:00"
+}
