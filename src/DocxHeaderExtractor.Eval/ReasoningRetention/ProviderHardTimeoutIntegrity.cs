@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
+using System.Text;
 using System.Text.Json;
 
 namespace DocxHeaderExtractor.Eval.ReasoningRetention;
@@ -159,11 +160,33 @@ public static class ProviderHardTimeoutIntegrity
         };
         foreach (var argument in launch.Arguments) startInfo.ArgumentList.Add(argument);
         startInfo.Environment["A99_CANONICAL_DEV_WORKER_JOB"] = workerJobPath;
-        using var child = Process.Start(startInfo)
-            ?? throw new InvalidOperationException("Could not start isolated production worker.");
+        await WriteLaunchMetadataAsync(workDirectory, workerJobPath, launch, startInfo.WorkingDirectory);
+        Process? startedChild;
+        try
+        {
+            startedChild = Process.Start(startInfo);
+        }
+        catch (Exception ex)
+        {
+            await File.WriteAllTextAsync(Path.Combine(workDirectory, "worker-launch.failure.json"), JsonSerializer.Serialize(new
+            {
+                classification = "PROCESS_START_FAILED",
+                exceptionType = ex.GetType().FullName,
+                message = ex.Message,
+                hresult = ex.HResult,
+                executable = launch.ProcessPath,
+                arguments = launch.Arguments,
+                workingDirectory = startInfo.WorkingDirectory,
+                timestamp = DateTimeOffset.UtcNow,
+            }, new JsonSerializerOptions { WriteIndented = true }));
+            return new WatchdogResult("production-worker", -1, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow, "PROCESS_START_FAILED", "NONE", null, null, "", ex.ToString());
+        }
+        using var child = startedChild ?? throw new InvalidOperationException("Could not start isolated production worker.");
         var started = DateTimeOffset.UtcNow;
-        var stdout = child.StandardOutput.ReadToEndAsync();
-        var stderr = child.StandardError.ReadToEndAsync();
+        var stdoutPath = Path.Combine(workDirectory, "worker.stdout.log");
+        var stderrPath = Path.Combine(workDirectory, "worker.stderr.log");
+        var stdout = CaptureStreamAsync(child.StandardOutput, stdoutPath);
+        var stderr = CaptureStreamAsync(child.StandardError, stderrPath);
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         deadline.CancelAfter(timeout);
         var timedOut = false;
@@ -176,7 +199,7 @@ public static class ProviderHardTimeoutIntegrity
             try { if (!child.HasExited) child.Kill(entireProcessTree: true); } catch (InvalidOperationException) { } catch (System.ComponentModel.Win32Exception) { }
             try { await child.WaitForExitAsync(CancellationToken.None); } catch { }
         }
-        return new WatchdogResult(
+        var result = new WatchdogResult(
             "production-worker",
             child.Id,
             started,
@@ -187,6 +210,63 @@ public static class ProviderHardTimeoutIntegrity
             null,
             await stdout,
             await stderr);
+        await File.WriteAllTextAsync(Path.Combine(workDirectory, "worker-exit.v1.json"), JsonSerializer.Serialize(new
+        {
+            status = result.Status,
+            terminationMode = result.TerminationMode,
+            childPid = result.ChildPid,
+            exitCode = result.ExitCode,
+            startedAt = result.StartedAt,
+            completedAt = result.CompletedAt,
+            stdoutBytes = File.Exists(stdoutPath) ? new FileInfo(stdoutPath).Length : 0,
+            stderrBytes = File.Exists(stderrPath) ? new FileInfo(stderrPath).Length : 0,
+            bootMarkerFound = File.Exists(Path.Combine(workDirectory, "worker.boot.json")),
+            lastStageMarker = new[] { "WORKER_BOOTED", "SOURCE_RESOLVED", "SOURCE_PARSED", "PRODUCTION_INPUT_READY" }
+                .LastOrDefault(stage => File.Exists(Path.Combine(workDirectory, $"worker.stage.{stage}.json"))),
+        }, new JsonSerializerOptions { WriteIndented = true }));
+        return result;
+    }
+
+    private static async Task<string> CaptureStreamAsync(StreamReader reader, string path)
+    {
+        await using (var stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read, 4096, FileOptions.WriteThrough))
+        await using (var writer = new StreamWriter(stream, new UTF8Encoding(false)) { AutoFlush = true })
+        {
+            while (await reader.ReadLineAsync() is { } line) await writer.WriteLineAsync(line);
+        }
+        return File.Exists(path) ? await File.ReadAllTextAsync(path) : "";
+    }
+
+    private static async Task WriteLaunchMetadataAsync(string workDirectory, string jobPath, CliLaunch launch, string? workingDirectory)
+    {
+        string? documentId = null;
+        string? campaignId = null;
+        string? runConfigurationHash = null;
+        string? sourceSha256 = null;
+        try
+        {
+            using var job = JsonDocument.Parse(await File.ReadAllTextAsync(jobPath));
+            var root = job.RootElement;
+            documentId = root.TryGetProperty("documentId", out var d) ? d.GetString() : null;
+            campaignId = root.TryGetProperty("campaignId", out var c) ? c.GetString() : null;
+            runConfigurationHash = root.TryGetProperty("runConfigurationHash", out var h) ? h.GetString() : null;
+            sourceSha256 = root.TryGetProperty("sourceSha256", out var s) ? s.GetString() : null;
+        }
+        catch { /* launch metadata remains useful even when the job cannot be parsed */ }
+        await File.WriteAllTextAsync(Path.Combine(workDirectory, "worker-launch.started.json"), JsonSerializer.Serialize(new
+        {
+            processStarted = false,
+            executable = launch.ProcessPath,
+            arguments = launch.Arguments,
+            workingDirectory,
+            documentId,
+            campaignId,
+            runConfigurationHash,
+            sourceSha256,
+            environmentVariables = new[] { "A99_CANONICAL_DEV_WORKER_JOB" },
+            secretsPersisted = false,
+            timestamp = DateTimeOffset.UtcNow,
+        }, new JsonSerializerOptions { WriteIndented = true }));
     }
 
     public static async Task<int> RunSelfTestAsync(string repoRoot, CancellationToken cancellationToken = default)

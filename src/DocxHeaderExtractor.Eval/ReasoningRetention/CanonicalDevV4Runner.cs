@@ -13,11 +13,14 @@ namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 public static class CanonicalDevV4Runner
 {
     private const string Benchmark = "CANONICAL_DEV_V1";
-    private const string CampaignId = "CANONICAL_DEV_V1_EXEC_V4";
-    private const string OutputRoot = "artifacts/level-accuracy/canonical-dev-v1-exec-v4";
+    private const string DefaultCampaignId = "CANONICAL_DEV_V1_EXEC_V4";
+    private const string DefaultOutputRoot = "artifacts/level-accuracy/canonical-dev-v1-exec-v4";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
-    private const string ProductionSemanticCheckpoint = "8b2d366";
-    private const string ExecutionHarnessCheckpoint = "8b2d366";
+    private static string CampaignId => Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_CAMPAIGN_ID") ?? DefaultCampaignId;
+    private static string OutputRoot => Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_OUTPUT_ROOT") ?? DefaultOutputRoot;
+    private static string ProductionSemanticCheckpoint => Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_SEMANTIC_CHECKPOINT") ?? "8b2d366";
+    private static string ExecutionHarnessCheckpoint => Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_HARNESS_CHECKPOINT") ?? "8b2d366";
+    private static string SchemaPrefix => $"a99-canonical-dev-v1-{CampaignId.Replace("CANONICAL_DEV_V1_", "", StringComparison.Ordinal).ToLowerInvariant()}";
     private const string ExpectedProductionSemanticHash = "5f0eb27dfa44068fc60c69e0dcf8a05b14a061ed7526610e4592d68c268fe5e6";
     private const int ExpectedDocuments = 15;
     private const int PerAttemptSeconds = 300;
@@ -36,6 +39,29 @@ public static class CanonicalDevV4Runner
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
     };
 
+    public static async Task<int> RunV5Async(string repoRoot, CancellationToken ct = default)
+    {
+        var previous = new[]
+        {
+            Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_CAMPAIGN_ID"),
+            Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_OUTPUT_ROOT"),
+            Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_SEMANTIC_CHECKPOINT"),
+            Environment.GetEnvironmentVariable("A99_CANONICAL_DEV_HARNESS_CHECKPOINT"),
+        };
+        Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_CAMPAIGN_ID", "CANONICAL_DEV_V1_EXEC_V5");
+        Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_OUTPUT_ROOT", "artifacts/level-accuracy/canonical-dev-v1-exec-v5");
+        Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_SEMANTIC_CHECKPOINT", "60de937");
+        Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_HARNESS_CHECKPOINT", "60de937");
+        try { return await RunAsync(repoRoot, ct); }
+        finally
+        {
+            Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_CAMPAIGN_ID", previous[0]);
+            Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_OUTPUT_ROOT", previous[1]);
+            Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_SEMANTIC_CHECKPOINT", previous[2]);
+            Environment.SetEnvironmentVariable("A99_CANONICAL_DEV_HARNESS_CHECKPOINT", previous[3]);
+        }
+    }
+
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
     {
         repoRoot = Path.GetFullPath(repoRoot);
@@ -44,7 +70,7 @@ public static class CanonicalDevV4Runner
         {
             await WriteJsonAsync(Path.Combine(output, "failure.v1.json"), new
             {
-                schemaVersion = "a99-canonical-dev-v1-exec-v4-failure-v1",
+                schemaVersion = $"{SchemaPrefix}-failure-v1",
                 status = "BLOCKED",
                 reason = "V4_OUTPUT_ALREADY_EXISTS",
                 campaignId = CampaignId,
@@ -65,7 +91,7 @@ public static class CanonicalDevV4Runner
         {
             await WriteJsonAsync(Path.Combine(output, "manifest.json"), new
             {
-                schemaVersion = "a99-canonical-dev-v1-exec-v4-manifest-v1",
+                schemaVersion = $"{SchemaPrefix}-manifest-v1",
                 status = "BLOCKED_ON_SOURCE_LINEAGE",
                 campaignId = CampaignId,
                 documents = sources,
@@ -91,7 +117,7 @@ public static class CanonicalDevV4Runner
         }).OrderBy(item => item.DocumentId, StringComparer.Ordinal), JsonOptions));
         var config = new
         {
-            schemaVersion = "a99-canonical-dev-v1-exec-v4-run-configuration-v1",
+            schemaVersion = $"{SchemaPrefix}-run-configuration-v1",
             benchmark = Benchmark,
             campaignId = CampaignId,
             productionSemanticCheckpoint = ProductionSemanticCheckpoint,
@@ -125,7 +151,7 @@ public static class CanonicalDevV4Runner
         var configHash = Sha256File(configPath);
         var preflight = new
         {
-            schemaVersion = "a99-canonical-dev-v1-exec-v4-preflight-v1",
+            schemaVersion = $"{SchemaPrefix}-preflight-v1",
             status = "FROZEN_BEFORE_PROVIDER_CALL_1",
             benchmark = Benchmark,
             campaignId = CampaignId,
@@ -147,7 +173,7 @@ public static class CanonicalDevV4Runner
         await WriteJsonAsync(Path.Combine(output, "preflight.v1.json"), preflight, CancellationToken.None);
         await WriteJsonAsync(Path.Combine(output, "production-run-manifest.json"), new
         {
-            schemaVersion = "a99-canonical-dev-v1-exec-v4-production-run-manifest-v1",
+            schemaVersion = $"{SchemaPrefix}-production-run-manifest-v1",
             status = "PRODUCTION_RUN_STARTED",
             benchmark = Benchmark,
             campaignId = CampaignId,
@@ -174,7 +200,7 @@ public static class CanonicalDevV4Runner
             var requestHash = Sha256Text(JsonSerializer.Serialize(new { source.DocumentId, source.ExpectedSha256, configHash }, JsonOptions));
             await WriteJsonAsync(Path.Combine(docDir, "attempt.started.v1.json"), new
             {
-                schemaVersion = "a99-canonical-dev-v1-exec-v4-attempt-start-v1",
+                schemaVersion = $"{SchemaPrefix}-attempt-start-v1",
                 benchmark = Benchmark,
                 campaignId = CampaignId,
                 documentId = source.DocumentId,
@@ -213,7 +239,7 @@ public static class CanonicalDevV4Runner
             {
                 await WriteJsonAsync(Path.Combine(docDir, "failure.v1.json"), new
                 {
-                    schemaVersion = "a99-canonical-dev-v1-exec-v4-failure-v1",
+                    schemaVersion = $"{SchemaPrefix}-failure-v1",
                     benchmark = Benchmark,
                     campaignId = CampaignId,
                     documentId = source.DocumentId,
@@ -250,7 +276,7 @@ public static class CanonicalDevV4Runner
             return await AbortAsync(output, runs, providerCallsTotal, configHash, productionSemanticHash, executionHarnessHash, "BLOCKED_ON_PROVIDER_EXECUTION_INTEGRITY", ct);
         var freeze = new
         {
-            schemaVersion = "a99-canonical-dev-v1-exec-v4-prediction-freeze-v1",
+            schemaVersion = $"{SchemaPrefix}-prediction-freeze-v1",
             status = "PREDICTIONS_FROZEN_BEFORE_SCORING",
             benchmark = Benchmark,
             campaignId = CampaignId,
@@ -269,7 +295,7 @@ public static class CanonicalDevV4Runner
         await WriteJsonAsync(freezePath, freeze, CancellationToken.None);
         await WriteJsonAsync(Path.Combine(output, "provider-attempt-manifest.json"), new
         {
-            schemaVersion = "a99-canonical-dev-v1-exec-v4-provider-attempt-manifest-v1",
+            schemaVersion = $"{SchemaPrefix}-provider-attempt-manifest-v1",
             benchmark = Benchmark,
             campaignId = CampaignId,
             runConfigurationHash = configHash,
@@ -281,8 +307,8 @@ public static class CanonicalDevV4Runner
         }, CancellationToken.None);
         await WriteJsonAsync(Path.Combine(output, "production-run-manifest.json"), new
         {
-            schemaVersion = "a99-canonical-dev-v1-exec-v4-production-run-manifest-v1",
-            status = "CANONICAL_DEV_V1_EXEC_V4_PREDICTIONS_FROZEN",
+            schemaVersion = $"{SchemaPrefix}-production-run-manifest-v1",
+            status = $"{CampaignId}_PREDICTIONS_FROZEN",
             benchmark = Benchmark,
             campaignId = CampaignId,
             runConfigurationHash = configHash,
@@ -303,7 +329,7 @@ public static class CanonicalDevV4Runner
     {
         await WriteJsonAsync(Path.Combine(output, "production-run-manifest.json"), new
         {
-            schemaVersion = "a99-canonical-dev-v1-exec-v4-production-run-manifest-v1",
+            schemaVersion = $"{SchemaPrefix}-production-run-manifest-v1",
             status = reason,
             benchmark = Benchmark,
             campaignId = CampaignId,
@@ -322,7 +348,7 @@ public static class CanonicalDevV4Runner
     private static async Task<int> BlockAsync(string output, string reason, CancellationToken ct)
     {
         Directory.CreateDirectory(output);
-        await WriteJsonAsync(Path.Combine(output, "preflight-failure.v1.json"), new { schemaVersion = "a99-canonical-dev-v1-exec-v4-preflight-failure-v1", status = "BLOCKED", campaignId = CampaignId, reason, goldReadCount = 0, providerCalls = 0 }, ct);
+        await WriteJsonAsync(Path.Combine(output, "preflight-failure.v1.json"), new { schemaVersion = $"{SchemaPrefix}-preflight-failure-v1", status = "BLOCKED", campaignId = CampaignId, reason, goldReadCount = 0, providerCalls = 0 }, ct);
         return 2;
     }
 

@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-exec-v4-attempt-start-v1",
+  "benchmark": "CANONICAL_DEV_V1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V5",
+  "documentId": "DOC-0001",
+  "sourcePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\bench\\01-style-chuan.docx",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "attemptId": "CANONICAL_DEV_V1_EXEC_V5:DOC-0001:A01:20260916T123405120Z",
+  "requestHash": "14169c97d0e8290a8f445c9ff59fc156fb95e8fadcf724dd638ff977b4d6211f",
+  "started": "2026-09-16T12:34:05.1209382+00:00",
+  "perAttemptHardTimeoutSeconds": 300,
+  "documentSafetyCeilingSeconds": 7200,
+  "runConfigurationHash": "b48f09483191d8b4350fb71d307f86db9255933aba22f5986df35711c9396ab4",
+  "goldReadBeforePredictionFreeze": false,
+  "goldReadCount": 0
+}

@@ -352,6 +352,8 @@ public static class CanonicalDevV1BaselineRunner
                 return await RunNoProviderSelfTestAsync(outputDir, documentId, sourcePath, sourceSha256, started, ct);
             if (string.Equals(executionMode, "RUNTIME_FAILURE", StringComparison.Ordinal))
                 throw new InvalidOperationException("DETERMINISTIC_WORKER_RUNTIME_FAILURE_TEST");
+            if (!File.Exists(sourcePath)) throw new FileNotFoundException("SOURCE_NOT_FOUND", sourcePath);
+            await WriteWorkerMarkerAsync(outputDir, "worker.stage.SOURCE_RESOLVED.json", new { stage = "SOURCE_RESOLVED", documentId, sourcePath, at = DateTimeOffset.UtcNow });
             var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
             envRemote.RequestTimeoutSeconds = perAttemptHardTimeoutSeconds;
             envRemote.Observability = new ProviderObservabilityOptions
@@ -369,6 +371,8 @@ public static class CanonicalDevV1BaselineRunner
                 new PipelineOptions { DisableLlm = false },
                 new HeaderClassifierFactory(selection));
             var execution = await pipeline.RunDocumentExecutionAsync(sourcePath, ct: ct);
+            await WriteWorkerMarkerAsync(outputDir, "worker.stage.SOURCE_PARSED.json", new { stage = "SOURCE_PARSED", documentId, at = DateTimeOffset.UtcNow });
+            await WriteWorkerMarkerAsync(outputDir, "worker.stage.PRODUCTION_INPUT_READY.json", new { stage = "PRODUCTION_INPUT_READY", documentId, at = DateTimeOffset.UtcNow });
             var result = execution.Result;
             var audit = execution.CompatibilityOutline.RouteAudit;
             var elements = result.Structure.Elements

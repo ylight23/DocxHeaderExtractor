@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "a99-canonical-dev-v1-exec-v5-integrity-close-v1",
+  "campaignId": "CANONICAL_DEV_V1_EXEC_V5",
+  "status": "BLOCKED_ON_PROVIDER_EXECUTION_INTEGRITY",
+  "scorable": false,
+  "primaryReason": "HARNESS_MUTATION_AFTER_PROVIDER_CALL_1",
+  "documentId": "DOC-0001",
+  "orchestratedProviderCalls": 5,
+  "workerPredictionExists": true,
+  "workerAttemptsExists": true,
+  "predictionPromoted": false,
+  "predictionFrozen": false,
+  "originalRunConfigurationHash": "b48f09483191d8b4350fb71d307f86db9255933aba22f5986df35711c9396ab4",
+  "originalExecutionHarnessHash": "ce6815b1e7e78a7ecb3650516f18b5de45be0528126d41008bc0c206d36c5da1",
+  "harnessFixAppliedAfterCall": "CaptureStreamAsync stream-disposal correction",
+  "newHarnessMayNotResumeCampaign": true,
+  "goldReads": 0,
+  "historicalReads": 0,
+  "rawTelemetryMutated": false,
+  "workerPredictionPath": "work/DOC-0001/A01/worker-prediction.v1.json",
+  "workerAttemptsPath": "work/DOC-0001/A01/worker-attempts.v1.json",
+  "reason": "The worker completed five provider calls, but the parent failed while reading telemetry because the capture stream was still open. Fixing the capture lifetime changes the execution harness after provider call one, so the V5 campaign cannot be resumed or frozen under the original configuration."
+}
