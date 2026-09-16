@@ -1,0 +1,90 @@
+[
+  {
+    "documentId": "DOC-0116",
+    "classification": "SOURCE_BACKED_PROPOSAL_INVALID",
+    "blockerStatus": "SOURCE_BACKED_PROPOSAL_VALIDATION_OR_AMBIGUITY_REQUIRES_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 22
+  },
+  {
+    "documentId": "DOC-0122",
+    "classification": "SOURCE_BACKED_PROPOSAL_INVALID",
+    "blockerStatus": "SOURCE_BACKED_PROPOSAL_VALIDATION_OR_AMBIGUITY_REQUIRES_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/037_WB_Plant_TwoStage_2025.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 126
+  },
+  {
+    "documentId": "DOC-0185",
+    "classification": "OTHER_HARD_BLOCKER",
+    "blockerStatus": "CANONICAL_EXHAUSTIVE_OCCURRENCE_REVIEW_NOT_MATERIALIZED",
+    "sourcePath": "todo10_8/generated-docx/01_phap_quy/005_Luat_Dau_thau_22-2023-QH15_EN.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 0
+  },
+  {
+    "documentId": "DOC-0200",
+    "classification": "OTHER_HARD_BLOCKER",
+    "blockerStatus": "CANONICAL_EXHAUSTIVE_OCCURRENCE_REVIEW_NOT_MATERIALIZED",
+    "sourcePath": "todo10_8/generated-docx/01_phap_quy/020_TT_133-2016_Che_do_ke_toan_SME.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 0
+  },
+  {
+    "documentId": "DOC-0201",
+    "classification": "OTHER_HARD_BLOCKER",
+    "blockerStatus": "CANONICAL_EXHAUSTIVE_OCCURRENCE_REVIEW_NOT_MATERIALIZED",
+    "sourcePath": "todo10_8/generated-docx/01_phap_quy/021_TT_78-2021_Hoa_don_dien_tu.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 0
+  },
+  {
+    "documentId": "DOC-0205",
+    "classification": "SOURCE_LINEAGE_BLOCKED",
+    "blockerStatus": "SOURCE_BINDING_BLOCKED_CURRENT_SOURCE_NOT_CANONICAL",
+    "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 71
+  },
+  {
+    "documentId": "DOC-0216",
+    "classification": "SOURCE_BACKED_PROPOSAL_INVALID",
+    "blockerStatus": "SOURCE_BACKED_PROPOSAL_VALIDATION_OR_AMBIGUITY_REQUIRES_REVIEW",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/036_WB_Plant_SingleStage_2025.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 117
+  },
+  {
+    "documentId": "DOC-0219",
+    "classification": "OTHER_HARD_BLOCKER",
+    "blockerStatus": "CANONICAL_EXHAUSTIVE_OCCURRENCE_REVIEW_NOT_MATERIALIZED",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/039_WB_EPC_Turnkey_SingleStage_2025.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 0
+  },
+  {
+    "documentId": "DOC-0243",
+    "classification": "HISTORICAL_SUBSET_PROPOSAL",
+    "blockerStatus": "CANONICAL_OCCURRENCE_UNIVERSE_NOT_AUTHORIZED_FOR_CANONICAL_GOLD",
+    "sourcePath": "todo10_8/heading_corpus_95_word/04_giao_trinh/063_Advanced_Linear_Algebra.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 102
+  },
+  {
+    "documentId": "DOC-0264",
+    "classification": "OTHER_HARD_BLOCKER",
+    "blockerStatus": "CANONICAL_EXHAUSTIVE_OCCURRENCE_REVIEW_NOT_MATERIALIZED",
+    "sourcePath": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 0
+  },
+  {
+    "documentId": "DOC-0265",
+    "classification": "OTHER_HARD_BLOCKER",
+    "blockerStatus": "CANONICAL_EXHAUSTIVE_OCCURRENCE_REVIEW_NOT_MATERIALIZED",
+    "sourcePath": "todo10_8/generated-docx/06_dich_song_ngu/085_Luat_Nha_o_2023_EN.docx",
+    "sourceLineageStatus": "SOURCE_PRESENT_STRICT_HASH_MATCH",
+    "strictHeadingCount": 0
+  }
+]

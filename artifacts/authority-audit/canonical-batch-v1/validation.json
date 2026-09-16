@@ -1,0 +1,16 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_VALIDATION",
+  "schemaVersion": "a99-canonical-batch-v1",
+  "status": "BATCH_READY_FOR_USER_CANONICAL_APPROVAL",
+  "discoveredDocumentCount": 15,
+  "allRecordsHaveClassification": true,
+  "frozenAuthoritiesMutated": false,
+  "userReviewedPromotionPerformed": false,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalSemanticTotalUsedForDecision": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "blockersWithExplicitReason": true
+}

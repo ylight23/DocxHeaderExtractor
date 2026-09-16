@@ -1,0 +1,33 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_MANIFEST",
+  "schemaVersion": "a99-canonical-batch-v1",
+  "status": "BATCH_READY_FOR_USER_CANONICAL_APPROVAL",
+  "documentInventory": "artifacts/authority-audit/canonical-batch-v1/document-inventory.json",
+  "generatedArtifacts": [
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v1/batch-review.md",
+      "sha256": "db5d121531dbf86f6f7cc15470f0f795b8cfbae7567e3cf5f1c2059b6a41d0c3"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v1/batch-summary.json",
+      "sha256": "6b7876e9423da7fc5f620c9b9b8ec49e08df5c69da6d87bfef49dbd92f625bce"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v1/blockers.json",
+      "sha256": "f5a7ba48c018a07f2fc36c085579cf39ecd1e552168f04daae9378566449ed67"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v1/document-inventory.json",
+      "sha256": "6e326985ae360710f8946e8983fd6e49496e8bb8df7a35e2ecfef5d9b352be62"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v1/validation.json",
+      "sha256": "81576cf44ec2e33cdffe6f7673015f53dc2d0efb9efb1a67331dcfe54e937eb7"
+    }
+  ],
+  "sourceDiscovery": "strict-gold-v4 + authority-audit manifests + current source corpus",
+  "canonicalGoldMutation": false,
+  "userReviewedPromotion": false,
+  "providerCalls": 0,
+  "modelCalls": 0
+}
