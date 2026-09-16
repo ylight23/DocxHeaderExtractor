@@ -1,0 +1,3027 @@
+[
+  {
+    "documentId": "DOC-0185",
+    "occurrenceCount": 119,
+    "semanticNodeCount": 119,
+    "primary": 119,
+    "repeat": 0,
+    "continuation": 0,
+    "multiOccurrenceNodeCount": 0,
+    "challengeCases": [],
+    "collisionGroups": {
+      "exactText": 0,
+      "punctuation": 0
+    },
+    "conclusion": "Occurrence count 119 equals semantic-node count 119 because every occurrence is a singleton PRIMARY assignment and every reviewed normalized-text collision was retained DISTINCT under fail-closed identity policy; see identity-challenge-review.json."
+  },
+  {
+    "documentId": "DOC-0200",
+    "occurrenceCount": 102,
+    "semanticNodeCount": 102,
+    "primary": 102,
+    "repeat": 0,
+    "continuation": 0,
+    "multiOccurrenceNodeCount": 0,
+    "challengeCases": [
+      {
+        "leftOccurrenceRef": "DOC-0200:body[1]/p[2200]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0200:body[1]/p[2235]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[2200]",
+        "rightSourceId": "body[1]/p[2235]",
+        "leftText": "Chương IV",
+        "rightText": "Chương IV",
+        "leftDocumentOrder": 2008,
+        "rightDocumentOrder": 2039,
+        "leftSemanticNodeRef": "N0088",
+        "rightSemanticNodeRef": "N0093",
+        "leftParentRef": "ROOT",
+        "rightParentRef": "ROOT",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      }
+    ],
+    "collisionGroups": {
+      "exactText": 1,
+      "punctuation": 1
+    },
+    "conclusion": "Occurrence count 102 equals semantic-node count 102 because every occurrence is a singleton PRIMARY assignment and every reviewed normalized-text collision was retained DISTINCT under fail-closed identity policy; see identity-challenge-review.json."
+  },
+  {
+    "documentId": "DOC-0201",
+    "occurrenceCount": 11,
+    "semanticNodeCount": 11,
+    "primary": 11,
+    "repeat": 0,
+    "continuation": 0,
+    "multiOccurrenceNodeCount": 0,
+    "challengeCases": [],
+    "collisionGroups": {
+      "exactText": 0,
+      "punctuation": 0
+    },
+    "conclusion": "Occurrence count 11 equals semantic-node count 11 because every occurrence is a singleton PRIMARY assignment and every reviewed normalized-text collision was retained DISTINCT under fail-closed identity policy; see identity-challenge-review.json."
+  },
+  {
+    "documentId": "DOC-0265",
+    "occurrenceCount": 245,
+    "semanticNodeCount": 245,
+    "primary": 245,
+    "repeat": 0,
+    "continuation": 0,
+    "multiOccurrenceNodeCount": 0,
+    "challengeCases": [
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[97]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[277]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[97]",
+        "rightSourceId": "body[1]/p[277]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 83,
+        "rightDocumentOrder": 243,
+        "leftSemanticNodeRef": "N0009",
+        "rightSemanticNodeRef": "N0028",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0008",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[97]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[353]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[97]",
+        "rightSourceId": "body[1]/p[353]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 83,
+        "rightDocumentOrder": 311,
+        "leftSemanticNodeRef": "N0009",
+        "rightSemanticNodeRef": "N0038",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0037",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[97]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[682]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[97]",
+        "rightSourceId": "body[1]/p[682]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 83,
+        "rightDocumentOrder": 602,
+        "leftSemanticNodeRef": "N0009",
+        "rightSemanticNodeRef": "N0072",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0071",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[97]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[954]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[97]",
+        "rightSourceId": "body[1]/p[954]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 83,
+        "rightDocumentOrder": 842,
+        "leftSemanticNodeRef": "N0009",
+        "rightSemanticNodeRef": "N0096",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[97]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1340]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[97]",
+        "rightSourceId": "body[1]/p[1340]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 83,
+        "rightDocumentOrder": 1181,
+        "leftSemanticNodeRef": "N0009",
+        "rightSemanticNodeRef": "N0145",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[97]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1584]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[97]",
+        "rightSourceId": "body[1]/p[1584]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 83,
+        "rightDocumentOrder": 1397,
+        "leftSemanticNodeRef": "N0009",
+        "rightSemanticNodeRef": "N0174",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[97]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1796]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[97]",
+        "rightSourceId": "body[1]/p[1796]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 83,
+        "rightDocumentOrder": 1581,
+        "leftSemanticNodeRef": "N0009",
+        "rightSemanticNodeRef": "N0197",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[277]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[353]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[277]",
+        "rightSourceId": "body[1]/p[353]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 243,
+        "rightDocumentOrder": 311,
+        "leftSemanticNodeRef": "N0028",
+        "rightSemanticNodeRef": "N0038",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0037",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[277]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[682]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[277]",
+        "rightSourceId": "body[1]/p[682]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 243,
+        "rightDocumentOrder": 602,
+        "leftSemanticNodeRef": "N0028",
+        "rightSemanticNodeRef": "N0072",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0071",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[277]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[954]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[277]",
+        "rightSourceId": "body[1]/p[954]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 243,
+        "rightDocumentOrder": 842,
+        "leftSemanticNodeRef": "N0028",
+        "rightSemanticNodeRef": "N0096",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[277]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1340]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[277]",
+        "rightSourceId": "body[1]/p[1340]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 243,
+        "rightDocumentOrder": 1181,
+        "leftSemanticNodeRef": "N0028",
+        "rightSemanticNodeRef": "N0145",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[277]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1584]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[277]",
+        "rightSourceId": "body[1]/p[1584]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 243,
+        "rightDocumentOrder": 1397,
+        "leftSemanticNodeRef": "N0028",
+        "rightSemanticNodeRef": "N0174",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[277]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1796]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[277]",
+        "rightSourceId": "body[1]/p[1796]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 243,
+        "rightDocumentOrder": 1581,
+        "leftSemanticNodeRef": "N0028",
+        "rightSemanticNodeRef": "N0197",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[353]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[682]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[353]",
+        "rightSourceId": "body[1]/p[682]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 311,
+        "rightDocumentOrder": 602,
+        "leftSemanticNodeRef": "N0038",
+        "rightSemanticNodeRef": "N0072",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0071",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[353]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[954]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[353]",
+        "rightSourceId": "body[1]/p[954]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 311,
+        "rightDocumentOrder": 842,
+        "leftSemanticNodeRef": "N0038",
+        "rightSemanticNodeRef": "N0096",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[353]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1340]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[353]",
+        "rightSourceId": "body[1]/p[1340]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 311,
+        "rightDocumentOrder": 1181,
+        "leftSemanticNodeRef": "N0038",
+        "rightSemanticNodeRef": "N0145",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[353]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1584]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[353]",
+        "rightSourceId": "body[1]/p[1584]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 311,
+        "rightDocumentOrder": 1397,
+        "leftSemanticNodeRef": "N0038",
+        "rightSemanticNodeRef": "N0174",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[353]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1796]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[353]",
+        "rightSourceId": "body[1]/p[1796]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 311,
+        "rightDocumentOrder": 1581,
+        "leftSemanticNodeRef": "N0038",
+        "rightSemanticNodeRef": "N0197",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[682]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[954]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[682]",
+        "rightSourceId": "body[1]/p[954]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 602,
+        "rightDocumentOrder": 842,
+        "leftSemanticNodeRef": "N0072",
+        "rightSemanticNodeRef": "N0096",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[682]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1340]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[682]",
+        "rightSourceId": "body[1]/p[1340]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 602,
+        "rightDocumentOrder": 1181,
+        "leftSemanticNodeRef": "N0072",
+        "rightSemanticNodeRef": "N0145",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[682]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1584]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[682]",
+        "rightSourceId": "body[1]/p[1584]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 602,
+        "rightDocumentOrder": 1397,
+        "leftSemanticNodeRef": "N0072",
+        "rightSemanticNodeRef": "N0174",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[682]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1796]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[682]",
+        "rightSourceId": "body[1]/p[1796]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 602,
+        "rightDocumentOrder": 1581,
+        "leftSemanticNodeRef": "N0072",
+        "rightSemanticNodeRef": "N0197",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[954]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1340]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[954]",
+        "rightSourceId": "body[1]/p[1340]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 842,
+        "rightDocumentOrder": 1181,
+        "leftSemanticNodeRef": "N0096",
+        "rightSemanticNodeRef": "N0145",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[954]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1584]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[954]",
+        "rightSourceId": "body[1]/p[1584]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 842,
+        "rightDocumentOrder": 1397,
+        "leftSemanticNodeRef": "N0096",
+        "rightSemanticNodeRef": "N0174",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[954]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1796]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[954]",
+        "rightSourceId": "body[1]/p[1796]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 842,
+        "rightDocumentOrder": 1581,
+        "leftSemanticNodeRef": "N0096",
+        "rightSemanticNodeRef": "N0197",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1340]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1584]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1340]",
+        "rightSourceId": "body[1]/p[1584]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 1181,
+        "rightDocumentOrder": 1397,
+        "leftSemanticNodeRef": "N0145",
+        "rightSemanticNodeRef": "N0174",
+        "leftParentRef": "N0144",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1340]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1796]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1340]",
+        "rightSourceId": "body[1]/p[1796]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 1181,
+        "rightDocumentOrder": 1581,
+        "leftSemanticNodeRef": "N0145",
+        "rightSemanticNodeRef": "N0197",
+        "leftParentRef": "N0144",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1584]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1796]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1584]",
+        "rightSourceId": "body[1]/p[1796]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 1397,
+        "rightDocumentOrder": 1581,
+        "leftSemanticNodeRef": "N0174",
+        "rightSemanticNodeRef": "N0197",
+        "leftParentRef": "N0173",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[178]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[300]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[178]",
+        "rightSourceId": "body[1]/p[300]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 154,
+        "rightDocumentOrder": 264,
+        "leftSemanticNodeRef": "N0017",
+        "rightSemanticNodeRef": "N0032",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0008",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[178]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[421]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[178]",
+        "rightSourceId": "body[1]/p[421]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 154,
+        "rightDocumentOrder": 371,
+        "leftSemanticNodeRef": "N0017",
+        "rightSemanticNodeRef": "N0045",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0037",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[178]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[769]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[178]",
+        "rightSourceId": "body[1]/p[769]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 154,
+        "rightDocumentOrder": 679,
+        "leftSemanticNodeRef": "N0017",
+        "rightSemanticNodeRef": "N0079",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0071",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[178]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1020]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[178]",
+        "rightSourceId": "body[1]/p[1020]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 154,
+        "rightDocumentOrder": 901,
+        "leftSemanticNodeRef": "N0017",
+        "rightSemanticNodeRef": "N0101",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[178]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1418]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[178]",
+        "rightSourceId": "body[1]/p[1418]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 154,
+        "rightDocumentOrder": 1249,
+        "leftSemanticNodeRef": "N0017",
+        "rightSemanticNodeRef": "N0153",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[178]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1622]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[178]",
+        "rightSourceId": "body[1]/p[1622]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 154,
+        "rightDocumentOrder": 1429,
+        "leftSemanticNodeRef": "N0017",
+        "rightSemanticNodeRef": "N0178",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[178]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1861]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[178]",
+        "rightSourceId": "body[1]/p[1861]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 154,
+        "rightDocumentOrder": 1638,
+        "leftSemanticNodeRef": "N0017",
+        "rightSemanticNodeRef": "N0204",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[300]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[421]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[300]",
+        "rightSourceId": "body[1]/p[421]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 264,
+        "rightDocumentOrder": 371,
+        "leftSemanticNodeRef": "N0032",
+        "rightSemanticNodeRef": "N0045",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0037",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[300]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[769]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[300]",
+        "rightSourceId": "body[1]/p[769]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 264,
+        "rightDocumentOrder": 679,
+        "leftSemanticNodeRef": "N0032",
+        "rightSemanticNodeRef": "N0079",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0071",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[300]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1020]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[300]",
+        "rightSourceId": "body[1]/p[1020]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 264,
+        "rightDocumentOrder": 901,
+        "leftSemanticNodeRef": "N0032",
+        "rightSemanticNodeRef": "N0101",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[300]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1418]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[300]",
+        "rightSourceId": "body[1]/p[1418]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 264,
+        "rightDocumentOrder": 1249,
+        "leftSemanticNodeRef": "N0032",
+        "rightSemanticNodeRef": "N0153",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[300]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1622]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[300]",
+        "rightSourceId": "body[1]/p[1622]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 264,
+        "rightDocumentOrder": 1429,
+        "leftSemanticNodeRef": "N0032",
+        "rightSemanticNodeRef": "N0178",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[300]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1861]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[300]",
+        "rightSourceId": "body[1]/p[1861]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 264,
+        "rightDocumentOrder": 1638,
+        "leftSemanticNodeRef": "N0032",
+        "rightSemanticNodeRef": "N0204",
+        "leftParentRef": "N0008",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[421]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[769]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[421]",
+        "rightSourceId": "body[1]/p[769]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 371,
+        "rightDocumentOrder": 679,
+        "leftSemanticNodeRef": "N0045",
+        "rightSemanticNodeRef": "N0079",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0071",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[421]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1020]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[421]",
+        "rightSourceId": "body[1]/p[1020]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 371,
+        "rightDocumentOrder": 901,
+        "leftSemanticNodeRef": "N0045",
+        "rightSemanticNodeRef": "N0101",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[421]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1418]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[421]",
+        "rightSourceId": "body[1]/p[1418]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 371,
+        "rightDocumentOrder": 1249,
+        "leftSemanticNodeRef": "N0045",
+        "rightSemanticNodeRef": "N0153",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[421]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1622]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[421]",
+        "rightSourceId": "body[1]/p[1622]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 371,
+        "rightDocumentOrder": 1429,
+        "leftSemanticNodeRef": "N0045",
+        "rightSemanticNodeRef": "N0178",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[421]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1861]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[421]",
+        "rightSourceId": "body[1]/p[1861]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 371,
+        "rightDocumentOrder": 1638,
+        "leftSemanticNodeRef": "N0045",
+        "rightSemanticNodeRef": "N0204",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[769]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1020]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[769]",
+        "rightSourceId": "body[1]/p[1020]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 679,
+        "rightDocumentOrder": 901,
+        "leftSemanticNodeRef": "N0079",
+        "rightSemanticNodeRef": "N0101",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[769]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1418]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[769]",
+        "rightSourceId": "body[1]/p[1418]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 679,
+        "rightDocumentOrder": 1249,
+        "leftSemanticNodeRef": "N0079",
+        "rightSemanticNodeRef": "N0153",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[769]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1622]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[769]",
+        "rightSourceId": "body[1]/p[1622]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 679,
+        "rightDocumentOrder": 1429,
+        "leftSemanticNodeRef": "N0079",
+        "rightSemanticNodeRef": "N0178",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[769]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1861]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[769]",
+        "rightSourceId": "body[1]/p[1861]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 679,
+        "rightDocumentOrder": 1638,
+        "leftSemanticNodeRef": "N0079",
+        "rightSemanticNodeRef": "N0204",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1020]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1418]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1020]",
+        "rightSourceId": "body[1]/p[1418]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 901,
+        "rightDocumentOrder": 1249,
+        "leftSemanticNodeRef": "N0101",
+        "rightSemanticNodeRef": "N0153",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1020]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1622]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1020]",
+        "rightSourceId": "body[1]/p[1622]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 901,
+        "rightDocumentOrder": 1429,
+        "leftSemanticNodeRef": "N0101",
+        "rightSemanticNodeRef": "N0178",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1020]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1861]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1020]",
+        "rightSourceId": "body[1]/p[1861]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 901,
+        "rightDocumentOrder": 1638,
+        "leftSemanticNodeRef": "N0101",
+        "rightSemanticNodeRef": "N0204",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1418]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1622]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1418]",
+        "rightSourceId": "body[1]/p[1622]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 1249,
+        "rightDocumentOrder": 1429,
+        "leftSemanticNodeRef": "N0153",
+        "rightSemanticNodeRef": "N0178",
+        "leftParentRef": "N0144",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1418]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1861]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1418]",
+        "rightSourceId": "body[1]/p[1861]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 1249,
+        "rightDocumentOrder": 1638,
+        "leftSemanticNodeRef": "N0153",
+        "rightSemanticNodeRef": "N0204",
+        "leftParentRef": "N0144",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1622]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1861]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1622]",
+        "rightSourceId": "body[1]/p[1861]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 1429,
+        "rightDocumentOrder": 1638,
+        "leftSemanticNodeRef": "N0178",
+        "rightSemanticNodeRef": "N0204",
+        "leftParentRef": "N0173",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[468]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[796]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[468]",
+        "rightSourceId": "body[1]/p[796]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 412,
+        "rightDocumentOrder": 702,
+        "leftSemanticNodeRef": "N0050",
+        "rightSemanticNodeRef": "N0083",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0071",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[468]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1179]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[468]",
+        "rightSourceId": "body[1]/p[1179]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 412,
+        "rightDocumentOrder": 1040,
+        "leftSemanticNodeRef": "N0050",
+        "rightSemanticNodeRef": "N0113",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[468]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1481]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[468]",
+        "rightSourceId": "body[1]/p[1481]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 412,
+        "rightDocumentOrder": 1304,
+        "leftSemanticNodeRef": "N0050",
+        "rightSemanticNodeRef": "N0157",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[468]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1689]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[468]",
+        "rightSourceId": "body[1]/p[1689]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 412,
+        "rightDocumentOrder": 1488,
+        "leftSemanticNodeRef": "N0050",
+        "rightSemanticNodeRef": "N0183",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[468]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1898]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[468]",
+        "rightSourceId": "body[1]/p[1898]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 412,
+        "rightDocumentOrder": 1671,
+        "leftSemanticNodeRef": "N0050",
+        "rightSemanticNodeRef": "N0210",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[796]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1179]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[796]",
+        "rightSourceId": "body[1]/p[1179]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 702,
+        "rightDocumentOrder": 1040,
+        "leftSemanticNodeRef": "N0083",
+        "rightSemanticNodeRef": "N0113",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[796]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1481]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[796]",
+        "rightSourceId": "body[1]/p[1481]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 702,
+        "rightDocumentOrder": 1304,
+        "leftSemanticNodeRef": "N0083",
+        "rightSemanticNodeRef": "N0157",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[796]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1689]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[796]",
+        "rightSourceId": "body[1]/p[1689]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 702,
+        "rightDocumentOrder": 1488,
+        "leftSemanticNodeRef": "N0083",
+        "rightSemanticNodeRef": "N0183",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[796]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1898]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[796]",
+        "rightSourceId": "body[1]/p[1898]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 702,
+        "rightDocumentOrder": 1671,
+        "leftSemanticNodeRef": "N0083",
+        "rightSemanticNodeRef": "N0210",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1179]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1481]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1179]",
+        "rightSourceId": "body[1]/p[1481]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 1040,
+        "rightDocumentOrder": 1304,
+        "leftSemanticNodeRef": "N0113",
+        "rightSemanticNodeRef": "N0157",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1179]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1689]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1179]",
+        "rightSourceId": "body[1]/p[1689]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 1040,
+        "rightDocumentOrder": 1488,
+        "leftSemanticNodeRef": "N0113",
+        "rightSemanticNodeRef": "N0183",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1179]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1898]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1179]",
+        "rightSourceId": "body[1]/p[1898]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 1040,
+        "rightDocumentOrder": 1671,
+        "leftSemanticNodeRef": "N0113",
+        "rightSemanticNodeRef": "N0210",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1481]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1689]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1481]",
+        "rightSourceId": "body[1]/p[1689]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 1304,
+        "rightDocumentOrder": 1488,
+        "leftSemanticNodeRef": "N0157",
+        "rightSemanticNodeRef": "N0183",
+        "leftParentRef": "N0144",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1481]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1898]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1481]",
+        "rightSourceId": "body[1]/p[1898]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 1304,
+        "rightDocumentOrder": 1671,
+        "leftSemanticNodeRef": "N0157",
+        "rightSemanticNodeRef": "N0210",
+        "leftParentRef": "N0144",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1689]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1898]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1689]",
+        "rightSourceId": "body[1]/p[1898]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 1488,
+        "rightDocumentOrder": 1671,
+        "leftSemanticNodeRef": "N0183",
+        "rightSemanticNodeRef": "N0210",
+        "leftParentRef": "N0173",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[573]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[848]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[573]",
+        "rightSourceId": "body[1]/p[848]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 505,
+        "rightDocumentOrder": 748,
+        "leftSemanticNodeRef": "N0059",
+        "rightSemanticNodeRef": "N0087",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0071",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[573]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1237]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[573]",
+        "rightSourceId": "body[1]/p[1237]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 505,
+        "rightDocumentOrder": 1090,
+        "leftSemanticNodeRef": "N0059",
+        "rightSemanticNodeRef": "N0124",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[573]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1538]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[573]",
+        "rightSourceId": "body[1]/p[1538]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 505,
+        "rightDocumentOrder": 1355,
+        "leftSemanticNodeRef": "N0059",
+        "rightSemanticNodeRef": "N0166",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[573]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1726]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[573]",
+        "rightSourceId": "body[1]/p[1726]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 505,
+        "rightDocumentOrder": 1521,
+        "leftSemanticNodeRef": "N0059",
+        "rightSemanticNodeRef": "N0187",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[573]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1942]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[573]",
+        "rightSourceId": "body[1]/p[1942]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 505,
+        "rightDocumentOrder": 1711,
+        "leftSemanticNodeRef": "N0059",
+        "rightSemanticNodeRef": "N0215",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[848]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1237]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[848]",
+        "rightSourceId": "body[1]/p[1237]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 748,
+        "rightDocumentOrder": 1090,
+        "leftSemanticNodeRef": "N0087",
+        "rightSemanticNodeRef": "N0124",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[848]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1538]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[848]",
+        "rightSourceId": "body[1]/p[1538]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 748,
+        "rightDocumentOrder": 1355,
+        "leftSemanticNodeRef": "N0087",
+        "rightSemanticNodeRef": "N0166",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[848]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1726]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[848]",
+        "rightSourceId": "body[1]/p[1726]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 748,
+        "rightDocumentOrder": 1521,
+        "leftSemanticNodeRef": "N0087",
+        "rightSemanticNodeRef": "N0187",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[848]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1942]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[848]",
+        "rightSourceId": "body[1]/p[1942]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 748,
+        "rightDocumentOrder": 1711,
+        "leftSemanticNodeRef": "N0087",
+        "rightSemanticNodeRef": "N0215",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1237]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1538]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1237]",
+        "rightSourceId": "body[1]/p[1538]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 1090,
+        "rightDocumentOrder": 1355,
+        "leftSemanticNodeRef": "N0124",
+        "rightSemanticNodeRef": "N0166",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0144",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1237]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1726]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1237]",
+        "rightSourceId": "body[1]/p[1726]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 1090,
+        "rightDocumentOrder": 1521,
+        "leftSemanticNodeRef": "N0124",
+        "rightSemanticNodeRef": "N0187",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1237]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1942]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1237]",
+        "rightSourceId": "body[1]/p[1942]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 1090,
+        "rightDocumentOrder": 1711,
+        "leftSemanticNodeRef": "N0124",
+        "rightSemanticNodeRef": "N0215",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1538]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1726]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1538]",
+        "rightSourceId": "body[1]/p[1726]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 1355,
+        "rightDocumentOrder": 1521,
+        "leftSemanticNodeRef": "N0166",
+        "rightSemanticNodeRef": "N0187",
+        "leftParentRef": "N0144",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1538]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1942]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1538]",
+        "rightSourceId": "body[1]/p[1942]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 1355,
+        "rightDocumentOrder": 1711,
+        "leftSemanticNodeRef": "N0166",
+        "rightSemanticNodeRef": "N0215",
+        "leftParentRef": "N0144",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1726]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1942]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1726]",
+        "rightSourceId": "body[1]/p[1942]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 1521,
+        "rightDocumentOrder": 1711,
+        "leftSemanticNodeRef": "N0187",
+        "rightSemanticNodeRef": "N0215",
+        "leftParentRef": "N0173",
+        "rightParentRef": "N0196",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[634]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[905]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[634]",
+        "rightSourceId": "body[1]/p[905]",
+        "leftText": "Section 5",
+        "rightText": "Section 5",
+        "leftDocumentOrder": 560,
+        "rightDocumentOrder": 797,
+        "leftSemanticNodeRef": "N0066",
+        "rightSemanticNodeRef": "N0091",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0071",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[634]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1276]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[634]",
+        "rightSourceId": "body[1]/p[1276]",
+        "leftText": "Section 5",
+        "rightText": "Section 5",
+        "leftDocumentOrder": 560,
+        "rightDocumentOrder": 1125,
+        "leftSemanticNodeRef": "N0066",
+        "rightSemanticNodeRef": "N0134",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[634]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1777]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[634]",
+        "rightSourceId": "body[1]/p[1777]",
+        "leftText": "Section 5",
+        "rightText": "Section 5",
+        "leftDocumentOrder": 560,
+        "rightDocumentOrder": 1564,
+        "leftSemanticNodeRef": "N0066",
+        "rightSemanticNodeRef": "N0192",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[905]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1276]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[905]",
+        "rightSourceId": "body[1]/p[1276]",
+        "leftText": "Section 5",
+        "rightText": "Section 5",
+        "leftDocumentOrder": 797,
+        "rightDocumentOrder": 1125,
+        "leftSemanticNodeRef": "N0091",
+        "rightSemanticNodeRef": "N0134",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0095",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[905]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1777]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[905]",
+        "rightSourceId": "body[1]/p[1777]",
+        "leftText": "Section 5",
+        "rightText": "Section 5",
+        "leftDocumentOrder": 797,
+        "rightDocumentOrder": 1564,
+        "leftSemanticNodeRef": "N0091",
+        "rightSemanticNodeRef": "N0192",
+        "leftParentRef": "N0071",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0265:body[1]/p[1276]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0265:body[1]/p[1777]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1276]",
+        "rightSourceId": "body[1]/p[1777]",
+        "leftText": "Section 5",
+        "rightText": "Section 5",
+        "leftDocumentOrder": 1125,
+        "rightDocumentOrder": 1564,
+        "leftSemanticNodeRef": "N0134",
+        "rightSemanticNodeRef": "N0192",
+        "leftParentRef": "N0095",
+        "rightParentRef": "N0173",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      }
+    ],
+    "collisionGroups": {
+      "exactText": 5,
+      "punctuation": 5
+    },
+    "conclusion": "Occurrence count 245 equals semantic-node count 245 because every occurrence is a singleton PRIMARY assignment and every reviewed normalized-text collision was retained DISTINCT under fail-closed identity policy; see identity-challenge-review.json."
+  },
+  {
+    "documentId": "DOC-0243",
+    "occurrenceCount": 121,
+    "semanticNodeCount": 121,
+    "primary": 121,
+    "repeat": 0,
+    "continuation": 0,
+    "multiOccurrenceNodeCount": 0,
+    "challengeCases": [
+      {
+        "leftOccurrenceRef": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+        "rightOccurrenceRef": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+        "leftSourceId": "body[1]/p[6277]",
+        "rightSourceId": "body[1]/p[6302]",
+        "leftText": "Positive matrices",
+        "rightText": "Positive matrices",
+        "leftDocumentOrder": 5252,
+        "rightDocumentOrder": 5256,
+        "leftSemanticNodeRef": "N0063",
+        "rightSemanticNodeRef": "N0065",
+        "leftParentRef": "N0062",
+        "rightParentRef": "N0064",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      }
+    ],
+    "collisionGroups": {
+      "exactText": 1,
+      "punctuation": 1
+    },
+    "conclusion": "Occurrence count 121 equals semantic-node count 121 because every occurrence is a singleton PRIMARY assignment and every reviewed normalized-text collision was retained DISTINCT under fail-closed identity policy; see identity-challenge-review.json."
+  },
+  {
+    "documentId": "DOC-0205",
+    "occurrenceCount": 72,
+    "semanticNodeCount": 72,
+    "primary": 72,
+    "repeat": 0,
+    "continuation": 0,
+    "multiOccurrenceNodeCount": 0,
+    "challengeCases": [],
+    "collisionGroups": {
+      "exactText": 0,
+      "punctuation": 0
+    },
+    "conclusion": "Occurrence count 72 equals semantic-node count 72 because every occurrence is a singleton PRIMARY assignment and every reviewed normalized-text collision was retained DISTINCT under fail-closed identity policy; see identity-challenge-review.json."
+  },
+  {
+    "documentId": "DOC-0264",
+    "occurrenceCount": 155,
+    "semanticNodeCount": 155,
+    "primary": 155,
+    "repeat": 0,
+    "continuation": 0,
+    "multiOccurrenceNodeCount": 0,
+    "challengeCases": [
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[171]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[369]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[171]",
+        "rightSourceId": "body[1]/p[369]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 25,
+        "rightDocumentOrder": 52,
+        "leftSemanticNodeRef": "N0016",
+        "rightSemanticNodeRef": "N0038",
+        "leftParentRef": "N0015",
+        "rightParentRef": "N0037",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[171]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[762]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[171]",
+        "rightSourceId": "body[1]/p[762]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 25,
+        "rightDocumentOrder": 110,
+        "leftSemanticNodeRef": "N0016",
+        "rightSemanticNodeRef": "N0081",
+        "leftParentRef": "N0015",
+        "rightParentRef": "N0080",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[171]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[1044]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[171]",
+        "rightSourceId": "body[1]/p[1044]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 25,
+        "rightDocumentOrder": 153,
+        "leftSemanticNodeRef": "N0016",
+        "rightSemanticNodeRef": "N0113",
+        "leftParentRef": "N0015",
+        "rightParentRef": "N0112",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[369]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[762]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[369]",
+        "rightSourceId": "body[1]/p[762]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 52,
+        "rightDocumentOrder": 110,
+        "leftSemanticNodeRef": "N0038",
+        "rightSemanticNodeRef": "N0081",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0080",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[369]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[1044]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[369]",
+        "rightSourceId": "body[1]/p[1044]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 52,
+        "rightDocumentOrder": 153,
+        "leftSemanticNodeRef": "N0038",
+        "rightSemanticNodeRef": "N0113",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0112",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[762]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[1044]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[762]",
+        "rightSourceId": "body[1]/p[1044]",
+        "leftText": "Section 1",
+        "rightText": "Section 1",
+        "leftDocumentOrder": 110,
+        "rightDocumentOrder": 153,
+        "leftSemanticNodeRef": "N0081",
+        "rightSemanticNodeRef": "N0113",
+        "leftParentRef": "N0080",
+        "rightParentRef": "N0112",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[342]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[470]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[342]",
+        "rightSourceId": "body[1]/p[470]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 46,
+        "rightDocumentOrder": 64,
+        "leftSemanticNodeRef": "N0034",
+        "rightSemanticNodeRef": "N0047",
+        "leftParentRef": "N0015",
+        "rightParentRef": "N0037",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[342]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[904]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[342]",
+        "rightSourceId": "body[1]/p[904]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 46,
+        "rightDocumentOrder": 131,
+        "leftSemanticNodeRef": "N0034",
+        "rightSemanticNodeRef": "N0097",
+        "leftParentRef": "N0015",
+        "rightParentRef": "N0080",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[342]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[1128]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[342]",
+        "rightSourceId": "body[1]/p[1128]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 46,
+        "rightDocumentOrder": 166,
+        "leftSemanticNodeRef": "N0034",
+        "rightSemanticNodeRef": "N0123",
+        "leftParentRef": "N0015",
+        "rightParentRef": "N0112",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[470]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[904]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[470]",
+        "rightSourceId": "body[1]/p[904]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 64,
+        "rightDocumentOrder": 131,
+        "leftSemanticNodeRef": "N0047",
+        "rightSemanticNodeRef": "N0097",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0080",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[470]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[1128]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[470]",
+        "rightSourceId": "body[1]/p[1128]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 64,
+        "rightDocumentOrder": 166,
+        "leftSemanticNodeRef": "N0047",
+        "rightSemanticNodeRef": "N0123",
+        "leftParentRef": "N0037",
+        "rightParentRef": "N0112",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[904]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[1128]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[904]",
+        "rightSourceId": "body[1]/p[1128]",
+        "leftText": "Section 2",
+        "rightText": "Section 2",
+        "leftDocumentOrder": 131,
+        "rightDocumentOrder": 166,
+        "leftSemanticNodeRef": "N0097",
+        "rightSemanticNodeRef": "N0123",
+        "leftParentRef": "N0080",
+        "rightParentRef": "N0112",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[977]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[1182]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[977]",
+        "rightSourceId": "body[1]/p[1182]",
+        "leftText": "Section 3",
+        "rightText": "Section 3",
+        "leftDocumentOrder": 140,
+        "rightDocumentOrder": 174,
+        "leftSemanticNodeRef": "N0105",
+        "rightSemanticNodeRef": "N0130",
+        "leftParentRef": "N0080",
+        "rightParentRef": "N0112",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      },
+      {
+        "leftOccurrenceRef": "DOC-0264:body[1]/p[1015]#heading-span-0-9",
+        "rightOccurrenceRef": "DOC-0264:body[1]/p[1196]#heading-span-0-9",
+        "leftSourceId": "body[1]/p[1015]",
+        "rightSourceId": "body[1]/p[1196]",
+        "leftText": "Section 4",
+        "rightText": "Section 4",
+        "leftDocumentOrder": 145,
+        "rightDocumentOrder": 178,
+        "leftSemanticNodeRef": "N0109",
+        "rightSemanticNodeRef": "N0133",
+        "leftParentRef": "N0080",
+        "rightParentRef": "N0112",
+        "relationDecision": "DISTINCT_SEMANTIC_NODE",
+        "challengeBasis": "NORMALIZED_EXACT_TEXT",
+        "positiveEvidence": [
+          "NORMALIZED_EXACT_TEXT matched",
+          "Both occurrences are independently bound source spans"
+        ],
+        "contradictionEvidence": [
+          "Different physical source occurrence refs",
+          "Different document positions",
+          "No source-backed repeat/continuation proof was assigned",
+          "KEEP_SPLIT identity policy"
+        ],
+        "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+      }
+    ],
+    "collisionGroups": {
+      "exactText": 4,
+      "punctuation": 4
+    },
+    "conclusion": "Occurrence count 155 equals semantic-node count 155 because every occurrence is a singleton PRIMARY assignment and every reviewed normalized-text collision was retained DISTINCT under fail-closed identity policy; see identity-challenge-review.json."
+  }
+]

@@ -1,0 +1,91 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V3_1_VALIDATION",
+  "schemaVersion": "a99-canonical-batch-v3.1",
+  "status": "BATCH_V3_1_READY_FOR_USER_SEMANTIC_REVIEW",
+  "proposalBatchCommit": "fb60411",
+  "baselineCommit": "a5ac90b",
+  "underlyingProposalArtifactsUnchanged": true,
+  "changedProposalArtifacts": [],
+  "sevenProposalDocs": [
+    "DOC-0185",
+    "DOC-0200",
+    "DOC-0201",
+    "DOC-0265",
+    "DOC-0243",
+    "DOC-0205",
+    "DOC-0264"
+  ],
+  "proposalCounts": [
+    {
+      "documentId": "DOC-0185",
+      "occurrences": 119,
+      "semanticNodes": 119,
+      "parentEdges": 119,
+      "cycles": 0,
+      "multipleParents": 0,
+      "danglingRefs": 0
+    },
+    {
+      "documentId": "DOC-0200",
+      "occurrences": 102,
+      "semanticNodes": 102,
+      "parentEdges": 102,
+      "cycles": 0,
+      "multipleParents": 0,
+      "danglingRefs": 0
+    },
+    {
+      "documentId": "DOC-0201",
+      "occurrences": 11,
+      "semanticNodes": 11,
+      "parentEdges": 11,
+      "cycles": 0,
+      "multipleParents": 0,
+      "danglingRefs": 0
+    },
+    {
+      "documentId": "DOC-0265",
+      "occurrences": 245,
+      "semanticNodes": 245,
+      "parentEdges": 245,
+      "cycles": 0,
+      "multipleParents": 0,
+      "danglingRefs": 0
+    },
+    {
+      "documentId": "DOC-0243",
+      "occurrences": 121,
+      "semanticNodes": 121,
+      "parentEdges": 121,
+      "cycles": 0,
+      "multipleParents": 0,
+      "danglingRefs": 0
+    },
+    {
+      "documentId": "DOC-0205",
+      "occurrences": 72,
+      "semanticNodes": 72,
+      "parentEdges": 72,
+      "cycles": 0,
+      "multipleParents": 0,
+      "danglingRefs": 0
+    },
+    {
+      "documentId": "DOC-0264",
+      "occurrences": 155,
+      "semanticNodes": 155,
+      "parentEdges": 155,
+      "cycles": 0,
+      "multipleParents": 0,
+      "danglingRefs": 0
+    }
+  ],
+  "blockersMaterialized": 4,
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "goldUsed": false,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "canonicalGoldMutation": false,
+  "newUserReviewedPromotion": false
+}
