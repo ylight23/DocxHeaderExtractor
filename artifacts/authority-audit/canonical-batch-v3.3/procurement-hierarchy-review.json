@@ -1,0 +1,1818 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V3_3_PROCUREMENT_HIERARCHY_REVIEW",
+  "documents": [
+    {
+      "documentId": "DOC-0219",
+      "checks": [
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[73]#heading-span-0-42",
+          "text": "Section I -Instructions to Proposers (ITP)",
+          "documentOrder": 46,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[72]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[75]#heading-span-0-37",
+          "text": "Section II -Proposal Data Sheet (PDS)",
+          "documentOrder": 48,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[72]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[77]#heading-span-0-50",
+          "text": "Section III -Evaluation and Qualification Criteria",
+          "documentOrder": 50,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[72]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[79]#heading-span-0-26",
+          "text": "Section IV -Proposal Forms",
+          "documentOrder": 52,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[72]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[81]#heading-span-0-29",
+          "text": "Section V -Eligible Countries",
+          "documentOrder": 54,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[72]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[83]#heading-span-0-32",
+          "text": "Section VI -Fraud and Corruption",
+          "documentOrder": 56,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[72]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[86]#heading-span-0-37",
+          "text": "Section VII – Employer’s Requirements",
+          "documentOrder": 59,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[85]#heading-span-0-32",
+          "selectedParentRef": "N0016",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[89]#heading-span-0-37",
+          "text": "Section VIII -General Conditions (GC)",
+          "documentOrder": 62,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[88]#heading-span-0-50",
+          "selectedParentRef": "N0018",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[91]#heading-span-0-38",
+          "text": "Section IX -Particular Conditions (PC)",
+          "documentOrder": 64,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[88]#heading-span-0-50",
+          "selectedParentRef": "N0018",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[93]#heading-span-0-25",
+          "text": "Section X -Contract Forms",
+          "documentOrder": 66,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[88]#heading-span-0-50",
+          "selectedParentRef": "N0018",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[164]#heading-span-0-44",
+          "text": "Section I - Instructions to Proposers (ITP)3",
+          "documentOrder": 116,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[163]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[165]#heading-span-0-40",
+          "text": "Section II - Proposal Data Sheet (PDS)39",
+          "documentOrder": 117,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[163]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[166]#heading-span-0-52",
+          "text": "Section III. Evaluation and Qualification Criteria51",
+          "documentOrder": 118,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[163]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[167]#heading-span-0-29",
+          "text": "Section IV - Proposal Forms59",
+          "documentOrder": 119,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[163]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[168]#heading-span-0-33",
+          "text": "Section V - Eligible Countries118",
+          "documentOrder": 120,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[163]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[169]#heading-span-0-36",
+          "text": "Section VI - Fraud and Corruption119",
+          "documentOrder": 121,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[163]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[171]#heading-span-0-40",
+          "text": "Section VII – Employer’s Requirements123",
+          "documentOrder": 123,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[170]#heading-span-0-34",
+          "selectedParentRef": "N0031",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[173]#heading-span-0-41",
+          "text": "Section VIII - General Conditions (GC)143",
+          "documentOrder": 125,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[172]#heading-span-0-53",
+          "selectedParentRef": "N0033",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[174]#heading-span-0-37",
+          "text": "Section IX - Particular Conditions145",
+          "documentOrder": 126,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[172]#heading-span-0-53",
+          "selectedParentRef": "N0033",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[175]#heading-span-0-29",
+          "text": "Section X - Contract Forms205",
+          "documentOrder": 127,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[172]#heading-span-0-53",
+          "selectedParentRef": "N0033",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[181]#heading-span-0-43",
+          "text": "Section I - Instructions to Proposers (ITP)",
+          "documentOrder": 129,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[178]#heading-span-0-40",
+          "selectedParentRef": "N0037",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[253]#heading-span-0-37",
+          "text": "Section I - Instructions to Proposers",
+          "documentOrder": 197,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[178]#heading-span-0-40",
+          "selectedParentRef": "N0037",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[3]#heading-span-0-42",
+          "text": "Section I -Instructions to Proposers (ITP)",
+          "documentOrder": 246,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[2]#heading-span-0-38",
+          "selectedParentRef": "N0047",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[4]#heading-span-0-38",
+          "text": "Section II - Proposal Data Sheet (PDS)",
+          "documentOrder": 247,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[2]#heading-span-0-38",
+          "selectedParentRef": "N0047",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[5]#heading-span-0-51",
+          "text": "Section III - Evaluation and Qualification Criteria",
+          "documentOrder": 248,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[2]#heading-span-0-38",
+          "selectedParentRef": "N0047",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[6]#heading-span-0-27",
+          "text": "Section IV - Proposal Forms",
+          "documentOrder": 249,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[2]#heading-span-0-38",
+          "selectedParentRef": "N0047",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[7]#heading-span-0-29",
+          "text": "Section V -Eligible Countries",
+          "documentOrder": 250,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[2]#heading-span-0-38",
+          "selectedParentRef": "N0047",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[8]#heading-span-0-33",
+          "text": "Section VI - Fraud and Corruption",
+          "documentOrder": 251,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[2]#heading-span-0-38",
+          "selectedParentRef": "N0047",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[10]#heading-span-0-36",
+          "text": "Section VII -Employer’s Requirements",
+          "documentOrder": 253,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[9]#heading-span-0-30",
+          "selectedParentRef": "N0054",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[12]#heading-span-0-33",
+          "text": "Section VIII - General Conditions",
+          "documentOrder": 255,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48",
+          "selectedParentRef": "N0056",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[13]#heading-span-0-33",
+          "text": "Section IX -Particular Conditions",
+          "documentOrder": 256,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48",
+          "selectedParentRef": "N0056",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[14]#heading-span-0-25",
+          "text": "Section X -Contract Forms",
+          "documentOrder": 257,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48",
+          "selectedParentRef": "N0056",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[265]#heading-span-0-38",
+          "text": "Section II - Proposal Data Sheet (PDS)",
+          "documentOrder": 543,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48",
+          "selectedParentRef": "N0056",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[275]#heading-span-0-50",
+          "text": "Section III. Evaluation and Qualification Criteria",
+          "documentOrder": 763,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48",
+          "selectedParentRef": "N0056",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[400]#heading-span-0-27",
+          "text": "Section IV - Proposal Forms",
+          "documentOrder": 878,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48",
+          "selectedParentRef": "N0056",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[976]#heading-span-0-30",
+          "text": "Section V - Eligible Countries",
+          "documentOrder": 1803,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48",
+          "selectedParentRef": "N0056",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[984]#heading-span-0-33",
+          "text": "Section VI - Fraud and Corruption",
+          "documentOrder": 1808,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/tbl[2]/tr[1]/tc[2]/p[11]#heading-span-0-48",
+          "selectedParentRef": "N0056",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/p[1036]#heading-span-0-37",
+          "text": "Section VII – Employer’s Requirements",
+          "documentOrder": 1828,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[1021]#heading-span-0-31",
+          "selectedParentRef": "N0188",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[51]/tr[1]/tc[1]/p[1]#heading-span-0-38",
+          "text": "Section VIII - General Conditions (GC)",
+          "documentOrder": 2077,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[1217]#heading-span-0-50",
+          "selectedParentRef": "N0194",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[52]/tr[1]/tc[1]/p[1]#heading-span-0-34",
+          "text": "Section IX - Particular Conditions",
+          "documentOrder": 2079,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[1217]#heading-span-0-50",
+          "selectedParentRef": "N0194",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0219:body[1]/tbl[59]/tr[1]/tc[1]/p[1]#heading-span-0-26",
+          "text": "Section X - Contract Forms",
+          "documentOrder": 2988,
+          "expectedStructuralParentOccurrenceId": "DOC-0219:body[1]/p[1217]#heading-span-0-50",
+          "selectedParentRef": "N0194",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        }
+      ],
+      "explicitHierarchyViolationCount": 0,
+      "status": "PASS"
+    },
+    {
+      "documentId": "DOC-0116",
+      "checks": [
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[145]#heading-span-0-38",
+          "text": "Section 1. Request for Proposal Letter",
+          "documentOrder": 70,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[174]#heading-span-0-40",
+          "text": "Section 1 – Request for Proposals Letter",
+          "documentOrder": 92,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[175]#heading-span-0-54",
+          "text": "Section 2 - Instructions to Consultants and Data Sheet",
+          "documentOrder": 93,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[176]#heading-span-0-47",
+          "text": "Section 3 - Technical Proposal - Standard Form",
+          "documentOrder": 94,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[177]#heading-span-0-30",
+          "text": "Section 4 – Eligible Countries",
+          "documentOrder": 95,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[178]#heading-span-0-32",
+          "text": "Section 5 – Fraud and Corruption",
+          "documentOrder": 96,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[179]#heading-span-0-30",
+          "text": "Section 6 - Terms of Reference",
+          "documentOrder": 97,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[200]#heading-span-0-53",
+          "text": "Section 2. Instructions to Consultants and Data Sheet",
+          "documentOrder": 111,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[250]#heading-span-0-38",
+          "text": "Section 2. Instructions to Consultants",
+          "documentOrder": 347,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[256]#heading-span-0-46",
+          "text": "Section 3. Technical Proposal – Standard Form",
+          "documentOrder": 533,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[586]#heading-span-0-29",
+          "text": "Section 4. Eligible Countrie",
+          "documentOrder": 832,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[596]#heading-span-0-31",
+          "text": "Section 5. Fraud and Corruptio",
+          "documentOrder": 836,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0116:body[1]/p[619]#heading-span-0-29",
+          "text": "Section 6. Terms of Referenc",
+          "documentOrder": 855,
+          "expectedStructuralParentOccurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "selectedParentRef": "N0020",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        }
+      ],
+      "explicitHierarchyViolationCount": 0,
+      "status": "PASS"
+    },
+    {
+      "documentId": "DOC-0122",
+      "checks": [
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[87]#heading-span-0-42",
+          "text": "Section I -Instructions to Proposers (ITP)",
+          "documentOrder": 47,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[86]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[89]#heading-span-0-37",
+          "text": "Section II -Proposal Data Sheet (PDS)",
+          "documentOrder": 49,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[86]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[91]#heading-span-0-50",
+          "text": "Section III -Evaluation and Qualification Criteria",
+          "documentOrder": 51,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[86]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[94]#heading-span-0-26",
+          "text": "Section IV -Proposal Forms",
+          "documentOrder": 53,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[86]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[96]#heading-span-0-29",
+          "text": "Section V -Eligible Countries",
+          "documentOrder": 55,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[86]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[98]#heading-span-0-32",
+          "text": "Section VI -Fraud and Corruption",
+          "documentOrder": 57,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[86]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[102]#heading-span-0-37",
+          "text": "Section VII - Employer’s Requirements",
+          "documentOrder": 60,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[101]#heading-span-0-32",
+          "selectedParentRef": "N0016",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[105]#heading-span-0-50",
+          "text": "Section VIII -General Conditions of Contract (GCC)",
+          "documentOrder": 63,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[104]#heading-span-0-50",
+          "selectedParentRef": "N0018",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[107]#heading-span-0-52",
+          "text": "Section IX - Particular Conditions of Contract (PCC)",
+          "documentOrder": 65,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[104]#heading-span-0-50",
+          "selectedParentRef": "N0018",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[109]#heading-span-0-25",
+          "text": "Section X -Contract Forms",
+          "documentOrder": 67,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[104]#heading-span-0-50",
+          "selectedParentRef": "N0018",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[222]#heading-span-0-44",
+          "text": "Section I - Instructions to Proposers (ITP)4",
+          "documentOrder": 149,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[221]#heading-span-0-41",
+          "selectedParentRef": "N0023",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[223]#heading-span-0-40",
+          "text": "Section II - Proposal Data Sheet (PDS)46",
+          "documentOrder": 150,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[221]#heading-span-0-41",
+          "selectedParentRef": "N0023",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[224]#heading-span-0-52",
+          "text": "Section III. Evaluation and Qualification Criteria5",
+          "documentOrder": 151,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[221]#heading-span-0-41",
+          "selectedParentRef": "N0023",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[225]#heading-span-0-29",
+          "text": "Section IV - Proposal Forms62",
+          "documentOrder": 152,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[221]#heading-span-0-41",
+          "selectedParentRef": "N0023",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[226]#heading-span-0-33",
+          "text": "Section V - Eligible Countries108",
+          "documentOrder": 153,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[221]#heading-span-0-41",
+          "selectedParentRef": "N0023",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[227]#heading-span-0-36",
+          "text": "Section VI - Fraud and Corruption109",
+          "documentOrder": 154,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[221]#heading-span-0-41",
+          "selectedParentRef": "N0023",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[229]#heading-span-0-39",
+          "text": "Section VII. Employer’s Requirements11",
+          "documentOrder": 156,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[228]#heading-span-0-34",
+          "selectedParentRef": "N0030",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[231]#heading-span-0-54",
+          "text": "Section VIII - General Conditions of Contract (GCC)143",
+          "documentOrder": 158,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[230]#heading-span-0-53",
+          "selectedParentRef": "N0032",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[232]#heading-span-0-49",
+          "text": "Section IX - Particular Conditions of Contract24",
+          "documentOrder": 159,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[230]#heading-span-0-53",
+          "selectedParentRef": "N0032",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[233]#heading-span-0-30",
+          "text": "Section X. - Contract Forms24",
+          "documentOrder": 160,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[230]#heading-span-0-53",
+          "selectedParentRef": "N0032",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[239]#heading-span-0-43",
+          "text": "Section I - Instructions to Proposers (ITP)",
+          "documentOrder": 162,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[236]#heading-span-0-40",
+          "selectedParentRef": "N0036",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[242]#heading-span-0-37",
+          "text": "Section I - Instructions to Proposers",
+          "documentOrder": 164,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[236]#heading-span-0-40",
+          "selectedParentRef": "N0036",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[2]#heading-span-0-42",
+          "text": "Section I -Instructions to Proposers (ITP)",
+          "documentOrder": 213,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[3]#heading-span-0-38",
+          "text": "Section II - Proposal Data Sheet (PDS)",
+          "documentOrder": 214,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[4]#heading-span-0-51",
+          "text": "Section III - Evaluation and Qualification Criteria",
+          "documentOrder": 215,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[5]#heading-span-0-27",
+          "text": "Section IV - Proposal Forms",
+          "documentOrder": 216,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[6]#heading-span-0-29",
+          "text": "Section V -Eligible Countries",
+          "documentOrder": 217,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[7]#heading-span-0-33",
+          "text": "Section VI - Fraud and Corruption",
+          "documentOrder": 218,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[9]#heading-span-0-36",
+          "text": "Section VII -Employer’s Requirements",
+          "documentOrder": 220,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[8]#heading-span-0-30",
+          "selectedParentRef": "N0053",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[11]#heading-span-0-45",
+          "text": "Section VIII - General Conditions of Contract",
+          "documentOrder": 222,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[12]#heading-span-0-45",
+          "text": "Section IX -Particular Conditions of Contract",
+          "documentOrder": 223,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[13]#heading-span-0-25",
+          "text": "Section X -Contract Forms",
+          "documentOrder": 224,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[261]#heading-span-0-38",
+          "text": "Section II - Proposal Data Sheet (PDS)",
+          "documentOrder": 583,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[271]#heading-span-0-50",
+          "text": "Section III. Evaluation and Qualification Criteri",
+          "documentOrder": 760,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[411]#heading-span-0-27",
+          "text": "Section IV - Proposal Forms",
+          "documentOrder": 887,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[907]#heading-span-0-30",
+          "text": "Section V - Eligible Countries",
+          "documentOrder": 1575,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[919]#heading-span-0-33",
+          "text": "Section VI - Fraud and Corruption",
+          "documentOrder": 1580,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[946]#heading-span-0-36",
+          "text": "Section VII. Employer’s Requirement",
+          "documentOrder": 1600,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[941]#heading-span-0-31",
+          "selectedParentRef": "N0173",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[1599]#heading-span-0-51",
+          "text": "Section VIII - General Conditions of Contract (GCC)",
+          "documentOrder": 1972,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[1589]#heading-span-0-50",
+          "selectedParentRef": "N0207",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[1873]#heading-span-0-46",
+          "text": "Section IX - Particular Conditions of Contrac",
+          "documentOrder": 3002,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[1589]#heading-span-0-50",
+          "selectedParentRef": "N0207",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0122:body[1]/p[1987]#heading-span-0-27",
+          "text": "Section X. - Contract Form",
+          "documentOrder": 3089,
+          "expectedStructuralParentOccurrenceId": "DOC-0122:body[1]/p[1589]#heading-span-0-50",
+          "selectedParentRef": "N0207",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        }
+      ],
+      "explicitHierarchyViolationCount": 0,
+      "status": "PASS"
+    },
+    {
+      "documentId": "DOC-0216",
+      "checks": [
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[82]#heading-span-0-42",
+          "text": "Section I -Instructions to Proposers (ITP)",
+          "documentOrder": 39,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[81]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[84]#heading-span-0-37",
+          "text": "Section II -Proposal Data Sheet (PDS)",
+          "documentOrder": 41,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[81]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[86]#heading-span-0-50",
+          "text": "Section III -Evaluation and Qualification Criteria",
+          "documentOrder": 43,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[81]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[88]#heading-span-0-26",
+          "text": "Section IV -Proposal Forms",
+          "documentOrder": 45,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[81]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[90]#heading-span-0-29",
+          "text": "Section V -Eligible Countries",
+          "documentOrder": 47,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[81]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[92]#heading-span-0-32",
+          "text": "Section VI -Fraud and Corruption",
+          "documentOrder": 49,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[81]#heading-span-0-40",
+          "selectedParentRef": "N0009",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[96]#heading-span-0-37",
+          "text": "Section VII - Employer’s Requirements",
+          "documentOrder": 52,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[95]#heading-span-0-32",
+          "selectedParentRef": "N0016",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[99]#heading-span-0-50",
+          "text": "Section VIII -General Conditions of Contract (GCC)",
+          "documentOrder": 55,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[98]#heading-span-0-50",
+          "selectedParentRef": "N0018",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[101]#heading-span-0-52",
+          "text": "Section IX - Particular Conditions of Contract (PCC)",
+          "documentOrder": 57,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[98]#heading-span-0-50",
+          "selectedParentRef": "N0018",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[103]#heading-span-0-25",
+          "text": "Section X -Contract Forms",
+          "documentOrder": 59,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[98]#heading-span-0-50",
+          "selectedParentRef": "N0018",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[180]#heading-span-0-44",
+          "text": "Section I - Instructions to Proposers (ITP)3",
+          "documentOrder": 109,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[179]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[181]#heading-span-0-40",
+          "text": "Section II - Proposal Data Sheet (PDS)37",
+          "documentOrder": 110,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[179]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[182]#heading-span-0-52",
+          "text": "Section III. Evaluation and Qualification Criteria4",
+          "documentOrder": 111,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[179]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[183]#heading-span-0-29",
+          "text": "Section IV - Proposal Forms54",
+          "documentOrder": 112,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[179]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[184]#heading-span-0-32",
+          "text": "Section V - Eligible Countries98",
+          "documentOrder": 113,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[179]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[185]#heading-span-0-35",
+          "text": "Section VI - Fraud and Corruption99",
+          "documentOrder": 114,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[179]#heading-span-0-41",
+          "selectedParentRef": "N0024",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[187]#heading-span-0-39",
+          "text": "Section VII. Employer’s Requirements10",
+          "documentOrder": 116,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[186]#heading-span-0-34",
+          "selectedParentRef": "N0031",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[189]#heading-span-0-54",
+          "text": "Section VIII - General Conditions of Contract (GCC)133",
+          "documentOrder": 118,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[188]#heading-span-0-53",
+          "selectedParentRef": "N0033",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[190]#heading-span-0-49",
+          "text": "Section IX - Particular Conditions of Contract23",
+          "documentOrder": 119,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[188]#heading-span-0-53",
+          "selectedParentRef": "N0033",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[191]#heading-span-0-30",
+          "text": "Section X. - Contract Forms23",
+          "documentOrder": 120,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[188]#heading-span-0-53",
+          "selectedParentRef": "N0033",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[197]#heading-span-0-43",
+          "text": "Section I - Instructions to Proposers (ITP)",
+          "documentOrder": 122,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[194]#heading-span-0-40",
+          "selectedParentRef": "N0037",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[200]#heading-span-0-37",
+          "text": "Section I - Instructions to Proposers",
+          "documentOrder": 124,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[194]#heading-span-0-40",
+          "selectedParentRef": "N0037",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[2]#heading-span-0-42",
+          "text": "Section I -Instructions to Proposers (ITP)",
+          "documentOrder": 173,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[3]#heading-span-0-38",
+          "text": "Section II - Proposal Data Sheet (PDS)",
+          "documentOrder": 174,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[4]#heading-span-0-51",
+          "text": "Section III - Evaluation and Qualification Criteria",
+          "documentOrder": 175,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[5]#heading-span-0-27",
+          "text": "Section IV - Proposal Forms",
+          "documentOrder": 176,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[6]#heading-span-0-29",
+          "text": "Section V -Eligible Countries",
+          "documentOrder": 177,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[7]#heading-span-0-33",
+          "text": "Section VI - Fraud and Corruption",
+          "documentOrder": 178,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[1]#heading-span-0-38",
+          "selectedParentRef": "N0046",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[9]#heading-span-0-36",
+          "text": "Section VII -Employer’s Requirements",
+          "documentOrder": 180,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[8]#heading-span-0-30",
+          "selectedParentRef": "N0053",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[11]#heading-span-0-45",
+          "text": "Section VIII - General Conditions of Contract",
+          "documentOrder": 182,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[12]#heading-span-0-45",
+          "text": "Section IX -Particular Conditions of Contract",
+          "documentOrder": 183,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[13]#heading-span-0-25",
+          "text": "Section X -Contract Forms",
+          "documentOrder": 184,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[215]#heading-span-0-38",
+          "text": "Section II - Proposal Data Sheet (PDS)",
+          "documentOrder": 485,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[225]#heading-span-0-50",
+          "text": "Section III. Evaluation and Qualification Criteri",
+          "documentOrder": 671,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[360]#heading-span-0-27",
+          "text": "Section IV - Proposal Forms",
+          "documentOrder": 800,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[363]#heading-span-0-38",
+          "text": "Section I - Instructions to Proposers5",
+          "documentOrder": 802,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[797]#heading-span-0-30",
+          "text": "Section V - Eligible Countries",
+          "documentOrder": 1464,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[809]#heading-span-0-33",
+          "text": "Section VI - Fraud and Corruption",
+          "documentOrder": 1469,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/tbl[2]/tr[2]/tc[2]/p[10]#heading-span-0-15",
+          "selectedParentRef": "N0055",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[835]#heading-span-0-36",
+          "text": "Section VII. Employer’s Requirement",
+          "documentOrder": 1489,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[831]#heading-span-0-31",
+          "selectedParentRef": "N0172",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[1477]#heading-span-0-51",
+          "text": "Section VIII - General Conditions of Contract (GCC)",
+          "documentOrder": 1860,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[1467]#heading-span-0-50",
+          "selectedParentRef": "N0206",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[1751]#heading-span-0-46",
+          "text": "Section IX - Particular Conditions of Contrac",
+          "documentOrder": 2890,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[1467]#heading-span-0-50",
+          "selectedParentRef": "N0206",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        },
+        {
+          "occurrenceId": "DOC-0216:body[1]/p[1856]#heading-span-0-27",
+          "text": "Section X. - Contract Form",
+          "documentOrder": 2976,
+          "expectedStructuralParentOccurrenceId": "DOC-0216:body[1]/p[1467]#heading-span-0-50",
+          "selectedParentRef": "N0206",
+          "pass": true,
+          "evidence": [
+            "SOURCE_DOCUMENT_ORDER",
+            "EXPLICIT_PART_SECTION_SUBORDINATION",
+            "WHOLE_DOCUMENT_HEADING_SCOPE_V1"
+          ]
+        }
+      ],
+      "explicitHierarchyViolationCount": 0,
+      "status": "PASS"
+    }
+  ],
+  "allRootWithExplicitHierarchyViolations": 0,
+  "goldUsed": false,
+  "historicalLevelRead": false,
+  "providerCalls": 0
+}

@@ -1,0 +1,2689 @@
+{
+  "artifactKind": "A99_CANONICAL_V3_3_PARENT_DECISIONS",
+  "documentId": "DOC-0243",
+  "decisionCount": 109,
+  "decisions": [
+    {
+      "semanticNodeRef": "N0001",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2]#heading-span-0-23",
+      "exactText": "Advanced linear algebra",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[20]#heading-span-0-7",
+      "exactText": "Preface",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "headingOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "exactText": "Contents",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "headingOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-7",
+      "exactText": "Preface",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "headingOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-21",
+      "exactText": "Part I.Linear algebra",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "headingOccurrenceRef": "DOC-0243:body[1]/tbl[2]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "exactText": "CONTENTS",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0005"
+        ]
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "headingOccurrenceRef": "DOC-0243:body[1]/tbl[2]/tr[20]/tc[1]/p[1]#heading-span-0-21",
+      "exactText": "Part IV.Matrix groups",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+      "exactText": "Part I",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "exactText": "CHAPTER",
+      "selectedParentRef": "N0008",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[100]#heading-span-0-19",
+      "exactText": "1a. Spaces, vectors",
+      "selectedParentRef": "N0010",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0010"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[233]#heading-span-0-15",
+      "exactText": "1b. Linear maps",
+      "selectedParentRef": "N0010",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0010"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[349]#heading-span-0-22",
+      "exactText": "1c. Geometry, analysis",
+      "selectedParentRef": "N0010",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0010"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[570]#heading-span-0-19",
+      "exactText": "1d. Complex numbers",
+      "selectedParentRef": "N0010",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0010"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[733]#heading-span-0-13",
+      "exactText": "1e. Exercises",
+      "selectedParentRef": "N0010",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0010"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "exactText": "CHAPTER",
+      "selectedParentRef": "N0008",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[754]#heading-span-0-20",
+      "exactText": "2a. Matrix inversion",
+      "selectedParentRef": "N0017",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0017"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[922]#heading-span-0-19",
+      "exactText": "2b. The determinant",
+      "selectedParentRef": "N0017",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0017"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1174]#heading-span-0-21",
+      "exactText": "2c. Some applications",
+      "selectedParentRef": "N0017",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0017"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1301]#heading-span-0-19",
+      "exactText": "2d. Diagonalization",
+      "selectedParentRef": "N0017",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0017"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1405]#heading-span-0-13",
+      "exactText": "2e. Exercises",
+      "selectedParentRef": "N0017",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0017"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "exactText": "CHAPTER",
+      "selectedParentRef": "N0008",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1426]#heading-span-0-17",
+      "exactText": "3a. Self-adjoints",
+      "selectedParentRef": "N0024",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0024"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1649]#heading-span-0-24",
+      "exactText": "3b. Rotations, unitaries",
+      "selectedParentRef": "N0024",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0024"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1832]#heading-span-0-19",
+      "exactText": "3c. Normal matrices",
+      "selectedParentRef": "N0024",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0024"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[1905]#heading-span-0-21",
+      "exactText": "3d. Spectral measures",
+      "selectedParentRef": "N0024",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0024"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2079]#heading-span-0-13",
+      "exactText": "3e. Exercises",
+      "selectedParentRef": "N0024",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0024"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "exactText": "CHAPTER",
+      "selectedParentRef": "N0008",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2095]#heading-span-0-13",
+      "exactText": "4a. Resultant",
+      "selectedParentRef": "N0031",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0031"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2219]#heading-span-0-16",
+      "exactText": "4b. Discriminant",
+      "selectedParentRef": "N0031",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0031"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2501]#heading-span-0-17",
+      "exactText": "4c. Higher degree",
+      "selectedParentRef": "N0031",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0031"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2787]#heading-span-0-19",
+      "exactText": "4d. Density results",
+      "selectedParentRef": "N0031",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0031"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2850]#heading-span-0-13",
+      "exactText": "4e. Exercises",
+      "selectedParentRef": "N0031",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0008",
+          "N0031"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+      "exactText": "Part II",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "exactText": "CHAPTER",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2893]#heading-span-0-20",
+      "exactText": "5a. Linear equations",
+      "selectedParentRef": "N0040",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0040"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[2971]#heading-span-0-22",
+      "exactText": "5b. Matrix exponential",
+      "selectedParentRef": "N0040",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0040"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3321]#heading-span-0-19",
+      "exactText": "5c. The Jordan form",
+      "selectedParentRef": "N0040",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0040"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3519]#heading-span-0-22",
+      "exactText": "5d. Basic applications",
+      "selectedParentRef": "N0040",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0040"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3683]#heading-span-0-13",
+      "exactText": "5e. Exercises",
+      "selectedParentRef": "N0040",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0040"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "exactText": "CHAPTER",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3704]#heading-span-0-19",
+      "exactText": "6a. Singular values",
+      "selectedParentRef": "N0047",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0047"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[3870]#heading-span-0-23",
+      "exactText": "6b. Functional calculus",
+      "selectedParentRef": "N0047",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0047"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4143]#heading-span-0-21",
+      "exactText": "6c. Complex functions",
+      "selectedParentRef": "N0047",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0047"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4393]#heading-span-0-19",
+      "exactText": "6d. Normal matrices",
+      "selectedParentRef": "N0047",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0047"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4514]#heading-span-0-13",
+      "exactText": "6e. Exercises",
+      "selectedParentRef": "N0047",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0047"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "exactText": "CHAPTER",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4529]#heading-span-0-26",
+      "exactText": "7a. Differential equations",
+      "selectedParentRef": "N0054",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0054"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4648]#heading-span-0-23",
+      "exactText": "7b. Functional analysis",
+      "selectedParentRef": "N0054",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0054"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[4926]#heading-span-0-25",
+      "exactText": "7c. Existence, uniqueness",
+      "selectedParentRef": "N0054",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0054"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5424]#heading-span-0-21",
+      "exactText": "7d. Dynamical systems",
+      "selectedParentRef": "N0054",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0054"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5514]#heading-span-0-13",
+      "exactText": "7e. Exercises",
+      "selectedParentRef": "N0054",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0054"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "exactText": "CHAPTER",
+      "selectedParentRef": "N0038",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5530]#heading-span-0-21",
+      "exactText": "8a. Infinite matrices",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5662]#heading-span-0-19",
+      "exactText": "8b. Spectral radius",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[5885]#heading-span-0-20",
+      "exactText": "8c. Normal operators",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6035]#heading-span-0-21",
+      "exactText": "8d. Compact operators",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6259]#heading-span-0-13",
+      "exactText": "8e. Exercises",
+      "selectedParentRef": "N0061",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0038",
+          "N0061"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+      "exactText": "Part III",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "exactText": "CHAPTER",
+      "selectedParentRef": "N0068",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6304]#heading-span-0-21",
+      "exactText": "9a. Jacobian, Hessian",
+      "selectedParentRef": "N0070",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0070"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6577]#heading-span-0-21",
+      "exactText": "9b. Positive matrices",
+      "selectedParentRef": "N0070",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0070"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6713]#heading-span-0-21",
+      "exactText": "9c. Sylvester theorem",
+      "selectedParentRef": "N0070",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0070"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6845]#heading-span-0-21",
+      "exactText": "9d. Infinite matrices",
+      "selectedParentRef": "N0070",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0070"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[6991]#heading-span-0-13",
+      "exactText": "9e. Exercises",
+      "selectedParentRef": "N0070",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0070"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "exactText": "CHAPTER 1",
+      "selectedParentRef": "N0068",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7006]#heading-span-0-19",
+      "exactText": "10a. Bilinear forms",
+      "selectedParentRef": "N0077",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0077"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7068]#heading-span-0-21",
+      "exactText": "10b. Smooth manifolds",
+      "selectedParentRef": "N0077",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0077"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7206]#heading-span-0-22",
+      "exactText": "10c. Relativity theory",
+      "selectedParentRef": "N0077",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0077"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7490]#heading-span-0-21",
+      "exactText": "10d. Curved spacetime",
+      "selectedParentRef": "N0077",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0077"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7793]#heading-span-0-14",
+      "exactText": "10e. Exercises",
+      "selectedParentRef": "N0077",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0077"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "exactText": "CHAPTER 1",
+      "selectedParentRef": "N0068",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7808]#heading-span-0-23",
+      "exactText": "11a. Circulant matrices",
+      "selectedParentRef": "N0084",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0084"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[7978]#heading-span-0-22",
+      "exactText": "11b. Hadamard matrices",
+      "selectedParentRef": "N0084",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0084"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8122]#heading-span-0-21",
+      "exactText": "11c. Complex Hadamard",
+      "selectedParentRef": "N0084",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0084"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8394]#heading-span-0-26",
+      "exactText": "11d. Bistochastic matrices",
+      "selectedParentRef": "N0084",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0084"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8535]#heading-span-0-14",
+      "exactText": "11e. Exercises",
+      "selectedParentRef": "N0084",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0084"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "exactText": "CHAPTER 1",
+      "selectedParentRef": "N0068",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8550]#heading-span-0-22",
+      "exactText": "12a. Graphs, Laplacian",
+      "selectedParentRef": "N0091",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0091"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8744]#heading-span-0-21",
+      "exactText": "12b. Kirchoff formula",
+      "selectedParentRef": "N0091",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0091"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[8911]#heading-span-0-19",
+      "exactText": "12c. Into the waves",
+      "selectedParentRef": "N0091",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0091"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9090]#heading-span-0-18",
+      "exactText": "12d. Into the heat",
+      "selectedParentRef": "N0091",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0091"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9279]#heading-span-0-14",
+      "exactText": "12e. Exercises",
+      "selectedParentRef": "N0091",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0068",
+          "N0091"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+      "exactText": "Part IV",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "exactText": "CHAPTER 1",
+      "selectedParentRef": "N0098",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9322]#heading-span-0-18",
+      "exactText": "13a. Finite groups",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0100"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9460]#heading-span-0-21",
+      "exactText": "13b. Symmetric groups",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0100"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9702]#heading-span-0-22",
+      "exactText": "13c. Reflection groups",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0100"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[9976]#heading-span-0-24",
+      "exactText": "13d. Complex reflections",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0100"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0106",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10113]#heading-span-0-14",
+      "exactText": "13e. Exercises",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0100"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0107",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "exactText": "CHAPTER 1",
+      "selectedParentRef": "N0098",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0109",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10127]#heading-span-0-15",
+      "exactText": "14a. Lie groups",
+      "selectedParentRef": "N0107",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0107"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0110",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10205]#heading-span-0-15",
+      "exactText": "14b. Peter-Weyl",
+      "selectedParentRef": "N0107",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0107"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0111",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10365]#heading-span-0-20",
+      "exactText": "14c. Brauer algebras",
+      "selectedParentRef": "N0107",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0107"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0112",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10618]#heading-span-0-21",
+      "exactText": "14d. Haar integration",
+      "selectedParentRef": "N0107",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0107"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0113",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10848]#heading-span-0-14",
+      "exactText": "14e. Exercises",
+      "selectedParentRef": "N0107",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0107"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0114",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "exactText": "CHAPTER 1",
+      "selectedParentRef": "N0098",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0116",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[10864]#heading-span-0-20",
+      "exactText": "15a. Quantum physics",
+      "selectedParentRef": "N0114",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0114"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0117",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11286]#heading-span-0-21",
+      "exactText": "15b. Angular momentum",
+      "selectedParentRef": "N0114",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0114"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0118",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11493]#heading-span-0-19",
+      "exactText": "15c. Pauli matrices",
+      "selectedParentRef": "N0114",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0114"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0119",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11572]#heading-span-0-19",
+      "exactText": "15d. Dirac matrices",
+      "selectedParentRef": "N0114",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0114"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0120",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11702]#heading-span-0-14",
+      "exactText": "15e. Exercises",
+      "selectedParentRef": "N0114",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0114"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0121",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "exactText": "CHAPTER 1",
+      "selectedParentRef": "N0098",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0123",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11721]#heading-span-0-20",
+      "exactText": "16a. Random matrices",
+      "selectedParentRef": "N0121",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0121"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0124",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[11904]#heading-span-0-22",
+      "exactText": "16b. Gaussian matrices",
+      "selectedParentRef": "N0121",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0121"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0125",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[12138]#heading-span-0-23",
+      "exactText": "16c. Wigner and Wishart",
+      "selectedParentRef": "N0121",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0121"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0126",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[12383]#heading-span-0-19",
+      "exactText": "16d. Back to groups",
+      "selectedParentRef": "N0121",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0121"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0127",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[12463]#heading-span-0-14",
+      "exactText": "16e. Exercises",
+      "selectedParentRef": "N0121",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0121"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0128",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[12472]#heading-span-0-12",
+      "exactText": "Bibliography",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0121",
+          "N0127"
+        ]
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0129",
+      "headingOccurrenceRef": "DOC-0243:body[1]/p[12587]#heading-span-0-5",
+      "exactText": "Index",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0098",
+          "N0121",
+          "N0127"
+        ]
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    }
+  ],
+  "levelEnteredByReviewer": false,
+  "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

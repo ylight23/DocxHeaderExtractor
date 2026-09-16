@@ -1,0 +1,148 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V3_3_VALIDATION",
+  "status": "BATCH_V3_3_READY_FOR_USER_SEMANTIC_REVIEW",
+  "documents": [
+    {
+      "documentId": "DOC-0185",
+      "sourceContainers": 1126,
+      "occurrences": 119,
+      "semanticNodes": 119,
+      "parentEdges": 119,
+      "rootChildren": 11,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 32
+    },
+    {
+      "documentId": "DOC-0200",
+      "sourceContainers": 7823,
+      "occurrences": 105,
+      "semanticNodes": 105,
+      "parentEdges": 105,
+      "rootChildren": 7,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 17
+    },
+    {
+      "documentId": "DOC-0201",
+      "sourceContainers": 605,
+      "occurrences": 12,
+      "semanticNodes": 12,
+      "parentEdges": 12,
+      "rootChildren": 12,
+      "maxDepth": 1,
+      "identityRelations": 0,
+      "identityChallenges": 1
+    },
+    {
+      "documentId": "DOC-0219",
+      "sourceContainers": 3328,
+      "occurrences": 243,
+      "semanticNodes": 243,
+      "parentEdges": 243,
+      "rootChildren": 180,
+      "maxDepth": 2,
+      "identityRelations": 0,
+      "identityChallenges": 139
+    },
+    {
+      "documentId": "DOC-0265",
+      "sourceContainers": 1934,
+      "occurrences": 249,
+      "semanticNodes": 249,
+      "parentEdges": 249,
+      "rootChildren": 14,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 174
+    },
+    {
+      "documentId": "DOC-0243",
+      "sourceContainers": 10606,
+      "occurrences": 129,
+      "semanticNodes": 109,
+      "parentEdges": 109,
+      "rootChildren": 13,
+      "maxDepth": 3,
+      "identityRelations": 20,
+      "identityChallenges": 83
+    },
+    {
+      "documentId": "DOC-0116",
+      "sourceContainers": 1896,
+      "occurrences": 120,
+      "semanticNodes": 120,
+      "parentEdges": 120,
+      "rootChildren": 86,
+      "maxDepth": 2,
+      "identityRelations": 0,
+      "identityChallenges": 74
+    },
+    {
+      "documentId": "DOC-0122",
+      "sourceContainers": 3512,
+      "occurrences": 294,
+      "semanticNodes": 294,
+      "parentEdges": 294,
+      "rootChildren": 172,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 176
+    },
+    {
+      "documentId": "DOC-0216",
+      "sourceContainers": 3399,
+      "occurrences": 295,
+      "semanticNodes": 295,
+      "parentEdges": 295,
+      "rootChildren": 172,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 183
+    },
+    {
+      "documentId": "DOC-0205",
+      "sourceContainers": 97,
+      "occurrences": 72,
+      "semanticNodes": 72,
+      "parentEdges": 72,
+      "rootChildren": 6,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 70
+    },
+    {
+      "documentId": "DOC-0264",
+      "sourceContainers": 205,
+      "occurrences": 155,
+      "semanticNodes": 155,
+      "parentEdges": 155,
+      "rootChildren": 11,
+      "maxDepth": 3,
+      "identityRelations": 0,
+      "identityChallenges": 167
+    }
+  ],
+  "hardGates": {
+    "unresolvedBodyTextRiskCount": 0,
+    "knownFalseHeadingRegressionFailures": 0,
+    "missingKnownHeadingRegressionFailures": 0,
+    "allRootWithExplicitHierarchyViolations": 0,
+    "compositeMergeParentLoss": 0,
+    "structuralResetViolations": 0,
+    "cycles": 0,
+    "multipleParents": 0,
+    "dangling": 0,
+    "unreachable": 0
+  },
+  "allGraphValidatorsPass": true,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "providerCalls": 0,
+  "productionModelCalls": 0,
+  "frozenGoldMutation": false,
+  "newUserReviewedPromotion": false,
+  "goldUsed": false,
+  "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

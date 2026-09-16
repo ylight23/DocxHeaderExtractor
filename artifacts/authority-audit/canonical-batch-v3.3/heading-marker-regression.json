@@ -1,0 +1,27 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V3_3_HEADING_MARKER_REGRESSION",
+  "cases": [
+    {
+      "documentId": "DOC-0201",
+      "sourceId": "body[1]/p[105]",
+      "marker": "Điều7",
+      "observed": [
+        "Điều7. Xửlýhóa đơn điệntử,bảngtổnghợpdữliệuhóađơn điệntửđã gửicơquan thuếcó sai sót trong một sốtrường hợp"
+      ],
+      "pass": true
+    },
+    {
+      "documentId": "DOC-0200",
+      "sourceId": "body[1]/p[64]",
+      "marker": "Chương II + Điều 11",
+      "observed": [
+        "Chương II TÀI KHOẢN KẾ TOÁN",
+        "Điều 11. Nguyên tắc kế toán tiền"
+      ],
+      "pass": true
+    }
+  ],
+  "missingKnownHeadingRegressionFailures": 0,
+  "goldUsed": false,
+  "providerCalls": 0
+}

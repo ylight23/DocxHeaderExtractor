@@ -1,0 +1,1335 @@
+{
+  "documentId": "DOC-0243",
+  "semanticNodeCount": 109,
+  "nodes": [
+    {
+      "semanticNodeRef": "N0001",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2]#heading-span-0-23",
+      "canonicalText": "Advanced linear algebra",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[20]#heading-span-0-7",
+      "canonicalText": "Preface",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[20]#heading-span-0-7"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "canonicalText": "Contents",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/tbl[1]/tr[1]/tc[2]/p[1]#heading-span-0-8"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-7",
+      "canonicalText": "Preface",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-7"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-21",
+      "canonicalText": "Part I.Linear algebra",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/tbl[2]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "canonicalText": "CONTENTS",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/tbl[2]/tr[1]/tc[2]/p[1]#heading-span-0-8"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/tbl[2]/tr[20]/tc[1]/p[1]#heading-span-0-21",
+      "canonicalText": "Part IV.Matrix groups",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/tbl[2]/tr[20]/tc[1]/p[1]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+      "canonicalText": "Part I",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[72]#heading-span-0-6",
+        "DOC-0243:body[1]/p[74]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "canonicalText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[96]#heading-span-0-9",
+        "DOC-0243:body[1]/p[98]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[100]#heading-span-0-19",
+      "canonicalText": "1a. Spaces, vectors",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[100]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[233]#heading-span-0-15",
+      "canonicalText": "1b. Linear maps",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[233]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[349]#heading-span-0-22",
+      "canonicalText": "1c. Geometry, analysis",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[349]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[570]#heading-span-0-19",
+      "canonicalText": "1d. Complex numbers",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[570]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[733]#heading-span-0-13",
+      "canonicalText": "1e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[733]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "canonicalText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[750]#heading-span-0-9",
+        "DOC-0243:body[1]/p[752]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[754]#heading-span-0-20",
+      "canonicalText": "2a. Matrix inversion",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[754]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[922]#heading-span-0-19",
+      "canonicalText": "2b. The determinant",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[922]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1174]#heading-span-0-21",
+      "canonicalText": "2c. Some applications",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[1174]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1301]#heading-span-0-19",
+      "canonicalText": "2d. Diagonalization",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[1301]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1405]#heading-span-0-13",
+      "canonicalText": "2e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[1405]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "canonicalText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+        "DOC-0243:body[1]/p[1424]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1426]#heading-span-0-17",
+      "canonicalText": "3a. Self-adjoints",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[1426]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1649]#heading-span-0-24",
+      "canonicalText": "3b. Rotations, unitaries",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[1649]#heading-span-0-24"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1832]#heading-span-0-19",
+      "canonicalText": "3c. Normal matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[1832]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[1905]#heading-span-0-21",
+      "canonicalText": "3d. Spectral measures",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[1905]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2079]#heading-span-0-13",
+      "canonicalText": "3e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2079]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "canonicalText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+        "DOC-0243:body[1]/p[2093]#heading-span-0-18"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2095]#heading-span-0-13",
+      "canonicalText": "4a. Resultant",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2095]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2219]#heading-span-0-16",
+      "canonicalText": "4b. Discriminant",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2219]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2501]#heading-span-0-17",
+      "canonicalText": "4c. Higher degree",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2501]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2787]#heading-span-0-19",
+      "canonicalText": "4d. Density results",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2787]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2850]#heading-span-0-13",
+      "canonicalText": "4e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2850]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+      "canonicalText": "Part II",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+        "DOC-0243:body[1]/p[2866]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "canonicalText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+        "DOC-0243:body[1]/p[2891]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2893]#heading-span-0-20",
+      "canonicalText": "5a. Linear equations",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2893]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[2971]#heading-span-0-22",
+      "canonicalText": "5b. Matrix exponential",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2971]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3321]#heading-span-0-19",
+      "canonicalText": "5c. The Jordan form",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[3321]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3519]#heading-span-0-22",
+      "canonicalText": "5d. Basic applications",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[3519]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3683]#heading-span-0-13",
+      "canonicalText": "5e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[3683]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "canonicalText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+        "DOC-0243:body[1]/p[3702]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3704]#heading-span-0-19",
+      "canonicalText": "6a. Singular values",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[3704]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[3870]#heading-span-0-23",
+      "canonicalText": "6b. Functional calculus",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[3870]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4143]#heading-span-0-21",
+      "canonicalText": "6c. Complex functions",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[4143]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4393]#heading-span-0-19",
+      "canonicalText": "6d. Normal matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[4393]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4514]#heading-span-0-13",
+      "canonicalText": "6e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[4514]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "canonicalText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+        "DOC-0243:body[1]/p[4527]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4529]#heading-span-0-26",
+      "canonicalText": "7a. Differential equations",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[4529]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4648]#heading-span-0-23",
+      "canonicalText": "7b. Functional analysis",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[4648]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[4926]#heading-span-0-25",
+      "canonicalText": "7c. Existence, uniqueness",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[4926]#heading-span-0-25"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5424]#heading-span-0-21",
+      "canonicalText": "7d. Dynamical systems",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[5424]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5514]#heading-span-0-13",
+      "canonicalText": "7e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[5514]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "canonicalText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+        "DOC-0243:body[1]/p[5528]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5530]#heading-span-0-21",
+      "canonicalText": "8a. Infinite matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[5530]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5662]#heading-span-0-19",
+      "canonicalText": "8b. Spectral radius",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[5662]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[5885]#heading-span-0-20",
+      "canonicalText": "8c. Normal operators",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[5885]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6035]#heading-span-0-21",
+      "canonicalText": "8d. Compact operators",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6035]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6259]#heading-span-0-13",
+      "canonicalText": "8e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6259]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+      "canonicalText": "Part III",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+        "DOC-0243:body[1]/p[6277]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "canonicalText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+        "DOC-0243:body[1]/p[6302]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6304]#heading-span-0-21",
+      "canonicalText": "9a. Jacobian, Hessian",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6304]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6577]#heading-span-0-21",
+      "canonicalText": "9b. Positive matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6577]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6713]#heading-span-0-21",
+      "canonicalText": "9c. Sylvester theorem",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6713]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6845]#heading-span-0-21",
+      "canonicalText": "9d. Infinite matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6845]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[6991]#heading-span-0-13",
+      "canonicalText": "9e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6991]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "canonicalText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+        "DOC-0243:body[1]/p[7004]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7006]#heading-span-0-19",
+      "canonicalText": "10a. Bilinear forms",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7006]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7068]#heading-span-0-21",
+      "canonicalText": "10b. Smooth manifolds",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7068]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7206]#heading-span-0-22",
+      "canonicalText": "10c. Relativity theory",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7206]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7490]#heading-span-0-21",
+      "canonicalText": "10d. Curved spacetime",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7490]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7793]#heading-span-0-14",
+      "canonicalText": "10e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7793]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "canonicalText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+        "DOC-0243:body[1]/p[7806]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7808]#heading-span-0-23",
+      "canonicalText": "11a. Circulant matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7808]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[7978]#heading-span-0-22",
+      "canonicalText": "11b. Hadamard matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7978]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8122]#heading-span-0-21",
+      "canonicalText": "11c. Complex Hadamard",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[8122]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8394]#heading-span-0-26",
+      "canonicalText": "11d. Bistochastic matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[8394]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8535]#heading-span-0-14",
+      "canonicalText": "11e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[8535]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "canonicalText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+        "DOC-0243:body[1]/p[8548]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8550]#heading-span-0-22",
+      "canonicalText": "12a. Graphs, Laplacian",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[8550]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8744]#heading-span-0-21",
+      "canonicalText": "12b. Kirchoff formula",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[8744]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[8911]#heading-span-0-19",
+      "canonicalText": "12c. Into the waves",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[8911]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9090]#heading-span-0-18",
+      "canonicalText": "12d. Into the heat",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9090]#heading-span-0-18"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9279]#heading-span-0-14",
+      "canonicalText": "12e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9279]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+      "canonicalText": "Part IV",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+        "DOC-0243:body[1]/p[9295]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "canonicalText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+        "DOC-0243:body[1]/p[9320]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9322]#heading-span-0-18",
+      "canonicalText": "13a. Finite groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9322]#heading-span-0-18"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9460]#heading-span-0-21",
+      "canonicalText": "13b. Symmetric groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9460]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9702]#heading-span-0-22",
+      "canonicalText": "13c. Reflection groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9702]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[9976]#heading-span-0-24",
+      "canonicalText": "13d. Complex reflections",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9976]#heading-span-0-24"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0106",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10113]#heading-span-0-14",
+      "canonicalText": "13e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10113]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0107",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "canonicalText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+        "DOC-0243:body[1]/p[10125]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0109",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10127]#heading-span-0-15",
+      "canonicalText": "14a. Lie groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10127]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0110",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10205]#heading-span-0-15",
+      "canonicalText": "14b. Peter-Weyl",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10205]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0111",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10365]#heading-span-0-20",
+      "canonicalText": "14c. Brauer algebras",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10365]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0112",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10618]#heading-span-0-21",
+      "canonicalText": "14d. Haar integration",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10618]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0113",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10848]#heading-span-0-14",
+      "canonicalText": "14e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10848]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0114",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "canonicalText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+        "DOC-0243:body[1]/p[10862]#heading-span-0-13"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0116",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[10864]#heading-span-0-20",
+      "canonicalText": "15a. Quantum physics",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10864]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0117",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11286]#heading-span-0-21",
+      "canonicalText": "15b. Angular momentum",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[11286]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0118",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11493]#heading-span-0-19",
+      "canonicalText": "15c. Pauli matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[11493]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0119",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11572]#heading-span-0-19",
+      "canonicalText": "15d. Dirac matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[11572]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0120",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11702]#heading-span-0-14",
+      "canonicalText": "15e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[11702]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0121",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "canonicalText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+        "DOC-0243:body[1]/p[11719]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0123",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11721]#heading-span-0-20",
+      "canonicalText": "16a. Random matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[11721]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0124",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[11904]#heading-span-0-22",
+      "canonicalText": "16b. Gaussian matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[11904]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0125",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[12138]#heading-span-0-23",
+      "canonicalText": "16c. Wigner and Wishart",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[12138]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0126",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[12383]#heading-span-0-19",
+      "canonicalText": "16d. Back to groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[12383]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0127",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[12463]#heading-span-0-14",
+      "canonicalText": "16e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[12463]#heading-span-0-14"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0128",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[12472]#heading-span-0-12",
+      "canonicalText": "Bibliography",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[12472]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0129",
+      "canonicalOccurrenceRef": "DOC-0243:body[1]/p[12587]#heading-span-0-5",
+      "canonicalText": "Index",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[12587]#heading-span-0-5"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    }
+  ],
+  "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

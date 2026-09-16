@@ -1,0 +1,29 @@
+{
+  "artifactKind": "A99_CANONICAL_V3_3_SOURCE_SCOPE_POLICY",
+  "policy": "WHOLE_DOCUMENT_HEADING_SCOPE_V1",
+  "isTrueHeadingBasedOn": "STRUCTURAL_FUNCTION",
+  "include": [
+    "MAIN_BODY",
+    "TEMPLATE_OR_FORM",
+    "ANNEX",
+    "APPENDIX",
+    "SCHEDULE",
+    "EMBEDDED_SUBDOCUMENT"
+  ],
+  "exclude": [
+    "TOC_REFERENCE_ENTRY",
+    "INDEX_REFERENCE_ENTRY",
+    "ORDINARY_FIELD_LABEL",
+    "NON_STRUCTURAL_TABLE_LABEL",
+    "STYLE_ONLY_FALSE_HEADING"
+  ],
+  "candidateScopeLabel": "EVIDENCE_METADATA_ONLY",
+  "documents": [
+    "DOC-0219",
+    "DOC-0116",
+    "DOC-0122",
+    "DOC-0216"
+  ],
+  "providerCalls": 0,
+  "goldUsed": false
+}

@@ -1,0 +1,2528 @@
+{
+  "artifactKind": "A99_CANONICAL_V3_3_PARENT_DECISIONS",
+  "documentId": "DOC-0200",
+  "decisionCount": 105,
+  "decisions": [
+    {
+      "semanticNodeRef": "N0001",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[4]#heading-span-0-48",
+      "exactText": "HƯỚNG DẪN CHẾ ĐỘ KẾ TOÁN DOANH NGHIỆP NHỎ VÀ VỪA",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 0,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[9]#heading-span-0-8",
+      "exactText": "Chương I",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[11]#heading-span-0-26",
+      "exactText": "Điều 1. Phạm vi điều chỉnh",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[13]#heading-span-0-25",
+      "exactText": "Điều 2. Đối tượng áp dụng",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[16]#heading-span-0-24",
+      "exactText": "Điều 3. Nguyên tắc chung",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[20]#heading-span-0-203",
+      "exactText": "Điều 4. Áp dụng chuẩn mực kế toán Doanh nghiệp nhỏ và vừa thực hiện Chế độ kế toán ban hành theo Thông tư này và các Chuẩn mực kế toán Việt Nam có liên quan, ngoại trừ các Chuẩn mực kế toán Việt Nam sau:",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[24]#heading-span-0-36",
+      "exactText": "Điều 5. Đơn vị tiền tệ trong kế toán",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[26]#heading-span-0-45",
+      "exactText": "Điều 6. Lựa chọn đơn vị tiền tệ trong kế toán",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0009",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[35]#heading-span-0-55",
+      "exactText": "Điều 7. Chuyển đổi Báo cáo tài chính sang Đồng Việt Nam",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[39]#heading-span-0-45",
+      "exactText": "Điều 8. Thay đổi đơn vị tiền tệ trong kế toán",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0011",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[42]#heading-span-0-187",
+      "exactText": "Điều 9. Quyền và trách nhiệm của doanh nghiệp đối với việc tổ chức kế toán tại các đơn vị trực thuộc không có tư cách pháp nhân hạch toán phụ thuộc (gọi tắt là đơn vị hạch toán phụ thuộc)",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[51]#heading-span-0-31",
+      "exactText": "Điều 10. Sửa đổi Chế độ kế toán",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[63]#heading-span-0-42",
+      "exactText": "Điều 10 được sửa đổi, bổ sung bởi Khoản 2",
+      "selectedParentRef": "N0002",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0002"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[64]#heading-span-0-27",
+      "exactText": "Chương II TÀI KHOẢN KẾ TOÁN",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[64]#heading-span-27-59",
+      "exactText": "Điều 11. Nguyên tắc kế toán tiền",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[71]#heading-span-0-33",
+      "exactText": "Điều 12. Tài khoản 111 - Tiền mặt",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[82]#heading-span-0-43",
+      "exactText": "Điều 13. Tài khoản 112 - Tiền gửi ngân hàng",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0018",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[97]#heading-span-0-47",
+      "exactText": "Điều 14. Tài khoản 121 - Chứng khoán kinh doanh",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[124]#heading-span-0-56",
+      "exactText": "Điều 15. Tài khoản 128 - Đầu tư nắm giữ đến ngày đáo hạn",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[143]#heading-span-0-39",
+      "exactText": "Điều 16. Nguyên tắc kế toán nợ phải thu",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[160]#heading-span-0-48",
+      "exactText": "Điều 17. Tài khoản 131 - Phải thu của khách hàng",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[173]#heading-span-0-190",
+      "exactText": "Điều 18. Tài khoản 133 - Thuế GTGT được khấu trừ1. Nguyên tắc kế toán a) Tài khoản này dùng để phản ánh số thuế GTGT đầu vào được khấu trừ, đã khấu trừ và còn được khấu trừ của doanh nghiệp.",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[184]#heading-span-0-420",
+      "exactText": "Điều 19. Tài khoản 136 - Phải thu nội bộ1. Nguyên tắc kế toán: a) Tài khoản này dùng để phản ánh các khoản nợ phải thu và tình hình thanh toán các khoản nợ phải thu của doanh nghiệp (đơn vị cấp trên) với đơn vị hạch toán phụ thuộc (đơn vị cấp dưới) hoặc giữa các đơn vị hạch toán phụ thuộc với nhau. Các đơn vị cấp dưới là đơn vị hạch toán phụ thuộc nhưng có tổ chức công tác kế toán như chi nhánh, xí nghiệp, nhà máy...",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[197]#heading-span-0-38",
+      "exactText": "Điều 20. Tài khoản 138 - Phải thu khác",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0025",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[220]#heading-span-0-32",
+      "exactText": "Điều 21. Tài khoản 141 - Tạm ứng",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[230]#heading-span-0-40",
+      "exactText": "Điều 22. Nguyên tắc kế toán hàng tồn kho",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[270]#heading-span-0-47",
+      "exactText": "Điều 23. Tài khoản 151 - Hàng mua đang đi đường",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[291]#heading-span-0-46",
+      "exactText": "Điều 24. Tài khoản 152 - Nguyên liệu, vật liệu",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[316]#heading-span-0-940",
+      "exactText": "Điều 25. Tài khoản 153 - Công cụ, dụng cụ1. Nguyên tắc kế toán a) Tài khoản này dùng để phản ánh trị giá hiện có và tình hình biến động tăng, giảm các loại công cụ, dụng cụ của doanh nghiệp. Công cụ, dụng cụ là những tư liệu lao động không có đủ các tiêu chuẩn về giá trị và thời gian sử dụng quy địnhđối với TSCĐ. Vì vậy công cụ, dụng cụ được quản lý và hạch toán như nguyên liệu, vật liệu. Theo quy định hiện hành, những tư liệu lao động sau đây nếu không đủ tiêu chuẩn ghi nhận TSCĐ thì được ghi nhận là công cụ, dụng cụ:- Các đà giáo, ván khuôn, công cụ, dụng cụ gá lắp chuyên dùng cho sản xuất xây lắp;- Các loại bao bì bán kèm theo hàng hóa có tính tiền riêng, nhưng trong quá trình bảo quản hàng hóa vận chuyển trênđường và dự trữ trong kho có tính giá trị hao mòn để trừ dần giá trị của bao bì;- Những dụng cụ, đồ nghề bằng thủy tinh, sành, sứ;- Phương tiện quản lý, đồ dùng văn phòng;- Quần áo, giày dép chuyên dùng để làm việc,...",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[328]#heading-span-0-61",
+      "exactText": "Điều 26. Tài khoản 154 - Chi phí sản xuất, kinh doanh dở dang",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[417]#heading-span-0-35",
+      "exactText": "Điều 27. Tài khoản 155 - Thành phẩm",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0032",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[440]#heading-span-0-33",
+      "exactText": "Điều 28. Tài khoản 156 - Hàng hóa",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[457]#heading-span-0-40",
+      "exactText": "Điều 29. Tài khoản 157 - Hàng gửi đi bán",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[466]#heading-span-0-106",
+      "exactText": "Điều 30. Nguyên tắc kế toán tài sản cố định, bất động sản đầu tư và chi phí đầu tư xây dựng cơ bản dở dang",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[471]#heading-span-0-40",
+      "exactText": "Điều 31. Tài khoản 211 - Tài sản cố định",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[559]#heading-span-0-48",
+      "exactText": "Điều 32. Tài khoản 214 - Hao mòn tài sản cố định",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[580]#heading-span-0-44",
+      "exactText": "Điều 33. Tài khoản 217 - Bất động sản đầu tư",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[617]#heading-span-0-55",
+      "exactText": "Điều 34. Tài khoản 228 - Đầu tư góp vốn vào đơn vị khác",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0039",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[654]#heading-span-0-54",
+      "exactText": "Điều 35. Kế toán giao dịch hợp đồng hợp tác kinh doanh",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[707]#heading-span-0-50",
+      "exactText": "Điều 36. Tài khoản 229 - Dự phòng tổn thất tài sản",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0041",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[761]#heading-span-0-48",
+      "exactText": "Điều 37. Tài khoản 241 - Xây dựng cơ bản dở dang",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[790]#heading-span-0-42",
+      "exactText": "Điều 38. Tài khoản 242 - Chi phí trả trước",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[803]#heading-span-0-39",
+      "exactText": "Điều 39. Nguyên tắc kế toán nợ phải trả",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[821]#heading-span-0-43",
+      "exactText": "Điều 40. Tài khoản 331 - Phải trả người bán",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[833]#heading-span-0-60",
+      "exactText": "Điều 41. Tài khoản 333 - Thuế và các khoản phải nộp nhà nước",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[881]#heading-span-0-48",
+      "exactText": "Điều 42. Tài khoản 334 - Phải trả người lao động",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[891]#heading-span-0-41",
+      "exactText": "Điều 43. Tài khoản 335 - Chi phí phải trả",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0048",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[907]#heading-span-0-334",
+      "exactText": "Điều 44. Tài khoản 336 - Phải trả nội bộ1. Nguyên tắc kế toán a) Tài khoản này dùng để phản ánh tình hình thanh toán các khoản phải trả giữa doanh nghiệp (đơn vị cấp trên) với cácđơn vị trực thuộc hạch toán phụ thuộc có tổ chức công tác kế toán (đơn vị cấp dưới); Giữa các đơn vị hạch toán phụthuộc của cùng một doanh nghiệp với nhau.",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[919]#heading-span-0-48",
+      "exactText": "Điều 45. Tài khoản 338 - Phải trả, phải nộp khác",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[942]#heading-span-0-49",
+      "exactText": "Điều 46. Tài khoản 341 - Vay và nợ thuê tài chính",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[963]#heading-span-0-200",
+      "exactText": "Điều 47. Tài khoản 352 - Dự phòng phải trả1. Nguyên tắc kế toán a) Tài khoản này dùng để phản ánh các khoản dự phòng phải trả hiện có, tình hình trích lập và sử dụng dự phòng phải trảcủa doanh nghiệp.",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[988]#heading-span-0-50",
+      "exactText": "Điều 48. Tài khoản 353 - Quỹ khen thưởng, phúc lợi",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1005]#heading-span-0-304",
+      "exactText": "Điều 49. Tài khoản 356 - Quỹ phát triển khoa học và công nghệ1. Nguyên tắc kế toán a) Tài khoản này dùng để phản ánh số hiện có, tình hình tăng giảm Quỹ phát triển khoa học và công nghệ (PTKH&CN) của doanh nghiệp. Quỹ PTKH&CN của doanh nghiệp chỉ được sử dụng cho đầu tư khoa học, công nghệ tại Việt Nam.",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1023]#heading-span-0-42",
+      "exactText": "Điều 50. Nguyên tắc kế toán vốn chủ sở hữu",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0055",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1033]#heading-span-0-50",
+      "exactText": "Điều 51. Tài khoản 411 - Vốn đầu tư của chủ sở hữu",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1055]#heading-span-0-51",
+      "exactText": "Điều 52. Tài khoản 413 - Chênh lệch tỷ giá hối đoái",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1116]#heading-span-0-53",
+      "exactText": "Điều 53. Tài khoản 418 - Các quỹ thuộc vốn chủ sở hữu",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1120]#heading-span-0-269",
+      "exactText": "Điều 54. Tài khoản 419 - Cổ phiếu quỹ1. Nguyên tắc kế toán a) Tài khoản này dùng để phản ánh giá trị hiện có và tình hình biến động tăng giảm của số cổ phiếu do các công ty cổphần mua lại trong số cổ phiếu do công ty đó đã phát hành ra công chúng (gọi là cổ phiếu quỹ).",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1133]#heading-span-0-58",
+      "exactText": "Điều 55. Tài khoản 421 - Lợi nhuận sau thuế chưa phân phối",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1158]#heading-span-0-37",
+      "exactText": "Điều 56. Nguyên tắc kế toán doanh thu",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1173]#heading-span-0-626",
+      "exactText": "Điều 57. Tài khoản 511 - Doanh thu bán hàng và cung cấp dịch vụ1. Nguyên tắc kế toán 1.1. Tài khoản này dùng để phản ánh doanh thu bán hàng và cung cấp dịch vụ của doanh nghiệp trong một kỳ kế toán của hoạt động sản xuất, kinh doanh từ các giao dịch và các nghiệp vụ sau: a) Bán hàng hóa: Bán sản phẩm do doanh nghiệp sản xuất ra, bán hàng hóa mua vào và bán bất động sản đầu tư; b) Cung cấp dịch vụ: Thực hiện công việc đã thỏa thuận theo hợp đồng trong một kỳ, hoặc nhiều kỳ kế toán, như cung cấp dịch vụ vận tải, du lịch, cho thuê TSCĐ theo phương thức cho thuê hoạt động, doanh thu hợp đồng xây dựng.... c) Doanh thu khác.",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0062",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1235]#heading-span-0-54",
+      "exactText": "Điều 58. Tài khoản 515 - Doanh thu hoạt động tài chính",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1256]#heading-span-0-242",
+      "exactText": "Điều 59. Nguyên tắc kế toán chi phí1. Chi phí là những khoản làm giảm lợi ích kinh tế, được ghi nhận tại thời điểm giao dịch phát sinh hoặc khi có khả năng tương đối chắc chắn sẽ phát sinh trong tương lai không phân biệt đã chi tiền hay chưa.",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1261]#heading-span-0-33",
+      "exactText": "Điều 60. Tài khoản 611 - Mua hàng",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1271]#heading-span-0-43",
+      "exactText": "Điều 61. Tài khoản 631 - Giá thành sản xuất",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1295]#heading-span-0-41",
+      "exactText": "Điều 62. Tài khoản 632 - Giá vốn hàng bán",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1319]#heading-span-0-42",
+      "exactText": "Điều 63. Tài khoản 635 - Chi phí tài chính",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1327]#heading-span-0-51",
+      "exactText": "Điều 64. Tài khoản 642 - Chi phí quản lý kinh doanh",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0069",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1360]#heading-span-0-38",
+      "exactText": "Điều 65. Tài khoản 711 - Thu nhập khác",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1372]#heading-span-0-37",
+      "exactText": "Điều 66. Tài khoản 811 - Chi phí khác",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0071",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1380]#heading-span-0-59",
+      "exactText": "Điều 67. Tài khoản 821 - Chi phí thuế thu nhập doanh nghiệp",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1392]#heading-span-0-52",
+      "exactText": "Điều 68. Tài khoản 911 - Xác định kết quả kinh doanh",
+      "selectedParentRef": "N0014",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0014"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1400]#heading-span-0-29",
+      "exactText": "Chương III BÁO CÁO TÀI CHÍNH",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1400]#heading-span-29-50",
+      "exactText": "MỤC 1. QUY ĐỊNH CHUNG",
+      "selectedParentRef": "N0073",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1400]#heading-span-50-89",
+      "exactText": "Điều 69. Mục đích của báo cáo tài chính",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1410]#heading-span-0-76",
+      "exactText": "Điều 70. Đối tượng áp dụng, trách nhiệm lập và chữ ký trên báo cáo tài chính",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1414]#heading-span-0-35",
+      "exactText": "Điều 71. Hệ thống báo cáo tài chính",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0078",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1440]#heading-span-0-68",
+      "exactText": "Điều 72. Yêu cầu đối với thông tin trình bày trong Báo cáo tài chính",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1450]#heading-span-0-107",
+      "exactText": "Điều 73. Nguyên tắc lập và trình bày Báo cáo tài chính của doanh nghiệp đáp ứng giả định hoạt động liên tục",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1468]#heading-span-0-113",
+      "exactText": "Điều 74. Nguyên tắc lập và trình bày báo cáo tài chính của doanh nghiệp không đáp ứng giả định hoạt động liên tục",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1517]#heading-span-0-78",
+      "exactText": "Điều 75. Nguyên tắc lập và trình bày báo cáo tài chính khi thay đổi kỳ kế toán",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1526]#heading-span-0-114",
+      "exactText": "Điều 76. Nguyên tắc lập và trình bày Báo cáo tài chính khi chuyển đổi loại hình hoặc hình thức sở hữu doanh nghiệp",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1531]#heading-span-0-102",
+      "exactText": "Điều 77. Nguyên tắc lập và trình bày Báo cáo tài chính khi chia, tách, hợp nhất, sáp nhập doanh nghiệp",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1543]#heading-span-0-136",
+      "exactText": "Điều 78. Đồng tiền sử dụng để lập báo cáo tài chính khi công bố ra công chúng và nộp các cơ quan chức năng quản lý Nhà nước tại Việt Nam",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0085",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1554]#heading-span-0-83",
+      "exactText": "Điều 79. Nguyên tắc lập Báo cáo tài chính khi thay đổi đơn vị tiền tệ trong kế toán",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1558]#heading-span-0-59",
+      "exactText": "Điều 80. Trách nhiệm, thời hạn lập và gửi báo cáo tài chính",
+      "selectedParentRef": "N0074",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0074"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[1565]#heading-span-0-79",
+      "exactText": "MỤC 2. NỘI DUNG VÀ PHƯƠNG PHÁP LẬP BÁO CÁO TÀI CHÍNH CỦA DOANH NGHIỆP NHỎ VÀVỪA",
+      "selectedParentRef": "N0073",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2112]#heading-span-0-288",
+      "exactText": "MỤC 3. NỘI DUNG VÀ PHƯƠNG PHÁP LẬP BÁO CÁO TÀI CHÍNH CỦA DOANH NGHIỆP SIÊU NHỎCác doanh nghiệp siêu nhỏ căn cứ vào biểu mẫu báo cáo tài chính năm quy định tại Phụ lục 2 ban hành kèm theo Thông tư này và các nguyên tắc chung để thực hiện việc lập và trình bày báo cáo tài chính tại đơn vị.",
+      "selectedParentRef": "N0073",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2113]#heading-span-0-393",
+      "exactText": "Điều 82. Nội dung và phương pháp lập báo cáo tài chính của doanh nghiệp siêu nhỏ1. Nội dung và phương pháp lập các chỉ tiêu của Báo cáo tình hình tài chính (Mẫu số B01 - DNSN) 1.1. Tài sản- Tiền và các khoản tương đương tiền (Mã số 110) Chỉ tiêu này phản ánh toàn bộ tiền mặt tại quỹ, tiền gửi ngân hàng không kỳ hạn và các khoản tương đương tiền hiện cócủa doanh nghiệp tại thời điểm báo cáo.",
+      "selectedParentRef": "N0088",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073",
+          "N0088"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2188]#heading-span-0-57",
+      "exactText": "MỤC 4. NỘI DUNG VÀ PHƯƠNG PHÁP LẬP BẢNG CÂN ĐỐI TÀI KHOẢN",
+      "selectedParentRef": "N0073",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0073"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2200]#heading-span-0-9",
+      "exactText": "Chương IV",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0092",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2202]#heading-span-0-81",
+      "exactText": "Điều 84. Quy định chung về chứng từ kế toán và hệ thống biểu mẫu chứng từ kế toán",
+      "selectedParentRef": "N0091",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0091"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2207]#heading-span-0-35",
+      "exactText": "Điều 85. Lập và ký chứng từ kế toán",
+      "selectedParentRef": "N0091",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0091"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2222]#heading-span-0-58",
+      "exactText": "Điều 86. Trình tự luân chuyển và kiểm tra chứng từ kế toán",
+      "selectedParentRef": "N0091",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0091"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2227]#heading-span-0-295",
+      "exactText": "Điều 87. Dịch chứng từ kế toán ra tiếng Việt, sử dụng, quản lý, in và phát hành biểu mẫu chứng từ kế toán Các chứng từ kế toán ghi bằng tiếng nước ngoài, khi sử dụng để ghi sổ kế toán và lập báo cáo tài chính ở Việt Nam phảiđược dịch các nội dung chủ yếu quy định tại Luật Kế toán ra tiếng Việt.",
+      "selectedParentRef": "N0091",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0091"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2235]#heading-span-0-9",
+      "exactText": "Chương IV",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2237]#heading-span-0-19",
+      "exactText": "Điều 88. Sổ kế toán",
+      "selectedParentRef": "N0096",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0096"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2241]#heading-span-0-52",
+      "exactText": "Điều 89. Trách nhiệm của người giữ và ghi sổ kế toán",
+      "selectedParentRef": "N0096",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0096"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0099",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2243]#heading-span-0-58",
+      "exactText": "Điều 90. Mở, ghi sổ kế toán, chữ ký và sửa chữa sổ kế toán",
+      "selectedParentRef": "N0096",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0096"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2256]#heading-span-0-9",
+      "exactText": "Chương VI",
+      "selectedParentRef": "ROOT",
+      "candidateParents": [
+        "ROOT",
+        []
+      ],
+      "structuralRank": 1,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0101",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2258]#heading-span-0-41",
+      "exactText": "Điều 91. Chuyển đổi số dư trên sổ kế toán",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0100"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2269]#heading-span-0-26",
+      "exactText": "Điều 92. Điều khoản hồi tố",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0100"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[2272]#heading-span-0-26",
+      "exactText": "Điều 93. Hiệu lực thi hành",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0100"
+        ]
+      ],
+      "structuralRank": 3,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[3424]#heading-span-0-133",
+      "exactText": "Mục 1: Số tạm ứng các kỳ trước chưa chi hết: Căn cứ vào dòng số dư tạm ứng tính đến ngày lập phiếu thanh toán trên sổ kế toán đế ghi.",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0100"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "headingOccurrenceRef": "DOC-0200:body[1]/p[3425]#heading-span-0-92",
+      "exactText": "Mục 2: Số tạm ứng kỳ này: Căn cứ vào các phiếu chi tạm ứng để ghi, mỗi phiếu chi ghi 1 dòng.",
+      "selectedParentRef": "N0100",
+      "candidateParents": [
+        "ROOT",
+        [
+          "N0100"
+        ]
+      ],
+      "structuralRank": 2,
+      "positiveEvidence": [
+        "SOURCE_DOCUMENT_ORDER",
+        "SOURCE_STRUCTURAL_HEADING_FUNCTION",
+        "EXPLICIT_SCOPE_STACK"
+      ],
+      "contradictionEvidence": [
+        "NO_PARENT_CROSSING_INTERVENING_STRUCTURAL_RESET"
+      ],
+      "decisionReason": "Source-backed parent selected from active structural scope stack; same/higher-rank structural headings reset lower scopes; rank-zero labels do not erase an explicit PART/SECTION scope.",
+      "confidence": "HIGH",
+      "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    }
+  ],
+  "levelEnteredByReviewer": false,
+  "reviewAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

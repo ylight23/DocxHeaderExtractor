@@ -1,0 +1,4008 @@
+{
+  "artifactKind": "A99_CANONICAL_V3_3_EXACT_BINDINGS",
+  "documentId": "DOC-0243",
+  "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+  "bindings": [
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2]#heading-span-0-23",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2]",
+      "sourceId": "body[1]/p[2]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "exactText": "Advanced linear algebra",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 2,
+      "occurrenceOrder": 1,
+      "sourceContainerText": "Advanced linear algebra",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[20]#heading-span-0-7",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[20]",
+      "sourceId": "body[1]/p[20]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 7
+      },
+      "exactText": "Preface",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 8,
+      "occurrenceOrder": 2,
+      "sourceContainerText": "Preface",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[1]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "exactText": "Contents",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 21,
+      "occurrenceOrder": 3,
+      "sourceContainerText": "Contents",
+      "sourceContainerKind": "tableCell",
+      "structuralScopeType": "TABLE_OR_EMBEDDED_SCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"TableParagraph\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-7",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 7
+      },
+      "exactText": "Preface",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 22,
+      "occurrenceOrder": 4,
+      "sourceContainerText": "Preface",
+      "sourceContainerKind": "tableCell",
+      "structuralScopeType": "TABLE_OR_EMBEDDED_SCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"TableParagraph\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/tbl[1]/tr[3]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[1]/tr[3]/tc[1]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "Part I.Linear algebra",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 24,
+      "occurrenceOrder": 5,
+      "sourceContainerText": "Part I.Linear algebra",
+      "sourceContainerKind": "tableCell",
+      "structuralScopeType": "TABLE_OR_EMBEDDED_SCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"TableParagraph\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[2]/tr[1]/tc[2]/p[1]#heading-span-0-8",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/tbl[2]/tr[1]/tc[2]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "exactText": "CONTENTS",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 75,
+      "occurrenceOrder": 6,
+      "sourceContainerText": "CONTENTS",
+      "sourceContainerKind": "tableCell",
+      "structuralScopeType": "TABLE_OR_EMBEDDED_SCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"TableParagraph\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/tbl[2]/tr[20]/tc[1]/p[1]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/tbl[2]/tr[20]/tc[1]/p[1]",
+      "sourceId": "body[1]/tbl[2]/tr[20]/tc[1]/p[1]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "Part IV.Matrix groups",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 113,
+      "occurrenceOrder": 7,
+      "sourceContainerText": "Part IV.Matrix groups",
+      "sourceContainerKind": "tableCell",
+      "structuralScopeType": "TABLE_OR_EMBEDDED_SCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"TableParagraph\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[72]",
+      "sourceId": "body[1]/p[72]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 6
+      },
+      "exactText": "Part I",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 154,
+      "occurrenceOrder": 8,
+      "sourceContainerText": "Part I",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[74]#heading-span-0-14",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[74]",
+      "sourceId": "body[1]/p[74]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "exactText": "Linear algebra",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 155,
+      "occurrenceOrder": 9,
+      "sourceContainerText": "Linear algebra",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[96]",
+      "sourceId": "body[1]/p[96]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 157,
+      "occurrenceOrder": 10,
+      "sourceContainerText": "CHAPTER  1",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[98]#heading-span-0-11",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[98]",
+      "sourceId": "body[1]/p[98]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 11
+      },
+      "exactText": "Linear maps",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 158,
+      "occurrenceOrder": 11,
+      "sourceContainerText": "Linear maps",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[100]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[100]",
+      "sourceId": "body[1]/p[100]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "1a. Spaces, vectors",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 159,
+      "occurrenceOrder": 12,
+      "sourceContainerText": "1a. Spaces, vectors",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[233]#heading-span-0-15",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[233]",
+      "sourceId": "body[1]/p[233]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 15
+      },
+      "exactText": "1b. Linear maps",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 257,
+      "occurrenceOrder": 13,
+      "sourceContainerText": "1b. Linear maps",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[349]#heading-span-0-22",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[349]",
+      "sourceId": "body[1]/p[349]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "exactText": "1c. Geometry, analysis",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 361,
+      "occurrenceOrder": 14,
+      "sourceContainerText": "1c. Geometry, analysis",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[570]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[570]",
+      "sourceId": "body[1]/p[570]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "1d. Complex numbers",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 539,
+      "occurrenceOrder": 15,
+      "sourceContainerText": "1d. Complex numbers",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[733]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[733]",
+      "sourceId": "body[1]/p[733]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "1e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 682,
+      "occurrenceOrder": 16,
+      "sourceContainerText": "1e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[750]",
+      "sourceId": "body[1]/p[750]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 693,
+      "occurrenceOrder": 17,
+      "sourceContainerText": "CHAPTER  2",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[752]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[752]",
+      "sourceId": "body[1]/p[752]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "Matrix theory",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 694,
+      "occurrenceOrder": 18,
+      "sourceContainerText": "Matrix theory",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[754]#heading-span-0-20",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[754]",
+      "sourceId": "body[1]/p[754]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "exactText": "2a. Matrix inversion",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 695,
+      "occurrenceOrder": 19,
+      "sourceContainerText": "2a. Matrix inversion",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[922]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[922]",
+      "sourceId": "body[1]/p[922]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "2b. The determinant",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 846,
+      "occurrenceOrder": 20,
+      "sourceContainerText": "2b. The determinant",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1174]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[1174]",
+      "sourceId": "body[1]/p[1174]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "2c. Some applications",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1064,
+      "occurrenceOrder": 21,
+      "sourceContainerText": "2c. Some applications",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1301]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[1301]",
+      "sourceId": "body[1]/p[1301]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "2d. Diagonalization",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1178,
+      "occurrenceOrder": 22,
+      "sourceContainerText": "2d. Diagonalization",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1405]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[1405]",
+      "sourceId": "body[1]/p[1405]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "2e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1275,
+      "occurrenceOrder": 23,
+      "sourceContainerText": "2e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[1422]",
+      "sourceId": "body[1]/p[1422]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 1286,
+      "occurrenceOrder": 24,
+      "sourceContainerText": "CHAPTER  3",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1424]#heading-span-0-17",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[1424]",
+      "sourceId": "body[1]/p[1424]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "exactText": "Spectral theorems",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 1287,
+      "occurrenceOrder": 25,
+      "sourceContainerText": "Spectral theorems",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1426]#heading-span-0-17",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[1426]",
+      "sourceId": "body[1]/p[1426]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "exactText": "3a. Self-adjoints",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1288,
+      "occurrenceOrder": 26,
+      "sourceContainerText": "3a. Self-adjoints",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1649]#heading-span-0-24",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[1649]",
+      "sourceId": "body[1]/p[1649]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "exactText": "3b. Rotations, unitaries",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1487,
+      "occurrenceOrder": 27,
+      "sourceContainerText": "3b. Rotations, unitaries",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1832]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[1832]",
+      "sourceId": "body[1]/p[1832]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "3c. Normal matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1655,
+      "occurrenceOrder": 28,
+      "sourceContainerText": "3c. Normal matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[1905]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[1905]",
+      "sourceId": "body[1]/p[1905]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "3d. Spectral measures",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1724,
+      "occurrenceOrder": 29,
+      "sourceContainerText": "3d. Spectral measures",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2079]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2079]",
+      "sourceId": "body[1]/p[2079]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "3e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1878,
+      "occurrenceOrder": 30,
+      "sourceContainerText": "3e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2091]",
+      "sourceId": "body[1]/p[2091]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 1884,
+      "occurrenceOrder": 31,
+      "sourceContainerText": "CHAPTER  4",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2093]#heading-span-0-18",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2093]",
+      "sourceId": "body[1]/p[2093]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "exactText": "Polynomials, roots",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 1885,
+      "occurrenceOrder": 32,
+      "sourceContainerText": "Polynomials, roots",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2095]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2095]",
+      "sourceId": "body[1]/p[2095]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "4a. Resultant",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1886,
+      "occurrenceOrder": 33,
+      "sourceContainerText": "4a. Resultant",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2219]#heading-span-0-16",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2219]",
+      "sourceId": "body[1]/p[2219]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 16
+      },
+      "exactText": "4b. Discriminant",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 1994,
+      "occurrenceOrder": 34,
+      "sourceContainerText": "4b. Discriminant",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2501]#heading-span-0-17",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2501]",
+      "sourceId": "body[1]/p[2501]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "exactText": "4c. Higher degree",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 2219,
+      "occurrenceOrder": 35,
+      "sourceContainerText": "4c. Higher degree",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2787]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2787]",
+      "sourceId": "body[1]/p[2787]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "4d. Density results",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 2432,
+      "occurrenceOrder": 36,
+      "sourceContainerText": "4d. Density results",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2850]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2850]",
+      "sourceId": "body[1]/p[2850]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "4e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 2488,
+      "occurrenceOrder": 37,
+      "sourceContainerText": "4e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2864]",
+      "sourceId": "body[1]/p[2864]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 7
+      },
+      "exactText": "Part II",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 2493,
+      "occurrenceOrder": 38,
+      "sourceContainerText": "Part II",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2866]#heading-span-0-16",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2866]",
+      "sourceId": "body[1]/p[2866]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 16
+      },
+      "exactText": "Advanced results",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 2494,
+      "occurrenceOrder": 39,
+      "sourceContainerText": "Advanced results",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2889]",
+      "sourceId": "body[1]/p[2889]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 2497,
+      "occurrenceOrder": 40,
+      "sourceContainerText": "CHAPTER  5",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2891]#heading-span-0-11",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2891]",
+      "sourceId": "body[1]/p[2891]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 11
+      },
+      "exactText": "Jordan form",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 2498,
+      "occurrenceOrder": 41,
+      "sourceContainerText": "Jordan form",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "DOCUMENT_SUBSCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2893]#heading-span-0-20",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2893]",
+      "sourceId": "body[1]/p[2893]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "exactText": "5a. Linear equations",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 2499,
+      "occurrenceOrder": 42,
+      "sourceContainerText": "5a. Linear equations",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[2971]#heading-span-0-22",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[2971]",
+      "sourceId": "body[1]/p[2971]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "exactText": "5b. Matrix exponential",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 2571,
+      "occurrenceOrder": 43,
+      "sourceContainerText": "5b. Matrix exponential",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3321]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[3321]",
+      "sourceId": "body[1]/p[3321]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "5c. The Jordan form",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 2843,
+      "occurrenceOrder": 44,
+      "sourceContainerText": "5c. The Jordan form",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "DOCUMENT_SUBSCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3519]#heading-span-0-22",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[3519]",
+      "sourceId": "body[1]/p[3519]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "exactText": "5d. Basic applications",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 2999,
+      "occurrenceOrder": 45,
+      "sourceContainerText": "5d. Basic applications",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3683]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[3683]",
+      "sourceId": "body[1]/p[3683]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "5e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 3115,
+      "occurrenceOrder": 46,
+      "sourceContainerText": "5e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[3700]",
+      "sourceId": "body[1]/p[3700]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 3126,
+      "occurrenceOrder": 47,
+      "sourceContainerText": "CHAPTER  6",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3702]#heading-span-0-15",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[3702]",
+      "sourceId": "body[1]/p[3702]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 15
+      },
+      "exactText": "Singular values",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 3127,
+      "occurrenceOrder": 48,
+      "sourceContainerText": "Singular values",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3704]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[3704]",
+      "sourceId": "body[1]/p[3704]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "6a. Singular values",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 3128,
+      "occurrenceOrder": 49,
+      "sourceContainerText": "6a. Singular values",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[3870]#heading-span-0-23",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[3870]",
+      "sourceId": "body[1]/p[3870]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "exactText": "6b. Functional calculus",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 3276,
+      "occurrenceOrder": 50,
+      "sourceContainerText": "6b. Functional calculus",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4143]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[4143]",
+      "sourceId": "body[1]/p[4143]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "6c. Complex functions",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 3500,
+      "occurrenceOrder": 51,
+      "sourceContainerText": "6c. Complex functions",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4393]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[4393]",
+      "sourceId": "body[1]/p[4393]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "6d. Normal matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 3701,
+      "occurrenceOrder": 52,
+      "sourceContainerText": "6d. Normal matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4514]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[4514]",
+      "sourceId": "body[1]/p[4514]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "6e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 3812,
+      "occurrenceOrder": 53,
+      "sourceContainerText": "6e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[4525]",
+      "sourceId": "body[1]/p[4525]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 3817,
+      "occurrenceOrder": 54,
+      "sourceContainerText": "CHAPTER  7",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4527]#heading-span-0-17",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[4527]",
+      "sourceId": "body[1]/p[4527]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "exactText": "Dynamical systems",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 3818,
+      "occurrenceOrder": 55,
+      "sourceContainerText": "Dynamical systems",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4529]#heading-span-0-26",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[4529]",
+      "sourceId": "body[1]/p[4529]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "exactText": "7a. Differential equations",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 3819,
+      "occurrenceOrder": 56,
+      "sourceContainerText": "7a. Differential equations",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4648]#heading-span-0-23",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[4648]",
+      "sourceId": "body[1]/p[4648]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "exactText": "7b. Functional analysis",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 3926,
+      "occurrenceOrder": 57,
+      "sourceContainerText": "7b. Functional analysis",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[4926]#heading-span-0-25",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[4926]",
+      "sourceId": "body[1]/p[4926]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 25
+      },
+      "exactText": "7c. Existence, uniqueness",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 4137,
+      "occurrenceOrder": 58,
+      "sourceContainerText": "7c. Existence, uniqueness",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5424]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[5424]",
+      "sourceId": "body[1]/p[5424]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "7d. Dynamical systems",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 4527,
+      "occurrenceOrder": 59,
+      "sourceContainerText": "7d. Dynamical systems",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5514]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[5514]",
+      "sourceId": "body[1]/p[5514]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "7e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 4599,
+      "occurrenceOrder": 60,
+      "sourceContainerText": "7e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[5526]",
+      "sourceId": "body[1]/p[5526]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 4605,
+      "occurrenceOrder": 61,
+      "sourceContainerText": "CHAPTER  8",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5528]#heading-span-0-17",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[5528]",
+      "sourceId": "body[1]/p[5528]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "exactText": "Infinite matrices",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 4606,
+      "occurrenceOrder": 62,
+      "sourceContainerText": "Infinite matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5530]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[5530]",
+      "sourceId": "body[1]/p[5530]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "8a. Infinite matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 4607,
+      "occurrenceOrder": 63,
+      "sourceContainerText": "8a. Infinite matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5662]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[5662]",
+      "sourceId": "body[1]/p[5662]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "8b. Spectral radius",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 4727,
+      "occurrenceOrder": 64,
+      "sourceContainerText": "8b. Spectral radius",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[5885]#heading-span-0-20",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[5885]",
+      "sourceId": "body[1]/p[5885]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "exactText": "8c. Normal operators",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 4914,
+      "occurrenceOrder": 65,
+      "sourceContainerText": "8c. Normal operators",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6035]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6035]",
+      "sourceId": "body[1]/p[6035]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "8d. Compact operators",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 5043,
+      "occurrenceOrder": 66,
+      "sourceContainerText": "8d. Compact operators",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6259]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6259]",
+      "sourceId": "body[1]/p[6259]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "8e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 5244,
+      "occurrenceOrder": 67,
+      "sourceContainerText": "8e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6275]",
+      "sourceId": "body[1]/p[6275]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 8
+      },
+      "exactText": "Part III",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 5251,
+      "occurrenceOrder": 68,
+      "sourceContainerText": "Part III",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6277]",
+      "sourceId": "body[1]/p[6277]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "exactText": "Positive matrices",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 5252,
+      "occurrenceOrder": 69,
+      "sourceContainerText": "Positive matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6300]",
+      "sourceId": "body[1]/p[6300]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 9
+      },
+      "exactText": "CHAPTER",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 5255,
+      "occurrenceOrder": 70,
+      "sourceContainerText": "CHAPTER  9",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6302]",
+      "sourceId": "body[1]/p[6302]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 17
+      },
+      "exactText": "Positive matrices",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 5256,
+      "occurrenceOrder": 71,
+      "sourceContainerText": "Positive matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6304]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6304]",
+      "sourceId": "body[1]/p[6304]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "9a. Jacobian, Hessian",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 5257,
+      "occurrenceOrder": 72,
+      "sourceContainerText": "9a. Jacobian, Hessian",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6577]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6577]",
+      "sourceId": "body[1]/p[6577]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "9b. Positive matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 5482,
+      "occurrenceOrder": 73,
+      "sourceContainerText": "9b. Positive matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6713]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6713]",
+      "sourceId": "body[1]/p[6713]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "9c. Sylvester theorem",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 5599,
+      "occurrenceOrder": 74,
+      "sourceContainerText": "9c. Sylvester theorem",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6845]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6845]",
+      "sourceId": "body[1]/p[6845]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "9d. Infinite matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 5705,
+      "occurrenceOrder": 75,
+      "sourceContainerText": "9d. Infinite matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[6991]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[6991]",
+      "sourceId": "body[1]/p[6991]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "9e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 5834,
+      "occurrenceOrder": 76,
+      "sourceContainerText": "9e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7002]",
+      "sourceId": "body[1]/p[7002]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "exactText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 5839,
+      "occurrenceOrder": 77,
+      "sourceContainerText": "CHAPTER  10",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7004]#heading-span-0-16",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7004]",
+      "sourceId": "body[1]/p[7004]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 16
+      },
+      "exactText": "Forms, signature",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 5840,
+      "occurrenceOrder": 78,
+      "sourceContainerText": "Forms, signature",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "DOCUMENT_SUBSCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7006]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7006]",
+      "sourceId": "body[1]/p[7006]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "10a. Bilinear forms",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 5841,
+      "occurrenceOrder": 79,
+      "sourceContainerText": "10a. Bilinear forms",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "DOCUMENT_SUBSCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7068]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7068]",
+      "sourceId": "body[1]/p[7068]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "10b. Smooth manifolds",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 5899,
+      "occurrenceOrder": 80,
+      "sourceContainerText": "10b. Smooth manifolds",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7206]#heading-span-0-22",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7206]",
+      "sourceId": "body[1]/p[7206]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "exactText": "10c. Relativity theory",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 6017,
+      "occurrenceOrder": 81,
+      "sourceContainerText": "10c. Relativity theory",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7490]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7490]",
+      "sourceId": "body[1]/p[7490]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "10d. Curved spacetime",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 6221,
+      "occurrenceOrder": 82,
+      "sourceContainerText": "10d. Curved spacetime",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7793]#heading-span-0-14",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7793]",
+      "sourceId": "body[1]/p[7793]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "exactText": "10e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 6463,
+      "occurrenceOrder": 83,
+      "sourceContainerText": "10e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7804]",
+      "sourceId": "body[1]/p[7804]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "exactText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 6468,
+      "occurrenceOrder": 84,
+      "sourceContainerText": "CHAPTER  11",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7806]#heading-span-0-16",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7806]",
+      "sourceId": "body[1]/p[7806]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 16
+      },
+      "exactText": "Special matrices",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 6469,
+      "occurrenceOrder": 85,
+      "sourceContainerText": "Special matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7808]#heading-span-0-23",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7808]",
+      "sourceId": "body[1]/p[7808]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "exactText": "11a. Circulant matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 6470,
+      "occurrenceOrder": 86,
+      "sourceContainerText": "11a. Circulant matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[7978]#heading-span-0-22",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[7978]",
+      "sourceId": "body[1]/p[7978]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "exactText": "11b. Hadamard matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 6609,
+      "occurrenceOrder": 87,
+      "sourceContainerText": "11b. Hadamard matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8122]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[8122]",
+      "sourceId": "body[1]/p[8122]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "11c. Complex Hadamard",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 6734,
+      "occurrenceOrder": 88,
+      "sourceContainerText": "11c. Complex Hadamard",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8394]#heading-span-0-26",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[8394]",
+      "sourceId": "body[1]/p[8394]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 26
+      },
+      "exactText": "11d. Bistochastic matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 6969,
+      "occurrenceOrder": 89,
+      "sourceContainerText": "11d. Bistochastic matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8535]#heading-span-0-14",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[8535]",
+      "sourceId": "body[1]/p[8535]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "exactText": "11e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 7098,
+      "occurrenceOrder": 90,
+      "sourceContainerText": "11e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[8546]",
+      "sourceId": "body[1]/p[8546]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "exactText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 7103,
+      "occurrenceOrder": 91,
+      "sourceContainerText": "CHAPTER  12",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8548]#heading-span-0-12",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[8548]",
+      "sourceId": "body[1]/p[8548]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "exactText": "Graph theory",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 7104,
+      "occurrenceOrder": 92,
+      "sourceContainerText": "Graph theory",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8550]#heading-span-0-22",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[8550]",
+      "sourceId": "body[1]/p[8550]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "exactText": "12a. Graphs, Laplacian",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 7105,
+      "occurrenceOrder": 93,
+      "sourceContainerText": "12a. Graphs, Laplacian",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8744]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[8744]",
+      "sourceId": "body[1]/p[8744]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "12b. Kirchoff formula",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 7274,
+      "occurrenceOrder": 94,
+      "sourceContainerText": "12b. Kirchoff formula",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "DOCUMENT_SUBSCOPE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[8911]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[8911]",
+      "sourceId": "body[1]/p[8911]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "12c. Into the waves",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 7422,
+      "occurrenceOrder": 95,
+      "sourceContainerText": "12c. Into the waves",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9090]#heading-span-0-18",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9090]",
+      "sourceId": "body[1]/p[9090]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "exactText": "12d. Into the heat",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 7565,
+      "occurrenceOrder": 96,
+      "sourceContainerText": "12d. Into the heat",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9279]#heading-span-0-14",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9279]",
+      "sourceId": "body[1]/p[9279]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "exactText": "12e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 7708,
+      "occurrenceOrder": 97,
+      "sourceContainerText": "12e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9293]",
+      "sourceId": "body[1]/p[9293]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 7
+      },
+      "exactText": "Part IV",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 7713,
+      "occurrenceOrder": 98,
+      "sourceContainerText": "Part IV",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9295]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9295]",
+      "sourceId": "body[1]/p[9295]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "Matrix groups",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 7714,
+      "occurrenceOrder": 99,
+      "sourceContainerText": "Matrix groups",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9318]",
+      "sourceId": "body[1]/p[9318]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "exactText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 7717,
+      "occurrenceOrder": 100,
+      "sourceContainerText": "CHAPTER  13",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9320]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9320]",
+      "sourceId": "body[1]/p[9320]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "Finite groups",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 7718,
+      "occurrenceOrder": 101,
+      "sourceContainerText": "Finite groups",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9322]#heading-span-0-18",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9322]",
+      "sourceId": "body[1]/p[9322]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 18
+      },
+      "exactText": "13a. Finite groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 7719,
+      "occurrenceOrder": 102,
+      "sourceContainerText": "13a. Finite groups",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9460]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9460]",
+      "sourceId": "body[1]/p[9460]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "13b. Symmetric groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 7825,
+      "occurrenceOrder": 103,
+      "sourceContainerText": "13b. Symmetric groups",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9702]#heading-span-0-22",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9702]",
+      "sourceId": "body[1]/p[9702]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "exactText": "13c. Reflection groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 8008,
+      "occurrenceOrder": 104,
+      "sourceContainerText": "13c. Reflection groups",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[9976]#heading-span-0-24",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[9976]",
+      "sourceId": "body[1]/p[9976]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 24
+      },
+      "exactText": "13d. Complex reflections",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 8205,
+      "occurrenceOrder": 105,
+      "sourceContainerText": "13d. Complex reflections",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10113]#heading-span-0-14",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10113]",
+      "sourceId": "body[1]/p[10113]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "exactText": "13e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 8311,
+      "occurrenceOrder": 106,
+      "sourceContainerText": "13e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10123]",
+      "sourceId": "body[1]/p[10123]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "exactText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 8315,
+      "occurrenceOrder": 107,
+      "sourceContainerText": "CHAPTER  14",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10125]#heading-span-0-14",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10125]",
+      "sourceId": "body[1]/p[10125]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "exactText": "Compact groups",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 8316,
+      "occurrenceOrder": 108,
+      "sourceContainerText": "Compact groups",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10127]#heading-span-0-15",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10127]",
+      "sourceId": "body[1]/p[10127]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 15
+      },
+      "exactText": "14a. Lie groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 8317,
+      "occurrenceOrder": 109,
+      "sourceContainerText": "14a. Lie groups",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10205]#heading-span-0-15",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10205]",
+      "sourceId": "body[1]/p[10205]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 15
+      },
+      "exactText": "14b. Peter-Weyl",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 8392,
+      "occurrenceOrder": 110,
+      "sourceContainerText": "14b. Peter-Weyl",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10365]#heading-span-0-20",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10365]",
+      "sourceId": "body[1]/p[10365]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "exactText": "14c. Brauer algebras",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 8538,
+      "occurrenceOrder": 111,
+      "sourceContainerText": "14c. Brauer algebras",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10618]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10618]",
+      "sourceId": "body[1]/p[10618]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "14d. Haar integration",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 8756,
+      "occurrenceOrder": 112,
+      "sourceContainerText": "14d. Haar integration",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10848]#heading-span-0-14",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10848]",
+      "sourceId": "body[1]/p[10848]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "exactText": "14e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 8941,
+      "occurrenceOrder": 113,
+      "sourceContainerText": "14e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10860]",
+      "sourceId": "body[1]/p[10860]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "exactText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 8947,
+      "occurrenceOrder": 114,
+      "sourceContainerText": "CHAPTER  15",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10862]#heading-span-0-13",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10862]",
+      "sourceId": "body[1]/p[10862]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 13
+      },
+      "exactText": "Spin matrices",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 8948,
+      "occurrenceOrder": 115,
+      "sourceContainerText": "Spin matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[10864]#heading-span-0-20",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[10864]",
+      "sourceId": "body[1]/p[10864]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "exactText": "15a. Quantum physics",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 8949,
+      "occurrenceOrder": 116,
+      "sourceContainerText": "15a. Quantum physics",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11286]#heading-span-0-21",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[11286]",
+      "sourceId": "body[1]/p[11286]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 21
+      },
+      "exactText": "15b. Angular momentum",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 9272,
+      "occurrenceOrder": 117,
+      "sourceContainerText": "15b. Angular momentum",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11493]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[11493]",
+      "sourceId": "body[1]/p[11493]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "15c. Pauli matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 9452,
+      "occurrenceOrder": 118,
+      "sourceContainerText": "15c. Pauli matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11572]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[11572]",
+      "sourceId": "body[1]/p[11572]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "15d. Dirac matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 9517,
+      "occurrenceOrder": 119,
+      "sourceContainerText": "15d. Dirac matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11702]#heading-span-0-14",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[11702]",
+      "sourceId": "body[1]/p[11702]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "exactText": "15e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 9608,
+      "occurrenceOrder": 120,
+      "sourceContainerText": "15e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[11717]",
+      "sourceId": "body[1]/p[11717]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 10
+      },
+      "exactText": "CHAPTER 1",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "documentOrder": 9617,
+      "occurrenceOrder": 121,
+      "sourceContainerText": "CHAPTER  16",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"BodyText\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_OUTLINE_MARKER",
+        "SOURCE_DOCUMENT_STRUCTURE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11719]#heading-span-0-15",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[11719]",
+      "sourceId": "body[1]/p[11719]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 15
+      },
+      "exactText": "Random matrices",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 9618,
+      "occurrenceOrder": 122,
+      "sourceContainerText": "Random matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": null,
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11721]#heading-span-0-20",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[11721]",
+      "sourceId": "body[1]/p[11721]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 20
+      },
+      "exactText": "16a. Random matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 9619,
+      "occurrenceOrder": 123,
+      "sourceContainerText": "16a. Random matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[11904]#heading-span-0-22",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[11904]",
+      "sourceId": "body[1]/p[11904]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 22
+      },
+      "exactText": "16b. Gaussian matrices",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 9783,
+      "occurrenceOrder": 124,
+      "sourceContainerText": "16b. Gaussian matrices",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12138]#heading-span-0-23",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[12138]",
+      "sourceId": "body[1]/p[12138]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 23
+      },
+      "exactText": "16c. Wigner and Wishart",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 9964,
+      "occurrenceOrder": 125,
+      "sourceContainerText": "16c. Wigner and Wishart",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12383]#heading-span-0-19",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[12383]",
+      "sourceId": "body[1]/p[12383]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 19
+      },
+      "exactText": "16d. Back to groups",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 10164,
+      "occurrenceOrder": 126,
+      "sourceContainerText": "16d. Back to groups",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12463]#heading-span-0-14",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[12463]",
+      "sourceId": "body[1]/p[12463]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 14
+      },
+      "exactText": "16e. Exercises",
+      "headingKind": "SUBSECTION_HEADING",
+      "documentOrder": 10236,
+      "occurrenceOrder": 127,
+      "sourceContainerText": "16e. Exercises",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading2\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_NUMBERED_SUBSECTION",
+        "SOURCE_BOLD_OR_HEADING_STYLE"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12472]#heading-span-0-12",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[12472]",
+      "sourceId": "body[1]/p[12472]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 12
+      },
+      "exactText": "Bibliography",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 10238,
+      "occurrenceOrder": 128,
+      "sourceContainerText": "Bibliography",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading1\"",
+        "outlineLevel": null,
+        "bold": true,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    },
+    {
+      "occurrenceId": "DOC-0243:body[1]/p[12587]#heading-span-0-5",
+      "documentId": "DOC-0243",
+      "sourceOccurrenceId": "DOC-0243:body[1]/p[12587]",
+      "sourceId": "body[1]/p[12587]",
+      "sourceSpan": {
+        "start": 0,
+        "end": 5
+      },
+      "exactText": "Index",
+      "headingKind": "CHAPTER_OR_PART_TITLE",
+      "documentOrder": 10341,
+      "occurrenceOrder": 129,
+      "sourceContainerText": "Index",
+      "sourceContainerKind": "bodyParagraph",
+      "structuralScopeType": "MAIN_BODY_OR_DOCUMENT_OUTLINE",
+      "isTrueHeading": true,
+      "sourceEvidence": {
+        "style": "w:val=\"Heading1\"",
+        "outlineLevel": null,
+        "bold": false,
+        "caps": false,
+        "alignment": null,
+        "parserOwnedEvidenceOnly": true
+      },
+      "adjudicationEvidence": [
+        "SOURCE_BOLD_TITLE_LINE",
+        "SOURCE_ADJACENT_OUTLINE_FUNCTION"
+      ],
+      "adjudicationProvenance": "AGENT_SOURCE_BACKED_ADJUDICATION"
+    }
+  ],
+  "scopePolicy": "WHOLE_DOCUMENT_HEADING_SCOPE_V1",
+  "historicalLevelRead": false
+}

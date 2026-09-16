@@ -1,0 +1,611 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V3_3_COMPOSITE_PARENT_REBIND",
+  "documentId": "DOC-0243",
+  "relationCount": 20,
+  "affectedMergedNodes": [
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[74]#heading-span-0-14",
+        "toOccurrenceId": "DOC-0243:body[1]/p[72]#heading-span-0-6",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[72]#heading-span-0-6",
+        "DOC-0243:body[1]/p[74]#heading-span-0-14"
+      ],
+      "oldTitleSemanticNodeRef": "N0003",
+      "oldLabelSemanticNodeRef": "N0002",
+      "oldTitleParentRef": "N0002",
+      "oldLabelParentRef": "ROOT",
+      "mergedSemanticNodeRef": "N0008",
+      "newParentRef": "ROOT",
+      "parentRebound": false,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[98]#heading-span-0-11",
+        "toOccurrenceId": "DOC-0243:body[1]/p[96]#heading-span-0-9",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[96]#heading-span-0-9",
+        "DOC-0243:body[1]/p[98]#heading-span-0-11"
+      ],
+      "oldTitleSemanticNodeRef": "N0005",
+      "oldLabelSemanticNodeRef": "N0004",
+      "oldTitleParentRef": "N0004",
+      "oldLabelParentRef": "N0002",
+      "mergedSemanticNodeRef": "N0010",
+      "newParentRef": "N0008",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[752]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[750]#heading-span-0-9",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[750]#heading-span-0-9",
+        "DOC-0243:body[1]/p[752]#heading-span-0-13"
+      ],
+      "oldTitleSemanticNodeRef": "N0012",
+      "oldLabelSemanticNodeRef": "N0011",
+      "oldTitleParentRef": "N0011",
+      "oldLabelParentRef": "N0002",
+      "mergedSemanticNodeRef": "N0017",
+      "newParentRef": "N0008",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[1424]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[1422]#heading-span-0-9",
+        "DOC-0243:body[1]/p[1424]#heading-span-0-17"
+      ],
+      "oldTitleSemanticNodeRef": "N0019",
+      "oldLabelSemanticNodeRef": "N0018",
+      "oldTitleParentRef": "N0018",
+      "oldLabelParentRef": "N0002",
+      "mergedSemanticNodeRef": "N0024",
+      "newParentRef": "N0008",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[2093]#heading-span-0-18",
+        "toOccurrenceId": "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2091]#heading-span-0-9",
+        "DOC-0243:body[1]/p[2093]#heading-span-0-18"
+      ],
+      "oldTitleSemanticNodeRef": "N0026",
+      "oldLabelSemanticNodeRef": "N0025",
+      "oldTitleParentRef": "N0025",
+      "oldLabelParentRef": "N0002",
+      "mergedSemanticNodeRef": "N0031",
+      "newParentRef": "N0008",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[2866]#heading-span-0-16",
+        "toOccurrenceId": "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2864]#heading-span-0-7",
+        "DOC-0243:body[1]/p[2866]#heading-span-0-16"
+      ],
+      "oldTitleSemanticNodeRef": "N0033",
+      "oldLabelSemanticNodeRef": "N0032",
+      "oldTitleParentRef": "N0032",
+      "oldLabelParentRef": "ROOT",
+      "mergedSemanticNodeRef": "N0038",
+      "newParentRef": "ROOT",
+      "parentRebound": false,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[2891]#heading-span-0-11",
+        "toOccurrenceId": "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[2889]#heading-span-0-9",
+        "DOC-0243:body[1]/p[2891]#heading-span-0-11"
+      ],
+      "oldTitleSemanticNodeRef": "N0035",
+      "oldLabelSemanticNodeRef": "N0034",
+      "oldTitleParentRef": "N0034",
+      "oldLabelParentRef": "N0032",
+      "mergedSemanticNodeRef": "N0040",
+      "newParentRef": "N0038",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[3702]#heading-span-0-15",
+        "toOccurrenceId": "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[3700]#heading-span-0-9",
+        "DOC-0243:body[1]/p[3702]#heading-span-0-15"
+      ],
+      "oldTitleSemanticNodeRef": "N0042",
+      "oldLabelSemanticNodeRef": "N0041",
+      "oldTitleParentRef": "N0041",
+      "oldLabelParentRef": "N0032",
+      "mergedSemanticNodeRef": "N0047",
+      "newParentRef": "N0038",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[4527]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[4525]#heading-span-0-9",
+        "DOC-0243:body[1]/p[4527]#heading-span-0-17"
+      ],
+      "oldTitleSemanticNodeRef": "N0049",
+      "oldLabelSemanticNodeRef": "N0048",
+      "oldTitleParentRef": "N0048",
+      "oldLabelParentRef": "N0032",
+      "mergedSemanticNodeRef": "N0054",
+      "newParentRef": "N0038",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[5528]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[5526]#heading-span-0-9",
+        "DOC-0243:body[1]/p[5528]#heading-span-0-17"
+      ],
+      "oldTitleSemanticNodeRef": "N0056",
+      "oldLabelSemanticNodeRef": "N0055",
+      "oldTitleParentRef": "N0055",
+      "oldLabelParentRef": "N0032",
+      "mergedSemanticNodeRef": "N0061",
+      "newParentRef": "N0038",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[6277]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6275]#heading-span-0-8",
+        "DOC-0243:body[1]/p[6277]#heading-span-0-17"
+      ],
+      "oldTitleSemanticNodeRef": "N0063",
+      "oldLabelSemanticNodeRef": "N0062",
+      "oldTitleParentRef": "N0062",
+      "oldLabelParentRef": "ROOT",
+      "mergedSemanticNodeRef": "N0068",
+      "newParentRef": "ROOT",
+      "parentRebound": false,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[6302]#heading-span-0-17",
+        "toOccurrenceId": "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[6300]#heading-span-0-9",
+        "DOC-0243:body[1]/p[6302]#heading-span-0-17"
+      ],
+      "oldTitleSemanticNodeRef": "N0065",
+      "oldLabelSemanticNodeRef": "N0064",
+      "oldTitleParentRef": "N0064",
+      "oldLabelParentRef": "N0062",
+      "mergedSemanticNodeRef": "N0070",
+      "newParentRef": "N0068",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[7004]#heading-span-0-16",
+        "toOccurrenceId": "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7002]#heading-span-0-10",
+        "DOC-0243:body[1]/p[7004]#heading-span-0-16"
+      ],
+      "oldTitleSemanticNodeRef": "N0072",
+      "oldLabelSemanticNodeRef": "N0071",
+      "oldTitleParentRef": "N0071",
+      "oldLabelParentRef": "N0062",
+      "mergedSemanticNodeRef": "N0077",
+      "newParentRef": "N0068",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[7806]#heading-span-0-16",
+        "toOccurrenceId": "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[7804]#heading-span-0-10",
+        "DOC-0243:body[1]/p[7806]#heading-span-0-16"
+      ],
+      "oldTitleSemanticNodeRef": "N0079",
+      "oldLabelSemanticNodeRef": "N0078",
+      "oldTitleParentRef": "N0078",
+      "oldLabelParentRef": "N0062",
+      "mergedSemanticNodeRef": "N0084",
+      "newParentRef": "N0068",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[8548]#heading-span-0-12",
+        "toOccurrenceId": "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[8546]#heading-span-0-10",
+        "DOC-0243:body[1]/p[8548]#heading-span-0-12"
+      ],
+      "oldTitleSemanticNodeRef": "N0086",
+      "oldLabelSemanticNodeRef": "N0085",
+      "oldTitleParentRef": "N0085",
+      "oldLabelParentRef": "N0062",
+      "mergedSemanticNodeRef": "N0091",
+      "newParentRef": "N0068",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[9295]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9293]#heading-span-0-7",
+        "DOC-0243:body[1]/p[9295]#heading-span-0-13"
+      ],
+      "oldTitleSemanticNodeRef": "N0093",
+      "oldLabelSemanticNodeRef": "N0092",
+      "oldTitleParentRef": "N0092",
+      "oldLabelParentRef": "ROOT",
+      "mergedSemanticNodeRef": "N0098",
+      "newParentRef": "ROOT",
+      "parentRebound": false,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[9320]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[9318]#heading-span-0-10",
+        "DOC-0243:body[1]/p[9320]#heading-span-0-13"
+      ],
+      "oldTitleSemanticNodeRef": "N0095",
+      "oldLabelSemanticNodeRef": "N0094",
+      "oldTitleParentRef": "N0094",
+      "oldLabelParentRef": "N0092",
+      "mergedSemanticNodeRef": "N0100",
+      "newParentRef": "N0098",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[10125]#heading-span-0-14",
+        "toOccurrenceId": "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10123]#heading-span-0-10",
+        "DOC-0243:body[1]/p[10125]#heading-span-0-14"
+      ],
+      "oldTitleSemanticNodeRef": "N0102",
+      "oldLabelSemanticNodeRef": "N0101",
+      "oldTitleParentRef": "N0101",
+      "oldLabelParentRef": "N0092",
+      "mergedSemanticNodeRef": "N0107",
+      "newParentRef": "N0098",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[10862]#heading-span-0-13",
+        "toOccurrenceId": "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[10860]#heading-span-0-10",
+        "DOC-0243:body[1]/p[10862]#heading-span-0-13"
+      ],
+      "oldTitleSemanticNodeRef": "N0109",
+      "oldLabelSemanticNodeRef": "N0108",
+      "oldTitleParentRef": "N0108",
+      "oldLabelParentRef": "N0092",
+      "mergedSemanticNodeRef": "N0114",
+      "newParentRef": "N0098",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    },
+    {
+      "documentId": "DOC-0243",
+      "relation": {
+        "fromOccurrenceId": "DOC-0243:body[1]/p[11719]#heading-span-0-15",
+        "toOccurrenceId": "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+        "relation": "CONTINUATION_OF",
+        "evidence": [
+          "IMMEDIATE_STRUCTURAL_ADJACENCY",
+          "COMPOSITE_OUTLINE_LABEL_AND_TITLE",
+          "SAME_SOURCE_DOCUMENT_OUTLINE"
+        ]
+      },
+      "memberOccurrenceRefs": [
+        "DOC-0243:body[1]/p[11717]#heading-span-0-10",
+        "DOC-0243:body[1]/p[11719]#heading-span-0-15"
+      ],
+      "oldTitleSemanticNodeRef": "N0116",
+      "oldLabelSemanticNodeRef": "N0115",
+      "oldTitleParentRef": "N0115",
+      "oldLabelParentRef": "N0092",
+      "mergedSemanticNodeRef": "N0121",
+      "newParentRef": "N0098",
+      "parentRebound": true,
+      "parentLoss": false,
+      "evidence": [
+        "SOURCE_COMPOSITE_OUTLINE_RELATION",
+        "SOURCE_DOCUMENT_ORDER",
+        "REVALIDATED_PARENT_EDGE"
+      ]
+    }
+  ],
+  "compositeMergeParentLoss": 0,
+  "goldUsed": false,
+  "historicalLevelRead": false,
+  "providerCalls": 0
+}

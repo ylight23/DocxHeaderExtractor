@@ -1,0 +1,1447 @@
+{
+  "documentId": "DOC-0116",
+  "semanticNodeCount": 120,
+  "nodes": [
+    {
+      "semanticNodeRef": "N0001",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[1]#heading-span-0-29",
+      "canonicalText": "STANDARD PROCUREMENT DOCUMENT",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[1]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0002",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[4]#heading-span-0-21",
+      "canonicalText": "Request for Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[4]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0003",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[61]#heading-span-0-29",
+      "canonicalText": "Standard Procurement Document",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[61]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0004",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[63]#heading-span-0-7",
+      "canonicalText": "SUMMARY",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[63]#heading-span-0-7"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0005",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[69]#heading-span-0-45",
+      "canonicalText": "Section 1: Request for Proposals (RFP) Lette",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[69]#heading-span-0-45"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0006",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[73]#heading-span-0-53",
+      "canonicalText": "Section 2: Instructions to Consultants and Data Sheet",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[73]#heading-span-0-53"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0007",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[77]#heading-span-0-46",
+      "canonicalText": "Section 3: Technical Proposal – Standard Forms",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[77]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0008",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[81]#heading-span-0-29",
+      "canonicalText": "Section 4: Eligible Countries",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[81]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0009",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[85]#heading-span-0-31",
+      "canonicalText": "Section 5: Fraud and Corruption",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[85]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0010",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[89]#heading-span-0-36",
+      "canonicalText": "Section 6: Terms of Reference (TORs)",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[89]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0011",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[105]#heading-span-0-21",
+      "canonicalText": "Request for Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[105]#heading-span-0-21"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0012",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[106]#heading-span-0-43",
+      "canonicalText": "Framework Agreement (s) Consulting Services",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[106]#heading-span-0-43"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0013",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[109]#heading-span-0-19",
+      "canonicalText": "PRIMARY PROCUREMENT",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[109]#heading-span-0-19"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0014",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[126]#heading-span-0-39",
+      "canonicalText": "Section 1. Request for Proposal Letter4",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[126]#heading-span-0-39"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0015",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[127]#heading-span-0-54",
+      "canonicalText": "Section 2. Instructions to Consultants and Data Sheet7",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[127]#heading-span-0-54"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0016",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[128]#heading-span-0-48",
+      "canonicalText": "Section 3. Technical Proposal – Standard Forms3",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[128]#heading-span-0-48"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0017",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[129]#heading-span-0-31",
+      "canonicalText": "Section 4. Eligible Countries5",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[129]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0018",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[130]#heading-span-0-33",
+      "canonicalText": "Section 5. Fraud and Corruption5",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[130]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0019",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[131]#heading-span-0-31",
+      "canonicalText": "Section 6. Terms of Reference6",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[131]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0020",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+      "canonicalText": "PART I – SELECTION PROCEDURES AND REQUIREMENTS",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[142]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0021",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[145]#heading-span-0-38",
+      "canonicalText": "Section 1. Request for Proposal Letter",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[145]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0022",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[174]#heading-span-0-40",
+      "canonicalText": "Section 1 – Request for Proposals Letter",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[174]#heading-span-0-40"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0023",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[175]#heading-span-0-54",
+      "canonicalText": "Section 2 - Instructions to Consultants and Data Sheet",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[175]#heading-span-0-54"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0024",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[176]#heading-span-0-47",
+      "canonicalText": "Section 3 - Technical Proposal - Standard Form",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[176]#heading-span-0-47"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0025",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[177]#heading-span-0-30",
+      "canonicalText": "Section 4 – Eligible Countries",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[177]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0026",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[178]#heading-span-0-32",
+      "canonicalText": "Section 5 – Fraud and Corruption",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[178]#heading-span-0-32"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0027",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[179]#heading-span-0-30",
+      "canonicalText": "Section 6 - Terms of Reference",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[179]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0028",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[200]#heading-span-0-53",
+      "canonicalText": "Section 2. Instructions to Consultants and Data Sheet",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[200]#heading-span-0-53"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0029",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#heading-span-0-11",
+      "canonicalText": "Definitions",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0030",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-12",
+      "canonicalText": "Introduction",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0031",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-20",
+      "canonicalText": "Conflict of Interest",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0032",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#heading-span-0-28",
+      "canonicalText": "Unfair Competitive Advantage",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#heading-span-0-28"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0033",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[8]/tc[1]/p[1]#heading-span-0-20",
+      "canonicalText": "Fraud and Corruption",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[8]/tc[1]/p[1]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0034",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[9]/tc[1]/p[1]#heading-span-0-11",
+      "canonicalText": "Eligibility",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[9]/tc[1]/p[1]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0035",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#heading-span-0-22",
+      "canonicalText": "General Considerations",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#heading-span-0-22"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0036",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[17]/tc[1]/p[1]#heading-span-0-31",
+      "canonicalText": "Cost of Preparation of Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[17]/tc[1]/p[1]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0037",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[18]/tc[1]/p[1]#heading-span-0-8",
+      "canonicalText": "Language",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[18]/tc[1]/p[1]#heading-span-0-8"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0038",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[19]/tc[1]/p[1]#heading-span-0-33",
+      "canonicalText": "Documents Comprising the Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[19]/tc[1]/p[1]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0039",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Only One Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0040",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Proposal Validity",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0041",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[25]/tc[1]/p[1]#heading-span-0-34",
+      "canonicalText": "Clarification and Amendment of RFP",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[25]/tc[1]/p[1]#heading-span-0-34"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0042",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#heading-span-0-48",
+      "canonicalText": "Preparation of Proposals Specific Considerations",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#heading-span-0-48"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0043",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#heading-span-0-37",
+      "canonicalText": "Technical Proposal Format and Content",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#heading-span-0-37"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0044",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#heading-span-0-18",
+      "canonicalText": "Financial Proposal",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#heading-span-0-18"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0045",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#heading-span-0-45",
+      "canonicalText": "Submission, Sealing, and Marking of Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#heading-span-0-45"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0046",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[32]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Confidentiality",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[32]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0047",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#heading-span-0-30",
+      "canonicalText": "Opening of Technical Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0048",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#heading-span-0-20",
+      "canonicalText": "Proposals Evaluation",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#heading-span-0-20"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0049",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#heading-span-0-33",
+      "canonicalText": "Evaluation of Technical Proposals",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0050",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#heading-span-0-12",
+      "canonicalText": "Negotiations",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#heading-span-0-12"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0051",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[41]/tc[1]/p[1]#heading-span-0-26",
+      "canonicalText": "Conclusion of Negotiations",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[41]/tc[1]/p[1]#heading-span-0-26"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0052",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[42]/tc[1]/p[1]#heading-span-0-17",
+      "canonicalText": "Standstill Period",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[42]/tc[1]/p[1]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0053",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#heading-span-0-59",
+      "canonicalText": "Notification of Intention to Conclude a Framework Agreement",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#heading-span-0-59"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0054",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#heading-span-0-28",
+      "canonicalText": "Framework Agreement Criteria",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#heading-span-0-28"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0055",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#heading-span-0-24",
+      "canonicalText": "No Obligation to Procure",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#heading-span-0-24"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0056",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#heading-span-0-15",
+      "canonicalText": "Non-exclusivity",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#heading-span-0-15"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0057",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[47]/tc[1]/p[1]#heading-span-0-46",
+      "canonicalText": "Notification to conclude a Framework Agreement",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[47]/tc[1]/p[1]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0058",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[48]/tc[1]/p[1]#heading-span-0-34",
+      "canonicalText": "Debriefing by the Procuring Agency",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[48]/tc[1]/p[1]#heading-span-0-34"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0059",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[49]/tc[1]/p[1]#heading-span-0-31",
+      "canonicalText": "Signing the Framework Agreement",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[49]/tc[1]/p[1]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0060",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#heading-span-0-59",
+      "canonicalText": "Publication of the Conclusion of Framework Agreement Notice",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#heading-span-0-59"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0061",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#heading-span-0-29",
+      "canonicalText": "Procurement Related Complaint",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0062",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[1]/tr[52]/tc[1]/p[1]#heading-span-0-50",
+      "canonicalText": "Method and criteria for award of Call-off Contract",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[1]/tr[52]/tc[1]/p[1]#heading-span-0-50"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0063",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[250]#heading-span-0-38",
+      "canonicalText": "Section 2. Instructions to Consultants",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[250]#heading-span-0-38"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0064",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[256]#heading-span-0-46",
+      "canonicalText": "Section 3. Technical Proposal – Standard Form",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[256]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0065",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#heading-span-0-4",
+      "canonicalText": "FORM",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#heading-span-0-4"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0066",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[290]#heading-span-0-11",
+      "canonicalText": "Form TECH-1",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[290]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0067",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[345]#heading-span-0-11",
+      "canonicalText": "Form TECH-2",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[345]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0068",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[350]#heading-span-0-601",
+      "canonicalText": "Form TECH-2: a brief description of the Consultant’s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant’s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant’s role/involvement.",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[350]#heading-span-0-601"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0069",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[367]#heading-span-0-11",
+      "canonicalText": "Form TECH-3",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[367]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0070",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[371]#heading-span-0-135",
+      "canonicalText": "Form TECH-3: comments and suggestions on the Terms of Reference that could improve the quality/effectiveness of the proposed services..",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[371]#heading-span-0-135"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0071",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[381]#heading-span-0-11",
+      "canonicalText": "Form TECH-4",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[381]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0072",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[386]#heading-span-0-120",
+      "canonicalText": "Form TECH-4: a description of the broad approach and methodology for performing assignments under the proposed Framework",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[386]#heading-span-0-120"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0073",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[401]#heading-span-0-11",
+      "canonicalText": "Form TECH-5",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[401]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0074",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[412]#heading-span-0-11",
+      "canonicalText": "Form TECH-6",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[412]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0075",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[426]#heading-span-0-11",
+      "canonicalText": "Form TECH-6",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[426]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0076",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[8]/tr[1]/tc[4]/p[1]#heading-span-0-58",
+      "canonicalText": "Summary of activities performed relevant to the Assignment",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[8]/tr[1]/tc[4]/p[1]#heading-span-0-58"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0077",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[468]#heading-span-0-11",
+      "canonicalText": "Form TECH-7",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[468]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0078",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[534]#heading-span-0-11",
+      "canonicalText": "Form TECH-8",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[534]#heading-span-0-11"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0079",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[542]#heading-span-0-62",
+      "canonicalText": "Request for Proposal reference No.: [insert identification no]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[542]#heading-span-0-62"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0080",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[586]#heading-span-0-29",
+      "canonicalText": "Section 4. Eligible Countrie",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[586]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0081",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[596]#heading-span-0-31",
+      "canonicalText": "Section 5. Fraud and Corruptio",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[596]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0082",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[619]#heading-span-0-29",
+      "canonicalText": "Section 6. Terms of Referenc",
+      "headingKind": "SECTION_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[619]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0083",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[646]#heading-span-0-43",
+      "canonicalText": "format, frequency, and contents of reports;",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[646]#heading-span-0-43"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0084",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[667]#heading-span-0-29",
+      "canonicalText": "PART II – FRAMEWORK AGREEMENT",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[667]#heading-span-0-29"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0085",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[671]#heading-span-0-62",
+      "canonicalText": "Notification of Intention to Conclude a Framework Agreement(s)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[671]#heading-span-0-62"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0086",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[707]#heading-span-0-50",
+      "canonicalText": "Notification to Conclude a Framework Agreement (s)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[707]#heading-span-0-50"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0087",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[745]#heading-span-0-57",
+      "canonicalText": "Appendix to the Framework Agreement: Fraud and Corruption",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[745]#heading-span-0-57"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0088",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[746]#heading-span-0-30",
+      "canonicalText": "Schedule 1: Terms of Reference",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[746]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0089",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[747]#heading-span-0-23",
+      "canonicalText": "Schedule 2: Key Experts",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[747]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0090",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[748]#heading-span-0-33",
+      "canonicalText": "Schedule 3: Secondary Procurement",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[748]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0091",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[749]#heading-span-0-36",
+      "canonicalText": "Schedule 4: Advance Payment Security",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[749]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0092",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[750]#heading-span-0-55",
+      "canonicalText": "Schedule 5: Code of Conduct for Experts [as applicable]",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[750]#heading-span-0-55"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0093",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[751]#heading-span-0-121",
+      "canonicalText": "Schedule 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[751]#heading-span-0-121"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0094",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[752]#heading-span-0-84",
+      "canonicalText": "Schedule 7: List of participating Clients [use for Multi-User FAs, otherwise delete]",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[752]#heading-span-0-84"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0095",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[2]#heading-span-0-86",
+      "canonicalText": "in the judgement of the Client, the Consultant has engaged in Fraud and Corruption, or",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[2]#heading-span-0-86"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0096",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[3]#heading-span-0-97",
+      "canonicalText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[3]#heading-span-0-97"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0097",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[5]#heading-span-0-58",
+      "canonicalText": "the Consultant becomes bankrupt or otherwise insolvent, or",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[5]#heading-span-0-58"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0098",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[780]#heading-span-0-35",
+      "canonicalText": "Appendix to the Framework Agreement",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[780]#heading-span-0-35"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0099",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[804]#heading-span-0-30",
+      "canonicalText": "SCHEDULE 1: Terms of Reference",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[804]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0100",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[811]#heading-span-0-24",
+      "canonicalText": "Schedule 2 - Key Experts",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[811]#heading-span-0-24"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0101",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[816]#heading-span-0-33",
+      "canonicalText": "SCHEDULE 3: Secondary Procurement",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[816]#heading-span-0-33"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0102",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[835]#heading-span-0-17",
+      "canonicalText": "Call-off contract",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[835]#heading-span-0-17"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0103",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[837]#heading-span-0-44",
+      "canonicalText": "Communicating the award of Call-off Contract",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[837]#heading-span-0-44"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0104",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[844]#heading-span-0-42",
+      "canonicalText": "Complaint about award of Call-off Contract",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[844]#heading-span-0-42"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0105",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[850]#heading-span-0-31",
+      "canonicalText": "Request for Proposals: Call-off",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[850]#heading-span-0-31"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0106",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[860]#heading-span-0-30",
+      "canonicalText": "Annex 1: Client’s Requirements",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[860]#heading-span-0-30"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0107",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[861]#heading-span-0-23",
+      "canonicalText": "Annex 2: Proposal Forms",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[861]#heading-span-0-23"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0108",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[862]#heading-span-0-124",
+      "canonicalText": "Annex 3: Call-off Contract for provision of Services [this may be the Call-off Contract Form or another acceptable template]",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[862]#heading-span-0-124"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0109",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[865]#heading-span-0-46",
+      "canonicalText": "Request for Proposal: Call-off (RFP: Call-off)",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[865]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0110",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[32]/tr[1]/tc[4]/p[1]#heading-span-0-58",
+      "canonicalText": "Summary of activities performed relevant to the Assignment",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[32]/tr[1]/tc[4]/p[1]#heading-span-0-58"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0111",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[1060]#heading-span-0-16",
+      "canonicalText": "Summary of Costs",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[1060]#heading-span-0-16"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0112",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[34]/tr[1]/tc[1]/p[1]#heading-span-0-4",
+      "canonicalText": "Item",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[34]/tr[1]/tc[1]/p[1]#heading-span-0-4"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0113",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[1070]#heading-span-0-68",
+      "canonicalText": "Appendix A. Financial Negotiations - Breakdown of Remuneration Rates",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[1070]#heading-span-0-68"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0114",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[39]/tr[2]/tc[1]/p[1]#heading-span-0-42",
+      "canonicalText": "[Insert complete legal name of the Client]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[39]/tr[2]/tc[1]/p[1]#heading-span-0-42"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0115",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/tbl[39]/tr[2]/tc[3]/p[1]#heading-span-0-46",
+      "canonicalText": "[Insert complete legal name of the Consultant]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/tbl[39]/tr[2]/tc[3]/p[1]#heading-span-0-46"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0116",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[1183]#heading-span-0-44",
+      "canonicalText": "Schedule of Payments [Modify as appropriate]",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[1183]#heading-span-0-44"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0117",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[1256]#heading-span-0-36",
+      "canonicalText": "SCHEDULE 4: Advance Payment Security",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[1256]#heading-span-0-36"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0118",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[1282]#heading-span-0-39",
+      "canonicalText": "SCHEDULE 5: Code of Conduct for Experts",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[1282]#heading-span-0-39"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0119",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[1286]#heading-span-0-121",
+      "canonicalText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[1286]#heading-span-0-121"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    },
+    {
+      "semanticNodeRef": "N0120",
+      "canonicalOccurrenceRef": "DOC-0116:body[1]/p[1293]#heading-span-0-43",
+      "canonicalText": "SCHEDULE 7: List of Clients (if applicable)",
+      "headingKind": "MAJOR_OUTLINE_HEADING",
+      "memberOccurrenceRefs": [
+        "DOC-0116:body[1]/p[1293]#heading-span-0-43"
+      ],
+      "identityEvidence": [
+        "SINGLETON_PRIMARY"
+      ]
+    }
+  ],
+  "identityAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION"
+}

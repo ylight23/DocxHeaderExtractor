@@ -1,0 +1,48 @@
+{
+  "artifactKind": "A99_CANONICAL_BATCH_V3_3_FALSE_HEADING_REGRESSION",
+  "cases": [
+    {
+      "documentId": "DOC-0122",
+      "sourceId": "body[1]/tbl[1]/tr[3]/tc[2]/p[7]",
+      "expectedAbsent": true,
+      "expectedText": "Sexual Exploitation is defined as ...",
+      "observed": [],
+      "present": false,
+      "pass": true,
+      "reason": "Known prose false-heading regression must not be accepted from style alone."
+    },
+    {
+      "documentId": "DOC-0122",
+      "sourceId": "body[1]/tbl[1]/tr[3]/tc[2]/p[9]",
+      "expectedAbsent": true,
+      "expectedText": "Sexual Abuse is defined as ...",
+      "observed": [],
+      "present": false,
+      "pass": true,
+      "reason": "Known prose false-heading regression must not be accepted from style alone."
+    },
+    {
+      "documentId": "DOC-0219",
+      "sourceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[15]",
+      "expectedAbsent": true,
+      "expectedText": "sign the Contract in accordance with ITP 53; or",
+      "observed": [],
+      "present": false,
+      "pass": true,
+      "reason": "Known prose false-heading regression must not be accepted from style alone."
+    },
+    {
+      "documentId": "DOC-0216",
+      "sourceId": "body[1]/tbl[3]/tr[29]/tc[2]/p[4]",
+      "expectedAbsent": true,
+      "expectedText": "sign the Contract in accordance with ITP 53; or",
+      "observed": [],
+      "present": false,
+      "pass": true,
+      "reason": "Known prose false-heading regression must not be accepted from style alone."
+    }
+  ],
+  "knownFalseHeadingRegressionFailures": 0,
+  "goldUsed": false,
+  "providerCalls": 0
+}
