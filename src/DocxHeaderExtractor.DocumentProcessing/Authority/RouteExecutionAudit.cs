@@ -87,6 +87,9 @@ public sealed record RouteExecutionAudit(
     /// </summary>
     [JsonPropertyName("spanLane")]
     public RouteLaneExecutionAudit? SpanLane { get; init; }
+
+    [JsonPropertyName("batchTelemetry")]
+    public PdfPipelineBatchTelemetry? BatchTelemetry { get; init; }
 }
 
 public sealed record PdfSelectedSourceIdentity(
@@ -155,6 +158,24 @@ public sealed record RouteLaneExecutionAudit(
     [property: JsonPropertyName("timedOut")] int TimedOut,
     [property: JsonPropertyName("notStarted")] int NotStarted,
     [property: JsonPropertyName("failureClass")] string? FailureClass = null);
+
+public sealed record PdfPipelineBatchTelemetry(
+    [property: JsonPropertyName("sourceParagraphCount")] int SourceParagraphCount,
+    [property: JsonPropertyName("roleInputBlockCount")] int RoleInputBlockCount,
+    [property: JsonPropertyName("roleBatchCount")] int RoleBatchCount,
+    [property: JsonPropertyName("roleProviderCalls")] int RoleProviderCalls,
+    [property: JsonPropertyName("roleInputTokensTotal")] int RoleInputTokensTotal,
+    [property: JsonPropertyName("roleLargestBatchBlocks")] int RoleLargestBatchBlocks,
+    [property: JsonPropertyName("roleLargestBatchTokens")] int RoleLargestBatchTokens,
+    [property: JsonPropertyName("headingLikeAfterRole")] int HeadingLikeAfterRole,
+    [property: JsonPropertyName("spanBatchCount")] int SpanBatchCount,
+    [property: JsonPropertyName("spanProviderCalls")] int SpanProviderCalls,
+    [property: JsonPropertyName("spanInputTokensTotal")] int SpanInputTokensTotal,
+    [property: JsonPropertyName("hierarchyInputCount")] int HierarchyInputCount,
+    [property: JsonPropertyName("hierarchyProviderCalls")] int HierarchyProviderCalls,
+    [property: JsonPropertyName("totalProviderCalls")] int TotalProviderCalls,
+    [property: JsonPropertyName("totalResponses")] int TotalResponses,
+    [property: JsonPropertyName("elapsedMs")] long ElapsedMs);
 
 public sealed record RouteBlockAudit(
     [property: JsonPropertyName("id")] string Id,

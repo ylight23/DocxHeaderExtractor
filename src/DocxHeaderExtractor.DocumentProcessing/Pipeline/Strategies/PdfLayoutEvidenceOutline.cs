@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
+using System.Diagnostics;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.DocumentProcessing.Features;
@@ -610,6 +611,8 @@ public static class PdfLayoutEvidenceOutline
         if (maximumAnalystBlocks < 0)
             return PdfTextbookOutlineResult.NotApplicable("invalid-analyst-block-budget");
 
+        var routeStarted = Stopwatch.GetTimestamp();
+
         var context = TryBuildBroadAuditContext(
             originalInputPath, includeAllVisualStyles, includeSupplementCandidates, out var reason);
         if (context is null) return PdfTextbookOutlineResult.NotApplicable(reason);
@@ -828,6 +831,25 @@ public static class PdfLayoutEvidenceOutline
                 spanLaneStatus == "not_run" ? 0 : spanAnalysis.Decisions.Count(d => d.HeadingSpan is null),
                 spanLaneStatus == "not_run" ? selected.Count : 0,
                 spanLaneStatus == "partial_timeout" ? "timeout" : null),
+            BatchTelemetry = new PdfPipelineBatchTelemetry(
+                context.Lines.Count,
+                selected.Count,
+                roleAnalysis.BatchTelemetry?.BatchCount ?? 0,
+                roleAnalysis.BatchTelemetry?.ProviderCalls ?? 0,
+                roleAnalysis.BatchTelemetry?.InputTokensTotal ?? 0,
+                roleAnalysis.BatchTelemetry?.LargestBatchBlocks ?? 0,
+                roleAnalysis.BatchTelemetry?.LargestBatchTokens ?? 0,
+                roleAnalysis.Decisions.Count(decision => decision.Role == PdfBlockRole.HeadingTopic),
+                spanAnalysis.BatchTelemetry?.BatchCount ?? 0,
+                spanAnalysis.BatchTelemetry?.ProviderCalls ?? 0,
+                spanAnalysis.BatchTelemetry?.InputTokensTotal ?? 0,
+                validated.Count,
+                semanticHierarchy.ModelRequests.Count(request => request.ProviderCallAttempted),
+                roleAnalysis.ModelRequests.Count(request => request.ProviderCallAttempted) +
+                    spanAnalysis.ModelRequests.Count(request => request.ProviderCallAttempted) +
+                    semanticHierarchy.ModelRequests.Count(request => request.ProviderCallAttempted),
+                blockAnalysis.RawResponses.Count,
+                (long)Stopwatch.GetElapsedTime(routeStarted).TotalMilliseconds),
             VisualLane = new RouteLaneExecutionAudit(
                 visualRecovery.Traces.Any(trace => trace.Status == "visual-region-unavailable") ? "partial_timeout" : "complete",
                 visualRecovery.Traces.Count(trace => !trace.Status.EndsWith("excluded", StringComparison.Ordinal)),

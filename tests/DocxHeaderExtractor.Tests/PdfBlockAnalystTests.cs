@@ -219,6 +219,23 @@ public sealed class PdfBlockAnalystTests
     }
 
     [Fact]
+    public void TokenAwareBatchesPreserveOrderedUniverseWithoutDuplicatesOrDrops()
+    {
+        var blocks = Enumerable.Range(1, 40)
+            .Select(index => Block($"b{index:D2}", $"Heading {index:D2} with a bounded source payload"))
+            .ToArray();
+
+        var batches = PdfBlockAnalyst.BuildTokenAwareBatches(
+            blocks, null, "system", PdfBlockAnalyst.BuildUserPrompt, targetPromptTokens: 120, maxBlocks: 5);
+
+        var flattened = batches.SelectMany(batch => batch).Select(block => block.Id).ToArray();
+        Assert.Equal(blocks.Select(block => block.Id), flattened);
+        Assert.Equal(flattened.Length, flattened.Distinct(StringComparer.Ordinal).Count());
+        Assert.All(batches, batch => Assert.InRange(batch.Count, 1, 5));
+        Assert.True(batches.Count > 1);
+    }
+
+    [Fact]
     public async Task BatchDeadlineMaterializesEveryAffectedBlockAsUncertain()
     {
         var blocks = Enumerable.Range(1, 13).Select(index => Block($"b{index}", $"Heading {index}")).ToArray();
@@ -248,7 +265,7 @@ public sealed class PdfBlockAnalystTests
             await using var checkpoint = new PdfStageCheckpoint(path, resume: false, "test.pdf");
             var analysis = await PdfBlockAnalyst.ResolveHeadingSpansAsync(
                 new FirstSpanBatchFailsClassifier(), blocks, decisions,
-                new Dictionary<string, PdfCandidateContext>(), checkpoint: checkpoint);
+                new Dictionary<string, PdfCandidateContext>(), checkpoint: checkpoint, maxBatchSize: 4);
 
             Assert.All(analysis.Decisions.Where(d => d.Id is "b1" or "b2" or "b3" or "b4"),
                 decision => Assert.Null(decision.HeadingSpan));
@@ -282,7 +299,7 @@ public sealed class PdfBlockAnalystTests
         var decisions = blocks.Select(block => new PdfBlockDecision(block.Id, PdfBlockRole.HeadingTopic, 0.9, "test")).ToArray();
 
         var analysis = await PdfBlockAnalyst.ResolveHeadingSpansAsync(
-            new SecondSpanBatchFailsClassifier(), blocks, decisions, new Dictionary<string, PdfCandidateContext>());
+            new SecondSpanBatchFailsClassifier(), blocks, decisions, new Dictionary<string, PdfCandidateContext>(), maxBatchSize: 4);
 
         Assert.All(analysis.Decisions.Where(decision => decision.Id is "b1" or "b2" or "b3" or "b4"),
             decision => Assert.NotNull(decision.HeadingSpan));

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -45,11 +46,23 @@ internal sealed record PdfBlockAnalysis(
     public IReadOnlyList<string> InputContracts { get; init; } = [];
     public IReadOnlyList<RouteModelRequestAudit> ModelRequests { get; init; } = [];
     public string? ProviderFailure { get; init; }
+    public PdfBatchTelemetry? BatchTelemetry { get; init; }
     public IReadOnlySet<string> HeadingBlockIds => Decisions
         .Where(d => d.Role == PdfBlockRole.HeadingTopic && d.Confidence >= 0.65)
         .Select(d => d.Id)
         .ToHashSet(StringComparer.Ordinal);
 }
+
+internal sealed record PdfBatchTelemetry(
+    string Stage,
+    int InputBlockCount,
+    int BatchCount,
+    int ProviderCalls,
+    int InputTokensTotal,
+    int LargestBatchBlocks,
+    int LargestBatchTokens,
+    int Responses,
+    long ElapsedMs);
 
 /// <summary>Independent execution budget for the semantic lane; visual has its own lifecycle.</summary>
 public sealed record SemanticLaneOptions(
@@ -108,6 +121,10 @@ internal static class PdfBlockAnalyst
     internal static string RoleSystemPromptText => SystemPrompt;
     internal static string PointerSpanSystemPromptText => PointerSpanSystemPrompt;
 
+    private const int TargetPromptTokens = 5_000;
+    private const int RoleSafetyCap = 32;
+    private const int SpanSafetyCap = 16;
+
     public static async Task<PdfBlockAnalysis> AnalyzeAsync(
         IHeaderClassifier classifier,
         IReadOnlyList<PdfSemanticBlock> blocks,
@@ -115,7 +132,8 @@ internal static class PdfBlockAnalyst
         CancellationToken ct = default,
         SemanticLaneOptions? laneOptions = null,
         PdfStageCheckpoint? checkpoint = null,
-        string requestStage = "semantic-role")
+        string requestStage = "semantic-role",
+        bool allowBatching = true)
     {
         if (blocks.Count == 0) return new PdfBlockAnalysis(blocks, [], []);
 
@@ -130,15 +148,18 @@ internal static class PdfBlockAnalyst
             }).ToArray(), []);
         }
 
-        if (blocks.Count > 12)
+        if (allowBatching && blocks.Count > 12)
         {
-            var configuredBatchSize = (laneOptions?.MaxBatchSize ?? 0) > 0
-                ? laneOptions!.MaxBatchSize
-                : contexts is null ? 12 : 8;
-            var batches = blocks.Chunk(Math.Max(1, configuredBatchSize)).ToArray();
-            var partials = new PdfBlockAnalysis[batches.Length];
+            var configuredCap = (laneOptions?.MaxBatchSize ?? 0) > 0
+                ? Math.Min(RoleSafetyCap, laneOptions!.MaxBatchSize)
+                : RoleSafetyCap;
+            var batches = BuildTokenAwareBatches(blocks, contexts, SystemPrompt, BuildUserPrompt,
+                TargetPromptTokens, configuredCap);
+            var batchPrompts = batches.Select(batch => BuildUserPrompt(batch, contexts)).ToArray();
+            var started = Stopwatch.GetTimestamp();
+            var partials = new PdfBlockAnalysis[batches.Count];
             var maximumConcurrency = Math.Max(1, (laneOptions ?? SemanticLaneOptions.Default).MaxConcurrency);
-            await Parallel.ForEachAsync(Enumerable.Range(0, batches.Length), new ParallelOptions
+            await Parallel.ForEachAsync(Enumerable.Range(0, batches.Count), new ParallelOptions
             {
                 MaxDegreeOfParallelism = maximumConcurrency,
                 CancellationToken = ct,
@@ -163,7 +184,7 @@ internal static class PdfBlockAnalyst
                     try
                     {
                     partial = await AnalyzeAsync(classifier, batch, batchContexts, batchDeadline.Token,
-                        laneOptions, checkpoint, requestStage);
+                        laneOptions, checkpoint, requestStage, allowBatching: false);
                     }
                     catch (OperationCanceledException) when (!ct.IsCancellationRequested)
                     {
@@ -177,14 +198,20 @@ internal static class PdfBlockAnalyst
             });
             return new PdfBlockAnalysis(blocks, partials.SelectMany(partial => partial.Decisions).ToArray(), partials.SelectMany(partial => partial.RawResponses).ToArray())
             {
-                InputContracts = batches
-                    .Select(batch => BuildUserPrompt(batch, contexts is null ? null : batch
-                        .Where(block => contexts.ContainsKey(block.Id))
-                        .ToDictionary(block => block.Id, block => contexts[block.Id], StringComparer.Ordinal)))
-                        .ToArray(),
+                InputContracts = batchPrompts,
                 ModelRequests = partials.SelectMany(partial => partial.ModelRequests).ToArray(),
                 ProviderFailure = partials.Select(partial => partial.ProviderFailure)
                     .FirstOrDefault(failure => failure is not null),
+                BatchTelemetry = new PdfBatchTelemetry(
+                    requestStage,
+                    blocks.Count,
+                    batches.Count,
+                    partials.Sum(partial => partial.ModelRequests.Count(request => request.ProviderCallAttempted)),
+                    batchPrompts.Sum(prompt => EstimatePromptTokens(SystemPrompt + "\n" + prompt)),
+                    batches.Max(batch => batch.Count),
+                    batchPrompts.Max(prompt => EstimatePromptTokens(SystemPrompt + "\n" + prompt)),
+                    partials.Sum(partial => partial.RawResponses.Count),
+                    (long)Stopwatch.GetElapsedTime(started).TotalMilliseconds),
             };
         }
 
@@ -263,6 +290,16 @@ internal static class PdfBlockAnalyst
         {
             InputContracts = inputContracts,
             ModelRequests = modelRequests,
+            BatchTelemetry = new PdfBatchTelemetry(
+                requestStage,
+                blocks.Count,
+                inputContracts.Count,
+                modelRequests.Count(request => request.ProviderCallAttempted),
+                inputContracts.Sum(prompt => EstimatePromptTokens(SystemPrompt + "\n" + prompt)),
+                blocks.Count,
+                inputContracts.Count == 0 ? 0 : inputContracts.Max(prompt => EstimatePromptTokens(SystemPrompt + "\n" + prompt)),
+                rawResponses.Count,
+                0),
         };
     }
 
@@ -277,7 +314,8 @@ internal static class PdfBlockAnalyst
         IReadOnlyList<PdfBlockDecision> roleDecisions,
         IReadOnlyDictionary<string, PdfCandidateContext> contexts,
         CancellationToken ct = default,
-        PdfStageCheckpoint? checkpoint = null)
+        PdfStageCheckpoint? checkpoint = null,
+        int maxBatchSize = 0)
     {
         var byId = roleDecisions.ToDictionary(d => d.Id, StringComparer.Ordinal);
         var headingBlocks = blocks.Where(block =>
@@ -288,7 +326,11 @@ internal static class PdfBlockAnalyst
         var inputContracts = new List<string>();
         var modelRequests = new List<RouteModelRequestAudit>();
         string? providerFailure = null;
-        foreach (var batch in headingBlocks.Chunk(4))
+        var batches = BuildTokenAwareBatches(headingBlocks, contexts, PointerSpanSystemPrompt,
+            BuildPointerSpanPrompt, TargetPromptTokens,
+            maxBatchSize > 0 ? Math.Min(SpanSafetyCap, maxBatchSize) : SpanSafetyCap);
+        var started = Stopwatch.GetTimestamp();
+        foreach (var batch in batches)
         {
             string raw;
             var requestId = RequestId("heading-span", batch, modelRequests.Count + 1);
@@ -348,8 +390,50 @@ internal static class PdfBlockAnalyst
             InputContracts = inputContracts,
             ModelRequests = modelRequests,
             ProviderFailure = providerFailure,
+            BatchTelemetry = new PdfBatchTelemetry(
+                "heading-span",
+                headingBlocks.Length,
+                batches.Count,
+                modelRequests.Count(request => request.ProviderCallAttempted),
+                inputContracts.Sum(prompt => EstimatePromptTokens(PointerSpanSystemPrompt + "\n" + prompt)),
+                batches.Count == 0 ? 0 : batches.Max(batch => batch.Count),
+                inputContracts.Count == 0 ? 0 : inputContracts.Max(prompt => EstimatePromptTokens(PointerSpanSystemPrompt + "\n" + prompt)),
+                rawResponses.Count,
+                (long)Stopwatch.GetElapsedTime(started).TotalMilliseconds),
         };
     }
+
+    internal static IReadOnlyList<IReadOnlyList<PdfSemanticBlock>> BuildTokenAwareBatches(
+        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyDictionary<string, PdfCandidateContext>? contexts,
+        string systemPrompt,
+        Func<IReadOnlyList<PdfSemanticBlock>, IReadOnlyDictionary<string, PdfCandidateContext>?, string> promptBuilder,
+        int targetPromptTokens,
+        int maxBlocks)
+    {
+        if (blocks.Count == 0) return [];
+        var result = new List<IReadOnlyList<PdfSemanticBlock>>();
+        var current = new List<PdfSemanticBlock>();
+        foreach (var block in blocks)
+        {
+            var candidate = current.Append(block).ToArray();
+            var candidatePrompt = promptBuilder(candidate, contexts);
+            var candidateTokens = EstimatePromptTokens(systemPrompt + "\n" + candidatePrompt);
+            if (current.Count > 0 && (current.Count >= maxBlocks || candidateTokens > targetPromptTokens))
+            {
+                result.Add(current.ToArray());
+                current = [block];
+            }
+            else
+            {
+                current.Add(block);
+            }
+        }
+        if (current.Count > 0) result.Add(current.ToArray());
+        return result;
+    }
+
+    internal static int EstimatePromptTokens(string value) => Math.Max(1, (int)Math.Ceiling(value.Length / 4d));
 
     /// <summary>Source-line identity for a block, so a checkpoint row can be matched across runs.</summary>
     private static string? LineIdOf(PdfSemanticBlock block) =>
@@ -445,7 +529,7 @@ internal static class PdfBlockAnalyst
 
     internal static string BuildPointerSpanPrompt(
         IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyDictionary<string, PdfCandidateContext> contexts)
+        IReadOnlyDictionary<string, PdfCandidateContext>? contexts)
     {
         var payload = blocks.Select(block => new
         {
@@ -454,7 +538,7 @@ internal static class PdfBlockAnalyst
             source_length = block.Text.Length,
             allowed_start_offsets = PdfSpanBoundaryMap.For(block.Text),
             allowed_end_offsets = PdfSpanBoundaryMap.For(block.Text),
-            context = contexts.TryGetValue(block.Id, out var context)
+            context = contexts is not null && contexts.TryGetValue(block.Id, out var context)
                 ? new
                 {
                     scope = context.Source.StructuralScope,
