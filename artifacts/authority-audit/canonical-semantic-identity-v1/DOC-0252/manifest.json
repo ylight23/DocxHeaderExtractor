@@ -1,0 +1,65 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_MANIFEST",
+  "schemaVersion": "a99-canonical-semantic-identity-v1-doc0252",
+  "documentId": "DOC-0252",
+  "status": "READY_FOR_USER_APPROVAL_CANONICAL_IDENTITY",
+  "authoritativeOccurrenceCheckpoint": "4ce5cca",
+  "occurrenceAuthoritySha256": "cc43a09038c70e4f09e7d35810bce089d2fc1fc316467c178f4083bebfd3c3f7",
+  "inputOccurrenceCount": 40,
+  "semanticNodeCount": 39,
+  "primaryCount": 39,
+  "repeatCount": 0,
+  "continuationCount": 1,
+  "multiOccurrenceNodeCount": 1,
+  "ambiguityCount": 0,
+  "artifactHashes": [
+    {
+      "name": "occurrence-input-manifest.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/occurrence-input-manifest.json",
+      "sha256": "54258e3f7a2ce7938c8995e0785b895abdba9f636e163d02e57fe3cf76340c0d"
+    },
+    {
+      "name": "occurrence-assignments.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/occurrence-assignments.json",
+      "sha256": "d83f7250e4e589d4503c8a23517192ff51bb9efa75b2a4af8ec047285f773b4b"
+    },
+    {
+      "name": "semantic-nodes.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/semantic-nodes.json",
+      "sha256": "2cb6bc490b69e7d36002fb701ef49f57cec1fdb45b0e77952f2eb489daf7a590"
+    },
+    {
+      "name": "identity-decisions.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/identity-decisions.json",
+      "sha256": "0d6077879bbf012cdbf76e90985af4e7b6f42b40f2e2a5e6b21c01edc615ee97"
+    },
+    {
+      "name": "ambiguities.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/ambiguities.json",
+      "sha256": "e93c1f21ecf0284ff6d91df0e65b06bb8f5d9195869aef54dcdadb5a9591da79"
+    },
+    {
+      "name": "validation.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/validation.json",
+      "sha256": "973bc4bdf03c430cf4dd51681b3d3fbd39ac5e67c2856bb22d967aee2f0df275"
+    },
+    {
+      "name": "post-freeze-diagnostics.json",
+      "path": "artifacts/authority-audit/canonical-semantic-identity-v1/DOC-0252/post-freeze-diagnostics.json",
+      "sha256": "12ac50df3f37fa8e685659898a3262821e826fd6afd0c3698641da03885eba72"
+    }
+  ],
+  "sourceOnly": true,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalHierarchyUsedForDecision": false,
+  "historicalOccurrenceRowsUsedForDecision": false,
+  "oldSemanticTotalUsedForDecision": false,
+  "parentReviewed": false,
+  "levelReviewed": false,
+  "occurrenceMutation": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "userApprovalRequired": true,
+  "stopBeforeHierarchy": true
+}

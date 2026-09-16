@@ -1,0 +1,20 @@
+{
+  "artifactKind": "A99_CANONICAL_SEMANTIC_IDENTITY_POST_FREEZE_DIAGNOSTICS",
+  "schemaVersion": "a99-canonical-semantic-identity-v1-doc0252",
+  "documentId": "DOC-0252",
+  "identityArtifactsFrozenBeforeDiagnostic": true,
+  "finalSemanticNodeCount": 39,
+  "currentCanonicalOccurrenceCount": 40,
+  "oldSemanticTotal": 41,
+  "comparison": "39 vs 41",
+  "classification": "NON_BINDING_CROSS_AUTHORITY_DIAGNOSTIC",
+  "historicalRows": 27,
+  "historicalTextOnlyMatches": 11,
+  "historicalOccurrenceRowsUsedForDecision": false,
+  "oldSemanticTotalUsedForDecision": false,
+  "historicalLevelRead": false,
+  "historicalParentRead": false,
+  "historicalIdentityUsedForDecision": false,
+  "oldSemanticSourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "note": "The old semantic total is structurally incompatible with the current 40-occurrence identity contract when it exceeds the current occurrence universe. It does not trigger identity mutation."
+}
