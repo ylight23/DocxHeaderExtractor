@@ -17,11 +17,11 @@ public static class CanonicalDevV1BaselineRunner
 {
     private const string AuthorityManifest = "artifacts/authority-audit/canonical-authority-freeze-v1/corpus-manifest.json";
     private const string InventoryPath = "eval/a99-dataset/document-inventory.v1.json";
-    private const string OutputRoot = "artifacts/level-accuracy/canonical-dev-v1-exec-v2";
+    private const string OutputRoot = "artifacts/level-accuracy/canonical-dev-v1-exec-v3";
     private const string Benchmark = "CANONICAL_DEV_V1";
-    private const string CampaignId = "CANONICAL_DEV_V1_EXEC_V2";
+    private const string CampaignId = "CANONICAL_DEV_V1_EXEC_V3";
     private const string ProductionSemanticCheckpoint = "40a0d5f";
-    private const string ExecutionHarnessCheckpoint = "7823e42";
+    private const string ExecutionHarnessCheckpoint = "8f798dd";
     private const int ExpectedDocuments = 15;
     private const int ExpectedOccurrences = 1908;
     private const int ExpectedSemanticNodes = 1887;
@@ -83,7 +83,9 @@ public static class CanonicalDevV1BaselineRunner
 
         var envRemote = RemoteInferenceOptions.FromEnvironment("openrouter");
         var documentTimeout = ResolveDocumentTimeout();
-        var runConfiguration = BuildRunConfiguration(repoRoot, authorityPath, envRemote, documentTimeout);
+        var productionSemanticHash = ComputeProductionSemanticHash(repoRoot);
+        var executionHarnessHash = ComputeExecutionHarnessHash(repoRoot);
+        var runConfiguration = BuildRunConfiguration(repoRoot, authorityPath, envRemote, documentTimeout, productionSemanticHash, executionHarnessHash);
         var runConfigurationPath = Path.Combine(output, "run-configuration.json");
         var runConfigurationHash = Sha256Text(JsonSerializer.Serialize(runConfiguration, JsonOptions));
         if (File.Exists(runConfigurationPath) && !string.Equals(Sha256CanonicalJsonFile(runConfigurationPath), runConfigurationHash, StringComparison.OrdinalIgnoreCase))
@@ -110,6 +112,8 @@ public static class CanonicalDevV1BaselineRunner
             campaignId = CampaignId,
             productionSemanticCheckpoint = ProductionSemanticCheckpoint,
             executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
+            productionSemanticHash,
+            executionHarnessHash,
             devExposed = true,
             blindHoldout = false,
             generalizationClaim = false,
@@ -169,7 +173,7 @@ public static class CanonicalDevV1BaselineRunner
             var started = DateTimeOffset.UtcNow;
             var attemptOrdinal = Directory.EnumerateFiles(docDir, "attempt*.started.v1.json", SearchOption.TopDirectoryOnly).Count() + 1;
             var attemptId = $"{CampaignId}:{source.DocumentId}:A{attemptOrdinal:D2}:{started:yyyyMMddTHHmmssfffZ}";
-            var attemptStartedPath = Path.Combine(docDir, $"attempt-{attemptOrdinal:D2}.started.v1.json");
+            var attemptStartedPath = Path.Combine(docDir, $"attempt.started.A{attemptOrdinal:D2}-{started:yyyyMMddTHHmmssfffZ}.json");
             await WriteJsonAsync(attemptStartedPath, new
             {
                 schemaVersion = "a99-canonical-dev-v1-attempt-start-v1",
@@ -192,15 +196,14 @@ public static class CanonicalDevV1BaselineRunner
                 Directory.CreateDirectory(workDir);
                 var logicalRequestHash = Sha256Text(JsonSerializer.Serialize(new { source.DocumentId, source.SourceSha256, runConfigurationHash, attemptId }, JsonOptions));
                 var jobPath = Path.Combine(workDir, "worker-job.json");
-                await WriteJsonAsync(jobPath, new { benchmark = Benchmark, campaignId = CampaignId, documentId = source.DocumentId, sourcePath = source.SourcePath, sourceSha256 = source.SourceSha256, outputDir = workDir, runConfigurationHash, attemptId, requestHash = logicalRequestHash, started }, CancellationToken.None);
+                await WriteJsonAsync(jobPath, new { benchmark = Benchmark, campaignId = CampaignId, productionSemanticHash, executionHarnessHash, documentId = source.DocumentId, sourcePath = source.SourcePath, sourceSha256 = source.SourceSha256, outputDir = workDir, runConfigurationHash, attemptId, requestHash = logicalRequestHash, started }, CancellationToken.None);
                 var watchdog = await ProviderHardTimeoutIntegrity.RunWorkerAsync(jobPath, workDir, documentTimeout, ct);
                 if (watchdog.Status != "COMPLETE")
                 {
                     runAborted = true;
                     await WriteFailureArtifactAsync(docDir, source, watchdog.Status, new TimeoutException(watchdog.Status), started, attemptId, runConfigurationHash, CancellationToken.None, watchdog.ChildPid, watchdog.TerminationMode);
                     documentRuns.Add(new { documentId = source.DocumentId, status = watchdog.Status, terminationMode = watchdog.TerminationMode, childPid = watchdog.ChildPid, predictionPath = (string?)null, providerCalls = 0, error = watchdog.Status });
-                    if (ct.IsCancellationRequested) break;
-                    continue;
+                    break;
                 }
                 var workerPrediction = Path.Combine(workDir, "worker-prediction.v1.json");
                 var workerAttempts = Path.Combine(workDir, "worker-attempts.v1.json");
@@ -221,7 +224,7 @@ public static class CanonicalDevV1BaselineRunner
                 await WriteFailureArtifactAsync(docDir, source, status, ex, started, attemptId, runConfigurationHash, CancellationToken.None);
                 documentRuns.Add(new { documentId = source.DocumentId, status, predictionPath = (string?)null, providerCalls = 0, error = ex.Message });
                 runAborted = true;
-                if (ct.IsCancellationRequested) break;
+                break;
             }
         }
 
@@ -240,6 +243,8 @@ public static class CanonicalDevV1BaselineRunner
                 benchmark = Benchmark,
                 campaignId = CampaignId,
                 runConfigurationHash,
+                productionSemanticHash,
+                executionHarnessHash,
                 productionSemanticCheckpoint = ProductionSemanticCheckpoint,
                 executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
                 frozenAt = DateTimeOffset.UtcNow,
@@ -268,6 +273,8 @@ public static class CanonicalDevV1BaselineRunner
                 benchmark = Benchmark,
                 campaignId = CampaignId,
                 runConfigurationHash,
+                productionSemanticHash,
+                executionHarnessHash,
                 providerCalls = totalProviderCalls,
                 artifacts = lineageFiles,
                 frozenAt = DateTimeOffset.UtcNow,
@@ -280,6 +287,8 @@ public static class CanonicalDevV1BaselineRunner
             benchmark = Benchmark,
             campaignId = CampaignId,
             runConfigurationHash,
+            productionSemanticHash,
+            executionHarnessHash,
             productionSemanticCheckpoint = ProductionSemanticCheckpoint,
             executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
             goldReadCount = 0,
@@ -311,6 +320,8 @@ public static class CanonicalDevV1BaselineRunner
         var sourceSha256 = root.GetProperty("sourceSha256").GetString()!;
         var outputDir = root.GetProperty("outputDir").GetString()!;
         var runConfigurationHash = root.GetProperty("runConfigurationHash").GetString()!;
+        var productionSemanticHash = root.GetProperty("productionSemanticHash").GetString()!;
+        var executionHarnessHash = root.GetProperty("executionHarnessHash").GetString()!;
         var attemptId = root.GetProperty("attemptId").GetString()!;
         var requestHash = root.GetProperty("requestHash").GetString()!;
         var started = root.TryGetProperty("started", out var startedValue) && startedValue.TryGetDateTimeOffset(out var parsedStarted)
@@ -345,6 +356,8 @@ public static class CanonicalDevV1BaselineRunner
                 campaignId = CampaignId,
                 productionSemanticCheckpoint = ProductionSemanticCheckpoint,
                 executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
+                productionSemanticHash,
+                executionHarnessHash,
                 documentId,
                 sourcePath,
                 sourceSha256,
@@ -398,6 +411,8 @@ public static class CanonicalDevV1BaselineRunner
                 requestContractCount = audit?.ModelInputContracts.Count ?? 0,
                 providerCalls,
                 runConfigurationHash,
+                productionSemanticHash,
+                executionHarnessHash,
                 attemptId,
                 requestHash,
                 responseHash,
@@ -429,7 +444,7 @@ public static class CanonicalDevV1BaselineRunner
         }
     }
 
-    private static object BuildRunConfiguration(string repoRoot, string authorityPath, RemoteInferenceOptions remote, TimeSpan documentTimeout)
+    private static object BuildRunConfiguration(string repoRoot, string authorityPath, RemoteInferenceOptions remote, TimeSpan documentTimeout, string productionSemanticHash, string executionHarnessHash)
     {
         var sourceFiles = new[]
         {
@@ -444,6 +459,8 @@ public static class CanonicalDevV1BaselineRunner
             campaignId = CampaignId,
             productionSemanticCheckpoint = ProductionSemanticCheckpoint,
             executionHarnessCheckpoint = ExecutionHarnessCheckpoint,
+            productionSemanticHash,
+            executionHarnessHash,
             codeCheckpoint = CodeCheckpoint,
             provider = "OpenRouter",
             model = remote.Model,
@@ -465,7 +482,7 @@ public static class CanonicalDevV1BaselineRunner
             bindingVersion = "RouteOccurrenceTraceBuilder production binding",
             bindingHash = FileHashOrMissing(repoRoot, "src/DocxHeaderExtractor.DocumentProcessing/Authority/RouteOccurrenceTraceBuilder.cs"),
             sourceUniverseManifestHash = Sha256File(authorityPath),
-            productionSemanticConfigurationHash = Sha256Text(string.Join("|", sourceFiles.Select(path => FileHashOrMissing(repoRoot, path)))),
+            productionSemanticConfigurationHash = productionSemanticHash,
             sourceImplementationHashes = sourceFiles.ToDictionary(
                 path => path,
                 path => File.Exists(Path.Combine(repoRoot, path.Replace('/', Path.DirectorySeparatorChar)))
@@ -478,6 +495,30 @@ public static class CanonicalDevV1BaselineRunner
             goldReadsBeforePredictionFreeze = 0,
             historicalReadsBeforePredictionFreeze = 0,
         };
+    }
+
+    private static string ComputeProductionSemanticHash(string repoRoot)
+    {
+        var files = new[]
+        {
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/AuthorityExtractionPipeline.cs",
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxAuthorityPipeline.cs",
+            "src/DocxHeaderExtractor.DocumentProcessing/OpenXmlLayer/OpenXmlDocumentSource.cs",
+            "src/DocxHeaderExtractor.DocumentProcessing/Authority/RouteOccurrenceTraceBuilder.cs",
+        };
+        return Sha256Text(string.Join("|", files.Select(path => path + ":" + FileHashOrMissing(repoRoot, path))));
+    }
+
+    private static string ComputeExecutionHarnessHash(string repoRoot)
+    {
+        var files = new[]
+        {
+            "src/DocxHeaderExtractor.Eval/ReasoningRetention/CanonicalDevV1BaselineRunner.cs",
+            "src/DocxHeaderExtractor.Eval/ReasoningRetention/ProviderHardTimeoutIntegrity.cs",
+            "src/DocxHeaderExtractor.Cli/Program.cs",
+            "src/DocxHeaderExtractor.Cli/CommandLineOptions.cs",
+        };
+        return Sha256Text(string.Join("|", files.Select(path => path + ":" + FileHashOrMissing(repoRoot, path))));
     }
 
     private static string FileHashOrMissing(string repoRoot, string relativePath)
