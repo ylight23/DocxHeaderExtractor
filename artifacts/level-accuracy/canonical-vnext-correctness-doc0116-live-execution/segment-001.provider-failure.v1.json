@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "a99-canonical-doc0116-segmented-provider-failure-v1",
+  "campaign": "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE",
+  "documentId": "DOC-0116",
+  "authorizedFrom": "ea4b9e95549ebf301575413b68cda266d2732321",
+  "requestOrdinal": 1,
+  "requestId": "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE:DOC-0116:segment-001",
+  "requestSha256": "aff6d4e10fec190998d0cbf79ae7288b7b71749b07ec2e95e09c4944048f96b1",
+  "estimatedInputTokens": 935402,
+  "ownedAliasCount": 1703,
+  "visibleAliasCount": 1703,
+  "providerHttpStatus": 400,
+  "providerName": "Alibaba",
+  "failureClass": "PROVIDER_INPUT_CONTEXT_LIMIT",
+  "retryPolicy": "NO_RETRY",
+  "rawProviderResponse": "{\"error\":{\"message\":\"Provider returned error\",\"code\":400,\"metadata\":{\"raw\":\"data: {\\\"error\\\":{\\\"code\\\":\\\"invalid_parameter_error\\\",\\\"param\\\":null,\\\"message\\\":\\\"Range of input length should be [1, 983616]\\\",\\\"type\\\":\\\"invalid_request_error\\\"},\\\"id\\\":\\\"chatcmpl-e4887098-10f1-99a9-b763-f77d4e3e3aa4\\\"}\\n\\n\",\"provider_name\":\"Alibaba\",\"is_byok\":false},\"user_id\":\"user_3HIWseSvek9HMXyFgnKkZuubz1K\"}}",
+  "rawPersistedBeforeParse": true,
+  "parseStatus": "NOT_REACHED",
+  "validationStatus": "NOT_REACHED",
+  "goldReads": 0,
+  "scoring": false
+}

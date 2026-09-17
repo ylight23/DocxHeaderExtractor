@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-canonical-doc0116-segmented-execution-failure-v1",
+  "status": "PROVIDER_EXECUTION_FAILURE",
+  "campaign": "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE",
+  "documentId": "DOC-0116",
+  "authorizedFrom": "ea4b9e95549ebf301575413b68cda266d2732321",
+  "requestPlanSha256": "215056cf59f43bc9739f62e849078bf1d2b883bb859d204eb339a8f8bb2d1a17",
+  "segmentCount": 2,
+  "providerCalls": 1,
+  "completedSegments": 0,
+  "failedSegment": 1,
+  "unattemptedSegments": [2],
+  "predictionFrozen": false,
+  "goldReads": 0,
+  "scoring": false,
+  "requestPlanMutated": false,
+  "retryAttempted": false,
+  "reason": "Provider rejected segment-001 because actual input length exceeded the provider maximum of 983616 tokens. Offline estimate was 935402 tokens; no retry or segment-002 call was made."
+}
