@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "a99-doc0116-user-approved-repaired-gold-promotion-manifest-v1",
+  "status": "USER_REVIEWED_CANONICAL_GOLD_AUTHORITY",
+  "documentId": "DOC-0116",
+  "promotedArtifactSha256": "83ec5942171bca438f08f58341a5c4cb0f0c92dc46976d13069e784a7d3141b0",
+  "validationSha256": "3b840ef6f74554479551f9f5539d7a88f2e81c45fbaac8c22489f295e51cd512",
+  "approvalRecordSha256": "527bca0e1e13cb8223e34e25d5d1f5707543e40a71b9b09058ccb4e6a56929e4",
+  "successorSha256": "a3d5c4246e0487fa06adc093bbcf0824751cd68046065d14a4c2d32c6a7b8ebb",
+  "originalGoldSha256": "85c318630555d8254cbb6cba33285011a4deff8889bb084c5be8e8e6a1c497cc",
+  "compatibilityAuditSha256": "5e83e10f45eaacd84902cd81121b78e62bec8ec4041aac19353686c137e374ad",
+  "predictionImmutable": true,
+  "predictionRead": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReads": 1,
+  "officialScoring": false,
+  "bridge1896To1921": "NOT_RUN",
+  "semanticContractAlignment": "NOT_RUN",
+  "createdAtUtc": "2026-09-17T08:03:18.7601855+00:00"
+}

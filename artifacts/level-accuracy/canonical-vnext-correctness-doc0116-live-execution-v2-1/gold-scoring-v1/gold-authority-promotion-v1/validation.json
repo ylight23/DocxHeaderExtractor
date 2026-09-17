@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "documentId": "DOC-0116",
+  "sourceShaMatches": true,
+  "successorShaMatches": true,
+  "successorRows": 120,
+  "promotedRows": 120,
+  "sourceFaithfulRows": 120,
+  "unresolvedRows": 0,
+  "missingPromotedRows": 0,
+  "oldGoldMutated": false,
+  "successorMutated": false,
+  "predictionRead": false,
+  "providerCalls": 0
+}
