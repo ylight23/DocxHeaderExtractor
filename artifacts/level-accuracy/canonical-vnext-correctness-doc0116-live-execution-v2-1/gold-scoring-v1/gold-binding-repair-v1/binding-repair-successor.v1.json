@@ -1,0 +1,2687 @@
+{
+  "schemaVersion": "a99-canonical-dev-vnext-doc0116-gold-binding-repair-successor-v1",
+  "status": "REPAIRED_SUCCESSOR_CANDIDATE_READY_FOR_REVIEW",
+  "documentId": "DOC-0116",
+  "existingGoldImmutable": true,
+  "repairedSuccessorArtifact": true,
+  "predictionImmutable": true,
+  "predictionFreezeSha256": "bf9b42a4ea76103805136f379b4f133e3af40d087a14743a34d811d81989bfa8",
+  "existingGoldBindingsSha256": "85c318630555d8254cbb6cba33285011a4deff8889bb084c5be8e8e6a1c497cc",
+  "compatibilityAuditSha256": "5e83e10f45eaacd84902cd81121b78e62bec8ec4041aac19353686c137e374ad",
+  "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "oldBindingCount": 120,
+  "repairedBindingCount": 120,
+  "changedBindingCount": 16,
+  "unresolvedBindingCount": 0,
+  "reasonCounts": {
+    "EXISTING_SPAN_SOURCE_EXACT": 104,
+    "source-whitespace-elision-map": 15,
+    "EXISTING_SPAN_EXACT;REFRESH_SOURCE_CONTAINER_TEXT": 1
+  },
+  "changedOccurrenceIds": [
+    "DOC-0116:body[1]/p[69]#heading-span-0-45",
+    "DOC-0116:body[1]/p[126]#heading-span-0-39",
+    "DOC-0116:body[1]/p[127]#heading-span-0-54",
+    "DOC-0116:body[1]/p[128]#heading-span-0-48",
+    "DOC-0116:body[1]/p[129]#heading-span-0-31",
+    "DOC-0116:body[1]/p[130]#heading-span-0-33",
+    "DOC-0116:body[1]/p[131]#heading-span-0-31",
+    "DOC-0116:body[1]/p[142]#heading-span-0-46",
+    "DOC-0116:body[1]/p[176]#heading-span-0-47",
+    "DOC-0116:body[1]/p[256]#heading-span-0-46",
+    "DOC-0116:body[1]/p[586]#heading-span-0-29",
+    "DOC-0116:body[1]/p[596]#heading-span-0-31",
+    "DOC-0116:body[1]/p[619]#heading-span-0-29",
+    "DOC-0116:body[1]/p[746]#heading-span-0-30",
+    "DOC-0116:body[1]/p[747]#heading-span-0-23",
+    "DOC-0116:body[1]/p[752]#heading-span-0-84"
+  ],
+  "unresolvedOccurrenceIds": [],
+  "repairPolicy": "Only source-faithful spans are accepted; the original binding is never overwritten. A whitespace-elision map is accepted only when the candidate accounts for the entire raw source paragraph after whitespace removal.",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReads": 1,
+  "rows": [
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[1]#heading-span-0-29",
+        "sourceId": "body[1]/p[1]",
+        "start": 0,
+        "end": 29,
+        "exactText": "STANDARD PROCUREMENT DOCUMENT",
+        "sourceContainerText": "STANDARD PROCUREMENT DOCUMENT"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[1]#heading-span-0-29",
+        "sourceId": "body[1]/p[1]",
+        "start": 0,
+        "end": 29,
+        "exactText": "STANDARD PROCUREMENT DOCUMENT",
+        "sourceContainerText": "STANDARD PROCUREMENT DOCUMENT"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "STANDARD PROCUREMENT DOCUMENT",
+      "sourceText": "STANDARD PROCUREMENT DOCUMENT"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[4]#heading-span-0-21",
+        "sourceId": "body[1]/p[4]",
+        "start": 0,
+        "end": 21,
+        "exactText": "Request for Proposals",
+        "sourceContainerText": "Request for Proposals"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[4]#heading-span-0-21",
+        "sourceId": "body[1]/p[4]",
+        "start": 0,
+        "end": 21,
+        "exactText": "Request for Proposals",
+        "sourceContainerText": "Request for Proposals"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Request for Proposals",
+      "sourceText": "Request for Proposals"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[61]#heading-span-0-29",
+        "sourceId": "body[1]/p[61]",
+        "start": 0,
+        "end": 29,
+        "exactText": "Standard Procurement Document",
+        "sourceContainerText": "Standard Procurement Document"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[61]#heading-span-0-29",
+        "sourceId": "body[1]/p[61]",
+        "start": 0,
+        "end": 29,
+        "exactText": "Standard Procurement Document",
+        "sourceContainerText": "Standard Procurement Document"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Standard Procurement Document",
+      "sourceText": "Standard Procurement Document"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[63]#heading-span-0-7",
+        "sourceId": "body[1]/p[63]",
+        "start": 0,
+        "end": 7,
+        "exactText": "SUMMARY",
+        "sourceContainerText": "SUMMARY"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[63]#heading-span-0-7",
+        "sourceId": "body[1]/p[63]",
+        "start": 0,
+        "end": 7,
+        "exactText": "SUMMARY",
+        "sourceContainerText": "SUMMARY"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "SUMMARY",
+      "sourceText": "SUMMARY"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[69]#heading-span-0-45",
+        "sourceId": "body[1]/p[69]",
+        "start": 0,
+        "end": 45,
+        "exactText": "Section 1: Request for Proposals (RFP) Lette",
+        "sourceContainerText": "Section 1:  Request for Proposals (RFP) Letter"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[69]#heading-span-0-45",
+        "sourceId": "body[1]/p[69]",
+        "start": 0,
+        "end": 46,
+        "exactText": "Section 1:  Request for Proposals (RFP) Letter",
+        "sourceContainerText": "Section 1:  Request for Proposals (RFP) Letter"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 1:  Request for Proposals (RFP) Lette",
+      "sourceText": "Section 1:  Request for Proposals (RFP) Letter"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[73]#heading-span-0-53",
+        "sourceId": "body[1]/p[73]",
+        "start": 0,
+        "end": 53,
+        "exactText": "Section 2: Instructions to Consultants and Data Sheet",
+        "sourceContainerText": "Section 2: Instructions to Consultants and Data Sheet"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[73]#heading-span-0-53",
+        "sourceId": "body[1]/p[73]",
+        "start": 0,
+        "end": 53,
+        "exactText": "Section 2: Instructions to Consultants and Data Sheet",
+        "sourceContainerText": "Section 2: Instructions to Consultants and Data Sheet"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 2: Instructions to Consultants and Data Sheet",
+      "sourceText": "Section 2: Instructions to Consultants and Data Sheet"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[77]#heading-span-0-46",
+        "sourceId": "body[1]/p[77]",
+        "start": 0,
+        "end": 46,
+        "exactText": "Section 3: Technical Proposal \u2013 Standard Forms",
+        "sourceContainerText": "Section 3: Technical Proposal \u2013 Standard Forms"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[77]#heading-span-0-46",
+        "sourceId": "body[1]/p[77]",
+        "start": 0,
+        "end": 46,
+        "exactText": "Section 3: Technical Proposal \u2013 Standard Forms",
+        "sourceContainerText": "Section 3: Technical Proposal \u2013 Standard Forms"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 3: Technical Proposal \u2013 Standard Forms",
+      "sourceText": "Section 3: Technical Proposal \u2013 Standard Forms"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[81]#heading-span-0-29",
+        "sourceId": "body[1]/p[81]",
+        "start": 0,
+        "end": 29,
+        "exactText": "Section 4: Eligible Countries",
+        "sourceContainerText": "Section 4: Eligible Countries"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[81]#heading-span-0-29",
+        "sourceId": "body[1]/p[81]",
+        "start": 0,
+        "end": 29,
+        "exactText": "Section 4: Eligible Countries",
+        "sourceContainerText": "Section 4: Eligible Countries"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 4: Eligible Countries",
+      "sourceText": "Section 4: Eligible Countries"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[85]#heading-span-0-31",
+        "sourceId": "body[1]/p[85]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Section 5: Fraud and Corruption",
+        "sourceContainerText": "Section 5: Fraud and Corruption   "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[85]#heading-span-0-31",
+        "sourceId": "body[1]/p[85]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Section 5: Fraud and Corruption",
+        "sourceContainerText": "Section 5: Fraud and Corruption   "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 5: Fraud and Corruption",
+      "sourceText": "Section 5: Fraud and Corruption   "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[89]#heading-span-0-36",
+        "sourceId": "body[1]/p[89]",
+        "start": 0,
+        "end": 36,
+        "exactText": "Section 6: Terms of Reference (TORs)",
+        "sourceContainerText": "Section 6: Terms of Reference (TORs)"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[89]#heading-span-0-36",
+        "sourceId": "body[1]/p[89]",
+        "start": 0,
+        "end": 36,
+        "exactText": "Section 6: Terms of Reference (TORs)",
+        "sourceContainerText": "Section 6: Terms of Reference (TORs)"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 6: Terms of Reference (TORs)",
+      "sourceText": "Section 6: Terms of Reference (TORs)"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[105]#heading-span-0-21",
+        "sourceId": "body[1]/p[105]",
+        "start": 0,
+        "end": 21,
+        "exactText": "Request for Proposals",
+        "sourceContainerText": "Request for Proposals"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[105]#heading-span-0-21",
+        "sourceId": "body[1]/p[105]",
+        "start": 0,
+        "end": 21,
+        "exactText": "Request for Proposals",
+        "sourceContainerText": "Request for Proposals"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Request for Proposals",
+      "sourceText": "Request for Proposals"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[106]#heading-span-0-43",
+        "sourceId": "body[1]/p[106]",
+        "start": 0,
+        "end": 43,
+        "exactText": "Framework Agreement (s) Consulting Services",
+        "sourceContainerText": "Framework Agreement (s) Consulting Services"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[106]#heading-span-0-43",
+        "sourceId": "body[1]/p[106]",
+        "start": 0,
+        "end": 43,
+        "exactText": "Framework Agreement (s) Consulting Services",
+        "sourceContainerText": "Framework Agreement (s) Consulting Services"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Framework Agreement (s) Consulting Services",
+      "sourceText": "Framework Agreement (s) Consulting Services"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[109]#heading-span-0-19",
+        "sourceId": "body[1]/p[109]",
+        "start": 0,
+        "end": 19,
+        "exactText": "PRIMARY PROCUREMENT",
+        "sourceContainerText": "PRIMARY PROCUREMENT"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[109]#heading-span-0-19",
+        "sourceId": "body[1]/p[109]",
+        "start": 0,
+        "end": 19,
+        "exactText": "PRIMARY PROCUREMENT",
+        "sourceContainerText": "PRIMARY PROCUREMENT"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "PRIMARY PROCUREMENT",
+      "sourceText": "PRIMARY PROCUREMENT"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[126]#heading-span-0-39",
+        "sourceId": "body[1]/p[126]",
+        "start": 0,
+        "end": 39,
+        "exactText": "Section 1. Request for Proposal Letter4",
+        "sourceContainerText": "Section 1. Request for Proposal Letter4"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[126]#heading-span-0-39",
+        "sourceId": "body[1]/p[126]",
+        "start": 0,
+        "end": 40,
+        "exactText": "Section 1. Request for Proposal Letter\t4",
+        "sourceContainerText": "Section 1. Request for Proposal Letter\t4"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 1. Request for Proposal Letter\t",
+      "sourceText": "Section 1. Request for Proposal Letter\t4"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[127]#heading-span-0-54",
+        "sourceId": "body[1]/p[127]",
+        "start": 0,
+        "end": 54,
+        "exactText": "Section 2. Instructions to Consultants and Data Sheet7",
+        "sourceContainerText": "Section 2. Instructions to Consultants and Data Sheet7"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[127]#heading-span-0-54",
+        "sourceId": "body[1]/p[127]",
+        "start": 0,
+        "end": 55,
+        "exactText": "Section 2. Instructions to Consultants and Data Sheet\t7",
+        "sourceContainerText": "Section 2. Instructions to Consultants and Data Sheet\t7"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 2. Instructions to Consultants and Data Sheet\t",
+      "sourceText": "Section 2. Instructions to Consultants and Data Sheet\t7"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[128]#heading-span-0-48",
+        "sourceId": "body[1]/p[128]",
+        "start": 0,
+        "end": 48,
+        "exactText": "Section 3. Technical Proposal \u2013 Standard Forms3",
+        "sourceContainerText": "Section 3.  Technical Proposal \u2013 Standard Forms37"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[128]#heading-span-0-48",
+        "sourceId": "body[1]/p[128]",
+        "start": 0,
+        "end": 50,
+        "exactText": "Section 3.  Technical Proposal \u2013 Standard Forms\t37",
+        "sourceContainerText": "Section 3.  Technical Proposal \u2013 Standard Forms\t37"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 3.  Technical Proposal \u2013 Standard Forms\t",
+      "sourceText": "Section 3.  Technical Proposal \u2013 Standard Forms\t37"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[129]#heading-span-0-31",
+        "sourceId": "body[1]/p[129]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Section 4. Eligible Countries5",
+        "sourceContainerText": "Section 4.  Eligible Countries57"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[129]#heading-span-0-31",
+        "sourceId": "body[1]/p[129]",
+        "start": 0,
+        "end": 33,
+        "exactText": "Section 4.  Eligible Countries\t57",
+        "sourceContainerText": "Section 4.  Eligible Countries\t57"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 4.  Eligible Countries\t",
+      "sourceText": "Section 4.  Eligible Countries\t57"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[130]#heading-span-0-33",
+        "sourceId": "body[1]/p[130]",
+        "start": 0,
+        "end": 33,
+        "exactText": "Section 5. Fraud and Corruption5",
+        "sourceContainerText": "Section 5.  Fraud and Corruption59"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[130]#heading-span-0-33",
+        "sourceId": "body[1]/p[130]",
+        "start": 0,
+        "end": 35,
+        "exactText": "Section 5.  Fraud and Corruption\t59",
+        "sourceContainerText": "Section 5.  Fraud and Corruption\t59"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 5.  Fraud and Corruption\t",
+      "sourceText": "Section 5.  Fraud and Corruption\t59"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[131]#heading-span-0-31",
+        "sourceId": "body[1]/p[131]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Section 6. Terms of Reference6",
+        "sourceContainerText": "Section 6.  Terms of Reference61"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[131]#heading-span-0-31",
+        "sourceId": "body[1]/p[131]",
+        "start": 0,
+        "end": 33,
+        "exactText": "Section 6.  Terms of Reference\t61",
+        "sourceContainerText": "Section 6.  Terms of Reference\t61"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 6.  Terms of Reference\t",
+      "sourceText": "Section 6.  Terms of Reference\t61"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+        "sourceId": "body[1]/p[142]",
+        "start": 0,
+        "end": 46,
+        "exactText": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS",
+        "sourceContainerText": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+        "sourceId": "body[1]/p[142]",
+        "start": 0,
+        "end": 46,
+        "exactText": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS",
+        "sourceContainerText": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS\t"
+      },
+      "reason": "EXISTING_SPAN_EXACT;REFRESH_SOURCE_CONTAINER_TEXT",
+      "changed": true,
+      "oldSpanText": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS",
+      "sourceText": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS\t"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[145]#heading-span-0-38",
+        "sourceId": "body[1]/p[145]",
+        "start": 0,
+        "end": 38,
+        "exactText": "Section 1. Request for Proposal Letter",
+        "sourceContainerText": "Section 1. Request for Proposal Letter "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[145]#heading-span-0-38",
+        "sourceId": "body[1]/p[145]",
+        "start": 0,
+        "end": 38,
+        "exactText": "Section 1. Request for Proposal Letter",
+        "sourceContainerText": "Section 1. Request for Proposal Letter "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 1. Request for Proposal Letter",
+      "sourceText": "Section 1. Request for Proposal Letter "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[174]#heading-span-0-40",
+        "sourceId": "body[1]/p[174]",
+        "start": 0,
+        "end": 40,
+        "exactText": "Section 1 \u2013 Request for Proposals Letter",
+        "sourceContainerText": "Section 1 \u2013 Request for Proposals Letter"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[174]#heading-span-0-40",
+        "sourceId": "body[1]/p[174]",
+        "start": 0,
+        "end": 40,
+        "exactText": "Section 1 \u2013 Request for Proposals Letter",
+        "sourceContainerText": "Section 1 \u2013 Request for Proposals Letter"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 1 \u2013 Request for Proposals Letter",
+      "sourceText": "Section 1 \u2013 Request for Proposals Letter"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[175]#heading-span-0-54",
+        "sourceId": "body[1]/p[175]",
+        "start": 0,
+        "end": 54,
+        "exactText": "Section 2 - Instructions to Consultants and Data Sheet",
+        "sourceContainerText": "Section 2 - Instructions to Consultants and Data Sheet"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[175]#heading-span-0-54",
+        "sourceId": "body[1]/p[175]",
+        "start": 0,
+        "end": 54,
+        "exactText": "Section 2 - Instructions to Consultants and Data Sheet",
+        "sourceContainerText": "Section 2 - Instructions to Consultants and Data Sheet"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 2 - Instructions to Consultants and Data Sheet",
+      "sourceText": "Section 2 - Instructions to Consultants and Data Sheet"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[176]#heading-span-0-47",
+        "sourceId": "body[1]/p[176]",
+        "start": 0,
+        "end": 47,
+        "exactText": "Section 3 - Technical Proposal - Standard Form",
+        "sourceContainerText": "Section 3 - Technical Proposal  - Standard Forms"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[176]#heading-span-0-47",
+        "sourceId": "body[1]/p[176]",
+        "start": 0,
+        "end": 48,
+        "exactText": "Section 3 - Technical Proposal  - Standard Forms",
+        "sourceContainerText": "Section 3 - Technical Proposal  - Standard Forms"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 3 - Technical Proposal  - Standard Form",
+      "sourceText": "Section 3 - Technical Proposal  - Standard Forms"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[177]#heading-span-0-30",
+        "sourceId": "body[1]/p[177]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Section 4 \u2013 Eligible Countries",
+        "sourceContainerText": "Section 4 \u2013 Eligible Countries"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[177]#heading-span-0-30",
+        "sourceId": "body[1]/p[177]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Section 4 \u2013 Eligible Countries",
+        "sourceContainerText": "Section 4 \u2013 Eligible Countries"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 4 \u2013 Eligible Countries",
+      "sourceText": "Section 4 \u2013 Eligible Countries"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[178]#heading-span-0-32",
+        "sourceId": "body[1]/p[178]",
+        "start": 0,
+        "end": 32,
+        "exactText": "Section 5 \u2013 Fraud and Corruption",
+        "sourceContainerText": "Section 5 \u2013 Fraud and Corruption"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[178]#heading-span-0-32",
+        "sourceId": "body[1]/p[178]",
+        "start": 0,
+        "end": 32,
+        "exactText": "Section 5 \u2013 Fraud and Corruption",
+        "sourceContainerText": "Section 5 \u2013 Fraud and Corruption"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 5 \u2013 Fraud and Corruption",
+      "sourceText": "Section 5 \u2013 Fraud and Corruption"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[179]#heading-span-0-30",
+        "sourceId": "body[1]/p[179]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Section 6 - Terms of Reference",
+        "sourceContainerText": "Section 6 - Terms of Reference"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[179]#heading-span-0-30",
+        "sourceId": "body[1]/p[179]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Section 6 - Terms of Reference",
+        "sourceContainerText": "Section 6 - Terms of Reference"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 6 - Terms of Reference",
+      "sourceText": "Section 6 - Terms of Reference"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[200]#heading-span-0-53",
+        "sourceId": "body[1]/p[200]",
+        "start": 0,
+        "end": 53,
+        "exactText": "Section 2. Instructions to Consultants and Data Sheet",
+        "sourceContainerText": "Section 2. Instructions to Consultants and Data Sheet"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[200]#heading-span-0-53",
+        "sourceId": "body[1]/p[200]",
+        "start": 0,
+        "end": 53,
+        "exactText": "Section 2. Instructions to Consultants and Data Sheet",
+        "sourceContainerText": "Section 2. Instructions to Consultants and Data Sheet"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 2. Instructions to Consultants and Data Sheet",
+      "sourceText": "Section 2. Instructions to Consultants and Data Sheet"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#heading-span-0-11",
+        "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Definitions",
+        "sourceContainerText": "Definitions"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[1]/tc[1]/p[1]#heading-span-0-11",
+        "sourceId": "body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Definitions",
+        "sourceContainerText": "Definitions"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Definitions",
+      "sourceText": "Definitions"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-12",
+        "sourceId": "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+        "start": 0,
+        "end": 12,
+        "exactText": "Introduction",
+        "sourceContainerText": "Introduction"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[2]/tc[1]/p[1]#heading-span-0-12",
+        "sourceId": "body[1]/tbl[1]/tr[2]/tc[1]/p[1]",
+        "start": 0,
+        "end": 12,
+        "exactText": "Introduction",
+        "sourceContainerText": "Introduction"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Introduction",
+      "sourceText": "Introduction"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-20",
+        "sourceId": "body[1]/tbl[1]/tr[3]/tc[1]/p[1]",
+        "start": 0,
+        "end": 20,
+        "exactText": "Conflict of Interest",
+        "sourceContainerText": "Conflict of Interest "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-20",
+        "sourceId": "body[1]/tbl[1]/tr[3]/tc[1]/p[1]",
+        "start": 0,
+        "end": 20,
+        "exactText": "Conflict of Interest",
+        "sourceContainerText": "Conflict of Interest "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Conflict of Interest",
+      "sourceText": "Conflict of Interest "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#heading-span-0-28",
+        "sourceId": "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+        "start": 0,
+        "end": 28,
+        "exactText": "Unfair Competitive Advantage",
+        "sourceContainerText": "Unfair Competitive Advantage"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[7]/tc[1]/p[1]#heading-span-0-28",
+        "sourceId": "body[1]/tbl[1]/tr[7]/tc[1]/p[1]",
+        "start": 0,
+        "end": 28,
+        "exactText": "Unfair Competitive Advantage",
+        "sourceContainerText": "Unfair Competitive Advantage"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Unfair Competitive Advantage",
+      "sourceText": "Unfair Competitive Advantage"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[8]/tc[1]/p[1]#heading-span-0-20",
+        "sourceId": "body[1]/tbl[1]/tr[8]/tc[1]/p[1]",
+        "start": 0,
+        "end": 20,
+        "exactText": "Fraud and Corruption",
+        "sourceContainerText": "Fraud and Corruption"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[8]/tc[1]/p[1]#heading-span-0-20",
+        "sourceId": "body[1]/tbl[1]/tr[8]/tc[1]/p[1]",
+        "start": 0,
+        "end": 20,
+        "exactText": "Fraud and Corruption",
+        "sourceContainerText": "Fraud and Corruption"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Fraud and Corruption",
+      "sourceText": "Fraud and Corruption"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[9]/tc[1]/p[1]#heading-span-0-11",
+        "sourceId": "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Eligibility",
+        "sourceContainerText": "Eligibility"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[9]/tc[1]/p[1]#heading-span-0-11",
+        "sourceId": "body[1]/tbl[1]/tr[9]/tc[1]/p[1]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Eligibility",
+        "sourceContainerText": "Eligibility"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Eligibility",
+      "sourceText": "Eligibility"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#heading-span-0-22",
+        "sourceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+        "start": 0,
+        "end": 22,
+        "exactText": "General Considerations",
+        "sourceContainerText": "General Considerations"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[16]/tc[1]/p[1]#heading-span-0-22",
+        "sourceId": "body[1]/tbl[1]/tr[16]/tc[1]/p[1]",
+        "start": 0,
+        "end": 22,
+        "exactText": "General Considerations",
+        "sourceContainerText": "General Considerations"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "General Considerations",
+      "sourceText": "General Considerations"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[17]/tc[1]/p[1]#heading-span-0-31",
+        "sourceId": "body[1]/tbl[1]/tr[17]/tc[1]/p[1]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Cost of Preparation of Proposal",
+        "sourceContainerText": "Cost of Preparation of Proposal"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[17]/tc[1]/p[1]#heading-span-0-31",
+        "sourceId": "body[1]/tbl[1]/tr[17]/tc[1]/p[1]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Cost of Preparation of Proposal",
+        "sourceContainerText": "Cost of Preparation of Proposal"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Cost of Preparation of Proposal",
+      "sourceText": "Cost of Preparation of Proposal"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[18]/tc[1]/p[1]#heading-span-0-8",
+        "sourceId": "body[1]/tbl[1]/tr[18]/tc[1]/p[1]",
+        "start": 0,
+        "end": 8,
+        "exactText": "Language",
+        "sourceContainerText": "Language "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[18]/tc[1]/p[1]#heading-span-0-8",
+        "sourceId": "body[1]/tbl[1]/tr[18]/tc[1]/p[1]",
+        "start": 0,
+        "end": 8,
+        "exactText": "Language",
+        "sourceContainerText": "Language "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Language",
+      "sourceText": "Language "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[19]/tc[1]/p[1]#heading-span-0-33",
+        "sourceId": "body[1]/tbl[1]/tr[19]/tc[1]/p[1]",
+        "start": 0,
+        "end": 33,
+        "exactText": "Documents Comprising the Proposal",
+        "sourceContainerText": "Documents Comprising the Proposal"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[19]/tc[1]/p[1]#heading-span-0-33",
+        "sourceId": "body[1]/tbl[1]/tr[19]/tc[1]/p[1]",
+        "start": 0,
+        "end": 33,
+        "exactText": "Documents Comprising the Proposal",
+        "sourceContainerText": "Documents Comprising the Proposal"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Documents Comprising the Proposal",
+      "sourceText": "Documents Comprising the Proposal"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#heading-span-0-17",
+        "sourceId": "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+        "start": 0,
+        "end": 17,
+        "exactText": "Only One Proposal",
+        "sourceContainerText": "Only One Proposal"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[20]/tc[1]/p[1]#heading-span-0-17",
+        "sourceId": "body[1]/tbl[1]/tr[20]/tc[1]/p[1]",
+        "start": 0,
+        "end": 17,
+        "exactText": "Only One Proposal",
+        "sourceContainerText": "Only One Proposal"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Only One Proposal",
+      "sourceText": "Only One Proposal"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#heading-span-0-17",
+        "sourceId": "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+        "start": 0,
+        "end": 17,
+        "exactText": "Proposal Validity",
+        "sourceContainerText": "Proposal Validity"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[21]/tc[1]/p[1]#heading-span-0-17",
+        "sourceId": "body[1]/tbl[1]/tr[21]/tc[1]/p[1]",
+        "start": 0,
+        "end": 17,
+        "exactText": "Proposal Validity",
+        "sourceContainerText": "Proposal Validity"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Proposal Validity",
+      "sourceText": "Proposal Validity"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[25]/tc[1]/p[1]#heading-span-0-34",
+        "sourceId": "body[1]/tbl[1]/tr[25]/tc[1]/p[1]",
+        "start": 0,
+        "end": 34,
+        "exactText": "Clarification and Amendment of RFP",
+        "sourceContainerText": "Clarification and Amendment of RFP "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[25]/tc[1]/p[1]#heading-span-0-34",
+        "sourceId": "body[1]/tbl[1]/tr[25]/tc[1]/p[1]",
+        "start": 0,
+        "end": 34,
+        "exactText": "Clarification and Amendment of RFP",
+        "sourceContainerText": "Clarification and Amendment of RFP "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Clarification and Amendment of RFP",
+      "sourceText": "Clarification and Amendment of RFP "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#heading-span-0-48",
+        "sourceId": "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+        "start": 0,
+        "end": 48,
+        "exactText": "Preparation of Proposals Specific Considerations",
+        "sourceContainerText": "Preparation of Proposals Specific Considerations"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[26]/tc[1]/p[1]#heading-span-0-48",
+        "sourceId": "body[1]/tbl[1]/tr[26]/tc[1]/p[1]",
+        "start": 0,
+        "end": 48,
+        "exactText": "Preparation of Proposals Specific Considerations",
+        "sourceContainerText": "Preparation of Proposals Specific Considerations"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Preparation of Proposals Specific Considerations",
+      "sourceText": "Preparation of Proposals Specific Considerations"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#heading-span-0-37",
+        "sourceId": "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+        "start": 0,
+        "end": 37,
+        "exactText": "Technical Proposal Format and Content",
+        "sourceContainerText": "Technical Proposal Format and Content"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[27]/tc[1]/p[1]#heading-span-0-37",
+        "sourceId": "body[1]/tbl[1]/tr[27]/tc[1]/p[1]",
+        "start": 0,
+        "end": 37,
+        "exactText": "Technical Proposal Format and Content",
+        "sourceContainerText": "Technical Proposal Format and Content"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Technical Proposal Format and Content",
+      "sourceText": "Technical Proposal Format and Content"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#heading-span-0-18",
+        "sourceId": "body[1]/tbl[1]/tr[28]/tc[1]/p[1]",
+        "start": 0,
+        "end": 18,
+        "exactText": "Financial Proposal",
+        "sourceContainerText": "Financial Proposal"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[28]/tc[1]/p[1]#heading-span-0-18",
+        "sourceId": "body[1]/tbl[1]/tr[28]/tc[1]/p[1]",
+        "start": 0,
+        "end": 18,
+        "exactText": "Financial Proposal",
+        "sourceContainerText": "Financial Proposal"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Financial Proposal",
+      "sourceText": "Financial Proposal"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#heading-span-0-45",
+        "sourceId": "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+        "start": 0,
+        "end": 45,
+        "exactText": "Submission, Sealing, and Marking of Proposals",
+        "sourceContainerText": "Submission, Sealing, and Marking of Proposals"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[31]/tc[1]/p[1]#heading-span-0-45",
+        "sourceId": "body[1]/tbl[1]/tr[31]/tc[1]/p[1]",
+        "start": 0,
+        "end": 45,
+        "exactText": "Submission, Sealing, and Marking of Proposals",
+        "sourceContainerText": "Submission, Sealing, and Marking of Proposals"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Submission, Sealing, and Marking of Proposals",
+      "sourceText": "Submission, Sealing, and Marking of Proposals"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[32]/tc[1]/p[1]#heading-span-0-15",
+        "sourceId": "body[1]/tbl[1]/tr[32]/tc[1]/p[1]",
+        "start": 0,
+        "end": 15,
+        "exactText": "Confidentiality",
+        "sourceContainerText": "Confidentiality"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[32]/tc[1]/p[1]#heading-span-0-15",
+        "sourceId": "body[1]/tbl[1]/tr[32]/tc[1]/p[1]",
+        "start": 0,
+        "end": 15,
+        "exactText": "Confidentiality",
+        "sourceContainerText": "Confidentiality"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Confidentiality",
+      "sourceText": "Confidentiality"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#heading-span-0-30",
+        "sourceId": "body[1]/tbl[1]/tr[33]/tc[1]/p[1]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Opening of Technical Proposals",
+        "sourceContainerText": "Opening of Technical Proposals"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[33]/tc[1]/p[1]#heading-span-0-30",
+        "sourceId": "body[1]/tbl[1]/tr[33]/tc[1]/p[1]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Opening of Technical Proposals",
+        "sourceContainerText": "Opening of Technical Proposals"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Opening of Technical Proposals",
+      "sourceText": "Opening of Technical Proposals"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#heading-span-0-20",
+        "sourceId": "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+        "start": 0,
+        "end": 20,
+        "exactText": "Proposals Evaluation",
+        "sourceContainerText": "Proposals Evaluation"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[34]/tc[1]/p[1]#heading-span-0-20",
+        "sourceId": "body[1]/tbl[1]/tr[34]/tc[1]/p[1]",
+        "start": 0,
+        "end": 20,
+        "exactText": "Proposals Evaluation",
+        "sourceContainerText": "Proposals Evaluation"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Proposals Evaluation",
+      "sourceText": "Proposals Evaluation"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#heading-span-0-33",
+        "sourceId": "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+        "start": 0,
+        "end": 33,
+        "exactText": "Evaluation of Technical Proposals",
+        "sourceContainerText": "Evaluation of Technical Proposals"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[35]/tc[1]/p[1]#heading-span-0-33",
+        "sourceId": "body[1]/tbl[1]/tr[35]/tc[1]/p[1]",
+        "start": 0,
+        "end": 33,
+        "exactText": "Evaluation of Technical Proposals",
+        "sourceContainerText": "Evaluation of Technical Proposals"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Evaluation of Technical Proposals",
+      "sourceText": "Evaluation of Technical Proposals"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#heading-span-0-12",
+        "sourceId": "body[1]/tbl[1]/tr[37]/tc[1]/p[1]",
+        "start": 0,
+        "end": 12,
+        "exactText": "Negotiations",
+        "sourceContainerText": "Negotiations"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[37]/tc[1]/p[1]#heading-span-0-12",
+        "sourceId": "body[1]/tbl[1]/tr[37]/tc[1]/p[1]",
+        "start": 0,
+        "end": 12,
+        "exactText": "Negotiations",
+        "sourceContainerText": "Negotiations"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Negotiations",
+      "sourceText": "Negotiations"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[41]/tc[1]/p[1]#heading-span-0-26",
+        "sourceId": "body[1]/tbl[1]/tr[41]/tc[1]/p[1]",
+        "start": 0,
+        "end": 26,
+        "exactText": "Conclusion of Negotiations",
+        "sourceContainerText": "Conclusion of Negotiations"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[41]/tc[1]/p[1]#heading-span-0-26",
+        "sourceId": "body[1]/tbl[1]/tr[41]/tc[1]/p[1]",
+        "start": 0,
+        "end": 26,
+        "exactText": "Conclusion of Negotiations",
+        "sourceContainerText": "Conclusion of Negotiations"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Conclusion of Negotiations",
+      "sourceText": "Conclusion of Negotiations"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[42]/tc[1]/p[1]#heading-span-0-17",
+        "sourceId": "body[1]/tbl[1]/tr[42]/tc[1]/p[1]",
+        "start": 0,
+        "end": 17,
+        "exactText": "Standstill Period",
+        "sourceContainerText": "Standstill Period"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[42]/tc[1]/p[1]#heading-span-0-17",
+        "sourceId": "body[1]/tbl[1]/tr[42]/tc[1]/p[1]",
+        "start": 0,
+        "end": 17,
+        "exactText": "Standstill Period",
+        "sourceContainerText": "Standstill Period"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Standstill Period",
+      "sourceText": "Standstill Period"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#heading-span-0-59",
+        "sourceId": "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+        "start": 0,
+        "end": 59,
+        "exactText": "Notification of Intention to Conclude a Framework Agreement",
+        "sourceContainerText": "Notification of Intention to Conclude a Framework Agreement"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[43]/tc[1]/p[1]#heading-span-0-59",
+        "sourceId": "body[1]/tbl[1]/tr[43]/tc[1]/p[1]",
+        "start": 0,
+        "end": 59,
+        "exactText": "Notification of Intention to Conclude a Framework Agreement",
+        "sourceContainerText": "Notification of Intention to Conclude a Framework Agreement"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Notification of Intention to Conclude a Framework Agreement",
+      "sourceText": "Notification of Intention to Conclude a Framework Agreement"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#heading-span-0-28",
+        "sourceId": "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+        "start": 0,
+        "end": 28,
+        "exactText": "Framework Agreement Criteria",
+        "sourceContainerText": "Framework Agreement Criteria "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#heading-span-0-28",
+        "sourceId": "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+        "start": 0,
+        "end": 28,
+        "exactText": "Framework Agreement Criteria",
+        "sourceContainerText": "Framework Agreement Criteria "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Framework Agreement Criteria",
+      "sourceText": "Framework Agreement Criteria "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#heading-span-0-24",
+        "sourceId": "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+        "start": 0,
+        "end": 24,
+        "exactText": "No Obligation to Procure",
+        "sourceContainerText": "No Obligation to Procure"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[45]/tc[1]/p[1]#heading-span-0-24",
+        "sourceId": "body[1]/tbl[1]/tr[45]/tc[1]/p[1]",
+        "start": 0,
+        "end": 24,
+        "exactText": "No Obligation to Procure",
+        "sourceContainerText": "No Obligation to Procure"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "No Obligation to Procure",
+      "sourceText": "No Obligation to Procure"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#heading-span-0-15",
+        "sourceId": "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+        "start": 0,
+        "end": 15,
+        "exactText": "Non-exclusivity",
+        "sourceContainerText": "Non-exclusivity"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[46]/tc[1]/p[1]#heading-span-0-15",
+        "sourceId": "body[1]/tbl[1]/tr[46]/tc[1]/p[1]",
+        "start": 0,
+        "end": 15,
+        "exactText": "Non-exclusivity",
+        "sourceContainerText": "Non-exclusivity"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Non-exclusivity",
+      "sourceText": "Non-exclusivity"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[47]/tc[1]/p[1]#heading-span-0-46",
+        "sourceId": "body[1]/tbl[1]/tr[47]/tc[1]/p[1]",
+        "start": 0,
+        "end": 46,
+        "exactText": "Notification to conclude a Framework Agreement",
+        "sourceContainerText": "Notification to conclude a Framework Agreement"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[47]/tc[1]/p[1]#heading-span-0-46",
+        "sourceId": "body[1]/tbl[1]/tr[47]/tc[1]/p[1]",
+        "start": 0,
+        "end": 46,
+        "exactText": "Notification to conclude a Framework Agreement",
+        "sourceContainerText": "Notification to conclude a Framework Agreement"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Notification to conclude a Framework Agreement",
+      "sourceText": "Notification to conclude a Framework Agreement"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[48]/tc[1]/p[1]#heading-span-0-34",
+        "sourceId": "body[1]/tbl[1]/tr[48]/tc[1]/p[1]",
+        "start": 0,
+        "end": 34,
+        "exactText": "Debriefing by the Procuring Agency",
+        "sourceContainerText": "Debriefing by the Procuring Agency"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[48]/tc[1]/p[1]#heading-span-0-34",
+        "sourceId": "body[1]/tbl[1]/tr[48]/tc[1]/p[1]",
+        "start": 0,
+        "end": 34,
+        "exactText": "Debriefing by the Procuring Agency",
+        "sourceContainerText": "Debriefing by the Procuring Agency"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Debriefing by the Procuring Agency",
+      "sourceText": "Debriefing by the Procuring Agency"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[49]/tc[1]/p[1]#heading-span-0-31",
+        "sourceId": "body[1]/tbl[1]/tr[49]/tc[1]/p[1]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Signing the Framework Agreement",
+        "sourceContainerText": "Signing the Framework Agreement"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[49]/tc[1]/p[1]#heading-span-0-31",
+        "sourceId": "body[1]/tbl[1]/tr[49]/tc[1]/p[1]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Signing the Framework Agreement",
+        "sourceContainerText": "Signing the Framework Agreement"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Signing the Framework Agreement",
+      "sourceText": "Signing the Framework Agreement"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#heading-span-0-59",
+        "sourceId": "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+        "start": 0,
+        "end": 59,
+        "exactText": "Publication of the Conclusion of Framework Agreement Notice",
+        "sourceContainerText": "Publication of the Conclusion of Framework Agreement Notice"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[50]/tc[1]/p[1]#heading-span-0-59",
+        "sourceId": "body[1]/tbl[1]/tr[50]/tc[1]/p[1]",
+        "start": 0,
+        "end": 59,
+        "exactText": "Publication of the Conclusion of Framework Agreement Notice",
+        "sourceContainerText": "Publication of the Conclusion of Framework Agreement Notice"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Publication of the Conclusion of Framework Agreement Notice",
+      "sourceText": "Publication of the Conclusion of Framework Agreement Notice"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#heading-span-0-29",
+        "sourceId": "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+        "start": 0,
+        "end": 29,
+        "exactText": "Procurement Related Complaint",
+        "sourceContainerText": "Procurement Related Complaint "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#heading-span-0-29",
+        "sourceId": "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+        "start": 0,
+        "end": 29,
+        "exactText": "Procurement Related Complaint",
+        "sourceContainerText": "Procurement Related Complaint "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Procurement Related Complaint",
+      "sourceText": "Procurement Related Complaint "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[52]/tc[1]/p[1]#heading-span-0-50",
+        "sourceId": "body[1]/tbl[1]/tr[52]/tc[1]/p[1]",
+        "start": 0,
+        "end": 50,
+        "exactText": "Method and criteria for award of Call-off Contract",
+        "sourceContainerText": "Method and criteria for award of Call-off Contract    "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[52]/tc[1]/p[1]#heading-span-0-50",
+        "sourceId": "body[1]/tbl[1]/tr[52]/tc[1]/p[1]",
+        "start": 0,
+        "end": 50,
+        "exactText": "Method and criteria for award of Call-off Contract",
+        "sourceContainerText": "Method and criteria for award of Call-off Contract    "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Method and criteria for award of Call-off Contract",
+      "sourceText": "Method and criteria for award of Call-off Contract    "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[250]#heading-span-0-38",
+        "sourceId": "body[1]/p[250]",
+        "start": 0,
+        "end": 38,
+        "exactText": "Section 2. Instructions to Consultants",
+        "sourceContainerText": "Section 2. Instructions to Consultants"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[250]#heading-span-0-38",
+        "sourceId": "body[1]/p[250]",
+        "start": 0,
+        "end": 38,
+        "exactText": "Section 2. Instructions to Consultants",
+        "sourceContainerText": "Section 2. Instructions to Consultants"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Section 2. Instructions to Consultants",
+      "sourceText": "Section 2. Instructions to Consultants"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[256]#heading-span-0-46",
+        "sourceId": "body[1]/p[256]",
+        "start": 0,
+        "end": 46,
+        "exactText": "Section 3. Technical Proposal \u2013 Standard Form",
+        "sourceContainerText": "Section 3.  Technical Proposal \u2013 Standard Forms"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[256]#heading-span-0-46",
+        "sourceId": "body[1]/p[256]",
+        "start": 0,
+        "end": 47,
+        "exactText": "Section 3.  Technical Proposal \u2013 Standard Forms",
+        "sourceContainerText": "Section 3.  Technical Proposal \u2013 Standard Forms"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 3.  Technical Proposal \u2013 Standard Form",
+      "sourceText": "Section 3.  Technical Proposal \u2013 Standard Forms"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#heading-span-0-4",
+        "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 4,
+        "exactText": "FORM",
+        "sourceContainerText": "FORM"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[3]/tr[1]/tc[1]/p[1]#heading-span-0-4",
+        "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 4,
+        "exactText": "FORM",
+        "sourceContainerText": "FORM"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "FORM",
+      "sourceText": "FORM"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[290]#heading-span-0-11",
+        "sourceId": "body[1]/p[290]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-1",
+        "sourceContainerText": "Form TECH-1  "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[290]#heading-span-0-11",
+        "sourceId": "body[1]/p[290]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-1",
+        "sourceContainerText": "Form TECH-1  "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-1",
+      "sourceText": "Form TECH-1  "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[345]#heading-span-0-11",
+        "sourceId": "body[1]/p[345]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-2",
+        "sourceContainerText": "Form TECH-2 "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[345]#heading-span-0-11",
+        "sourceId": "body[1]/p[345]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-2",
+        "sourceContainerText": "Form TECH-2 "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-2",
+      "sourceText": "Form TECH-2 "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[350]#heading-span-0-601",
+        "sourceId": "body[1]/p[350]",
+        "start": 0,
+        "end": 601,
+        "exactText": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.",
+        "sourceContainerText": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.  "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[350]#heading-span-0-601",
+        "sourceId": "body[1]/p[350]",
+        "start": 0,
+        "end": 601,
+        "exactText": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.",
+        "sourceContainerText": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.  "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.",
+      "sourceText": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.  "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[367]#heading-span-0-11",
+        "sourceId": "body[1]/p[367]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-3",
+        "sourceContainerText": "Form TECH-3 "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[367]#heading-span-0-11",
+        "sourceId": "body[1]/p[367]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-3",
+        "sourceContainerText": "Form TECH-3 "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-3",
+      "sourceText": "Form TECH-3 "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[371]#heading-span-0-135",
+        "sourceId": "body[1]/p[371]",
+        "start": 0,
+        "end": 135,
+        "exactText": "Form TECH-3: comments and suggestions on the Terms of Reference that could improve the quality/effectiveness of the proposed services..",
+        "sourceContainerText": "Form TECH-3: comments and suggestions on the Terms of Reference that could improve the quality/effectiveness of the proposed services.."
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[371]#heading-span-0-135",
+        "sourceId": "body[1]/p[371]",
+        "start": 0,
+        "end": 135,
+        "exactText": "Form TECH-3: comments and suggestions on the Terms of Reference that could improve the quality/effectiveness of the proposed services..",
+        "sourceContainerText": "Form TECH-3: comments and suggestions on the Terms of Reference that could improve the quality/effectiveness of the proposed services.."
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-3: comments and suggestions on the Terms of Reference that could improve the quality/effectiveness of the proposed services..",
+      "sourceText": "Form TECH-3: comments and suggestions on the Terms of Reference that could improve the quality/effectiveness of the proposed services.."
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[381]#heading-span-0-11",
+        "sourceId": "body[1]/p[381]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-4",
+        "sourceContainerText": "Form TECH-4 "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[381]#heading-span-0-11",
+        "sourceId": "body[1]/p[381]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-4",
+        "sourceContainerText": "Form TECH-4 "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-4",
+      "sourceText": "Form TECH-4 "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[386]#heading-span-0-120",
+        "sourceId": "body[1]/p[386]",
+        "start": 0,
+        "end": 120,
+        "exactText": "Form TECH-4: a description of the broad approach and methodology for performing assignments under the proposed Framework",
+        "sourceContainerText": "Form TECH-4: a description of the broad approach and methodology for performing assignments under the proposed Framework"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[386]#heading-span-0-120",
+        "sourceId": "body[1]/p[386]",
+        "start": 0,
+        "end": 120,
+        "exactText": "Form TECH-4: a description of the broad approach and methodology for performing assignments under the proposed Framework",
+        "sourceContainerText": "Form TECH-4: a description of the broad approach and methodology for performing assignments under the proposed Framework"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-4: a description of the broad approach and methodology for performing assignments under the proposed Framework",
+      "sourceText": "Form TECH-4: a description of the broad approach and methodology for performing assignments under the proposed Framework"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[401]#heading-span-0-11",
+        "sourceId": "body[1]/p[401]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-5",
+        "sourceContainerText": "Form TECH-5 "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[401]#heading-span-0-11",
+        "sourceId": "body[1]/p[401]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-5",
+        "sourceContainerText": "Form TECH-5 "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-5",
+      "sourceText": "Form TECH-5 "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[412]#heading-span-0-11",
+        "sourceId": "body[1]/p[412]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-6",
+        "sourceContainerText": "Form TECH-6"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[412]#heading-span-0-11",
+        "sourceId": "body[1]/p[412]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-6",
+        "sourceContainerText": "Form TECH-6"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-6",
+      "sourceText": "Form TECH-6"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[426]#heading-span-0-11",
+        "sourceId": "body[1]/p[426]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-6",
+        "sourceContainerText": "Form TECH-6"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[426]#heading-span-0-11",
+        "sourceId": "body[1]/p[426]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-6",
+        "sourceContainerText": "Form TECH-6"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-6",
+      "sourceText": "Form TECH-6"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[8]/tr[1]/tc[4]/p[1]#heading-span-0-58",
+        "sourceId": "body[1]/tbl[8]/tr[1]/tc[4]/p[1]",
+        "start": 0,
+        "end": 58,
+        "exactText": "Summary of activities performed relevant to the Assignment",
+        "sourceContainerText": "Summary of activities performed relevant to the Assignment"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[8]/tr[1]/tc[4]/p[1]#heading-span-0-58",
+        "sourceId": "body[1]/tbl[8]/tr[1]/tc[4]/p[1]",
+        "start": 0,
+        "end": 58,
+        "exactText": "Summary of activities performed relevant to the Assignment",
+        "sourceContainerText": "Summary of activities performed relevant to the Assignment"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Summary of activities performed relevant to the Assignment",
+      "sourceText": "Summary of activities performed relevant to the Assignment"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[468]#heading-span-0-11",
+        "sourceId": "body[1]/p[468]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-7",
+        "sourceContainerText": "Form TECH-7 "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[468]#heading-span-0-11",
+        "sourceId": "body[1]/p[468]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-7",
+        "sourceContainerText": "Form TECH-7 "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-7",
+      "sourceText": "Form TECH-7 "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[534]#heading-span-0-11",
+        "sourceId": "body[1]/p[534]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-8",
+        "sourceContainerText": "Form TECH-8 "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[534]#heading-span-0-11",
+        "sourceId": "body[1]/p[534]",
+        "start": 0,
+        "end": 11,
+        "exactText": "Form TECH-8",
+        "sourceContainerText": "Form TECH-8 "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Form TECH-8",
+      "sourceText": "Form TECH-8 "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[542]#heading-span-0-62",
+        "sourceId": "body[1]/p[542]",
+        "start": 0,
+        "end": 62,
+        "exactText": "Request for Proposal reference No.: [insert identification no]",
+        "sourceContainerText": "Request for Proposal reference No.: [insert identification no]"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[542]#heading-span-0-62",
+        "sourceId": "body[1]/p[542]",
+        "start": 0,
+        "end": 62,
+        "exactText": "Request for Proposal reference No.: [insert identification no]",
+        "sourceContainerText": "Request for Proposal reference No.: [insert identification no]"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Request for Proposal reference No.: [insert identification no]",
+      "sourceText": "Request for Proposal reference No.: [insert identification no]"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[586]#heading-span-0-29",
+        "sourceId": "body[1]/p[586]",
+        "start": 0,
+        "end": 29,
+        "exactText": "Section 4. Eligible Countrie",
+        "sourceContainerText": "Section 4.  Eligible Countries"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[586]#heading-span-0-29",
+        "sourceId": "body[1]/p[586]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Section 4.  Eligible Countries",
+        "sourceContainerText": "Section 4.  Eligible Countries"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 4.  Eligible Countrie",
+      "sourceText": "Section 4.  Eligible Countries"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[596]#heading-span-0-31",
+        "sourceId": "body[1]/p[596]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Section 5. Fraud and Corruptio",
+        "sourceContainerText": "Section 5.  Fraud and Corruption"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[596]#heading-span-0-31",
+        "sourceId": "body[1]/p[596]",
+        "start": 0,
+        "end": 32,
+        "exactText": "Section 5.  Fraud and Corruption",
+        "sourceContainerText": "Section 5.  Fraud and Corruption"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 5.  Fraud and Corruptio",
+      "sourceText": "Section 5.  Fraud and Corruption"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[619]#heading-span-0-29",
+        "sourceId": "body[1]/p[619]",
+        "start": 0,
+        "end": 29,
+        "exactText": "Section 6. Terms of Referenc",
+        "sourceContainerText": "Section 6.  Terms of Reference"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[619]#heading-span-0-29",
+        "sourceId": "body[1]/p[619]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Section 6.  Terms of Reference",
+        "sourceContainerText": "Section 6.  Terms of Reference"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Section 6.  Terms of Referenc",
+      "sourceText": "Section 6.  Terms of Reference"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[646]#heading-span-0-43",
+        "sourceId": "body[1]/p[646]",
+        "start": 0,
+        "end": 43,
+        "exactText": "format, frequency, and contents of reports;",
+        "sourceContainerText": "format, frequency, and contents of reports; "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[646]#heading-span-0-43",
+        "sourceId": "body[1]/p[646]",
+        "start": 0,
+        "end": 43,
+        "exactText": "format, frequency, and contents of reports;",
+        "sourceContainerText": "format, frequency, and contents of reports; "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "format, frequency, and contents of reports;",
+      "sourceText": "format, frequency, and contents of reports; "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[667]#heading-span-0-29",
+        "sourceId": "body[1]/p[667]",
+        "start": 0,
+        "end": 29,
+        "exactText": "PART II \u2013 FRAMEWORK AGREEMENT",
+        "sourceContainerText": "PART II \u2013 FRAMEWORK AGREEMENT"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[667]#heading-span-0-29",
+        "sourceId": "body[1]/p[667]",
+        "start": 0,
+        "end": 29,
+        "exactText": "PART II \u2013 FRAMEWORK AGREEMENT",
+        "sourceContainerText": "PART II \u2013 FRAMEWORK AGREEMENT"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "PART II \u2013 FRAMEWORK AGREEMENT",
+      "sourceText": "PART II \u2013 FRAMEWORK AGREEMENT"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[671]#heading-span-0-62",
+        "sourceId": "body[1]/p[671]",
+        "start": 0,
+        "end": 62,
+        "exactText": "Notification of Intention to Conclude a Framework Agreement(s)",
+        "sourceContainerText": "Notification of Intention to Conclude a Framework Agreement(s)"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[671]#heading-span-0-62",
+        "sourceId": "body[1]/p[671]",
+        "start": 0,
+        "end": 62,
+        "exactText": "Notification of Intention to Conclude a Framework Agreement(s)",
+        "sourceContainerText": "Notification of Intention to Conclude a Framework Agreement(s)"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Notification of Intention to Conclude a Framework Agreement(s)",
+      "sourceText": "Notification of Intention to Conclude a Framework Agreement(s)"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[707]#heading-span-0-50",
+        "sourceId": "body[1]/p[707]",
+        "start": 0,
+        "end": 50,
+        "exactText": "Notification to Conclude a Framework Agreement (s)",
+        "sourceContainerText": "Notification to Conclude a Framework Agreement (s) "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[707]#heading-span-0-50",
+        "sourceId": "body[1]/p[707]",
+        "start": 0,
+        "end": 50,
+        "exactText": "Notification to Conclude a Framework Agreement (s)",
+        "sourceContainerText": "Notification to Conclude a Framework Agreement (s) "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Notification to Conclude a Framework Agreement (s)",
+      "sourceText": "Notification to Conclude a Framework Agreement (s) "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[745]#heading-span-0-57",
+        "sourceId": "body[1]/p[745]",
+        "start": 0,
+        "end": 57,
+        "exactText": "Appendix to the Framework Agreement: Fraud and Corruption",
+        "sourceContainerText": "Appendix to the Framework Agreement: Fraud and Corruption"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[745]#heading-span-0-57",
+        "sourceId": "body[1]/p[745]",
+        "start": 0,
+        "end": 57,
+        "exactText": "Appendix to the Framework Agreement: Fraud and Corruption",
+        "sourceContainerText": "Appendix to the Framework Agreement: Fraud and Corruption"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Appendix to the Framework Agreement: Fraud and Corruption",
+      "sourceText": "Appendix to the Framework Agreement: Fraud and Corruption"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[746]#heading-span-0-30",
+        "sourceId": "body[1]/p[746]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Schedule 1: Terms of Reference",
+        "sourceContainerText": "Schedule 1: Terms of Reference"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[746]#heading-span-0-30",
+        "sourceId": "body[1]/p[746]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Schedule 1: \tTerms of Reference",
+        "sourceContainerText": "Schedule 1: \tTerms of Reference"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Schedule 1: \tTerms of Referenc",
+      "sourceText": "Schedule 1: \tTerms of Reference"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[747]#heading-span-0-23",
+        "sourceId": "body[1]/p[747]",
+        "start": 0,
+        "end": 23,
+        "exactText": "Schedule 2: Key Experts",
+        "sourceContainerText": "Schedule 2: Key Experts"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[747]#heading-span-0-23",
+        "sourceId": "body[1]/p[747]",
+        "start": 0,
+        "end": 24,
+        "exactText": "Schedule 2: \tKey Experts",
+        "sourceContainerText": "Schedule 2: \tKey Experts"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Schedule 2: \tKey Expert",
+      "sourceText": "Schedule 2: \tKey Experts"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[748]#heading-span-0-33",
+        "sourceId": "body[1]/p[748]",
+        "start": 0,
+        "end": 33,
+        "exactText": "Schedule 3: Secondary Procurement",
+        "sourceContainerText": "Schedule 3: Secondary Procurement "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[748]#heading-span-0-33",
+        "sourceId": "body[1]/p[748]",
+        "start": 0,
+        "end": 33,
+        "exactText": "Schedule 3: Secondary Procurement",
+        "sourceContainerText": "Schedule 3: Secondary Procurement "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Schedule 3: Secondary Procurement",
+      "sourceText": "Schedule 3: Secondary Procurement "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[749]#heading-span-0-36",
+        "sourceId": "body[1]/p[749]",
+        "start": 0,
+        "end": 36,
+        "exactText": "Schedule 4: Advance Payment Security",
+        "sourceContainerText": "Schedule 4: Advance Payment Security"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[749]#heading-span-0-36",
+        "sourceId": "body[1]/p[749]",
+        "start": 0,
+        "end": 36,
+        "exactText": "Schedule 4: Advance Payment Security",
+        "sourceContainerText": "Schedule 4: Advance Payment Security"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Schedule 4: Advance Payment Security",
+      "sourceText": "Schedule 4: Advance Payment Security"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[750]#heading-span-0-55",
+        "sourceId": "body[1]/p[750]",
+        "start": 0,
+        "end": 55,
+        "exactText": "Schedule 5: Code of Conduct for Experts [as applicable]",
+        "sourceContainerText": "Schedule 5: Code of Conduct for Experts [as applicable]"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[750]#heading-span-0-55",
+        "sourceId": "body[1]/p[750]",
+        "start": 0,
+        "end": 55,
+        "exactText": "Schedule 5: Code of Conduct for Experts [as applicable]",
+        "sourceContainerText": "Schedule 5: Code of Conduct for Experts [as applicable]"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Schedule 5: Code of Conduct for Experts [as applicable]",
+      "sourceText": "Schedule 5: Code of Conduct for Experts [as applicable]"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[751]#heading-span-0-121",
+        "sourceId": "body[1]/p[751]",
+        "start": 0,
+        "end": 121,
+        "exactText": "Schedule 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+        "sourceContainerText": "Schedule 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[751]#heading-span-0-121",
+        "sourceId": "body[1]/p[751]",
+        "start": 0,
+        "end": 121,
+        "exactText": "Schedule 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+        "sourceContainerText": "Schedule 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Schedule 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+      "sourceText": "Schedule 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[752]#heading-span-0-84",
+        "sourceId": "body[1]/p[752]",
+        "start": 0,
+        "end": 84,
+        "exactText": "Schedule 7: List of participating Clients [use for Multi-User FAs, otherwise delete]",
+        "sourceContainerText": "Schedule 7: List of participating Clients [use for Multi-User FAs, otherwise delete]"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[752]#heading-span-0-84",
+        "sourceId": "body[1]/p[752]",
+        "start": 0,
+        "end": 86,
+        "exactText": "Schedule 7: \tList of participating Clients [use for Multi-User FAs, otherwise delete]\t",
+        "sourceContainerText": "Schedule 7: \tList of participating Clients [use for Multi-User FAs, otherwise delete]\t"
+      },
+      "reason": "source-whitespace-elision-map",
+      "changed": true,
+      "oldSpanText": "Schedule 7: \tList of participating Clients [use for Multi-User FAs, otherwise delete",
+      "sourceText": "Schedule 7: \tList of participating Clients [use for Multi-User FAs, otherwise delete]\t"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[2]#heading-span-0-86",
+        "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[2]",
+        "start": 0,
+        "end": 86,
+        "exactText": "in the judgement of the Client, the Consultant has engaged in Fraud and Corruption, or",
+        "sourceContainerText": "in the judgement of the Client, the Consultant has engaged in Fraud and Corruption, or"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[2]#heading-span-0-86",
+        "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[2]",
+        "start": 0,
+        "end": 86,
+        "exactText": "in the judgement of the Client, the Consultant has engaged in Fraud and Corruption, or",
+        "sourceContainerText": "in the judgement of the Client, the Consultant has engaged in Fraud and Corruption, or"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "in the judgement of the Client, the Consultant has engaged in Fraud and Corruption, or",
+      "sourceText": "in the judgement of the Client, the Consultant has engaged in Fraud and Corruption, or"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[3]#heading-span-0-97",
+        "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[3]",
+        "start": 0,
+        "end": 97,
+        "exactText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or",
+        "sourceContainerText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[3]#heading-span-0-97",
+        "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[3]",
+        "start": 0,
+        "end": 97,
+        "exactText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or",
+        "sourceContainerText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or",
+      "sourceText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[5]#heading-span-0-58",
+        "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[5]",
+        "start": 0,
+        "end": 58,
+        "exactText": "the Consultant becomes bankrupt or otherwise insolvent, or",
+        "sourceContainerText": "the Consultant becomes bankrupt or otherwise insolvent, or"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[5]#heading-span-0-58",
+        "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[5]",
+        "start": 0,
+        "end": 58,
+        "exactText": "the Consultant becomes bankrupt or otherwise insolvent, or",
+        "sourceContainerText": "the Consultant becomes bankrupt or otherwise insolvent, or"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "the Consultant becomes bankrupt or otherwise insolvent, or",
+      "sourceText": "the Consultant becomes bankrupt or otherwise insolvent, or"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[780]#heading-span-0-35",
+        "sourceId": "body[1]/p[780]",
+        "start": 0,
+        "end": 35,
+        "exactText": "Appendix to the Framework Agreement",
+        "sourceContainerText": "Appendix to the Framework Agreement"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[780]#heading-span-0-35",
+        "sourceId": "body[1]/p[780]",
+        "start": 0,
+        "end": 35,
+        "exactText": "Appendix to the Framework Agreement",
+        "sourceContainerText": "Appendix to the Framework Agreement"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Appendix to the Framework Agreement",
+      "sourceText": "Appendix to the Framework Agreement"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[804]#heading-span-0-30",
+        "sourceId": "body[1]/p[804]",
+        "start": 0,
+        "end": 30,
+        "exactText": "SCHEDULE 1: Terms of Reference",
+        "sourceContainerText": "SCHEDULE 1: Terms of Reference"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[804]#heading-span-0-30",
+        "sourceId": "body[1]/p[804]",
+        "start": 0,
+        "end": 30,
+        "exactText": "SCHEDULE 1: Terms of Reference",
+        "sourceContainerText": "SCHEDULE 1: Terms of Reference"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "SCHEDULE 1: Terms of Reference",
+      "sourceText": "SCHEDULE 1: Terms of Reference"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[811]#heading-span-0-24",
+        "sourceId": "body[1]/p[811]",
+        "start": 0,
+        "end": 24,
+        "exactText": "Schedule 2 - Key Experts",
+        "sourceContainerText": "Schedule 2 - Key Experts "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[811]#heading-span-0-24",
+        "sourceId": "body[1]/p[811]",
+        "start": 0,
+        "end": 24,
+        "exactText": "Schedule 2 - Key Experts",
+        "sourceContainerText": "Schedule 2 - Key Experts "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Schedule 2 - Key Experts",
+      "sourceText": "Schedule 2 - Key Experts "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[816]#heading-span-0-33",
+        "sourceId": "body[1]/p[816]",
+        "start": 0,
+        "end": 33,
+        "exactText": "SCHEDULE 3: Secondary Procurement",
+        "sourceContainerText": "SCHEDULE 3: Secondary Procurement "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[816]#heading-span-0-33",
+        "sourceId": "body[1]/p[816]",
+        "start": 0,
+        "end": 33,
+        "exactText": "SCHEDULE 3: Secondary Procurement",
+        "sourceContainerText": "SCHEDULE 3: Secondary Procurement "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "SCHEDULE 3: Secondary Procurement",
+      "sourceText": "SCHEDULE 3: Secondary Procurement "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[835]#heading-span-0-17",
+        "sourceId": "body[1]/p[835]",
+        "start": 0,
+        "end": 17,
+        "exactText": "Call-off contract",
+        "sourceContainerText": "Call-off contract"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[835]#heading-span-0-17",
+        "sourceId": "body[1]/p[835]",
+        "start": 0,
+        "end": 17,
+        "exactText": "Call-off contract",
+        "sourceContainerText": "Call-off contract"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Call-off contract",
+      "sourceText": "Call-off contract"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[837]#heading-span-0-44",
+        "sourceId": "body[1]/p[837]",
+        "start": 0,
+        "end": 44,
+        "exactText": "Communicating the award of Call-off Contract",
+        "sourceContainerText": "Communicating the award of Call-off Contract"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[837]#heading-span-0-44",
+        "sourceId": "body[1]/p[837]",
+        "start": 0,
+        "end": 44,
+        "exactText": "Communicating the award of Call-off Contract",
+        "sourceContainerText": "Communicating the award of Call-off Contract"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Communicating the award of Call-off Contract",
+      "sourceText": "Communicating the award of Call-off Contract"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[844]#heading-span-0-42",
+        "sourceId": "body[1]/p[844]",
+        "start": 0,
+        "end": 42,
+        "exactText": "Complaint about award of Call-off Contract",
+        "sourceContainerText": "Complaint about award of Call-off Contract"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[844]#heading-span-0-42",
+        "sourceId": "body[1]/p[844]",
+        "start": 0,
+        "end": 42,
+        "exactText": "Complaint about award of Call-off Contract",
+        "sourceContainerText": "Complaint about award of Call-off Contract"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Complaint about award of Call-off Contract",
+      "sourceText": "Complaint about award of Call-off Contract"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[850]#heading-span-0-31",
+        "sourceId": "body[1]/p[850]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Request for Proposals: Call-off",
+        "sourceContainerText": "Request for Proposals: Call-off"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[850]#heading-span-0-31",
+        "sourceId": "body[1]/p[850]",
+        "start": 0,
+        "end": 31,
+        "exactText": "Request for Proposals: Call-off",
+        "sourceContainerText": "Request for Proposals: Call-off"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Request for Proposals: Call-off",
+      "sourceText": "Request for Proposals: Call-off"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[860]#heading-span-0-30",
+        "sourceId": "body[1]/p[860]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Annex 1: Client\u2019s Requirements",
+        "sourceContainerText": "Annex 1: Client\u2019s Requirements"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[860]#heading-span-0-30",
+        "sourceId": "body[1]/p[860]",
+        "start": 0,
+        "end": 30,
+        "exactText": "Annex 1: Client\u2019s Requirements",
+        "sourceContainerText": "Annex 1: Client\u2019s Requirements"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Annex 1: Client\u2019s Requirements",
+      "sourceText": "Annex 1: Client\u2019s Requirements"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[861]#heading-span-0-23",
+        "sourceId": "body[1]/p[861]",
+        "start": 0,
+        "end": 23,
+        "exactText": "Annex 2: Proposal Forms",
+        "sourceContainerText": "Annex 2: Proposal Forms"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[861]#heading-span-0-23",
+        "sourceId": "body[1]/p[861]",
+        "start": 0,
+        "end": 23,
+        "exactText": "Annex 2: Proposal Forms",
+        "sourceContainerText": "Annex 2: Proposal Forms"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Annex 2: Proposal Forms",
+      "sourceText": "Annex 2: Proposal Forms"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[862]#heading-span-0-124",
+        "sourceId": "body[1]/p[862]",
+        "start": 0,
+        "end": 124,
+        "exactText": "Annex 3: Call-off Contract for provision of Services [this may be the Call-off Contract Form or another acceptable template]",
+        "sourceContainerText": "Annex 3: Call-off Contract for provision of Services [this may be the Call-off Contract Form or another acceptable template]"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[862]#heading-span-0-124",
+        "sourceId": "body[1]/p[862]",
+        "start": 0,
+        "end": 124,
+        "exactText": "Annex 3: Call-off Contract for provision of Services [this may be the Call-off Contract Form or another acceptable template]",
+        "sourceContainerText": "Annex 3: Call-off Contract for provision of Services [this may be the Call-off Contract Form or another acceptable template]"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Annex 3: Call-off Contract for provision of Services [this may be the Call-off Contract Form or another acceptable template]",
+      "sourceText": "Annex 3: Call-off Contract for provision of Services [this may be the Call-off Contract Form or another acceptable template]"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[865]#heading-span-0-46",
+        "sourceId": "body[1]/p[865]",
+        "start": 0,
+        "end": 46,
+        "exactText": "Request for Proposal: Call-off (RFP: Call-off)",
+        "sourceContainerText": "Request for Proposal: Call-off (RFP: Call-off)"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[865]#heading-span-0-46",
+        "sourceId": "body[1]/p[865]",
+        "start": 0,
+        "end": 46,
+        "exactText": "Request for Proposal: Call-off (RFP: Call-off)",
+        "sourceContainerText": "Request for Proposal: Call-off (RFP: Call-off)"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Request for Proposal: Call-off (RFP: Call-off)",
+      "sourceText": "Request for Proposal: Call-off (RFP: Call-off)"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[32]/tr[1]/tc[4]/p[1]#heading-span-0-58",
+        "sourceId": "body[1]/tbl[32]/tr[1]/tc[4]/p[1]",
+        "start": 0,
+        "end": 58,
+        "exactText": "Summary of activities performed relevant to the Assignment",
+        "sourceContainerText": "Summary of activities performed relevant to the Assignment"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[32]/tr[1]/tc[4]/p[1]#heading-span-0-58",
+        "sourceId": "body[1]/tbl[32]/tr[1]/tc[4]/p[1]",
+        "start": 0,
+        "end": 58,
+        "exactText": "Summary of activities performed relevant to the Assignment",
+        "sourceContainerText": "Summary of activities performed relevant to the Assignment"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Summary of activities performed relevant to the Assignment",
+      "sourceText": "Summary of activities performed relevant to the Assignment"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[1060]#heading-span-0-16",
+        "sourceId": "body[1]/p[1060]",
+        "start": 0,
+        "end": 16,
+        "exactText": "Summary of Costs",
+        "sourceContainerText": "Summary of Costs"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[1060]#heading-span-0-16",
+        "sourceId": "body[1]/p[1060]",
+        "start": 0,
+        "end": 16,
+        "exactText": "Summary of Costs",
+        "sourceContainerText": "Summary of Costs"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Summary of Costs",
+      "sourceText": "Summary of Costs"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[34]/tr[1]/tc[1]/p[1]#heading-span-0-4",
+        "sourceId": "body[1]/tbl[34]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 4,
+        "exactText": "Item",
+        "sourceContainerText": "Item"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[34]/tr[1]/tc[1]/p[1]#heading-span-0-4",
+        "sourceId": "body[1]/tbl[34]/tr[1]/tc[1]/p[1]",
+        "start": 0,
+        "end": 4,
+        "exactText": "Item",
+        "sourceContainerText": "Item"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Item",
+      "sourceText": "Item"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[1070]#heading-span-0-68",
+        "sourceId": "body[1]/p[1070]",
+        "start": 0,
+        "end": 68,
+        "exactText": "Appendix A. Financial Negotiations - Breakdown of Remuneration Rates",
+        "sourceContainerText": "Appendix A. Financial Negotiations - Breakdown of Remuneration Rates"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[1070]#heading-span-0-68",
+        "sourceId": "body[1]/p[1070]",
+        "start": 0,
+        "end": 68,
+        "exactText": "Appendix A. Financial Negotiations - Breakdown of Remuneration Rates",
+        "sourceContainerText": "Appendix A. Financial Negotiations - Breakdown of Remuneration Rates"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Appendix A. Financial Negotiations - Breakdown of Remuneration Rates",
+      "sourceText": "Appendix A. Financial Negotiations - Breakdown of Remuneration Rates"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[39]/tr[2]/tc[1]/p[1]#heading-span-0-42",
+        "sourceId": "body[1]/tbl[39]/tr[2]/tc[1]/p[1]",
+        "start": 0,
+        "end": 42,
+        "exactText": "[Insert complete legal name of the Client]",
+        "sourceContainerText": "[Insert complete legal name of the Client]"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[39]/tr[2]/tc[1]/p[1]#heading-span-0-42",
+        "sourceId": "body[1]/tbl[39]/tr[2]/tc[1]/p[1]",
+        "start": 0,
+        "end": 42,
+        "exactText": "[Insert complete legal name of the Client]",
+        "sourceContainerText": "[Insert complete legal name of the Client]"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "[Insert complete legal name of the Client]",
+      "sourceText": "[Insert complete legal name of the Client]"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[39]/tr[2]/tc[3]/p[1]#heading-span-0-46",
+        "sourceId": "body[1]/tbl[39]/tr[2]/tc[3]/p[1]",
+        "start": 0,
+        "end": 46,
+        "exactText": "[Insert complete legal name of the Consultant]",
+        "sourceContainerText": "[Insert complete legal name of the Consultant]"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/tbl[39]/tr[2]/tc[3]/p[1]#heading-span-0-46",
+        "sourceId": "body[1]/tbl[39]/tr[2]/tc[3]/p[1]",
+        "start": 0,
+        "end": 46,
+        "exactText": "[Insert complete legal name of the Consultant]",
+        "sourceContainerText": "[Insert complete legal name of the Consultant]"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "[Insert complete legal name of the Consultant]",
+      "sourceText": "[Insert complete legal name of the Consultant]"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[1183]#heading-span-0-44",
+        "sourceId": "body[1]/p[1183]",
+        "start": 0,
+        "end": 44,
+        "exactText": "Schedule of Payments [Modify as appropriate]",
+        "sourceContainerText": "Schedule of Payments [Modify as appropriate]"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[1183]#heading-span-0-44",
+        "sourceId": "body[1]/p[1183]",
+        "start": 0,
+        "end": 44,
+        "exactText": "Schedule of Payments [Modify as appropriate]",
+        "sourceContainerText": "Schedule of Payments [Modify as appropriate]"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "Schedule of Payments [Modify as appropriate]",
+      "sourceText": "Schedule of Payments [Modify as appropriate]"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[1256]#heading-span-0-36",
+        "sourceId": "body[1]/p[1256]",
+        "start": 0,
+        "end": 36,
+        "exactText": "SCHEDULE 4: Advance Payment Security",
+        "sourceContainerText": "SCHEDULE 4: Advance Payment Security "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[1256]#heading-span-0-36",
+        "sourceId": "body[1]/p[1256]",
+        "start": 0,
+        "end": 36,
+        "exactText": "SCHEDULE 4: Advance Payment Security",
+        "sourceContainerText": "SCHEDULE 4: Advance Payment Security "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "SCHEDULE 4: Advance Payment Security",
+      "sourceText": "SCHEDULE 4: Advance Payment Security "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[1282]#heading-span-0-39",
+        "sourceId": "body[1]/p[1282]",
+        "start": 0,
+        "end": 39,
+        "exactText": "SCHEDULE 5: Code of Conduct for Experts",
+        "sourceContainerText": "SCHEDULE 5: Code of Conduct for Experts"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[1282]#heading-span-0-39",
+        "sourceId": "body[1]/p[1282]",
+        "start": 0,
+        "end": 39,
+        "exactText": "SCHEDULE 5: Code of Conduct for Experts",
+        "sourceContainerText": "SCHEDULE 5: Code of Conduct for Experts"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "SCHEDULE 5: Code of Conduct for Experts",
+      "sourceText": "SCHEDULE 5: Code of Conduct for Experts"
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[1286]#heading-span-0-121",
+        "sourceId": "body[1]/p[1286]",
+        "start": 0,
+        "end": 121,
+        "exactText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+        "sourceContainerText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants "
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[1286]#heading-span-0-121",
+        "sourceId": "body[1]/p[1286]",
+        "start": 0,
+        "end": 121,
+        "exactText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+        "sourceContainerText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants "
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+      "sourceText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants "
+    },
+    {
+      "old": {
+        "occurrenceId": "DOC-0116:body[1]/p[1293]#heading-span-0-43",
+        "sourceId": "body[1]/p[1293]",
+        "start": 0,
+        "end": 43,
+        "exactText": "SCHEDULE 7: List of Clients (if applicable)",
+        "sourceContainerText": "SCHEDULE 7: List of Clients (if applicable)"
+      },
+      "repaired": {
+        "occurrenceId": "DOC-0116:body[1]/p[1293]#heading-span-0-43",
+        "sourceId": "body[1]/p[1293]",
+        "start": 0,
+        "end": 43,
+        "exactText": "SCHEDULE 7: List of Clients (if applicable)",
+        "sourceContainerText": "SCHEDULE 7: List of Clients (if applicable)"
+      },
+      "reason": "EXISTING_SPAN_SOURCE_EXACT",
+      "changed": false,
+      "oldSpanText": "SCHEDULE 7: List of Clients (if applicable)",
+      "sourceText": "SCHEDULE 7: List of Clients (if applicable)"
+    }
+  ],
+  "createdAtUtc": "2026-09-17T07:35:04.4803159+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "a99-canonical-dev-vnext-doc0116-gold-binding-repair-successor-manifest-v1",
+  "status": "REPAIRED_SUCCESSOR_CANDIDATE_READY_FOR_REVIEW",
+  "documentId": "DOC-0116",
+  "successorSha256": "a3d5c4246e0487fa06adc093bbcf0824751cd68046065d14a4c2d32c6a7b8ebb",
+  "reportSha256": "056a820db86c080d0c361f03c2892e7b37fb117d6384a40b05edacfbd9e27739",
+  "originalGoldSha256": "85c318630555d8254cbb6cba33285011a4deff8889bb084c5be8e8e6a1c497cc",
+  "predictionFreezeSha256": "bf9b42a4ea76103805136f379b4f133e3af40d087a14743a34d811d81989bfa8",
+  "compatibilityAuditSha256": "5e83e10f45eaacd84902cd81121b78e62bec8ec4041aac19353686c137e374ad",
+  "providerCalls": 0,
+  "goldReads": 1,
+  "modelCalls": 0,
+  "authorityPromotion": "FORBIDDEN_UNTIL_REVIEW_AND_COMPATIBILITY_GATES_PASS",
+  "createdAtUtc": "2026-09-17T07:35:04.575144+00:00"
+}
