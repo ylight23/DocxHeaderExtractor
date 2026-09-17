@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "a99-doc0116-occurrence-universe-bridge-audit-v1",
+  "documentId": "DOC-0116",
+  "status": "BRIDGE_PASS",
+  "bridgeMeaning": "DETERMINISTIC_SOURCE_REPRESENTATION_BRIDGE_ONLY",
+  "semanticEquivalenceClaim": false,
+  "goldCoverageClaim": false,
+  "sourceUniverseSha256": "f9c568ede3d8172dfea05cc07aeb3c8f838088b7a0c163faf461f2cd3d845d8b",
+  "sourceAuthoritySha256": "4cd73af516c4a26b67c6155085a7392b8f7ed3262ebee2f9c24bb6249125bf39",
+  "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "authoritySourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "runtimeAliasCount": 1921,
+  "distinctRuntimeAliasCount": 1921,
+  "normalizedContainerCount": 1896,
+  "expectedNormalizedContainerCount": 1896,
+  "aliasSurplusBeyondNormalizedContainers": 25,
+  "groupedContainerCount": 3,
+  "maxGroupSize": 13,
+  "directAliaslessGroupCount": 1,
+  "allAliasesUnique": true,
+  "allSourceIdsUnique": true,
+  "sourceShaMatchesAuthority": true,
+  "aliasToContainerMappingSha256": "0e541f6415d680bb78b0a478ea88e1dd4b09675b379024629a82e1a529f45916",
+  "groupedContainers": [
+    {
+      "normalizedContainerId": "body[1]/p[25]",
+      "aliasCount": 2,
+      "hasDirectAlias": false,
+      "aliases": [
+        {
+          "alias": "S0006",
+          "sourceId": "body[1]/p[25]/txbxContent[1]/p[1]",
+          "sourceOrdinal": 25,
+          "textSha256": "e59ea10b1b22fa4d689914d855f3c05c471f7ed73f25c754a88de30616b061a7"
+        },
+        {
+          "alias": "S0007",
+          "sourceId": "body[1]/p[25]/txbxContent[2]/p[1]",
+          "sourceOrdinal": 26,
+          "textSha256": "e59ea10b1b22fa4d689914d855f3c05c471f7ed73f25c754a88de30616b061a7"
+        }
+      ]
+    },
+    {
+      "normalizedContainerId": "body[1]/p[472]",
+      "aliasCount": 13,
+      "hasDirectAlias": true,
+      "aliases": [
+        {
+          "alias": "S0737",
+          "sourceId": "body[1]/p[472]",
+          "sourceOrdinal": 1420,
+          "textSha256": "06ade30f3b3640c148ec352bc36cf60e2e4d7a603be0132f0652a3aa94c319b1"
+        },
+        {
+          "alias": "S0738",
+          "sourceId": "body[1]/p[472]/txbxContent[1]/p[1]",
+          "sourceOrdinal": 1421,
+          "textSha256": "89f0fc4ec3b80de2b26fe5effc2a79997c8cdcb42a741167a709f89601db6bc2"
+        },
+        {
+          "alias": "S0739",
+          "sourceId": "body[1]/p[472]/txbxContent[1]/p[2]",
+          "sourceOrdinal": 1422,
+          "textSha256": "c46376877fb854608febebcb7b9afaa7a591ff16b18c53129308667296693fad"
+        },
+        {
+          "alias": "S0740",
+          "sourceId": "body[1]/p[472]/txbxContent[1]/p[3]",
+          "sourceOrdinal": 1423,
+          "textSha256": "6a1202d2bc01001bf041c66c6fe75a3a18cea77aea8fa27f626a3ec4f2f4fda4"
+        },
+        {
+          "alias": "S0741",
+          "sourceId": "body[1]/p[472]/txbxContent[2]/p[1]",
+          "sourceOrdinal": 1425,
+          "textSha256": "89f0fc4ec3b80de2b26fe5effc2a79997c8cdcb42a741167a709f89601db6bc2"
+        },
+        {
+          "alias": "S0742",
+          "sourceId": "body[1]/p[472]/txbxContent[2]/p[2]",
+          "sourceOrdinal": 1426,
+          "textSha256": "c46376877fb854608febebcb7b9afaa7a591ff16b18c53129308667296693fad"
+        },
+        {
+          "alias": "S0743",
+          "sourceId": "body[1]/p[472]/txbxContent[2]/p[3]",
+          "sourceOrdinal": 1427,
+          "textSha256": "6a1202d2bc01001bf041c66c6fe75a3a18cea77aea8fa27f626a3ec4f2f4fda4"
+        },
+        {
+          "alias": "S0744",
+          "sourceId": "body[1]/p[472]/txbxContent[3]/p[1]",
+          "sourceOrdinal": 1429,
+          "textSha256": "34e55975bb8befb16013eee7043a008f92b7c945cfc1b7153e5444f7e422c8c2"
+        },
+        {
+          "alias": "S0745",
+          "sourceId": "body[1]/p[472]/txbxContent[3]/p[2]",
+          "sourceOrdinal": 1430,
+          "textSha256": "fcf0c7af0d89490bb209ef081487248dac51f11d79119018ba34ed5e24467950"
+        },
+        {
+          "alias": "S0746",
+          "sourceId": "body[1]/p[472]/txbxContent[3]/p[4]",
+          "sourceOrdinal": 1432,
+          "textSha256": "4f175bcf3351c21af86413a70c6ed24e30e17eeeca8c96632e098314ebdc413b"
+        },
+        {
+          "alias": "S0747",
+          "sourceId": "body[1]/p[472]/txbxContent[4]/p[1]",
+          "sourceOrdinal": 1433,
+          "textSha256": "34e55975bb8befb16013eee7043a008f92b7c945cfc1b7153e5444f7e422c8c2"
+        },
+        {
+          "alias": "S0748",
+          "sourceId": "body[1]/p[472]/txbxContent[4]/p[2]",
+          "sourceOrdinal": 1434,
+          "textSha256": "fcf0c7af0d89490bb209ef081487248dac51f11d79119018ba34ed5e24467950"
+        },
+        {
+          "alias": "S0749",
+          "sourceId": "body[1]/p[472]/txbxContent[4]/p[4]",
+          "sourceOrdinal": 1436,
+          "textSha256": "4f175bcf3351c21af86413a70c6ed24e30e17eeeca8c96632e098314ebdc413b"
+        }
+      ]
+    },
+    {
+      "normalizedContainerId": "body[1]/p[540]",
+      "aliasCount": 13,
+      "hasDirectAlias": true,
+      "aliases": [
+        {
+          "alias": "S0813",
+          "sourceId": "body[1]/p[540]",
+          "sourceOrdinal": 1511,
+          "textSha256": "cca144df29410497887fa9702c2f647034e1e027d2ba615575c4476f4d1f4b1d"
+        },
+        {
+          "alias": "S0814",
+          "sourceId": "body[1]/p[540]/txbxContent[1]/p[1]",
+          "sourceOrdinal": 1512,
+          "textSha256": "a9ed96858084f283c57ed6247ae66031f5c4956ea9832802c3b0607bcb92172d"
+        },
+        {
+          "alias": "S0815",
+          "sourceId": "body[1]/p[540]/txbxContent[1]/p[3]",
+          "sourceOrdinal": 1514,
+          "textSha256": "a64c30f89c8954c5a1c71d56356f0ce0cb1e2c44d9ebbad3b2605b09ae849a91"
+        },
+        {
+          "alias": "S0816",
+          "sourceId": "body[1]/p[540]/txbxContent[1]/p[5]",
+          "sourceOrdinal": 1516,
+          "textSha256": "2a76239b65738fad2357be3d1e7cf24833eafaf13042b826d0d200f179d19c4f"
+        },
+        {
+          "alias": "S0817",
+          "sourceId": "body[1]/p[540]/txbxContent[1]/p[7]",
+          "sourceOrdinal": 1518,
+          "textSha256": "1a88aa64f3eddf6b6d2e1f7f5cbafb55564f39a9c89b2e2d18b71a925dc41124"
+        },
+        {
+          "alias": "S0818",
+          "sourceId": "body[1]/p[540]/txbxContent[1]/p[8]",
+          "sourceOrdinal": 1519,
+          "textSha256": "8e92855a52a32c35f02d233e00df37ab5e1cf8d64b3534690f4e64aac1e6b125"
+        },
+        {
+          "alias": "S0819",
+          "sourceId": "body[1]/p[540]/txbxContent[1]/p[9]",
+          "sourceOrdinal": 1520,
+          "textSha256": "b3ffbf789b0b52b297c69cfc95f4af1bb4a7d646166bbcf6e719a480d7764115"
+        },
+        {
+          "alias": "S0820",
+          "sourceId": "body[1]/p[540]/txbxContent[2]/p[1]",
+          "sourceOrdinal": 1522,
+          "textSha256": "a9ed96858084f283c57ed6247ae66031f5c4956ea9832802c3b0607bcb92172d"
+        },
+        {
+          "alias": "S0821",
+          "sourceId": "body[1]/p[540]/txbxContent[2]/p[3]",
+          "sourceOrdinal": 1524,
+          "textSha256": "a64c30f89c8954c5a1c71d56356f0ce0cb1e2c44d9ebbad3b2605b09ae849a91"
+        },
+        {
+          "alias": "S0822",
+          "sourceId": "body[1]/p[540]/txbxContent[2]/p[5]",
+          "sourceOrdinal": 1526,
+          "textSha256": "2a76239b65738fad2357be3d1e7cf24833eafaf13042b826d0d200f179d19c4f"
+        },
+        {
+          "alias": "S0823",
+          "sourceId": "body[1]/p[540]/txbxContent[2]/p[7]",
+          "sourceOrdinal": 1528,
+          "textSha256": "1a88aa64f3eddf6b6d2e1f7f5cbafb55564f39a9c89b2e2d18b71a925dc41124"
+        },
+        {
+          "alias": "S0824",
+          "sourceId": "body[1]/p[540]/txbxContent[2]/p[8]",
+          "sourceOrdinal": 1529,
+          "textSha256": "8e92855a52a32c35f02d233e00df37ab5e1cf8d64b3534690f4e64aac1e6b125"
+        },
+        {
+          "alias": "S0825",
+          "sourceId": "body[1]/p[540]/txbxContent[2]/p[9]",
+          "sourceOrdinal": 1530,
+          "textSha256": "b3ffbf789b0b52b297c69cfc95f4af1bb4a7d646166bbcf6e719a480d7764115"
+        }
+      ]
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "predictionRead": false,
+  "goldReads": 0,
+  "scoring": false,
+  "createdAtUtc": "2026-09-17T08:09:10.6405616+00:00"
+}
