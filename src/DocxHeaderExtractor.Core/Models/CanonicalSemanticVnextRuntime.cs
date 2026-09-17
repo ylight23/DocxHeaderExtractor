@@ -87,6 +87,10 @@ public static class CanonicalSemanticGraphCacheKey
 
 public sealed record SemanticContractIssue(string Code, string? SourceAlias, string Message);
 
+public sealed record SemanticProposalValidationSummary(
+    IReadOnlyList<CanonicalSemanticProposal> ValidProposals,
+    IReadOnlyList<SemanticContractIssue> Issues);
+
 /// <summary>Validates semantic proposals without using Gold or interpreting model intent.</summary>
 public static class CanonicalSemanticContractValidator
 {
@@ -112,6 +116,13 @@ public static class CanonicalSemanticContractValidator
         ArgumentNullException.ThrowIfNull(aliases);
         var issues = new List<SemanticContractIssue>();
         var names = proposal.SourceAliases is { Count: > 0 } ? proposal.SourceAliases : [proposal.SourceAlias];
+        if (string.IsNullOrWhiteSpace(proposal.SourceAlias))
+            issues.Add(new("MISSING_SOURCE_ALIAS", null, "A proposal must identify a source alias."));
+        if (proposal.SourceAliases is { Count: > 0 } && !proposal.SourceAliases.Contains(proposal.SourceAlias, StringComparer.Ordinal))
+            issues.Add(new("PRIMARY_ALIAS_NOT_IN_COMPOSITE", proposal.SourceAlias, "sourceAlias must be one of sourceAliases."));
+        if (proposal.SelectionMode is not null &&
+            proposal.SelectionMode is not CanonicalSemanticSelectionMode.VerbatimText and not CanonicalSemanticSelectionMode.WholeAlias)
+            issues.Add(new("INVALID_SELECTION_MODE", proposal.SourceAlias, "selectionMode is not part of the semantic contract."));
         foreach (var name in names)
         {
             if (!aliases.ContainsKey(name))
@@ -119,9 +130,58 @@ public static class CanonicalSemanticContractValidator
             else if (ownedAliases is not null && !ownedAliases.Contains(name))
                 issues.Add(new("OUT_OF_OWNED_SEGMENT", name, "The alias is visible but outside this segment's ownership."));
         }
-        if (proposal.IsHeading && string.IsNullOrEmpty(proposal.VerbatimText) && (proposal.VerbatimParts is not { Count: > 0 }))
+        if (proposal.IsHeading &&
+            !string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal) &&
+            string.IsNullOrEmpty(proposal.VerbatimText) && (proposal.VerbatimParts is not { Count: > 0 }))
             issues.Add(new("MISSING_VERBATIM_TEXT", proposal.SourceAlias, "A heading must identify exact source text."));
+        if (proposal.Occurrence is <= 0)
+            issues.Add(new("INVALID_OCCURRENCE", proposal.SourceAlias, "occurrence must be a positive ordinal when supplied."));
+        if (string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal) && names.Count != 1)
+            issues.Add(new("WHOLE_ALIAS_REQUIRES_ONE_ALIAS", proposal.SourceAlias, "WHOLE_ALIAS cannot address multiple aliases."));
+        if (!string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal) &&
+            proposal.VerbatimParts is { Count: > 0 } && names.Count != proposal.VerbatimParts.Count)
+            issues.Add(new("COMPOSITE_MAPPING_MISMATCH", proposal.SourceAlias, "sourceAliases and verbatimParts must have the same cardinality."));
+        if (proposal.IsHeading && issues.Count == 0 &&
+            !string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal))
+        {
+            var parts = proposal.VerbatimParts is { Count: > 0 }
+                ? proposal.VerbatimParts
+                : [proposal.VerbatimText!];
+            for (var index = 0; index < names.Count; index++)
+            {
+                var alias = aliases[names[index]];
+                var text = parts[index];
+                var first = alias.Text.IndexOf(text, StringComparison.Ordinal);
+                if (first < 0)
+                {
+                    issues.Add(new("NON_VERBATIM_TEXT", names[index], "verbatim text is not an exact source substring."));
+                    continue;
+                }
+                var second = alias.Text.IndexOf(text, first + Math.Max(1, text.Length), StringComparison.Ordinal);
+                if (second >= 0 && proposal.Occurrence is null &&
+                    proposal.LeftExactContext is null && proposal.RightExactContext is null)
+                    issues.Add(new("AMBIGUOUS_BINDING", names[index], "duplicate source text requires occurrence or exact context."));
+            }
+        }
         return issues;
+    }
+
+    public static SemanticProposalValidationSummary ValidateProposals(
+        IReadOnlyList<CanonicalSemanticProposal> proposals,
+        IReadOnlyDictionary<string, SemanticSourceAlias> aliases,
+        IReadOnlySet<string>? ownedAliases = null)
+    {
+        ArgumentNullException.ThrowIfNull(proposals);
+        ArgumentNullException.ThrowIfNull(aliases);
+        var valid = new List<CanonicalSemanticProposal>();
+        var issues = new List<SemanticContractIssue>();
+        foreach (var proposal in proposals)
+        {
+            var proposalIssues = Validate(proposal, aliases, ownedAliases);
+            if (proposalIssues.Count == 0) valid.Add(proposal);
+            else issues.AddRange(proposalIssues);
+        }
+        return new(valid, issues);
     }
 
     private static void Visit(JsonElement value, List<SemanticContractIssue> issues, string? sourceAlias)

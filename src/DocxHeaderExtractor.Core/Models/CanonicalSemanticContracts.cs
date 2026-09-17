@@ -407,16 +407,17 @@ public static class CanonicalSemanticGraphResolver
         var occurrences = new List<CanonicalSemanticGraphOccurrence>(ordered.Length);
         foreach (var (item, index) in ordered.Select((item, index) => (item, index)))
         {
-            // Text/role alone is not a semantic identity. Explicit structural context keeps
-            // same-label headings in different sections distinct while preserving repeats that
-            // genuinely share the same resolved context.
+            // Text/role alone is never a semantic identity. A node is shared only when the
+            // semantic model supplied an explicit same-node/continuation relation; otherwise
+            // each exact physical occurrence remains its own semantic node.
             var parentHint = item.RelationHints.FirstOrDefault(hint =>
                 hint.StartsWith("parent-node:", StringComparison.Ordinal));
-            var scope = item.Scope.Contains("continuation", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(item.Scope, "document_body", StringComparison.OrdinalIgnoreCase)
-                ? string.Empty
-                : item.Scope;
-            var nodeKey = $"{item.Text}\u001f{item.SemanticRole}\u001f{item.StructuralType}\u001f{scope}\u001f{parentHint}";
+            var sameNodeHint = item.RelationHints.FirstOrDefault(hint =>
+                hint.StartsWith("same-node:", StringComparison.Ordinal) ||
+                hint.StartsWith("continuation-node:", StringComparison.Ordinal));
+            var nodeKey = sameNodeHint is not null
+                ? $"explicit:{sameNodeHint}"
+                : $"physical:{item.SourceId}:{item.Start}:{item.End}:{item.Alias}";
             if (!nodes.TryGetValue(nodeKey, out var nodeId))
             {
                 nodeId = $"semantic-node:{nodes.Count + 1:0000}";

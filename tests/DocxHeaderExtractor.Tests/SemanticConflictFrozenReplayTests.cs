@@ -18,7 +18,7 @@ public sealed class SemanticConflictFrozenReplayTests
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
     [Fact]
-    public void Frozen_W2_W3_role_conflict_is_bindable_without_gold_or_provider()
+    public void Frozen_W2_W3_role_conflict_is_withheld_without_adjudication()
     {
         var root = RepoRoot();
         var sourceFile = Path.Combine(root, SourcePath.Replace('/', Path.DirectorySeparatorChar));
@@ -56,9 +56,8 @@ public sealed class SemanticConflictFrozenReplayTests
             var normalized = SemanticConflictNormalizer.Normalize(conflictInput, aliases);
             Assert.Empty(normalized.Conflicts);
             var attributeConflict = Assert.Single(normalized.AttributeConflicts);
-            var bindingReady = Assert.Single(normalized.BindingReadyProposals);
+            Assert.Empty(normalized.BindingReadyProposals);
             Assert.Equal("semanticRole", Assert.Single(attributeConflict.ContestedFields.Keys));
-            Assert.Null(bindingReady.SemanticRole);
 
             var newBound = CanonicalSemanticExactBinder.Bind(normalized.BindingReadyProposals, aliases, out var newObservations);
             var newBindFailure = newObservations.Count(item => item.Status != CanonicalSemanticBindingStatus.Bound);
@@ -67,8 +66,8 @@ public sealed class SemanticConflictFrozenReplayTests
 
             Assert.Single(oldDirectBound);
             Assert.Equal(1, oldDirectFailure);
-            Assert.Single(newBound);
-            Assert.Equal(1, newObservations.Count(item => item.Status == CanonicalSemanticBindingStatus.Bound));
+            Assert.Empty(newBound);
+            Assert.Empty(newObservations);
             Assert.Equal(0, newBindFailure);
             Assert.True(hardValidation.IsValid);
 
@@ -98,7 +97,7 @@ public sealed class SemanticConflictFrozenReplayTests
                     bindingReadyOccurrence = normalized.BindingReadyProposals.Count,
                     attributeConflict = normalized.AttributeConflicts.Count,
                     contestedFields = attributeConflict.ContestedFields.Keys.OrderBy(item => item, StringComparer.Ordinal).ToArray(),
-                    consensusSemanticRole = bindingReady.SemanticRole,
+                    consensusSemanticRole = (string?)null,
                     binderInput = normalized.BindingReadyProposals.Count,
                     binderOutput = newBound.Count,
                     bindFailure = newBindFailure,
@@ -112,7 +111,7 @@ public sealed class SemanticConflictFrozenReplayTests
         Assert.All(all, repeat =>
         {
             Assert.Equal(2, (int)repeat.s0239InputProposals);
-            Assert.Equal(1, (int)repeat.newPath.bindingReadyOccurrence);
+            Assert.Equal(0, (int)repeat.newPath.bindingReadyOccurrence);
             Assert.Equal(1, (int)repeat.newPath.attributeConflict);
             Assert.Equal(0, (int)repeat.newPath.bindFailure);
             Assert.Equal(0, (int)repeat.newPath.systemLoss);
@@ -137,12 +136,12 @@ public sealed class SemanticConflictFrozenReplayTests
             acceptance = new
             {
                 s0239InputProposals = 2,
-                bindingReadyOccurrence = 1,
+                bindingReadyOccurrence = 0,
                 attributeConflict = 1,
                 contestedField = "semanticRole",
                 consensusSemanticRole = (string?)null,
-                binderInput = 1,
-                binderOutput = 1,
+                binderInput = 0,
+                binderOutput = 0,
                 bindFailure = 0,
                 systemLoss = 0
             },

@@ -25,7 +25,8 @@ public static class CanonicalSemanticPipeline
         DocumentSourceCatalog sourceCatalog,
         IReadOnlyList<CanonicalSemanticProposal> proposals,
         string sourceSha256,
-        string? expectedSourceSha256 = null)
+        string? expectedSourceSha256 = null,
+        IReadOnlySet<string>? ownedAliases = null)
     {
         ArgumentNullException.ThrowIfNull(sourceCatalog);
         ArgumentNullException.ThrowIfNull(proposals);
@@ -35,7 +36,7 @@ public static class CanonicalSemanticPipeline
         if (!sourceHashVerified) throw new InvalidOperationException("source-hash-mismatch");
 
         var aliases = SemanticSourceAliasCatalog.FromCatalog(sourceCatalog);
-        var bound = CanonicalSemanticExactBinder.Bind(proposals, aliases, out var observations);
+        var bound = CanonicalSemanticExactBinder.Bind(proposals, aliases, ownedAliases, out var observations);
         var bindingValidation = CanonicalSemanticHardBindingValidator.Validate(
             bound, aliases, sourceSha256, expectedSourceSha256 ?? sourceSha256);
         if (!bindingValidation.IsValid)
