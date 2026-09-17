@@ -1,6 +1,11 @@
 {
   "schemaVersion": "a99-canonical-dev-vnext-doc0116-gold-scoring-manifest-v1",
-  "scoreSha256": "4e5a1e63592d8590f8cc1767ff09e62b5f0e368145e2e6b2116e0ef7b1729c56",
+  "scoringStatus": "PROVISIONAL_INVALIDATED_BY_COMPATIBILITY_AUDIT",
+  "officialScoring": false,
+  "compatibilityAuditSha256": "5e83e10f45eaacd84902cd81121b78e62bec8ec4041aac19353686c137e374ad",
+  "metricsUsableAsOfficialAccuracy": false,
+  "historicalProvisionalDiagnostic": true,
+  "scoreSha256": "1229e7b1eb91ef7b8e7c52f1fd015641412a20fb9ca85190487c519811fb4986",
   "goldFreezeSha256": "7bf9f849efca7bd865ff75749156f918b4cd3ca2f20649e3cab84edc4e4b9933",
   "providerCalls": 0,
   "modelCalls": 0,

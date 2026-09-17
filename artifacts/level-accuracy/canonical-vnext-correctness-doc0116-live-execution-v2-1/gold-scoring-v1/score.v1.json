@@ -1,5 +1,10 @@
 {
   "schemaVersion": "a99-canonical-dev-vnext-doc0116-gold-score-v1",
+  "scoringStatus": "PROVISIONAL_INVALIDATED_BY_COMPATIBILITY_AUDIT",
+  "officialScoring": false,
+  "compatibilityAuditSha256": "5e83e10f45eaacd84902cd81121b78e62bec8ec4041aac19353686c137e374ad",
+  "metricsUsableAsOfficialAccuracy": false,
+  "historicalProvisionalDiagnostic": true,
   "documentId": "DOC-0116",
   "predictionAuthority": {
     "predictionFreezeSha256": "bf9b42a4ea76103805136f379b4f133e3af40d087a14743a34d811d81989bfa8",

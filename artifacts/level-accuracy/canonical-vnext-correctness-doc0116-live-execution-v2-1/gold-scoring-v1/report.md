@@ -1,5 +1,16 @@
 # DOC-0116 canonical prediction scoring
 
+## PROVISIONAL — NOT OFFICIAL ACCURACY
+
+`scoringStatus = PROVISIONAL_INVALIDATED_BY_COMPATIBILITY_AUDIT`
+`officialScoring = false`
+`metricsUsableAsOfficialAccuracy = false`
+Compatibility audit: `5e83e10f45eaacd84902cd81121b78e62bec8ec4041aac19353686c137e374ad`
+
+The metrics below are preserved as a historical provisional diagnostic only. They must not be
+reported as official accuracy until Gold authority/provenance, exact bindings, the 1896-to-1921
+source-universe bridge, and the provider semantic contract have all been reconciled.
+
 This is offline scoring of frozen provider output. No provider call or prediction rebuild was used as an authority.
 
 - Prediction occurrences: **289**
