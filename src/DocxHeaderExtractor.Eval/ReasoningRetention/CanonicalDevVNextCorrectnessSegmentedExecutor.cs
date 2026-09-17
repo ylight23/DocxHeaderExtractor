@@ -34,6 +34,7 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
         var freezeStatus = freezeRoot.GetProperty("status").GetString();
         if (freezeStatus is not ("READY_FOR_DOC0116_PROVIDER_EXECUTION" or "READY_FOR_DOC0116_PROVIDER_EXECUTION_V2_1"))
             throw new InvalidDataException("FROZEN_SEGMENT_PLAN_NOT_AUTHORIZED");
+        ValidateFrozenLineage(preflightRoot, freezeRoot, planPath);
 
         var owned = new HashSet<string>(StringComparer.Ordinal);
         var requestCount = planRoot.GetProperty("segmentCount").GetInt32();
@@ -241,6 +242,58 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
         if (model.AttemptDeadlineSeconds != expectedAttemptDeadline)
             throw new InvalidDataException("FROZEN_RUNTIME_ATTEMPT_DEADLINE_MISMATCH");
     }
+
+    private static void ValidateFrozenLineage(string preflightRoot, JsonElement freezeRoot, string planPath)
+    {
+        var repoRoot = FindRepositoryRoot(preflightRoot);
+        var expectedPlanSha = freezeRoot.GetProperty("requestPlanSha256").GetString()!;
+        var actualPlanSha = Sha256File(planPath);
+        if (!string.Equals(actualPlanSha, expectedPlanSha, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException("FROZEN_REQUEST_PLAN_HASH_MISMATCH");
+
+        var expectedProduction = freezeRoot.GetProperty("productionSemanticHash").GetString()!;
+        var actualProduction = HashFiles(repoRoot,
+            "src/DocxHeaderExtractor.Core/Models/CanonicalSemanticProductionEntryPoint.cs",
+            "src/DocxHeaderExtractor.Eval/ReasoningRetention/CanonicalSemanticRichEvidence.cs",
+            "src/DocxHeaderExtractor.Eval/ReasoningRetention/OpenRouterCanonicalSemanticTextModel.cs");
+        if (!string.Equals(actualProduction, expectedProduction, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException("FROZEN_PRODUCTION_SEMANTIC_HASH_MISMATCH");
+
+        var expectedHarness = freezeRoot.GetProperty("executionHarnessHash").GetString()!;
+        var actualHarness = HashFiles(repoRoot,
+            "src/DocxHeaderExtractor.Eval/ReasoningRetention/CanonicalDevVNextCorrectnessLiveRunner.cs",
+            "src/DocxHeaderExtractor.Eval/ReasoningRetention/CanonicalDevVNextCorrectnessSegmentedExecutor.cs",
+            "src/DocxHeaderExtractor.Eval/ReasoningRetention/CanonicalDevVNextCorrectnessProviderExecutionRunner.cs",
+            "src/DocxHeaderExtractor.Cli/Program.cs");
+        if (!string.Equals(actualHarness, expectedHarness, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException("FROZEN_EXECUTION_HARNESS_HASH_MISMATCH");
+    }
+
+    private static string FindRepositoryRoot(string preflightRoot)
+    {
+        var directory = new DirectoryInfo(Path.GetFullPath(preflightRoot));
+        while (directory is not null)
+        {
+            var gitPath = Path.Combine(directory.FullName, ".git");
+            if (File.Exists(gitPath) || Directory.Exists(gitPath))
+                return directory.FullName;
+            directory = directory.Parent;
+        }
+        throw new InvalidDataException("REPOSITORY_ROOT_NOT_FOUND");
+    }
+
+    private static string HashFiles(string repoRoot, params string[] relativePaths) =>
+        Sha256Text(string.Join("\n", relativePaths.Select(path =>
+        {
+            var fullPath = Path.Combine(repoRoot, path.Replace('/', Path.DirectorySeparatorChar));
+            return path + ":" + (File.Exists(fullPath) ? Sha256File(fullPath) : "MISSING");
+        })));
+
+    private static string Sha256File(string path) =>
+        Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
+
+    private static string Sha256Text(string value) =>
+        Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
 }
 
 public sealed record CanonicalSegmentedExecutorValidation(
