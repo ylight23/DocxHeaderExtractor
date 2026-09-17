@@ -1,0 +1,30 @@
+﻿{
+  "schemaVersion": "a99-true-heading-run-configuration-v1",
+  "campaignId": "CANONICAL_VNEXT_TRUE_HEADING_DOC0116_BASELINE_V1",
+  "documentId": "DOC-0116",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "maxOutputTokens": 48000,
+  "effectiveProviderInputLimit": 983616,
+  "transportReserveTokens": 16384,
+  "minimumPostReserveHeadroom": 4096,
+  "safeSegmentUpperBound": 979520,
+  "requestTimeoutSeconds": 600,
+  "perAttemptHardTimeoutSeconds": 660,
+  "documentSafetyCeilingSeconds": 7200,
+  "maxConcurrency": 1,
+  "retries": 0,
+  "semanticContract": {
+    "version": "a99-semantic-true-heading-v2",
+    "sha256": "d7bb0c8718e234b179538aac2aeeb79f06ec80fc50e830eac514ecd41b619cd0"
+  },
+  "productionSemanticHash": "957d64925334c6c189bd77359edd45354815dcc55883bf06ba7a5705cf75bfa4",
+  "executionHarnessHash": "52db34de61d57f0da17a7448b41e9f71da3add4080359ed5d6dc5b634c133c35",
+  "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "sourceUniverseSha256": "f9c568ede3d8172dfea05cc07aeb3c8f838088b7a0c163faf461f2cd3d845d8b",
+  "candidateGating": false,
+  "target": "ALL TRUE HEADING OCCURRENCES",
+  "goldReads": 0,
+  "scoring": false
+}
