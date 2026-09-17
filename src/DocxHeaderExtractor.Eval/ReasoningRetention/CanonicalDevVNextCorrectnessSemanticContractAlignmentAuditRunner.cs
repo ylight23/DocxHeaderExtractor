@@ -62,8 +62,8 @@ public static class CanonicalDevVNextCorrectnessSemanticContractAlignmentAuditRu
 
         using var freeze = JsonDocument.Parse(await File.ReadAllTextAsync(freezePath, ct));
         var freezeRoot = freeze.RootElement;
-        var canonicalOccurrenceCount = ReadInt(freezeRoot, "canonicalOccurrenceCount");
-        var graphOccurrenceCount = ReadInt(freezeRoot, "canonicalGraphOccurrenceCount");
+        var runtimeSourceAliasCount = ReadInt(freezeRoot, "canonicalOccurrenceCount");
+        var frozenCanonicalGraphOccurrences = ReadInt(freezeRoot, "canonicalGraphOccurrenceCount");
         var providerCalls = ReadInt(freezeRoot, "providerCalls");
 
         var broadPhrase = systemPrompts.Any(p => p.Contains("heading or structural label", StringComparison.OrdinalIgnoreCase));
@@ -111,8 +111,8 @@ public static class CanonicalDevVNextCorrectnessSemanticContractAlignmentAuditRu
             predictionForensics = new
             {
                 parsedProposalCount,
-                canonicalOccurrenceCount,
-                canonicalGraphOccurrenceCount = graphOccurrenceCount,
+                runtimeSourceAliasCount,
+                frozenCanonicalGraphOccurrences,
                 providerCalls,
                 roleCounts,
             },
@@ -150,8 +150,8 @@ public static class CanonicalDevVNextCorrectnessSemanticContractAlignmentAuditRu
         var report = $"# DOC-0116 semantic contract alignment audit\n\n" +
             "Status: **FROZEN_PREDICTION_SEMANTIC_COMPATIBILITY_FAIL**\n\n" +
             "Official scoring remains blocked. The frozen provider contract asks for every structurally real heading or structural label, while the Gold target is ALL TRUE HEADING OCCURRENCES. The frozen schema has no independent true-heading decision field and permits OTHER_STRUCTURAL_LABEL. No deterministic Gold-independent projection is present in the frozen artifacts.\n\n" +
-            $"- Frozen canonical occurrences: **{canonicalOccurrenceCount}**\n" +
-            $"- Frozen graph occurrences: **{graphOccurrenceCount}**\n" +
+            $"- Runtime source aliases: **{runtimeSourceAliasCount}**\n" +
+            $"- Frozen canonical graph occurrences: **{frozenCanonicalGraphOccurrences}**\n" +
             $"- Parsed proposals inspected: **{parsedProposalCount}**\n" +
             $"- Provider calls (historical frozen run): **{providerCalls}**\n" +
             $"- Prompt broad phrase present: **{broadPhrase}**\n" +
@@ -182,8 +182,8 @@ public static class CanonicalDevVNextCorrectnessSemanticContractAlignmentAuditRu
 
         Console.WriteLine("STATUS=FROZEN_PREDICTION_SEMANTIC_COMPATIBILITY_FAIL");
         Console.WriteLine($"PARSED_PROPOSALS={parsedProposalCount}");
-        Console.WriteLine($"CANONICAL_OCCURRENCES={canonicalOccurrenceCount}");
-        Console.WriteLine($"GRAPH_OCCURRENCES={graphOccurrenceCount}");
+        Console.WriteLine($"RUNTIME_SOURCE_ALIASES={runtimeSourceAliasCount}");
+        Console.WriteLine($"FROZEN_CANONICAL_GRAPH_OCCURRENCES={frozenCanonicalGraphOccurrences}");
         Console.WriteLine("OFFICIAL_SCORING=0");
         Console.WriteLine("PROVIDER_CALLS=0");
         Console.WriteLine("GOLD_READS=0");

@@ -35,8 +35,8 @@
   },
   "predictionForensics": {
     "parsedProposalCount": 294,
-    "canonicalOccurrenceCount": 1921,
-    "canonicalGraphOccurrenceCount": 289,
+    "runtimeSourceAliasCount": 1921,
+    "frozenCanonicalGraphOccurrences": 289,
     "providerCalls": 7,
     "roleCounts": {
       "ANNEX_HEADING": 18,
@@ -62,5 +62,5 @@
     "derivedPredictionCreated": false,
     "goldUsedToClassifyPrediction": false
   },
-  "createdAtUtc": "2026-09-17T08:20:37.0919196+00:00"
+  "createdAtUtc": "2026-09-17T08:23:27.2061961+00:00"
 }
