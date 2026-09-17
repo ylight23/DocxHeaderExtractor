@@ -1,0 +1,1855 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-v2a1-role-prefilter-forensic-v1",
+  "status": "V2A1_FORENSIC_RECOVERY_AUDIT_COMPLETE",
+  "baselineCheckpoint": "04516c74ac86e1da8a626c3836b2655414c3cfb4",
+  "v7BaselineCheckpoint": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "v2aShadowArtifact": "artifacts/level-accuracy/canonical-dev-v1-v2a-role-prefilter-shadow-v2/DOC-0116/shadow-audit.v1.json",
+  "v7PredictionArtifact": "artifacts/level-accuracy/canonical-dev-v1-exec-v7-optimized/DOC-0116/prediction.v1.json",
+  "documentId": "DOC-0116",
+  "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "sourceParagraphCount": 3590,
+  "v2aSkippedCount": 1196,
+  "v2aWouldSkipV7HeadingLikeCount": 9,
+  "v2aWouldSkipV7UncertainCount": 56,
+  "grouping": {
+    "basis": "SOURCE_DERIVED_EVIDENCE_SIGNATURE_ONLY",
+    "documentSpecificRules": false,
+    "textLiteralRules": false,
+    "headingLikeGroups": [
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|medium",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/p[892]",
+          "body[1]/p[1003]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix|Unknown|no-marker|not-table|no-format-signal|numbering-signal|period|long",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/p[907]",
+          "body[1]/p[911]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|medium",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/p[519]",
+          "body[1]/p[555]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|numbering-signal|other|medium",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/p[557]",
+          "body[1]/p[558]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|format-signal|numbering-signal|other|long",
+        "count": 1,
+        "sourceIds": [
+          "body[1]/p[638]"
+        ]
+      }
+    ],
+    "uncertainGroups": [
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+        "count": 19,
+        "sourceIds": [
+          "body[1]/tbl[29]/tr[10]/tc[2]/p[1]",
+          "body[1]/tbl[30]/tr[4]/tc[1]/p[1]",
+          "body[1]/tbl[30]/tr[4]/tc[3]/p[1]",
+          "body[1]/tbl[30]/tr[4]/tc[4]/p[1]",
+          "body[1]/tbl[30]/tr[4]/tc[5]/p[1]",
+          "body[1]/tbl[30]/tr[4]/tc[7]/p[1]",
+          "body[1]/tbl[30]/tr[4]/tc[9]/p[1]",
+          "body[1]/tbl[30]/tr[5]/tc[4]/p[1]",
+          "body[1]/tbl[30]/tr[5]/tc[5]/p[1]",
+          "body[1]/tbl[30]/tr[5]/tc[7]/p[1]",
+          "body[1]/tbl[30]/tr[5]/tc[9]/p[1]",
+          "body[1]/tbl[30]/tr[6]/tc[1]/p[1]",
+          "body[1]/tbl[30]/tr[8]/tc[1]/p[1]",
+          "body[1]/tbl[30]/tr[10]/tc[1]/p[1]",
+          "body[1]/tbl[30]/tr[14]/tc[1]/p[1]",
+          "body[1]/tbl[30]/tr[14]/tc[4]/p[1]",
+          "body[1]/tbl[30]/tr[15]/tc[4]/p[1]",
+          "body[1]/tbl[30]/tr[16]/tc[1]/p[1]",
+          "body[1]/tbl[30]/tr[18]/tc[1]/p[1]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+        "count": 13,
+        "sourceIds": [
+          "body[1]/tbl[5]/tr[3]/tc[2]/p[1]",
+          "body[1]/tbl[6]/tr[4]/tc[4]/p[1]",
+          "body[1]/tbl[6]/tr[4]/tc[5]/p[1]",
+          "body[1]/tbl[6]/tr[4]/tc[7]/p[1]",
+          "body[1]/tbl[6]/tr[4]/tc[9]/p[1]",
+          "body[1]/tbl[6]/tr[5]/tc[4]/p[1]",
+          "body[1]/tbl[6]/tr[5]/tc[5]/p[1]",
+          "body[1]/tbl[6]/tr[5]/tc[7]/p[1]",
+          "body[1]/tbl[6]/tr[5]/tc[9]/p[1]",
+          "body[1]/tbl[6]/tr[6]/tc[1]/p[1]",
+          "body[1]/tbl[6]/tr[8]/tc[1]/p[1]",
+          "body[1]/tbl[6]/tr[12]/tc[1]/p[1]",
+          "body[1]/tbl[10]/tr[2]/tc[1]/p[1]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|format-signal|no-numbering-signal|other|short",
+        "count": 3,
+        "sourceIds": [
+          "body[1]/tbl[5]/tr[2]/tc[10]/p[1]",
+          "body[1]/tbl[5]/tr[2]/tc[11]/p[1]",
+          "body[1]/tbl[5]/tr[2]/tc[13]/p[1]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|format-signal|no-numbering-signal|period|short",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/tbl[30]/tr[2]/tc[10]/p[1]",
+          "body[1]/tbl[30]/tr[2]/tc[12]/p[1]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|medium",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/tbl[19]/tr[13]/tc[2]/p[7]",
+          "body[1]/tbl[19]/tr[13]/tc[2]/p[9]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|semicolon|long",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/tbl[19]/tr[13]/tc[2]/p[8]",
+          "body[1]/tbl[19]/tr[13]/tc[2]/p[10]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|numbering-signal|period|long",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/tbl[19]/tr[14]/tc[2]/p[1]",
+          "body[1]/tbl[19]/tr[14]/tc[2]/p[2]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|long",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/p[538]",
+          "body[1]/p[540]/txbxContent[1]/p[5]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|numbering-signal|period|long",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/p[528]",
+          "body[1]/p[530]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|numbering-signal|period|medium",
+        "count": 2,
+        "sourceIds": [
+          "body[1]/p[527]",
+          "body[1]/p[529]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|format-signal|no-numbering-signal|other|short",
+        "count": 1,
+        "sourceIds": [
+          "body[1]/tbl[29]/tr[2]/tc[13]/p[1]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|long",
+        "count": 1,
+        "sourceIds": [
+          "body[1]/tbl[19]/tr[13]/tc[2]/p[6]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|medium",
+        "count": 1,
+        "sourceIds": [
+          "body[1]/p[535]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|period|long",
+        "count": 1,
+        "sourceIds": [
+          "body[1]/p[540]/txbxContent[1]/p[3]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|format-signal|no-numbering-signal|period|short",
+        "count": 1,
+        "sourceIds": [
+          "body[1]/tbl[5]/tr[2]/tc[12]/p[1]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|medium",
+        "count": 1,
+        "sourceIds": [
+          "body[1]/tbl[10]/tr[2]/tc[1]/p[3]"
+        ]
+      },
+      {
+        "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|period|long",
+        "count": 1,
+        "sourceIds": [
+          "body[1]/tbl[10]/tr[2]/tc[1]/p[4]"
+        ]
+      }
+    ]
+  },
+  "headingLikeOccurrences": [
+    {
+      "sourceId": "body[1]/p[519]",
+      "sourceText": "The following non-exhaustive list is intended to illustrate types of prohibited behaviors:",
+      "sourceOrdinal": 1483,
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "styleFacts": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 11
+      },
+      "numberingFacts": {},
+      "scope": {
+        "scope": "document_body",
+        "parserStructuralScope": "document_body",
+        "tableDepth": 0
+      },
+      "domainEvidence": {
+        "domainRole": "Unknown",
+        "role": "Unknown",
+        "proposesOutlineExclusion": false,
+        "isStructuralRole": false,
+        "basis": "document-domain-detector:Unknown",
+        "observedEvidence": [
+          "short_source_paragraph",
+          "no_marker"
+        ],
+        "evidenceDetails": [
+          {
+            "kind": "short_source_paragraph",
+            "value": "true",
+            "origin": "docx_parser"
+          },
+          {
+            "kind": "no_marker",
+            "value": "true",
+            "origin": "docx_parser"
+          }
+        ]
+      },
+      "neighbors": {
+        "previous": [
+          {
+            "sourceId": "body[1]/p[517]",
+            "sourceOrdinal": 1481,
+            "text": "ATTACHMENT 1 TO THE CODE OF CONDUCT FORM",
+            "role": "HeadingCandidate"
+          },
+          {
+            "sourceId": "body[1]/p[518]",
+            "sourceOrdinal": 1482,
+            "text": "BEHAVIORS CONSTITUTING SEXUAL EXPLOITATION AND ABUSE (SEA) AND BEHAVIORS CONSTITUTING SEXUAL HARASSMENT (SH)",
+            "role": "Normal"
+          }
+        ],
+        "next": [
+          {
+            "sourceId": "body[1]/p[520]",
+            "sourceOrdinal": 1484,
+            "text": "Examples of sexual exploitation and abuse include, but are not limited to:",
+            "role": "HeadingCandidate"
+          },
+          {
+            "sourceId": "body[1]/p[521]",
+            "sourceOrdinal": 1485,
+            "text": "An Expert tells a member of the community that he/she can get them jobs related to the work site (e.g. cooking and cleaning) in exchange for sex.",
+            "role": "Normal"
+          }
+        ]
+      },
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "prefilterScope": "document_body",
+      "prefilterDomainRole": "Unknown",
+      "policyCandidate": false,
+      "v7PredictedRole": "HeadingTopic",
+      "v7ModelRole": "TopicHeading",
+      "v7ModelProposalPresent": true,
+      "v7ValidationStatus": "eligible",
+      "v7FinalIncluded": true,
+      "v7ConfidenceSource": "NOT_PERSISTED_IN_FROZEN_V7_ARTIFACT",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|medium"
+    },
+    {
+      "sourceId": "body[1]/p[555]",
+      "sourceText": "(ii) We declare that there is no Beneficial Owner meeting one or more of the following conditions:",
+      "sourceOrdinal": 1560,
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "styleFacts": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "bold": false,
+        "italic": true,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12
+      },
+      "numberingFacts": {},
+      "scope": {
+        "scope": "document_body",
+        "parserStructuralScope": "document_body",
+        "tableDepth": 0
+      },
+      "domainEvidence": {
+        "domainRole": "Unknown",
+        "role": "Unknown",
+        "proposesOutlineExclusion": false,
+        "isStructuralRole": false,
+        "basis": "document-domain-detector:Unknown",
+        "observedEvidence": [
+          "short_source_paragraph",
+          "no_marker"
+        ],
+        "evidenceDetails": [
+          {
+            "kind": "short_source_paragraph",
+            "value": "true",
+            "origin": "docx_parser"
+          },
+          {
+            "kind": "no_marker",
+            "value": "true",
+            "origin": "docx_parser"
+          }
+        ]
+      },
+      "neighbors": {
+        "previous": [
+          {
+            "sourceId": "body[1]/tbl[11]/tr[2]/tc[1]/p[1]",
+            "sourceOrdinal": 1553,
+            "text": "[include full name (last, middle, first), nationality, country of residence]",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[553]",
+            "sourceOrdinal": 1558,
+            "text": "OR",
+            "role": "Normal"
+          }
+        ],
+        "next": [
+          {
+            "sourceId": "body[1]/p[557]",
+            "sourceOrdinal": 1562,
+            "text": "directly or indirectly holding 25% or more of the shares",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[558]",
+            "sourceOrdinal": 1563,
+            "text": "directly or indirectly holding 25% or more of the voting rights",
+            "role": "Normal"
+          }
+        ]
+      },
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "prefilterScope": "document_body",
+      "prefilterDomainRole": "Unknown",
+      "policyCandidate": false,
+      "v7PredictedRole": "HeadingTopic",
+      "v7ModelRole": "LegalClause",
+      "v7ModelProposalPresent": true,
+      "v7ValidationStatus": "eligible",
+      "v7FinalIncluded": true,
+      "v7ConfidenceSource": "NOT_PERSISTED_IN_FROZEN_V7_ARTIFACT",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|medium"
+    },
+    {
+      "sourceId": "body[1]/p[557]",
+      "sourceText": "directly or indirectly holding 25% or more of the shares",
+      "sourceOrdinal": 1562,
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "styleFacts": {
+        "styleId": "ListParagraph",
+        "styleName": "List Paragraph",
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12
+      },
+      "numberingFacts": {
+        "numberingId": 56,
+        "numberingLevel": 0,
+        "numberLabel": "\uF0B7",
+        "numberingFormat": "bullet"
+      },
+      "scope": {
+        "scope": "document_body",
+        "parserStructuralScope": "document_body",
+        "tableDepth": 0
+      },
+      "domainEvidence": {
+        "domainRole": "Unknown",
+        "role": "Unknown",
+        "proposesOutlineExclusion": false,
+        "isStructuralRole": false,
+        "basis": "document-domain-detector:Unknown",
+        "observedEvidence": [
+          "short_source_paragraph",
+          "no_marker"
+        ],
+        "evidenceDetails": [
+          {
+            "kind": "short_source_paragraph",
+            "value": "true",
+            "origin": "docx_parser"
+          },
+          {
+            "kind": "no_marker",
+            "value": "true",
+            "origin": "docx_parser"
+          }
+        ]
+      },
+      "neighbors": {
+        "previous": [
+          {
+            "sourceId": "body[1]/p[553]",
+            "sourceOrdinal": 1558,
+            "text": "OR",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[555]",
+            "sourceOrdinal": 1560,
+            "text": "(ii) We declare that there is no Beneficial Owner meeting one or more of the following conditions:",
+            "role": "Normal"
+          }
+        ],
+        "next": [
+          {
+            "sourceId": "body[1]/p[558]",
+            "sourceOrdinal": 1563,
+            "text": "directly or indirectly holding 25% or more of the voting rights",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[559]",
+            "sourceOrdinal": 1564,
+            "text": "directly or indirectly having the right to appoint a majority of the board of directors or equivalent governing body of the Consultant",
+            "role": "Normal"
+          }
+        ]
+      },
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "prefilterScope": "document_body",
+      "prefilterDomainRole": "Unknown",
+      "policyCandidate": false,
+      "v7PredictedRole": "HeadingTopic",
+      "v7ModelRole": "LegalClause",
+      "v7ModelProposalPresent": true,
+      "v7ValidationStatus": "eligible",
+      "v7FinalIncluded": true,
+      "v7ConfidenceSource": "NOT_PERSISTED_IN_FROZEN_V7_ARTIFACT",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|numbering-signal|other|medium"
+    },
+    {
+      "sourceId": "body[1]/p[558]",
+      "sourceText": "directly or indirectly holding 25% or more of the voting rights",
+      "sourceOrdinal": 1563,
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "styleFacts": {
+        "styleId": "ListParagraph",
+        "styleName": "List Paragraph",
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12
+      },
+      "numberingFacts": {
+        "numberingId": 56,
+        "numberingLevel": 0,
+        "numberLabel": "\uF0B7",
+        "numberingFormat": "bullet"
+      },
+      "scope": {
+        "scope": "document_body",
+        "parserStructuralScope": "document_body",
+        "tableDepth": 0
+      },
+      "domainEvidence": {
+        "domainRole": "Unknown",
+        "role": "Unknown",
+        "proposesOutlineExclusion": false,
+        "isStructuralRole": false,
+        "basis": "document-domain-detector:Unknown",
+        "observedEvidence": [
+          "short_source_paragraph",
+          "no_marker"
+        ],
+        "evidenceDetails": [
+          {
+            "kind": "short_source_paragraph",
+            "value": "true",
+            "origin": "docx_parser"
+          },
+          {
+            "kind": "no_marker",
+            "value": "true",
+            "origin": "docx_parser"
+          }
+        ]
+      },
+      "neighbors": {
+        "previous": [
+          {
+            "sourceId": "body[1]/p[555]",
+            "sourceOrdinal": 1560,
+            "text": "(ii) We declare that there is no Beneficial Owner meeting one or more of the following conditions:",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[557]",
+            "sourceOrdinal": 1562,
+            "text": "directly or indirectly holding 25% or more of the shares",
+            "role": "Normal"
+          }
+        ],
+        "next": [
+          {
+            "sourceId": "body[1]/p[559]",
+            "sourceOrdinal": 1564,
+            "text": "directly or indirectly having the right to appoint a majority of the board of directors or equivalent governing body of the Consultant",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[562]",
+            "sourceOrdinal": 1567,
+            "text": "OR",
+            "role": "Normal"
+          }
+        ]
+      },
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "prefilterScope": "document_body",
+      "prefilterDomainRole": "Unknown",
+      "policyCandidate": false,
+      "v7PredictedRole": "HeadingTopic",
+      "v7ModelRole": "LegalClause",
+      "v7ModelProposalPresent": true,
+      "v7ValidationStatus": "eligible",
+      "v7FinalIncluded": true,
+      "v7ConfidenceSource": "NOT_PERSISTED_IN_FROZEN_V7_ARTIFACT",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|numbering-signal|other|medium"
+    },
+    {
+      "sourceId": "body[1]/p[638]",
+      "sourceText": "Team Composition \u0026 Qualification Requirements for the Key Experts (and any other requirements which will be used for evaluating the Key Experts under Data Sheet 21.1 of the ITC) under the Framework Agreement",
+      "sourceOrdinal": 1643,
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "styleFacts": {
+        "styleId": "ListParagraph",
+        "styleName": "List Paragraph",
+        "bold": true,
+        "italic": true,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12
+      },
+      "numberingFacts": {
+        "numberingId": 679,
+        "numberingLevel": 0,
+        "numberLabel": "5.",
+        "numberingFormat": "decimal"
+      },
+      "scope": {
+        "scope": "document_body",
+        "parserStructuralScope": "document_body",
+        "tableDepth": 0
+      },
+      "domainEvidence": {
+        "domainRole": "Unknown",
+        "role": "Unknown",
+        "proposesOutlineExclusion": false,
+        "isStructuralRole": false,
+        "basis": "document-domain-detector:Unknown",
+        "observedEvidence": [
+          "long_source_paragraph",
+          "no_marker"
+        ],
+        "evidenceDetails": [
+          {
+            "kind": "long_source_paragraph",
+            "value": "true",
+            "origin": "docx_parser"
+          },
+          {
+            "kind": "no_marker",
+            "value": "true",
+            "origin": "docx_parser"
+          }
+        ]
+      },
+      "neighbors": {
+        "previous": [
+          {
+            "sourceId": "body[1]/p[635]",
+            "sourceOrdinal": 1640,
+            "text": "4.2 [indicate if downstream work is required]",
+            "role": "HeadingCandidate"
+          },
+          {
+            "sourceId": "body[1]/p[636]",
+            "sourceOrdinal": 1641,
+            "text": "4.3 [indicate if training is a specific component of the assignment]",
+            "role": "HeadingCandidate"
+          }
+        ],
+        "next": [
+          {
+            "sourceId": "body[1]/p[640]",
+            "sourceOrdinal": 1645,
+            "text": "[If the scope of services of the consultant include design of structural elements, specify appropriate experience and qualifications needed to ensure that the design will be carried out by competent professionals.]",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[642]",
+            "sourceOrdinal": 1647,
+            "text": "Reporting Requirements and Time Schedule for Deliverables for a typical assignment under the Framework Agreement",
+            "role": "HeadingCandidate"
+          }
+        ]
+      },
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "prefilterScope": "document_body",
+      "prefilterDomainRole": "Unknown",
+      "policyCandidate": false,
+      "v7PredictedRole": "HeadingTopic",
+      "v7ModelRole": "TopicHeading",
+      "v7ModelProposalPresent": true,
+      "v7ValidationStatus": "eligible",
+      "v7FinalIncluded": true,
+      "v7ConfidenceSource": "NOT_PERSISTED_IN_FROZEN_V7_ARTIFACT",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|format-signal|numbering-signal|other|long"
+    },
+    {
+      "sourceId": "body[1]/p[892]",
+      "sourceText": "The technical proposal shall be evaluated to assess:",
+      "sourceOrdinal": 2235,
+      "paragraphRole": "Normal",
+      "score": 0.1,
+      "isCandidate": false,
+      "styleFacts": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numberingFacts": {},
+      "scope": {
+        "scope": "document_body",
+        "parserStructuralScope": "appendix",
+        "tableDepth": 0
+      },
+      "domainEvidence": {
+        "domainRole": "Unknown",
+        "role": "Unknown",
+        "proposesOutlineExclusion": false,
+        "isStructuralRole": false,
+        "basis": "document-domain-detector:Unknown",
+        "observedEvidence": [
+          "short_source_paragraph",
+          "no_marker"
+        ],
+        "evidenceDetails": [
+          {
+            "kind": "short_source_paragraph",
+            "value": "true",
+            "origin": "docx_parser"
+          },
+          {
+            "kind": "no_marker",
+            "value": "true",
+            "origin": "docx_parser"
+          }
+        ]
+      },
+      "neighbors": {
+        "previous": [
+          {
+            "sourceId": "body[1]/p[890]",
+            "sourceOrdinal": 2233,
+            "text": "Proposals will be opened on [[insert time, day, month, year] by the Client\u2019s representatives in the presence of the Consultant\u2019s designated representatives who choose to attend the opening of the proposals. Minutes of the opening will be shared with all Consultants who submitted proposals.",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[891]",
+            "sourceOrdinal": 2234,
+            "text": "Evaluation of Technical and Financial Proposal",
+            "role": "HeadingCandidate"
+          }
+        ],
+        "next": [
+          {
+            "sourceId": "body[1]/p[893]",
+            "sourceOrdinal": 2236,
+            "text": "consistency of approach and methodology with the approach and methodology proposed for a typical assignment under the Framework Agreement",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[895]",
+            "sourceOrdinal": 2238,
+            "text": "adequacy of the methodology, work plan and organization of the Consultant\u2019s team, in responding to the Terms of Reference- Call-off;",
+            "role": "Normal"
+          }
+        ]
+      },
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "prefilterScope": "appendix",
+      "prefilterDomainRole": "Unknown",
+      "policyCandidate": false,
+      "v7PredictedRole": "HeadingTopic",
+      "v7ModelRole": "TopicHeading",
+      "v7ModelProposalPresent": true,
+      "v7ValidationStatus": "eligible",
+      "v7FinalIncluded": true,
+      "v7ConfidenceSource": "NOT_PERSISTED_IN_FROZEN_V7_ARTIFACT",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|medium"
+    },
+    {
+      "sourceId": "body[1]/p[907]",
+      "sourceText": "Availability of Key Experts: The invited Consultant shall confirm the availability of all Key Experts included in the Proposal as a pre-requisite to the negotiations, or, if applicable, a replacement in accordance with ITC 12. Failure to confirm the Key Experts\u2019 availability may result in the rejection of the Consultant\u2019s Proposal and the Client proceeding to negotiate the Contract with the next-ranked Consultant.",
+      "sourceOrdinal": 2250,
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "styleFacts": {
+        "styleId": "ListParagraph",
+        "styleName": "List Paragraph",
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numberingFacts": {
+        "numberingId": 703,
+        "numberingLevel": 0,
+        "numberLabel": "\uF0B7",
+        "numberingFormat": "bullet"
+      },
+      "scope": {
+        "scope": "document_body",
+        "parserStructuralScope": "appendix",
+        "tableDepth": 0
+      },
+      "domainEvidence": {
+        "domainRole": "Unknown",
+        "role": "Unknown",
+        "proposesOutlineExclusion": false,
+        "isStructuralRole": false,
+        "basis": "document-domain-detector:Unknown",
+        "observedEvidence": [
+          "long_source_paragraph",
+          "no_marker"
+        ],
+        "evidenceDetails": [
+          {
+            "kind": "long_source_paragraph",
+            "value": "true",
+            "origin": "docx_parser"
+          },
+          {
+            "kind": "no_marker",
+            "value": "true",
+            "origin": "docx_parser"
+          }
+        ]
+      },
+      "neighbors": {
+        "previous": [
+          {
+            "sourceId": "body[1]/p[905]",
+            "sourceOrdinal": 2248,
+            "text": "Negotiations and award",
+            "role": "HeadingCandidate"
+          },
+          {
+            "sourceId": "body[1]/p[906]",
+            "sourceOrdinal": 2249,
+            "text": "The Client will invite the consultant whose technical proposal is evaluated as substantially responsive and whose financial proposal is evaluated as the lowest evaluated total price for contract negotiations.",
+            "role": "Normal"
+          }
+        ],
+        "next": [
+          {
+            "sourceId": "body[1]/p[909]",
+            "sourceOrdinal": 2252,
+            "text": "Notwithstanding the above, the substitution of Key Experts at the negotiations may be considered if due solely to circumstances outside the reasonable control of and not foreseeable by the Consultant, including but not limited to death or medical incapacity. In such case, the Consultant shall offer a substitute Key Expert within the period of time specified in the letter of invitation to negotiate the Contract, who shall have equivalent or better qualifications and experience than the original candidate.",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[911]",
+            "sourceOrdinal": 2254,
+            "text": "Technical Negotiations: The negotiations include discussions on the proposed approach, methodology, organization and work plan. These discussions shall not substantially alter the original scope of services under the TOR Call-off or the terms of the Call-off contract, lest the quality of the final product, its price, or the relevance of the initial evaluation be affected.",
+            "role": "Normal"
+          }
+        ]
+      },
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "prefilterScope": "appendix",
+      "prefilterDomainRole": "Unknown",
+      "policyCandidate": false,
+      "v7PredictedRole": "HeadingTopic",
+      "v7ModelRole": "TopicHeading",
+      "v7ModelProposalPresent": true,
+      "v7ValidationStatus": "eligible",
+      "v7FinalIncluded": true,
+      "v7ConfidenceSource": "NOT_PERSISTED_IN_FROZEN_V7_ARTIFACT",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix|Unknown|no-marker|not-table|no-format-signal|numbering-signal|period|long"
+    },
+    {
+      "sourceId": "body[1]/p[911]",
+      "sourceText": "Technical Negotiations: The negotiations include discussions on the proposed approach, methodology, organization and work plan. These discussions shall not substantially alter the original scope of services under the TOR Call-off or the terms of the Call-off contract, lest the quality of the final product, its price, or the relevance of the initial evaluation be affected.",
+      "sourceOrdinal": 2254,
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "styleFacts": {
+        "styleId": "ListParagraph",
+        "styleName": "List Paragraph",
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numberingFacts": {
+        "numberingId": 703,
+        "numberingLevel": 0,
+        "numberLabel": "\uF0B7",
+        "numberingFormat": "bullet"
+      },
+      "scope": {
+        "scope": "document_body",
+        "parserStructuralScope": "appendix",
+        "tableDepth": 0
+      },
+      "domainEvidence": {
+        "domainRole": "Unknown",
+        "role": "Unknown",
+        "proposesOutlineExclusion": false,
+        "isStructuralRole": false,
+        "basis": "document-domain-detector:Unknown",
+        "observedEvidence": [
+          "long_source_paragraph",
+          "no_marker"
+        ],
+        "evidenceDetails": [
+          {
+            "kind": "long_source_paragraph",
+            "value": "true",
+            "origin": "docx_parser"
+          },
+          {
+            "kind": "no_marker",
+            "value": "true",
+            "origin": "docx_parser"
+          }
+        ]
+      },
+      "neighbors": {
+        "previous": [
+          {
+            "sourceId": "body[1]/p[907]",
+            "sourceOrdinal": 2250,
+            "text": "Availability of Key Experts: The invited Consultant shall confirm the availability of all Key Experts included in the Proposal as a pre-requisite to the negotiations, or, if applicable, a replacement in accordance with ITC 12. Failure to confirm the Key Experts\u2019 availability may result in the rejection of the Consultant\u2019s Proposal and the Client proceeding to negotiate the Contract with the next-ranked Consultant.",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[909]",
+            "sourceOrdinal": 2252,
+            "text": "Notwithstanding the above, the substitution of Key Experts at the negotiations may be considered if due solely to circumstances outside the reasonable control of and not foreseeable by the Consultant, including but not limited to death or medical incapacity. In such case, the Consultant shall offer a substitute Key Expert within the period of time specified in the letter of invitation to negotiate the Contract, who shall have equivalent or better qualifications and experience than the original candidate.",
+            "role": "Normal"
+          }
+        ],
+        "next": [
+          {
+            "sourceId": "body[1]/p[913]",
+            "sourceOrdinal": 2256,
+            "text": "Financial Negotiations: The negotiations include the clarification of the Consultant\u2019s tax liability in the Client\u2019s country and how it should be reflected in the Call-off Contract. As the selection has already considered cost, the total price stated in the Financial Proposal for a Lump-Sum contract shall not be negotiated. In the case of a Time-Based contract, remunerations rates negotiations for the Key Experts in the Framework Agreement or their substitution shall not take place, as those rates and any mechanism for adjustment was already established pursuant to the Framework Agreement. Negotiations for Time-Based Contracts shall therefore focus on any additional Key Expert positions\u2019 remuneration rates, if they are much higher than the typically charged rates by consultants in similar contracts.",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[915]",
+            "sourceOrdinal": 2258,
+            "text": "If the negotiations fail, the Client shall inform the Consultant in writing of all pending issues and disagreements and provide a final opportunity to the Consultant to respond. If disagreement persists, the Client shall terminate the negotiations informing the Consultant of the reasons for doing so. The Client will then invite the next-ranked Consultant to negotiate a Contract. Once the Client commences negotiations with the next-ranked Consultant, the Client shall not reopen the earlier negotiations.",
+            "role": "Normal"
+          }
+        ]
+      },
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "prefilterScope": "appendix",
+      "prefilterDomainRole": "Unknown",
+      "policyCandidate": false,
+      "v7PredictedRole": "HeadingTopic",
+      "v7ModelRole": "TopicHeading",
+      "v7ModelProposalPresent": true,
+      "v7ValidationStatus": "eligible",
+      "v7FinalIncluded": true,
+      "v7ConfidenceSource": "NOT_PERSISTED_IN_FROZEN_V7_ARTIFACT",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix|Unknown|no-marker|not-table|no-format-signal|numbering-signal|period|long"
+    },
+    {
+      "sourceId": "body[1]/p[1003]",
+      "sourceText": "{Suggested structure of your Technical Proposal}",
+      "sourceOrdinal": 2380,
+      "paragraphRole": "Normal",
+      "score": 0.1,
+      "isCandidate": false,
+      "styleFacts": {
+        "styleId": "Normal",
+        "styleName": "Normal",
+        "bold": false,
+        "italic": false,
+        "underline": false,
+        "allCaps": false,
+        "fontSizePt": 12,
+        "alignment": "both"
+      },
+      "numberingFacts": {},
+      "scope": {
+        "scope": "document_body",
+        "parserStructuralScope": "appendix",
+        "tableDepth": 0
+      },
+      "domainEvidence": {
+        "domainRole": "Unknown",
+        "role": "Unknown",
+        "proposesOutlineExclusion": false,
+        "isStructuralRole": false,
+        "basis": "document-domain-detector:Unknown",
+        "observedEvidence": [
+          "short_source_paragraph",
+          "no_marker"
+        ],
+        "evidenceDetails": [
+          {
+            "kind": "short_source_paragraph",
+            "value": "true",
+            "origin": "docx_parser"
+          },
+          {
+            "kind": "no_marker",
+            "value": "true",
+            "origin": "docx_parser"
+          }
+        ]
+      },
+      "neighbors": {
+        "previous": [
+          {
+            "sourceId": "body[1]/p[998]",
+            "sourceOrdinal": 2375,
+            "text": "Technical Proposal Form 1",
+            "role": "HeadingCandidate"
+          },
+          {
+            "sourceId": "body[1]/p[999]",
+            "sourceOrdinal": 2376,
+            "text": "Description of Approach, Methodology, and Work Plan for Performing the Assignment",
+            "role": "Normal"
+          }
+        ],
+        "next": [
+          {
+            "sourceId": "body[1]/p[1004]",
+            "sourceOrdinal": 2381,
+            "text": "[Note to Consultant: The Framework Agreement (including the proposal) is included by reference. In preparing this section, the Consultant may focus on any specific requirements of the RFP Call-off and not necessarily repeat the relevant part of the proposal included in the Framework Agreement unless it needs to be updated.]",
+            "role": "Normal"
+          },
+          {
+            "sourceId": "body[1]/p[1006]",
+            "sourceOrdinal": 2383,
+            "text": "a) Technical Approach, Methodology, and Organization of the Consultant\u2019s team. {Please explain your understanding of the objectives of the assignment as outlined in the Terms of Reference (TOR), the technical approach, and the methodology you would adopt for implementing the tasks to deliver the expected output(s); the degree of detail of such output; and describe the structure and composition of your team. Please do not repeat/copy the TORs in here.}",
+            "role": "Normal"
+          }
+        ]
+      },
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "prefilterScope": "appendix",
+      "prefilterDomainRole": "Unknown",
+      "policyCandidate": false,
+      "v7PredictedRole": "HeadingTopic",
+      "v7ModelRole": "TopicHeading",
+      "v7ModelProposalPresent": true,
+      "v7ValidationStatus": "eligible",
+      "v7FinalIncluded": true,
+      "v7ConfidenceSource": "NOT_PERSISTED_IN_FROZEN_V7_ARTIFACT",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|medium"
+    }
+  ],
+  "uncertainOccurrences": [
+    {
+      "sourceId": "body[1]/tbl[5]/tr[2]/tc[10]/p[1]",
+      "sourceOrdinal": 895,
+      "sourceText": "8",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[5]/tr[2]/tc[11]/p[1]",
+      "sourceOrdinal": 896,
+      "sourceText": "9",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[5]/tr[2]/tc[12]/p[1]",
+      "sourceOrdinal": 897,
+      "sourceText": ".....",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|format-signal|no-numbering-signal|period|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[5]/tr[2]/tc[13]/p[1]",
+      "sourceOrdinal": 898,
+      "sourceText": "n",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[5]/tr[3]/tc[2]/p[1]",
+      "sourceOrdinal": 901,
+      "sourceText": "{e.g., Deliverable #1: Report A",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[4]/tc[4]/p[1]",
+      "sourceOrdinal": 1132,
+      "sourceText": "[Home]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[4]/tc[5]/p[1]",
+      "sourceOrdinal": 1133,
+      "sourceText": "[2 month]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[4]/tc[7]/p[1]",
+      "sourceOrdinal": 1135,
+      "sourceText": "[1.0]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[4]/tc[9]/p[1]",
+      "sourceOrdinal": 1137,
+      "sourceText": "[1.0]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[5]/tc[4]/p[1]",
+      "sourceOrdinal": 1150,
+      "sourceText": "[Field]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[5]/tc[5]/p[1]",
+      "sourceOrdinal": 1151,
+      "sourceText": "[0.5 m]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[5]/tc[7]/p[1]",
+      "sourceOrdinal": 1153,
+      "sourceText": "[2.5]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[5]/tc[9]/p[1]",
+      "sourceOrdinal": 1155,
+      "sourceText": "[0]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[6]/tc[1]/p[1]",
+      "sourceOrdinal": 1165,
+      "sourceText": "K-2",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[8]/tc[1]/p[1]",
+      "sourceOrdinal": 1201,
+      "sourceText": "K-3",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[6]/tr[12]/tc[1]/p[1]",
+      "sourceOrdinal": 1273,
+      "sourceText": "n",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/p[527]",
+      "sourceOrdinal": 1491,
+      "sourceText": "An Expert comment on the appearance of another Expert (either positive or negative) and sexual desirability.",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|numbering-signal|period|medium",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/p[528]",
+      "sourceOrdinal": 1492,
+      "sourceText": "When An Expert complains about comments made by another Expert on his/her appearance, the other Expert comment that he/she is \u201Casking for it\u201D because of how he/she dresses.",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|numbering-signal|period|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/p[529]",
+      "sourceOrdinal": 1493,
+      "sourceText": "Unwelcome touching of an Expert or Employer\u2019s Personnel by another Expert.",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|numbering-signal|period|medium",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/p[530]",
+      "sourceOrdinal": 1494,
+      "sourceText": "An Expert tells another Expert that he/she will get him/her a salary raise, or promotion if he/she sends him/her naked photographs of himself/herself.",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|numbering-signal|period|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/p[535]",
+      "sourceOrdinal": 1499,
+      "sourceText": "Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment Performance Declaration",
+      "paragraphRole": "Normal",
+      "score": 0.4,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|medium",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/p[538]",
+      "sourceOrdinal": 1502,
+      "sourceText": "Consultant\u2019s Name: [insert full name] Date: [insert day, month, year] Joint Venture Member\u2019s or Subconsultant\u2019s Name: [insert full name] RFP No. and title: [insert RFP number and title] Page [insert page number] of [insert total number] pages",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[10]/tr[2]/tc[1]/p[1]",
+      "sourceOrdinal": 1504,
+      "sourceText": "We:",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[10]/tr[2]/tc[1]/p[3]",
+      "sourceOrdinal": 1506,
+      "sourceText": "(b) are subject to disqualification by the Bank for non-compliance with SEA/ SH obligations",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|medium",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[10]/tr[2]/tc[1]/p[4]",
+      "sourceOrdinal": 1507,
+      "sourceText": "(c) had been subject to disqualification by the Bank for non-compliance with SEA/ SH obligations. An arbitral award on the disqualification case has been made in our favor.",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|period|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/p[540]/txbxContent[1]/p[3]",
+      "sourceOrdinal": 1514,
+      "sourceText": "This Beneficial Ownership Disclosure Form (\u201CForm\u201D) is to be completed by the successful Consultant. In case of joint venture, the Consultant must submit a separate Form for each member. The beneficial ownership information to be submitted in this Form shall be current as of the date of its submission.",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|period|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/p[540]/txbxContent[1]/p[5]",
+      "sourceOrdinal": 1516,
+      "sourceText": "For the purposes of this Form, a Beneficial Owner of a Consultant is any natural person who ultimately owns or controls the Consultant by meeting one or more of the following conditions:",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|no-marker|not-table|no-format-signal|no-numbering-signal|other|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[19]/tr[13]/tc[2]/p[6]",
+      "sourceOrdinal": 2033,
+      "sourceText": "[(a) Except in the case of gross negligence or wilful misconduct on the part of the Consultant or on the part of any person or a firm acting on behalf of the Consultant in carrying out the Services, the Consultant, with respect to damage caused by the Consultant to the Client\u2019s property, shall not be liable to the Client:",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[19]/tr[13]/tc[2]/p[7]",
+      "sourceOrdinal": 2034,
+      "sourceText": "(i) for any indirect or consequential loss or damage; and",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|medium",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[19]/tr[13]/tc[2]/p[8]",
+      "sourceOrdinal": 2035,
+      "sourceText": "(ii) for any direct loss or damage that exceeds [insert a multiplier, e.g.: one, two, three] times the total value of the Contract;",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|semicolon|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[19]/tr[13]/tc[2]/p[9]",
+      "sourceOrdinal": 2036,
+      "sourceText": "(b) This limitation of liability shall not",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|medium",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[19]/tr[13]/tc[2]/p[10]",
+      "sourceOrdinal": 2037,
+      "sourceText": "(i) affect the Consultant\u2019s liability, if any, for damage to Third Parties caused by the Consultant or any person or firm acting on behalf of the Consultant in carrying out the Services;",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|semicolon|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[19]/tr[14]/tc[2]/p[1]",
+      "sourceOrdinal": 2040,
+      "sourceText": "For the purposes of the Call-off Contracts, \u201CForce Majeure\u201D means an event which is beyond the reasonable control of a party to a Call-off Contract, is not foreseeable, is unavoidable, and makes a party\u2019s performance of its obligations hereunder impossible or so impractical as reasonably to be considered impossible under the circumstances, and subject to those requirements, includes, but is not limited to, war, riots, civil disorder, earthquake, fire, explosion, storm, flood or other adverse weather conditions, strikes, lockouts or other industrial action confiscation or any other action by Government agencies.",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|numbering-signal|period|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[19]/tr[14]/tc[2]/p[2]",
+      "sourceOrdinal": 2041,
+      "sourceText": "Force Majeure shall not include (i) any event which is caused by the negligence or intentional action of a party or such party\u2019s Experts, Sub-consultants or agents or employees, nor (ii) any event which a diligent party could reasonably have been expected to both take into account at the time of the conclusion of this Contract, and avoid or overcome in the carrying out of its obligations hereunder.",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|numbering-signal|period|long",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[29]/tr[2]/tc[13]/p[1]",
+      "sourceOrdinal": 2411,
+      "sourceText": "n",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[29]/tr[10]/tc[2]/p[1]",
+      "sourceOrdinal": 2512,
+      "sourceText": "{e.g., Deliverable #2:...............}",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[2]/tc[10]/p[1]",
+      "sourceOrdinal": 2561,
+      "sourceText": "........",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|format-signal|no-numbering-signal|period|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[2]/tc[12]/p[1]",
+      "sourceOrdinal": 2563,
+      "sourceText": "D-...",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|format-signal|no-numbering-signal|period|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[4]/tc[1]/p[1]",
+      "sourceOrdinal": 2585,
+      "sourceText": "K-1",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[4]/tc[3]/p[1]",
+      "sourceOrdinal": 2587,
+      "sourceText": "[Team Leader]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[4]/tc[4]/p[1]",
+      "sourceOrdinal": 2588,
+      "sourceText": "[Home]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[4]/tc[5]/p[1]",
+      "sourceOrdinal": 2589,
+      "sourceText": "[2 month]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[4]/tc[7]/p[1]",
+      "sourceOrdinal": 2591,
+      "sourceText": "[1.0]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[4]/tc[9]/p[1]",
+      "sourceOrdinal": 2593,
+      "sourceText": "[1.0]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[5]/tc[4]/p[1]",
+      "sourceOrdinal": 2606,
+      "sourceText": "[Field]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[5]/tc[5]/p[1]",
+      "sourceOrdinal": 2607,
+      "sourceText": "[0.5 m]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[5]/tc[7]/p[1]",
+      "sourceOrdinal": 2609,
+      "sourceText": "[2.5]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[5]/tc[9]/p[1]",
+      "sourceOrdinal": 2611,
+      "sourceText": "[0]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[6]/tc[1]/p[1]",
+      "sourceOrdinal": 2621,
+      "sourceText": "K-2",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[8]/tc[1]/p[1]",
+      "sourceOrdinal": 2657,
+      "sourceText": "K-3",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[10]/tc[1]/p[1]",
+      "sourceOrdinal": 2693,
+      "sourceText": "n",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[14]/tc[1]/p[1]",
+      "sourceOrdinal": 2761,
+      "sourceText": "N-1",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[14]/tc[4]/p[1]",
+      "sourceOrdinal": 2764,
+      "sourceText": "[Home]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[15]/tc[4]/p[1]",
+      "sourceOrdinal": 2782,
+      "sourceText": "[Field]",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[16]/tc[1]/p[1]",
+      "sourceOrdinal": 2797,
+      "sourceText": "N-2",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    },
+    {
+      "sourceId": "body[1]/tbl[30]/tr[18]/tc[1]/p[1]",
+      "sourceOrdinal": 2833,
+      "sourceText": "n",
+      "paragraphRole": "Normal",
+      "score": 0,
+      "isCandidate": false,
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "skipSignals": [
+        "no_structural_signal"
+      ],
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|appendix_table|TableTitle|no-marker|table|no-format-signal|no-numbering-signal|other|short",
+      "v7ModelRole": "Unknown"
+    }
+  ],
+  "gates": {
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "goldReads": 0,
+    "scoring": false,
+    "productionPrefilterActivated": false,
+    "v2bStatus": "BLOCKED_ON_BEHAVIOR_PRESERVATION"
+  }
+}

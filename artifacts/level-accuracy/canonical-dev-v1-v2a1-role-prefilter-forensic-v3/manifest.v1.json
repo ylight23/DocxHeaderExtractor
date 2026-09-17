@@ -1,0 +1,24 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-v2a1-role-prefilter-forensic-manifest-v1",
+  "status": "V2A1_FORENSIC_AUDIT_FROZEN",
+  "baselineCheckpoint": "04516c74ac86e1da8a626c3836b2655414c3cfb4",
+  "v7BaselineCheckpoint": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "artifacts": [
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a1-role-prefilter-forensic-v3/DOC-0116/forensic.v1.json",
+      "sha256": "74f996009abd86b489faa47d1beac5e7e8b9d996658a7eaea7c4187365a3f486"
+    },
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a1-role-prefilter-forensic-v3/report.md",
+      "sha256": "cfd58f499fb89e51decd68d47a6fc15bcb0030932cfa3eaa0d252308264a17ae"
+    },
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a1-role-prefilter-forensic-v3/summary.v1.json",
+      "sha256": "8786d22711a26e7d6d26737ca712016b549efd29f55aadc86998c0dd8297b0b5"
+    }
+  ],
+  "providerCalls": 0,
+  "goldReads": 0,
+  "scoring": false,
+  "productionPrefilterActivated": false
+}
