@@ -1,0 +1,881 @@
+{
+  "schemaVersion": "a99-canonical-dev-vnext-doc0116-gold-compatibility-audit-v1",
+  "status": "OFFICIAL_SCORING_BLOCKED_PENDING_COMPATIBILITY_AUDIT",
+  "documentId": "DOC-0116",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "scoring": false,
+  "scoreAuthority": {
+    "claimedAuthorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+    "claimedUserApproval": true,
+    "proposalValidationStatus": "READY_FOR_USER_SEMANTIC_REVIEW",
+    "batchValidationStatus": "BATCH_V3_3_READY_FOR_USER_SEMANTIC_REVIEW",
+    "proposalAuthority": "AGENT_SOURCE_BACKED_ADJUDICATION",
+    "newUserReviewedPromotion": false,
+    "authorityProvenanceConflict": true,
+    "conclusion": "Freeze manifest claim is not independently corroborated by underlying proposal/batch provenance."
+  },
+  "source": {
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+    "expectedSourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+    "actualSourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+    "sourceShaMatches": true,
+    "rawParagraphCount": 3590
+  },
+  "exactBindingAudit": {
+    "goldBindingCount": 120,
+    "sourceExists": 120,
+    "spanWithinSource": 120,
+    "spanTextEqualsExactText": 105,
+    "exactTextEqualsContainerText": 86,
+    "sourceContainerTextEqualsRaw": 110,
+    "mismatchCount": 40,
+    "mismatches": [
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[69]#heading-span-0-45",
+          "sourceId": "body[1]/p[69]",
+          "start": 0,
+          "end": 45,
+          "exactText": "Section 1: Request for Proposals (RFP) Lette",
+          "sourceContainerText": "Section 1:  Request for Proposals (RFP) Letter"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 1:  Request for Proposals (RFP) Letter",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[85]#heading-span-0-31",
+          "sourceId": "body[1]/p[85]",
+          "start": 0,
+          "end": 31,
+          "exactText": "Section 5: Fraud and Corruption",
+          "sourceContainerText": "Section 5: Fraud and Corruption   "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Section 5: Fraud and Corruption   ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[126]#heading-span-0-39",
+          "sourceId": "body[1]/p[126]",
+          "start": 0,
+          "end": 39,
+          "exactText": "Section 1. Request for Proposal Letter4",
+          "sourceContainerText": "Section 1. Request for Proposal Letter4"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": true,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 1. Request for Proposal Letter\t4",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[127]#heading-span-0-54",
+          "sourceId": "body[1]/p[127]",
+          "start": 0,
+          "end": 54,
+          "exactText": "Section 2. Instructions to Consultants and Data Sheet7",
+          "sourceContainerText": "Section 2. Instructions to Consultants and Data Sheet7"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": true,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 2. Instructions to Consultants and Data Sheet\t7",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[128]#heading-span-0-48",
+          "sourceId": "body[1]/p[128]",
+          "start": 0,
+          "end": 48,
+          "exactText": "Section 3. Technical Proposal \u2013 Standard Forms3",
+          "sourceContainerText": "Section 3.  Technical Proposal \u2013 Standard Forms37"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 3.  Technical Proposal \u2013 Standard Forms\t37",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[129]#heading-span-0-31",
+          "sourceId": "body[1]/p[129]",
+          "start": 0,
+          "end": 31,
+          "exactText": "Section 4. Eligible Countries5",
+          "sourceContainerText": "Section 4.  Eligible Countries57"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 4.  Eligible Countries\t57",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[130]#heading-span-0-33",
+          "sourceId": "body[1]/p[130]",
+          "start": 0,
+          "end": 33,
+          "exactText": "Section 5. Fraud and Corruption5",
+          "sourceContainerText": "Section 5.  Fraud and Corruption59"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 5.  Fraud and Corruption\t59",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[131]#heading-span-0-31",
+          "sourceId": "body[1]/p[131]",
+          "start": 0,
+          "end": 31,
+          "exactText": "Section 6. Terms of Reference6",
+          "sourceContainerText": "Section 6.  Terms of Reference61"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 6.  Terms of Reference\t61",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[142]#heading-span-0-46",
+          "sourceId": "body[1]/p[142]",
+          "start": 0,
+          "end": 46,
+          "exactText": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS",
+          "sourceContainerText": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": true,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "CONTAINER_TEXT_SOURCE_MISMATCH",
+        "sourceText": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS\t",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[145]#heading-span-0-38",
+          "sourceId": "body[1]/p[145]",
+          "start": 0,
+          "end": 38,
+          "exactText": "Section 1. Request for Proposal Letter",
+          "sourceContainerText": "Section 1. Request for Proposal Letter "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Section 1. Request for Proposal Letter ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[176]#heading-span-0-47",
+          "sourceId": "body[1]/p[176]",
+          "start": 0,
+          "end": 47,
+          "exactText": "Section 3 - Technical Proposal - Standard Form",
+          "sourceContainerText": "Section 3 - Technical Proposal  - Standard Forms"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 3 - Technical Proposal  - Standard Forms",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[3]/tc[1]/p[1]#heading-span-0-20",
+          "sourceId": "body[1]/tbl[1]/tr[3]/tc[1]/p[1]",
+          "start": 0,
+          "end": 20,
+          "exactText": "Conflict of Interest",
+          "sourceContainerText": "Conflict of Interest "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Conflict of Interest ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[18]/tc[1]/p[1]#heading-span-0-8",
+          "sourceId": "body[1]/tbl[1]/tr[18]/tc[1]/p[1]",
+          "start": 0,
+          "end": 8,
+          "exactText": "Language",
+          "sourceContainerText": "Language "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Language ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[25]/tc[1]/p[1]#heading-span-0-34",
+          "sourceId": "body[1]/tbl[1]/tr[25]/tc[1]/p[1]",
+          "start": 0,
+          "end": 34,
+          "exactText": "Clarification and Amendment of RFP",
+          "sourceContainerText": "Clarification and Amendment of RFP "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Clarification and Amendment of RFP ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[44]/tc[1]/p[1]#heading-span-0-28",
+          "sourceId": "body[1]/tbl[1]/tr[44]/tc[1]/p[1]",
+          "start": 0,
+          "end": 28,
+          "exactText": "Framework Agreement Criteria",
+          "sourceContainerText": "Framework Agreement Criteria "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Framework Agreement Criteria ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[51]/tc[1]/p[1]#heading-span-0-29",
+          "sourceId": "body[1]/tbl[1]/tr[51]/tc[1]/p[1]",
+          "start": 0,
+          "end": 29,
+          "exactText": "Procurement Related Complaint",
+          "sourceContainerText": "Procurement Related Complaint "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Procurement Related Complaint ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[52]/tc[1]/p[1]#heading-span-0-50",
+          "sourceId": "body[1]/tbl[1]/tr[52]/tc[1]/p[1]",
+          "start": 0,
+          "end": 50,
+          "exactText": "Method and criteria for award of Call-off Contract",
+          "sourceContainerText": "Method and criteria for award of Call-off Contract    "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Method and criteria for award of Call-off Contract    ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[256]#heading-span-0-46",
+          "sourceId": "body[1]/p[256]",
+          "start": 0,
+          "end": 46,
+          "exactText": "Section 3. Technical Proposal \u2013 Standard Form",
+          "sourceContainerText": "Section 3.  Technical Proposal \u2013 Standard Forms"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 3.  Technical Proposal \u2013 Standard Forms",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[290]#heading-span-0-11",
+          "sourceId": "body[1]/p[290]",
+          "start": 0,
+          "end": 11,
+          "exactText": "Form TECH-1",
+          "sourceContainerText": "Form TECH-1  "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Form TECH-1  ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[345]#heading-span-0-11",
+          "sourceId": "body[1]/p[345]",
+          "start": 0,
+          "end": 11,
+          "exactText": "Form TECH-2",
+          "sourceContainerText": "Form TECH-2 "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Form TECH-2 ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[350]#heading-span-0-601",
+          "sourceId": "body[1]/p[350]",
+          "start": 0,
+          "end": 601,
+          "exactText": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.",
+          "sourceContainerText": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.  "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.  ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[367]#heading-span-0-11",
+          "sourceId": "body[1]/p[367]",
+          "start": 0,
+          "end": 11,
+          "exactText": "Form TECH-3",
+          "sourceContainerText": "Form TECH-3 "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Form TECH-3 ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[381]#heading-span-0-11",
+          "sourceId": "body[1]/p[381]",
+          "start": 0,
+          "end": 11,
+          "exactText": "Form TECH-4",
+          "sourceContainerText": "Form TECH-4 "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Form TECH-4 ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[401]#heading-span-0-11",
+          "sourceId": "body[1]/p[401]",
+          "start": 0,
+          "end": 11,
+          "exactText": "Form TECH-5",
+          "sourceContainerText": "Form TECH-5 "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Form TECH-5 ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[468]#heading-span-0-11",
+          "sourceId": "body[1]/p[468]",
+          "start": 0,
+          "end": 11,
+          "exactText": "Form TECH-7",
+          "sourceContainerText": "Form TECH-7 "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Form TECH-7 ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[534]#heading-span-0-11",
+          "sourceId": "body[1]/p[534]",
+          "start": 0,
+          "end": 11,
+          "exactText": "Form TECH-8",
+          "sourceContainerText": "Form TECH-8 "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Form TECH-8 ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[586]#heading-span-0-29",
+          "sourceId": "body[1]/p[586]",
+          "start": 0,
+          "end": 29,
+          "exactText": "Section 4. Eligible Countrie",
+          "sourceContainerText": "Section 4.  Eligible Countries"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 4.  Eligible Countries",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[596]#heading-span-0-31",
+          "sourceId": "body[1]/p[596]",
+          "start": 0,
+          "end": 31,
+          "exactText": "Section 5. Fraud and Corruptio",
+          "sourceContainerText": "Section 5.  Fraud and Corruption"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 5.  Fraud and Corruption",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[619]#heading-span-0-29",
+          "sourceId": "body[1]/p[619]",
+          "start": 0,
+          "end": 29,
+          "exactText": "Section 6. Terms of Referenc",
+          "sourceContainerText": "Section 6.  Terms of Reference"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Section 6.  Terms of Reference",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[646]#heading-span-0-43",
+          "sourceId": "body[1]/p[646]",
+          "start": 0,
+          "end": 43,
+          "exactText": "format, frequency, and contents of reports;",
+          "sourceContainerText": "format, frequency, and contents of reports; "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "format, frequency, and contents of reports; ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[707]#heading-span-0-50",
+          "sourceId": "body[1]/p[707]",
+          "start": 0,
+          "end": 50,
+          "exactText": "Notification to Conclude a Framework Agreement (s)",
+          "sourceContainerText": "Notification to Conclude a Framework Agreement (s) "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Notification to Conclude a Framework Agreement (s) ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[746]#heading-span-0-30",
+          "sourceId": "body[1]/p[746]",
+          "start": 0,
+          "end": 30,
+          "exactText": "Schedule 1: Terms of Reference",
+          "sourceContainerText": "Schedule 1: Terms of Reference"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": true,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Schedule 1: \tTerms of Reference",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[747]#heading-span-0-23",
+          "sourceId": "body[1]/p[747]",
+          "start": 0,
+          "end": 23,
+          "exactText": "Schedule 2: Key Experts",
+          "sourceContainerText": "Schedule 2: Key Experts"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": true,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Schedule 2: \tKey Experts",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[748]#heading-span-0-33",
+          "sourceId": "body[1]/p[748]",
+          "start": 0,
+          "end": 33,
+          "exactText": "Schedule 3: Secondary Procurement",
+          "sourceContainerText": "Schedule 3: Secondary Procurement "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Schedule 3: Secondary Procurement ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[752]#heading-span-0-84",
+          "sourceId": "body[1]/p[752]",
+          "start": 0,
+          "end": 84,
+          "exactText": "Schedule 7: List of participating Clients [use for Multi-User FAs, otherwise delete]",
+          "sourceContainerText": "Schedule 7: List of participating Clients [use for Multi-User FAs, otherwise delete]"
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": false,
+        "exactTextEqualsContainerText": true,
+        "sourceContainerTextEqualsRaw": false,
+        "reason": "SPAN_TEXT_MISMATCH",
+        "sourceText": "Schedule 7: \tList of participating Clients [use for Multi-User FAs, otherwise delete]\t",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[3]#heading-span-0-97",
+          "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[3]",
+          "start": 0,
+          "end": 97,
+          "exactText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or",
+          "sourceContainerText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[811]#heading-span-0-24",
+          "sourceId": "body[1]/p[811]",
+          "start": 0,
+          "end": 24,
+          "exactText": "Schedule 2 - Key Experts",
+          "sourceContainerText": "Schedule 2 - Key Experts "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "Schedule 2 - Key Experts ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[816]#heading-span-0-33",
+          "sourceId": "body[1]/p[816]",
+          "start": 0,
+          "end": 33,
+          "exactText": "SCHEDULE 3: Secondary Procurement",
+          "sourceContainerText": "SCHEDULE 3: Secondary Procurement "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "SCHEDULE 3: Secondary Procurement ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[1256]#heading-span-0-36",
+          "sourceId": "body[1]/p[1256]",
+          "start": 0,
+          "end": 36,
+          "exactText": "SCHEDULE 4: Advance Payment Security",
+          "sourceContainerText": "SCHEDULE 4: Advance Payment Security "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "SCHEDULE 4: Advance Payment Security ",
+        "isExactCompatible": false
+      },
+      {
+        "binding": {
+          "occurrenceId": "DOC-0116:body[1]/p[1286]#heading-span-0-121",
+          "sourceId": "body[1]/p[1286]",
+          "start": 0,
+          "end": 121,
+          "exactText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+          "sourceContainerText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants "
+        },
+        "sourceExists": true,
+        "spanWithinSource": true,
+        "spanTextEqualsExactText": true,
+        "exactTextEqualsContainerText": false,
+        "sourceContainerTextEqualsRaw": true,
+        "reason": "EXACT_TEXT_CONTAINER_MISMATCH",
+        "sourceText": "SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants ",
+        "isExactCompatible": false
+      }
+    ]
+  },
+  "occurrenceUniverseBridge": {
+    "runtimeAliasCount": 1921,
+    "distinctRuntimeAliasCount": 1921,
+    "runtimeAliasesFoundInRawSource": 1921,
+    "runtimeAliasesMissingFromRawSource": [],
+    "normalizedContainerCount": 1896,
+    "goldSourceContainerCount": 1896,
+    "deltaRuntimeMinusGoldContainers": 25,
+    "deltaNormalizedMinusGoldContainers": 0,
+    "representationGranularityDelta": 25,
+    "bridgeAcceptedByThisAudit": false,
+    "groupedNestedAliases": [
+      {
+        "normalizedContainerId": "body[1]/p[25]",
+        "aliasCount": 2,
+        "aliases": [
+          "body[1]/p[25]/txbxContent[1]/p[1]",
+          "body[1]/p[25]/txbxContent[2]/p[1]"
+        ],
+        "hasDirectAlias": false
+      },
+      {
+        "normalizedContainerId": "body[1]/p[472]",
+        "aliasCount": 13,
+        "aliases": [
+          "body[1]/p[472]",
+          "body[1]/p[472]/txbxContent[1]/p[1]",
+          "body[1]/p[472]/txbxContent[1]/p[2]",
+          "body[1]/p[472]/txbxContent[1]/p[3]",
+          "body[1]/p[472]/txbxContent[2]/p[1]",
+          "body[1]/p[472]/txbxContent[2]/p[2]",
+          "body[1]/p[472]/txbxContent[2]/p[3]",
+          "body[1]/p[472]/txbxContent[3]/p[1]",
+          "body[1]/p[472]/txbxContent[3]/p[2]",
+          "body[1]/p[472]/txbxContent[3]/p[4]",
+          "body[1]/p[472]/txbxContent[4]/p[1]",
+          "body[1]/p[472]/txbxContent[4]/p[2]",
+          "body[1]/p[472]/txbxContent[4]/p[4]"
+        ],
+        "hasDirectAlias": true
+      },
+      {
+        "normalizedContainerId": "body[1]/p[540]",
+        "aliasCount": 13,
+        "aliases": [
+          "body[1]/p[540]",
+          "body[1]/p[540]/txbxContent[1]/p[1]",
+          "body[1]/p[540]/txbxContent[1]/p[3]",
+          "body[1]/p[540]/txbxContent[1]/p[5]",
+          "body[1]/p[540]/txbxContent[1]/p[7]",
+          "body[1]/p[540]/txbxContent[1]/p[8]",
+          "body[1]/p[540]/txbxContent[1]/p[9]",
+          "body[1]/p[540]/txbxContent[2]/p[1]",
+          "body[1]/p[540]/txbxContent[2]/p[3]",
+          "body[1]/p[540]/txbxContent[2]/p[5]",
+          "body[1]/p[540]/txbxContent[2]/p[7]",
+          "body[1]/p[540]/txbxContent[2]/p[8]",
+          "body[1]/p[540]/txbxContent[2]/p[9]"
+        ],
+        "hasDirectAlias": true
+      }
+    ],
+    "statement": "The 1921 runtime aliases and 1896 Gold containers are not directly comparable without an explicitly accepted normalization bridge."
+  },
+  "contractAlignment": {
+    "providerPrompt": {
+      "detectedStructuralLabelPhrase": true,
+      "containsOtherStructuralLabelRole": true,
+      "systemPromptSha256": "a9603fe817e4a6ae1eb3085fd86b324e76c42a2aed934692a949d1aee4e68cbb",
+      "promptExcerpt": "You identify every structurally real document heading or structural label in the supplied source.\nA single source occurrence may contain zero, one, or many independent headings. Decide semantic\nexistence and role yourself from the complete source. Formatting, "
+    },
+    "canonicalGold": {
+      "scopePolicy": "WHOLE_DOCUMENT_HEADING_SCOPE_V1",
+      "trueHeadingField": "isTrueHeading",
+      "headingKindField": "headingKind",
+      "sourceAuthorityStatus": null
+    },
+    "semanticTaskMismatch": true,
+    "statement": "Provider task includes structural labels; Gold authority declares true heading occurrences."
+  },
+  "frozenScoreDisposition": {
+    "priorScoreArtifactsPreserved": true,
+    "officialAccuracyClaim": false,
+    "disposition": "91/198/29 remains provisional and is not an official accuracy result until authority, binding, universe, and contract compatibility are resolved."
+  },
+  "artifactInputs": [
+    {
+      "path": "artifacts/authority-audit/canonical-authority-freeze-v1/DOC-0116/authority-freeze-manifest.json",
+      "sha256": "700ff601f02ceaf02d365c9614c264572cb2c6cab9a194af8314023c55fdc4ff"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0116/source-authority.json",
+      "sha256": "4cd73af516c4a26b67c6155085a7392b8f7ed3262ebee2f9c24bb6249125bf39"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0116/exact-bindings.json",
+      "sha256": "85c318630555d8254cbb6cba33285011a4deff8889bb084c5be8e8e6a1c497cc"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0116/validation.json",
+      "sha256": "59bfd7d643720a274fbe3e6183ede851af82f3173d6897c654f8dd1ffe8d8219"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/validation.json",
+      "sha256": "5d96cbc1453785598a3f9eafb433e69a7a6b137de4594fbe7b7e379a9268ddaa"
+    },
+    {
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/manifest.json",
+      "sha256": "490f9e17767f2bff61ff8e9fafa92196288a7ef07d31568e0bfa2a7bf0422ccd"
+    },
+    {
+      "path": "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-live-preflight-v2-1/source-evidence.v1.json",
+      "sha256": "93d103d6809373ff80c928a1fcc8ee61d4c68f15d1acf1afa66612f131d1fcf0"
+    },
+    {
+      "path": "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-live-preflight-v2-1/materialized-request-001.v1.json",
+      "sha256": "2f67b8bb6ca87d9b9d1bcb0036a4d184c598c6c2e9ff83338578837f128fbc34"
+    }
+  ],
+  "auditReadCounts": {
+    "goldReads": 1,
+    "providerCalls": 0,
+    "modelCalls": 0
+  },
+  "auditedAtUtc": "2026-09-17T07:08:15.4182353+00:00"
+}

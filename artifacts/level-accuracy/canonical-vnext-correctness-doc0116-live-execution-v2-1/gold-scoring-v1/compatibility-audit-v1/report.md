@@ -1,0 +1,182 @@
+﻿# DOC-0116 Gold compatibility audit
+
+Status: `OFFICIAL_SCORING_BLOCKED_PENDING_COMPATIBILITY_AUDIT`
+
+This is an offline diagnostic. It does not mutate prediction, Gold, or the prior score.
+
+- Gold bindings checked: **120**
+- Exact binding-compatible rows: **80**
+- Binding mismatches: **40**
+- Runtime source-evidence aliases: **1921**
+- Gold source containers: **1896**
+- Provider calls: **0**
+- Gold reads: **1**
+
+The prior 91/198/29 score remains preserved but is not an official accuracy claim.
+
+## Binding mismatches
+
+- `body[1]/p[69]` span `0..45` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 1:  Request for Proposals (RFP) Letter`
+  - Gold exactText: `Section 1: Request for Proposals (RFP) Lette`
+  - Source raw: `Section 1:  Request for Proposals (RFP) Letter`
+- `body[1]/p[85]` span `0..31` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Section 5: Fraud and Corruption   `
+  - Gold exactText: `Section 5: Fraud and Corruption`
+  - Source raw: `Section 5: Fraud and Corruption   `
+- `body[1]/p[126]` span `0..39` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 1. Request for Proposal Letter4`
+  - Gold exactText: `Section 1. Request for Proposal Letter4`
+  - Source raw: `Section 1. Request for Proposal Letter	4`
+- `body[1]/p[127]` span `0..54` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 2. Instructions to Consultants and Data Sheet7`
+  - Gold exactText: `Section 2. Instructions to Consultants and Data Sheet7`
+  - Source raw: `Section 2. Instructions to Consultants and Data Sheet	7`
+- `body[1]/p[128]` span `0..48` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 3.  Technical Proposal – Standard Forms37`
+  - Gold exactText: `Section 3. Technical Proposal – Standard Forms3`
+  - Source raw: `Section 3.  Technical Proposal – Standard Forms	37`
+- `body[1]/p[129]` span `0..31` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 4.  Eligible Countries57`
+  - Gold exactText: `Section 4. Eligible Countries5`
+  - Source raw: `Section 4.  Eligible Countries	57`
+- `body[1]/p[130]` span `0..33` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 5.  Fraud and Corruption59`
+  - Gold exactText: `Section 5. Fraud and Corruption5`
+  - Source raw: `Section 5.  Fraud and Corruption	59`
+- `body[1]/p[131]` span `0..31` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 6.  Terms of Reference61`
+  - Gold exactText: `Section 6. Terms of Reference6`
+  - Source raw: `Section 6.  Terms of Reference	61`
+- `body[1]/p[142]` span `0..46` reason `CONTAINER_TEXT_SOURCE_MISMATCH`
+  - Gold container: `PART I – SELECTION PROCEDURES AND REQUIREMENTS`
+  - Gold exactText: `PART I – SELECTION PROCEDURES AND REQUIREMENTS`
+  - Source raw: `PART I – SELECTION PROCEDURES AND REQUIREMENTS	`
+- `body[1]/p[145]` span `0..38` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Section 1. Request for Proposal Letter `
+  - Gold exactText: `Section 1. Request for Proposal Letter`
+  - Source raw: `Section 1. Request for Proposal Letter `
+- `body[1]/p[176]` span `0..47` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 3 - Technical Proposal  - Standard Forms`
+  - Gold exactText: `Section 3 - Technical Proposal - Standard Form`
+  - Source raw: `Section 3 - Technical Proposal  - Standard Forms`
+- `body[1]/tbl[1]/tr[3]/tc[1]/p[1]` span `0..20` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Conflict of Interest `
+  - Gold exactText: `Conflict of Interest`
+  - Source raw: `Conflict of Interest `
+- `body[1]/tbl[1]/tr[18]/tc[1]/p[1]` span `0..8` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Language `
+  - Gold exactText: `Language`
+  - Source raw: `Language `
+- `body[1]/tbl[1]/tr[25]/tc[1]/p[1]` span `0..34` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Clarification and Amendment of RFP `
+  - Gold exactText: `Clarification and Amendment of RFP`
+  - Source raw: `Clarification and Amendment of RFP `
+- `body[1]/tbl[1]/tr[44]/tc[1]/p[1]` span `0..28` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Framework Agreement Criteria `
+  - Gold exactText: `Framework Agreement Criteria`
+  - Source raw: `Framework Agreement Criteria `
+- `body[1]/tbl[1]/tr[51]/tc[1]/p[1]` span `0..29` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Procurement Related Complaint `
+  - Gold exactText: `Procurement Related Complaint`
+  - Source raw: `Procurement Related Complaint `
+- `body[1]/tbl[1]/tr[52]/tc[1]/p[1]` span `0..50` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Method and criteria for award of Call-off Contract    `
+  - Gold exactText: `Method and criteria for award of Call-off Contract`
+  - Source raw: `Method and criteria for award of Call-off Contract    `
+- `body[1]/p[256]` span `0..46` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 3.  Technical Proposal – Standard Forms`
+  - Gold exactText: `Section 3. Technical Proposal – Standard Form`
+  - Source raw: `Section 3.  Technical Proposal – Standard Forms`
+- `body[1]/p[290]` span `0..11` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Form TECH-1  `
+  - Gold exactText: `Form TECH-1`
+  - Source raw: `Form TECH-1  `
+- `body[1]/p[345]` span `0..11` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Form TECH-2 `
+  - Gold exactText: `Form TECH-2`
+  - Source raw: `Form TECH-2 `
+- `body[1]/p[350]` span `0..601` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Form TECH-2: a brief description of the Consultant’s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant’s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant’s role/involvement.  `
+  - Gold exactText: `Form TECH-2: a brief description of the Consultant’s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant’s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant’s role/involvement.`
+  - Source raw: `Form TECH-2: a brief description of the Consultant’s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant’s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant’s role/involvement.  `
+- `body[1]/p[367]` span `0..11` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Form TECH-3 `
+  - Gold exactText: `Form TECH-3`
+  - Source raw: `Form TECH-3 `
+- `body[1]/p[381]` span `0..11` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Form TECH-4 `
+  - Gold exactText: `Form TECH-4`
+  - Source raw: `Form TECH-4 `
+- `body[1]/p[401]` span `0..11` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Form TECH-5 `
+  - Gold exactText: `Form TECH-5`
+  - Source raw: `Form TECH-5 `
+- `body[1]/p[468]` span `0..11` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Form TECH-7 `
+  - Gold exactText: `Form TECH-7`
+  - Source raw: `Form TECH-7 `
+- `body[1]/p[534]` span `0..11` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Form TECH-8 `
+  - Gold exactText: `Form TECH-8`
+  - Source raw: `Form TECH-8 `
+- `body[1]/p[586]` span `0..29` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 4.  Eligible Countries`
+  - Gold exactText: `Section 4. Eligible Countrie`
+  - Source raw: `Section 4.  Eligible Countries`
+- `body[1]/p[596]` span `0..31` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 5.  Fraud and Corruption`
+  - Gold exactText: `Section 5. Fraud and Corruptio`
+  - Source raw: `Section 5.  Fraud and Corruption`
+- `body[1]/p[619]` span `0..29` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Section 6.  Terms of Reference`
+  - Gold exactText: `Section 6. Terms of Referenc`
+  - Source raw: `Section 6.  Terms of Reference`
+- `body[1]/p[646]` span `0..43` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `format, frequency, and contents of reports; `
+  - Gold exactText: `format, frequency, and contents of reports;`
+  - Source raw: `format, frequency, and contents of reports; `
+- `body[1]/p[707]` span `0..50` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Notification to Conclude a Framework Agreement (s) `
+  - Gold exactText: `Notification to Conclude a Framework Agreement (s)`
+  - Source raw: `Notification to Conclude a Framework Agreement (s) `
+- `body[1]/p[746]` span `0..30` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Schedule 1: Terms of Reference`
+  - Gold exactText: `Schedule 1: Terms of Reference`
+  - Source raw: `Schedule 1: 	Terms of Reference`
+- `body[1]/p[747]` span `0..23` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Schedule 2: Key Experts`
+  - Gold exactText: `Schedule 2: Key Experts`
+  - Source raw: `Schedule 2: 	Key Experts`
+- `body[1]/p[748]` span `0..33` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Schedule 3: Secondary Procurement `
+  - Gold exactText: `Schedule 3: Secondary Procurement`
+  - Source raw: `Schedule 3: Secondary Procurement `
+- `body[1]/p[752]` span `0..84` reason `SPAN_TEXT_MISMATCH`
+  - Gold container: `Schedule 7: List of participating Clients [use for Multi-User FAs, otherwise delete]`
+  - Gold exactText: `Schedule 7: List of participating Clients [use for Multi-User FAs, otherwise delete]`
+  - Source raw: `Schedule 7: 	List of participating Clients [use for Multi-User FAs, otherwise delete]	`
+- `body[1]/tbl[19]/tr[23]/tc[2]/p[3]` span `0..97` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or `
+  - Gold exactText: `during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or`
+  - Source raw: `during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or `
+- `body[1]/p[811]` span `0..24` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `Schedule 2 - Key Experts `
+  - Gold exactText: `Schedule 2 - Key Experts`
+  - Source raw: `Schedule 2 - Key Experts `
+- `body[1]/p[816]` span `0..33` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `SCHEDULE 3: Secondary Procurement `
+  - Gold exactText: `SCHEDULE 3: Secondary Procurement`
+  - Source raw: `SCHEDULE 3: Secondary Procurement `
+- `body[1]/p[1256]` span `0..36` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `SCHEDULE 4: Advance Payment Security `
+  - Gold exactText: `SCHEDULE 4: Advance Payment Security`
+  - Source raw: `SCHEDULE 4: Advance Payment Security `
+- `body[1]/p[1286]` span `0..121` reason `EXACT_TEXT_CONTAINER_MISMATCH`
+  - Gold container: `SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants `
+  - Gold exactText: `SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants`
+  - Source raw: `SCHEDULE 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants `
+
+## Interpretation
+
+The provider prompt asks for headings or structural labels, while the Gold policy is true heading occurrences. This semantic contract mismatch must be resolved before scoring is treated as official. The 1921-to-1896 difference is reported as a representation-granularity bridge, not silently accepted as equivalent.
