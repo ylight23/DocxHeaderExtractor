@@ -1,0 +1,1825 @@
+{
+  "falsePositiveCount": 198,
+  "falseNegativeCount": 29,
+  "falsePositiveOccurrences": [
+    {
+      "occurrenceId": "semantic-occurrence:0003",
+      "sourceId": "body[1]/p[5]",
+      "start": 0,
+      "end": 22,
+      "text": "Framework Agreement(s)",
+      "semanticRole": "DOCUMENT_TITLE"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0004",
+      "sourceId": "body[1]/p[7]",
+      "start": 0,
+      "end": 19,
+      "text": "Consulting Services",
+      "semanticRole": "DOCUMENT_TITLE"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0005",
+      "sourceId": "body[1]/p[39]",
+      "start": 0,
+      "end": 8,
+      "text": "Foreword",
+      "semanticRole": "FRONT_MATTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0008",
+      "sourceId": "body[1]/p[67]",
+      "start": 0,
+      "end": 46,
+      "text": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS",
+      "semanticRole": "PART"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0009",
+      "sourceId": "body[1]/p[69]",
+      "start": 0,
+      "end": 45,
+      "text": "Section 1: Request for Proposals (RFP) Letter",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0015",
+      "sourceId": "body[1]/p[93]",
+      "start": 0,
+      "end": 29,
+      "text": "PART II \u2013 FRAMEWORK AGREEMENT",
+      "semanticRole": "PART"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0016",
+      "sourceId": "body[1]/p[101]",
+      "start": 0,
+      "end": 24,
+      "text": "SELECTION OF CONSULTANTS",
+      "semanticRole": "PART"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0020",
+      "sourceId": "body[1]/p[123]",
+      "start": 0,
+      "end": 16,
+      "text": "TABLE OF CONTENT",
+      "semanticRole": "FRONT_MATTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0021",
+      "sourceId": "body[1]/p[125]",
+      "start": 0,
+      "end": 48,
+      "text": "PART I \u2013 SELECTION PROCEDURES AND REQUIREMENTS 3",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0022",
+      "sourceId": "body[1]/p[126]",
+      "start": 0,
+      "end": 40,
+      "text": "Section 1. Request for Proposal Letter 4",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0023",
+      "sourceId": "body[1]/p[127]",
+      "start": 0,
+      "end": 55,
+      "text": "Section 2. Instructions to Consultants and Data Sheet 7",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0024",
+      "sourceId": "body[1]/p[128]",
+      "start": 0,
+      "end": 49,
+      "text": "Section 3. Technical Proposal \u2013 Standard Forms 37",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0025",
+      "sourceId": "body[1]/p[129]",
+      "start": 0,
+      "end": 32,
+      "text": "Section 4. Eligible Countries 57",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0026",
+      "sourceId": "body[1]/p[130]",
+      "start": 0,
+      "end": 34,
+      "text": "Section 5. Fraud and Corruption 59",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0027",
+      "sourceId": "body[1]/p[131]",
+      "start": 0,
+      "end": 32,
+      "text": "Section 6. Terms of Reference 61",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0028",
+      "sourceId": "body[1]/p[132]",
+      "start": 0,
+      "end": 32,
+      "text": "PART II \u2013 FRAMEWORK AGREEMENT 63",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0031",
+      "sourceId": "body[1]/p[147]",
+      "start": 0,
+      "end": 19,
+      "text": "Consulting Services",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0034",
+      "sourceId": "body[1]/p[176]",
+      "start": 0,
+      "end": 47,
+      "text": "Section 3 - Technical Proposal - Standard Forms",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0038",
+      "sourceId": "body[1]/p[180]",
+      "start": 0,
+      "end": 28,
+      "text": "Part II- Framework Agreement",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0040",
+      "sourceId": "body[1]/p[202]",
+      "start": 0,
+      "end": 16,
+      "text": "TABLE OF CONTENT",
+      "semanticRole": "FRONT_MATTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0041",
+      "sourceId": "body[1]/p[204]",
+      "start": 0,
+      "end": 23,
+      "text": "A. General Provisions 9",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0042",
+      "sourceId": "body[1]/p[205]",
+      "start": 0,
+      "end": 16,
+      "text": "1. Definitions 9",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0043",
+      "sourceId": "body[1]/p[206]",
+      "start": 0,
+      "end": 18,
+      "text": "2. Introduction 13",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0044",
+      "sourceId": "body[1]/p[207]",
+      "start": 0,
+      "end": 26,
+      "text": "3. Conflict of Interest 13",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0045",
+      "sourceId": "body[1]/p[208]",
+      "start": 0,
+      "end": 34,
+      "text": "4. Unfair Competitive Advantage 14",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0046",
+      "sourceId": "body[1]/p[209]",
+      "start": 0,
+      "end": 26,
+      "text": "5. Fraud and Corruption 15",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0047",
+      "sourceId": "body[1]/p[210]",
+      "start": 0,
+      "end": 17,
+      "text": "6. Eligibility 15",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0048",
+      "sourceId": "body[1]/p[211]",
+      "start": 0,
+      "end": 30,
+      "text": "B. Preparation of Proposals 17",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0049",
+      "sourceId": "body[1]/p[212]",
+      "start": 0,
+      "end": 28,
+      "text": "7. General Considerations 17",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0050",
+      "sourceId": "body[1]/p[213]",
+      "start": 0,
+      "end": 37,
+      "text": "8. Cost of Preparation of Proposal 17",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0051",
+      "sourceId": "body[1]/p[214]",
+      "start": 0,
+      "end": 14,
+      "text": "9. Language 17",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0052",
+      "sourceId": "body[1]/p[215]",
+      "start": 0,
+      "end": 40,
+      "text": "10. Documents Comprising the Proposal 17",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0053",
+      "sourceId": "body[1]/p[216]",
+      "start": 0,
+      "end": 24,
+      "text": "11. Only One Proposal 17",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0054",
+      "sourceId": "body[1]/p[217]",
+      "start": 0,
+      "end": 24,
+      "text": "12. Proposal Validity 18",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0055",
+      "sourceId": "body[1]/p[218]",
+      "start": 0,
+      "end": 41,
+      "text": "13. Clarification and Amendment of RFP 19",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0056",
+      "sourceId": "body[1]/p[219]",
+      "start": 0,
+      "end": 55,
+      "text": "14. Preparation of Proposals Specific Considerations 19",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0057",
+      "sourceId": "body[1]/p[220]",
+      "start": 0,
+      "end": 44,
+      "text": "15. Technical Proposal Format and Content 20",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0058",
+      "sourceId": "body[1]/p[221]",
+      "start": 0,
+      "end": 25,
+      "text": "16. Financial Proposal 20",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0059",
+      "sourceId": "body[1]/p[222]",
+      "start": 0,
+      "end": 40,
+      "text": "C. Submission, Opening and Evaluation 20",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0060",
+      "sourceId": "body[1]/p[223]",
+      "start": 0,
+      "end": 52,
+      "text": "17. Submission, Sealing, and Marking of Proposals 20",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0061",
+      "sourceId": "body[1]/p[224]",
+      "start": 0,
+      "end": 22,
+      "text": "18. Confidentiality 21",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0062",
+      "sourceId": "body[1]/p[225]",
+      "start": 0,
+      "end": 37,
+      "text": "19. Opening of Technical Proposals 22",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0063",
+      "sourceId": "body[1]/p[226]",
+      "start": 0,
+      "end": 27,
+      "text": "20. Proposals Evaluation 22",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0064",
+      "sourceId": "body[1]/p[227]",
+      "start": 0,
+      "end": 40,
+      "text": "21. Evaluation of Technical Proposals 22",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0065",
+      "sourceId": "body[1]/p[228]",
+      "start": 0,
+      "end": 58,
+      "text": "D. Negotiations and conclusion of a Framework Agreement 23",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0066",
+      "sourceId": "body[1]/p[229]",
+      "start": 0,
+      "end": 19,
+      "text": "22. Negotiations 23",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0067",
+      "sourceId": "body[1]/p[230]",
+      "start": 0,
+      "end": 33,
+      "text": "23. Conclusion of Negotiations 24",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0068",
+      "sourceId": "body[1]/p[231]",
+      "start": 0,
+      "end": 24,
+      "text": "24. Standstill Period 24",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0069",
+      "sourceId": "body[1]/p[232]",
+      "start": 0,
+      "end": 66,
+      "text": "25. Notification of Intention to Conclude a Framework Agreement 24",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0070",
+      "sourceId": "body[1]/p[233]",
+      "start": 0,
+      "end": 35,
+      "text": "26. Framework Agreement Criteria 25",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0071",
+      "sourceId": "body[1]/p[234]",
+      "start": 0,
+      "end": 31,
+      "text": "27. No Obligation to Procure 25",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0072",
+      "sourceId": "body[1]/p[235]",
+      "start": 0,
+      "end": 22,
+      "text": "28. Non-exclusivity 25",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0073",
+      "sourceId": "body[1]/p[236]",
+      "start": 0,
+      "end": 53,
+      "text": "29. Notification to conclude a Framework Agreement 25",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0074",
+      "sourceId": "body[1]/p[237]",
+      "start": 0,
+      "end": 41,
+      "text": "30. Debriefing by the Procuring Agency 25",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0075",
+      "sourceId": "body[1]/p[238]",
+      "start": 0,
+      "end": 38,
+      "text": "31. Signing the Framework Agreement 26",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0076",
+      "sourceId": "body[1]/p[239]",
+      "start": 0,
+      "end": 66,
+      "text": "32. Publication of the Conclusion of Framework Agreement Notice 26",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0077",
+      "sourceId": "body[1]/p[240]",
+      "start": 0,
+      "end": 36,
+      "text": "33. Procurement Related Complaint 27",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0078",
+      "sourceId": "body[1]/p[241]",
+      "start": 0,
+      "end": 57,
+      "text": "34. Method and criteria for award of Call-off Contract 27",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0079",
+      "sourceId": "body[1]/p[242]",
+      "start": 0,
+      "end": 16,
+      "text": "E. Data Sheet 28",
+      "semanticRole": "TOC_ENTRY"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0080",
+      "sourceId": "body[1]/p[247]",
+      "start": 0,
+      "end": 27,
+      "text": "Instructions to Consultants",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0081",
+      "sourceId": "body[1]/p[248]",
+      "start": 0,
+      "end": 21,
+      "text": "A. General Provisions",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0088",
+      "sourceId": "body[1]/tbl[1]/tr[15]/tc[1]/p[1]",
+      "start": 0,
+      "end": 27,
+      "text": "B. Preparation of Proposals",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0095",
+      "sourceId": "body[1]/tbl[1]/tr[22]/tc[1]/p[1]",
+      "start": 0,
+      "end": 33,
+      "text": "a. Extension of Proposal Validity",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0096",
+      "sourceId": "body[1]/tbl[1]/tr[23]/tc[1]/p[1]",
+      "start": 0,
+      "end": 52,
+      "text": "b. Substitution of Key Experts at Validity Extension",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0097",
+      "sourceId": "body[1]/tbl[1]/tr[24]/tc[1]/p[1]",
+      "start": 0,
+      "end": 18,
+      "text": "c. Sub-Contracting",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0102",
+      "sourceId": "body[1]/tbl[1]/tr[30]/tc[1]/p[1]",
+      "start": 0,
+      "end": 37,
+      "text": "C. Submission, Opening and Evaluation",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0107",
+      "sourceId": "body[1]/tbl[1]/tr[36]/tc[1]/p[1]",
+      "start": 0,
+      "end": 55,
+      "text": "D. Negotiations and conclusion of a Framework Agreement",
+      "semanticRole": "CHAPTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0109",
+      "sourceId": "body[1]/tbl[1]/tr[38]/tc[1]/p[1]",
+      "start": 0,
+      "end": 30,
+      "text": "a. Availability of Key Experts",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0110",
+      "sourceId": "body[1]/tbl[1]/tr[39]/tc[1]/p[1]",
+      "start": 0,
+      "end": 25,
+      "text": "b. Technical Negotiations",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0111",
+      "sourceId": "body[1]/tbl[1]/tr[40]/tc[1]/p[1]",
+      "start": 0,
+      "end": 33,
+      "text": "c. Clarification of tax liability",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0125",
+      "sourceId": "body[1]/p[251]",
+      "start": 0,
+      "end": 13,
+      "text": "E. Data Sheet",
+      "semanticRole": "CHAPTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0126",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 3,
+      "text": "ITC",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0127",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[2]",
+      "start": 0,
+      "end": 9,
+      "text": "Reference",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0128",
+      "sourceId": "body[1]/tbl[2]/tr[1]/tc[2]/p[1]",
+      "start": 0,
+      "end": 10,
+      "text": "A. General",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0129",
+      "sourceId": "body[1]/tbl[2]/tr[15]/tc[1]/p[1]",
+      "start": 0,
+      "end": 27,
+      "text": "B. Preparation of Proposals",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0130",
+      "sourceId": "body[1]/tbl[2]/tr[24]/tc[1]/p[1]",
+      "start": 0,
+      "end": 37,
+      "text": "C. Submission, Opening and Evaluation",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0131",
+      "sourceId": "body[1]/tbl[2]/tr[31]/tc[2]/p[1]",
+      "start": 0,
+      "end": 55,
+      "text": "D. Negotiations and conclusion of a Framework Agreement",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0132",
+      "sourceId": "body[1]/p[256]",
+      "start": 0,
+      "end": 46,
+      "text": "Section 3. Technical Proposal \u2013 Standard Forms",
+      "semanticRole": "PART"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0133",
+      "sourceId": "body[1]/p[258]",
+      "start": 0,
+      "end": 27,
+      "text": "Checklist of Required Forms",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0135",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[2]/p[1]",
+      "start": 0,
+      "end": 11,
+      "text": "DESCRIPTION",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0136",
+      "sourceId": "body[1]/tbl[3]/tr[1]/tc[3]/p[1]",
+      "start": 0,
+      "end": 10,
+      "text": "Page Limit",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0138",
+      "sourceId": "body[1]/p[291]",
+      "start": 0,
+      "end": 65,
+      "text": "Primary Procurement - Framework Agreement for Consulting Services",
+      "semanticRole": "CAPTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0139",
+      "sourceId": "body[1]/p[293]",
+      "start": 0,
+      "end": 34,
+      "text": "Technical Proposal Submission Form",
+      "semanticRole": "CAPTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0141",
+      "sourceId": "body[1]/p[347]",
+      "start": 0,
+      "end": 40,
+      "text": "Consultant\u2019s Organization and Experience",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0142",
+      "sourceId": "body[1]/p[352]",
+      "start": 0,
+      "end": 29,
+      "text": "A - Consultant\u2019s Organization",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0143",
+      "sourceId": "body[1]/p[358]",
+      "start": 0,
+      "end": 27,
+      "text": "B - Consultant\u2019s Experience",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0145",
+      "sourceId": "body[1]/p[369]",
+      "start": 0,
+      "end": 50,
+      "text": "Comments and Suggestions on the Terms of Reference",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0147",
+      "sourceId": "body[1]/p[383]",
+      "start": 0,
+      "end": 79,
+      "text": "Description of Approach and Methodology in Responding to the Terms of Reference",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0149",
+      "sourceId": "body[1]/p[403]",
+      "start": 0,
+      "end": 80,
+      "text": "planning for deliverables for a Typical assignment under the Framework agreement",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0151",
+      "sourceId": "body[1]/p[414]",
+      "start": 0,
+      "end": 74,
+      "text": "Team Composition, Assignment, and Experts\u2019 inputs for a typical assignment",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0152",
+      "sourceId": "body[1]/p[429]",
+      "start": 0,
+      "end": 21,
+      "text": "CURRICULUM VITAE (CV)",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0153",
+      "sourceId": "body[1]/p[473]",
+      "start": 0,
+      "end": 27,
+      "text": "CODE OF CONDUCT FOR EXPERTS",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0154",
+      "sourceId": "body[1]/p[478]",
+      "start": 0,
+      "end": 16,
+      "text": "REQUIRED CONDUCT",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0155",
+      "sourceId": "body[1]/p[495]",
+      "start": 0,
+      "end": 16,
+      "text": "RAISING CONCERNS",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0156",
+      "sourceId": "body[1]/p[502]",
+      "start": 0,
+      "end": 45,
+      "text": "CONSEQUENCES OF VIOLATING THE CODE OF CONDUCT",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0157",
+      "sourceId": "body[1]/p[515]",
+      "start": 0,
+      "end": 122,
+      "text": "ATTACHMENT 1: Behaviors constituting Sexual Exploitation and Abuse (SEA) and behaviors constituting Sexual Harassment (SH)",
+      "semanticRole": "ANNEX_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0158",
+      "sourceId": "body[1]/p[517]",
+      "start": 0,
+      "end": 40,
+      "text": "ATTACHMENT 1 TO THE CODE OF CONDUCT FORM",
+      "semanticRole": "ANNEX_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0159",
+      "sourceId": "body[1]/p[518]",
+      "start": 0,
+      "end": 108,
+      "text": "BEHAVIORS CONSTITUTING SEXUAL EXPLOITATION AND ABUSE (SEA) AND BEHAVIORS CONSTITUTING SEXUAL HARASSMENT (SH)",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0160",
+      "sourceId": "body[1]/p[520]",
+      "start": 0,
+      "end": 74,
+      "text": "Examples of sexual exploitation and abuse include, but are not limited to:",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0161",
+      "sourceId": "body[1]/p[526]",
+      "start": 0,
+      "end": 47,
+      "text": "Examples of sexual harassment in a work context",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0163",
+      "sourceId": "body[1]/p[535]",
+      "start": 0,
+      "end": 84,
+      "text": "Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment Performance Declaration",
+      "semanticRole": "CONTENT_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0164",
+      "sourceId": "body[1]/p[540]",
+      "start": 0,
+      "end": 36,
+      "text": "Beneficial Ownership Disclosure Form",
+      "semanticRole": "OTHER_STRUCTURAL_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0165",
+      "sourceId": "body[1]/p[540]/txbxContent[1]/p[1]",
+      "start": 0,
+      "end": 77,
+      "text": "INSTRUCTIONS TO CONSULTANTS: DELETE THIS BOX ONCE YOU HAVE COMPLETED THE FORM",
+      "semanticRole": "OTHER_STRUCTURAL_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0166",
+      "sourceId": "body[1]/p[586]",
+      "start": 0,
+      "end": 29,
+      "text": "Section 4. Eligible Countries",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0167",
+      "sourceId": "body[1]/p[596]",
+      "start": 0,
+      "end": 31,
+      "text": "Section 5. Fraud and Corruption",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0168",
+      "sourceId": "body[1]/p[600]",
+      "start": 0,
+      "end": 7,
+      "text": "Purpose",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0169",
+      "sourceId": "body[1]/p[602]",
+      "start": 0,
+      "end": 12,
+      "text": "Requirements",
+      "semanticRole": "SUBSECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0170",
+      "sourceId": "body[1]/p[619]",
+      "start": 0,
+      "end": 29,
+      "text": "Section 6. Terms of Reference",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0173",
+      "sourceId": "body[1]/tbl[12]/tr[4]/tc[3]/p[2]",
+      "start": 0,
+      "end": 30,
+      "text": "Criterion (ii): [insert score]",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0174",
+      "sourceId": "body[1]/tbl[12]/tr[4]/tc[3]/p[3]",
+      "start": 0,
+      "end": 31,
+      "text": "Sub-criterion a: [insert score]",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0175",
+      "sourceId": "body[1]/tbl[12]/tr[4]/tc[3]/p[4]",
+      "start": 0,
+      "end": 31,
+      "text": "Sub-criterion b: [insert score]",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0176",
+      "sourceId": "body[1]/tbl[12]/tr[4]/tc[3]/p[5]",
+      "start": 0,
+      "end": 31,
+      "text": "Sub-criterion c: [insert score]",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0177",
+      "sourceId": "body[1]/tbl[12]/tr[4]/tc[3]/p[6]",
+      "start": 0,
+      "end": 27,
+      "text": "Total score: [insert score]",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0178",
+      "sourceId": "body[1]/p[697]",
+      "start": 0,
+      "end": 43,
+      "text": "Reason/s why your Proposal was unsuccessful",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0179",
+      "sourceId": "body[1]/p[698]",
+      "start": 0,
+      "end": 27,
+      "text": "How to request a debriefing",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0180",
+      "sourceId": "body[1]/p[699]",
+      "start": 0,
+      "end": 23,
+      "text": "How to make a complaint",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0181",
+      "sourceId": "body[1]/p[700]",
+      "start": 0,
+      "end": 17,
+      "text": "Standstill Period",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0183",
+      "sourceId": "body[1]/p[724]",
+      "start": 0,
+      "end": 19,
+      "text": "Framework Agreement",
+      "semanticRole": "DOCUMENT_TITLE"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0184",
+      "sourceId": "body[1]/p[744]",
+      "start": 0,
+      "end": 30,
+      "text": "Framework Agreement Provisions",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0193",
+      "sourceId": "body[1]/p[776]",
+      "start": 0,
+      "end": 36,
+      "text": "Framework Agreement Provisions (FAP)",
+      "semanticRole": "DOCUMENT_TITLE"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0194",
+      "sourceId": "body[1]/tbl[19]/tr[2]/tc[1]/p[1]",
+      "start": 0,
+      "end": 11,
+      "text": "Definitions",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0195",
+      "sourceId": "body[1]/tbl[19]/tr[3]/tc[1]/p[1]",
+      "start": 0,
+      "end": 40,
+      "text": "Framework Agreement Specific Information",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0196",
+      "sourceId": "body[1]/tbl[19]/tr[3]/tc[2]/p[9]",
+      "start": 0,
+      "end": 24,
+      "text": "Client\u2019s Representatives",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0197",
+      "sourceId": "body[1]/tbl[19]/tr[3]/tc[2]/p[39]",
+      "start": 0,
+      "end": 28,
+      "text": "Consultant\u2019s Representatives",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0198",
+      "sourceId": "body[1]/tbl[19]/tr[3]/tc[2]/p[47]",
+      "start": 0,
+      "end": 20,
+      "text": "Appointing authority",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0199",
+      "sourceId": "body[1]/tbl[19]/tr[4]/tc[1]/p[1]",
+      "start": 0,
+      "end": 29,
+      "text": "Framework Agreement Documents",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0200",
+      "sourceId": "body[1]/tbl[19]/tr[5]/tc[1]/p[1]",
+      "start": 0,
+      "end": 24,
+      "text": "Consultant\u2019s Obligations",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0201",
+      "sourceId": "body[1]/tbl[19]/tr[5]/tc[2]/p[4]",
+      "start": 0,
+      "end": 23,
+      "text": "Standard of Performance",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0202",
+      "sourceId": "body[1]/tbl[19]/tr[5]/tc[2]/p[8]",
+      "start": 0,
+      "end": 14,
+      "text": "Applicable Law",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0203",
+      "sourceId": "body[1]/tbl[19]/tr[5]/tc[2]/p[13]",
+      "start": 0,
+      "end": 20,
+      "text": "Conflict of Interest",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0204",
+      "sourceId": "body[1]/tbl[19]/tr[5]/tc[2]/p[25]",
+      "start": 0,
+      "end": 12,
+      "text": "Forced Labor",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0205",
+      "sourceId": "body[1]/tbl[19]/tr[5]/tc[2]/p[29]",
+      "start": 0,
+      "end": 11,
+      "text": "Child Labor",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0206",
+      "sourceId": "body[1]/tbl[19]/tr[5]/tc[2]/p[38]",
+      "start": 0,
+      "end": 29,
+      "text": "Health and safety obligations",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0207",
+      "sourceId": "body[1]/tbl[19]/tr[5]/tc[2]/p[40]",
+      "start": 0,
+      "end": 40,
+      "text": "Non-Discrimination and Equal Opportunity",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0208",
+      "sourceId": "body[1]/tbl[19]/tr[6]/tc[1]/p[1]",
+      "start": 0,
+      "end": 26,
+      "text": "Description of Key Experts",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0209",
+      "sourceId": "body[1]/tbl[19]/tr[7]/tc[1]/p[1]",
+      "start": 0,
+      "end": 25,
+      "text": "Obligations of the Client",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0210",
+      "sourceId": "body[1]/tbl[19]/tr[8]/tc[1]/p[1]",
+      "start": 0,
+      "end": 15,
+      "text": "Access to sites",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0211",
+      "sourceId": "body[1]/tbl[19]/tr[11]/tc[2]/p[1]",
+      "start": 4,
+      "end": 18,
+      "text": "Contract Price",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0212",
+      "sourceId": "body[1]/tbl[19]/tr[15]/tc[1]/p[1]",
+      "start": 0,
+      "end": 8,
+      "text": "Language",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0213",
+      "sourceId": "body[1]/tbl[19]/tr[16]/tc[1]/p[1]",
+      "start": 0,
+      "end": 20,
+      "text": "Fraud and Corruption",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0214",
+      "sourceId": "body[1]/tbl[19]/tr[17]/tc[1]/p[1]",
+      "start": 0,
+      "end": 30,
+      "text": "Records, inspections and audit",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0215",
+      "sourceId": "body[1]/tbl[19]/tr[18]/tc[1]/p[1]",
+      "start": 0,
+      "end": 24,
+      "text": "Confidential Information",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0216",
+      "sourceId": "body[1]/tbl[19]/tr[19]/tc[1]/p[1]",
+      "start": 0,
+      "end": 55,
+      "text": "Proprietary Rights of the Client in Reports and Records",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0217",
+      "sourceId": "body[1]/tbl[19]/tr[20]/tc[1]/p[1]",
+      "start": 0,
+      "end": 33,
+      "text": "Equipment, Vehicles and Materials",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0218",
+      "sourceId": "body[1]/tbl[19]/tr[21]/tc[1]/p[1]",
+      "start": 0,
+      "end": 33,
+      "text": "Change to the Framework Agreement",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0219",
+      "sourceId": "body[1]/tbl[19]/tr[22]/tc[1]/p[1]",
+      "start": 0,
+      "end": 10,
+      "text": "Assignment",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0220",
+      "sourceId": "body[1]/tbl[19]/tr[23]/tc[1]/p[1]",
+      "start": 0,
+      "end": 38,
+      "text": "Termination of the Framework Agreement",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0221",
+      "sourceId": "body[1]/tbl[19]/tr[24]/tc[1]/p[1]",
+      "start": 0,
+      "end": 57,
+      "text": "Dispute resolution in relation to the Framework Agreement",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0223",
+      "sourceId": "body[1]/p[781]",
+      "start": 0,
+      "end": 20,
+      "text": "Fraud and Corruption",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0224",
+      "sourceId": "body[1]/p[783]",
+      "start": 0,
+      "end": 7,
+      "text": "Purpose",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0225",
+      "sourceId": "body[1]/p[785]",
+      "start": 0,
+      "end": 12,
+      "text": "Requirements",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0226",
+      "sourceId": "body[1]/p[802]",
+      "start": 0,
+      "end": 31,
+      "text": "Framework Agreement \u2013 Schedules",
+      "semanticRole": "PART"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0230",
+      "sourceId": "body[1]/p[819]",
+      "start": 0,
+      "end": 31,
+      "text": "Secondary Procurement method(s)",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0231",
+      "sourceId": "body[1]/p[822]",
+      "start": 0,
+      "end": 40,
+      "text": "Competitive proposals (mini-competition)",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0236",
+      "sourceId": "body[1]/p[852]",
+      "start": 0,
+      "end": 49,
+      "text": "Secondary Procurement under a Framework Agreement",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0241",
+      "sourceId": "body[1]/p[867]",
+      "start": 0,
+      "end": 5,
+      "text": "Price",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0242",
+      "sourceId": "body[1]/p[879]",
+      "start": 0,
+      "end": 11,
+      "text": "Key Experts",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0243",
+      "sourceId": "body[1]/p[881]",
+      "start": 0,
+      "end": 14,
+      "text": "Clarifications",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0244",
+      "sourceId": "body[1]/p[883]",
+      "start": 0,
+      "end": 39,
+      "text": "Preparation and Submission of Proposals",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0245",
+      "sourceId": "body[1]/p[889]",
+      "start": 0,
+      "end": 20,
+      "text": "Opening of Proposals",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0246",
+      "sourceId": "body[1]/p[891]",
+      "start": 0,
+      "end": 46,
+      "text": "Evaluation of Technical and Financial Proposal",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0247",
+      "sourceId": "body[1]/p[905]",
+      "start": 0,
+      "end": 22,
+      "text": "Negotiations and award",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0248",
+      "sourceId": "body[1]/p[921]",
+      "start": 0,
+      "end": 8,
+      "text": "Contract",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0249",
+      "sourceId": "body[1]/p[923]",
+      "start": 0,
+      "end": 17,
+      "text": "Commencement Date",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0250",
+      "sourceId": "body[1]/p[927]",
+      "start": 0,
+      "end": 51,
+      "text": "RFP: CALL-OFF Annex 1: Terms of Reference: Call-off",
+      "semanticRole": "ANNEX_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0251",
+      "sourceId": "body[1]/p[935]",
+      "start": 0,
+      "end": 47,
+      "text": "RFP: CALL-OFF ANNEX 2: Consultant Proposal Form",
+      "semanticRole": "ANNEX_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0252",
+      "sourceId": "body[1]/p[943]",
+      "start": 0,
+      "end": 22,
+      "text": "Submission of Proposal",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0253",
+      "sourceId": "body[1]/p[991]",
+      "start": 0,
+      "end": 81,
+      "text": "Description of Approach, Methodology, and Work Plan for Performing the Assignment",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0254",
+      "sourceId": "body[1]/p[992]",
+      "start": 0,
+      "end": 43,
+      "text": "Work Schedule and planning for deliverables",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0255",
+      "sourceId": "body[1]/p[993]",
+      "start": 0,
+      "end": 53,
+      "text": "Team Composition, Assignment, and Key Experts\u2019 inputs",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0256",
+      "sourceId": "body[1]/p[994]",
+      "start": 0,
+      "end": 118,
+      "text": "CVs for any justifiable substitution or needed additional Key Expert position not envisaged in the Framework Agreement",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0257",
+      "sourceId": "body[1]/p[995]",
+      "start": 0,
+      "end": 24,
+      "text": "Financial proposal forms",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0258",
+      "sourceId": "body[1]/p[998]",
+      "start": 0,
+      "end": 25,
+      "text": "Technical Proposal Form 1",
+      "semanticRole": "ANNEX_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0259",
+      "sourceId": "body[1]/p[999]",
+      "start": 0,
+      "end": 81,
+      "text": "Description of Approach, Methodology, and Work Plan for Performing the Assignment",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0260",
+      "sourceId": "body[1]/p[1014]",
+      "start": 0,
+      "end": 25,
+      "text": "Technical Proposal Form 2",
+      "semanticRole": "ANNEX_HEADING"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0261",
+      "sourceId": "body[1]/p[1015]",
+      "start": 0,
+      "end": 43,
+      "text": "Work Schedule and planning for deliverables",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0262",
+      "sourceId": "body[1]/tbl[30]/tr[13]/tc[1]/p[1]",
+      "start": 0,
+      "end": 15,
+      "text": "NON-KEY EXPERTS",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0263",
+      "sourceId": "body[1]/p[1036]",
+      "start": 0,
+      "end": 25,
+      "text": "Technical Proposal Form 4",
+      "semanticRole": "CHAPTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0264",
+      "sourceId": "body[1]/p[1037]",
+      "start": 0,
+      "end": 21,
+      "text": "CURRICULUM VITAE (CV)",
+      "semanticRole": "CHAPTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0265",
+      "sourceId": "body[1]/p[1059]",
+      "start": 0,
+      "end": 25,
+      "text": "financial Proposal Form 1",
+      "semanticRole": "CHAPTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0267",
+      "sourceId": "body[1]/p[1063]",
+      "start": 0,
+      "end": 25,
+      "text": "financial Proposal Form 2",
+      "semanticRole": "CHAPTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0268",
+      "sourceId": "body[1]/p[1064]",
+      "start": 0,
+      "end": 25,
+      "text": "Breakdown of Remuneration",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0270",
+      "sourceId": "body[1]/p[1073]",
+      "start": 0,
+      "end": 28,
+      "text": "Review of Remuneration Rates",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0271",
+      "sourceId": "body[1]/p[1126]",
+      "start": 0,
+      "end": 34,
+      "text": "Breakdown of Reimbursable Expenses",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0272",
+      "sourceId": "body[1]/p[1135]",
+      "start": 0,
+      "end": 47,
+      "text": "Call-off Contract for the provision of Services",
+      "semanticRole": "CHAPTER"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0273",
+      "sourceId": "body[1]/p[1149]",
+      "start": 0,
+      "end": 18,
+      "text": "Contract Documents",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0274",
+      "sourceId": "body[1]/p[1176]",
+      "start": 0,
+      "end": 39,
+      "text": "Contract Price and Schedule of Payments",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0275",
+      "sourceId": "body[1]/p[1206]",
+      "start": 0,
+      "end": 29,
+      "text": "Authority of Member in Charge",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0276",
+      "sourceId": "body[1]/p[1208]",
+      "start": 0,
+      "end": 21,
+      "text": "Reporting Obligations",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0277",
+      "sourceId": "body[1]/p[1210]",
+      "start": 0,
+      "end": 9,
+      "text": "Insurance",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0278",
+      "sourceId": "body[1]/p[1222]",
+      "start": 0,
+      "end": 27,
+      "text": "Modifications or Variations",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0279",
+      "sourceId": "body[1]/p[1225]",
+      "start": 0,
+      "end": 52,
+      "text": "Dispute resolution in relation to Call-off Contracts",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0281",
+      "sourceId": "body[1]/p[1257]",
+      "start": 0,
+      "end": 16,
+      "text": "Demand Guarantee",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0282",
+      "sourceId": "body[1]/p[1260]",
+      "start": 0,
+      "end": 34,
+      "text": "Bank Guarantee for Advance Payment",
+      "semanticRole": "SECTION"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0286",
+      "sourceId": "body[1]/tbl[41]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 1,
+      "text": "#",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0287",
+      "sourceId": "body[1]/tbl[41]/tr[1]/tc[2]/p[1]",
+      "start": 0,
+      "end": 14,
+      "text": "Name of Client",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0288",
+      "sourceId": "body[1]/tbl[41]/tr[1]/tc[3]/p[1]",
+      "start": 0,
+      "end": 7,
+      "text": "Address",
+      "semanticRole": "TABLE_LABEL"
+    },
+    {
+      "occurrenceId": "semantic-occurrence:0289",
+      "sourceId": "body[1]/tbl[41]/tr[1]/tc[4]/p[1]",
+      "start": 0,
+      "end": 14,
+      "text": "Representative",
+      "semanticRole": "TABLE_LABEL"
+    }
+  ],
+  "falseNegativeOccurrences": [
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[69]#heading-span-0-45",
+      "sourceId": "body[1]/p[69]",
+      "start": 0,
+      "end": 45,
+      "text": "Section 1: Request for Proposals (RFP) Lette",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[126]#heading-span-0-39",
+      "sourceId": "body[1]/p[126]",
+      "start": 0,
+      "end": 39,
+      "text": "Section 1. Request for Proposal Letter4",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[127]#heading-span-0-54",
+      "sourceId": "body[1]/p[127]",
+      "start": 0,
+      "end": 54,
+      "text": "Section 2. Instructions to Consultants and Data Sheet7",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[128]#heading-span-0-48",
+      "sourceId": "body[1]/p[128]",
+      "start": 0,
+      "end": 48,
+      "text": "Section 3. Technical Proposal \u2013 Standard Forms3",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[129]#heading-span-0-31",
+      "sourceId": "body[1]/p[129]",
+      "start": 0,
+      "end": 31,
+      "text": "Section 4. Eligible Countries5",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[130]#heading-span-0-33",
+      "sourceId": "body[1]/p[130]",
+      "start": 0,
+      "end": 33,
+      "text": "Section 5. Fraud and Corruption5",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[131]#heading-span-0-31",
+      "sourceId": "body[1]/p[131]",
+      "start": 0,
+      "end": 31,
+      "text": "Section 6. Terms of Reference6",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[176]#heading-span-0-47",
+      "sourceId": "body[1]/p[176]",
+      "start": 0,
+      "end": 47,
+      "text": "Section 3 - Technical Proposal - Standard Form",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/tbl[1]/tr[32]/tc[1]/p[1]#heading-span-0-15",
+      "sourceId": "body[1]/tbl[1]/tr[32]/tc[1]/p[1]",
+      "start": 0,
+      "end": 15,
+      "text": "Confidentiality",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[256]#heading-span-0-46",
+      "sourceId": "body[1]/p[256]",
+      "start": 0,
+      "end": 46,
+      "text": "Section 3. Technical Proposal \u2013 Standard Form",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[350]#heading-span-0-601",
+      "sourceId": "body[1]/p[350]",
+      "start": 0,
+      "end": 601,
+      "text": "Form TECH-2: a brief description of the Consultant\u2019s organization and an outline of the recent experience of the Consultant that is most relevant to the assignment. In the case of a joint venture, information on similar assignments shall be provided for each partner. For each assignment, the outline should indicate the names of the Consultant\u2019s Key Experts and Sub-consultants who participated, the duration of the assignment, the contract amount (total and, if it was done in a form of a joint venture or a sub-consultancy, the amount paid to the Consultant), and the Consultant\u2019s role/involvement.",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[371]#heading-span-0-135",
+      "sourceId": "body[1]/p[371]",
+      "start": 0,
+      "end": 135,
+      "text": "Form TECH-3: comments and suggestions on the Terms of Reference that could improve the quality/effectiveness of the proposed services..",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[386]#heading-span-0-120",
+      "sourceId": "body[1]/p[386]",
+      "start": 0,
+      "end": 120,
+      "text": "Form TECH-4: a description of the broad approach and methodology for performing assignments under the proposed Framework",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[426]#heading-span-0-11",
+      "sourceId": "body[1]/p[426]",
+      "start": 0,
+      "end": 11,
+      "text": "Form TECH-6",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/tbl[8]/tr[1]/tc[4]/p[1]#heading-span-0-58",
+      "sourceId": "body[1]/tbl[8]/tr[1]/tc[4]/p[1]",
+      "start": 0,
+      "end": 58,
+      "text": "Summary of activities performed relevant to the Assignment",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[468]#heading-span-0-11",
+      "sourceId": "body[1]/p[468]",
+      "start": 0,
+      "end": 11,
+      "text": "Form TECH-7",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[542]#heading-span-0-62",
+      "sourceId": "body[1]/p[542]",
+      "start": 0,
+      "end": 62,
+      "text": "Request for Proposal reference No.: [insert identification no]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[586]#heading-span-0-29",
+      "sourceId": "body[1]/p[586]",
+      "start": 0,
+      "end": 29,
+      "text": "Section 4. Eligible Countrie",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[596]#heading-span-0-31",
+      "sourceId": "body[1]/p[596]",
+      "start": 0,
+      "end": 31,
+      "text": "Section 5. Fraud and Corruptio",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[619]#heading-span-0-29",
+      "sourceId": "body[1]/p[619]",
+      "start": 0,
+      "end": 29,
+      "text": "Section 6. Terms of Referenc",
+      "headingKind": "SECTION_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[646]#heading-span-0-43",
+      "sourceId": "body[1]/p[646]",
+      "start": 0,
+      "end": 43,
+      "text": "format, frequency, and contents of reports;",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[2]#heading-span-0-86",
+      "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[2]",
+      "start": 0,
+      "end": 86,
+      "text": "in the judgement of the Client, the Consultant has engaged in Fraud and Corruption, or",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[3]#heading-span-0-97",
+      "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[3]",
+      "start": 0,
+      "end": 97,
+      "text": "during the Term of the Framework Agreement, the Consultant ceases to be qualified or eligible, or",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/tbl[19]/tr[23]/tc[2]/p[5]#heading-span-0-58",
+      "sourceId": "body[1]/tbl[19]/tr[23]/tc[2]/p[5]",
+      "start": 0,
+      "end": 58,
+      "text": "the Consultant becomes bankrupt or otherwise insolvent, or",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/tbl[32]/tr[1]/tc[4]/p[1]#heading-span-0-58",
+      "sourceId": "body[1]/tbl[32]/tr[1]/tc[4]/p[1]",
+      "start": 0,
+      "end": 58,
+      "text": "Summary of activities performed relevant to the Assignment",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/tbl[34]/tr[1]/tc[1]/p[1]#heading-span-0-4",
+      "sourceId": "body[1]/tbl[34]/tr[1]/tc[1]/p[1]",
+      "start": 0,
+      "end": 4,
+      "text": "Item",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/tbl[39]/tr[2]/tc[1]/p[1]#heading-span-0-42",
+      "sourceId": "body[1]/tbl[39]/tr[2]/tc[1]/p[1]",
+      "start": 0,
+      "end": 42,
+      "text": "[Insert complete legal name of the Client]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/tbl[39]/tr[2]/tc[3]/p[1]#heading-span-0-46",
+      "sourceId": "body[1]/tbl[39]/tr[2]/tc[3]/p[1]",
+      "start": 0,
+      "end": 46,
+      "text": "[Insert complete legal name of the Consultant]",
+      "headingKind": "STRUCTURAL_SCOPE_HEADING"
+    },
+    {
+      "occurrenceId": "DOC-0116:body[1]/p[1183]#heading-span-0-44",
+      "sourceId": "body[1]/p[1183]",
+      "start": 0,
+      "end": 44,
+      "text": "Schedule of Payments [Modify as appropriate]",
+      "headingKind": "MAJOR_OUTLINE_HEADING"
+    }
+  ],
+  "nonVerbatimTextIsDiagnosticOnly": true
+}

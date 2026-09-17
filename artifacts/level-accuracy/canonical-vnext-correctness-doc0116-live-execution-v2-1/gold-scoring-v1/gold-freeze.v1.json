@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "a99-canonical-dev-vnext-doc0116-gold-freeze-v1",
+  "documentId": "DOC-0116",
+  "authorityStatus": "USER_REVIEWED_CANONICAL_HIERARCHY_GOLD",
+  "explicitUserApproval": true,
+  "canonicalGoldOccurrenceCount": 120,
+  "canonicalGoldSemanticNodeCount": 120,
+  "predictionAuthority": {
+    "predictionFreeze": "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-live-execution-v2-1/prediction-freeze.v1.json",
+    "predictionFreezeSha256": "bf9b42a4ea76103805136f379b4f133e3af40d087a14743a34d811d81989bfa8",
+    "predictionForensic": "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-live-execution-v2-1/prediction-forensic-v1/prediction-forensic.v1.json",
+    "predictionForensicSha256": "e2133e500b687f640f6942f44dcdc80e5e7e0352e3de9c70571d47dc9eb2c648",
+    "frozenCanonicalGraphOccurrences": 289
+  },
+  "rejectedPartialReference": "eval/a99-closed-loop/strict-gold-v4/DOC-0116.strict-gold-v4.json",
+  "rejectedPartialReferenceReason": "STRICT_GOLD_V4_PARTIAL_NOT_EXHAUSTIVE",
+  "goldReads": 1,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "scoring": false,
+  "goldFiles": [
+    {
+      "artifact": "authorityManifest",
+      "path": "artifacts/authority-audit/canonical-authority-freeze-v1/DOC-0116/authority-freeze-manifest.json",
+      "sha256": "700ff601f02ceaf02d365c9614c264572cb2c6cab9a194af8314023c55fdc4ff"
+    },
+    {
+      "artifact": "sourceAuthority",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0116/source-authority.json",
+      "sha256": "4cd73af516c4a26b67c6155085a7392b8f7ed3262ebee2f9c24bb6249125bf39"
+    },
+    {
+      "artifact": "exactBindings",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0116/exact-bindings.json",
+      "sha256": "85c318630555d8254cbb6cba33285011a4deff8889bb084c5be8e8e6a1c497cc"
+    },
+    {
+      "artifact": "occurrenceValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0116/validation.json",
+      "sha256": "59bfd7d643720a274fbe3e6183ede851af82f3173d6897c654f8dd1ffe8d8219"
+    },
+    {
+      "artifact": "identityDecisions",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0116/identity-decisions.json",
+      "sha256": "587beec76bfcbfc55949f324cdd3bb0d8ace2f86b1a0ea5b9a5070eba360ed4a"
+    },
+    {
+      "artifact": "semanticNodes",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0116/semantic-nodes.json",
+      "sha256": "65176017adbe8b57765c13777fb5fba12725e4fe3d2a19d0b674d3e308a27f49"
+    },
+    {
+      "artifact": "identityValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0116/validation.json",
+      "sha256": "8757fd76a713a13c375703cc5dc0069faa4ed0bc8b49aa7fcfc98068d477ba3c"
+    },
+    {
+      "artifact": "parentEdges",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0116/parent-edges.json",
+      "sha256": "f0e6b0be7e0a0f8f1900bc48ed1c4dfabc50eaee2ad52ff76815acc9dd4b9df6"
+    },
+    {
+      "artifact": "parentDecisions",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0116/parent-decisions.json",
+      "sha256": "5ef4b79db1470cc4256bfe876ce1968a46c9f66ec613287a92119e26c5303f10"
+    },
+    {
+      "artifact": "hierarchyValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0116/validation.json",
+      "sha256": "cc716b838b228c994e735dbe5c096a4608ee518071c764f1bd3c2b0fa17ae3da"
+    },
+    {
+      "artifact": "derivedLevels",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0116/derived-levels.json",
+      "sha256": "ff7dd804afa2953c206bd450c43dc17459b14984a41ba277eb0b52dd9272ee4a"
+    }
+  ],
+  "goldSourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "authorityManifestHashChecks": [
+    {
+      "artifact": "sourceDocument",
+      "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/031_WB_Framework_Agreement_Consulting_2025.docx",
+      "expected": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "actual": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "matches": true
+    },
+    {
+      "artifact": "proposalManifest",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/manifest.json",
+      "expected": "490f9e17767f2bff61ff8e9fafa92196288a7ef07d31568e0bfa2a7bf0422ccd",
+      "actual": "490f9e17767f2bff61ff8e9fafa92196288a7ef07d31568e0bfa2a7bf0422ccd",
+      "matches": true
+    },
+    {
+      "artifact": "sourceAuthority",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0116/source-authority.json",
+      "expected": "4cd73af516c4a26b67c6155085a7392b8f7ed3262ebee2f9c24bb6249125bf39",
+      "actual": "4cd73af516c4a26b67c6155085a7392b8f7ed3262ebee2f9c24bb6249125bf39",
+      "matches": true
+    },
+    {
+      "artifact": "exactBindings",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0116/exact-bindings.json",
+      "expected": "85c318630555d8254cbb6cba33285011a4deff8889bb084c5be8e8e6a1c497cc",
+      "actual": "85c318630555d8254cbb6cba33285011a4deff8889bb084c5be8e8e6a1c497cc",
+      "matches": true
+    },
+    {
+      "artifact": "occurrenceValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-exhaustive-heading-occurrence-v3.3/DOC-0116/validation.json",
+      "expected": "59bfd7d643720a274fbe3e6183ede851af82f3173d6897c654f8dd1ffe8d8219",
+      "actual": "59bfd7d643720a274fbe3e6183ede851af82f3173d6897c654f8dd1ffe8d8219",
+      "matches": true
+    },
+    {
+      "artifact": "identityDecisions",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0116/identity-decisions.json",
+      "expected": "587beec76bfcbfc55949f324cdd3bb0d8ace2f86b1a0ea5b9a5070eba360ed4a",
+      "actual": "587beec76bfcbfc55949f324cdd3bb0d8ace2f86b1a0ea5b9a5070eba360ed4a",
+      "matches": true
+    },
+    {
+      "artifact": "semanticNodes",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0116/semantic-nodes.json",
+      "expected": "65176017adbe8b57765c13777fb5fba12725e4fe3d2a19d0b674d3e308a27f49",
+      "actual": "65176017adbe8b57765c13777fb5fba12725e4fe3d2a19d0b674d3e308a27f49",
+      "matches": true
+    },
+    {
+      "artifact": "identityValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-semantic-identity-v3.3/DOC-0116/validation.json",
+      "expected": "8757fd76a713a13c375703cc5dc0069faa4ed0bc8b49aa7fcfc98068d477ba3c",
+      "actual": "8757fd76a713a13c375703cc5dc0069faa4ed0bc8b49aa7fcfc98068d477ba3c",
+      "matches": true
+    },
+    {
+      "artifact": "hierarchyParentDecisions",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0116/parent-decisions.json",
+      "expected": "5ef4b79db1470cc4256bfe876ce1968a46c9f66ec613287a92119e26c5303f10",
+      "actual": "5ef4b79db1470cc4256bfe876ce1968a46c9f66ec613287a92119e26c5303f10",
+      "matches": true
+    },
+    {
+      "artifact": "parentEdges",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0116/parent-edges.json",
+      "expected": "f0e6b0be7e0a0f8f1900bc48ed1c4dfabc50eaee2ad52ff76815acc9dd4b9df6",
+      "actual": "f0e6b0be7e0a0f8f1900bc48ed1c4dfabc50eaee2ad52ff76815acc9dd4b9df6",
+      "matches": true
+    },
+    {
+      "artifact": "hierarchyValidation",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0116/validation.json",
+      "expected": "cc716b838b228c994e735dbe5c096a4608ee518071c764f1bd3c2b0fa17ae3da",
+      "actual": "cc716b838b228c994e735dbe5c096a4608ee518071c764f1bd3c2b0fa17ae3da",
+      "matches": true
+    },
+    {
+      "artifact": "derivedLevels",
+      "path": "artifacts/authority-audit/canonical-batch-v3.3/canonical-hierarchy-v3.3/DOC-0116/derived-levels.json",
+      "expected": "ff7dd804afa2953c206bd450c43dc17459b14984a41ba277eb0b52dd9272ee4a",
+      "actual": "ff7dd804afa2953c206bd450c43dc17459b14984a41ba277eb0b52dd9272ee4a",
+      "matches": true
+    }
+  ],
+  "frozenAtUtc": "2026-09-17T05:26:58.2546116+00:00"
+}
