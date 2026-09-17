@@ -37,7 +37,13 @@ public sealed class OpenRouterCanonicalSemanticTextModel : ICanonicalSemanticTex
             SemanticTextExactBindingContract.Schema(),
             "semantic_text_exact_binding_v1",
             cancellationToken);
+        using var rawDocument = JsonDocument.Parse(result.Content);
+        var contractIssues = CanonicalSemanticContractValidator.ValidateJson(rawDocument.RootElement);
+        if (contractIssues.Count > 0)
+            throw new FormatException(string.Join(",", contractIssues.Select(issue => issue.Code)));
         var response = SemanticTextExactBindingContract.Parse(result.Content);
+        // The provider DTO is an infrastructure compatibility shape. Only these semantic fields
+        // cross into Core; any positional data in a legacy response is intentionally discarded.
         var proposals = response.Headings.Select(heading => new CanonicalSemanticProposal(
             heading.Source,
             true,

@@ -165,10 +165,10 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 }
                 case AuthorityRoute.DocxAuthority:
                 {
-                    authority = await DocxAuthorityPipeline.RunAsync(policyState, mode, analyst, ct);
+                    authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(policyState, mode, analyst, ct);
                     authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
                     audit = authority.Audit;
-                    route = "docx-authority-v1";
+                    route = "docx-canonical-vnext";
                     reason = authority.Reason;
                     break;
                 }

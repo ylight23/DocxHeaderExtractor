@@ -282,5 +282,5 @@ public static class SemanticTransitionLedger
 {
     public static SemanticTransitionLedgerEntry FirstLoss(
         string stage, int inputCount, int outputCount, string? code) =>
-        new(stage, outputCount < inputCount ? "LOSS_OBSERVED" : "PRESERVED", inputCount, outputCount, code);
+        new(stage, outputCount < inputCount ? "LOSS_OBSERVED" : "COMPLETED", inputCount, outputCount, code);
 }

@@ -215,16 +215,31 @@ public static class CanonicalSemanticProductionEntryPoint
             .Concat(primaryValidation.Issues)
             .ToArray();
         var normalization = SemanticConflictNormalizer.Normalize(primaryValidation.ValidProposals, aliases);
+        var detectedGlobalConflicts = CanonicalSemanticGlobalConflictDetector.Detect(
+            primaryValidation.ValidProposals, aliases, normalization.Conflicts);
+        var globalConflicts = input.GlobalConflicts
+            .Concat(detectedGlobalConflicts)
+            .GroupBy(item => item.ConflictId, StringComparer.Ordinal)
+            .Select(group => group.First())
+            .ToArray();
         var adjudication = await ResolveConflictsAsync(
             normalization, aliases, input, context, adjudicationModel, requestId, cancellationToken);
         var globalReopen = await CanonicalSemanticGlobalReopenCoordinator.ResolveAsync(
-            input.GlobalConflicts, aliases, globalReopenModel, requestId, cancellationToken: cancellationToken);
+            globalConflicts, aliases, globalReopenModel, requestId, cancellationToken: cancellationToken);
         var globalValidation = CanonicalSemanticContractValidator.ValidateProposals(
             globalReopen.AcceptedAlternatives,
             aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal),
             input.OwnedAliases);
         allContractIssues = allContractIssues.Concat(globalValidation.Issues).ToArray();
-        var bindingReady = adjudication.BindingReadyProposals.Concat(globalValidation.ValidProposals).ToArray();
+        var bindingReady = adjudication.BindingReadyProposals.ToList();
+        foreach (var accepted in globalValidation.ValidProposals)
+        {
+            var acceptedIdentity = CanonicalSemanticGlobalConflictDetector.PhysicalIdentity(accepted, aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal));
+            bindingReady.RemoveAll(existing => string.Equals(
+                CanonicalSemanticGlobalConflictDetector.PhysicalIdentity(existing, aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal)),
+                acceptedIdentity, StringComparison.Ordinal));
+            bindingReady.Add(accepted);
+        }
         var visualBlocks = input.VisualBlocks is { Count: > 0 }
             ? VisualRecovery.Recover(input.VisualBlocks)
             : [];
@@ -236,9 +251,9 @@ public static class CanonicalSemanticProductionEntryPoint
             visualInference = await visualModel.InferAsync(
                 input, context, visualBlocks, requestId + ":visual", cancellationToken);
         }
-        var visualInput = visualInference.Blocks.Count > 0
-            ? input with { VisualBlocks = visualInference.Blocks }
-            : input;
+        var visualInput = input with { GlobalConflicts = globalConflicts };
+        if (visualInference.Blocks.Count > 0)
+            visualInput = visualInput with { VisualBlocks = visualInference.Blocks };
         var result = RunPostInference(visualInput with { SemanticProposals = bindingReady },
             bindingReady, textInference.Proposals, visualInference.Proposals, normalization,
             textInference.Telemetry, visualInference.Telemetry, 1,

@@ -111,6 +111,8 @@ public sealed class ProductionAuthorityCutoverTests
             Assert.Equal(4, outline.Headings.Count);
             Assert.NotNull(outline.ProductOutput);
             Assert.Equal(4, outline.ProductOutput!.Headings.Count);
+            Assert.Equal("docx-canonical-vnext", outline.DeterministicRoute);
+            Assert.Equal("docx-canonical-vnext", outline.RouteAudit?.Route);
             Assert.DoesNotContain(outline.Headings, heading => heading.Text.StartsWith("2.1 ", StringComparison.Ordinal));
             Assert.All(outline.Provenance.Passes, pass => Assert.False(pass.SentDataExternally));
         }

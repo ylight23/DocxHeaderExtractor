@@ -212,6 +212,10 @@ public sealed class SemanticConflictNormalizerTests
 
         Assert.Equal(1, result.SemanticAdjudicationCalls);
         Assert.Equal(1, result.ResolvedConflictCount);
+        Assert.Equal(1, result.PrimaryTextModelCalls);
+        Assert.Equal(0, result.GlobalReopenCalls);
+        Assert.Equal(0, result.VisualModelCalls);
+        Assert.Equal(2, result.TotalModelCalls);
         var bound = Assert.Single(result.TextPipeline.BoundHeadings);
         Assert.Equal("CHAPTER", bound.SemanticRole);
         Assert.Equal("Heading", bound.Text);

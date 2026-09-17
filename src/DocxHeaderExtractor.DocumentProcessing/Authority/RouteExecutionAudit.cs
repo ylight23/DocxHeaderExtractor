@@ -18,6 +18,10 @@ public sealed record RouteExecutionAudit(
     [property: JsonPropertyName("groundingRejections")] IReadOnlyList<RouteBlockRejectionAudit> GroundingRejections,
     [property: JsonPropertyName("alignedBlockIds")] IReadOnlyList<string> AlignedBlockIds)
 {
+    /// <summary>Stable route identity for the promoted execution authority.</summary>
+    [JsonPropertyName("route")]
+    public string? Route { get; init; }
+
     /// <summary>Explicit source-to-representation lineage captured at the route boundary.</summary>
     [JsonIgnore]
     public IReadOnlyList<RouteSourceRepresentation> SourceRepresentations { get; init; } = [];

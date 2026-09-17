@@ -128,7 +128,7 @@ internal static class DocxAuthorityPipeline
         return new StructuralAuthorityResult(structuralAuthority, audit, "docx-source-authority");
     }
 
-    private static ValidatedStructure MaterializeStructuralAuthority(
+    internal static ValidatedStructure MaterializeStructuralAuthority(
         IReadOnlyList<PdfValidatedHeading> validated,
         IReadOnlyDictionary<string, PdfValidatedStructure> structures,
         IReadOnlyDictionary<string, DocxAuthorityContext> contexts)
