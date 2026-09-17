@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "a99-true-heading-execution-lineage-attestation-v1",
+  "status": "TRUE_HEADING_EXECUTION_LINEAGE_ATTESTATION_PASS",
+  "documentId": "DOC-0116",
+  "campaignId": "CANONICAL_VNEXT_TRUE_HEADING_DOC0116_BASELINE_V1",
+  "preflightHead": "204021bee65da626f13783219eed4e104305f9b8",
+  "executionHead": "692aa944f882da1ebc3d22528c2434a7a6ef4687",
+  "checks": {
+    "requestPlanSha256": {
+      "frozen": "8af64a1895933aedd6fa64a94ad48fb178c7196bf463eea14c2f6833472b0273",
+      "actual": "8af64a1895933aedd6fa64a94ad48fb178c7196bf463eea14c2f6833472b0273",
+      "match": true
+    },
+    "semanticContractSha256": {
+      "frozen": "d7bb0c8718e234b179538aac2aeeb79f06ec80fc50e830eac514ecd41b619cd0",
+      "match": true
+    },
+    "sourceSha256": {
+      "frozen": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+      "match": true
+    },
+    "sourceUniverseSha256": {
+      "frozen": "f9c568ede3d8172dfea05cc07aeb3c8f838088b7a0c163faf461f2cd3d845d8b",
+      "match": true
+    },
+    "wireRequestHashes": {
+      "allSevenMatch": true,
+      "requests": [
+        { "segment": 1, "sha256": "e6af7821001e6ad23fd60e47b0c445e89d15c71a4f7758b01738c730d01f16fe" },
+        { "segment": 2, "sha256": "e1750f114aea852bf51322990312dda166676699fcfed2889b9b0c187cfce7e7" },
+        { "segment": 3, "sha256": "c9909b02148a701250f0e4e5b0413a6b59a0a75888e2b45bee7254e869f66595" },
+        { "segment": 4, "sha256": "c1cabbbcc354b00a20ca6dd7ffaa75a93ee939b3c2d73396623faa748a658388" },
+        { "segment": 5, "sha256": "b875beffc95b9fade43efb23fd813bb49f63417130440400eedad9703c6d4d48" },
+        { "segment": 6, "sha256": "c731b72d3e90e9418de60cad2d6a1f1c52baf749d1027cb8ba3265de141c82d5" },
+        { "segment": 7, "sha256": "9dba04d50b0878985880b75fdd52489a6affba094b08cdf5f611b4a9b961ae44" }
+      ]
+    }
+  },
+  "actualExecutionCode": {
+    "trueHeadingProviderExecutionRunnerSha256": "3f49259fa8a600d0940f581a31011aefd60f6dd0c7aa650527a7388a3ed04ad8",
+    "programSha256": "5bab21c4b0cdd7b7982a90b09c121f44b896ea0bd63ee779c58f5918db2ae0df",
+    "trueHeadingContractSha256": "454f1754680be020d9f2f866c021673195f8965b8b47f5fa074d65eea813409e",
+    "trueHeadingPreflightRunnerSha256": "dd2afa82edf083fc47a59f6cfb82b829b7525ce8930dc7e20e8053aa535966e5",
+    "preflightExecutionHarnessHash": "52db34de61d57f0da17a7448b41e9f71da3add4080359ed5d6dc5b634c133c35",
+    "preflightHarnessIncludedTrueHeadingRunner": false,
+    "postPreflightExecutionCommits": [
+      "c0bb914ade965128d584460c7006f035d31fe914",
+      "05d23bce1f8eaee85bec34e402f05dc9fb8ffce4",
+      "583d0a36f489f1718866c2a0de6566efbbcb5d35",
+      "692aa944f882da1ebc3d22528c2434a7a6ef4687"
+    ]
+  },
+  "prediction": {
+    "predictionSha256": "0e22e6f83d98694850805988e6805a027976f08f87dc91681e2b28cc40a8805c",
+    "trueHeadingProjectionSha256": "f16e5a75939f4b0cbf2b897b514307a50b93afce9297772553e4397db6b75062",
+    "predictionFreezeArtifactSha256": "ea95ea9151c4743a53ea8dda2d655f351a1ce303856a8f6ff7795fb861570662",
+    "predictionManifestSha256": "f85188b13aba65c26609b948d05df0fcfc1da98507f08a39a21effd9cc7776b9",
+    "rawProviderItems": 1921,
+    "boundItems": 1910,
+    "trueHeadingItems": 239,
+    "nonVerbatimText": 11,
+    "predictionFrozen": true
+  },
+  "executionAccounting": {
+    "providerCalls": 7,
+    "retries": 0,
+    "maxParallel": 1,
+    "goldReads": 0,
+    "scoring": false,
+    "historicalProviderCalls": 7,
+    "totalHistoricalCallsAcrossBothBaselines": 14
+  },
+  "goldAccess": {
+    "goldRead": false,
+    "goldContentLoaded": false,
+    "officialScoringStarted": false
+  }
+}
