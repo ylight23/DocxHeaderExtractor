@@ -18,11 +18,11 @@ namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 public static class CanonicalDevVNextCorrectnessLiveRunner
 {
     private const string Baseline = "e5d29a623ea01f93a423264d6c1eb97a9fb3d68d";
-    private const string PredecessorTransportCheckpoint = "c5894437a95f0b7814aff4c7a68d9bb410953783";
+    private const string PredecessorTransportCheckpoint = "24efeb8da76ed2d35a66bab798df63859b5c0a49";
     private const string DocumentId = "DOC-0116";
     private const string CampaignId = "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE";
     private const string SourcePreflightRoot = "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-preflight";
-    private const string OutputRoot = "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-live-preflight-v2";
+    private const string OutputRoot = "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-live-preflight-v2-1";
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string Model = "qwen/qwen3.7-flash";
     private const int AdvertisedModelContext = 1_000_000;
@@ -39,8 +39,10 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
     // conservative token upper bound for byte-level tokenization; reserve covers chat-template
     // and special-token overhead. The previous chars/4 estimate remains diagnostic only.
     private const int TransportReserveTokens = 16_384;
+    private const int MinimumPostReserveHeadroom = 4_096;
+    private const int SafeSegmentUpperBound = EffectiveProviderInputLimit - MinimumPostReserveHeadroom;
     private const string TokenAccountingPolicy = "UTF8_REQUEST_BODY_BYTES_PLUS_TRANSPORT_RESERVE_UPPER_BOUND";
-    private const string ProviderRequestRendererVersion = "OPENROUTER_BODY_RENDERER_SHARED_WITH_SENDER_V1";
+    private const string ProviderRequestRendererVersion = "OPENROUTER_BODY_RENDERER_SINGLE_WIRE_BYTES_V2_1";
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
@@ -173,10 +175,10 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
         var fullMaterialized = MaterializeSegment(aliases);
         var fullProviderInputUpperBound = fullMaterialized.ProviderInputUpperBound;
         var estimatedInputTokens = fullMaterialized.DiagnosticCharEstimate;
-        var fits = fullProviderInputUpperBound <= EffectiveProviderInputLimit;
+        var fits = fullProviderInputUpperBound <= SafeSegmentUpperBound;
         var segments = fits
             ? [new SegmentPlan(1, aliases, aliases, "SINGLE_FULL_UNIVERSE_REQUEST")]
-            : BuildSegments(aliases, EffectiveProviderInputLimit,
+            : BuildSegments(aliases, SafeSegmentUpperBound,
                 visible => MaterializeSegment(visible).ProviderInputUpperBound);
 
         var sourceEvidenceJson = JsonSerializer.Serialize(new
@@ -234,6 +236,8 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
                 advertisedModelContext = AdvertisedModelContext,
                 effectiveProviderInputLimit = EffectiveProviderInputLimit,
                 transportReserveTokens = TransportReserveTokens,
+                minimumPostReserveHeadroom = MinimumPostReserveHeadroom,
+                safeSegmentUpperBound = SafeSegmentUpperBound,
             maxOutputTokens = MaxOutputTokens,
             temperature = "PROVIDER_DEFAULT_UNSPECIFIED",
             reasoning = new { enabledOverride = (bool?)null, providerDefault = true, outputExcluded = true },
@@ -247,7 +251,7 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             semanticContractVersion = CanonicalSemanticContract.ProtocolVersion,
             bindingContractVersion = SemanticTextExactBindingContract.ProtocolVersion,
             modelInputSerializationVersion = "canonical-source-alias-rich-evidence-packet-v1",
-            segmentationPolicyVersion = "full-universe-owned-alias-segments-v2-provider-body-upper-bound",
+            segmentationPolicyVersion = "full-universe-owned-alias-segments-v2-1-wire-bytes-headroom",
             predecessorTransportCheckpoint = PredecessorTransportCheckpoint,
             providerRequestRendererVersion = ProviderRequestRendererVersion,
             tokenAccountingPolicy = TokenAccountingPolicy,
@@ -282,6 +286,8 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
                 advertisedModelContext = AdvertisedModelContext,
                 effectiveProviderInputLimit = EffectiveProviderInputLimit,
                 transportReserveTokens = TransportReserveTokens,
+                minimumPostReserveHeadroom = MinimumPostReserveHeadroom,
+                safeSegmentUpperBound = SafeSegmentUpperBound,
                 contextHeadroom = EffectiveProviderInputLimit - fullProviderInputUpperBound,
                 fits,
             },
@@ -370,6 +376,8 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
                 providerRequestRendererVersion = ProviderRequestRendererVersion,
                 tokenAccountingPolicy = TokenAccountingPolicy,
                 transportReserveTokens = TransportReserveTokens,
+                minimumPostReserveHeadroom = MinimumPostReserveHeadroom,
+                safeSegmentUpperBound = SafeSegmentUpperBound,
                 runConfigurationHash,
             }, ct);
         }
@@ -392,6 +400,8 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             goldReads = 0,
             advertisedModelContext = AdvertisedModelContext,
             effectiveProviderInputLimit = EffectiveProviderInputLimit,
+            minimumPostReserveHeadroom = MinimumPostReserveHeadroom,
+            safeSegmentUpperBound = SafeSegmentUpperBound,
             maxOutputTokens = MaxOutputTokens,
             transportReserveTokens = TransportReserveTokens,
             tokenAccountingPolicy = TokenAccountingPolicy,
@@ -403,7 +413,7 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
         var freeze = new
         {
             schemaVersion = "a99-canonical-vnext-correctness-request-freeze-v1",
-            status = "READY_FOR_DOC0116_PROVIDER_EXECUTION",
+            status = "READY_FOR_DOC0116_PROVIDER_EXECUTION_V2_1",
             campaignId = CampaignId,
             documentId = DocumentId,
             baseline = Baseline,
@@ -488,6 +498,8 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             $"Diagnostic chars/4 estimate: `{estimatedInputTokens}`",
             $"Provider input upper bound: `{fullProviderInputUpperBound}`",
             $"Effective provider input limit: `{EffectiveProviderInputLimit}`",
+            $"Minimum post-reserve headroom: `{MinimumPostReserveHeadroom}`",
+            $"Safe segment upper bound: `{SafeSegmentUpperBound}`",
             $"Provider upper-bound headroom: `{EffectiveProviderInputLimit - fullProviderInputUpperBound}`",
             $"Source evidence packets: `{sourceEvidence.Count}`",
             $"Token attribution: source text `{sourceTextTokens}`, evidence `{sourceEvidenceTokens}`, local `{localContextTokens}`, global `{globalContextTokens}`, overhead `{schemaSystemOverheadTokens}`, total `{estimatedInputTokens}`",
@@ -506,6 +518,8 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
         Console.WriteLine($"DIAGNOSTIC_CHAR_ESTIMATE_TOKENS={estimatedInputTokens}");
         Console.WriteLine($"PROVIDER_INPUT_UPPER_BOUND={fullProviderInputUpperBound}");
         Console.WriteLine($"PROVIDER_INPUT_LIMIT={EffectiveProviderInputLimit}");
+        Console.WriteLine($"SAFE_SEGMENT_UPPER_BOUND={SafeSegmentUpperBound}");
+        Console.WriteLine($"MIN_POST_RESERVE_HEADROOM={MinimumPostReserveHeadroom}");
         Console.WriteLine($"CONTEXT_HEADROOM={EffectiveProviderInputLimit - fullProviderInputUpperBound}");
         Console.WriteLine("PROVIDER_CALLS=0");
         Console.WriteLine("GOLD_READS=0");

@@ -19,7 +19,8 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
 
     public static async Task<CanonicalSegmentedExecutorValidation> ValidateFrozenPlanAsync(
         string preflightRoot,
-        CancellationToken ct = default)
+        CancellationToken ct = default,
+        OpenRouterCeilingReasoningModel? runtimeModel = null)
     {
         var freezePath = Path.Combine(preflightRoot, "request-freeze-manifest.v1.json");
         var planPath = Path.Combine(preflightRoot, "request-plan.v1.json");
@@ -30,8 +31,8 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
         using var plan = JsonDocument.Parse(await File.ReadAllTextAsync(planPath, ct));
         var freezeRoot = freeze.RootElement;
         var planRoot = plan.RootElement;
-        if (!string.Equals(freezeRoot.GetProperty("status").GetString(),
-                "READY_FOR_DOC0116_PROVIDER_EXECUTION", StringComparison.Ordinal))
+        var freezeStatus = freezeRoot.GetProperty("status").GetString();
+        if (freezeStatus is not ("READY_FOR_DOC0116_PROVIDER_EXECUTION" or "READY_FOR_DOC0116_PROVIDER_EXECUTION_V2_1"))
             throw new InvalidDataException("FROZEN_SEGMENT_PLAN_NOT_AUTHORIZED");
 
         var owned = new HashSet<string>(StringComparer.Ordinal);
@@ -74,11 +75,18 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
         if (owned.Count != expected || !planRoot.GetProperty("everyAliasOwnedExactlyOnce").GetBoolean())
             throw new InvalidDataException("SEGMENT_FULL_UNIVERSE_OWNERSHIP_MISMATCH");
         var effectiveInputLimit = planRoot.GetProperty("effectiveProviderInputLimit").GetInt32();
+        var segmentUpperBound = planRoot.TryGetProperty("safeSegmentUpperBound", out var safeBound)
+            ? safeBound.GetInt32()
+            : effectiveInputLimit;
+        if (segmentUpperBound > effectiveInputLimit)
+            throw new InvalidDataException("SEGMENT_SAFE_UPPER_BOUND_EXCEEDS_PROVIDER_LIMIT");
         foreach (var request in requestRows)
         {
-            if (request.GetProperty("providerInputUpperBoundTokens").GetInt32() > effectiveInputLimit)
+            if (request.GetProperty("providerInputUpperBoundTokens").GetInt32() > segmentUpperBound)
                 throw new InvalidDataException($"SEGMENT_PROVIDER_INPUT_UPPER_BOUND_EXCEEDED:{request.GetProperty("requestOrdinal").GetInt32()}");
         }
+        if (runtimeModel is not null)
+            ValidateRuntimeConfiguration(freezeRoot, planRoot, runtimeModel);
 
         return new CanonicalSegmentedExecutorValidation(
             requestCount,
@@ -99,7 +107,7 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
     {
         ArgumentNullException.ThrowIfNull(fullInput);
         ArgumentNullException.ThrowIfNull(model);
-        var validation = await ValidateFrozenPlanAsync(preflightRoot, ct);
+        var validation = await ValidateFrozenPlanAsync(preflightRoot, ct, model);
         Directory.CreateDirectory(executionRoot);
         await WriteAtomicAsync(Path.Combine(executionRoot, "executor-validation.v1.json"), validation, ct);
 
@@ -121,6 +129,9 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
             var user = root.GetProperty("userPrompt").GetString()!;
             var schemaText = root.GetProperty("schemaText").GetString()!;
             var schema = JsonDocument.Parse(schemaText).RootElement.Clone();
+            var frozenWire = new FrozenWireRequestExpectation(
+                root.GetProperty("providerRequestBodyBytesUtf8").GetInt32(),
+                root.GetProperty("providerRequestBodySha256").GetString()!);
             var ownedSourceTextCharacters = aliases
                 .Where(alias => owned.Contains(alias.Alias))
                 .Sum(alias => alias.Text.Length);
@@ -136,7 +147,8 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
                 user,
                 schema,
                 SchemaName,
-                ct);
+                ct,
+                frozenWire);
 
             // This is deliberately before Parse: a valid provider response remains forensic
             // evidence even if parsing/binding later fails.
@@ -206,6 +218,29 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
         left.ValueKind == JsonValueKind.String && right.ValueKind == JsonValueKind.String
             ? string.Equals(left.GetString(), right.GetString(), StringComparison.Ordinal)
             : left.ToString() == right.ToString();
+
+    private static void ValidateRuntimeConfiguration(
+        JsonElement freezeRoot,
+        JsonElement planRoot,
+        OpenRouterCeilingReasoningModel model)
+    {
+        var expectedModel = freezeRoot.GetProperty("model").GetString();
+        var expectedEndpoint = freezeRoot.GetProperty("endpoint").GetString();
+        var expectedRequestTimeout = freezeRoot.GetProperty("requestTimeoutSeconds").GetInt32();
+        var expectedMaxOutput = planRoot.GetProperty("maxOutputTokens").GetInt32();
+        var expectedAttemptDeadline = freezeRoot.GetProperty("perAttemptHardTimeoutSeconds").GetInt32();
+
+        if (!string.Equals(model.ConfiguredModel, expectedModel, StringComparison.Ordinal))
+            throw new InvalidDataException("FROZEN_RUNTIME_MODEL_MISMATCH");
+        if (!string.Equals(model.ConfiguredEndpoint.ToString(), expectedEndpoint, StringComparison.Ordinal))
+            throw new InvalidDataException("FROZEN_RUNTIME_ENDPOINT_MISMATCH");
+        if (model.ConfiguredRequestTimeoutSeconds != expectedRequestTimeout)
+            throw new InvalidDataException("FROZEN_RUNTIME_REQUEST_TIMEOUT_MISMATCH");
+        if (model.SemanticMaxCompletionTokens != expectedMaxOutput)
+            throw new InvalidDataException("FROZEN_RUNTIME_MAX_OUTPUT_MISMATCH");
+        if (model.AttemptDeadlineSeconds != expectedAttemptDeadline)
+            throw new InvalidDataException("FROZEN_RUNTIME_ATTEMPT_DEADLINE_MISMATCH");
+    }
 }
 
 public sealed record CanonicalSegmentedExecutorValidation(

@@ -1,5 +1,7 @@
 using System.Net;
 using System.Net.Http.Json;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Eval.ReasoningRetention;
 using DocxHeaderExtractor.Infrastructure.AI;
@@ -33,10 +35,12 @@ public sealed class MultiPassLiveWiringTests
     private sealed class CapturingHandler : HttpMessageHandler
     {
         public JsonDocument? CapturedBody;
+        public int CallCount;
         public string ResponseContent = """{"headings":[]}""";
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
         {
+            CallCount++;
             var bodyText = await request.Content!.ReadAsStringAsync(ct);
             CapturedBody = JsonDocument.Parse(bodyText);
             var payload = new
@@ -46,6 +50,44 @@ public sealed class MultiPassLiveWiringTests
             };
             return new HttpResponseMessage(HttpStatusCode.OK) { Content = JsonContent.Create(payload) };
         }
+    }
+
+    [Fact]
+    public async Task FrozenWireExpectation_UsesExactlyTheBytesSent_AndRejectsBeforeProviderCallOnMismatch()
+    {
+        var (model, handler) = NewModel();
+        var system = "system";
+        var user = "user";
+        var schema = new { type = "object", properties = new { headings = new { type = "array" } } };
+        var reasoning = new { effort = "high", exclude = true };
+        var body = OpenRouterCeilingReasoningModel.BuildRequestBodyForAudit(
+            "qwen/qwen3.5-9b", system, user, model.SemanticMaxCompletionTokens, schema,
+            "wire_test", reasoning, null, false);
+        var expectedBytes = OpenRouterCeilingReasoningModel.SerializeRequestBodyForWire(body);
+        var expected = new FrozenWireRequestExpectation(
+            expectedBytes.Length,
+            Convert.ToHexString(SHA256.HashData(expectedBytes)).ToLowerInvariant());
+
+        await model.CompleteRawStructuredSemanticAsync(
+            "DOC-TEST", "route", "wire-1", "{\"x\":1}", 1, 1, 1,
+            system, user, schema, "wire_test", CancellationToken.None, expected);
+
+        Assert.Equal(1, handler.CallCount);
+        Assert.Equal(1, model.ProviderCalls);
+        var capturedBytes = Encoding.UTF8.GetBytes(handler.CapturedBody!.RootElement.GetRawText());
+        Assert.Equal(expected.BodyBytes, capturedBytes.Length);
+        Assert.Equal(expected.BodySha256, Convert.ToHexString(SHA256.HashData(capturedBytes)).ToLowerInvariant());
+
+        var mismatchHandler = new CapturingHandler();
+        using var mismatchModel = new OpenRouterCeilingReasoningModel(
+            new RemoteInferenceOptions { ApiKey = "test-key", Model = "qwen/qwen3.5-9b", RequestTimeoutSeconds = 5 },
+            Capability(), new HttpClient(mismatchHandler));
+        await Assert.ThrowsAsync<InvalidDataException>(() => mismatchModel.CompleteRawStructuredSemanticAsync(
+            "DOC-TEST", "route", "wire-2", "{\"x\":1}", 1, 1, 1,
+            system, user, schema, "wire_test", CancellationToken.None,
+            new FrozenWireRequestExpectation(expected.BodyBytes, new string('0', 64))));
+        Assert.Equal(0, mismatchHandler.CallCount);
+        Assert.Equal(0, mismatchModel.ProviderCalls);
     }
 
     private static (OpenRouterCeilingReasoningModel Model, CapturingHandler Handler) NewModel()

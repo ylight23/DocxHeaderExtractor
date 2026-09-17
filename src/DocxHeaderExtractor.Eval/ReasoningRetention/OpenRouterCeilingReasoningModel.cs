@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -60,6 +59,10 @@ public sealed record RequestPacketTelemetry
     [JsonPropertyName("generationElapsedMs")] public long? GenerationElapsedMs { get; set; }
 }
 
+/// <summary>Frozen request-body identity supplied by a preflight plan. The check happens before
+/// provider-call accounting and before the HTTP request is sent.</summary>
+public sealed record FrozenWireRequestExpectation(int BodyBytes, string BodySha256);
+
 /// <summary>OpenRouter adapter for the reasoning-ceiling route only: qwen/qwen3.5-9b, no
 /// fallback, reasoning enabled at the highest supported effort with exclude=true (the model
 /// reasons internally but chain-of-thought text is never requested/parsed/stored), and a
@@ -102,6 +105,10 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
     public int ProviderCalls => Volatile.Read(ref _providerCalls);
     public IReadOnlyList<RequestPacketTelemetry> Telemetry => _telemetry;
     public OpenRouterModelCapability Capability => _capability;
+    public string ConfiguredModel => _options.Model;
+    public Uri ConfiguredEndpoint => _options.Endpoint;
+    public int ConfiguredRequestTimeoutSeconds => _options.RequestTimeoutSeconds;
+    public int AttemptDeadlineSeconds => checked((int)_attemptDeadline.TotalSeconds);
 
     /// <summary>Resolved output budget for the semantic pass: bounded by real provider
     /// max-completion-tokens if reported, otherwise a generous default -- never a blind
@@ -151,14 +158,15 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
     public async Task<(string Content, RequestPacketTelemetry Telemetry)> CompleteRawStructuredSemanticAsync(
         string documentId, string route, string requestId, string packetJson, int sourceTextCharacters,
         int ownedOccurrences, int visibleOccurrences, string systemPrompt, string userPrompt,
-        object schema, string schemaName, CancellationToken ct = default)
+        object schema, string schemaName, CancellationToken ct = default,
+        FrozenWireRequestExpectation? expectedWire = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(systemPrompt);
         ArgumentException.ThrowIfNullOrWhiteSpace(userPrompt);
         ArgumentNullException.ThrowIfNull(schema);
         var maxCompletion = SemanticMaxCompletionTokens;
         var telemetry = NewTelemetry(documentId, "SEMANTIC", requestId, packetJson, sourceTextCharacters, maxCompletion, ownedOccurrences, visibleOccurrences);
-        var (content, finishReason) = await SendAsync(systemPrompt, userPrompt, maxCompletion, schema, schemaName, telemetry, ct).ConfigureAwait(false);
+        var (content, finishReason) = await SendAsync(systemPrompt, userPrompt, maxCompletion, schema, schemaName, telemetry, ct, expectedWire).ConfigureAwait(false);
         if (IsOutputLimit(finishReason))
         {
             telemetry.FailureClass = ReasoningCompletionFailureClass.ProviderOutputLimit;
@@ -529,19 +537,31 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
 
     private async Task<(string Content, string? FinishReason)> SendAsync(
         string systemPrompt, object userPrompt, int maxCompletionTokens, object schema, string schemaName,
-        RequestPacketTelemetry telemetry, CancellationToken ct)
+        RequestPacketTelemetry telemetry, CancellationToken ct, FrozenWireRequestExpectation? expectedWire = null)
     {
-        Interlocked.Increment(ref _providerCalls);
         var reasoning = BuildReasoningParameter();
         object body = BuildRequestBody(_options.Model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning,
             _options.OpenRouterProviderRoute, _options.OpenRouterAllowNonZdrPublicBenchmark);
         var canonicalBody = BuildRequestBody(_options.Model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning,
             null, _options.OpenRouterAllowNonZdrPublicBenchmark);
         telemetry.ProviderRoute = _options.OpenRouterProviderRoute ?? "AUTO";
-        telemetry.CanonicalRequestHash = Sha256Bytes(SerializeRequestBodyForAudit(canonicalBody));
-        telemetry.RequestBodyHash = Sha256Bytes(SerializeRequestBodyForAudit(body));
+        telemetry.CanonicalRequestHash = Sha256Bytes(SerializeRequestBodyForWire(canonicalBody));
+        var wireBytes = SerializeRequestBodyForWire(body);
+        telemetry.RequestBodyHash = Sha256Bytes(wireBytes);
+        if (expectedWire is not null)
+        {
+            if (wireBytes.Length != expectedWire.BodyBytes)
+                throw new InvalidDataException($"FROZEN_WIRE_BODY_LENGTH_MISMATCH:expected={expectedWire.BodyBytes}:actual={wireBytes.Length}");
+            if (!string.Equals(telemetry.RequestBodyHash, expectedWire.BodySha256, StringComparison.OrdinalIgnoreCase))
+                throw new InvalidDataException($"FROZEN_WIRE_BODY_HASH_MISMATCH:expected={expectedWire.BodySha256}:actual={telemetry.RequestBodyHash}");
+        }
 
-        using var message = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint) { Content = JsonContent.Create(body) };
+        // A body mismatch is a local integrity failure, not a provider attempt.
+        Interlocked.Increment(ref _providerCalls);
+
+        using var content = new ByteArrayContent(wireBytes);
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        using var message = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint) { Content = content };
         message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
         message.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor Accuracy99 Ceiling");
 
@@ -752,7 +772,11 @@ public sealed class OpenRouterCeilingReasoningModel : IDisposable
         object schema, string schemaName, object? reasoning, string? providerRoute, bool allowNonZdrPublicBenchmark) =>
         BuildRequestBody(model, systemPrompt, userPrompt, maxCompletionTokens, schema, schemaName, reasoning, providerRoute, allowNonZdrPublicBenchmark);
 
-    internal static byte[] SerializeRequestBodyForAudit(object body) => JsonSerializer.SerializeToUtf8Bytes(body);
+    internal static byte[] SerializeRequestBodyForWire(object body) => JsonSerializer.SerializeToUtf8Bytes(body);
+
+    // Compatibility alias for existing offline audit callers. Audit and transport now use the
+    // same canonical UTF-8 serializer and, for live sends, the exact resulting byte array.
+    internal static byte[] SerializeRequestBodyForAudit(object body) => SerializeRequestBodyForWire(body);
 
     private static object BuildRequestBody(string model, string systemPrompt, object userPrompt, int maxCompletionTokens,
         object schema, string schemaName, object? reasoning, string? providerRoute, bool allowNonZdrPublicBenchmark)
