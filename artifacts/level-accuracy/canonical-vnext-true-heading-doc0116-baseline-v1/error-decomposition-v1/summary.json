@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "a99-true-heading-error-decomposition-v1",
+  "status": "DIAGNOSTIC_COMPLETE",
+  "documentId": "DOC-0116",
+  "predictionSha256": "0e22e6f83d98694850805988e6805a027976f08f87dc91681e2b28cc40a8805c",
+  "goldAuthoritySha256": "83ec5942171bca438f08f58341a5c4cb0f0c92dc46976d13069e784a7d3141b0",
+  "officialScoreUnchanged": true,
+  "classificationBasis": "SOURCE_DERIVED_EVIDENCE_WITH_FROZEN_GOLD_MEMBERSHIP",
+  "classificationIsDiagnosticHeuristic": true,
+  "falsePositiveCount": 154,
+  "falseNegativeCount": 35,
+  "falsePositiveCategories": {
+    "OTHER_STRUCTURAL_LABEL": 63,
+    "TABLE_STRUCTURAL_LABEL": 50,
+    "NUMBERING_OR_STYLE_SIGNAL": 34,
+    "FORM_OR_FIELD_LABEL": 4,
+    "TOC_LIKE_ENTRY": 2,
+    "BODY_PARAGRAPH_FALSE_SIGNAL": 1
+  },
+  "falseNegativeCategories": {
+    "OTHER_TRUE_HEADING": 16,
+    "TABLE_STRUCTURAL_LABEL": 7,
+    "TOC_LIKE_ENTRY": 6,
+    "TABLE_FORM_LABEL": 2,
+    "BODY_PARAGRAPH_FALSE_SIGNAL": 1,
+    "DUPLICATE_OR_REPEATED_HEADING_OCCURRENCE": 1,
+    "FORM_OR_FIELD_LABEL": 1,
+    "NUMBERING_OR_STYLE_SIGNAL": 1
+  },
+  "classificationPrecedence": [
+    "TOC_LIKE_ENTRY",
+    "TABLE_FORM_LABEL",
+    "TABLE_STRUCTURAL_LABEL",
+    "CAPTION_NOTE_SIGNATURE_FOOTER",
+    "FORM_OR_FIELD_LABEL",
+    "BODY_PARAGRAPH_FALSE_SIGNAL",
+    "NUMBERING_OR_STYLE_SIGNAL",
+    "REPEATED_OR_BANNER_OCCURRENCE",
+    "OTHER_STRUCTURAL_LABEL_OR_OTHER_TRUE_HEADING"
+  ],
+  "execution": {
+    "providerCalls": 0,
+    "goldReads": 1,
+    "predictionMutated": false,
+    "goldMutated": false,
+    "officialScoreRecomputed": false
+  }
+}

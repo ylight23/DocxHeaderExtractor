@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "a99-true-heading-error-decomposition-manifest-v1",
+  "status": "DIAGNOSTIC_COMPLETE",
+  "documentId": "DOC-0116",
+  "predictionSha256": "0e22e6f83d98694850805988e6805a027976f08f87dc91681e2b28cc40a8805c",
+  "goldAuthoritySha256": "83ec5942171bca438f08f58341a5c4cb0f0c92dc46976d13069e784a7d3141b0",
+  "scoreArtifact": "../gold-scoring-v2/score.v1.json",
+  "classificationBasis": "SOURCE_DERIVED_EVIDENCE_WITH_FROZEN_GOLD_MEMBERSHIP",
+  "officialScoreMutation": false,
+  "predictionMutation": false,
+  "goldMutation": false,
+  "providerCalls": 0,
+  "goldReads": 1,
+  "scoring": false
+}
