@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-true-heading-prediction-freeze-v1",
+  "status": "PREDICTION_FROZEN_BEFORE_GOLD",
+  "documentId": "DOC-0116",
+  "predictionSha256": "0e22e6f83d98694850805988e6805a027976f08f87dc91681e2b28cc40a8805c",
+  "requestPlanSha256": "8af64a1895933aedd6fa64a94ad48fb178c7196bf463eea14c2f6833472b0273",
+  "segmentCount": 7,
+  "providerCalls": 7,
+  "retries": 0,
+  "rawProviderItems": 1921,
+  "boundItems": 1910,
+  "trueHeadingItems": 239,
+  "goldReads": 0,
+  "scoring": false,
+  "predictionFrozen": true
+}

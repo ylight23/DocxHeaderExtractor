@@ -1,0 +1,2635 @@
+{
+  "schemaVersion": "a99-true-heading-parsed-v1",
+  "requestOrdinal": 4,
+  "itemCount": 292,
+  "items": [
+    {
+      "source": "S0947",
+      "text": "Criterion (ii): [insert score]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0948",
+      "text": "Sub-criterion a: [insert score]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0949",
+      "text": "Sub-criterion b: [insert score]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0950",
+      "text": "Sub-criterion c: [insert score]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0951",
+      "text": "Total score: [insert score]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0952",
+      "text": "[insert name]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0953",
+      "text": "\u2026",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0954",
+      "text": "Reason/s why your Proposal was unsuccessful",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0955",
+      "text": "[INSTRUCTIONS; State the reason/s why this Consultant\u2019s Proposal was unsuccessful. Do NOT include: (a) a point by point comparison with another Consultant\u2019s Proposal or (b) information that is marked confidential by the Consultant in its Proposal.]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0956",
+      "text": "How to request a debriefing",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0957",
+      "text": "Deadline: The deadline to request a debriefing expires at midnight on [insert date] (local time).",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0958",
+      "text": "You may request a debriefing in relation to the results of the evaluation of your proposal. If you decide to request a debriefing your written request must be made within three (3) Business Days of receipt of this Notification of Intention to Conclude a Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0959",
+      "text": "Provide the framework agreement name, reference number, name of the Consultant, contact details; and address the request for debriefing as follows:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0960",
+      "text": "Attention: [insert full name of person, if applicable]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0961",
+      "text": "Title/position: [insert title/position]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0962",
+      "text": "Agency: [insert name of Procuring Agency]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0963",
+      "text": "Email address: [insert email address]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0964",
+      "text": "Fax number: [insert fax number] delete if not used",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0965",
+      "text": "If your request for a debriefing is received within the 3 Business Days deadline, we will provide the debriefing within five (5) Business Days of receipt of your request. If we are unable to provide the debriefing within this period, the Standstill Period shall be extended by five (5) Business Days after the date that the debriefing is provided. If this happens, we will notify you and confirm the date that the extended Standstill Period will end.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0966",
+      "text": "The debriefing may be in writing, by phone, video conference call or in person. We shall promptly advise you in writing how the debriefing will take place and confirm the date and time.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0967",
+      "text": "If the deadline to request a debriefing has expired, you may still request a debriefing. In this case, we will provide the debriefing as soon as practicable, and normally no later than fifteen (15) Business Days from the date of publication of the Conclusion of Framework Agreement Notice.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0968",
+      "text": "How to make a complaint",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0969",
+      "text": "Deadline: Procurement-related Complaint challenging the decision to conclude a Framework Agreement shall be submitted by midnight, [insert date] (local time).",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0970",
+      "text": "Provide the Framework Agreement name, reference number, name of the Consultant, contact details; and address the Procurement-related Complaint as follows:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0971",
+      "text": "Attention: [insert full name of person, if applicable]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0972",
+      "text": "Title/position: [insert title/position]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0973",
+      "text": "Agency: [insert name of Procuring Agency]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0974",
+      "text": "Email address: [insert email address]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0975",
+      "text": "Fax number: [insert fax number] delete if not used",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0976",
+      "text": "At this point in the procurement process, you may submit a Procurement-related Complaint challenging the decision to exclude you from conclusion of a Framework Agreement. You do not need to have requested, or received, a debriefing before making this complaint. Your complaint must be submitted within the Standstill Period and received by us before the Standstill Period ends.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0977",
+      "text": "Further information:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0978",
+      "text": "For more information see the Procurement Regulations for IPF Borrowers (Procurement Regulations) (Annex III). You should read these provisions before preparing and submitting your complaint. In addition, the World Bank\u2019s Guidance \u201CHow to make a Procurement-related Complaint\u201D provides a useful explanation of the process, as well as a sample letter of complaint.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0979",
+      "text": "In summary, there are four essential requirements:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0980",
+      "text": "You must be an \u2018interested party\u2019. In this case, that means a Consultant who submitted a proposal in this procurement process, and is the recipient of a Notification of Intention to Conclude a Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0981",
+      "text": "The complaint can only challenge the decision to conclude the Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0982",
+      "text": "You must submit the complaint within the period stated above.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0983",
+      "text": "You must include, in your complaint, all the information required by the Procurement Regulations (as described in Annex III).",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0984",
+      "text": "Standstill Period",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0985",
+      "text": "Deadline: The Standstill Period is due to end at midnight on [insert date] (local time).",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0986",
+      "text": "The Standstill Period lasts ten (10) Business Days after the date of transmission of this Notification of Intention to Conclude a Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0987",
+      "text": "The Standstill Period may be extended as stated in the section above titled \u2018How to request a debriefing\u2019.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0988",
+      "text": "If you have any questions regarding this Notification, please do not hesitate to contact us.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0989",
+      "text": "On behalf of the Procuring Agency:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0990",
+      "text": "Signature:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0991",
+      "text": "Name:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0992",
+      "text": "Title/position:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0993",
+      "text": "Telephone:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0994",
+      "text": "Email:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0995",
+      "text": "Notification to Conclude a Framework Agreement (s)",
+      "headingDecision": "TRUE_HEADING",
+      "role": "DOCUMENT_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0996",
+      "text": "[Use letterhead paper of the Procuring Agency]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0997",
+      "text": "[Date]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0998",
+      "text": "To: [name and address of successful Consultant]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S0999",
+      "text": "Notification to Conclude a Framework Agreement",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1000",
+      "text": "Framework Agreement No. [insert FA reference number]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1001",
+      "text": "This is to notify you that your proposal dated [insert date] to conclude a Framework Agreement in relation to the provision of [insert short title of the Services] is hereby accepted by our Agency.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1002",
+      "text": "Please sign, date and return the Framework Agreement within [insert the applicable period for signing of the FA in accordance of the ITC] days of receipt of the same. In accordance with ITC 29.1, please also complete and submit, within eight (8) Business days, the Beneficial Ownership Disclosure Form attached to the RFP.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1003",
+      "text": "Authorized Signature:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1004",
+      "text": "Name:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1005",
+      "text": "Title/position:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1006",
+      "text": "Name of Procuring Agency:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1007",
+      "text": "Telephone:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1008",
+      "text": "Email:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1009",
+      "text": "Attachment: Framework Agreement",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_STRUCTURAL_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1010",
+      "text": "Framework Agreement",
+      "headingDecision": "TRUE_HEADING",
+      "role": "DOCUMENT_TITLE",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1011",
+      "text": "[This form is to be completed by the Procuring Agency in accordance with the instructions provided in italicized text. The italicized text should be deleted from the final document.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1012",
+      "text": "Note: the terminology in relation to the parties to the Framework Agreement changes from the terminology used in relation to the parties involved in the Primary Procurement. In the Primary Procurement, the Procuring Agency is responsible for establishing the FA(s). However, the parties to the FA will be the \u201CClient(s)\u201D (being Borrower\u2019s agencies that are entitled to procure under the FA) and, where appropriate, a \u201CLead Client\u201D or a \u201CResponsible Agency\u201D acting on behalf of a Client(s) and responsible for managing and administering the FA.]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1013",
+      "text": "This Framework Agreement [insert reference number of the Framework Agreement] is made for the provision of [ insert brief description of the Services]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1014",
+      "text": "on the [insert: number] day of [insert: month], [insert: year]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1015",
+      "text": "between",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1016",
+      "text": "[Select one of the three OPTIONS below]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1017",
+      "text": "[OPTION 1: for Single User Framework Agreement]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1018",
+      "text": "the Client(s) [insert complete name of the Client/s, the type of legal entity, (for example, \u201Can agency of the Ministry of the Government of {insert name of Country of Client/s}\u201D, or \u201Ca corporation incorporated under the laws of {insert name of Country of Client/s}\u201D] (the Client(s)) and",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1019",
+      "text": "[OPTION 2: for a Multi-User Framework Agreement with a Lead Client that is responsible for managing and administering the Framework Agreement, and that is also a Client,]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1020",
+      "text": "between",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1021",
+      "text": "the Lead Client [insert complete name of the Lead Client, the type of legal entity, (for example, \u201Can agency of the Ministry of the Government of {insert name of the Lead Client\u2019s Country}\u201D, or \u201Ca corporation incorporated under the laws of {insert name of Country of Lead Client}\u201D] and having its principal place of business at [insert Lead Client\u2019s address] as a Client in its own right under the Framework Agreement and as the agency responsible for the management and administration of the Framework Agreement for use by the other participating Clients listed in Schedule [insert number] to this Framework Agreement (Client (s)) and",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1022",
+      "text": "[OPTION 3: for a Multi-User Framework Agreement with an agency, that is not a Client, but that is responsible for the management and administration of the Framework Agreement, for use by the Clients.]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1023",
+      "text": "between",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1024",
+      "text": "the Responsible Agency [insert complete name of the type of legal entity, (for example, \u201Can agency of the Ministry of the Government of {insert name of Country} of the Responsible Agency\u201D, or \u201Ca corporation incorporated under the laws of {insert name of Country of the Responsible Agency}\u201D] and having its principal place of business at [insert Responsible Agency\u2019s address] as the agency responsible for the management and administration of the Framework Agreement for use by the participating Clients listed in Schedule [insert number] to this Framework Agreement (Client (s)) and",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1025",
+      "text": "the Consultant [insert name of the Consultant] [If the Consultant consist of more than one entity, replace: \u201C the Consultant [insert name of the Consultant] with \u201C\u2026a Joint Venture [insert name of the JV] consisting of the following entities, each member of which will be jointly and severally liable to the Client for all the Consultant\u2019s obligations under the Framework Agreement, namely, [name of member] and [name of member] (hereinafter called the \u201CConsultant\u201D).]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1026",
+      "text": "This Framework Agreement is subject to the provisions described in the Sections and Schedules listed below, and any amendments thereof.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1027",
+      "text": "This Framework Agreement concludes a standing offer by the Consultant to provide the specified Services to the Client(s) during the Term of the Framework Agreement, as and when the Client(s) wishes to procure them, through a Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1028",
+      "text": "The following documents shall be deemed to form and be read and construed as part of this Framework Agreement and, where indicated, to any Call-off Contract awarded under this Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1029",
+      "text": "Framework Agreement Provisions",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1030",
+      "text": "Appendix to the Framework Agreement: Fraud and Corruption",
+      "headingDecision": "TRUE_HEADING",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1031",
+      "text": "Schedule 1: Terms of Reference",
+      "headingDecision": "TRUE_HEADING",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1032",
+      "text": "Schedule 2: Key Experts",
+      "headingDecision": "TRUE_HEADING",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1033",
+      "text": "Schedule 3: Secondary Procurement",
+      "headingDecision": "TRUE_HEADING",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1034",
+      "text": "Schedule 4: Advance Payment Security",
+      "headingDecision": "TRUE_HEADING",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1035",
+      "text": "Schedule 5: Code of Conduct for Experts [as applicable]",
+      "headingDecision": "TRUE_HEADING",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1036",
+      "text": "Schedule 6: Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration for Sub-consultants",
+      "headingDecision": "TRUE_HEADING",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1037",
+      "text": "Schedule 7: List of participating Clients [use for Multi-User FAs, otherwise delete]",
+      "headingDecision": "TRUE_HEADING",
+      "role": "ANNEX_HEADING",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1038",
+      "text": "IN WITNESS whereof, the Parties to this Framework Agreement have caused this Framework Agreement to be executed in accordance with the laws of [insert the name of the Framework Agreement governing law country] on the day, month and year indicated above.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1039",
+      "text": "[Select one of the three options below]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1040",
+      "text": "[OPTION 1: for Single User Framework Agreement]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1041",
+      "text": "\u201CFor and on behalf of the Client:\u201D",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1042",
+      "text": "[OPTION 2: for a Multi-User Framework Agreement with a Lead Client that is responsible for managing and administering the Framework Agreement, and that is also a Client]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1043",
+      "text": "\u201CFor and on behalf of the Lead Client:\u201D",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1044",
+      "text": "[OPTION 3: - for a Multi-User Framework Agreement with an agency, that is not a Client, but that is responsible for the management and administration of the Framework Agreement, for use by the participating Clients.]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1045",
+      "text": "\u201CFor and on behalf of the Responsible Agency\u201D",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1046",
+      "text": "Signed: [insert signature]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1047",
+      "text": "Full name: [name of person signing]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1048",
+      "text": "Agency: [insert the name of agency]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1049",
+      "text": "In the capacity of: [insert title or other appropriate designation]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1050",
+      "text": "In the presence of [insert identification of official witness]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1051",
+      "text": "For and on behalf of the Consultant:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1052",
+      "text": "Signed: [insert signature of authorized representative(s) of the Consultant]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1053",
+      "text": "Full name: [name of person signing]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1054",
+      "text": "In the capacity of: [insert title or other appropriate designation]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1055",
+      "text": "In the presence of [insert identification official of witness]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1056",
+      "text": "[Note: For a joint venture, either all members shall sign or only the lead member shall sign, in which case the power of attorney to sign on behalf of all members shall be attached.]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1057",
+      "text": "Framework Agreement Provisions (FAP)",
+      "headingDecision": "TRUE_HEADING",
+      "role": "PART",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1058",
+      "text": "[This section is to be completed by the Procuring Agency as per the instructions provided in italicized text. The italicized text should be deleted from the final document.]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "OTHER_NON_TASK_STRUCTURAL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1059",
+      "text": "Framework Agreement Provision (FAP)",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1060",
+      "text": "Description",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1061",
+      "text": "Definitions",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1062",
+      "text": "The following words and expressions shall have the meanings hereby assigned to them",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1063",
+      "text": "\u201CBank\u201D means the World Bank, meaning the International Bank for Reconstruction and Development (IBRD) and/or the International Development Association (IDA), whether acting on its own account or in its capacity as administrator of trust funds provided by other donors.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1064",
+      "text": "\u201CBorrower\u201D means the Government, Government agency or other entity that signs the financing agreement with the Bank",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1065",
+      "text": "\u201CBorrower\u2019s Country\u201D is the country specified in the FAP 2.3.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1066",
+      "text": "\u201CBusiness Day\u201D is any day that is an official working day of the Client. It excludes the Client\u2019s official public holidays.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1067",
+      "text": "\u201CCall-off Contract\u201D is a contract awarded under a Framework Agreement, pursuant to a Secondary Procurement, for the provision of Services.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1068",
+      "text": "\u201CClient\u201D is the Borrower\u2019s agency(ies) that is/are permitted to procure Services from a Consultant/s under a Call-off Contract awarded pursuant to the Framework Agreement/s. Where appropriate, for the purpose of interpretation of the Framework Agreement, the term Client includes Lead Client, or Responsible Agency.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1069",
+      "text": "\u201CClosed Framework Agreement\u201D is where no new firm(s) may conclude Framework Agreement(s) during the Term of the Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1070",
+      "text": "\u201CCommencement Date\u201D is the date this Framework Agreement is signed by both parties, being the commencement of the Term.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1071",
+      "text": "\u201CConsultant\u201D means a legally established professional consulting firm or an entity who has concluded a Framework Agreement to provide Services, from time to time, and as and when required, under a Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1072",
+      "text": "\u201CContract Price\u201D is the price payable to the Consultant as stipulated in each Call-off Contract, subject to such additions and adjustments thereto or deductions therefrom, as may be made pursuant to the Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1073",
+      "text": "\u201CDay\u201D means calendar day.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1074",
+      "text": "\u201CIn Writing\u201D means communicated or recorded in written form. It includes, for example: mail, e-mail, fax or communication through an electronic procurement system (provided that the electronic system is accessible, secure, ensures integrity and confidentiality, and has sufficient audit trail features).",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1075",
+      "text": "\u201CLead Client\u201D, when named in the Framework Agreement, means a party to the Framework Agreement, as a Client in its own right under the framework agreement and as the agency responsible for the management and administration of the Framework Agreement for use by the other participating Clients as stipulated in the FAP 2.2. All communications, including notices, in relation to the Framework Agreement, are to be addressed to the Lead Client. All communications, including notices, in relation to a Call-off Contract, are to be addressed to the Client named in the Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1076",
+      "text": "\u201CMulti-User Framework Agreement\u201D means a Framework Agreement where there is more than one Client permitted to procure pursuant to a Call-off Contract, as stipulated in FAP 2.2;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1077",
+      "text": "\u201CResponsible Agency\u201D, when named in the Framework Agreement, is a party to the Framework Agreement, but only in its capacity as the agency responsible for managing and administering the Framework Agreement for use by the participating Clients. All communications, including notices, in relation to the Framework Agreement, are to be addressed to the Responsible Agency.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1078",
+      "text": "\u201CSecondary Procurement\u201D is the method used to select a Consultant and award a Call-off Contract under this Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1079",
+      "text": "\u201CServices\u201D means the consulting services to be provided by the Consultant pursuant to a Call-Off Contract awarded pursuant to the Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1080",
+      "text": "\u201CSingle-User Framework Agreement\u201D means a Framework Agreement where there is only one Client, as stipulated in FAP 2.2.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1081",
+      "text": "\u201CSub-consultants\u201D means an entity to whom/which the Consultant subcontracts any part of the Services while remaining solely liable for the execution of the Framework Agreement and Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1082",
+      "text": "\u201CTerm\u201D means the duration of this Framework Agreement as described in the FAP2.5 starting on the Commencement Date. Where applicable, it includes any extension(s) to the initial Term, if permitted in the FAP 2.6.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1083",
+      "text": "Framework Agreement Specific Information",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1084",
+      "text": "This Framework Agreement relates to the provision of Services, under separate Call-off Contracts, of [insert short title that describes the type of consulting services]. The Services are of the type more described in Schedule 1: Terms of Reference.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1085",
+      "text": "[state either \u201CThis is a Single-User Framework Agreement.\u201D or \u201CThis is a Multi-User Framework Agreement. All participating Clients are listed at Schedule [insert Schedule number]\u201D]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1086",
+      "text": "The Borrower\u2019s Country is: [insert the name of the country]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1087",
+      "text": "The Framework Agreement and the Call-off Contracts shall be governed by and interpreted in accordance with the laws of [state: \u201Cthe Borrower\u2019s Country\u201D, unless any other law shall apply].",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1088",
+      "text": "The Term of this Framework Agreement is [enter number of years] years. [NOTE: the maximum initial Term shall not exceed 3 years] from the Commencement Date.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1089",
+      "text": "[Delete if the term is not to be extended] The Term may be extended, at the Client\u2019s sole discretion, and where there has been satisfactory performance by the Consultant. To extend the Term, the Client shall give the Consultant no less than three (3) months\u2019 notice, In Writing, prior to the date on which the Framework Agreement would otherwise have expired. The total Term of the Framework Agreement shall be no longer than five (5) years.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1090",
+      "text": "Any notice given by one party to the other pursuant to this Framework Agreement shall be In Writing using the quickest available method such as electronic mail with proof of receipt. A notice shall be effective when delivered, or on the notice\u2019s effective date, whichever is later.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1091",
+      "text": "The representatives for each party, who shall be the primary point of contact for the other party in relation to matters arising from this Framework Agreement, including notices, are specified below. Should the representative be replaced, the party replacing the representative shall promptly inform the other party In Writing of the name and contact details of the new representative. Any representative appointed shall be authorized to make decisions on the day-to-day operation of the Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1092",
+      "text": "Client\u2019s Representatives",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1093",
+      "text": "[Selection one of the following options]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1094",
+      "text": "OPTION 1: for a Single-User Framework Agreement use the following text]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1095",
+      "text": "The name and contact details of the Client\u2019s Representative under this Framework Agreement, and the address for notices in relation to this Framework Agreement, are:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1096",
+      "text": "Name:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1097",
+      "text": "Title/position:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1098",
+      "text": "Address:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1099",
+      "text": "Phone:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1100",
+      "text": "Mobile:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1101",
+      "text": "E-mail:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1102",
+      "text": "OR",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1103",
+      "text": "[OPTION 2: for a Multi-User Framework Agreement with a Lead Client that is responsible for managing and administering the Framework Agreement and is also a Client insert the name of the Lead Client\u2019s Representative and list all other participating Clients\u2019 Representatives in a Schedule:]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1104",
+      "text": "The name and contact details of the Lead Client under this Framework Agreement, and the address for notices in relation to this Framework Agreement, are:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1105",
+      "text": "Name:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1106",
+      "text": "Title/position:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1107",
+      "text": "Address:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1108",
+      "text": "Phone:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1109",
+      "text": "Mobile:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1110",
+      "text": "E-mail:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1111",
+      "text": "The Representatives for all other participating Clients are listed in Schedule [insert number] to this Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1112",
+      "text": "OR",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1113",
+      "text": "[OPTION 3: for a Multi-User Framework Agreement concluded by a central purchasing authority (that is not also a Client) insert the following]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1114",
+      "text": "The name and contact details of the Responsible Agency under this Framework Agreement, and the address for notices in relation to this Framework Agreement, are:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1115",
+      "text": "Name:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1116",
+      "text": "Title/position:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1117",
+      "text": "Address:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1118",
+      "text": "Phone:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1119",
+      "text": "Mobile:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1120",
+      "text": "E-mail:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1121",
+      "text": "The Representatives for all participating Clients are listed in Schedule [insert number] to this Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1122",
+      "text": "Consultant\u2019s Representatives",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1123",
+      "text": "The name and contact details of the Consultant\u2019s Representative, for the purposes of this Framework Agreement, and the address for notices in relation to this Framework Agreement are:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1124",
+      "text": "Name:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1125",
+      "text": "Title/position:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1126",
+      "text": "Address:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1127",
+      "text": "Phone:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1128",
+      "text": "Mobile:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1129",
+      "text": "E-mail:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "TABLE_LABEL",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1130",
+      "text": "Appointing authority",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1131",
+      "text": "Appointing authority that may be required for the Call-off Contract, for the sole arbitrator [insert name of an appropriate professional body].",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1132",
+      "text": "Framework Agreement Documents",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1133",
+      "text": "This Framework Agreement (FA) shall be read as a whole. Where a document is incorporated by reference into this Framework Agreement, it shall be deemed to form, and be read and construed, as part of this Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1134",
+      "text": "This Framework Agreement comprises the following documents.:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1135",
+      "text": "Framework Agreement, including all Sections and Schedules;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1136",
+      "text": "Notice of Conclusion of a Framework Agreement; and",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1137",
+      "text": "Proposal submission forms (from Primary Procurement).",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1138",
+      "text": "Consultant\u2019s Obligations",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1139",
+      "text": "The Consultant shall offer to provide (standing offer) consulting services to the Client pursuant to the Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1140",
+      "text": "The Consultant shall respond to a request from a Client for proposal or direct contracting within the period specified in that request by either (i) submitting a proposal or (ii) accepting award of contract in case of direct selection or (iii) informing the Client that it does not intend to provide the Services under the Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1141",
+      "text": "During the Term of the Framework Agreement, the Consultant shall continue to be eligible and technically qualified, as per the qualification and eligibility criteria stipulated in the Primary Procurement. The Consultant shall notify the Client immediately, in writing, if it ceases to be qualified and/or ceases to be eligible.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1142",
+      "text": "Standard of Performance",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1143",
+      "text": "The Consultant shall perform the Services and carry out the Services with all due diligence, efficiency and economy, in accordance with generally accepted professional standards and practices, and shall observe sound management practices, and employ appropriate technology and safe and effective equipment, machinery, materials and methods.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1144",
+      "text": "The Consultant shall employ and provide such qualified and experienced Experts and Sub-consultants as are required to carry out the Services.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1145",
+      "text": "The Consultant may subcontract part of the Services to an extent and with such Key Experts and Sub-consultants as may be approved in advance by the Client. Submission by the Consultant for the Client\u2019s approval, for addition of any Sub-consultant not named in the Contract, shall also include the Sub-consultant\u2019s declaration in accordance with Schedule 6- Sexual exploitation and Abuse (SEA) and/or Sexual Harassment (SH) Performance Declaration. Notwithstanding such approval, the Consultant shall retain full responsibility for the Services.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1146",
+      "text": "Applicable Law",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1147",
+      "text": "The Consultant shall perform the Services in accordance with the Contract and the Applicable Law and shall take all practicable steps to ensure that any of its Experts and Sub-consultants, comply with the Applicable Law.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1148",
+      "text": "Throughout the execution of the Framework Agreement, the Consultant shall comply with the import of goods and services prohibitions in the Client\u2019s country when",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1149",
+      "text": "(a) as a matter of law or official regulations, the Borrower\u2019s country prohibits commercial relations with that country; or",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1150",
+      "text": "(b) by an act of compliance with a decision of the United Nations Security Council taken under Chapter VII of the Charter of the United Nations, the Borrower\u2019s Country prohibits any import of goods from that country or any payments to any country, person, or entity in that country.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1151",
+      "text": "Conflict of Interest",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1152",
+      "text": "The Consultant shall hold the Client\u2019s interests paramount, without any consideration for future work, and strictly avoid conflict with other assignments or their own corporate interests.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1153",
+      "text": "The payment of the Consultant in accordance with the Call-off Contract shall constitute the Consultant\u2019s only payment in connection with the Contract and, subject to FAP 4.12, the Consultant shall not accept for its own benefit any trade commission, discount or similar payment in connection with activities pursuant to this Framework Agreement or in the discharge of its obligations hereunder, and the Consultant shall use its best efforts to ensure that any Sub-consultants, as well as the Experts and agents of either of them, similarly shall not receive any such additional payment.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1154",
+      "text": "Furthermore, if the Consultant, as part of the Services, has the responsibility of advising the Client on the procurement of goods, works or services, the Consultant shall comply with the applicable policies of the Bank, and shall at all times exercise such responsibility in the best interest of the Client. Any discounts or commissions obtained by the Consultant in the exercise of such procurement responsibility shall be for the account of the Client.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1155",
+      "text": "The Consultant agrees that, during the term of this Framework Agreement and after its termination, the Consultant and any entity affiliated with the Consultant, as well as any Sub-consultants and any entity affiliated with such Sub-consultants, shall be disqualified from providing goods, works or non-consulting services resulting from or directly related to the Consultant\u2019s Services for the preparation or implementation of the project.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1156",
+      "text": "The Consultant shall not engage, and shall cause its Experts as well as its Sub-consultants not to engage, either directly or indirectly, in any business or professional activities that would conflict with the activities assigned to them pursuant to this Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1157",
+      "text": "The Consultant has an obligation and shall ensure that its Experts and Sub-consultants shall have an obligation to disclose any situation of actual or potential conflict that impacts their capacity to serve the best interest of their Client, or that may reasonably be perceived as having this effect. Failure to disclose said situations may lead to the disqualification of the Consultant or the termination of its Framework Agreement and/or Call-off Contract",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1158",
+      "text": "The Services provided under Call-off Contracts that may be awarded by the Client shall be:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1159",
+      "text": "consistent with Schedule 1: Terms of Reference as may be specifically described in the TOR-Call-off;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1160",
+      "text": "at the Contract Price stipulated in the Call-off Contract; and",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1161",
+      "text": "at such times and to such locations as stipulated in the Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1162",
+      "text": "The Consultant agrees that this Framework Agreement and any additional provisions set out in a Call-off Contract, shall apply to the provision of the Services.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1163",
+      "text": "Forced Labor",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1164",
+      "text": "The Consultant, including its Subcontractors, shall not employ or engage forced labor or persons subject to trafficking, as described below.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1165",
+      "text": "Forced labor consists of any work or service, not voluntarily performed, that is exacted from an individual under threat of force or penalty, and includes any kind of involuntary or compulsory labor, such as indentured labor, bonded labor or similar labor-contracting arrangements.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1166",
+      "text": "Trafficking in persons is defined as the recruitment, transportation, transfer, harboring or receipt of persons by means of the threat or use of force or other forms of coercion, abduction, fraud, deception, abuse of power, or of a position of vulnerability, or of the giving or receiving of payments or benefits to achieve the consent of a person having control over another person, for the purposes of exploitation.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1167",
+      "text": "Child Labor",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1168",
+      "text": "The Consultant, including its Subcontractors, shall not employ or engage a child under the age of 14 unless the national law specifies a higher age (the minimum age).",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1169",
+      "text": "The Consultant, including its Subcontractors, shall not employ or engage a child between the minimum age and the age of 18 in a manner that is likely to be hazardous, or to interfere with, the child\u2019s education, or to be harmful to the child\u2019s health or physical, mental, spiritual, moral, or social development.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1170",
+      "text": "Work considered hazardous for children is work that, by its nature or the circumstances in which it is carried out, is likely to jeopardize the health, safety, or morals of children. Such work activities prohibited for children include work:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1171",
+      "text": "with exposure to physical, psychological or sexual abuse;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1172",
+      "text": "underground, underwater, working at heights or in confined spaces;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1173",
+      "text": "with dangerous machinery, equipment or tools, or involving handling or transport of heavy loads;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1174",
+      "text": "in unhealthy environments exposing children to hazardous substances, agents, or processes, or to temperatures, noise or vibration damaging to health; or",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1175",
+      "text": "under difficult conditions such as work for long hours, during the night or in confinement on the premises of the employer.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1176",
+      "text": "Health and safety obligations",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1177",
+      "text": "The Consultant, including its Subconsultants shall comply, with all applicable health and safety regulations, laws, guidelines, and any other requirements stated in Schedule 1.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1178",
+      "text": "Non-Discrimination and Equal Opportunity",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1179",
+      "text": "The Consultant shall not make decisions relating to the employment or treatment of Experts on the basis of personal characteristics unrelated to inherent job requirements. The Consultant shall base the employment of Experts on the principle of equal opportunity and fair treatment, and shall not discriminate with respect to any aspects of the employment relationship",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1180",
+      "text": "The Consultant shall comply with additional obligations as specified in the Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1181",
+      "text": "Description of Key Experts",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1182",
+      "text": "The title agreed job description, minimum qualification and estimated period of engagement (if known) is described in Schedule 2.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1183",
+      "text": "Except as the Client may otherwise agree in writing, no changes shall be made in Key Experts agreed in a Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1184",
+      "text": "If the Client finds that any of the Experts or Sub-consultant:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1185",
+      "text": "persists in any misconduct or lack of care;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1186",
+      "text": "carries out duties incompetently or negligently;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1187",
+      "text": "fails to comply with any provision of the Contract;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1188",
+      "text": "based on reasonable evidence, is determined to have engaged in Fraud and Corruption during the execution of the Services;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1189",
+      "text": "engages in Sexual Harassment, which means unwelcome sexual advances, requests for sexual favors, and other verbal or physical conduct of a sexual nature with other Experts, or Client\u2019s personnel;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1190",
+      "text": "engages in Sexual Exploitation, which means any actual or attempted abuse of position of vulnerability, differential power or trust, for sexual purposes, including, but not limited to, profiting monetarily, socially or politically from the sexual exploitation of another;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1191",
+      "text": "engages in Sexual Abuse, which means the actual or threatened physical intrusion of a sexual nature, whether by force or under unequal or coercive conditions; or",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1192",
+      "text": "engages in any form of sexual activity with individuals under the age of 18, except in case of pre-existing marriage",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1193",
+      "text": "the Consultant shall, at the Client\u2019s written request, provide a replacement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1194",
+      "text": "In the event that any of Key Experts, Non-Key Experts or Sub-consultants is found by the Client to be incompetent or incapable in discharging assigned duties, the Client, specifying the grounds, therefore, may request the Consultant to provide a replacement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1195",
+      "text": "Any replacement of the removed Experts or Sub-consultants shall possess better qualifications and experience and shall be acceptable to the Client.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1196",
+      "text": "The Consultant shall bear all costs arising out of or incidental to any removal and/or replacement of such Experts.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1197",
+      "text": "Obligations of the Client",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1198",
+      "text": "Unless otherwise specified in the Call-off Contract, the Client shall use its best efforts to:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1199",
+      "text": "assist the Consultant with obtaining work permits and such other documents as shall be necessary to enable the Consultant to perform the Services.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1200",
+      "text": "assist the Consultant with promptly obtaining, for the Experts and, if appropriate, their eligible dependents, all necessary entry and exit visas, residence permits, exchange permits and any other documents required for their stay in the Client\u2019s country while carrying out the Services under the Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1201",
+      "text": "facilitate prompt clearance through customs of any property required for the Services and of the personal effects of the Experts and their eligible dependents.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1202",
+      "text": "issue to officials, agents and representatives of the Government all such instructions and information as may be necessary or appropriate for the prompt and effective implementation of the Services.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1203",
+      "text": "assist the Consultant and the Experts and any Sub-consultants employed by the Consultant for the Services with obtaining exemption from any requirement to register or obtain any permit to practice their profession or to establish themselves either individually or as a corporate entity in the Client\u2019s country according to the applicable law in the Client\u2019s country.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1204",
+      "text": "assist the Consultant, any Sub-consultants and the Experts of either of them with obtaining the privilege, pursuant to the applicable law in the Client\u2019s country, of bringing into the Client\u2019s country reasonable amounts of foreign currency for the purposes of the Services or for the personal use of the Experts and of withdrawing any such amounts as may be earned therein by the Experts in the execution of the Services.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1205",
+      "text": "Provide to the Consultant any such other assistance as may be specified in the Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1206",
+      "text": "Access to sites",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1207",
+      "text": "The Client warrants that the Consultant shall have, free of charge, unimpeded access to the sites in respect of which access is required for the performance of the Services. The Client will be responsible for any damage to the sites or any property thereon resulting from such access and will indemnify the Consultant and each of the experts in respect of liability for any such damage, unless such damage is caused by the wilful default or negligence of the Consultant or any Sub-consultants or the Experts of either of them.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1208",
+      "text": "Continued Qualifications and Eligibility",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1209",
+      "text": "The Consultant shall continue to be technically qualified and eligible during the term of the Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1210",
+      "text": "The Client may require, during the Term of the Framework Agreement, evidence of the Consultant\u2019s continued qualification and eligibility. Failure to provide such evidence, as requested, may result in the Consultant being disqualified from participating in a Secondary Procurement, and/or being awarded a Call-off Contract, and/or the termination of the Framework Agreement.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1211",
+      "text": "Role of Lead Client or Responsible Agency",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1212",
+      "text": "Where there is a Lead Client or Responsible Agency that is a party to the Framework Agreement, their role is to manage and administer the Framework Agreement(s) for use by the participating Client(s). All communications, including notices, in relation to the Framework Agreement are to be made to the Lead Client or Responsible Agency.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1213",
+      "text": "The Lead Client or Responsible Agency is responsible for all matters pertaining to the Framework Agreement including, for example, amendments, suspension and termination of the Framework Agreement. For matters relating to individual Call-off Contracts, all communications, including notices, must be made to the Client named in the Call-off Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1214",
+      "text": "Where no Lead Client or Responsible Agency has been appointed, the named Client is responsible for managing and administering the Framework Agreement and the provisions in FAP 2.9 above, in relation to communications and notices etc., apply to the Client.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1215",
+      "text": "Contract Price",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1216",
+      "text": "The Contract Price is the price payable to the Consultant as stipulated in each Call-off Contract, subject to such additions and adjustments thereto or deductions therefrom, as may be made pursuant to the Contract. Call-off Contracts may be Time- based or Lump-sum, as appropriate.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1217",
+      "text": "Adjustments for Changes in Laws",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1218",
+      "text": "If after the date of 28 days prior to date of proposal submission for the Framework Agreement, any law, regulation, ordinance, order or bylaw having the force of law is enacted, promulgated, abrogated, or changed in the place of the Borrower\u2019s Country (which shall be deemed to include any change in interpretation or application by the competent authorities) that subsequently affects the secondary procurement process, suitable adjustments in Framework Agreement will be allowed.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1219",
+      "text": "Liability of the Consultant",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1220",
+      "text": "Subject to additional provisions, if any, set forth in the Call-off Contracts, the Consultant\u2019s liability under this Contract shall be as determined under the Applicable Law.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1221",
+      "text": "[State: No additional provisions.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1222",
+      "text": "OR otherwise insert the following]:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1223",
+      "text": "[(a) Except in the case of gross negligence or wilful misconduct on the part of the Consultant or on the part of any person or a firm acting on behalf of the Consultant in carrying out the Services, the Consultant, with respect to damage caused by the Consultant to the Client\u2019s property, shall not be liable to the Client:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1224",
+      "text": "(i) for any indirect or consequential loss or damage; and",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1225",
+      "text": "(ii) for any direct loss or damage that exceeds [insert a multiplier, e.g.: one, two, three] times the total value of the Contract;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1226",
+      "text": "(b) This limitation of liability shall not",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1227",
+      "text": "(i) affect the Consultant\u2019s liability, if any, for damage to Third Parties caused by the Consultant or any person or firm acting on behalf of the Consultant in carrying out the Services;",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1228",
+      "text": "(ii) be construed as providing the Consultant with any limitation or exclusion from liability which is prohibited by the applicable law in the Client\u2019s country.\u201D]",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1229",
+      "text": "Force Majeure",
+      "headingDecision": "TRUE_HEADING",
+      "role": "SECTION",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1230",
+      "text": "For the purposes of the Call-off Contracts, \u201CForce Majeure\u201D means an event which is beyond the reasonable control of a party to a Call-off Contract, is not foreseeable, is unavoidable, and makes a party\u2019s performance of its obligations hereunder impossible or so impractical as reasonably to be considered impossible under the circumstances, and subject to those requirements, includes, but is not limited to, war, riots, civil disorder, earthquake, fire, explosion, storm, flood or other adverse weather conditions, strikes, lockouts or other industrial action confiscation or any other action by Government agencies.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1231",
+      "text": "Force Majeure shall not include (i) any event which is caused by the negligence or intentional action of a party or such party\u2019s Experts, Sub-consultants or agents or employees, nor (ii) any event which a diligent party could reasonably have been expected to both take into account at the time of the conclusion of this Contract, and avoid or overcome in the carrying out of its obligations hereunder.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1232",
+      "text": "Force Majeure shall not include insufficiency of funds or failure to make any payment required hereunder.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1233",
+      "text": "The failure of a party to fulfil any of its obligations hereunder shall not be considered to be a breach of, or default under, this Contract insofar as such inability arises from an event of Force Majeure, provided that the party affected by such an event has taken all reasonable precautions, due care and reasonable alternative measures, all with the objective of carrying out the terms and conditions of this Contract.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1234",
+      "text": "A party affected by an event of Force Majeure shall continue to perform its obligations, as far as is reasonably practical, and shall take all reasonable measures to minimize the consequences of any event of Force Majeure.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1235",
+      "text": "A party affected by an event of Force Majeure shall notify the other Party of such event as soon as possible, and in any case not later than fourteen (14) calendar days following the occurrence of such event, providing evidence of the nature and cause of such event, and shall similarly give written notice of the restoration of normal conditions as soon as possible.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1236",
+      "text": "Any period within which a party shall, pursuant to this Contract, complete any action or task, shall be extended for a period equal to the time during which such party was unable to perform such action as a result of Force Majeure.",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1237",
+      "text": "During the period of their inability to perform the Services as a result of an event of Force Majeure, the Consultant, upon instructions by the Client, shall either:",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "BODY_FRAGMENT",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "source": "S1238",
+      "text": "(a) demobilize, in which case the Consultant shall be reimbursed for additional costs they reasonably and necessarily incurred, and, if required by the Client, in reactivating the Services; or",
+      "headingDecision": "NOT_TRUE_HEADING",
+      "role": "LIST_ITEM",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ]
+}
