@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-doc0116-future-true-heading-contract-v1",
+  "status": "FUTURE_CONTRACT_ONLY",
+  "target": "ALL TRUE HEADING OCCURRENCES",
+  "requiredDecisionField": "headingDecision",
+  "allowedDecisionValues": [
+    "TRUE_HEADING",
+    "NOT_TRUE_HEADING"
+  ],
+  "semanticRoleIsSeparateFromHeadingDecision": true,
+  "structuralLabelMetadataMayBeRetained": true,
+  "currentFrozenPredictionCompatible": false,
+  "providerCalls": 0,
+  "goldReads": 0,
+  "note": "This is a successor contract specification only; it does not rewrite or re-score the frozen 289 prediction."
+}

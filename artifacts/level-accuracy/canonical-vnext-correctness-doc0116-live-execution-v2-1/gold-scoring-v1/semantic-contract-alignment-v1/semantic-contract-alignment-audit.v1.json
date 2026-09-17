@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "a99-doc0116-semantic-contract-alignment-audit-v1",
+  "documentId": "DOC-0116",
+  "status": "FROZEN_PREDICTION_SEMANTIC_COMPATIBILITY_FAIL",
+  "frozenPredictionSemanticCompatibility": "FAIL",
+  "officialScoring": false,
+  "metricsUsableAsOfficialAccuracy": false,
+  "futureContractAlignment": "READY_FOR_SEPARATE_FUTURE_BASELINE",
+  "predictionImmutable": true,
+  "predictionFreezeSha256": "bf9b42a4ea76103805136f379b4f133e3af40d087a14743a34d811d81989bfa8",
+  "requestCount": 7,
+  "requestHashes": [
+    "2f67b8bb6ca87d9b9d1bcb0036a4d184c598c6c2e9ff83338578837f128fbc34",
+    "f3d870b14b1e076cde29138444bf0a2434d278ba264229fe0e2d0aa3518249d4",
+    "2133411a97c9f55d9ea2dd5b011f4e91fbd8fcc0fd667e56ab69ad9b4f6e4bb6",
+    "857dea00827fedc72d49bd5025f6c4fd92d3489c49f68156e38b5f3e65ce3caa",
+    "9f98417be2309edd57ba8f0692d64c8dd5fd89d677e1204f01fc664893b0e6c2",
+    "8119c840014994d88d8234b51361da87bdeeceadd1274ce77b29f561dcda9dd8",
+    "a8098719e090236b13a4edbf51abbd23806dbde406ebce3b9da810ff3aee0204"
+  ],
+  "systemPromptHashes": [
+    "a9603fe817e4a6ae1eb3085fd86b324e76c42a2aed934692a949d1aee4e68cbb"
+  ],
+  "schemaHashes": [
+    "962de375d800d27b55a62976042375487b1c910a4f03416e07948a62690c9d1d"
+  ],
+  "frozenContract": {
+    "broadHeadingOrStructuralLabelPhrase": true,
+    "hasIndependentTrueHeadingField": false,
+    "permitsOtherStructuralLabelRole": true,
+    "hasSourceField": true,
+    "hasTextField": true,
+    "hasRoleField": true,
+    "deterministicGoldIndependentProjectionAvailable": false
+  },
+  "predictionForensics": {
+    "parsedProposalCount": 294,
+    "canonicalOccurrenceCount": 1921,
+    "canonicalGraphOccurrenceCount": 289,
+    "providerCalls": 7,
+    "roleCounts": {
+      "ANNEX_HEADING": 18,
+      "CAPTION": 2,
+      "CHAPTER": 7,
+      "CONTENT_HEADING": 14,
+      "DOCUMENT_TITLE": 8,
+      "FRONT_MATTER": 4,
+      "LIST_ITEM": 8,
+      "OTHER_STRUCTURAL_LABEL": 7,
+      "PART": 8,
+      "SECTION": 145,
+      "SUBSECTION": 10,
+      "TABLE_LABEL": 16,
+      "TOC_ENTRY": 47
+    }
+  },
+  "firewall": {
+    "goldReads": 0,
+    "providerCalls": 0,
+    "scoring": false,
+    "predictionMutation": false,
+    "derivedPredictionCreated": false,
+    "goldUsedToClassifyPrediction": false
+  },
+  "createdAtUtc": "2026-09-17T08:20:37.0919196+00:00"
+}
