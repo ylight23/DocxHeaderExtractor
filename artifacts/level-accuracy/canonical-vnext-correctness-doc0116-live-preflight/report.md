@@ -1,6 +1,6 @@
 # DOC-0116 correctness live-runner transport closure
 
-Status: `READY_FOR_DOC0116_CANONICAL_PROVIDER_AUTHORIZATION`
+Status: `READY_FOR_DOC0116_PROVIDER_EXECUTION`
 Source aliases: `1921`
 Planned provider requests: `2`
 Estimated input tokens: `1048905`

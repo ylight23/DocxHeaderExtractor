@@ -31,7 +31,7 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
         var freezeRoot = freeze.RootElement;
         var planRoot = plan.RootElement;
         if (!string.Equals(freezeRoot.GetProperty("status").GetString(),
-                "READY_FOR_DOC0116_CANONICAL_PROVIDER_AUTHORIZATION", StringComparison.Ordinal))
+                "READY_FOR_DOC0116_PROVIDER_EXECUTION", StringComparison.Ordinal))
             throw new InvalidDataException("FROZEN_SEGMENT_PLAN_NOT_AUTHORIZED");
 
         var owned = new HashSet<string>(StringComparer.Ordinal);

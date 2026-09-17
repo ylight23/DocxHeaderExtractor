@@ -1,10 +1,10 @@
 {
   "schemaVersion": "a99-canonical-vnext-correctness-request-freeze-v1",
-  "status": "READY_FOR_DOC0116_CANONICAL_PROVIDER_AUTHORIZATION",
+  "status": "READY_FOR_DOC0116_PROVIDER_EXECUTION",
   "campaignId": "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE",
   "documentId": "DOC-0116",
   "baseline": "e5d29a623ea01f93a423264d6c1eb97a9fb3d68d",
-  "startHead": "3fe6ff310abc0f700df3d5f26ca14834369aca98",
+  "startHead": "a4dc2d7c722d38cb1b4aac6fb8eae63713b92ee1",
   "provider": "OpenRouter",
   "model": "qwen/qwen3.7-flash",
   "endpoint": "https://openrouter.ai/api/v1/chat/completions",
@@ -14,7 +14,7 @@
   "sourceUniverseSha256": "f9c568ede3d8172dfea05cc07aeb3c8f838088b7a0c163faf461f2cd3d845d8b",
   "sourceEvidenceArtifactSha256": "93d103d6809373ff80c928a1fcc8ee61d4c68f15d1acf1afa66612f131d1fcf0",
   "productionSemanticHash": "471b0a0b94a9a223c15820e6fdeacdd56490179cb91def67ae7b65806c959ee3",
-  "executionHarnessHash": "cc1b46b6411f9c25db2e8f65bbd8d033347273a45cb7f8903d880ca1ab066679",
+  "executionHarnessHash": "21272f5531651b29a4ce9165fc0d91a227c80c2c0ae266052323c1b03c4bd527",
   "evidencePacketSha256": "50cf1bb636af0ce2d8c62f11e7772e9af3aa66945cac45c7d46be6eaef367027",
   "contextPackingSha256": "38faba1f731b34f8c2807d45bbf1c5aa968a1fde9814da87dfcb29c550c4c090",
   "canonicalOccurrenceCount": 1921,
@@ -34,8 +34,8 @@
     "safetyMarginSeconds": 60,
     "invariantPass": true
   },
-  "runConfigurationHash": "260a402542e9772b75b31a6233c25dc85c34d8cbe3a9b7f1807e1ba4973b0eed",
-  "requestPlanSha256": "2b8eb5446b0ddf949bd91f61a129bd25d90b708409d09315d2c9324c09210103",
+  "runConfigurationHash": "867d9fa7d1f228a86d58043275440bb216dca13bfeded75be7cac2c7f933045d",
+  "requestPlanSha256": "215056cf59f43bc9739f62e849078bf1d2b883bb859d204eb339a8f8bb2d1a17",
   "requestCount": 2,
   "requestHashes": [
     {

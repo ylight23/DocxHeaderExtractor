@@ -356,7 +356,7 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
         var freeze = new
         {
             schemaVersion = "a99-canonical-vnext-correctness-request-freeze-v1",
-            status = "READY_FOR_DOC0116_CANONICAL_PROVIDER_AUTHORIZATION",
+            status = "READY_FOR_DOC0116_PROVIDER_EXECUTION",
             campaignId = CampaignId,
             documentId = DocumentId,
             baseline = Baseline,
