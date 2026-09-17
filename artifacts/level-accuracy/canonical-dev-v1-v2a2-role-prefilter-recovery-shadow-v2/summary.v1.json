@@ -1,0 +1,63 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-v2a2-role-prefilter-recovery-shadow-summary-v1",
+  "status": "V2A2_GENERIC_RECOVERY_SHADOW_COMPLETE",
+  "baselineCheckpoint": "b66e937df1e856fbe6bab5a325c4ca8e06bf2863",
+  "v7BaselineCheckpoint": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "documents": [
+    "DOC-0001",
+    "DOC-0116"
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReads": 0,
+  "scoring": false,
+  "productionPrefilterActivated": false,
+  "devTunedForV7BehaviorPreservation": true,
+  "documentsAudited": [
+    {
+      "documentId": "DOC-0001",
+      "sourceParagraphCount": 14,
+      "currentRoleInputCount": 14,
+      "eligibleBeforeRecovery": 7,
+      "eligibleAfterRecovery": 7,
+      "projectedRoleBatchCount": 1,
+      "projectedRoleInputTokens": 3834,
+      "projectedLargestBatchBlocks": 7,
+      "projectedLargestBatchTokens": 3834,
+      "v7HeadingLikeRecoveredByRule": {
+        "R1_INLINE_PREFIX_BODY": 0,
+        "R2_STRUCTURAL_NUMBERING_PLUS_FORMAT": 0,
+        "R3_STANDALONE_TEMPLATE_LABEL": 0
+      },
+      "v7HeadingLikeResidualSkipped": 0,
+      "wouldSkipV7UncertainCount": 0
+    },
+    {
+      "documentId": "DOC-0116",
+      "sourceParagraphCount": 3590,
+      "currentRoleInputCount": 1921,
+      "eligibleBeforeRecovery": 725,
+      "eligibleAfterRecovery": 835,
+      "projectedRoleBatchCount": 71,
+      "projectedRoleInputTokens": 339903,
+      "projectedLargestBatchBlocks": 16,
+      "projectedLargestBatchTokens": 4994,
+      "v7HeadingLikeRecoveredByRule": {
+        "R1_INLINE_PREFIX_BODY": 2,
+        "R3_STANDALONE_TEMPLATE_LABEL": 1,
+        "R2_STRUCTURAL_NUMBERING_PLUS_FORMAT": 1
+      },
+      "v7HeadingLikeResidualSkipped": 5,
+      "wouldSkipV7UncertainCount": 55
+    }
+  ],
+  "decisionPrimaryDocument": "DOC-0116",
+  "gates": {
+    "projectedRoleBatchCount": 71,
+    "projectedRoleBatchGate": true,
+    "sourcePlausibleRiskResidualCount": 0,
+    "allSourcePlausibleRiskClassesVisible": true,
+    "v2bStatus": "BLOCKED_UNTIL_PRODUCTION_PREFILTER_REVIEW"
+  },
+  "nextPhase": "V2B_PRODUCTION_PREFILTER_NOT_STARTED"
+}

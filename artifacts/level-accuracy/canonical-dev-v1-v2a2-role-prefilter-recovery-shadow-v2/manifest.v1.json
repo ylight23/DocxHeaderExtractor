@@ -1,0 +1,29 @@
+﻿{
+  "schemaVersion": "a99-canonical-dev-v1-v2a2-role-prefilter-recovery-shadow-manifest-v1",
+  "status": "V2A2_GENERIC_RECOVERY_SHADOW_FROZEN",
+  "baselineCheckpoint": "b66e937df1e856fbe6bab5a325c4ca8e06bf2863",
+  "v7BaselineCheckpoint": "c2d01c2ec42912000fd5155174b7ae906c7472bc",
+  "artifacts": [
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a2-role-prefilter-recovery-shadow-v2/DOC-0001/shadow-audit.v1.json",
+      "sha256": "594cbaa82d0681752bd52e2453f1f1231cc34a7520b0cd748ed280d93b7472ec"
+    },
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a2-role-prefilter-recovery-shadow-v2/DOC-0116/shadow-audit.v1.json",
+      "sha256": "3cf33f61fa36502b9e94ad2c03d48917ea8b6550790e9de7166dc0f40230efbb"
+    },
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a2-role-prefilter-recovery-shadow-v2/report.md",
+      "sha256": "09f321e7b46e3a4f90c998759ce70f0eddd8d191e6ddc151da43a0bef8279529"
+    },
+    {
+      "path": "artifacts/level-accuracy/canonical-dev-v1-v2a2-role-prefilter-recovery-shadow-v2/summary.v1.json",
+      "sha256": "26dae2869b91e07f6ad7db8be60350491294bcac20690939d2faf15a10429625"
+    }
+  ],
+  "providerCalls": 0,
+  "goldReads": 0,
+  "scoring": false,
+  "productionPrefilterActivated": false,
+  "devTunedForV7BehaviorPreservation": true
+}

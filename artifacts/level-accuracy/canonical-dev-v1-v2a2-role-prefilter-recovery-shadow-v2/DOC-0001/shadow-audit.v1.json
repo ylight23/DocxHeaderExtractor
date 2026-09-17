@@ -1,0 +1,99 @@
+﻿{
+  "documentId": "DOC-0001",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "sourceParagraphCount": 14,
+  "currentRoleInputCount": 14,
+  "eligibleBeforeRecovery": 7,
+  "recoveryCount": 0,
+  "eligibleAfterRecovery": 7,
+  "prefilterSkippedCount": 7,
+  "projectedRoleBatchCount": 1,
+  "projectedRoleInputTokens": 3834,
+  "projectedLargestBatchBlocks": 7,
+  "projectedLargestBatchTokens": 3834,
+  "recoveryCountsByRule": {},
+  "v7HeadingLikeRecoveredByRule": {
+    "R1_INLINE_PREFIX_BODY": 0,
+    "R2_STRUCTURAL_NUMBERING_PLUS_FORMAT": 0,
+    "R3_STANDALONE_TEMPLATE_LABEL": 0
+  },
+  "residualSkipped": [
+    {
+      "sourceId": "body[1]/p[2]",
+      "sourceOrdinal": 1,
+      "sourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|not-table|no-format-signal|no-numbering-signal|period|long",
+      "v7HeadingLike": false
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "sourceOrdinal": 3,
+      "sourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|not-table|no-format-signal|no-numbering-signal|period|long",
+      "v7HeadingLike": false
+    },
+    {
+      "sourceId": "body[1]/p[6]",
+      "sourceOrdinal": 5,
+      "sourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|not-table|no-format-signal|no-numbering-signal|period|long",
+      "v7HeadingLike": false
+    },
+    {
+      "sourceId": "body[1]/p[8]",
+      "sourceOrdinal": 7,
+      "sourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|not-table|no-format-signal|no-numbering-signal|period|long",
+      "v7HeadingLike": false
+    },
+    {
+      "sourceId": "body[1]/p[10]",
+      "sourceOrdinal": 9,
+      "sourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|not-table|no-format-signal|no-numbering-signal|period|long",
+      "v7HeadingLike": false
+    },
+    {
+      "sourceId": "body[1]/p[12]",
+      "sourceOrdinal": 11,
+      "sourceText": "C\u00E1c s\u1ED1 li\u1EC7u d\u1EABn trong m\u1EE5c n\u00E0y \u0111\u01B0\u1EE3c t\u1ED5ng h\u1EE3p t\u1EEB b\u00E1o c\u00E1o qu\u00FD g\u1EA7n nh\u1EA5t v\u00E0 \u0111\u00E3 \u0111\u01B0\u1EE3c \u0111\u1ED1i chi\u1EBFu v\u1EDBi h\u1EC7 th\u1ED1ng qu\u1EA3n l\u00FD t\u1EADp trung tr\u01B0\u1EDBc khi \u0111\u01B0a v\u00E0o t\u00E0i li\u1EC7u.",
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|not-table|no-format-signal|no-numbering-signal|period|long",
+      "v7HeadingLike": false
+    },
+    {
+      "sourceId": "body[1]/p[14]",
+      "sourceOrdinal": 13,
+      "sourceText": "N\u1ED9i dung ph\u1EA7n n\u00E0y m\u00F4 t\u1EA3 chi ti\u1EBFt c\u00E1c b\u01B0\u1EDBc tri\u1EC3n khai, k\u00E8m theo y\u00EAu c\u1EA7u v\u1EC1 h\u1EA1 t\u1EA7ng v\u00E0 nh\u00E2n s\u1EF1 v\u1EADn h\u00E0nh, \u0111\u1ED3ng th\u1EDDi n\u00EAu r\u00F5 tr\u00E1ch nhi\u1EC7m c\u1EE7a t\u1EEBng \u0111\u01A1n v\u1ECB tham gia th\u1EF1c hi\u1EC7n.",
+      "skipReason": "SKIP_NO_STRUCTURAL_SIGNAL",
+      "evidenceSignature": "SKIP_NO_STRUCTURAL_SIGNAL|Normal|not-candidate|document_body|Unknown|not-table|no-format-signal|no-numbering-signal|period|long",
+      "v7HeadingLike": false
+    }
+  ],
+  "recoveryRows": [],
+  "wouldSkipV7UncertainCount": 0,
+  "sourcePlausibleRiskResidualCount": 0,
+  "summary": {
+    "documentId": "DOC-0001",
+    "sourceParagraphCount": 14,
+    "currentRoleInputCount": 14,
+    "eligibleBeforeRecovery": 7,
+    "eligibleAfterRecovery": 7,
+    "projectedRoleBatchCount": 1,
+    "projectedRoleInputTokens": 3834,
+    "projectedLargestBatchBlocks": 7,
+    "projectedLargestBatchTokens": 3834,
+    "v7HeadingLikeRecoveredByRule": {
+      "R1_INLINE_PREFIX_BODY": 0,
+      "R2_STRUCTURAL_NUMBERING_PLUS_FORMAT": 0,
+      "R3_STANDALONE_TEMPLATE_LABEL": 0
+    },
+    "v7HeadingLikeResidualSkipped": 0,
+    "wouldSkipV7UncertainCount": 0
+  }
+}
