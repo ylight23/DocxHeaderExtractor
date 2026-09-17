@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "a99-canonical-vnext-correctness-request-preflight-v1",
+  "campaignId": "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116",
+  "documentId": "DOC-0116",
+  "pipeline": "CanonicalSemanticProductionEntryPoint",
+  "modelAdapter": "OpenRouterCanonicalSemanticTextModel",
+  "semanticContractVersion": "a99-canonical-semantic-vnext-v1",
+  "bindingContractVersion": "a99-semantic-text-exact-binding-v1",
+  "route": "ModelCapabilityCeiling",
+  "sourceUniverseSha256": "f9c568ede3d8172dfea05cc07aeb3c8f838088b7a0c163faf461f2cd3d845d8b",
+  "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+  "aliasCount": 1921,
+  "targetEvidenceCount": 1921,
+  "candidateHintCount": 1921,
+  "candidateHintsAllAttentionOnly": true,
+  "candidatePolicyAcceptanceForEveryAlias": true,
+  "sourceIdsUnique": true,
+  "aliasesInSourceOrder": true,
+  "packet": {
+    "bytesUtf8": 311049,
+    "sha256": "4d59a9220d2355a0d64e873cfe044cf402f791ff9e1f65bc47c472b32ef85414",
+    "aliasCount": 1921,
+    "allAliasesPresent": true
+  },
+  "systemPrompt": {
+    "bytesUtf8": 1575,
+    "sha256": "a9603fe817e4a6ae1eb3085fd86b324e76c42a2aed934692a949d1aee4e68cbb"
+  },
+  "userPrompt": {
+    "bytesUtf8": 311118,
+    "sha256": "6db4b2c395483a05fe03ced1b7a9bfb27cfe56ba539bfdc8dc4559382375786e"
+  },
+  "schema": {
+    "bytesUtf8": 785,
+    "sha256": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3"
+  },
+  "exactModelInputContract": "packetJson \u002B SemanticTextExactBindingContract.System \u002B BuildUser(packetJson, route) \u002B Schema",
+  "attentionOnlyInvariant": "Every source catalog alias remains model-visible; candidate hints do not gate recall.",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReads": 0,
+  "scoring": false
+}
