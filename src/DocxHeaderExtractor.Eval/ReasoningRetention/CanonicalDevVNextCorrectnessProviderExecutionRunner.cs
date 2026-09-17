@@ -71,11 +71,17 @@ public static class CanonicalDevVNextCorrectnessProviderExecutionRunner
             StructuredOutputSupported = true,
             MaxCompletionTokens = remote.MaxOutputTokens,
         };
-        var fullInput = await BuildFullInputAsync(repoRoot, ct);
+        var fullInput = await BuildFullInputAsync(
+            repoRoot,
+            root.GetProperty("sourceUniverseSha256").GetString()!,
+            ct);
         using var model = new OpenRouterCeilingReasoningModel(
             remote,
             capability,
             attemptDeadline: TimeSpan.FromSeconds(root.GetProperty("perAttemptHardTimeoutSeconds").GetInt32()));
+        // Validate the frozen plan and runtime configuration before creating any execution
+        // artifact. A local mismatch must remain retryable without an output-directory tombstone.
+        await CanonicalDevVNextCorrectnessSegmentedExecutor.ValidateFrozenPlanAsync(preflight, ct, model);
         Directory.CreateDirectory(execution);
         await File.WriteAllTextAsync(Path.Combine(execution, "execution-start.v1.json"), JsonSerializer.Serialize(new
         {
@@ -109,22 +115,55 @@ public static class CanonicalDevVNextCorrectnessProviderExecutionRunner
     }
 
     private static async Task<CanonicalSemanticProductionInput> BuildFullInputAsync(
-        string repoRoot, CancellationToken ct)
+        string repoRoot, string expectedSourceUniverseSha, CancellationToken ct)
     {
-        var sourceManifestPath = Path.Combine(repoRoot, SourcePreflightRoot.Replace('/', Path.DirectorySeparatorChar), "preflight-manifest.v1.json");
         var sourceUniversePath = Path.Combine(repoRoot, SourcePreflightRoot.Replace('/', Path.DirectorySeparatorChar), "source-universe.v1.json");
-        using var sourceManifest = JsonDocument.Parse(await File.ReadAllTextAsync(sourceManifestPath, ct));
+        if (!File.Exists(sourceUniversePath))
+            throw new InvalidDataException("SOURCE_UNIVERSE_MISSING");
+        var actualSourceUniverseSha = Sha256File(sourceUniversePath);
+        if (!string.Equals(actualSourceUniverseSha, expectedSourceUniverseSha, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException("FROZEN_SOURCE_UNIVERSE_HASH_MISMATCH");
         using var sourceUniverse = JsonDocument.Parse(await File.ReadAllTextAsync(sourceUniversePath, ct));
         var sourceRoot = sourceUniverse.RootElement;
         var sourcePath = Path.Combine(repoRoot, sourceRoot.GetProperty("sourcePath").GetString()!
             .Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar));
+        var expectedSourceSha = sourceRoot.GetProperty("sourceSha256").GetString()!;
+        var actualSourceSha = Sha256File(sourcePath);
+        if (!string.Equals(actualSourceSha, expectedSourceSha, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException("FROZEN_SOURCE_DOCUMENT_HASH_MISMATCH");
+        var frozenAliases = sourceRoot.GetProperty("sourceIdentity").EnumerateArray()
+            .Select(item => new FrozenAlias(
+                item.GetProperty("alias").GetString()!,
+                item.GetProperty("sourceId").GetString()!,
+                item.GetProperty("sourceOrdinal").GetInt32(),
+                item.GetProperty("text").GetString()!))
+            .ToArray();
+        if (frozenAliases.Length != 1_921)
+            throw new InvalidDataException("FROZEN_SOURCE_UNIVERSE_CARDINALITY_MISMATCH");
+
         var source = new OpenXmlDocumentSource().Read(sourcePath) with { DocumentId = DocumentId };
         var prepared = await VisualSourceEvidenceBuilder.BuildAsync(sourcePath, int.MaxValue, ct);
+        var currentAliases = SemanticSourceAliasCatalog.FromCatalog(prepared.Catalog);
+        if (currentAliases.Count != frozenAliases.Length ||
+            currentAliases.Zip(frozenAliases).Any(pair =>
+                !string.Equals(pair.First.Alias, pair.Second.Alias, StringComparison.Ordinal) ||
+                !string.Equals(pair.First.SourceId, pair.Second.SourceId, StringComparison.Ordinal) ||
+                pair.First.SourceOrdinal != pair.Second.SourceOrdinal ||
+                !string.Equals(pair.First.Text, pair.Second.Text, StringComparison.Ordinal)))
+            throw new InvalidDataException("FROZEN_SOURCE_ALIAS_IDENTITY_MISMATCH");
+
         var features = NumberingStyleFeatures.FromSourceDocument(source);
         var derived = new DocumentFeatureDeriver().Derive(source);
         var policy = DocxPolicyStateBuilder.Build(source, features, derived,
             new PipelineOptions { DisableLlm = false }.Extraction);
         var evidence = CanonicalSemanticRichEvidenceBuilder.Build(source, prepared.Catalog, policy);
+        if (evidence.Count != frozenAliases.Length ||
+            evidence.Any(item => !currentAliases.Any(alias =>
+                string.Equals(alias.Alias, item.SourceAlias, StringComparison.Ordinal) &&
+                string.Equals(alias.SourceId, item.SourceId, StringComparison.Ordinal) &&
+                alias.SourceOrdinal == item.SourceOrdinal &&
+                string.Equals(alias.Text, item.ExactSourceText, StringComparison.Ordinal))))
+            throw new InvalidDataException("FROZEN_SOURCE_EVIDENCE_IDENTITY_MISMATCH");
         var candidateHints = evidence.Select(item => item.CandidateAttention).ToArray();
         var targetEvidence = evidence
             .Select(item => $"{item.SourceAlias}|ordinal:{item.SourceOrdinal}|scope:{item.StructuralScope}")
@@ -141,10 +180,10 @@ public static class CanonicalDevVNextCorrectnessProviderExecutionRunner
             "contextPolicy:FULL_SOURCE_UNIVERSE_RICH_EVIDENCE_V1",
         };
         return new CanonicalSemanticProductionInput(
-            prepared.Catalog, null, Sha256File(sourcePath), prepared.Pages, candidateHints,
+            prepared.Catalog, null, expectedSourceSha, prepared.Pages, candidateHints,
             targetEvidence, localContext, globalContext,
             VisualPages: prepared.VisualPages,
-            ExpectedSourceSha256: Sha256File(sourcePath),
+            ExpectedSourceSha256: expectedSourceSha,
             DocumentId: DocumentId,
             SourceEvidence: evidence);
     }
@@ -162,4 +201,6 @@ public static class CanonicalDevVNextCorrectnessProviderExecutionRunner
 
     private static int GetInt32OrDefault(this JsonElement element, string property, int fallback) =>
         element.TryGetProperty(property, out var value) && value.TryGetInt32(out var result) ? result : fallback;
+
+    private sealed record FrozenAlias(string Alias, string SourceId, int SourceOrdinal, string Text);
 }
