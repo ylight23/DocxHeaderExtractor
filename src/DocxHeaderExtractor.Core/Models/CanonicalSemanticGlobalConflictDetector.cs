@@ -28,41 +28,111 @@ public static class CanonicalSemanticGlobalConflictDetector
             .Where(item => item.SourceAlias is not null && byAlias.ContainsKey(item.SourceAlias))
             .GroupBy(item => PhysicalIdentity(item, byAlias), StringComparer.Ordinal))
         {
-            // Parent hints are intentionally not part of local semantic normalization. A whole
-            // document can nevertheless expose that one physical semantic interpretation claims
-            // two incompatible parents. Reopen only the existing alternatives.
             var alternatives = group
-                .Where(item => item.RelationHints?.Any(hint =>
-                    hint.StartsWith("parent-node:", StringComparison.Ordinal)) == true)
                 .GroupBy(SemanticFingerprint, StringComparer.Ordinal)
                 .Select(item => item.First())
                 .ToArray();
-            var parents = alternatives
-                .SelectMany(item => item.RelationHints ?? [])
-                .Where(hint => hint.StartsWith("parent-node:", StringComparison.Ordinal))
-                .Distinct(StringComparer.Ordinal)
-                .ToArray();
-            if (parents.Length <= 1 || localConflictKeys.Contains(group.Key)) continue;
+            if (alternatives.Length <= 1 || localConflictKeys.Contains(group.Key)) continue;
 
-            var conflictId = StableId("parent-relation-contradiction", group.Key,
-                string.Join("\n", alternatives.Select(SemanticFingerprint).OrderBy(item => item, StringComparer.Ordinal)));
-            result.Add(new CanonicalSemanticGlobalConflict(
-                conflictId,
-                [group.Key],
-                alternatives,
-                [
-                    "whole-document parent relation contradiction",
-                    $"physicalIdentity={group.Key}",
-                    $"parentHints={string.Join(",", parents.OrderBy(item => item, StringComparer.Ordinal))}",
-                ],
-                [SourceContext(group.Key, byAlias)])
+            var parentHints = ExplicitValues(alternatives, "parent-node:");
+            if (parentHints.Count > 1)
             {
-                ConflictKind = "PARENT_RELATION_CONTRADICTION",
-                RelationEvidence = parents,
-            });
+                result.Add(CreateConflict(
+                    "PARENT_RELATION_CONTRADICTION", group.Key, alternatives,
+                    "whole-document parent relation contradiction", parentHints, byAlias));
+            }
+
+            AddFieldConflict(result, "STRUCTURAL_TYPE_CONTRADICTION", "structuralType",
+                alternatives, group.Key, item => item.StructuralType, byAlias);
+            AddFieldConflict(result, "SEMANTIC_ROLE_CONTRADICTION", "semanticRole",
+                alternatives, group.Key, item => item.SemanticRole, byAlias);
+            AddFieldConflict(result, "SCOPE_CONTRADICTION", "scope",
+                alternatives, group.Key, item => item.Scope, byAlias);
+
+            var relationEvidence = RelationContradictions(alternatives);
+            if (relationEvidence.Count > 0)
+            {
+                result.Add(CreateConflict(
+                    "RELATION_HINT_CONTRADICTION", group.Key, alternatives,
+                    "explicit relation hints are mutually incompatible", relationEvidence, byAlias));
+            }
         }
 
         return result;
+    }
+
+    private static void AddFieldConflict(
+        ICollection<CanonicalSemanticGlobalConflict> conflicts,
+        string kind,
+        string field,
+        IReadOnlyList<CanonicalSemanticProposal> alternatives,
+        string physicalIdentity,
+        Func<CanonicalSemanticProposal, string?> value,
+        IReadOnlyDictionary<string, SemanticSourceAlias> aliases)
+    {
+        var values = alternatives.Select(value)
+            .Where(item => !string.IsNullOrWhiteSpace(item))
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(item => item, StringComparer.Ordinal)
+            .ToArray();
+        if (values.Length <= 1) return;
+        conflicts.Add(CreateConflict(
+            kind, physicalIdentity, alternatives,
+            $"same physical occurrence has incompatible {field} alternatives",
+            values, aliases));
+    }
+
+    private static CanonicalSemanticGlobalConflict CreateConflict(
+        string kind,
+        string physicalIdentity,
+        IReadOnlyList<CanonicalSemanticProposal> alternatives,
+        string evidence,
+        IReadOnlyList<string> relationEvidence,
+        IReadOnlyDictionary<string, SemanticSourceAlias> aliases)
+    {
+        var fingerprints = alternatives.Select(SemanticFingerprint)
+            .OrderBy(item => item, StringComparer.Ordinal)
+            .ToArray();
+        var conflictId = StableId(kind, physicalIdentity, string.Join("\n", fingerprints));
+        return new CanonicalSemanticGlobalConflict(
+            conflictId,
+            [physicalIdentity],
+            alternatives,
+            [evidence, $"physicalIdentity={physicalIdentity}"],
+            [SourceContext(physicalIdentity, aliases)])
+        {
+            ConflictKind = kind,
+            RelationEvidence = relationEvidence,
+        };
+    }
+
+    private static IReadOnlyList<string> ExplicitValues(
+        IReadOnlyList<CanonicalSemanticProposal> alternatives,
+        string prefix) => alternatives
+        .SelectMany(item => item.RelationHints ?? [])
+        .Where(item => item.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+        .Select(item => item[prefix.Length..])
+        .Where(item => !string.IsNullOrWhiteSpace(item))
+        .Distinct(StringComparer.Ordinal)
+        .OrderBy(item => item, StringComparer.Ordinal)
+        .ToArray();
+
+    private static IReadOnlyList<string> RelationContradictions(
+        IReadOnlyList<CanonicalSemanticProposal> alternatives)
+    {
+        var same = ExplicitValues(alternatives, "same-node:");
+        var separate = ExplicitValues(alternatives, "separate-node:");
+        var continuation = ExplicitValues(alternatives, "continuation-node:");
+        var evidence = new List<string>();
+        foreach (var value in same.Intersect(separate, StringComparer.Ordinal))
+            evidence.Add($"same-node:{value} vs separate-node:{value}");
+        foreach (var value in continuation.Intersect(separate, StringComparer.Ordinal))
+            evidence.Add($"continuation-node:{value} vs separate-node:{value}");
+        if (same.Count > 1)
+            evidence.AddRange(same.Select(value => $"same-node:{value}"));
+        if (continuation.Count > 1)
+            evidence.AddRange(continuation.Select(value => $"continuation-node:{value}"));
+        return evidence.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToArray();
     }
 
     public static string PhysicalIdentity(
