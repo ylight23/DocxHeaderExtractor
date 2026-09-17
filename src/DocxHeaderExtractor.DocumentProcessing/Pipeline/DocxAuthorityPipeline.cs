@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
@@ -23,110 +22,8 @@ internal static class DocxAuthorityPipeline
         DocxPolicyState policyState,
         DocumentModeReport mode,
         IHeaderClassifier? analyst,
-        CancellationToken ct = default)
-    {
-        var source = BuildForAudit(policyState, mode);
-        return await RunCoreAsync(source, analyst, ct);
-    }
-
-    private static async Task<StructuralAuthorityResult> RunCoreAsync(
-        DocxAuthoritySource source,
-        IHeaderClassifier? analyst,
-        CancellationToken ct)
-    {
-        if (source.Blocks.Count == 0)
-            return new StructuralAuthorityResult(new ValidatedStructure([]), null, "empty-docx-source");
-
-        var routeStarted = Stopwatch.GetTimestamp();
-        PdfBlockAnalysis roles;
-        PdfBlockAnalysis spans;
-        if (analyst is null)
-        {
-            var decisions = source.Contexts.Values
-                .Where(context => IsDeterministicallyStructured(context.Source, context.Paragraph))
-                .Select(context => new PdfBlockDecision(
-                    context.Source.SourceId, PdfBlockRole.HeadingTopic, 1,
-                    "deterministic-ooxml-structure",
-                    new TextOffsetSpan(0, context.Source.Text.Length),
-                    SemanticRole: PdfSemanticRole.TopicHeading))
-                .ToArray();
-            roles = new PdfBlockAnalysis(source.Blocks, decisions, []);
-            spans = roles;
-        }
-        else
-        {
-            roles = await PdfBlockAnalyst.AnalyzeAsync(analyst, source.Blocks, source.ModelContexts, ct);
-            if (roles.ProviderFailure is not null)
-                throw new InvalidOperationException(
-                    $"provider-failure: semantic role analysis failed ({roles.ProviderFailure}).");
-            spans = await PdfBlockAnalyst.ResolveHeadingSpansAsync(analyst, source.Blocks, roles.Decisions, source.ModelContexts, ct);
-            if (spans.ProviderFailure is not null)
-                throw new InvalidOperationException(
-                    $"provider-failure: heading span analysis failed ({spans.ProviderFailure}).");
-        }
-
-        var traces = PdfProposalValidator.Trace(source.ModelContexts, spans.Decisions);
-        var validated = PdfProposalValidator.Validate(source.ModelContexts, spans.Decisions);
-        var markerStructures = PdfHierarchyResolver.Resolve(validated, source.ModelContexts);
-        var hierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, source.ModelContexts);
-        var semanticHierarchy = analyst is null
-            ? new PdfSemanticHierarchyResult(markerStructures, [], [], [])
-            : await PdfSemanticHierarchyFallback.ResolveAsync(analyst, validated, markerStructures, source.ModelContexts, ct);
-        var structures = semanticHierarchy.Structures.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
-        var structuralAuthority = MaterializeStructuralAuthority(validated, structures, source.Contexts);
-        var audit = new RouteExecutionAudit(
-            "docx-authority-v1",
-            source.Blocks.Count,
-            source.Blocks.Count,
-            0,
-            0,
-            source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
-            source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
-            [],
-            spans.Decisions.Select(decision => new RouteBlockDecisionAudit(
-                decision.Id, decision.Role.ToString(), decision.Confidence)
-            {
-                SemanticRole = decision.SemanticRole.ToString(),
-                ProposedParentId = decision.ProposedParentId,
-                ProposedSourceSpan = decision.ProposedSourceSpan,
-            }).ToArray(),
-            validated.Select(item => item.SourceId).ToArray(),
-            [],
-            validated.Select(item => item.SourceId).ToArray())
-        {
-            RawAnalystResponses = roles.RawResponses.Concat(spans.RawResponses).Concat(semanticHierarchy.RawResponses).ToArray(),
-            ModelInputContracts = roles.InputContracts.Concat(spans.InputContracts).Concat(semanticHierarchy.InputContracts).ToArray(),
-            ModelRequests = roles.ModelRequests.Concat(spans.ModelRequests).Concat(semanticHierarchy.ModelRequests).ToArray(),
-            CandidateStageTraces = traces,
-            ValidatedStructures = semanticHierarchy.Structures,
-            HierarchyProposals = semanticHierarchy.Audit,
-            HierarchyFacts = hierarchyFacts,
-            BatchTelemetry = new PdfPipelineBatchTelemetry(
-                source.Blocks.Count,
-                source.Blocks.Count,
-                roles.BatchTelemetry?.BatchCount ?? 0,
-                roles.BatchTelemetry?.ProviderCalls ?? 0,
-                roles.BatchTelemetry?.InputTokensTotal ?? 0,
-                roles.BatchTelemetry?.LargestBatchBlocks ?? 0,
-                roles.BatchTelemetry?.LargestBatchTokens ?? 0,
-                roles.Decisions.Count(decision => decision.Role == PdfBlockRole.HeadingTopic),
-                spans.BatchTelemetry?.BatchCount ?? 0,
-                spans.BatchTelemetry?.ProviderCalls ?? 0,
-                spans.BatchTelemetry?.InputTokensTotal ?? 0,
-                validated.Count,
-                semanticHierarchy.ModelRequests.Count(request => request.ProviderCallAttempted),
-                roles.ModelRequests.Count(request => request.ProviderCallAttempted) +
-                    spans.ModelRequests.Count(request => request.ProviderCallAttempted) +
-                    semanticHierarchy.ModelRequests.Count(request => request.ProviderCallAttempted),
-                roles.RawResponses.Count + spans.RawResponses.Count + semanticHierarchy.RawResponses.Count,
-                (long)Stopwatch.GetElapsedTime(routeStarted).TotalMilliseconds),
-            SemanticLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", source.Blocks.Count,
-                roles.Decisions.Count, 0, 0),
-            SpanLane = analyst is null ? null : new RouteLaneExecutionAudit("complete", roles.Decisions.Count,
-                spans.Decisions.Count, 0, 0),
-        };
-        return new StructuralAuthorityResult(structuralAuthority, audit, "docx-source-authority");
-    }
+        CancellationToken ct = default) =>
+        await CanonicalSemanticDocxAuthorityAdapter.RunAsync(policyState, mode, analyst, ct);
 
     internal static ValidatedStructure MaterializeStructuralAuthority(
         IReadOnlyList<PdfValidatedHeading> validated,
@@ -205,10 +102,6 @@ internal static class DocxAuthorityPipeline
                 element.ParentId!, element.Id, StructuralRelationType.ParentChild));
         return ValidatedStructure.FromElements(elements, relationProposals);
     }
-
-    private static bool IsDeterministicallyStructured(SourceParagraph source, IPolicyParagraph paragraph) =>
-        paragraph.HasBuiltInHeadingStyle || source.Style.OutlineLevel is >= 0 and <= 8 ||
-        paragraph.NumberingStyleLevel is >= 1 and <= 9;
 
     private static DocxAuthoritySource Build(
         SourceDocument sourceDocument,
