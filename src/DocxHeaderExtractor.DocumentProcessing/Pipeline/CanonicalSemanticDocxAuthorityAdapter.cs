@@ -58,6 +58,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         };
 
         CanonicalSemanticProductionResult result;
+        HeaderClassifierCanonicalTextModel? canonicalModel = null;
         if (transport is null)
         {
             result = CanonicalSemanticProductionEntryPoint.Run(
@@ -65,8 +66,9 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         }
         else
         {
+            canonicalModel = new HeaderClassifierCanonicalTextModel(transport);
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
-                input, new HeaderClassifierCanonicalTextModel(transport),
+                input, canonicalModel,
                 requestId: $"docx:{policyState.Source.DocumentId}",
                 cancellationToken: cancellationToken);
         }
@@ -104,6 +106,17 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             validated.Select(item => item.SourceId).ToArray())
         {
             Route = "docx-canonical-vnext",
+            RawAnalystResponses = canonicalModel?.RawResponses ?? [],
+            ModelInputContracts = canonicalModel is null ? [] : [CanonicalSemanticContract.ProtocolVersion],
+            ModelRequests = result.PrimaryTextModelCalls == 0
+                ? []
+                : [new RouteModelRequestAudit(
+                    $"docx:{policyState.Source.DocumentId}:primary",
+                    "canonical-primary-semantic",
+                    source.Blocks.Select(block => block.Id).ToArray(),
+                    true,
+                    canonicalModel?.RawResponses.Count > 0,
+                    canonicalModel?.RawResponses.Count > 0 ? "complete" : "failed")],
             CandidateStageTraces = source.Contexts.Values.Select(context =>
                 new PdfCandidateStageTrace(
                     context.Source.SourceId,
@@ -120,6 +133,23 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 validated.Count, 0, 0),
             SpanLane = new RouteLaneExecutionAudit("canonical-binder", result.TextPipeline.BoundHeadings.Count,
                 result.TextPipeline.BoundHeadings.Count, 0, result.TextPipeline.BindingFailureCount),
+            BatchTelemetry = new PdfPipelineBatchTelemetry(
+                source.Blocks.Count,
+                source.Blocks.Count,
+                result.PrimaryTextModelCalls == 0 ? 0 : 1,
+                result.PrimaryTextModelCalls,
+                0,
+                0,
+                0,
+                result.TextPipeline.BoundHeadings.Count,
+                0,
+                0,
+                0,
+                result.CanonicalOccurrences.Count,
+                0,
+                result.TotalModelCalls,
+                canonicalModel?.RawResponses.Count ?? 0,
+                0),
         };
         return new StructuralAuthorityResult(
             structuralAuthority,
@@ -182,6 +212,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
 
     private sealed class HeaderClassifierCanonicalTextModel(IHeaderClassifier classifier) : ICanonicalSemanticTextModel
     {
+        public List<string> RawResponses { get; } = [];
+
         public async Task<CanonicalSemanticTextInferenceResult> InferAsync(
             CanonicalSemanticProductionInput input,
             SemanticContextPacket packedContext,
@@ -200,6 +232,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 SystemPrompt,
                 packet + "\nSCHEMA=" + JsonSerializer.Serialize(CanonicalSemanticContract.Schema()),
                 cancellationToken);
+            RawResponses.Add(raw);
             using var document = JsonDocument.Parse(raw);
             var issues = CanonicalSemanticContractValidator.ValidateJson(document.RootElement);
             if (issues.Count > 0)

@@ -36,7 +36,7 @@ public sealed class AuthorityRoutePolicyWiringTests
 
             var outline = await pipeline.RunAsync(path);
 
-            Assert.Equal("docx-authority-v1", outline.DeterministicRoute);
+            Assert.Equal("docx-canonical-vnext", outline.DeterministicRoute);
             Assert.Equal(new SourceCapabilities(true, false, false), policy.LastCapabilities);
         }
         finally
