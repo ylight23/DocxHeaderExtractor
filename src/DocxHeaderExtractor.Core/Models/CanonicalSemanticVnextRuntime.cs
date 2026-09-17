@@ -87,7 +87,11 @@ public static class CanonicalSemanticGraphCacheKey
 
 public sealed record SemanticContractIssue(string Code, string? SourceAlias, string Message);
 
-/// <summary>Validates semantic proposals without using Gold or interpreting model intent.</summary>
+/// <summary>
+/// Validates the model/harness semantic boundary without using Gold or deciding semantic truth.
+/// This stage may reject source-invalid output, but it must never turn formatting/style evidence
+/// into a heading decision.
+/// </summary>
 public static class CanonicalSemanticContractValidator
 {
     private static readonly HashSet<string> NumericCoordinateNames = new(StringComparer.OrdinalIgnoreCase)
@@ -111,16 +115,69 @@ public static class CanonicalSemanticContractValidator
         ArgumentNullException.ThrowIfNull(proposal);
         ArgumentNullException.ThrowIfNull(aliases);
         var issues = new List<SemanticContractIssue>();
-        var names = proposal.SourceAliases is { Count: > 0 } ? proposal.SourceAliases : [proposal.SourceAlias];
+        var names = proposal.SourceAliases is { Count: > 0 }
+            ? proposal.SourceAliases
+            : [proposal.SourceAlias];
+
         foreach (var name in names)
         {
             if (!aliases.ContainsKey(name))
-                issues.Add(new("UNKNOWN_ALIAS", name, "The alias is not owned by this source catalog."));
+                issues.Add(new("UNKNOWN_ALIAS", name, "The alias does not exist in this source catalog."));
             else if (ownedAliases is not null && !ownedAliases.Contains(name))
-                issues.Add(new("OUT_OF_OWNED_SEGMENT", name, "The alias is visible but outside this segment's ownership."));
+                issues.Add(new("OUT_OF_OWNED_SEGMENT", name,
+                    "The alias may be visible as context but is outside this segment's ownership."));
         }
-        if (proposal.IsHeading && string.IsNullOrEmpty(proposal.VerbatimText) && (proposal.VerbatimParts is not { Count: > 0 }))
-            issues.Add(new("MISSING_VERBATIM_TEXT", proposal.SourceAlias, "A heading must identify exact source text."));
+
+        if (proposal.SelectionMode is not null &&
+            !string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.VerbatimText, StringComparison.Ordinal) &&
+            !string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal))
+        {
+            issues.Add(new("INVALID_SELECTION_MODE", proposal.SourceAlias,
+                "The semantic proposal uses an unsupported source-selection mode."));
+            return issues;
+        }
+
+        if (!proposal.IsHeading)
+            return issues;
+
+        if (string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal))
+        {
+            if (names.Count != 1)
+                issues.Add(new("WHOLE_ALIAS_REQUIRES_ONE_ALIAS", proposal.SourceAlias,
+                    "WHOLE_ALIAS may identify exactly one parser-owned source occurrence."));
+            return issues;
+        }
+
+        var parts = proposal.VerbatimParts is { Count: > 0 }
+            ? proposal.VerbatimParts
+            : !string.IsNullOrEmpty(proposal.VerbatimText)
+                ? [proposal.VerbatimText]
+                : [];
+        if (parts.Count == 0)
+        {
+            issues.Add(new("MISSING_VERBATIM_TEXT", proposal.SourceAlias,
+                "A heading must identify exact source text unless WHOLE_ALIAS is explicitly selected."));
+            return issues;
+        }
+
+        if (parts.Count != names.Count)
+        {
+            issues.Add(new("ALIAS_PART_COUNT_MISMATCH", proposal.SourceAlias,
+                "Each source alias in a composite heading must have exactly one verbatim part."));
+            return issues;
+        }
+
+        for (var index = 0; index < names.Count; index++)
+        {
+            if (!aliases.TryGetValue(names[index], out var alias))
+                continue;
+            if (string.IsNullOrEmpty(parts[index]) ||
+                alias.Text.IndexOf(parts[index], StringComparison.Ordinal) < 0)
+            {
+                issues.Add(new("NON_VERBATIM_TEXT", names[index],
+                    "The proposed verbatim text does not occur exactly inside the addressed source alias."));
+            }
+        }
         return issues;
     }
 
@@ -133,7 +190,8 @@ public static class CanonicalSemanticContractValidator
                 var nextAlias = property.NameEquals("sourceAlias") && property.Value.ValueKind == JsonValueKind.String
                     ? property.Value.GetString() : sourceAlias;
                 if (NumericCoordinateNames.Contains(property.Name))
-                    issues.Add(new("NUMERIC_COORDINATE_REJECTED", nextAlias, $"Field '{property.Name}' is not part of the semantic contract."));
+                    issues.Add(new("NUMERIC_COORDINATE_REJECTED", nextAlias,
+                        $"Field '{property.Name}' is not part of the semantic contract."));
                 Visit(property.Value, issues, nextAlias);
             }
         }
