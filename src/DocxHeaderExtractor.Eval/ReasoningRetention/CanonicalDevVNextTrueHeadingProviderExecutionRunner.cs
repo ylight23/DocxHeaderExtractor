@@ -33,8 +33,10 @@ public static class CanonicalDevVNextTrueHeadingProviderExecutionRunner
             return Blocked("PREFLIGHT_ARTIFACT_MISSING");
         using var freeze = JsonDocument.Parse(await File.ReadAllTextAsync(freezePath, ct));
         using var plan = JsonDocument.Parse(await File.ReadAllTextAsync(planPath, ct));
+        using var config = JsonDocument.Parse(await File.ReadAllTextAsync(configPath, ct));
         var freezeRoot = freeze.RootElement;
         var planRoot = plan.RootElement;
+        var configRoot = config.RootElement;
         if (freezeRoot.GetProperty("status").GetString() != "READY_FOR_TRUE_HEADING_PROVIDER_EXECUTION" ||
             freezeRoot.GetProperty("goldReads").GetInt32() != 0 || freezeRoot.GetProperty("providerCalls").GetInt32() != 0 ||
             freezeRoot.GetProperty("predictionFrozen").GetBoolean())
@@ -70,11 +72,11 @@ public static class CanonicalDevVNextTrueHeadingProviderExecutionRunner
         if (owned.Count != aliases.Count) return Blocked("FULL_ALIAS_OWNERSHIP_MISMATCH");
 
         var remote = RemoteInferenceOptions.FromEnvironment("openrouter");
-        remote.Model = freezeRoot.GetProperty("model").GetString() ?? Model;
-        remote.Endpoint = new Uri(freezeRoot.GetProperty("endpoint").GetString() ?? Endpoint);
+        remote.Model = configRoot.GetProperty("model").GetString() ?? Model;
+        remote.Endpoint = new Uri(configRoot.GetProperty("endpoint").GetString() ?? Endpoint);
         remote.ContextSize = 1_000_000;
         remote.MaxOutputTokens = 48_000;
-        remote.RequestTimeoutSeconds = freezeRoot.GetProperty("requestTimeoutSeconds").GetInt32();
+        remote.RequestTimeoutSeconds = configRoot.GetProperty("requestTimeoutSeconds").GetInt32();
         remote.TransientRequestRetries = 0;
         remote.MissingIdRetries = 0;
         remote.MaxParallelRequests = 1;
@@ -96,7 +98,7 @@ public static class CanonicalDevVNextTrueHeadingProviderExecutionRunner
         }, ct);
 
         using var model = new OpenRouterCeilingReasoningModel(remote, capability,
-            attemptDeadline: TimeSpan.FromSeconds(freezeRoot.GetProperty("perAttemptHardTimeoutSeconds").GetInt32()));
+            attemptDeadline: TimeSpan.FromSeconds(configRoot.GetProperty("perAttemptHardTimeoutSeconds").GetInt32()));
         var allItems = new List<SemanticTextTrueHeadingItem>();
         var attemptCount = 0;
         try
