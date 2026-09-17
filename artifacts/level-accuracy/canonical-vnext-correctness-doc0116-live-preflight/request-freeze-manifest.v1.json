@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "a99-canonical-vnext-correctness-request-freeze-v1",
+  "status": "READY_FOR_DOC0116_CORRECTNESS_PROVIDER_AUTHORIZATION",
+  "campaignId": "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE",
+  "documentId": "DOC-0116",
+  "baseline": "ffc1187db403fac6528e448ba61d0b5e3308e6f1",
+  "startHead": "ffc1187db403fac6528e448ba61d0b5e3308e6f1",
+  "sourceUniverseSha256": "f9c568ede3d8172dfea05cc07aeb3c8f838088b7a0c163faf461f2cd3d845d8b",
+  "runConfigurationHash": "84823a619e1f5faa0478b26ed275d28a879fa85d959d50337d7468cfb25b0b40",
+  "requestPlanSha256": "00c369d6643962abc34d9df700f259c26617c6569a91cb5abd5dcc269dc7c48a",
+  "requestCount": 1,
+  "requestHashes": [
+    {
+      "requestOrdinal": 1,
+      "serializedPayloadSha256": "4d59a9220d2355a0d64e873cfe044cf402f791ff9e1f65bc47c472b32ef85414",
+      "userPromptSha256": "6db4b2c395483a05fe03ced1b7a9bfb27cfe56ba539bfdc8dc4559382375786e",
+      "schemaSha256": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3"
+    }
+  ],
+  "lateResponsePolicy": "LATE_RESPONSES_AFTER_TIMEOUT_ARE_NOT_DURABLE_SEMANTIC_FACTS",
+  "predictionPromotion": "ATOMIC_ONLY_AFTER_VALIDATION_AND_CANONICAL_FREEZE",
+  "goldAccess": "FORBIDDEN_UNTIL_PREDICTION_FROZEN",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReads": 0,
+  "scoring": false,
+  "predictionFrozen": false
+}

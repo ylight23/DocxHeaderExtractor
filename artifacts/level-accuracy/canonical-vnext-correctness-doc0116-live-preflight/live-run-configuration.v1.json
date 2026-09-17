@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "a99-canonical-vnext-correctness-live-run-configuration-v1",
+  "campaignId": "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE",
+  "baseline": "ffc1187db403fac6528e448ba61d0b5e3308e6f1",
+  "documentId": "DOC-0116",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "contextSize": 1000000,
+  "maxOutputTokens": 48000,
+  "temperature": "PROVIDER_DEFAULT_UNSPECIFIED",
+  "reasoning": {
+    "enabledOverride": null,
+    "providerDefault": true,
+    "outputExcluded": true
+  },
+  "providerRouting": {
+    "route": null,
+    "mode": "OPENROUTER_AUTOMATIC_ROUTING",
+    "fallbackPolicy": "PROVIDER_DEFAULT"
+  },
+  "requestTimeoutSeconds": 600,
+  "perAttemptHardTimeoutSeconds": 300,
+  "documentSafetyCeilingSeconds": 7200,
+  "transientRequestRetries": 0,
+  "missingIdRetries": 0,
+  "maxConcurrency": 1,
+  "semanticContractVersion": "a99-canonical-semantic-vnext-v1",
+  "bindingContractVersion": "a99-semantic-text-exact-binding-v1",
+  "modelInputSerializationVersion": "canonical-source-alias-packet-v1",
+  "segmentationPolicyVersion": "full-universe-owned-alias-segments-v1",
+  "contextPolicyVersion": "FULL_SOURCE_UNIVERSE_ATTENTION_ONLY_V1",
+  "candidateGating": false,
+  "v2aSubsetUsed": false,
+  "sourceUniverseSha256": "f9c568ede3d8172dfea05cc07aeb3c8f838088b7a0c163faf461f2cd3d845d8b",
+  "promptHashes": {
+    "systemPromptSha256": "a9603fe817e4a6ae1eb3085fd86b324e76c42a2aed934692a949d1aee4e68cbb",
+    "userPromptSha256": "6db4b2c395483a05fe03ced1b7a9bfb27cfe56ba539bfdc8dc4559382375786e",
+    "schemaSha256": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3"
+  },
+  "contextFit": {
+    "inputBytesUtf8": 312694,
+    "estimatedInputTokens": 78174,
+    "maxOutputTokens": 48000,
+    "contextSize": 1000000,
+    "safetyMarginTokens": 1024,
+    "contextHeadroom": 872802,
+    "fits": true
+  }
+}
