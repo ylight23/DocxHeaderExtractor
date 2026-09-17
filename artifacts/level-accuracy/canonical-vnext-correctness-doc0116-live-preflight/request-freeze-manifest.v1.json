@@ -1,19 +1,53 @@
 {
   "schemaVersion": "a99-canonical-vnext-correctness-request-freeze-v1",
-  "status": "READY_FOR_DOC0116_CORRECTNESS_PROVIDER_AUTHORIZATION",
+  "status": "READY_FOR_DOC0116_CANONICAL_PROVIDER_AUTHORIZATION",
   "campaignId": "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE",
   "documentId": "DOC-0116",
-  "baseline": "ffc1187db403fac6528e448ba61d0b5e3308e6f1",
-  "startHead": "ffc1187db403fac6528e448ba61d0b5e3308e6f1",
+  "baseline": "e5d29a623ea01f93a423264d6c1eb97a9fb3d68d",
+  "startHead": "e5d29a623ea01f93a423264d6c1eb97a9fb3d68d",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "requestTimeoutSeconds": 600,
+  "perAttemptHardTimeoutSeconds": 660,
+  "documentSafetyCeilingSeconds": 7200,
   "sourceUniverseSha256": "f9c568ede3d8172dfea05cc07aeb3c8f838088b7a0c163faf461f2cd3d845d8b",
-  "runConfigurationHash": "84823a619e1f5faa0478b26ed275d28a879fa85d959d50337d7468cfb25b0b40",
-  "requestPlanSha256": "00c369d6643962abc34d9df700f259c26617c6569a91cb5abd5dcc269dc7c48a",
-  "requestCount": 1,
+  "sourceEvidenceArtifactSha256": "93d103d6809373ff80c928a1fcc8ee61d4c68f15d1acf1afa66612f131d1fcf0",
+  "productionSemanticHash": "471b0a0b94a9a223c15820e6fdeacdd56490179cb91def67ae7b65806c959ee3",
+  "executionHarnessHash": "cfb470085f03f3bc37df9300c92896003a7ec081cee53cf96bdb1656ea5ffce6",
+  "evidencePacketSha256": "50cf1bb636af0ce2d8c62f11e7772e9af3aa66945cac45c7d46be6eaef367027",
+  "contextPackingSha256": "38faba1f731b34f8c2807d45bbf1c5aa968a1fde9814da87dfcb29c550c4c090",
+  "canonicalOccurrenceCount": 1921,
+  "semanticallyReachableOccurrenceCount": 1921,
+  "candidateGating": false,
+  "tokenAttribution": {
+    "sourceTextTokens": 54219,
+    "sourceEvidenceTokens": 488787,
+    "localContextTokens": 183801,
+    "globalContextTokens": 45,
+    "schemaSystemOverheadTokens": 322053,
+    "totalTokens": 1048905
+  },
+  "timeoutRelationship": {
+    "requestTimeoutSeconds": 600,
+    "outerPerAttemptHardTimeoutSeconds": 660,
+    "safetyMarginSeconds": 60,
+    "invariantPass": true
+  },
+  "runConfigurationHash": "168a6182cbaef57af2ba0069af64185924977f519f271bbd624c00784c10d591",
+  "requestPlanSha256": "1a065dfc5cd4dd7d6ad18041320f89fb67115a9835baf2d105f1d80244ca3275",
+  "requestCount": 2,
   "requestHashes": [
     {
       "requestOrdinal": 1,
-      "serializedPayloadSha256": "4d59a9220d2355a0d64e873cfe044cf402f791ff9e1f65bc47c472b32ef85414",
-      "userPromptSha256": "6db4b2c395483a05fe03ced1b7a9bfb27cfe56ba539bfdc8dc4559382375786e",
+      "serializedPayloadSha256": "f54dcc842ba675cc7d1f89ecfb981dd6af70e26dbe0a3a633ebed829cee6486e",
+      "userPromptSha256": "d85d834587a2265600acebac35991808b940edaa0644ecec959a07b502d227b4",
+      "schemaSha256": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3"
+    },
+    {
+      "requestOrdinal": 2,
+      "serializedPayloadSha256": "707067aae0e0f68eda2d8cbd3ee92079e64b8308a488896c11cc1ad32877caeb",
+      "userPromptSha256": "b2666aeebc77b1410e41a136cdb6699780643553b7b54b3175073162120601a1",
       "schemaSha256": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3"
     }
   ],

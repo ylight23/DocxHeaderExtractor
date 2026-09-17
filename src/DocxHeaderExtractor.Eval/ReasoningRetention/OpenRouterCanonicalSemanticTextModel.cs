@@ -22,15 +22,7 @@ public sealed class OpenRouterCanonicalSemanticTextModel : ICanonicalSemanticTex
         ArgumentNullException.ThrowIfNull(input);
         ArgumentNullException.ThrowIfNull(packedContext);
         var aliases = SemanticSourceAliasCatalog.FromCatalog(input.SourceCatalog);
-        var packet = JsonSerializer.Serialize(new
-        {
-            sourceAliases = aliases.Select(alias => new
-            {
-                alias = alias.Alias,
-                text = alias.Text,
-                sourceOrdinal = alias.SourceOrdinal,
-            }).ToArray(),
-        });
+        var packet = CanonicalSemanticRequestMaterializer.BuildPacket(input, packedContext);
         var route = ReasoningRoute.ModelCapabilityCeiling.ToString();
         var result = await _model.CompleteRawStructuredSemanticAsync(
             input.DocumentId ?? requestId,

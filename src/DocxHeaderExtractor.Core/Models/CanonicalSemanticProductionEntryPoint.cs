@@ -19,7 +19,30 @@ public sealed record CanonicalSemanticProductionInput(
     IReadOnlyList<CanonicalSemanticVisualProposal>? VisualProposals = null,
     IReadOnlyList<CanonicalSemanticVisualPageEvidence>? VisualPages = null,
     string? ExpectedSourceSha256 = null,
-    string? DocumentId = null);
+    string? DocumentId = null,
+    IReadOnlyList<CanonicalSemanticSourceEvidence>? SourceEvidence = null);
+
+/// <summary>Compact parser-owned evidence attached to one canonical source occurrence. It contains
+/// observations only; it does not contain candidate gating, Gold, hierarchy, or model decisions.</summary>
+public sealed record CanonicalSemanticSourceEvidence(
+    string SourceAlias,
+    string SourceId,
+    int SourceOrdinal,
+    string ExactSourceText,
+    string StructuralScope,
+    int TableDepth,
+    int SectionIndex,
+    bool InContentControl,
+    bool InTableOfContents,
+    IReadOnlyList<string> ContainerFacts,
+    object StyleFacts,
+    object NumberingFacts,
+    IReadOnlyList<object> RunFormattingFacts,
+    IReadOnlyList<string> MarkerFacts,
+    IReadOnlyList<string> ObservedEvidence,
+    IReadOnlyList<string> LocalBefore,
+    IReadOnlyList<string> LocalAfter,
+    SemanticCandidateAttentionHint CandidateAttention);
 
 public sealed record CanonicalSemanticInferenceTelemetry(
     string? ActualProvider = null,
