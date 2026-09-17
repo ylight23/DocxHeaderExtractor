@@ -18,13 +18,15 @@ namespace DocxHeaderExtractor.Eval.ReasoningRetention;
 public static class CanonicalDevVNextCorrectnessLiveRunner
 {
     private const string Baseline = "e5d29a623ea01f93a423264d6c1eb97a9fb3d68d";
+    private const string PredecessorTransportCheckpoint = "c5894437a95f0b7814aff4c7a68d9bb410953783";
     private const string DocumentId = "DOC-0116";
     private const string CampaignId = "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE";
     private const string SourcePreflightRoot = "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-preflight";
-    private const string OutputRoot = "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-live-preflight";
+    private const string OutputRoot = "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-live-preflight-v2";
     private const string Endpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string Model = "qwen/qwen3.7-flash";
-    private const int ContextSize = 1_000_000;
+    private const int AdvertisedModelContext = 1_000_000;
+    private const int EffectiveProviderInputLimit = 983_616;
     private const int MaxOutputTokens = 48_000;
     private const int RequestTimeoutSeconds = 600;
     private const int PerAttemptHardTimeoutSeconds = 660;
@@ -33,9 +35,12 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
     private const int TransientRequestRetries = 0;
     private const int MissingIdRetries = 0;
     private const int MaxConcurrency = 1;
-    // No exact Qwen/OpenRouter tokenizer is available in this offline harness. Keep a materially
-    // conservative reserve instead of treating a few hundred estimated tokens as proof of fit.
-    private const int ContextSafetyMarginTokens = 16_384;
+    // No exact Qwen/Alibaba tokenizer is available offline. UTF-8 request-body bytes are a
+    // conservative token upper bound for byte-level tokenization; reserve covers chat-template
+    // and special-token overhead. The previous chars/4 estimate remains diagnostic only.
+    private const int TransportReserveTokens = 16_384;
+    private const string TokenAccountingPolicy = "UTF8_REQUEST_BODY_BYTES_PLUS_TRANSPORT_RESERVE_UPPER_BOUND";
+    private const string ProviderRequestRendererVersion = "OPENROUTER_BODY_RENDERER_SHARED_WITH_SENDER_V1";
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
@@ -138,9 +143,9 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
         var systemPrompt = SemanticTextExactBindingContract.System;
         var userPrompt = SemanticTextExactBindingContract.BuildUser(packetJson, route);
         var schemaJson = JsonSerializer.Serialize(SemanticTextExactBindingContract.Schema());
-        var estimatedInputTokens = ProviderTokenEstimate(systemPrompt + "\n" + userPrompt);
-        var fits = estimatedInputTokens + MaxOutputTokens + ContextSafetyMarginTokens <= ContextSize;
-        (string Packet, SemanticContextPacket Context) MaterializeSegment(IReadOnlyList<AliasRow> visible)
+        var schemaElement = JsonSerializer.Deserialize<JsonElement>(schemaJson);
+        var planningReasoning = new { enabled = true, exclude = true };
+        (string Packet, SemanticContextPacket Context, string UserPrompt, int ProviderBodyBytes, int ProviderInputUpperBound, int DiagnosticCharEstimate) MaterializeSegment(IReadOnlyList<AliasRow> visible)
         {
             var segmentEvidence = visible.Select(alias => evidenceByAlias[alias.Alias]).ToArray();
             var segmentCatalogAliases = visible.Select(alias => catalogByAlias[alias.Alias]).ToArray();
@@ -150,16 +155,29 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
                 segmentEvidence.SelectMany(item => item.LocalBefore.Concat(item.LocalAfter)
                     .Select(context => $"{item.SourceAlias}|{context}")),
                 globalContext);
+            var segmentPacket = CanonicalSemanticRequestMaterializer.BuildPacket(
+                segmentCatalogAliases, segmentEvidence, segmentHints, segmentContext);
+            var segmentUserPrompt = SemanticTextExactBindingContract.BuildUser(segmentPacket, route);
+            var providerBody = OpenRouterCeilingReasoningModel.BuildRequestBodyForAudit(
+                Model, systemPrompt, segmentUserPrompt, MaxOutputTokens, schemaElement,
+                "semantic_text_exact_binding_v1", planningReasoning, null, true);
+            var providerBodyBytes = OpenRouterCeilingReasoningModel.SerializeRequestBodyForAudit(providerBody).Length;
             return (
-                CanonicalSemanticRequestMaterializer.BuildPacket(
-                    segmentCatalogAliases, segmentEvidence, segmentHints, segmentContext),
-                segmentContext);
+                segmentPacket,
+                segmentContext,
+                segmentUserPrompt,
+                providerBodyBytes,
+                checked(providerBodyBytes + TransportReserveTokens),
+                ProviderTokenEstimate(systemPrompt + "\n" + segmentUserPrompt));
         }
+        var fullMaterialized = MaterializeSegment(aliases);
+        var fullProviderInputUpperBound = fullMaterialized.ProviderInputUpperBound;
+        var estimatedInputTokens = fullMaterialized.DiagnosticCharEstimate;
+        var fits = fullProviderInputUpperBound <= EffectiveProviderInputLimit;
         var segments = fits
             ? [new SegmentPlan(1, aliases, aliases, "SINGLE_FULL_UNIVERSE_REQUEST")]
-            : BuildSegments(aliases, ContextSize - MaxOutputTokens - ContextSafetyMarginTokens,
-                visible => ProviderTokenEstimate(systemPrompt + "\n" +
-                    SemanticTextExactBindingContract.BuildUser(MaterializeSegment(visible).Packet, route)));
+            : BuildSegments(aliases, EffectiveProviderInputLimit,
+                visible => MaterializeSegment(visible).ProviderInputUpperBound);
 
         var sourceEvidenceJson = JsonSerializer.Serialize(new
         {
@@ -213,7 +231,9 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             provider = "OpenRouter",
             model = Model,
             endpoint = Endpoint,
-            contextSize = ContextSize,
+                advertisedModelContext = AdvertisedModelContext,
+                effectiveProviderInputLimit = EffectiveProviderInputLimit,
+                transportReserveTokens = TransportReserveTokens,
             maxOutputTokens = MaxOutputTokens,
             temperature = "PROVIDER_DEFAULT_UNSPECIFIED",
             reasoning = new { enabledOverride = (bool?)null, providerDefault = true, outputExcluded = true },
@@ -227,7 +247,10 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             semanticContractVersion = CanonicalSemanticContract.ProtocolVersion,
             bindingContractVersion = SemanticTextExactBindingContract.ProtocolVersion,
             modelInputSerializationVersion = "canonical-source-alias-rich-evidence-packet-v1",
-            segmentationPolicyVersion = "full-universe-owned-alias-segments-v1",
+            segmentationPolicyVersion = "full-universe-owned-alias-segments-v2-provider-body-upper-bound",
+            predecessorTransportCheckpoint = PredecessorTransportCheckpoint,
+            providerRequestRendererVersion = ProviderRequestRendererVersion,
+            tokenAccountingPolicy = TokenAccountingPolicy,
             contextPolicyVersion = "FULL_SOURCE_UNIVERSE_RICH_EVIDENCE_V1",
             candidateGating = false,
             v2aSubsetUsed = false,
@@ -252,12 +275,14 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             },
             contextFit = new
             {
-                inputBytesUtf8 = Encoding.UTF8.GetByteCount(systemPrompt + "\n" + userPrompt),
-                estimatedInputTokens,
+                inputBytesUtf8 = fullMaterialized.ProviderBodyBytes,
+                diagnosticCharEstimateTokens = estimatedInputTokens,
+                providerInputUpperBoundTokens = fullProviderInputUpperBound,
                 maxOutputTokens = MaxOutputTokens,
-                contextSize = ContextSize,
-                safetyMarginTokens = ContextSafetyMarginTokens,
-                contextHeadroom = ContextSize - estimatedInputTokens - MaxOutputTokens - ContextSafetyMarginTokens,
+                advertisedModelContext = AdvertisedModelContext,
+                effectiveProviderInputLimit = EffectiveProviderInputLimit,
+                transportReserveTokens = TransportReserveTokens,
+                contextHeadroom = EffectiveProviderInputLimit - fullProviderInputUpperBound,
                 fits,
             },
             tokenAttribution = new
@@ -267,7 +292,7 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
                 localContextTokens,
                 globalContextTokens,
                 schemaSystemOverheadTokens,
-                totalTokens = estimatedInputTokens,
+                totalTokens = fullProviderInputUpperBound,
             },
             timeoutRelationship = new
             {
@@ -289,7 +314,10 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             var segmentPacket = materialized.Packet;
             var segmentContext = materialized.Context;
             var segmentEvidence = segment.Visible.Select(alias => evidenceByAlias[alias.Alias]).ToArray();
-            var segmentUserPrompt = SemanticTextExactBindingContract.BuildUser(segmentPacket, route);
+            var providerBody = OpenRouterCeilingReasoningModel.BuildRequestBodyForAudit(
+                Model, systemPrompt, materialized.UserPrompt, MaxOutputTokens, schemaElement,
+                "semantic_text_exact_binding_v1", planningReasoning, null, true);
+            var providerBodyBytes = OpenRouterCeilingReasoningModel.SerializeRequestBodyForAudit(providerBody);
             return new
             {
                 requestOrdinal = segment.Ordinal,
@@ -297,11 +325,14 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
                 visibleAliases = segment.Visible.Select(alias => alias.Alias).ToArray(),
                 overlapPolicy = "VISIBLE_OVERLAP_MAY_NOT_CREATE_DUPLICATE_OWNERSHIP",
                 systemPromptSha256 = Sha256Text(systemPrompt),
-                userPromptSha256 = Sha256Text(segmentUserPrompt),
+                userPromptSha256 = Sha256Text(materialized.UserPrompt),
                 schemaSha256 = Sha256Text(schemaJson),
                 serializedPayloadSha256 = Sha256Text(segmentPacket),
                 serializedPayloadBytesUtf8 = Encoding.UTF8.GetByteCount(segmentPacket),
-                estimatedInputTokens = ProviderTokenEstimate(systemPrompt + "\n" + segmentUserPrompt),
+                diagnosticCharEstimateTokens = materialized.DiagnosticCharEstimate,
+                providerRequestBodyBytesUtf8 = providerBodyBytes.Length,
+                providerInputUpperBoundTokens = checked(providerBodyBytes.Length + TransportReserveTokens),
+                providerRequestBodySha256 = Sha256Bytes(providerBodyBytes),
                 maxOutputTokens = MaxOutputTokens,
                 sourceEvidenceArtifactSha256 = Sha256Text(JsonSerializer.Serialize(segmentEvidence, JsonOptions) + Environment.NewLine),
                 evidencePacketSha256 = Sha256Text(segmentPacket),
@@ -325,10 +356,20 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
                 packet = JsonSerializer.Deserialize<JsonElement>(materialized.Packet),
                 schemaText = schemaJson,
                 packetText = materialized.Packet,
+                providerRequestBodyBytesUtf8 = materialized.ProviderBodyBytes,
+                providerInputUpperBoundTokens = materialized.ProviderInputUpperBound,
+                diagnosticCharEstimateTokens = materialized.DiagnosticCharEstimate,
+                providerRequestBodySha256 = Sha256Bytes(OpenRouterCeilingReasoningModel.SerializeRequestBodyForAudit(
+                    OpenRouterCeilingReasoningModel.BuildRequestBodyForAudit(
+                        Model, systemPrompt, materialized.UserPrompt, MaxOutputTokens, schemaElement,
+                        "semantic_text_exact_binding_v1", planningReasoning, null, true))),
                 systemPromptSha256 = Sha256Text(systemPrompt),
-                userPromptSha256 = Sha256Text(segmentUserPrompt),
+                userPromptSha256 = Sha256Text(materialized.UserPrompt),
                 schemaSha256 = Sha256Text(schemaJson),
                 packetSha256 = Sha256Text(materialized.Packet),
+                providerRequestRendererVersion = ProviderRequestRendererVersion,
+                tokenAccountingPolicy = TokenAccountingPolicy,
+                transportReserveTokens = TransportReserveTokens,
                 runConfigurationHash,
             }, ct);
         }
@@ -349,6 +390,12 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             providerCalls = 0,
             modelCalls = 0,
             goldReads = 0,
+            advertisedModelContext = AdvertisedModelContext,
+            effectiveProviderInputLimit = EffectiveProviderInputLimit,
+            maxOutputTokens = MaxOutputTokens,
+            transportReserveTokens = TransportReserveTokens,
+            tokenAccountingPolicy = TokenAccountingPolicy,
+            providerRequestRendererVersion = ProviderRequestRendererVersion,
         };
         var requestPlanPath = Path.Combine(output, "request-plan.v1.json");
         await WriteJsonAsync(requestPlanPath, requestPlan, ct);
@@ -360,6 +407,7 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             campaignId = CampaignId,
             documentId = DocumentId,
             baseline = Baseline,
+            predecessorTransportCheckpoint = PredecessorTransportCheckpoint,
             startHead,
             provider = "OpenRouter",
             model = Model,
@@ -437,8 +485,10 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             $"Status: `{freeze.status}`",
             $"Source aliases: `{aliases.Length}`",
             $"Planned provider requests: `{requests.Length}`",
-            $"Estimated input tokens: `{estimatedInputTokens}`",
-            $"Context headroom after output and safety margin: `{ContextSize - estimatedInputTokens - MaxOutputTokens - ContextSafetyMarginTokens}`",
+            $"Diagnostic chars/4 estimate: `{estimatedInputTokens}`",
+            $"Provider input upper bound: `{fullProviderInputUpperBound}`",
+            $"Effective provider input limit: `{EffectiveProviderInputLimit}`",
+            $"Provider upper-bound headroom: `{EffectiveProviderInputLimit - fullProviderInputUpperBound}`",
             $"Source evidence packets: `{sourceEvidence.Count}`",
             $"Token attribution: source text `{sourceTextTokens}`, evidence `{sourceEvidenceTokens}`, local `{localContextTokens}`, global `{globalContextTokens}`, overhead `{schemaSystemOverheadTokens}`, total `{estimatedInputTokens}`",
             $"Timeout relation: outer `{PerAttemptHardTimeoutSeconds}s` >= request `{RequestTimeoutSeconds}s` + margin `{RequestTimeoutSafetyMarginSeconds}s`",
@@ -453,8 +503,10 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
         Console.WriteLine($"STATUS={freeze.status}");
         Console.WriteLine($"REQUESTS={requests.Length}");
         Console.WriteLine($"ALIASES={aliases.Length}");
-        Console.WriteLine($"ESTIMATED_INPUT_TOKENS={estimatedInputTokens}");
-        Console.WriteLine($"CONTEXT_HEADROOM={ContextSize - estimatedInputTokens - MaxOutputTokens - ContextSafetyMarginTokens}");
+        Console.WriteLine($"DIAGNOSTIC_CHAR_ESTIMATE_TOKENS={estimatedInputTokens}");
+        Console.WriteLine($"PROVIDER_INPUT_UPPER_BOUND={fullProviderInputUpperBound}");
+        Console.WriteLine($"PROVIDER_INPUT_LIMIT={EffectiveProviderInputLimit}");
+        Console.WriteLine($"CONTEXT_HEADROOM={EffectiveProviderInputLimit - fullProviderInputUpperBound}");
         Console.WriteLine("PROVIDER_CALLS=0");
         Console.WriteLine("GOLD_READS=0");
         return 0;
@@ -462,7 +514,7 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
 
     private static IReadOnlyList<SegmentPlan> BuildSegments(
         IReadOnlyList<AliasRow> aliases,
-        int availableTokens,
+        int effectiveInputLimit,
         Func<IReadOnlyList<AliasRow>, int> estimateTokens)
     {
         var result = new List<SegmentPlan>();
@@ -470,8 +522,10 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
         foreach (var alias in aliases)
         {
             var candidate = current.Append(alias).ToArray();
-            if (current.Count > 0 && estimateTokens(candidate) > availableTokens)
+            if (estimateTokens(candidate) > effectiveInputLimit)
             {
+                if (current.Count == 0)
+                    throw new InvalidDataException($"SINGLE_ALIAS_EXCEEDS_PROVIDER_INPUT_LIMIT:{alias.Alias}");
                 result.Add(new SegmentPlan(result.Count + 1, current.ToArray(), current.ToArray(), "DETERMINISTIC_SOURCE_ORDER_SEGMENT"));
                 current = [];
             }
@@ -483,6 +537,8 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
     }
 
     private static int ProviderTokenEstimate(string value) => ProviderObservabilityHashing.EstimateTokens(value);
+
+    private static string Sha256Bytes(byte[] bytes) => Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
 
     private static async Task<int> BlockedAsync(string output, string startHead, string reason, CancellationToken ct, object? details = null)
     {

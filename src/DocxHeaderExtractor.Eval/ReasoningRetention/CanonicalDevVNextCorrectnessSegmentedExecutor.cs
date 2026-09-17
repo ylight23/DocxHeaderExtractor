@@ -61,11 +61,24 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
                 !string.Equals(Sha256(user), request.GetProperty("userPromptSha256").GetString(), StringComparison.OrdinalIgnoreCase) ||
                 !string.Equals(Sha256(schema), request.GetProperty("schemaSha256").GetString(), StringComparison.OrdinalIgnoreCase))
                 throw new InvalidDataException($"SEGMENT_REQUEST_HASH_MISMATCH:{ordinal}");
+            foreach (var property in new[] { "providerRequestBodySha256", "providerRequestBodyBytesUtf8", "providerInputUpperBoundTokens" })
+            {
+                if (!root.TryGetProperty(property, out _) || !request.TryGetProperty(property, out _))
+                    throw new InvalidDataException($"SEGMENT_PROVIDER_RENDERING_METADATA_MISSING:{ordinal}:{property}");
+                if (!JsonElementEquals(root.GetProperty(property), request.GetProperty(property)))
+                    throw new InvalidDataException($"SEGMENT_PROVIDER_RENDERING_METADATA_MISMATCH:{ordinal}:{property}");
+            }
         }
 
         var expected = freezeRoot.GetProperty("canonicalOccurrenceCount").GetInt32();
         if (owned.Count != expected || !planRoot.GetProperty("everyAliasOwnedExactlyOnce").GetBoolean())
             throw new InvalidDataException("SEGMENT_FULL_UNIVERSE_OWNERSHIP_MISMATCH");
+        var effectiveInputLimit = planRoot.GetProperty("effectiveProviderInputLimit").GetInt32();
+        foreach (var request in requestRows)
+        {
+            if (request.GetProperty("providerInputUpperBoundTokens").GetInt32() > effectiveInputLimit)
+                throw new InvalidDataException($"SEGMENT_PROVIDER_INPUT_UPPER_BOUND_EXCEEDED:{request.GetProperty("requestOrdinal").GetInt32()}");
+        }
 
         return new CanonicalSegmentedExecutorValidation(
             requestCount,
@@ -188,6 +201,11 @@ public static class CanonicalDevVNextCorrectnessSegmentedExecutor
 
     private static string Sha256(string value) =>
         Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
+
+    private static bool JsonElementEquals(JsonElement left, JsonElement right) =>
+        left.ValueKind == JsonValueKind.String && right.ValueKind == JsonValueKind.String
+            ? string.Equals(left.GetString(), right.GetString(), StringComparison.Ordinal)
+            : left.ToString() == right.ToString();
 }
 
 public sealed record CanonicalSegmentedExecutorValidation(

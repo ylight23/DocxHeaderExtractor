@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "a99-canonical-segmented-executor-closure-v1",
+  "status": "SEGMENTED_EXECUTOR_OFFLINE_VALIDATED",
+  "executorType": "CanonicalDevVNextCorrectnessSegmentedExecutor",
+  "segmentCount": 7,
+  "ownedOccurrenceCount": 1921,
+  "hashesAndOwnershipValid": true,
+  "mergePolicy": "ALL_SEGMENT_RESPONSES_REQUIRED_BEFORE_GLOBAL_POST_INFERENCE",
+  "globalPostInferenceRuns": 1,
+  "transportSource": "FROZEN_REQUEST_PLAN_AND_MATERIALIZED_REQUESTS",
+  "forbiddenPath": "CanonicalSemanticProductionEntryPoint.RunAsync(full input) before segment completion",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReads": 0,
+  "scoring": false
+}

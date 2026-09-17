@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "a99-canonical-vnext-correctness-live-run-configuration-v1",
+  "campaignId": "CANONICAL_DEV_VNEXT_CORRECTNESS_DOC0116_LIVE",
+  "baseline": "e5d29a623ea01f93a423264d6c1eb97a9fb3d68d",
+  "documentId": "DOC-0116",
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "advertisedModelContext": 1000000,
+  "effectiveProviderInputLimit": 983616,
+  "transportReserveTokens": 16384,
+  "maxOutputTokens": 48000,
+  "temperature": "PROVIDER_DEFAULT_UNSPECIFIED",
+  "reasoning": {
+    "enabledOverride": null,
+    "providerDefault": true,
+    "outputExcluded": true
+  },
+  "providerRouting": {
+    "route": null,
+    "mode": "OPENROUTER_AUTOMATIC_ROUTING",
+    "fallbackPolicy": "PROVIDER_DEFAULT"
+  },
+  "requestTimeoutSeconds": 600,
+  "perAttemptHardTimeoutSeconds": 660,
+  "documentSafetyCeilingSeconds": 7200,
+  "transientRequestRetries": 0,
+  "missingIdRetries": 0,
+  "maxConcurrency": 1,
+  "semanticContractVersion": "a99-canonical-semantic-vnext-v1",
+  "bindingContractVersion": "a99-semantic-text-exact-binding-v1",
+  "modelInputSerializationVersion": "canonical-source-alias-rich-evidence-packet-v1",
+  "segmentationPolicyVersion": "full-universe-owned-alias-segments-v2-provider-body-upper-bound",
+  "predecessorTransportCheckpoint": "c5894437a95f0b7814aff4c7a68d9bb410953783",
+  "providerRequestRendererVersion": "OPENROUTER_BODY_RENDERER_SHARED_WITH_SENDER_V1",
+  "tokenAccountingPolicy": "UTF8_REQUEST_BODY_BYTES_PLUS_TRANSPORT_RESERVE_UPPER_BOUND",
+  "contextPolicyVersion": "FULL_SOURCE_UNIVERSE_RICH_EVIDENCE_V1",
+  "candidateGating": false,
+  "v2aSubsetUsed": false,
+  "productionSemanticHash": "471b0a0b94a9a223c15820e6fdeacdd56490179cb91def67ae7b65806c959ee3",
+  "executionHarnessHash": "e7377822ad337b04064908b6b6be2d7b0308a0b2a65ad9cfc02f48ff70d5a1cc",
+  "sourceUniverseSha256": "f9c568ede3d8172dfea05cc07aeb3c8f838088b7a0c163faf461f2cd3d845d8b",
+  "sourceEvidenceArtifactSha256": "93d103d6809373ff80c928a1fcc8ee61d4c68f15d1acf1afa66612f131d1fcf0",
+  "evidencePacketSha256": "50cf1bb636af0ce2d8c62f11e7772e9af3aa66945cac45c7d46be6eaef367027",
+  "contextPackingSha256": "38faba1f731b34f8c2807d45bbf1c5aa968a1fde9814da87dfcb29c550c4c090",
+  "evidencePacketOccurrenceCount": 1921,
+  "semanticallyReachableOccurrenceCount": 1921,
+  "promptHashes": {
+    "systemPromptSha256": "a9603fe817e4a6ae1eb3085fd86b324e76c42a2aed934692a949d1aee4e68cbb",
+    "userPromptSha256": "dfba638f6582c51a40dc90c84ae84c90d76b9f1f47105aeeeb91179d44f65c68",
+    "schemaSha256": "a295fbe535e8d6cede2ad1e06b0597f4dc571cf5a0012989fa94aacacf22cdf3"
+  },
+  "contextFit": {
+    "inputBytesUtf8": 5819399,
+    "diagnosticCharEstimateTokens": 1048905,
+    "providerInputUpperBoundTokens": 5835783,
+    "maxOutputTokens": 48000,
+    "advertisedModelContext": 1000000,
+    "effectiveProviderInputLimit": 983616,
+    "transportReserveTokens": 16384,
+    "contextHeadroom": -4852167,
+    "fits": false
+  },
+  "tokenAttribution": {
+    "sourceTextTokens": 54219,
+    "sourceEvidenceTokens": 488787,
+    "localContextTokens": 183801,
+    "globalContextTokens": 45,
+    "schemaSystemOverheadTokens": 322053,
+    "totalTokens": 5835783
+  },
+  "timeoutRelationship": {
+    "requestTimeoutSeconds": 600,
+    "outerPerAttemptHardTimeoutSeconds": 660,
+    "safetyMarginSeconds": 60,
+    "invariant": "outer per-attempt hard timeout \u003E= provider request timeout \u002B safety margin",
+    "invariantPass": true,
+    "documentSafetyCeilingSeconds": 7200
+  }
+}
