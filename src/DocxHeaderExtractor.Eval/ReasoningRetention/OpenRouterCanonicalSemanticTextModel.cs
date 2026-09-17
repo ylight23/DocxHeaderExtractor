@@ -38,9 +38,7 @@ public sealed class OpenRouterCanonicalSemanticTextModel : ICanonicalSemanticTex
             "semantic_text_exact_binding_v1",
             cancellationToken);
         using var rawDocument = JsonDocument.Parse(result.Content);
-        var contractIssues = CanonicalSemanticContractValidator.ValidateJson(rawDocument.RootElement);
-        if (contractIssues.Count > 0)
-            throw new FormatException(string.Join(",", contractIssues.Select(issue => issue.Code)));
+        RejectProviderCoordinates(rawDocument.RootElement);
         var response = SemanticTextExactBindingContract.Parse(result.Content);
         // The provider DTO is an infrastructure compatibility shape. Only these semantic fields
         // cross into Core; any positional data in a legacy response is intentionally discarded.
@@ -58,5 +56,23 @@ public sealed class OpenRouterCanonicalSemanticTextModel : ICanonicalSemanticTex
             result.Telemetry.ReportedInputTokens,
             result.Telemetry.ReportedReasoningTokens,
             result.Telemetry.ReportedOutputTokens));
+    }
+
+    private static void RejectProviderCoordinates(JsonElement element)
+    {
+        if (element.ValueKind == JsonValueKind.Object)
+        {
+            foreach (var property in element.EnumerateObject())
+            {
+                if (property.Name is "start" or "end" or "offset" or "page" or "bbox" or "coordinates")
+                    throw new FormatException($"provider-positional-field-forbidden:{property.Name}");
+                RejectProviderCoordinates(property.Value);
+            }
+        }
+        else if (element.ValueKind == JsonValueKind.Array)
+        {
+            foreach (var item in element.EnumerateArray())
+                RejectProviderCoordinates(item);
+        }
     }
 }
