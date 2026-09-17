@@ -33,7 +33,9 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
     private const int TransientRequestRetries = 0;
     private const int MissingIdRetries = 0;
     private const int MaxConcurrency = 1;
-    private const int ContextSafetyMarginTokens = 1_024;
+    // No exact Qwen/OpenRouter tokenizer is available in this offline harness. Keep a materially
+    // conservative reserve instead of treating a few hundred estimated tokens as proof of fit.
+    private const int ContextSafetyMarginTokens = 16_384;
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
     public static async Task<int> RunAsync(string repoRoot, CancellationToken ct = default)
@@ -321,6 +323,8 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
                 userPrompt = segmentUserPrompt,
                 schema = JsonSerializer.Deserialize<JsonElement>(schemaJson),
                 packet = JsonSerializer.Deserialize<JsonElement>(materialized.Packet),
+                schemaText = schemaJson,
+                packetText = materialized.Packet,
                 systemPromptSha256 = Sha256Text(systemPrompt),
                 userPromptSha256 = Sha256Text(segmentUserPrompt),
                 schemaSha256 = Sha256Text(schemaJson),
@@ -407,6 +411,25 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             predictionFrozen = false,
         };
         await WriteJsonAsync(Path.Combine(output, "request-freeze-manifest.v1.json"), freeze, ct);
+        var executorValidation = await CanonicalDevVNextCorrectnessSegmentedExecutor
+            .ValidateFrozenPlanAsync(output, ct);
+        await WriteJsonAsync(Path.Combine(output, "executor-closure.v1.json"), new
+        {
+            schemaVersion = "a99-canonical-segmented-executor-closure-v1",
+            status = "SEGMENTED_EXECUTOR_OFFLINE_VALIDATED",
+            executorType = executorValidation.ExecutorType,
+            segmentCount = executorValidation.SegmentCount,
+            ownedOccurrenceCount = executorValidation.OwnedOccurrenceCount,
+            hashesAndOwnershipValid = executorValidation.HashesAndOwnershipValid,
+            mergePolicy = executorValidation.MergePolicy,
+            globalPostInferenceRuns = 1,
+            transportSource = "FROZEN_REQUEST_PLAN_AND_MATERIALIZED_REQUESTS",
+            forbiddenPath = "CanonicalSemanticProductionEntryPoint.RunAsync(full input) before segment completion",
+            providerCalls = 0,
+            modelCalls = 0,
+            goldReads = 0,
+            scoring = false,
+        }, ct);
         await File.WriteAllTextAsync(Path.Combine(output, "report.md"), string.Join(Environment.NewLine, new[]
         {
             "# DOC-0116 correctness live-runner transport closure",
@@ -419,6 +442,7 @@ public static class CanonicalDevVNextCorrectnessLiveRunner
             $"Source evidence packets: `{sourceEvidence.Count}`",
             $"Token attribution: source text `{sourceTextTokens}`, evidence `{sourceEvidenceTokens}`, local `{localContextTokens}`, global `{globalContextTokens}`, overhead `{schemaSystemOverheadTokens}`, total `{estimatedInputTokens}`",
             $"Timeout relation: outer `{PerAttemptHardTimeoutSeconds}s` >= request `{RequestTimeoutSeconds}s` + margin `{RequestTimeoutSafetyMarginSeconds}s`",
+            $"Segmented executor closure: `{executorValidation.ValidationStatus}` ({executorValidation.SegmentCount} requests, {executorValidation.OwnedOccurrenceCount} owned occurrences)",
             "Provider calls: `0`",
             "Gold reads: `0`",
             "Scoring: `false`",
