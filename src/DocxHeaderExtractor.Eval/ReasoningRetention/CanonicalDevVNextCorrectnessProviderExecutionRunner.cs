@@ -114,7 +114,7 @@ public static class CanonicalDevVNextCorrectnessProviderExecutionRunner
         return 0;
     }
 
-    private static async Task<CanonicalSemanticProductionInput> BuildFullInputAsync(
+    internal static async Task<CanonicalSemanticProductionInput> BuildFullInputAsync(
         string repoRoot, string expectedSourceUniverseSha, CancellationToken ct)
     {
         var sourceUniversePath = Path.Combine(repoRoot, SourcePreflightRoot.Replace('/', Path.DirectorySeparatorChar), "source-universe.v1.json");

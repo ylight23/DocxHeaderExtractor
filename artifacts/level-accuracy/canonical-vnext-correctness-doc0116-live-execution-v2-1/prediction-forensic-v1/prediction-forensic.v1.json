@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "a99-canonical-vnext-correctness-prediction-forensic-v1",
+  "documentId": "DOC-0116",
+  "executionRoot": "artifacts/level-accuracy/canonical-vnext-correctness-doc0116-live-execution-v2-1",
+  "predictionFreezeSha256": "bf9b42a4ea76103805136f379b4f133e3af40d087a14743a34d811d81989bfa8",
+  "executionCompleteSha256": "9dc1015b561e412cd123cb99f0c806aafc4a012c4e523ca29f353466403ccfd7",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldReads": 0,
+  "scoring": false,
+  "segmentCount": 7,
+  "segments": [
+    {
+      "requestOrdinal": 1,
+      "proposalCount": 103,
+      "parsedArtifactSha256": "8049064a286ba929210f3028bd3b035fbd502a2ef353f4c7be09a2f70c2d4782"
+    },
+    {
+      "requestOrdinal": 2,
+      "proposalCount": 40,
+      "parsedArtifactSha256": "624ae05195df978d82f3fd8388ab9eafef4362e85989d59f86cae0438a90708e"
+    },
+    {
+      "requestOrdinal": 3,
+      "proposalCount": 29,
+      "parsedArtifactSha256": "1a6786d03c0db97e4ee9774555b872c3a29532637ab7e9b2b5d495ce49feca29"
+    },
+    {
+      "requestOrdinal": 4,
+      "proposalCount": 43,
+      "parsedArtifactSha256": "7e20f909ccbc631b92138d77f862a61b0b424ef2735006ca2472f91dc0a8d918"
+    },
+    {
+      "requestOrdinal": 5,
+      "proposalCount": 50,
+      "parsedArtifactSha256": "74715681c0acd2f4a7633461c20cfa5785f5c8835349b42fd92db5701ebb318e"
+    },
+    {
+      "requestOrdinal": 6,
+      "proposalCount": 25,
+      "parsedArtifactSha256": "e18667fd913641bac18890b9c13301b3d1c60618fdf6d608c4b428ffa089b7a3"
+    },
+    {
+      "requestOrdinal": 7,
+      "proposalCount": 4,
+      "parsedArtifactSha256": "d7bd9059524339f64a8295912dda91f6bd6c313eeb30fcc06ebe2d5e4474d719"
+    }
+  ],
+  "rawProposals": 294,
+  "exactSemanticDuplicatesCollapsed": 0,
+  "hardConflictProposalsWithheld": 0,
+  "hardConflictGroupsWithheld": 0,
+  "attributeConflictAlternatives": 0,
+  "attributeConflictGroups": 0,
+  "normalizedProposals": 294,
+  "bindingReadyProposals": 294,
+  "bindingObservationStatusCounts": {
+    "Bound": 289,
+    "NonVerbatimText": 5
+  },
+  "boundHeadings": 289,
+  "canonicalGraphOccurrencesReplay": 289,
+  "canonicalGraphOccurrencesFrozen": 289,
+  "replayMatchesFrozenGraph": true,
+  "equation": {
+    "rawProposals": 294,
+    "exactSemanticDuplicatesCollapsed": 0,
+    "hardConflictProposalsWithheld": 0,
+    "attributeConflictGroups": 0,
+    "normalizedProposals": 294,
+    "bindingReadyProposals": 294,
+    "boundHeadings": 289,
+    "canonicalGraphOccurrences": 289
+  },
+  "normalizationConflictDetails": [],
+  "attributeConflictDetails": []
+}
