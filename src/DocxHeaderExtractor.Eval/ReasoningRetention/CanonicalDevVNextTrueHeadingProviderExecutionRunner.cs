@@ -39,8 +39,12 @@ public static class CanonicalDevVNextTrueHeadingProviderExecutionRunner
             freezeRoot.GetProperty("goldReads").GetInt32() != 0 || freezeRoot.GetProperty("providerCalls").GetInt32() != 0 ||
             freezeRoot.GetProperty("predictionFrozen").GetBoolean())
             return Blocked("PREFLIGHT_NOT_AUTHORITY");
+        // The preflight freezes runConfigurationHash over the canonical UTF-8 JSON text. The
+        // artifact was written by a text API that may emit a BOM, so validate its canonical text
+        // bytes rather than treating an encoding marker as a configuration mutation.
+        var runConfigurationText = await File.ReadAllTextAsync(configPath, ct);
         if (!string.Equals(Sha256File(planPath), freezeRoot.GetProperty("requestPlanSha256").GetString(), StringComparison.OrdinalIgnoreCase) ||
-            !string.Equals(Sha256File(configPath), freezeRoot.GetProperty("runConfigurationHash").GetString(), StringComparison.OrdinalIgnoreCase))
+            !string.Equals(Sha256(runConfigurationText), freezeRoot.GetProperty("runConfigurationHash").GetString(), StringComparison.OrdinalIgnoreCase))
             return Blocked("FROZEN_PLAN_OR_CONFIG_HASH_MISMATCH");
 
         var requests = planRoot.GetProperty("requests").EnumerateArray().ToArray();
