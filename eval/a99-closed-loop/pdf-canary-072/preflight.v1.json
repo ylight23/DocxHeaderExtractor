@@ -1,0 +1,125 @@
+{
+  "artifactKind": "PDF_CANARY_072_PREFLIGHT",
+  "providerCalls": 0,
+  "capturedAt": "provider boundary, before any response",
+  "notCaptured": "the placement pass: it fires only when headings are unresolved, and an empty reply produces none. Production would send it as an additional request.",
+  "source": {
+    "file": "072_ICP_TAG_Minutes_Mar_2025.pdf",
+    "sha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "detectedType": "Pdf",
+    "parserLines": 1065,
+    "semanticBlocks": 1013,
+    "riskLines": 559,
+    "riskBlocks": 559,
+    "riskBlocksThatAreSingletons": 559,
+    "riskBlocksFusedWithCleanLines": 0,
+    "sourceCatalogUnits": 1013,
+    "aliases": 1013
+  },
+  "segmentation": {
+    "ownedPerSegmentPolicy": 120,
+    "visibleMarginPolicy": 20,
+    "segments": 9,
+    "owned": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      53
+    ],
+    "visible": [
+      140,
+      160,
+      160,
+      160,
+      160,
+      160,
+      160,
+      160,
+      73
+    ],
+    "ownedTotal": 1013,
+    "ownedDistinct": 1013,
+    "duplicateOwnership": 0,
+    "aliasesNeverOwned": [],
+    "aliasesOwnedButNotInCatalog": []
+  },
+  "request": {
+    "systemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+    "systemPromptIsTheSharedOne": true,
+    "userPayloadSha256": [
+      "687ccf7b41fa2e66ca9430c4e5d3df80a2ea92d6bd9feac51e8d2369ebe9ecff",
+      "606779f57490f352c2a34f21473f93bab59315cd7810359b28f837a2a042be49",
+      "8934b2f65c1f30dc1ab480598ccdce561b1efaa024a048aaaeb49b50714f2700",
+      "e06d45576e3e6887c5661d664a4d2234a5c66d1ff68292e0ae9271a015861cce",
+      "e5b5330d10a65daddaf7ce70657ef1db309cc41d6150f4f0a64e8dec7ef8a579",
+      "989e758b0a18c49ab412d8802632c0d4b492c5049a50ef29fc32b32b84407ab5",
+      "1f5f9d45fa20625d6daea67eeb2b0c1e31a0284120194912d61b22415f5c8f87",
+      "6044274f4ded8b92966df8036d865dfe550797bde0c7e90d83ecd580007fdebd",
+      "6126c969092546f51e2df4361aa593512bc3aee27ef62e3d1eb81c05bf89f5fb"
+    ],
+    "chars": [
+      52196,
+      53916,
+      53504,
+      53677,
+      53859,
+      53915,
+      53895,
+      54643,
+      22906
+    ],
+    "bytes": [
+      52196,
+      53916,
+      53504,
+      53677,
+      53859,
+      53915,
+      53895,
+      54643,
+      22906
+    ],
+    "largestRequestChars": 54643,
+    "expectedItemCount": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      53
+    ]
+  },
+  "evidenceShape": {
+    "ownedEntryFields": [
+      "alias",
+      "text",
+      "owned",
+      "scope",
+      "tableDepth",
+      "inTableOfContents",
+      "style",
+      "numbering",
+      "markers",
+      "attention"
+    ],
+    "marginEntryFields": [
+      "alias",
+      "text",
+      "owned"
+    ]
+  },
+  "contract": {
+    "protocol": "a99-canonical-semantic-vnext-v1",
+    "coordinateNamesFoundInSchema": [],
+    "partialSpanCommunicated": false,
+    "relationFieldsCommunicated": true
+  }
+}

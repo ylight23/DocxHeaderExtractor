@@ -1,0 +1,77 @@
+{
+  "artifactKind": "PDF_CANARY_PREFLIGHT_FINDINGS",
+  "schemaVersion": "v1",
+  "document": "DOC-0072",
+  "providerCalls": 0,
+  "verdict": "BLOCKED_DO_NOT_SPEND_THE_CANARY_CALL",
+  "acceptanceChecks": {
+    "providerCalls": "PASS - 0",
+    "sourceLoss": "PASS - 1013 blocks, 1013 catalog units, 1013 aliases, every alias owned exactly once",
+    "ownershipGap": "PASS - ownedDistinct 1013 = aliases 1013, duplicateOwnership 0, aliasesNeverOwned []",
+    "riskOccurrenceFusion": "PASS - 559 risk blocks, all singletons, 0 fused with a clean line",
+    "positionalCoordinateOwnership": "PASS - no coordinate name appears in the output schema; the prompt forbids returning offsets, spans, pages, boxes or coordinates",
+    "determinism": "PASS - two runs produce identical system-prompt and per-segment payload hashes",
+    "replayProvenance": "PASS - system prompt and all nine request payloads written beside this file"
+  },
+  "blockingFindings": [
+    {
+      "id": "P1",
+      "severity": "BLOCKING",
+      "title": "The canonical PDF source text is the un-repaired parser string",
+      "detail": "DocumentSourceCatalogBuilder.FromPdfParserBlocks takes RawText from SourceFactsBuilder.FromPdfBlock, which is block.Text - PdfTextUtilities.Readable. On this document that string carries spurious intra-word spaces.",
+      "measured": "275 of the first 400 blocks (68.8%) have Text different from DisplayText; 201 carry kerning join evidence.",
+      "examples": [
+        {
+          "raw": "M I N UTES OF TH E I NTE RNATIONAL COM PARISON PROG RAM",
+          "headingReadable": "M I NUTES OF TH E INTE RNATIONAL COM PARISON PROG RAM",
+          "lineMatchText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+        },
+        {
+          "raw": "Session I : Welcome a nd meeting objectives",
+          "headingReadable": "Session I: Welcome a nd meeting objectives",
+          "lineMatchText": "Session I: Welcome and meeting objectives"
+        }
+      ],
+      "whyItBlocks": "The contract requires verbatimText to be an exact substring of the source. With the mangled string as source, the model must echo 'M I N UTES OF TH E I NTE RNATIONAL' character for character for the binder to accept it, and any PDF gold written in readable text can never match.",
+      "notASimpleFix": "HeadingReadable is not the answer either - it repairs some cases and corrupts others, producing 'hybridmeetingon', 'New York-Hybrid' and ',,,.' on this same document. PdfLine.MatchText is the variant that reads correctly, but it is per line and is currently used for matching, not as source identity.",
+      "decisionRequired": "What is 'verbatim' for a PDF? Either the canonical source stays the literal parser string and the model must echo it exactly, or the canonical source becomes a declared repair and offsets index that repaired string. This defines the source contract for the whole PDF lane, so it is not a fix to make quietly.",
+      "notChanged": true
+    },
+    {
+      "id": "P2",
+      "severity": "HIGH",
+      "title": "Layout geometry is presented to the model in the field named 'style'",
+      "detail": "The PDF evidence fills the style slot with { LineCount, Left, Right, TopY, BottomY } at full float precision, for example Left 169.477678125. In the DOCX lane the same slot carries an author declaration - StyleId, StyleName, OutlineLevel, Bold.",
+      "risk": "Same field name, two different kinds of thing. A declaration is a claim about meaning; a coordinate is a measurement. Handing raw coordinates under a name the DOCX lane uses for declarations invites positional reasoning in the one place the architecture has worked hardest to keep positional authority out of, and it makes any cross-format comparison of 'style evidence' meaningless.",
+      "alsoNoise": "numbering is three nulls on every PDF entry, and tableDepth is 0 on every entry because PDF scope carries that instead.",
+      "notChanged": true
+    },
+    {
+      "id": "P3",
+      "severity": "HIGH",
+      "title": "One structural family is split across five segments",
+      "detail": "The Session family has 13 members spread over segments 0, 2, 3, 4 and 7. Segment 7 additionally contains a second series - SESSION I and SESSION II - which is the annex agenda restating the same sessions.",
+      "relatesTo": "I7. This is the DAY 1 failure mode, and more severe: DAY 1 was one family across two segments, this is one family across five, with a restated series in the last.",
+      "consequence": "A canary run now would be measuring segmentation asymmetry as much as PDF semantics, and the two could not be separated.",
+      "notChanged": true
+    }
+  ],
+  "inspectionsRequested": {
+    "riskLinePresentButNotFused": "CONFIRMED CLEAN - 559 risk blocks, all singletons, none fused",
+    "headingsMergedTooWidelyBetweenCleanLines": "1065 parser lines became 1013 blocks, so only 52 merges. But 392 owned entries exceed 90 characters, and the long ones are body prose rather than headings - merging is conservative, though P1 makes the merged text unreadable anyway.",
+    "segmentSplittingAStructuralFamily": "FOUND - see P3",
+    "pdfPromptDivergingFromDocx": "CLEAN - systemPromptIsTheSharedOne is true and every request carries the identical prompt",
+    "layoutFieldBecomingSemanticAuthority": "FOUND - see P2"
+  },
+  "recommendedOrder": [
+    "Decide P1, the PDF source text contract - it changes every downstream number",
+    "Reshape P2 so declarations and measurements are not in the same slot",
+    "P3 is I7 and can be measured after, since it needs a provider run either way",
+    "Only then spend the canary call"
+  ],
+  "packetProvenance": {
+    "systemPrompt": "system-prompt.txt",
+    "requests": "request-0.json .. request-8.json",
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61"
+  }
+}
