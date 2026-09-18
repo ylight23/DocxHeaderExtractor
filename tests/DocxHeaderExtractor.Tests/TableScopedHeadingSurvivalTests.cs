@@ -80,18 +80,22 @@ public sealed class TableScopedHeadingSurvivalTests
 
     private static IReadOnlyDictionary<string, PdfCandidateContext> ModelContexts()
     {
+        var state = State();
+        var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
+        return DocxAuthorityPipeline.BuildForAudit(state, mode).ModelContexts;
+    }
+
+    private static DocxPolicyState State()
+    {
         var docx = Path.Combine(RepositoryRoot(),
             "todo10_8", "heading_corpus_95_word", "05_bien_ban_hop", "076_ICP_IACG08_Minutes_2023.docx");
         Assert.True(File.Exists(docx), $"Missing fixture: {docx}");
 
         var source = new OpenXmlDocumentSource().Read(docx);
-        var policy = DocxPolicyStateBuilder.Build(source, NumberingStyleFeatures.FromSourceDocument(source),
-            new DocumentFeatureDeriver().Derive(source), new ExtractionOptions());
-        var state = new DocxPolicyState(source, NumberingStyleFeatures.FromSourceDocument(source),
-            new DocumentFeatureDeriver().Derive(source), policy.Paragraphs, policy.StyleTrust);
-        var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-
-        return DocxAuthorityPipeline.BuildForAudit(state, mode).ModelContexts;
+        var features = NumberingStyleFeatures.FromSourceDocument(source);
+        var derived = new DocumentFeatureDeriver().Derive(source);
+        var policy = DocxPolicyStateBuilder.Build(source, features, derived, new ExtractionOptions());
+        return new DocxPolicyState(source, features, derived, policy.Paragraphs, policy.StyleTrust);
     }
 
     private static string RepositoryRoot()
