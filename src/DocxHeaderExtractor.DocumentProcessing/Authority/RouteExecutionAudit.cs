@@ -69,6 +69,14 @@ public sealed record RouteExecutionAudit(
     [JsonPropertyName("hierarchyFacts")]
     public IReadOnlyList<PdfHierarchyFactAudit> HierarchyFacts { get; init; } = [];
 
+    /// <summary>
+    /// Measured semantic disagreement for this run. Reported so the question "does this route need
+    /// an adjudication model" is answered from counted conflict, not assumed conflict.
+    /// </summary>
+    [JsonPropertyName("conflictCensus")]
+    public Pipeline.SemanticConflictCensus ConflictCensus { get; init; } =
+        Pipeline.SemanticConflictCensus.Empty;
+
     [JsonPropertyName("textLayerRecoveries")]
     public IReadOnlyList<PdfTextLayerRecoveryAudit> TextLayerRecoveries { get; init; } = [];
 

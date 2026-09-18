@@ -17,6 +17,27 @@ internal static class ModelRelationHierarchyResolver
     private const string SameNodeHintPrefix = "same-node:";
     private const string ContinuationNodeHintPrefix = "continuation-node:";
     private const string RootParent = "ROOT";
+    private const string NoHierarchy = "NONE";
+
+    /// <summary>A heading the model placed under an earlier heading.</summary>
+    internal const string ResolvedParent = "model-parent-relation";
+
+    /// <summary>A heading the model placed at the top of the section tree.</summary>
+    internal const string ResolvedRoot = "model-root";
+
+    /// <summary>
+    /// A heading the model positively determined to sit OUTSIDE the section tree: a document
+    /// title, a running header, a table or figure label, a form label. It is a real heading and is
+    /// reported as one, but it has no level and may not be anyone's parent — letting one act as a
+    /// parent pushes every real section down a level and shifts the whole document.
+    /// </summary>
+    internal const string OutOfHierarchy = "model-out-of-hierarchy";
+
+    /// <summary>
+    /// The model did not decide. Distinct from <see cref="OutOfHierarchy"/>: this one is an
+    /// absence of judgement and belongs in a review queue, that one is a judgement.
+    /// </summary>
+    internal const string Unresolved = "unresolved";
 
     /// <summary>Harness-owned hierarchy for one heading, derived from model parent relations.</summary>
     /// <param name="SemanticNodeKey">
@@ -56,9 +77,23 @@ internal static class ModelRelationHierarchyResolver
             .Select((item, index) => (item.SourceId, index))
             .ToDictionary(item => item.SourceId, item => item.index, StringComparer.Ordinal);
 
+        // Pass one reads the model's own words: which headings sit outside the tree entirely.
+        // It must finish before any parent is accepted, because a heading outside the tree cannot
+        // be a parent and the claim can arrive after the child that names it.
+        var outsideHierarchy = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var heading in ordered)
+        {
+            var hint = heading.RelationHints.FirstOrDefault(item =>
+                item.StartsWith(ParentHintPrefix, StringComparison.Ordinal));
+            if (hint is not null &&
+                string.Equals(hint[ParentHintPrefix.Length..], NoHierarchy, StringComparison.OrdinalIgnoreCase))
+                outsideHierarchy.Add(heading.SourceId);
+        }
+
         var parentBySourceId = new Dictionary<string, string?>(StringComparer.Ordinal);
         foreach (var heading in ordered)
         {
+            if (outsideHierarchy.Contains(heading.SourceId)) continue;
             var hint = heading.RelationHints.FirstOrDefault(item =>
                 item.StartsWith(ParentHintPrefix, StringComparison.Ordinal));
             if (hint is null) continue;
@@ -69,6 +104,7 @@ internal static class ModelRelationHierarchyResolver
                 continue;
             }
             if (!sourceIdByAlias.TryGetValue(target, out var parentSourceId)) continue;
+            if (outsideHierarchy.Contains(parentSourceId)) continue;
             if (string.Equals(parentSourceId, heading.SourceId, StringComparison.Ordinal)) continue;
             if (ordinalBySourceId[parentSourceId] >= ordinalBySourceId[heading.SourceId]) continue;
             parentBySourceId[heading.SourceId] = parentSourceId;
@@ -96,8 +132,9 @@ internal static class ModelRelationHierarchyResolver
                 heading.SourceId,
                 levels[heading.SourceId],
                 resolved ? parentSourceId : null,
-                !resolved ? "unresolved"
-                    : parentSourceId is null ? "model-root" : "model-parent-relation",
+                outsideHierarchy.Contains(heading.SourceId) ? OutOfHierarchy
+                    : !resolved ? Unresolved
+                    : parentSourceId is null ? ResolvedRoot : ResolvedParent,
                 nodeKey,
                 seenNodes.Add(nodeKey)));
         }

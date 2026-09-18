@@ -72,6 +72,7 @@ public static class HeadingOutlineProjection
             InlineBodySpan = metadata?.InlineBodySpan is { } bodySpan
                 ? new TextOffsetSpan(bodySpan.Start, bodySpan.End)
                 : null,
+            HierarchyResolution = metadata?.HierarchyResolution,
             BoundarySource = metadata?.BoundarySource,
             StyleId = metadata?.StyleId,
             Source = ParseSource(element.Decision.Origin),

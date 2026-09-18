@@ -53,6 +53,7 @@ try
     return options.Command switch
     {
         "info" => RunModelInfo(options),
+        "score" => RunScore(options),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -187,6 +188,48 @@ static DocumentAgentRequest AgentRequest(string file, CommandLineOptions o) =>
         AllowWritebackOverwrite = o.WritebackOverwrite,
         ApplyHeadingStyles = o.WritebackHeadingStyles,
     };
+
+static int RunScore(CommandLineOptions o)
+{
+    if (o.Inputs.Count != 2)
+    {
+        Console.Error.WriteLine("dhx score <reference.json> <prediction.json>");
+        return 2;
+    }
+
+    static IReadOnlyList<ScoredHeading> Read(string path, params string[] textFields)
+    {
+        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        var rows = document.RootElement.ValueKind == JsonValueKind.Array
+            ? document.RootElement
+            : document.RootElement.EnumerateObject()
+                .Where(property => property.Value.ValueKind == JsonValueKind.Array)
+                .Select(property => property.Value)
+                .FirstOrDefault(array => array.GetArrayLength() > 0 &&
+                    array[0].ValueKind == JsonValueKind.Object);
+        var result = new List<ScoredHeading>();
+        if (rows.ValueKind != JsonValueKind.Array) return result;
+        foreach (var row in rows.EnumerateArray())
+        {
+            var text = textFields
+                .Select(field => row.TryGetProperty(field, out var value) ? value.GetString() : null)
+                .FirstOrDefault(value => !string.IsNullOrWhiteSpace(value));
+            if (text is null) continue;
+            int? level = row.TryGetProperty("level", out var levelValue) &&
+                levelValue.ValueKind == JsonValueKind.Number ? levelValue.GetInt32() : null;
+            result.Add(new ScoredHeading(text, level));
+        }
+        return result;
+    }
+
+    var gold = Read(o.Inputs[0], "exactText", "text");
+    var predicted = Read(o.Inputs[1], "originalText", "text");
+    var score = HeadingLevelScorer.Score(gold, predicted);
+    Console.WriteLine(score.Describe(Path.GetFileNameWithoutExtension(o.Inputs[0])));
+    foreach (var (text, goldLevel, predictedLevel) in score.StructuralMismatches.Take(10))
+        Console.WriteLine($"    reference L{goldLevel} -> predicted L{predictedLevel}  {text}");
+    return 0;
+}
 
 static int RunModelInfo(CommandLineOptions o)
 {
