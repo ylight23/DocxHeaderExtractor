@@ -30,6 +30,14 @@
     "lost": 0,
     "note": "The fix changed nothing on this document, which is measurable without gold."
   },
-  "requiredBeforeScoring": "Re-author or repair DOC-0001 gold from the source, under the same user approval the other strict-gold-v4 files carry. Not done here - no gold mutation.",
-  "relatedOpenItem": "DOC-0252 has one row whose text changes under the same repair heuristic; it was not investigated and is not claimed to be damaged."
+  "requiredBeforeScoring": "Approve eval/a99-closed-loop/reference-repair-v1/doc0001-gold-reauthor-proposal.v1.json. Still not applied - no gold mutation.",
+  "relatedOpenItem": "DOC-0252 has one row whose text changes under the same repair heuristic; it was not investigated and is not claimed to be damaged.",
+  "resolutionPath": {
+    "proposal": "eval/a99-closed-loop/reference-repair-v1/doc0001-gold-reauthor-proposal.v1.json",
+    "status": "PENDING_USER_REVIEW",
+    "providerCalls": 0,
+    "approach": "Source-backed deterministic re-author, not a decoding repair. The document is style-conformant: seven paragraphs carry a built-in heading style with an explicit w:outlineLvl and the other seven are body prose, so the heading set is closed by construction.",
+    "corroboration": "All seven superseded gold rows land on one of those seven paragraphs, and every stored level agrees with w:outlineLvl + 1.",
+    "supersededGoldRetained": true
+  }
 }

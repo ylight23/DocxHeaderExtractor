@@ -1,0 +1,114 @@
+{
+  "artifactKind": "INTERVENTION_BACKLOG",
+  "schemaVersion": "v1",
+  "asOf": "2026-09-18",
+  "principle": "One causal family per intervention, one variable changed, one fresh run each. Never combine two prompt changes in a single measurement.",
+  "SYSTEM": [
+    {
+      "id": "veto",
+      "title": "semantic veto removal",
+      "status": "DONE",
+      "commits": [
+        "3886a5a"
+      ],
+      "evidence": "semantic-veto-removal-v1/cross-document-replay.v1.json",
+      "verdict": "SEMANTIC_VETO_FIX_EXPOSES_MODEL_FP"
+    },
+    {
+      "id": "containment",
+      "title": "malformed reply containment",
+      "status": "DONE",
+      "commits": [
+        "5e67b8a"
+      ],
+      "evidence": "tests/DocxHeaderExtractor.Tests/MalformedReplyContainmentTests.cs"
+    },
+    {
+      "id": "I7",
+      "title": "STRUCTURAL ANCESTOR CARRY",
+      "status": "OPEN_NEEDS_PROVIDER",
+      "target": [
+        "DAY 1 (DOC-0256)"
+      ],
+      "changes": "context packing only",
+      "promptChanged": false,
+      "question": "If segment 1 can see the active ancestor 'Annex 1: Meeting Agenda', does DAY 1 still get classified differently from DAY 2/3/4?",
+      "evidence": "semantic-veto-removal-v1/day1-segment-asymmetry.v1.json",
+      "mustNotCombineWith": [
+        "I8",
+        "I9"
+      ],
+      "note": "Changes the request packet, so it invalidates the frozen recordings and cannot be scored offline."
+    }
+  ],
+  "MODEL": [
+    {
+      "id": "I8",
+      "title": "PARTIAL-SPAN DISCOVERY CONTRACT",
+      "status": "OPEN_NEEDS_PROVIDER",
+      "target": [
+        "Africa",
+        "Asia and the Pacific",
+        "Eurostat-OECD PPP Program"
+      ],
+      "changes": "prompt only",
+      "contextPackingChanged": false,
+      "question": "If the prompt states that a heading may be an exact substring or prefix inside a sourceAlias, does the model return the correct partial span?",
+      "evidence": "semantic-veto-removal-v1/partial-span-boundary.v1.json",
+      "mustNotCombineWith": [
+        "I7",
+        "I9"
+      ],
+      "whySeparateFromI9": "I8 tests boundary selection inside one occurrence. I9 tests which occurrence of a section to claim. Combining them would make any gain unattributable."
+    },
+    {
+      "id": "I9",
+      "title": "TOC/BODY DOUBLE-CLAIM CONTROL",
+      "status": "OPEN_NEEDS_PROVIDER",
+      "target": [
+        "DOC-0116, 4 table-of-contents lines"
+      ],
+      "changes": "prompt only",
+      "sourcePacketChanged": false,
+      "question": "Can the model keep the body occurrence without also claiming the navigation occurrence for the same semantic section?",
+      "evidence": "semantic-veto-removal-v1/newly-exposed-fp-classification.v1.json",
+      "mustNotCombineWith": [
+        "I7",
+        "I8"
+      ]
+    }
+  ],
+  "REFERENCE": [
+    {
+      "id": "R1",
+      "title": "DOC-0001 gold re-author",
+      "status": "PENDING_USER_REVIEW",
+      "providerCalls": 0,
+      "proposal": "reference-repair-v1/doc0001-gold-reauthor-proposal.v1.json",
+      "effect": "Returns DOC-0001 to the replay cohort, taking it from four scoreable documents to five."
+    },
+    {
+      "id": "R2",
+      "title": "DOC-0256 'Planning for the ICP 2024 cycle' coordinate cleanup",
+      "status": "PENDING_USER_ADJUDICATION",
+      "urgency": "LOW",
+      "proposal": "semantic-veto-removal-v1/gold-coordinate-adjudication.v1.json",
+      "note": "Does not block any benchmark: the authorised join is semantic, so the row matches by text wherever it sits."
+    },
+    {
+      "id": "R3",
+      "title": "DOC-0116 exhaustive gold",
+      "status": "OPEN",
+      "why": "Gold is TOC-derived and PARTIAL, so precision is not measurable there. 88 newly surviving occurrences are stuck at UNRESOLVED for want of an exhaustive reference.",
+      "note": "Until this exists, DOC-0116 contributes recall evidence only."
+    }
+  ],
+  "notPlanned": {
+    "items": [
+      "broad omission-review pass",
+      "a stronger model",
+      "a VLM pass"
+    ],
+    "reason": "No evidence remains for a clean true model omission in DOC-0256. Every residual now has a narrower causal hypothesis: context asymmetry, text-boundary contract, or a reference defect. Reaching for more model capacity would be treating a symptom whose cause is already identified."
+  }
+}

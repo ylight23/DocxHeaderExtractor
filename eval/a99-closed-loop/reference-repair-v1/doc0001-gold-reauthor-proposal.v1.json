@@ -1,0 +1,197 @@
+{
+  "artifactKind": "GOLD_REAUTHOR_PROPOSAL",
+  "schemaVersion": "v1",
+  "status": "PENDING_USER_REVIEW",
+  "mutationApplied": false,
+  "documentId": "DOC-0001",
+  "fileName": "01-style-chuan.docx",
+  "sourcePath": "bench/01-style-chuan.docx",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "sourceShaMatchesSupersededGold": true,
+  "why": "The current gold is unusable: its exactText holds UTF-8 bytes stored as cp1252, and three of seven rows contain 0x81/0x90 which are undefined in cp1252, so a decoding repair is lossy. This proposal does not repair the damaged strings - it re-derives the heading set from the source document.",
+  "method": {
+    "kind": "SOURCE_BACKED_DETERMINISTIC_REAUTHOR",
+    "providerCalls": 0,
+    "modelUsed": false,
+    "derivation": "Every heading is a paragraph carrying an OOXML built-in heading style with an explicit w:outlineLvl. Text is read from the source document; level is w:outlineLvl + 1.",
+    "whyDeterministicIsSufficient": "This is a style-conformant document. The heading set is closed by construction: the source contains exactly seven paragraphs with a built-in heading style and the remaining seven are body prose.",
+    "corroboration": {
+      "goldRowsLandingOnABuiltInHeadingStyle": "7/7",
+      "sourceParagraphsWithABuiltInHeadingStyle": 7,
+      "levelAgreementWithSupersededGold": "7/7",
+      "note": "The superseded gold is used only to confirm the pairing and the heading count. It is not the source of the new text."
+    }
+  },
+  "sourceIdSchemeChange": {
+    "from": "paragraph[N] (0-based paragraph ordinal)",
+    "to": "body[1]/p[N+1]",
+    "reason": "The canonical route addresses occurrences as body[1]/p[N]. The mapping is exact and was verified row by row.",
+    "note": "Recorded because it also resolves the secondary defect noted in doc0001-replay-block.v1.json."
+  },
+  "proposedHeadings": [
+    {
+      "sourceId": "body[1]/p[1]",
+      "paragraphOrdinal": 0,
+      "exactText": "Chương 1. Quy định chung",
+      "level": 1,
+      "evidence": {
+        "styleId": "Heading1",
+        "outlineLvl": 0,
+        "builtInHeadingStyle": true,
+        "derivation": "OOXML built-in heading style with explicit w:outlineLvl"
+      },
+      "supersedes": {
+        "sourceId": "paragraph[0]",
+        "storedExactText": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung",
+        "storedLevel": 1,
+        "textRecoverable": true,
+        "levelAgrees": true
+      }
+    },
+    {
+      "sourceId": "body[1]/p[3]",
+      "paragraphOrdinal": 2,
+      "exactText": "1.1. Phạm vi điều chỉnh",
+      "level": 2,
+      "evidence": {
+        "styleId": "Heading2",
+        "outlineLvl": 1,
+        "builtInHeadingStyle": true,
+        "derivation": "OOXML built-in heading style with explicit w:outlineLvl"
+      },
+      "supersedes": {
+        "sourceId": "paragraph[2]",
+        "storedExactText": "1.1. Pháº¡m vi Ä‘iá»u chá»‰nh",
+        "storedLevel": 2,
+        "textRecoverable": false,
+        "levelAgrees": true
+      }
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "paragraphOrdinal": 4,
+      "exactText": "1.2. Đối tượng áp dụng",
+      "level": 2,
+      "evidence": {
+        "styleId": "Heading2",
+        "outlineLvl": 1,
+        "builtInHeadingStyle": true,
+        "derivation": "OOXML built-in heading style with explicit w:outlineLvl"
+      },
+      "supersedes": {
+        "sourceId": "paragraph[4]",
+        "storedExactText": "1.2. Äá»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+        "storedLevel": 2,
+        "textRecoverable": false,
+        "levelAgrees": true
+      }
+    },
+    {
+      "sourceId": "body[1]/p[7]",
+      "paragraphOrdinal": 6,
+      "exactText": "1.2.1. Cơ quan quản lý",
+      "level": 3,
+      "evidence": {
+        "styleId": "Heading3",
+        "outlineLvl": 2,
+        "builtInHeadingStyle": true,
+        "derivation": "OOXML built-in heading style with explicit w:outlineLvl"
+      },
+      "supersedes": {
+        "sourceId": "paragraph[6]",
+        "storedExactText": "1.2.1. CÆ¡ quan quáº£n lÃ½",
+        "storedLevel": 3,
+        "textRecoverable": true,
+        "levelAgrees": true
+      }
+    },
+    {
+      "sourceId": "body[1]/p[9]",
+      "paragraphOrdinal": 8,
+      "exactText": "1.2.2. Đơn vị trực thuộc",
+      "level": 3,
+      "evidence": {
+        "styleId": "Heading3",
+        "outlineLvl": 2,
+        "builtInHeadingStyle": true,
+        "derivation": "OOXML built-in heading style with explicit w:outlineLvl"
+      },
+      "supersedes": {
+        "sourceId": "paragraph[8]",
+        "storedExactText": "1.2.2. ÄÆ¡n vá»‹ trá»±c thuá»™c",
+        "storedLevel": 3,
+        "textRecoverable": false,
+        "levelAgrees": true
+      }
+    },
+    {
+      "sourceId": "body[1]/p[11]",
+      "paragraphOrdinal": 10,
+      "exactText": "Chương 2. Tổ chức thực hiện",
+      "level": 1,
+      "evidence": {
+        "styleId": "Heading1",
+        "outlineLvl": 0,
+        "builtInHeadingStyle": true,
+        "derivation": "OOXML built-in heading style with explicit w:outlineLvl"
+      },
+      "supersedes": {
+        "sourceId": "paragraph[10]",
+        "storedExactText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n",
+        "storedLevel": 1,
+        "textRecoverable": true,
+        "levelAgrees": true
+      }
+    },
+    {
+      "sourceId": "body[1]/p[13]",
+      "paragraphOrdinal": 12,
+      "exactText": "2.1. Phân công trách nhiệm",
+      "level": 2,
+      "evidence": {
+        "styleId": "Heading2",
+        "outlineLvl": 1,
+        "builtInHeadingStyle": true,
+        "derivation": "OOXML built-in heading style with explicit w:outlineLvl"
+      },
+      "supersedes": {
+        "sourceId": "paragraph[12]",
+        "storedExactText": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m",
+        "storedLevel": 2,
+        "textRecoverable": true,
+        "levelAgrees": true
+      }
+    }
+  ],
+  "provenance": {
+    "supersededGoldPath": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+    "supersededGoldSha256": "5ac30a82db551a8149ed777390eeca0dc6c6d0bafd9e82468dde32777808dfc8",
+    "retain": true,
+    "retentionReason": "Keep the corrupted file as superseded provenance. Deleting it would erase the evidence that the damage existed and how it was found."
+  },
+  "requiredBeforeUse": [
+    "user review of all seven rows",
+    "promotion to a new strict-gold version with finalAuthority USER",
+    "capabilities must be re-declared; do not assume occurrenceEvaluable becomes true just because source ids are now canonical"
+  ],
+  "effectIfApproved": {
+    "replayCohort": "DOC-0001 rejoins the offline replay cohort, taking it from four scoreable documents to five.",
+    "blastRadiusOfTheVetoFixOnThisDocument": {
+      "newlySurviving": 0,
+      "lost": 0,
+      "note": "Measured already and independent of gold: commit 3886a5a changes nothing on this document."
+    },
+    "wouldBeScore": {
+      "predicted": 6,
+      "goldRows": 7,
+      "tp": 6,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.8571,
+      "f1": 0.9231,
+      "missing": "body[1]/p[11] 'Chương 2. Tổ chức thực hiện'",
+      "status": "PROJECTION_ONLY_PENDING_APPROVAL"
+    }
+  }
+}
