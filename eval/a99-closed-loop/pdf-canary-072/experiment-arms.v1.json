@@ -1,0 +1,72 @@
+{
+  "artifactKind": "PDF_EXPERIMENT_ARM_FREEZE",
+  "providerCalls": 0,
+  "document": "DOC-0072",
+  "note": "Requests per arm, not provider calls made. A full run of one arm sends this many semantic requests, plus a placement request per unresolved heading round.",
+  "noCombinedArm": "I7 and I8 are never applied together until each has been measured alone.",
+  "arms": [
+    {
+      "arm": "B0-baseline",
+      "carryStructuralAncestors": false,
+      "communicatePartialSpan": false,
+      "requests": 9,
+      "systemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "systemPromptChars": 2301,
+      "payloadSha256": [
+        "e1e8ca87ddd9cbf7785c45c03d31e79e2f0f16732fd0a4d5518b563200de03f2",
+        "c23135ee6b48e4bbeffa4bb3c96f50a536c4ea91e5bc8cafdf44c3e199a30bbf",
+        "6389bf74bf01c9ea94044a603a229ff33c43076b2daa9e0cf9fcfa349c867027",
+        "f811a12a39ea3277110b866cacae4bed2ce3794fc7114e8aebb980f80a0dd46d",
+        "aa73bcfe95980ad2d4630f80ffa461f2b0c6f87d7b989f775889c5f774a7906a",
+        "73911c908e4e3ddb33114f904c1317c5e6c224729976e106ee11ad86aa428cf3",
+        "07c105f1b0020de95334a81af860139dfec347de9979b580827efd651576cdff",
+        "62d4723d59301e2c3e678a0ccda67c5675ec45a2b8fb590b403494e95f5b27a0",
+        "5ad1783f8ab11c25c36a72fdc7c33867456a0ad86346d2cfcec0973101d5386d"
+      ],
+      "totalPayloadChars": 328601,
+      "segmentsCarryingOpenStructure": 0
+    },
+    {
+      "arm": "B1-i7-structural-ancestors",
+      "carryStructuralAncestors": true,
+      "communicatePartialSpan": false,
+      "requests": 9,
+      "systemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "systemPromptChars": 2301,
+      "payloadSha256": [
+        "e1e8ca87ddd9cbf7785c45c03d31e79e2f0f16732fd0a4d5518b563200de03f2",
+        "e5fc5e4aef3ccdd29b39cb7e5c6e8190b062e0b87597f901a53a60a3c636308a",
+        "ab5f8a6e1b5916c5998a4bca4ac606db5eb6b120d34195c2a9377a0fae273b16",
+        "7f433cb5b9330ece833c10192cb643c02b3a472e56b152d5dc556aac9d48d643",
+        "4b85a851af0eb1f68a4c545445cf943408b72c5d80e6a8f7bb4cb6274e4a902d",
+        "50a28189518f62a5560b997800a595d422075ae3c79a32d24faf00386b975d35",
+        "950ba833a4e3bb729e5bc954f3bbcb9d6ec376758a2b9520ec8f911e81970519",
+        "dd6fc59f1de230c04c603cca1e89363d58ef5d40f17a52d92aea79a4c12d4605",
+        "460201b61db399f69662bc18996f87d1d5fe31d8e4eb15190cfa35e7019459af"
+      ],
+      "totalPayloadChars": 331541,
+      "segmentsCarryingOpenStructure": 8
+    },
+    {
+      "arm": "B2-i8-partial-span",
+      "carryStructuralAncestors": false,
+      "communicatePartialSpan": true,
+      "requests": 9,
+      "systemPromptSha256": "dae4842b313c9655fafb74b76e69795aa026991f547b36d9f3c9cf2aaa6acd04",
+      "systemPromptChars": 3388,
+      "payloadSha256": [
+        "e1e8ca87ddd9cbf7785c45c03d31e79e2f0f16732fd0a4d5518b563200de03f2",
+        "c23135ee6b48e4bbeffa4bb3c96f50a536c4ea91e5bc8cafdf44c3e199a30bbf",
+        "6389bf74bf01c9ea94044a603a229ff33c43076b2daa9e0cf9fcfa349c867027",
+        "f811a12a39ea3277110b866cacae4bed2ce3794fc7114e8aebb980f80a0dd46d",
+        "aa73bcfe95980ad2d4630f80ffa461f2b0c6f87d7b989f775889c5f774a7906a",
+        "73911c908e4e3ddb33114f904c1317c5e6c224729976e106ee11ad86aa428cf3",
+        "07c105f1b0020de95334a81af860139dfec347de9979b580827efd651576cdff",
+        "62d4723d59301e2c3e678a0ccda67c5675ec45a2b8fb590b403494e95f5b27a0",
+        "5ad1783f8ab11c25c36a72fdc7c33867456a0ad86346d2cfcec0973101d5386d"
+      ],
+      "totalPayloadChars": 328601,
+      "segmentsCarryingOpenStructure": 0
+    }
+  ]
+}

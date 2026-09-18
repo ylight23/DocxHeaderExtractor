@@ -24,7 +24,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
     public static async Task<StructuralAuthorityResult> RunAsync(
         string pdfPath,
         IHeaderClassifier? transport,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        CanonicalSemanticExperiment? experiment = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
@@ -92,7 +93,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         }
         else
         {
-            canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(transport);
+            canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+                transport, experiment ?? CanonicalSemanticExperiment.Baseline);
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
                 input, canonicalModel,
                 requestId: $"pdf:{Path.GetFileNameWithoutExtension(pdfPath)}",
@@ -238,7 +240,10 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             context.PreviousBlocks,
             context.NextBlocks,
             new SemanticCandidateAttentionHint(
-                alias, attention, attention ? "pdf-layout-candidate" : "pdf-layout-non-candidate"));
+                alias, attention, attention ? "pdf-layout-candidate" : "pdf-layout-non-candidate"))
+        {
+            ActiveStructuralAncestors = context.ActiveHeadingStack,
+        };
     }
 
     private static string RelativeSize(double size, double body)

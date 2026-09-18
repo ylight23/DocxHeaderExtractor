@@ -155,8 +155,45 @@ internal static class CanonicalSemanticEngine
             ? parsed
             : PdfSemanticRole.SectionHeading;
 
-    internal sealed class HeaderClassifierCanonicalTextModel(IHeaderClassifier classifier) : ICanonicalSemanticTextModel
+    /// <summary>
+    /// I8. Says that a heading may be part of an occurrence, and fences that permission tightly.
+    /// <para>
+    /// Deliberately narrow. The failure this addresses is a heading glued to the prose that follows
+    /// it in one source occurrence, where the model currently proposes nothing because the whole
+    /// occurrence is not a heading. What it must not become is permission to edit text, or to
+    /// assemble a heading from two separated pieces of one occurrence - that is a different
+    /// contract, and composite headings across several occurrences already have one.
+    /// </para>
+    /// </summary>
+    internal const string PartialSpanClause = """
+
+        A heading may occupy either the whole source occurrence, or ONE exact contiguous substring
+        of a single owned source occurrence. Use the second form when a heading is followed, in the
+        same occurrence, by text that is not part of it.
+          - return the same sourceAlias
+          - return verbatimText as that exact contiguous substring, copied character for character
+          - do not normalize, rewrite, repair, shorten or paraphrase it
+          - do not return offsets or coordinates: the harness locates the substring itself
+        Two separated pieces of one occurrence are NOT a partial span. sourceAliases remains for a
+        heading that genuinely runs across several occurrences, each part copied from its own.
+
+        If that substring appears more than once inside the occurrence, say which one you mean:
+        add "occurrence" as its 1-based ordinal, or "leftExactContext"/"rightExactContext" copied
+        exactly from the characters beside it. A short heading often repeats inside a longer word -
+        "Africa" occurs twice in "Africa Gregoire ... African Development Bank" - and an unmarked
+        duplicate is rejected rather than guessed at.
+        """;
+
+    /// <summary>The prompt this run sends. One clause per intervention, appended, never rewritten.</summary>
+    internal static string SystemPromptFor(CanonicalSemanticExperiment experiment) =>
+        experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
+
+    internal sealed class HeaderClassifierCanonicalTextModel(
+        IHeaderClassifier classifier,
+        CanonicalSemanticExperiment? experiment = null) : ICanonicalSemanticTextModel
     {
+        private readonly CanonicalSemanticExperiment _experiment = experiment ?? CanonicalSemanticExperiment.Baseline;
+
         public List<string> RawResponses { get; } = [];
 
         /// <summary>
@@ -202,10 +239,18 @@ internal static class CanonicalSemanticEngine
                 var to = Math.Min(evidence.Count, start + owned.Length + VisibleMargin);
                 var visible = evidence.Skip(from).Take(to - from).ToArray();
                 var ownedAliases = owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);
+                // I7. The structural state already open where this segment begins, so a segment that
+                // continues inside a container is not shown that container's contents without the
+                // container. Parser-owned marker evidence, not a harness claim about parents: it
+                // says what was open, never what anything's parent is.
+                var ancestors = _experiment.CarryStructuralAncestors
+                    ? owned[0].ActiveStructuralAncestors
+                    : [];
                 var packet = JsonSerializer.Serialize(new
                 {
                     protocol = CanonicalSemanticContract.ProtocolVersion,
                     ownedSourceAliases = owned.Select(item => item.SourceAlias).ToArray(),
+                    openStructuralContext = ancestors,
                     // Evidence is already in document order, so a neighbour IS the local context.
                     // Owned entries carry the decision facts; margin entries carry text only.
                     sourceEvidence = visible.Select(item => ownedAliases.Contains(item.SourceAlias)
@@ -214,7 +259,7 @@ internal static class CanonicalSemanticEngine
                         .ToArray(),
                 });
                 var raw = await classifier.BoundaryCutAsync(
-                    SystemPrompt,
+                    SystemPromptFor(_experiment),
                     packet + "\nSCHEMA=" + JsonSerializer.Serialize(CanonicalSemanticContract.Schema()),
                     cancellationToken,
                     expectedItemCount: owned.Length);

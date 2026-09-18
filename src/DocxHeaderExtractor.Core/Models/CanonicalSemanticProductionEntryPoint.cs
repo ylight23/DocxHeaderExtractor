@@ -49,7 +49,14 @@ public sealed record CanonicalSemanticSourceEvidence(
     IReadOnlyList<string> ObservedEvidence,
     IReadOnlyList<string> LocalBefore,
     IReadOnlyList<string> LocalAfter,
-    SemanticCandidateAttentionHint CandidateAttention);
+    SemanticCandidateAttentionHint CandidateAttention)
+{
+    /// <summary>
+    /// Structural state already open at this occurrence, from parser-owned marker evidence.
+    /// Context only: it reports what a reader would already have seen, never who anything parents to.
+    /// </summary>
+    public IReadOnlyList<string> ActiveStructuralAncestors { get; init; } = [];
+}
 
 public sealed record CanonicalSemanticInferenceTelemetry(
     string? ActualProvider = null,
