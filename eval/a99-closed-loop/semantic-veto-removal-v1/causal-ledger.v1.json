@@ -1,0 +1,70 @@
+{
+  "artifactKind": "CAUSAL_LEDGER",
+  "schemaVersion": "v1",
+  "documentId": "DOC-0256",
+  "historicalFalseNegatives": 8,
+  "buckets": [
+    {
+      "count": 3,
+      "items": [
+        "DAY 2",
+        "DAY 3",
+        "DAY 4"
+      ],
+      "class": "RESIDUAL_SYSTEM_LOSS_PROVEN",
+      "resolution": "FIXED_AND_REPLAY_VERIFIED",
+      "evidence": "replay-freeze.v1.json",
+      "fixCommit": "3886a5a"
+    },
+    {
+      "count": 1,
+      "items": [
+        "Planning for the ICP 2024 cycle"
+      ],
+      "class": "REFERENCE_COORDINATE_DEFECT",
+      "resolution": "PENDING_GOLD_CORRECTION_APPROVAL",
+      "evidence": "gold-coordinate-adjudication.v1.json"
+    },
+    {
+      "count": 1,
+      "items": [
+        "DAY 1"
+      ],
+      "class": "SEGMENT_BOUNDARY_INCONSISTENCY",
+      "resolution": "DIAGNOSED_NOT_FIXED",
+      "evidence": "day1-segment-asymmetry.v1.json"
+    },
+    {
+      "count": 3,
+      "items": [
+        "Africa",
+        "Asia and the Pacific",
+        "Eurostat-OECD PPP Program"
+      ],
+      "class": "MODEL_WRONG_TEXT_BOUNDARY",
+      "resolution": "DIAGNOSED_NOT_FIXED",
+      "evidence": "partial-span-boundary.v1.json"
+    }
+  ],
+  "trueModelOmissions": 0,
+  "keyFinding": "No clean TRUE_MODEL_OMISSION remains among the 8. Every residual is harness-shaped variance, reference noise, or an unstated text-boundary instruction.",
+  "falsePositivesAfterFix": [
+    {
+      "sourceId": "body[1]/p[3]",
+      "note": "title block"
+    },
+    {
+      "sourceId": "body[1]/p[4]",
+      "note": "date line"
+    },
+    {
+      "sourceId": "body[1]/p[5]",
+      "note": "subtitle"
+    },
+    {
+      "sourceId": "body[1]/p[99]",
+      "note": "artifact of the gold coordinate defect, not a real extra"
+    }
+  ],
+  "falsePositiveNote": "Three of the four are model-side and untouched by this fix."
+}

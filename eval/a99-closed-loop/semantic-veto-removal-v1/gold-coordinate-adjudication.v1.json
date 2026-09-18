@@ -1,0 +1,74 @@
+{
+  "artifactKind": "GOLD_COORDINATE_ADJUDICATION_PACKET",
+  "schemaVersion": "v1",
+  "status": "PENDING_USER_APPROVAL",
+  "mutationApplied": false,
+  "documentId": "DOC-0256",
+  "goldFile": "eval/a99-closed-loop/strict-gold-v4/DOC-0256.strict-gold-v4.json",
+  "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+  "sourceShaVerifiedAgainstFixture": true,
+  "goldRow": {
+    "headingOccurrenceId": "DOC-0256:body[1]/p[50]#key-line-22",
+    "sourceId": "body[1]/p[50]",
+    "exactText": "Planning for the ICP 2024 cycle",
+    "level": 1,
+    "sourceReferencePath": "keys/rebased/m712/076_ICP_IACG08_Minutes_2023.key"
+  },
+  "actualTextAtGoldSourceId": "The report was submitted “for discussion” for the March 2024 session. Furthermore, the Governing Board met in February 2023 and noted progress made with the ICP 2021 cycle, despite the COVID-19 pandemic and the war in Ukraine, and the need to identify a new approach to link the CIS region; the need to approach the national implementing agencies on completing the ICP 2021 cycle activities in a timely manner and to begin preparations for the ICP 2024 cycle; the need to identify sustained funding for the program and to strengthen advocacy efforts; and the current and anticipated uses of PPPs. The IACG convened in May 2023 and discussed the ICP 2021 cycle implementation, reviewed data, planning for the 2023/4 governance activities and ICP 2021 cycle release, and planning for the ICP 2024 cycle.",
+  "textMatchesGoldSourceId": false,
+  "allExactSourceOccurrencesOfGoldText": [
+    {
+      "sourceId": "body[1]/p[99]",
+      "alias": "S0081",
+      "exactMatch": true,
+      "text": "Planning for the ICP 2024 cycle"
+    },
+    {
+      "sourceId": "body[1]/tbl[4]/tr[5]/tc[2]/p[1]",
+      "alias": "S0166",
+      "exactMatch": true,
+      "text": "Planning for the ICP 2024 cycle"
+    },
+    {
+      "sourceId": "body[1]/tbl[5]/tr[1]/tc[2]/p[1]",
+      "alias": "S0178",
+      "exactMatch": true,
+      "text": "Planning for the ICP 2024 cycle"
+    }
+  ],
+  "modelSelectedOccurrence": {
+    "alias": "S0081",
+    "sourceId": "body[1]/p[99]",
+    "verbatimText": "Planning for the ICP 2024 cycle",
+    "sourceExact": true,
+    "structuralType": "section",
+    "relationHints": [
+      "parent-node:ROOT"
+    ]
+  },
+  "currentScoringEffect": "One prediction is penalised twice: counted as a false negative at the gold coordinate and as a false positive at the true source coordinate.",
+  "proposedCorrection": {
+    "field": "sourceId",
+    "from": "body[1]/p[50]",
+    "to": "body[1]/p[99]",
+    "alsoUpdate": "headingOccurrenceId, which embeds the same coordinate",
+    "rationale": "The gold text does not occur at p[50] in this source SHA. It occurs verbatim at p[99] and at two table cells. p[99] is the body-prose occurrence and the only one outside a table."
+  },
+  "openQuestionForApprover": "Confirm p[99] is the canonical intended occurrence rather than tbl[4]/tr[5]/tc[2]/p[1] or tbl[5]/tr[1]/tc[2]/p[1]. Those two are agenda-table restatements of the same title.",
+  "counterfactualIfApproved": {
+    "goldRows": 24,
+    "predicted": 23,
+    "matched": 20,
+    "recall": 0.8333,
+    "precision": 0.8696,
+    "f1": 0.8511,
+    "status": "COUNTERFACTUAL_NOT_OFFICIAL"
+  },
+  "auditOfEveryGoldRow": {
+    "rows": 24,
+    "misaligned": 1,
+    "misalignedRows": [
+      "body[1]/p[50]"
+    ]
+  }
+}

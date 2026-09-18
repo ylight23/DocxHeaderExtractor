@@ -23,6 +23,13 @@ internal sealed class FrozenReplyClassifier(IReadOnlyList<string> replies) : IHe
 
     public int CallsBeyondRecording { get; private set; }
 
+    /// <summary>
+    /// The user messages the route actually built, in call order. Kept so a diagnosis can read the
+    /// real packet rather than a reconstruction of it - the packet is what the model saw, and a
+    /// reconstruction would be the second thing to debug when the two disagree.
+    /// </summary>
+    public List<string> Requests { get; } = [];
+
     public string ModelName => "frozen-replay";
     public int ContextSize => 1 << 20;
     public string RuntimeDescription => "offline replay of frozen provider replies";
@@ -31,6 +38,7 @@ internal sealed class FrozenReplyClassifier(IReadOnlyList<string> replies) : IHe
     public Task<string> BoundaryCutAsync(
         string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
     {
+        Requests.Add(userMessage);
         if (_next < replies.Count) return Task.FromResult(replies[_next++]);
         CallsBeyondRecording++;
         return Task.FromResult("{\"headings\":[]}");
