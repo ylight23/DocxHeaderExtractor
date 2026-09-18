@@ -33,6 +33,19 @@ internal sealed record PdfSourceFacts(
     /// <summary>Parser-derived only; model proposals cannot alter this marker fact.</summary>
     public PdfMarkerFact? Marker { get; init; }
 
+    /// <summary>
+    /// Format the document declares about this occurrence, as opposed to where it sits. A PDF has
+    /// no style names, so weight, slant and size are the only declarations available - and for a
+    /// PDF they carry most of the heading signal, which is why they belong on the facts rather than
+    /// being reconstructed downstream from geometry.
+    /// </summary>
+    public double BoldRatio { get; init; }
+
+    public double ItalicRatio { get; init; }
+
+    /// <summary>Absolute point size. Only ever reported to the model relative to the document.</summary>
+    public double FontSize { get; init; }
+
     /// <summary>Stable parser line identities retained for source/audit correlation.</summary>
     public IReadOnlyList<string> LineIds { get; init; } = [];
 
@@ -285,10 +298,17 @@ internal static class PdfCandidateContextBuilder
         if (scope == "code_or_grammar") evidence.Add("formal_syntax_shape");
         if (scope == "table_of_contents") evidence.Add("toc_entry_cluster");
         var facts = new PdfSourceFacts(
-            block.Id, block.Text, block.Page, block.LineCount, block.Left, block.TopY, block.Right, block.BottomY,
+            // The canonical projection, the same string the alias catalog and the binder use. These
+            // two paths build facts for one occurrence and must agree: if the model is shown the raw
+            // concatenation while the binder validates against the projection, every proposal fails
+            // as non-verbatim and the failure looks like the model getting the text wrong.
+            block.Id, block.VerbatimText, block.Page, block.LineCount, block.Left, block.TopY, block.Right, block.BottomY,
             scope, evidence)
         {
             Marker = marker,
+            BoldRatio = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.BoldRatio),
+            ItalicRatio = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.ItalicRatio),
+            FontSize = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.FontSize),
             LineIds = block.Lines.Select(LineKey).ToArray(),
             EvidenceDetails = evidence.Select(item => new PdfObservedEvidence(item, "true",
                 item is "standalone_line" or "multi_line_cluster" or "table_like" or "header_footer_zone" or "repeated_region"

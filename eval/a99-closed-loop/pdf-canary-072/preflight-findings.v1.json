@@ -3,7 +3,7 @@
   "schemaVersion": "v1",
   "document": "DOC-0072",
   "providerCalls": 0,
-  "verdict": "BLOCKED_DO_NOT_SPEND_THE_CANARY_CALL",
+  "verdict": "P1_AND_P2_RESOLVED_P3_OPEN",
   "acceptanceChecks": {
     "providerCalls": "PASS - 0",
     "sourceLoss": "PASS - 1013 blocks, 1013 catalog units, 1013 aliases, every alias owned exactly once",
@@ -73,5 +73,36 @@
     "systemPrompt": "system-prompt.txt",
     "requests": "request-0.json .. request-8.json",
     "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61"
-  }
+  },
+  "resolution": {
+    "P1": {
+      "status": "RESOLVED",
+      "contract": "PDF VERBATIM = exact substring of a deterministic parser-owned text projection",
+      "implementation": "PdfSourceTextProjection carries RawParserText, VerbatimText, SpanMap and ProjectionVersion. The span map is recorded while the glyphs are in hand, never re-derived by aligning two strings afterwards.",
+      "basis": "The match-gap rule, gap > max(1.8, size*0.27), applied to the same ordered letters. Geometry only - no dictionary, no spelling correction, no word guessing.",
+      "rejected": [
+        "raw parser spacing",
+        "HeadingReadable, which B showed produces hybridmeetingon and ,,,.",
+        "any LLM rewrite",
+        "fuzzy normalized gold text"
+      ],
+      "measured": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM and Session I: Welcome and meeting objectives now read correctly where the raw string read M I N UTES and Session I : Welcome a nd.",
+      "secondDefectFound": "Two paths built facts for one occurrence - DocumentSourceCatalogBuilder via SourceFactsBuilder, and PdfCandidateContextBuilder. Changing only the first would have shown the model the raw string while the binder validated the projection, so every proposal would have failed as non-verbatim and the failure would have looked like the model getting the text wrong. Both are aligned.",
+      "fallback": "A line built from a string rather than glyphs is its own projection with an empty span map, so nothing is blanked and the absence of glyph provenance is explicit."
+    },
+    "P2": {
+      "status": "RESOLVED",
+      "before": "style carried LineCount, Left, Right, TopY, BottomY at full float precision; numbering carried three nulls; tableDepth carried 0",
+      "after": "style carries Bold, Italic, RelativeFontSize and LineCount; numbering is omitted; geometry stays on PdfSourceFacts for the harness and the audit",
+      "relativeNotAbsolute": "Font size is reported against the document's own median body size as body, larger-than-body, much-larger-than-body or smaller-than-body. A point size means nothing without the document to compare it to.",
+      "thirdDefectFound": "The first attempt read bold and font size from ObservedEvidence, which never carries them, so all three fields were constants - geometry removed and nothing put in its place. For a PDF, format is most of the heading signal. BoldRatio, ItalicRatio and FontSize are now parser facts on PdfSourceFacts, and the evidence discriminates: 8 of 120 owned entries in segment 0 are bold.",
+      "packetEffect": "Total request characters fell from 452,511 to 331,481, a 27% reduction, entirely from removing coordinate noise and repairing the text."
+    },
+    "P3": {
+      "status": "OPEN",
+      "note": "Unchanged. It is I7, it needs a provider run either way, and proving it works requires a baseline-versus-I7 A/B rather than a single canary taken after the change."
+    }
+  },
+  "packetChanged": true,
+  "rerunRequired": "B was rerun. Structural checks still pass: 1065 lines, 1013 blocks, 1013 aliases, each owned exactly once across 9 segments, no gap, no duplicate, no risk fusion, no coordinate name in the schema, and two runs produce identical hashes."
 }

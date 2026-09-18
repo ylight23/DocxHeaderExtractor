@@ -12,6 +12,16 @@ internal sealed record PdfSemanticBlock(
     string Text)
 {
     public int LineCount => Lines.Count;
+
+    /// <summary>
+    /// The canonical text of this occurrence, composed from its lines' projections, with the span
+    /// map rebased onto it. <see cref="Text"/> remains the raw parser concatenation for audit.
+    /// </summary>
+    public PdfSourceTextProjection Projection =>
+        PdfSourceTextProjection.Join(Lines.Select(line => line.Projection).ToArray());
+
+    /// <summary>What the model is shown and what the binder binds against.</summary>
+    public string VerbatimText => Projection.VerbatimText;
     public string DisplayText => PdfTextUtilities.HeadingReadable(Text);
     public string CanonicalText => string.Concat(Lines.Select(line => line.CanonicalMatchText ??
         PdfTextUtilities.CanonicalForMatch(line.Text)));

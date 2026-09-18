@@ -54,13 +54,18 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
 
         var ordinalBySourceId = catalog.Units.ToDictionary(
             unit => unit.SourceId, unit => unit.SourceOrdinal, StringComparer.Ordinal);
+        // The document's own body size, so font evidence can be stated relative to this document
+        // rather than as a point size that means nothing on its own. Median, not mean: a title page
+        // of large text should not move what counts as body.
+        var bodyFontSize = Median(contexts.Values.Select(context => context.Source.FontSize));
         var evidence = contexts.Values
             .Where(context => aliasesBySourceId.ContainsKey(context.Source.SourceId))
             .OrderBy(context => ordinalBySourceId.GetValueOrDefault(context.Source.SourceId, int.MaxValue))
             .Select(context => EvidenceOf(
                 context,
                 aliasesBySourceId[context.Source.SourceId].Alias,
-                ordinalBySourceId.GetValueOrDefault(context.Source.SourceId)))
+                ordinalBySourceId.GetValueOrDefault(context.Source.SourceId),
+                bodyFontSize))
             .ToArray();
 
         var input = new CanonicalSemanticProductionInput(
@@ -194,9 +199,15 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
     private static CanonicalSemanticSourceEvidence EvidenceOf(
         PdfCandidateContext context,
         string alias,
-        int ordinal)
+        int ordinal,
+        double bodyFontSize)
     {
         var source = context.Source;
+        var bold = source.BoldRatio >= 0.5;
+        var italic = source.ItalicRatio >= 0.5;
+        // Categorical, not absolute: "larger than the body" is evidence a reader could state, while
+        // a point size means nothing without the rest of the document to compare it against.
+        var relativeFontSize = RelativeSize(source.FontSize, bodyFontSize);
         var attention = !source.ObservedEvidence.Contains("page_number") &&
             source.StructuralScope is not ("running_page_artifact" or "table_of_contents");
         return new CanonicalSemanticSourceEvidence(
@@ -205,13 +216,22 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             ordinal,
             source.RawText,
             source.StructuralScope,
+            // A PDF has no nested tables to have a depth in. Zero would read as a measured fact;
+            // the scope already carries whatever table evidence exists.
             TableDepth: 0,
             SectionIndex: source.Page,
             InContentControl: false,
             InTableOfContents: source.StructuralScope == "table_of_contents",
             ["pdf-parser-source", $"scope:{source.StructuralScope}", $"page:{source.Page}"],
-            new { source.LineCount, source.Left, source.Right, source.TopY, source.BottomY },
-            new { NumberingId = (string?)null, NumberingLevel = (int?)null, NumberLabel = (string?)null },
+            // Format evidence only. The style slot means "what the document declares about this
+            // occurrence"; in the DOCX lane that is StyleId and OutlineLevel. Raw coordinates are a
+            // measurement, not a declaration, and putting them here would both mislabel them and
+            // invite positional reasoning in the one place this architecture works hardest to
+            // exclude it. Geometry stays on PdfSourceFacts for the harness and the audit.
+            new { Bold = bold, Italic = italic, RelativeFontSize = relativeFontSize, LineCount = source.LineCount },
+            // A PDF has no numbering definition. Reporting three nulls states a fact about a
+            // concept that does not exist here; omitting the notion is the honest shape.
+            new { },
             [],
             CanonicalSemanticEngine.MarkerFactsOf(source),
             source.ObservedEvidence,
@@ -219,5 +239,21 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             context.NextBlocks,
             new SemanticCandidateAttentionHint(
                 alias, attention, attention ? "pdf-layout-candidate" : "pdf-layout-non-candidate"));
+    }
+
+    private static string RelativeSize(double size, double body)
+    {
+        if (size <= 0 || body <= 0) return "unknown";
+        var ratio = size / body;
+        return ratio >= 1.25 ? "much-larger-than-body"
+            : ratio >= 1.08 ? "larger-than-body"
+            : ratio <= 0.85 ? "smaller-than-body"
+            : "body";
+    }
+
+    private static double Median(IEnumerable<double> values)
+    {
+        var ordered = values.Where(value => value > 0).OrderBy(value => value).ToArray();
+        return ordered.Length == 0 ? 0 : ordered[ordered.Length / 2];
     }
 }
