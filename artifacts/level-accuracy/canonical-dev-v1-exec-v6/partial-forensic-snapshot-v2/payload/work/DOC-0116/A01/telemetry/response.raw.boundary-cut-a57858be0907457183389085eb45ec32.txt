@@ -1,9 +1,0 @@
-
-         
-
-         
-
-         
-
-         
-{"id":"gen-1789568328-sO0YVN5QN1M642Mgt8Q3","object":"chat.completion","created":1789568328,"model":"qwen/qwen3.5-9b","provider":"Together","system_fingerprint":null,"service_tier":null,"choices":[{"index":0,"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","message":{"role":"assistant","content":"{\n  \"blocks\": [\n    {\n      \"id\": \"body[1]/tbl[19]/tr[15]/tc[1]/p[1]\",\n      \"role\": \"table_header\",\n      \"confidence\": 0.95\n    },\n    {\n      \"id\": \"body[1]/tbl[19]/tr[15]/tc[2]/p[1]\",\n      \"role\": \"body_text\",\n      \"confidence\": 0.95\n    },\n    {\n      \"id\": \"body[1]/tbl[19]/tr[15]/tc[2]/p[2]\",\n      \"role\": \"body_text\",\n      \"confidence\": 0.95\n    },\n    {\n      \"id\": \"body[1]/tbl[19]/tr[16]/tc[1]/p[1]\",\n      \"role\": \"table_header\",\n      \"confidence\": 0.95\n    },\n    {\n      \"id\": \"body[1]/tbl[19]/tr[16]/tc[2]/p[1]\",\n      \"role\": \"body_text\",\n      \"confidence\": 0.95\n    },\n    {\n      \"id\": \"body[1]/tbl[19]/tr[16]/tc[2]/p[2]\",\n      \"role\": \"body_text\",\n      \"confidence\": 0.95\n    },\n    {\n      \"id\": \"body[1]/tbl[19]/tr[17]/tc[1]/p[1]\",\n      \"role\": \"table_header\",\n      \"confidence\": 0.95\n    },\n    {\n      \"id\": \"body[1]/tbl[19]/tr[17]/tc[2]/p[1]\",\n      \"role\": \"body_text\",\n      \"confidence\": 0.95\n    }\n  ]\n}","refusal":null,"reasoning":null}}],"usage":{"prompt_tokens":5166,"completion_tokens":437,"total_tokens":5603,"cost":0.00098747,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"cache_write_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":0.00098747,"upstream_inference_prompt_cost":0.00087822,"upstream_inference_completions_cost":0.00010925},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0,"audio_tokens":0}}}

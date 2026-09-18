@@ -1,9 +1,0 @@
-
-         
-
-         
-
-         
-
-         
-{"id":"gen-1789568420-eYakvN0LAkDu1Pc2GAHc","object":"chat.completion","created":1789568420,"model":"qwen/qwen3.5-9b","provider":"DeepInfra","system_fingerprint":null,"service_tier":null,"choices":[{"index":0,"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","message":{"role":"assistant","content":"{\"blocks\":[{\"id\":\"body[1]/p[859]\",\"role\":\"form_label\",\"confidence\":1.0},{\"id\":\"body[1]/p[860]\",\"role\":\"appendix_heading\",\"confidence\":1.0},{\"id\":\"body[1]/p[861]\",\"role\":\"appendix_heading\",\"confidence\":1.0},{\"id\":\"body[1]/p[862]\",\"role\":\"appendix_heading\",\"confidence\":1.0},{\"id\":\"body[1]/p[864]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[865]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[866]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[867]\",\"role\":\"body_text\",\"confidence\":1.0}]}","refusal":null,"reasoning":null}}],"usage":{"prompt_tokens":3883,"completion_tokens":200,"total_tokens":4083,"cost":0.0004183,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"cache_write_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":0.0004183,"upstream_inference_prompt_cost":0.0003883,"upstream_inference_completions_cost":0.00003},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0,"audio_tokens":0}}}
