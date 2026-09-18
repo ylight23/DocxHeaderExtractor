@@ -18,15 +18,27 @@ The normal host path is:
 
 ```text
 CLI / Web / MCP / AgentHarness
-        -> PipelineDocumentExtractionTool
-        -> AuthorityExtractionPipeline
-        -> LegacyDocConverter
-        -> DocxSlimExtractor
-        -> DocumentModeClassifier / PDF discovery
-        -> DocxAuthorityPipeline or PdfLayoutEvidenceOutline
-        -> proposal/span resolution
-        -> validator -> canonical grounding -> hierarchy/output policy
+        -> UploadedSourceDetector            (the uploaded file, read from its bytes)
+        -> CanonicalExtractionDispatcher
+        -> DocxCanonicalSourceExtractor      or   PdfCanonicalSourceExtractor
+             -> AuthorityExtractionPipeline            -> PdfCanonicalExtraction
+             -> DocxAuthorityPipeline                  -> CanonicalSemanticPdfAuthorityAdapter
+        -> CanonicalSemanticEngine           (shared: prompt, segmentation, contract, binder,
+                                              hierarchy resolver, placement)
+        -> PdfProposalValidator -> CanonicalStructureMaterializer
+        -> canonical document
+        ------------------------------------ semantic boundary ------------------------------------
+        -> ExtractionIntent -> CanonicalProjector -> output
 ```
+
+One upload, one lane. There is no PDF discovery step: a DOCX upload is extracted as a DOCX and a
+PDF upload as a PDF, and neither format's presence elsewhere changes how the other is processed.
+The two lanes share everything after source occurrences, so a difference between them can only come
+from how the source was read.
+
+Intent sits after the semantic boundary on purpose. The same file yields the same canonical
+document whatever is asked of it; asking for level-1 headings filters the graph rather than
+changing what the model was asked to find.
 
 The CLI still has a direct compatibility/evaluation construction of
 `HeaderExtractionPipeline`. Tests and repair/evaluation commands also reach it.
