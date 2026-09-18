@@ -143,4 +143,65 @@ public class ModelRelationHierarchyResolverTests
         Assert.True(derived[1].IsPrimaryOccurrence);
         Assert.NotEqual(derived[0].SemanticNodeKey, derived[1].SemanticNodeKey);
     }
+
+    [Fact]
+    public void Out_of_hierarchy_is_a_decision_and_carries_no_level()
+    {
+        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        [
+            Heading("S0001", "p1", 1, "MINUTES OF THE PROGRAM", "parent-node:NONE"),
+            Heading("S0002", "p2", 2, "Session I", "parent-node:ROOT"),
+        ]).ToDictionary(item => item.SourceId, StringComparer.Ordinal);
+
+        Assert.Equal(ModelRelationHierarchyResolver.OutOfHierarchy, derived["p1"].Resolution);
+        Assert.Null(derived["p1"].ParentSourceId);
+        Assert.Equal(ModelRelationHierarchyResolver.ResolvedRoot, derived["p2"].Resolution);
+    }
+
+    [Fact]
+    public void Out_of_hierarchy_is_distinguishable_from_unresolved()
+    {
+        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        [
+            Heading("S0001", "p1", 1, "Running header", "parent-node:NONE"),
+            Heading("S0002", "p2", 2, "Something the model could not place"),
+        ]).ToDictionary(item => item.SourceId, StringComparer.Ordinal);
+
+        // Both end without a level; only the reason tells a reviewer which one needs them.
+        Assert.NotEqual(derived["p1"].Resolution, derived["p2"].Resolution);
+        Assert.Equal(ModelRelationHierarchyResolver.OutOfHierarchy, derived["p1"].Resolution);
+        Assert.Equal(ModelRelationHierarchyResolver.Unresolved, derived["p2"].Resolution);
+    }
+
+    [Fact]
+    public void A_heading_outside_the_tree_cannot_be_anyone_parent()
+    {
+        // The whole point: a title accepted as a parent pushes every real section one level down.
+        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        [
+            Heading("S0001", "p1", 1, "DOCUMENT TITLE", "parent-node:NONE"),
+            Heading("S0002", "p2", 2, "Session I", "parent-node:S0001"),
+        ]).ToDictionary(item => item.SourceId, StringComparer.Ordinal);
+
+        Assert.Equal(ModelRelationHierarchyResolver.Unresolved, derived["p2"].Resolution);
+        Assert.Null(derived["p2"].ParentSourceId);
+    }
+
+    [Fact]
+    public void Sections_keep_level_one_when_the_title_stays_outside_the_tree()
+    {
+        // The DOC-0252 shape: title and subtitle outside, sessions at the top of the tree.
+        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        [
+            Heading("S0001", "p1", 1, "MINUTES", "parent-node:NONE"),
+            Heading("S0002", "p2", 2, "TECHNICAL ADVISORY GROUP", "parent-node:NONE"),
+            Heading("S0003", "p3", 3, "Session I", "parent-node:ROOT"),
+            Heading("S0004", "p4", 4, "Session II", "parent-node:ROOT"),
+            Heading("S0005", "p5", 5, "1. Global office update", "parent-node:S0004"),
+        ]).ToDictionary(item => item.SourceId, StringComparer.Ordinal);
+
+        Assert.Equal(1, derived["p3"].Level);
+        Assert.Equal(1, derived["p4"].Level);
+        Assert.Equal(2, derived["p5"].Level);
+    }
 }

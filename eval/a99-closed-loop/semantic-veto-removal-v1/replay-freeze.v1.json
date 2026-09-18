@@ -20,28 +20,14 @@
       "proposals": 23,
       "validated": 20,
       "canonical": 20,
-      "goldMatched": 16
+      "goldMatched": 17
     },
     "after": {
       "proposals": 23,
       "validated": 23,
       "canonical": 23,
-      "goldMatched": 19
+      "goldMatched": 20
     }
-  },
-  "score": {
-    "goldRows": 24,
-    "before": {
-      "recall": 0.6667,
-      "precision": 0.8,
-      "f1": 0.7273
-    },
-    "after": {
-      "recall": 0.7917,
-      "precision": 0.8261,
-      "f1": 0.8085
-    },
-    "note": "Identity only. Level and hierarchy accuracy were not measured by this replay."
   },
   "delta": {
     "recovered": [
@@ -90,5 +76,50 @@
     "Four false positives remain and none of them is harness-shaped.",
     "Four further documents have usable recordings and matching gold (DOC-0001, DOC-0116, DOC-0252, DOC-0258); this fix is not yet generalised over them."
   ],
-  "status": "FROZEN_CAUSAL_EVIDENCE"
+  "status": "FROZEN_CAUSAL_EVIDENCE",
+  "scoringAxis": {
+    "authorised": "semantic",
+    "goldDeclaration": "capabilities.occurrenceEvaluable = false, semanticEvaluable = true",
+    "join": "exact heading text, unique on the gold side and equal to semanticHeadingTotal",
+    "supersedes": "The occurrence-axis numbers first reported for this document. They are kept below under scoreOccurrenceAxisUnauthorised for traceability and must not be quoted."
+  },
+  "scoreOccurrenceAxisUnauthorised": {
+    "goldRows": 24,
+    "before": {
+      "recall": 0.6667,
+      "precision": 0.8,
+      "f1": 0.7273
+    },
+    "after": {
+      "recall": 0.7917,
+      "precision": 0.8261,
+      "f1": 0.8085
+    },
+    "note": "Identity only. Level and hierarchy accuracy were not measured by this replay.",
+    "status": "SUPERSEDED_UNAUTHORISED_AXIS"
+  },
+  "score": {
+    "goldSemanticRows": 24,
+    "before": {
+      "predicted": 20,
+      "tp": 17,
+      "fp": 3,
+      "fn": 7,
+      "precision": 0.85,
+      "recall": 0.7083,
+      "f1": 0.7727
+    },
+    "after": {
+      "predicted": 23,
+      "tp": 20,
+      "fp": 3,
+      "fn": 4,
+      "precision": 0.8696,
+      "recall": 0.8333,
+      "f1": 0.8511
+    },
+    "note": "Identity only. Level and hierarchy accuracy were not measured by this replay.",
+    "status": "OFFICIAL"
+  },
+  "crossDocumentEvidence": "cross-document-replay.v1.json"
 }

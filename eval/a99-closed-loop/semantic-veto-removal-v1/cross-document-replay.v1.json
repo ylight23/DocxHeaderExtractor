@@ -1,0 +1,155 @@
+{
+  "artifactKind": "CROSS_DOCUMENT_OFFLINE_REPLAY",
+  "schemaVersion": "v1",
+  "task": "A99 - CROSS-DOCUMENT OFFLINE REPLAY OF SEMANTIC-VETO FIX",
+  "fixCommit": "3886a5a",
+  "providerCalls": 0,
+  "promptChanged": false,
+  "requestPacketChanged": false,
+  "goldMutated": false,
+  "method": {
+    "afterSet": "replay of frozen provider replies through the current harness",
+    "beforeSet": "counterfactual computed from the same replay by re-applying the two clauses 3886a5a removed from PdfProposalValidator.IsEligibleHeading",
+    "whyNotTheRecordedArtifacts": "The recordings on disk were produced by earlier harness versions that differ in more than the veto. Scoring against their recorded outputs would confound this change with those.",
+    "counterfactualValidation": "On DOC-0256 the counterfactual reproduces the real pre-fix run exactly: 20 canonical, 16 matched on the occurrence axis."
+  },
+  "scoringAxisCorrection": {
+    "finding": "Every strict-gold-v4 file declares capabilities.occurrenceEvaluable = false and semanticEvaluable = true.",
+    "consequence": "Joining predictions to gold on sourceId is not an authorised capability. All scores here join on exact heading text, which is unique on the gold side in every document and equals semanticHeadingTotal.",
+    "effectOnEarlierReporting": "The DOC-0256 numbers reported before this replay (recall 0.7917, precision 0.8261) used an occurrence join. On the authorised semantic axis the same replay scores recall 0.8333, precision 0.8696, F1 0.8511.",
+    "effectOnTheGoldCoordinateDefect": "On a semantic join the DOC-0256 'Planning for the ICP 2024 cycle' row matches by text regardless of coordinate, so it is no longer an FN/FP pair. The coordinate defect is real but only affects an occurrence-level join, which the gold does not authorise. The adjudication packet stays open; the semantic score does not depend on it."
+  },
+  "documents": {
+    "DOC-0001": {
+      "verdict": "REPLAY_COMPATIBILITY_BLOCKED",
+      "reason": "The gold text is mojibake - UTF-8 bytes stored as cp1252. Gold also uses a paragraph[N] source id scheme while this route produces body[1]/p[N].",
+      "evidence": "0 of 7 gold rows match any prediction as stored. A cp1252->utf8 repair fixes only 4 of 7; the other 3 contain bytes undefined in cp1252 and are not recoverable.",
+      "scored": false,
+      "blastRadius": {
+        "newlySurviving": 0,
+        "lost": 0
+      }
+    },
+    "DOC-0116": {
+      "verdict": "MEASURED_RECALL_ONLY",
+      "goldCoverage": "PARTIAL",
+      "headingSetExhaustive": false,
+      "evidenceClass": "TOC_DERIVED_PARTIAL_KEY",
+      "precisionMeasurable": false,
+      "reason": "Gold is TOC-derived and explicitly not exhaustive, so a prediction outside gold is not evidence of a false positive.",
+      "goldSemanticRows": 22,
+      "before": {
+        "predicted": 94,
+        "tp": 2,
+        "recall": 0.0909
+      },
+      "after": {
+        "predicted": 198,
+        "tp": 21,
+        "recall": 0.9545
+      },
+      "delta": {
+        "predicted": 104,
+        "tp": 19,
+        "recall": 0.8636
+      },
+      "blastRadius": {
+        "newlySurviving": 111,
+        "lost": 0
+      }
+    },
+    "DOC-0252": {
+      "verdict": "NO_CHANGE",
+      "goldCoverage": "EXHAUSTIVE",
+      "goldSemanticRows": 27,
+      "before": {
+        "predicted": 25,
+        "tp": 7,
+        "fp": 18,
+        "fn": 20,
+        "precision": 0.28,
+        "recall": 0.2593,
+        "f1": 0.2692
+      },
+      "after": {
+        "predicted": 25,
+        "tp": 7,
+        "fp": 18,
+        "fn": 20,
+        "precision": 0.28,
+        "recall": 0.2593,
+        "f1": 0.2692
+      },
+      "blastRadius": {
+        "newlySurviving": 0,
+        "lost": 0
+      },
+      "note": "No occurrence in this document was ever vetoed, so the fix is a no-op here. Its low score is unrelated to this change."
+    },
+    "DOC-0258": {
+      "verdict": "EXPOSES_ONE_MODEL_FP",
+      "goldCoverage": "EXHAUSTIVE",
+      "goldSemanticRows": 24,
+      "before": {
+        "predicted": 22,
+        "tp": 17,
+        "fp": 5,
+        "fn": 7,
+        "precision": 0.7727,
+        "recall": 0.7083,
+        "f1": 0.7391
+      },
+      "after": {
+        "predicted": 23,
+        "tp": 17,
+        "fp": 6,
+        "fn": 7,
+        "precision": 0.7391,
+        "recall": 0.7083,
+        "f1": 0.7234
+      },
+      "blastRadius": {
+        "newlySurviving": 1,
+        "lost": 0
+      }
+    },
+    "DOC-0256": {
+      "verdict": "FIXED_AND_REPLAY_VERIFIED",
+      "goldCoverage": "EXHAUSTIVE",
+      "goldSemanticRows": 24,
+      "before": {
+        "predicted": 20,
+        "tp": 17,
+        "fp": 3,
+        "fn": 7,
+        "precision": 0.85,
+        "recall": 0.7083,
+        "f1": 0.7727
+      },
+      "after": {
+        "predicted": 23,
+        "tp": 20,
+        "fp": 3,
+        "fn": 4,
+        "precision": 0.8696,
+        "recall": 0.8333,
+        "f1": 0.8511
+      },
+      "blastRadius": {
+        "newlySurviving": 3,
+        "lost": 0
+      },
+      "reference": true
+    }
+  },
+  "acceptanceGate": {
+    "noPreviouslyValidCanonicalHeadingLost": true,
+    "lostAcrossAllDocuments": 0,
+    "everyNewlySurvivingOccurrenceExplainable": true,
+    "explanation": "Every newly surviving occurrence was vetoed by exactly one of the two removed clauses: a contested structural scope, or a domain role proposing outline exclusion. No other mechanism added anything.",
+    "pinnedBy": "tests/DocxHeaderExtractor.Tests/CrossDocumentReplayTests.cs"
+  },
+  "verdict": "SEMANTIC_VETO_FIX_EXPOSES_MODEL_FP",
+  "verdictReasoning": "No system regression anywhere: nothing that used to reach canonical output was lost. Large system-loss recovery on DOC-0116 (recall 0.0909 -> 0.9545) and DOC-0256 (+3 true headings, no new FP). The veto was also masking genuine model errors, which are now visible: four table-of-contents lines on DOC-0116 and one agenda row on DOC-0258. The authority split is correct and must not be reverted to hide them.",
+  "secondaryVerdict": "REPLAY_COMPATIBILITY_INCOMPLETE for DOC-0001 - reference defect, not a harness or model result."
+}

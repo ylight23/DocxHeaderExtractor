@@ -2,7 +2,7 @@
   "artifactKind": "CAUSAL_LEDGER",
   "schemaVersion": "v1",
   "documentId": "DOC-0256",
-  "historicalFalseNegatives": 8,
+  "historicalFalseNegatives": 7,
   "buckets": [
     {
       "count": 3,
@@ -15,15 +15,6 @@
       "resolution": "FIXED_AND_REPLAY_VERIFIED",
       "evidence": "replay-freeze.v1.json",
       "fixCommit": "3886a5a"
-    },
-    {
-      "count": 1,
-      "items": [
-        "Planning for the ICP 2024 cycle"
-      ],
-      "class": "REFERENCE_COORDINATE_DEFECT",
-      "resolution": "PENDING_GOLD_CORRECTION_APPROVAL",
-      "evidence": "gold-coordinate-adjudication.v1.json"
     },
     {
       "count": 1,
@@ -60,11 +51,9 @@
     {
       "sourceId": "body[1]/p[5]",
       "note": "subtitle"
-    },
-    {
-      "sourceId": "body[1]/p[99]",
-      "note": "artifact of the gold coordinate defect, not a real extra"
     }
   ],
-  "falsePositiveNote": "Three of the four are model-side and untouched by this fix."
+  "falsePositiveNote": "All three are model-side and untouched by this fix.",
+  "scoringAxis": "semantic (gold declares occurrenceEvaluable = false)",
+  "axisCorrectionNote": "The 8th false negative in the first version of this ledger was an artefact of joining on sourceId. On the authorised semantic axis 'Planning for the ICP 2024 cycle' matches by text, so it is a true positive, not a false negative. The gold coordinate defect is real and stays open, but it is a reference-hygiene item, not a member of this ledger."
 }

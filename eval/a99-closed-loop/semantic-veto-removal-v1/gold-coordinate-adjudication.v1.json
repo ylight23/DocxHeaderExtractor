@@ -62,7 +62,8 @@
     "recall": 0.8333,
     "precision": 0.8696,
     "f1": 0.8511,
-    "status": "COUNTERFACTUAL_NOT_OFFICIAL"
+    "status": "OBSOLETE_ON_SEMANTIC_AXIS",
+    "note": "The semantic axis already scores 20/23; this row was never the reason it was 19 on the unauthorised occurrence axis."
   },
   "auditOfEveryGoldRow": {
     "rows": 24,
@@ -70,5 +71,11 @@
     "misalignedRows": [
       "body[1]/p[50]"
     ]
+  },
+  "scoringAxisUpdate": {
+    "finding": "The gold declares occurrenceEvaluable = false, so the authorised join is semantic (text), not coordinate.",
+    "consequence": "On the authorised axis this row matches by text wherever it sits, so it is NOT currently costing an FN/FP pair. The official DOC-0256 score does not depend on this correction.",
+    "whyStillOpen": "The coordinate is still wrong in the file and would mislead any future occurrence-level work, which is the direction this gold would need to grow in.",
+    "urgency": "LOWERED - no longer blocking a benchmark number."
   }
 }
