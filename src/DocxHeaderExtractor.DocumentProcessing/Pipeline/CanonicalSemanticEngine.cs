@@ -17,7 +17,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 internal static class CanonicalSemanticEngine
 {
-    internal const string SystemPrompt = """
+    private const string RawSystemPrompt = """
         You are the primary semantic reasoning stage of the A99 canonical document pipeline.
         Decide semantic meaning only for the supplied parser-owned source aliases. Return strict
         JSON matching the supplied schema. sourceAlias/sourceAliases and verbatimText are the only
@@ -65,7 +65,7 @@ internal static class CanonicalSemanticEngine
         return facts;
     }
 
-    internal const string PlacementPrompt = """
+    private const string RawPlacementPrompt = """
         You are the structural stage of the A99 canonical document pipeline. The heading list below
         is already settled: do not add, remove, rename or re-judge any entry. Decide one thing only
         — where each heading in "toPlace" sits relative to the others.
@@ -165,7 +165,7 @@ internal static class CanonicalSemanticEngine
     /// contract, and composite headings across several occurrences already have one.
     /// </para>
     /// </summary>
-    internal const string PartialSpanClause = """
+    private const string RawPartialSpanClause = """
 
         A heading may occupy either the whole source occurrence, or ONE exact contiguous substring
         of a single owned source occurrence. Use the second form when a heading is followed, in the
@@ -183,6 +183,36 @@ internal static class CanonicalSemanticEngine
         "Africa" occurs twice in "Africa Gregoire ... African Development Bank" - and an unmarked
         duplicate is rejected rather than guessed at.
         """;
+
+    /// <summary>
+    /// Normalizes to LF, because a prompt is bytes on the wire and must not depend on how the
+    /// source file happened to be checked out.
+    /// <para>
+    /// A raw string literal keeps whatever line endings the file has. Git hands a Windows checkout
+    /// CRLF and a Linux one LF, so the same commit produced two different prompts - 2,330
+    /// characters against 2,301 - and every frozen prompt hash was therefore a property of the
+    /// machine rather than of the code. Two people could run what looked like the same experiment
+    /// and send different requests.
+    /// </para>
+    /// <para>
+    /// Normalized once here, where the prompt is owned, rather than at each call site: a caller
+    /// that forgot would reintroduce exactly this defect, and nothing would say so.
+    /// </para>
+    /// </summary>
+    internal static string NormalizePromptLineEndings(string prompt)
+    {
+        ArgumentNullException.ThrowIfNull(prompt);
+        return prompt.ReplaceLineEndings("\n");
+    }
+
+    /// <summary>The semantic discovery prompt, line endings settled.</summary>
+    internal static string SystemPrompt { get; } = NormalizePromptLineEndings(RawSystemPrompt);
+
+    /// <summary>The placement prompt, line endings settled.</summary>
+    internal static string PlacementPrompt { get; } = NormalizePromptLineEndings(RawPlacementPrompt);
+
+    /// <summary>The I8 clause, line endings settled before it is appended.</summary>
+    internal static string PartialSpanClause { get; } = NormalizePromptLineEndings(RawPartialSpanClause);
 
     /// <summary>The prompt this run sends. One clause per intervention, appended, never rewritten.</summary>
     internal static string SystemPromptFor(CanonicalSemanticExperiment experiment) =>
