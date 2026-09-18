@@ -21,14 +21,34 @@
   },
   "documents": {
     "DOC-0001": {
-      "verdict": "REPLAY_COMPATIBILITY_BLOCKED",
-      "reason": "The gold text is mojibake - UTF-8 bytes stored as cp1252. Gold also uses a paragraph[N] source id scheme while this route produces body[1]/p[N].",
-      "evidence": "0 of 7 gold rows match any prediction as stored. A cp1252->utf8 repair fixes only 4 of 7; the other 3 contain bytes undefined in cp1252 and are not recoverable.",
-      "scored": false,
+      "verdict": "NO_CHANGE",
+      "goldCoverage": "EXHAUSTIVE",
+      "goldSemanticRows": 7,
+      "goldReauthored": true,
+      "goldReauthorNote": "Gold was re-authored under R1 after a mojibake defect; see reference-repair-v1.",
+      "before": {
+        "predicted": 6,
+        "tp": 6,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.8571,
+        "f1": 0.9231
+      },
+      "after": {
+        "predicted": 6,
+        "tp": 6,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.8571,
+        "f1": 0.9231
+      },
       "blastRadius": {
         "newlySurviving": 0,
         "lost": 0
-      }
+      },
+      "note": "No occurrence in this document was ever vetoed, so the fix is a no-op here."
     },
     "DOC-0116": {
       "verdict": "MEASURED_RECALL_ONLY",
@@ -151,5 +171,11 @@
   },
   "verdict": "SEMANTIC_VETO_FIX_EXPOSES_MODEL_FP",
   "verdictReasoning": "No system regression anywhere: nothing that used to reach canonical output was lost. Large system-loss recovery on DOC-0116 (recall 0.0909 -> 0.9545) and DOC-0256 (+3 true headings, no new FP). The veto was also masking genuine model errors, which are now visible: four table-of-contents lines on DOC-0116 and one agenda row on DOC-0258. The authority split is correct and must not be reverted to hide them.",
-  "secondaryVerdict": "REPLAY_COMPATIBILITY_INCOMPLETE for DOC-0001 - reference defect, not a harness or model result."
+  "secondaryVerdict": "RESOLVED - DOC-0001 rejoined the cohort after the R1 gold re-author. Four of five documents are now scoreable; DOC-0116 remains recall-only because its gold is PARTIAL.",
+  "cohort": {
+    "documents": 5,
+    "scoreable": 4,
+    "recallOnly": 1,
+    "blocked": 0
+  }
 }

@@ -5,28 +5,6 @@ public sealed class ExtractionOptions
     /// <summary>Cắt ngắn text khi ghi ra XML tinh gọn (ký tự).</summary>
     public int MaxTextLength { get; set; } = 160;
 
-    /// <summary>Đoạn dài hơn ngưỡng này không bao giờ được coi là ứng viên tiêu đề.</summary>
-    public int MaxCandidateTextLength { get; set; } = 200;
-
-    /// <summary>Ngưỡng điểm heuristic để giữ lại một đoạn không có style heading.</summary>
-    public double CandidateThreshold { get; set; } = 0.45;
-
-    /// <summary>
-    /// Nhận làm ứng viên cả những dòng CHỈ vì chúng đứng riêng một dòng, không dấu câu cuối, viết
-    /// hoa đầu — tức không có bằng chứng cấu trúc nào, kể cả điểm heuristic.
-    /// <para>
-    /// ĐO ĐƯỢC trên khoá luận thật (§33): đường này sinh <b>75 ứng viên và KHÔNG một đề mục thật
-    /// nào</b> — độ chính xác 0%. Nó nhận `Nguồn: Facebook` mười hai lần, dòng bìa, phương án trắc
-    /// nghiệm, dòng mục lục gõ tay kèm số trang. Đó là 58% tập ứng viên, và 6 trong 21 dương tính
-    /// giả cuối cùng đi ra từ đây.
-    /// </para>
-    /// <para>
-    /// Vẫn để MẶC ĐỊNH BẬT: hợp đồng của tầng ứng viên là chọn RỘNG, và một tài liệu không đủ để
-    /// kết luận đường này vô dụng ở mọi tài liệu. Cờ tồn tại để đo được cái giá của nó.
-    /// </para>
-    /// </summary>
-    public bool PromoteStandaloneLines { get; set; } = true;
-
     /// <summary>
     /// Bỏ đoạn nằm trong <c>w:sdt</c> (content control) ra khỏi tập ứng viên.
     /// <para>

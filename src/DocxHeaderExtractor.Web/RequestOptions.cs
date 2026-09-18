@@ -27,7 +27,6 @@ public static class RequestOptions
         o.NumberingDeclaredOutline = Flag(form, "numberingOutline");
         o.AdministrativeDeclaredOutline = Flag(form, "adminOutline");
         o.AutoDetectDocumentMode = !form.ContainsKey("autoMode") || Flag(form, "autoMode");
-        if (Number(form, "threshold") is { } th) o.Extraction.CandidateThreshold = th;
 
         o.DisableLlm = Flag(form, "noLlm");
 

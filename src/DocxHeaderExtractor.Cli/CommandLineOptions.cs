@@ -159,7 +159,7 @@ public sealed class CommandLineOptions
         int i = 0;
         // Only verbs the CLI actually dispatches. Anything else is treated as an input path
         // by the default extract route.
-        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "info")
+        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "info" or "score")
         {
             o.Command = args[0];
             i = 1;
@@ -375,12 +375,10 @@ public sealed class CommandLineOptions
                 case "--no-structural-recovery": o.Pipeline.RecoverNumberedSiblings = false; break;
 
                 case "--max-text": extraction.MaxTextLength = int.Parse(Next(a)); break;
-                case "--threshold": extraction.CandidateThreshold = double.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture); break;
                 case "--no-tables": extraction.IncludeTables = false; break;
                 case "--page-headers": extraction.IncludePageHeadersFooters = true; break;
                 case "--no-context": extraction.IncludeFollowingContext = false; break;
                 case "--structural-only": extraction.UseLexicalRules = false; break;
-                case "--no-standalone-lines": extraction.PromoteStandaloneLines = false; break;
                 case "--skip-content-controls": extraction.SkipContentControls = true; break;
                 case "--bare-labels": extraction.AllowBareLabelledNumbers = true; break;
                 case "--split-merged": extraction.SplitMergedParagraphs = true; break;
@@ -455,6 +453,7 @@ public sealed class CommandLineOptions
         Cách dùng:
           dhx extract <file.docx|file.doc> [tuỳ chọn]   # mặc định; tên lệnh có thể bỏ qua
           dhx info    <file.gguf>                       # xem metadata mô hình
+          dhx score   <reference.json> <prediction.json> # đo level accuracy
           dhx help                                      # trợ giúp
 
         Tuỳ chọn chính:

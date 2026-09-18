@@ -14,6 +14,18 @@ namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 /// trước khi mô hình kịp thấy), điều mà kiến trúc hiện tại coi là quyết định NGHĨA
 /// (candidateHint chỉ là gợi ý attention, không phải tập heading được phép) và vì vậy thuộc về
 /// LLM, không phải harness.
+/// <para>
+/// BẤT BIẾN — nhãn ở đây KHÔNG phải cổng chặn:
+/// <list type="bullet">
+/// <item>HeadingCandidate — chỉ là gợi ý chú ý/định tuyến.</item>
+/// <item>Normal — vẫn nằm trong semantic source universe, mô hình vẫn được hỏi về nó.</item>
+/// <item>Empty — loại, và chỉ vì không có text nào để gửi đi.</item>
+/// </list>
+/// Nơi thực thi bất biến này là <c>DocxAuthorityPipeline.Build</c>, vốn chỉ lọc theo
+/// <c>Role != Empty</c> và text rỗng. Vì vậy hạ một đoạn xuống Normal KHÔNG làm mất recall, và
+/// nới HeadingCandidate ra rộng hơn KHÔNG làm tăng recall — nó chỉ làm nhãn mất khả năng phân
+/// biệt. Bất biến được khoá bằng <c>SourceUniverseCeilingTests</c>.
+/// </para>
 /// </summary>
 public static class HeadingHeuristics
 {
