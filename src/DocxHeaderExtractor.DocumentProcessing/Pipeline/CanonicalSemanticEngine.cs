@@ -239,25 +239,35 @@ internal static class CanonicalSemanticEngine
                 var to = Math.Min(evidence.Count, start + owned.Length + VisibleMargin);
                 var visible = evidence.Skip(from).Take(to - from).ToArray();
                 var ownedAliases = owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);
-                // I7. The structural state already open where this segment begins, so a segment that
-                // continues inside a container is not shown that container's contents without the
-                // container. Parser-owned marker evidence, not a harness claim about parents: it
-                // says what was open, never what anything's parent is.
-                var ancestors = _experiment.CarryStructuralAncestors
-                    ? owned[0].ActiveStructuralAncestors
-                    : [];
-                var packet = JsonSerializer.Serialize(new
-                {
-                    protocol = CanonicalSemanticContract.ProtocolVersion,
-                    ownedSourceAliases = owned.Select(item => item.SourceAlias).ToArray(),
-                    openStructuralContext = ancestors,
-                    // Evidence is already in document order, so a neighbour IS the local context.
-                    // Owned entries carry the decision facts; margin entries carry text only.
-                    sourceEvidence = visible.Select(item => ownedAliases.Contains(item.SourceAlias)
-                        ? OwnedEvidence(item)
-                        : (object)new { alias = item.SourceAlias, text = item.ExactSourceText, owned = false })
-                        .ToArray(),
-                });
+                // Evidence is already in document order, so a neighbour IS the local context.
+                // Owned entries carry the decision facts; margin entries carry text only.
+                var sourceEvidence = visible.Select(item => ownedAliases.Contains(item.SourceAlias)
+                    ? OwnedEvidence(item)
+                    : (object)new { alias = item.SourceAlias, text = item.ExactSourceText, owned = false })
+                    .ToArray();
+
+                // I7 adds a field; the baseline must not carry an empty one. Serialising
+                // openStructuralContext unconditionally made every baseline packet differ from the
+                // packet the pre-I7 code sent, which quietly moved the thing every arm is measured
+                // against. An arm that is off contributes nothing to the request at all.
+                var packet = _experiment.CarryStructuralAncestors
+                    ? JsonSerializer.Serialize(new
+                    {
+                        protocol = CanonicalSemanticContract.ProtocolVersion,
+                        ownedSourceAliases = owned.Select(item => item.SourceAlias).ToArray(),
+                        // The structural state already open where this segment begins, so a segment
+                        // continuing inside a container is not shown that container's contents
+                        // without the container. Parser-owned marker evidence, not a harness claim
+                        // about parents: it says what was open, never what anything's parent is.
+                        openStructuralContext = owned[0].ActiveStructuralAncestors,
+                        sourceEvidence,
+                    })
+                    : JsonSerializer.Serialize(new
+                    {
+                        protocol = CanonicalSemanticContract.ProtocolVersion,
+                        ownedSourceAliases = owned.Select(item => item.SourceAlias).ToArray(),
+                        sourceEvidence,
+                    });
                 var raw = await classifier.BoundaryCutAsync(
                     SystemPromptFor(_experiment),
                     packet + "\nSCHEMA=" + JsonSerializer.Serialize(CanonicalSemanticContract.Schema()),

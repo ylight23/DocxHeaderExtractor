@@ -53,6 +53,38 @@ public sealed class PdfExperimentArmPacketTests
         Assert.StartsWith(baseline[0].SystemPrompt, arm[0].SystemPrompt, StringComparison.Ordinal);
     }
 
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(false, true)]
+    public async Task An_arm_with_I7_off_does_not_carry_the_field_at_all(
+        bool carryAncestors, bool partialSpan)
+    {
+        // Absent, not empty. Serialising openStructuralContext as [] when the arm is off still
+        // changes every payload byte-for-byte, which silently moves the baseline that every arm is
+        // measured against. The hash assertions elsewhere prove identity; this one names the cause,
+        // so a regression says what broke rather than only that something did.
+        var requests = await CaptureAsync(new CanonicalSemanticExperiment(carryAncestors, partialSpan));
+
+        Assert.All(requests, request =>
+            Assert.False(Body(request).TryGetProperty("openStructuralContext", out _)));
+    }
+
+    [Fact]
+    public async Task The_baseline_payload_still_matches_the_frozen_pre_intervention_hashes()
+    {
+        // The historical values from before I7 existed. If an arm ever leaks into the default
+        // again, these move and the B0 column stops meaning "what ships today".
+        var baseline = await CaptureAsync(CanonicalSemanticExperiment.Baseline);
+
+        Assert.Equal(
+            [
+                "9461b41805aa226d10b46b620d68fdea0988e546ff90ee3ec25e3f0b4742d33f",
+                "3b673d8ff93a3ffaa81cc0bd343470c10a161a577357d3e8b85e788209749772",
+                "3e1e10450e57140cfad40dce66724b2540edf5ddb67d97f74427e0fbe98abaac",
+            ],
+            baseline.Take(3).Select(request => Sha256(request.UserMessage)));
+    }
+
     [Fact]
     public async Task B1_carries_open_structure_only_where_structure_is_open()
     {
