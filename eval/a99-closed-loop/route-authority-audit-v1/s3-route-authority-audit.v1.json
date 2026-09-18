@@ -1,0 +1,84 @@
+{
+  "artifactKind": "ROUTE_AUTHORITY_AUDIT",
+  "schemaVersion": "v1",
+  "id": "S3",
+  "severity": "HIGH",
+  "question": "Why are two parallel sources modelled as one mutually exclusive enum route?",
+  "invariantRequired": [
+    "DOCX PRESENCE NEVER DISABLES PDF.",
+    "PDF PRESENCE NEVER DISABLES DOCX.",
+    "EACH SOURCE TYPE HAS ITS OWN AUTHORITY PIPELINE."
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "title": "The route is an exclusive enum, decided by one boolean expression",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Routing/DefaultAuthorityRoutePolicy.cs",
+      "code": "HasPdf && AnalystAvailable ? AuthorityRoute.PdfAuthority : AuthorityRoute.DocxAuthority",
+      "detail": "AuthorityRoute is { DocxAuthority, PdfAuthority, Unsupported } and Decide returns exactly one. There is no representation for both.",
+      "verdict": "CONFIRMS THE ARCHITECTURAL DEFECT"
+    },
+    {
+      "id": "F2",
+      "title": "PDF is not an independent lane at all - it cannot run without a DOCX",
+      "code": "if (!capabilities.HasDocx) return AuthorityRoute.Unsupported;",
+      "detail": "A PDF-only input is Unsupported. So PDF is not a parallel source authority; it is a mode of the DOCX pipeline that happens to replace the DOCX catalog.",
+      "verdict": "STRONGER THAN THE ORIGINAL CONCERN - the asymmetry runs both ways and neither direction matches the required invariant"
+    },
+    {
+      "id": "F3",
+      "title": "Selecting PdfAuthority replaces the source catalog for the entire downstream",
+      "file": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/AuthorityExtractionPipeline.cs",
+      "code": "var sourceCatalog = authorityRoute == AuthorityRoute.PdfAuthority ? routeSourceCatalog : DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);",
+      "detail": "sourceCatalog then feeds StructuralSectionProjection, SectionChunkProjection, RouteOccurrenceTraceBuilder and DocumentExtractionResult. When the PDF route wins, the DOCX occurrence universe never reaches the result - sections, chunks and traces are all PDF-derived, and provenance records pdf-parser-facts-plus-canonical-grounding instead of docx-source-document.",
+      "verdict": "This is why it is not merely a default-choice question: the PDF lane substitutes the source of truth, silently."
+    },
+    {
+      "id": "F4",
+      "title": "The architecture required already exists - one level below the route",
+      "file": "src/DocxHeaderExtractor.Core/Models/CanonicalSemanticProductionEntryPoint.cs",
+      "detail": "CanonicalSemanticProductionInput already accepts VisualBlocks, VisualProposals and VisualPages alongside the DOCX SourceCatalog, and CanonicalSemanticCrossModalReconciler.Reconcile(textEvidence, visualEvidence) already merges two modalities into unified occurrences without letting either duplicate the other. That is exactly DOCX authority plus PDF evidence, reconciled.",
+      "gap": "CanonicalSemanticDocxAuthorityAdapter passes none of the three visual arguments, so they default to null. The channel exists and is unused.",
+      "verdict": "The fix is not a new layer. It is removing the exclusive choice above a reconciler that is already built."
+    },
+    {
+      "id": "F5",
+      "title": "The route policy contract test does not test the production policy",
+      "file": "tests/DocxHeaderExtractor.Tests/AuthorityRoutePolicyContractTests.cs",
+      "detail": "The test file declares its own SourceCapabilities, AuthorityRoute, IAuthorityRoutePolicy and CharacterizedAuthorityRoutePolicy inside the test namespace and asserts against that copy. It never references the production Routing types, so it would keep passing if the production policy changed or was deleted.",
+      "verdict": "Mirrors the implementation; provides no protection."
+    }
+  ],
+  "consequenceForEvidenceGatheredSoFar": {
+    "statement": "Every replay in semantic-veto-removal-v1 ran the DOCX canonical lane, because no PDF was passed.",
+    "implication": "If production routes a DOCX to PdfAuthority whenever a PDF accompanies it, the measured gains from 3886a5a do not automatically apply to those runs. The veto removal was applied to PdfProposalValidator, which the PDF lane also uses, but the rest of that lane - including ResolveHeadingSpansAsync and the three unaudited heuristic sites - was not measured.",
+    "action": "Do not generalise the cross-document replay numbers to PDF-accompanied production runs until S3 is resolved."
+  },
+  "correctShape": {
+    "current": "decide(one of DOCX or PDF) then that lane owns the source catalog and the result",
+    "required": [
+      "HasDocx -> run DOCX authority",
+      "HasPdf -> run PDF authority",
+      "both -> run both, then optional reconciliation at the cross-modal evidence layer",
+      "DOCX authority never substituted because a PDF happens to exist"
+    ],
+    "nonStandardDocxIsItsOwnCase": [
+      "DOCX_TEXT_AUTHORITY_UNAVAILABLE",
+      "IMAGE_ONLY_DOCX",
+      "CORRUPT_DOCX_SOURCE"
+    ],
+    "note": "An image-only or corrupt DOCX must report its state explicitly rather than silently handing authority to the PDF. This is the same gap recorded as S1 - there is no no-text-layer status anywhere in the codebase today."
+  },
+  "blastRadiusOfChanging": {
+    "productionCallSites": "AuthorityExtractionPipeline only - the enum is read in one switch plus three ternaries, for the catalog, the representation kind and the trace owner.",
+    "testCallSites": "AuthorityRoutePolicyContractTests, which tests a private copy and so would not resist the change.",
+    "assessment": "The coupling is narrow. The cost is not in call sites; it is in deciding what a combined result means, which is a product question, not a refactor."
+  },
+  "openQuestionsForTheOwner": [
+    "When both lanes run, what single result does the caller receive - DOCX authority with PDF as evidence, or two results side by side?",
+    "Should PDF-only input remain Unsupported, or become a first-class lane? F2 says it currently cannot run at all.",
+    "Does PDF evidence enter through the existing CanonicalSemanticProductionInput visual channel, or stay a separate result reconciled afterwards?"
+  ],
+  "recommendation": "Audit only. No code change made. The enum is the defect, but replacing it requires deciding the combined-result contract first, and that decision is the owner decision.",
+  "status": "AUDITED_NOT_FIXED"
+}
