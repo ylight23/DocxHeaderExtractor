@@ -97,13 +97,9 @@ public interface ICanonicalSemanticVisualModel
         CancellationToken cancellationToken = default);
 }
 
-public interface ICanonicalSemanticAdjudicationModel
-{
-    Task<SemanticAdjudicationResponse> AdjudicateAsync(
-        SemanticAdjudicationCase adjudicationCase,
-        string requestId,
-        CancellationToken cancellationToken = default);
-}
+// ICanonicalSemanticAdjudicationModel is declared with the control plane that drives it, in
+// CanonicalSemanticClosedLoopControlPlane. Both sides of this merge had added the same interface
+// independently, character for character; the copy that lives beside its caller is the one kept.
 
 public sealed record CanonicalSemanticProductionResult(
     CanonicalSemanticModalityProfile ModalityProfile,
