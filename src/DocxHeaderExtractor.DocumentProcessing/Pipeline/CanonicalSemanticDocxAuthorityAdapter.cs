@@ -18,7 +18,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         DocxPolicyState policyState,
         DocumentModeReport mode,
         IHeaderClassifier? transport,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        CanonicalSemanticExperiment? experiment = null)
     {
         ArgumentNullException.ThrowIfNull(policyState);
         var source = DocxAuthorityPipeline.BuildForAudit(policyState, mode);
@@ -58,7 +59,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         }
         else
         {
-            canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(transport);
+            canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+                transport, experiment ?? CanonicalSemanticExperiment.Baseline);
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
                 input, canonicalModel,
                 requestId: $"docx:{policyState.Source.DocumentId}",
@@ -243,6 +245,9 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             [paragraph.IsCandidate ? "candidate-attention" : "source-visible"],
             context.ModelContext.PreviousBlocks,
             context.ModelContext.NextBlocks,
-            new SemanticCandidateAttentionHint(alias, paragraph.IsCandidate, paragraph.IsCandidate ? "policy-candidate" : "policy-non-candidate"));
+            new SemanticCandidateAttentionHint(alias, paragraph.IsCandidate, paragraph.IsCandidate ? "policy-candidate" : "policy-non-candidate"))
+        {
+            ActiveStructuralAncestors = context.ModelContext.ActiveHeadingStack,
+        };
     }
 }
