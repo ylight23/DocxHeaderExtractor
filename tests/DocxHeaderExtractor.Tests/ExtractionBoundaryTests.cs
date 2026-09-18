@@ -62,7 +62,7 @@ public sealed class ExtractionBoundaryTests : IDisposable
         await File.WriteAllTextAsync(Path.Combine(_directory, "report.pdf"), "%PDF-1.7\n");
         using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var dispatcher = new CanonicalExtractionDispatcher(
-            new DocxCanonicalSourceExtractor(pipeline), new PdfCanonicalSourceExtractorNotWired());
+            new DocxCanonicalSourceExtractor(pipeline), new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true }));
 
         var document = await dispatcher.ExtractAsync(
             new AuthorityExtractionRequest(UploadedFile.FromLocalPath(path)));
@@ -78,7 +78,7 @@ public sealed class ExtractionBoundaryTests : IDisposable
     {
         var path = Path.Combine(_directory, "notes.docx");
         await File.WriteAllBytesAsync(path, [0x00, 0x01, 0x02, 0x03]);
-        var dispatcher = new CanonicalExtractionDispatcher(new PdfCanonicalSourceExtractorNotWired());
+        var dispatcher = new CanonicalExtractionDispatcher(new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true }));
 
         await Assert.ThrowsAsync<UnsupportedSourceException>(() => dispatcher.ExtractAsync(
             new AuthorityExtractionRequest(UploadedFile.FromLocalPath(path))));

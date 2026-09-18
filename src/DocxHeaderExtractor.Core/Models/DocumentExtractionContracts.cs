@@ -91,6 +91,9 @@ public static class ExecutionContracts
     /// <summary>Authority was the uploaded file, identified by its own bytes.</summary>
     public const string ExplicitUploadedDocxCanonical = "EXPLICIT_UPLOADED_DOCX_CANONICAL";
 
+    /// <summary>Authority was the uploaded PDF, extracted from that PDF alone.</summary>
+    public const string ExplicitUploadedPdfCanonical = "EXPLICIT_UPLOADED_PDF_CANONICAL";
+
     /// <summary>Authority came from a PDF found beside the input or in a corpus directory.</summary>
     public const string LegacyAutoDiscoveredPdfRoute = "LEGACY_AUTO_DISCOVERED_PDF_ROUTE";
 }
