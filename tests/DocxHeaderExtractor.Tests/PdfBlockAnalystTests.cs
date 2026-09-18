@@ -350,7 +350,7 @@ public sealed class PdfBlockAnalystTests
         public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) =>
             throw new NotSupportedException();
 
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
         {
             UserPrompt = userMessage;
             return Task.FromResult(response);
@@ -370,7 +370,7 @@ public sealed class PdfBlockAnalystTests
         public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
         public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
         public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default) =>
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.Delay(Timeout.InfiniteTimeSpan, ct).ContinueWith(_ => "", ct);
         public void Dispose() { }
     }
@@ -385,7 +385,7 @@ public sealed class PdfBlockAnalystTests
         public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
         public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
         public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
         {
             if (!systemPrompt.Contains("source pointer span", StringComparison.Ordinal)) throw new NotSupportedException();
             if (Interlocked.Increment(ref _spanCalls) == 1) throw new InvalidOperationException("test span failure");
@@ -404,7 +404,7 @@ public sealed class PdfBlockAnalystTests
         public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
         public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
         public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
         {
             if (Interlocked.Increment(ref _spanCalls) == 2) throw new InvalidOperationException("test later span failure");
             return Task.FromResult("""{"blocks":[{"id":"b1","heading_span":{"start":0,"end":9}},{"id":"b2","heading_span":{"start":0,"end":9}},{"id":"b3","heading_span":{"start":0,"end":9}},{"id":"b4","heading_span":{"start":0,"end":9}}]}""");

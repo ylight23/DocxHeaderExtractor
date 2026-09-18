@@ -272,7 +272,11 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
     }
 
     /// <summary>Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.</summary>
-    public async Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+    public async Task<string> BoundaryCutAsync(
+        string systemPrompt,
+        string userMessage,
+        CancellationToken ct = default,
+        int expectedItemCount = 0)
     {
         var body = new
         {

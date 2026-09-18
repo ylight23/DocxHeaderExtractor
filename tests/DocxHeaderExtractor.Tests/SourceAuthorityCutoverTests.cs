@@ -145,7 +145,7 @@ public sealed class SourceAuthorityCutoverTests
         public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context,
             IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
 
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
             => Task.FromResult("{\"headings\":[]}");
 
         public void Dispose() { }

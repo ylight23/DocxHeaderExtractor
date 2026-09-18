@@ -99,7 +99,8 @@ public sealed class FactModelRuntimeTests
         Assert.Equal("test-model", body.RootElement.GetProperty("model").GetString());
         Assert.Equal(0, body.RootElement.GetProperty("temperature").GetInt32());
         Assert.Equal("json_object", body.RootElement.GetProperty("response_format").GetProperty("type").GetString());
-        Assert.True(body.RootElement.GetProperty("provider").GetProperty("zdr").GetBoolean());
+        // Written explicitly so the account's privacy default never decides routing implicitly.
+        Assert.False(body.RootElement.GetProperty("provider").GetProperty("zdr").GetBoolean());
         Assert.Equal("deny", body.RootElement.GetProperty("provider").GetProperty("data_collection").GetString());
         Assert.DoesNotContain("secret-api-key", handler.RequestBody, StringComparison.Ordinal);
     }

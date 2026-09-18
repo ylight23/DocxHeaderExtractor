@@ -19,7 +19,10 @@ public sealed class OpenRouterTests
 
         Assert.Single(result.Headings);
         Assert.Equal(2, result.Headings[0].Level);
-        Assert.Contains("\"zdr\":true", handler.Body);
+        // The ZDR flag must always be written, never omitted: an omitted field inherits the
+        // account's privacy default, which silently rejects every endpoint of the controlled
+        // models. Its value follows RemoteInferenceOptions.RequireZeroDataRetention (false here).
+        Assert.Contains("\"zdr\":false", handler.Body);
         Assert.Contains("\"data_collection\":\"deny\"", handler.Body);
         Assert.Contains("\"require_parameters\":true", handler.Body);
         Assert.Contains("\"response_format\":{\"type\":\"json_object\"}", handler.Body);

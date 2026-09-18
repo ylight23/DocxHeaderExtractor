@@ -138,15 +138,19 @@ public static class CanonicalSemanticContractValidator
             issues.Add(new("INVALID_OCCURRENCE", proposal.SourceAlias, "occurrence must be a positive ordinal when supplied."));
         if (string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal) && names.Count != 1)
             issues.Add(new("WHOLE_ALIAS_REQUIRES_ONE_ALIAS", proposal.SourceAlias, "WHOLE_ALIAS cannot address multiple aliases."));
-        if (!string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal) &&
-            proposal.VerbatimParts is { Count: > 0 } && names.Count != proposal.VerbatimParts.Count)
+        // The parts list is resolved BEFORE the cardinality check so the check also covers the
+        // shape a model actually produced: several sourceAliases with a single verbatimText and no
+        // verbatimParts. Guarding only the populated-verbatimParts case left that shape to index a
+        // one-element list with the alias ordinal, and the validator threw instead of rejecting.
+        var wholeAlias = string.Equals(
+            proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal);
+        var parts = proposal.VerbatimParts is { Count: > 0 }
+            ? proposal.VerbatimParts
+            : proposal.VerbatimText is null ? [] : (IReadOnlyList<string>)[proposal.VerbatimText];
+        if (!wholeAlias && names.Count != parts.Count)
             issues.Add(new("COMPOSITE_MAPPING_MISMATCH", proposal.SourceAlias, "sourceAliases and verbatimParts must have the same cardinality."));
-        if (proposal.IsHeading && issues.Count == 0 &&
-            !string.Equals(proposal.SelectionMode, CanonicalSemanticSelectionMode.WholeAlias, StringComparison.Ordinal))
+        if (proposal.IsHeading && issues.Count == 0 && !wholeAlias)
         {
-            var parts = proposal.VerbatimParts is { Count: > 0 }
-                ? proposal.VerbatimParts
-                : [proposal.VerbatimText!];
             for (var index = 0; index < names.Count; index++)
             {
                 var alias = aliases[names[index]];

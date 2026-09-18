@@ -26,21 +26,11 @@
          thật chứ không chỉ chạy tay một lần. -->
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Cli\DocxHeaderExtractor.Cli.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
-    <ProjectReference Include="..\..\src\DocxHeaderExtractor.Eval\DocxHeaderExtractor.Eval.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Mcp\DocxHeaderExtractor.Mcp.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Infrastructure\DocxHeaderExtractor.Infrastructure.csproj" />
     <!-- Chỉ để kiểm giới hạn của WritebackStore: nó giữ tài liệu của người dùng trong bộ nhớ nên
          các mức trần phải có test, không thể chỉ tin vào review. -->
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Web\DocxHeaderExtractor.Web.csproj" Aliases="global,WebApp" />
-    <ProjectReference Include="..\..\tools\identity-benchmark-v4h-b\IdentityBenchmarkV4HB.csproj" />
-    <ProjectReference Include="..\..\tools\identity-benchmark-v4h-c\IdentityBenchmarkV4HC.csproj" />
-    <ProjectReference Include="..\..\tools\identity-benchmark-v5a\IdentityBenchmarkV5A.csproj" />
-    <ProjectReference Include="..\..\tools\identity-benchmark-v5c\IdentityBenchmarkV5C.csproj" />
-    <ProjectReference Include="..\..\tools\identity-benchmark-v6a\IdentityBenchmarkV6A.csproj" />
-    <ProjectReference Include="..\..\tools\identity-benchmark-v6b\IdentityBenchmarkV6B.csproj" />
-    <ProjectReference Include="..\..\tools\identity-benchmark-v6c\IdentityBenchmarkV6C.csproj" />
-    <ProjectReference Include="..\..\tools\identity-benchmark-v6d-r\IdentityBenchmarkV6DR.csproj" />
-    <ProjectReference Include="..\..\tools\identity-benchmark-v7a\IdentityBenchmarkV7A.csproj" />
   </ItemGroup>
 
 </Project>

@@ -225,7 +225,7 @@ internal sealed class FrozenPdfClassifier(
         IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) =>
         Task.FromResult(new ChunkResult([], "{}", 0, 0, new HashSet<int>()));
 
-    public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+    public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
     {
         countCall();
         using var json = JsonDocument.Parse(userMessage);

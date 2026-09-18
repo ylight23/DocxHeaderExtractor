@@ -58,6 +58,11 @@ internal static class DocxAuthorityPipeline
                 CandidateId = item.SourceId,
                 ObservedSourceFacts = [sourceFacts],
             };
+            // No resolved parent means the model gave no relation to derive from. Level stays
+            // absent rather than defaulting to 1, which would assert "top level" without evidence.
+            var derivedLevel = string.Equals(hierarchy.ParentResolution, "unresolved", StringComparison.Ordinal)
+                ? (int?)null
+                : hierarchy.Level;
             var proposal = new StructuralProposal
             {
                 CandidateId = item.SourceId,
@@ -71,7 +76,7 @@ internal static class DocxAuthorityPipeline
                 ProposedParentId = hierarchy.ParentId is { } parent
                     ? elementIdBySourceId.GetValueOrDefault(parent)
                     : null,
-                ProposedLevel = hierarchy.Level,
+                ProposedLevel = derivedLevel,
             };
             var decision = new StructuralDecision(
                 "structure", nameof(HeadingDecisionStatus.RequiresReview), 0,
@@ -82,7 +87,11 @@ internal static class DocxAuthorityPipeline
                 new StructuralProjectionMetadata
                 {
                     CompatibilitySourceId = sourceParagraph.SourceId,
+                    // Declaring the level "set" while leaving it null made the projection prefer
+                    // that null over the materialized element level, so this route emitted headings
+                    // with no level at all whatever the resolver decided.
                     CompatibilityLevelIsSet = true,
+                    CompatibilityLevel = derivedLevel,
                     OriginalText = sourceParagraph.Text,
                     BoundarySource = "docx-source-pointer-span",
                     StyleId = sourceParagraph.Style.StyleId,

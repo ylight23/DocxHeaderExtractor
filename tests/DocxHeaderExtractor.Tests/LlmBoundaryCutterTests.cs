@@ -119,7 +119,7 @@ public sealed class LlmBoundaryCutterTests
             throw new NotSupportedException();
 
         public Task<string> BoundaryCutAsync(
-            string systemPrompt, string userMessage, CancellationToken ct = default)
+            string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
         {
             WasCalled = true;
             return Task.FromResult(response);
@@ -150,7 +150,7 @@ public sealed class LlmBoundaryCutterTests
             throw new NotSupportedException();
 
         public Task<string> BoundaryCutAsync(
-            string systemPrompt, string userMessage, CancellationToken ct = default) =>
+            string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             throw new InvalidOperationException("backend lỗi (mô phỏng cho test)");
 
         public void Dispose() { }

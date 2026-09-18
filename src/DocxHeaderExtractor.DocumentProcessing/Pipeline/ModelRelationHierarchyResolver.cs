@@ -1,0 +1,106 @@
+using DocxHeaderExtractor.Core.Models;
+
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+
+/// <summary>
+/// Turns the immediate-parent relations a model returned into harness-owned levels.
+/// <para>
+/// The split of authority is the point: the model decides which heading is whose parent and which
+/// occurrences are one section; this resolver only validates those claims and counts depth. It
+/// never reads numbering, style, indentation or adjacency, so a document's numbering shape can
+/// never re-enter as a level authority.
+/// </para>
+/// </summary>
+internal static class ModelRelationHierarchyResolver
+{
+    private const string ParentHintPrefix = "parent-node:";
+    private const string SameNodeHintPrefix = "same-node:";
+    private const string ContinuationNodeHintPrefix = "continuation-node:";
+    private const string RootParent = "ROOT";
+
+    /// <summary>Harness-owned hierarchy for one heading, derived from model parent relations.</summary>
+    /// <param name="SemanticNodeKey">
+    /// Which semantic section this occurrence belongs to. Shared only when the model said so with
+    /// a same-node hint; otherwise every physical occurrence is its own node, because identical
+    /// wording alone is not identity.
+    /// </param>
+    /// <param name="IsPrimaryOccurrence">
+    /// False for a repeat of a node already seen earlier in document order. Repeats stay real
+    /// occurrences; only the outline projection collapses them.
+    /// </param>
+    internal readonly record struct DerivedHeadingHierarchy(
+        string SourceId,
+        int Level,
+        string? ParentSourceId,
+        string Resolution,
+        string SemanticNodeKey,
+        bool IsPrimaryOccurrence);
+
+    /// <summary>
+    /// Level is derived from the immediate-parent relations the model returned, never from
+    /// numbering shape. The harness owns validation and the arithmetic: a parent must be a bound
+    /// heading that precedes its child in document order, self-parenting is rejected, and a child
+    /// whose parent cannot be resolved stays unresolved instead of inheriting a guessed depth.
+    /// </summary>
+    internal static IReadOnlyList<DerivedHeadingHierarchy> DeriveHierarchyFromModelRelations(
+        IReadOnlyList<CanonicalSemanticBoundHeading> bound)
+    {
+        var ordered = bound
+            .GroupBy(item => item.SourceId, StringComparer.Ordinal)
+            .Select(group => group.OrderBy(item => item.Start).First())
+            .OrderBy(item => item.SourceOrdinal)
+            .ThenBy(item => item.Start)
+            .ToArray();
+        var sourceIdByAlias = ordered.ToDictionary(item => item.Alias, item => item.SourceId, StringComparer.Ordinal);
+        var ordinalBySourceId = ordered
+            .Select((item, index) => (item.SourceId, index))
+            .ToDictionary(item => item.SourceId, item => item.index, StringComparer.Ordinal);
+
+        var parentBySourceId = new Dictionary<string, string?>(StringComparer.Ordinal);
+        foreach (var heading in ordered)
+        {
+            var hint = heading.RelationHints.FirstOrDefault(item =>
+                item.StartsWith(ParentHintPrefix, StringComparison.Ordinal));
+            if (hint is null) continue;
+            var target = hint[ParentHintPrefix.Length..];
+            if (string.Equals(target, RootParent, StringComparison.OrdinalIgnoreCase))
+            {
+                parentBySourceId[heading.SourceId] = null;
+                continue;
+            }
+            if (!sourceIdByAlias.TryGetValue(target, out var parentSourceId)) continue;
+            if (string.Equals(parentSourceId, heading.SourceId, StringComparison.Ordinal)) continue;
+            if (ordinalBySourceId[parentSourceId] >= ordinalBySourceId[heading.SourceId]) continue;
+            parentBySourceId[heading.SourceId] = parentSourceId;
+        }
+
+        var levels = new Dictionary<string, int>(StringComparer.Ordinal);
+        var seenNodes = new HashSet<string>(StringComparer.Ordinal);
+        var result = new List<DerivedHeadingHierarchy>(ordered.Length);
+        foreach (var heading in ordered)
+        {
+            var resolved = parentBySourceId.TryGetValue(heading.SourceId, out var parentSourceId);
+            var level = 1;
+            if (resolved && parentSourceId is not null)
+                level = levels.TryGetValue(parentSourceId, out var parentLevel) ? parentLevel + 1 : 1;
+            levels[heading.SourceId] = Math.Clamp(level, 1, 9);
+            // Same node-identity rule as CanonicalSemanticGraphResolver: shared only on an explicit
+            // model hint, otherwise the physical occurrence is its own node.
+            var sameNodeHint = heading.RelationHints.FirstOrDefault(item =>
+                item.StartsWith(SameNodeHintPrefix, StringComparison.Ordinal) ||
+                item.StartsWith(ContinuationNodeHintPrefix, StringComparison.Ordinal));
+            var nodeKey = sameNodeHint is not null
+                ? $"explicit:{sameNodeHint}"
+                : $"physical:{heading.SourceId}:{heading.Start}:{heading.End}:{heading.Alias}";
+            result.Add(new DerivedHeadingHierarchy(
+                heading.SourceId,
+                levels[heading.SourceId],
+                resolved ? parentSourceId : null,
+                !resolved ? "unresolved"
+                    : parentSourceId is null ? "model-root" : "model-parent-relation",
+                nodeKey,
+                seenNodes.Add(nodeKey)));
+        }
+        return result;
+    }
+}

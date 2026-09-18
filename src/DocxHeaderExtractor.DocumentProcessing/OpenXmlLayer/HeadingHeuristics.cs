@@ -6,23 +6,17 @@ using DocxHeaderExtractor.DocumentProcessing.Policy;
 namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>
-/// Luật nhận diện tiêu đề chạy trước LLM. Mục tiêu: giữ lại đúng tập ứng viên nhỏ
-/// (recall cao, precision vừa phải) để LLM chỉ phải lọc và gán cấp.
-/// <para>
-/// Các mẫu tiền tố đánh số ở đây CỐ Ý rộng hơn <see cref="Pipeline.NumberingAudit"/>: bỏ sót một
-/// ứng viên ở tầng này là mất hẳn vì mô hình không bao giờ nhìn thấy nó, còn nhận rộng thì mô hình
-/// và hậu kiểm vẫn còn cơ hội bác. Danh sách đầy đủ các chỗ lệch và lý do nằm ở đầu
-/// <c>NumberingAudit</c>; sửa một bên thì đọc bên kia trước.
-/// </para>
+/// Phân loại đoạn trước LLM. SEMANTIC_RECALL_CEILING = SOURCE_OCCURRENCE_UNIVERSE, không phải
+/// một tập ứng viên do điểm số quyết định: mọi đoạn còn lại sau các loại trừ cấu trúc dứt khoát
+/// (rỗng, hỏng, bảng dữ liệu, content control, dòng mục lục/chú thích) đều trở thành
+/// HeadingCandidate và được đưa cho LLM tự quyết định isHeading. Điểm số chi tiết theo
+/// numbering/prefix/table-depth/formatting đã bị bỏ - nó từng là một cổng chặn ẩn (loại đoạn
+/// trước khi mô hình kịp thấy), điều mà kiến trúc hiện tại coi là quyết định NGHĨA
+/// (candidateHint chỉ là gợi ý attention, không phải tập heading được phép) và vì vậy thuộc về
+/// LLM, không phải harness.
 /// </summary>
 public static class HeadingHeuristics
 {
-    /// <summary>
-    /// Tên style dựng sẵn của OOXML. ĐÂY KHÔNG PHẢI từ vựng tiếng Anh mà là định danh do
-    /// chính đặc tả ECMA-376 quy định: dù Word chạy giao diện tiếng gì, w:styleId và w:name
-    /// của style dựng sẵn vẫn là "Heading1"/"heading 1", "Title", "Subtitle".
-    /// Vì vậy luật này không phụ thuộc ngôn ngữ tài liệu và luôn được bật.
-    /// </summary>
     /// <summary>
     /// Style do người dùng TỰ ĐẶT TÊN theo ngôn ngữ của họ. Đây mới thực sự là mapping cứng:
     /// nó chỉ đúng với vài thứ tiếng và phải bổ sung tay khi gặp tiếng khác.
@@ -36,75 +30,6 @@ public static class HeadingHeuristics
     ];
 
     private static readonly Regex StyleLevelRx = new(@"(\d+)\s*$", RegexOptions.Compiled);
-
-    /// <summary>
-    /// Dạng đánh số có từ nhãn đứng trước: "PHẦN I. …", "Chương 2. …", "Điều 5. …", "Section 3: …".
-    /// <para>
-    /// Thay cho danh sách từ khoá cứng (chương|phần|mục|điều|chapter|section|…) vốn chỉ đúng với
-    /// tiếng Việt và tiếng Anh, và chỉ đúng với những từ ai đó nghĩ ra sẵn. Ở đây KHÔNG quan tâm
-    /// từ nhãn là gì — chỉ cần một từ viết hoa đứng trước một số (Ả Rập hoặc La Mã), có dấu ngắt,
-    /// rồi tới phần tên mục. Đó là một document number format, nhận diện bằng hình dạng chứ không
-    /// bằng vốn từ, nên áp được cho mọi ngôn ngữ.
-    /// </para>
-    /// <para>
-    /// Hai dạng được nhận: có dấu ngắt rồi tới phần tên ("PHẦN I. CƠ SỞ…"), hoặc không dấu ngắt
-    /// nhưng phần tên bắt đầu bằng chữ HOA ("Chương 1 Tổng quan"). Ràng buộc chữ hoa ở nhánh thứ
-    /// hai là thứ tách nó khỏi câu văn có số: "Ngày 14 tháng 01 năm 2026" không khớp vì sau số là
-    /// chữ thường. "Ngày 14/01/2026 báo cáo…" không khớp vì sau số là dấu gạch chéo, và "Trang 5"
-    /// không khớp vì không có phần tên mục.
-    /// </para>
-    /// </summary>
-    private static readonly Regex LabelledNumberPrefixRx = new(
-        @"^\s*\p{Lu}[\p{L}]{1,11}\s+(\d{1,3}|[IVXLCDM]{1,7})(?:\s*[\.\):\-–]\s+\p{L}|\s+\p{Lu})",
-        RegexOptions.Compiled);
-
-    /// <summary>
-    /// "1.", "1.2", "2.3.4)" ở đầu dòng — kể cả khi thiếu dấu cách sau dấu chấm.
-    /// <para>
-    /// Bản gõ tay rất hay quên dấu cách, ví dụ: "1.MUC (chỉ số tổng hợp…)"
-    /// mất trọn 0.35 điểm thưởng đánh số nên chỉ còn 0.40, dưới ngưỡng 0.45 và bị loại — trong
-    /// khi hai mục anh em "2. MB…" và "3. MB…" được 0.75. Mô hình không cứu được vì đoạn bị loại
-    /// từ trước khi nó nhìn thấy.
-    /// </para>
-    /// <para>
-    /// Vẫn CỐ Ý không nhận "1MUC" (mất luôn dấu chấm): không phân biệt được với "3G", "4K", "2B".
-    /// Sau số phải có dấu ngắt hoặc khoảng trắng — không chấp nhận nối thẳng chữ.
-    /// <c>(?!\d)</c> chặn nuốt nhầm số dài: "2024 Báo cáo" không được thành mục "20".
-    /// </para>
-    /// </summary>
-    private static readonly Regex DecimalPrefixRx = new(
-        @"^\s*(\d{1,2}(?:\.\d{1,2}){0,4})(?!\d)\s*(?:[\.\)\-–:]\s*|\s+)\S",
-        RegexOptions.Compiled);
-
-    /// <summary>
-    /// Đoạn có mở đầu bằng một ký hiệu đánh số bất kỳ hay không — dùng để MIỄN trần độ dài, không
-    /// dùng để chấm điểm (điểm vẫn do từng luật riêng cộng vào như cũ).
-    /// </summary>
-    private static bool CoKyHieuDanhSo(string text) =>
-        DecimalPrefixRx.IsMatch(text)
-        || RomanPrefixRx.IsMatch(text)
-        || LetterPrefixRx.IsMatch(text)
-        || (!CaptionRx.IsMatch(text) && LabelledNumberPrefixRx.IsMatch(text));
-
-    /// <summary>
-    /// Độ dài phần NHAN ĐỀ: tới dấu ngắt đầu tiên nếu đoạn là heading-dính-body, ngược lại là cả
-    /// đoạn. Không đoán ranh giới ở đây — chỉ cần một ước lượng đủ tốt để chấm điểm.
-    /// </summary>
-    private static int DoDaiNhanDe(string text)
-    {
-        if (!CoKyHieuDanhSo(text)) return text.Length;
-        var at = text.IndexOfAny([':', ';']);
-        return at > 0 ? at : text.Length;
-    }
-
-    private static readonly Regex RomanPrefixRx = new(
-        @"^\s*([IVXLCDM]{1,7})\s*[\.\)\-–:]\s+\S",
-        RegexOptions.Compiled);
-
-    /// <summary>"A. …", "Б) …" — \p{Lu} bắt mọi chữ hoa Unicode nên không phải liệt kê bảng chữ cái.</summary>
-    private static readonly Regex LetterPrefixRx = new(
-        @"^\s*(\p{Lu})\s*[\.\)]\s+\S",
-        RegexOptions.Compiled);
 
     /// <summary>
     /// Nhãn đặt tên cho một đối tượng, dạng "TỪ + SỐ NHIỀU PHẦN": "Bảng 1.2:", "Hình 2.4", "Table 3.1".
@@ -156,13 +81,15 @@ public static class HeadingHeuristics
     public static bool EndsLikeSentence(string text) => SentenceEndRx.IsMatch(text);
 
     /// <summary>
-    /// Gán role, guessed level và điểm số cho policy paragraph.
+    /// Gán role và (khi có bằng chứng style chắc chắn) guessed level cho policy paragraph. Không
+    /// còn chấm điểm/ngưỡng: mọi đoạn còn sống sót qua các loại trừ cấu trúc dứt khoát bên dưới
+    /// đều thành HeadingCandidate.
     /// </summary>
     /// <param name="trustStyleSelection">
-    /// Cho phép style built-in thoát sớm với <c>Score = 1.0</c>. Đặt false khi
+    /// Cho phép style built-in thoát sớm với role StyledHeading. Đặt false khi
     /// <see cref="StyleTrustAudit"/> chấm rằng style của TÀI LIỆU NÀY bị áp bừa: khi đó đoạn mang
-    /// style vẫn đi tiếp xuống phần tính điểm — nó KHÔNG bị xoá, chỉ mất quyền phủ quyết mọi luật
-    /// hình dạng phía dưới (bảng, chú thích, gạch đầu dòng, dấu câu cuối).
+    /// style vẫn tiếp tục xuống thành HeadingCandidate như mọi đoạn khác — nó không mất quyền được
+    /// LLM xét, chỉ mất nhãn "chắc chắn theo style".
     /// </param>
     public static void Classify(IPolicyParagraph p, ExtractionOptions options, bool trustStyleSelection = true)
     {
@@ -198,15 +125,12 @@ public static class HeadingHeuristics
             return;
         }
 
-        // 0) Loại thẳng hai họ nhiễu lớn nhất trong luận văn/báo cáo: dòng mục lục
-        //    (tín hiệu cấu trúc: hyperlink tới neo _Toc) và chú thích hình/bảng (tín hiệu từ ngữ).
-        // Chú thích bảng nhận diện bằng CẤU TRÚC, không bằng từ vựng: nhãn "từ + số nhiều phần"
-        // đứng ngay trước chính bảng nó đặt tên, và con số là gõ tay (NumberingId null) chứ không
-        // do danh sách numbering của Word sinh ra. Mọi heading đánh số thật trong tài liệu Word đều
-        // mang NumberingId — đó là vế tách hai nhóm sạch nhất.
-        // ĐO ĐƯỢC: trên một báo cáo thật 1183 đoạn, 13 chú thích bị tác giả gán style Heading3 nên
-        // nhánh style cho điểm 1.0 và thoát sớm. Ở chế độ --structural-only (mặc định của giao
-        // diện) thì CaptionRx bị tắt cùng cờ luật từ ngữ, tức không còn bộ lọc chú thích nào.
+        // Loại thẳng hai họ nhiễu lớn nhất trong luận văn/báo cáo: dòng mục lục (tín hiệu cấu
+        // trúc: hyperlink tới neo _Toc) và chú thích hình/bảng. Đây vẫn là loại trừ cấu trúc dứt
+        // khoát (không phải chấm điểm mềm): một dòng TOC hay một chú thích hình/bảng không phải
+        // là một "ứng viên yếu" cần LLM cân nhắc, nó không phải một occurrence heading khác trong
+        // tài liệu — nó LÀ điều nó là, xác định bằng cấu trúc (anchor _Toc) hoặc hình dạng
+        // (nhãn "từ + số nhiều phần" đứng trước bảng).
         var objectCaption = p.PrecedesTable && p.NumberingId is null && ObjectLabelPrefixRx.IsMatch(p.Text);
 
         if (p.InTableOfContents || objectCaption ||
@@ -217,19 +141,11 @@ public static class HeadingHeuristics
             return;
         }
 
-        // 1) Style khẳng định — TRỪ khi dòng mở đầu bằng ký tự gạch đầu dòng.
-        //    Đo được trên tài liệu thật: đoạn thân bài "- Kích thước dữ liệu: Khoảng 200 GB…"
-        //    bị gán nhầm w:outlineLvl=3, và nhánh style thoát sớm nên mọi luật về hình thức
-        //    (gạch đầu dòng, dấu chấm cuối câu) không bao giờ được chạy. Ký tự gạch đầu dòng
-        //    là quy ước ký hiệu, không gắn với ngôn ngữ nào, nên phủ quyết ở đây là an toàn.
-        //    Không loại thẳng: vẫn cho xuống phần tính điểm để đoạn nào thực sự nổi bật về
-        //    định dạng còn cơ hội trở lại làm ứng viên.
         var looksLikeListItem = BulletPrefixRx.IsMatch(p.Text);
 
-        // 0) Danh sách đa cấp tự khai cấp này gắn với style Heading N. Đây là tuyên bố cấu trúc
-        //    mạnh nhất trong OOXML: người soạn cấu hình MỘT LẦN cho cả tài liệu qua hộp thoại
-        //    multilevel list, nên nó không nhiễm lỗi copy định dạng như w:outlineLvl. Đặt trước
-        //    cả nhánh style built-in vì nó khai báo cả cấp lẫn quan hệ cha–con của cả cây.
+        // Danh sách đa cấp tự khai cấp này gắn với style Heading N. Đây là tuyên bố cấu trúc
+        // mạnh nhất trong OOXML: người soạn cấu hình MỘT LẦN cho cả tài liệu qua hộp thoại
+        // multilevel list, nên nó không nhiễm lỗi copy định dạng như w:outlineLvl.
         if (trustStyleSelection && !looksLikeListItem && p.NumberingStyleLevel is { } listHeadingLevel)
         {
             p.Role = ParagraphRole.StyledHeading;
@@ -239,9 +155,8 @@ public static class HeadingHeuristics
             return;
         }
 
-        // Chỉ style built-in mới đủ mạnh để được khôi phục vô điều kiện. outlineLvl và tên
-        // style tự đặt là evidence tốt nhưng đều có thể bị người soạn gán nhầm, nhất là trong
-        // bảng biểu mẫu; chúng phải còn cơ hội để mô hình bác bỏ.
+        // Style built-in OOXML — evidence cấp mạnh nhất về CẤP (level), giữ lại như một gợi ý cho
+        // LLM; role vẫn StyledHeading để hạ nguồn biết đây là style-declared, không phải suy đoán.
         var builtInLevel = looksLikeListItem ? null : BuiltInLevel(p);
         if (builtInLevel is not null && trustStyleSelection)
         {
@@ -252,196 +167,14 @@ public static class HeadingHeuristics
             return;
         }
 
-        // 2) Định dạng trực tiếp + mẫu đánh số.
-        //
-        // ĐỘ DÀI KHÔNG ĐƯỢC LOẠI MỘT ĐOẠN ĐÃ MANG KÝ HIỆU ĐÁNH SỐ.
-        //
-        // Bản cũ loại thẳng mọi đoạn dài quá MaxCandidateTextLength (200) TRƯỚC khi nhìn ký hiệu.
-        // Trong văn bản hành chính Việt Nam phần lớn mục cấp 2 viết theo kiểu
-        // "N. Tiêu đề: nội dung…" — heading và body nằm chung một paragraph — nên trần độ dài loại
-        // đúng nhóm cần xử lý nhất. Ca thật người dùng báo: `V. KHÔNG GIAN MẠNG: Thông tin liên
-        // quan…` và `5. Tàu cá ngư dân ta…` (166 ký tự) biến mất, còn hậu kiểm thì báo đúng
-        // "nhảy từ IV sang VI" và "nhảy từ 4 sang 6" — hệ thống biết thiếu mà không cứu được.
-        //
-        // Ký hiệu đánh số là bằng chứng do NGƯỜI SOẠN gõ ra, mạnh hơn hẳn một ngưỡng độ dài do ta
-        // chọn. Nên khi có ký hiệu: giữ lại, chỉ trừ điểm; InlineHeadingSplitter cắt phần thân sau.
-        var coKyHieu = CoKyHieuDanhSo(p.Text);
-        if (p.Text.Length > options.MaxCandidateTextLength && !coKyHieu)
-        {
-            p.Role = ParagraphRole.Normal;
-            return;
-        }
-
-        double score = 0;
-        int? prefixLevel = null;
-
-
-
-        // Style built-in trong tài liệu bị StyleTrustAudit chấm là áp bừa: KHÔNG mất bằng chứng,
-        // chỉ mất quyền thoát sớm. Điểm đủ cao để một mình nó vẫn vượt ngưỡng ứng viên, nhưng giờ
-        // các luật hình dạng bên dưới (ô bảng, gạch đầu dòng, dấu câu cuối) trừ được vào nó.
-        if (builtInLevel is not null)
-        {
-            // CỐ Ý không đặt HasBuiltInHeadingStyle: đó là cờ miễn trừ — nó chặn mô hình xoá đoạn và
-            // cho critic bỏ qua. Đặt lại ở đây là vừa tuyên bố "không tin style của tài liệu này"
-            // vừa trả cho nó nguyên quyền phủ quyết, tức luật thành vô hiệu. Cấp vẫn giữ qua
-            // prefixLevel nên KHÔNG mất bằng chứng — chỉ chuyển quyền phán quyết sang mô hình.
-            score += 0.80;
-            prefixLevel = builtInLevel;
-        }
-
-        if (!looksLikeListItem && p.OutlineLevel is >= 0 and <= 8)
-        {
-            // Outline level là tín hiệu mạnh, nhưng không return sớm: một câu hướng dẫn trong
-            // bảng hoặc bullet có outline level sai vẫn phải bị ngữ cảnh/model phản biện.
-            score += p.TableDepth > 0 ? 0.25 : 0.65;
-            prefixLevel = p.OutlineLevel.Value + 1;
-        }
-        else if (options.UseLexicalRules && LocalizedStyleLevel(p) is { } localizedLevel)
-        {
-            // Tên style bản địa hoá là metadata cấu trúc, không phải font; giữ đủ điểm
-            // để không đánh rơi heading không đánh số trước khi LLM thấy chúng.
-            score += 0.75;
-            prefixLevel = localizedLevel;
-        }
-
-        // Ưu tiên numbering metadata do OOXML/NumberingResolver cung cấp. Đây là nguồn
-        // đáng tin hơn việc đoán từ font hay từ nội dung hiển thị.
-        if (p.NumberingId is not null)
-        {
-            var listLevel = p.NumberingDepth ?? ((p.NumberingLevel ?? 0) + 1);
-            var isBullet = string.Equals(p.NumberingFormat, "bullet", StringComparison.OrdinalIgnoreCase);
-            score += isBullet ? 0.10 : 0.60;
-            prefixLevel ??= Math.Clamp(listLevel, 1, 9);
-        }
-
-        // Dạng "từ nhãn + số" là bằng chứng CẤU TRÚC (document number format), không phải bằng
-        // chứng từ vựng — nên không nằm sau cờ UseLexicalRules. Trước đây nó là danh sách từ khoá
-        // và bị tắt cùng luật từ ngữ, khiến "PHẦN I. CƠ SỞ LÝ LUẬN" mất sạch điểm đánh số ở đúng
-        // cấu hình mà giao diện chạy mặc định.
-        if (!looksLikeListItem && !CaptionRx.IsMatch(p.Text) && LabelledNumberPrefixRx.IsMatch(p.Text))
-        {
-            score += 0.55;
-            prefixLevel ??= 1;
-        }
-
-        var dec = DecimalPrefixRx.Match(p.Text);
-        if (dec.Success)
-        {
-            var depth = dec.Groups[1].Value.Count(c => c == '.') + 1;
-            // Numbering là tín hiệu chính; không phụ thuộc bold/cỡ chữ/căn lề.
-            score += depth >= 2 ? 0.55 : 0.35;
-            // Số mục nhiều cấp trong table cell thường bị trừ điểm vì nằm trong bảng,
-            // dù chính numbering là bằng chứng sibling mạnh (ví dụ 3.1/3.2). Giữ một
-            // phần điểm cấu trúc để các mục này vẫn được đưa cho LLM hậu kiểm.
-            if (p.TableDepth > 0 && depth >= 2) score += 0.25;
-            prefixLevel = Math.Min(depth, 9);
-        }
-        else if (RomanPrefixRx.IsMatch(p.Text)) { score += 0.40; prefixLevel ??= 1; }
-        else if (LetterPrefixRx.IsMatch(p.Text)) { score += 0.35; prefixLevel ??= 2; }
-
-        // Formatting chỉ là fallback recall rất nhỏ cho tiêu đề không đánh số; không được
-        // tự quyết định cấp và luôn phải qua quan hệ/LLM hậu kiểm.
-        if (p.AllCaps) score += 0.25;
-        if (p.KeepNext) score += 0.20;
-        if (p.PageBreakBefore) score += 0.15;
-        if (p.Underline) score += 0.05;
-
-        // Chỉ dùng cỡ chữ như fallback recall cho heading không có numbering/style;
-        // không dùng nó để suy ra level và không thể tự chấp nhận heading.
-        var hasNumberingOrListStructure = p.NumberingId is not null || p.OutlineLevel is not null
-            || dec.Success || RomanPrefixRx.IsMatch(p.Text) || LetterPrefixRx.IsMatch(p.Text);
-        var baseSize = p.BodyFontSizePt ?? 11.0;
-        if (!hasNumberingOrListStructure && p.FontSizePt is { } fs)
-        {
-            if (fs >= baseSize + 3) score += 0.35;
-            else if (fs >= baseSize + 1) score += 0.20;
-            else if (fs < baseSize - 0.5) score -= 0.15;
-        }
-
-        if (string.Equals(p.Alignment, "center", StringComparison.OrdinalIgnoreCase)) score += 0.20;
-        // Độ dài dùng để chấm điểm là độ dài PHẦN NHAN ĐỀ, không phải cả đoạn. Với
-        // heading-dính-body ("V. KHÔNG GIAN MẠNG: <một đoạn dài>") thì nhan đề chỉ 18 ký tự —
-        // chấm theo 236 ký tự của cả đoạn là chấm nhầm đối tượng.
-        //
-        // ĐO ĐƯỢC vì sao phải sửa: bản cũ cho "V. KHÔNG GIAN MẠNG" ngắn 0,50 nhưng bản dính body
-        // chỉ 0,35 — dưới ngưỡng 0,45 nên biến mất, đúng mục V mà người dùng báo thiếu. Nay hai
-        // bản cùng điểm, và đó là ĐÚNG: nhan đề y hệt nhau, khác biệt nằm ở chỗ có thân đi kèm
-        // hay không — việc của InlineHeadingSplitter, không phải việc của bộ chấm điểm.
-        if (DoDaiNhanDe(p.Text) <= 80) score += 0.10;
-        // Câu hoàn chỉnh ở cuối đoạn là dấu hiệu THÂN BÀI — trừ khi đoạn có ký hiệu đánh số VÀ
-        // một dấu ngắt, tức nó là heading-dính-body. Lúc đó câu ấy thuộc phần thân, không thuộc
-        // nhan đề, nên phạt là tính hai lần cho cùng một sự việc: đoạn đã bị phạt vì dài rồi.
-        // Đo được: "1.2. Phạm vi áp dụng: <một câu dài>." nhận +0,55 rồi bị trừ 0,05 (dài) và
-        // 0,25 (kết câu) còn 0,25 — dưới ngưỡng 0,45, nên bản sửa trần độ dài tự vô hiệu.
-        var headingDinhBody = coKyHieu && (p.Text.Contains(':') || p.Text.Contains(';'));
-        if (SentenceEndRx.IsMatch(p.Text) && !p.Text.EndsWith(':') && !headingDinhBody) score -= 0.25;
-        if (p.Text.EndsWith(':') && p.Text.Length > 60) score -= 0.25;
-        if (looksLikeListItem) score -= 0.35;
-        // Ô bảng thường là nhiễu; mục nhiều cấp đã được cộng evidence ở nhánh decimal.
-        if (p.TableDepth > 0) score -= 0.35;
-        if (p.NumberingId is not null && !dec.Success &&
-            string.Equals(p.NumberingFormat, "bullet", StringComparison.OrdinalIgnoreCase))
-            score -= 0.20; // bullet list thường
-
-        p.Score = Math.Round(Math.Clamp(score, 0, 1), 3);
-
-        if (p.Score >= options.CandidateThreshold)
-        {
-            p.Role = ParagraphRole.HeadingCandidate;
-            p.GuessedLevel = prefixLevel;
-            return;
-        }
-
-        p.Role = ParagraphRole.Normal;
-        PromoteStandaloneLine(p, options);
-    }
-
-    /// <summary>
-    /// Vớt heading KHÔNG đánh số và KHÔNG khác định dạng thân bài — "Danh mục hình ảnh",
-    /// "Danh mục bảng biểu", "Tài liệu tham khảo".
-    /// <para>
-    /// Với những dòng này mọi tín hiệu hình thức đều bằng 0: không số nên không có điểm numbering,
-    /// cùng font cùng cỡ nên không có điểm định dạng. Tính ra điểm 0,10 và bị loại ngay ở tầng lọc,
-    /// tức mô hình KHÔNG BAO GIỜ được hỏi — không phải mô hình sai, mà là nó không được trao cơ hội.
-    /// </para>
-    /// <para>
-    /// Không dùng tiêu chí "đoạn kế tiếp dài hơn": chính "Danh mục hình ảnh" lại đứng trước một
-    /// loạt dòng ngắn ("Hình 1. Sơ đồ… 5"), nên tiêu chí đó trượt đúng ca cần vớt. Chỉ dựa vào đặc
-    /// điểm của bản thân dòng: ngắn, mở đầu bằng chữ hoa, không kết thúc bằng dấu câu của câu văn,
-    /// không phải bullet/caption/ô bảng.
-    /// </para>
-    /// <para>
-    /// Cho điểm đúng bằng ngưỡng: đây là lớp ứng viên YẾU NHẤT, chỉ đủ để lọt vào diện được hỏi.
-    /// Cấp để null vì không có bằng chứng cấu trúc nào nói về cấp. Đánh đổi có thật: số ứng viên
-    /// tăng nên chậm hơn, và mở thêm cửa cho false positive — phải theo dõi bằng eval.
-    /// </para>
-    /// </summary>
-    private static void PromoteStandaloneLine(IPolicyParagraph p, ExtractionOptions options)
-    {
-        if (!options.PromoteStandaloneLines) return;
-        if (p.TableDepth > 0) return;
-        var text = p.Text.Trim();
-        if (text.Length is < 3 or > 80) return;
-        if (BulletPrefixRx.IsMatch(text) || CaptionRx.IsMatch(text)) return;
-        if (SentenceEndRx.IsMatch(text) || text.EndsWith(':')) return;
-        if (!char.IsUpper(text[0]) && !char.IsDigit(text[0])) return;
-        // Phải có ít nhất hai từ chữ: chặn mã hiệu, số liệu lẻ, ô dữ liệu một từ.
-        if (WordRx.Matches(text).Count < 2) return;
-        // Chặn rác máy móc: JSON, khoá kỹ thuật, định danh có gạch dưới. Đo được lý do — dòng
-        // `BLOCK metadata: {"i":0,...}` cài trong tài liệu thử vượt qua mọi tiêu chí ngôn ngữ ở
-        // trên (ngắn, hoa đầu, không dấu câu cuối, đủ hai từ) và thành false positive.
-        if (MachineNoiseRx.IsMatch(text)) return;
-
+        // SEMANTIC_RECALL_CEILING = SOURCE_OCCURRENCE_UNIVERSE, not HEURISTIC_CANDIDATE_SET.
+        // Mọi đoạn sống sót tới đây (không rỗng, không hỏng, không phải bảng dữ liệu/content
+        // control bị chặn, không phải dòng TOC/chú thích, không có style/numbering built-in đã tự
+        // xử lý ở trên) trở thành HeadingCandidate vô điều kiện — không chấm điểm, không ngưỡng.
+        // candidateHints là gợi ý attention, không phải tập heading được phép; mô hình quyết định
+        // nghĩa (isHeading), harness quyết định toạ độ.
         p.Role = ParagraphRole.HeadingCandidate;
-        p.Score = options.CandidateThreshold;
-        p.GuessedLevel = null;
     }
-
-    private static readonly Regex WordRx = new(@"\p{L}{2,}", RegexOptions.Compiled);
-
-    /// <summary>Dấu hiệu chuỗi máy sinh chứ không phải câu chữ người viết.</summary>
-    private static readonly Regex MachineNoiseRx = new(@"[{}\[\]<>""=|]|_\p{L}|\p{L}_", RegexOptions.Compiled);
 
     /// <summary>
     /// Suy ra cấp heading từ style. Thứ tự ưu tiên đi từ tín hiệu độc lập ngôn ngữ xuống dưới:

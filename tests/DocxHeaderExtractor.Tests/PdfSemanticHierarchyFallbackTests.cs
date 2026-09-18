@@ -78,7 +78,7 @@ public sealed class PdfSemanticHierarchyFallbackTests
         public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
         public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
         public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default) => Task.FromResult(response);
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => Task.FromResult(response);
         public void Dispose() { }
     }
 }
