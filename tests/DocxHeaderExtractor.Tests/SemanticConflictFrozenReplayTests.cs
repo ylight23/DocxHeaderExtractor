@@ -59,6 +59,19 @@ public sealed class SemanticConflictFrozenReplayTests
             Assert.Empty(normalized.BindingReadyProposals);
             Assert.Equal("semanticRole", Assert.Single(attributeConflict.ContestedFields.Keys));
 
+            // Names the stage that withholds it, not just the count. Nothing here is rejected by
+            // contract validation: both proposals address S0239 correctly and quote it exactly.
+            // They disagree about what it means, so the normalizer holds the occurrence back for
+            // adjudication - which is what "unresolved is withheld, never silently collapsed"
+            // means in practice. The committed artifact recorded 1 for a while after this became
+            // 0, because the expectation was updated and the artifact was not.
+            Assert.Equal(
+                ["ARTICLE", "CHAPTER"],
+                attributeConflict.ContestedFields["semanticRole"].Order(StringComparer.Ordinal));
+            Assert.All(conflictInput, item => Assert.Empty(
+                CanonicalSemanticContractValidator.Validate(
+                    item, aliases.ToDictionary(alias => alias.Alias, StringComparer.Ordinal))));
+
             var newBound = CanonicalSemanticExactBinder.Bind(normalized.BindingReadyProposals, aliases, out var newObservations);
             var newBindFailure = newObservations.Count(item => item.Status != CanonicalSemanticBindingStatus.Bound);
             var hardValidation = CanonicalSemanticHardBindingValidator.Validate(
