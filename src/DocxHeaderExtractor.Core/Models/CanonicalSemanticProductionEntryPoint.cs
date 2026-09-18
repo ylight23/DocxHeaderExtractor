@@ -374,6 +374,19 @@ public static class CanonicalSemanticProductionEntryPoint
         int UnresolvedCount,
         int InvalidCount);
 
+    /// <summary>
+    /// Production adapter over the one adjudication owner.
+    /// <para>
+    /// It prepares this path's context and maps the result onto the production shape. The algorithm
+    /// - which conflicts to open, what to accept, what to withhold - belongs to
+    /// <see cref="CanonicalSemanticClosedLoopControlPlane"/>, and there is no second copy of it
+    /// here. If this method ever loops over conflicts again, the duplicate owner has come back.
+    /// </para>
+    /// <para>
+    /// Normalization has already happened once, before contract validation filtered the proposals,
+    /// and the result is passed through rather than recomputed.
+    /// </para>
+    /// </summary>
     private static async Task<AdjudicationResolution> ResolveConflictsAsync(
         SemanticConflictNormalizationResult normalization,
         IReadOnlyList<SemanticSourceAlias> aliases,
@@ -383,47 +396,28 @@ public static class CanonicalSemanticProductionEntryPoint
         string requestId,
         CancellationToken cancellationToken)
     {
-        var ready = normalization.BindingReadyProposals.ToList();
-        if (adjudicationModel is null || normalization.Conflicts.Count + normalization.AttributeConflicts.Count == 0)
-            return new(ready, 0, 0, normalization.Conflicts.Count + normalization.AttributeConflicts.Count, 0);
+        var conflictCount = normalization.Conflicts.Count + normalization.AttributeConflicts.Count;
 
-        var calls = 0;
-        var resolved = 0;
-        var unresolved = 0;
-        var invalid = 0;
-        foreach (var conflict in normalization.Conflicts)
-        {
-            var caseInput = SemanticConflictAdjudicator.CreateCase(conflict, aliases, context.LocalContext, input.GlobalContext);
-            var response = await adjudicationModel.AdjudicateAsync(caseInput, $"{requestId}:adjudication:{caseInput.CaseId}", cancellationToken);
-            calls++;
-            var validation = SemanticConflictAdjudicator.ValidateResponse(caseInput, response);
-            if (validation.IsValid && validation.AcceptedProposal is not null)
-            {
-                ready.Add(validation.AcceptedProposal);
-                resolved++;
-            }
-            else if (validation.IsValid && validation.Status == SemanticAdjudicationDecision.Unresolved)
-                unresolved++;
-            else
-                invalid++;
-        }
-        foreach (var conflict in normalization.AttributeConflicts)
-        {
-            var caseInput = SemanticConflictAdjudicator.CreateCase(conflict, aliases, context.LocalContext, input.GlobalContext);
-            var response = await adjudicationModel.AdjudicateAsync(caseInput, $"{requestId}:adjudication:{caseInput.CaseId}", cancellationToken);
-            calls++;
-            var validation = SemanticConflictAdjudicator.ValidateResponse(caseInput, response);
-            if (validation.IsValid && validation.AcceptedProposal is not null)
-            {
-                ready.Add(validation.AcceptedProposal);
-                resolved++;
-            }
-            else if (validation.IsValid && validation.Status == SemanticAdjudicationDecision.Unresolved)
-                unresolved++;
-            else
-                invalid++;
-        }
-        return new(ready, calls, resolved, unresolved, invalid);
+        // No adjudicator, or nothing to adjudicate: no provider call is spent, and every conflict
+        // stays unresolved rather than being quietly treated as settled.
+        if (adjudicationModel is null || conflictCount == 0)
+            return new(normalization.BindingReadyProposals.ToList(), 0, 0, conflictCount, 0);
+
+        var adjudicated = await CanonicalSemanticClosedLoopControlPlane.AdjudicateAsync(
+            normalization,
+            aliases,
+            adjudicationModel,
+            context.LocalContext,
+            input.GlobalContext,
+            requestId,
+            cancellationToken);
+
+        return new(
+            adjudicated.BindingReadyProposals,
+            adjudicated.ModelCalls,
+            adjudicated.BindingReadyProposals.Count - normalization.BindingReadyProposals.Count,
+            adjudicated.UnresolvedCaseIds.Count,
+            adjudicated.InvalidCaseIds.Count);
     }
 
     private static CanonicalSemanticGraph CombineGraphs(

@@ -52,7 +52,7 @@ public sealed class CanonicalSemanticClosedLoopControlPlaneTests
         var model = new SelectRoleAdjudicator("CHAPTER");
 
         var adjudicated = await CanonicalSemanticClosedLoopControlPlane.AdjudicateAsync(
-            proposals, aliases, model);
+            SemanticConflictNormalizer.Normalize(proposals, aliases), aliases, model);
         var pipeline = CanonicalSemanticPipeline.Run(
             catalog, adjudicated.BindingReadyProposals, "hash");
 
@@ -73,7 +73,7 @@ public sealed class CanonicalSemanticClosedLoopControlPlaneTests
         var model = new SelectRoleAdjudicator("SECTION");
 
         var result = await CanonicalSemanticClosedLoopControlPlane.AdjudicateAsync(
-            [proposal], aliases, model);
+            SemanticConflictNormalizer.Normalize([proposal], aliases), aliases, model);
 
         Assert.Equal(0, result.ModelCalls);
         Assert.Empty(result.Cases);
@@ -96,7 +96,7 @@ public sealed class CanonicalSemanticClosedLoopControlPlaneTests
         };
 
         var result = await CanonicalSemanticClosedLoopControlPlane.AdjudicateAsync(
-            proposals, aliases, new UnresolvedAdjudicator());
+            SemanticConflictNormalizer.Normalize(proposals, aliases), aliases, new UnresolvedAdjudicator());
 
         Assert.Equal(1, result.ModelCalls);
         Assert.Empty(result.BindingReadyProposals);
