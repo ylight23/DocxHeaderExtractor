@@ -62,7 +62,7 @@ internal static class PdfCandidateRanker
         var positive = new List<string>();
         var negative = new List<string>();
         var ambiguity = new List<string>();
-        var labelledMarker = PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(block.DisplayText) is not null ||
+        var labelledMarker = LooseLabelledMarkerParser.ParseCanonical(block.DisplayText) is not null ||
                              (structuralMarkerCountsAsStrong &&
                               PdfLineBlockAnnotation.HasStructuralMarker(block.DisplayText));
         var genericMarker = NumberingAudit.Parse(block.DisplayText) is not null;

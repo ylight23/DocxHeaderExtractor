@@ -29,7 +29,7 @@ internal static class DocxAuthorityPipeline
         IReadOnlyList<PdfValidatedHeading> validated,
         IReadOnlyDictionary<string, PdfValidatedStructure> structures,
         IReadOnlyDictionary<string, DocxAuthorityContext> contexts) =>
-        MaterializeStructuralAuthority(
+        CanonicalStructureMaterializer.Materialize(
             validated, structures,
             contexts.ToDictionary(
                 pair => pair.Key,
@@ -40,107 +40,6 @@ internal static class DocxAuthorityPipeline
                     pair.Value.Source.Style.StyleId),
                 StringComparer.Ordinal),
             "docx");
-
-    /// <summary>
-    /// Turns validated headings into canonical structure, reading only what any source format can
-    /// supply: an identity, a position in reading order, the exact text, and an optional style name.
-    /// <para>
-    /// Kept format-neutral on purpose. A PDF lane that duplicated this would be free to drift from
-    /// the DOCX lane on level derivation, parent wiring or emission - the three things the whole
-    /// hierarchy argument was about - and the drift would only show up as a metric difference
-    /// between two formats nobody could explain.
-    /// </para>
-    /// </summary>
-    internal static ValidatedStructure MaterializeStructuralAuthority(
-        IReadOnlyList<PdfValidatedHeading> validated,
-        IReadOnlyDictionary<string, PdfValidatedStructure> structures,
-        IReadOnlyDictionary<string, CanonicalSourceOccurrence> occurrences,
-        string routeKey)
-    {
-        var elementIdBySourceId = validated.ToDictionary(
-            item => item.SourceId,
-            item => $"structural:{routeKey}:{item.SourceId}",
-            StringComparer.Ordinal);
-        var elements = new List<ValidatedStructuralElement>(validated.Count);
-
-        foreach (var item in validated)
-        {
-            var sourceParagraph = occurrences[item.SourceId];
-            var hierarchy = structures[item.SourceId];
-            var sourceFacts = new SourceFacts
-            {
-                SourceId = sourceParagraph.SourceId,
-                RawText = sourceParagraph.Text,
-                Source = new SourceAnchor
-                {
-                    SourceType = "docx",
-                    ParagraphId = sourceParagraph.SourceId,
-                    ParagraphIndex = sourceParagraph.SourceOrdinal,
-                },
-                RawSpan = new SourceTextSpan(0, sourceParagraph.Text.Length),
-            };
-            var candidate = new StructuralCandidate
-            {
-                CandidateId = item.SourceId,
-                ObservedSourceFacts = [sourceFacts],
-            };
-            // Two different states both end without a level, and the reason is kept because they
-            // mean opposite things to a reviewer: "unresolved" is an absence of judgement and needs
-            // one, "out-of-hierarchy" IS the judgement - a title or running header is a heading
-            // that simply holds no position in the section tree. Neither may default to level 1,
-            // which would assert "top level" without evidence.
-            var placed = hierarchy.ParentResolution is
-                ModelRelationHierarchyResolver.ResolvedParent or ModelRelationHierarchyResolver.ResolvedRoot;
-            var derivedLevel = placed ? hierarchy.Level : (int?)null;
-            var proposal = new StructuralProposal
-            {
-                CandidateId = item.SourceId,
-                Type = StructuralElementType.Heading,
-                Role = ProposedRole.HeadingTopic,
-                ProposedSources =
-                [
-                    new ProposedSourceReference(item.SourceId,
-                        new StructuralSpan(item.HeadingSpan.Start, item.HeadingSpan.End)),
-                ],
-                ProposedParentId = hierarchy.ParentId is { } parent
-                    ? elementIdBySourceId.GetValueOrDefault(parent)
-                    : null,
-                ProposedLevel = derivedLevel,
-            };
-            var decision = new StructuralDecision(
-                "structure", nameof(HeadingDecisionStatus.RequiresReview), 0,
-                "docx-authority-validated-review");
-            var element = StructuralProposalValidator.Materialize(
-                candidate, proposal, elementIdBySourceId[item.SourceId], decision,
-                elementIdBySourceId.Values.ToHashSet(StringComparer.Ordinal),
-                new StructuralProjectionMetadata
-                {
-                    CompatibilitySourceId = sourceParagraph.SourceId,
-                    // Declaring the level "set" while leaving it null made the projection prefer
-                    // that null over the materialized element level, so this route emitted headings
-                    // with no level at all whatever the resolver decided.
-                    CompatibilityLevelIsSet = true,
-                    CompatibilityLevel = derivedLevel,
-                    HierarchyResolution = hierarchy.ParentResolution,
-                    OriginalText = sourceParagraph.Text,
-                    BoundarySource = "docx-source-pointer-span",
-                    StyleId = sourceParagraph.StyleId,
-                });
-            if (element is null)
-                throw new InvalidOperationException($"Validated DOCX heading '{item.SourceId}' failed generic materialization.");
-
-            elements.Add(element with
-            {
-                Sources = element.Sources.Select(source => source with { StableId = sourceParagraph.SourceId }).ToArray(),
-            });
-        }
-
-        var relationProposals = elements
-            .Where(element => element.ParentId is not null)
-            .Select(element => new StructuralRelationProposal(
-                element.ParentId!, element.Id, StructuralRelationType.ParentChild));
-        return ValidatedStructure.FromElements(elements, relationProposals);
-    }
 
     private static DocxAuthoritySource Build(
         SourceDocument sourceDocument,
@@ -216,16 +115,6 @@ internal static class DocxAuthorityPipeline
 
     private static string Excerpt(string text) => text.Length <= 180 ? text : text[..180];
 }
-/// <summary>
-/// What structural materialization needs from a source occurrence, in any format. A DOCX paragraph
-/// and a PDF text block both reduce to this.
-/// </summary>
-internal sealed record CanonicalSourceOccurrence(
-    string SourceId,
-    int SourceOrdinal,
-    string Text,
-    string? StyleId);
-
 internal sealed record DocxAuthorityContext(
     SourceParagraph Source,
     IPolicyParagraph Paragraph,

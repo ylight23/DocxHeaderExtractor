@@ -144,7 +144,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
                 null),
             StringComparer.Ordinal);
 
-        var structure = DocxAuthorityPipeline.MaterializeStructuralAuthority(
+        var structure = CanonicalStructureMaterializer.Materialize(
             validated.Where(item => primarySourceIds.Contains(item.SourceId)).ToArray(),
             structures, occurrences, "pdf");
 

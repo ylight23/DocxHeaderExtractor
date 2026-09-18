@@ -70,8 +70,12 @@ public static class CanonicalSemanticGlobalConflictDetector
         Func<CanonicalSemanticProposal, string?> value,
         IReadOnlyDictionary<string, SemanticSourceAlias> aliases)
     {
+        // Select! after the null filter: the compiler cannot see that Where removed them, and
+        // widening the parameter to string?[] instead would let a genuine null reach the conflict
+        // record, where it would be reported as an alternative the model proposed.
         var values = alternatives.Select(value)
             .Where(item => !string.IsNullOrWhiteSpace(item))
+            .Select(item => item!)
             .Distinct(StringComparer.Ordinal)
             .OrderBy(item => item, StringComparer.Ordinal)
             .ToArray();

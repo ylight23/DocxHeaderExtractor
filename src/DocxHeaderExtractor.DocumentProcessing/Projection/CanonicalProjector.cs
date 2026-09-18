@@ -42,7 +42,7 @@ public static class CanonicalProjector
         var elements = request.Document.Structure.OutlineElements.ToArray();
         var idToText = elements.ToDictionary(
             element => element.Id,
-            element => element.ProjectionMetadata?.OriginalText ?? element.Text,
+            element => (string?)(element.ProjectionMetadata?.OriginalText ?? element.Text),
             StringComparer.Ordinal);
 
         var records = elements

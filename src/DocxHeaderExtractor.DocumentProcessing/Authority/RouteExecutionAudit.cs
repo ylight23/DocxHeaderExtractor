@@ -59,9 +59,6 @@ public sealed record RouteExecutionAudit(
     [JsonPropertyName("visualRecoveries")]
     public IReadOnlyList<PdfVisualRecoveryTrace> VisualRecoveries { get; init; } = [];
 
-    [JsonPropertyName("proposalResolutions")]
-    public IReadOnlyList<PdfProposalResolutionAudit> ProposalResolutions { get; init; } = [];
-
     [JsonPropertyName("hierarchyProposals")]
     public IReadOnlyList<PdfHierarchyProposalAudit> HierarchyProposals { get; init; } = [];
 
@@ -76,9 +73,6 @@ public sealed record RouteExecutionAudit(
     [JsonPropertyName("conflictCensus")]
     public Pipeline.SemanticConflictCensus ConflictCensus { get; init; } =
         Pipeline.SemanticConflictCensus.Empty;
-
-    [JsonPropertyName("textLayerRecoveries")]
-    public IReadOnlyList<PdfTextLayerRecoveryAudit> TextLayerRecoveries { get; init; } = [];
 
     [JsonPropertyName("rankedCandidates")]
     public IReadOnlyList<RankedCandidate> RankedCandidates { get; init; } = [];

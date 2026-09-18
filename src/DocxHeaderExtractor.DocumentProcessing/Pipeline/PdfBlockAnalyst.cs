@@ -437,10 +437,10 @@ internal static class PdfBlockAnalyst
 
     /// <summary>Source-line identity for a block, so a checkpoint row can be matched across runs.</summary>
     private static string? LineIdOf(PdfSemanticBlock block) =>
-        block.Lines.Count == 0 ? null : PdfCandidateProvenance.LineId(block.Lines[0]);
+        block.Lines.Count == 0 ? null : PdfLineIdentity.Of(block.Lines[0]);
 
     private static IReadOnlyList<string> LineIdsOf(PdfSemanticBlock block) =>
-        block.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
+        block.Lines.Select(PdfLineIdentity.Of).ToArray();
 
     private static string RequestId(string stage, IEnumerable<PdfSemanticBlock> blocks, int attempt)
     {

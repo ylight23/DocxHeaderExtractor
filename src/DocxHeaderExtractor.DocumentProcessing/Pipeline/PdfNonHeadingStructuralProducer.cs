@@ -165,7 +165,7 @@ internal static class PdfNonHeadingStructuralProducer
             ParagraphIndex = ordinal,
             Page = block.Page,
             RenderBlockId = block.Id,
-            RenderLineIds = block.Lines.Select(PdfCandidateProvenance.LineId).ToArray(),
+            RenderLineIds = block.Lines.Select(PdfLineIdentity.Of).ToArray(),
         },
         RawSpan = new SourceTextSpan(0, block.Text.Length),
     };

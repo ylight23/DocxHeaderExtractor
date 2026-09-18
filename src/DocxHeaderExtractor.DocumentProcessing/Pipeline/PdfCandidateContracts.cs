@@ -277,7 +277,7 @@ internal static class PdfCandidateContextBuilder
             block.LineCount == 1 ? "standalone_line" : "multi_line_cluster",
             marker is null ? "no_marker" : $"marker:{marker.Value.Family}",
         };
-        var looseMarker = PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(block.DisplayText);
+        var looseMarker = LooseLabelledMarkerParser.ParseCanonical(block.DisplayText);
         if (looseMarker is not null &&
             PdfTextUtilities.CanonicalForMatch(block.DisplayText).Length <
             PdfTextUtilities.CanonicalForMatch(looseMarker).Length + 6)
@@ -505,7 +505,7 @@ internal static class PdfMarkerFactsParser
                     : ImmutableArray<int>.Empty,
             };
 
-        var looseLabel = PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(text);
+        var looseLabel = LooseLabelledMarkerParser.ParseCanonical(text);
         if (looseLabel is not null)
         {
             var separator = looseLabel.IndexOf(':');
