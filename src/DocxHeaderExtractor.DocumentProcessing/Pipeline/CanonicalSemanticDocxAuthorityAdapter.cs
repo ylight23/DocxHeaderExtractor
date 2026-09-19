@@ -116,7 +116,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         // go through a DocxAuthorityPipeline wrapper whose only remaining work was this mapping;
         // a lane-named entry point in front of a shared owner is how the two drift apart again.
         var structuralAuthority = CanonicalStructureMaterializer.Materialize(
-            validated.Where(item => primarySourceIds.Contains(item.SourceId)).ToArray(),
+            validated,
             structures,
             source.Contexts.ToDictionary(
                 pair => pair.Key,
@@ -126,8 +126,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                     pair.Value.Source.Text,
                     pair.Value.Source.Style.StyleId),
                 StringComparer.Ordinal),
-            "docx");
-        var audit = new RouteExecutionAudit(
+            "docx", primarySourceIds);
+        var audit = CanonicalRouteAuditBoundary.Create(
             "docx-canonical-vnext",
             source.Blocks.Count,
             source.Blocks.Count,
@@ -144,9 +144,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             }).ToArray(),
             validated.Select(item => item.SourceId).ToArray(),
             [],
-            validated.Select(item => item.SourceId).ToArray())
+            validated.Select(item => item.SourceId).ToArray()) with
         {
-            Route = "docx-canonical-vnext",
             RawAnalystResponses = canonicalModel?.RawResponses ?? [],
             ModelInputContracts = canonicalModel is null ? [] : [CanonicalSemanticContract.ProtocolVersion],
             ModelRequests = result.PrimaryTextModelCalls == 0

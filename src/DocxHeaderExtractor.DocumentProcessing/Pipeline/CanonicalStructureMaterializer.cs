@@ -43,15 +43,28 @@ internal static class CanonicalStructureMaterializer
         IReadOnlyList<PdfValidatedHeading> validated,
         IReadOnlyDictionary<string, PdfValidatedStructure> structures,
         IReadOnlyDictionary<string, CanonicalSourceOccurrence> occurrences,
-        string routeKey)
+        string routeKey,
+        IReadOnlySet<string>? primarySourceIds = null)
     {
-        var elementIdBySourceId = validated.ToDictionary(
+        ArgumentNullException.ThrowIfNull(validated);
+        ArgumentNullException.ThrowIfNull(structures);
+        ArgumentNullException.ThrowIfNull(occurrences);
+        ArgumentException.ThrowIfNullOrWhiteSpace(routeKey);
+
+        // Primary occurrence selection is an upstream identity decision. The materializer only
+        // applies that already-decided set at the boundary; it never derives identity or chooses
+        // a primary occurrence from text, order, parent, or level.
+        var selected = primarySourceIds is null
+            ? validated
+            : validated.Where(item => primarySourceIds.Contains(item.SourceId)).ToArray();
+
+        var elementIdBySourceId = selected.ToDictionary(
             item => item.SourceId,
             item => $"structural:{routeKey}:{item.SourceId}",
             StringComparer.Ordinal);
-        var elements = new List<ValidatedStructuralElement>(validated.Count);
+        var elements = new List<ValidatedStructuralElement>(selected.Count);
 
-        foreach (var item in validated)
+        foreach (var item in selected)
         {
             var sourceParagraph = occurrences[item.SourceId];
             var hierarchy = structures[item.SourceId];

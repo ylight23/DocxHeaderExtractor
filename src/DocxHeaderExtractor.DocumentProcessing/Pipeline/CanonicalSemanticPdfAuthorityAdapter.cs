@@ -95,10 +95,10 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             StringComparer.Ordinal);
 
         var structure = CanonicalStructureMaterializer.Materialize(
-            validated.Where(item => primarySourceIds.Contains(item.SourceId)).ToArray(),
-            structures, occurrences, "pdf");
+            validated,
+            structures, occurrences, "pdf", primarySourceIds);
 
-        var audit = new RouteExecutionAudit(
+        var audit = CanonicalRouteAuditBoundary.Create(
             "pdf-canonical-vnext",
             universe.Blocks.Count,
             universe.Blocks.Count,
@@ -115,9 +115,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             }).ToArray(),
             validated.Select(item => item.SourceId).ToArray(),
             [],
-            validated.Select(item => item.SourceId).ToArray())
+            validated.Select(item => item.SourceId).ToArray()) with
         {
-            Route = "pdf-canonical-vnext",
             RawAnalystResponses = canonicalModel?.RawResponses ?? [],
             ModelInputContracts = canonicalModel is null ? [] : [CanonicalSemanticContract.ProtocolVersion],
             ValidatedStructures = structures.Values.ToArray(),
