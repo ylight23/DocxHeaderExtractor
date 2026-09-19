@@ -70,19 +70,39 @@ public sealed class PdfExperimentArmPacketTests
     }
 
     [Fact]
-    public async Task The_baseline_payload_still_matches_the_frozen_pre_intervention_hashes()
+    public async Task The_baseline_payload_matches_the_frozen_hashes()
     {
-        // The historical values from before I7 existed. If an arm ever leaks into the default
-        // again, these move and the B0 column stops meaning "what ships today".
+        // If an arm ever leaks into the default, these move and the B0 column stops meaning "what
+        // ships today".
+        //
+        // They moved once, deliberately: tableDepth left the PDF request, because a PDF has no
+        // nested-table depth and zero read as a measurement. The move was verified to be that
+        // change and nothing else - re-inserting "tableDepth":0 where it used to sit reproduced
+        // the previous values 9461b418..., 3b673d8f... and 3e1e1045... byte for byte. No PDF
+        // provider run had been taken against the old baseline, so nothing frozen depends on it.
         var baseline = await CaptureAsync(CanonicalSemanticExperiment.Baseline);
 
         Assert.Equal(
             [
-                "9461b41805aa226d10b46b620d68fdea0988e546ff90ee3ec25e3f0b4742d33f",
-                "3b673d8ff93a3ffaa81cc0bd343470c10a161a577357d3e8b85e788209749772",
-                "3e1e10450e57140cfad40dce66724b2540edf5ddb67d97f74427e0fbe98abaac",
+                "e3bddbe9b074fe203249a52e8497a215c75d9a044dcae420107b53aa57dc7010",
+                "8468fb223a10e015ddddebd45b3ae073e5aaa62c1f1b5ea0d8d4ece55086c1f2",
+                "acc0f9f04c56f2ecb2e723e56273e985f6c1b6843112a060763a48d4a4fd7f01",
             ],
             baseline.Take(3).Select(request => Sha256(request.UserMessage)));
+    }
+
+    [Fact]
+    public async Task No_pdf_request_states_a_table_depth_it_could_not_have_measured()
+    {
+        // Absent, not zero - the same rule the openStructuralContext test above holds. A PDF has
+        // no nested-table structure, so there is nothing for an occurrence to be at depth zero of,
+        // and a number on the wire cannot be distinguished from one that was measured.
+        var requests = await CaptureAsync(CanonicalSemanticExperiment.Baseline);
+
+        Assert.NotEmpty(requests);
+        Assert.All(requests, request =>
+            Assert.All(Body(request).GetProperty("sourceEvidence").EnumerateArray(), entry =>
+                Assert.False(entry.TryGetProperty("tableDepth", out _))));
     }
 
     [Fact]

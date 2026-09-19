@@ -232,19 +232,43 @@ internal static class CanonicalSemanticEngine
         /// and repeating them was 45% of the payload. Per-run formatting spans are dropped too;
         /// style, numbering and marker facts carry the same signal far more compactly.
         /// </summary>
-        private static object OwnedEvidence(CanonicalSemanticSourceEvidence item) => new
-        {
-            alias = item.SourceAlias,
-            text = item.ExactSourceText,
-            owned = true,
-            scope = item.StructuralScope,
-            tableDepth = item.TableDepth,
-            inTableOfContents = item.InTableOfContents,
-            style = item.StyleFacts,
-            numbering = item.NumberingFacts,
-            markers = item.MarkerFacts,
-            attention = item.CandidateAttention.HeuristicMatch,
-        };
+        /// <summary>
+        /// Absent, not zero, for a format that has no such concept - the same rule I7 established
+        /// for openStructuralContext. A PDF has no nested-table depth, and sending
+        /// <c>tableDepth: 0</c> stated a measurement nothing had made; the model cannot tell an
+        /// omitted field from a measured absence once it is on the wire as a number.
+        /// <para>
+        /// Two literal shapes rather than one built dynamically, so the DOCX request stays
+        /// byte-identical to what it has always been and every frozen DOCX hash still holds.
+        /// </para>
+        /// </summary>
+        private static object OwnedEvidence(CanonicalSemanticSourceEvidence item) =>
+            item.TableDepth is { } tableDepth
+                ? new
+                {
+                    alias = item.SourceAlias,
+                    text = item.ExactSourceText,
+                    owned = true,
+                    scope = item.StructuralScope,
+                    tableDepth,
+                    inTableOfContents = item.InTableOfContents,
+                    style = item.StyleFacts,
+                    numbering = item.NumberingFacts,
+                    markers = item.MarkerFacts,
+                    attention = item.CandidateAttention.HeuristicMatch,
+                }
+                : new
+                {
+                    alias = item.SourceAlias,
+                    text = item.ExactSourceText,
+                    owned = true,
+                    scope = item.StructuralScope,
+                    inTableOfContents = item.InTableOfContents,
+                    style = item.StyleFacts,
+                    numbering = item.NumberingFacts,
+                    markers = item.MarkerFacts,
+                    attention = item.CandidateAttention.HeuristicMatch,
+                };
 
         /// <summary>Owned occurrences evaluated per request. Keeps one document bounded.</summary>
         internal const int OwnedPerSegment = 120;

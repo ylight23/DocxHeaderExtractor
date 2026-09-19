@@ -222,9 +222,10 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             ordinal,
             source.RawText,
             source.StructuralScope,
-            // A PDF has no nested tables to have a depth in. Zero would read as a measured fact;
-            // the scope already carries whatever table evidence exists.
-            TableDepth: 0,
+            // A PDF has no nested tables to have a depth in, so the field is absent rather than
+            // zero, and the request omits it entirely. The scope already carries whatever table
+            // evidence this format actually has.
+            TableDepth: null,
             SectionIndex: source.Page,
             InContentControl: false,
             InTableOfContents: source.StructuralScope == "table_of_contents",

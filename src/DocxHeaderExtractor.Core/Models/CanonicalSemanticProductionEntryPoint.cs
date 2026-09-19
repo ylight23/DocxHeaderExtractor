@@ -37,7 +37,16 @@ public sealed record CanonicalSemanticSourceEvidence(
     int SourceOrdinal,
     string ExactSourceText,
     string StructuralScope,
-    int TableDepth,
+    /// <summary>
+    /// Nesting depth inside a table, or null where the source format has no such concept.
+    /// <para>
+    /// Null is not zero. Zero is a measurement - "this occurrence was examined and found outside
+    /// any table" - and a PDF cannot make it: it has no nested-table structure to be at depth zero
+    /// of. Reporting zero would hand the model a fact nothing established, so the field is omitted
+    /// from the request entirely instead.
+    /// </para>
+    /// </summary>
+    int? TableDepth,
     int SectionIndex,
     bool InContentControl,
     bool InTableOfContents,
