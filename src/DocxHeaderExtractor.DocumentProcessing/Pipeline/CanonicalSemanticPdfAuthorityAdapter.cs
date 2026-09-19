@@ -62,7 +62,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
 
         var boundHeadings = transport is null
             ? result.TextPipeline.BoundHeadings
-            : await CanonicalSemanticEngine.PlaceUnresolvedHeadingsAsync(
+            : await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
                 result.TextPipeline.BoundHeadings, transport, cancellationToken);
 
         var derived = ModelRelationHierarchyResolver
