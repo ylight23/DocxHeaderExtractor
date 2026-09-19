@@ -482,7 +482,7 @@ public sealed class PdfGoldReviewPackTests
             Assert.Equal(
                 ["HEADING", "NOT_HEADING", "NEEDS_REVIEW"],
                 document.RootElement.GetProperty("allowedDecisions").EnumerateArray()
-                    .Select(item => item.GetString()).ToArray());
+                    .Select(item => item.GetString()!).ToArray());
             Assert.Equal("PER_OCCURRENCE", document.RootElement.GetProperty("decisionScope").GetString());
         }
     }
