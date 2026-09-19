@@ -66,16 +66,19 @@ public sealed class PdfGoldAuthorityTests
             projectionVersion = PdfSourceTextProjection.CurrentVersion,
             providerCalls = 0,
             derivedFrom = "PDF parser occurrences only; no model output and no heuristic selection",
-            authoritativeSemanticHeadingTotal = AuthoritativeTotal,
+            // The approved semantic total is deliberately absent from anything a reviewer opens.
+            // Knowing the answer is 41 before starting turns the first pass into a search for 41,
+            // and a reviewer who is one over will drop a borderline row to make it fit rather than
+            // record the uncertainty. Reconciliation happens after the pass is frozen, where a
+            // disagreement is a finding to re-examine instead of a target to hit.
             reviewInstruction =
-                "Mark which of these occurrences are true heading occurrences. The marked count must " +
-                "reconcile with authoritativeSemanticHeadingTotal, or the disagreement is itself a finding.",
+                "Decide each occurrence on the document's own terms: is this a true heading " +
+                "occurrence? Mark NEEDS_REVIEW rather than guessing.",
             occurrences = rows.Length,
             rows,
         });
 
-        Assert.True(rows.Length > AuthoritativeTotal,
-            $"source universe ({rows.Length}) cannot be smaller than the heading total it must contain");
+        Assert.True(rows.Length > 0);
     }
 
     [Fact]
@@ -201,6 +204,47 @@ public sealed class PdfGoldAuthorityTests
 
         var issue = Assert.Single(PdfGoldValidator.Validate(gold, catalog, aliases));
         Assert.Equal(PdfGoldValidator.TotalDisagreesWithAuthority, issue.Code);
+    }
+
+    [Fact]
+    public void The_two_authorities_keep_separate_lineage_and_a_conflict_is_reported_not_resolved()
+    {
+        // The approved total and the occurrence review are two acts by two reviewers at two times.
+        // A disagreement is a question for them; adopting the new count silently would erase an
+        // approval nobody withdrew.
+        var catalog = SyntheticCatalog(("p1", "Opening"), ("p2", "Closing"));
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var gold = Gold([new PdfGoldHeading("S0001", CanonicalSemanticSelectionMode.WholeAlias, "SECTION")]) with
+        {
+            SemanticHeadingTotal = 2,
+            SemanticHeadingTotalAuthority = new PdfGoldAuthorityRecord("USER", "2026-09-12"),
+            OccurrenceAuthority = new PdfGoldAuthorityRecord("HUMAN_REVIEWED", "2026-09-19")
+            {
+                Reviewer = "reviewer-under-test",
+                SourceUniverseSha256 = "0000",
+            },
+        };
+
+        var issue = Assert.Single(PdfGoldValidator.Validate(gold, catalog, aliases));
+        Assert.Equal(PdfGoldValidator.TotalDisagreesWithAuthority, issue.Code);
+        Assert.Contains("approved by USER on 2026-09-12", issue.Detail, StringComparison.Ordinal);
+        // Neither authority was rewritten by the check.
+        Assert.Equal(2, gold.SemanticHeadingTotal);
+        Assert.Equal("HUMAN_REVIEWED", gold.OccurrenceAuthority!.Authority);
+    }
+
+    [Fact]
+    public void Claiming_occurrence_truth_without_an_occurrence_review_is_refused()
+    {
+        var catalog = SyntheticCatalog(("p1", "Opening"));
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var gold = Gold([new PdfGoldHeading("S0001", CanonicalSemanticSelectionMode.WholeAlias, "SECTION")]) with
+        {
+            Capabilities = new PdfGoldCapabilities { SemanticEvaluable = true, OccurrenceEvaluable = true },
+        };
+
+        var issue = Assert.Single(PdfGoldValidator.Validate(gold, catalog, aliases));
+        Assert.Equal(PdfGoldValidator.OccurrenceAuthorityMissing, issue.Code);
     }
 
     // ---- the evaluator -----------------------------------------------------------------------

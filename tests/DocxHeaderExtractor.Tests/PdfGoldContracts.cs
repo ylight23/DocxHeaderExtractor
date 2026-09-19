@@ -47,6 +47,19 @@ public sealed record PdfGoldDocument(
     /// <summary>The authoritative count this review must reconcile with, when one exists.</summary>
     [JsonPropertyName("semanticHeadingTotal")] public int? SemanticHeadingTotal { get; init; }
 
+    /// <summary>
+    /// Who approved the count, and when. Separate from the occurrence review on purpose: the total
+    /// for DOC-0252 was approved on its own evidence, and materialising occurrences later is a
+    /// second act by a second reviewer. Collapsing them into one field would make a later
+    /// occurrence review look like it had always been part of the approved total.
+    /// </summary>
+    [JsonPropertyName("semanticHeadingTotalAuthority")]
+    public PdfGoldAuthorityRecord? SemanticHeadingTotalAuthority { get; init; }
+
+    /// <summary>Who identified the occurrences, against which source universe.</summary>
+    [JsonPropertyName("occurrenceAuthority")]
+    public PdfGoldAuthorityRecord? OccurrenceAuthority { get; init; }
+
     [JsonPropertyName("finalAuthority")] public string FinalAuthority { get; init; } = "UNREVIEWED";
 
     /// <summary>What may be scored from this Gold. A count alone scores neither membership nor relations.</summary>
@@ -54,6 +67,17 @@ public sealed record PdfGoldDocument(
 
     /// <summary>Provider calls spent producing this Gold. Must be zero.</summary>
     [JsonPropertyName("providerCalls")] public int ProviderCalls { get; init; }
+}
+
+/// <summary>One lineage: who decided, when, and over what.</summary>
+public sealed record PdfGoldAuthorityRecord(
+    [property: JsonPropertyName("authority")] string Authority,
+    [property: JsonPropertyName("decidedAt")] string DecidedAt)
+{
+    [JsonPropertyName("reviewer")] public string? Reviewer { get; init; }
+
+    /// <summary>The worksheet the occurrences were marked on, so a later universe change is visible.</summary>
+    [JsonPropertyName("sourceUniverseSha256")] public string? SourceUniverseSha256 { get; init; }
 }
 
 public sealed record PdfGoldCapabilities
@@ -84,6 +108,7 @@ public static class PdfGoldValidator
     public const string DuplicateRow = "DUPLICATE_GOLD_ROW";
     public const string ParentOutsideUniverse = "PARENT_ALIAS_OUTSIDE_SOURCE_UNIVERSE";
     public const string TotalDisagreesWithAuthority = "ROW_COUNT_DISAGREES_WITH_AUTHORITATIVE_TOTAL";
+    public const string OccurrenceAuthorityMissing = "OCCURRENCE_AUTHORITY_MISSING";
 
     public static IReadOnlyList<PdfGoldIssue> Validate(
         PdfGoldDocument gold,
@@ -154,10 +179,23 @@ public static class PdfGoldValidator
                     "The disambiguator matches no single occurrence of the text."));
         }
 
+        // Reported as a conflict between two lineages, never resolved by rewriting either. The
+        // approved total and the occurrence review are separate acts of authority; if they
+        // disagree, that is a question for the people who made them, and silently adopting the new
+        // count would erase an approval nobody withdrew.
         if (gold.SemanticHeadingTotal is { } total && gold.Headings.Count != total)
         {
+            var approved = gold.SemanticHeadingTotalAuthority is { } record
+                ? $" approved by {record.Authority} on {record.DecidedAt}"
+                : string.Empty;
             issues.Add(new(TotalDisagreesWithAuthority, gold.DocumentId,
-                $"review materialised {gold.Headings.Count} rows against an authoritative total of {total}."));
+                $"review materialised {gold.Headings.Count} rows against a total of {total}{approved}."));
+        }
+
+        if (gold.Capabilities.OccurrenceEvaluable && gold.OccurrenceAuthority is null)
+        {
+            issues.Add(new(OccurrenceAuthorityMissing, gold.DocumentId,
+                "occurrenceEvaluable claims per-occurrence truth, but no occurrence review is recorded."));
         }
 
         return issues;

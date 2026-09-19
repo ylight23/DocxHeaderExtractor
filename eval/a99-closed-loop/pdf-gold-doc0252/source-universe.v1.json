@@ -7,8 +7,7 @@
   "projectionVersion": "pdf-glyph-gap-v1",
   "providerCalls": 0,
   "derivedFrom": "PDF parser occurrences only; no model output and no heuristic selection",
-  "authoritativeSemanticHeadingTotal": 41,
-  "reviewInstruction": "Mark which of these occurrences are true heading occurrences. The marked count must reconcile with authoritativeSemanticHeadingTotal, or the disagreement is itself a finding.",
+  "reviewInstruction": "Decide each occurrence on the document's own terms: is this a true heading occurrence? Mark NEEDS_REVIEW rather than guessing.",
   "occurrences": 1013,
   "rows": [
     {
