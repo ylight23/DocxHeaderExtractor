@@ -7,5067 +7,5515 @@
   "decisions": [
     {
       "sourceAlias": "S0001",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "DocumentTitle",
+          "parentSourceAlias": null,
+          "reviewNote": "Primary document title; the following organization/date/location lines are metadata, not separate structural headings."
+        }
+      ]
     },
     {
       "sourceAlias": "S0002",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0003",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0004",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0005",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0006",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0007",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0008",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0009",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0010",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0011",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0012",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0013",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0014",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0015",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0016",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0017",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0018",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0019",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0020",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0021",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0022",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0023",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0024",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0025",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0026",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0027",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0028",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0029",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0030",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0031",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0032",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0033",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0034",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0035",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0036",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0037",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0038",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0039",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0040",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0041",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0042",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0043",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Session II: Update on the ICP 2021 Cycle",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        },
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "1 Global office update",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        }
+      ]
     },
     {
       "sourceAlias": "S0044",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0045",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0046",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0047",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0048",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0049",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0050",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0051",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0052",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0053",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0054",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0055",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0056",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0057",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0058",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0059",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0060",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0061",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0062",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0063",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0064",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0065",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0066",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0067",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0068",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0069",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0070",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0071",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0072",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0073",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0074",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0075",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0076",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0077",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0078",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0079",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0080",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0081",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0082",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0083",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0084",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0085",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0086",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0087",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0088",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0089",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0090",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0091",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0092",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0093",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0094",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0095",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0096",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0097",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0098",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0099",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0100",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0101",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0102",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0103",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0104",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0105",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0106",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0107",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0108",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0109",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0110",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0111",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0112",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0113",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0114",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0115",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0116",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0117",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0118",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0119",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0120",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0121",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0122",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0123",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0124",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0125",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0126",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0127",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Africa",
+          "occurrence": 1,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": "Use occurrence=1 because 'Africa' also appears as the prefix of 'African' later in the same parser occurrence."
+        }
+      ]
     },
     {
       "sourceAlias": "S0128",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0129",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0130",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0131",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0132",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0133",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0134",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0135",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0136",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0137",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0138",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0139",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0140",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0141",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Asia and the Pacific",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0142",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0143",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0144",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0145",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0146",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0147",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0148",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0149",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0150",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0151",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0152",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0153",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0154",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0155",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0156",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0157",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0158",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0159",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0160",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0161",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0162",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0163",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0164",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0165",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0166",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0167",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0168",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0169",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0170",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0171",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0172",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0173",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Commonwealth of Independent States (CIS)",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0174",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0175",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0176",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0177",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0178",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0179",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0180",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0181",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0182",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0183",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0184",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0185",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0186",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0187",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0188",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0189",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0190",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0191",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0192",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0193",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0194",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0195",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0196",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0197",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0198",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0199",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0200",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0201",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0202",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0203",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0204",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0205",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0206",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0207",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0208",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0209",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0210",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0211",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0212",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0213",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0214",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0215",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0216",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0217",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0218",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0219",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0220",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0221",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0222",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0223",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Latin America and the Caribbean",
+          "occurrence": 1,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": "Use occurrence=1 because the same phrase appears again inside the organization name."
+        }
+      ]
     },
     {
       "sourceAlias": "S0224",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0225",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0226",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0227",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0228",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0229",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0230",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0231",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0232",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0233",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0234",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0235",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0236",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0237",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0238",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0239",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0240",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0241",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0242",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0243",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0244",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Western Asia",
+          "occurrence": 1,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": "Use occurrence=1 because the same phrase appears again inside the organization name."
+        }
+      ]
     },
     {
       "sourceAlias": "S0245",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0246",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0247",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0248",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0249",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0250",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0251",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0252",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0253",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0254",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0255",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0256",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0257",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0258",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0259",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0260",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0261",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0262",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0263",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0264",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0265",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0266",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0267",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0268",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0269",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0270",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0271",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0272",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0273",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0274",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0275",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0276",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0277",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0278",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0279",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0280",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0281",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0282",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0283",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0284",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0285",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0286",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0287",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0288",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0289",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0290",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0291",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0292",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0293",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0294",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0295",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0296",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0297",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0298",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0299",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0300",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0301",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0302",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0303",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0304",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0305",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0306",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0307",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0308",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0309",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0310",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0311",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0312",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0313",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0314",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0315",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0316",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0317",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0318",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0319",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0320",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0321",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0322",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0323",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0324",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0325",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0326",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0327",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0328",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0329",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0330",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0331",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0332",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0333",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0334",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0335",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0336",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0337",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0338",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0339",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0340",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0341",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0342",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0343",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0344",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0345",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0346",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0347",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0348",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0349",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0350",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0351",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0352",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0353",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0354",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0355",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0356",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0357",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0358",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0359",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0360",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0361",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0362",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0363",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0364",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0365",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0366",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0367",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0368",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0369",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0370",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0371",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0372",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0373",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0374",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0375",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0376",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0377",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0378",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0379",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0380",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0381",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0382",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0383",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0384",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0385",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0386",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0387",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0388",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0389",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0390",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0391",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0392",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0393",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0394",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0395",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0396",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0397",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0398",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0399",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0400",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0401",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0402",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0403",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0404",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0405",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0406",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0407",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0408",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0409",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0410",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0411",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0412",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0413",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0414",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0415",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0416",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0417",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0418",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0419",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0420",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0421",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0422",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0423",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0424",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0425",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0426",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0427",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0428",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0429",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0430",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0431",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0432",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0433",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0434",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0435",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0436",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0437",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0438",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0439",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0440",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0441",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0442",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0443",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0444",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0445",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0446",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0447",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0448",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0449",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0450",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0451",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0452",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0453",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0454",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0455",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0456",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0457",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0458",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0459",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0460",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        },
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "1 TAG Composition and Terms of Reference",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        }
+      ]
     },
     {
       "sourceAlias": "S0461",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0462",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0463",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0464",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0465",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0466",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0467",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0468",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0469",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0470",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0471",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0472",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0473",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0474",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0475",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0476",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0477",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0478",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0479",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0480",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0481",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0482",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0483",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0484",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0485",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0486",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0487",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0488",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0489",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0490",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0491",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0492",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0493",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0494",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0495",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0496",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0497",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0498",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0499",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0500",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0501",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0502",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0503",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0504",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0505",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0506",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0507",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0508",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0509",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0510",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0511",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0512",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0513",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0514",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0515",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0516",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0517",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0518",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0519",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0520",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0521",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0522",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0523",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0524",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0525",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0526",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0527",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0528",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0529",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0530",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0531",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0532",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0533",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0534",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0535",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0536",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0537",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0538",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0539",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0540",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0541",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0542",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0543",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0544",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0545",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0546",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0547",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0548",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0549",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0550",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0551",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0552",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0553",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0554",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0555",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0556",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0557",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0558",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0559",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0560",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0561",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0562",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0563",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0564",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0565",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0566",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0567",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0568",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0569",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0570",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0571",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0572",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0573",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Session V: Current Research",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        },
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "1 The Treatment of Import and Export Prices in International Comparisons",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        }
+      ]
     },
     {
       "sourceAlias": "S0574",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0575",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0576",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0577",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0578",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0579",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0580",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0581",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0582",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0583",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0584",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0585",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0586",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0587",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0588",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0589",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0590",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0591",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0592",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0593",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0594",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0595",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0596",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0597",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0598",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0599",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0600",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0601",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0602",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0603",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0604",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0605",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0606",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0607",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0608",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0609",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0610",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0611",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0612",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0613",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0614",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0615",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0616",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": "This is the initiating parser occurrence of the two-line heading; S0618 is continuation text, not a second heading occurrence."
+        }
+      ]
     },
     {
       "sourceAlias": "S0617",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0618",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0619",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0620",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0621",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0622",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0623",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0624",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0625",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0626",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0627",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0628",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0629",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0630",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0631",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0632",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0633",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0634",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0635",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0636",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0637",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0638",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0639",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0640",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0641",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0642",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0643",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0644",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0645",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0646",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0647",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0648",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0649",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0650",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0651",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0652",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0653",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0654",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0655",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0656",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0657",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0658",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0659",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0660",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0661",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0662",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0663",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0664",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0665",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0666",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0667",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0668",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0669",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0670",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0671",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0672",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0673",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0674",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0675",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0676",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0677",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0678",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0679",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0680",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0681",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0682",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0683",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0684",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0685",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0686",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0687",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0688",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0689",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0690",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0691",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0692",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0693",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0694",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0695",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0696",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0697",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0698",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0699",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0700",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0701",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0702",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0703",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0704",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0705",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0706",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0707",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0708",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0709",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0710",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0711",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0712",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0713",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0714",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0715",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0716",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0717",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0718",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0719",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0720",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0721",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0722",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0723",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0724",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0725",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0726",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0727",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0728",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0729",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0730",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0731",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0732",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0733",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0734",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0735",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0736",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0737",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0738",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0739",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0740",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0741",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0742",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0743",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0744",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0745",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0746",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0747",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0748",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0749",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0750",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0751",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0752",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0753",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0754",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0755",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0756",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0757",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0758",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0759",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0760",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0761",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0762",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0763",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0764",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0765",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0766",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0767",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0768",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0769",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0770",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0771",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0772",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0773",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0774",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0775",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0776",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0777",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0778",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0779",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0780",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0781",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0782",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0783",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0784",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0785",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0786",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0787",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0788",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0789",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0790",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0791",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0792",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0793",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0794",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0795",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0796",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0797",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0798",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0799",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0800",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0801",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0802",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0803",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0804",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0805",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0806",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0807",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0808",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0809",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0810",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0811",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0812",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0813",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0814",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0815",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0816",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0817",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0818",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0819",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0820",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0821",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0822",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0823",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0824",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0825",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0826",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0827",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0828",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0829",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0830",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0831",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0832",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0833",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0834",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0835",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0836",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0837",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0838",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0839",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0840",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0841",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0842",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0843",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0844",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0845",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0846",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0847",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0848",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0849",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0850",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0851",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0852",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0853",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0854",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0855",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0856",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0857",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0858",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0859",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0860",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0861",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0862",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0863",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0864",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0865",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0866",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0867",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0868",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0869",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0870",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0871",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0872",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0873",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0874",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0875",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0876",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0877",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0878",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0879",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0880",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0881",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0882",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0883",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0884",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0885",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0886",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0887",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0888",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0889",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0890",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0891",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0892",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0893",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0894",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0895",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0896",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0897",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0898",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0899",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0900",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0901",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0902",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0903",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0904",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0905",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0906",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0907",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0908",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0909",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0910",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0911",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "SectionHeading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0912",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0913",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0914",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0915",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0916",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0917",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0918",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0919",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0920",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0921",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0922",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0923",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0924",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0925",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0926",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0927",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0928",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0929",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0930",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0931",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0932",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0933",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0934",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0935",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": "Continuation session label is a distinct true heading occurrence."
+        }
+      ]
     },
     {
       "sourceAlias": "S0936",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0937",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0938",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0939",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0940",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0941",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0942",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0943",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0944",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0945",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0946",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0947",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0948",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0949",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AppendixHeading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0950",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0951",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0952",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0953",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0954",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0955",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0956",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0957",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0958",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0959",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0960",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0961",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0962",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0963",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0964",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0965",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0966",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0967",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0968",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0969",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0970",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0971",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0972",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0973",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0974",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0975",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0976",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0977",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0978",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0979",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0980",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0981",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0982",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0983",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0984",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0985",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0986",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0987",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0988",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0989",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0990",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0991",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0992",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0993",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0994",
-      "humanDecision": null,
-      "headingClaims": []
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
     },
     {
       "sourceAlias": "S0995",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0996",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0997",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0998",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S0999",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1000",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1001",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1002",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1003",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1004",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1005",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1006",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1007",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1008",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1009",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1010",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1011",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1012",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     },
     {
       "sourceAlias": "S1013",
-      "humanDecision": null,
+      "humanDecision": "NOT_HEADING",
       "headingClaims": []
     }
   ]
