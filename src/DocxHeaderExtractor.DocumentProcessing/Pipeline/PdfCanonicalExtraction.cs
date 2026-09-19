@@ -46,7 +46,20 @@ public static class PdfCanonicalExtraction
 
         var started = Environment.TickCount64;
         var used = options.DisableLlm ? null : analyst;
-        var authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(file.LocalPath, used, ct);
+        PdfExperimentGatedHeaderClassifier? gated = null;
+        if (used is not null && options.ExperimentGate is not null)
+            gated = new PdfExperimentGatedHeaderClassifier(used, options.ExperimentGate, disposeInner: false);
+
+        StructuralAuthorityResult authority;
+        try
+        {
+            authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
+                file.LocalPath, gated ?? used, ct);
+        }
+        finally
+        {
+            gated?.Dispose();
+        }
         // The same repair step the DOCX lane applies, through the same implementation. A quarantine
         // that silently did nothing on one format would make the harness's repair loop mean two
         // different things depending on what was uploaded.
