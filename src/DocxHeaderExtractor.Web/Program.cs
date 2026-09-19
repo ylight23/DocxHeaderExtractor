@@ -11,6 +11,7 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.Infrastructure.Learning;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Application.Runtime;
 using DocxHeaderExtractor.Application.Feedback;
@@ -138,6 +139,25 @@ app.MapPost("/api/inspect", async (HttpRequest req, CancellationToken ct) =>
             SplitMergedParagraphs = form["splitMerged"].ToString() is "1" or "true" or "on",
             UseLexicalRules = form["structuralOnly"].ToString() is not ("1" or "true" or "on"),
         };
+        // Định dạng quyết định bởi byte, giống hệt đường rút trích. Trước đây bước này chạy thẳng
+        // vào EnsureDocx, vốn từ chối PDF theo phần mở rộng — nên cùng một tệp: rút trích nhận là
+        // PDF, còn kiểm tra mode trả về "không hỗ trợ chuyển đổi Word". Một host không được mâu
+        // thuẫn với chính nó về tệp người dùng vừa tải lên.
+        var uploadedType = UploadedSourceDetector.Detect(inputPath);
+        if (uploadedType == SourceType.Pdf)
+            return PdfInspection(inputPath, json);
+        // Không phải định dạng nào lane sở hữu, và cũng không phải thứ converter nhận: từ chối
+        // ngay, gọi tên tệp, thay vì để lỗi nổ ra bên trong một parser chưa từng được đưa đúng
+        // định dạng nó cần.
+        if (uploadedType == SourceType.Unknown &&
+            Path.GetExtension(inputPath).ToLowerInvariant() is not (".doc" or ".rtf" or ".odt"))
+        {
+            return Results.BadRequest(new
+            {
+                message = $"'{Path.GetFileName(inputPath)}' không phải DOCX hay PDF theo nội dung tệp.",
+            });
+        }
+
         var conversion = LegacyDocConverter.EnsureDocx(inputPath);
         DocumentModeReport report;
         try
@@ -157,6 +177,8 @@ app.MapPost("/api/inspect", async (HttpRequest req, CancellationToken ct) =>
             return Results.Json(new
             {
                 file = Path.GetFileName(inputPath),
+                sourceType = "docx",
+                supported = true,
                 report = ModePayload(report),
                 suggestedRoute,
                 canRunDeterministic = suggestedRoute is not null,
@@ -309,8 +331,16 @@ app.MapPost("/api/extract", async (
         // được retrieval ví dụ tương tự; pipeline không gửi lịch sử correction ra OpenRouter.
         options.CorrectionMemoryPath = correctionMemory.PathOnDisk;
 
-        // Dùng đúng extractor/options như pipeline để bundle review có stable ID khớp tài liệu.
-        var source = new AuthorityDocumentSourceReader(options).Read(inputPath).Document;
+        // Một quyết định duy nhất về định dạng, đọc từ byte, dùng chung cho mọi bước phía sau.
+        var uploadedType = UploadedSourceDetector.Detect(inputPath);
+
+        // Bundle review dựng từ OOXML nên chỉ có với nguồn OOXML. Trước đây bước này chạy vô điều
+        // kiện qua EnsureDocx và từ chối PDF theo phần mở rộng, nên Web không rút trích được PDF
+        // dù lane PDF đã chạy được từ CLI/MCP. Với PDF thì không có snapshot — nói ra chứ không
+        // dựng một snapshot hình dạng DOCX từ tài liệu không phải DOCX.
+        var source = uploadedType == SourceType.Pdf
+            ? null
+            : new AuthorityDocumentSourceReader(options).Read(inputPath).Document;
 
         // Hai backend dùng tài nguyên máy này cần khóa. OpenRouter có thể chạy đồng thời và không
         // được giữ hàng chỉ vì GPU local/LM Studio đang bận.
@@ -390,8 +420,11 @@ app.MapPost("/api/extract", async (
 
             var agentRun = await run;
             var outline = agentRun.TaskResult.Value;
-            var humanReview = AuthorityOutlineReviewProjection.Project(outline, source);
-            await humanReviewService.PublishAsync(humanReview, ct);
+            var humanReview = source is null
+                ? null
+                : AuthorityOutlineReviewProjection.Project(outline, source);
+            if (humanReview is not null)
+                await humanReviewService.PublishAsync(humanReview, ct);
 
             // Đọc vào bộ nhớ trước khi finally xoá thư mục tạm; link chỉ tải được đúng một lần.
             string? download = null;
@@ -409,9 +442,15 @@ app.MapPost("/api/extract", async (
                 type = "result",
                 outline,
                 stats = Stats.From(outline),
-                review = ReviewBundle.Create(outline, source),
+                sourceType = uploadedType.ToString().ToLowerInvariant(),
+                review = source is null ? null : ReviewBundle.Create(outline, source),
                 humanReview,
-                humanReviewUrl = $"/review.html?documentId={Uri.EscapeDataString(humanReview.DocumentId)}",
+                humanReviewUrl = humanReview is null
+                    ? null
+                    : $"/review.html?documentId={Uri.EscapeDataString(humanReview.DocumentId)}",
+                humanReviewUnavailableReason = source is null
+                    ? "human review is projected from the OOXML source document; a PDF has none"
+                    : null,
                 agent = new
                 {
                     runId = agentRun.RunId,
@@ -458,6 +497,37 @@ Console.OutputEncoding = Encoding.UTF8;
 Console.WriteLine($"dhx-ui đang chạy: {string.Join(", ", app.Urls.DefaultIfEmpty("http://localhost:5099"))}");
 Console.WriteLine("Ctrl+C để dừng.");
 app.Run();
+
+// Kiểm tra mode là phép đo trên OOXML: paragraph, style, outlineLvl, numPr. PDF không có những
+// thứ đó, nên ở đây không có DocumentMode nào để phân loại. Trả về một report rỗng hình dạng DOCX
+// sẽ đọc như "đã đo và không thấy gì"; điều đúng là nói rằng phép đo này không áp dụng, kèm đúng
+// những gì parser PDF thật sự biết.
+static IResult PdfInspection(string inputPath, JsonSerializerOptions json)
+{
+    var file = UploadedFile.FromLocalPath(inputPath);
+    using var document = UglyToad.PdfPig.PdfDocument.Open(inputPath);
+    var pages = document.NumberOfPages;
+    // Cùng một lane mà rút trích dùng, chạy không mô hình: số đơn vị nguồn ở đây đúng bằng số đơn
+    // vị nguồn mà lần rút trích sẽ thấy, thay vì một lần đọc thứ hai có thể bất đồng với nó.
+    var canonical = PdfCanonicalExtraction.RunAsync(file, new PipelineOptions { DisableLlm = true })
+        .GetAwaiter().GetResult();
+
+    return Results.Json(new
+    {
+        file = Path.GetFileName(inputPath),
+        sourceType = "pdf",
+        supported = true,
+        // Vắng mặt, không phải rỗng: một report hình dạng DOCX với mọi số bằng 0 sẽ đọc như "đã đo
+        // và không thấy gì", trong khi sự thật là phép đo đó không tồn tại cho định dạng này.
+        report = (object?)null,
+        suggestedRoute = (string?)null,
+        // Lane PDF không có đường tất định nào sinh ra heading: mọi heading đều do mô hình đề xuất.
+        canRunDeterministic = false,
+        pages,
+        sourceOccurrences = canonical.SourceCatalog.Units.Count,
+        note = "Kiểm tra mode là phép đo trên OOXML; PDF không có style/outlineLvl/numPr để phân loại.",
+    }, json);
+}
 
 // Tên file người dùng tải lên không được phép thoát khỏi thư mục làm việc.
 static string SafeName(string name)
