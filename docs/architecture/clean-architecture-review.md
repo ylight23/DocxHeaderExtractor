@@ -18,15 +18,17 @@ The normal host path is:
 
 ```text
 CLI / Web / MCP / AgentHarness
+        -> PipelineDocumentExtractionTool    (the one tool all four hosts construct)
         -> UploadedSourceDetector            (the uploaded file, read from its bytes)
-        -> CanonicalExtractionDispatcher
+             -> LegacyDocConverter.EnsureDocx  only for a format no lane owns (.doc/.rtf/.odt)
+        -> CanonicalExtractionDispatcher     (re-reads the file; routes on what it actually is)
         -> DocxCanonicalSourceExtractor      or   PdfCanonicalSourceExtractor
              -> AuthorityExtractionPipeline            -> PdfCanonicalExtraction
-             -> DocxAuthorityPipeline                  -> CanonicalSemanticPdfAuthorityAdapter
+             -> CanonicalSemanticDocxAuthorityAdapter  -> CanonicalSemanticPdfAuthorityAdapter
         -> CanonicalSemanticEngine           (shared: prompt, segmentation, contract, binder,
                                               hierarchy resolver, placement)
         -> PdfProposalValidator -> CanonicalStructureMaterializer
-        -> canonical document
+        -> canonical document + compatibility outline
         ------------------------------------ semantic boundary ------------------------------------
         -> ExtractionIntent -> CanonicalProjector -> output
 ```
@@ -35,6 +37,18 @@ One upload, one lane. There is no PDF discovery step: a DOCX upload is extracted
 PDF upload as a PDF, and neither format's presence elsewhere changes how the other is processed.
 The two lanes share everything after source occurrences, so a difference between them can only come
 from how the source was read.
+
+This diagram described the library and not the product until the PDF lane was wired into
+`PipelineDocumentExtractionTool`. Before that, every upload was pushed through
+`LegacyDocConverter.EnsureDocx` first, which refuses a PDF on its extension, so the dispatcher and
+the PDF lane existed, were tested, and could not be reached from the Web, CLI or MCP host at all.
+No local suite could say so: each one called the lane directly. `PdfProductReachabilityTests` now
+goes through the host tool, and the CLI glob and the Web file picker accept `.pdf` - a format the
+product refuses to open is not a supported format however complete the lane behind it is.
+
+Conversion runs only for a format no lane owns. A file whose bytes are already DOCX or PDF is
+dispatched as it is, whatever it is named, so a DOCX called `report.pdf` is no longer refused on
+its extension by a converter that never needed to see it.
 
 Intent sits after the semantic boundary on purpose. The same file yields the same canonical
 document whatever is asked of it; asking for level-1 headings filters the graph rather than
