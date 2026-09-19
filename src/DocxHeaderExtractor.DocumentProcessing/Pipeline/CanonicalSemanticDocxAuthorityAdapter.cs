@@ -112,9 +112,21 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             .Where(item => item.IsPrimaryOccurrence)
             .Select(item => item.SourceId)
             .ToHashSet(StringComparer.Ordinal);
-        var structuralAuthority = DocxAuthorityPipeline.MaterializeStructuralAuthority(
+        // Straight to the one materializer, in the same shape the PDF lane hands it. This used to
+        // go through a DocxAuthorityPipeline wrapper whose only remaining work was this mapping;
+        // a lane-named entry point in front of a shared owner is how the two drift apart again.
+        var structuralAuthority = CanonicalStructureMaterializer.Materialize(
             validated.Where(item => primarySourceIds.Contains(item.SourceId)).ToArray(),
-            structures, source.Contexts);
+            structures,
+            source.Contexts.ToDictionary(
+                pair => pair.Key,
+                pair => new CanonicalSourceOccurrence(
+                    pair.Value.Source.SourceId,
+                    pair.Value.Source.SourceOrdinal,
+                    pair.Value.Source.Text,
+                    pair.Value.Source.Style.StyleId),
+                StringComparer.Ordinal),
+            "docx");
         var audit = new RouteExecutionAudit(
             "docx-canonical-vnext",
             source.Blocks.Count,

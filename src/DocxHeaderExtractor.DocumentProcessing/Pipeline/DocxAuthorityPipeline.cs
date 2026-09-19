@@ -25,22 +25,6 @@ internal static class DocxAuthorityPipeline
         CancellationToken ct = default) =>
         await CanonicalSemanticDocxAuthorityAdapter.RunAsync(policyState, mode, analyst, ct);
 
-    internal static ValidatedStructure MaterializeStructuralAuthority(
-        IReadOnlyList<PdfValidatedHeading> validated,
-        IReadOnlyDictionary<string, PdfValidatedStructure> structures,
-        IReadOnlyDictionary<string, DocxAuthorityContext> contexts) =>
-        CanonicalStructureMaterializer.Materialize(
-            validated, structures,
-            contexts.ToDictionary(
-                pair => pair.Key,
-                pair => new CanonicalSourceOccurrence(
-                    pair.Value.Source.SourceId,
-                    pair.Value.Source.SourceOrdinal,
-                    pair.Value.Source.Text,
-                    pair.Value.Source.Style.StyleId),
-                StringComparer.Ordinal),
-            "docx");
-
     private static DocxAuthoritySource Build(
         SourceDocument sourceDocument,
         IReadOnlyDictionary<string, IPolicyParagraph> policyParagraphs,
