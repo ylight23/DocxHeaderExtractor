@@ -37,12 +37,11 @@ public static class RepairCandidateRunner
 
     public static RepairCandidateReport Analyze(DocumentOutline outline)
     {
-        var candidates = (outline.Diagnostics?.Candidates ?? []).ToList();
-        if (!string.IsNullOrWhiteSpace(outline.DeterministicRoute) &&
-            candidates.All(c => !string.Equals(c.Route, outline.DeterministicRoute, StringComparison.Ordinal)))
-        {
-            candidates.Add(CurrentOutputCandidate(outline));
-        }
+        ArgumentNullException.ThrowIfNull(outline);
+        if (outline.Diagnostics is null)
+            throw new InvalidOperationException("document-diagnostics-required");
+
+        var candidates = outline.Diagnostics.Candidates.ToList();
 
         var ranked = candidates
             .Select(c => Score(c, outline.DeterministicRoute))
@@ -56,7 +55,7 @@ public static class RepairCandidateRunner
 
         var best = ranked.FirstOrDefault();
         var hasAccepted = ranked.Any(c => c.Accepted);
-        var needsPatch = outline.Diagnostics?.Status != "normal" ||
+        var needsPatch = outline.Diagnostics.Status != "normal" ||
                          !hasAccepted ||
                          outline.Headings.Any(h =>
                              h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);

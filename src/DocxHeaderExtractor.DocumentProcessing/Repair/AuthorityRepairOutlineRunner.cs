@@ -14,6 +14,7 @@ public sealed class AuthorityRepairOutlineRunner : IRepairOutlineRunner
 
     public AuthorityRepairOutlineRunner(PipelineOptions options)
     {
+        options.EnableDocumentDiagnostics = true;
         _pipeline = new AuthorityExtractionPipeline(options);
     }
 

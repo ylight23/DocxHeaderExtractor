@@ -57,6 +57,22 @@ public sealed class RepairValidationGateTests
         Assert.Contains(report.Gates, g => g.Name == "part_section_number_order" && !g.Passed);
     }
 
+    [Fact]
+    public void CandidateReportRejectsMissingDiagnostics()
+    {
+        var outline = new DocumentOutline
+        {
+            File = "test.docx",
+            ParagraphCount = 0,
+            CandidateCount = 0,
+            Headings = [],
+        };
+
+        var error = Assert.Throws<InvalidOperationException>(() => RepairCandidateRunner.Analyze(outline));
+
+        Assert.Equal("document-diagnostics-required", error.Message);
+    }
+
     private static DocumentOutline Outline(string route, params (int Index, int Level, string Text)[] headings) =>
         new()
         {
@@ -74,5 +90,11 @@ public sealed class RepairValidationGateTests
                 DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
                 ConfidenceBasis = route,
             }).ToList(),
+            Diagnostics = new DocumentDiagnosticReport(
+                "normal",
+                "signals_validated",
+                new StyleSignalDiagnostic(0, 0, 0, 0, 0, true, true, false),
+                new LayoutSignalDiagnostic(0, 0, 0, 0),
+                [new OutlineCandidateDiagnostic(route, true, "accepted", headings.Length, 0, 0, 0)]),
         };
 }

@@ -1,6 +1,8 @@
 using DocxHeaderExtractor.DocumentProcessing.Chunking;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -15,6 +17,16 @@ public sealed class PipelineOptions
 
     /// <summary>Bỏ qua LLM, chỉ dùng luật (nhanh, để đối chiếu).</summary>
     public bool DisableLlm { get; set; }
+
+    /// <summary>
+    /// Chạy bộ chẩn đoán candidate legacy và đính kèm <see cref="DocumentDiagnosticReport"/> vào
+    /// outline. Tắt mặc định: normal canonical extraction không cần chạy các strategy chẩn đoán.
+    /// Repair/diagnostic entrypoints phải bật cờ này một cách tường minh.
+    /// </summary>
+    public bool EnableDocumentDiagnostics { get; set; }
+
+    /// <summary>Test seam for proving explicit diagnostic reachability without timing assumptions.</summary>
+    internal Func<DocxPolicyState, DocumentModeReport, DocumentDiagnosticReport>? DocumentDiagnosticsAnalyzer { get; set; }
 
     /// <summary>
     /// Optional fail-closed gate for an explicitly frozen PDF provider experiment. Null preserves

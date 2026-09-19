@@ -116,7 +116,9 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var policyState = DocxPolicyStateBuilder.Build(
                 sourceDocument, structuralFeatures, derivedFeatures, _options.Extraction);
             var mode = DocumentModeClassifier.Measure(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-            var diagnostics = DocumentDiagnosticRunner.Analyze(policyState, mode);
+            var diagnostics = _options.EnableDocumentDiagnostics
+                ? (_options.DocumentDiagnosticsAnalyzer ?? DocumentDiagnosticRunner.Analyze)(policyState, mode)
+                : null;
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
             StructuralAuthorityResult authority;
             RouteExecutionAudit? audit;

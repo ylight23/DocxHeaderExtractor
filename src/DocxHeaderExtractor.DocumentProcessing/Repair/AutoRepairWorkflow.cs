@@ -184,10 +184,15 @@ public sealed class AutoRepairWorkflow
             written);
     }
 
-    private static bool NeedsAnalysis(DocumentOutline outline) =>
-        outline.Diagnostics?.Status != "normal" ||
-        outline.Headings.Any(h =>
-            h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);
+    private static bool NeedsAnalysis(DocumentOutline outline)
+    {
+        if (outline.Diagnostics is null)
+            throw new InvalidOperationException("document-diagnostics-required");
+
+        return outline.Diagnostics.Status != "normal" ||
+               outline.Headings.Any(h =>
+                   h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);
+    }
 
     private static DocumentFailureCase BuildFailureCase(
         string caseId,
