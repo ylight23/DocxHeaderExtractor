@@ -28,24 +28,62 @@ the filter instead of the source universe.
 
 ```json
 {
-  "sourceAlias": "S0001",
-  "page": 1,
-  "sourceOrdinal": 0,
-  "verbatimText": "...",
+  "sourceAlias": "S0573",
+  "page": 8,
+  "sourceOrdinal": 605,
+  "sourceText": "Session V: Current Research 1 The Treatment of Import and Export Prices ...",
   "humanDecision": null,
-  "semanticRole": null,
-  "parentSourceAlias": null,
-  "reviewNote": null
+  "headingClaims": [
+    {
+      "selectionMode": null,
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "semanticRole": null,
+      "parentSourceAlias": null,
+      "reviewNote": null
+    }
+  ]
 }
 ```
 
 - `humanDecision` — `HEADING` · `NOT_HEADING` · `NEEDS_REVIEW`. Null means undecided, never "no".
+- `headingClaims` — the headings found **inside** this occurrence.
+  - `NOT_HEADING` → empty.
+  - `HEADING` → at least one claim; **several are allowed**.
+  - `NEEDS_REVIEW` → leave as is; a second pass settles it.
+- `selectionMode` — `WHOLE_ALIAS` when the heading is the entire occurrence, `VERBATIM_TEXT` when
+  it is part of one.
+- `verbatimText` — for `VERBATIM_TEXT`, the exact heading text copied from `sourceText`.
+- `occurrence` / `leftExactContext` / `rightExactContext` — only when that text appears more than
+  once inside this same occurrence.
 - `semanticRole` — a separate field on purpose. Role is not encoded into the decision, so heading
   membership and role stay separately measurable: a heading found with the wrong role is a role
   error, not a missed heading.
 - `parentSourceAlias` — only where the relation was actually adjudicated. Null means *not
   adjudicated*; it does not mean "root".
 - `reviewNote` — why, when the answer was not obvious.
+
+Each claim becomes exactly one `PdfGoldHeading`, field for field. The conversion is mechanical:
+anything a row does not say is reported back rather than defaulted, because a default there is code
+deciding what a person meant.
+
+### Why claims are a list
+
+A source occurrence is a parser artefact, not a semantic unit. Line grouping fuses neighbouring
+lines that share geometry and font, so one occurrence can hold more than one heading. In this
+document:
+
+| Alias | Page | Fused text |
+| --- | --- | --- |
+| `S0043` | 1 | `Session II: Update on the ICP 2021 Cycle` + `1 Global office update` |
+| `S0460` | 7 | `Session IV: TAG Functioning and Terms of Reference for Task Forces` + `1 TAG Composition ...` |
+| `S0573` | 8 | `Session V: Current Research` + `1 The Treatment of Import and Export Prices ...` |
+
+One answer per occurrence could not say *which* heading, with *which* boundary, in *which* role —
+and those are exactly the partial-span cases I8 exists to address. A Gold that cannot express them
+cannot measure I8 either.
 
 ## Suggested order
 
@@ -57,6 +95,14 @@ the filter instead of the source universe.
    the review agree with the harness by construction.
 4. **Consistency pass** — every alias carries exactly one decision, and any remaining
    `NEEDS_REVIEW` is deliberate rather than skipped.
+
+## Provenance of this review
+
+The pack itself does not show the approved total, but the reviewer was told it in conversation
+before starting. This review is therefore **not a blind first pass**, and the freeze must not
+describe it as one. It can still be conducted occurrence by occurrence without using the total as a
+target — that is the intent — but the exposure is a fact about how the Gold was produced, and
+recording it is cheaper than defending the claim later.
 
 ## Rules this pack enforces
 

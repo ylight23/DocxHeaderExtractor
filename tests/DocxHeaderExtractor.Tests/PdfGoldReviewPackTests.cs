@@ -38,19 +38,31 @@ public sealed class PdfGoldReviewPackTests
     /// </summary>
     private static readonly string[] AllowedDecisions = ["HEADING", "NOT_HEADING", "NEEDS_REVIEW"];
 
-    /// <summary>The fields a reviewer fills in. Null means undecided, never "no".</summary>
-    private static object ReviewRow(string alias, int page, int ordinal, string text) => new
+    /// <summary>
+    /// A source occurrence is a parser artefact, not a semantic unit, so the membership decision
+    /// and the headings found inside it are different questions. S0043, S0460 and S0573 each carry
+    /// a session heading and a numbered sub-heading in one fused two-line block; one answer per
+    /// occurrence could not say which heading, with which boundary, in which role.
+    /// </summary>
+    private static readonly object ClaimContract = new
     {
-        sourceAlias = alias,
-        page,
-        sourceOrdinal = ordinal,
-        verbatimText = text,
-        humanDecision = (string?)null,
-        semanticRole = (string?)null,
-        // Null means the reviewer did not adjudicate this relation. It does not mean "root".
-        parentSourceAlias = (string?)null,
-        reviewNote = (string?)null,
+        NOT_HEADING = "headingClaims must be empty",
+        HEADING = "headingClaims must name at least one heading; several are allowed",
+        NEEDS_REVIEW = "leave the claims as they are; a second pass settles it",
+        selectionMode = "WHOLE_ALIAS when the heading is the entire occurrence, else VERBATIM_TEXT",
+        verbatimText = "for VERBATIM_TEXT: the exact heading text, copied from sourceText",
+        occurrence = "1-based, only when that text appears more than once in this occurrence",
+        mapping = "each claim becomes exactly one PdfGoldHeading, field for field",
     };
+
+    /// <summary>
+    /// One occurrence as a reviewer receives it: the membership decision, and a blank claim to fill
+    /// in. A source occurrence is a parser artefact, not a semantic unit - line grouping fuses
+    /// neighbouring lines, so one occurrence can hold more than one heading - so the claims are a
+    /// list. Delete it for NOT_HEADING; add to it when the occurrence carries several headings.
+    /// </summary>
+    private static PdfReviewOccurrence ReviewRow(string alias, int page, int ordinal, string text) =>
+        new(alias, page, ordinal, text) { HeadingClaims = [new PdfReviewHeadingClaim()] };
 
     [Fact]
     public async Task View_A_groups_every_occurrence_by_page()
@@ -65,6 +77,7 @@ public sealed class PdfGoldReviewPackTests
             documentId = "DOC-0252",
             allowedDecisions = AllowedDecisions,
             decisionScope = "PER_OCCURRENCE",
+            claimContract = ClaimContract,
             sourceSha256 = SourceSha,
             providerCalls = 0,
             derivedFrom = "PDF parser occurrences only",
@@ -97,6 +110,7 @@ public sealed class PdfGoldReviewPackTests
             documentId = "DOC-0252",
             allowedDecisions = AllowedDecisions,
             decisionScope = "PER_OCCURRENCE",
+            claimContract = ClaimContract,
             sourceSha256 = SourceSha,
             providerCalls = 0,
             derivedFrom = "PDF parser occurrences only",
@@ -126,7 +140,7 @@ public sealed class PdfGoldReviewPackTests
                                 sourceAlias = row.Alias,
                                 page = row.Page,
                                 sourceOrdinal = row.Ordinal,
-                                verbatimText = row.Text,
+                                sourceText = row.Text,
                                 readingGroup = row.Text.Trim().Length <= 3 ? "SHORT_TEXT" : "TEXT",
                                 style = fact is null ? null : new
                                 {
@@ -138,9 +152,7 @@ public sealed class PdfGoldReviewPackTests
                                 markers = fact is null ? [] : CanonicalSemanticEngine.MarkerFactsOf(fact),
                                 observedEvidence = fact?.ObservedEvidence ?? [],
                                 humanDecision = (string?)null,
-                                semanticRole = (string?)null,
-                                parentSourceAlias = (string?)null,
-                                reviewNote = (string?)null,
+                                headingClaims = new[] { new PdfReviewHeadingClaim() },
                             };
                         }).ToArray(),
                     }).ToArray(),
@@ -184,6 +196,7 @@ public sealed class PdfGoldReviewPackTests
             documentId = "DOC-0252",
             allowedDecisions = AllowedDecisions,
             decisionScope = "PER_OCCURRENCE",
+            claimContract = ClaimContract,
             sourceSha256 = SourceSha,
             providerCalls = 0,
             derivedFrom = "PDF parser occurrences only",
@@ -223,7 +236,7 @@ public sealed class PdfGoldReviewPackTests
         foreach (var group in document.RootElement.GetProperty("groups").EnumerateArray())
         {
             // No group-level answer exists to be filled in.
-            foreach (var field in new[] { "humanDecision", "semanticRole", "parentSourceAlias" })
+            foreach (var field in new[] { "humanDecision", "semanticRole", "parentSourceAlias", "headingClaims" })
                 Assert.False(group.TryGetProperty(field, out _), $"group carries {field}");
 
             // Every occurrence in the group carries its own, still undecided.
@@ -232,13 +245,131 @@ public sealed class PdfGoldReviewPackTests
             Assert.All(rows, row =>
             {
                 Assert.Equal(JsonValueKind.Null, row.GetProperty("humanDecision").ValueKind);
-                Assert.Equal(JsonValueKind.Null, row.GetProperty("semanticRole").ValueKind);
+                // The claims live on the occurrence, never on the group.
+                Assert.Equal(1, row.GetProperty("headingClaims").GetArrayLength());
             });
 
             // Aliases within a group are distinct occurrences, never one repeated row.
             var aliases = rows.Select(row => row.GetProperty("sourceAlias").GetString()!).ToArray();
             Assert.Equal(aliases.Length, aliases.Distinct(StringComparer.Ordinal).Count());
         }
+    }
+
+    [Fact]
+    public async Task An_occurrence_holding_two_headings_can_say_so()
+    {
+        // The shape defect this replaces. Line grouping fuses neighbouring lines that share
+        // geometry and font, so S0043, S0460 and S0573 each carry a session heading and a numbered
+        // sub-heading in one two-line block. One answer per occurrence could not say which heading,
+        // with which boundary, in which role - and those are exactly the partial-span cases I8
+        // exists to address, so a Gold that cannot express them cannot measure I8 either.
+        var rows = await RowsAsync();
+        var fused = rows.Single(row => row.Alias == "S0573");
+        Assert.Contains("Session V: Current Research", fused.Text, StringComparison.Ordinal);
+        Assert.Contains("The Treatment of Import and Export Prices", fused.Text, StringComparison.Ordinal);
+
+        var reviewed = new PdfReviewOccurrence("S0573", 8, fused.Ordinal, fused.Text)
+        {
+            HumanDecision = PdfGoldReview.Heading,
+            HeadingClaims =
+            [
+                new PdfReviewHeadingClaim
+                {
+                    SelectionMode = CanonicalSemanticSelectionMode.VerbatimText,
+                    VerbatimText = "Session V: Current Research",
+                    SemanticRole = "SECTION",
+                },
+                new PdfReviewHeadingClaim
+                {
+                    SelectionMode = CanonicalSemanticSelectionMode.VerbatimText,
+                    VerbatimText = "The Treatment of Import and Export Prices in International Comparisons",
+                    SemanticRole = "SUBSECTION",
+                    ParentSourceAlias = "S0573",
+                },
+            ],
+        };
+
+        Assert.Empty(PdfGoldReview.Check([reviewed]));
+        var gold = PdfGoldReview.ToGoldHeadings([reviewed]);
+        Assert.Equal(2, gold.Count);
+        Assert.Equal(["Session V: Current Research",
+                "The Treatment of Import and Export Prices in International Comparisons"],
+            gold.Select(heading => heading.VerbatimText));
+        Assert.All(gold, heading => Assert.Equal("S0573", heading.SourceAlias));
+    }
+
+    [Fact]
+    public void A_claim_maps_onto_a_gold_heading_field_for_field()
+    {
+        // Mechanical on purpose. Anything the conversion had to infer would be this code deciding
+        // what a reviewer meant.
+        var reviewed = new PdfReviewOccurrence("S0100", 3, 99, "Africa and then Africa again")
+        {
+            HumanDecision = PdfGoldReview.Heading,
+            HeadingClaims =
+            [
+                new PdfReviewHeadingClaim
+                {
+                    SelectionMode = CanonicalSemanticSelectionMode.VerbatimText,
+                    VerbatimText = "Africa",
+                    Occurrence = 2,
+                    LeftExactContext = "then ",
+                    RightExactContext = " again",
+                    SemanticRole = "SECTION",
+                    ParentSourceAlias = "S0099",
+                },
+            ],
+        };
+
+        var heading = Assert.Single(PdfGoldReview.ToGoldHeadings([reviewed]));
+
+        Assert.Equal("S0100", heading.SourceAlias);
+        Assert.Equal(CanonicalSemanticSelectionMode.VerbatimText, heading.SelectionMode);
+        Assert.Equal("Africa", heading.VerbatimText);
+        Assert.Equal(2, heading.Occurrence);
+        Assert.Equal("then ", heading.LeftExactContext);
+        Assert.Equal(" again", heading.RightExactContext);
+        Assert.Equal("SECTION", heading.SemanticRole);
+        Assert.Equal("S0099", heading.ParentSourceAlias);
+    }
+
+    [Theory]
+    [InlineData(null, 1, PdfGoldReview.DecisionMissing)]
+    [InlineData("NOT_HEADING", 1, PdfGoldReview.NotHeadingCarriesClaims)]
+    [InlineData("HEADING", 0, PdfGoldReview.HeadingWithoutClaim)]
+    [InlineData("NEEDS_REVIEW", 1, PdfGoldReview.StillNeedsReview)]
+    [InlineData("MAYBE", 1, PdfGoldReview.DecisionUnknown)]
+    public void The_decision_and_its_claims_have_to_agree_before_anything_is_frozen(
+        string? decision, int claims, string expected)
+    {
+        var reviewed = new PdfReviewOccurrence("S0001", 1, 0, "Opening")
+        {
+            HumanDecision = decision,
+            HeadingClaims = claims == 0
+                ? []
+                : [new PdfReviewHeadingClaim
+                {
+                    SelectionMode = CanonicalSemanticSelectionMode.WholeAlias,
+                    SemanticRole = "SECTION",
+                }],
+        };
+
+        Assert.Equal(expected, Assert.Single(PdfGoldReview.Check([reviewed])).Code);
+    }
+
+    [Fact]
+    public void A_claim_that_does_not_say_enough_is_reported_rather_than_defaulted()
+    {
+        var reviewed = new PdfReviewOccurrence("S0001", 1, 0, "Opening")
+        {
+            HumanDecision = PdfGoldReview.Heading,
+            HeadingClaims = [new PdfReviewHeadingClaim()],
+        };
+
+        var codes = PdfGoldReview.Check([reviewed]).Select(issue => issue.Code).ToArray();
+
+        Assert.Contains(PdfGoldReview.ClaimSelectionMissing, codes);
+        Assert.Contains(PdfGoldReview.ClaimRoleMissing, codes);
     }
 
     [Fact]
@@ -340,7 +471,7 @@ public sealed class PdfGoldReviewPackTests
         foreach (var row in page.GetProperty("rows").EnumerateArray())
         {
             var alias = row.GetProperty("sourceAlias").GetString()!;
-            Assert.Equal(byAlias[alias], row.GetProperty("verbatimText").GetString());
+            Assert.Equal(byAlias[alias], row.GetProperty("sourceText").GetString());
         }
     }
 
