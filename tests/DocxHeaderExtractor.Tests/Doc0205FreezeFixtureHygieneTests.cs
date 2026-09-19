@@ -64,11 +64,17 @@ public sealed class Doc0205FreezeFixtureHygieneTests
         using (freeze)
         {
             Assert.Equal("qwen/qwen3.5-9b", freeze.RootElement.GetProperty("model").GetString());
+            // Canonical text digests. The values pinned here were previously 87806218... and
+            // 9fa17ebe..., which are the CRLF rendering Windows checkout produces from an LF blob -
+            // bytes that exist nowhere in this repository. See CanonicalArtifactHash.
             Assert.Equal(
-                "87806218db77813629e50fd5ce31a6e38fead71329426d6fce4f2edb37adadd1",
+                CanonicalArtifactHash.Contract,
+                freeze.RootElement.GetProperty(CanonicalArtifactHash.ContractField).GetString());
+            Assert.Equal(
+                "a6d65ce827401124c686eb4a3c450f9cda12898a0372ce23f7fb464401c6c164",
                 freeze.RootElement.GetProperty("predictionSha256").GetString());
             Assert.Equal(
-                "9fa17ebe58fa322e09f573cb254aa683929ed1010be8979ecfffc09316d61e49",
+                "dea61f4593446031144da1c62f162f05dca77750d713b02f114f0f46c96d28f8",
                 freeze.RootElement.GetProperty("resultSha256").GetString());
         }
     }

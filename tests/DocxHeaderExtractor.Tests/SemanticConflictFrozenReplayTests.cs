@@ -23,7 +23,8 @@ public sealed class SemanticConflictFrozenReplayTests
         var root = RepoRoot();
         var sourceFile = Path.Combine(root, SourcePath.Replace('/', Path.DirectorySeparatorChar));
         Assert.True(File.Exists(sourceFile), $"Missing faithful source: {sourceFile}");
-        Assert.Equal(SourceSha256, Sha256(sourceFile));
+        // Byte-exact, deliberately: a DOCX is the source itself, not an artifact about it.
+        Assert.Equal(SourceSha256, CanonicalArtifactHash.OfBytes(sourceFile));
 
         var source = new OpenXmlDocumentSource().Read(sourceFile) with { DocumentId = "DOC-0205" };
         var aliases = source.Paragraphs
@@ -170,7 +171,14 @@ public sealed class SemanticConflictFrozenReplayTests
         using var freeze = JsonDocument.Parse(File.ReadAllText(freezePath));
         var freezeRoot = freeze.RootElement;
         Assert.False(freezeRoot.GetProperty("goldReadBeforeFreeze").GetBoolean());
-        Assert.Equal(Sha256(predictionPath), freezeRoot.GetProperty("predictionSha256").GetString());
+        // Canonical text, not raw bytes: the file's line endings are a property of the checkout,
+        // not of the prediction. The freeze declares the rule it was recorded under.
+        Assert.Equal(
+            CanonicalArtifactHash.Contract,
+            freezeRoot.GetProperty(CanonicalArtifactHash.ContractField).GetString());
+        Assert.Equal(
+            freezeRoot.GetProperty("predictionSha256").GetString(),
+            CanonicalArtifactHash.OfTextFile(predictionPath));
         using var prediction = JsonDocument.Parse(File.ReadAllText(predictionPath));
         return JsonSerializer.Deserialize<IReadOnlyList<CanonicalSemanticProposal>>(
             prediction.RootElement.GetProperty("proposals").GetRawText(), JsonOptions) ?? [];
@@ -178,5 +186,4 @@ public sealed class SemanticConflictFrozenReplayTests
 
     private static string RepoRoot() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
     private static string Relative(string root, string path) => Path.GetRelativePath(root, path).Replace(Path.DirectorySeparatorChar, '/');
-    private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
 }
