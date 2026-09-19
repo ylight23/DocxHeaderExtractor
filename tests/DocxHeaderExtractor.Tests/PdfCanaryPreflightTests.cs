@@ -117,19 +117,11 @@ public sealed class PdfCanaryPreflightTests
             },
         };
 
-        var json = JsonSerializer.Serialize(report, new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-        });
-        var outputDirectory = Path.Combine(root, "eval", "a99-closed-loop", "pdf-canary-072");
-        Directory.CreateDirectory(outputDirectory);
-        await File.WriteAllTextAsync(Path.Combine(outputDirectory, "preflight.v1.json"), json);
+        const string Frozen = "eval/a99-closed-loop/pdf-canary-072";
+        FreezeArtifact.AssertJson(Frozen, "preflight.v1.json", report);
         for (var index = 0; index < capture.Requests.Count; index++)
-            await File.WriteAllTextAsync(
-                Path.Combine(outputDirectory, $"request-{index}.json"), capture.Requests[index].UserMessage);
-        await File.WriteAllTextAsync(
-            Path.Combine(outputDirectory, "system-prompt.txt"), capture.Requests[0].SystemPrompt);
+            FreezeArtifact.AssertText(Frozen, $"request-{index}.json", capture.Requests[index].UserMessage);
+        FreezeArtifact.AssertText(Frozen, "system-prompt.txt", capture.Requests[0].SystemPrompt);
 
         // ---- acceptance -----------------------------------------------------------------------
         Assert.NotEmpty(capture.Requests);

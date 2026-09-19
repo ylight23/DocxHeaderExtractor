@@ -151,7 +151,7 @@ public sealed class PdfExperimentArmPacketTests
     }
 
     [Fact]
-    public async Task Freeze()
+    public async Task The_frozen_arm_comparison_still_describes_this_code()
     {
         var arms = new[]
         {
@@ -177,11 +177,8 @@ public sealed class PdfExperimentArmPacketTests
             });
         }
 
-        var root = RepositoryRoot();
-        var directory = Path.Combine(root, "eval", "a99-closed-loop", "pdf-canary-072");
-        Directory.CreateDirectory(directory);
-        await File.WriteAllTextAsync(Path.Combine(directory, "experiment-arms.v1.json"),
-            JsonSerializer.Serialize(new
+        FreezeArtifact.AssertJson("eval/a99-closed-loop/pdf-canary-072", "experiment-arms.v1.json",
+            new
             {
                 artifactKind = "PDF_EXPERIMENT_ARM_FREEZE",
                 providerCalls = 0,
@@ -190,7 +187,7 @@ public sealed class PdfExperimentArmPacketTests
                     "many semantic requests, plus a placement request per unresolved heading round.",
                 noCombinedArm = "I7 and I8 are never applied together until each has been measured alone.",
                 arms = frozen,
-            }, new JsonSerializerOptions { WriteIndented = true }));
+            });
 
         Assert.Equal(3, frozen.Count);
     }

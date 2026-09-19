@@ -130,9 +130,10 @@ public sealed class SemanticConflictFrozenReplayTests
             Assert.Equal(0, (int)repeat.newPath.systemLoss);
         });
 
-        var artifactPath = Path.Combine(root, OutputPath.Replace('/', Path.DirectorySeparatorChar));
-        Directory.CreateDirectory(Path.GetDirectoryName(artifactPath)!);
-        File.WriteAllText(artifactPath, JsonSerializer.Serialize(new
+        FreezeArtifact.AssertText(
+            Path.GetDirectoryName(OutputPath)!.Replace(Path.DirectorySeparatorChar, '/'),
+            Path.GetFileName(OutputPath),
+            JsonSerializer.Serialize(new
         {
             schemaVersion = "a99-semantic-conflict-frozen-replay-v1",
             status = "COMPLETE",

@@ -169,19 +169,12 @@ public sealed class DocxExperimentArmPacketTests
             },
         };
 
-        var directory = Path.Combine(RepositoryRoot(), "eval", "a99-closed-loop", "docx-i8-doc0256");
-        Directory.CreateDirectory(directory);
-        await File.WriteAllTextAsync(Path.Combine(directory, "experiment-manifest.v1.json"),
-            JsonSerializer.Serialize(manifest, new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-            }));
-        await File.WriteAllTextAsync(Path.Combine(directory, "d0-system-prompt.txt"), baseline[0].SystemPrompt);
-        await File.WriteAllTextAsync(Path.Combine(directory, "d2-system-prompt.txt"), arm[0].SystemPrompt);
+        const string Frozen = "eval/a99-closed-loop/docx-i8-doc0256";
+        FreezeArtifact.AssertJson(Frozen, "experiment-manifest.v1.json", manifest);
+        FreezeArtifact.AssertText(Frozen, "d0-system-prompt.txt", baseline[0].SystemPrompt);
+        FreezeArtifact.AssertText(Frozen, "d2-system-prompt.txt", arm[0].SystemPrompt);
         foreach (var segment in targetSegments.Concat(controls.Select(control => control.Segment)).Distinct())
-            await File.WriteAllTextAsync(
-                Path.Combine(directory, $"segment-{segment}-payload.json"), baseline[segment].UserMessage);
+            FreezeArtifact.AssertText(Frozen, $"segment-{segment}-payload.json", baseline[segment].UserMessage);
 
         Assert.NotEmpty(controls);
     }
