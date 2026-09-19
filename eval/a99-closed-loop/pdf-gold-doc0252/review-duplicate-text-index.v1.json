@@ -3,10 +3,17 @@
   "schemaVersion": "a99-pdf-gold-review-view-v1",
   "view": "DUPLICATE_TEXT_INDEX",
   "documentId": "DOC-0252",
+  "allowedDecisions": [
+    "HEADING",
+    "NOT_HEADING",
+    "NEEDS_REVIEW"
+  ],
+  "decisionScope": "PER_OCCURRENCE",
   "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
   "providerCalls": 0,
   "derivedFrom": "PDF parser occurrences only",
   "groupKeyNote": "Normalised for grouping only. Judge the exact verbatimText on each row.",
+  "groupingContract": "Grouped so the same wording can be compared in one place, never so it can be decided in one place. Identical text is not identical semantics: the same string can be a table-of-contents entry, a true section heading in the body, a running header artefact and an ordinary mention in prose. Every occurrence keeps its own decision. Applying one answer across a group is only ever a reviewer's explicit act after confirming the occurrences really are treated alike.",
   "exhaustive": true,
   "occurrences": 1013,
   "repeatedGroups": 19,

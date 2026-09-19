@@ -3,6 +3,12 @@
   "schemaVersion": "a99-pdf-gold-review-view-v1",
   "view": "BY_PAGE",
   "documentId": "DOC-0252",
+  "allowedDecisions": [
+    "HEADING",
+    "NOT_HEADING",
+    "NEEDS_REVIEW"
+  ],
+  "decisionScope": "PER_OCCURRENCE",
   "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
   "providerCalls": 0,
   "derivedFrom": "PDF parser occurrences only",

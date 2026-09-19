@@ -31,6 +31,13 @@ public sealed class PdfGoldReviewPackTests
 
     private const string SourceSha = "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61";
 
+    /// <summary>
+    /// The three answers a reviewer may give. Kept separate from the role on purpose: encoding the
+    /// role into the decision would make membership and role one number, and they have to be
+    /// measurable apart - a heading found with the wrong role is not a heading that was missed.
+    /// </summary>
+    private static readonly string[] AllowedDecisions = ["HEADING", "NOT_HEADING", "NEEDS_REVIEW"];
+
     /// <summary>The fields a reviewer fills in. Null means undecided, never "no".</summary>
     private static object ReviewRow(string alias, int page, int ordinal, string text) => new
     {
@@ -56,6 +63,8 @@ public sealed class PdfGoldReviewPackTests
             schemaVersion = "a99-pdf-gold-review-view-v1",
             view = "BY_PAGE",
             documentId = "DOC-0252",
+            allowedDecisions = AllowedDecisions,
+            decisionScope = "PER_OCCURRENCE",
             sourceSha256 = SourceSha,
             providerCalls = 0,
             derivedFrom = "PDF parser occurrences only",
@@ -86,6 +95,8 @@ public sealed class PdfGoldReviewPackTests
             schemaVersion = "a99-pdf-gold-review-view-v1",
             view = "BY_PARSER_CONTEXT",
             documentId = "DOC-0252",
+            allowedDecisions = AllowedDecisions,
+            decisionScope = "PER_OCCURRENCE",
             sourceSha256 = SourceSha,
             providerCalls = 0,
             derivedFrom = "PDF parser occurrences only",
@@ -142,10 +153,14 @@ public sealed class PdfGoldReviewPackTests
     [Fact]
     public async Task View_C_puts_occurrences_that_read_alike_next_to_each_other()
     {
-        // A minutes document repeats agenda labels and running headers. Deciding those apart, on
-        // different pages, is how a reviewer ends up treating the same thing two ways; deciding
-        // them together is how the repetition itself becomes visible. The grouping key is a reading
-        // convenience - the text a reviewer judges stays the exact VerbatimText.
+        // A minutes document repeats agenda labels and running headers. Reviewing those apart, on
+        // different pages, is how a reviewer ends up treating the same thing two ways; seeing them
+        // together is how an inconsistency becomes visible.
+        //
+        // Comparison, not decision. The same string can be a table-of-contents entry, a body
+        // heading, a running header and a passing mention in prose, so same text is neither the
+        // same occurrence nor the same node. The grouping key is a reading convenience; the text a
+        // reviewer judges stays the exact VerbatimText, and every occurrence keeps its own answer.
         var rows = await RowsAsync();
 
         var groups = rows
@@ -167,10 +182,19 @@ public sealed class PdfGoldReviewPackTests
             schemaVersion = "a99-pdf-gold-review-view-v1",
             view = "DUPLICATE_TEXT_INDEX",
             documentId = "DOC-0252",
+            allowedDecisions = AllowedDecisions,
+            decisionScope = "PER_OCCURRENCE",
             sourceSha256 = SourceSha,
             providerCalls = 0,
             derivedFrom = "PDF parser occurrences only",
             groupKeyNote = "Normalised for grouping only. Judge the exact verbatimText on each row.",
+            groupingContract =
+                "Grouped so the same wording can be compared in one place, never so it can be " +
+                "decided in one place. Identical text is not identical semantics: the same string " +
+                "can be a table-of-contents entry, a true section heading in the body, a running " +
+                "header artefact and an ordinary mention in prose. Every occurrence keeps its own " +
+                "decision. Applying one answer across a group is only ever a reviewer's explicit " +
+                "act after confirming the occurrences really are treated alike.",
             exhaustive = true,
             occurrences = rows.Count,
             repeatedGroups = groups.Count(group => group.repeated),
@@ -178,6 +202,62 @@ public sealed class PdfGoldReviewPackTests
         });
 
         AssertExhaustive("review-duplicate-text-index.v1.json", rows);
+    }
+
+    [Fact]
+    public async Task A_duplicate_text_group_offers_no_way_to_answer_for_the_whole_group()
+    {
+        // The correction that matters here. Grouping identical wording makes an inconsistency
+        // visible; it must not make one answer cover several occurrences. The same string can be a
+        // table-of-contents entry, a body heading, a running header and a mention in prose, so same
+        // text is neither the same occurrence nor the same node.
+        await RowsAsync();
+        using var document = JsonDocument.Parse(
+            File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, "review-duplicate-text-index.v1.json")));
+
+        Assert.Equal("PER_OCCURRENCE", document.RootElement.GetProperty("decisionScope").GetString());
+        var repeated = document.RootElement.GetProperty("groups").EnumerateArray()
+            .Where(group => group.GetProperty("repeated").GetBoolean()).ToArray();
+        Assert.NotEmpty(repeated);
+
+        foreach (var group in document.RootElement.GetProperty("groups").EnumerateArray())
+        {
+            // No group-level answer exists to be filled in.
+            foreach (var field in new[] { "humanDecision", "semanticRole", "parentSourceAlias" })
+                Assert.False(group.TryGetProperty(field, out _), $"group carries {field}");
+
+            // Every occurrence in the group carries its own, still undecided.
+            var rows = group.GetProperty("rows").EnumerateArray().ToArray();
+            Assert.Equal(group.GetProperty("occurrences").GetInt32(), rows.Length);
+            Assert.All(rows, row =>
+            {
+                Assert.Equal(JsonValueKind.Null, row.GetProperty("humanDecision").ValueKind);
+                Assert.Equal(JsonValueKind.Null, row.GetProperty("semanticRole").ValueKind);
+            });
+
+            // Aliases within a group are distinct occurrences, never one repeated row.
+            var aliases = rows.Select(row => row.GetProperty("sourceAlias").GetString()!).ToArray();
+            Assert.Equal(aliases.Length, aliases.Distinct(StringComparer.Ordinal).Count());
+        }
+    }
+
+    [Fact]
+    public async Task Membership_and_role_are_separate_fields_in_every_view()
+    {
+        // So they stay separately measurable: a heading found with the wrong role is a role error,
+        // not a missed heading.
+        await RowsAsync();
+
+        foreach (var view in AllViews.Where(view => view != "source-universe.v1.json"))
+        {
+            using var document = JsonDocument.Parse(
+                File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, view)));
+            Assert.Equal(
+                ["HEADING", "NOT_HEADING", "NEEDS_REVIEW"],
+                document.RootElement.GetProperty("allowedDecisions").EnumerateArray()
+                    .Select(item => item.GetString()).ToArray());
+            Assert.Equal("PER_OCCURRENCE", document.RootElement.GetProperty("decisionScope").GetString());
+        }
     }
 
     [Fact]
