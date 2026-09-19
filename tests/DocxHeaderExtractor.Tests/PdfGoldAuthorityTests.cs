@@ -8,18 +8,13 @@ namespace DocxHeaderExtractor.Tests;
 /// <summary>
 /// The authority chain for PDF semantic Gold, built before any provider call.
 /// <para>
-/// DOC-0252 already has an approved semantic Gold, and it is a single number: 41 true heading
-/// occurrences, with occurrenceEvaluable false and the explicit note that no occurrence list was
-/// synthesized from the total. A count can say whether a run found too many or too few. It cannot
-/// say which heading was missed, so it cannot drive recall, precision, or any diagnosis of a
-/// specific failure.
+/// DOC-0252 has an approved semantic total and a separately materialized occurrence Gold. The
+/// occurrence artifact is created only from the human-owned decision authority after deterministic
+/// conversion, validation and reconciliation; it is never synthesized from the total.
 /// </para>
 /// <para>
-/// What is missing is therefore human work, not engineering: someone has to mark which occurrences
-/// of the source universe are the 41. This file builds everything around that decision - the
-/// worksheet a reviewer marks, the validator that binds their answer to the catalog, and the
-/// evaluator that scores a prediction against it - and deliberately does not fill in the answer.
-/// Gold authored by a model would be the model grading itself.
+/// This file keeps the semantic freeze lineage and source binding assertions in place. The
+/// occurrence loader/materializer tests own the second, human-approved occurrence lineage.
 /// </para>
 /// </summary>
 public sealed class PdfGoldAuthorityTests
@@ -82,10 +77,10 @@ public sealed class PdfGoldAuthorityTests
     }
 
     [Fact]
-    public void The_existing_gold_is_a_count_and_says_so()
+    public void The_existing_gold_exposes_the_approved_occurrence_freeze()
     {
-        // Pinned because it is the reason this work exists. If occurrenceEvaluable ever becomes
-        // true without an occurrence artifact, something synthesized identities from a total.
+        // Pinned because occurrence evaluation is allowed only after the approved occurrence
+        // authority has been converted and frozen.
         using var freeze = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepositoryRoot(), GoldFreeze)));
         var root = freeze.RootElement;
 
@@ -93,8 +88,10 @@ public sealed class PdfGoldAuthorityTests
         Assert.Equal(AuthoritativeSourceSha, root.GetProperty("sourceSha256").GetString());
         Assert.Equal(AuthoritativeTotal, root.GetProperty("semanticHeadingTotal").GetInt32());
         Assert.True(root.GetProperty("capabilities").GetProperty("semanticEvaluable").GetBoolean());
-        Assert.False(root.GetProperty("capabilities").GetProperty("occurrenceEvaluable").GetBoolean());
-        Assert.Equal(JsonValueKind.Null, root.GetProperty("occurrenceArtifact").ValueKind);
+        Assert.True(root.GetProperty("capabilities").GetProperty("occurrenceEvaluable").GetBoolean());
+        Assert.Equal(
+            "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json",
+            root.GetProperty("occurrenceArtifact").GetString());
     }
 
     [Fact]
