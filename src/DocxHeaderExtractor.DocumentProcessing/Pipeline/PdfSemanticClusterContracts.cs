@@ -5,9 +5,9 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// <para>
 /// These lived beside <c>PdfSemanticClusterAnalyst</c>, the model stage that once produced them.
 /// That stage is gone - the canonical semantic engine owns this question now - but the types are
-/// not: <c>PdfBlockGrounder</c> and <c>PdfStageCheckpoint</c> still read and persist them, and the
-/// checkpoint is reachable from the CLI. Moving them here separates a contract that is still used
-/// from the implementation that no longer exists.
+/// not: <c>PdfStageCheckpoint</c> still reads and persists them, and the checkpoint lifecycle is
+/// retained for the later timeout/detached-work hardening phase. Moving them here separates a
+/// contract that is still used from an implementation that no longer exists.
 /// </para>
 /// </summary>
 internal enum PdfSemanticClusterRole
