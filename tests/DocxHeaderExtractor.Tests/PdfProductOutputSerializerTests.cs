@@ -14,14 +14,29 @@ public sealed class PdfProductOutputSerializerTests
     [Fact]
     public void OnlyEmitTrueDecisionsAreSerialized()
     {
+        // The non-emitted case has to be a source-validity failure. A scope or role heuristic no
+        // longer suppresses a heading: that would let a pattern match overrule the model on what a
+        // heading means, which measurably deleted headings the model had identified correctly.
+        var structure = Project(
+            (Structure("b1"), "1 Introduction"),
+            (Structure("b2") with { Decision = "binding_failed" }, "4 3 Validation"));
+
+        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisionPolicy.Decide(structure));
+
+        var heading = Assert.Single(output.Headings);
+        Assert.Equal("1 Introduction", heading.Text);
+    }
+
+    [Fact]
+    public void A_scope_heuristic_no_longer_removes_a_model_heading()
+    {
         var structure = Project(
             (Structure("b1"), "1 Introduction"),
             (Structure("b2") with { StructuralScope = "appendix_table" }, "4 3 Validation"));
 
         var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisionPolicy.Decide(structure));
 
-        var heading = Assert.Single(output.Headings);
-        Assert.Equal("1 Introduction", heading.Text);
+        Assert.Equal(2, output.Headings.Count);
     }
 
     /// <summary>

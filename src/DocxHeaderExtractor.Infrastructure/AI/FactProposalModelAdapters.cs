@@ -40,7 +40,7 @@ public sealed class OpenRouterFactProposalModel : IFactProposalModel
             response_format = new { type = "json_object" },
             provider = new
             {
-                zdr = true,
+                zdr = _options.RequireZeroDataRetention,
                 data_collection = "deny",
                 require_parameters = true,
                 allow_fallbacks = true,

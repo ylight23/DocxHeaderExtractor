@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.Application.Capabilities;
 
 namespace DocxHeaderExtractor.AgentHarness;
@@ -22,9 +23,22 @@ public interface IDocumentAgentGuardrail
         CancellationToken ct = default);
 }
 
-/// <summary>Chặn sớm đường dẫn không tồn tại hoặc định dạng mà pipeline không hỗ trợ.</summary>
+/// <summary>
+/// Chặn sớm đường dẫn không tồn tại hoặc định dạng mà pipeline không hỗ trợ.
+/// <para>
+/// Chấp nhận khi byte cho thấy một lane sở hữu định dạng này, hoặc khi phần mở rộng nằm trong danh
+/// sách vốn có. Trước đây guardrail chỉ nhìn phần mở rộng và không có <c>.pdf</c>, nên một tệp PDF
+/// bị chặn ở đây dù lane PDF đã rút trích được nó.
+/// </para>
+/// </summary>
 public sealed class InputDocumentGuardrail : IDocumentAgentGuardrail
 {
+    /// <summary>
+    /// Phần mở rộng vẫn được chấp nhận như trước. Giữ nguyên danh sách này thay vì thay thế bằng
+    /// phép dò byte: dò byte là để <em>mở thêm</em> đường cho định dạng mà lane sở hữu, không phải
+    /// để siết lại những gì guardrail này vốn cho qua. Byte không nhận dạng được mà phần mở rộng
+    /// hợp lệ vẫn đi tiếp và hỏng ở parser đúng như cũ — đó là câu hỏi khác.
+    /// </summary>
     private static readonly HashSet<string> SupportedExtensions =
         new(StringComparer.OrdinalIgnoreCase) { ".docx", ".docm", ".doc", ".rtf", ".odt" };
 
@@ -41,9 +55,15 @@ public sealed class InputDocumentGuardrail : IDocumentAgentGuardrail
         if (!File.Exists(path))
             return ValueTask.FromResult(AgentGuardrailDecision.Block(
                 "input_not_found", $"Không tìm thấy file: {Path.GetFileName(path)}"));
-        if (!SupportedExtensions.Contains(Path.GetExtension(path)))
+
+        // Byte trước, rồi mới tới tên. Một tệp PDF bị chặn ở đây dù lane PDF rút trích được nó, chỉ
+        // vì ".pdf" không có trong danh sách; và một tệp PDF đặt tên ".docx" thì lại được cho qua.
+        var detected = UploadedSourceDetector.Detect(path);
+        if (detected is not (SourceType.Docx or SourceType.Pdf) &&
+            !SupportedExtensions.Contains(Path.GetExtension(path)))
             return ValueTask.FromResult(AgentGuardrailDecision.Block(
-                "input_unsupported", $"Định dạng không được hỗ trợ: {Path.GetExtension(path)}"));
+                "input_unsupported",
+                $"Định dạng không được hỗ trợ: {Path.GetFileName(path)} không phải DOCX hay PDF."));
 
         return ValueTask.FromResult(AgentGuardrailDecision.Pass(
             "input_valid", $"Đầu vào hợp lệ: {Path.GetFileName(path)}"));

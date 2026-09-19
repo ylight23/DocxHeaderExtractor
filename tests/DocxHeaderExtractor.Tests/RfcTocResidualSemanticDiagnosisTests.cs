@@ -69,8 +69,8 @@ public sealed class RfcTocResidualSemanticDiagnosisTests
             });
         }
 
-        File.WriteAllText(
-            Path.Combine(root, "eval", "verification", "rfc-toc-residual-semantic-diagnosis.v1.json"),
+        FreezeArtifact.AssertText(
+            "eval/verification", "rfc-toc-residual-semantic-diagnosis.v1.json",
             JsonSerializer.Serialize(new
             {
                 task = "RFC-5",

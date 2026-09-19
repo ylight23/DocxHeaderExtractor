@@ -15,8 +15,9 @@ internal static class DocumentStructureEvidence
     [
         RfcTocDictionaryOutline.Basis,
         BookTocDictionaryOutline.Basis,
-        PdfBookmarkOutline.Basis,
-        PdfTaggedEvidenceOutline.Basis,
+        // The PDF bookmark and tagged-structure bases were removed with the legacy PDF lane. A
+        // document reaching this check now came through the DOCX route, so an internal outline can
+        // only be one the OOXML itself declares.
         PartSectionOutline.Basis,
     ];
 

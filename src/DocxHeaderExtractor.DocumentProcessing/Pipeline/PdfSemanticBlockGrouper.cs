@@ -12,6 +12,16 @@ internal sealed record PdfSemanticBlock(
     string Text)
 {
     public int LineCount => Lines.Count;
+
+    /// <summary>
+    /// The canonical text of this occurrence, composed from its lines' projections, with the span
+    /// map rebased onto it. <see cref="Text"/> remains the raw parser concatenation for audit.
+    /// </summary>
+    public PdfSourceTextProjection Projection =>
+        PdfSourceTextProjection.Join(Lines.Select(line => line.Projection).ToArray());
+
+    /// <summary>What the model is shown and what the binder binds against.</summary>
+    public string VerbatimText => Projection.VerbatimText;
     public string DisplayText => PdfTextUtilities.HeadingReadable(Text);
     public string CanonicalText => string.Concat(Lines.Select(line => line.CanonicalMatchText ??
         PdfTextUtilities.CanonicalForMatch(line.Text)));
@@ -27,6 +37,19 @@ internal sealed record PdfSemanticBlockSummary(
 
 internal static class PdfSemanticBlockGrouper
 {
+    /// <summary>
+    /// Groups parser lines into the occurrences the model reasons over.
+    /// <para>
+    /// Risk classification - a page number, a repeated running header, a table-like line - travels
+    /// through grouping as data and is never re-derived here. With
+    /// <paramref name="includeRiskLines"/> it keeps the line in the source universe, which is the
+    /// point: attention, routing and evidence may use the classification, but it must not delete
+    /// source text. It must equally not deform it. A risk line sits in its own occurrence and never
+    /// fuses with a clean neighbour, because geometry and font alone will happily merge a running
+    /// header into the heading beneath it, and the result would be a source occurrence whose text
+    /// no heading actually has - an artificial partial-span problem manufactured by the harness.
+    /// </para>
+    /// </summary>
     public static IReadOnlyList<PdfSemanticBlock> Build(
         IReadOnlyList<PdfLineBlockAnnotation> annotations,
         int maxLinesPerBlock = 4,
@@ -35,30 +58,32 @@ internal static class PdfSemanticBlockGrouper
     {
         var candidates = annotations
             .Where(a => includeRiskLines || !a.ExcludeFromCandidateGrouping)
-            .Select(a => a.Line)
-            .OrderBy(l => l.Page)
-            .ThenByDescending(l => l.Y)
-            .ThenBy(l => l.Left)
+            .OrderBy(a => a.Line.Page)
+            .ThenByDescending(a => a.Line.Y)
+            .ThenBy(a => a.Line.Left)
             .ToList();
 
-        var blocks = new List<List<PdfLine>>();
-        foreach (var line in candidates)
+        var blocks = new List<List<PdfLineBlockAnnotation>>();
+        foreach (var annotation in candidates)
         {
             var current = blocks.LastOrDefault();
             if (current is not null &&
-                CanMerge(current, line, maxLinesPerBlock, allowSemicolonContinuation))
+                !IsRisk(current[^1]) && !IsRisk(annotation) &&
+                CanMerge(current.Select(item => item.Line).ToArray(), annotation.Line,
+                    maxLinesPerBlock, allowSemicolonContinuation))
             {
-                current.Add(line);
+                current.Add(annotation);
             }
             else
             {
-                blocks.Add([line]);
+                blocks.Add([annotation]);
             }
         }
 
         var id = 1;
-        return blocks.Select(lines =>
+        return blocks.Select(group =>
         {
+            var lines = group.Select(item => item.Line).ToArray();
             var primaryStyle = lines
                 .GroupBy(l => PdfStyleClusterProfile.StyleOf(l))
                 .OrderByDescending(g => g.Sum(l => PdfTextUtilities.Readable(l.Text).Length))
@@ -76,6 +101,14 @@ internal static class PdfSemanticBlockGrouper
                 PdfTextUtilities.Readable(string.Join(" ", lines.Select(l => l.Text))));
         }).ToList();
     }
+
+    /// <summary>
+    /// Read from the annotation the filter produced, never recomputed. A second derivation here
+    /// could disagree with the first, and then the block boundary and the evidence attached to it
+    /// would be describing different things.
+    /// </summary>
+    private static bool IsRisk(PdfLineBlockAnnotation annotation) =>
+        annotation.PageNumber || annotation.Repeated || annotation.HeaderFooterZone || annotation.TableLike;
 
     public static PdfSemanticBlockSummary Summarize(IReadOnlyList<PdfSemanticBlock> blocks) =>
         new(

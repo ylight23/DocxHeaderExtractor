@@ -1,0 +1,88 @@
+{
+  "artifactKind": "NEWLY_EXPOSED_FALSE_POSITIVE_CLASSIFICATION",
+  "schemaVersion": "v1",
+  "context": "Removing the veto can uncover a model semantic error the heuristic happened to be hiding. Those are recorded, never re-hidden.",
+  "classes": [
+    "TRUE_MODEL_SEMANTIC_EXTRA",
+    "REFERENCE_DEFECT",
+    "PROJECTION_ERROR",
+    "HARNESS_ERROR",
+    "UNRESOLVED"
+  ],
+  "DOC-0258": {
+    "goldCoverage": "EXHAUSTIVE",
+    "newlySurviving": 1,
+    "items": [
+      {
+        "alias": "S0123",
+        "sourceId": "body[1]/tbl[3]/tr[8]/tc[2]/p[1]",
+        "text": "Result review: draft revised 2017 and 2021 results",
+        "modelOriginallyProposedIt": true,
+        "oldVeto": "domainRole:TableTitle",
+        "oldCanonicalStatus": "deleted",
+        "newCanonicalStatus": "emitted",
+        "goldStatus": "not in gold",
+        "class": "TRUE_MODEL_SEMANTIC_EXTRA",
+        "causalReason": "An agenda-table session row. The exhaustive gold for this document contains no table-resident heading at all, and the sibling document DOC-0256 treats agenda session rows as content while treating only the DAY rows as headings. The model over-extended; the heuristic used to hide it."
+      }
+    ]
+  },
+  "DOC-0116": {
+    "goldCoverage": "PARTIAL",
+    "headingSetExhaustive": false,
+    "newlySurviving": 111,
+    "inGold": 19,
+    "notInGold": 92,
+    "important": "Gold is TOC-derived and not exhaustive, so 'not in gold' is not evidence of a false positive here. Only the TOC-shaped subset can be judged.",
+    "breakdown": [
+      {
+        "class": "TRUE_MODEL_SEMANTIC_EXTRA",
+        "count": 4,
+        "oldVeto": "scope:table_of_contents",
+        "items": [
+          "B. Preparation of Proposals 17",
+          "C. Submission, Opening and Evaluation 20",
+          "D. Negotiations and conclusion of a Framework Agreement 23",
+          "E. Data Sheet 28"
+        ],
+        "causalReason": "Table-of-contents lines, identifiable by the trailing page number. The model proposed the TOC line as well as the real section heading that lives in the body table, so the same section is claimed twice from two different source occurrences. This is a genuine model error that the table_of_contents scope veto was suppressing."
+      },
+      {
+        "class": "UNRESOLVED",
+        "count": 82,
+        "oldVeto": "scope:table or domainRole:TableTitle",
+        "sample": [
+          "Definitions",
+          "Introduction",
+          "Conflict of Interest",
+          "Fraud and Corruption",
+          "Language",
+          "Documents Comprising the Proposal",
+          "Cost of Preparation of Proposal",
+          "Clarification and Amendment of RFP"
+        ],
+        "causalReason": "These read as genuine RFP section headings that happen to live in a layout table, and 19 of their siblings are in the partial gold. They cannot be adjudicated against a TOC-derived key. They need an exhaustive reference before they can be called correct or extra."
+      },
+      {
+        "class": "UNRESOLVED",
+        "count": 6,
+        "oldVeto": "domainRole:FormFieldLabel",
+        "items": [
+          "Adequacy for the Assignment:",
+          "Certification:",
+          "ATTACHMENTS:",
+          "Expiration of Contract: [Insert time period e.g. six months]",
+          "Address for notices to the Client:",
+          "Address for notices to the Consultant:"
+        ],
+        "causalReason": "Form labels in a contract template. Whether a form label is a heading is exactly the semantic question the gold for this document does not answer."
+      }
+    ]
+  },
+  "architecturalConclusion": "Removing the heuristic veto is correct on authority: the harness stopped deciding meaning, and nothing that was already valid was lost. It also makes the semantic reasoner's own errors visible. The reasoner still needs work - specifically it double-claims a section from both its TOC line and its body occurrence. Reinstating the veto to hide that would restore the original architectural fault.",
+  "doNotDo": [
+    "reinstate any scope or domain-role veto",
+    "tune a threshold to suppress the exposed FPs",
+    "score DOC-0116 precision against a partial key"
+  ]
+}

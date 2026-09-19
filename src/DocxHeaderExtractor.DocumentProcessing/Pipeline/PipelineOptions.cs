@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Chunking;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -14,6 +15,12 @@ public sealed class PipelineOptions
 
     /// <summary>Bỏ qua LLM, chỉ dùng luật (nhanh, để đối chiếu).</summary>
     public bool DisableLlm { get; set; }
+
+    /// <summary>
+    /// Optional fail-closed gate for an explicitly frozen PDF provider experiment. Null preserves
+    /// ordinary non-experiment runtime behavior; an experiment must supply its manifest-bound gate.
+    /// </summary>
+    public PdfExperimentExecutionGate? ExperimentGate { get; set; }
 
     /// <summary>Luôn giữ đoạn có style heading kể cả khi mô hình bỏ sót.</summary>
     public bool TrustStyles { get; set; } = true;
@@ -146,8 +153,8 @@ public sealed class PipelineOptions
 
     /// <summary>
     /// Slow lane for PDF layout candidates. The model sees at most 40 blocks that survived the
-    /// deterministic line/table/repeat filters; <see cref="PdfBlockGrounder"/> must ground every
-    /// accepted role back to extracted source text. Disabled by default until measured on keys.
+    /// deterministic line/table/repeat filters and is retained only as a compatibility option.
+    /// Disabled by default until measured on keys.
     /// </summary>
     public bool PdfLayoutAnalystFallback { get; set; }
 

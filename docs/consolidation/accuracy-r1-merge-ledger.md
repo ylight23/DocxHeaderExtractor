@@ -1,5 +1,8 @@
 # accuracy-r1 merge ledger
 
+> Historical record. Several components named below were deleted on 2026-09-18; see
+> [pdf-lane-removal.md](../architecture/pdf-lane-removal.md). This file is left as written.
+
 Source: `accuracy/round2-ranking` @ `81e677f`
 
 | Responsibility | Classification | Disposition |

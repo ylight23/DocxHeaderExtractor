@@ -142,7 +142,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
             blocks = decisions.Select(d =>
             {
                 var block = blocks.FirstOrDefault(candidate => string.Equals(candidate.Id, d.Id, StringComparison.Ordinal));
-                var lineIds = block?.Lines.Select(PdfCandidateProvenance.LineId).ToArray() ?? [];
+                var lineIds = block?.Lines.Select(PdfLineIdentity.Of).ToArray() ?? [];
                 return new
                 {
                     id = d.Id,
@@ -229,7 +229,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
             {
                 decisionById.TryGetValue(block.Id, out var decision);
                 traceById.TryGetValue(block.Id, out var trace);
-                var sourceLineIds = block.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
+                var sourceLineIds = block.Lines.Select(PdfLineIdentity.Of).ToArray();
                 return new
                 {
                     sourceIdentity = new

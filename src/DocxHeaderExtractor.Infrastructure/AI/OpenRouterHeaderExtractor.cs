@@ -8,8 +8,16 @@ using System.Text.Json;
 namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>
-/// RPC JSON qua OpenRouter Chat Completions. Mỗi request bắt buộc ZDR, cấm endpoint thu thập
-/// dữ liệu và yêu cầu provider trả JSON. Schema/ID được hậu kiểm cục bộ trước khi chấp nhận.
+/// RPC JSON qua OpenRouter Chat Completions. Mỗi request cấm endpoint thu thập dữ liệu để huấn
+/// luyện (<c>data_collection=deny</c>) và yêu cầu provider trả JSON. Schema/ID được hậu kiểm cục
+/// bộ trước khi chấp nhận.
+/// <para>
+/// Zero-Data-Retention do <see cref="RemoteInferenceOptions.RequireZeroDataRetention"/> quyết
+/// định và LUÔN được ghi tường minh: bỏ trống trường này thì OpenRouter áp mặc định của tài
+/// khoản, và tài khoản đặt ZDR sẽ loại mọi endpoint của model controlled (qwen3.7-flash chỉ có
+/// endpoint Alibaba, không được chứng nhận ZDR) bằng 404 trước khi tới model. Mặc định false;
+/// ràng buộc còn lại cấm provider dùng dữ liệu để huấn luyện nhưng không bảo đảm xoá sau khi trả.
+/// </para>
 /// </summary>
 public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
 {
@@ -31,7 +39,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
 
     public string ModelName => _options.Model;
     public int ContextSize => _options.ContextSize;
-    public string RuntimeDescription => "OpenRouter RPC · ZDR · data_collection=deny";
+    public string RuntimeDescription => "OpenRouter RPC · data_collection=deny";
     public int SharedPrefixTokens => 0;
 
     public Task<ChunkResult> ClassifyAsync(
@@ -129,7 +137,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 response_format = new { type = "json_object" },
                 provider = new
                 {
-                    zdr = true,
+                    zdr = _options.RequireZeroDataRetention,
                     data_collection = "deny",
                     require_parameters = true,
                     allow_fallbacks = true,
@@ -241,7 +249,11 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
     private static int headingsCount(bool roles, string user) => roles ? 0 : user.Count(c => c == '{');
 
     /// <summary>Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.</summary>
-    public async Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+    public async Task<string> BoundaryCutAsync(
+        string systemPrompt,
+        string userMessage,
+        CancellationToken ct = default,
+        int expectedItemCount = 0)
     {
         var body = new
         {
@@ -250,7 +262,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             // Role/pointer passes return one JSON item per supplied source id. A fixed 120-token
             // cap truncates otherwise valid multi-block responses and turns them into invisible
             // missing decisions. Keep the result bounded by the configured model profile.
-            max_tokens = BoundaryOutputBudget(userMessage),
+            max_tokens = BoundaryOutputBudget(userMessage, expectedItemCount),
             reasoning = new { effort = "none" },
             messages = new[]
             {
@@ -260,7 +272,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             response_format = new { type = "json_object" },
             provider = new
             {
-                zdr = true,
+                zdr = _options.RequireZeroDataRetention,
                 data_collection = "deny",
                 require_parameters = true,
                 allow_fallbacks = true,
@@ -340,18 +352,33 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         throw new FormatException("OpenRouter response không có choices[0].message.content.");
     }
 
-    private int BoundaryOutputBudget(string userMessage)
+    private int BoundaryOutputBudget(string userMessage, int expectedItemCount)
     {
-        var identifiers = 0;
+        // The budget scales with how many source items the request asks about. Both identifier
+        // spellings must be counted: the legacy boundary protocol names them "id", the canonical
+        // semantic contract names them "sourceAlias". Counting only "id" silently clamped the
+        // canonical route to the 256-token floor and truncated its JSON mid-object.
+        // A caller that knows how many items it asks about states it. Only fall back to sniffing
+        // the payload when it does not: that inference reads a field name, so renaming a field in
+        // the request silently collapsed the budget to its floor and truncated the reply.
+        // A canonical semantic item answers with verbatim text, role, type, scope and relation
+        // hints, so it needs far more than a legacy boundary item's couple of integers.
+        if (expectedItemCount > 0)
+            return Math.Clamp(96 + expectedItemCount * 128, 256, _options.MaxOutputTokens);
+        var legacy = CountOccurrences(userMessage, "\"id\"", StringComparison.Ordinal);
+        return Math.Clamp(96 + legacy * 64, 256, _options.MaxOutputTokens);
+    }
+
+    private static int CountOccurrences(string text, string token, StringComparison comparison)
+    {
+        var count = 0;
         var offset = 0;
-        const string token = "\"id\"";
-        while ((offset = userMessage.IndexOf(token, offset, StringComparison.Ordinal)) >= 0)
+        while ((offset = text.IndexOf(token, offset, comparison)) >= 0)
         {
-            identifiers++;
+            count++;
             offset += token.Length;
         }
-
-        return Math.Clamp(96 + identifiers * 64, 256, _options.MaxOutputTokens);
+        return count;
     }
 
     private static string SafeError(string text)

@@ -12,10 +12,18 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// to an audit instead of disappearing from the record.
 /// </para>
 /// <para>
-/// Exclusion rules here preserve the historical M9.4 comparison semantics without depending on the
-/// evaluation-only legacy projection; this
-/// is a change of input, not of policy. An unresolved hierarchy is deliberately not an exclusion —
-/// a heading can be certain while its parent is unknown, which is exactly what M8 measured.
+/// Authority is split by what a reason actually claims. Source validity may suppress: an empty
+/// text, an unexpected validation decision, or a heading with no anchor cannot be shown as an
+/// occurrence of the document. A semantic heuristic may not: "this sits in a table", "this looks
+/// like a caption", "this scope is usually excluded" are observations about meaning, and meaning
+/// belongs to the model. They are recorded on the decision so a reviewer sees the disagreement,
+/// and the heading is still emitted. An unresolved hierarchy is likewise not an exclusion — a
+/// heading can be certain while its parent is unknown, which is exactly what M8 measured.
+/// </para>
+/// <para>
+/// The rule cuts both ways: nothing here can promote a heading either. This policy only ever reads
+/// facts the model proposed and the binder anchored, so a heuristic can neither create a heading
+/// nor delete one.
 /// </para>
 /// </summary>
 public static class PdfOutputDecisionPolicy
@@ -33,21 +41,32 @@ public static class PdfOutputDecisionPolicy
 
     public static PdfOutputDecision Decide(PdfFinalHeading heading)
     {
-        var reasons = new List<string>();
-        if (string.IsNullOrWhiteSpace(heading.Text)) reasons.Add("empty_source_text");
-        if (Array.IndexOf(ExcludedScopes, heading.Scope) >= 0) reasons.Add($"excluded_scope:{heading.Scope}");
-        if (heading.DomainExclusionProposed) reasons.Add($"excluded_role:{heading.Role}");
+        // Only source validity may suppress a heading the model called a heading. Each of these
+        // says the fact cannot be anchored in the source, not that it means something else.
+        var blocking = new List<string>();
+        if (string.IsNullOrWhiteSpace(heading.Text)) blocking.Add("empty_source_text");
         if (!string.Equals(heading.ValidationDecision, "requires_review", StringComparison.Ordinal))
-            reasons.Add($"unexpected_validation_decision:{heading.ValidationDecision}");
+            blocking.Add($"unexpected_validation_decision:{heading.ValidationDecision}");
         // A product heading has to be locatable in the canonical source; without that anchor it can
         // be reviewed as a fact but not shown as an occurrence of the document, and not written back.
-        if (heading.SourceAnchor is null) reasons.Add(heading.GroundingStatus);
+        if (heading.SourceAnchor is null) blocking.Add(heading.GroundingStatus);
 
-        var emit = reasons.Count == 0;
+        var emit = blocking.Count == 0;
+
+        // Recorded, never suppressive. A role or scope heuristic that disagrees with the model is
+        // evidence for a reviewer; letting it drop the heading would put meaning back in the hands
+        // of a pattern match. Measured cost of the old behaviour: three headings the model had
+        // identified correctly, with valid aliases and exact verbatim text, vanished from the
+        // output because they sat inside a table and the role heuristic called them table titles.
+        var observations = new List<string>();
+        if (heading.DomainExclusionProposed) observations.Add($"domain_role_disagreement:{heading.Role}");
+        if (Array.IndexOf(ExcludedScopes, heading.Scope) >= 0)
+            observations.Add($"scope_disagreement:{heading.Scope}");
         // Review state is independent of emission: the product shows the heading and still marks it
         // for a human. Reporting an unresolved hierarchy as a reason must not suppress the heading.
-        if (emit && heading.HierarchyStatus != "resolved") reasons.Add($"hierarchy_{heading.HierarchyStatus}");
-        return new PdfOutputDecision(heading.Id, emit, emit, reasons);
+        if (emit && heading.HierarchyStatus != "resolved") observations.Add($"hierarchy_{heading.HierarchyStatus}");
+
+        return new PdfOutputDecision(heading.Id, emit, emit, [.. blocking, .. observations]);
     }
 }
 

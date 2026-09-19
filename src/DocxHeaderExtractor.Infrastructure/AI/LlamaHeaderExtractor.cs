@@ -518,7 +518,11 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     /// giữa các lượt gọi). Cùng cấu hình sampler greedy với <see cref="ClassifyRolesAsync"/>
     /// (Temperature=0, TopK=1, Seed cố định) để tái lập được số đã đo trong harness thử nghiệm.
     /// </summary>
-    public async Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default)
+    public async Task<string> BoundaryCutAsync(
+        string systemPrompt,
+        string userMessage,
+        CancellationToken ct = default,
+        int expectedItemCount = 0)
     {
         var prompt = BuildBoundaryPrompt(systemPrompt, userMessage);
         using var pipeline = new DefaultSamplingPipeline { Temperature = 0f, TopK = 1, Seed = _options.Seed };

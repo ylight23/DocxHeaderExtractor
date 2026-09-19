@@ -258,8 +258,13 @@ public static class SemanticConflictAdjudicator
             structuralType = proposal.StructuralType,
             scope = proposal.Scope,
             occurrence = proposal.Occurrence,
-            // Relationship and hierarchy hints are intentionally adjudicated elsewhere.
-            relationHints = Array.Empty<string>(),
+            // Hierarchy hints are adjudicated elsewhere; same-node/continuation relations are
+            // semantic alternatives and therefore remain visible to the adjudicator.
+            relationHints = (proposal.RelationHints ?? [])
+                .Where(hint => !hint.StartsWith("level:", StringComparison.OrdinalIgnoreCase) &&
+                              !hint.StartsWith("parent-node:", StringComparison.OrdinalIgnoreCase) &&
+                              !hint.StartsWith("sibling-node:", StringComparison.OrdinalIgnoreCase))
+                .ToArray(),
         });
 
     private static IReadOnlyList<string> ResolveAliases(CanonicalSemanticProposal proposal) =>

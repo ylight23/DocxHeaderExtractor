@@ -16,7 +16,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// </para>
 /// <para>
 /// KHÔNG dùng cho pipeline trích xuất chính — chỉ dùng cho các cổng chẩn đoán có điều kiện kích hoạt cụ
-/// thể (vd xác nhận paragraph hỏng thật hay lỗi parser, xem <see cref="Repair.CorruptParagraphVisualVerifier"/>).
+/// thể (vd xác nhận paragraph hỏng thật hay lỗi parser).
 /// Nạp model tốn vài giây và vài trăm MB-GB RAM; gọi lại nhiều lần nên tái dùng cùng một instance.
 /// </para>
 /// </summary>

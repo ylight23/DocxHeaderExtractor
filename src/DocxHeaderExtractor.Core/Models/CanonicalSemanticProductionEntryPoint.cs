@@ -20,7 +20,14 @@ public sealed record CanonicalSemanticProductionInput(
     IReadOnlyList<CanonicalSemanticVisualPageEvidence>? VisualPages = null,
     string? ExpectedSourceSha256 = null,
     string? DocumentId = null,
-    IReadOnlyList<CanonicalSemanticSourceEvidence>? SourceEvidence = null);
+    IReadOnlyList<CanonicalSemanticSourceEvidence>? SourceEvidence = null)
+{
+    /// <summary>Aliases visible to this execution segment. Null means the complete source set.</summary>
+    public IReadOnlySet<string>? OwnedAliases { get; init; }
+
+    /// <summary>Explicit global semantic conflicts supplied by a resolver; never inferred here.</summary>
+    public IReadOnlyList<CanonicalSemanticGlobalConflict> GlobalConflicts { get; init; } = [];
+}
 
 /// <summary>Compact parser-owned evidence attached to one canonical source occurrence. It contains
 /// observations only; it does not contain candidate gating, Gold, hierarchy, or model decisions.</summary>
@@ -30,7 +37,16 @@ public sealed record CanonicalSemanticSourceEvidence(
     int SourceOrdinal,
     string ExactSourceText,
     string StructuralScope,
-    int TableDepth,
+    /// <summary>
+    /// Nesting depth inside a table, or null where the source format has no such concept.
+    /// <para>
+    /// Null is not zero. Zero is a measurement - "this occurrence was examined and found outside
+    /// any table" - and a PDF cannot make it: it has no nested-table structure to be at depth zero
+    /// of. Reporting zero would hand the model a fact nothing established, so the field is omitted
+    /// from the request entirely instead.
+    /// </para>
+    /// </summary>
+    int? TableDepth,
     int SectionIndex,
     bool InContentControl,
     bool InTableOfContents,
@@ -42,7 +58,14 @@ public sealed record CanonicalSemanticSourceEvidence(
     IReadOnlyList<string> ObservedEvidence,
     IReadOnlyList<string> LocalBefore,
     IReadOnlyList<string> LocalAfter,
-    SemanticCandidateAttentionHint CandidateAttention);
+    SemanticCandidateAttentionHint CandidateAttention)
+{
+    /// <summary>
+    /// Structural state already open at this occurrence, from parser-owned marker evidence.
+    /// Context only: it reports what a reader would already have seen, never who anything parents to.
+    /// </summary>
+    public IReadOnlyList<string> ActiveStructuralAncestors { get; init; } = [];
+}
 
 public sealed record CanonicalSemanticInferenceTelemetry(
     string? ActualProvider = null,
@@ -53,7 +76,11 @@ public sealed record CanonicalSemanticInferenceTelemetry(
 
 public sealed record CanonicalSemanticTextInferenceResult(
     IReadOnlyList<CanonicalSemanticProposal> Proposals,
-    CanonicalSemanticInferenceTelemetry Telemetry);
+    CanonicalSemanticInferenceTelemetry Telemetry)
+{
+    /// <summary>Provider/parser contract issues captured before any binder is allowed to run.</summary>
+    public IReadOnlyList<SemanticContractIssue> ContractIssues { get; init; } = [];
+}
 
 public interface ICanonicalSemanticTextModel
 {
@@ -78,6 +105,10 @@ public interface ICanonicalSemanticVisualModel
         string requestId,
         CancellationToken cancellationToken = default);
 }
+
+// ICanonicalSemanticAdjudicationModel is declared with the control plane that drives it, in
+// CanonicalSemanticClosedLoopControlPlane. Both sides of this merge had added the same interface
+// independently, character for character; the copy that lives beside its caller is the one kept.
 
 public sealed record CanonicalSemanticProductionResult(
     CanonicalSemanticModalityProfile ModalityProfile,
@@ -132,6 +163,17 @@ public sealed record CanonicalSemanticProductionResult(
 
     public IReadOnlyList<CanonicalSemanticGraphOccurrence> Projection =>
         CanonicalGraph.OutlineProjection;
+
+    public IReadOnlyList<SemanticContractIssue> ContractIssues { get; init; } = [];
+    public int ContractValidProposalCount { get; init; }
+    public int ContractInvalidProposalCount { get; init; }
+    public int SemanticAdjudicationCalls { get; init; }
+    public int ResolvedConflictCount { get; init; }
+    public int UnresolvedConflictCount { get; init; }
+    public int InvalidAdjudicationCount { get; init; }
+    public int GlobalReopenCalls { get; init; }
+    public int PrimaryTextModelCalls => TextModelCalls;
+    public int TotalModelCalls => TextModelCalls + VisualModelCalls + SemanticAdjudicationCalls + GlobalReopenCalls;
 }
 
 public static class CanonicalSemanticProductionEntryPoint
@@ -141,8 +183,18 @@ public static class CanonicalSemanticProductionEntryPoint
         ArgumentNullException.ThrowIfNull(input);
         if (input.SemanticProposals is null)
             throw new InvalidOperationException("LIVE_INFERENCE_REQUIRES_RUN_ASYNC");
-        return RunPostInference(input, input.SemanticProposals, input.VisualProposals ?? [],
-            new(), new(), 0, 0);
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(input.SourceCatalog);
+        var validation = CanonicalSemanticContractValidator.ValidateProposals(
+            input.SemanticProposals, aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal), input.OwnedAliases);
+        var normalization = SemanticConflictNormalizer.Normalize(validation.ValidProposals, aliases);
+        var result = RunPostInference(input, normalization.BindingReadyProposals, input.SemanticProposals,
+            input.VisualProposals ?? [], normalization, new(), new(), 0, 0, validation, 0, 0, 0, 0, 0);
+        return result with
+        {
+            ContractIssues = validation.Issues,
+            ContractValidProposalCount = validation.ValidProposals.Count,
+            ContractInvalidProposalCount = input.SemanticProposals.Count - validation.ValidProposals.Count,
+        };
     }
 
     public static async Task<CanonicalSemanticProductionResult> RunAsync(
@@ -150,7 +202,9 @@ public static class CanonicalSemanticProductionEntryPoint
         ICanonicalSemanticTextModel textModel,
         ICanonicalSemanticVisualModel? visualModel = null,
         string requestId = "canonical-semantic-production",
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default,
+        ICanonicalSemanticAdjudicationModel? adjudicationModel = null,
+        ICanonicalSemanticAdjudicationModel? globalReopenModel = null)
     {
         ArgumentNullException.ThrowIfNull(input);
         ArgumentNullException.ThrowIfNull(textModel);
@@ -165,6 +219,39 @@ public static class CanonicalSemanticProductionEntryPoint
         var context = SemanticContextPacker.Pack(
             input.TargetEvidence, input.LocalContext, input.GlobalContext);
         var textInference = await textModel.InferAsync(input, context, requestId, cancellationToken);
+        var primaryValidation = CanonicalSemanticContractValidator.ValidateProposals(
+            textInference.Proposals,
+            aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal),
+            input.OwnedAliases);
+        var allContractIssues = (textInference.ContractIssues ?? [])
+            .Concat(primaryValidation.Issues)
+            .ToArray();
+        var normalization = SemanticConflictNormalizer.Normalize(primaryValidation.ValidProposals, aliases);
+        var detectedGlobalConflicts = CanonicalSemanticGlobalConflictDetector.Detect(
+            primaryValidation.ValidProposals, aliases, normalization.Conflicts);
+        var globalConflicts = input.GlobalConflicts
+            .Concat(detectedGlobalConflicts)
+            .GroupBy(item => item.ConflictId, StringComparer.Ordinal)
+            .Select(group => group.First())
+            .ToArray();
+        var adjudication = await ResolveConflictsAsync(
+            normalization, aliases, input, context, adjudicationModel, requestId, cancellationToken);
+        var globalReopen = await CanonicalSemanticGlobalReopenCoordinator.ResolveAsync(
+            globalConflicts, aliases, globalReopenModel, requestId, cancellationToken: cancellationToken);
+        var globalValidation = CanonicalSemanticContractValidator.ValidateProposals(
+            globalReopen.AcceptedAlternatives,
+            aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal),
+            input.OwnedAliases);
+        allContractIssues = allContractIssues.Concat(globalValidation.Issues).ToArray();
+        var bindingReady = adjudication.BindingReadyProposals.ToList();
+        foreach (var accepted in globalValidation.ValidProposals)
+        {
+            var acceptedIdentity = CanonicalSemanticGlobalConflictDetector.PhysicalIdentity(accepted, aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal));
+            bindingReady.RemoveAll(existing => string.Equals(
+                CanonicalSemanticGlobalConflictDetector.PhysicalIdentity(existing, aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal)),
+                acceptedIdentity, StringComparison.Ordinal));
+            bindingReady.Add(accepted);
+        }
         var visualBlocks = input.VisualBlocks is { Count: > 0 }
             ? VisualRecovery.Recover(input.VisualBlocks)
             : [];
@@ -176,23 +263,40 @@ public static class CanonicalSemanticProductionEntryPoint
             visualInference = await visualModel.InferAsync(
                 input, context, visualBlocks, requestId + ":visual", cancellationToken);
         }
-        var visualInput = visualInference.Blocks.Count > 0
-            ? input with { VisualBlocks = visualInference.Blocks }
-            : input;
-        return RunPostInference(visualInput with { SemanticProposals = textInference.Proposals },
-            textInference.Proposals, visualInference.Proposals,
+        var visualInput = input with { GlobalConflicts = globalConflicts };
+        if (visualInference.Blocks.Count > 0)
+            visualInput = visualInput with { VisualBlocks = visualInference.Blocks };
+        var result = RunPostInference(visualInput with { SemanticProposals = bindingReady },
+            bindingReady, textInference.Proposals, visualInference.Proposals, normalization,
             textInference.Telemetry, visualInference.Telemetry, 1,
-            profile.Pages.Any(page => page.UseVisualRecovery) ? 1 : 0);
+            profile.Pages.Any(page => page.UseVisualRecovery) ? 1 : 0,
+            primaryValidation, adjudication.AdjudicationCalls,
+            adjudication.ResolvedCount, adjudication.UnresolvedCount, adjudication.InvalidCount,
+            globalReopen.ReopenCalls);
+        return result with
+        {
+            ContractIssues = allContractIssues,
+            ContractValidProposalCount = primaryValidation.ValidProposals.Count,
+            ContractInvalidProposalCount = textInference.Proposals.Count - primaryValidation.ValidProposals.Count,
+        };
     }
 
     private static CanonicalSemanticProductionResult RunPostInference(
         CanonicalSemanticProductionInput input,
         IReadOnlyList<CanonicalSemanticProposal> semanticProposals,
+        IReadOnlyList<CanonicalSemanticProposal> rawModelProposals,
         IReadOnlyList<CanonicalSemanticVisualProposal> visualProposals,
+        SemanticConflictNormalizationResult normalization,
         CanonicalSemanticInferenceTelemetry textTelemetry,
         CanonicalSemanticInferenceTelemetry visualTelemetry,
         int textModelCalls,
-        int visualModelCalls)
+        int visualModelCalls,
+        SemanticProposalValidationSummary validation,
+        int adjudicationCalls,
+        int resolvedConflictCount,
+        int unresolvedConflictCount,
+        int invalidAdjudicationCount,
+        int globalReopenCalls)
     {
         var pages = input.Pages ?? throw new ArgumentNullException(nameof(input.Pages));
         var profile = ModalityProfiler.Profile(pages);
@@ -200,9 +304,8 @@ public static class CanonicalSemanticProductionEntryPoint
         foreach (var alias in aliases)
             _ = SemanticCandidatePolicy.CanAcceptOwnedOccurrence(alias.Alias, input.CandidateHints);
         var context = SemanticContextPacker.Pack(input.TargetEvidence, input.LocalContext, input.GlobalContext);
-        var normalization = SemanticConflictNormalizer.Normalize(semanticProposals, aliases);
-        var text = CanonicalSemanticPipeline.Run(input.SourceCatalog, normalization.BindingReadyProposals,
-            input.SourceSha256, input.ExpectedSourceSha256);
+        var text = CanonicalSemanticPipeline.Run(input.SourceCatalog, semanticProposals,
+            input.SourceSha256, input.ExpectedSourceSha256, input.OwnedAliases);
 
         var visualOccurrences = input.VisualBlocks is { Count: > 0 }
             ? VisualRecovery.Recover(input.VisualBlocks)
@@ -229,35 +332,101 @@ public static class CanonicalSemanticProductionEntryPoint
 
         var ledger = new[]
         {
-            new SemanticTransitionLedgerEntry("SOURCE_IDENTITY", "PRESERVED", aliases.Count, aliases.Count),
-            new SemanticTransitionLedgerEntry("MODALITY_PROFILER", "PRESERVED", pages.Count, profile.Pages.Count),
-            new SemanticTransitionLedgerEntry("SOURCE_EVIDENCE", "PRESERVED", aliases.Count, aliases.Count),
-            new SemanticTransitionLedgerEntry("CANDIDATE_ATTENTION", "PRESERVED", aliases.Count, aliases.Count),
-            new SemanticTransitionLedgerEntry("CONTEXT_PACKING", "PRESERVED", context.VisibleEvidence.Count, context.VisibleEvidence.Count),
+            new SemanticTransitionLedgerEntry("SOURCE_IDENTITY", "COMPLETED", aliases.Count, aliases.Count),
+            new SemanticTransitionLedgerEntry("MODALITY_PROFILE", "COMPLETED", pages.Count, profile.Pages.Count),
+            new SemanticTransitionLedgerEntry("SOURCE_EVIDENCE", "COMPLETED", aliases.Count, aliases.Count),
+            new SemanticTransitionLedgerEntry("CANDIDATE_ATTENTION", "ATTENTION_ONLY", aliases.Count, aliases.Count),
+            new SemanticTransitionLedgerEntry("CONTEXT_PACKING", "COMPLETED", context.VisibleEvidence.Count, context.VisibleEvidence.Count),
+            new SemanticTransitionLedgerEntry("PRIMARY_SEMANTIC_INFERENCE", textModelCalls > 0 ? "COMPLETED" : "SKIPPED_PRECOMPUTED", 0, rawModelProposals.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_CONTRACT_VALIDATION", validation.Issues.Count == 0 ? "COMPLETED" : "PARTIAL_INVALID_PROPOSALS", rawModelProposals.Count, validation.ValidProposals.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_CONFLICT_NORMALIZATION", "COMPLETED", normalization.SemanticProposalInputCount, normalization.NormalizedProposals.Count),
             new SemanticTransitionLedgerEntry("SEMANTIC_CONFLICT_CHECK",
                 normalization.Conflicts.Count > 0
                     ? "CONFLICTS_WITHHELD"
                     : normalization.AttributeConflicts.Count > 0
-                        ? "ATTRIBUTE_CONFLICTS_BINDABLE"
-                        : "PRESERVED",
+                        ? "ATTRIBUTE_CONFLICTS_WITHHELD"
+                        : "NO_CONFLICT",
                 normalization.SemanticProposalInputCount,
                 normalization.BindingReadyProposals.Count,
                 normalization.Conflicts.Count > 0 ? "OCCURRENCE_OR_BINDING_CONFLICT" : null),
-            new SemanticTransitionLedgerEntry("SEMANTIC_CONTRACT", "PRESERVED", semanticProposals.Count, semanticProposals.Count),
-            new SemanticTransitionLedgerEntry("TEXT_UTF16_BINDING", "PRESERVED", normalization.BindingReadyProposals.Count, text.BoundHeadings.Count),
-            new SemanticTransitionLedgerEntry("VISUAL_RECOVERY", "PRESERVED", input.VisualBlocks?.Count ?? 0, visualOccurrences.Count),
-            new SemanticTransitionLedgerEntry("VISUAL_REGION_BINDING", "PRESERVED", visualProposals.Count, visualHeadings.Count),
-            new SemanticTransitionLedgerEntry("CROSS_MODAL_RECONCILIATION", "PRESERVED", textEvidence.Length + visualEvidence.Length, unified.Count),
-            new SemanticTransitionLedgerEntry("GLOBAL_RESOLUTION", "PRESERVED", text.BoundHeadings.Count + visualHeadings.Count, canonicalGraph.Occurrences.Count),
-            new SemanticTransitionLedgerEntry("CANONICAL_GRAPH", "PRESERVED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
-            new SemanticTransitionLedgerEntry("SEMANTIC_BOUNDARY", "PRESERVED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
-            new SemanticTransitionLedgerEntry("TASK_PROJECTION", "PRESERVED", canonicalGraph.Occurrences.Count, canonicalGraph.OutlineProjection.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_ADJUDICATION", adjudicationCalls > 0 ? "COMPLETED" : normalization.Conflicts.Count + normalization.AttributeConflicts.Count > 0 ? "SKIPPED_NO_ADJUDICATOR" : "SKIPPED_NO_CONFLICT", normalization.Conflicts.Count + normalization.AttributeConflicts.Count, resolvedConflictCount),
+            new SemanticTransitionLedgerEntry("TEXT_EXACT_BINDING", "COMPLETED", semanticProposals.Count, text.BoundHeadings.Count),
+            new SemanticTransitionLedgerEntry("HARD_BINDING_VALIDATION", text.BindingFailureCount == 0 ? "COMPLETED" : "COMPLETED_WITH_REJECTIONS", text.BindingObservations.Count, text.BoundHeadings.Count),
+            new SemanticTransitionLedgerEntry("VISUAL_RECOVERY", input.VisualBlocks?.Count > 0 ? "COMPLETED" : "SKIPPED_NO_VISUAL_RECOVERY", input.VisualBlocks?.Count ?? 0, visualOccurrences.Count),
+            new SemanticTransitionLedgerEntry("VISUAL_SEMANTIC_INFERENCE", visualModelCalls > 0 ? "COMPLETED" : "SKIPPED_NO_VISUAL_RECOVERY", visualProposals.Count, visualProposals.Count),
+            new SemanticTransitionLedgerEntry("VISUAL_REGION_BINDING", visualProposals.Count > 0 ? "COMPLETED" : "SKIPPED_NO_VISUAL_RECOVERY", visualProposals.Count, visualHeadings.Count),
+            new SemanticTransitionLedgerEntry("CROSS_MODAL_RECONCILIATION", "COMPLETED", textEvidence.Length + visualEvidence.Length, unified.Count),
+            new SemanticTransitionLedgerEntry("GLOBAL_RESOLUTION", "COMPLETED", text.BoundHeadings.Count + visualHeadings.Count, canonicalGraph.Occurrences.Count),
+            new SemanticTransitionLedgerEntry("GLOBAL_SEMANTIC_REOPEN", globalReopenCalls > 0 ? "COMPLETED" : "SKIPPED_NO_CONFLICT", input.GlobalConflicts.Count, globalReopenCalls),
+            new SemanticTransitionLedgerEntry("CANONICAL_GRAPH", "COMPLETED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_BOUNDARY", "COMPLETED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
+            new SemanticTransitionLedgerEntry("TASK_PROJECTION", "COMPLETED", canonicalGraph.Occurrences.Count, canonicalGraph.OutlineProjection.Count),
         };
 
         return new(profile, context, input.CandidateHints, text,
-            visualOccurrences, visualHeadings, unified, ledger, semanticProposals,
+            visualOccurrences, visualHeadings, unified, ledger, rawModelProposals,
             textTelemetry, visualTelemetry, textModelCalls, visualModelCalls)
-        { CanonicalGraph = canonicalGraph, ConflictNormalization = normalization };
+        { CanonicalGraph = canonicalGraph, ConflictNormalization = normalization,
+          SemanticAdjudicationCalls = adjudicationCalls,
+          ResolvedConflictCount = resolvedConflictCount,
+          UnresolvedConflictCount = unresolvedConflictCount,
+          InvalidAdjudicationCount = invalidAdjudicationCount,
+          GlobalReopenCalls = globalReopenCalls,
+          ContractValidProposalCount = validation.ValidProposals.Count,
+          ContractInvalidProposalCount = validation.Issues.Count == 0 ? 0 : semanticProposals.Count - validation.ValidProposals.Count };
+    }
+
+    private sealed record AdjudicationResolution(
+        IReadOnlyList<CanonicalSemanticProposal> BindingReadyProposals,
+        int AdjudicationCalls,
+        int ResolvedCount,
+        int UnresolvedCount,
+        int InvalidCount);
+
+    /// <summary>
+    /// Production adapter over the one adjudication owner.
+    /// <para>
+    /// It prepares this path's context and maps the result onto the production shape. The algorithm
+    /// - which conflicts to open, what to accept, what to withhold - belongs to
+    /// <see cref="CanonicalSemanticClosedLoopControlPlane"/>, and there is no second copy of it
+    /// here. If this method ever loops over conflicts again, the duplicate owner has come back.
+    /// </para>
+    /// <para>
+    /// Normalization has already happened once, before contract validation filtered the proposals,
+    /// and the result is passed through rather than recomputed.
+    /// </para>
+    /// </summary>
+    private static async Task<AdjudicationResolution> ResolveConflictsAsync(
+        SemanticConflictNormalizationResult normalization,
+        IReadOnlyList<SemanticSourceAlias> aliases,
+        CanonicalSemanticProductionInput input,
+        SemanticContextPacket context,
+        ICanonicalSemanticAdjudicationModel? adjudicationModel,
+        string requestId,
+        CancellationToken cancellationToken)
+    {
+        var conflictCount = normalization.Conflicts.Count + normalization.AttributeConflicts.Count;
+
+        // No adjudicator, or nothing to adjudicate: no provider call is spent, and every conflict
+        // stays unresolved rather than being quietly treated as settled.
+        if (adjudicationModel is null || conflictCount == 0)
+            return new(normalization.BindingReadyProposals.ToList(), 0, 0, conflictCount, 0);
+
+        var adjudicated = await CanonicalSemanticClosedLoopControlPlane.AdjudicateAsync(
+            normalization,
+            aliases,
+            adjudicationModel,
+            context.LocalContext,
+            input.GlobalContext,
+            requestId,
+            cancellationToken);
+
+        return new(
+            adjudicated.BindingReadyProposals,
+            adjudicated.ModelCalls,
+            adjudicated.BindingReadyProposals.Count - normalization.BindingReadyProposals.Count,
+            adjudicated.UnresolvedCaseIds.Count,
+            adjudicated.InvalidCaseIds.Count);
     }
 
     private static CanonicalSemanticGraph CombineGraphs(
@@ -292,7 +461,7 @@ public static class CanonicalSemanticProductionEntryPoint
             var pageNumber = ParsePage(binding.PageId);
             var occurrence = new CanonicalSemanticGraphOccurrence(
                 $"visual-occurrence:{occurrences.Count + 1:0000}",
-                CanonicalSemanticGraphResolver.CreatePhysicalNodeId(binding),
+                CanonicalSemanticIdentityResolver.CreatePhysicalNodeId(binding),
                 binding.VisualAlias, $"visual:{binding.PageId}", pageNumber,
                 binding.RecoveredTranscript, heading.SemanticRole, heading.StructuralType,
                 heading.Scope, binding.BlockOrdinal, binding.BlockOrdinal, "PRIMARY", null)

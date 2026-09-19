@@ -7,10 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Historical evaluation helpers consume internal processing diagnostics only through the explicit Eval project. -->
-    <InternalsVisibleTo Include="DocxHeaderExtractor.Eval" />
     <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
-    <InternalsVisibleTo Include="IdentityBenchmarkV8H0" />
   </ItemGroup>
 
   <ItemGroup>

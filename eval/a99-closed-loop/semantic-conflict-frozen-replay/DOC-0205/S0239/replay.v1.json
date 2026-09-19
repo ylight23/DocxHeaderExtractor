@@ -16,12 +16,12 @@
   "goldReadBeforeFreeze": false,
   "acceptance": {
     "s0239InputProposals": 2,
-    "bindingReadyOccurrence": 1,
+    "bindingReadyOccurrence": 0,
     "attributeConflict": 1,
     "contestedField": "semanticRole",
     "consensusSemanticRole": null,
-    "binderInput": 1,
-    "binderOutput": 1,
+    "binderInput": 0,
+    "binderOutput": 0,
     "bindFailure": 0,
     "systemLoss": 0
   },
@@ -45,14 +45,14 @@
         "bindFailure": 1
       },
       "newPath": {
-        "bindingReadyOccurrence": 1,
+        "bindingReadyOccurrence": 0,
         "attributeConflict": 1,
         "contestedFields": [
           "semanticRole"
         ],
         "consensusSemanticRole": null,
-        "binderInput": 1,
-        "binderOutput": 1,
+        "binderInput": 0,
+        "binderOutput": 0,
         "bindFailure": 0,
         "hardBindingValid": true,
         "systemLoss": 0
@@ -77,14 +77,14 @@
         "bindFailure": 1
       },
       "newPath": {
-        "bindingReadyOccurrence": 1,
+        "bindingReadyOccurrence": 0,
         "attributeConflict": 1,
         "contestedFields": [
           "semanticRole"
         ],
         "consensusSemanticRole": null,
-        "binderInput": 1,
-        "binderOutput": 1,
+        "binderInput": 0,
+        "binderOutput": 0,
         "bindFailure": 0,
         "hardBindingValid": true,
         "systemLoss": 0

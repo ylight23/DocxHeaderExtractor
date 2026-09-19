@@ -65,11 +65,15 @@ public static class NumberingAudit
     // ── Quan hệ với HeadingHeuristics ────────────────────────────────────────────────────────
     // Hai file cùng đọc tiền tố đánh số nhưng KHÔNG cùng một hợp đồng, và đó là chủ đích:
     //
-    //   HeadingHeuristics  — chạy TRƯỚC mô hình, quyết định "có đáng hỏi không". Sai theo hướng
-    //                        rộng: bỏ sót một ứng viên là mất hẳn, vì mô hình không bao giờ thấy nó.
-    //                        LƯU Ý: vế "sai theo hướng rộng" ĐÚNG với phần chấm điểm ở đây, nhưng
-    //                        KHÔNG áp cho nhóm luật hạ cấp theo cấu trúc policy —
-    //                        §21 đo được rằng nới chúng ra làm F1 tụt 90,8% → 78,4%.
+    //   HeadingHeuristics  — chạy TRƯỚC mô hình, quyết định "đoạn này có đáng CHÚ Ý không".
+    //                        KHÔNG quyết định mô hình được nhìn thấy gì. Đoạn mang nhãn Normal
+    //                        vẫn đi vào semantic source universe; chỉ Empty (không có text để
+    //                        gửi) mới bị loại — xem DocxAuthorityPipeline.Build.
+    //                        Ghi chú này từng nói ngược: nó khẳng định bỏ sót một ứng viên là
+    //                        mất hẳn vì mô hình không bao giờ thấy nó. Điều đó đúng với kiến
+    //                        trúc candidate-first đã bỏ, và nếu để lại sẽ dụ người sau "chữa
+    //                        recall" bằng cách nới HeadingCandidate — tức quay về đúng cái
+    //                        cổng chặn ẩn mà kiến trúc hiện tại vừa gỡ.
     //   NumberingAudit     — chạy SAU mô hình, quyết định "dãy số này có nhất quán không". Sai theo
     //                        hướng hẹp: nhận nhầm "1: 03/04" là mục số 1 thì hậu kiểm sẽ báo thiếu
     //                        mục 2, 3 không hề tồn tại.

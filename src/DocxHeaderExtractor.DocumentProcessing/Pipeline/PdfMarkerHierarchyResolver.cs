@@ -21,7 +21,7 @@ internal static class PdfMarkerHierarchyResolver
             {
                 var token = NumberingAudit.Parse(heading.Text);
                 var looseMarker = token is null
-                    ? PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(heading.Text)
+                    ? LooseLabelledMarkerParser.ParseCanonical(heading.Text)
                     : null;
                 var signature = token?.Signature ?? LooseMarkerSignature(looseMarker);
                 return (Heading: heading, Token: token, Signature: signature);

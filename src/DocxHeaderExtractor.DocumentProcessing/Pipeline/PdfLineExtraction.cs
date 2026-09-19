@@ -13,7 +13,25 @@ internal sealed record PdfLine(
     int Page, double Y, double FontSize, string Text, double BoldRatio, string LeadingBoldPrefix,
     double ItalicRatio, double Left, double Right, string FontName, string FillColorKey,
     string? CanonicalMatchText = null, string? MatchText = null,
-    double? Bottom = null, double? Top = null);
+    double? Bottom = null, double? Top = null)
+{
+    private readonly PdfSourceTextProjection? _projection;
+
+    /// <summary>
+    /// The canonical text of this line and the way back to its glyphs. <see cref="Text"/> stays the
+    /// raw parser concatenation for audit; the projection is what the model and the binder use.
+    /// <para>
+    /// A line built from a string rather than from glyphs has no reconstruction to declare, so it
+    /// falls back to itself. That keeps the text intact instead of blanking it, and the empty span
+    /// map says plainly that no glyph provenance is available.
+    /// </para>
+    /// </summary>
+    public PdfSourceTextProjection Projection
+    {
+        get => _projection ?? PdfSourceTextProjection.Identity(Text);
+        init => _projection = value;
+    }
+}
 
 internal static class PdfLineExtraction
 {
@@ -53,6 +71,12 @@ internal static class PdfLineExtraction
                 var ordered = bucket.OrderBy(l => l.BoundingBox.Left).ToList();
                 var pieces = new List<string>();
                 var matchPieces = new List<string>();
+                // Built while the glyphs are in hand. Deriving it afterwards from the two strings
+                // would be guessing at an alignment that is known exactly here.
+                var spanMap = new List<PdfVerbatimSpanMapEntry>();
+                var rawLength = 0;
+                var verbatimLength = 0;
+                var glyphOrdinal = 0;
                 var boldFlags = new List<bool>();
                 var italicFlags = new List<bool>();
                 var fontNames = new List<string>();
@@ -65,6 +89,7 @@ internal static class PdfLineExtraction
                         var gap = letter.BoundingBox.Left - previous.BoundingBox.Right;
                         if (gap > Math.Max(1.2, Math.Max(previous.FontSize, previous.BoundingBox.Height) * 0.18))
                         {
+                            rawLength += 1;
                             pieces.Add(" ");
                             boldFlags.Add(boldFlags.Count > 0 && boldFlags[^1]);
                             italicFlags.Add(italicFlags.Count > 0 && italicFlags[^1]);
@@ -72,8 +97,20 @@ internal static class PdfLineExtraction
                             fillColors.Add(fillColors.Count > 0 ? fillColors[^1] : "");
                         }
                         if (IsMatchWordGapForAudit(gap, previous.FontSize, previous.BoundingBox.Height))
+                        {
+                            verbatimLength += 1;
                             matchPieces.Add(" ");
+                        }
                     }
+
+                    spanMap.Add(new PdfVerbatimSpanMapEntry(
+                        verbatimLength, letter.Value.Length,
+                        rawLength, letter.Value.Length,
+                        glyphOrdinal++, page.Number,
+                        letter.BoundingBox.Left, letter.BoundingBox.Right,
+                        letter.BoundingBox.Bottom, letter.BoundingBox.Top));
+                    verbatimLength += letter.Value.Length;
+                    rawLength += letter.Value.Length;
                     pieces.Add(letter.Value);
                     matchPieces.Add(letter.Value);
                     var fontName = NormalizeFontName(letter.FontName ?? letter.FontDetails?.Name ?? "");
@@ -117,7 +154,11 @@ internal static class PdfLineExtraction
                     canonicalMatch,
                     matchText,
                     ordered.Min(l => l.BoundingBox.Bottom),
-                    ordered.Max(l => l.BoundingBox.Top)));
+                    ordered.Max(l => l.BoundingBox.Top))
+                {
+                    Projection = new PdfSourceTextProjection(
+                        raw, string.Concat(matchPieces), spanMap, PdfSourceTextProjection.CurrentVersion),
+                });
             }
         }
         return lines;

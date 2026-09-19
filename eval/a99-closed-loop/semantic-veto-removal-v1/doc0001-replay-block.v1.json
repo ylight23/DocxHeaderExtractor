@@ -1,0 +1,63 @@
+{
+  "artifactKind": "REPLAY_COMPATIBILITY_BLOCK",
+  "schemaVersion": "v1",
+  "documentId": "DOC-0001",
+  "verdict": "RESOLVED_BY_REAUTHOR",
+  "scored": true,
+  "mutationApplied": false,
+  "sourceShaMatches": true,
+  "sourcePath": "bench/01-style-chuan.docx",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "defects": [
+    {
+      "kind": "REFERENCE_ENCODING_DAMAGE",
+      "detail": "Gold exactText holds UTF-8 bytes decoded as cp1252. Example: gold stores 'ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung' where the source reads 'Chuong 1. Quy dinh chung' in correct Vietnamese.",
+      "repairable": "partially",
+      "repairedRowsMatchingAPrediction": 4,
+      "totalRows": 7,
+      "irrecoverable": 3,
+      "irrecoverableReason": "Three rows contain 0x81 and 0x90, which are undefined in cp1252, so the round trip is lossy and the original text cannot be reconstructed from the file."
+    },
+    {
+      "kind": "SOURCE_ID_SCHEME_MISMATCH",
+      "goldScheme": "paragraph[N]",
+      "routeScheme": "body[1]/p[N]",
+      "note": "Secondary. The semantic axis does not need source ids, so this alone would not block scoring."
+    }
+  ],
+  "blastRadiusStillMeasurable": {
+    "newlySurviving": 0,
+    "lost": 0,
+    "note": "The fix changed nothing on this document, which is measurable without gold."
+  },
+  "requiredBeforeScoring": "Approve eval/a99-closed-loop/reference-repair-v1/doc0001-gold-reauthor-proposal.v1.json. Still not applied - no gold mutation.",
+  "relatedOpenItem": "DOC-0252 has one row whose text changes under the same repair heuristic; it was not investigated and is not claimed to be damaged.",
+  "resolutionPath": {
+    "proposal": "eval/a99-closed-loop/reference-repair-v1/doc0001-gold-reauthor-proposal.v1.json",
+    "status": "APPROVED_AND_APPLIED",
+    "providerCalls": 0,
+    "approach": "Source-backed deterministic re-author, not a decoding repair. The document is style-conformant: seven paragraphs carry a built-in heading style with an explicit w:outlineLvl and the other seven are body prose, so the heading set is closed by construction.",
+    "corroboration": "All seven superseded gold rows land on one of those seven paragraphs, and every stored level agrees with w:outlineLvl + 1.",
+    "supersededGoldRetained": true,
+    "appliedAt": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+    "supersededCopy": "eval/a99-closed-loop/strict-gold-v4/superseded/DOC-0001.strict-gold-v4.mojibake.json",
+    "strongerProvenanceFound": "bench/01-style-chuan.key is generated with the document and carries ordinal, level and text for all seven headings. The previous gold already cited it, with a matching sha. So the reference was never damaged - only the reading of it was, and the re-author is a re-read rather than an inference from style. This also avoids leaning on 'Heading1/2/3 implies semantic heading', which would contradict the standing invariant that a heading style is not semantic truth."
+  },
+  "score": {
+    "axis": "semantic",
+    "gold": 7,
+    "predicted": 6,
+    "tp": 6,
+    "fp": 0,
+    "fn": 1,
+    "precision": 1.0,
+    "recall": 0.8571,
+    "f1": 0.9231,
+    "missing": "body[1]/p[11] Chuong 2. To chuc thuc hien",
+    "vetoFixBlastRadius": {
+      "newlySurviving": 0,
+      "lost": 0
+    },
+    "status": "OFFICIAL"
+  }
+}

@@ -92,8 +92,11 @@ public static class SourceFactsBuilder
         return new SourceFacts
         {
             SourceId = block.Id,
-            RawText = block.Text,
-            RawSpan = new SourceTextSpan(0, block.Text.Length),
+            // The canonical projection, not the raw concatenation. A PDF has no text, only ordered
+            // glyphs; the raw string is one reconstruction and a poor one, so it stays available on
+            // the block for audit while the declared projection is what anything downstream binds.
+            RawText = block.VerbatimText,
+            RawSpan = new SourceTextSpan(0, block.VerbatimText.Length),
             Source = new SourceAnchor
             {
                 SourceType = "pdf",

@@ -1,3 +1,18 @@
+# Freeze artifacts are written by tests and read back by tests, so what checkout puts in the
+# working tree must be exactly what a regeneration writes. Left to core.autocrlf, checkout produced
+# CRLF on Windows while the writer produced LF; Git then reported the file modified to avoid
+# overwriting local work, and `git checkout` and `git bisect` aborted on a clean green run. The
+# content was never in question - `git diff` was empty - so pinning the checkout is the fix, not
+# changing what the artifacts say.
+# Kept to the directories a test regenerates. A wider rule reaches artifacts whose recorded hash
+# was taken over a checkout rather than over the committed bytes, and changing what checkout
+# produces would silently redefine whether those still verify - a separate question, not this one.
+/eval/a99-closed-loop/pdf-canary-072/** text eol=lf
+/eval/a99-closed-loop/docx-i8-doc0256/** text eol=lf
+/eval/a99-closed-loop/semantic-conflict-frozen-replay/** text eol=lf
+/eval/verification/** text eol=lf
+/eval/a99-closed-loop/pdf-gold-doc0252/** text eol=lf
+
 # These benchmark artifacts are bound by raw SHA-256 in N12/N14. Keep their Git blobs byte-identical
 # in every checkout; their .json extension does not grant Git permission to rewrite line endings.
 /eval/benchmark-n0/silver-labels/*.json -text

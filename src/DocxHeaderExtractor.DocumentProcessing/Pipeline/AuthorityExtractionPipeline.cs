@@ -100,11 +100,13 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         CancellationToken ct = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(inputPath);
-        var extension = Path.GetExtension(inputPath);
-        if (!string.Equals(extension, ".docx", StringComparison.OrdinalIgnoreCase) &&
-            !string.Equals(extension, ".docm", StringComparison.OrdinalIgnoreCase))
+        // The uploaded file decides everything that follows, and it is identified by its bytes.
+        // Naming a PDF ".docx" must fail here rather than inside an OOXML reader.
+        var uploadedType = UploadedSourceDetector.Detect(inputPath);
+        if (uploadedType != SourceType.Docx)
             throw new NotSupportedException(
-                "AuthorityExtractionPipeline nhận đầu vào OOXML đã chuẩn hoá (.docx/.docm); " +
+                $"AuthorityExtractionPipeline nhận đầu vào OOXML đã chuẩn hoá (.docx/.docm); " +
+                $"tệp được tải lên được nhận dạng là {uploadedType}. " +
                 "compatibility adapter phải chuyển đổi định dạng đời cũ trước khi gọi pipeline.");
 
         var started = Environment.TickCount64;
@@ -116,7 +118,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             var mode = DocumentModeClassifier.Measure(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray());
             var diagnostics = DocumentDiagnosticRunner.Analyze(policyState, mode);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
-            var pdf = PdfTextbookOutline.FindSiblingPdf(inputPath);
             StructuralAuthorityResult authority;
             RouteExecutionAudit? audit;
             string route;
@@ -124,51 +125,29 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             DocumentSourceCatalog? routeSourceCatalog = null;
             PdfFinalStructure? routeFinalStructure = null;
             IReadOnlyList<PdfOutputDecision>? routeOutputDecisions = null;
-            var authorityRoute = _routePolicy.Decide(new SourceCapabilities(
-                HasDocx: true,
-                HasPdf: !string.IsNullOrWhiteSpace(pdf),
-                AnalystAvailable: analyst is not null));
+            // Decided from the upload alone. This used to consult
+            // PdfTextbookOutline.FindSiblingPdf, which looks for a same-named PDF beside the input,
+            // rewrites an eval corpus path, and finally walks up from the process working directory
+            // searching an evaluation dataset. A file nobody uploaded could therefore take
+            // authority away from the file that was uploaded - and which file won depended on the
+            // working directory. A second rendering of a document is evidence, never authority.
+            var authorityRoute = _routePolicy.Decide(
+                new UploadedSource(uploadedType, AnalystAvailable: analyst is not null));
             switch (authorityRoute)
             {
+                // Unreachable from this entry point: it only accepts a DOCX upload, and a DOCX
+                // upload is now always DOCX authority. Kept so an injected policy that returns it
+                // fails loudly instead of silently producing a DOCX result labelled as PDF.
                 case AuthorityRoute.PdfAuthority:
-                {
-                    await using var productionCheckpoint = ProductionCheckpointScope.Create();
-                    await using var checkpoint = new PdfStageCheckpoint(
-                        productionCheckpoint.CheckpointPath, resume: false, Path.GetFileName(pdf));
-                    PdfTextbookOutlineResult result;
-                    try
-                    {
-                        result = await PdfLayoutEvidenceOutline.TryBuildBroadAuditWithAnalystCoreAsync(
-                            inputPath, policyState, analyst!,
-                            maximumAnalystBlocks: _options.PdfFirstAnalystBlocks,
-                            includeAllVisualStyles: true,
-                            includeSupplementCandidates: true,
-                            maximumVisualRegions: _options.PdfFirstVisualRegions,
-                            visualAnalyst: null,
-                            ct: ct,
-                            resume: false,
-                            checkpointInstance: checkpoint);
-                    }
-                    finally
-                    {
-                        await checkpoint.StopAcceptingWritesAndDrainAsync();
-                    }
-                    authority = result.Authority;
-                    routeFinalStructure = result.FinalStructure;
-                    routeOutputDecisions = result.OutputDecisions;
-                    routeSourceCatalog = result.SourceCatalog;
-                    authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
-                    route = "pdf-authority-v1";
-                    reason = result.Reason;
-                    audit = authority.Audit;
-                    break;
-                }
+                    throw new NotSupportedException(
+                        "PdfAuthority cannot be selected for a DOCX upload. A PDF upload needs its " +
+                        "own entry point; a PDF found next to a DOCX is evidence, not authority.");
                 case AuthorityRoute.DocxAuthority:
                 {
-                    authority = await DocxAuthorityPipeline.RunAsync(policyState, mode, analyst, ct);
+                    authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(policyState, mode, analyst, ct);
                     authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
                     audit = authority.Audit;
-                    route = "docx-authority-v1";
+                    route = "docx-canonical-vnext";
                     reason = authority.Reason;
                     break;
                 }
@@ -272,12 +251,11 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return _analyst;
     }
 
-    private static PdfFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
+    internal static PdfFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
         ValidatedStructure structure)
     {
-        return PdfFinalStructureProjection.Project(
-            FileSha256(docxPath), audit.ValidatedStructures, audit.HierarchyFacts,
-            PdfCanonicalGrounding.FromValidatedStructure(structure));
+        return CanonicalProjectionBoundary.ProjectPdfFinalStructure(
+            FileSha256(docxPath), audit, structure);
     }
 
     private static IReadOnlyList<RouteSourceRepresentation> BuildSourceRepresentations(
@@ -363,7 +341,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return decisions.Where(decision => survivingCompatibilityIds.Contains(decision.HeadingId)).ToArray();
     }
 
-    private static OutlineRunProvenance BuildProvenance(RouteExecutionAudit? audit,
+    internal static OutlineRunProvenance BuildProvenance(RouteExecutionAudit? audit,
         bool sentDataExternally)
     {
         if (audit is null)

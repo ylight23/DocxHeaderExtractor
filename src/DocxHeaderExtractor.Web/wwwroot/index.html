@@ -309,9 +309,9 @@
     </h2>
     <div id="drop">
       <strong id="dropName">Kéo thả file vào đây, hoặc bấm để chọn</strong>
-      <span>.docx · .docm · .doc · .rtf · .odt</span>
+      <span>.docx · .docm · .doc · .rtf · .odt · .pdf</span>
     </div>
-    <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt">
+    <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt,.pdf">
 
     <div class="prompt-box">
       <label class="f" for="userPrompt">User prompt</label>
@@ -1258,7 +1258,7 @@ $('inspectMode').onclick = async () => {
     const res = await fetch('/api/inspect', { method: 'POST', body: fd });
     const payload = await res.json();
     if (!res.ok) throw new Error(payload.message || payload.detail || 'Không kiểm tra được mode.');
-    renderMode(payload.report, payload.suggestedRoute);
+    renderMode(payload);
   } catch (e) {
     $('modeBox').innerHTML = `<div class="err">${esc(e.message)}</div>`;
   } finally {
@@ -1567,8 +1567,29 @@ function render(o, s, review, agent) {
   }
 }
 
-function renderMode(report, route) {
-  if (!report) return;
+function renderMode(payload) {
+  const report = payload && payload.report;
+  const route = payload && payload.suggestedRoute;
+  // Mot PDF khong co mode OOXML de phan loai, nen server khong gui report. Noi ra dieu do, kem
+  // dung nhung gi parser PDF biet - im lang se khien nut trong nhu hong.
+  if (!report) {
+    if (payload && payload.sourceType === 'pdf') {
+      $('modeBox').innerHTML = `
+        <div class="modebox">
+          <div class="modehead">
+            <strong>PDF</strong>
+            <span class="tag Style">nguồn đọc được</span>
+            <span class="tag dis">chỉ báo cáo</span>
+          </div>
+          <p class="note" style="margin-top:6px">${esc(payload.note || '')}</p>
+          <div class="modegrid">
+            <div><span>Trang</span><b>${payload.pages ?? 0}</b></div>
+            <div><span>Đơn vị nguồn</span><b>${payload.sourceOccurrences ?? 0}</b></div>
+          </div>
+        </div>`;
+    }
+    return;
+  }
   const mode = report.mode || report.Mode || 'Unknown';
   const status = report.status || report.Status || 'Normal';
   $('modeBox').innerHTML = `

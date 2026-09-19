@@ -60,11 +60,25 @@ public sealed class Doc0205SemanticContractAuditTests
             "eval/a99-closed-loop/qwen37-flash-visual-ceiling/DOC-0205/visual-v2/freeze.v2.json");
     }
 
+    /// <summary>
+    /// Verifies a freeze against the artifacts it authorizes, by canonical text rather than by raw
+    /// bytes. The recorded values used to be taken over the working tree, which on Windows is the
+    /// CRLF rendering of an LF blob, so this audit passed on one checkout configuration and failed
+    /// on every other. The freeze declares which rule its hashes follow, and a freeze that does not
+    /// declare it is refused rather than hashed under an assumption.
+    /// </summary>
     private static void AssertFrozenPair(string prediction, string result, string freeze)
     {
         using var authority = LoadAbsolute(freeze);
-        Assert.Equal(authority.RootElement.GetProperty("predictionSha256").GetString(), Sha256(AbsolutePath(prediction)));
-        Assert.Equal(authority.RootElement.GetProperty("resultSha256").GetString(), Sha256(AbsolutePath(result)));
+        Assert.Equal(
+            CanonicalArtifactHash.Contract,
+            authority.RootElement.GetProperty(CanonicalArtifactHash.ContractField).GetString());
+        Assert.Equal(
+            authority.RootElement.GetProperty("predictionSha256").GetString(),
+            CanonicalArtifactHash.OfTextFile(AbsolutePath(prediction)));
+        Assert.Equal(
+            authority.RootElement.GetProperty("resultSha256").GetString(),
+            CanonicalArtifactHash.OfTextFile(AbsolutePath(result)));
         Assert.False(authority.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
     }
 
@@ -77,10 +91,4 @@ public sealed class Doc0205SemanticContractAuditTests
     private static string AbsolutePath(string relativePath) => Path.Combine(Root(), relativePath.Replace('/', Path.DirectorySeparatorChar));
 
     private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-
-    private static string Sha256(string path)
-    {
-        using var stream = File.OpenRead(path);
-        return Convert.ToHexString(SHA256.HashData(stream)).ToLowerInvariant();
-    }
 }
