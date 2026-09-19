@@ -5,8 +5,8 @@ using DocumentFormat.OpenXml.Wordprocessing;
 namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>
-/// Sinh .docx mẫu để thử nhanh và để kiểm thử: có heading theo style chuẩn,
-/// heading "giả" chỉ định dạng thủ công (đậm/hoa/canh giữa), bảng, và đoạn thân bài.
+/// Sinh .docx mẫu để kiểm thử: có heading theo style chuẩn, heading giả định dạng thủ công,
+/// bảng và đoạn thân bài.
 /// </summary>
 public static class SampleDocumentFactory
 {
@@ -30,7 +30,6 @@ public static class SampleDocumentFactory
         Heading(body, "Heading2", "1.2. Thuật ngữ");
         Normal(body, "OOXML là định dạng mở của Microsoft Office. GGUF là định dạng lưu trữ mô hình đã lượng tử hoá.");
 
-        // Heading "giả": không dùng style Heading, chỉ in đậm + canh giữa + chữ hoa.
         Fake(body, "PHỤ LỤC A – BẢNG ĐỐI CHIẾU", bold: true, caps: true, center: true, sizePt: 14);
         Normal(body, "Bảng dưới đây đối chiếu tên style trong Word với cấp tiêu đề tương ứng trong kết quả đầu ra.");
 
@@ -52,7 +51,7 @@ public static class SampleDocumentFactory
         var styles = new Styles(
             new DocDefaults(
                 new RunPropertiesDefault(
-                    new RunPropertiesBaseStyle(new FontSize { Val = "22" }))));   // 11pt
+                    new RunPropertiesBaseStyle(new FontSize { Val = "22" }))));
 
         for (int lvl = 1; lvl <= 3; lvl++)
         {
