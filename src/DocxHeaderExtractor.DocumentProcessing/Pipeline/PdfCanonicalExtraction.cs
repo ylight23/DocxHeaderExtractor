@@ -46,6 +46,9 @@ public static class PdfCanonicalExtraction
 
         var started = Environment.TickCount64;
         var used = options.DisableLlm ? null : analyst;
+        if (used is not null && analystSendsDataExternally && options.ExperimentGate is null)
+            throw new InvalidOperationException("PDF_EXPERIMENT_GATE_REQUIRED");
+
         PdfExperimentGatedHeaderClassifier? gated = null;
         if (used is not null && options.ExperimentGate is not null)
             gated = new PdfExperimentGatedHeaderClassifier(used, options.ExperimentGate, disposeInner: false);

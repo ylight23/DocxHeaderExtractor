@@ -1,0 +1,57 @@
+name: deterministic-contract
+
+on:
+  push:
+    branches:
+      - main
+      - refactor/a99-semantic-control-plane-vnext
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+  DOTNET_NOLOGO: 'true'
+  A99_FREEZE_UPDATE: '0'
+  OPENROUTER_API_KEY: ''
+  SGLANG_API_KEY: ''
+  LMSTUDIO_API_KEY: ''
+
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build Release
+        run: dotnet build -c Release --no-restore
+
+      - name: Focused authority and experiment contracts
+        run: >-
+          dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj
+          -c Release --no-build
+          --filter
+          "FullyQualifiedName~PdfExperimentManifestTests|FullyQualifiedName~PdfGoldAuthorityTests|FullyQualifiedName~PdfGoldEvaluatorTests|FullyQualifiedName~PdfGoldOccurrenceAuthorityTests|FullyQualifiedName~PdfGoldReviewDecisionAuthorityTests|FullyQualifiedName~PdfGoldReviewPackTests|FullyQualifiedName~P4ReachabilityCleanupTests"
+
+      - name: Full deterministic Release suite
+        run: dotnet test -c Release --no-build
+
+      - name: Generated-artifact cleanliness
+        shell: bash
+        run: |
+          git diff --check
+          if [ -n "$(git status --porcelain)" ]; then
+            echo 'Working tree changed during deterministic CI; frozen artifacts must not be regenerated.'
+            git status --short
+            exit 1
+          fi

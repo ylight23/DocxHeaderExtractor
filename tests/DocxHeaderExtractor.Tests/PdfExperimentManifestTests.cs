@@ -30,6 +30,34 @@ public sealed class PdfExperimentManifestTests
     }
 
     [Fact]
+    public void The_committed_DOC0252_manifest_keeps_the_frozen_execution_identity()
+    {
+        var manifest = BuildManifest();
+
+        Assert.Equal("fb62c1c696b4c30f0b71aed2e39f296ece3934c5870982fdc0e19bc62d64189c", manifest.ManifestHash);
+        Assert.Equal("5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+            manifest.SourceUniverseSha256);
+        Assert.Equal(41, manifest.OccurrenceGold.HeadingClaimCount);
+        Assert.True(manifest.OccurrenceGold.OccurrenceEvaluable);
+        Assert.Equal("8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+            manifest.Prompt.PromptSha256);
+        Assert.Equal("1fef20eb21eda3c98130663eddee8012a58b96f7af07b8927974a98d2a35485d",
+            manifest.SourcePacket.PacketSha256);
+        Assert.Equal(10, manifest.Budget.MaximumProviderCalls);
+        Assert.Equal("a99-pdf-gold-evaluator-v2-semantic-role",
+            manifest.Evaluator.OccurrenceEvaluatorContractVersion);
+    }
+
+    [Fact]
+    public void CI_contract_keeps_freeze_update_mode_disabled()
+    {
+        if (!string.Equals(Environment.GetEnvironmentVariable("CI"), "true", StringComparison.OrdinalIgnoreCase))
+            return;
+
+        Assert.False(FreezeArtifact.UpdateRequested);
+    }
+
+    [Fact]
     public void Every_identity_bearing_change_creates_a_new_manifest_hash()
     {
         var manifest = BuildManifest();
@@ -95,6 +123,22 @@ public sealed class PdfExperimentManifestTests
     }
 
     [Fact]
+    public async Task External_pdf_provider_is_blocked_before_transport_without_an_experiment_gate()
+    {
+        using var fake = new RequestCapturingClassifier();
+        var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            PdfCanonicalExtraction.RunExecutionAsync(
+                UploadedFile.FromLocalPath(Path(Pdf)),
+                new PipelineOptions(),
+                fake,
+                analystSendsDataExternally: true,
+                ct: CancellationToken.None));
+
+        Assert.Equal("PDF_EXPERIMENT_GATE_REQUIRED", error.Message);
+        Assert.Empty(fake.Requests);
+    }
+
+    [Fact]
     public void Approval_for_another_manifest_cannot_authorize_this_manifest()
     {
         var manifest = BuildManifest();
@@ -139,6 +183,27 @@ public sealed class PdfExperimentManifestTests
         Assert.Contains("BUDGET_EXCEEDED", error.Message, StringComparison.Ordinal);
         Assert.Equal(2, gate.ProviderCalls);
         Assert.Equal(2, fake.Requests.Count);
+    }
+
+    [Fact]
+    public async Task Every_classifier_method_uses_the_same_budget_and_exhaustion_precedes_transport()
+    {
+        var manifest = BuildManifest() with { Budget = new PdfExperimentBudgetIdentity(4) };
+        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
+        using var fake = new BudgetProbeClassifier();
+        using var guarded = new PdfExperimentGatedHeaderClassifier(fake, gate, disposeInner: false);
+
+        await guarded.BoundaryCutAsync("system", "initial");
+        await IgnoreTransportFailure(() => guarded.ClassifyAsync("chunk", []));
+        await IgnoreTransportFailure(() => guarded.CritiqueAsync("chunk", []));
+        await IgnoreTransportFailure(() => guarded.ClassifyHierarchyAsync([], []));
+
+        var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            guarded.BoundaryCutAsync("system", "after-budget"));
+
+        Assert.Contains("BUDGET_EXCEEDED", error.Message, StringComparison.Ordinal);
+        Assert.Equal(4, gate.ProviderCalls);
+        Assert.Equal(4, fake.TransportCalls);
     }
 
     [Fact]
@@ -251,5 +316,43 @@ public sealed class PdfExperimentManifestTests
         while (dir is not null && !File.Exists(System.IO.Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
             dir = dir.Parent;
         return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
+    }
+
+    private static async Task IgnoreTransportFailure<T>(Func<Task<T>> operation)
+    {
+        await Assert.ThrowsAsync<InvalidOperationException>(operation);
+    }
+
+    private sealed class BudgetProbeClassifier : IHeaderClassifier
+    {
+        public int TransportCalls { get; private set; }
+        public string ModelName => "budget-probe";
+        public int ContextSize => 1 << 20;
+        public string RuntimeDescription => "budget probe; no provider";
+        public int SharedPrefixTokens => 0;
+
+        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes,
+            CancellationToken ct = default) => Transport<ChunkResult>();
+
+        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes,
+            CancellationToken ct = default) => Transport<ChunkResult>();
+
+        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context,
+            IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => Transport<ChunkResult>();
+
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage,
+            CancellationToken ct = default, int expectedItemCount = 0)
+        {
+            TransportCalls++;
+            return Task.FromResult("{}");
+        }
+
+        private Task<T> Transport<T>()
+        {
+            TransportCalls++;
+            return Task.FromException<T>(new InvalidOperationException("fake transport"));
+        }
+
+        public void Dispose() { }
     }
 }
