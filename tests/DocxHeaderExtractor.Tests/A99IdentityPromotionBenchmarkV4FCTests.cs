@@ -35,7 +35,16 @@ public sealed class A99IdentityPromotionBenchmarkV4FCTests
         using var manifest = Load(ArtifactRoot + "/request-manifest.json");
         var m = manifest.RootElement;
         Assert.Equal(7_702, m.GetProperty("requestCount").GetInt32());
-        Assert.Equal(Sha256("artifacts/identity-benchmark/v4/context-projection/packet-manifest.json"), m.GetProperty("packetManifestSha256").GetString());
+        // The frozen packet manifest is identified by its content, not by the line endings this
+        // checkout happened to give it - see CanonicalArtifactHash.
+        Assert.Equal(
+            CanonicalArtifactHash.Contract,
+            m.GetProperty(CanonicalArtifactHash.ContractField).GetString());
+        Assert.Equal(
+            m.GetProperty("packetManifestSha256").GetString(),
+            CanonicalArtifactHash.OfTextFile(Path.Combine(
+                Root(), "artifacts/identity-benchmark/v4/context-projection/packet-manifest.json"
+                    .Replace('/', Path.DirectorySeparatorChar))));
         Assert.True(m.GetProperty("packetManifestConsumedAsFrozen").GetBoolean());
         Assert.False(m.GetProperty("packetBodiesPersisted").GetBoolean());
         Assert.False(m.GetProperty("exactBytesPersisted").GetBoolean());
