@@ -29,9 +29,12 @@ public static class PdfCanonicalExtraction
         var authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
             file.LocalPath, options.DisableLlm ? null : analyst, ct);
 
-        var catalog = authority.Audit is null
-            ? new DocumentSourceCatalog([])
-            : PdfSourceCatalogOf(authority);
+        // The catalog the lane parsed, not a second one derived from the audit. The audit's block
+        // text is a readable rendering meant for a person to read; the model was shown, and the
+        // binder bound against, the declared projection. Reconstructing from the audit meant a
+        // consumer could be handed different text for exactly the occurrences where those two
+        // disagree - which is the divergence this lane exists to rule out.
+        var catalog = authority.SourceCatalog ?? new DocumentSourceCatalog([]);
         var sections = StructuralSectionProjection.Project(authority.Structure, catalog);
         var chunks = SectionChunkProjection.Project(
             sections, catalog, authority.Structure,
@@ -55,21 +58,4 @@ public static class PdfCanonicalExtraction
                 ExecutionContract = ExecutionContracts.ExplicitUploadedPdfCanonical,
             });
     }
-
-    /// <summary>
-    /// Rebuilds the catalog from the blocks the audit recorded, so the units a consumer sees are
-    /// the units the model was shown - not a second parse that could disagree with the first.
-    /// </summary>
-    private static DocumentSourceCatalog PdfSourceCatalogOf(Authority.StructuralAuthorityResult authority) =>
-        new(authority.Audit!.CandidateBlocks.Select((block, index) => new DocumentSourceUnit(
-            block.Id,
-            index,
-            block.Text ?? string.Empty,
-            new SourceAnchor
-            {
-                SourceType = "pdf",
-                ParagraphId = block.Id,
-                ParagraphIndex = index,
-            },
-            new StructuralSpan(0, (block.Text ?? string.Empty).Length))));
 }

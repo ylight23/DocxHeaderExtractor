@@ -190,6 +190,10 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         return new StructuralAuthorityResult(structure, audit, "pdf-canonical-vnext")
         {
             EmittedElementIds = structure.Elements.Select(element => element.Id).ToHashSet(StringComparer.Ordinal),
+            // The catalog the model was shown and the binder bound against, handed out rather than
+            // left to be reconstructed. The audit beside it records readable text for a person;
+            // these are the occurrences themselves.
+            SourceCatalog = catalog,
         };
     }
 
