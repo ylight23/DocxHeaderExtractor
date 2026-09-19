@@ -183,6 +183,21 @@ public sealed record PdfPipelineBatchTelemetry(
     [property: JsonPropertyName("totalResponses")] int TotalResponses,
     [property: JsonPropertyName("elapsedMs")] long ElapsedMs);
 
+/// <summary>
+/// One model-proposed parent link and what deterministic validation did with it.
+/// <para>
+/// Part of <see cref="RouteExecutionAudit.HierarchyProposals"/>, so it belongs with the audit
+/// contract. It used to live inside <c>PdfSemanticHierarchyFallback</c> - the model stage that
+/// produced it - which meant deleting that dead stage would have taken a live production type with
+/// it.
+/// </para>
+/// </summary>
+public sealed record PdfHierarchyProposalAudit(
+    string Id,
+    string? ProposedParentId,
+    string? ResolvedParentId,
+    string Resolution);
+
 public sealed record RouteBlockAudit(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("page")] int Page,
