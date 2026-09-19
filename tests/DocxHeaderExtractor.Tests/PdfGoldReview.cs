@@ -13,8 +13,11 @@ namespace DocxHeaderExtractor.Tests;
 /// express exactly the partial-span cases I8 exists to address.
 /// </para>
 /// <para>
-/// Every field here maps one-to-one onto <see cref="PdfGoldHeading"/>, so a reviewed pack converts
-/// without interpretation.
+/// Every <em>semantic</em> field here maps one-to-one onto <see cref="PdfGoldHeading"/>, so a
+/// reviewed pack converts without interpretation. <see cref="ReviewNote"/> is the exception and is
+/// not one of them: it records why a reviewer decided as they did, which belongs to the review
+/// lineage rather than to what the document is held to contain. Carrying it into semantic Gold
+/// would grow the thing every evaluation compares against in order to keep a note.
 /// </para>
 /// </summary>
 public sealed record PdfReviewHeadingClaim
@@ -35,6 +38,7 @@ public sealed record PdfReviewHeadingClaim
     /// <summary>Only where the relation was adjudicated. Null means not adjudicated, not "root".</summary>
     [JsonPropertyName("parentSourceAlias")] public string? ParentSourceAlias { get; init; }
 
+    /// <summary>Review metadata, kept with the review. Never part of the semantic Gold heading.</summary>
     [JsonPropertyName("reviewNote")] public string? ReviewNote { get; init; }
 }
 
@@ -128,16 +132,32 @@ public static class PdfGoldReview
     }
 
     /// <summary>
-    /// Every claim on every HEADING occurrence, in review order, mapped field for field. One
-    /// occurrence may produce several Gold headings; that is the point of the shape.
+    /// Converts a reviewed pack, or reports why it cannot be converted. Checking is part of the
+    /// conversion rather than a step a caller has to remember: a caller that forgot would have
+    /// produced Gold carrying empty-string defaults for selection mode and role, and nothing
+    /// downstream looked for those - a malformed Gold would have travelled a long way before
+    /// anything noticed.
     /// </summary>
-    public static IReadOnlyList<PdfGoldHeading> ToGoldHeadings(IReadOnlyList<PdfReviewOccurrence> reviewed)
+    public static bool TryToGoldHeadings(
+        IReadOnlyList<PdfReviewOccurrence> reviewed,
+        out IReadOnlyList<PdfGoldHeading> headings,
+        out IReadOnlyList<PdfGoldIssue> issues)
     {
         ArgumentNullException.ThrowIfNull(reviewed);
-        return reviewed
+        issues = Check(reviewed);
+        if (issues.Count > 0)
+        {
+            headings = [];
+            return false;
+        }
+
+        // Every value below is non-null because Check passed; the shape is what makes that true,
+        // not an assumption. Each claim carries the semantic fields of exactly one Gold heading -
+        // ReviewNote is deliberately not among them, see the remark on the conversion contract.
+        headings = reviewed
             .Where(row => row.HumanDecision == Heading)
             .SelectMany(row => row.HeadingClaims.Select(claim =>
-                new PdfGoldHeading(row.SourceAlias, claim.SelectionMode ?? string.Empty, claim.SemanticRole ?? string.Empty)
+                new PdfGoldHeading(row.SourceAlias, claim.SelectionMode!, claim.SemanticRole!)
                 {
                     VerbatimText = claim.VerbatimText,
                     Occurrence = claim.Occurrence,
@@ -146,5 +166,19 @@ public static class PdfGoldReview
                     ParentSourceAlias = claim.ParentSourceAlias,
                 }))
             .ToArray();
+        return true;
+    }
+
+    /// <summary>
+    /// The same conversion for a pack already known to be complete. Refuses rather than degrades:
+    /// a half-answered review is not Gold with gaps, it is a review that is not finished.
+    /// </summary>
+    public static IReadOnlyList<PdfGoldHeading> ToGoldHeadings(IReadOnlyList<PdfReviewOccurrence> reviewed)
+    {
+        if (TryToGoldHeadings(reviewed, out var headings, out var issues)) return headings;
+
+        throw new InvalidOperationException(
+            "This review cannot be converted to Gold yet:" + Environment.NewLine +
+            string.Join(Environment.NewLine, issues.Select(issue => $"  {issue.Code} {issue.SourceAlias}: {issue.Detail}")));
     }
 }

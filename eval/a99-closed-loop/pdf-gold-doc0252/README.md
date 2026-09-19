@@ -65,9 +65,15 @@ the filter instead of the source universe.
   adjudicated*; it does not mean "root".
 - `reviewNote` — why, when the answer was not obvious.
 
-Each claim becomes exactly one `PdfGoldHeading`, field for field. The conversion is mechanical:
+Each claim becomes exactly one `PdfGoldHeading`. The conversion is mechanical and checks itself:
 anything a row does not say is reported back rather than defaulted, because a default there is code
-deciding what a person meant.
+deciding what a person meant. `PdfGoldReview.TryToGoldHeadings` returns nothing at all when the
+review is unfinished, so correctness does not depend on remembering to validate first.
+
+`reviewNote` is the one field that does **not** cross over. It is review metadata — why a reviewer
+decided as they did — and it stays with the review lineage. Semantic Gold is what the document is
+held to contain; growing it to carry a rationale would grow the thing every evaluation compares
+against.
 
 ### Why claims are a list
 
@@ -130,9 +136,10 @@ Gold written against the wrong one fails to bind for reasons that have nothing t
 
 ## After the review
 
-1. Validate every row against the current catalog (`PdfGoldValidator`): aliases inside the source
-   universe, text exact, repeated text disambiguated. A row that does not bind is a Gold defect,
-   never a model miss.
+1. Convert with `PdfGoldReview.TryToGoldHeadings`, which refuses an unfinished review, then
+   validate every row against the current catalog (`PdfGoldValidator`): aliases inside the source
+   universe, role and selection mode present, text exact, repeated text disambiguated. A row that
+   does not bind is a Gold defect, never a model miss.
 2. Reconcile the `HEADING` count with the approved total. If they differ, that is a conflict between
    two lineages — the total approved by USER on 2026-09-12, and this occurrence review — and it is
    reported for adjudication. Neither is rewritten.

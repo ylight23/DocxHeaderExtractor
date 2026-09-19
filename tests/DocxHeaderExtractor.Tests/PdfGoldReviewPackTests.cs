@@ -333,6 +333,102 @@ public sealed class PdfGoldReviewPackTests
         Assert.Equal("S0099", heading.ParentSourceAlias);
     }
 
+    [Fact]
+    public void Conversion_refuses_a_review_that_is_not_finished()
+    {
+        // Correctness must not depend on a caller remembering to check first. Before this, skipping
+        // Check produced Gold with empty-string selection mode and role, and nothing downstream
+        // looked for those - a malformed Gold would have travelled a long way before anything said
+        // so.
+        var unfinished = new PdfReviewOccurrence("S0001", 1, 0, "Opening")
+        {
+            HumanDecision = PdfGoldReview.Heading,
+            HeadingClaims = [new PdfReviewHeadingClaim()],
+        };
+
+        Assert.False(PdfGoldReview.TryToGoldHeadings([unfinished], out var headings, out var issues));
+        Assert.Empty(headings);
+        Assert.Contains(issues, issue => issue.Code == PdfGoldReview.ClaimSelectionMissing);
+
+        var error = Assert.Throws<InvalidOperationException>(() => PdfGoldReview.ToGoldHeadings([unfinished]));
+        Assert.Contains(PdfGoldReview.ClaimRoleMissing, error.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void No_conversion_ever_produces_an_empty_selection_mode_or_role()
+    {
+        // The property, not the path: whatever comes out is a heading someone actually asserted.
+        var reviews = new[]
+        {
+            new PdfReviewOccurrence("S0001", 1, 0, "A") { HumanDecision = PdfGoldReview.NotHeading },
+            new PdfReviewOccurrence("S0002", 1, 1, "B")
+            {
+                HumanDecision = PdfGoldReview.Heading,
+                HeadingClaims =
+                [
+                    new PdfReviewHeadingClaim
+                    {
+                        SelectionMode = CanonicalSemanticSelectionMode.WholeAlias,
+                        SemanticRole = "SECTION",
+                        ReviewNote = "kept with the review, not with the Gold",
+                    },
+                ],
+            },
+        };
+
+        Assert.True(PdfGoldReview.TryToGoldHeadings(reviews, out var headings, out var issues));
+        Assert.Empty(issues);
+        Assert.All(headings, heading =>
+        {
+            Assert.False(string.IsNullOrWhiteSpace(heading.SelectionMode));
+            Assert.False(string.IsNullOrWhiteSpace(heading.SemanticRole));
+        });
+    }
+
+    [Fact]
+    public void A_review_note_stays_with_the_review_and_never_enters_the_gold_heading()
+    {
+        // Deliberate, and stated so the "maps field for field" claim is true of the semantic fields
+        // and honest about the one that is not. A rationale explains a decision; it is not part of
+        // what the document is held to contain, and growing Gold to carry it would grow the thing
+        // every evaluation compares against.
+        var reviewed = new PdfReviewOccurrence("S0001", 1, 0, "Opening")
+        {
+            HumanDecision = PdfGoldReview.Heading,
+            HeadingClaims =
+            [
+                new PdfReviewHeadingClaim
+                {
+                    SelectionMode = CanonicalSemanticSelectionMode.WholeAlias,
+                    SemanticRole = "SECTION",
+                    ReviewNote = "bold, opens the session, matches the agenda",
+                },
+            ],
+        };
+
+        var heading = Assert.Single(PdfGoldReview.ToGoldHeadings([reviewed]));
+
+        Assert.DoesNotContain(typeof(PdfGoldHeading).GetProperties(),
+            property => property.Name.Contains("Note", StringComparison.OrdinalIgnoreCase));
+        // The semantic fields a claim does carry are all present on the heading.
+        Assert.Equal("SECTION", heading.SemanticRole);
+        Assert.Equal(CanonicalSemanticSelectionMode.WholeAlias, heading.SelectionMode);
+    }
+
+    [Fact]
+    public void Gold_written_by_hand_without_a_role_is_refused_by_the_validator_too()
+    {
+        // The conversion is one way in; it is not the only one. A Gold assembled by another tool
+        // has to meet the same bar.
+        var catalog = SyntheticCatalog(("p1", "Opening"));
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
+        var byHand = new PdfGoldDocument("DOC-TEST", "0000",
+            [new PdfGoldHeading("S0001", CanonicalSemanticSelectionMode.WholeAlias, string.Empty)]);
+
+        var issue = Assert.Single(PdfGoldValidator.Validate(byHand, catalog, aliases));
+        Assert.Equal(PdfGoldValidator.SemanticRoleMissing, issue.Code);
+    }
+
     [Theory]
     [InlineData(null, 1, PdfGoldReview.DecisionMissing)]
     [InlineData("NOT_HEADING", 1, PdfGoldReview.NotHeadingCarriesClaims)]
@@ -520,6 +616,12 @@ public sealed class PdfGoldReviewPackTests
                 break;
         }
     }
+
+    private static DocumentSourceCatalog SyntheticCatalog(params (string Id, string Text)[] units) =>
+        new(units.Select((unit, index) => new DocumentSourceUnit(
+            unit.Id, index, unit.Text,
+            new SourceAnchor { SourceType = "pdf", ParagraphId = unit.Id, ParagraphIndex = index },
+            new StructuralSpan(0, unit.Text.Length))));
 
     private sealed record Row(string Alias, string SourceId, int Page, int Ordinal, string Text);
 

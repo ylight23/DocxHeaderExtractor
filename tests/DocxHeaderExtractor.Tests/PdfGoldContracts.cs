@@ -109,6 +109,9 @@ public static class PdfGoldValidator
     public const string ParentOutsideUniverse = "PARENT_ALIAS_OUTSIDE_SOURCE_UNIVERSE";
     public const string TotalDisagreesWithAuthority = "ROW_COUNT_DISAGREES_WITH_AUTHORITATIVE_TOTAL";
     public const string OccurrenceAuthorityMissing = "OCCURRENCE_AUTHORITY_MISSING";
+    public const string SelectionModeMissing = "SELECTION_MODE_MISSING";
+    public const string SelectionModeUnknown = "SELECTION_MODE_UNKNOWN";
+    public const string SemanticRoleMissing = "SEMANTIC_ROLE_MISSING";
 
     public static IReadOnlyList<PdfGoldIssue> Validate(
         PdfGoldDocument gold,
@@ -138,6 +141,18 @@ public static class PdfGoldValidator
 
             if (row.ParentSourceAlias is { Length: > 0 } parent && !textByAlias.ContainsKey(parent))
                 issues.Add(new(ParentOutsideUniverse, row.SourceAlias, $"parent {parent} is not a source alias."));
+
+            // Checked here as well as during conversion, because Gold can also be written by hand
+            // or by another tool. A row with no role or no selection mode is not a heading anyone
+            // asserted; letting it through would put an empty string into every comparison.
+            if (string.IsNullOrWhiteSpace(row.SemanticRole))
+                issues.Add(new(SemanticRoleMissing, row.SourceAlias, "the heading carries no semantic role."));
+            if (string.IsNullOrWhiteSpace(row.SelectionMode))
+                issues.Add(new(SelectionModeMissing, row.SourceAlias, "the heading says nothing about its span."));
+            else if (row.SelectionMode is not (CanonicalSemanticSelectionMode.WholeAlias
+                     or CanonicalSemanticSelectionMode.VerbatimText))
+                issues.Add(new(SelectionModeUnknown, row.SourceAlias,
+                    $"'{row.SelectionMode}' is not a selection mode."));
 
             var key = $"{row.SourceAlias}|{row.SelectionMode}|{row.VerbatimText}|{row.Occurrence}";
             if (!seen.Add(key))
