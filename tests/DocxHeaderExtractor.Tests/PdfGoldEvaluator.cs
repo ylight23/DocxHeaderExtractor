@@ -8,7 +8,20 @@ public sealed record PdfPredictedHeading(
     string SelectionMode,
     string? VerbatimText = null,
     int? Occurrence = null,
-    string? ParentSourceAlias = null);
+    string? ParentSourceAlias = null,
+    string? SemanticRole = null);
+
+public sealed record PdfSemanticRoleScore(
+    [property: JsonPropertyName("compared")] int Compared,
+    [property: JsonPropertyName("agreed")] int Agreed,
+    [property: JsonPropertyName("mismatched")] int Mismatched)
+{
+    [JsonPropertyName("accuracy")]
+    public double Accuracy => Compared == 0 ? 1 : (double)Agreed / Compared;
+
+    [JsonPropertyName("mismatches")]
+    public IReadOnlyList<string> Mismatches { get; init; } = [];
+}
 
 /// <summary>
 /// Two measurements, deliberately kept apart.
@@ -23,6 +36,9 @@ public sealed record PdfPredictedHeading(
 /// Relations are scored only over headings Gold actually adjudicated a parent for. Gold with no
 /// parent on a row is silent about that relation, not asserting it has none, so a prediction is
 /// neither right nor wrong there and the row is excluded rather than counted as a failure.
+/// Semantic role is a separate field comparison over already-matched occurrences. It is not part
+/// of occurrence identity, so a role error remains a role error rather than becoming a miss and a
+/// spurious occurrence.
 /// </para>
 /// </summary>
 public sealed record PdfGoldEvaluation(
@@ -34,6 +50,9 @@ public sealed record PdfGoldEvaluation(
 
     /// <summary>Gold rows that did not bind. Non-zero means the Gold is not measurable yet.</summary>
     [property: JsonPropertyName("goldIssues")] public IReadOnlyList<string> GoldIssues { get; init; } = [];
+
+    [property: JsonPropertyName("semanticRole")]
+    public PdfSemanticRoleScore SemanticRole { get; init; } = new(0, 0, 0);
 }
 
 public sealed record PdfMembershipScore(
@@ -95,6 +114,24 @@ public static class PdfGoldEvaluator
             SpuriousAliases = spurious,
         };
 
+        var roleMismatches = matched
+            .Where(key => !string.Equals(
+                goldByKey[key].SemanticRole,
+                predictedByKey[key].SemanticRole,
+                StringComparison.Ordinal))
+            .Select(key =>
+                $"{key}: expected {DisplayRole(goldByKey[key].SemanticRole)}, " +
+                $"got {DisplayRole(predictedByKey[key].SemanticRole)}")
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+        var roleScore = new PdfSemanticRoleScore(
+            matched.Length,
+            matched.Length - roleMismatches.Length,
+            roleMismatches.Length)
+        {
+            Mismatches = roleMismatches,
+        };
+
         // Only headings both sides found, and only where Gold adjudicated a parent.
         var adjudicated = matched
             .Where(key => goldByKey[key].ParentSourceAlias is { Length: > 0 })
@@ -122,6 +159,7 @@ public static class PdfGoldEvaluator
             GoldRows = gold.Headings.Count,
             PredictedRows = predicted.Count,
             GoldIssues = (goldIssues ?? []).Select(issue => $"{issue.Code}:{issue.SourceAlias}").ToArray(),
+            SemanticRole = roleScore,
         };
     }
 
@@ -130,4 +168,6 @@ public static class PdfGoldEvaluator
 
     private static string Key(PdfPredictedHeading row) =>
         $"{row.SourceAlias}|{row.SelectionMode}|{row.VerbatimText}|{row.Occurrence}";
+
+    private static string DisplayRole(string? role) => role ?? "<null>";
 }
