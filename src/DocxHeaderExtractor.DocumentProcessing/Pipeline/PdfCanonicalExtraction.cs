@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 
@@ -19,6 +20,23 @@ public static class PdfCanonicalExtraction
         UploadedFile file,
         PipelineOptions options,
         IHeaderClassifier? analyst = null,
+        CancellationToken ct = default) =>
+        (await RunExecutionAsync(file, options, analyst, ct: ct)).Result;
+
+    /// <summary>
+    /// The canonical document plus the outline shape the harness has always spoken.
+    /// <para>
+    /// Both are produced here, from one run, for the same reason the source catalog is: a host that
+    /// needed an outline used to have no PDF path at all, and giving it a second entry point that
+    /// re-derived one would be a second answer about the same document.
+    /// </para>
+    /// </summary>
+    public static async Task<AuthorityPipelineExecutionResult> RunExecutionAsync(
+        UploadedFile file,
+        PipelineOptions options,
+        IHeaderClassifier? analyst = null,
+        IReadOnlySet<int>? quarantinedIndexes = null,
+        bool analystSendsDataExternally = false,
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(file);
@@ -26,8 +44,13 @@ public static class PdfCanonicalExtraction
         if (file.DetectedType != SourceType.Pdf)
             throw new UnsupportedSourceException(file);
 
-        var authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-            file.LocalPath, options.DisableLlm ? null : analyst, ct);
+        var started = Environment.TickCount64;
+        var used = options.DisableLlm ? null : analyst;
+        var authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(file.LocalPath, used, ct);
+        // The same repair step the DOCX lane applies, through the same implementation. A quarantine
+        // that silently did nothing on one format would make the harness's repair loop mean two
+        // different things depending on what was uploaded.
+        authority = AuthorityExtractionPipeline.ApplyStructuralQuarantine(authority, quarantinedIndexes);
 
         // The catalog the lane parsed, not a second one derived from the audit. The audit's block
         // text is a readable rendering meant for a person to read; the model was shown, and the
@@ -40,7 +63,7 @@ public static class PdfCanonicalExtraction
             sections, catalog, authority.Structure,
             new DocumentChunkingPolicy(Math.Max(1, options.Chunking.TokenBudget)));
 
-        return new DocumentExtractionResult(
+        var result = new DocumentExtractionResult(
             new DocumentIdentity(
                 Path.GetFileNameWithoutExtension(file.LocalPath),
                 file.OriginalFileName,
@@ -57,5 +80,60 @@ public static class PdfCanonicalExtraction
             {
                 ExecutionContract = ExecutionContracts.ExplicitUploadedPdfCanonical,
             });
+
+        return new AuthorityPipelineExecutionResult(
+            result,
+            Outline(file, options, authority, catalog, used, analystSendsDataExternally, started));
+    }
+
+    /// <summary>
+    /// The compatibility outline for a PDF run.
+    /// <para>
+    /// Fields a PDF has no equivalent for are left absent rather than filled with a DOCX-shaped
+    /// answer: <c>DocumentMode</c> and <c>Diagnostics</c> are measurements over OOXML paragraphs and
+    /// styles, and a zeroed report would read as "measured and found nothing".
+    /// <c>ParagraphCount</c> is the source occurrence count, which is the same thing this field
+    /// means on the DOCX side - how many source units the document was found to have.
+    /// </para>
+    /// </summary>
+    private static DocumentOutline Outline(
+        UploadedFile file,
+        PipelineOptions options,
+        StructuralAuthorityResult authority,
+        DocumentSourceCatalog catalog,
+        IHeaderClassifier? analyst,
+        bool analystSendsDataExternally,
+        long started)
+    {
+        var audit = authority.Audit;
+        var product = new PdfProductOutput(file.Sha256, []);
+        if (audit is not null)
+        {
+            var final = AuthorityExtractionPipeline.BuildFinalStructure(
+                file.LocalPath, audit, authority.Structure);
+            product = PdfProductOutputSerializer.Serialize(final, PdfOutputDecisionPolicy.Decide(final));
+        }
+
+        return new DocumentOutline
+        {
+            // The checked-out name, as the DOCX lane reports it. OriginalFileName is richer, but a
+            // field that means the upload's name on one lane and the temp file's on the other is
+            // exactly the kind of quiet divergence this work is removing.
+            File = Path.GetFileName(file.LocalPath),
+            ParagraphCount = catalog.Units.Count,
+            CandidateCount = audit?.CandidatesSelected ?? 0,
+            Headings = HeadingOutlineProjection.Project(
+                authority.Structure,
+                authority.EmittedElementIds ?? authority.Structure.Elements
+                    .Select(element => element.Id).ToHashSet(StringComparer.Ordinal)),
+            ProductOutput = product,
+            ElapsedMs = Environment.TickCount64 - started,
+            Model = analyst?.ModelName,
+            DeterministicRoute = "pdf-canonical-vnext",
+            RouteAudit = audit,
+            DecisionAudit = null,
+            Provenance = AuthorityExtractionPipeline.BuildProvenance(
+                audit, !options.DisableLlm && analystSendsDataExternally),
+        };
     }
 }

@@ -290,8 +290,12 @@ static List<string> ExpandInputs(IEnumerable<string> inputs)
     }
     return files.Distinct().OrderBy(f => f).ToList();
 
+    // A glob filter, not a routing decision: the lane is still chosen from the bytes. This only
+    // decides which files a wildcard expands to, and leaving .pdf out of it meant the PDF lane was
+    // unreachable from the CLI however the file was named.
     static bool IsSupported(string f) =>
-        Path.GetExtension(f).ToLowerInvariant() is ".docx" or ".docm" or ".doc" or ".rtf" or ".odt";
+        Path.GetExtension(f).ToLowerInvariant()
+            is ".docx" or ".docm" or ".doc" or ".rtf" or ".odt" or ".pdf";
 }
 
 static class ModelLocator

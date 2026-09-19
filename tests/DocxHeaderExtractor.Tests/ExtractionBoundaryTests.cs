@@ -64,13 +64,13 @@ public sealed class ExtractionBoundaryTests : IDisposable
         var dispatcher = new CanonicalExtractionDispatcher(
             new DocxCanonicalSourceExtractor(pipeline), new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true }));
 
-        var document = await dispatcher.ExtractAsync(
+        var execution = await dispatcher.ExtractAsync(
             new AuthorityExtractionRequest(UploadedFile.FromLocalPath(path)));
 
-        Assert.Equal("docx-canonical-vnext", document.Provenance.Route);
+        Assert.Equal("docx-canonical-vnext", execution.Result.Provenance.Route);
         Assert.Equal(
             DocxHeaderExtractor.Core.Models.ExecutionContracts.ExplicitUploadedDocxCanonical,
-            document.Provenance.ExecutionContract);
+            execution.Result.Provenance.ExecutionContract);
     }
 
     [Fact]

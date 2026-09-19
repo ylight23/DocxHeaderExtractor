@@ -251,7 +251,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return _analyst;
     }
 
-    private static PdfFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
+    internal static PdfFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
         ValidatedStructure structure)
     {
         return PdfFinalStructureProjection.Project(
@@ -342,7 +342,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return decisions.Where(decision => survivingCompatibilityIds.Contains(decision.HeadingId)).ToArray();
     }
 
-    private static OutlineRunProvenance BuildProvenance(RouteExecutionAudit? audit,
+    internal static OutlineRunProvenance BuildProvenance(RouteExecutionAudit? audit,
         bool sentDataExternally)
     {
         if (audit is null)

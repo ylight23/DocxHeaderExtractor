@@ -7,7 +7,23 @@ public interface ICanonicalSourceExtractor
 {
     SourceType Handles { get; }
 
-    Task<DocumentExtractionResult> ExtractAsync(UploadedFile file, CancellationToken ct = default);
+    /// <summary>
+    /// Extracts the canonical document, and with it the outline shape hosts consume.
+    /// <para>
+    /// Both come from one run on purpose. A host that needs an outline would otherwise have to
+    /// take a second path, and a second path is a second answer about the same document.
+    /// </para>
+    /// <para>
+    /// <paramref name="quarantinedIndexes"/> is the harness repair loop removing source occurrences
+    /// a validator rejected, then re-running. It is not intent - it says nothing about what the
+    /// caller wants out of the document - so it stays a parameter here rather than joining
+    /// <see cref="AuthorityExtractionRequest"/>, which must carry the file and nothing else.
+    /// </para>
+    /// </summary>
+    Task<Authority.AuthorityPipelineExecutionResult> ExtractAsync(
+        UploadedFile file,
+        IReadOnlySet<int>? quarantinedIndexes = null,
+        CancellationToken ct = default);
 }
 
 /// <summary>
@@ -29,15 +45,19 @@ public sealed class CanonicalExtractionDispatcher
         _extractors = extractors.ToDictionary(item => item.Handles);
     }
 
-    public Task<DocumentExtractionResult> ExtractAsync(
-        AuthorityExtractionRequest request, CancellationToken ct = default)
+    public Task<Authority.AuthorityPipelineExecutionResult> ExtractAsync(
+        AuthorityExtractionRequest request,
+        IReadOnlySet<int>? quarantinedIndexes = null,
+        CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(request);
-        // Re-detected rather than trusted: the record could have been built before the bytes were
-        // fully written, and the type is the one thing that must match what is about to be parsed.
-        var type = UploadedSourceDetector.Detect(request.File.LocalPath);
-        return _extractors.TryGetValue(type, out var extractor)
-            ? extractor.ExtractAsync(request.File with { }, ct)
-            : throw new UnsupportedSourceException(request.File);
+        // Re-read rather than trusted: the record could have been built before the bytes were fully
+        // written. The whole record is rebuilt, not just the type - routing on fresh bytes while
+        // handing the extractor a stale hash would produce a document whose recorded identity is
+        // not the identity of what was parsed, which is worse than either alone.
+        var file = UploadedFile.FromLocalPath(request.File.LocalPath, request.File.OriginalFileName);
+        return _extractors.TryGetValue(file.DetectedType, out var extractor)
+            ? extractor.ExtractAsync(file, quarantinedIndexes, ct)
+            : throw new UnsupportedSourceException(file);
     }
 }
