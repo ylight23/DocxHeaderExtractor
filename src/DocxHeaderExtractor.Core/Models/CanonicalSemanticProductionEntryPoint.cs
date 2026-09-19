@@ -461,7 +461,7 @@ public static class CanonicalSemanticProductionEntryPoint
             var pageNumber = ParsePage(binding.PageId);
             var occurrence = new CanonicalSemanticGraphOccurrence(
                 $"visual-occurrence:{occurrences.Count + 1:0000}",
-                CanonicalSemanticGraphResolver.CreatePhysicalNodeId(binding),
+                CanonicalSemanticIdentityResolver.CreatePhysicalNodeId(binding),
                 binding.VisualAlias, $"visual:{binding.PageId}", pageNumber,
                 binding.RecoveredTranscript, heading.SemanticRole, heading.StructuralType,
                 heading.Scope, binding.BlockOrdinal, binding.BlockOrdinal, "PRIMARY", null)

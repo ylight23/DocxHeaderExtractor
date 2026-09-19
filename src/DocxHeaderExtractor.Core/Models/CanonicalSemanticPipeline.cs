@@ -82,7 +82,7 @@ public static class CanonicalSemanticPipeline
             bound, aliases, sourceSha256, expectedSourceSha256 ?? sourceSha256);
         if (!bindingValidation.IsValid)
             throw new InvalidOperationException(string.Join(",", bindingValidation.Errors));
-        var graph = CanonicalSemanticGraphResolver.Resolve(bound);
+        var graph = CanonicalSemanticIdentityResolver.Resolve(bound);
         return new CanonicalSemanticPipelineResult(
             aliases, bound, observations, graph, sourceSha256, sourceHashVerified)
         {

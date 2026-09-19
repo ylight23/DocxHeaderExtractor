@@ -14,8 +14,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 internal static class ModelRelationHierarchyResolver
 {
     private const string ParentHintPrefix = "parent-node:";
-    private const string SameNodeHintPrefix = "same-node:";
-    private const string ContinuationNodeHintPrefix = "continuation-node:";
     private const string RootParent = "ROOT";
     private const string NoHierarchy = "NONE";
 
@@ -120,14 +118,9 @@ internal static class ModelRelationHierarchyResolver
             if (resolved && parentSourceId is not null)
                 level = levels.TryGetValue(parentSourceId, out var parentLevel) ? parentLevel + 1 : 1;
             levels[heading.SourceId] = Math.Clamp(level, 1, 9);
-            // Same node-identity rule as CanonicalSemanticGraphResolver: shared only on an explicit
-            // model hint, otherwise the physical occurrence is its own node.
-            var sameNodeHint = heading.RelationHints.FirstOrDefault(item =>
-                item.StartsWith(SameNodeHintPrefix, StringComparison.Ordinal) ||
-                item.StartsWith(ContinuationNodeHintPrefix, StringComparison.Ordinal));
-            var nodeKey = sameNodeHint is not null
-                ? $"explicit:{sameNodeHint}"
-                : $"physical:{heading.SourceId}:{heading.Start}:{heading.End}:{heading.Alias}";
+            // Identity ownership lives in the semantic stage. Hierarchy only consumes its stable
+            // key to mark the primary occurrence without re-defining same-node semantics.
+            var nodeKey = CanonicalSemanticIdentityResolver.CreateNodeKey(heading);
             result.Add(new DerivedHeadingHierarchy(
                 heading.SourceId,
                 levels[heading.SourceId],
