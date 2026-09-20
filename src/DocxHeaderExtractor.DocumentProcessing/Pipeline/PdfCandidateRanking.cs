@@ -27,11 +27,6 @@ public sealed record RankedCandidate(
     string Scope = "unknown",
     string? OccurrenceKey = null);
 
-public sealed record PdfCandidateRankingAudit(
-    string Status,
-    int CandidateCount,
-    IReadOnlyList<RankedCandidate> Candidates);
-
 /// <summary>Feature-only ordering; it has no model dependency and never removes a candidate.</summary>
 internal static class PdfCandidateRanker
 {
