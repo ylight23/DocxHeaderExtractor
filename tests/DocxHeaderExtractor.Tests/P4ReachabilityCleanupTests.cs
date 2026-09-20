@@ -1,5 +1,4 @@
-using System.Security.Cryptography;
-using System.Text;
+using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -8,15 +7,20 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class P4ReachabilityCleanupTests
 {
     [Fact]
-    public void Retired_pdf_analyst_prompt_profile_keeps_the_frozen_bytes_and_hash()
+    public void Retired_pdf_analyst_prompt_fingerprint_remains_artifact_owned()
     {
-        var expectedHash = "028ed77b71687bebadd8f5e702b7ad0890e11dca845597cf0a48652e8aec7aab";
-        var recomputed = Convert.ToHexString(
-            SHA256.HashData(Encoding.UTF8.GetBytes(PdfStagePromptProfile.PromptProfileBytes)))
-            .ToLowerInvariant();
+        var path = Path.Combine(
+            RepositoryRoot(),
+            "artifacts/identity-benchmark/v8h0/heading-extraction-preflight-v1/manifest.json");
+        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        var fingerprint = document.RootElement
+            .GetProperty("detector")
+            .GetProperty("promptProfileSha256")
+            .GetString();
 
-        Assert.Equal(expectedHash, PdfStagePromptProfile.SemanticPromptSha256);
-        Assert.Equal(expectedHash, recomputed);
+        Assert.Equal(
+            "028ed77b71687bebadd8f5e702b7ad0890e11dca845597cf0a48652e8aec7aab",
+            fingerprint);
     }
 
     [Fact]
@@ -38,6 +42,14 @@ public sealed class P4ReachabilityCleanupTests
         {
             LegacyDocConverter.TryDelete(path);
         }
+    }
+
+    private static string RepositoryRoot()
+    {
+        var directory = new DirectoryInfo(AppContext.BaseDirectory);
+        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
+            directory = directory.Parent;
+        return directory?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
     }
 
     private sealed class ForcedPdfRoutePolicy : DocxHeaderExtractor.DocumentProcessing.Routing.IAuthorityRoutePolicy

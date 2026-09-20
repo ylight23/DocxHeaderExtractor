@@ -18,15 +18,6 @@ internal enum PdfSemanticClusterRole
     Uncertain,
 }
 
-/// <summary>One visual style cluster, with the examples that characterise it.</summary>
-internal sealed record PdfSemanticClusterSample(
-    string Id,
-    PdfStyleKey Style,
-    int Lines,
-    int Pages,
-    int Characters,
-    IReadOnlyList<string> Examples);
-
 /// <summary>What a cluster was judged to be, and why. Advisory; never an output decision.</summary>
 internal sealed record PdfSemanticClusterDecision(
     string Id,

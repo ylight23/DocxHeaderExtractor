@@ -8,7 +8,7 @@ namespace DocxHeaderExtractor.DocumentProcessing;
 /// Application processing implementation. Hosts inject this surface; it owns no provider or
 /// source authority and continues to delegate structural authority to the existing pipeline.
 /// </summary>
-public sealed class DocumentProcessingService : IDocumentProcessingService
+public sealed class DocumentProcessingService : IDisposable
 {
     private readonly AuthorityExtractionPipeline _authority;
     private readonly IFactSchemaPackRegistry _schemaPacks;

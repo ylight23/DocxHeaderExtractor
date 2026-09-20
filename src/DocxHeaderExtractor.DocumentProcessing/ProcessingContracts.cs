@@ -58,10 +58,3 @@ public sealed record DocumentProcessingResult(
     [property: JsonPropertyName("schemaResults")] IReadOnlyList<FactSchemaExtractionResult> SchemaResults,
     [property: JsonPropertyName("compatibilityOutline")] DocumentOutline CompatibilityOutline,
     [property: JsonPropertyName("audit")] DocumentProcessingAudit Audit);
-
-public interface IDocumentProcessingService : IDisposable
-{
-    Task<DocumentProcessingResult> ProcessAsync(
-        DocumentProcessingRequest request,
-        CancellationToken cancellationToken = default);
-}

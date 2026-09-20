@@ -1,7 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.Tests;
@@ -89,19 +88,6 @@ public sealed class PdfCanonicalLaneTests
         var pdfIds = pdf.SourceCatalog.Units.Select(unit => unit.SourceId).ToHashSet(StringComparer.Ordinal);
         var docxIds = docx.SourceCatalog.Units.Select(unit => unit.SourceId).ToHashSet(StringComparer.Ordinal);
         Assert.Empty(pdfIds.Intersect(docxIds, StringComparer.Ordinal));
-    }
-
-    [Fact]
-    public async Task A_pdf_canonical_document_projects_with_the_same_intent_as_a_docx_one()
-    {
-        // The point of sharing the semantic stage: one projection contract over both formats.
-        var file = UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf));
-        var document = await PdfCanonicalExtraction.RunAsync(file, new PipelineOptions { DisableLlm = true });
-
-        var projected = CanonicalProjector.Project(new ProjectionRequest(
-            document, new ExtractionIntent { Task = ExtractionTask.Headings }));
-
-        Assert.Equal(["text", "level", "parent", "source"], projected.Fields);
     }
 
     [Fact]

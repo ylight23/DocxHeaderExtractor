@@ -7,51 +7,20 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class DocumentConsumerProjectionTests
 {
     [Fact]
-    public void Retrieval_index_and_ie_projections_preserve_generic_structure()
+    public void Ie_projection_preserves_generic_structure()
     {
         var result = BuildResult();
 
-        var retrieval = Assert.Single(RetrievalProjection.Project(result));
-        var index = Assert.Single(SearchIndexProjection.Project(result));
         var ie = Assert.Single(IEContextProjection.Project(result));
 
-        Assert.Equal(result.Chunks[0].Text, retrieval.Text);
-        Assert.Equal(result.Chunks[0].Text, index.Text);
         Assert.Equal(result.Chunks[0].Text, ie.SourceText);
         Assert.Equal("doc-1", ie.DocumentId);
         Assert.Equal(result.Chunks[0].Id, ie.ChunkId);
         Assert.Equal(result.Chunks[0].SourceIds, ie.SourceUnits.Select(unit => unit.SourceId));
-        Assert.Equal(["h1"], retrieval.SectionPath);
-        Assert.Equal(retrieval.SectionPath, index.SectionPath);
-        Assert.Equal(result.Chunks[0].SourceIds, retrieval.SourceIds);
         Assert.Equal(result.Chunks[0].StructuralElementIds, ie.StructuralElementIds);
-        Assert.Equal(retrieval.StructuralContext, index.StructuralContext);
-        Assert.Contains(nameof(StructuralElementType.ListItem), index.StructuralTypes);
-        Assert.Contains(nameof(StructuralElementType.Figure), index.StructuralTypes);
-        Assert.Contains(nameof(StructuralElementType.FigureTitle), index.StructuralTypes);
-        Assert.Contains(nameof(StructuralElementType.Caption), index.StructuralTypes);
-        Assert.Contains(nameof(StructuralElementType.Table), index.StructuralTypes);
-        Assert.Contains(nameof(StructuralElementType.TableTitle), index.StructuralTypes);
-        Assert.Contains(retrieval.Relations, relation =>
-            relation.Type == StructuralRelationType.CaptionOf && relation.ToId == "figure");
-        Assert.Contains(retrieval.Relations, relation =>
-            relation.Type == StructuralRelationType.Labels && relation.ToId == "table");
         Assert.Contains(ie.FigureTableContext, item => item.Type == StructuralElementType.Figure);
         Assert.Contains(ie.FigureTableContext, item => item.Type == StructuralElementType.Table);
         Assert.Contains(ie.FigureTableContext, item => item.Type == StructuralElementType.Caption);
-    }
-
-    [Fact]
-    public void Consumer_projections_reject_chunk_text_that_is_not_catalog_backed()
-    {
-        var result = BuildResult();
-        var invalid = result with
-        {
-            Chunks = [result.Chunks[0] with { Text = "invented downstream text" }],
-        };
-
-        var error = Assert.Throws<InvalidOperationException>(() => RetrievalProjection.Project(invalid));
-        Assert.Equal("consumer-chunk-text-not-source-backed", error.Message);
     }
 
     private static DocumentExtractionResult BuildResult()

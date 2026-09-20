@@ -1,6 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.Tests;
@@ -102,80 +101,4 @@ public sealed class ExtractionBoundaryTests : IDisposable
             type => type.Namespace?.Contains("Projection", StringComparison.Ordinal) == true);
     }
 
-    [Fact]
-    public async Task Two_different_questions_read_one_unchanged_canonical_document()
-    {
-        // The freeze this whole architecture rests on. Asking for headings must not send anything
-        // looking only for headings; the canonical graph is the same object both times.
-        var path = Path.Combine(_directory, "structure.docx");
-        SampleDocumentFactory.Create(path);
-        using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var document = await pipeline.RunDocumentAsync(path);
-
-        var headings = CanonicalProjector.Project(new ProjectionRequest(
-            document, new ExtractionIntent { Task = ExtractionTask.Headings }));
-        var structure = CanonicalProjector.Project(new ProjectionRequest(
-            document, new ExtractionIntent { Task = ExtractionTask.DocumentStructure }));
-
-        Assert.Equal(headings.Records.Count, structure.Records.Count);
-        Assert.Equal(["text", "level", "parent", "source"], headings.Fields);
-        Assert.Contains("semanticRole", structure.Fields);
-    }
-
-    [Fact]
-    public async Task A_custom_projection_selects_fields_without_inventing_any()
-    {
-        var path = Path.Combine(_directory, "custom.docx");
-        SampleDocumentFactory.Create(path);
-        using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var document = await pipeline.RunDocumentAsync(path);
-
-        var projected = CanonicalProjector.Project(new ProjectionRequest(document, new ExtractionIntent
-        {
-            Task = ExtractionTask.CustomProjection,
-            UserInstruction = "Lay tieu de, loai tieu de va cap",
-            RequestedFields = ["text", "semanticRole", "level"],
-            OutputFormat = OutputFormat.Xlsx,
-        }));
-
-        Assert.Equal(["text", "semanticRole", "level"], projected.Fields);
-        Assert.Equal(OutputFormat.Xlsx, projected.OutputFormat);
-        Assert.All(projected.Records, record =>
-            Assert.Equal(["text", "semanticRole", "level"], record.Fields.Keys));
-    }
-
-    [Fact]
-    public async Task A_field_the_canonical_document_does_not_carry_is_refused_not_guessed()
-    {
-        var path = Path.Combine(_directory, "missing-field.docx");
-        SampleDocumentFactory.Create(path);
-        using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var document = await pipeline.RunDocumentAsync(path);
-
-        var error = Assert.Throws<ArgumentException>(() => CanonicalProjector.Project(
-            new ProjectionRequest(document, new ExtractionIntent
-            {
-                Task = ExtractionTask.CustomProjection,
-                RequestedFields = ["text", "invoiceTotal"],
-            })));
-
-        Assert.Contains("invoiceTotal", error.Message, StringComparison.Ordinal);
-    }
-
-    [Fact]
-    public async Task Projection_is_deterministic_on_one_canonical_document()
-    {
-        var path = Path.Combine(_directory, "stable.docx");
-        SampleDocumentFactory.Create(path);
-        using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var document = await pipeline.RunDocumentAsync(path);
-        var intent = new ExtractionIntent { Task = ExtractionTask.Headings };
-
-        var first = CanonicalProjector.Project(new ProjectionRequest(document, intent));
-        var second = CanonicalProjector.Project(new ProjectionRequest(document, intent));
-
-        Assert.Equal(
-            first.Records.Select(record => string.Join("|", record.Fields.Values)),
-            second.Records.Select(record => string.Join("|", record.Fields.Values)));
-    }
 }

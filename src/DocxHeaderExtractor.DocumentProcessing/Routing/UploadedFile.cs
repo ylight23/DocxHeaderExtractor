@@ -57,7 +57,7 @@ public sealed record UploadedFile
 /// <para>
 /// Intent is deliberately absent. The same file must always produce the same canonical document,
 /// so that asking a different question can never change what the document is held to contain.
-/// Intent belongs to <see cref="ProjectionRequest"/>, on the far side of the semantic boundary.
+/// Intent belongs to a projection request, on the far side of the semantic boundary.
 /// </para>
 /// </summary>
 public sealed record AuthorityExtractionRequest(UploadedFile File);
