@@ -15,7 +15,6 @@ workstream.
 Web / CLI / MCP
   -> DocumentAgentHarness
   -> PipelineDocumentExtractionTool
-  -> DocumentProcessingService
   -> AuthorityExtractionPipeline
   -> ValidatedStructure
   -> PromptDrivenProjection
@@ -32,7 +31,6 @@ retained for existing library/test callers and is not a second authority route.
 - Input documents and tool output are untrusted until deterministic validation.
 - Parser-owned source coordinates are the only materialization source.
 - `ValidatedStructure` is structural authority.
-- `ValidatedFact` is fact authority.
 - Application plan compilation creates stable `PlanId` values from task/resource identity and
   capability metadata; explicit idempotency keys override the resource identity when supplied.
 - Capability metadata is registered and resolved by the provider-independent Application catalog;
@@ -48,15 +46,15 @@ retained for existing library/test callers and is not a second authority route.
 
 | Project | Current role | Current references |
 |---|---|---|
-| `Core` | pure source/structure/fact contracts and authority value objects/validators | no project or parser/render/provider package references |
+| `Core` | pure source/structure contracts and authority value objects/validators | no project or parser/render/provider package references |
 | `Application` | provider-independent intent, plan compiler, policy, projection, task/resource, capability, semantic-registry and runtime contracts | `Core` |
-| `DocumentProcessing` | DOCX/PDF source adapters, authority pipeline implementations, processing service, bounded review/repair compatibility | `Application`, `Core`; owns OpenXML/PdfPig/PDFtoImage |
+| `DocumentProcessing` | DOCX/PDF source adapters, authority pipeline implementations, bounded review/repair compatibility | `Application`, `Core`; owns OpenXML/PdfPig/PDFtoImage |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
 | `Web` | HTTP host and UI composition root | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure` |
 | `Cli` | command host and explicit evaluation/repair commands | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure`, explicit `Eval` plugin bridge |
 | `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure` |
 | `Eval` | evaluation/replay-only adapters | `Core`, `DocumentProcessing` |
-| `Infrastructure` | provider implementations, prompt/cache adapters, source infrastructure ports and fact-provider adapters | `Application`, `Core`, `DocumentProcessing` |
+| `Infrastructure` | provider implementations, prompt/cache adapters, and source infrastructure ports | `Application`, `Core`, `DocumentProcessing` |
 
 `Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. Package
 versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.

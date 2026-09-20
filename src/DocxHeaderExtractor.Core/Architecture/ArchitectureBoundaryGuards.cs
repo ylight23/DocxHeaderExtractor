@@ -18,8 +18,6 @@ public static class ArchitectureBoundaryGuards
         new("compatibility-heading-one-way", "generic structural authority", "HeadingRecord -> ValidatedStructure"),
         new("structural-proposal-validation", "structural authority", "StructuralProposalValidator"),
         new("relation-proposal-validation", "relation authority", "StructuralRelationProposalValidator"),
-        new("fact-proposal-validation", "fact authority", "FactProposalValidator"),
-        new("registered-schema-selection", "schema authority", "SchemaSelectionValidator"),
     ];
 
     public static void RequireProposalValidation(bool passed, string boundary)
