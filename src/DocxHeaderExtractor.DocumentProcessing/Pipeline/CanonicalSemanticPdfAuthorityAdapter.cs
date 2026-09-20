@@ -24,7 +24,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         string pdfPath,
         IHeaderClassifier? transport,
         CancellationToken cancellationToken,
-        CanonicalSemanticExperiment? experiment = null)
+        CanonicalSemanticExperiment? experiment = null,
+        SemanticLaneOptions? semanticLaneOptions = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
@@ -33,7 +34,60 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer");
         if (universe.Blocks.Count == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-source-blocks");
+
+        var scope = ProductionCheckpointScope.Create();
+        var checkpoint = new PdfStageCheckpoint(
+            scope.CheckpointPath,
+            resume: false,
+            Path.GetFileNameWithoutExtension(pdfPath));
+        var execution = await PdfLaneExecution.RunAsync(
+            (lease, ct) => RunSemanticCoreAsync(
+                pdfPath, universe, transport, experiment, lease, checkpoint, ct),
+            (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
+            cancellationToken).ConfigureAwait(false);
+
+        if (execution.DetachedTask is { } detached)
+        {
+            var cleanup = DisposeCheckpointAfterDetachedAsync(detached, checkpoint);
+            scope.DeferCleanup([cleanup]);
+            await scope.DisposeAsync().ConfigureAwait(false);
+        }
+        else
+        {
+            await checkpoint.DisposeAsync().ConfigureAwait(false);
+            await scope.DisposeAsync().ConfigureAwait(false);
+        }
+
+        if (execution.State == PdfLaneExecutionState.TimedOut)
+            throw new TimeoutException("PDF semantic execution exceeded its lane deadline.");
+        if (execution.State == PdfLaneExecutionState.Cancelled)
+            throw new OperationCanceledException(cancellationToken);
+        if (execution.State == PdfLaneExecutionState.Failed)
+            throw execution.Fault ?? new InvalidOperationException("PDF semantic execution failed.");
+        if (!execution.Lease.CanPublishCompletedResult || execution.Value is null)
+            throw new InvalidOperationException("PDF semantic result lost its execution lease.");
+
+        return execution.Value;
+    }
+
+    private static async Task<StructuralAuthorityResult> RunSemanticCoreAsync(
+        string pdfPath,
+        PdfCanonicalSourceUniverse universe,
+        IHeaderClassifier? transport,
+        CanonicalSemanticExperiment? experiment,
+        PdfLaneExecutionLease lease,
+        PdfStageCheckpoint checkpoint,
+        CancellationToken cancellationToken)
+    {
         var input = universe.CreateProductionInput(Path.GetFileNameWithoutExtension(pdfPath));
+        await checkpoint.RecordSelectionAsync(
+            universe.Blocks.Select(block => new PdfSelectedSourceIdentity(
+                block.Id,
+                block.Page,
+                block.Lines.Select(PdfLineIdentity.Of).ToArray(),
+                block.DisplayText)).ToArray(),
+            cancellationToken,
+            lease).ConfigureAwait(false);
 
         CanonicalSemanticProductionResult result;
         CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel? canonicalModel = null;
@@ -44,7 +98,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         else
         {
             canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
-                transport, experiment ?? CanonicalSemanticExperiment.Baseline);
+                new LeaseBoundHeaderClassifier(transport, lease),
+                experiment ?? CanonicalSemanticExperiment.Baseline);
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
                 input, canonicalModel,
                 requestId: $"pdf:{Path.GetFileNameWithoutExtension(pdfPath)}",
@@ -58,6 +113,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             "canonical-vnext-semantic-contract",
             new TextOffsetSpan(item.Start, item.End),
             SemanticRole: CanonicalSemanticEngine.ParseSemanticRole(item.SemanticRole))).ToArray();
+        await checkpoint.RecordSemanticBatchAsync(universe.Blocks, decisions, cancellationToken, lease)
+            .ConfigureAwait(false);
         var validated = PdfSemanticProposalBinder.BindAndValidate(universe, decisions);
 
         var boundHeadings = transport is null
@@ -144,5 +201,79 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             // these are the occurrences themselves.
             SourceCatalog = universe.Catalog,
         };
+    }
+
+    private static async Task DisposeCheckpointAfterDetachedAsync(
+        Task detached,
+        PdfStageCheckpoint checkpoint)
+    {
+        try
+        {
+            await detached.ConfigureAwait(false);
+        }
+        finally
+        {
+            await checkpoint.DisposeAsync().ConfigureAwait(false);
+        }
+    }
+
+    private sealed class LeaseBoundHeaderClassifier : IHeaderClassifier
+    {
+        private readonly IHeaderClassifier _inner;
+        private readonly PdfLaneExecutionLease _lease;
+
+        public LeaseBoundHeaderClassifier(IHeaderClassifier inner, PdfLaneExecutionLease lease)
+        {
+            _inner = inner ?? throw new ArgumentNullException(nameof(inner));
+            _lease = lease ?? throw new ArgumentNullException(nameof(lease));
+        }
+
+        public string ModelName => _inner.ModelName;
+        public int ContextSize => _inner.ContextSize;
+        public string RuntimeDescription => _inner.RuntimeDescription;
+        public int SharedPrefixTokens => _inner.SharedPrefixTokens;
+
+        public Task<ChunkResult> ClassifyAsync(
+            string chunkXml,
+            IReadOnlyList<int> allowedIndexes,
+            CancellationToken ct = default) =>
+            StartAndObserve(() => _inner.ClassifyAsync(chunkXml, allowedIndexes, ct));
+
+        public Task<ChunkResult> CritiqueAsync(
+            string chunkXml,
+            IReadOnlyList<int> allowedIndexes,
+            CancellationToken ct = default) =>
+            StartAndObserve(() => _inner.CritiqueAsync(chunkXml, allowedIndexes, ct));
+
+        public Task<ChunkResult> ClassifyHierarchyAsync(
+            IReadOnlyList<HierarchyItem> context,
+            IReadOnlyList<HierarchyItem> headings,
+            CancellationToken ct = default) =>
+            StartAndObserve(() => _inner.ClassifyHierarchyAsync(context, headings, ct));
+
+        public Task<string> BoundaryCutAsync(
+            string systemPrompt,
+            string userMessage,
+            CancellationToken ct = default,
+            int expectedItemCount = 0) =>
+            StartAndObserve(() => _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount));
+
+        public void Dispose() { }
+
+        private Task<T> StartAndObserve<T>(Func<Task<T>> start)
+        {
+            Task<T>? task = null;
+            if (!_lease.TryStartDownstream(() => task = start()))
+                throw new PdfExecutionLeaseLostException();
+            return ObserveResultAsync(task!, _lease);
+        }
+
+        private static async Task<T> ObserveResultAsync<T>(Task<T> task, PdfLaneExecutionLease lease)
+        {
+            var result = await task.ConfigureAwait(false);
+            if (!lease.IsActive)
+                throw new PdfExecutionLeaseLostException();
+            return result;
+        }
     }
 }

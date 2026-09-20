@@ -31,13 +31,41 @@ public static class PdfCanonicalExtraction
     /// re-derived one would be a second answer about the same document.
     /// </para>
     /// </summary>
-    public static async Task<AuthorityPipelineExecutionResult> RunExecutionAsync(
+    public static Task<AuthorityPipelineExecutionResult> RunExecutionAsync(
         UploadedFile file,
         PipelineOptions options,
         IHeaderClassifier? analyst = null,
         IReadOnlySet<int>? quarantinedIndexes = null,
         bool analystSendsDataExternally = false,
-        CancellationToken ct = default)
+        CancellationToken ct = default) =>
+        RunExecutionCoreAsync(
+            file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
+            SemanticLaneOptions.Default);
+
+    /// <summary>
+    /// Internal lifecycle seam for deterministic lane-boundary tests. The public execution
+    /// signature above remains source- and binary-compatible with the pre-P5c route.
+    /// </summary>
+    internal static Task<AuthorityPipelineExecutionResult> RunExecutionAsync(
+        UploadedFile file,
+        PipelineOptions options,
+        IHeaderClassifier? analyst,
+        SemanticLaneOptions semanticLaneOptions,
+        IReadOnlySet<int>? quarantinedIndexes = null,
+        bool analystSendsDataExternally = false,
+        CancellationToken ct = default) =>
+        RunExecutionCoreAsync(
+            file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
+            semanticLaneOptions);
+
+    private static async Task<AuthorityPipelineExecutionResult> RunExecutionCoreAsync(
+        UploadedFile file,
+        PipelineOptions options,
+        IHeaderClassifier? analyst,
+        IReadOnlySet<int>? quarantinedIndexes,
+        bool analystSendsDataExternally,
+        CancellationToken ct,
+        SemanticLaneOptions semanticLaneOptions)
     {
         ArgumentNullException.ThrowIfNull(file);
         ArgumentNullException.ThrowIfNull(options);
@@ -57,7 +85,8 @@ public static class PdfCanonicalExtraction
         try
         {
             authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-                file.LocalPath, gated ?? used, ct);
+                file.LocalPath, gated ?? used, ct,
+                semanticLaneOptions: semanticLaneOptions);
         }
         finally
         {

@@ -10,6 +10,14 @@ internal enum PdfLaneExecutionState
     Cancelled = 4,
 }
 
+internal sealed class PdfExecutionLeaseLostException : InvalidOperationException
+{
+    public PdfExecutionLeaseLostException()
+        : base("The PDF execution lease is no longer active; late provider work was quarantined.")
+    {
+    }
+}
+
 /// <summary>
 /// Monotonic lease for one lane attempt. A terminal transition wins exactly once. Checkpoint,
 /// publication, and downstream work can admit an operation only while the lease is active.
@@ -35,6 +43,8 @@ internal sealed class PdfLaneExecutionLease
     public int TerminalTransitionCount => Volatile.Read(ref _terminalTransitions);
     public bool LateCompletionObserved => Volatile.Read(ref _lateCompletionObserved) != 0;
     public Exception? LateFault => Volatile.Read(ref _lateFault);
+    public bool CanPublishCompletedResult => State == PdfLaneExecutionState.Succeeded &&
+        TerminalTransitionCount == 1;
 
     public bool TryTransition(PdfLaneExecutionState terminal)
     {
