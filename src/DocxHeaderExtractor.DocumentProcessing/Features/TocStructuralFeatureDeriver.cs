@@ -5,7 +5,7 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 namespace DocxHeaderExtractor.DocumentProcessing.Features;
 
 /// <summary>Derives TOC adjacency only; TOC recognition remains owned by the existing source stage.</summary>
-public sealed class TocStructuralFeatureDeriver : ITocStructuralFeatureDeriver
+public sealed class TocStructuralFeatureDeriver
 {
     public TocStructuralFeatures Derive(
         SourceDocument source,

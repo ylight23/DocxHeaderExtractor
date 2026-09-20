@@ -6,7 +6,6 @@ using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Chunking;
 using DocxHeaderExtractor.DocumentProcessing.Features;
 using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
@@ -175,9 +174,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 /// trên cùng đầu vào: nếu tự dựng lại prompt thì phép so biến thành so hai cách dựng prompt.
 /// <para>
 /// Truyền <c>--model</c> thì chia khối bằng ĐÚNG tokenizer của mô hình đó và in tỉ lệ ký tự/token
-/// đo được. Không truyền thì rơi về ước lượng <see cref="SlimXmlChunker.CharsPerToken"/> — mà
-/// chính hằng số đó đang bị nghi sai nặng cho tiếng Việt, nên bản dump khi ấy KHÔNG khớp lượt chạy
-/// thật và tệp ghi rõ điều đó.
+/// đo được; bản dump ghi rõ khi dùng ước lượng thay thế.
 /// </para>
 /// </summary>
 static DocumentAgentRequest AgentRequest(string file, CommandLineOptions o) =>

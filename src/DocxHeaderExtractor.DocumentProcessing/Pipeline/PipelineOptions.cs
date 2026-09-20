@@ -60,20 +60,6 @@ public sealed class PipelineOptions
     public bool StyleAutoAssign { get; set; }
 
     /// <summary>
-    /// Chuẩn hoá cấp để không nhảy cóc (1 → 3 thành 1 → 2).
-    /// <para>
-    /// MẶC ĐỊNH TẮT từ khi cấp do cấu trúc quyết định. Bộ chuẩn hoá gán cấp theo ĐỘ SÂU NGĂN XẾP,
-    /// nên heading đầu tiên còn sống luôn bị ép về cấp 1 — mất một heading cha là mọi con của nó
-    /// tụt theo. Tra tay trên 01-style-chuan (đáp án 0→1, 2→2, 4→2, 6→1, 8→2) với đoạn 0 bị đánh
-    /// rơi: nó gán 2→1 và 4→1 rồi để 6, 8 đúng, khớp từng dòng với báo cáo eval. Toàn bộ lỗi cấp
-    /// đo được đều một chiều "trả về 1, đáp án 2" — dấu vân tay của chính phép ép này, không phải
-    /// của mô hình đoán bừa. Khi cấp đến từ w:lvl/w:pStyle, style built-in hay chuỗi đánh số đã
-    /// xác thực, chuẩn hoá lại chỉ có thể làm hỏng thứ vốn đã đúng.
-    /// </para>
-    /// </summary>
-    public bool NormalizeLevels { get; set; }
-
-    /// <summary>
     /// Đoạn có <c>w:outlineLvl</c> thì lấy cấp từ đó, không dùng cấp mô hình đoán.
     /// outlineLvl là đặc tả OOXML do chính người soạn đặt — chính xác hơn mọi suy luận.
     /// </summary>

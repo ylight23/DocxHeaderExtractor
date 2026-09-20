@@ -4,7 +4,7 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 namespace DocxHeaderExtractor.DocumentProcessing.Policy;
 
 /// <summary>Pure policy remainder extracted from the former Slim PostProcess method.</summary>
-public sealed class PostClassificationPolicy : IPostClassificationPolicy
+public sealed class PostClassificationPolicy
 {
     public PostClassificationDecision Decide(PostClassificationInput input)
     {

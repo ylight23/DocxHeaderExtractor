@@ -345,10 +345,6 @@ public sealed class CommandLineOptions
                 case "--no-trust-styles": o.Pipeline.TrustStyles = false; break;
                 case "--skip-styled": o.Pipeline.SkipStyledCandidates = true; break;
                 case "--style-auto-assign": o.Pipeline.StyleAutoAssign = true; break;
-                // Cấp thô là mặc định từ khi cấu trúc quyết định cấp; cờ này giữ lại để bật chuẩn
-                // hoá theo độ sâu ngăn xếp khi cần so với hành vi cũ.
-                case "--raw-levels": o.Pipeline.NormalizeLevels = false; break;
-                case "--normalize-levels": o.Pipeline.NormalizeLevels = true; break;
                 case "--two-pass": o.Pipeline.TwoPass = true; break;
                 case "--no-global-hierarchy": o.Pipeline.GlobalHierarchy = false; break;
                 case "--model-levels": o.Pipeline.LevelFromOutline = false; break;
@@ -573,7 +569,6 @@ public sealed class CommandLineOptions
               --no-audit            Tắt hậu kiểm theo ký hiệu đánh số. Mặc định BẬT: đối chiếu
                                     cấp giữa các mục cùng dạng đánh số và tìm lỗ hổng trong dãy
                                     anh em, đánh dấu (?) chỗ đáng ngờ. Không gọi mô hình.
-              --raw-levels          Giữ nguyên cấp do mô hình trả về (không chuẩn hoá)
               --two-pass            Quét hai lượt với cách cắt khối khác nhau, đánh dấu (?)
                                     những đoạn hai lượt bất đồng để xem lại. Tốn gấp ~2 lần.
               --no-global-hierarchy Không chạy lượt gán cấp riêng trên toàn bộ heading đã chọn

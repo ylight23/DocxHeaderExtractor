@@ -13,7 +13,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 /// Reads observed DOCX facts directly from OpenXML. This adapter deliberately does not construct
 /// candidate/policy/demotion state.
 /// </summary>
-public sealed class OpenXmlDocumentSource : IDocumentSource
+public sealed class OpenXmlDocumentSource
 {
     private static readonly Regex WhitespaceRx = new(@"\s+", RegexOptions.Compiled);
     private static readonly Regex TrailingPageNumberRx = new(@"^(?<title>.*\S)\s+(?<page>\d{1,4})$", RegexOptions.Compiled);

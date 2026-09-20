@@ -8,11 +8,15 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Review;
 
+public sealed record DocumentSourceSnapshot(
+    SourceDocument Document,
+    IReadOnlyList<int> CandidateIndexes);
+
 /// <summary>
 /// Explicit evaluation boundary. The compatibility projection is consumed here once to produce
 /// source facts and the frozen candidate-index view; evaluator code never receives Slim types.
 /// </summary>
-public sealed class AuthorityDocumentSourceReader : IDocumentSourceReader
+public sealed class AuthorityDocumentSourceReader
 {
     private readonly PipelineOptions _pipelineOptions;
     private readonly ExtractionOptions _options;
