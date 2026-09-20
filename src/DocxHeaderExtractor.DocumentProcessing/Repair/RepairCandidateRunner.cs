@@ -71,33 +71,6 @@ public static class RepairCandidateRunner
             ranked);
     }
 
-    private static OutlineCandidateDiagnostic CurrentOutputCandidate(DocumentOutline outline)
-    {
-        var duplicateRate = DuplicateRate(outline.Headings);
-        var pollutionRate = TitlePollutionRate(outline.Headings);
-        var jumpRate = LevelJumpRate(outline.Headings);
-        var reviewRate = outline.Headings.Count == 0
-            ? 1
-            : (double)outline.Headings.Count(h =>
-                h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed) / outline.Headings.Count;
-        var accepted = outline.Headings.Count > 0 &&
-                       duplicateRate <= 0.02 &&
-                       pollutionRate <= 0.05 &&
-                       jumpRate <= 0.25 &&
-                       reviewRate <= 0.10;
-        var reason = accepted
-            ? "current_output_internal_validation"
-            : $"current_output_weak dup={duplicateRate:P1} pollution={pollutionRate:P1} jump={jumpRate:P1} review={reviewRate:P1}";
-        return new OutlineCandidateDiagnostic(
-            outline.DeterministicRoute!,
-            accepted,
-            reason,
-            outline.Headings.Count,
-            duplicateRate,
-            pollutionRate,
-            jumpRate);
-    }
-
     private static RepairCandidateScore Score(OutlineCandidateDiagnostic candidate, string? currentRoute)
     {
         var score = 0.0;
