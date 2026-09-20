@@ -447,7 +447,8 @@ app.MapPost("/api/extract", async (
                 humanReview,
                 humanReviewUrl = humanReview is null
                     ? null
-                    : $"/review.html?documentId={Uri.EscapeDataString(humanReview.DocumentId)}",
+                    : $"/review.html?documentId={Uri.EscapeDataString(
+                        ReviewDocumentIdCodec.Encode(humanReview.DocumentId))}",
                 humanReviewUnavailableReason = source is null
                     ? "human review is projected from the OOXML source document; a PDF has none"
                     : null,

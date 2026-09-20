@@ -16,7 +16,10 @@ public static class HumanReviewEndpoints
             HumanReviewService service,
             CancellationToken ct) =>
         {
-            var review = await service.GetReviewAsync(documentId, ct);
+            if (!ReviewDocumentIdCodec.TryDecode(documentId, out var rawDocumentId))
+                return InvalidDocumentId();
+
+            var review = await service.GetReviewAsync(rawDocumentId, ct);
             return review is null
                 ? Results.NotFound(new { message = "review-session-not-found" })
                 : Results.Json(review, json);
@@ -27,10 +30,13 @@ public static class HumanReviewEndpoints
             HumanReviewService service,
             CancellationToken ct) =>
         {
-            var review = await service.GetReviewAsync(documentId, ct);
+            if (!ReviewDocumentIdCodec.TryDecode(documentId, out var rawDocumentId))
+                return InvalidDocumentId();
+
+            var review = await service.GetReviewAsync(rawDocumentId, ct);
             if (review is null)
                 return Results.NotFound(new { message = "review-session-not-found" });
-            return Results.Json(await service.GetRecordsAsync(documentId, ct), json);
+            return Results.Json(await service.GetRecordsAsync(rawDocumentId, ct), json);
         });
 
         app.MapPost("/api/review/{documentId}/decisions", async (
@@ -39,6 +45,9 @@ public static class HumanReviewEndpoints
             HumanReviewService service,
             CancellationToken ct) =>
         {
+            if (!ReviewDocumentIdCodec.TryDecode(documentId, out var rawDocumentId))
+                return InvalidDocumentId();
+
             HumanReviewDecision? decision;
             try
             {
@@ -54,7 +63,7 @@ public static class HumanReviewEndpoints
 
             try
             {
-                return Results.Json(await service.RecordAsync(documentId, decision, ct), json);
+                return Results.Json(await service.RecordAsync(rawDocumentId, decision, ct), json);
             }
             catch (InvalidOperationException ex) when (ex.Message == "review-session-not-found")
             {
@@ -71,7 +80,10 @@ public static class HumanReviewEndpoints
             HumanReviewService service,
             CancellationToken ct) =>
         {
-            var plan = await service.BuildWritebackPlanAsync(documentId, cancellationToken: ct);
+            if (!ReviewDocumentIdCodec.TryDecode(documentId, out var rawDocumentId))
+                return InvalidDocumentId();
+
+            var plan = await service.BuildWritebackPlanAsync(rawDocumentId, cancellationToken: ct);
             return plan is null
                 ? Results.NotFound(new { message = "review-session-not-found" })
                 : Results.Json(plan, json);
@@ -83,6 +95,9 @@ public static class HumanReviewEndpoints
             HumanReviewService service,
             CancellationToken ct) =>
         {
+            if (!ReviewDocumentIdCodec.TryDecode(documentId, out var rawDocumentId))
+                return InvalidDocumentId();
+
             if (!request.HasFormContentType)
                 return Results.BadRequest(new { code = "writeback-source-required" });
 
@@ -104,7 +119,7 @@ public static class HumanReviewEndpoints
                 var extraction = new ExtractionOptions();
                 var source = new AuthorityDocumentSourceReader(extraction).Read(sourcePath).Document;
                 var plan = await service.BuildWritebackPlanAsync(
-                    documentId, source, allowSourceDocumentIdAlias: true, cancellationToken: ct);
+                    rawDocumentId, source, allowSourceDocumentIdAlias: true, cancellationToken: ct);
                 if (plan is null)
                     return Results.NotFound(new { message = "review-session-not-found" });
                 if (!plan.IsReady)
@@ -129,4 +144,7 @@ public static class HumanReviewEndpoints
             }
         });
     }
+
+    private static IResult InvalidDocumentId() =>
+        Results.BadRequest(new { code = "review-document-id-invalid" });
 }
