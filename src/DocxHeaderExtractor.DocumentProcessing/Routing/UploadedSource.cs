@@ -9,16 +9,6 @@ public enum SourceType
 }
 
 /// <summary>
-/// The one file the caller asked about, plus whether an analyst is available to reason over it.
-/// <para>
-/// This deliberately describes a single upload rather than a set of capabilities the machine
-/// happens to have. The previous contract asked "is there a DOCX? is there a PDF?", which let a
-/// file nobody uploaded decide how the uploaded one was processed.
-/// </para>
-/// </summary>
-public sealed record UploadedSource(SourceType Type, bool AnalystAvailable);
-
-/// <summary>
 /// Identifies an uploaded file by its content.
 /// <para>
 /// The extension is a claim by whoever named the file, not evidence. A .docx that is really a PDF,

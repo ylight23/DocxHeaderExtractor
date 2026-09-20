@@ -1,6 +1,4 @@
 using System.Text.Json;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -23,27 +21,6 @@ public sealed class P4ReachabilityCleanupTests
             fingerprint);
     }
 
-    [Fact]
-    public async Task Pdf_authority_route_remains_explicitly_defensive_for_docx_authority_pipeline()
-    {
-        var path = Path.Combine(Path.GetTempPath(), $"dhx-p4-route-{Guid.NewGuid():N}.docx");
-        try
-        {
-            SampleDocumentFactory.Create(path);
-            using var pipeline = new AuthorityExtractionPipeline(
-                new PipelineOptions { DisableLlm = true },
-                new ForcedPdfRoutePolicy());
-
-            var error = await Assert.ThrowsAsync<NotSupportedException>(() => pipeline.RunAsync(path));
-
-            Assert.Contains("PdfAuthority cannot be selected", error.Message, StringComparison.Ordinal);
-        }
-        finally
-        {
-            LegacyDocConverter.TryDelete(path);
-        }
-    }
-
     private static string RepositoryRoot()
     {
         var directory = new DirectoryInfo(AppContext.BaseDirectory);
@@ -52,10 +29,4 @@ public sealed class P4ReachabilityCleanupTests
         return directory?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
     }
 
-    private sealed class ForcedPdfRoutePolicy : DocxHeaderExtractor.DocumentProcessing.Routing.IAuthorityRoutePolicy
-    {
-        public DocxHeaderExtractor.DocumentProcessing.Routing.AuthorityRoute Decide(
-            DocxHeaderExtractor.DocumentProcessing.Routing.UploadedSource source) =>
-            DocxHeaderExtractor.DocumentProcessing.Routing.AuthorityRoute.PdfAuthority;
-    }
 }
