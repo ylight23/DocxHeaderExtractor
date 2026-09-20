@@ -136,7 +136,8 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     public Task RecordSemanticBatchAsync(
         IReadOnlyList<PdfSemanticBlock> blocks,
         IReadOnlyList<PdfBlockDecision> decisions,
-        CancellationToken ct) =>
+        CancellationToken ct,
+        PdfLaneExecutionLease? executionLease = null) =>
         AppendAsync("semantic", "batch:" + string.Join(',', decisions.Select(d => d.Id)), "completed", new
         {
             blocks = decisions.Select(d =>
@@ -158,7 +159,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
                     d.Reason,
                 };
             }),
-        }, ct);
+        }, ct, executionLease);
 
     /// <summary>
     /// Records the selected source identities before the first semantic provider call. This is
@@ -166,7 +167,8 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     /// </summary>
     public Task RecordSelectionAsync(
         IReadOnlyList<PdfSelectedSourceIdentity> selected,
-        CancellationToken ct) =>
+        CancellationToken ct,
+        PdfLaneExecutionLease? executionLease = null) =>
         AppendAsync("selection", "selected", "completed", new
         {
             selected = selected.Select(item => new
@@ -177,7 +179,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
                 item.SourceText,
                 item.SourceSpan,
             }).ToArray(),
-        }, ct);
+        }, ct, executionLease);
 
     /// <summary>
     /// One span-resolution batch as it actually ended. A heading cannot validate without a resolved
@@ -192,7 +194,8 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     public Task RecordSpanBatchAsync(
         IReadOnlyList<(string Id, int Page, string? LineId, IReadOnlyList<string> LineIds, TextOffsetSpan? Span)> resolutions,
         string? failureClass,
-        CancellationToken ct) =>
+        CancellationToken ct,
+        PdfLaneExecutionLease? executionLease = null) =>
         AppendAsync("span", "batch:" + string.Join(',', resolutions.Select(r => r.Id)),
             failureClass is null ? "completed" : "failed", new
             {
@@ -208,7 +211,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
                     start = r.Span?.Start,
                     end = r.Span?.End,
                 }),
-            }, ct);
+            }, ct, executionLease);
 
     /// <summary>Persists the downstream decision chain without making it an execution input.</summary>
     public Task RecordDownstreamProvenanceAsync(
@@ -218,7 +221,8 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
         IReadOnlySet<string> groundedIds,
         IReadOnlySet<string> emittedIds,
         IReadOnlyList<PdfSemanticClusterDecision> clusterDecisions,
-        CancellationToken ct)
+        CancellationToken ct,
+        PdfLaneExecutionLease? executionLease = null)
     {
         var decisionById = decisions.ToDictionary(item => item.Id, StringComparer.Ordinal);
         var traceById = traces.ToDictionary(item => item.Id, StringComparer.Ordinal);
@@ -249,22 +253,38 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
                     outputStatus = emittedIds.Contains(block.Id) ? "EMITTED" : "NOT_EMITTED",
                 };
             }).ToArray(),
-        }, ct);
+        }, ct, executionLease);
     }
 
-    public async Task RecordVisualRegionAsync(PdfVisualRecoveryTrace trace, CancellationToken ct)
+    public async Task RecordVisualRegionAsync(
+        PdfVisualRecoveryTrace trace,
+        CancellationToken ct,
+        PdfLaneExecutionLease? executionLease = null)
     {
-        await AppendAsync("visual", trace.RegionId, "completed", trace, ct);
+        if (!await AppendAsync("visual", trace.RegionId, "completed", trace, ct, executionLease).ConfigureAwait(false))
+            return;
         lock (_completedVisualRegions) _completedVisualRegions.Add(trace.RegionId);
     }
 
-    private async Task AppendAsync(string lane, string identity, string status, object payload, CancellationToken ct)
+    private async Task<bool> AppendAsync(
+        string lane,
+        string identity,
+        string status,
+        object payload,
+        CancellationToken ct,
+        PdfLaneExecutionLease? executionLease = null)
     {
         lock (_writeState)
         {
-            if (!_acceptWrites) return;
+            if (!_acceptWrites) return false;
             if (_activeWrites++ == 0)
                 _writesIdle = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        }
+        using var operation = executionLease?.TryAdmitOperation();
+        if (executionLease is not null && operation is null)
+        {
+            ExitWrite();
+            return false;
         }
         var acquired = false;
         try
@@ -273,6 +293,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
             await _write.WaitAsync(ct);
             acquired = true;
             await File.AppendAllTextAsync(_path, line + Environment.NewLine, ct);
+            return true;
         }
         finally
         {
