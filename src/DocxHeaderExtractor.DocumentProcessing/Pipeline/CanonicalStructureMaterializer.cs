@@ -143,3 +143,14 @@ internal static class CanonicalStructureMaterializer
         return ValidatedStructure.FromElements(elements, relationProposals);
     }
 }
+
+/// <summary>
+/// Canonical route transport for the materialized structure and the source elements it emitted.
+/// The old structural materializer implementation was removed; this shared result remains live
+/// because the normal authority pipeline uses it to carry canonical materialization output.
+/// </summary>
+public sealed record StructuralMaterializationResult(
+    ValidatedStructure Structure,
+    IReadOnlySet<string> EmittedElementIds,
+    int UnjoinedSourceCount,
+    int UnjoinedParentCount);

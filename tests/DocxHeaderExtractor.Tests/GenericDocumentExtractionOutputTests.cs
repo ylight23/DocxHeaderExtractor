@@ -185,49 +185,6 @@ public sealed class GenericDocumentExtractionOutputTests
         Assert.Equal(new[] { 1, 2 }, element.Sources.Select(source => source.SourceOrdinal));
     }
 
-    [Fact]
-    public void Pdf_materializer_joins_parser_catalog_and_preserves_narrow_structural_span()
-    {
-        const string raw = "prefix Figure 3 caption suffix";
-        var fact = new PdfHierarchyFactAudit(
-            "b1", 0, 1, "document_body", "document_body", null, null, false, null,
-            null, null, 1, "relationship_unresolved", [])
-        {
-            FactId = "p1:b1:s7-23",
-            SourceBlockText = raw,
-            HeadingSpan = new TextOffsetSpan(7, 23),
-            HeadingText = "Figure 3 caption",
-        };
-        var final = PdfFinalStructureProjection.Project(
-            "sha",
-            [new PdfValidatedStructure("b1", 1, null, "unresolved", "requires_review")],
-            [fact],
-            [new PdfCanonicalGrounding(
-                "b1", 0, "docx-p1", new DocxTextSpan(7, 23), raw)]);
-        var catalog = DocumentSourceCatalogBuilder.FromSourceFacts([
-            new SourceFacts
-            {
-                SourceId = "b1",
-                RawText = raw,
-                RawSpan = new SourceTextSpan(0, raw.Length),
-                Source = new SourceAnchor { SourceType = "pdf", ParagraphIndex = 0, RenderBlockId = "b1" },
-            },
-        ]);
-
-        var materialized = StructuralAuthorityMaterializer.Materialize(
-            final,
-            PdfOutputDecisionPolicy.Decide(final),
-            catalog,
-            StructuralMaterializationSourceAuthority.PdfParserSource);
-        var source = Assert.Single(materialized.Structure.Elements).Sources.Single();
-
-        Assert.Equal("b1", source.SourceId);
-        Assert.Equal(0, source.SourceOrdinal);
-        Assert.Equal(new StructuralSpan(7, 23), source.Span);
-        Assert.Equal(raw, catalog.Units.Single().Text);
-        Assert.Equal(new StructuralSpan(0, raw.Length), catalog.Units.Single().SourceSpan);
-    }
-
     private static SourceDocument BuildSource() => new()
     {
         DocumentId = "doc",
