@@ -18,6 +18,7 @@ provider call was made.
 | `review-duplicate-text-index.v1.json` | `DUPLICATE_TEXT_INDEX` | 573 text groups, 19 of them repeated |
 | `review-by-page.v1.json` | `BY_PAGE` | 15 pages |
 | `review-by-parser-context.v1.json` | `BY_PARSER_CONTEXT` | 15 pages × structural scope, with parser evidence |
+| `gold-source-reconfirmation.v1.json` | — | one audit event: the approved 41 re-checked against the source |
 
 Each view is an **exhaustive partition** of the same 1,013 occurrences — same aliases, no
 additions, no omissions, verbatim text unmodified. None of them is a shortlist: a candidate filter
@@ -109,6 +110,22 @@ before starting. This review is therefore **not a blind first pass**, and the fr
 describe it as one. It can still be conducted occurrence by occurrence without using the total as a
 target — that is the intent — but the exposure is a fact about how the Gold was produced, and
 recording it is cheaper than defending the claim later.
+
+## Reconfirmation
+
+`gold-source-reconfirmation.v1.json` records that the approved 41 were checked again - against the
+rendered 15-page PDF and by an independent claim-by-claim diff - and came back unchanged: nothing
+added, nothing removed, nothing left for review.
+
+It is an observation of the decision, not a second decision, and it lives here rather than inside
+canonical Gold on purpose. Writing it into the Gold file would move `goldSha256`, and the executed
+occurrence baseline names that hash as the authority it ran against - so the record that makes the
+baseline checkable would have been rewritten by an audit that ran after it. Gold stays byte-identical
+and the artifact carries both hashes so the equality can be seen rather than trusted.
+
+The differences that re-audit did find are not membership differences. They are boundary defects in
+the source occurrences, frozen separately in
+`eval/a99-closed-loop/representation/doc-0252-source-occurrence-boundary.v1.json`.
 
 ## Rules this pack enforces
 

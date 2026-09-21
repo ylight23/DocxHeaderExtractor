@@ -349,6 +349,367 @@ public sealed class PdfGoldAuthorityTests
         Assert.Equal(0, document.Provenance.ProviderCalls);
     }
 
+    // ---- reconfirmation of the semantic decision ----------------------------------------------
+
+    [Fact]
+    public void The_source_reconfirmation_is_recorded_beside_Gold_and_never_inside_it()
+    {
+        // A re-audit that confirms a decision is a second observation of it, not a second decision.
+        // Writing it into canonical Gold would move goldSha256, and the executed baseline names
+        // that hash as the authority it ran against - so the file that proves the baseline honest
+        // would have been edited by the audit that came after it. The event lives beside Gold
+        // instead, in the DOC-0252 authority-audit pack that already holds this document's review
+        // lineage, and Gold stays byte-identical.
+        var entry = CanonicalGoldRegistry.Entry("DOC-0252");
+        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");   // throws on hash mismatch
+        var semantic = gold.RootElement.GetProperty("semantic");
+        var approval = gold.RootElement.GetProperty("approval");
+
+        var claims = semantic.GetProperty("claims").EnumerateArray()
+            .Select(claim => new
+            {
+                sourceAlias = claim.GetProperty("sourceAlias").GetString()!,
+                selectionMode = claim.GetProperty("selectionMode").GetString()!,
+                verbatimText = claim.GetProperty("verbatimText").GetString(),
+            })
+            .ToArray();
+
+        Assert.Equal(AuthoritativeTotal, claims.Length);
+        Assert.Equal(AuthoritativeTotal, semantic.GetProperty("approvedSemanticTotal").GetInt32());
+        Assert.Equal(AuthoritativeTotal, entry.SemanticHeadingTotal);
+
+        // The baseline's own record of what it ran against, read from the run rather than restated.
+        var run = JsonDocument.Parse(File.ReadAllText(
+            Path.Combine(TestRepository.Root(), "eval/a99-closed-loop/occurrence-baseline-v1/run.v1.json"
+                .Replace('/', Path.DirectorySeparatorChar))));
+        var executionHash = run.RootElement.GetProperty("runs").EnumerateArray()
+            .Where(item => item.GetProperty("documentId").GetString() == "DOC-0252")
+            .Select(item => item.GetProperty("goldHash").GetString()!)
+            .Distinct(StringComparer.Ordinal)
+            .Single();
+        Assert.Equal(entry.GoldSha256, executionHash);
+        Assert.Equal(entry.GoldSha256, CanonicalArtifactHash.OfTextFile(
+            Path.Combine(TestRepository.Root(), entry.CanonicalGoldPath.Replace('/', Path.DirectorySeparatorChar))));
+
+        FreezeArtifact.AssertJson(Worksheet, "gold-source-reconfirmation.v1.json", new
+        {
+            artifactKind = "a99_semantic_gold_source_reconfirmation",
+            schemaVersion = "a99-semantic-gold-source-reconfirmation-v1",
+            kind = "SEMANTIC_GOLD_SOURCE_RECONFIRMATION",
+            authorityId = "DOC-0252",
+            result = "CONFIRMED",
+            providerCalls = 0,
+            modelCalls = 0,
+
+            semanticHeadingTotal = AuthoritativeTotal,
+            add = 0,
+            remove = 0,
+            needsReview = 0,
+            membershipChanged = false,
+
+            basis = new[] { "ORIGINAL_SOURCE_VISUAL_REAUDIT", "INDEPENDENT_41_CLAIM_SOURCE_DIFF" },
+
+            // Referenced, never restated: the decision this confirms was approved once, by USER, on
+            // its own date. A reconfirmation that carried its own approval date would read as a
+            // second approval and would quietly become the one later work cites.
+            reconfirms = new
+            {
+                approvalAuthority = approval.GetProperty("authority").GetString(),
+                userFinalApproval = approval.GetProperty("userFinalApproval").GetBoolean(),
+                approvalBasis = approval.GetProperty("approvalBasis").GetString(),
+                approvedAt = approval.GetProperty("approvedAt").GetString(),
+                canonicalGoldPath = entry.CanonicalGoldPath,
+            },
+            isReplacementAuthority = false,
+
+            // One Gold root, one hash, unmoved. The baseline needs no successor lineage because
+            // nothing about the file it executed against changed.
+            goldLineage = new
+            {
+                baselineExecutionGoldSha256 = executionHash,
+                currentCanonicalGoldSha256 = entry.GoldSha256,
+                canonicalGoldModified = false,
+                claimSetEquivalent = true,
+                provenanceRecordedOutsideCanonicalGold = true,
+            },
+
+            // The diff itself, so the confirmation can be re-checked without rerunning the audit.
+            claims,
+
+            notes = new[]
+            {
+                "Punctuation and text-layer differences between the rendered PDF and a claim's verbatimText are representation differences, not membership differences.",
+                "The S0616 mismatch is caused by source-occurrence fragmentation, not by Gold membership; see eval/a99-closed-loop/representation/doc-0252-source-occurrence-boundary.v1.json.",
+                "This audit was not blind to the approved total of 41; the original occurrence review was not either, and both exposures stay recorded rather than being described as independent.",
+            },
+        });
+    }
+
+    // ---- how the source represents each approved heading --------------------------------------
+
+    [Fact]
+    public void Every_approved_heading_is_classified_against_the_visual_line_the_page_actually_has()
+    {
+        // PDF_SOURCE_OCCURRENCE_BOUNDARY_MISMATCH. The question is not whether the 41 headings are
+        // right - that is settled - but whether the occurrence universe can express them at all.
+        // Two things have to disagree for that to be measurable, so the boundary is taken from the
+        // page's own geometry and the grouper's answer is compared against it. Nothing a model
+        // produced is consulted anywhere in this test.
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        Assert.Equal(AuthoritativeTotal, gold.Headings.Count);
+
+        var occurrences = Blocks();
+        var aliases = occurrences
+            .Select((_, index) => $"S{index + 1:D4}")
+            .ToArray();
+        var indexOf = aliases
+            .Select((alias, index) => (alias, index))
+            .ToDictionary(item => item.alias, item => item.index, StringComparer.Ordinal);
+
+        // The offsets below read the occurrence text as its lines joined by a single space. If that
+        // ever stopped being how the projection composes, every span in this census would be off by
+        // a little and still look plausible, so it is checked rather than assumed.
+        Assert.All(occurrences, occurrence => Assert.Equal(
+            string.Join(PdfSourceOccurrenceBoundary.Separator,
+                occurrence.Lines.Select(line => line.Projection.VerbatimText)),
+            occurrence.VerbatimText));
+
+        var visualLines = PdfSourceOccurrenceBoundary.VisualLines(occurrences);
+        var lineOf = visualLines
+            .SelectMany(line => line.OccurrenceIndexes.Select(occurrence => (occurrence, line)))
+            .ToLookup(pair => pair.occurrence, pair => pair.line);
+
+        var rows = gold.Headings.Select((heading, ordinal) =>
+        {
+            var index = indexOf[heading.SourceAlias];
+            var occurrence = occurrences[index];
+            var goldText = heading.VerbatimText ?? occurrence.VerbatimText;
+
+            var carried = PdfSourceOccurrenceBoundary.LinesCarrying(occurrence, heading.VerbatimText);
+            var carriedLines = carried.Select(line => occurrence.Lines[line]).ToArray();
+            var headingLines = lineOf[index]
+                .Where(line => carriedLines.Any(parser =>
+                    parser.Page == line.Page &&
+                    parser.Top <= line.Top && parser.Bottom >= line.Bottom))
+                .DistinctBy(line => line.Index)
+                .OrderByDescending(line => line.Top)
+                .ToArray();
+            if (headingLines.Length == 0)
+                headingLines = lineOf[index].OrderByDescending(line => line.Top).ToArray();
+
+            // Fragmentation: the heading's own visual line is shared with another occurrence, so
+            // no single occurrence can hold the heading whatever the model says.
+            var foreign = headingLines
+                .SelectMany(line => line.OccurrenceIndexes)
+                .Where(other => other != index)
+                .Distinct()
+                .Order()
+                .Select(other => new { alias = aliases[other], text = occurrences[other].VerbatimText })
+                .ToArray();
+
+            var goldKey = PdfSourceOccurrenceBoundary.Key(goldText);
+            var occurrenceKey = PdfSourceOccurrenceBoundary.Key(occurrence.VerbatimText);
+
+            var classification =
+                foreign.Length > 0 ? "FRAGMENTED"
+                : goldKey != occurrenceKey ? "OVER_GROUPED"
+                : string.Equals(goldText, occurrence.VerbatimText, StringComparison.Ordinal) ? "EXACT_SOURCE_BOUNDARY"
+                : PdfSourceOccurrenceBoundary.KeyWithoutPunctuation(goldText)
+                    == PdfSourceOccurrenceBoundary.KeyWithoutPunctuation(occurrence.VerbatimText)
+                    ? "NORMALIZATION_ONLY"
+                    : "OTHER_REPRESENTATION_MISMATCH";
+
+            return new
+            {
+                // Keyed exactly as occurrence-baseline-v1/causal-forensic.v1.json keys the same
+                // claims, so the two artifacts can be read side by side without a mapping table.
+                claim = $"{heading.SourceAlias}#{ordinal}",
+                sourceAlias = heading.SourceAlias,
+                page = occurrence.Page,
+                selectionMode = heading.SelectionMode,
+                boundary = classification,
+                goldText,
+                occurrenceText = occurrence.VerbatimText,
+                occurrenceLineCount = occurrence.LineCount,
+                headingVisualLineCount = headingLines.Length,
+                // The whole visual line as the page has it, which is what the occurrence should
+                // have been able to reproduce.
+                visualLineText = headingLines.Select(line => line.Text).ToArray(),
+                occurrenceIsWholeVisualLine = headingLines.Length > 0 && foreign.Length == 0 &&
+                    PdfSourceOccurrenceBoundary.Key(string.Join(" ", headingLines.Select(line => line.Text)))
+                        == occurrenceKey,
+                foreignOccurrencesOnHeadingLine = foreign,
+            };
+        }).ToArray();
+
+        var census = rows.GroupBy(row => row.boundary)
+            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
+
+        // ---- what the measured baseline lost, against what the source could express -------------
+        // The 13 persistent superset losses are not assumed to share a cause. Each is joined to its
+        // own measured boundary, and a loss whose boundary is clean would be a finding in itself.
+        var forensic = JsonDocument.Parse(File.ReadAllText(
+            Path.Combine(TestRepository.Root(),
+                "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json"
+                    .Replace('/', Path.DirectorySeparatorChar))));
+        var boundaryOf = rows.ToDictionary(row => row.claim, row => row.boundary, StringComparer.Ordinal);
+        var losses = forensic.RootElement.GetProperty("lostOccurrences").EnumerateArray()
+            .Where(loss => loss.GetProperty("persistent").GetBoolean())
+            .Select(loss => new
+            {
+                claim = loss.GetProperty("claim").GetString()!,
+                firstLoss = loss.GetProperty("firstLoss").GetString()!,
+            })
+            .Select(loss => new
+            {
+                loss.claim,
+                loss.firstLoss,
+                boundary = boundaryOf.GetValueOrDefault(loss.claim, "CLAIM_NOT_IN_AUDIT"),
+            })
+            .OrderBy(loss => loss.claim, StringComparer.Ordinal)
+            .ToArray();
+
+        // ---- punctuation ----------------------------------------------------------------------
+        // Isolation alone is not the defect. A punctuation occurrence that sits on its own visual
+        // line is merely small; one that sits on a line with text is a line the grouper took apart,
+        // and that is what destroys a heading boundary.
+        string[] marks = [".", ":", ";", ",", "-", "–", "—"];
+        var goldAliases = gold.Headings.Select(heading => heading.SourceAlias)
+            .ToHashSet(StringComparer.Ordinal);
+        var lineByOccurrence = visualLines
+            .SelectMany(line => line.OccurrenceIndexes.Select(occurrence => (occurrence, line)))
+            .ToLookup(pair => pair.occurrence, pair => pair.line);
+
+        var punctuation = marks.Select(mark =>
+        {
+            var matching = occurrences
+                .Select((occurrence, index) => (occurrence, index))
+                .Where(item => item.occurrence.VerbatimText.Trim() == mark)
+                .ToArray();
+            return new
+            {
+                mark,
+                occurrences = matching.Length,
+                sharingAVisualLineWithText = matching.Count(item =>
+                    lineByOccurrence[item.index].Any(line => line.SplitAcrossOccurrences)),
+                immediatelyBeforeAGoldAlias = matching.Count(item =>
+                    item.index + 1 < aliases.Length && goldAliases.Contains(aliases[item.index + 1])),
+            };
+        }).ToArray();
+
+        var dots = punctuation.Single(item => item.mark == ".");
+
+        FreezeArtifact.AssertJson("eval/a99-closed-loop/representation",
+            "doc-0252-source-occurrence-boundary.v1.json", new
+        {
+            artifactKind = "a99_source_occurrence_boundary_audit",
+            schemaVersion = "a99-source-occurrence-boundary-audit-v1",
+            finding = "PDF_SOURCE_OCCURRENCE_BOUNDARY_MISMATCH",
+            authorityId = "DOC-0252",
+            sourceSha256 = AuthoritativeSourceSha,
+            providerCalls = 0,
+            modelCalls = 0,
+
+            defectOwner = "HARNESS_SOURCE_OCCURRENCE_LAYER",
+            whatIsNotTheDefect = new[]
+            {
+                "GOLD_MEMBERSHIP: reconfirmed at 41, add 0, remove 0 - see pdf-gold-doc0252/gold-source-reconfirmation.v1.json.",
+                "TEXT_EXTRACTION: the glyphs are present. Every punctuation mark counted below was extracted; it was placed in an occurrence of its own.",
+                "BINDER: binding a heading to exactly one occurrence is the contract that keeps coordinates with the harness. Relaxing it would hide this defect rather than fix it.",
+            },
+
+            textLayerVersusGrouping = new
+            {
+                verdict = "TEXT_EXTRACTION_PRESENT_AND_OCCURRENCE_GROUPING_WRONG",
+                note = "An earlier report from this session said the trailing period was absent from the PDF text layer. That was wrong and is corrected here: the period is extracted, and then separated from the line it belongs to.",
+                mechanism = "PdfLineExtraction buckets glyphs by vertical midpoint with a tolerance scaled to glyph height. A period and a capital sharing one baseline differ in midpoint by more than that tolerance, so the period becomes its own line, its own block, and its own occurrence.",
+                evidence = "S0616 spans [425.51, 435.02] and S0617, the period belonging to its list number, spans [427.41, 429.07] - strictly inside it, therefore the same visual line by geometry.",
+            },
+
+            modes = new object[]
+            {
+                new
+                {
+                    mode = "OVER_GROUPING",
+                    statement = "One occurrence carries a heading together with the text that follows it, so no proposal can be both semantically right and exactly bindable.",
+                    claims = census.GetValueOrDefault("OVER_GROUPED"),
+                    persistentSupersetLossesInBaseline = 13,
+                    note = "The 13 come from occurrence-baseline-v1/causal-forensic.v1.json and are not re-derived here; each claim below carries its own measured boundary rather than inheriting a shared cause.",
+                },
+                new
+                {
+                    mode = "FRAGMENTATION",
+                    statement = "One visual line is split across several occurrences, so the heading it carries exists in no occurrence at all.",
+                    claims = census.GetValueOrDefault("FRAGMENTED"),
+                    worked = new
+                    {
+                        claim = "S0616",
+                        sourceHeading = "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+                        modelSemanticDecision = "CORRECT",
+                        sourceRepresentation = "INSUFFICIENT_FOR_EXACT_BINDING",
+                        finalScore = "FN under the current occurrence authority",
+                        note = "Diagnosis, not a score. The measured baseline stands as measured; what changes is who owns the loss.",
+                    },
+                },
+            },
+
+            boundaryAudit = new
+            {
+                total = rows.Length,
+                census,
+                rows,
+            },
+
+            persistentBaselineLosses = new
+            {
+                source = "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json",
+                note = "Measured scores are reproduced unchanged and joined to this audit's boundary classification. Diagnosis is added; nothing is rescored.",
+                byFirstLossAndBoundary = losses
+                    .GroupBy(loss => $"{loss.firstLoss} + {loss.boundary}")
+                    .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
+                losses,
+            },
+
+            punctuationCensus = new
+            {
+                sourceOccurrences = occurrences.Count,
+                visualLines = visualLines.Count,
+                visualLinesSplitAcrossOccurrences = visualLines.Count(line => line.SplitAcrossOccurrences),
+                dotOnlyOccurrences = dots.occurrences,
+                dotImmediatelyBeforeAGoldAlias = dots.immediatelyBeforeAGoldAlias,
+                byMark = punctuation,
+            },
+
+            causalInterpretation = new
+            {
+                family = "SOURCE_REPRESENTATION_INTERVENTION_JUSTIFIED",
+                expandedInto = new[] { "OVER_GROUPING", "FRAGMENTATION" },
+                chain = new[]
+                {
+                    "PDF glyphs: present and correct.",
+                    "Line reconstruction: splits a baseline by glyph midpoint.",
+                    "Occurrence grouping: under-splits headings into body, over-splits lines into punctuation.",
+                    "Model: largely locates the right region.",
+                    "Binder and scorer: apply the current contract correctly.",
+                    "Result: FN and FP owned by the source layer, not by the model.",
+                },
+                interventionTarget = "BOUNDARY_RECONSTRUCTION_FROM_PDF_TEXT_ATOMS",
+                notAnIntervention = new[]
+                {
+                    "Reducing the grouper's maximum block size. It would not fix fragmentation and would deepen it.",
+                    "Letting the binder span or subdivide occurrences freely. That moves coordinate authority to the model.",
+                },
+                status = "EVIDENCE_FROZEN_NO_CODE_CHANGE",
+            },
+        });
+
+        // The two modes are both real, and the census is not silently empty on either side.
+        Assert.Equal(AuthoritativeTotal, rows.Length);
+        Assert.Contains(rows, row => row.boundary == "FRAGMENTED");
+        Assert.Contains(rows, row => row.boundary == "OVER_GROUPED");
+        Assert.Equal(166, dots.occurrences);
+    }
+
     // ---- helpers -----------------------------------------------------------------------------
 
     /// <summary>

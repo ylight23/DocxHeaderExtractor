@@ -1,0 +1,959 @@
+{
+  "artifactKind": "a99_source_occurrence_boundary_audit",
+  "schemaVersion": "a99-source-occurrence-boundary-audit-v1",
+  "finding": "PDF_SOURCE_OCCURRENCE_BOUNDARY_MISMATCH",
+  "authorityId": "DOC-0252",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "defectOwner": "HARNESS_SOURCE_OCCURRENCE_LAYER",
+  "whatIsNotTheDefect": [
+    "GOLD_MEMBERSHIP: reconfirmed at 41, add 0, remove 0 - see pdf-gold-doc0252/gold-source-reconfirmation.v1.json.",
+    "TEXT_EXTRACTION: the glyphs are present. Every punctuation mark counted below was extracted; it was placed in an occurrence of its own.",
+    "BINDER: binding a heading to exactly one occurrence is the contract that keeps coordinates with the harness. Relaxing it would hide this defect rather than fix it."
+  ],
+  "textLayerVersusGrouping": {
+    "verdict": "TEXT_EXTRACTION_PRESENT_AND_OCCURRENCE_GROUPING_WRONG",
+    "note": "An earlier report from this session said the trailing period was absent from the PDF text layer. That was wrong and is corrected here: the period is extracted, and then separated from the line it belongs to.",
+    "mechanism": "PdfLineExtraction buckets glyphs by vertical midpoint with a tolerance scaled to glyph height. A period and a capital sharing one baseline differ in midpoint by more than that tolerance, so the period becomes its own line, its own block, and its own occurrence.",
+    "evidence": "S0616 spans [425.51, 435.02] and S0617, the period belonging to its list number, spans [427.41, 429.07] - strictly inside it, therefore the same visual line by geometry."
+  },
+  "modes": [
+    {
+      "mode": "OVER_GROUPING",
+      "statement": "One occurrence carries a heading together with the text that follows it, so no proposal can be both semantically right and exactly bindable.",
+      "claims": 8,
+      "persistentSupersetLossesInBaseline": 13,
+      "note": "The 13 come from occurrence-baseline-v1/causal-forensic.v1.json and are not re-derived here; each claim below carries its own measured boundary rather than inheriting a shared cause."
+    },
+    {
+      "mode": "FRAGMENTATION",
+      "statement": "One visual line is split across several occurrences, so the heading it carries exists in no occurrence at all.",
+      "claims": 16,
+      "worked": {
+        "claim": "S0616",
+        "sourceHeading": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "modelSemanticDecision": "CORRECT",
+        "sourceRepresentation": "INSUFFICIENT_FOR_EXACT_BINDING",
+        "finalScore": "FN under the current occurrence authority",
+        "note": "Diagnosis, not a score. The measured baseline stands as measured; what changes is who owns the loss."
+      }
+    }
+  ],
+  "boundaryAudit": {
+    "total": 41,
+    "census": {
+      "EXACT_SOURCE_BOUNDARY": 17,
+      "OVER_GROUPED": 8,
+      "FRAGMENTED": 16
+    },
+    "rows": [
+      {
+        "claim": "S0001#0",
+        "sourceAlias": "S0001",
+        "page": 1,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "occurrenceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "M I N UTES OF TH E I NTE RNATIONAL COM PARISON PROG RAM"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0006#1",
+        "sourceAlias": "S0006",
+        "page": 1,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "Session I: Welcome and meeting objectives",
+        "occurrenceText": "Session I: Welcome and meeting objectives",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Session I : Welcome a nd meeting objectives"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0043#2",
+        "sourceAlias": "S0043",
+        "page": 1,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "OVER_GROUPED",
+        "goldText": "Session II: Update on the ICP 2021 Cycle",
+        "occurrenceText": "Session II: Update on the ICP 2021 Cycle 1 Global office update",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Session I I : U pdate on the ICP 2021 Cycle"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0043#3",
+        "sourceAlias": "S0043",
+        "page": 1,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "FRAGMENTED",
+        "goldText": "1 Global office update",
+        "occurrenceText": "Session II: Update on the ICP 2021 Cycle 1 Global office update",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "1 G loba l office u pdate ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0044",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0122#4",
+        "sourceAlias": "S0122",
+        "page": 3,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "2 Regional updates",
+        "occurrenceText": "2 Regional updates",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "2 Regiona l u pdates ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0123",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0127#5",
+        "sourceAlias": "S0127",
+        "page": 3,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "OVER_GROUPED",
+        "goldText": "Africa",
+        "occurrenceText": "Africa Gregoire Mboya de Loubassou African Development Bank (AfDB) presented the status of ICP 2024",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Africa"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0141#6",
+        "sourceAlias": "S0141",
+        "page": 3,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "OVER_GROUPED",
+        "goldText": "Asia and the Pacific",
+        "occurrenceText": "Asia and the Pacific Kaushal Joshi Asian Development Bank (ADB) presented the dissemination activities of the ICP 2021 results",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Asia a n d the Pa cific"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0173#7",
+        "sourceAlias": "S0173",
+        "page": 3,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "OVER_GROUPED",
+        "goldText": "Commonwealth of Independent States (CIS)",
+        "occurrenceText": "Commonwealth of Independent States (CIS) Andrey Kosarev Interstate Statistical Committee of the Commonwealth of Independent States (CIS-Stat)",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Co m m o nwea lth of I n de pe nde nt States (CI S)"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0199#8",
+        "sourceAlias": "S0199",
+        "page": 4,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "Eurostat–OECD PPP Program",
+        "occurrenceText": "Eurostat–OECD PPP Program",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "E u rostat–O ECD P P P P rogra m"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0223#9",
+        "sourceAlias": "S0223",
+        "page": 4,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "OVER_GROUPED",
+        "goldText": "Latin America and the Caribbean",
+        "occurrenceText": "Latin America and the Caribbean Lady Infante Ortega United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Lati n Am e rica a n d the Ca ri bbea n"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0244#10",
+        "sourceAlias": "S0244",
+        "page": 4,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "OVER_GROUPED",
+        "goldText": "Western Asia",
+        "occurrenceText": "Western Asia Majed Skaini United Nations Economic and Social Commission for Western Asia (UN-ESCWA) presented the",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Weste rn Asia"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0268#11",
+        "sourceAlias": "S0268",
+        "page": 5,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "Session III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceText": "Session III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Session I I I : Short- a nd Long-Term Resea rch a nd Development Agenda"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0269#12",
+        "sourceAlias": "S0269",
+        "page": 5,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "1 Research Topics Emerging from the Previous ICP Cycles",
+        "occurrenceText": "1 Research Topics Emerging from the Previous ICP Cycles",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "1 Resea rch Topics Emerging from the Previous ICP Cycles ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0270",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0363#13",
+        "sourceAlias": "S0363",
+        "page": 6,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "2 Forthcoming Research Topics",
+        "occurrenceText": "2 Forthcoming Research Topics",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "2 Forthcom ing Resea rch Topics ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0364",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0460#14",
+        "sourceAlias": "S0460",
+        "page": 7,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "OVER_GROUPED",
+        "goldText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "occurrenceText": "Session IV: TAG Functioning and Terms of Reference for Task Forces 1 TAG Composition and Terms of Reference",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Session IV: TAG Fu nction ing a nd Terms of Reference for Task Forces"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0460#15",
+        "sourceAlias": "S0460",
+        "page": 7,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "FRAGMENTED",
+        "goldText": "1 TAG Composition and Terms of Reference",
+        "occurrenceText": "Session IV: TAG Functioning and Terms of Reference for Task Forces 1 TAG Composition and Terms of Reference",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "1 TAG Com position a nd Terms of Reference ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0461",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0492#16",
+        "sourceAlias": "S0492",
+        "page": 7,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "2 Terms of Reference for a Task Force on Annual PPP Production",
+        "occurrenceText": "2 Terms of Reference for a Task Force on Annual PPP Production",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "2 Terms of Reference for a Task Force on An n ua l PPP Production ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0493",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0541#17",
+        "sourceAlias": "S0541",
+        "page": 8,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "3 Terms of Reference for a Task Force on ICP Classification Update",
+        "occurrenceText": "3 Terms of Reference for a Task Force on ICP Classification Update",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "3 Terms of Reference for a Task Force on ICP Classification U pdate ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0542",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0573#18",
+        "sourceAlias": "S0573",
+        "page": 8,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "OVER_GROUPED",
+        "goldText": "Session V: Current Research",
+        "occurrenceText": "Session V: Current Research 1 The Treatment of Import and Export Prices in International Comparisons",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Session V: Cu rrent Resea rch"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0573#19",
+        "sourceAlias": "S0573",
+        "page": 8,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "FRAGMENTED",
+        "goldText": "1 The Treatment of Import and Export Prices in International Comparisons",
+        "occurrenceText": "Session V: Current Research 1 The Treatment of Import and Export Prices in International Comparisons",
+        "occurrenceLineCount": 2,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "1 The Treatment of I m port and Export Prices in I nternationa l Com pa risons ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0574",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0616#20",
+        "sourceAlias": "S0616",
+        "page": 9,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "2 A Survey Based Approach to Adjustment for Quality Differences in Services in International Price",
+        "occurrenceText": "2 A Survey Based Approach to Adjustment for Quality Differences in Services in International Price",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "2 A Su rvey Based Approach to Adjustment for Qua lity Differences in Services in I nternationa l Price ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0617",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0649#21",
+        "sourceAlias": "S0649",
+        "page": 9,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "3 Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "occurrenceText": "3 Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "3 Treatment of Sca n ner (Transaction) Data in the Eu ropea n Com pa rison Progra mme (ECP) ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0650",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0693#22",
+        "sourceAlias": "S0693",
+        "page": 10,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "4 Treatment of Negative Expenditures in ICP",
+        "occurrenceText": "4 Treatment of Negative Expenditures in ICP",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "4 Treatment of Negative Expenditu res in ICP ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0694",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0732#23",
+        "sourceAlias": "S0732",
+        "page": 10,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "5 Fine Tuning Global Linking Procedures",
+        "occurrenceText": "5 Fine Tuning Global Linking Procedures",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "5 Fine Tu ning Globa l Lin king Procedu res ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0733",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0818#24",
+        "sourceAlias": "S0818",
+        "page": 12,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "6 Improving Reliability of Price Comparisons",
+        "occurrenceText": "6 Improving Reliability of Price Comparisons",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "6 I m proving Relia bility of Price Com pa risons ."
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0819",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "claim": "S0893#25",
+        "sourceAlias": "S0893",
+        "page": 12,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "Session VI: Any Other Business",
+        "occurrenceText": "Session VI: Any Other Business",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Session VI : Any Other Bu siness"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0911#26",
+        "sourceAlias": "S0911",
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "Agenda",
+        "occurrenceText": "Agenda",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "Agenda"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0912#27",
+        "sourceAlias": "S0912",
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "DAY 1: Friday March 7 2025 | Chair: Paul SCHREYER",
+        "occurrenceText": "DAY 1: Friday March 7 2025 | Chair: Paul SCHREYER",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "DAY 1 : Friday Ma rch 7 2025 | Cha ir: Pa u l SCH REYER , ,"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0913",
+            "text": ", ,"
+          }
+        ]
+      },
+      {
+        "claim": "S0914#28",
+        "sourceAlias": "S0914",
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "SESSION I: Welcome and Opening Remarks",
+        "occurrenceText": "SESSION I: Welcome and Opening Remarks",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "SESSION I : Welcome a nd Opening Rema rks"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0917#29",
+        "sourceAlias": "S0917",
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "occurrenceText": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "SESSION I I : U pdate on the ICP 202 1 a nd 2024 Cycles"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0920#30",
+        "sourceAlias": "S0920",
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceText": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "SESSION I I I : Short- a nd Long-Term Resea rch a nd Development Agenda"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0925#31",
+        "sourceAlias": "S0925",
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+        "occurrenceText": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "SESSION IV: TAG Fu nctioning a nd Terms of Refence for Task Forces"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0930#32",
+        "sourceAlias": "S0930",
+        "page": 14,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "SESSION V: Current Research",
+        "occurrenceText": "SESSION V: Current Research",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "SESSION V: Cu rrent Research"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0933#33",
+        "sourceAlias": "S0933",
+        "page": 14,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "DAY 2: Saturday March 8 2025 | Chair: Prasada RAO",
+        "occurrenceText": "DAY 2: Saturday March 8 2025 | Chair: Prasada RAO",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "DAY 2 : Satu rday Ma rch 8 2025 | Cha ir: Prasada RAO , ,"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0934",
+            "text": ", ,"
+          }
+        ]
+      },
+      {
+        "claim": "S0935#34",
+        "sourceAlias": "S0935",
+        "page": 14,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "SESSION V: Current Research (Cont’d)",
+        "occurrenceText": "SESSION V: Current Research (Cont’d)",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "SESSION V: Cu rrent Resea rch (Cont’d)"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0946#35",
+        "sourceAlias": "S0946",
+        "page": 14,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "SESSION VI: Closing",
+        "occurrenceText": "SESSION VI: Closing",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "SESSION VI : Closing"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0949#36",
+        "sourceAlias": "S0949",
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "Annex 2: List of Participants",
+        "occurrenceText": "Annex 2: List of Participants",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "An nex 2: List of Pa rticipa nts"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0950#37",
+        "sourceAlias": "S0950",
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "ICP Technical Advisory Group members",
+        "occurrenceText": "ICP Technical Advisory Group members",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "ICP Technical Advisory Grou p mem bers"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0968#38",
+        "sourceAlias": "S0968",
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "FRAGMENTED",
+        "goldText": "ICP experts guest speakers and observers",
+        "occurrenceText": "ICP experts guest speakers and observers",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "ICP experts guest spea kers a nd observers , ,"
+        ],
+        "occurrenceIsWholeVisualLine": false,
+        "foreignOccurrencesOnHeadingLine": [
+          {
+            "alias": "S0969",
+            "text": ", ,"
+          }
+        ]
+      },
+      {
+        "claim": "S0987#39",
+        "sourceAlias": "S0987",
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "ICP Inter-Agency Coordination Group (IACG)",
+        "occurrenceText": "ICP Inter-Agency Coordination Group (IACG)",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "ICP I nter-Agency Coordination G rou p (IACG)"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0994#40",
+        "sourceAlias": "S0994",
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "goldText": "World Bank",
+        "occurrenceText": "World Bank",
+        "occurrenceLineCount": 1,
+        "headingVisualLineCount": 1,
+        "visualLineText": [
+          "World Ba n k"
+        ],
+        "occurrenceIsWholeVisualLine": true,
+        "foreignOccurrencesOnHeadingLine": []
+      }
+    ]
+  },
+  "persistentBaselineLosses": {
+    "source": "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json",
+    "note": "Measured scores are reproduced unchanged and joined to this audit's boundary classification. Diagnosis is added; nothing is rescored.",
+    "byFirstLossAndBoundary": {
+      "MODEL_EMITTED_SUPERSET + OVER_GROUPED": 7,
+      "MODEL_EMITTED_SUPERSET + FRAGMENTED": 6,
+      "MODEL_NOT_EMITTED + OVER_GROUPED": 1,
+      "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM + FRAGMENTED": 2,
+      "MODEL_NOT_EMITTED + EXACT_SOURCE_BOUNDARY": 1
+    },
+    "losses": [
+      {
+        "claim": "S0043#2",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "OVER_GROUPED"
+      },
+      {
+        "claim": "S0043#3",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "FRAGMENTED"
+      },
+      {
+        "claim": "S0127#5",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "OVER_GROUPED"
+      },
+      {
+        "claim": "S0141#6",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "OVER_GROUPED"
+      },
+      {
+        "claim": "S0173#7",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "OVER_GROUPED"
+      },
+      {
+        "claim": "S0223#9",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "OVER_GROUPED"
+      },
+      {
+        "claim": "S0244#10",
+        "firstLoss": "MODEL_NOT_EMITTED",
+        "boundary": "OVER_GROUPED"
+      },
+      {
+        "claim": "S0460#14",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "OVER_GROUPED"
+      },
+      {
+        "claim": "S0460#15",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "FRAGMENTED"
+      },
+      {
+        "claim": "S0492#16",
+        "firstLoss": "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "boundary": "FRAGMENTED"
+      },
+      {
+        "claim": "S0541#17",
+        "firstLoss": "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "boundary": "FRAGMENTED"
+      },
+      {
+        "claim": "S0573#18",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "OVER_GROUPED"
+      },
+      {
+        "claim": "S0573#19",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "FRAGMENTED"
+      },
+      {
+        "claim": "S0616#20",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "FRAGMENTED"
+      },
+      {
+        "claim": "S0732#23",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "FRAGMENTED"
+      },
+      {
+        "claim": "S0818#24",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundary": "FRAGMENTED"
+      },
+      {
+        "claim": "S0994#40",
+        "firstLoss": "MODEL_NOT_EMITTED",
+        "boundary": "EXACT_SOURCE_BOUNDARY"
+      }
+    ]
+  },
+  "punctuationCensus": {
+    "sourceOccurrences": 1013,
+    "visualLines": 603,
+    "visualLinesSplitAcrossOccurrences": 446,
+    "dotOnlyOccurrences": 166,
+    "dotImmediatelyBeforeAGoldAlias": 14,
+    "byMark": [
+      {
+        "mark": ".",
+        "occurrences": 166,
+        "sharingAVisualLineWithText": 166,
+        "immediatelyBeforeAGoldAlias": 14
+      },
+      {
+        "mark": ":",
+        "occurrences": 0,
+        "sharingAVisualLineWithText": 0,
+        "immediatelyBeforeAGoldAlias": 0
+      },
+      {
+        "mark": ";",
+        "occurrences": 0,
+        "sharingAVisualLineWithText": 0,
+        "immediatelyBeforeAGoldAlias": 0
+      },
+      {
+        "mark": ",",
+        "occurrences": 106,
+        "sharingAVisualLineWithText": 105,
+        "immediatelyBeforeAGoldAlias": 2
+      },
+      {
+        "mark": "-",
+        "occurrences": 0,
+        "sharingAVisualLineWithText": 0,
+        "immediatelyBeforeAGoldAlias": 0
+      },
+      {
+        "mark": "–",
+        "occurrences": 0,
+        "sharingAVisualLineWithText": 0,
+        "immediatelyBeforeAGoldAlias": 0
+      },
+      {
+        "mark": "—",
+        "occurrences": 0,
+        "sharingAVisualLineWithText": 0,
+        "immediatelyBeforeAGoldAlias": 0
+      }
+    ]
+  },
+  "causalInterpretation": {
+    "family": "SOURCE_REPRESENTATION_INTERVENTION_JUSTIFIED",
+    "expandedInto": [
+      "OVER_GROUPING",
+      "FRAGMENTATION"
+    ],
+    "chain": [
+      "PDF glyphs: present and correct.",
+      "Line reconstruction: splits a baseline by glyph midpoint.",
+      "Occurrence grouping: under-splits headings into body, over-splits lines into punctuation.",
+      "Model: largely locates the right region.",
+      "Binder and scorer: apply the current contract correctly.",
+      "Result: FN and FP owned by the source layer, not by the model."
+    ],
+    "interventionTarget": "BOUNDARY_RECONSTRUCTION_FROM_PDF_TEXT_ATOMS",
+    "notAnIntervention": [
+      "Reducing the grouper's maximum block size. It would not fix fragmentation and would deepen it.",
+      "Letting the binder span or subdivide occurrences freely. That moves coordinate authority to the model."
+    ],
+    "status": "EVIDENCE_FROZEN_NO_CODE_CHANGE"
+  }
+}

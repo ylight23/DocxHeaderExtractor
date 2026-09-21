@@ -1,0 +1,245 @@
+{
+  "artifactKind": "a99_semantic_gold_source_reconfirmation",
+  "schemaVersion": "a99-semantic-gold-source-reconfirmation-v1",
+  "kind": "SEMANTIC_GOLD_SOURCE_RECONFIRMATION",
+  "authorityId": "DOC-0252",
+  "result": "CONFIRMED",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "semanticHeadingTotal": 41,
+  "add": 0,
+  "remove": 0,
+  "needsReview": 0,
+  "membershipChanged": false,
+  "basis": [
+    "ORIGINAL_SOURCE_VISUAL_REAUDIT",
+    "INDEPENDENT_41_CLAIM_SOURCE_DIFF"
+  ],
+  "reconfirms": {
+    "approvalAuthority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json"
+  },
+  "isReplacementAuthority": false,
+  "goldLineage": {
+    "baselineExecutionGoldSha256": "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
+    "currentCanonicalGoldSha256": "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
+    "canonicalGoldModified": false,
+    "claimSetEquivalent": true,
+    "provenanceRecordedOutsideCanonicalGold": true
+  },
+  "claims": [
+    {
+      "sourceAlias": "S0001",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0006",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0043",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "Session II: Update on the ICP 2021 Cycle"
+    },
+    {
+      "sourceAlias": "S0043",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "1 Global office update"
+    },
+    {
+      "sourceAlias": "S0122",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0127",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "Africa"
+    },
+    {
+      "sourceAlias": "S0141",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "Asia and the Pacific"
+    },
+    {
+      "sourceAlias": "S0173",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "Commonwealth of Independent States (CIS)"
+    },
+    {
+      "sourceAlias": "S0199",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0223",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "Latin America and the Caribbean"
+    },
+    {
+      "sourceAlias": "S0244",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "Western Asia"
+    },
+    {
+      "sourceAlias": "S0268",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0269",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0363",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0460",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "Session IV: TAG Functioning and Terms of Reference for Task Forces"
+    },
+    {
+      "sourceAlias": "S0460",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "1 TAG Composition and Terms of Reference"
+    },
+    {
+      "sourceAlias": "S0492",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0541",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0573",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "Session V: Current Research"
+    },
+    {
+      "sourceAlias": "S0573",
+      "selectionMode": "VERBATIM_TEXT",
+      "verbatimText": "1 The Treatment of Import and Export Prices in International Comparisons"
+    },
+    {
+      "sourceAlias": "S0616",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0649",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0693",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0732",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0818",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0893",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0911",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0912",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0914",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0917",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0920",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0925",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0930",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0933",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0935",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0946",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0949",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0950",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0968",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0987",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    },
+    {
+      "sourceAlias": "S0994",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null
+    }
+  ],
+  "notes": [
+    "Punctuation and text-layer differences between the rendered PDF and a claim's verbatimText are representation differences, not membership differences.",
+    "The S0616 mismatch is caused by source-occurrence fragmentation, not by Gold membership; see eval/a99-closed-loop/representation/doc-0252-source-occurrence-boundary.v1.json.",
+    "This audit was not blind to the approved total of 41; the original occurrence review was not either, and both exposures stay recorded rather than being described as independent."
+  ]
+}
