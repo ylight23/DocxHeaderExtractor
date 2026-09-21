@@ -8,9 +8,8 @@ public sealed class A99IdentityPromotionBenchmarkV4FCTests
     private const string ArtifactRoot = "artifacts/identity-benchmark/v4/projected-requests";
     private const string V4Root = "artifacts/identity-benchmark/v4/pruning-challenger";
 
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static JsonDocument Load(string relative) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), relative.Replace('/', Path.DirectorySeparatorChar))));
-    private static string Sha256(string relative) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(Path.Combine(Root(), relative.Replace('/', Path.DirectorySeparatorChar))))).ToLowerInvariant();
+    private static JsonDocument Load(string relative) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), relative.Replace('/', Path.DirectorySeparatorChar))));
+    private static string Sha256(string relative) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(Path.Combine(TestRepository.Root(), relative.Replace('/', Path.DirectorySeparatorChar))))).ToLowerInvariant();
 
     [Fact]
     public void V4F_C_freezes_the_same_candidates_with_zero_execution()
@@ -43,7 +42,7 @@ public sealed class A99IdentityPromotionBenchmarkV4FCTests
         Assert.Equal(
             m.GetProperty("packetManifestSha256").GetString(),
             CanonicalArtifactHash.OfTextFile(Path.Combine(
-                Root(), "artifacts/identity-benchmark/v4/context-projection/packet-manifest.json"
+                TestRepository.Root(), "artifacts/identity-benchmark/v4/context-projection/packet-manifest.json"
                     .Replace('/', Path.DirectorySeparatorChar))));
         Assert.True(m.GetProperty("packetManifestConsumedAsFrozen").GetBoolean());
         Assert.False(m.GetProperty("packetBodiesPersisted").GetBoolean());

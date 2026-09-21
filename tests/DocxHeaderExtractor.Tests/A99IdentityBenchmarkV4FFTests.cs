@@ -5,8 +5,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class A99IdentityBenchmarkV4FFTests
 {
     private const string RootRelative = "artifacts/identity-benchmark/v4/projected-verifier-experiment/forensics";
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static JsonDocument Load(string file) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), RootRelative.Replace('/', Path.DirectorySeparatorChar), file)));
+    private static JsonDocument Load(string file) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), RootRelative.Replace('/', Path.DirectorySeparatorChar), file)));
 
     [Fact]
     public void V4F_F_freezes_zero_call_firewall_and_single_diagnosis()

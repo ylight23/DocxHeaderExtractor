@@ -45,7 +45,7 @@ public sealed class PdfSourceCatalogIdentityTests
         var blocks = Blocks().ToDictionary(block => block.Id, StringComparer.Ordinal);
 
         var document = await PdfCanonicalExtraction.RunAsync(
-            UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
+            UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
 
         Assert.NotEmpty(document.SourceCatalog.Units);
@@ -64,7 +64,7 @@ public sealed class PdfSourceCatalogIdentityTests
         var blocks = Blocks();
 
         var document = await PdfCanonicalExtraction.RunAsync(
-            UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
+            UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
 
         Assert.Equal(
@@ -83,7 +83,7 @@ public sealed class PdfSourceCatalogIdentityTests
             .ToDictionary(block => block.Id, StringComparer.Ordinal);
 
         var document = await PdfCanonicalExtraction.RunAsync(
-            UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
+            UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
 
         var checkedUnits = document.SourceCatalog.Units
@@ -97,7 +97,7 @@ public sealed class PdfSourceCatalogIdentityTests
 
     private static IReadOnlyList<PdfSemanticBlock> Blocks()
     {
-        var path = Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar));
+        var path = Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar));
         IReadOnlyList<PdfLine> lines;
         using (var document = UglyToad.PdfPig.PdfDocument.Open(path))
         {
@@ -107,11 +107,4 @@ public sealed class PdfSourceCatalogIdentityTests
         return PdfSemanticBlockGrouper.Build(PdfLineBlockFilter.Analyze(lines), includeRiskLines: true);
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

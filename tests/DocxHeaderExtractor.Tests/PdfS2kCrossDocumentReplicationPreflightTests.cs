@@ -320,15 +320,7 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
     });
 
     private static string RepoPath(string relativePath) =>
-        System.IO.Path.GetFullPath(System.IO.Path.Combine(RepositoryRoot(), relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar)));
-
-    private static string RepositoryRoot()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(System.IO.Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
-            directory = directory.Parent;
-        return directory?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
+        System.IO.Path.GetFullPath(System.IO.Path.Combine(TestRepository.Root(), relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar)));
 
     private sealed record SourceBuild(
         string SourceHash,

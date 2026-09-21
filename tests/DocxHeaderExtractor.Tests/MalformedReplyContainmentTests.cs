@@ -97,7 +97,7 @@ public sealed class MalformedReplyContainmentTests
 
     private static string[] Frozen()
     {
-        using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepositoryRoot(),
+        using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(),
             "tests", "DocxHeaderExtractor.Tests", "Assets", "DOC-0256.frozen-responses.json")));
         return document.RootElement.GetProperty("responses")
             .EnumerateArray().Select(item => item.GetString()!).ToArray();
@@ -105,7 +105,7 @@ public sealed class MalformedReplyContainmentTests
 
     private static DocxPolicyState State()
     {
-        var docx = Path.Combine(RepositoryRoot(), "todo10_8", "heading_corpus_95_word",
+        var docx = Path.Combine(TestRepository.Root(), "todo10_8", "heading_corpus_95_word",
             "05_bien_ban_hop", "076_ICP_IACG08_Minutes_2023.docx");
         var source = new OpenXmlDocumentSource().Read(docx);
         var features = NumberingStyleFeatures.FromSourceDocument(source);
@@ -114,11 +114,4 @@ public sealed class MalformedReplyContainmentTests
         return new DocxPolicyState(source, features, derived, policy.Paragraphs, policy.StyleTrust);
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

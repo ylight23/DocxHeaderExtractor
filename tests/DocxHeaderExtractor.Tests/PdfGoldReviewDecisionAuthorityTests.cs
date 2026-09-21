@@ -110,16 +110,9 @@ public sealed class PdfGoldReviewDecisionAuthorityTests
     }
 
     private static JsonDocument Open(string name) =>
-        JsonDocument.Parse(File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, name)));
+        JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, name)));
 
     private static string SourcePath() =>
-        Path.Combine(RepositoryRoot(), Pack, "source-universe.v1.json");
+        Path.Combine(TestRepository.Root(), Pack, "source-universe.v1.json");
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

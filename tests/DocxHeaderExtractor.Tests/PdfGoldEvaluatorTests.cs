@@ -112,14 +112,7 @@ public sealed class PdfGoldEvaluatorTests
         new("DOC-TEST", "source", [new PdfGoldHeading(alias, "WHOLE_ALIAS", role)]);
 
     private static string Path(string relativePath) =>
-        System.IO.Path.Combine(RepositoryRoot(),
+        System.IO.Path.Combine(TestRepository.Root(),
             relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(System.IO.Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

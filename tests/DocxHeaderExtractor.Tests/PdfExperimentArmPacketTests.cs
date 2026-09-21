@@ -229,7 +229,7 @@ public sealed class PdfExperimentArmPacketTests
 
     private static async Task<IReadOnlyList<CapturedRequest>> CaptureAsync(CanonicalSemanticExperiment experiment)
     {
-        var path = Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar));
+        var path = Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar));
         using var capture = new RequestCapturingClassifier();
         await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None, experiment);
         return capture.Requests;
@@ -238,11 +238,4 @@ public sealed class PdfExperimentArmPacketTests
     private static string Sha256(string value) =>
         Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

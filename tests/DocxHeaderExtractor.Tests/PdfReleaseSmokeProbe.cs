@@ -28,7 +28,7 @@ public sealed class PdfReleaseSmokeProbe
         var output = Environment.GetEnvironmentVariable("M11_B4_REPORT");
         if (string.IsNullOrWhiteSpace(output)) return;
 
-        var corpus = Path.Combine(RepositoryRoot(), "todo10_8", "heading_corpus_95_word");
+        var corpus = Path.Combine(TestRepository.Root(), "todo10_8", "heading_corpus_95_word");
         var rows = new List<Row>();
 
         foreach (var path in Directory.EnumerateFiles(corpus, "*.docx", SearchOption.AllDirectories)
@@ -129,11 +129,4 @@ public sealed class PdfReleaseSmokeProbe
         bool HasProductOutput,
         IReadOnlyList<string> Violations);
 
-    private static string RepositoryRoot()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
-            directory = directory.Parent;
-        return directory?.FullName ?? AppContext.BaseDirectory;
-    }
 }

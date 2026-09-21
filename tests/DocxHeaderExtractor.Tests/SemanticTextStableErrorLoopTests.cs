@@ -60,6 +60,5 @@ public sealed class SemanticTextStableErrorLoopTests
         Assert.False(baseline.RootElement.GetProperty("verification").GetProperty("configurationSignaturePersisted").GetBoolean());
     }
 
-    private static JsonDocument Load(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(RepoRoot(), Root, name)));
-    private static string RepoRoot() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
+    private static JsonDocument Load(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), Root, name)));
 }

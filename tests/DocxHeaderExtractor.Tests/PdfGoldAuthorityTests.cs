@@ -81,7 +81,7 @@ public sealed class PdfGoldAuthorityTests
     {
         // Pinned because occurrence evaluation is allowed only after the approved occurrence
         // authority has been converted and frozen.
-        using var freeze = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepositoryRoot(), GoldFreeze)));
+        using var freeze = JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), GoldFreeze)));
         var root = freeze.RootElement;
 
         Assert.Equal("PDF", root.GetProperty("mediaType").GetString());
@@ -99,7 +99,7 @@ public sealed class PdfGoldAuthorityTests
     {
         // Lineage, checked rather than assumed. Gold against one rendering of a document and a run
         // against another is the failure mode that produces an unexplainable metric.
-        var file = UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar)));
+        var file = UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar)));
 
         Assert.Equal(AuthoritativeSourceSha, file.Sha256);
         var (catalog, _) = await SourceAsync();
@@ -333,7 +333,7 @@ public sealed class PdfGoldAuthorityTests
         var issues = PdfGoldValidator.Validate(gold, catalog, aliases);
 
         var document = await PdfCanonicalExtraction.RunAsync(
-            UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
+            UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
         var predicted = document.Structure.Elements
             .Select(element => new PdfPredictedHeading(
@@ -381,14 +381,14 @@ public sealed class PdfGoldAuthorityTests
     private static async Task<(DocumentSourceCatalog Catalog, IReadOnlyList<SemanticSourceAlias> Aliases)> SourceAsync()
     {
         var document = await PdfCanonicalExtraction.RunAsync(
-            UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
+            UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
         return (document.SourceCatalog, SemanticSourceAliasCatalog.FromCatalog(document.SourceCatalog));
     }
 
     private static IReadOnlyList<PdfSemanticBlock> Blocks()
     {
-        var path = Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar));
+        var path = Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar));
         IReadOnlyList<PdfLine> lines;
         using (var document = UglyToad.PdfPig.PdfDocument.Open(path))
         {
@@ -398,11 +398,4 @@ public sealed class PdfGoldAuthorityTests
         return PdfSemanticBlockGrouper.Build(PdfLineBlockFilter.Analyze(lines), includeRiskLines: true);
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

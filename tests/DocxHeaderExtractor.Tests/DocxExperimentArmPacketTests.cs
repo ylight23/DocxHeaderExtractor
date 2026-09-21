@@ -277,7 +277,7 @@ public sealed class DocxExperimentArmPacketTests
     /// <summary>Alias to verbatim text for every heading the frozen D0 run proposed.</summary>
     private static IReadOnlyDictionary<string, string> FrozenWholeSpanProposals()
     {
-        var path = Path.Combine(RepositoryRoot(), "tests", "DocxHeaderExtractor.Tests", "Assets",
+        var path = Path.Combine(TestRepository.Root(), "tests", "DocxHeaderExtractor.Tests", "Assets",
             "DOC-0256.frozen-responses.json");
         using var document = JsonDocument.Parse(File.ReadAllText(path));
         return document.RootElement.GetProperty("responses").EnumerateArray()
@@ -293,7 +293,7 @@ public sealed class DocxExperimentArmPacketTests
 
     private static async Task<IReadOnlyList<CapturedRequest>> CaptureAsync(CanonicalSemanticExperiment experiment)
     {
-        var path = Path.Combine(RepositoryRoot(), Docx.Replace('/', Path.DirectorySeparatorChar));
+        var path = Path.Combine(TestRepository.Root(), Docx.Replace('/', Path.DirectorySeparatorChar));
         var source = new OpenXmlDocumentSource().Read(path);
         var features = NumberingStyleFeatures.FromSourceDocument(source);
         var derived = new DocumentFeatureDeriver().Derive(source);
@@ -322,11 +322,4 @@ public sealed class DocxExperimentArmPacketTests
     private static string Sha256(string value) =>
         Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

@@ -134,15 +134,7 @@ public sealed class PdfS2dSourceUniverseAuthorityTests
     private static string Read(string relativePath) => File.ReadAllText(Path(relativePath));
 
     private static string Path(string relativePath) =>
-        System.IO.Path.Combine(RepositoryRoot(), relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
-
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(System.IO.Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
+        System.IO.Path.Combine(TestRepository.Root(), relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
 
     private static PdfExperimentRuntimeBinding Runtime(PdfExperimentManifest manifest) =>
         new(

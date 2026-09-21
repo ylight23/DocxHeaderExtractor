@@ -74,7 +74,7 @@ public sealed class CrossDocumentReplayTests
 
     private static async Task<(IReadOnlyList<Row> Rows, int CallsBeyondRecording)> ReplayAsync(string doc)
     {
-        var root = RepositoryRoot();
+        var root = TestRepository.Root();
         using var asset = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "tests",
             "DocxHeaderExtractor.Tests", "Assets", $"{doc}.frozen-responses.json")));
         var srcRel = asset.RootElement.TryGetProperty("sourcePath", out var sp)
@@ -109,11 +109,4 @@ public sealed class CrossDocumentReplayTests
         return (rows, replay.CallsBeyondRecording);
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

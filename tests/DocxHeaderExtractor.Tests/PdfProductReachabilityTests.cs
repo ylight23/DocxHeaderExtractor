@@ -122,7 +122,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
         var stale = UploadedFile.FromLocalPath(path);
         Assert.Equal(SourceType.Docx, stale.DetectedType);
 
-        File.Copy(Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar)), path, overwrite: true);
+        File.Copy(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar)), path, overwrite: true);
         using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
         using var pdfLane = new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true });
         var dispatcher = new CanonicalExtractionDispatcher(
@@ -151,15 +151,8 @@ public sealed class PdfProductReachabilityTests : IDisposable
     private string CopyPdf(string name)
     {
         var target = Path.Combine(_directory, name);
-        File.Copy(Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar)), target);
+        File.Copy(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar)), target);
         return target;
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

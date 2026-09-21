@@ -29,7 +29,7 @@ public sealed class PdfCanaryPreflightTests
     [Fact]
     public async Task Preflight()
     {
-        var root = RepositoryRoot();
+        var root = TestRepository.Root();
         var path = Path.Combine(root, Pdf);
         var file = UploadedFile.FromLocalPath(path);
 
@@ -139,7 +139,7 @@ public sealed class PdfCanaryPreflightTests
     {
         // If two runs on identical input disagree, nothing measured after a canary can be
         // attributed to anything, so this stops before the call rather than after it.
-        var path = Path.Combine(RepositoryRoot(), Pdf);
+        var path = Path.Combine(TestRepository.Root(), Pdf);
 
         var (first, _) = await CaptureAsync(path);
         var (second, _) = await CaptureAsync(path);
@@ -158,7 +158,7 @@ public sealed class PdfCanaryPreflightTests
     {
         // Shared engine, so this should be true by construction. Asserted anyway: a PDF-specific
         // prompt would make any DOCX-versus-PDF difference unattributable.
-        var (capture, _) = await CaptureAsync(Path.Combine(RepositoryRoot(), Pdf));
+        var (capture, _) = await CaptureAsync(Path.Combine(TestRepository.Root(), Pdf));
 
         Assert.All(capture.Requests, request =>
             Assert.Equal(CanonicalSemanticEngine.SystemPrompt, request.SystemPrompt));
@@ -169,7 +169,7 @@ public sealed class PdfCanaryPreflightTests
     {
         // Layout facts may travel as evidence. What must not happen is the contract inviting the
         // model to hand back a coordinate, which is how positional authority leaks into the model.
-        var (capture, _) = await CaptureAsync(Path.Combine(RepositoryRoot(), Pdf));
+        var (capture, _) = await CaptureAsync(Path.Combine(TestRepository.Root(), Pdf));
         var prompt = capture.Requests[0].SystemPrompt;
 
         Assert.Contains("Do not return offsets, spans, pages, boxes, coordinates", prompt, StringComparison.Ordinal);
@@ -249,11 +249,4 @@ public sealed class PdfCanaryPreflightTests
     private static string Sha256(string value) =>
         Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

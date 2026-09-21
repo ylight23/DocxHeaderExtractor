@@ -4,8 +4,7 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityPromotionBenchmarkV4CTests
 {
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static JsonDocument Load(string path) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), path.Replace('/', Path.DirectorySeparatorChar))));
+    private static JsonDocument Load(string path) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), path.Replace('/', Path.DirectorySeparatorChar))));
 
     [Fact]
     public void V4C_records_integrity_pass_before_gold_and_no_provider_execution()

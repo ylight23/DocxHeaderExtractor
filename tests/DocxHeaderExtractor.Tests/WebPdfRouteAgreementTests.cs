@@ -139,17 +139,10 @@ public sealed class WebPdfRouteAgreementTests : IClassFixture<WebApplicationFact
     {
         var content = new MultipartFormDataContent();
         var file = new ByteArrayContent(File.ReadAllBytes(
-            Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar))));
+            Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))));
         file.Headers.ContentType = new MediaTypeHeaderValue(contentType);
         content.Add(file, "file", name);
         return content;
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

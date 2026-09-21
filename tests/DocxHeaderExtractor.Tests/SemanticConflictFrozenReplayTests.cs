@@ -20,7 +20,7 @@ public sealed class SemanticConflictFrozenReplayTests
     [Fact]
     public void Frozen_W2_W3_role_conflict_is_withheld_without_adjudication()
     {
-        var root = RepoRoot();
+        var root = TestRepository.Root();
         var sourceFile = Path.Combine(root, SourcePath.Replace('/', Path.DirectorySeparatorChar));
         Assert.True(File.Exists(sourceFile), $"Missing faithful source: {sourceFile}");
         // Byte-exact, deliberately: a DOCX is the source itself, not an artifact about it.
@@ -184,6 +184,5 @@ public sealed class SemanticConflictFrozenReplayTests
             prediction.RootElement.GetProperty("proposals").GetRawText(), JsonOptions) ?? [];
     }
 
-    private static string RepoRoot() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
     private static string Relative(string root, string path) => Path.GetRelativePath(root, path).Replace(Path.DirectorySeparatorChar, '/');
 }

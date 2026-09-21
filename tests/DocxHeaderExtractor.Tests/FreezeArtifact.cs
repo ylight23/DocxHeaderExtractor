@@ -51,7 +51,7 @@ internal static class FreezeArtifact
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         ArgumentNullException.ThrowIfNull(content);
 
-        var path = Path.Combine(RepositoryRoot(), directory.Replace('/', Path.DirectorySeparatorChar), name);
+        var path = Path.Combine(TestRepository.Root(), directory.Replace('/', Path.DirectorySeparatorChar), name);
         var canonical = content.ReplaceLineEndings("\n");
 
         if (UpdateRequested)
@@ -81,11 +81,4 @@ internal static class FreezeArtifact
         Convert.ToHexStringLower(
             System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(value)));
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

@@ -106,7 +106,7 @@ public sealed class CanonicalArtifactHashTests
 
         Assert.All(freezes, relative =>
         {
-            var path = Path.Combine(RepositoryRoot(), relative.Replace('/', Path.DirectorySeparatorChar));
+            var path = Path.Combine(TestRepository.Root(), relative.Replace('/', Path.DirectorySeparatorChar));
             using var freeze = JsonDocument.Parse(File.ReadAllText(path));
             Assert.Equal(
                 CanonicalArtifactHash.Contract,
@@ -119,7 +119,7 @@ public sealed class CanonicalArtifactHashTests
     {
         // The one concrete value, tied to the artifact rather than to the machine. If a checkout
         // ever hands this file CRLF again, this still holds - which is the whole point.
-        var path = Path.Combine(RepositoryRoot(),
+        var path = Path.Combine(TestRepository.Root(),
             "eval/a99-closed-loop/openrouter-qwen35-9b-per-segment-recovery/documents/DOC-0205/prediction.v1.json"
                 .Replace('/', Path.DirectorySeparatorChar));
 
@@ -128,11 +128,4 @@ public sealed class CanonicalArtifactHashTests
             CanonicalArtifactHash.OfTextFile(path));
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

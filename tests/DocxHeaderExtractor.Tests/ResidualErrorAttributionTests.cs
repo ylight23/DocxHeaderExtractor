@@ -82,14 +82,6 @@ public sealed class ResidualErrorAttributionTests
         Assert.Equal("INTERVENTION_REVERTED", reverted.RootElement.GetProperty("finalClassification").GetString());
     }
 
-    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), relativePath)));
+    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), relativePath)));
 
-    private static string Root()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
-            directory = directory.Parent;
-
-        return directory?.FullName ?? throw new InvalidOperationException("Repository root not found.");
-    }
 }

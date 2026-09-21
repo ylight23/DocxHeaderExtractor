@@ -100,21 +100,13 @@ public sealed class PdfLiveExecutionLifecycleTests
         SemanticLaneOptions lane,
         CancellationToken cancellationToken = default)
     {
-        var file = UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf));
+        var file = UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf));
         return PdfCanonicalExtraction.RunExecutionAsync(
             file,
             new PipelineOptions(),
             classifier,
             ct: cancellationToken,
             semanticLaneOptions: lane);
-    }
-
-    private static string RepositoryRoot()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
-            directory = directory.Parent;
-        return directory?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
     }
 
     private sealed class GateClassifier : IHeaderClassifier

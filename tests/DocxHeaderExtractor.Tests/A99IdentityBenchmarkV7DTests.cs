@@ -4,9 +4,8 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV7DTests
 {
-    private static string Root => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static string ProjectionPath => Path.Combine(Root, "artifacts/identity-benchmark/v7/conservative-clustering/evaluation-v1-dev-regression/projection-freeze.json");
-    private static string SummaryPath => Path.Combine(Root, "artifacts/identity-benchmark/v7/conservative-clustering/evaluation-v1-dev-regression/summary.json");
+    private static string ProjectionPath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v7/conservative-clustering/evaluation-v1-dev-regression/projection-freeze.json");
+    private static string SummaryPath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v7/conservative-clustering/evaluation-v1-dev-regression/summary.json");
 
     [Fact]
     public void V7D_projection_freezes_continuation_as_zero_before_gold_join()

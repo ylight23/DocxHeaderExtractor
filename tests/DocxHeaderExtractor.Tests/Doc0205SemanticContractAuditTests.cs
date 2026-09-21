@@ -84,11 +84,10 @@ public sealed class Doc0205SemanticContractAuditTests
 
     private static JsonDocument LoadFromRoot(string name) => Load($"{RootRelative}/{name}");
 
-    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), relativePath)));
+    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), relativePath)));
 
     private static JsonDocument LoadAbsolute(string relativePath) => JsonDocument.Parse(File.ReadAllText(AbsolutePath(relativePath)));
 
-    private static string AbsolutePath(string relativePath) => Path.Combine(Root(), relativePath.Replace('/', Path.DirectorySeparatorChar));
+    private static string AbsolutePath(string relativePath) => Path.Combine(TestRepository.Root(), relativePath.Replace('/', Path.DirectorySeparatorChar));
 
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
 }

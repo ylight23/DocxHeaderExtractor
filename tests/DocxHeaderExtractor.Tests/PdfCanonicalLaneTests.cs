@@ -24,7 +24,7 @@ public sealed class PdfCanonicalLaneTests
     [Fact]
     public async Task A_pdf_upload_produces_its_own_canonical_document()
     {
-        var file = UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf));
+        var file = UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf));
         Assert.Equal(SourceType.Pdf, file.DetectedType);
 
         var document = await PdfCanonicalExtraction.RunAsync(file, new PipelineOptions { DisableLlm = true });
@@ -44,7 +44,7 @@ public sealed class PdfCanonicalLaneTests
         // table-like line is still an occurrence the model must be allowed to judge; the annotation
         // travels with it as evidence rather than removing it. If this ever drops below the raw
         // block count, the PDF lane has grown the hidden gate the DOCX lane had removed.
-        var file = UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf));
+        var file = UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf));
 
         var document = await PdfCanonicalExtraction.RunAsync(file, new PipelineOptions { DisableLlm = true });
 
@@ -61,7 +61,7 @@ public sealed class PdfCanonicalLaneTests
     {
         // Both files exist in this repository, side by side in the corpus, which is exactly the
         // arrangement the old sibling lookup exploited. The PDF result must be built from the PDF.
-        var root = RepositoryRoot();
+        var root = TestRepository.Root();
         Assert.True(File.Exists(Path.Combine(root, SameMaterialAsDocx)));
         var file = UploadedFile.FromLocalPath(Path.Combine(root, Pdf));
 
@@ -76,7 +76,7 @@ public sealed class PdfCanonicalLaneTests
     [Fact]
     public async Task A_pdf_and_a_docx_of_the_same_material_are_two_independent_documents()
     {
-        var root = RepositoryRoot();
+        var root = TestRepository.Root();
         var pdf = await PdfCanonicalExtraction.RunAsync(
             UploadedFile.FromLocalPath(Path.Combine(root, Pdf)), new PipelineOptions { DisableLlm = true });
         using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
@@ -93,17 +93,10 @@ public sealed class PdfCanonicalLaneTests
     [Fact]
     public async Task A_docx_handed_to_the_pdf_lane_is_refused_rather_than_parsed()
     {
-        var file = UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), SameMaterialAsDocx));
+        var file = UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), SameMaterialAsDocx));
 
         await Assert.ThrowsAsync<UnsupportedSourceException>(() =>
             PdfCanonicalExtraction.RunAsync(file, new PipelineOptions { DisableLlm = true }));
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

@@ -34,7 +34,7 @@ public sealed class Doc0205FreezeFixtureHygieneTests
     {
         Assert.All(FrozenRuns, run =>
         {
-            var directory = Path.Combine(RepositoryRoot(), run.Directory.Replace('/', Path.DirectorySeparatorChar));
+            var directory = Path.Combine(TestRepository.Root(), run.Directory.Replace('/', Path.DirectorySeparatorChar));
             Assert.True(Directory.Exists(directory), $"missing frozen run: {run.Directory}");
             Assert.True(File.Exists(Path.Combine(directory, run.Freeze)), $"missing authority: {run.Freeze}");
         });
@@ -93,7 +93,7 @@ public sealed class Doc0205FreezeFixtureHygieneTests
 
         Assert.All(FrozenRuns, run =>
         {
-            var directory = Path.Combine(RepositoryRoot(), run.Directory.Replace('/', Path.DirectorySeparatorChar));
+            var directory = Path.Combine(TestRepository.Root(), run.Directory.Replace('/', Path.DirectorySeparatorChar));
             foreach (var file in Directory.EnumerateFiles(directory, "*.json"))
             {
                 var text = File.ReadAllText(file);
@@ -106,13 +106,6 @@ public sealed class Doc0205FreezeFixtureHygieneTests
 
     private static JsonDocument Open(string directory, string file) =>
         JsonDocument.Parse(File.ReadAllText(Path.Combine(
-            RepositoryRoot(), directory.Replace('/', Path.DirectorySeparatorChar), file)));
+            TestRepository.Root(), directory.Replace('/', Path.DirectorySeparatorChar), file)));
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

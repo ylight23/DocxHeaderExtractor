@@ -4,8 +4,7 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityPromotionBenchmarkV4DATests
 {
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static JsonDocument Load(string path) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), path.Replace('/', Path.DirectorySeparatorChar))));
+    private static JsonDocument Load(string path) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), path.Replace('/', Path.DirectorySeparatorChar))));
 
     [Fact]
     public void V4D_A_fails_closed_when_new_V4_reason_labels_have_no_frozen_V3_mapping()

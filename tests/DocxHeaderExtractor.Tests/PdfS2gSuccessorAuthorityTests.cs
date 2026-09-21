@@ -161,8 +161,6 @@ public sealed class PdfS2gSuccessorAuthorityTests
     private static string Read(string relativePath) => File.ReadAllText(RepositoryPath(Root + "/" + relativePath));
 
     private static string RepositoryPath(string relativePath) =>
-        System.IO.Path.Combine(RepositoryRoot(), relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
+        System.IO.Path.Combine(TestRepository.Root(), relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
 
-    private static string RepositoryRoot() =>
-        Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
 }

@@ -226,7 +226,7 @@ public sealed class PdfGoldReviewPackTests
         // text is neither the same occurrence nor the same node.
         await RowsAsync();
         using var document = JsonDocument.Parse(
-            File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, "review-duplicate-text-index.v1.json")));
+            File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, "review-duplicate-text-index.v1.json")));
 
         Assert.Equal("PER_OCCURRENCE", document.RootElement.GetProperty("decisionScope").GetString());
         var repeated = document.RootElement.GetProperty("groups").EnumerateArray()
@@ -478,7 +478,7 @@ public sealed class PdfGoldReviewPackTests
         foreach (var view in AllViews.Where(view => view != "source-universe.v1.json"))
         {
             using var document = JsonDocument.Parse(
-                File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, view)));
+                File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, view)));
             Assert.Equal(
                 ["HEADING", "NOT_HEADING", "NEEDS_REVIEW"],
                 document.RootElement.GetProperty("allowedDecisions").EnumerateArray()
@@ -524,7 +524,7 @@ public sealed class PdfGoldReviewPackTests
         foreach (var view in AllViews)
         {
             using var document = JsonDocument.Parse(
-                File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, view)));
+                File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, view)));
             var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             CollectNames(document.RootElement, names);
 
@@ -546,7 +546,7 @@ public sealed class PdfGoldReviewPackTests
         foreach (var view in AllViews)
         {
             using var document = JsonDocument.Parse(
-                File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, view)));
+                File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, view)));
             Assert.False(document.RootElement.TryGetProperty("authoritativeSemanticHeadingTotal", out _),
                 $"{view} shows the reviewer the answer");
             Assert.False(document.RootElement.TryGetProperty("semanticHeadingTotal", out _));
@@ -562,7 +562,7 @@ public sealed class PdfGoldReviewPackTests
         var byAlias = rows.ToDictionary(row => row.Alias, row => row.Text, StringComparer.Ordinal);
 
         using var document = JsonDocument.Parse(
-            File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, "review-by-page.v1.json")));
+            File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, "review-by-page.v1.json")));
         foreach (var page in document.RootElement.GetProperty("pages").EnumerateArray())
         foreach (var row in page.GetProperty("rows").EnumerateArray())
         {
@@ -576,7 +576,7 @@ public sealed class PdfGoldReviewPackTests
     {
         await RowsAsync();
         using var document = JsonDocument.Parse(
-            File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, "review-by-parser-context.v1.json")));
+            File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, "review-by-parser-context.v1.json")));
 
         var shortRows = document.RootElement.GetProperty("pages").EnumerateArray()
             .SelectMany(page => page.GetProperty("scopes").EnumerateArray())
@@ -628,7 +628,7 @@ public sealed class PdfGoldReviewPackTests
     private static async Task<IReadOnlyList<Row>> RowsAsync()
     {
         var document = await PdfCanonicalExtraction.RunAsync(
-            UploadedFile.FromLocalPath(Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
+            UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
         var aliases = SemanticSourceAliasCatalog.FromCatalog(document.SourceCatalog)
             .ToDictionary(alias => alias.SourceId, alias => alias.Alias, StringComparer.Ordinal);
@@ -641,7 +641,7 @@ public sealed class PdfGoldReviewPackTests
 
     private static IReadOnlyDictionary<string, PdfSourceFacts> FactsAsync()
     {
-        var path = Path.Combine(RepositoryRoot(), Pdf.Replace('/', Path.DirectorySeparatorChar));
+        var path = Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar));
         IReadOnlyList<PdfLine> lines;
         using (var document = UglyToad.PdfPig.PdfDocument.Open(path))
         {
@@ -656,7 +656,7 @@ public sealed class PdfGoldReviewPackTests
 
     private static List<string> AliasesOf(string view)
     {
-        using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepositoryRoot(), Pack, view)));
+        using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, view)));
         var aliases = new List<string>();
         Walk(document.RootElement, aliases);
         return aliases;
@@ -705,11 +705,4 @@ public sealed class PdfGoldReviewPackTests
         return ordered.Length == 0 ? 0 : ordered[ordered.Length / 2];
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

@@ -4,8 +4,7 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV8AHoldoutTests
 {
-    private static string Root => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static string BasePath => Path.Combine(Root, "artifacts/identity-benchmark/v8/holdout/source-only-freeze-v1");
+    private static string BasePath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v8/holdout/source-only-freeze-v1");
 
     [Fact]
     public void V8A_refuses_contaminated_corpus_and_stops_before_provider()

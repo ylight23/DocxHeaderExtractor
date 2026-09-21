@@ -5,8 +5,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class A99IdentityBenchmarkV4HATests
 {
     private const string ArtifactRoot = "artifacts/identity-benchmark/v4/semantic-adjudication";
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static JsonDocument Load(string file) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), file)));
+    private static JsonDocument Load(string file) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), file)));
 
     [Fact]
     public void Pack_contains_all_128_exactly_bound_source_pairs()
@@ -59,7 +58,7 @@ public sealed class A99IdentityBenchmarkV4HATests
     public void Review_item_manifest_is_neutral_and_deterministically_hashable()
     {
         using var manifest = Load("review-item-manifest.json");
-        var json = File.ReadAllText(Path.Combine(Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), "review-item-manifest.json"));
+        var json = File.ReadAllText(Path.Combine(TestRepository.Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), "review-item-manifest.json"));
         Assert.DoesNotContain("packetClass", json, StringComparison.Ordinal);
         Assert.DoesNotContain("stableRank", json, StringComparison.Ordinal);
         Assert.DoesNotContain("reasons", json, StringComparison.Ordinal);
