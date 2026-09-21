@@ -29,8 +29,17 @@ public sealed record PdfSemanticRoleScore(
     /// <summary>Matched headings Gold recorded no role for. Excluded from the denominator.</summary>
     [JsonPropertyName("notAdjudicated")] public int NotAdjudicated { get; init; }
 
+    /// <summary>
+    /// Null when nothing was adjudicated. Reporting 1.0 for zero comparisons reads as perfect role
+    /// agreement on a document whose reviewer never named a role, which is a stronger claim than
+    /// silence - and it would sit in a table beside a document that really was measured.
+    /// </summary>
     [JsonPropertyName("accuracy")]
-    public double Accuracy => Compared == 0 ? 1 : (double)Agreed / Compared;
+    public double? Accuracy => Compared == 0 ? null : (double)Agreed / Compared;
+
+    /// <summary>ADJUDICATED when Gold named roles to compare against, otherwise NOT_ADJUDICATED.</summary>
+    [JsonPropertyName("status")]
+    public string Status => Compared == 0 ? "NOT_ADJUDICATED" : "ADJUDICATED";
 
     [JsonPropertyName("mismatches")]
     public IReadOnlyList<string> Mismatches { get; init; } = [];

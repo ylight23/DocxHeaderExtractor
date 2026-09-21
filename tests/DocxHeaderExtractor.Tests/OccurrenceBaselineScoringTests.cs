@@ -80,7 +80,8 @@ public sealed class OccurrenceBaselineScoringTests
                         agreed = evaluation.SemanticRole.Agreed,
                         mismatched = evaluation.SemanticRole.Mismatched,
                         notAdjudicated = evaluation.SemanticRole.NotAdjudicated,
-                        accuracy = Round(evaluation.SemanticRole.Accuracy),
+                        accuracy = evaluation.SemanticRole.Accuracy is { } value ? Round(value) : (double?)null,
+                        status = evaluation.SemanticRole.Status,
                     },
                 });
             }
@@ -136,6 +137,139 @@ public sealed class OccurrenceBaselineScoringTests
         });
 
         Assert.True(microTp > 0);
+    }
+
+    /// <summary>
+    /// Why DOC-0252 loses what it loses, per occurrence, from the responses already paid for.
+    /// <para>
+    /// The question this answers is the one that decides the next intervention: did the model fail
+    /// to propose these headings, or propose them with a different boundary? Those look identical
+    /// in an FN count and call for opposite work.
+    /// </para>
+    /// </summary>
+    [Fact]
+    public void Characterize_where_DOC_0252_loses_each_occurrence()
+    {
+        const string Id = "DOC-0252";
+        var entry = CanonicalGoldRegistry.Entry(Id);
+        using var gold = CanonicalGoldRegistry.Resolve(Id);
+        var claims = gold.RootElement.GetProperty("occurrence").GetProperty("claims")
+            .EnumerateArray().Select(claim => claim.Clone()).ToArray();
+
+        var perRepeat = new List<Dictionary<string, string>>();
+        var unpairedFp = new List<HashSet<string>>();
+        SemanticAuthorityReplayBundle? first = null;
+
+        for (var repeat = 1; repeat <= 3; repeat++)
+        {
+            var bundle = LoadBundle(Id, repeat);
+            first ??= bundle;
+            var text = bundle.AliasCatalog.ToDictionary(alias => alias.Alias, alias => alias.Text, StringComparer.Ordinal);
+            var proposalsByAlias = bundle.Proposals
+                .GroupBy(proposal => proposal.SourceAlias, StringComparer.Ordinal)
+                .ToDictionary(group => group.Key, group => group.ToArray(), StringComparer.Ordinal);
+
+            var goldBound = CanonicalGoldRegistry.ResolveBoundGold(Id, bundle.AliasCatalog);
+            var replay = SemanticAuthorityReplay.Replay(bundle, bundle.SourceHash, bundle.SourceUniverseHash);
+            var predicted = replay.Pipeline.BoundHeadings
+                .Select(item => new PdfBoundOccurrence(item.Parts, item.SemanticRole, item.Alias))
+                .ToArray();
+            var evaluation = PdfGoldBoundOccurrenceEvaluator.EvaluateBound(goldBound, predicted, [], claims.Length);
+            var missed = evaluation.Semantic.MissedAliases.ToHashSet(StringComparer.Ordinal);
+
+            var classified = new Dictionary<string, string>(StringComparer.Ordinal);
+            for (var index = 0; index < claims.Length; index++)
+            {
+                var claim = claims[index];
+                var alias = claim.GetProperty("sourceAlias").GetString()!;
+                var key = $"{alias}#{index}";
+                if (!missed.Contains(alias)) { classified[key] = "TRUE_POSITIVE"; continue; }
+
+                if (!proposalsByAlias.TryGetValue(alias, out var proposals))
+                {
+                    classified[key] = "MODEL_NOT_EMITTED";
+                    continue;
+                }
+
+                var occurrence = text.GetValueOrDefault(alias, string.Empty);
+                var wholeAlias = claim.GetProperty("selectionMode").GetString() == "WHOLE_ALIAS";
+                var goldText = wholeAlias ? occurrence : claim.GetProperty("verbatimText").GetString() ?? string.Empty;
+                classified[key] = Classify(goldText, occurrence, proposals);
+            }
+
+            perRepeat.Add(classified);
+            unpairedFp.Add(evaluation.Semantic.SpuriousAliases
+                .Where(alias => !claims.Any(claim => claim.GetProperty("sourceAlias").GetString() == alias))
+                .ToHashSet(StringComparer.Ordinal));
+        }
+
+        // Persistent means the same class in all three repeats, not merely lost in all three.
+        var keys = perRepeat[0].Keys.Order(StringComparer.Ordinal).ToArray();
+        var census = new Dictionary<string, int>(StringComparer.Ordinal);
+        var occurrences = keys.Select(key =>
+        {
+            var signature = perRepeat.Select(repeat => repeat[key]).ToArray();
+            var stable = signature.Distinct(StringComparer.Ordinal).Count() == 1;
+            var primary = stable ? signature[0] : "NON_PERSISTENT";
+            census[primary] = census.GetValueOrDefault(primary) + 1;
+            return new
+            {
+                claim = key,
+                signature,
+                firstLoss = primary,
+                persistent = stable && primary != "TRUE_POSITIVE",
+            };
+        }).ToArray();
+
+        var lost = occurrences.Where(item => item.firstLoss != "TRUE_POSITIVE").ToArray();
+        FreezeArtifact.AssertJson(RunRoot, "causal-forensic.v1.json", new
+        {
+            artifactKind = "a99_occurrence_baseline_causal_forensic",
+            schemaVersion = "a99-occurrence-baseline-causal-forensic-v1",
+            experimentId = "A99-S2P-OCCURRENCE-BASELINE-V1",
+            authorityId = Id,
+            providerCalls = 0,
+            modelCalls = 0,
+            goldSha256 = entry.GoldSha256,
+            sourceSha256 = entry.SourceSha256,
+            sourceUniverseSha256 = first!.SourceUniverseHash,
+            goldClaims = claims.Length,
+            roleScoringStatus = "NOT_CURRENTLY_COMPARABLE",
+            roleNote = "Gold uses a closed ontology (MeetingSection, AgendaItem, LocalSubheading); " +
+                       "the model returns open vocabulary (heading, section-title). Not a model " +
+                       "error and not comparable until an ontology or mapping is adjudicated.",
+            firstLossCensus = census.OrderBy(pair => pair.Key, StringComparer.Ordinal)
+                .ToDictionary(pair => pair.Key, pair => pair.Value),
+            lostOccurrences = lost,
+            unpairedFalsePositivesPerRepeat = unpairedFp.Select(set => set.Count).ToArray(),
+            occurrences,
+        });
+
+        Assert.Equal(claims.Length, occurrences.Length);
+    }
+
+    /// <summary>
+    /// Where the first loss happened for one Gold claim, from what the model actually returned.
+    /// The order matters: an occurrence the model proposed is never blamed on the binder.
+    /// </summary>
+    private static string Classify(
+        string goldText, string occurrence, IReadOnlyList<CanonicalSemanticProposal> proposals)
+    {
+        foreach (var proposal in proposals)
+        {
+            var emitted = proposal.VerbatimText ?? string.Empty;
+            if (string.Equals(emitted, goldText, StringComparison.Ordinal))
+                return "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM";
+            if (emitted.Length == 0) continue;
+            if (emitted.Contains(goldText, StringComparison.Ordinal))
+                return "MODEL_EMITTED_SUPERSET";
+            if (goldText.Contains(emitted, StringComparison.Ordinal))
+                return "MODEL_EMITTED_SUBSPAN";
+            if (!occurrence.Contains(emitted, StringComparison.Ordinal))
+                return "MODEL_EMITTED_NON_VERBATIM_TEXT";
+        }
+
+        return "MODEL_EMITTED_DIFFERENT_REGION";
     }
 
     private static SemanticAuthorityReplayBundle LoadBundle(string id, int repeat)

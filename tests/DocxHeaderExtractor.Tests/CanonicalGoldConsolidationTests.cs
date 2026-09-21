@@ -402,7 +402,10 @@ public sealed class CanonicalGoldConsolidationTests
         Assert.Equal(0, evaluation.SemanticRole.Compared);
         Assert.Equal(0, evaluation.SemanticRole.Mismatched);
         Assert.Equal(2, evaluation.SemanticRole.NotAdjudicated);
-        Assert.Equal(1.0, evaluation.SemanticRole.Accuracy);
+        // Null, not 1.0. Perfect agreement over nothing is a stronger claim than silence, and it
+        // would sit in a table beside a document that really was measured.
+        Assert.Null(evaluation.SemanticRole.Accuracy);
+        Assert.Equal("NOT_ADJUDICATED", evaluation.SemanticRole.Status);
     }
 
     private static PdfBoundOccurrence Bound(string alias, int start, int end, string? role) =>

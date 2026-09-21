@@ -28,7 +28,8 @@
             "agreed": 0,
             "mismatched": 0,
             "notAdjudicated": 7,
-            "accuracy": 1
+            "accuracy": null,
+            "status": "NOT_ADJUDICATED"
           }
         },
         {
@@ -47,7 +48,8 @@
             "agreed": 0,
             "mismatched": 0,
             "notAdjudicated": 7,
-            "accuracy": 1
+            "accuracy": null,
+            "status": "NOT_ADJUDICATED"
           }
         },
         {
@@ -66,7 +68,8 @@
             "agreed": 0,
             "mismatched": 0,
             "notAdjudicated": 7,
-            "accuracy": 1
+            "accuracy": null,
+            "status": "NOT_ADJUDICATED"
           }
         }
       ],
@@ -98,7 +101,8 @@
             "agreed": 0,
             "mismatched": 20,
             "notAdjudicated": 0,
-            "accuracy": 0
+            "accuracy": 0,
+            "status": "ADJUDICATED"
           }
         },
         {
@@ -117,7 +121,8 @@
             "agreed": 0,
             "mismatched": 20,
             "notAdjudicated": 0,
-            "accuracy": 0
+            "accuracy": 0,
+            "status": "ADJUDICATED"
           }
         },
         {
@@ -136,7 +141,8 @@
             "agreed": 0,
             "mismatched": 20,
             "notAdjudicated": 0,
-            "accuracy": 0
+            "accuracy": 0,
+            "status": "ADJUDICATED"
           }
         }
       ],
