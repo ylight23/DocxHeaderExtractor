@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Inference;
 
@@ -62,7 +63,10 @@ public sealed record PdfExperimentManifest(
     [property: JsonPropertyName("sourcePacket")] PdfExperimentPacketIdentity SourcePacket,
     [property: JsonPropertyName("routing")] PdfExperimentRoutingIdentity Routing,
     [property: JsonPropertyName("budget")] PdfExperimentBudgetIdentity Budget,
-    [property: JsonPropertyName("evaluator")] PdfExperimentEvaluatorIdentity Evaluator)
+    [property: JsonPropertyName("evaluator")] PdfExperimentEvaluatorIdentity Evaluator,
+    [property: JsonPropertyName("semanticContractHash")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    string? SemanticContractHash = null)
 {
     [JsonIgnore]
     public string ManifestHash => PdfExperimentManifestHasher.Compute(this);
@@ -172,6 +176,29 @@ public sealed class PdfExperimentExecutionGate
         Require(_runtime.SemanticRoleEvaluationEnabled,
             _manifest.Evaluator.SemanticRoleEvaluationEnabled,
             "SEMANTIC_ROLE_EVALUATION_MISMATCH");
+
+        if (_manifest.SemanticContractHash is { } manifestSemanticContractHash)
+        {
+            Require(manifestSemanticContractHash,
+                SemanticAuthorityReplayHashing.SemanticContractHash(),
+                "SEMANTIC_CONTRACT_HASH_MISMATCH");
+        }
+    }
+
+    /// <summary>
+    /// Binds a live provider route to the semantic contract used by the parser and replay bundle.
+    /// A successor manifest must carry this identity; historical manifests without it are not
+    /// eligible for live transport. This runs before the lane starts and before call accounting.
+    /// </summary>
+    internal void EnsureLiveSemanticContract()
+    {
+        EnsureReady();
+        if (string.IsNullOrWhiteSpace(_manifest.SemanticContractHash))
+            throw new InvalidOperationException("PDF_EXPERIMENT_SEMANTIC_CONTRACT_AUTHORITY_MISSING");
+
+        Require(_manifest.SemanticContractHash,
+            SemanticAuthorityReplayHashing.SemanticContractHash(),
+            "SEMANTIC_CONTRACT_HASH_MISMATCH");
     }
 
     /// <summary>

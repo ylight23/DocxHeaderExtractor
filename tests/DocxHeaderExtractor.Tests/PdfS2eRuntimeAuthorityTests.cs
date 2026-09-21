@@ -185,6 +185,29 @@ public sealed class PdfS2eRuntimeAuthorityTests
             root.GetProperty("replaySemanticContractHash").GetString());
     }
 
+    [Fact]
+    public async Task Stale_semantic_contract_authority_blocks_before_provider_transport()
+    {
+        using var manifestDocument = JsonDocument.Parse(Read("experiment-manifest.v1.json"));
+        var parsed = JsonSerializer.Deserialize<PdfExperimentManifest>(
+            manifestDocument.RootElement.GetProperty("manifest").GetRawText(),
+            new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
+        var stale = parsed with { SemanticContractHash = "stale-semantic-contract" };
+        var gate = new PdfExperimentExecutionGate(
+            stale,
+            new PdfExperimentApproval(stale.ManifestHash, "s2f-stale-contract", "offline-test"),
+            Runtime(parsed));
+        using var fake = new RequestCapturingClassifier();
+
+        var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            CanonicalSemanticPdfAuthorityAdapter.RunAsync(
+                Path(Pdf), fake, CancellationToken.None, experimentGate: gate));
+
+        Assert.Equal("PDF_EXPERIMENT_SEMANTIC_CONTRACT_HASH_MISMATCH", error.Message);
+        Assert.Equal(0, gate.ProviderCalls);
+        Assert.Empty(fake.Requests);
+    }
+
     private static async Task GenerateAsync()
     {
         var path = Path(Pdf);

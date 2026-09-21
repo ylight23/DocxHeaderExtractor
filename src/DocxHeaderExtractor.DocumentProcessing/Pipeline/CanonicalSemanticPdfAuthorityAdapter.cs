@@ -33,6 +33,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
 
         var universe = PdfCanonicalSourceUniverseBuilder.Build(pdfPath);
         experimentGate?.EnsureLiveSourceUniverse(universe.SourceUniverseSha256);
+        experimentGate?.EnsureLiveSemanticContract();
         if (universe.ParserLineCount == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer");
         if (universe.Blocks.Count == 0)
