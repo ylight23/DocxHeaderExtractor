@@ -92,6 +92,108 @@ public sealed class CanonicalSemanticVnextRuntimeTests
     }
 
     [Fact]
+    public void Duplicate_text_with_unique_occurrence_ordinal_binds_that_occurrence()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "A Results B Results C")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results", Occurrence: 2)
+        ], aliases, out var audit);
+
+        var item = Assert.Single(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+        Assert.Equal(12, item.Start);
+        Assert.Equal(19, item.End);
+    }
+
+    [Fact]
+    public void Duplicate_text_with_unique_exact_context_binds_that_occurrence()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "prefix-A Results; prefix-B Results")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results", LeftExactContext: "prefix-B ")
+        ], aliases, out var audit);
+
+        var item = Assert.Single(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+        Assert.Equal(27, item.Start);
+        Assert.Equal(34, item.End);
+    }
+
+    [Fact]
+    public void Duplicate_text_with_non_unique_exact_context_is_ambiguous()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "A Results shared; B Results shared")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results", RightExactContext: " shared")
+        ], aliases, out var audit);
+
+        Assert.Empty(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.AmbiguousBinding, audit[0].Status);
+        Assert.Equal("AMBIGUOUS_BINDING", audit[0].Reason);
+    }
+
+    [Fact]
+    public void Duplicate_text_with_non_matching_exact_context_is_rejected()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "A Results B Results C")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results", RightExactContext: " missing")
+        ], aliases, out var audit);
+
+        Assert.Empty(bound);
+        Assert.NotEqual(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+    }
+
+    [Fact]
+    public void Single_exact_text_occurrence_binds_unchanged()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "A Results B")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results")
+        ], aliases, out var audit);
+
+        Assert.Single(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+    }
+
+    [Fact]
+    public void Identical_text_in_two_aliases_binds_only_requested_alias()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "Results"), ("p2", "Results")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0002", true, "Results")
+        ], aliases, out var audit);
+
+        var item = Assert.Single(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+        Assert.Equal("p2", item.SourceId);
+    }
+
+    [Fact]
+    public void Ambiguous_part_prevents_composite_heading_binding()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(
+            ("p1", "A Results B Results"),
+            ("p2", "Tail")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal(
+                "S0001", true, null,
+                VerbatimParts: ["Results", "Tail"],
+                SourceAliases: ["S0001", "S0002"])
+        ], aliases, out var audit);
+
+        Assert.Empty(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.AmbiguousBinding, audit[0].Status);
+    }
+
+    [Fact]
     public void Multipart_heading_binds_every_ordered_alias_and_part()
     {
         var catalog = Catalog(("p1", "SESSION V:"), ("p2", "Current Research (Cont'd)"));

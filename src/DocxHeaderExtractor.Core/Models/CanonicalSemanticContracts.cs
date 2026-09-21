@@ -338,7 +338,7 @@ public static class CanonicalSemanticExactBinder
             return ordinal >= 1 && ordinal <= positions.Count ? positions[ordinal - 1] : null;
         if (proposal.LeftExactContext is null && proposal.RightExactContext is null)
             return null;
-        return positions.Where(position =>
+        var matchingPositions = positions.Where(position =>
         {
             var left = proposal.LeftExactContext is null ||
                 (position >= proposal.LeftExactContext.Length &&
@@ -348,7 +348,8 @@ public static class CanonicalSemanticExactBinder
                 (end + proposal.RightExactContext.Length <= source.Length &&
                  source.Substring(end, proposal.RightExactContext.Length) == proposal.RightExactContext);
             return left && right;
-        }).Select(position => (int?)position).FirstOrDefault();
+        }).ToArray();
+        return matchingPositions.Length == 1 ? matchingPositions[0] : null;
     }
 }
 
