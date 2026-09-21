@@ -1,0 +1,349 @@
+{
+  "artifactKind": "a99_pdf_s2i_i6_preflight",
+  "schemaVersion": "a99-pdf-s2i-i6-preflight-v1",
+  "baselineCommit": "56eed18",
+  "sourceHash": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseHash": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+  "goldHash": "2ebbc6b8af28dec38514d0b53aa36599a00ca86e87af050bfb3008b98bef6d31",
+  "baselinePromptHash": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+  "baselineSemanticContractHash": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365",
+  "baselineSuccessorManifestHash": "2ac4513d81d63fcaab23cf26d0fbacf4bd5ac741770eeb0f4c4ce9c0fcbd3474",
+  "strictCausalCohort": {
+    "name": "STRICT_PERSISTENT_TRUE_OMISSION",
+    "count": 11,
+    "baselineExactRecoveries": "0/3 for every target",
+    "rows": [
+      {
+        "Key": "b127:0:6",
+        "SourceAlias": "S0127",
+        "SourceText": "Africa Gregoire Mboya de Loubassou African Development Bank (AfDB) presented the status of ICP 2024",
+        "GoldRole": "LocalSubheading",
+        "SourceOrdinal": 139,
+        "SegmentIndex": 1,
+        "SegmentId": "segment-001"
+      },
+      {
+        "Key": "b141:0:20",
+        "SourceAlias": "S0141",
+        "SourceText": "Asia and the Pacific Kaushal Joshi Asian Development Bank (ADB) presented the dissemination activities of the ICP 2021 results",
+        "GoldRole": "LocalSubheading",
+        "SourceOrdinal": 154,
+        "SegmentIndex": 1,
+        "SegmentId": "segment-001"
+      },
+      {
+        "Key": "b173:0:40",
+        "SourceAlias": "S0173",
+        "SourceText": "Commonwealth of Independent States (CIS) Andrey Kosarev Interstate Statistical Committee of the Commonwealth of Independent States (CIS-Stat)",
+        "GoldRole": "LocalSubheading",
+        "SourceOrdinal": 187,
+        "SegmentIndex": 1,
+        "SegmentId": "segment-001"
+      },
+      {
+        "Key": "b223:0:31",
+        "SourceAlias": "S0223",
+        "SourceText": "Latin America and the Caribbean Lady Infante Ortega United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+        "GoldRole": "LocalSubheading",
+        "SourceOrdinal": 240,
+        "SegmentIndex": 2,
+        "SegmentId": "segment-002"
+      },
+      {
+        "Key": "b244:0:12",
+        "SourceAlias": "S0244",
+        "SourceText": "Western Asia Majed Skaini United Nations Economic and Social Commission for Western Asia (UN-ESCWA) presented the",
+        "GoldRole": "LocalSubheading",
+        "SourceOrdinal": 263,
+        "SegmentIndex": 2,
+        "SegmentId": "segment-002"
+      },
+      {
+        "Key": "b492:0:62",
+        "SourceAlias": "S0492",
+        "SourceText": "2 Terms of Reference for a Task Force on Annual PPP Production",
+        "GoldRole": "AgendaItem",
+        "SourceOrdinal": 520,
+        "SegmentIndex": 4,
+        "SegmentId": "segment-004"
+      },
+      {
+        "Key": "b541:0:66",
+        "SourceAlias": "S0541",
+        "SourceText": "3 Terms of Reference for a Task Force on ICP Classification Update",
+        "GoldRole": "AgendaItem",
+        "SourceOrdinal": 570,
+        "SegmentIndex": 4,
+        "SegmentId": "segment-004"
+      },
+      {
+        "Key": "b573:0:27",
+        "SourceAlias": "S0573",
+        "SourceText": "Session V: Current Research 1 The Treatment of Import and Export Prices in International Comparisons",
+        "GoldRole": "MeetingSection",
+        "SourceOrdinal": 605,
+        "SegmentIndex": 5,
+        "SegmentId": "segment-005"
+      },
+      {
+        "Key": "b573:28:100",
+        "SourceAlias": "S0573",
+        "SourceText": "Session V: Current Research 1 The Treatment of Import and Export Prices in International Comparisons",
+        "GoldRole": "AgendaItem",
+        "SourceOrdinal": 605,
+        "SegmentIndex": 5,
+        "SegmentId": "segment-005"
+      },
+      {
+        "Key": "b935:0:36",
+        "SourceAlias": "S0935",
+        "SourceText": "SESSION V: Current Research (Cont\u2019d)",
+        "GoldRole": "MeetingSection",
+        "SourceOrdinal": 978,
+        "SegmentIndex": 8,
+        "SegmentId": "segment-008"
+      },
+      {
+        "Key": "b994:0:10",
+        "SourceAlias": "S0994",
+        "SourceText": "World Bank",
+        "GoldRole": "LocalSubheading",
+        "SourceOrdinal": 1045,
+        "SegmentIndex": 8,
+        "SegmentId": "segment-008"
+      }
+    ]
+  },
+  "mixedPersistentResiduals": [
+    {
+      "key": "b269:0:55",
+      "perRepeat": {
+        "r1": "TRUE_MODEL_OMISSION",
+        "r2": "SUPERSET_HEADING",
+        "r3": "TRUE_MODEL_OMISSION"
+      }
+    },
+    {
+      "key": "b363:0:29",
+      "perRepeat": {
+        "r1": "SUPERSET_HEADING",
+        "r2": "TRUE_MODEL_OMISSION",
+        "r3": "SUPERSET_HEADING"
+      }
+    },
+    {
+      "key": "b43:0:40",
+      "perRepeat": {
+        "r1": "MODEL_WRONG_TEXT_BOUNDARY",
+        "r2": "MODEL_WRONG_SPAN",
+        "r3": "MODEL_WRONG_TEXT_BOUNDARY"
+      }
+    },
+    {
+      "key": "b43:41:63",
+      "perRepeat": {
+        "r1": "MODEL_WRONG_TEXT_BOUNDARY",
+        "r2": "MODEL_WRONG_SPAN",
+        "r3": "MODEL_WRONG_TEXT_BOUNDARY"
+      }
+    },
+    {
+      "key": "b460:0:66",
+      "perRepeat": {
+        "r1": "MODEL_WRONG_SPAN",
+        "r2": "TRUE_MODEL_OMISSION",
+        "r3": "MODEL_WRONG_SPAN"
+      }
+    },
+    {
+      "key": "b460:67:107",
+      "perRepeat": {
+        "r1": "MODEL_WRONG_SPAN",
+        "r2": "TRUE_MODEL_OMISSION",
+        "r3": "MODEL_WRONG_SPAN"
+      }
+    },
+    {
+      "key": "b616:0:98",
+      "perRepeat": {
+        "r1": "SUPERSET_HEADING",
+        "r2": "SUPERSET_HEADING",
+        "r3": "SUPERSET_HEADING"
+      }
+    },
+    {
+      "key": "b649:0:84",
+      "perRepeat": {
+        "r1": "SUPERSET_HEADING",
+        "r2": "SUPERSET_HEADING",
+        "r3": "SUPERSET_HEADING"
+      }
+    },
+    {
+      "key": "b693:0:43",
+      "perRepeat": {
+        "r1": "SUPERSET_HEADING",
+        "r2": "SUPERSET_HEADING",
+        "r3": "SUPERSET_HEADING"
+      }
+    },
+    {
+      "key": "b732:0:39",
+      "perRepeat": {
+        "r1": "SUPERSET_HEADING",
+        "r2": "TRUE_MODEL_OMISSION",
+        "r3": "SUPERSET_HEADING"
+      }
+    },
+    {
+      "key": "b818:0:44",
+      "perRepeat": {
+        "r1": "SUPERSET_HEADING",
+        "r2": "TRUE_MODEL_OMISSION",
+        "r3": "SUPERSET_HEADING"
+      }
+    }
+  ],
+  "segmentation": {
+    "ownedPerSegment": 120,
+    "visibleMargin": 20,
+    "affectedSegments": [
+      {
+        "segmentIndex": 1,
+        "segmentId": "segment-001",
+        "baselineRequestSha256": "8468fb223a10e015ddddebd45b3ae073e5aaa62c1f1b5ea0d8d4ece55086c1f2",
+        "targetOccurrences": [
+          {
+            "Key": "b127:0:6",
+            "SourceAlias": "S0127",
+            "SourceOrdinal": 139,
+            "GoldRole": "LocalSubheading"
+          },
+          {
+            "Key": "b141:0:20",
+            "SourceAlias": "S0141",
+            "SourceOrdinal": 154,
+            "GoldRole": "LocalSubheading"
+          },
+          {
+            "Key": "b173:0:40",
+            "SourceAlias": "S0173",
+            "SourceOrdinal": 187,
+            "GoldRole": "LocalSubheading"
+          }
+        ],
+        "ownedPerSegment": 120,
+        "visibleMargin": 20,
+        "targeting": "original full segment input; no custom window"
+      },
+      {
+        "segmentIndex": 2,
+        "segmentId": "segment-002",
+        "baselineRequestSha256": "acc0f9f04c56f2ecb2e723e56273e985f6c1b6843112a060763a48d4a4fd7f01",
+        "targetOccurrences": [
+          {
+            "Key": "b223:0:31",
+            "SourceAlias": "S0223",
+            "SourceOrdinal": 240,
+            "GoldRole": "LocalSubheading"
+          },
+          {
+            "Key": "b244:0:12",
+            "SourceAlias": "S0244",
+            "SourceOrdinal": 263,
+            "GoldRole": "LocalSubheading"
+          }
+        ],
+        "ownedPerSegment": 120,
+        "visibleMargin": 20,
+        "targeting": "original full segment input; no custom window"
+      },
+      {
+        "segmentIndex": 4,
+        "segmentId": "segment-004",
+        "baselineRequestSha256": "36d852a38b29ea4cdd0b574ded450ec1645ecb37ca2b1e1168cc07999e6a404d",
+        "targetOccurrences": [
+          {
+            "Key": "b492:0:62",
+            "SourceAlias": "S0492",
+            "SourceOrdinal": 520,
+            "GoldRole": "AgendaItem"
+          },
+          {
+            "Key": "b541:0:66",
+            "SourceAlias": "S0541",
+            "SourceOrdinal": 570,
+            "GoldRole": "AgendaItem"
+          }
+        ],
+        "ownedPerSegment": 120,
+        "visibleMargin": 20,
+        "targeting": "original full segment input; no custom window"
+      },
+      {
+        "segmentIndex": 5,
+        "segmentId": "segment-005",
+        "baselineRequestSha256": "6166d16762e544854bb1fbc758a6b375bbd6f72d54d67330ac310b84e65b5c0e",
+        "targetOccurrences": [
+          {
+            "Key": "b573:0:27",
+            "SourceAlias": "S0573",
+            "SourceOrdinal": 605,
+            "GoldRole": "MeetingSection"
+          },
+          {
+            "Key": "b573:28:100",
+            "SourceAlias": "S0573",
+            "SourceOrdinal": 605,
+            "GoldRole": "AgendaItem"
+          }
+        ],
+        "ownedPerSegment": 120,
+        "visibleMargin": 20,
+        "targeting": "original full segment input; no custom window"
+      },
+      {
+        "segmentIndex": 8,
+        "segmentId": "segment-008",
+        "baselineRequestSha256": "14dda86b057ac85332b21013222b89387051a5f051d393d6d8cde97ce17a9f3a",
+        "targetOccurrences": [
+          {
+            "Key": "b935:0:36",
+            "SourceAlias": "S0935",
+            "SourceOrdinal": 978,
+            "GoldRole": "MeetingSection"
+          },
+          {
+            "Key": "b994:0:10",
+            "SourceAlias": "S0994",
+            "SourceOrdinal": 1045,
+            "GoldRole": "LocalSubheading"
+          }
+        ],
+        "ownedPerSegment": 120,
+        "visibleMargin": 20,
+        "targeting": "original full segment input; no custom window"
+      }
+    ]
+  },
+  "i6Question": "Does removing the semantic-role classification obligation during discovery recover strict persistent omissions?",
+  "promptSchemaDelta": {
+    "status": "NO_CONTRACT_DELTA_AVAILABLE",
+    "exactDiff": "empty",
+    "reason": "The current discovery prompt does not require semanticRole and the live schema already makes semanticRole optional string; removing an obligation that is absent cannot form a causal contrast."
+  },
+  "i6Authority": {
+    "status": "NOT_CREATED",
+    "reason": "A new experiment authority requires a real prompt or schema delta; no valid delta was found."
+  },
+  "callPlan": {
+    "repeats": 3,
+    "affectedSegmentCount": 5,
+    "primaryCalls": 15,
+    "maxProviderCalls": 15,
+    "placementCalls": 0
+  },
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "finalState": "I6_PREFLIGHT_BLOCKED"
+}
