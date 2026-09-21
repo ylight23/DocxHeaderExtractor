@@ -74,9 +74,6 @@ public sealed record RouteExecutionAudit(
     public Pipeline.SemanticConflictCensus ConflictCensus { get; init; } =
         Pipeline.SemanticConflictCensus.Empty;
 
-    [JsonPropertyName("rankedCandidates")]
-    public IReadOnlyList<RankedCandidate> RankedCandidates { get; init; } = [];
-
     /// <summary>Independent semantic execution outcome. A timeout is partial work, not provider unavailability.</summary>
     [JsonPropertyName("semanticLane")]
     public RouteLaneExecutionAudit? SemanticLane { get; init; }
