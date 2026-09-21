@@ -1,0 +1,113 @@
+{
+  "artifactKind": "a99_pdf_segment_atom_evidence_authority",
+  "schemaVersion": "a99-pdf-segment-atom-evidence-authority-v1",
+  "authorityId": "DOC-0252",
+  "status": "SEGMENT_ATOM_EVIDENCE_AUTHORITY_FROZEN",
+  "active": false,
+  "providerAuthorized": false,
+  "canonicalGoldMigrated": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "source": {
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "frozenGoldSourceUniverseSha256": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+    "activeSourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "segmentAtoms": 650,
+    "atomAliasLookup": 650,
+    "atomSourceIdLookup": 650,
+    "sourceAliasUniverseSha256": "b529ad6222cb46cf90b621f4ecb16f2587f9d02e92253f8bd2eff668347bd694",
+    "sourceAliasHashSchema": "a99-pdf-visual-segment-source-alias-universe-v1"
+  },
+  "evidence": {
+    "modelEvidenceUnits": 650,
+    "modelEvidenceLookup": 650,
+    "emptyEvidenceLookup": 0,
+    "blockOnlyEvidenceIds": 0,
+    "modelVisibleEvidenceSha256": "5790501a2060d55f807cf0546534a5e4cde8bb2f7eb4a86d896164ef1a2bbb02",
+    "blockDiagnosticUniverseSha256": "3b351411e1c773d14bf534f19c4ae721612716a4561396c757bc3ac35ed8b05c",
+    "contextGrouping": "LegacyV1",
+    "contextIsNotSourceIdentity": true
+  },
+  "candidateSegmentHash": {
+    "previouslyObserved": "86cad7d6b7a52391b4361ea1ad402774fa4bccf6af5570e3705f7582a6893c79",
+    "recomputedFromCompletedShadowPath": "b529ad6222cb46cf90b621f4ecb16f2587f9d02e92253f8bd2eff668347bd694",
+    "matchesPreviouslyObserved": false,
+    "mismatchDisposition": "reported-not-forced",
+    "mismatchReason": "The completed path hashes the ordered atom identity tuple (alias, parser source id, ordinal, page, row, segment, exact projected text). The previously observed fingerprint has no matching canonical serialization in the current repository and is not used as authority."
+  },
+  "packing": {
+    "ownedPerPack": 120,
+    "visibleMargin": 20,
+    "contextPacks": 6,
+    "plannedRepeats": 1,
+    "primaryCallsPerRepeat": 6,
+    "totalPrimaryCalls": 6,
+    "callPlanHash": "3e0efc07895d53039abc1f834637afff0079491028c0b2c8f822f0817bbe3bff",
+    "requestPlanHash": "649b0cbf3c813531616722d8bdbda7c4a42f03e28e27a4a23e5b136689a001fc",
+    "sourcePartsSchemaHash": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "transport": "not_constructed_beyond_request_payload"
+  },
+  "prompt": {
+    "templateChanged": false,
+    "oldPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+    "shadowPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+    "activePromptUnchanged": true
+  },
+  "contract": {
+    "activeSemanticContractSha256": "91005fabc2e978d5ab4d900bc66ebeb27e563628056b3073cef22896687ac72e",
+    "shadowStructuredSourcePartsContractSha256": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "activeCanonicalPathChanged": false,
+    "canonicalGoldChanged": false,
+    "evaluatorChanged": false
+  },
+  "sourceRepresentationChecks": {
+    "approvedSemanticHeadings": 41,
+    "sourceHeadingsRepresentable": 41,
+    "sourceCoordinateTextDebt": 16,
+    "s0616": {
+      "bound": true,
+      "blockRequiredForBinding": false,
+      "parts": [
+        {
+          "sourceAlias": "L0359:S0",
+          "exactText": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price",
+          "localBefore": [
+            "[L0357:S0] questions the ICP methodology is facing as well as more long-term developments such as the use of AI",
+            "[L0358:S0] technology for price collection and validation."
+          ],
+          "localAfter": [
+            "[L0360:S0] Comparisons",
+            "[L0361:S0] Professor Naohito Abe, Hitotsubashi University, presented a research paper written in collaboration with"
+          ]
+        },
+        {
+          "sourceAlias": "L0360:S0",
+          "exactText": "Comparisons",
+          "localBefore": [
+            "[L0358:S0] technology for price collection and validation.",
+            "[L0359:S0] 2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price"
+          ],
+          "localAfter": [
+            "[L0361:S0] Professor Naohito Abe, Hitotsubashi University, presented a research paper written in collaboration with",
+            "[L0362:S0] Professor Kyoji Fukao, Dr. Kenta Ikeuchi and Professor D.S. Prasada Rao, on the topic of price adjustments"
+          ]
+        }
+      ],
+      "locality": "NextRowCompatible"
+    }
+  },
+  "producerPaths": [
+    "PdfLineExtraction.ExtractLines(..., PdfLineGrouping.VisualLineSegmentV3)",
+    "PdfSegmentAtomCatalog.FromSegments",
+    "PdfVisualSegmentEvidenceAuthority.Build",
+    "PdfCandidateContextBuilder.Build (block context only)",
+    "SemanticSourcePartBinder",
+    "PdfVisualSegmentRequestPlan.Build"
+  ],
+  "lineage": {
+    "activeCanonicalSourceUniverse": "unchanged",
+    "shadowOnly": true,
+    "goldAndEvaluator": "unchanged",
+    "providerTransport": "not_called"
+  }
+}
