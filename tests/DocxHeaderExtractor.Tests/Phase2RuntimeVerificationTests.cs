@@ -91,16 +91,6 @@ public sealed class Phase2RuntimeVerificationTests
     }
 
     [Fact]
-    public void Framework_adapter_is_an_outer_delegate_over_the_harness_contract()
-    {
-        Assert.True(typeof(IMicrosoftAgentFrameworkAdapter).IsAssignableFrom(
-            typeof(MicrosoftAgentFrameworkAdapter)));
-        Assert.DoesNotContain(
-            typeof(MicrosoftAgentFrameworkAdapter).GetInterfaces(),
-            type => type.Namespace == "DocxHeaderExtractor.Core");
-    }
-
-    [Fact]
     public void Skill_runtime_resolves_only_active_versioned_descriptors()
     {
         var catalog = new SkillCatalog([

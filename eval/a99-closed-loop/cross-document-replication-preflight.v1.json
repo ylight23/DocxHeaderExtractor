@@ -1,0 +1,480 @@
+{
+  "artifactKind": "a99_cross_document_replication_preflight",
+  "schemaVersion": "a99-cross-document-replication-preflight-v1",
+  "authority": {
+    "authorityCommit": "56db83933b5373057a01f7826d28a65974330d61",
+    "strictGoldManifest": "eval/a99-closed-loop/strict-gold-manifest.v4.json",
+    "capabilityMatrix": "eval/a99-closed-loop/strict-gold-capability-matrix.v5.json",
+    "currentInventory": "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+    "currentPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+    "semanticContractSha256": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365",
+    "evaluatorContract": "a99-pdf-gold-evaluator-v3-bound-occurrence-semantic-role",
+    "modelIdentifier": "qwen/qwen3.7-flash",
+    "sourceUniverseConstruction": {
+      "pdf": "PdfCanonicalSourceUniverseBuilder.Build",
+      "docx": "OpenXmlDocumentSource.Read + DocumentSourceCatalogBuilder.FromSourceDocument",
+      "docxHashSchema": "a99-docx-runtime-source-universe-v1"
+    }
+  },
+  "strictGoldInventory": {
+    "policy": "USER_PROMOTED_STRICT_GOLD_V4",
+    "documents": [
+      {
+        "documentId": "DOC-0001",
+        "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+        "semanticHeadingTotal": 7,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": true,
+        "currentSourcePath": "bench/01-style-chuan.docx",
+        "currentSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+      },
+      {
+        "documentId": "DOC-0116",
+        "sourceSha256": "0a8637b1afb059e6048c9da706c1ac419ceaea18fde37965791430c5f68f66da",
+        "semanticHeadingTotal": null,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": false,
+        "currentSourcePath": null,
+        "currentSourceSha256": null
+      },
+      {
+        "documentId": "DOC-0122",
+        "sourceSha256": "9481f514cc8c4e9f09f4b394ecb260a1a5b8ef1bc09233e4d8f4b15fb2e09bab",
+        "semanticHeadingTotal": null,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": false,
+        "currentSourcePath": null,
+        "currentSourceSha256": null
+      },
+      {
+        "documentId": "DOC-0185",
+        "sourceSha256": "f842861bb7966cd94c8ce12f2064709936c064b7fa5825d133bd77f6ffb5f895",
+        "semanticHeadingTotal": null,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": false,
+        "currentSourcePath": null,
+        "currentSourceSha256": null
+      },
+      {
+        "documentId": "DOC-0200",
+        "sourceSha256": "8ac2c82dbaac57ad889e72e8883d884907bc63d0f55172b0d44da1c1941c7835",
+        "semanticHeadingTotal": null,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": false,
+        "currentSourcePath": null,
+        "currentSourceSha256": null
+      },
+      {
+        "documentId": "DOC-0201",
+        "sourceSha256": "cb6c4e0878a899688fc1054b268fed1a8e6cb45c36b350d36c7448efecd8964d",
+        "semanticHeadingTotal": null,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": false,
+        "currentSourcePath": null,
+        "currentSourceSha256": null
+      },
+      {
+        "documentId": "DOC-0205",
+        "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+        "semanticHeadingTotal": 71,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": true,
+        "currentSourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+        "currentSourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878"
+      },
+      {
+        "documentId": "DOC-0216",
+        "sourceSha256": "be8f4e037fb609cb21e8ed22d4b3c6a17ea47598860876d734367ea0a5531cb6",
+        "semanticHeadingTotal": null,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": false,
+        "currentSourcePath": null,
+        "currentSourceSha256": null
+      },
+      {
+        "documentId": "DOC-0219",
+        "sourceSha256": "fcd9f54dac7ce89c0281acce063cd5713ae44d4b782b4770ed084286a590a221",
+        "semanticHeadingTotal": null,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": false,
+        "currentSourcePath": null,
+        "currentSourceSha256": null
+      },
+      {
+        "documentId": "DOC-0243",
+        "sourceSha256": "505ab1af2c51d968b4acc632c4e52725ba8d24c2d8dcadf40a1c458493e73eb7",
+        "semanticHeadingTotal": null,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": false,
+        "currentSourcePath": null,
+        "currentSourceSha256": null
+      },
+      {
+        "documentId": "DOC-0252",
+        "sourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+        "semanticHeadingTotal": 27,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": true,
+        "currentSourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+        "currentSourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61"
+      },
+      {
+        "documentId": "DOC-0256",
+        "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+        "semanticHeadingTotal": 24,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": true,
+        "currentSourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf",
+        "currentSourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b"
+      },
+      {
+        "documentId": "DOC-0258",
+        "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+        "semanticHeadingTotal": 24,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": true,
+        "currentSourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+        "currentSourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30"
+      },
+      {
+        "documentId": "DOC-0264",
+        "sourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+        "semanticHeadingTotal": 158,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": true,
+        "currentSourcePath": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
+        "currentSourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117"
+      },
+      {
+        "documentId": "DOC-0265",
+        "sourceSha256": "b066db0170eab1d65805f9e76da79034eecf6d46d8fda08e374fcc45c485e1e6",
+        "semanticHeadingTotal": null,
+        "occurrenceEvaluable": false,
+        "characterSpanEvaluable": false,
+        "currentInventoryPresent": false,
+        "currentSourcePath": null,
+        "currentSourceSha256": null
+      }
+    ],
+    "currentInventoryMissing": [
+      "DOC-0116",
+      "DOC-0122",
+      "DOC-0185",
+      "DOC-0200",
+      "DOC-0201",
+      "DOC-0216",
+      "DOC-0219",
+      "DOC-0243",
+      "DOC-0265"
+    ]
+  },
+  "currentAuthorityCandidates": [
+    {
+      "documentId": "DOC-0001",
+      "mediaType": "DOCX",
+      "sourcePath": "bench/01-style-chuan.docx",
+      "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "inventorySourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "sourceHashMatchesInventory": true,
+      "sourceUniverseSha256": "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba",
+      "aliasCatalogHash": "394c838cab35ed4d7fb9efc05f3fdab0ed3f7d6ea67c1826b81cdd6de38170ac",
+      "aliasCount": 14,
+      "parserLineCount": 0,
+      "authorityBuildDeterministic": true,
+      "nativeGoldPath": null,
+      "nativeEvaluatorV3Compatible": false,
+      "goldRebindPassed": false,
+      "goldBindingIssues": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+      ],
+      "goldHeadingClaims": 7,
+      "goldHeadingAliases": 0,
+      "legacyOccurrencePath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
+      "legacyOccurrenceSchema": "a99_strict_gold_occurrence_binding",
+      "legacyOccurrenceSourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "legacyOccurrenceBindingCount": 7,
+      "historicalReplayReusable": false,
+      "eligibleForNewProviderReplication": false,
+      "exclusionReasons": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+      ]
+    },
+    {
+      "documentId": "DOC-0205",
+      "mediaType": "DOCX",
+      "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "inventorySourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "sourceHashMatchesInventory": true,
+      "sourceUniverseSha256": "3134a6ea9a3f65bc3423985a0ed1b3a0568813d7d3e2a3d2063ea2fe6a8eac5e",
+      "aliasCatalogHash": "be44c86ac79429ee3829fb9b93fa6b9b11121410ac21d67449d6e1dc0013e21e",
+      "aliasCount": 3,
+      "parserLineCount": 0,
+      "authorityBuildDeterministic": true,
+      "nativeGoldPath": null,
+      "nativeEvaluatorV3Compatible": false,
+      "goldRebindPassed": false,
+      "goldBindingIssues": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+      ],
+      "goldHeadingClaims": 72,
+      "goldHeadingAliases": 0,
+      "legacyOccurrencePath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0205.occurrence-gold-v1.json",
+      "legacyOccurrenceSchema": "a99_strict_gold_occurrence_binding",
+      "legacyOccurrenceSourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+      "legacyOccurrenceBindingCount": 71,
+      "historicalReplayReusable": false,
+      "eligibleForNewProviderReplication": false,
+      "exclusionReasons": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "mediaType": "PDF",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "inventorySourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "sourceHashMatchesInventory": true,
+      "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+      "aliasCatalogHash": "867a2dd5cccf46984a1b282e7a69916dbececb1f3a35da2e5b1e7f6379774305",
+      "aliasCount": 1013,
+      "parserLineCount": 1065,
+      "authorityBuildDeterministic": true,
+      "nativeGoldPath": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json",
+      "nativeEvaluatorV3Compatible": true,
+      "goldRebindPassed": true,
+      "goldBindingIssues": [],
+      "goldHeadingClaims": 41,
+      "goldHeadingAliases": 38,
+      "legacyOccurrencePath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0252.occurrence-gold-v1.json",
+      "legacyOccurrenceSchema": "a99_strict_gold_occurrence_binding",
+      "legacyOccurrenceSourceSha256": "4dda3c8ec8cd74e3a61503db0f8e9f168270d39036e3825441ab6167f9e16a77",
+      "legacyOccurrenceBindingCount": 27,
+      "historicalReplayReusable": true,
+      "eligibleForNewProviderReplication": false,
+      "exclusionReasons": []
+    },
+    {
+      "documentId": "DOC-0256",
+      "mediaType": "PDF",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf",
+      "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "inventorySourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "sourceHashMatchesInventory": true,
+      "sourceUniverseSha256": "335fd5250bc68d4b3f88129fa4c267d62a40b6612847849923a8842eaf16abd8",
+      "aliasCatalogHash": "17c4db9f9a1798a45b042a5c5a49bf591054c611ad0bbff97802a51040469caf",
+      "aliasCount": 695,
+      "parserLineCount": 767,
+      "authorityBuildDeterministic": true,
+      "nativeGoldPath": null,
+      "nativeEvaluatorV3Compatible": false,
+      "goldRebindPassed": false,
+      "goldBindingIssues": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "SOURCE_HASH_MISMATCH",
+        "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+      ],
+      "goldHeadingClaims": 34,
+      "goldHeadingAliases": 0,
+      "legacyOccurrencePath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0256.occurrence-gold-v1.json",
+      "legacyOccurrenceSchema": "a99_strict_gold_occurrence_binding",
+      "legacyOccurrenceSourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+      "legacyOccurrenceBindingCount": 24,
+      "historicalReplayReusable": false,
+      "eligibleForNewProviderReplication": false,
+      "exclusionReasons": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "SOURCE_HASH_MISMATCH",
+        "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+      ]
+    },
+    {
+      "documentId": "DOC-0258",
+      "mediaType": "DOCX",
+      "sourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+      "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "inventorySourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "sourceHashMatchesInventory": true,
+      "sourceUniverseSha256": "18286ac2f4b3c3abb2a89a409fb30818c4d277b32e6b22e906726f158ab2039f",
+      "aliasCatalogHash": "871ba7af092a8fe26403f290392a6570b3238651df6fb48fcc78e379d5107540",
+      "aliasCount": 146,
+      "parserLineCount": 0,
+      "authorityBuildDeterministic": true,
+      "nativeGoldPath": null,
+      "nativeEvaluatorV3Compatible": false,
+      "goldRebindPassed": false,
+      "goldBindingIssues": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+      ],
+      "goldHeadingClaims": 37,
+      "goldHeadingAliases": 0,
+      "legacyOccurrencePath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0258.occurrence-gold-v1.json",
+      "legacyOccurrenceSchema": "a99_strict_gold_occurrence_binding",
+      "legacyOccurrenceSourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "legacyOccurrenceBindingCount": 24,
+      "historicalReplayReusable": false,
+      "eligibleForNewProviderReplication": false,
+      "exclusionReasons": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+      ]
+    },
+    {
+      "documentId": "DOC-0264",
+      "mediaType": "DOCX",
+      "sourcePath": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
+      "sourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "inventorySourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "sourceHashMatchesInventory": true,
+      "sourceUniverseSha256": "f97a2ae622ed57887229060ac4b84e0f2822672f41c42c62c268c9730a398ba4",
+      "aliasCatalogHash": "11d50363276f02718c278646576ad63fefcab4eeb116d77e0ddd74500ad47728",
+      "aliasCount": 3,
+      "parserLineCount": 0,
+      "authorityBuildDeterministic": true,
+      "nativeGoldPath": null,
+      "nativeEvaluatorV3Compatible": false,
+      "goldRebindPassed": false,
+      "goldBindingIssues": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "OCCURRENCE_MATERIALIZATION_BLOCKED"
+      ],
+      "goldHeadingClaims": 159,
+      "goldHeadingAliases": 0,
+      "legacyOccurrencePath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0264.occurrence-gold-v1.json",
+      "legacyOccurrenceSchema": "a99_strict_gold_occurrence_binding",
+      "legacyOccurrenceSourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "legacyOccurrenceBindingCount": 0,
+      "historicalReplayReusable": false,
+      "eligibleForNewProviderReplication": false,
+      "exclusionReasons": [
+        "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "OCCURRENCE_MATERIALIZATION_BLOCKED"
+      ]
+    }
+  ],
+  "cohortDecision": {
+    "selectionPolicy": "CURRENT_SOURCE_AUTHORITY + CURRENT_EVALUATOR_V3 + EXACT_OCCURRENCE_GOLD",
+    "retainedExistingBaseline": [
+      "DOC-0252"
+    ],
+    "newSelectedDocuments": [],
+    "excludedDocuments": [
+      {
+        "documentId": "DOC-0001",
+        "reasons": [
+          "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+          "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+          "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+        ]
+      },
+      {
+        "documentId": "DOC-0205",
+        "reasons": [
+          "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+          "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+          "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+        ]
+      },
+      {
+        "documentId": "DOC-0256",
+        "reasons": [
+          "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+          "SOURCE_HASH_MISMATCH",
+          "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+        ]
+      },
+      {
+        "documentId": "DOC-0258",
+        "reasons": [
+          "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+          "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+          "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
+        ]
+      },
+      {
+        "documentId": "DOC-0264",
+        "reasons": [
+          "NON_CURRENT_EVALUATOR_V3_SCHEMA",
+          "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+          "OCCURRENCE_MATERIALIZATION_BLOCKED"
+        ]
+      }
+    ],
+    "reason": "No second document has current native evaluator-v3 occurrence Gold. DOC-0252 is retained only as the existing S2J baseline; no new cross-document provider run is justified."
+  },
+  "offlineCallPlan": {
+    "repeatCount": 3,
+    "maximumProviderCalls": 30,
+    "selectedNewDocumentCount": 0,
+    "totalNewProviderCalls": 0,
+    "segmentation": {
+      "ownedPerSegment": 120,
+      "visibleMargin": 20
+    },
+    "requestSizeStatus": "COST_UNKNOWN",
+    "requestSizeAudited": false,
+    "providerTransportRequired": false
+  },
+  "failureMatrixContract": {
+    "scope": "future cross-document replication measurements only",
+    "families": [
+      "heading-definition-discovery",
+      "multi-heading-decomposition",
+      "segment-context-attention-competition",
+      "candidate-hint-attention",
+      "source-representation-loss",
+      "role-mismatch",
+      "binding-or-evaluator-defect"
+    ],
+    "documentsWithTrueOmission": [],
+    "repeatedFailureFamilies": [],
+    "roleMetric": "NOT_CURRENTLY_ADJUDICABLE",
+    "note": "No new document has a current evaluator-v3 occurrence Gold contract; do not infer cross-document replication from DOC-0252 alone."
+  },
+  "protectedBaseline": {
+    "documentId": "DOC-0252",
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "currentRuntimeSourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "reviewedGoldSourceUniverseSha256": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+    "reviewedGoldUniverseReboundByCurrentAliases": true,
+    "reviewedGoldUniverseIdentityExact": false,
+    "goldHeadingClaims": 41,
+    "goldHeadingAliases": 38,
+    "s2jAuditPath": "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/strict-omission-causal-audit.v1.json",
+    "s2jAuditSha256": "ae222f1e26765d7454b47073e99045ec55d455c21d3ad8c6a250b0737189a13c",
+    "semanticContractSha256": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365",
+    "currentPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8"
+  },
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "finalState": "CROSS_DOCUMENT_BASELINE_BLOCKED",
+  "blockReason": "A cross-document current-authority cohort cannot be formed without a second document that has current native evaluator-v3 occurrence Gold. Existing legacy strict occurrence files are not silently converted or treated as current Gold."
+}

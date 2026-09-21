@@ -4,12 +4,11 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV6ATests
 {
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
 
     [Fact]
     public void V6A_is_offline_and_keeps_owner_inference_unresolved()
     {
-        var root = Root();
+        var root = TestRepository.Root();
         using var summary = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "artifacts", "identity-benchmark", "v6", "diagnosis", "v5-failure-diagnosis-v1", "summary.json")));
         using var cases = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "artifacts", "identity-benchmark", "v6", "diagnosis", "v5-failure-diagnosis-v1", "cases.json")));
         Assert.Equal("V6A_COMPLETE", summary.RootElement.GetProperty("status").GetString());

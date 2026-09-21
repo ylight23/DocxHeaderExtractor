@@ -48,9 +48,6 @@ public sealed class CommandLineOptions
     public bool WritebackOverwrite { get; private set; }
     public bool WritebackHeadingStyles { get; private set; }
 
-    /// <summary>Lệnh `toc-keys`: tỉ lệ khớp tối thiểu giữa mục lục và thân bài để nhận file.</summary>
-    public double TocMatchThreshold { get; private set; } = DocxHeaderExtractor.Eval.TocAnswerKeyGenerator.DefaultMatchThreshold;
-
     /// <summary>Lệnh `toc-keys`: ghi cả key từng phần cho file dưới ngưỡng, đánh dấu partial_toc.</summary>
     public bool TocPartial { get; private set; }
 
@@ -160,78 +157,9 @@ public sealed class CommandLineOptions
         if (args.Length == 0) { o.ShowHelp = true; return o; }
 
         int i = 0;
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-preflight")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-live")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-execute")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-prediction-forensic")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-gold-score")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-gold-forensic")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-gold-compatibility-audit")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-gold-binding-repair")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-gold-provenance-approval-audit")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-gold-successor-promotion")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-gold-occurrence-universe-bridge-audit")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-correctness-semantic-contract-alignment-audit")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-true-heading-preflight")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') && args[0] == "a99-canonical-dev-vnext-true-heading-execute")
-        {
-            o.Command = args[0];
-            i = 1;
-        }
-        if (!args[0].StartsWith('-') &&
-                    args[0] is "extract" or "xml" or "help" or "info" or "sample" or "bench" or "eval" or "review" or "review-key" or "toc-keys" or "repair" or "repair-calibrate" or "repair-audit" or "repair-key-package" or "pdf-clusters" or "pdf-source-review" or "pdf-stage-eval" or "pdf-hierarchy-facts" or "pdf-hierarchy-marker-counterfactual" or "pdf-visual-probe" or "pdf-visual-representation-eval" or "pdf-visual-result-eval" or "pdf-visual-provenance-eval" or "pdf-visual-scheduler-benchmark" or "pdf-rank-eval" or "pdf-first-loss-audit" or "pdf-occurrence-eval" or "pdf-occurrence-counterfactual-eval" or "pdf-candidate-construction-audit" or "pdf-semantic-recovery-eval" or "pdf-semantic-recovery-result-eval" or "pdf-hierarchy-facts-eval" or "pdf-shadow-compare" or "pdf-human-audit-eval" or "pdf-tags" or "pdf-bookmarks" or "key-rebase" or "verify-corrupt" or "source-facts" or "accuracy99" or "r18" or "harness-lift" or "local-qwen-preflight" or "local-qwen-large" or "a99-v2a-role-prefilter-shadow" or "a99-v2a1-role-prefilter-forensic" or "a99-v2a2-role-prefilter-recovery-shadow" or "a99-v6-whole-alias-replay" or "a99-v6-source-slice-audit" or "a99-v6-source-slice-challenger" or "a99-v6-source-fidelity-audit" or "a99-v6-source-fidelity-paired" or "a99-v6-faithful-whole-alias-replay" or "a99-v6-faithful-whole-alias-live" or "a99-v6-faithful-whole-alias-provider-probe" or "a99-semantic-conflict-adjudication" or "a99-hdsa-semantic-node-production-live" or "a99-hdsa-semantic-node-error-decomposition" or "a99-hdsa-semantic-node-production-forensic" or "a99-hdsa-root-v2-live-probe" or "a99-hdsa-semantic-identity-v4-live" or "a99-hdsa-semantic-node-v4-production-live" or "a99-hdsa-v3-v4-parent-forensic" or "a99-semantic-merge-isolation-replay" or "a99-v4-conservative-counterfactual" or "a99-global-outline-llm-live" or "a99-global-outline-llm-evaluate-frozen" or "a99-global-role-identity-live" or "a99-global-role-identity-v2-live" or "a99-global-identity-sparse-positive-replay" or "a99-global-identity-retrieve-verify-live" or "a99-global-identity-oracle-pair-diagnostic" or "a99-global-identity-deterministic-candidate-poc" or "a99-global-identity-deterministic-candidate-poc-evaluate" or "a99-global-identity-deterministic-pair-verification-live" or "a99-canonical-dev-v1" or "a99-canonical-dev-v1-exec-v4" or "a99-canonical-dev-v1-exec-v5" or "a99-canonical-dev-v1-exec-v6" or "a99-canonical-dev-v1-exec-v7-optimized" or "a99-canonical-worker-launch-integrity" or "a99-canonical-worker-lifecycle-self-test" or "a99-provider-hard-timeout-integrity" or "a99-provider-hard-timeout-child" or "a99-canonical-dev-v1-worker" or "a99-doc0116-shape-forensic" or "a99-provider-observability-v1" or "a99-provider-observability-v1-child" or "a99-doc0116-provider-micro-v1" or "a99-doc0116-provider-micro-v1-reclassify" or "a99-provider-timeout-policy-v2" or "a99-canonical-dev-vnext-correctness-prediction-forensic" or "a99-canonical-dev-vnext-correctness-gold-score" or "a99-canonical-dev-vnext-correctness-gold-forensic" or "a99-canonical-dev-vnext-correctness-gold-compatibility-audit" or "a99-canonical-dev-vnext-correctness-gold-binding-repair" or "a99-canonical-dev-vnext-correctness-gold-provenance-approval-audit" or "a99-canonical-dev-vnext-correctness-gold-successor-promotion" or "a99-canonical-dev-vnext-correctness-gold-occurrence-universe-bridge-audit" or "a99-canonical-dev-vnext-correctness-semantic-contract-alignment-audit" or "a99-canonical-dev-vnext-true-heading-preflight" or "a99-canonical-dev-vnext-true-heading-execute")
+        // Only verbs the CLI actually dispatches. Anything else is treated as an input path
+        // by the default extract route.
+        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "info" or "score")
         {
             o.Command = args[0];
             i = 1;
@@ -239,21 +167,6 @@ public sealed class CommandLineOptions
         if (o.Command == "help") { o.ShowHelp = true; return o; }
 
         var explicitChunkTokens = false;
-        if (o.Command == "accuracy99" && i < args.Length && !args[i].StartsWith('-'))
-        {
-            o.Accuracy99Operation = args[i++];
-            if (o.Accuracy99Operation.Equals("gold", StringComparison.OrdinalIgnoreCase) &&
-                i < args.Length && !args[i].StartsWith('-'))
-                o.Accuracy99Operation = $"gold-{args[i++]}";
-        }
-        else if (o.Command == "r18" && i < args.Length && !args[i].StartsWith('-'))
-        {
-            o.R18Operation = args[i++];
-        }
-        else if (o.Command == "harness-lift" && i < args.Length && !args[i].StartsWith('-'))
-        {
-            o.HarnessLiftOperation = args[i++];
-        }
 
         for (; i < args.Length; i++)
         {
@@ -266,11 +179,7 @@ public sealed class CommandLineOptions
                 case "-h" or "--help": o.ShowHelp = true; break;
                 case "-m" or "--model": llama.ModelPath = Next(a); break;
                 case "-o" or "--out": o.OutputPath = Next(a); break;
-                case "--operation":
-                    if (o.Command == "r18") o.R18Operation = Next(a);
-                    else if (o.Command == "harness-lift") o.HarnessLiftOperation = Next(a);
-                    else o.Accuracy99Operation = Next(a);
-                    break;
+                case "--operation": o.Accuracy99Operation = Next(a); break;
                 case "--root": o.Accuracy99Root = Next(a); break;
                 case "--source-root": o.Accuracy99SourceRoot = Next(a); break;
                 case "--harness-root": o.HarnessLiftRoot = Next(a); break;
@@ -344,10 +253,7 @@ public sealed class CommandLineOptions
                 case "--pdf-visual-probe-list": o.PdfVisualProbeList = true; break;
                 case "--pdf-visual-page": o.PdfVisualPage = Math.Max(1, int.Parse(Next(a))); break;
                 case "--pdf-visual-line-list": o.PdfVisualLineList = true; break;
-                case "--gold":
-                    if (o.Command == "accuracy99") o.Accuracy99GoldPath = Next(a);
-                    else o.PdfVisualRepresentationGoldPath = Next(a);
-                    break;
+                case "--gold": o.PdfVisualRepresentationGoldPath = Next(a); break;
                 case "--hierarchy-gold": o.PdfHierarchyGoldPath = Next(a); break;
                 case "--recovery-baseline-artifact": o.PdfSemanticRecoveryBaselineArtifact = Next(a); break;
                 case "--semantic-recovery-profile": o.PdfSemanticRecoveryProfile = Next(a); break;
@@ -361,7 +267,6 @@ public sealed class CommandLineOptions
                     o.Pipeline.DoclingSidecarFallback = true;
                     break;
                 case "--session-code-fallback": o.Pipeline.SessionCodeFallback = true; break;
-                case "--llm-boundary-cut-fallback": o.Pipeline.LlmBoundaryCutFallback = true; break;
                 case "--openrouter":
                     o.Provider.Backend = InferenceBackend.OpenRouter;
                     o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
@@ -439,12 +344,7 @@ public sealed class CommandLineOptions
                 case "--no-trust-styles": o.Pipeline.TrustStyles = false; break;
                 case "--skip-styled": o.Pipeline.SkipStyledCandidates = true; break;
                 case "--style-auto-assign": o.Pipeline.StyleAutoAssign = true; break;
-                // Cấp thô là mặc định từ khi cấu trúc quyết định cấp; cờ này giữ lại để bật chuẩn
-                // hoá theo độ sâu ngăn xếp khi cần so với hành vi cũ.
-                case "--raw-levels": o.Pipeline.NormalizeLevels = false; break;
-                case "--normalize-levels": o.Pipeline.NormalizeLevels = true; break;
                 case "--two-pass": o.Pipeline.TwoPass = true; break;
-                case "--no-global-hierarchy": o.Pipeline.GlobalHierarchy = false; break;
                 case "--model-levels": o.Pipeline.LevelFromOutline = false; break;
                 case "--dump-xml": o.Pipeline.DumpXmlPath = Next(a); break;
                 case "--show-raw": o.Pipeline.ShowRawOutput = true; break;
@@ -465,16 +365,11 @@ public sealed class CommandLineOptions
                 case "--no-reuse-prefix": llama.ReusePromptPrefix = false; break;
                 case "--gpu-layers" or "-ngl": llama.GpuLayerCount = int.Parse(Next(a)); break;
                 case "--verbose-native": llama.VerboseNativeLog = true; break;
-                case "--no-audit": o.Pipeline.AuditNumbering = false; break;
-                case "--no-structural-recovery": o.Pipeline.RecoverNumberedSiblings = false; break;
-
                 case "--max-text": extraction.MaxTextLength = int.Parse(Next(a)); break;
-                case "--threshold": extraction.CandidateThreshold = double.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture); break;
                 case "--no-tables": extraction.IncludeTables = false; break;
                 case "--page-headers": extraction.IncludePageHeadersFooters = true; break;
                 case "--no-context": extraction.IncludeFollowingContext = false; break;
                 case "--structural-only": extraction.UseLexicalRules = false; break;
-                case "--no-standalone-lines": extraction.PromoteStandaloneLines = false; break;
                 case "--skip-content-controls": extraction.SkipContentControls = true; break;
                 case "--bare-labels": extraction.AllowBareLabelledNumbers = true; break;
                 case "--split-merged": extraction.SplitMergedParagraphs = true; break;
@@ -484,8 +379,6 @@ public sealed class CommandLineOptions
                 case "--admin-outline": o.Pipeline.AdministrativeDeclaredOutline = true; break;
                 case "--style-outline": o.Pipeline.StyleDeclaredOutline = true; break;
                 case "--numbering-outline": o.Pipeline.NumberingDeclaredOutline = true; break;
-                case "--deterministic-hierarchy": o.Pipeline.DeterministicHierarchy = true; break;
-                case "--no-deterministic-hierarchy": o.Pipeline.DeterministicHierarchy = false; break;
                 case "--mode-only": extraction.ReportModeOnly = true; break;
                 case "--flag-repeated-labels": extraction.FlagRepeatedLabels = true; break;
                 case "--skip-corrupt": extraction.SkipCorruptParagraphs = true; break;
@@ -497,9 +390,6 @@ public sealed class CommandLineOptions
                 case "--compact": o.CompactXml = true; break;
                 case "--dump-chunks": o.DumpChunksDir = Next(a); break;
 
-                case "--toc-match-threshold":
-                    o.TocMatchThreshold = double.Parse(Next(a), System.Globalization.CultureInfo.InvariantCulture);
-                    break;
                 case "--toc-partial": o.TocPartial = true; break;
                 case "-v" or "--verbose": o.Verbose = true; break;
                 case "--key-limit": o.KeyPackageLimit = int.Parse(Next(a)); break;
@@ -550,61 +440,10 @@ public sealed class CommandLineOptions
         dhx – trích xuất tiêu đề (heading) từ .docx/.doc bằng OpenXML + LLamaSharp (CPU)
 
         Cách dùng:
-          dhx extract <file.docx|file.doc> [tuỳ chọn]
-          dhx xml     <file.docx> [--compact]  # in XML tinh gọn, không gọi mô hình
-                                              # --compact = đúng nội dung gửi cho mô hình
-          dhx info    <file.gguf>            # xem metadata mô hình
-          dhx sample  <ra.docx>              # tạo file .docx mẫu để thử
-          dhx bench   [thư-mục]              # sinh bộ tài liệu thử + đáp án (mặc định ./bench)
-          dhx eval    [thư-mục]              # chấm trên bộ có đáp án, in precision/recall/cấp
-                                             # mỗi X.docx cần một X.key đi kèm
-          dhx review  <file.docx>             # chạy dự đoán, xuất .review.json để người duyệt sửa
-          dhx review-key <file.review.json>   # sinh .key + .training.jsonl từ review đã duyệt
-          dhx toc-keys <thư-mục|file.docx>    # suy đáp án ỨNG VIÊN từ mục lục Word, mở rộng bench
-          dhx pdf-clusters <file.pdf|file.docx> # dump cụm style PDF + mẫu; thêm model để hỏi text analyst
-          dhx pdf-source-review <file.pdf> # dump toàn bộ source PDF cho review độc lập; không filter/candidate/LLM
-          dhx pdf-rank-eval <file.docx> # freeze/rank toàn bộ PDF candidate, đo Recall@K; không gọi LLM
-          dhx pdf-first-loss-audit <file.docx> --pdf-stage-key-root <keys> # tách representation khỏi retrieval per-gold; không gọi LLM
-          dhx pdf-occurrence-eval <file.docx> --pdf-stage-key-root <keys> # evaluation-only gold-anchor occurrence recall; không gọi LLM
-          dhx pdf-occurrence-counterfactual-eval <file.docx> --pdf-stage-key-root <keys> # chấm resolver source-only bằng gold ngoài runtime; không gọi LLM
-          dhx pdf-candidate-construction-audit <file.docx> --pdf-stage-key-root <keys> # trace grouping/producer cho gold mất candidate; không gọi LLM
-          dhx pdf-semantic-recovery-eval <file.docx> --openrouter --openrouter-model qwen/qwen3.5-9b --semantic-recovery-profile current_v6 # source-only recovery; profiles: current_v6|neighborhood_microbatch|neighborhood_single
-          dhx pdf-stage-eval <file.docx> --pdf-stage-semantic-hierarchy # opt-in semantic parent fallback; M8 inventory leaves it off
-          dhx pdf-hierarchy-facts <docs...> -o facts.json          # M8.1a: chỉ facts nguồn, không nhận gold, usesGold=false
-          dhx pdf-semantic-recovery-result-eval <artifact.json> --gold <rebased.key> --recovery-baseline-artifact <occurrence.json> # frozen artifact + gold; không gọi model
-          dhx pdf-hierarchy-marker-counterfactual <facts.json> -o cf.json  # M8.1d-3: đo blast radius, không gold, không model
-          dhx pdf-hierarchy-facts-eval <artifact.json> --hierarchy-gold <gold.json> # chấm hierarchy facts frozen; không gọi model
-          dhx pdf-visual-representation-eval <file.docx> --gold <file.key> # đo coverage Visual SourceFacts; không gọi model
-          dhx pdf-visual-result-eval <run.json> --gold <file.key> # chấm lại Visual Inference Artifact; không gọi model
-          dhx key-rebase <regenerated.docx> --gold <old.key> --out <new.key> --rebase-provenance <audit.json> # rebase gold evaluation từ title người duyệt; không đọc model output
-          dhx pdf-visual-provenance-eval <run1.json> <run2.json> # overlap/dedupe theo canonical DOCX identity; không gọi model
-          dhx pdf-visual-scheduler-benchmark <file.docx> --visual-artifact <run.json> [--visual-artifact <run.json>]
-          dhx pdf-tags <file.pdf|file.docx>     # audit /H* -> MCID -> PDF text -> DOCX span; không đổi output
-          dhx pdf-bookmarks <file.pdf|file.docx> # audit raw /Outlines -> title/level/page; không đổi output
-                                              # hoặc --vlm-model/--vlm-mmproj để hỏi visual analyst
-                                              # trên candidate blocks. KHÔNG thay đáp án người kiểm.
-          dhx repair <file.docx|thư-mục>      # code-first probe: ghi failure-case/probe/prompt/plan
-                                              # để LLM phân tích và agent vá trong sandbox
-          dhx repair-calibrate <thư-mục>       # đo score/gate repair so với .key thật, xuất CSV/JSON
-          dhx repair-audit <thư-mục>           # quét corpus: gate fail, needs_analysis, key thiếu
-          dhx repair-key-package <file|thư-mục> # tạo partial .key draft + CSV review cho file thiếu key
-          dhx verify-corrupt <file.docx>       # cổng chẩn đoán VLM: đoạn bị is_doubled gắn cờ là lỗi
-                                              # thật ở nguồn (render+nhìn) hay lỗi tầng đọc — cần PDF
-                                              # anh em + --vlm-model/--vlm-mmproj (xem handoff §173)
-          dhx accuracy99 packet <file.docx> --out <packet.json>
-          dhx accuracy99 inventory <dataset-root> --out <manifest.json>
-          dhx accuracy99 evaluate <file.docx> --accuracy-gold <gold.json> --prediction <outline.json>
-          dhx accuracy99 baseline <file.docx> --profile structural --out <baseline.json>
-                                              # General-heading accuracy infrastructure; Human Gold
-                                              # is never inferred from .key/silver artifacts.
-          dhx accuracy99 early-dev-campaign    # freeze the stratified 12-20 document DEV review set
-          dhx accuracy99 gold validate-v2       # validate only the frozen early DEV gold set
-          dhx accuracy99 gold import-dev-v2     # import valid early DEV gold; never opens holdout
-          dhx accuracy99 review-ui              # copy the source-first v2 reviewer UI
-          dhx r18 ownership <file.docx> --out <report.json>
-                                              # Evaluation-only decision ownership audit; never calls a provider.
-          dhx local-qwen-preflight                # 2-document local vLLM concurrency preflight (global 8 slots)
-          dhx local-qwen-large                    # resumable 95-file local Qwen campaign (global 8 slots)
+          dhx extract <file.docx|file.doc> [tuỳ chọn]   # mặc định; tên lệnh có thể bỏ qua
+          dhx info    <file.gguf>                       # xem metadata mô hình
+          dhx score   <reference.json> <prediction.json> # đo level accuracy
+          dhx help                                      # trợ giúp
 
         Tuỳ chọn chính:
           -m, --model <path.gguf>   Mô hình GGUF (mặc định: biến DHX_MODEL, appsettings.json
@@ -720,20 +559,13 @@ public sealed class CommandLineOptions
                                     ~24% nhưng ĐO ĐƯỢC là precision tụt 100% → 94%: các đoạn có
                                     style nằm xen kẽ đóng vai trò neo cho mô hình. Chỉ dùng khi
                                     ưu tiên tốc độ hơn độ chính xác.
-              --no-audit            Tắt hậu kiểm theo ký hiệu đánh số. Mặc định BẬT: đối chiếu
-                                    cấp giữa các mục cùng dạng đánh số và tìm lỗ hổng trong dãy
-                                    anh em, đánh dấu (?) chỗ đáng ngờ. Không gọi mô hình.
-              --raw-levels          Giữ nguyên cấp do mô hình trả về (không chuẩn hoá)
               --two-pass            Quét hai lượt với cách cắt khối khác nhau, đánh dấu (?)
                                     những đoạn hai lượt bất đồng để xem lại. Tốn gấp ~2 lần.
-              --no-global-hierarchy Không chạy lượt gán cấp riêng trên toàn bộ heading đã chọn
               --model-levels        Lấy cấp do mô hình đoán thay vì đọc w:outlineLvl trong file
 
         Ví dụ:
           dhx extract bao-cao.docx -m models\Llama-3.2-3B-Instruct-Q4_K_M.gguf -f md
           dhx extract *.docx --no-llm -f csv -o outline.csv
-          dhx review bao-cao.docx -m models\Qwen2.5-7B-Instruct-Q4_K_M.gguf -o bao-cao.review.json
-          dhx review-key bao-cao.review.json -o bao-cao.key
-          dhx xml bao-cao.docx | less
+          dhx bao-cao.docx -f md          # tên lệnh có thể bỏ qua
         """;
 }

@@ -142,9 +142,6 @@ public sealed class McpExtractionService : IDisposable
             // Heading built-in đã có bằng chứng OOXML chắc chắn; giữ trong context
             // làm mốc nhưng không gửi lại cho LLM như ứng viên cần quyết định.
             SkipStyledCandidates = true,
-            AuditNumbering = true,
-            RecoverNumberedSiblings = true,
-            GlobalHierarchy = true,
         };
     }
 

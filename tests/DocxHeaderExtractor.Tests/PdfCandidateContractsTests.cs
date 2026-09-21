@@ -41,8 +41,28 @@ public sealed class PdfCandidateContractsTests
     }
 
     [Fact]
-    public void ValidatorDoesNotLetSemanticRoleOverrideTableScope()
+    public void ParserTableScopeIsRecordedAsDisagreementAndNoLongerVetoesTheModel()
     {
+        var line = Line("DAY 2: WEDNESDAY, NOVEMBER 1, 2023", 700);
+        var context = PdfCandidateContextBuilder.Build(
+            [Block("b1", line)], [new PdfLineBlockAnnotation(line, false, false, true, false, "table-like")]);
+        var decision = new PdfBlockDecision(
+            "b1", PdfBlockRole.HeadingTopic, 0.99, "model call", new TextOffsetSpan(0, line.Text.Length));
+
+        var trace = Assert.Single(PdfProposalValidator.Trace(context, [decision]));
+
+        Assert.Equal("table", context["b1"].Source.StructuralScope);
+        Assert.Equal("eligible", trace.ValidationStatus);
+        Assert.Equal("scope-disagreement:table", trace.Reason);
+        Assert.True(PdfProposalValidator.IsEligibleHeading(decision, context["b1"]));
+        Assert.Single(PdfProposalValidator.Validate(context, [decision]));
+    }
+
+    [Fact]
+    public void AMissingPointerSpanStillOutranksAScopeDisagreementInTheTrace()
+    {
+        // Ordering matters for diagnosis: the trace must name why the proposal was actually
+        // rejected, never a heuristic that no longer rejects anything.
         var line = Line("Assets liabilities", 700);
         var context = PdfCandidateContextBuilder.Build(
             [Block("b1", line)], [new PdfLineBlockAnnotation(line, false, false, true, false, "table-like")]);
@@ -51,7 +71,7 @@ public sealed class PdfCandidateContractsTests
         var trace = Assert.Single(PdfProposalValidator.Trace(context, [decision]));
 
         Assert.Equal("unresolved", trace.ValidationStatus);
-        Assert.Equal("scope-conflict", trace.Reason);
+        Assert.Equal("missing-pointer-span", trace.Reason);
         Assert.False(PdfProposalValidator.IsEligibleHeading(decision, context["b1"]));
     }
 
@@ -192,8 +212,10 @@ public sealed class PdfCandidateContractsTests
 
         Assert.Equal("code_or_grammar", context["b1"].Source.StructuralScope);
         Assert.Contains("formal_syntax_shape", context["b1"].Source.ObservedEvidence);
-        Assert.Equal("unresolved", trace.ValidationStatus);
-        Assert.False(PdfProposalValidator.IsEligibleHeading(decision, context["b1"]));
+        // The scope survives as evidence; it no longer decides.
+        Assert.Equal("eligible", trace.ValidationStatus);
+        Assert.Equal("scope-disagreement:code_or_grammar", trace.Reason);
+        Assert.True(PdfProposalValidator.IsEligibleHeading(decision, context["b1"]));
     }
 
     [Fact]
@@ -215,11 +237,13 @@ public sealed class PdfCandidateContractsTests
             Assert.Contains("toc_entry_cluster", context.Source.ObservedEvidence);
             Assert.Empty(context.ActiveHeadingStack);
         });
-        Assert.False(PdfProposalValidator.IsEligibleHeading(decision, contexts["b1"]));
+        Assert.True(PdfProposalValidator.IsEligibleHeading(decision, contexts["b1"]));
+        Assert.Equal("scope-disagreement:table_of_contents",
+            PdfProposalValidator.SemanticDisagreementOf(contexts["b1"]));
     }
 
     [Fact]
-    public void RfcStructuralScopesRejectReferencesIndexAndAbnfButKeepAppendixNamespace()
+    public void RfcStructuralScopesAreDetectedAsEvidenceButKeepAppendixNamespace()
     {
         var introduction = Line("1. Introduction", 700);
         var references = Line("References", 680);
@@ -244,11 +268,16 @@ public sealed class PdfCandidateContractsTests
         Assert.Equal("appendix", contexts["appendix"].Source.StructuralScope);
         Assert.Equal("code_or_grammar", contexts["grammar"].Source.StructuralScope);
         Assert.Equal("index_terms", contexts["term"].Source.StructuralScope);
-        Assert.False(PdfProposalValidator.IsEligibleHeading(proposed, contexts["reference"]));
+        // Scope detection is the point of this test; it is evidence attached to the context, and
+        // the appendix namespace must not be swept into it. Neither outcome removes a proposal.
+        Assert.Equal("scope-disagreement:reference_list",
+            PdfProposalValidator.SemanticDisagreementOf(contexts["reference"]));
+        Assert.Null(PdfProposalValidator.SemanticDisagreementOf(contexts["appendix"]));
+        Assert.True(PdfProposalValidator.IsEligibleHeading(proposed, contexts["reference"]));
     }
 
     [Fact]
-    public void RfcProseSectionReferenceIsAParserFactNotAnOutlineNode()
+    public void RfcProseSectionReferenceIsRecordedAsADomainRoleDisagreement()
     {
         var prose = Line("See Section 5.6.1 for cache directives.", 700);
         var contexts = PdfCandidateContextBuilder.Build([Block("prose", prose)],
@@ -256,11 +285,13 @@ public sealed class PdfCandidateContractsTests
         var proposed = new PdfBlockDecision("prose", PdfBlockRole.HeadingTopic, .99, "", new TextOffsetSpan(0, prose.Text.Length));
 
         Assert.Equal(PdfDomainRole.InlineClauseReference, contexts["prose"].Source.DomainRole);
-        Assert.False(PdfProposalValidator.IsEligibleHeading(proposed, contexts["prose"]));
+        Assert.Equal($"domain-role-disagreement:{PdfDomainRole.InlineClauseReference}",
+            PdfProposalValidator.SemanticDisagreementOf(contexts["prose"]));
+        Assert.True(PdfProposalValidator.IsEligibleHeading(proposed, contexts["prose"]));
     }
 
     [Fact]
-    public void LegalDomainPolicyResolvesMarkerTreeAndRejectsAmendmentAnnotation()
+    public void LegalDomainPolicyResolvesMarkerTreeAndRecordsAmendmentAnnotation()
     {
         var part = Line("PHAN I QUY DINH CHUNG", 700);
         var chapter = Line("CHUONG I NHUNG QUY DINH CHUNG", 680);
@@ -285,7 +316,11 @@ public sealed class PdfCandidateContractsTests
 
         Assert.Equal(PdfDomainRole.LegalPart, contexts["part"].Source.DomainRole);
         Assert.Equal(PdfDomainRole.AmendmentAnnotation, contexts["amendment"].Source.DomainRole);
-        Assert.DoesNotContain(validated, item => item.SourceId == "amendment");
+        // The detector's opinion travels as evidence. It used to delete the proposal here, which
+        // put the harness in charge of what counts as a heading.
+        Assert.Equal($"domain-role-disagreement:{PdfDomainRole.AmendmentAnnotation}",
+            PdfProposalValidator.SemanticDisagreementOf(contexts["amendment"]));
+        Assert.Contains(validated, item => item.SourceId == "amendment");
         Assert.Equal("part", structures.Single(item => item.SourceId == "chapter").ParentId);
         Assert.Equal("chapter", structures.Single(item => item.SourceId == "article").ParentId);
     }
@@ -317,7 +352,7 @@ public sealed class PdfCandidateContractsTests
     }
 
     [Fact]
-    public void ProcurementPolicyKeepsStructuralMarkersAndRejectsTemplateFields()
+    public void ProcurementPolicyKeepsStructuralMarkersAndFlagsTemplateFields()
     {
         var partOne = Line("PART 1 - BIDDING PROCEDURES", 700);
         var partTwo = Line("PART 2 - CONDITIONS OF CONTRACT", 680);
@@ -342,7 +377,9 @@ public sealed class PdfCandidateContractsTests
 
         Assert.Equal(PdfDomainRole.ProcurementSection, contexts["section"].Source.DomainRole);
         Assert.Equal(PdfDomainRole.FormFieldLabel, contexts["field"].Source.DomainRole);
-        Assert.DoesNotContain(validated, item => item.SourceId == "field");
+        Assert.Equal($"domain-role-disagreement:{PdfDomainRole.FormFieldLabel}",
+            PdfProposalValidator.SemanticDisagreementOf(contexts["field"]));
+        Assert.Contains(validated, item => item.SourceId == "field");
         Assert.Equal("part-2", structures.Single(item => item.SourceId == "section").ParentId);
     }
 
@@ -395,71 +432,6 @@ public sealed class PdfCandidateContractsTests
         Assert.Equal("trigger", contexts["embedded-article"].Source.ScopeHostSourceId);
         Assert.True(contexts["embedded-article"].Source.InsideQuote);
         Assert.Equal("document_body", contexts["outer"].Source.StructuralScope);
-    }
-
-    [Fact]
-    public void RankerKeepsEveryCandidateAndEscalatesOnlyByFeatureEvidence()
-    {
-        var marker = Line("Chapter 1 Scope", 700);
-        var table = Line("Revenue 2025", 680);
-        var blocks = new[] { Block("marker", marker), Block("table", table) };
-        var contexts = PdfCandidateContextBuilder.Build(blocks,
-        [
-            new PdfLineBlockAnnotation(marker, false, false, false, false, "semantic-candidate"),
-            new PdfLineBlockAnnotation(table, false, false, true, false, "table-like"),
-        ]);
-
-        var ranked = PdfCandidateRanker.Rank(blocks, contexts);
-
-        Assert.Equal(2, ranked.Count);
-        Assert.Equal(ModelTier.Deterministic, ranked.Single(item => item.SourceId == "marker").Tier);
-        Assert.Equal(ModelTier.Review, ranked.Single(item => item.SourceId == "table").Tier);
-        Assert.Contains("table_scope", ranked.Single(item => item.SourceId == "table").NegativeSignals);
-    }
-
-    [Fact]
-    public void RankerPrefersTightMarkerTitleCompositeOverItsMarkerOnlyFragment()
-    {
-        var marker = Line("Chapter I", 700);
-        var title = Line("GENERAL PROVISIONS", 680);
-        var single = Block("single", marker);
-        var composite = new PdfSemanticBlock("composite", [marker, title], PdfStyleClusterProfile.StyleOf(marker),
-            1, 700, 680, marker.Left, marker.Right, "Chapter I GENERAL PROVISIONS");
-        var contexts = PdfCandidateContextBuilder.Build([single, composite],
-        [
-            new PdfLineBlockAnnotation(marker, false, false, false, false, "semantic-candidate"),
-            new PdfLineBlockAnnotation(title, false, false, false, false, "semantic-candidate"),
-        ]);
-
-        var ranked = PdfCandidateRanker.Rank([single, composite], contexts);
-
-        Assert.Equal("composite", ranked[0].SourceId);
-        Assert.Contains("marker_title_composite", ranked[0].PositiveSignals);
-    }
-
-    [Fact]
-    public void RankerDefersLongMarkerBodyWindowBehindAtomicHeading()
-    {
-        var heading = Line("Article 2 Scope", 700);
-        var bodyOne = Line("This Act provides for national cyber security.", 680);
-        var bodyTwo = Line("It applies to agencies and organizations.", 660);
-        var bodyThree = Line("Implementation follows this Article.", 640);
-        var atomic = Block("atomic", heading);
-        var window = new PdfSemanticBlock("window", [heading, bodyOne, bodyTwo, bodyThree], PdfStyleClusterProfile.StyleOf(heading),
-            1, 700, 640, heading.Left, heading.Right, string.Join(" ", new[] { heading.Text, bodyOne.Text, bodyTwo.Text, bodyThree.Text }));
-        var contexts = PdfCandidateContextBuilder.Build([atomic, window],
-        [
-            new PdfLineBlockAnnotation(heading, false, false, false, false, "semantic-candidate"),
-            new PdfLineBlockAnnotation(bodyOne, false, false, false, false, "semantic-candidate"),
-            new PdfLineBlockAnnotation(bodyTwo, false, false, false, false, "semantic-candidate"),
-            new PdfLineBlockAnnotation(bodyThree, false, false, false, false, "semantic-candidate"),
-        ]);
-
-        var ranked = PdfCandidateRanker.Rank([window, atomic], contexts);
-
-        Assert.Equal("atomic", ranked[0].SourceId);
-        Assert.Contains("long_marker_body_window", ranked.Single(item => item.SourceId == "window").NegativeSignals);
-        Assert.Contains("marker_body_boundary", ranked.Single(item => item.SourceId == "window").AmbiguitySignals);
     }
 
     private static PdfLine Line(string text, double y) => new(

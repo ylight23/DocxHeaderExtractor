@@ -57,7 +57,7 @@ public sealed class SemanticTextGeneralizationGateTests
     [Fact]
     public void Every_live_cell_is_frozen_before_gold_with_verified_hashes()
     {
-        var root = Root();
+        var root = TestRepository.Root();
         var cells = Directory.GetDirectories(Path.Combine(root, "eval", "a99-closed-loop", "semantic-text-generalization"), "r*", SearchOption.AllDirectories)
             .Where(path => File.Exists(Path.Combine(path, "freeze.v1.json")))
             .Select(path => JsonDocument.Parse(File.ReadAllText(Path.Combine(path, "freeze.v1.json"))).RootElement.Clone())
@@ -72,14 +72,6 @@ public sealed class SemanticTextGeneralizationGateTests
         });
     }
 
-    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), relativePath)));
+    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), relativePath)));
 
-    private static string Root()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
-            directory = directory.Parent;
-
-        return directory?.FullName ?? throw new InvalidOperationException("Repository root not found.");
-    }
 }

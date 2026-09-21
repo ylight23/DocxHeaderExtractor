@@ -1,5 +1,8 @@
 using DocxHeaderExtractor.DocumentProcessing.Chunking;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -14,6 +17,28 @@ public sealed class PipelineOptions
 
     /// <summary>Bỏ qua LLM, chỉ dùng luật (nhanh, để đối chiếu).</summary>
     public bool DisableLlm { get; set; }
+
+    /// <summary>
+    /// Chạy bộ chẩn đoán candidate legacy và đính kèm <see cref="DocumentDiagnosticReport"/> vào
+    /// outline. Tắt mặc định: normal canonical extraction không cần chạy các strategy chẩn đoán.
+    /// Repair/diagnostic entrypoints phải bật cờ này một cách tường minh.
+    /// </summary>
+    public bool EnableDocumentDiagnostics { get; set; }
+
+    /// <summary>Test seam for proving explicit diagnostic reachability without timing assumptions.</summary>
+    internal Func<DocxPolicyState, DocumentModeReport, DocumentDiagnosticReport>? DocumentDiagnosticsAnalyzer { get; set; }
+
+    /// <summary>
+    /// Optional fail-closed gate for an explicitly frozen PDF provider experiment. Null preserves
+    /// ordinary non-experiment runtime behavior; an experiment must supply its manifest-bound gate.
+    /// </summary>
+    public PdfExperimentExecutionGate? ExperimentGate { get; set; }
+
+    /// <summary>
+    /// Explicit experiment-only replay capture. Null keeps ordinary extraction free of artifact
+    /// writes; when supplied, persistence is fail-closed unless the request is optional.
+    /// </summary>
+    public SemanticAuthorityReplayCaptureRequest? ReplayCapture { get; set; }
 
     /// <summary>Luôn giữ đoạn có style heading kể cả khi mô hình bỏ sót.</summary>
     public bool TrustStyles { get; set; } = true;
@@ -39,20 +64,6 @@ public sealed class PipelineOptions
     /// <para>MẶC ĐỊNH TẮT — cờ này tồn tại để có số cho chính nó, không phải để dùng.</para>
     /// </summary>
     public bool StyleAutoAssign { get; set; }
-
-    /// <summary>
-    /// Chuẩn hoá cấp để không nhảy cóc (1 → 3 thành 1 → 2).
-    /// <para>
-    /// MẶC ĐỊNH TẮT từ khi cấp do cấu trúc quyết định. Bộ chuẩn hoá gán cấp theo ĐỘ SÂU NGĂN XẾP,
-    /// nên heading đầu tiên còn sống luôn bị ép về cấp 1 — mất một heading cha là mọi con của nó
-    /// tụt theo. Tra tay trên 01-style-chuan (đáp án 0→1, 2→2, 4→2, 6→1, 8→2) với đoạn 0 bị đánh
-    /// rơi: nó gán 2→1 và 4→1 rồi để 6, 8 đúng, khớp từng dòng với báo cáo eval. Toàn bộ lỗi cấp
-    /// đo được đều một chiều "trả về 1, đáp án 2" — dấu vân tay của chính phép ép này, không phải
-    /// của mô hình đoán bừa. Khi cấp đến từ w:lvl/w:pStyle, style built-in hay chuỗi đánh số đã
-    /// xác thực, chuẩn hoá lại chỉ có thể làm hỏng thứ vốn đã đúng.
-    /// </para>
-    /// </summary>
-    public bool NormalizeLevels { get; set; }
 
     /// <summary>
     /// Đoạn có <c>w:outlineLvl</c> thì lấy cấp từ đó, không dùng cấp mô hình đoán.
@@ -146,8 +157,8 @@ public sealed class PipelineOptions
 
     /// <summary>
     /// Slow lane for PDF layout candidates. The model sees at most 40 blocks that survived the
-    /// deterministic line/table/repeat filters; <see cref="PdfBlockGrounder"/> must ground every
-    /// accepted role back to extracted source text. Disabled by default until measured on keys.
+    /// deterministic line/table/repeat filters and is retained only as a compatibility option.
+    /// Disabled by default until measured on keys.
     /// </summary>
     public bool PdfLayoutAnalystFallback { get; set; }
 
@@ -209,34 +220,6 @@ public sealed class PipelineOptions
     /// </summary>
     public bool SessionCodeFallback { get; set; }
 
-    /// <summary>
-    /// Tầng cắt ranh giới title/body bằng LLM few-shot cố định theo domain — chỉ chạy cho ứng viên
-    /// mà <see cref="InlineHeadingSplitter"/> KHÔNG tìm được ranh giới tất định (không phải mọi
-    /// heading dính body, chỉ phần còn lại sau khi luật rẻ hơn đã thử). Xem
-    /// <see cref="LlmBoundaryCutter"/> — bảng cứng đã đo 85,7%/95,0%/85,7% trên ba domain và thắng
-    /// retrieval động khi so đầu đối đầu (<c>docs/llm-boundary-few-shot-retrieval.md</c> §3/§4).
-    /// <para>
-    /// Mặc định TẮT — kết quả đã đo là trên HARNESS RIÊNG (55 ca cô lập, không qua pipeline thật),
-    /// chưa đo end-to-end qua route sản xuất này. Chỉ chạy khi mô hình đang bật (<c>--no-llm</c>
-    /// tắt luôn tầng này, vì đây là tầng gọi model).
-    /// </para>
-    /// </summary>
-    public bool LlmBoundaryCutFallback { get; set; }
-
-    /// <summary>
-    /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
-    /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
-    /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
-    /// </summary>
-    public bool AuditNumbering { get; set; } = true;
-
-    /// <summary>
-    /// Cứu heading bị mô hình loại hẳn khi đánh số của tài liệu khẳng định nó là em kế tiếp của
-    /// một heading đã nhận (3.1 → 3.2). Bộ sắp cấp chỉ sửa được cấp của heading ĐÃ chọn, không
-    /// kéo lại được mục đã bị loại — xem <see cref="StructuralRecovery"/>.
-    /// </summary>
-    public bool RecoverNumberedSiblings { get; set; } = true;
-
     /// <summary>Ghi XML tinh gọn từ canonical model ra file để debug/đối chiếu source.</summary>
     public string? DumpXmlPath { get; set; }
 
@@ -248,33 +231,6 @@ public sealed class PipelineOptions
     /// production chỉ hỏi các ứng viên mơ hồ; style/rule và hậu kiểm cấu trúc xử lý phần chắc chắn.
     /// </summary>
     public bool ReviewAllParagraphs { get; set; }
-
-    /// <summary>
-    /// Sau khi chọn heading theo từng cửa sổ, chạy một lượt riêng để gán lại cấp trên danh sách
-    /// heading theo thứ tự toàn tài liệu. Tránh lỗi chunk cắt giữa heading cha và heading con.
-    /// </summary>
-    public bool GlobalHierarchy { get; set; } = true;
-
-    /// <summary>
-    /// Chạy bộ suy cấp TẤT ĐỊNH (<see cref="StructuralHierarchyResolver"/> +
-    /// <see cref="TableOfContentsAnchor"/>) cho kết quả deterministic, dù LLM đang bật hay tắt.
-    /// <para>
-    /// Hai bộ này không cần mô hình nhưng nằm trong <c>RunModelAsync</c>, nên đường không mô hình
-    /// chưa bao giờ chạy chúng. Đo được trên <c>bench/02-dinh-dang-thu-cong</c>: đúng cấp 28,6%
-    /// với 5/7 mục nông hơn đáp án một cấp, trong khi gọi thẳng resolver cho đúng cả 7.
-    /// </para>
-    /// <para>
-    /// <b>MẶC ĐỊNH BẬT</b>, khác với các cờ mới khác của dự án. Lý do: §10.4 cấm lật mặc định CHỈ
-    /// vì bench, nhưng đây không phải mã chưa kiểm chứng. <see cref="StructuralHierarchyResolver"/>
-    /// đã có bằng chứng đáp án NGƯỜI KIỂM (§31: đúng cấp 81,1% → 91,5% trên khoá luận thật) và
-    /// đường có mô hình chạy nó VÔ ĐIỀU KIỆN trong <c>RunModelAsync</c>. Nhưng route deterministic
-    /// short-circuit trước <c>RunModelAsync</c>, nên nếu bỏ bước này khi LLM bật thì chỉ riêng việc
-    /// dùng Qwen để bù/xác minh đã làm mất pin cấp của route tất định. Đo được trên nhóm WB: bật
-    /// Qwen 27B từng làm Nav+cấp sập do bỏ bước này; chạy lại bước tất định đưa cấp về 100%.
-    /// </para>
-    /// <para>Tắt bằng <c>--no-deterministic-hierarchy</c> để đối chứng. Xem handoff §51.</para>
-    /// </summary>
-    public bool DeterministicHierarchy { get; set; } = true;
 
     public Action<string>? Log { get; set; }
 

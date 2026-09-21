@@ -57,7 +57,7 @@ public sealed class A99IdentityGoldArtifactTests
     [Fact]
     public void Evidence_fabric_document_is_design_only()
     {
-        var path = Path.Combine(RepositoryRoot(), "docs", "architecture", "generic-modular-pipeline-evidence-fabric.md");
+        var path = Path.Combine(TestRepository.Root(), "docs", "architecture", "generic-modular-pipeline-evidence-fabric.md");
         Assert.True(File.Exists(path));
         var text = File.ReadAllText(path);
         Assert.Contains("IMPLEMENTATION STATUS: NOT YET IMPLEMENTED", text, StringComparison.Ordinal);
@@ -68,8 +68,6 @@ public sealed class A99IdentityGoldArtifactTests
         decisions.EnumerateArray().Single(item => item.GetProperty("itemId").GetString() == itemId);
 
     private static JsonDocument Load(string relativePath) =>
-        JsonDocument.Parse(File.ReadAllText(Path.Combine(RepositoryRoot(), relativePath)));
+        JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), relativePath)));
 
-    private static string RepositoryRoot() =>
-        Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
 }

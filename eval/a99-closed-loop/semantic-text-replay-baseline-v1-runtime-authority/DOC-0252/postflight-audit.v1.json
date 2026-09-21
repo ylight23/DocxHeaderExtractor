@@ -1,0 +1,26 @@
+{
+  "artifactKind": "a99_pdf_s2e_provider_postflight_audit",
+  "schemaVersion": "a99-pdf-s2e-provider-postflight-audit-v1",
+  "experimentId": "DOC-0252-PDF-S2E-RUNTIME-B0",
+  "status": "PROVIDER_RUN_COMPLETE_BASELINE_BLOCKED",
+  "providerCalls": 29,
+  "approvedMaximumProviderCalls": 30,
+  "repeats": 3,
+  "repeatStatuses": [
+    { "repeat": 1, "status": "SUCCEEDED", "logicalProviderCalls": 9 },
+    { "repeat": 2, "status": "SUCCEEDED", "logicalProviderCalls": 10 },
+    { "repeat": 3, "status": "SUCCEEDED", "logicalProviderCalls": 10 }
+  ],
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+  "aliasCatalogHash": "867a2dd5cccf46984a1b282e7a69916dbececb1f3a35da2e5b1e7f6379774305",
+  "manifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+  "replayBundles": 3,
+  "replayBundleReloadValidation": "PASS",
+  "manifestSemanticContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "replaySemanticContractHash": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365",
+  "semanticContractHashMatch": false,
+  "baselineUsableForScoring": false,
+  "blockingReason": "SEMANTIC_CONTRACT_HASH_MISMATCH",
+  "note": "Transport and replay persistence succeeded, but the approved manifest contract identity does not equal the runtime replay contract identity. Do not score, publish, or run additional provider calls until reconciled and separately approved."
+}

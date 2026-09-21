@@ -127,7 +127,7 @@ public sealed class McpStdioIntegrationTests : IDisposable
             Name = "dhx-mcp-test",
             Command = "dotnet",
             Arguments = [FindMcpDll()],
-            WorkingDirectory = FindRepositoryRoot(),
+            WorkingDirectory = TestRepository.Root(),
             InheritEnvironmentVariables = false,
             EnvironmentVariables = environment,
         });
@@ -145,7 +145,7 @@ public sealed class McpStdioIntegrationTests : IDisposable
         Assert.NotNull(result.StructuredContent);
 
         var input = Path.Combine(_root, "mau.docx");
-        File.Copy(Path.Combine(FindRepositoryRoot(), "samples", "mau.docx"), input);
+        File.Copy(Path.Combine(TestRepository.Root(), "samples", "mau.docx"), input);
         var extraction = await client.CallToolAsync(
             "extract_docx_headings",
             new Dictionary<string, object?> { ["inputPath"] = input });
@@ -181,7 +181,7 @@ public sealed class McpStdioIntegrationTests : IDisposable
             "Release";
 #endif
         var outputRoot = Path.Combine(
-            FindRepositoryRoot(), "src", "DocxHeaderExtractor.Mcp", "bin", configuration, "net9.0");
+            TestRepository.Root(), "src", "DocxHeaderExtractor.Mcp", "bin", configuration, "net9.0");
         var runtimeIdentifier = System.Runtime.InteropServices.RuntimeInformation.RuntimeIdentifier;
         var candidates = new[]
         {
@@ -191,18 +191,6 @@ public sealed class McpStdioIntegrationTests : IDisposable
         var path = candidates.FirstOrDefault(File.Exists);
         Assert.True(path is not null, $"Không tìm thấy MCP test host. Searched: {string.Join(", ", candidates)}");
         return path!;
-    }
-
-    private static string FindRepositoryRoot()
-    {
-        var current = new DirectoryInfo(AppContext.BaseDirectory);
-        while (current is not null)
-        {
-            if (File.Exists(Path.Combine(current.FullName, "DocxHeaderExtractor.sln")))
-                return current.FullName;
-            current = current.Parent;
-        }
-        throw new DirectoryNotFoundException("Không tìm thấy root DocxHeaderExtractor từ test output.");
     }
 
     public void Dispose()

@@ -5,8 +5,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class A99IdentityBenchmarkV4GCTests
 {
     private const string ArtifactRoot = "artifacts/identity-benchmark/v4/target-grounding-challenger/semantic-audit";
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static JsonDocument Load(string file) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), file)));
+    private static JsonDocument Load(string file) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), file)));
 
     [Fact]
     public void Integrity_and_firewall_are_closed_before_gold_join()

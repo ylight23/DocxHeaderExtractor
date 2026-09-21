@@ -6,7 +6,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Policy;
 /// Application owner for initial candidate classification. The legacy heuristic implementation is
 /// deliberately delegated unchanged during ARCH-4E1; demotion/post-processing remain separate.
 /// </summary>
-public sealed class HeadingCandidatePolicy : IHeadingCandidatePolicy
+public sealed class HeadingCandidatePolicy
 {
     public CandidateDecision Apply(CandidatePolicyInput input)
     {

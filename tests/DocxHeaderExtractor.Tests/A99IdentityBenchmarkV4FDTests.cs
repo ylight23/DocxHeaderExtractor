@@ -7,9 +7,8 @@ public sealed class A99IdentityBenchmarkV4FDTests
 {
     private const string ArtifactRoot = "artifacts/identity-benchmark/v4/projected-verifier-experiment";
     private const string V4Root = "artifacts/identity-benchmark/v4/pruning-challenger";
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static JsonDocument Load(string relative) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), relative.Replace('/', Path.DirectorySeparatorChar))));
-    private static string Sha256(string relative) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(Path.Combine(Root(), relative.Replace('/', Path.DirectorySeparatorChar))))).ToLowerInvariant();
+    private static JsonDocument Load(string relative) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), relative.Replace('/', Path.DirectorySeparatorChar))));
+    private static string Sha256(string relative) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(Path.Combine(TestRepository.Root(), relative.Replace('/', Path.DirectorySeparatorChar))))).ToLowerInvariant();
 
     [Fact]
     public void V4F_D_freezes_a_source_only_paired_sample()

@@ -100,6 +100,35 @@ public sealed class ProductionCheckpointScopeTests
     }
 
     [Fact]
+    public async Task Late_lane_completion_cannot_advance_a_checkpoint()
+    {
+        await using var scope = ProductionCheckpointScope.Create();
+        await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, false, "test.pdf");
+        var releaseWriter = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        var lane = await PdfLaneExecution.RunAsync(async (lease, _) =>
+        {
+            await releaseWriter.Task.ConfigureAwait(false);
+            await checkpoint.RecordSpanBatchAsync(
+                [("late", 1, "late-line", (IReadOnlyList<string>)["late-line"], new TextOffsetSpan(2, 4))],
+                null,
+                CancellationToken.None,
+                lease).ConfigureAwait(false);
+            return "late";
+        }, TimeSpan.FromMilliseconds(10), CancellationToken.None);
+
+        Assert.Equal(PdfLaneExecutionState.TimedOut, lane.State);
+        releaseWriter.SetResult();
+        await lane.DetachedTask!;
+
+        var checkpointText = File.Exists(scope.CheckpointPath)
+            ? await File.ReadAllTextAsync(scope.CheckpointPath)
+            : string.Empty;
+        Assert.DoesNotContain("late-line", checkpointText, StringComparison.Ordinal);
+        Assert.True(lane.Lease.LateCompletionObserved);
+    }
+
+    [Fact]
     public async Task Admitted_write_with_pre_cancelled_token_exits_and_drains()
     {
         await using var scope = ProductionCheckpointScope.Create();

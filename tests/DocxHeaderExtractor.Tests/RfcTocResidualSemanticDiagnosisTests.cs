@@ -11,7 +11,7 @@ public sealed class RfcTocResidualSemanticDiagnosisTests
     [Fact]
     public async Task Capture_rfc5_residuals_without_changing_production_or_expectations()
     {
-        var root = RepositoryRoot();
+        var root = TestRepository.Root();
         var cases = new[]
         {
             ("Pipeline_no_llm_khong_cat_lai_tieu_de_rfc_da_lay_tu_toc", "092_RFC9111_HTTP_Caching.docx", "count_at_least", 67, new[] { "3.1. Storing Header and Trailer Fields" }),
@@ -69,8 +69,8 @@ public sealed class RfcTocResidualSemanticDiagnosisTests
             });
         }
 
-        File.WriteAllText(
-            Path.Combine(root, "eval", "verification", "rfc-toc-residual-semantic-diagnosis.v1.json"),
+        FreezeArtifact.AssertText(
+            "eval/verification", "rfc-toc-residual-semantic-diagnosis.v1.json",
             JsonSerializer.Serialize(new
             {
                 task = "RFC-5",
@@ -91,11 +91,4 @@ public sealed class RfcTocResidualSemanticDiagnosisTests
             }, new JsonSerializerOptions { WriteIndented = true }));
     }
 
-    private static string RepositoryRoot()
-    {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
-            dir = dir.Parent;
-        return dir?.FullName ?? throw new DirectoryNotFoundException("Cannot find repository root.");
-    }
 }

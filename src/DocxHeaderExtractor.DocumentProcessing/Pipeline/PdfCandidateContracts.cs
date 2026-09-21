@@ -33,6 +33,19 @@ internal sealed record PdfSourceFacts(
     /// <summary>Parser-derived only; model proposals cannot alter this marker fact.</summary>
     public PdfMarkerFact? Marker { get; init; }
 
+    /// <summary>
+    /// Format the document declares about this occurrence, as opposed to where it sits. A PDF has
+    /// no style names, so weight, slant and size are the only declarations available - and for a
+    /// PDF they carry most of the heading signal, which is why they belong on the facts rather than
+    /// being reconstructed downstream from geometry.
+    /// </summary>
+    public double BoldRatio { get; init; }
+
+    public double ItalicRatio { get; init; }
+
+    /// <summary>Absolute point size. Only ever reported to the model relative to the document.</summary>
+    public double FontSize { get; init; }
+
     /// <summary>Stable parser line identities retained for source/audit correlation.</summary>
     public IReadOnlyList<string> LineIds { get; init; } = [];
 
@@ -264,7 +277,7 @@ internal static class PdfCandidateContextBuilder
             block.LineCount == 1 ? "standalone_line" : "multi_line_cluster",
             marker is null ? "no_marker" : $"marker:{marker.Value.Family}",
         };
-        var looseMarker = PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(block.DisplayText);
+        var looseMarker = LooseLabelledMarkerParser.ParseCanonical(block.DisplayText);
         if (looseMarker is not null &&
             PdfTextUtilities.CanonicalForMatch(block.DisplayText).Length <
             PdfTextUtilities.CanonicalForMatch(looseMarker).Length + 6)
@@ -285,10 +298,17 @@ internal static class PdfCandidateContextBuilder
         if (scope == "code_or_grammar") evidence.Add("formal_syntax_shape");
         if (scope == "table_of_contents") evidence.Add("toc_entry_cluster");
         var facts = new PdfSourceFacts(
-            block.Id, block.Text, block.Page, block.LineCount, block.Left, block.TopY, block.Right, block.BottomY,
+            // The canonical projection, the same string the alias catalog and the binder use. These
+            // two paths build facts for one occurrence and must agree: if the model is shown the raw
+            // concatenation while the binder validates against the projection, every proposal fails
+            // as non-verbatim and the failure looks like the model getting the text wrong.
+            block.Id, block.VerbatimText, block.Page, block.LineCount, block.Left, block.TopY, block.Right, block.BottomY,
             scope, evidence)
         {
             Marker = marker,
+            BoldRatio = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.BoldRatio),
+            ItalicRatio = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.ItalicRatio),
+            FontSize = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.FontSize),
             LineIds = block.Lines.Select(LineKey).ToArray(),
             EvidenceDetails = evidence.Select(item => new PdfObservedEvidence(item, "true",
                 item is "standalone_line" or "multi_line_cluster" or "table_like" or "header_footer_zone" or "repeated_region"
@@ -316,8 +336,34 @@ internal static class PdfCandidateContextBuilder
     private static string PromptExcerpt(string text) => text.Length <= 180 ? text : text[..180];
 }
 
+/// <summary>
+/// Turns model proposals into validated headings. It answers one question only: can this proposal
+/// be anchored in the source exactly as the model stated it — a real pointer span, on a real token
+/// boundary, from a parser lineage this pipeline owns.
+/// <para>
+/// It deliberately does not answer whether the proposal <em>means</em> a heading. A parser scope
+/// ("this block looks like a table") and a domain role detector ("this reads like a caption") are
+/// evidence about meaning, and meaning belongs to the model. They stay on the context and are
+/// reported on the stage trace as a disagreement, so a reviewer sees them, but they no longer
+/// remove the occurrence.
+/// </para>
+/// <para>
+/// Measured cost of the old behaviour on DOC-0256: the model proposed <c>DAY 2/3/4</c> with valid
+/// aliases, exact verbatim text and successful binding; all three sat in a one-cell table, the
+/// parser scoped them <c>table</c>, and this predicate deleted them before they ever reached
+/// hierarchy resolution or the output. The structure audit showed 23 headings and the product 20,
+/// with no rejection recorded anywhere — the loss was invisible.
+/// </para>
+/// </summary>
 internal static class PdfProposalValidator
 {
+    /// <summary>
+    /// Parser scopes that used to veto a model proposal. Kept as observation vocabulary: the trace
+    /// still names the disagreement so it can be measured, and nothing reads this to exclude.
+    /// </summary>
+    internal static readonly string[] SemanticallyContestedScopes =
+        ["table", "running_page_artifact", "table_of_contents", "code_or_grammar", "reference_list", "index_terms"];
+
     public static IReadOnlyList<PdfValidatedHeading> Validate(
         IReadOnlyDictionary<string, PdfCandidateContext> contexts,
         IReadOnlyList<PdfBlockDecision> decisions) => decisions
@@ -345,27 +391,39 @@ internal static class PdfProposalValidator
             var spanStatus = decision.Role == PdfBlockRole.HeadingTopic
                 ? ValidateSpan(decision, context.Source.RawText, out spanReason)
                 : "not-applicable";
-            var structuralScopeRejected = context.Source.StructuralScope is "table" or "running_page_artifact" or "table_of_contents" or "code_or_grammar" or "reference_list" or "index_terms";
-            var scopeRejected = structuralScopeRejected || context.Source.DomainEvidence.ProposesOutlineExclusion;
             var validation = decision.Role != PdfBlockRole.HeadingTopic
                 ? "not-heading"
-                : scopeRejected
-                    ? "unresolved"
-                    : spanStatus == "valid" ? "eligible" : "unresolved";
+                : spanStatus == "valid" ? "eligible" : "unresolved";
+            // A heuristic disagreement is reported, not applied. It is only surfaced once the
+            // proposal is otherwise eligible, so it can never be confused with the reason a
+            // proposal was actually rejected.
+            var reason = spanReason ??
+                (validation == "eligible" ? SemanticDisagreementOf(context) : null);
             return new PdfCandidateStageTrace(
                 context.Source.SourceId, context.Source.StructuralScope, decision.SemanticRole.ToString(), spanStatus,
-                validation, scopeRejected
-                    ? structuralScopeRejected ? "scope-conflict" : $"domain-role-conflict:{context.Source.DomainRole}"
-                    : spanReason);
+                validation, reason);
         }).ToArray();
     }
 
+    /// <summary>
+    /// Source validity only. The model said this is a heading; the three conditions below ask
+    /// whether the harness can point at it — not whether it agrees.
+    /// </summary>
     public static bool IsEligibleHeading(PdfBlockDecision decision, PdfCandidateContext context) =>
         decision.Role == PdfBlockRole.HeadingTopic &&
-        context.Source.StructuralScope is not ("table" or "running_page_artifact" or "table_of_contents" or "code_or_grammar" or "reference_list" or "index_terms") &&
-        !context.Source.DomainEvidence.ProposesOutlineExclusion &&
         HasTrustedEvidenceOrigins(context.Source) &&
         ValidateSpan(decision, context.Source.RawText, out _) == "valid";
+
+    /// <summary>
+    /// What a parser scope or domain detector would have said, had it still held a veto. Null when
+    /// the heuristics agree with the model.
+    /// </summary>
+    internal static string? SemanticDisagreementOf(PdfCandidateContext context) =>
+        Array.IndexOf(SemanticallyContestedScopes, context.Source.StructuralScope) >= 0
+            ? $"scope-disagreement:{context.Source.StructuralScope}"
+            : context.Source.DomainEvidence.ProposesOutlineExclusion
+                ? $"domain-role-disagreement:{context.Source.DomainRole}"
+                : null;
 
     private static bool HasTrustedEvidenceOrigins(PdfSourceFacts source) =>
         source.EvidenceDetails.All(evidence => evidence.Origin is "layout_parser" or "marker_parser" or
@@ -447,7 +505,7 @@ internal static class PdfMarkerFactsParser
                     : ImmutableArray<int>.Empty,
             };
 
-        var looseLabel = PdfLayoutEvidenceOutline.ParseLooseLabelledMarkerForAudit(text);
+        var looseLabel = LooseLabelledMarkerParser.ParseCanonical(text);
         if (looseLabel is not null)
         {
             var separator = looseLabel.IndexOf(':');

@@ -4,12 +4,11 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV5ATests
 {
-    private static string RepositoryRoot() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
 
     [Fact]
     public void V5A_freeze_is_source_only_and_does_not_assign_identity()
     {
-        var root = RepositoryRoot();
+        var root = TestRepository.Root();
         var path = Path.Combine(root, "artifacts", "identity-benchmark", "v5", "source-only-clusters", "freeze", "manifest.json");
         using var doc = JsonDocument.Parse(File.ReadAllText(path));
         var value = doc.RootElement;
@@ -26,7 +25,7 @@ public sealed class A99IdentityBenchmarkV5ATests
     [Fact]
     public void V5A_edges_retain_source_evidence_provenance_only()
     {
-        var root = RepositoryRoot();
+        var root = TestRepository.Root();
         var path = Path.Combine(root, "artifacts", "identity-benchmark", "v5", "source-only-clusters", "freeze", "edges.json");
         using var doc = JsonDocument.Parse(File.ReadAllText(path));
         var edges = doc.RootElement.GetProperty("edges").EnumerateArray().ToArray();

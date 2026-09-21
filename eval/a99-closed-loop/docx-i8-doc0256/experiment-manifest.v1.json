@@ -1,0 +1,121 @@
+{
+  "artifactKind": "DOCX_I8_EXPERIMENT_MANIFEST",
+  "document": "DOC-0256",
+  "file": "076_ICP_IACG08_Minutes_2023.docx",
+  "providerCalls": 0,
+  "goldCoverage": "EXHAUSTIVE, 24 semantic rows, occurrenceEvaluable false",
+  "arms": [
+    {
+      "arm": "D0-baseline",
+      "communicatePartialSpan": false,
+      "requests": 2,
+      "systemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "systemPromptChars": 2301,
+      "payloadSha256": [
+        "7309aea6856c7f6ef041293dad49788fe25110c2221fa17c6b875398afd42d58",
+        "a0f620421c068b495333340c557ec2243aeefd78fa2e52cec392ca2e3a84fc4a"
+      ]
+    },
+    {
+      "arm": "D2-i8-partial-span",
+      "communicatePartialSpan": true,
+      "requests": 2,
+      "systemPromptSha256": "dae4842b313c9655fafb74b76e69795aa026991f547b36d9f3c9cf2aaa6acd04",
+      "systemPromptChars": 3388,
+      "payloadSha256": [
+        "7309aea6856c7f6ef041293dad49788fe25110c2221fa17c6b875398afd42d58",
+        "a0f620421c068b495333340c557ec2243aeefd78fa2e52cec392ca2e3a84fc4a"
+      ]
+    }
+  ],
+  "invariants": {
+    "aliasesIdentical": true,
+    "sourceTextIdentical": true,
+    "ownershipIdentical": true,
+    "segmentationIdentical": true,
+    "payloadByteIdentical": true,
+    "onlySystemPromptDiffers": true
+  },
+  "targets": [
+    {
+      "goldText": "Africa",
+      "sourceHeading": "Africa",
+      "segment": 0,
+      "alias": "S0009",
+      "occurrenceLength": 803,
+      "occurrenceHead": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), the status of the ICP 2021 cycle in the Africa region, which provided i",
+      "whyPartialSpanIsNeeded": "the heading is a prefix of this occurrence; participant text and prose follow it in the same occurrence",
+      "sourceHeadingOccurrencesInsideTheOccurrence": 3,
+      "needsDisambiguation": true,
+      "disambiguationNote": "the heading text repeats inside its own occurrence, so an exact substring alone cannot identify it; occurrence or exact context is required, and neither is a coordinate",
+      "goldTextMatchesTheHeadingAsSpelled": true,
+      "goldTextFirstIndexInOccurrence": 0,
+      "scoreable": true
+    },
+    {
+      "goldText": "Asia and the Pacific",
+      "sourceHeading": "Asia and the Pacific",
+      "segment": 0,
+      "alias": "S0013",
+      "occurrenceLength": 877,
+      "occurrenceHead": "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the Asia and the Pacific region. Tw",
+      "whyPartialSpanIsNeeded": "the heading is a prefix of this occurrence; participant text and prose follow it in the same occurrence",
+      "sourceHeadingOccurrencesInsideTheOccurrence": 2,
+      "needsDisambiguation": true,
+      "disambiguationNote": "the heading text repeats inside its own occurrence, so an exact substring alone cannot identify it; occurrence or exact context is required, and neither is a coordinate",
+      "goldTextMatchesTheHeadingAsSpelled": true,
+      "goldTextFirstIndexInOccurrence": 0,
+      "scoreable": true
+    },
+    {
+      "goldText": "Eurostat-OECD PPP Program",
+      "sourceHeading": "Eurostat–OECD PPP Program",
+      "segment": 0,
+      "alias": "S0020",
+      "occurrenceLength": 1257,
+      "occurrenceHead": "Eurostat–OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, the status of the Eurostat-OECD PPP Program. Forty-eigh",
+      "whyPartialSpanIsNeeded": "the heading is a prefix of this occurrence; participant text and prose follow it in the same occurrence",
+      "sourceHeadingOccurrencesInsideTheOccurrence": 1,
+      "needsDisambiguation": false,
+      "disambiguationNote": "the heading text is unique inside its occurrence",
+      "goldTextMatchesTheHeadingAsSpelled": false,
+      "goldTextFirstIndexInOccurrence": 103,
+      "scoreable": false
+    }
+  ],
+  "referenceDefect": {
+    "severity": "BLOCKS_SCORING_OF_ONE_TARGET",
+    "row": "Eurostat-OECD PPP Program",
+    "detail": "Gold spells it with a hyphen, U+002D. The heading in the source is spelled with an en dash, U+2013. The hyphen form does occur in this occurrence, but at index 103, inside the body prose, so the gold text matches a mention of the programme rather than the heading.",
+    "consequence": "If I8 works perfectly and the model returns the heading as the source spells it, a strict text join against gold still fails for this row. Two of the three targets are cleanly scoreable; this one is not until the row is adjudicated.",
+    "notChanged": true,
+    "decisionRequired": "Either correct the gold row to the source spelling, or declare a dash-insensitive comparison in advance. Neither should happen silently mid-experiment."
+  },
+  "controls": [
+    {
+      "Kind": "WHOLE_SPAN",
+      "Segment": 0,
+      "Alias": "S0001",
+      "Text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "Why": "the model proposed this occurrence entire in the frozen D0 run; under I8 it must stay whole rather than shrink to a substring"
+    },
+    {
+      "Kind": "NON_HEADING_PROSE",
+      "Segment": 0,
+      "Alias": "S0019",
+      "Text": "A regional workshop was held in June 2023 to review expenditure and price data, proposals for the ICP 2024 cycle household consumption items...",
+      "Why": "a long prose occurrence the model proposed nothing for; under I8 it must not become a place to hunt for a heading-shaped substring"
+    }
+  ],
+  "targetedExperiment": {
+    "note": "Requests, not calls made. Running the target and control segments under both prompts is the number below, and nothing here has been sent.",
+    "segmentsUnderTest": [
+      0
+    ],
+    "requestsPerArm": 1,
+    "arms": 2,
+    "totalSemanticRequests": 2,
+    "plus": "placement requests are additional and depend on what each reply leaves unresolved",
+    "fullDocumentAlternative": 4
+  }
+}

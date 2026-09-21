@@ -145,6 +145,13 @@ public sealed record StructuralProjectionMetadata
     /// <summary>Whether the compatibility level should override the generic structural level.</summary>
     [JsonIgnore]
     public bool CompatibilityLevelIsSet { get; init; }
+    /// <summary>
+    /// Why this heading has, or does not have, a level. "model-out-of-hierarchy" is a decision —
+    /// a title or running header that holds no position in the section tree — while "unresolved"
+    /// is the absence of one and belongs in a review queue. Both end with a null level, so the
+    /// reason is the only thing that tells them apart.
+    /// </summary>
+    public string? HierarchyResolution { get; init; }
     public string? OriginalText { get; init; }
     public string? InlineBody { get; init; }
     public StructuralSpan? InlineBodySpan { get; init; }

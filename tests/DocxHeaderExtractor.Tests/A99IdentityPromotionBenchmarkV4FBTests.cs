@@ -7,8 +7,7 @@ public sealed class A99IdentityPromotionBenchmarkV4FBTests
     private const string ArtifactRoot = "artifacts/identity-benchmark/v4/context-projection";
     private const string V4Root = "artifacts/identity-benchmark/v4/pruning-challenger";
 
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static JsonDocument Load(string relative) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), relative.Replace('/', Path.DirectorySeparatorChar))));
+    private static JsonDocument Load(string relative) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), relative.Replace('/', Path.DirectorySeparatorChar))));
 
     [Fact]
     public void V4F_B_preserves_the_frozen_candidate_count_and_freezes_bounds()

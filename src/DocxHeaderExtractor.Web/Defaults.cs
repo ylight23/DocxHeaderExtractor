@@ -13,7 +13,6 @@ namespace DocxHeaderExtractor.Web;
 public sealed record Defaults(
     int ChunkTokens,
     int ChunkCandidates,
-    double Threshold,
     bool StructuralOnly,
     int GpuLayers,
     bool GpuBackend,
@@ -35,7 +34,6 @@ public sealed record Defaults(
             ChunkTokens: chunking.TokenBudget,
             // 6 là mức cân bằng giữa số request và độ chính xác ID/cấp trên Qwen 7B.
             ChunkCandidates: chunking.MaxCandidatesPerChunk,
-            Threshold: extraction.CandidateThreshold,
             // Đo được: bật luật từ ngữ không đổi kết quả trên cả hai bộ test, nhưng luật loại
             // chú thích có thể chém nhầm tiêu đề dạng "Bảng 2 cột dữ liệu" mà không cho gỡ.
             StructuralOnly: true,

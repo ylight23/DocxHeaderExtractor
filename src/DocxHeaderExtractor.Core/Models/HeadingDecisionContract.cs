@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
@@ -123,19 +121,6 @@ public enum VisualEvidenceTag
     RepeatedRunningHeader,
 }
 
-/// <summary>Untrusted model output. It contains no raw text, anchors, marker facts, or final tree authority.</summary>
-public sealed record ModelProposal
-{
-    public required string SourceId { get; init; }
-    public required ProposedRole Role { get; init; }
-    public SourceTextSpan? HeadingSpan { get; init; }
-    public IReadOnlyList<SemanticEvidenceTag> SemanticEvidence { get; init; } = [];
-    public IReadOnlyList<VisualEvidenceTag> VisualEvidence { get; init; } = [];
-    public int? ProposedLevel { get; init; }
-    public string? ProposedParentId { get; init; }
-    [JsonIgnore] public double? ModelScore { get; init; }
-}
-
 public sealed record HeadingValidation(
     bool SourceGrounded,
     bool SpanValid,
@@ -164,21 +149,6 @@ public sealed record ValidatedHeading
     public string Status { get; init; } = "validated";
     public string? DiagnosticReason { get; init; }
     public string Provenance { get; init; } = "source-facts-validator";
-}
-
-public sealed record HeadingPolicy(
-    bool IncludeDocumentTitle = true,
-    bool IncludeLocalSubheading = false,
-    bool IncludeListItemTopic = false)
-{
-    public bool Includes(ProposedRole role) => role switch
-    {
-        ProposedRole.HeadingTopic => true,
-        ProposedRole.DocumentTitle => IncludeDocumentTitle,
-        ProposedRole.LocalSubheading => IncludeLocalSubheading,
-        ProposedRole.ListItemTopic => IncludeListItemTopic,
-        _ => false,
-    };
 }
 
 /// <summary>

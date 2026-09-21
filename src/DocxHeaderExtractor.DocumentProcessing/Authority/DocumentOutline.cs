@@ -97,6 +97,15 @@ public sealed class HeadingRecord
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? BoundarySource { get; set; }
 
+    /// <summary>
+    /// Why <see cref="Level"/> is what it is. Distinguishes a heading the model placed outside the
+    /// section tree (a title, a running header) from one it could not place at all: both carry a
+    /// null level, but only the second needs a human.
+    /// </summary>
+    [JsonPropertyName("hierarchyResolution")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? HierarchyResolution { get; set; }
+
     [JsonPropertyName("styleId")]
     public string? StyleId { get; init; }
 

@@ -13,7 +13,26 @@ public sealed class RemoteInferenceOptions
     public string ApiKey { get; set; } = "";
     public string Model { get; set; } = DefaultModel;
     public int ContextSize { get; set; } = 32768;
-    public int MaxOutputTokens { get; set; } = 768;
+    /// <summary>
+    /// Ceiling only: every caller sizes its own budget from how many source items the request
+    /// asks about and clamps by this value. 768 was tuned for the legacy boundary protocol and
+    /// truncated the canonical semantic contract, whose reply carries one object per owned
+    /// occurrence.
+    /// </summary>
+    public int MaxOutputTokens { get; set; } = 32768;
+
+    /// <summary>
+    /// Sent as <c>provider.zdr</c>. It must be written explicitly: omitting the field makes
+    /// OpenRouter inherit the account's privacy default, and an account set to Zero-Data-Retention
+    /// then rejects every endpoint of the controlled models (qwen3.7-flash is served only by
+    /// Alibaba, which is not ZDR-certified) with a 404 before the request reaches a model.
+    /// <para>
+    /// Default false: the retained guarantee is <c>data_collection=deny</c>, which forbids the
+    /// provider from training on the data but does not promise deletion once the reply is sent.
+    /// Set true only when every model in use has a ZDR-certified endpoint.
+    /// </para>
+    /// </summary>
+    public bool RequireZeroDataRetention { get; set; }
     public int MissingIdRetries { get; set; } = 2;
     public int RequestTimeoutSeconds { get; set; } = 90;
     public int TransientRequestRetries { get; set; } = 2;

@@ -1,3 +1,4 @@
+using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
@@ -5,7 +6,7 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 namespace DocxHeaderExtractor.DocumentProcessing.Features;
 
 /// <summary>Pure document-wide feature derivation. It has no heading or selection policy.</summary>
-public sealed class DocumentFeatureDeriver : IDocumentFeatureDeriver
+public sealed class DocumentFeatureDeriver
 {
     private const int CorruptMinimumLength = 12;
     private const double CorruptThreshold = 0.55;
@@ -35,7 +36,7 @@ public sealed class DocumentFeatureDeriver : IDocumentFeatureDeriver
         {
             BodyFontSizePt = bodySize,
             FontSizeCharacterWeights = frozenWeights,
-            CorruptSourceIds = new ReadOnlySet<string>(corruptSourceIds),
+            CorruptSourceIds = corruptSourceIds.ToFrozenSet(StringComparer.Ordinal),
         };
     }
 
@@ -53,17 +54,4 @@ public sealed class DocumentFeatureDeriver : IDocumentFeatureDeriver
         return (double)same / pairs >= CorruptThreshold;
     }
 
-    private sealed class ReadOnlySet<T>(ISet<T> source) : IReadOnlySet<T>
-    {
-        public int Count => source.Count;
-        public bool Contains(T item) => source.Contains(item);
-        public IEnumerator<T> GetEnumerator() => source.GetEnumerator();
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
-        public bool IsProperSubsetOf(IEnumerable<T> other) => source.IsProperSubsetOf(other);
-        public bool IsProperSupersetOf(IEnumerable<T> other) => source.IsProperSupersetOf(other);
-        public bool IsSubsetOf(IEnumerable<T> other) => source.IsSubsetOf(other);
-        public bool IsSupersetOf(IEnumerable<T> other) => source.IsSupersetOf(other);
-        public bool Overlaps(IEnumerable<T> other) => source.Overlaps(other);
-        public bool SetEquals(IEnumerable<T> other) => source.SetEquals(other);
-    }
 }

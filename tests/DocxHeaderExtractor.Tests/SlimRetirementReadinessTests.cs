@@ -26,13 +26,6 @@ public sealed class SlimRetirementReadinessTests
     }
 
     private static JsonDocument LoadArtifact() => JsonDocument.Parse(File.ReadAllText(Path.Combine(
-        FindRepositoryRoot(), "eval", "architecture", "slim-retirement-readiness.v1.json")));
+        TestRepository.Root(), "eval", "architecture", "slim-retirement-readiness.v1.json")));
 
-    private static string FindRepositoryRoot()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
-            directory = directory.Parent;
-        return directory?.FullName ?? throw new InvalidOperationException("Repository root not found.");
-    }
 }

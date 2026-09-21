@@ -34,11 +34,21 @@ public interface IHeaderClassifier : IDisposable
     /// Cắt ranh giới title/body cho MỘT đoạn văn bản đã biết là heading dính liền thân bài (câu hỏi
     /// "có phải heading không" đã được tầng khác trả lời — nhiệm vụ ở đây hẹp hơn nhiều so với
     /// <see cref="ClassifyAsync"/>: không JSON schema, không multi-index, chỉ system+user rồi trả
-    /// nguyên văn completion (đã trim). Người gọi (<c>LlmBoundaryCutter</c>) tự kiểm câu trả lời có
-    /// phải PREFIX hợp lệ của input hay không trước khi dùng làm ranh giới — backend không tự bảo
+    /// nguyên văn completion (đã trim). Canonical semantic callers tự kiểm câu trả lời có phải
+    /// PREFIX hợp lệ của input hay không trước khi dùng làm ranh giới — backend không tự bảo
     /// đảm điều đó.
     /// </summary>
-    Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default);
+    /// <param name="expectedItemCount">
+    /// How many result items the caller is asking about, when it knows. Backends that must size an
+    /// output budget use it instead of guessing from the payload's shape. 0 means "unknown, infer".
+    /// Guessing was a real defect: the budget was derived by counting a field name, so renaming a
+    /// field in the request silently collapsed the budget to its floor and truncated the reply.
+    /// </param>
+    Task<string> BoundaryCutAsync(
+        string systemPrompt,
+        string userMessage,
+        CancellationToken ct = default,
+        int expectedItemCount = 0);
 }
 
 /// <summary>

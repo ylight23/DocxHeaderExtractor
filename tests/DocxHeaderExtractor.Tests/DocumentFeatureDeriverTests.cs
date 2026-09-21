@@ -58,7 +58,7 @@ public sealed class DocumentFeatureDeriverTests
     [Fact]
     public void Feature_deriver_has_no_policy_dependency()
     {
-        var sourcePath = Path.Combine(FindRepositoryRoot(),
+        var sourcePath = Path.Combine(TestRepository.Root(),
             "src", "DocxHeaderExtractor.DocumentProcessing", "Features", "DocumentFeatureDeriver.cs");
         var source = File.ReadAllText(sourcePath);
 
@@ -88,11 +88,4 @@ public sealed class DocumentFeatureDeriverTests
         Layout = new SourceLayoutFacts(),
     };
 
-    private static string FindRepositoryRoot()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
-            directory = directory.Parent;
-        return directory?.FullName ?? throw new InvalidOperationException("Repository root not found.");
-    }
 }

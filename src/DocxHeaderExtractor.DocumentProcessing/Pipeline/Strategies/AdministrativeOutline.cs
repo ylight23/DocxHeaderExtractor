@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// <para>
 /// <b>Vì sao có file này thay vì vá tiếp <see cref="OpenXmlLayer.HeadingHeuristics"/>.</b>
 /// Ba chế độ đạt 100% trên đáp án người kiểm — <c>--style-outline</c>, <c>--numbering-outline</c>,
-/// <see cref="StructuralHierarchyResolver"/> — đều là bộ dựng ĐỌC MỘT DỮ KIỆN CẤU TRÚC cho cả tài
+/// các luật cấu trúc — đều là bộ dựng ĐỌC MỘT DỮ KIỆN CẤU TRÚC cho cả tài
 /// liệu, với thứ tự quyền lực rõ ràng. Còn §57–§59 đi hướng ngược lại: vá bộ chấm điểm bằng miễn
 /// trừ, hình phạt và hướng duyệt, tức nhiều luật cục bộ tương tác nhau quanh ngưỡng 0,45.
 /// Kết quả đo được là ba lần sửa liên tiếp gây hồi quy ở chỗ khác — trong đó §57.3 tự tạo ra lỗi
@@ -26,7 +26,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// <para>
 /// <b>Luật cấp.</b> KHÔNG gán cứng theo loại ký hiệu. Thứ tự lồng nhau lấy từ THỨ TỰ XUẤT HIỆN
 /// LẦN ĐẦU của từng chữ ký trong chính tài liệu — cùng bất biến mà
-/// <c>StructuralHierarchyResolver.SignatureTiers</c> dùng, và cùng kết luận mà spec §4.4 rút ra
+/// bộ suy cấp theo chữ ký dùng, và cùng kết luận mà spec §4.4 rút ra
 /// từ một corpus độc lập: <i>"cấp phải suy theo ngữ cảnh cha gần nhất, không gán cứng theo loại
 /// ký hiệu"</i>. Nhờ vậy tài liệu dùng <c>A.</c> thay cho <c>I.</c>, hay dùng <c>1)</c> thay cho
 /// <c>1.</c>, đều chạy mà không sửa gì.

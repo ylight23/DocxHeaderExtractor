@@ -4,9 +4,8 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV7CTests
 {
-    private static string Root => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static string SummaryPath => Path.Combine(Root, "artifacts/identity-benchmark/v7/conservative-clustering/preflight-v1-clique-equivalence/summary.json");
-    private static string ManifestPath => Path.Combine(Root, "artifacts/identity-benchmark/v7/conservative-clustering/preflight-v1-clique-equivalence/manifest.json");
+    private static string SummaryPath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v7/conservative-clustering/preflight-v1-clique-equivalence/summary.json");
+    private static string ManifestPath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v7/conservative-clustering/preflight-v1-clique-equivalence/manifest.json");
 
     [Fact]
     public void V7C_freezes_conservative_graph_without_gold_or_provider()

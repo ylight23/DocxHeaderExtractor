@@ -20,7 +20,7 @@
   "promptAffectsSemanticTruth": false,
   "repeatedOrContinuationMayBeHeading": true,
   "newSemanticNodeRequiredForHeading": false,
-  "exactOccurrenceFreeze": false,
+  "exactOccurrenceFreeze": true,
   "bindingAllowed": true,
   "modalityHints": {
     "visualRecoveryRequired": false,
@@ -29,13 +29,13 @@
   },
   "capabilities": {
     "semanticEvaluable": true,
-    "occurrenceEvaluable": false,
+    "occurrenceEvaluable": true,
     "characterSpanEvaluable": false,
     "hierarchyEvaluable": false,
     "visualBindingEvaluable": false
   },
   "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_TEXT_OR_VISUAL_ALIAS_CATALOG",
-  "occurrenceArtifact": null,
+  "occurrenceArtifact": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json",
   "bindingArtifact": null,
   "historicalArtifactsAreProvenanceOnly": true,
   "authorityRecord": {
@@ -44,8 +44,8 @@
     "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
     "semanticHeadingTotal": 41,
     "status": "FROZEN_SEMANTIC_VNEXT",
-    "exactOccurrenceFreeze": false,
-    "notes": "Continuation agenda occurrence was already treated as a distinct true heading occurrence.",
+    "exactOccurrenceFreeze": true,
+    "notes": "Occurrence Gold was materialized from the human-owned DOC-0252 decision authority and reconciled independently with the approved semantic total.",
     "userFinalApproval": true,
     "finalAuthority": "USER",
     "approvedAt": "2026-09-12"

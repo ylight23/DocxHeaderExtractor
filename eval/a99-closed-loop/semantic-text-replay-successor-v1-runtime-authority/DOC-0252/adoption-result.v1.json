@@ -1,0 +1,47 @@
+{
+  "artifactKind": "a99_pdf_s2g_zero_provider_adoption_result",
+  "schemaVersion": "a99-pdf-s2g-zero-provider-adoption-result-v1",
+  "status": "ADOPTED_AND_SCORED_OFFLINE",
+  "experimentId": "DOC-0252-PDF-S2E-RUNTIME-B0-ADOPTION-V1",
+  "successorManifestHash": "2ac4513d81d63fcaab23cf26d0fbacf4bd5ac741770eeb0f4c4ce9c0fcbd3474",
+  "originalExperimentId": "DOC-0252-PDF-S2E-RUNTIME-B0",
+  "originalManifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+  "semanticContractHash": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365",
+  "promptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+  "goldSha256": "2ebbc6b8af28dec38514d0b53aa36599a00ca86e87af050bfb3008b98bef6d31",
+  "evaluator": "a99-pdf-gold-evaluator-v2-semantic-role",
+  "approval": {
+    "approvedBy": "user",
+    "scope": "existing DOC-0252 S2E r1/r2/r3 bundles; deterministic replay; scoring; residual attribution",
+    "modelCalls": 0,
+    "providerCalls": 0
+  },
+  "repeats": [
+    { "repeat": "r1", "truePositive": 0, "falsePositive": 27, "falseNegative": 41, "precision": 0.0, "recall": 0.0, "f1": 0.0, "semanticRoleCompared": 0, "hierarchy": "NOT_ADJUDICATED" },
+    { "repeat": "r2", "truePositive": 0, "falsePositive": 28, "falseNegative": 41, "precision": 0.0, "recall": 0.0, "f1": 0.0, "semanticRoleCompared": 0, "hierarchy": "NOT_ADJUDICATED" },
+    { "repeat": "r3", "truePositive": 0, "falsePositive": 28, "falseNegative": 41, "precision": 0.0, "recall": 0.0, "f1": 0.0, "semanticRoleCompared": 0, "hierarchy": "NOT_ADJUDICATED" }
+  ],
+  "aggregate": {
+    "truePositive": 0,
+    "falsePositive": 83,
+    "falseNegative": 123,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "semanticRoleCompared": 0,
+    "scoringInputsComplete": true
+  },
+  "residualAttribution": {
+    "falseNegative": { "persistentCount": 41, "stochasticCount": 0 },
+    "falsePositive": { "persistentCount": 5, "stochasticCount": 49 },
+    "definition": "persistent = intersection across r1/r2/r3; stochastic = union minus intersection"
+  },
+  "interpretation": {
+    "identity": "Frozen evaluator identity: sourceAlias + selectionMode + verbatimText + occurrence.",
+    "runtimeSelectionMode": "The captured proposals omit selectionMode; the offline scoring adapter represents null as VERBATIM_TEXT without rewriting proposals.",
+    "roleMetric": "No semanticRole comparison was possible because no exact occurrence keys matched.",
+    "notAProviderFailure": "Replay, binding, hierarchy, and materialization passed; the zero score is an exact-contract measurement result."
+  }
+}

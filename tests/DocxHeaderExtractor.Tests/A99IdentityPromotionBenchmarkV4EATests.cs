@@ -6,10 +6,8 @@ public sealed class A99IdentityPromotionBenchmarkV4EATests
 {
     private const string ArtifactRoot = "artifacts/identity-benchmark/v4/pruning-challenger";
 
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-
     private static JsonDocument Load(string fileName)
-        => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), fileName)));
+        => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), fileName)));
 
     [Fact]
     public void V4E_A_reproduces_the_frozen_V3_shortlist_before_running_the_V4_challenger()

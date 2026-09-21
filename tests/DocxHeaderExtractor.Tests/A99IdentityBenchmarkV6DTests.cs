@@ -4,12 +4,11 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV6DTests
 {
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
 
     [Fact]
     public void V6D_preflight_is_owner_conditioned_and_gold_free()
     {
-        var root = Path.Combine(Root(), "artifacts", "identity-benchmark", "v6", "semantic-node-induction", "preflight-v1-owner-conditioned");
+        var root = Path.Combine(TestRepository.Root(), "artifacts", "identity-benchmark", "v6", "semantic-node-induction", "preflight-v1-owner-conditioned");
         using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "manifest.json")));
         var m = manifest.RootElement;
         Assert.Equal("READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION", m.GetProperty("status").GetString());
@@ -29,7 +28,7 @@ public sealed class A99IdentityBenchmarkV6DTests
     [Fact]
     public void V6D_requests_use_owner_evidence_without_requesting_hierarchy()
     {
-        var root = Path.Combine(Root(), "artifacts", "identity-benchmark", "v6", "semantic-node-induction", "preflight-v1-owner-conditioned");
+        var root = Path.Combine(TestRepository.Root(), "artifacts", "identity-benchmark", "v6", "semantic-node-induction", "preflight-v1-owner-conditioned");
         using var requests = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "requests.json")));
         foreach (var record in requests.RootElement.GetProperty("records").EnumerateArray())
         {

@@ -4,10 +4,9 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV8ContractTests
 {
-    private static string Root => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static string ManifestPath => Path.Combine(Root, "artifacts/identity-benchmark/v8/proof-carrying-identity/preflight-v1/manifest.json");
-    private static string ContractPath => Path.Combine(Root, "artifacts/identity-benchmark/v8/proof-carrying-identity/preflight-v1/contract.json");
-    private static string ChecksPath => Path.Combine(Root, "artifacts/identity-benchmark/v8/proof-carrying-identity/preflight-v1/synthetic-gate-checks.json");
+    private static string ManifestPath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v8/proof-carrying-identity/preflight-v1/manifest.json");
+    private static string ContractPath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v8/proof-carrying-identity/preflight-v1/contract.json");
+    private static string ChecksPath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v8/proof-carrying-identity/preflight-v1/synthetic-gate-checks.json");
 
     [Fact]
     public void V8_contract_is_frozen_without_holdout_gold_or_provider()

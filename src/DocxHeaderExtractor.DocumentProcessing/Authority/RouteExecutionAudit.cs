@@ -18,6 +18,10 @@ public sealed record RouteExecutionAudit(
     [property: JsonPropertyName("groundingRejections")] IReadOnlyList<RouteBlockRejectionAudit> GroundingRejections,
     [property: JsonPropertyName("alignedBlockIds")] IReadOnlyList<string> AlignedBlockIds)
 {
+    /// <summary>Stable route identity for the promoted execution authority.</summary>
+    [JsonPropertyName("route")]
+    public string? Route { get; init; }
+
     /// <summary>Explicit source-to-representation lineage captured at the route boundary.</summary>
     [JsonIgnore]
     public IReadOnlyList<RouteSourceRepresentation> SourceRepresentations { get; init; } = [];
@@ -55,9 +59,6 @@ public sealed record RouteExecutionAudit(
     [JsonPropertyName("visualRecoveries")]
     public IReadOnlyList<PdfVisualRecoveryTrace> VisualRecoveries { get; init; } = [];
 
-    [JsonPropertyName("proposalResolutions")]
-    public IReadOnlyList<PdfProposalResolutionAudit> ProposalResolutions { get; init; } = [];
-
     [JsonPropertyName("hierarchyProposals")]
     public IReadOnlyList<PdfHierarchyProposalAudit> HierarchyProposals { get; init; } = [];
 
@@ -65,11 +66,13 @@ public sealed record RouteExecutionAudit(
     [JsonPropertyName("hierarchyFacts")]
     public IReadOnlyList<PdfHierarchyFactAudit> HierarchyFacts { get; init; } = [];
 
-    [JsonPropertyName("textLayerRecoveries")]
-    public IReadOnlyList<PdfTextLayerRecoveryAudit> TextLayerRecoveries { get; init; } = [];
-
-    [JsonPropertyName("rankedCandidates")]
-    public IReadOnlyList<RankedCandidate> RankedCandidates { get; init; } = [];
+    /// <summary>
+    /// Measured semantic disagreement for this run. Reported so the question "does this route need
+    /// an adjudication model" is answered from counted conflict, not assumed conflict.
+    /// </summary>
+    [JsonPropertyName("conflictCensus")]
+    public Pipeline.SemanticConflictCensus ConflictCensus { get; init; } =
+        Pipeline.SemanticConflictCensus.Empty;
 
     /// <summary>Independent semantic execution outcome. A timeout is partial work, not provider unavailability.</summary>
     [JsonPropertyName("semanticLane")]
@@ -177,6 +180,21 @@ public sealed record PdfPipelineBatchTelemetry(
     [property: JsonPropertyName("totalResponses")] int TotalResponses,
     [property: JsonPropertyName("elapsedMs")] long ElapsedMs);
 
+/// <summary>
+/// One model-proposed parent link and what deterministic validation did with it.
+/// <para>
+/// Part of <see cref="RouteExecutionAudit.HierarchyProposals"/>, so it belongs with the audit
+/// contract. It used to live inside <c>PdfSemanticHierarchyFallback</c> - the model stage that
+/// produced it - which meant deleting that dead stage would have taken a live production type with
+/// it.
+/// </para>
+/// </summary>
+public sealed record PdfHierarchyProposalAudit(
+    string Id,
+    string? ProposedParentId,
+    string? ResolvedParentId,
+    string Resolution);
+
 public sealed record RouteBlockAudit(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("page")] int Page,
@@ -220,4 +238,16 @@ public sealed record PdfVisualRecoveryTrace(
     [property: JsonPropertyName("mappedSpanStart")] int? MappedSpanStart = null,
     [property: JsonPropertyName("mappedSpanEnd")] int? MappedSpanEnd = null,
     [property: JsonPropertyName("validatorReason")] string? ValidatorReason = null,
-    [property: JsonPropertyName("attempts")] IReadOnlyList<DocxHeaderExtractor.DocumentProcessing.Vision.PdfVisualAttemptOutcome>? Attempts = null);
+    [property: JsonPropertyName("attempts")] IReadOnlyList<PdfVisualAttemptOutcome>? Attempts = null);
+
+/// <summary>
+/// One attempt a visual model made at a region, and how it ended.
+/// <para>
+/// Part of <see cref="PdfVisualRecoveryTrace.Attempts"/>, so it belongs with the audit contract.
+/// It used to live beside the image-question interfaces in Vision; those had implementations and
+/// no callers and were removed, and this record would have gone with them even though the audit
+/// still records it.
+/// </para>
+/// </summary>
+public sealed record PdfVisualAttemptOutcome(
+    int Attempt, string Status, int? HttpStatus, long ElapsedMs, string? Error);

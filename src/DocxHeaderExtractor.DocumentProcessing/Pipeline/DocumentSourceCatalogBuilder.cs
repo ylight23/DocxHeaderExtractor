@@ -57,9 +57,9 @@ public static class DocumentSourceCatalogBuilder
             .Select(group =>
             {
                 var first = group.First();
-                var firstLineIds = first.Lines.Select(PdfCandidateProvenance.LineId).ToArray();
+                var firstLineIds = first.Lines.Select(PdfLineIdentity.Of).ToArray();
                 if (group.Skip(1).Any(other =>
-                    !firstLineIds.SequenceEqual(other.Lines.Select(PdfCandidateProvenance.LineId)) ||
+                    !firstLineIds.SequenceEqual(other.Lines.Select(PdfLineIdentity.Of)) ||
                     !string.Equals(first.Text, other.Text, StringComparison.Ordinal)))
                 {
                     throw new InvalidOperationException(
@@ -72,7 +72,7 @@ public static class DocumentSourceCatalogBuilder
         var lineIndexById = sourceLines is null
             ? null
             : sourceLines
-                .Select((line, index) => (Id: PdfCandidateProvenance.LineId(line), Index: index))
+                .Select((line, index) => (Id: PdfLineIdentity.Of(line), Index: index))
                 .GroupBy(item => item.Id, StringComparer.Ordinal)
                 .ToDictionary(group => group.Key, group => group.First().Index, StringComparer.Ordinal);
 
@@ -80,7 +80,7 @@ public static class DocumentSourceCatalogBuilder
         {
             var fact = SourceFactsBuilder.FromPdfBlock(block);
             var sourceOrdinal = block.Lines
-                .Select(PdfCandidateProvenance.LineId)
+                .Select(PdfLineIdentity.Of)
                 .Where(lineId => lineIndexById?.ContainsKey(lineId) ?? false)
                 .Select(lineId => lineIndexById![lineId])
                 .DefaultIfEmpty(index)
@@ -90,7 +90,7 @@ public static class DocumentSourceCatalogBuilder
                 Source = fact.Source with
                 {
                     ParagraphIndex = sourceOrdinal,
-                    RenderLineIds = block.Lines.Select(PdfCandidateProvenance.LineId).ToArray(),
+                    RenderLineIds = block.Lines.Select(PdfLineIdentity.Of).ToArray(),
                 },
             };
         }));

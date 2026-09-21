@@ -4,12 +4,11 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV6BTests
 {
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
 
     [Fact]
     public void V6B_freezes_source_evidence_without_semantic_owner_decisions()
     {
-        var path = Path.Combine(Root(), "artifacts", "identity-benchmark", "v6", "owner-evidence", "source-only-freeze-v1", "manifest.json");
+        var path = Path.Combine(TestRepository.Root(), "artifacts", "identity-benchmark", "v6", "owner-evidence", "source-only-freeze-v1", "manifest.json");
         using var doc = JsonDocument.Parse(File.ReadAllText(path));
         var json = doc.RootElement;
         Assert.Equal("SOURCE_ONLY_OWNER_EVIDENCE_FROZEN", json.GetProperty("status").GetString());

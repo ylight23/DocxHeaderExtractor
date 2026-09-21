@@ -1,0 +1,5522 @@
+{
+  "artifactKind": "a99_pdf_gold_review_decisions",
+  "schemaVersion": "a99-pdf-gold-review-decisions-v1",
+  "documentId": "DOC-0252",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+  "decisions": [
+    {
+      "sourceAlias": "S0001",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "DocumentTitle",
+          "parentSourceAlias": null,
+          "reviewNote": "Primary document title; the following organization/date/location lines are metadata, not separate structural headings."
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0002",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0003",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0004",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0005",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0006",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0007",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0008",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0009",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0010",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0011",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0012",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0013",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0014",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0015",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0016",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0017",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0018",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0019",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0020",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0021",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0022",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0023",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0024",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0025",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0026",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0027",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0028",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0029",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0030",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0031",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0032",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0033",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0034",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0035",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0036",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0037",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0038",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0039",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0040",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0041",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0042",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0043",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Session II: Update on the ICP 2021 Cycle",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        },
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "1 Global office update",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0044",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0045",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0046",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0047",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0048",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0049",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0050",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0051",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0052",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0053",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0054",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0055",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0056",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0057",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0058",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0059",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0060",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0061",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0062",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0063",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0064",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0065",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0066",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0067",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0068",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0069",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0070",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0071",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0072",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0073",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0074",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0075",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0076",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0077",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0078",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0079",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0080",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0081",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0082",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0083",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0084",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0085",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0086",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0087",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0088",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0089",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0090",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0091",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0092",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0093",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0094",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0095",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0096",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0097",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0098",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0099",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0100",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0101",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0102",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0103",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0104",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0105",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0106",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0107",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0108",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0109",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0110",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0111",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0112",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0113",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0114",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0115",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0116",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0117",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0118",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0119",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0120",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0121",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0122",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0123",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0124",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0125",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0126",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0127",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Africa",
+          "occurrence": 1,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": "Use occurrence=1 because 'Africa' also appears as the prefix of 'African' later in the same parser occurrence."
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0128",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0129",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0130",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0131",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0132",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0133",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0134",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0135",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0136",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0137",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0138",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0139",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0140",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0141",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Asia and the Pacific",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0142",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0143",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0144",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0145",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0146",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0147",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0148",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0149",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0150",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0151",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0152",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0153",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0154",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0155",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0156",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0157",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0158",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0159",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0160",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0161",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0162",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0163",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0164",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0165",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0166",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0167",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0168",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0169",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0170",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0171",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0172",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0173",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Commonwealth of Independent States (CIS)",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0174",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0175",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0176",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0177",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0178",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0179",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0180",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0181",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0182",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0183",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0184",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0185",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0186",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0187",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0188",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0189",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0190",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0191",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0192",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0193",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0194",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0195",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0196",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0197",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0198",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0199",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0200",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0201",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0202",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0203",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0204",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0205",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0206",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0207",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0208",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0209",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0210",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0211",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0212",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0213",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0214",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0215",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0216",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0217",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0218",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0219",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0220",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0221",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0222",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0223",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Latin America and the Caribbean",
+          "occurrence": 1,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": "Use occurrence=1 because the same phrase appears again inside the organization name."
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0224",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0225",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0226",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0227",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0228",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0229",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0230",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0231",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0232",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0233",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0234",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0235",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0236",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0237",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0238",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0239",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0240",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0241",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0242",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0243",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0244",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Western Asia",
+          "occurrence": 1,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": "Use occurrence=1 because the same phrase appears again inside the organization name."
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0245",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0246",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0247",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0248",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0249",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0250",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0251",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0252",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0253",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0254",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0255",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0256",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0257",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0258",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0259",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0260",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0261",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0262",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0263",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0264",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0265",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0266",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0267",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0268",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0269",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0270",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0271",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0272",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0273",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0274",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0275",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0276",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0277",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0278",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0279",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0280",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0281",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0282",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0283",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0284",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0285",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0286",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0287",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0288",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0289",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0290",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0291",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0292",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0293",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0294",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0295",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0296",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0297",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0298",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0299",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0300",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0301",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0302",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0303",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0304",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0305",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0306",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0307",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0308",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0309",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0310",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0311",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0312",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0313",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0314",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0315",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0316",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0317",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0318",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0319",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0320",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0321",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0322",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0323",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0324",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0325",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0326",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0327",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0328",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0329",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0330",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0331",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0332",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0333",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0334",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0335",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0336",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0337",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0338",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0339",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0340",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0341",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0342",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0343",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0344",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0345",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0346",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0347",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0348",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0349",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0350",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0351",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0352",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0353",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0354",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0355",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0356",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0357",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0358",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0359",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0360",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0361",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0362",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0363",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0364",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0365",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0366",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0367",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0368",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0369",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0370",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0371",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0372",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0373",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0374",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0375",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0376",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0377",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0378",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0379",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0380",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0381",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0382",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0383",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0384",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0385",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0386",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0387",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0388",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0389",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0390",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0391",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0392",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0393",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0394",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0395",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0396",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0397",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0398",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0399",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0400",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0401",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0402",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0403",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0404",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0405",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0406",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0407",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0408",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0409",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0410",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0411",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0412",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0413",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0414",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0415",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0416",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0417",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0418",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0419",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0420",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0421",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0422",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0423",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0424",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0425",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0426",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0427",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0428",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0429",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0430",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0431",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0432",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0433",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0434",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0435",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0436",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0437",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0438",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0439",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0440",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0441",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0442",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0443",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0444",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0445",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0446",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0447",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0448",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0449",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0450",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0451",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0452",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0453",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0454",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0455",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0456",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0457",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0458",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0459",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0460",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        },
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "1 TAG Composition and Terms of Reference",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0461",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0462",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0463",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0464",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0465",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0466",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0467",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0468",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0469",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0470",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0471",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0472",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0473",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0474",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0475",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0476",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0477",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0478",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0479",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0480",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0481",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0482",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0483",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0484",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0485",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0486",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0487",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0488",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0489",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0490",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0491",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0492",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0493",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0494",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0495",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0496",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0497",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0498",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0499",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0500",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0501",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0502",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0503",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0504",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0505",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0506",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0507",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0508",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0509",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0510",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0511",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0512",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0513",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0514",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0515",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0516",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0517",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0518",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0519",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0520",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0521",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0522",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0523",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0524",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0525",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0526",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0527",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0528",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0529",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0530",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0531",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0532",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0533",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0534",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0535",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0536",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0537",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0538",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0539",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0540",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0541",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0542",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0543",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0544",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0545",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0546",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0547",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0548",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0549",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0550",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0551",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0552",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0553",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0554",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0555",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0556",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0557",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0558",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0559",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0560",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0561",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0562",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0563",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0564",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0565",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0566",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0567",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0568",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0569",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0570",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0571",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0572",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0573",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "Session V: Current Research",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        },
+        {
+          "selectionMode": "VERBATIM_TEXT",
+          "verbatimText": "1 The Treatment of Import and Export Prices in International Comparisons",
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": "One parser occurrence contains two headings."
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0574",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0575",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0576",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0577",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0578",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0579",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0580",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0581",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0582",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0583",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0584",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0585",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0586",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0587",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0588",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0589",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0590",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0591",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0592",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0593",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0594",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0595",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0596",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0597",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0598",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0599",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0600",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0601",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0602",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0603",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0604",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0605",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0606",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0607",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0608",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0609",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0610",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0611",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0612",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0613",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0614",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0615",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0616",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": "This is the initiating parser occurrence of the two-line heading; S0618 is continuation text, not a second heading occurrence."
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0617",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0618",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0619",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0620",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0621",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0622",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0623",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0624",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0625",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0626",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0627",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0628",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0629",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0630",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0631",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0632",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0633",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0634",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0635",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0636",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0637",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0638",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0639",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0640",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0641",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0642",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0643",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0644",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0645",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0646",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0647",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0648",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0649",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0650",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0651",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0652",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0653",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0654",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0655",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0656",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0657",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0658",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0659",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0660",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0661",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0662",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0663",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0664",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0665",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0666",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0667",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0668",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0669",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0670",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0671",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0672",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0673",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0674",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0675",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0676",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0677",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0678",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0679",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0680",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0681",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0682",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0683",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0684",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0685",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0686",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0687",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0688",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0689",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0690",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0691",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0692",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0693",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0694",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0695",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0696",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0697",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0698",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0699",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0700",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0701",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0702",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0703",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0704",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0705",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0706",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0707",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0708",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0709",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0710",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0711",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0712",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0713",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0714",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0715",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0716",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0717",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0718",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0719",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0720",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0721",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0722",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0723",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0724",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0725",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0726",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0727",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0728",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0729",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0730",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0731",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0732",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0733",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0734",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0735",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0736",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0737",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0738",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0739",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0740",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0741",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0742",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0743",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0744",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0745",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0746",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0747",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0748",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0749",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0750",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0751",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0752",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0753",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0754",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0755",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0756",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0757",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0758",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0759",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0760",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0761",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0762",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0763",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0764",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0765",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0766",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0767",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0768",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0769",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0770",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0771",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0772",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0773",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0774",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0775",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0776",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0777",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0778",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0779",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0780",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0781",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0782",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0783",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0784",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0785",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0786",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0787",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0788",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0789",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0790",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0791",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0792",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0793",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0794",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0795",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0796",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0797",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0798",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0799",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0800",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0801",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0802",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0803",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0804",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0805",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0806",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0807",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0808",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0809",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0810",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0811",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0812",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0813",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0814",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0815",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0816",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0817",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0818",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AgendaItem",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0819",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0820",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0821",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0822",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0823",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0824",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0825",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0826",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0827",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0828",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0829",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0830",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0831",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0832",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0833",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0834",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0835",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0836",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0837",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0838",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0839",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0840",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0841",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0842",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0843",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0844",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0845",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0846",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0847",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0848",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0849",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0850",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0851",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0852",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0853",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0854",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0855",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0856",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0857",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0858",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0859",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0860",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0861",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0862",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0863",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0864",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0865",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0866",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0867",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0868",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0869",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0870",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0871",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0872",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0873",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0874",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0875",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0876",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0877",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0878",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0879",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0880",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0881",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0882",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0883",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0884",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0885",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0886",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0887",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0888",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0889",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0890",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0891",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0892",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0893",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0894",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0895",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0896",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0897",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0898",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0899",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0900",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0901",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0902",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0903",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0904",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0905",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0906",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0907",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0908",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0909",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0910",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0911",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "SectionHeading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0912",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0913",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0914",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0915",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0916",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0917",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0918",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0919",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0920",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0921",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0922",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0923",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0924",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0925",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0926",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0927",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0928",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0929",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0930",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0931",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0932",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0933",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0934",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0935",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": "Continuation session label is a distinct true heading occurrence."
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0936",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0937",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0938",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0939",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0940",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0941",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0942",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0943",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0944",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0945",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0946",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "MeetingSection",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0947",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0948",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0949",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "AppendixHeading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0950",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0951",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0952",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0953",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0954",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0955",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0956",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0957",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0958",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0959",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0960",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0961",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0962",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0963",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0964",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0965",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0966",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0967",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0968",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0969",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0970",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0971",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0972",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0973",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0974",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0975",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0976",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0977",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0978",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0979",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0980",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0981",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0982",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0983",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0984",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0985",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0986",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0987",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0988",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0989",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0990",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0991",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0992",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0993",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0994",
+      "humanDecision": "HEADING",
+      "headingClaims": [
+        {
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null,
+          "semanticRole": "LocalSubheading",
+          "parentSourceAlias": null,
+          "reviewNote": null
+        }
+      ]
+    },
+    {
+      "sourceAlias": "S0995",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0996",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0997",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0998",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S0999",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1000",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1001",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1002",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1003",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1004",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1005",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1006",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1007",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1008",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1009",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1010",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1011",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1012",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    },
+    {
+      "sourceAlias": "S1013",
+      "humanDecision": "NOT_HEADING",
+      "headingClaims": []
+    }
+  ]
+}

@@ -4,9 +4,8 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV7BTests
 {
-    private static string Root => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static string ManifestPath => Path.Combine(Root, "artifacts/identity-benchmark/v7/identity-verification/preflight-v1-independent-positive-edge/manifest.json");
-    private static string RequestsPath => Path.Combine(Root, "artifacts/identity-benchmark/v7/identity-verification/preflight-v1-independent-positive-edge/requests.json");
+    private static string ManifestPath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v7/identity-verification/preflight-v1-independent-positive-edge/manifest.json");
+    private static string RequestsPath => Path.Combine(TestRepository.Root(), "artifacts/identity-benchmark/v7/identity-verification/preflight-v1-independent-positive-edge/requests.json");
 
     [Fact]
     public void V7B_preflight_is_three_document_global_requests_and_gold_free()

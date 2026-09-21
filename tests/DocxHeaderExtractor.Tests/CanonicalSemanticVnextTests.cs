@@ -45,8 +45,8 @@ public sealed class CanonicalSemanticVnextTests
     {
         var bound = new[]
         {
-            new CanonicalSemanticBoundHeading("S0001", "p1", 1, "Financial Statements", "SECTION", "Heading", "document_body", [], 0, 19, true),
-            new CanonicalSemanticBoundHeading("S0002", "p2", 2, "Financial Statements", "SECTION", "Heading", "continuation", [], 0, 19, true),
+            new CanonicalSemanticBoundHeading("S0001", "p1", 1, "Financial Statements", "SECTION", "Heading", "document_body", ["same-node:financial-statements"], 0, 19, true),
+            new CanonicalSemanticBoundHeading("S0002", "p2", 2, "Financial Statements", "SECTION", "Heading", "continuation", ["same-node:financial-statements"], 0, 19, true),
         };
 
         var graph = CanonicalSemanticGraphResolver.Resolve(bound);

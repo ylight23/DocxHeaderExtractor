@@ -88,23 +88,6 @@ public sealed class ReviewContractTests
         Assert.Equal("Introduction", review.Headings[0].Text);
     }
 
-    [Fact]
-    public void Pipeline_projection_exposes_diagnostics_separately()
-    {
-        var source = Source("p-1", "Introduction", 2, "pdf");
-        var pipeline = new HeadingPipelineResult(
-            [Heading("h-1", "p-1", 0, source.RawText.Length, .8)],
-            [new HeadingPipelineDiagnostic("p-2", "rejected", "span-invalid", "validator")]);
-
-        var result = HeadingPipelineReviewProjection.ToReviewResult("document-1", pipeline, [source]);
-
-        Assert.Single(result.Headings);
-        Assert.Single(result.Diagnostics);
-        Assert.Equal("pipeline.rejected.span-invalid", result.Diagnostics[0].Code);
-        Assert.Equal("error", result.Diagnostics[0].Severity);
-        Assert.Equal("p-2", result.Diagnostics[0].SourceId);
-    }
-
     private static DocumentReviewResult Review(string headingId) =>
         DocumentReviewResultMapper.FromValidatedHeadings(
             "document-1",

@@ -5,8 +5,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class A99IdentityBenchmarkV4GBTests
 {
     private const string ArtifactRoot = "artifacts/identity-benchmark/v4/target-grounding-challenger/execution";
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
-    private static JsonDocument Load(string file) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), file)));
+    private static JsonDocument Load(string file) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), file)));
 
     [Fact]
     public void Provider_preflight_is_frozen_before_transport()

@@ -4,12 +4,11 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class A99IdentityBenchmarkV6CTests
 {
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
 
     [Fact]
     public void V6C_preflight_is_document_global_and_source_only()
     {
-        var path = Path.Combine(Root(), "artifacts", "identity-benchmark", "v6", "owner-induction", "preflight-v1", "manifest.json");
+        var path = Path.Combine(TestRepository.Root(), "artifacts", "identity-benchmark", "v6", "owner-induction", "preflight-v1", "manifest.json");
         using var doc = JsonDocument.Parse(File.ReadAllText(path));
         var json = doc.RootElement;
         Assert.Equal("READY_FOR_PROVIDER_EXECUTION", json.GetProperty("status").GetString());
@@ -25,7 +24,7 @@ public sealed class A99IdentityBenchmarkV6CTests
     [Fact]
     public void V6C_v2_addressable_preflight_is_a_new_no_call_boundary()
     {
-        var path = Path.Combine(Root(), "artifacts", "identity-benchmark", "v6", "owner-induction", "preflight-v2-addressable", "manifest.json");
+        var path = Path.Combine(TestRepository.Root(), "artifacts", "identity-benchmark", "v6", "owner-induction", "preflight-v2-addressable", "manifest.json");
         using var doc = JsonDocument.Parse(File.ReadAllText(path));
         var json = doc.RootElement;
         Assert.Equal("READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION", json.GetProperty("status").GetString());
@@ -40,7 +39,7 @@ public sealed class A99IdentityBenchmarkV6CTests
     [Fact]
     public void V6C_v3_opaque_handles_are_source_only_and_membership_is_single_authority()
     {
-        var root = Path.Combine(Root(), "artifacts", "identity-benchmark", "v6", "owner-induction", "preflight-v3-opaque-handles");
+        var root = Path.Combine(TestRepository.Root(), "artifacts", "identity-benchmark", "v6", "owner-induction", "preflight-v3-opaque-handles");
         using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "manifest.json")));
         var json = manifest.RootElement;
         Assert.Equal("READY_FOR_SEPARATE_PROVIDER_AUTHORIZATION", json.GetProperty("status").GetString());
@@ -69,7 +68,7 @@ public sealed class A99IdentityBenchmarkV6CTests
     [Fact]
     public void V6C_v3_distinguishes_target_occurrences_from_context_handle_universe()
     {
-        var path = Path.Combine(Root(), "artifacts", "identity-benchmark", "v6", "owner-induction", "preflight-v3-opaque-handles", "requests.json");
+        var path = Path.Combine(TestRepository.Root(), "artifacts", "identity-benchmark", "v6", "owner-induction", "preflight-v3-opaque-handles", "requests.json");
         using var requests = JsonDocument.Parse(File.ReadAllText(path));
         var targetCounts = new Dictionary<string, int>(StringComparer.Ordinal)
         {
