@@ -19,6 +19,8 @@
 /eval/a99-closed-loop/representation/doc-0252-source-occurrence-boundary.v1.json text eol=lf
 /eval/a99-closed-loop/representation/doc-0252-visual-line-shadow.v1.json text eol=lf
 /eval/a99-closed-loop/representation/doc-0252-block-grouping-shadow.v1.json text eol=lf
+/eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json text eol=lf
+/eval/a99-closed-loop/representation/visual-line-segment-adjudication.v1.json text eol=lf
 
 # These benchmark artifacts are bound by raw SHA-256 in N12/N14. Keep their Git blobs byte-identical
 # in every checkout; their .json extension does not grant Git permission to rewrite line endings.

@@ -47,6 +47,34 @@ public static class DocumentSourceCatalogBuilder
     /// optional line inventory keeps source ordinals tied to physical parser order even when a
     /// supplemental/window representation is the selected source unit.
     /// </summary>
+    /// <summary>
+    /// A catalog whose units are visual line segments rather than layout blocks.
+    /// <para>
+    /// The seam for a coordinate system in which the atom is one coherent region of one row, and
+    /// blocks are context rather than authority. It is built and measured; nothing routes through
+    /// it yet, and <see cref="FromPdfParserBlocks"/> remains what production reads. A heading that
+    /// wraps occupies more than one atom here, so this catalog only becomes bindable once a
+    /// contract exists for naming several of them - which is a separate decision.
+    /// </para>
+    /// </summary>
+    internal static DocumentSourceCatalog FromPdfVisualLineSegments(IReadOnlyList<PdfLine> segments)
+    {
+        ArgumentNullException.ThrowIfNull(segments);
+
+        var blocks = segments.Select((line, index) => new PdfSemanticBlock(
+            $"l{index + 1}",
+            [line],
+            PdfStyleClusterProfile.StyleOf(line),
+            line.Page,
+            line.Y,
+            line.Y,
+            line.Left,
+            line.Right,
+            PdfTextUtilities.Readable(line.Text))).ToArray();
+
+        return FromPdfParserBlocks(blocks, segments);
+    }
+
     internal static DocumentSourceCatalog FromPdfParserBlocks(
         IReadOnlyList<PdfSemanticBlock> blocks,
         IReadOnlyList<PdfLine>? sourceLines = null)

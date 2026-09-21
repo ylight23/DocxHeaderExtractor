@@ -1,3 +1,4 @@
+using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
@@ -111,10 +112,134 @@ public sealed class PdfLineExtractionTests
         Assert.Equal(first.Select(line => line.ToArray()), second.Select(line => line.ToArray()));
     }
 
+    // ---- where a row stops being one region ----------------------------------------------------
+
+    [Fact]
+    public void A_corridor_that_the_rows_around_it_keep_open_divides_a_row()
+    {
+        // A two-sided masthead. Two rows, text on both sides of the same whitespace, and nothing
+        // crossing it - which is what makes it a corridor rather than a wide space.
+        var rows = new[]
+        {
+            Row((60, 120), (300, 520)),
+            Row((60, 110), (300, 500)),
+        };
+
+        var cuts = PdfVisualRegion.Cuts(rows, wordGap: 3);
+
+        Assert.Equal([0], cuts[0]);
+        Assert.Equal([0], cuts[1]);
+    }
+
+    [Fact]
+    public void Ordinary_word_spacing_never_divides_a_row()
+    {
+        var rows = new[]
+        {
+            Row((60, 100), (104, 150), (154, 200), (204, 260)),
+            Row((60, 110), (114, 170), (174, 230)),
+        };
+
+        Assert.All(PdfVisualRegion.Cuts(rows, wordGap: 4), row => Assert.Empty(row));
+    }
+
+    [Fact]
+    public void A_gap_no_neighbouring_row_agrees_with_is_left_alone()
+    {
+        // Tab-aligned metadata between two ordinary lines of prose. The gap is wide, and the rows
+        // above and below run straight through where it sits, so there is no region boundary here.
+        var rows = new[]
+        {
+            Row((60, 500)),
+            Row((60, 120), (300, 520)),
+            Row((60, 500)),
+        };
+
+        Assert.All(PdfVisualRegion.Cuts(rows, wordGap: 3), row => Assert.Empty(row));
+    }
+
+    [Fact]
+    public void Two_columns_divide_every_row_that_spans_them()
+    {
+        var rows = Enumerable.Range(0, 6).Select(_ => Row((60, 280), (320, 540))).ToArray();
+        var cuts = PdfVisualRegion.Cuts(rows, wordGap: 3);
+
+        Assert.All(cuts, row => Assert.Equal([0], row));
+    }
+
+    [Fact]
+    public void A_centred_heading_is_one_region()
+    {
+        // Wide margins either side, and no text beyond them. A margin is not a corridor: there is
+        // nothing on the far side of it for this row to be separate from.
+        var rows = new[]
+        {
+            Row((60, 520)),
+            Row((200, 380)),
+            Row((60, 520)),
+        };
+
+        Assert.All(PdfVisualRegion.Cuts(rows, wordGap: 3), row => Assert.Empty(row));
+        Assert.Equal(0, PdfVisualRegion.ClearWidthAround(Row((200, 380)), middle: 100));
+    }
+
+    [Fact]
+    public void A_table_row_is_divided_where_its_columns_are()
+    {
+        var rows = new[]
+        {
+            Row((60, 140), (200, 300), (360, 460)),
+            Row((60, 130), (200, 290), (360, 450)),
+            Row((60, 135), (200, 295), (360, 455)),
+        };
+
+        Assert.All(PdfVisualRegion.Cuts(rows, wordGap: 4), row => Assert.Equal([0, 1], row));
+    }
+
+    [Fact]
+    public void Cutting_is_a_pure_function_of_its_input()
+    {
+        var rows = new[]
+        {
+            Row((60, 120), (300, 520)),
+            Row((60, 110), (300, 500)),
+            Row((60, 500)),
+        };
+
+        Assert.Equal(
+            PdfVisualRegion.Cuts(rows, wordGap: 3).Select(row => row.ToArray()),
+            PdfVisualRegion.Cuts(rows, wordGap: 3).Select(row => row.ToArray()));
+        Assert.Empty(PdfVisualRegion.Cuts(rows, wordGap: 0)[0]);
+    }
+
+    [Fact]
+    public void A_raised_glyph_stays_in_the_segment_it_belongs_to()
+    {
+        // Segmentation is horizontal and the vertical rule is untouched, so a superscript sitting
+        // inside one region's x-range must travel with that region and not with the other.
+        var rows = new[]
+        {
+            Row((60, 120), (121, 126), (300, 520)),
+            Row((60, 110), (300, 500)),
+        };
+
+        var cuts = PdfVisualRegion.Cuts(rows, wordGap: 3);
+
+        Assert.Equal([1], cuts[0]);
+    }
+
+    private static IReadOnlyList<PdfVisualRegion.Box> Row(params (double Left, double Right)[] boxes) =>
+        boxes.Select(box => new PdfVisualRegion.Box(box.Left, box.Right)).ToArray();
+
     // ---- the rule, measured on a real document ------------------------------------------------
 
     [Fact]
     public void The_candidate_reconstruction_conserves_every_glyph_the_parser_extracted()
+    {
+        foreach (var candidate in Candidates) ConservesEveryGlyph(candidate);
+    }
+
+    private static void ConservesEveryGlyph(PdfLineGrouping candidate)
     {
         // Grouping identity may change; extracted content may not. Checked against the letters
         // PdfPig produced as well as against V1, so a candidate cannot pass by losing the same
@@ -124,7 +249,7 @@ public sealed class PdfLineExtractionTests
             .OrderBy(atom => atom, AtomOrder)
             .ToArray();
         var before = Atoms(Lines(PdfLineGrouping.MidpointV1));
-        var after = Atoms(Lines(PdfLineGrouping.VisualLineV2));
+        var after = Atoms(Lines(candidate));
 
         Assert.Equal(letters.Length, after.Length);
         Assert.Equal(letters, after);
@@ -141,17 +266,35 @@ public sealed class PdfLineExtractionTests
     [Fact]
     public void The_candidate_reconstruction_reads_in_source_order()
     {
-        // Lines run down each page and glyphs run left to right inside them. This is the property
-        // the repair depends on: the period returns to its own line, which changes where it sits in
-        // the document stream, and that stream must still be the page's reading order.
-        var lines = Lines(PdfLineGrouping.VisualLineV2);
+        foreach (var candidate in Candidates) ReadsInSourceOrder(candidate);
+    }
+
+    private static void ReadsInSourceOrder(PdfLineGrouping candidate)
+    {
+        // The property the repair depends on: a period returns to its own line and a divided row
+        // becomes several, both of which move where text sits in the document stream, and that
+        // stream must still be the page's reading order. Successive entries either go down the
+        // page, or share a row and then run left to right without overlapping.
+        var lines = Lines(candidate);
 
         foreach (var page in lines.GroupBy(line => line.Page))
         {
             var ordered = page.ToArray();
             for (var index = 1; index < ordered.Length; index++)
-                Assert.True(ordered[index].Y < ordered[index - 1].Y,
-                    $"page {page.Key} line {index} runs back up the page");
+            {
+                var previous = ordered[index - 1];
+                var line = ordered[index];
+                // Reading order, stated as the disjunction it actually is: an entry is either
+                // lower on the page than the one before it, or beside it on an overlapping band
+                // and further right. The second case exists only once rows can be divided, and it
+                // is what carries a bullet's dash and its text in the order a reader takes them.
+                var lower = line.Y < previous.Y;
+                var beside =
+                    line.Left > previous.Right &&
+                    line.Top > previous.Bottom && line.Bottom < previous.Top;
+                Assert.True(lower || beside,
+                    $"page {page.Key} entry {index} is neither below nor beside the one before it");
+            }
         }
 
         foreach (var line in lines)
@@ -166,10 +309,15 @@ public sealed class PdfLineExtractionTests
     [Fact]
     public void The_candidate_reconstruction_is_deterministic()
     {
+        foreach (var candidate in Candidates) IsDeterministic(candidate);
+    }
+
+    private static void IsDeterministic(PdfLineGrouping candidate)
+    {
         Assert.Equal(
-            Lines(PdfLineGrouping.VisualLineV2).Select(line => $"{line.Page}|{line.Y:F4}|{line.Text}"),
-            Lines(PdfLineGrouping.VisualLineV2).Select(line => $"{line.Page}|{line.Y:F4}|{line.Text}"));
-        Assert.Equal(Universe(PdfLineGrouping.VisualLineV2), Universe(PdfLineGrouping.VisualLineV2));
+            Lines(candidate).Select(line => $"{line.Page}|{line.Y:F4}|{line.Left:F4}|{line.Text}"),
+            Lines(candidate).Select(line => $"{line.Page}|{line.Y:F4}|{line.Left:F4}|{line.Text}"));
+        Assert.Equal(Universe(candidate, PdfBlockGrouping.LegacyV1), Universe(candidate, PdfBlockGrouping.LegacyV1));
     }
 
     [Fact]
@@ -177,8 +325,8 @@ public sealed class PdfLineExtractionTests
     {
         // The whole point of the seam. V1 is still what production builds, and its identity is the
         // one every frozen Gold, preflight and baseline artifact names.
-        Assert.Equal(ActiveUniverseSha, Universe(PdfLineGrouping.MidpointV1));
-        Assert.NotEqual(ActiveUniverseSha, Universe(PdfLineGrouping.VisualLineV2));
+        Assert.Equal(ActiveUniverseSha, Universe(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1));
+        Assert.NotEqual(ActiveUniverseSha, Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.LegacyV1));
     }
 
     // ---- what the candidate would change ------------------------------------------------------
@@ -189,8 +337,8 @@ public sealed class PdfLineExtractionTests
         var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
         Assert.Equal(AuthoritativeTotal, gold.Headings.Count);
 
-        var before = Occurrences(PdfLineGrouping.MidpointV1);
-        var after = Occurrences(PdfLineGrouping.VisualLineV2);
+        var before = Occurrences(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1);
+        var after = Occurrences(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.LegacyV1);
 
         // BEFORE resolves by alias, which is authoritative there. AFTER cannot: a candidate
         // reconstruction renumbers every occurrence, so resolving by alias would compare a heading
@@ -298,8 +446,8 @@ public sealed class PdfLineExtractionTests
             activeGrouping = nameof(PdfLineGrouping.MidpointV1),
             candidateGrouping = nameof(PdfLineGrouping.VisualLineV2),
             activeAuthorityMoved = false,
-            currentRuntimeUniverseSha256 = Universe(PdfLineGrouping.MidpointV1),
-            shadowRuntimeUniverseSha256 = Universe(PdfLineGrouping.VisualLineV2),
+            currentRuntimeUniverseSha256 = Universe(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1),
+            shadowRuntimeUniverseSha256 = Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.LegacyV1),
 
             rule = new
             {
@@ -388,7 +536,127 @@ public sealed class PdfLineExtractionTests
             > beforeRows.Count(row => row.FullyRepresentable));
     }
 
+    // ---- what the segment candidate does to a real document and to the corpus -------------------
+
+    [Fact]
+    public void The_segment_universe_keeps_every_approved_heading_representable()
+    {
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var reference = Occurrences(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1);
+        var aliases = PdfSourceOccurrenceBoundary.Aliases(reference.Count);
+        var goldTexts = gold.Headings
+            .Select(heading => heading.VerbatimText ?? reference[Array.IndexOf(aliases, heading.SourceAlias)].VerbatimText)
+            .ToArray();
+
+        // Blocks still form the occurrence, as they do on the other side of this comparison. The
+        // line-atom catalog below is built and measured, but binding a heading that wraps needs a
+        // contract for naming several atoms, and that is a later decision.
+        var after = Occurrences(PdfLineGrouping.VisualLineSegmentV3, PdfBlockGrouping.ContinuationV2);
+        var indexes = PdfSourceOccurrenceBoundary.Locate(after, gold.Headings, goldTexts, out var missing);
+        var rows = PdfSourceOccurrenceBoundary.Classify(after, gold.Headings, indexes);
+        var census = rows.GroupBy(row => row.Boundary)
+            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
+
+        var segments = Lines(PdfLineGrouping.VisualLineSegmentV3);
+
+        FreezeArtifact.AssertJson(Artifacts, "doc-0252-visual-line-segment-shadow.v1.json", new
+        {
+            artifactKind = "a99_pdf_visual_line_segment_shadow",
+            schemaVersion = "a99-pdf-visual-line-segment-shadow-v1",
+            intervention = "PDF_VISUAL_LINE_SEGMENT_AUTHORITY",
+            providerCalls = 0,
+            modelCalls = 0,
+
+            rule = new
+            {
+                statement = "A row is divided where a gap much wider than the page's own word space sits in a corridor that a neighbouring row also leaves open while carrying text on both sides of it.",
+                candidateGapFactor = PdfVisualRegion.CandidateGapFactor,
+                neighbourWindow = PdfVisualRegion.NeighbourWindow,
+                corridorSupportRatio = PdfVisualRegion.CorridorSupportRatio,
+                supportingRowsRequired = PdfVisualRegion.SupportingRowsRequired,
+                whyNotGapAlone = "A wide gap is not evidence of a second region. Tab-aligned metadata, a folio beside a running header, a justified last line and a signature line all leave one. What separates two regions is whitespace that persists across rows with text on both sides of it.",
+                riskCensusIsNotASplitRule = "The corpus count of rows with a jump over three line-heights is a risk census. It is reported beside the number actually divided, and the two are not the same measurement.",
+            },
+
+            lineage = new
+            {
+                activeAuthorityMoved = false,
+                activeRuntimeUniverseSha256 = Universe(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1),
+                lineFixedShadowSha256 = Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.LegacyV1),
+                blockFixedShadowSha256 = Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.ContinuationV2),
+                lineSegmentShadowSha256 = Universe(PdfLineGrouping.VisualLineSegmentV3, PdfBlockGrouping.ContinuationV2),
+            },
+
+            doc0252 = new
+            {
+                visualRows = Lines(PdfLineGrouping.VisualLineV2).Count,
+                visualLineSegments = segments.Count,
+                occurrences = after.Count,
+                // The future coordinate system, built through its own seam and measured. Nothing
+                // routes through it; it is here so the atom count is a fact rather than a plan.
+                lineAtomCatalogUnits = DocumentSourceCatalogBuilder
+                    .FromPdfVisualLineSegments(segments).Units.Count,
+                boundary = census,
+                fullyRepresentable = rows.Count(row => row.FullyRepresentable),
+                notRepresentable = rows.Where(row => !row.FullyRepresentable)
+                    .Select(PdfSourceOccurrenceBoundary.Serialize).ToArray(),
+                headingsNotFound = missing,
+                claims = rows.Select(PdfSourceOccurrenceBoundary.Serialize).ToArray(),
+            },
+
+            corpus = CorpusCensus(),
+        });
+
+        Assert.Empty(missing);
+        Assert.Equal(AuthoritativeTotal, rows.Count(row => row.FullyRepresentable));
+        Assert.Equal(0, census.GetValueOrDefault("FRAGMENTED"));
+    }
+
+    [Fact]
+    public void The_adjudicated_layout_cases_come_out_as_a_reader_would_read_them()
+    {
+        // The rule is judged against rows a person looked at, held in their own artifact so the
+        // rule cannot be written to agree with them. Each case is re-derived from its document
+        // rather than compared with a stored outcome.
+        using var adjudication = JsonDocument.Parse(File.ReadAllText(
+            System.IO.Path.Combine(TestRepository.Root(),
+                $"{Artifacts}/visual-line-segment-adjudication.v1.json"
+                    .Replace('/', System.IO.Path.DirectorySeparatorChar))));
+
+        var results = new List<(string Case, string Expected, string Actual)>();
+        foreach (var item in adjudication.RootElement.GetProperty("cases").EnumerateArray())
+        {
+            var caseId = item.GetProperty("caseId").GetString()!;
+            var expected = item.GetProperty("expected").GetString()!;
+            var parts = caseId.Split('|');
+            var row = FindRow(parts[0], int.Parse(parts[1][1..]), double.Parse(parts[2]));
+            Assert.True(row is not null, $"{caseId} no longer names a row in its document");
+            results.Add((caseId, expected, row!.Count > 1 ? "DIVIDED" : "WHOLE"));
+        }
+
+        // A case the reader marked as two regions that the rule leaves whole is a miss, and it is
+        // declared as one in the artifact. Dividing a row the reader called single is the failure
+        // this gate exists for, because an atom that splits one region cannot be bound to it.
+        var falseSplits = results
+            .Where(item => item.Expected == "WHOLE" && item.Actual == "DIVIDED")
+            .ToArray();
+        var missed = results
+            .Where(item => item.Expected == "DIVIDED" && item.Actual == "WHOLE")
+            .ToArray();
+        var declaredMisses = results.Count(item => item.Expected == "UNDER_SPLIT");
+
+        Assert.Empty(falseSplits.Select(item => item.Case));
+        Assert.Empty(missed.Select(item => item.Case));
+        Assert.All(results.Where(item => item.Expected == "UNDER_SPLIT"),
+            item => Assert.Equal("WHOLE", item.Actual));
+        Assert.True(declaredMisses > 0, "the artifact should keep recording what this rule misses");
+    }
+
     // ---- helpers ------------------------------------------------------------------------------
+
+    /// <summary>Both candidate reconstructions. Neither is active; both must hold the invariants.</summary>
+    private static readonly PdfLineGrouping[] Candidates =
+        [PdfLineGrouping.VisualLineV2, PdfLineGrouping.VisualLineSegmentV3];
 
     private static PdfVisualLineBucket Line(Glyph first)
     {
@@ -416,13 +684,6 @@ public sealed class PdfLineExtractionTests
         using var document = PdfDocument.Open(Path_);
         return PdfLineExtraction.ExtractLines(document, grouping);
     }
-
-    private static IReadOnlyList<PdfSemanticBlock> Occurrences(PdfLineGrouping grouping) =>
-        PdfSemanticBlockGrouper.Build(
-            PdfLineBlockFilter.Analyze(Lines(grouping)), includeRiskLines: true);
-
-    private static string Universe(PdfLineGrouping grouping) =>
-        PdfCanonicalSourceUniverseBuilder.Build(Path_, Lines(grouping)).SourceUniverseSha256;
 
     /// <summary>One extracted glyph, identified by what it is and where it was drawn.</summary>
     private static string Atom(Letter letter) =>
@@ -500,6 +761,166 @@ public sealed class PdfLineExtractionTests
     {
         var sorted = values.Order().ToArray();
         return sorted.Length == 0 ? 0 : sorted[sorted.Length / 2];
+    }
+
+    private static IReadOnlyList<PdfSemanticBlock> Occurrences(
+        PdfLineGrouping lines, PdfBlockGrouping blocks) =>
+        PdfSemanticBlockGrouper.Build(
+            PdfLineBlockFilter.Analyze(Lines(lines)), includeRiskLines: true, grouping: blocks);
+
+    private static string Universe(PdfLineGrouping lines, PdfBlockGrouping blocks) =>
+        PdfCanonicalSourceUniverseBuilder.Build(Path_, Lines(lines), blocks).SourceUniverseSha256;
+
+    /// <summary>
+    /// One reconstructed row, recovered from the segments it was divided into. Segments are emitted
+    /// row by row and left to right, so a segment beginning to the right of the one before it on an
+    /// overlapping band belongs to the same row.
+    /// </summary>
+    private static List<List<PdfLine>> Rows(IReadOnlyList<PdfLine> segments)
+    {
+        var rows = new List<List<PdfLine>>();
+        foreach (var segment in segments)
+        {
+            var open = rows.Count > 0 ? rows[^1] : null;
+            var beside = open is not null &&
+                open[^1].Page == segment.Page &&
+                segment.Left > open[^1].Right &&
+                segment.Top > open[^1].Bottom && segment.Bottom < open[^1].Top;
+            if (beside) open!.Add(segment);
+            else rows.Add([segment]);
+        }
+
+        return rows;
+    }
+
+    /// <summary>Every horizontal gap inside a row, in line-heights, however the row was divided.</summary>
+    private static IEnumerable<double> RowGaps(IReadOnlyList<PdfLine> row)
+    {
+        var scale = row.Max(segment => Math.Max(segment.FontSize, (segment.Top ?? 0) - (segment.Bottom ?? 0)));
+        if (scale <= 0) yield break;
+
+        foreach (var segment in row)
+        {
+            var spans = segment.Projection.SpanMap;
+            for (var index = 1; index < spans.Count; index++)
+                yield return (spans[index].Left - spans[index - 1].Right) / scale;
+        }
+
+        for (var index = 1; index < row.Count; index++)
+            yield return (row[index].Left - row[index - 1].Right) / scale;
+    }
+
+    /// <summary>
+    /// The whole corpus under the candidate, so the rule is judged on documents it was not designed
+    /// against. Samples are taken deterministically, by file name and row order, and are evidence
+    /// for adjudication rather than an answer.
+    /// </summary>
+    private static object CorpusCensus()
+    {
+        var pdfs = Directory
+            .GetFiles(System.IO.Path.Combine(TestRepository.Root(), "todo10_8", "heading_corpus_100"),
+                "*.pdf", SearchOption.AllDirectories)
+            .OrderBy(System.IO.Path.GetFileName, StringComparer.Ordinal)
+            .ToArray();
+
+        int documents = 0, rowsTotal = 0, segmentsTotal = 0, unreadable = 0;
+        int one = 0, two = 0, three = 0, riskRows = 0, riskSplit = 0, documentsWithDivided = 0;
+        var divided = new List<object>();
+        var wideButWhole = new List<object>();
+
+        foreach (var path in pdfs)
+        {
+            IReadOnlyList<PdfLine> segments;
+            try
+            {
+                using var document = PdfDocument.Open(path);
+                segments = PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3);
+            }
+            catch (Exception)
+            {
+                // A document this parser cannot open says nothing about segmentation. It is counted
+                // out rather than counted as clean.
+                unreadable++;
+                continue;
+            }
+
+            documents++;
+            segmentsTotal += segments.Count;
+            var rows = Rows(segments);
+            rowsTotal += rows.Count;
+
+            var name = System.IO.Path.GetFileName(path);
+            var dividedHere = 0;
+            var wideHere = 0;
+            foreach (var row in rows)
+            {
+                if (row.Count == 1) one++;
+                else if (row.Count == 2) two++;
+                else three++;
+
+                var wide = RowGaps(row).Any(gap => gap > 3.0);
+                if (wide) riskRows++;
+
+                if (row.Count > 1)
+                {
+                    dividedHere++;
+                    if (wide) riskSplit++;
+                    if (dividedHere <= 2) divided.Add(Case(name, row));
+                }
+                else if (wide && ++wideHere <= 2)
+                {
+                    wideButWhole.Add(Case(name, row));
+                }
+            }
+
+            if (dividedHere > 0) documentsWithDivided++;
+        }
+
+        return new
+        {
+            documents,
+            unreadableDocuments = unreadable,
+            visualRows = rowsTotal,
+            totalSegments = segmentsTotal,
+            rowsWith1Segment = one,
+            rowsWith2Segments = two,
+            rowsWith3PlusSegments = three,
+            documentsWithMultiSegmentRows = documentsWithDivided,
+            riskRowsWithGapOver3LineHeights = riskRows,
+            riskRowsActuallyDivided = riskSplit,
+            note = "The two risk numbers are not the same measurement. The first counts rows with wide whitespace; the second counts rows the corridor rule divided.",
+            dividedSamples = divided,
+            wideButUndividedSamples = wideButWhole,
+        };
+    }
+
+    private static object Case(string document, IReadOnlyList<PdfLine> row) => new
+    {
+        caseId = $"{document}|p{row[0].Page}|{row[0].Y:F1}",
+        page = row[0].Page,
+        rowText = string.Join("  ", row.Select(segment => segment.Text)),
+        segments = row.Select(segment => new
+        {
+            text = segment.Text,
+            left = Math.Round(segment.Left, 1),
+            right = Math.Round(segment.Right, 1),
+        }).ToArray(),
+    };
+
+    /// <summary>The row a case names, found again in its own document by page and height.</summary>
+    private static List<PdfLine>? FindRow(string document, int page, double y)
+    {
+        var path = Directory
+            .GetFiles(System.IO.Path.Combine(TestRepository.Root(), "todo10_8", "heading_corpus_100"),
+                document, SearchOption.AllDirectories)
+            .OrderBy(item => item, StringComparer.Ordinal)
+            .FirstOrDefault();
+        if (path is null) return null;
+
+        using var pdf = PdfDocument.Open(path);
+        var rows = Rows(PdfLineExtraction.ExtractLines(pdf, PdfLineGrouping.VisualLineSegmentV3));
+        return rows.FirstOrDefault(row =>
+            row[0].Page == page && Math.Abs(row[0].Y - y) < 0.05);
     }
 
     private static object[] Serialize(IReadOnlyList<PdfSourceOccurrenceBoundary.PdfPunctuationRow> rows) =>

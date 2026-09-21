@@ -1,0 +1,80 @@
+{
+  "artifactKind": "a99_pdf_visual_line_segment_adjudication",
+  "schemaVersion": "a99-pdf-visual-line-segment-adjudication-v1",
+  "adjudicatedBy": "MODEL_GEOMETRIC_REVIEW",
+  "userApproved": false,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "note": [
+    "This is not semantic Gold and no part of it is user-approved. It is a set of layout judgements about whether one reconstructed row holds one region or several, made by reading each row's text and glyph boxes.",
+    "It is kept apart from the segmentation rule on purpose. A rule that had these cases built into it would agree with them by construction, and the agreement would say nothing.",
+    "Every case names a document, a page and the row's Y, so it is re-derived from the source each run rather than stored as an outcome."
+  ],
+  "verdicts": {
+    "DIVIDED": "The row holds separate regions and the candidate must divide it.",
+    "WHOLE": "The row is one region and the candidate must leave it alone.",
+    "UNDER_SPLIT": "The row holds separate regions, the candidate leaves it whole, and that is recorded as a known miss rather than accepted as correct. Conservative: it costs a coarse atom, not a wrong one."
+  },
+  "cases": [
+    {
+      "caseId": "001_Bo_luat_Dan_su_91-2015-QH13.pdf|p1|712.9",
+      "category": "GOVERNMENT_MASTHEAD",
+      "expected": "DIVIDED",
+      "reason": "Issuing body on the left, national heading on the right. Two rows carry the same corridor, and both have text on either side of it."
+    },
+    {
+      "caseId": "004_Luat_Dau_tu_61-2020-QH14_EN.pdf|p1|784.5",
+      "category": "GOVERNMENT_MASTHEAD",
+      "expected": "DIVIDED",
+      "reason": "The same masthead in English, over two rows: THE NATIONAL / ASSEMBLY against THE SOCIALIST REPUBLIC OF VIETNAM / Independence - Freedom - Happiness."
+    },
+    {
+      "caseId": "012_Luat_Ke_toan_hop_nhat_2026.pdf|p39|380.0",
+      "category": "REFERENCE_AND_DATE_LINE",
+      "expected": "DIVIDED",
+      "reason": "Document number on the left, place and date on the right, under a masthead row that divides at the same corridor."
+    },
+    {
+      "caseId": "019_TT_200-2014_Che_do_ke_toan_DN.pdf|p1|626.9",
+      "category": "REFERENCE_AND_DATE_LINE",
+      "expected": "DIVIDED",
+      "reason": "As above, in a circular rather than a consolidated law."
+    },
+    {
+      "caseId": "020_TT_133-2016_Che_do_ke_toan_SME.pdf|p19|296.6",
+      "category": "TABLE_ROW",
+      "expected": "DIVIDED",
+      "reason": "Cells of an accounting table. The column corridors hold across the rows above and below."
+    },
+    {
+      "caseId": "024_ND_15-2020_Xu_phat_BC_VT_CNTT.pdf|p85|758.6",
+      "category": "SIGNATURE_BLOCK",
+      "expected": "DIVIDED",
+      "reason": "Distribution list on the left, signing authority on the right. Two independent columns running down the closing page."
+    },
+    {
+      "caseId": "006_Luat_Dat_dai_31-2024-QH15.pdf|p1|781.7",
+      "category": "RUNNING_HEADER_WITH_FOLIO",
+      "expected": "WHOLE",
+      "reason": "Gazette reference and page number. One region with a wide gap before the folio, and no neighbouring row keeps that gap open."
+    },
+    {
+      "caseId": "009_Luat_Giao_dich_dien_tu_20-2023-QH15.pdf|p1|781.5",
+      "category": "RUNNING_HEADER_WITH_FOLIO",
+      "expected": "WHOLE",
+      "reason": "The same header with the folio on the other side. Still one region."
+    },
+    {
+      "caseId": "004_Luat_Dau_tu_61-2020-QH14_EN.pdf|p19|469.1",
+      "category": "WATERMARK_FRAGMENT",
+      "expected": "WHOLE",
+      "reason": "A watermark fragment lands on the baseline of a line of body text. It is arguably a separate region, but it appears at a different x on each row it touches, so there is no corridor to read. Left whole, and recorded as a residual rather than a success."
+    },
+    {
+      "caseId": "006_Luat_Dat_dai_31-2024-QH15.pdf|p1|746.3",
+      "category": "GOVERNMENT_MASTHEAD",
+      "expected": "UNDER_SPLIT",
+      "reason": "The same masthead as case 1, but this printing puts nothing to the left of the national heading on the second row, and the row above is a full-width running header. One row shows the division and no other confirms it, so the rule declines. The evidence really is one row; the cost is a coarse atom, not a wrong one."
+    }
+  ]
+}

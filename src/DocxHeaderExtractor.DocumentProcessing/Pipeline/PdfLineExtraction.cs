@@ -46,6 +46,12 @@ internal enum PdfLineGrouping
     /// Baseline compatibility plus vertical overlap. See <see cref="PdfVisualLineBucket"/>.
     /// </summary>
     VisualLineV2,
+
+    /// <summary>
+    /// <see cref="VisualLineV2"/>'s rows, then cut where a vertical corridor divides one row into
+    /// separate regions. See <see cref="PdfVisualRegion"/>.
+    /// </summary>
+    VisualLineSegmentV3,
 }
 
 /// <summary>
@@ -195,7 +201,8 @@ internal static class PdfLineExtraction
             // one document cannot produce two universes. V1 keeps the midpoint order its tolerance
             // is measured against, down to the tie-breaks, because every frozen universe hash was
             // taken over exactly this sequence.
-            IReadOnlyList<Letter> letters = grouping == PdfLineGrouping.VisualLineV2
+            var byBaseline = grouping is PdfLineGrouping.VisualLineV2 or PdfLineGrouping.VisualLineSegmentV3;
+            IReadOnlyList<Letter> letters = byBaseline
                 ? visible
                     .OrderByDescending(l => l.StartBaseLine.Y)
                     .ThenBy(l => l.BoundingBox.Left)
@@ -207,7 +214,7 @@ internal static class PdfLineExtraction
                     .ToList();
 
             var buckets = new List<IReadOnlyList<Letter>>();
-            if (grouping == PdfLineGrouping.VisualLineV2)
+            if (byBaseline)
             {
                 buckets.AddRange(PdfVisualLineBucket.Split(letters, PdfVisualLineBucket.Of));
             }
@@ -232,6 +239,9 @@ internal static class PdfLineExtraction
                     current.Add(letter);
                 }
             }
+
+            if (grouping == PdfLineGrouping.VisualLineSegmentV3)
+                buckets = Segment(buckets, page);
 
             foreach (var bucket in buckets)
             {
@@ -329,6 +339,51 @@ internal static class PdfLineExtraction
             }
         }
         return lines;
+    }
+
+    /// <summary>
+    /// Divides each reconstructed row wherever a vertical corridor separates two regions of the
+    /// page. The row order is kept and each row's segments follow it left to right, so the page
+    /// still reads top to bottom and the glyphs of a row stay together and in order.
+    /// </summary>
+    private static List<IReadOnlyList<Letter>> Segment(
+        List<IReadOnlyList<Letter>> rows, UglyToad.PdfPig.Content.Page page)
+    {
+        var ordered = rows
+            .Select(row => row.OrderBy(l => l.BoundingBox.Left).ToArray())
+            .ToArray();
+
+        // The page's own word space, taken from the gaps the projection already treats as spaces.
+        var spaces = new List<double>();
+        foreach (var row in ordered)
+            for (var index = 1; index < row.Length; index++)
+            {
+                var previous = row[index - 1];
+                var gap = row[index].BoundingBox.Left - previous.BoundingBox.Right;
+                if (IsMatchWordGapForAudit(gap, previous.FontSize, previous.BoundingBox.Height))
+                    spaces.Add(gap);
+            }
+
+        var cuts = PdfVisualRegion.Cuts(
+            ordered.Select(row => (IReadOnlyList<PdfVisualRegion.Box>)row
+                .Select(l => new PdfVisualRegion.Box(l.BoundingBox.Left, l.BoundingBox.Right))
+                .ToArray()).ToArray(),
+            PdfVisualRegion.WordGap(spaces));
+
+        var segments = new List<IReadOnlyList<Letter>>(rows.Count);
+        for (var row = 0; row < ordered.Length; row++)
+        {
+            var start = 0;
+            foreach (var cut in cuts[row])
+            {
+                segments.Add(ordered[row][start..(cut + 1)]);
+                start = cut + 1;
+            }
+
+            segments.Add(ordered[row][start..]);
+        }
+
+        return segments;
     }
 
     private static double MidY(Letter l) => (l.BoundingBox.Bottom + l.BoundingBox.Top) / 2.0;
