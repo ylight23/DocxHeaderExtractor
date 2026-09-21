@@ -213,49 +213,6 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
                 }),
             }, ct, executionLease);
 
-    /// <summary>Persists the downstream decision chain without making it an execution input.</summary>
-    public Task RecordDownstreamProvenanceAsync(
-        IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyList<PdfBlockDecision> decisions,
-        IReadOnlyList<PdfCandidateStageTrace> traces,
-        IReadOnlySet<string> groundedIds,
-        IReadOnlySet<string> emittedIds,
-        IReadOnlyList<PdfSemanticClusterDecision> clusterDecisions,
-        CancellationToken ct,
-        PdfLaneExecutionLease? executionLease = null)
-    {
-        var decisionById = decisions.ToDictionary(item => item.Id, StringComparer.Ordinal);
-        var traceById = traces.ToDictionary(item => item.Id, StringComparer.Ordinal);
-        return AppendAsync("downstream", "provenance", "completed", new
-        {
-            clusterDecisions,
-            occurrences = blocks.Select(block =>
-            {
-                decisionById.TryGetValue(block.Id, out var decision);
-                traceById.TryGetValue(block.Id, out var trace);
-                var sourceLineIds = block.Lines.Select(PdfLineIdentity.Of).ToArray();
-                return new
-                {
-                    sourceIdentity = new
-                    {
-                        page = block.Page,
-                        sourceLineIds,
-                        sourceSpan = decision?.HeadingSpan,
-                    },
-                    candidateIdDiagnostic = block.Id,
-                    semanticRole = decision?.Role.ToString(),
-                    semanticReason = decision?.Reason,
-                    spanProposal = decision?.HeadingSpan,
-                    spanOutcome = decision?.HeadingSpan is not null ? "RESOLVED" : "NO_PROPOSAL",
-                    validatorStatus = trace?.ValidationStatus,
-                    validatorReason = trace?.Reason,
-                    groundingStatus = groundedIds.Contains(block.Id) ? "GROUNDED" : "NOT_GROUNDED",
-                    outputStatus = emittedIds.Contains(block.Id) ? "EMITTED" : "NOT_EMITTED",
-                };
-            }).ToArray(),
-        }, ct, executionLease);
-    }
-
     public async Task RecordVisualRegionAsync(
         PdfVisualRecoveryTrace trace,
         CancellationToken ct,
