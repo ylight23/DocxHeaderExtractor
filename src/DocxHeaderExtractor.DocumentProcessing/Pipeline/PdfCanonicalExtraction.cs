@@ -87,7 +87,8 @@ public static class PdfCanonicalExtraction
             authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
                 file.LocalPath, gated ?? used, ct,
                 semanticLaneOptions: semanticLaneOptions,
-                replayCapture: options.ReplayCapture);
+                replayCapture: options.ReplayCapture,
+                experimentGate: options.ExperimentGate);
         }
         finally
         {

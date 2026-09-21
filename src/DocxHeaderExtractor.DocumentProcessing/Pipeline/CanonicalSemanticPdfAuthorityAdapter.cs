@@ -26,11 +26,13 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         CancellationToken cancellationToken,
         CanonicalSemanticExperiment? experiment = null,
         SemanticLaneOptions? semanticLaneOptions = null,
-        SemanticAuthorityReplayCaptureRequest? replayCapture = null)
+        SemanticAuthorityReplayCaptureRequest? replayCapture = null,
+        PdfExperimentExecutionGate? experimentGate = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
         var universe = PdfCanonicalSourceUniverseBuilder.Build(pdfPath);
+        experimentGate?.EnsureLiveSourceUniverse(universe.SourceUniverseSha256);
         if (universe.ParserLineCount == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer");
         if (universe.Blocks.Count == 0)

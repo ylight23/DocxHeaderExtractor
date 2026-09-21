@@ -174,6 +174,22 @@ public sealed class PdfExperimentExecutionGate
             "SEMANTIC_ROLE_EVALUATION_MISMATCH");
     }
 
+    /// <summary>
+    /// Binds the execution gate to the source universe actually parsed by the live PDF route.
+    /// This is deliberately checked before the lane starts: a manifest-bound runtime binding can
+    /// otherwise look valid while the parser has produced a different universe identity, allowing
+    /// transport to spend calls before replay capture reports the mismatch.
+    /// </summary>
+    internal void EnsureLiveSourceUniverse(string sourceUniverseSha256)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(sourceUniverseSha256);
+        EnsureReady();
+        Require(sourceUniverseSha256, _manifest.SourceUniverseSha256,
+            "LIVE_SOURCE_UNIVERSE_SHA_MISMATCH");
+        Require(sourceUniverseSha256, _runtime.SourceUniverseSha256,
+            "LIVE_RUNTIME_SOURCE_UNIVERSE_SHA_MISMATCH");
+    }
+
     public void ReserveProviderCall(string stage)
     {
         if (string.IsNullOrWhiteSpace(stage))

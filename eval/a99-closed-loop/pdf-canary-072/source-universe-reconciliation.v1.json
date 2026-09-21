@@ -1,0 +1,56 @@
+{
+  "artifactKind": "a99_pdf_source_universe_reconciliation",
+  "schemaVersion": "a99-pdf-source-universe-reconciliation-v1",
+  "documentId": "DOC-0252",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "oldApprovedAuthority": {
+    "sourceUniverseSha256": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+    "producer": "committed pdf-gold-doc0252/source-universe.v1.json",
+    "hash": "canonical LF UTF-8 bytes of the complete committed artifact",
+    "reproducible": true
+  },
+  "liveRuntimeAuthority": {
+    "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "producer": "PdfCanonicalSourceUniverseBuilder.Build + PdfCanonicalSourceUniverseHash.Compute",
+    "schemaVersion": "a99-pdf-runtime-source-universe-v1",
+    "repeatedBuilds": 3,
+    "deterministic": true
+  },
+  "reconciledPreflightAuthority": {
+    "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "producer": "the live PdfCanonicalSourceUniverseBuilder output; new preflight/manifest identity required before transport",
+    "existingApprovedManifestMutated": false
+  },
+  "replayCaptureAuthority": {
+    "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "producer": "CanonicalSemanticProductionInput.SourceUniverseSha256 and SemanticAuthorityReplayBundleFactory"
+  },
+  "aliasCatalogHash": "867a2dd5cccf46984a1b282e7a69916dbececb1f3a35da2e5b1e7f6379774305",
+  "semanticDiff": {
+    "oldRows": 1013,
+    "runtimeRows": 1013,
+    "onlyOld": 0,
+    "onlyRuntime": 0,
+    "textDiff": 0,
+    "sourceIdentityDiff": 0,
+    "ordinalDiff": 0,
+    "pageDiff": 0,
+    "spanDiff": 0,
+    "orderDiff": 0,
+    "samePayload": 1013,
+    "goldClaims": 41,
+    "goldCompatibleWithRuntimeUniverse": true
+  },
+  "s2cAttempt": {
+    "status": "ABORTED_AUTHORITY_MISMATCH",
+    "providerCallsConsumed": 9,
+    "publishedReplayBundles": 0,
+    "r2Executed": false,
+    "r3Executed": false,
+    "usableBaselineRepeats": 0
+  },
+  "classification": "MIXED_AUTHORITY_DRIFT",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "transportResumption": "blocked until a new preflight, manifest, call plan, and explicit approval"
+}
