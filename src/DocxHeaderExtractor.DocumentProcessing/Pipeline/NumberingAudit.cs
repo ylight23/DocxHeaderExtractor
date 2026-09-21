@@ -152,7 +152,7 @@ public static class NumberingAudit
     /// <c>Chương II QUY ĐỊNH CHUNG</c>, không còn dấu chấm ở giữa. Hậu quả đo được trên
     /// <c>082_Bo_luat_Lao_dong_2019_EN</c>: 26 <c>Chapter</c> + 221 <c>Article</c> mà TẤT CẢ đều
     /// cấp 1 — vì <c>Chapter</c> không parse được nên tài liệu chỉ còn MỘT chữ ký, mà
-    /// <see cref="StructuralHierarchyResolver"/> đòi từ hai chữ ký trở lên mới suy được quan hệ
+    /// Bộ suy cấp cấu trúc đòi từ hai chữ ký trở lên mới suy được quan hệ
     /// lồng nhau. Không tài liệu nào có 26 chương và 221 điều mà chỉ một cấp.
     /// </para>
     /// <para>

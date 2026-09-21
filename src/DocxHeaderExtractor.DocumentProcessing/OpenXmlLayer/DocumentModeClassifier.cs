@@ -90,7 +90,7 @@ public static class DocumentModeClassifier
     /// <c>3.1.</c> bị luật <c>^\d+\.</c> bắt trước và gán nhầm cấp.
     /// <para>
     /// Ở đây chỉ dùng để NHẬN DẠNG chế độ, không dùng để gán cấp. Việc gán cấp đã có luật riêng và
-    /// đã đo: <c>StructuralHierarchyResolver.LocalListDepth</c> neo theo cha gần nhất (§31, đúng cấp
+    /// đã đo: luật neo theo cha gần nhất (§31, đúng cấp
     /// 81,1% → 91,5%). Spec §4.4 kết luận y hệt bằng corpus khác: <i>"cấp phải suy theo ngữ cảnh cha
     /// gần nhất, không gán cứng theo loại ký hiệu"</i> — hai tập dữ liệu độc lập, cùng một luật.
     /// </para>
