@@ -1,0 +1,785 @@
+{
+  "artifactKind": "a99_gold_adjudication_packet",
+  "schemaVersion": "a99-gold-adjudication-packet-v1",
+  "documentId": "DOC-0001",
+  "reviewStatus": "PENDING_HUMAN_REVIEW",
+  "authoritativeGoldCreated": false,
+  "documentAuthority": {
+    "sourcePath": "bench/01-style-chuan.docx",
+    "sourceType": "DOCX",
+    "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+    "sourceHashFromInventory": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+    "sourceUniverseSha256": "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba",
+    "aliasCatalogHash": "394c838cab35ed4d7fb9efc05f3fdab0ed3f7d6ea67c1826b81cdd6de38170ac",
+    "sourceUniverseProducer": "OpenXmlDocumentSource.Read + DocumentSourceCatalogBuilder.FromSourceDocument",
+    "sourceUniverseDeterministic": true,
+    "sourceUniverseBuilds": 2,
+    "parserLineCount": 0
+  },
+  "currentRuntimeEvaluator": {
+    "evaluatorIdentity": "a99-pdf-gold-evaluator-v3-bound-occurrence-semantic-role",
+    "occurrenceIdentity": "sourceAlias + exact UTF-16 span/bound parts",
+    "roleAuthority": "NOT_REQUIRED_FOR_OCCURRENCE_ADJUDICATION",
+    "semanticRolePreservedOnlyAsLegacyMetadata": true
+  },
+  "legacyHintProvenance": {
+    "path": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
+    "artifactKind": "a99_strict_gold_occurrence_binding",
+    "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+    "claimCount": 7,
+    "use": "REVIEW_HINT_ONLY",
+    "automaticAcceptance": false,
+    "claims": [
+      {
+        "ordinal": 0,
+        "sourceId": "body[1]/p[1]",
+        "oldStart": 0,
+        "oldEnd": 24,
+        "rawText": "Chương 1. Quy định chung",
+        "historicalApprovedText": "ChÆ°Æ¡ng 1. Quy Ä‘á»‹nh chung",
+        "semanticRole": "heading",
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "currentCandidateKeys": [
+          "S0001:0:24"
+        ]
+      },
+      {
+        "ordinal": 1,
+        "sourceId": "body[1]/p[3]",
+        "oldStart": 0,
+        "oldEnd": 23,
+        "rawText": "1.1. Phạm vi điều chỉnh",
+        "historicalApprovedText": "1.1. Pháº¡m vi Ä‘iá»\u0081u chá»‰nh",
+        "semanticRole": "heading",
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "currentCandidateKeys": [
+          "S0003:0:23"
+        ]
+      },
+      {
+        "ordinal": 2,
+        "sourceId": "body[1]/p[5]",
+        "oldStart": 0,
+        "oldEnd": 22,
+        "rawText": "1.2. Đối tượng áp dụng",
+        "historicalApprovedText": "1.2. Ä\u0090á»‘i tÆ°á»£ng Ã¡p dá»¥ng",
+        "semanticRole": "heading",
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "currentCandidateKeys": [
+          "S0005:0:22"
+        ]
+      },
+      {
+        "ordinal": 3,
+        "sourceId": "body[1]/p[7]",
+        "oldStart": 0,
+        "oldEnd": 22,
+        "rawText": "1.2.1. Cơ quan quản lý",
+        "historicalApprovedText": "1.2.1. CÆ¡ quan quáº£n lÃ½",
+        "semanticRole": "heading",
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "currentCandidateKeys": [
+          "S0007:0:22"
+        ]
+      },
+      {
+        "ordinal": 4,
+        "sourceId": "body[1]/p[9]",
+        "oldStart": 0,
+        "oldEnd": 24,
+        "rawText": "1.2.2. Đơn vị trực thuộc",
+        "historicalApprovedText": "1.2.2. Ä\u0090Æ¡n vá»‹ trá»±c thuá»™c",
+        "semanticRole": "heading",
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "currentCandidateKeys": [
+          "S0009:0:24"
+        ]
+      },
+      {
+        "ordinal": 5,
+        "sourceId": "body[1]/p[11]",
+        "oldStart": 0,
+        "oldEnd": 27,
+        "rawText": "Chương 2. Tổ chức thực hiện",
+        "historicalApprovedText": "ChÆ°Æ¡ng 2. Tá»• chá»©c thá»±c hiá»‡n",
+        "semanticRole": "heading",
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "currentCandidateKeys": [
+          "S0011:0:27"
+        ]
+      },
+      {
+        "ordinal": 6,
+        "sourceId": "body[1]/p[13]",
+        "oldStart": 0,
+        "oldEnd": 26,
+        "rawText": "2.1. Phân công trách nhiệm",
+        "historicalApprovedText": "2.1. PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m",
+        "semanticRole": "heading",
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "currentCandidateKeys": [
+          "S0013:0:26"
+        ]
+      }
+    ]
+  },
+  "sourceUniverse": {
+    "complete": true,
+    "aliases": [
+      {
+        "sourceAlias": "S0001",
+        "sourceId": "body[1]/p[1]",
+        "sourceOrdinal": 0,
+        "exactText": "Chương 1. Quy định chung",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 24
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[1]",
+          "paragraphIndex": 0,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": null,
+        "nextSourceAlias": "S0002",
+        "legacyHintCount": 1,
+        "candidateHintOnly": true
+      },
+      {
+        "sourceAlias": "S0002",
+        "sourceId": "body[1]/p[2]",
+        "sourceOrdinal": 1,
+        "exactText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 167
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[2]",
+          "paragraphIndex": 1,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0001",
+        "nextSourceAlias": "S0003",
+        "legacyHintCount": 0,
+        "candidateHintOnly": false
+      },
+      {
+        "sourceAlias": "S0003",
+        "sourceId": "body[1]/p[3]",
+        "sourceOrdinal": 2,
+        "exactText": "1.1. Phạm vi điều chỉnh",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 23
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[3]",
+          "paragraphIndex": 2,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0002",
+        "nextSourceAlias": "S0004",
+        "legacyHintCount": 1,
+        "candidateHintOnly": true
+      },
+      {
+        "sourceAlias": "S0004",
+        "sourceId": "body[1]/p[4]",
+        "sourceOrdinal": 3,
+        "exactText": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 147
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[4]",
+          "paragraphIndex": 3,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0003",
+        "nextSourceAlias": "S0005",
+        "legacyHintCount": 0,
+        "candidateHintOnly": false
+      },
+      {
+        "sourceAlias": "S0005",
+        "sourceId": "body[1]/p[5]",
+        "sourceOrdinal": 4,
+        "exactText": "1.2. Đối tượng áp dụng",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 22
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[5]",
+          "paragraphIndex": 4,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0004",
+        "nextSourceAlias": "S0006",
+        "legacyHintCount": 1,
+        "candidateHintOnly": true
+      },
+      {
+        "sourceAlias": "S0006",
+        "sourceId": "body[1]/p[6]",
+        "sourceOrdinal": 5,
+        "exactText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 167
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[6]",
+          "paragraphIndex": 5,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0005",
+        "nextSourceAlias": "S0007",
+        "legacyHintCount": 0,
+        "candidateHintOnly": false
+      },
+      {
+        "sourceAlias": "S0007",
+        "sourceId": "body[1]/p[7]",
+        "sourceOrdinal": 6,
+        "exactText": "1.2.1. Cơ quan quản lý",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 22
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[7]",
+          "paragraphIndex": 6,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0006",
+        "nextSourceAlias": "S0008",
+        "legacyHintCount": 1,
+        "candidateHintOnly": true
+      },
+      {
+        "sourceAlias": "S0008",
+        "sourceId": "body[1]/p[8]",
+        "sourceOrdinal": 7,
+        "exactText": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 147
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[8]",
+          "paragraphIndex": 7,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0007",
+        "nextSourceAlias": "S0009",
+        "legacyHintCount": 0,
+        "candidateHintOnly": false
+      },
+      {
+        "sourceAlias": "S0009",
+        "sourceId": "body[1]/p[9]",
+        "sourceOrdinal": 8,
+        "exactText": "1.2.2. Đơn vị trực thuộc",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 24
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[9]",
+          "paragraphIndex": 8,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0008",
+        "nextSourceAlias": "S0010",
+        "legacyHintCount": 1,
+        "candidateHintOnly": true
+      },
+      {
+        "sourceAlias": "S0010",
+        "sourceId": "body[1]/p[10]",
+        "sourceOrdinal": 9,
+        "exactText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 167
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[10]",
+          "paragraphIndex": 9,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0009",
+        "nextSourceAlias": "S0011",
+        "legacyHintCount": 0,
+        "candidateHintOnly": false
+      },
+      {
+        "sourceAlias": "S0011",
+        "sourceId": "body[1]/p[11]",
+        "sourceOrdinal": 10,
+        "exactText": "Chương 2. Tổ chức thực hiện",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 27
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[11]",
+          "paragraphIndex": 10,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0010",
+        "nextSourceAlias": "S0012",
+        "legacyHintCount": 1,
+        "candidateHintOnly": true
+      },
+      {
+        "sourceAlias": "S0012",
+        "sourceId": "body[1]/p[12]",
+        "sourceOrdinal": 11,
+        "exactText": "Các số liệu dẫn trong mục này được tổng hợp từ báo cáo quý gần nhất và đã được đối chiếu với hệ thống quản lý tập trung trước khi đưa vào tài liệu.",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 147
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[12]",
+          "paragraphIndex": 11,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0011",
+        "nextSourceAlias": "S0013",
+        "legacyHintCount": 0,
+        "candidateHintOnly": false
+      },
+      {
+        "sourceAlias": "S0013",
+        "sourceId": "body[1]/p[13]",
+        "sourceOrdinal": 12,
+        "exactText": "2.1. Phân công trách nhiệm",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 26
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[13]",
+          "paragraphIndex": 12,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0012",
+        "nextSourceAlias": "S0014",
+        "legacyHintCount": 1,
+        "candidateHintOnly": true
+      },
+      {
+        "sourceAlias": "S0014",
+        "sourceId": "body[1]/p[14]",
+        "sourceOrdinal": 13,
+        "exactText": "Nội dung phần này mô tả chi tiết các bước triển khai, kèm theo yêu cầu về hạ tầng và nhân sự vận hành, đồng thời nêu rõ trách nhiệm của từng đơn vị tham gia thực hiện.",
+        "exactUtf16Span": {
+          "start": 0,
+          "end": 167
+        },
+        "sourceAnchor": {
+          "sourceType": "docx",
+          "paragraphId": "body[1]/p[14]",
+          "paragraphIndex": 13,
+          "page": null,
+          "renderBlockId": null
+        },
+        "previousSourceAlias": "S0013",
+        "nextSourceAlias": null,
+        "legacyHintCount": 0,
+        "candidateHintOnly": false
+      }
+    ],
+    "note": "Every current source occurrence remains review-accessible. Candidate hints do not restrict approval."
+  },
+  "candidateOccurrences": [
+    {
+      "candidateOrdinal": 1,
+      "candidateKey": "S0001:0:24",
+      "documentId": "DOC-0001",
+      "sourceAlias": "S0001",
+      "sourceId": "body[1]/p[1]",
+      "sourceOrdinal": 0,
+      "exactVerbatimText": "Chương 1. Quy định chung",
+      "exactUtf16Span": {
+        "start": 0,
+        "end": 24
+      },
+      "page": null,
+      "previousSourceAlias": null,
+      "currentSourceAlias": "S0001",
+      "nextSourceAlias": "S0002",
+      "context": {
+        "before": "",
+        "current": "Chương 1. Quy định chung",
+        "after": ""
+      },
+      "legacyHint": {
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "headingOrdinals": [
+          0
+        ],
+        "semanticRoles": [
+          "heading"
+        ]
+      },
+      "ambiguityFlags": {
+        "multipleCurrentCandidates": false,
+        "boundaryChanged": false,
+        "sourceAliasChanged": false,
+        "exactCurrentOccurrence": true
+      },
+      "reviewStatus": "PENDING_HUMAN_REVIEW",
+      "decisionOptions": [
+        "APPROVE_HEADING",
+        "REJECT_NOT_HEADING",
+        "ADJUST_BOUNDARY",
+        "SPLIT_INTO_MULTIPLE",
+        "MERGE_AS_COMPOSITE",
+        "DUPLICATE_OCCURRENCE",
+        "NEEDS_REVIEW"
+      ]
+    },
+    {
+      "candidateOrdinal": 2,
+      "candidateKey": "S0003:0:23",
+      "documentId": "DOC-0001",
+      "sourceAlias": "S0003",
+      "sourceId": "body[1]/p[3]",
+      "sourceOrdinal": 2,
+      "exactVerbatimText": "1.1. Phạm vi điều chỉnh",
+      "exactUtf16Span": {
+        "start": 0,
+        "end": 23
+      },
+      "page": null,
+      "previousSourceAlias": "S0002",
+      "currentSourceAlias": "S0003",
+      "nextSourceAlias": "S0004",
+      "context": {
+        "before": "",
+        "current": "1.1. Phạm vi điều chỉnh",
+        "after": ""
+      },
+      "legacyHint": {
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "headingOrdinals": [
+          1
+        ],
+        "semanticRoles": [
+          "heading"
+        ]
+      },
+      "ambiguityFlags": {
+        "multipleCurrentCandidates": false,
+        "boundaryChanged": false,
+        "sourceAliasChanged": false,
+        "exactCurrentOccurrence": true
+      },
+      "reviewStatus": "PENDING_HUMAN_REVIEW",
+      "decisionOptions": [
+        "APPROVE_HEADING",
+        "REJECT_NOT_HEADING",
+        "ADJUST_BOUNDARY",
+        "SPLIT_INTO_MULTIPLE",
+        "MERGE_AS_COMPOSITE",
+        "DUPLICATE_OCCURRENCE",
+        "NEEDS_REVIEW"
+      ]
+    },
+    {
+      "candidateOrdinal": 3,
+      "candidateKey": "S0005:0:22",
+      "documentId": "DOC-0001",
+      "sourceAlias": "S0005",
+      "sourceId": "body[1]/p[5]",
+      "sourceOrdinal": 4,
+      "exactVerbatimText": "1.2. Đối tượng áp dụng",
+      "exactUtf16Span": {
+        "start": 0,
+        "end": 22
+      },
+      "page": null,
+      "previousSourceAlias": "S0004",
+      "currentSourceAlias": "S0005",
+      "nextSourceAlias": "S0006",
+      "context": {
+        "before": "",
+        "current": "1.2. Đối tượng áp dụng",
+        "after": ""
+      },
+      "legacyHint": {
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "headingOrdinals": [
+          2
+        ],
+        "semanticRoles": [
+          "heading"
+        ]
+      },
+      "ambiguityFlags": {
+        "multipleCurrentCandidates": false,
+        "boundaryChanged": false,
+        "sourceAliasChanged": false,
+        "exactCurrentOccurrence": true
+      },
+      "reviewStatus": "PENDING_HUMAN_REVIEW",
+      "decisionOptions": [
+        "APPROVE_HEADING",
+        "REJECT_NOT_HEADING",
+        "ADJUST_BOUNDARY",
+        "SPLIT_INTO_MULTIPLE",
+        "MERGE_AS_COMPOSITE",
+        "DUPLICATE_OCCURRENCE",
+        "NEEDS_REVIEW"
+      ]
+    },
+    {
+      "candidateOrdinal": 4,
+      "candidateKey": "S0007:0:22",
+      "documentId": "DOC-0001",
+      "sourceAlias": "S0007",
+      "sourceId": "body[1]/p[7]",
+      "sourceOrdinal": 6,
+      "exactVerbatimText": "1.2.1. Cơ quan quản lý",
+      "exactUtf16Span": {
+        "start": 0,
+        "end": 22
+      },
+      "page": null,
+      "previousSourceAlias": "S0006",
+      "currentSourceAlias": "S0007",
+      "nextSourceAlias": "S0008",
+      "context": {
+        "before": "",
+        "current": "1.2.1. Cơ quan quản lý",
+        "after": ""
+      },
+      "legacyHint": {
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "headingOrdinals": [
+          3
+        ],
+        "semanticRoles": [
+          "heading"
+        ]
+      },
+      "ambiguityFlags": {
+        "multipleCurrentCandidates": false,
+        "boundaryChanged": false,
+        "sourceAliasChanged": false,
+        "exactCurrentOccurrence": true
+      },
+      "reviewStatus": "PENDING_HUMAN_REVIEW",
+      "decisionOptions": [
+        "APPROVE_HEADING",
+        "REJECT_NOT_HEADING",
+        "ADJUST_BOUNDARY",
+        "SPLIT_INTO_MULTIPLE",
+        "MERGE_AS_COMPOSITE",
+        "DUPLICATE_OCCURRENCE",
+        "NEEDS_REVIEW"
+      ]
+    },
+    {
+      "candidateOrdinal": 5,
+      "candidateKey": "S0009:0:24",
+      "documentId": "DOC-0001",
+      "sourceAlias": "S0009",
+      "sourceId": "body[1]/p[9]",
+      "sourceOrdinal": 8,
+      "exactVerbatimText": "1.2.2. Đơn vị trực thuộc",
+      "exactUtf16Span": {
+        "start": 0,
+        "end": 24
+      },
+      "page": null,
+      "previousSourceAlias": "S0008",
+      "currentSourceAlias": "S0009",
+      "nextSourceAlias": "S0010",
+      "context": {
+        "before": "",
+        "current": "1.2.2. Đơn vị trực thuộc",
+        "after": ""
+      },
+      "legacyHint": {
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "headingOrdinals": [
+          4
+        ],
+        "semanticRoles": [
+          "heading"
+        ]
+      },
+      "ambiguityFlags": {
+        "multipleCurrentCandidates": false,
+        "boundaryChanged": false,
+        "sourceAliasChanged": false,
+        "exactCurrentOccurrence": true
+      },
+      "reviewStatus": "PENDING_HUMAN_REVIEW",
+      "decisionOptions": [
+        "APPROVE_HEADING",
+        "REJECT_NOT_HEADING",
+        "ADJUST_BOUNDARY",
+        "SPLIT_INTO_MULTIPLE",
+        "MERGE_AS_COMPOSITE",
+        "DUPLICATE_OCCURRENCE",
+        "NEEDS_REVIEW"
+      ]
+    },
+    {
+      "candidateOrdinal": 6,
+      "candidateKey": "S0011:0:27",
+      "documentId": "DOC-0001",
+      "sourceAlias": "S0011",
+      "sourceId": "body[1]/p[11]",
+      "sourceOrdinal": 10,
+      "exactVerbatimText": "Chương 2. Tổ chức thực hiện",
+      "exactUtf16Span": {
+        "start": 0,
+        "end": 27
+      },
+      "page": null,
+      "previousSourceAlias": "S0010",
+      "currentSourceAlias": "S0011",
+      "nextSourceAlias": "S0012",
+      "context": {
+        "before": "",
+        "current": "Chương 2. Tổ chức thực hiện",
+        "after": ""
+      },
+      "legacyHint": {
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "headingOrdinals": [
+          5
+        ],
+        "semanticRoles": [
+          "heading"
+        ]
+      },
+      "ambiguityFlags": {
+        "multipleCurrentCandidates": false,
+        "boundaryChanged": false,
+        "sourceAliasChanged": false,
+        "exactCurrentOccurrence": true
+      },
+      "reviewStatus": "PENDING_HUMAN_REVIEW",
+      "decisionOptions": [
+        "APPROVE_HEADING",
+        "REJECT_NOT_HEADING",
+        "ADJUST_BOUNDARY",
+        "SPLIT_INTO_MULTIPLE",
+        "MERGE_AS_COMPOSITE",
+        "DUPLICATE_OCCURRENCE",
+        "NEEDS_REVIEW"
+      ]
+    },
+    {
+      "candidateOrdinal": 7,
+      "candidateKey": "S0013:0:26",
+      "documentId": "DOC-0001",
+      "sourceAlias": "S0013",
+      "sourceId": "body[1]/p[13]",
+      "sourceOrdinal": 12,
+      "exactVerbatimText": "2.1. Phân công trách nhiệm",
+      "exactUtf16Span": {
+        "start": 0,
+        "end": 26
+      },
+      "page": null,
+      "previousSourceAlias": "S0012",
+      "currentSourceAlias": "S0013",
+      "nextSourceAlias": "S0014",
+      "context": {
+        "before": "",
+        "current": "2.1. Phân công trách nhiệm",
+        "after": ""
+      },
+      "legacyHint": {
+        "classification": "EXACT_CURRENT_OCCURRENCE_FOUND",
+        "headingOrdinals": [
+          6
+        ],
+        "semanticRoles": [
+          "heading"
+        ]
+      },
+      "ambiguityFlags": {
+        "multipleCurrentCandidates": false,
+        "boundaryChanged": false,
+        "sourceAliasChanged": false,
+        "exactCurrentOccurrence": true
+      },
+      "reviewStatus": "PENDING_HUMAN_REVIEW",
+      "decisionOptions": [
+        "APPROVE_HEADING",
+        "REJECT_NOT_HEADING",
+        "ADJUST_BOUNDARY",
+        "SPLIT_INTO_MULTIPLE",
+        "MERGE_AS_COMPOSITE",
+        "DUPLICATE_OCCURRENCE",
+        "NEEDS_REVIEW"
+      ]
+    }
+  ],
+  "reviewContract": {
+    "decisions": [
+      "APPROVE_HEADING",
+      "REJECT_NOT_HEADING",
+      "ADJUST_BOUNDARY",
+      "SPLIT_INTO_MULTIPLE",
+      "MERGE_AS_COMPOSITE",
+      "DUPLICATE_OCCURRENCE",
+      "NEEDS_REVIEW"
+    ],
+    "pendingDecision": "PENDING_HUMAN_REVIEW",
+    "boundaryAdjustmentRequiresCurrentBinding": true,
+    "unboundOrAmbiguousBlocksFutureGold": true
+  },
+  "counts": {
+    "sourceAliases": 14,
+    "legacyClaims": 7,
+    "candidateOccurrences": 7,
+    "exactCurrentOccurrenceFound": 7,
+    "multipleCurrentCandidates": 0,
+    "boundaryChanged": 0,
+    "sourceAliasChanged": 0,
+    "notFound": 0,
+    "semanticReviewRequired": 0,
+    "pendingHumanReview": 7
+  },
+  "modelCalls": 0,
+  "providerCalls": 0
+}
