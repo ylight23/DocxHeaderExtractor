@@ -1,0 +1,9 @@
+{
+  "artifactKind": "a99_pdf_replay_capture_contract",
+  "schemaVersion": "a99-pdf-replay-capture-contract-v1",
+  "experimentId": "DOC-0252-PDF-S2E-RUNTIME-B0",
+  "artifactRoot": "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252",
+  "requireReplayBundle": true,
+  "perRepeat": "provider response -\u003E pure parse -\u003E CanonicalSemanticProposal[] -\u003E atomic replay bundle -\u003E reload validation -\u003E source-aware validation",
+  "naming": "DOC-0252/r{repeat}/semantic-authority-replay-{repeat}.json; distinct from the aborted S2C root"
+}
