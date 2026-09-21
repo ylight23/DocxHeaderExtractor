@@ -1,0 +1,54 @@
+{
+  "artifactKind": "a99_canonical_gold",
+  "schemaVersion": "a99-canonical-gold-v1",
+  "authorityId": "DOC-0256",
+  "documentId": "DOC-0256",
+  "sourceId": null,
+  "source": {
+    "fileName": "076_ICP_IACG08_Minutes_2023.pdf",
+    "mediaType": "PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf",
+    "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0256.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semantic": {
+    "headingSetExhaustive": true,
+    "semanticHeadingTotal": 34,
+    "headings": []
+  },
+  "occurrence": {
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "bindingCoordinateSystem": null,
+    "sourceUniverseSha256": null,
+    "unavailableReason": "no occurrence artifact describes this source under the current authority",
+    "claims": []
+  },
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0256.semantic-freeze.v1.json",
+      "sha256": "e46a50337cf6a14f6b09538924f9682b7602424f532c68768c2393cc3bc26a9a",
+      "role": "SEMANTIC_AUTHORITY"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

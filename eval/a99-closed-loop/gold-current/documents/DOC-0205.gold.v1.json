@@ -1,0 +1,54 @@
+{
+  "artifactKind": "a99_canonical_gold",
+  "schemaVersion": "a99-canonical-gold-v1",
+  "authorityId": "DOC-0205",
+  "documentId": "DOC-0205",
+  "sourceId": null,
+  "source": {
+    "fileName": "025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "mediaType": "DOCX",
+    "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0205.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semantic": {
+    "headingSetExhaustive": true,
+    "semanticHeadingTotal": 72,
+    "headings": []
+  },
+  "occurrence": {
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "bindingCoordinateSystem": null,
+    "sourceUniverseSha256": null,
+    "unavailableReason": "no occurrence artifact describes this source under the current authority",
+    "claims": []
+  },
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0205.semantic-freeze.v1.json",
+      "sha256": "04cb3f98d10be9f4e9d0aa5b6ce2dcadf8d93f8eac64305507bafaa122262bc0",
+      "role": "SEMANTIC_AUTHORITY"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

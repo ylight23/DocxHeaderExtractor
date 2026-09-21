@@ -1,0 +1,54 @@
+{
+  "artifactKind": "a99_canonical_gold",
+  "schemaVersion": "a99-canonical-gold-v1",
+  "authorityId": "SRC-042",
+  "documentId": null,
+  "sourceId": "SRC-042",
+  "source": {
+    "fileName": "042_IDA_Financial_Statements_June_2025.pdf",
+    "mediaType": "PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+    "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-042.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semantic": {
+    "headingSetExhaustive": true,
+    "semanticHeadingTotal": 262,
+    "headings": []
+  },
+  "occurrence": {
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "bindingCoordinateSystem": null,
+    "sourceUniverseSha256": null,
+    "unavailableReason": "no occurrence artifact describes this source under the current authority",
+    "claims": []
+  },
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-042.semantic-freeze.v1.json",
+      "sha256": "1cfe5c24b1335e32f2ab148cd835288f2ef47df1c582dfa36453e6b32cb7b8a3",
+      "role": "SEMANTIC_AUTHORITY"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

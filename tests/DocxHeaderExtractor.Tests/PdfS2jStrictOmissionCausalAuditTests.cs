@@ -31,8 +31,7 @@ public sealed class PdfS2jStrictOmissionCausalAuditTests
     [Fact]
     public void Frozen_requests_characterize_strict_persistent_omissions_without_transport()
     {
-        var gold = JsonSerializer.Deserialize<PdfGoldDocument>(
-            File.ReadAllText(RepositoryPath(GoldPath)))!;
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
         var bundles = Enumerable.Range(1, 3).Select(LoadBundle).ToArray();
         var goldBound = PdfGoldBoundOccurrenceEvaluator.BindGold(
             gold, bundles[0].AliasCatalog, out var bindingIssues);

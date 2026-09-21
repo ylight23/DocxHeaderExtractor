@@ -1,0 +1,54 @@
+{
+  "artifactKind": "a99_canonical_gold",
+  "schemaVersion": "a99-canonical-gold-v1",
+  "authorityId": "SRC-057",
+  "documentId": null,
+  "sourceId": "SRC-057",
+  "source": {
+    "fileName": "057_Quantitative_Methods_in_Finance_Lecture_Notes.docx",
+    "mediaType": "DOCX",
+    "sourcePath": "todo10_8/heading_corpus_95_word/04_giao_trinh/057_Quantitative_Methods_in_Finance_Lecture_Notes.docx",
+    "sourceSha256": "f7a09e4da3aadd7c9c7ef6769657832cb69d314250be21d19e1c4dcfac804af9",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-057.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semantic": {
+    "headingSetExhaustive": true,
+    "semanticHeadingTotal": 831,
+    "headings": []
+  },
+  "occurrence": {
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "bindingCoordinateSystem": null,
+    "sourceUniverseSha256": null,
+    "unavailableReason": "no occurrence artifact describes this source under the current authority",
+    "claims": []
+  },
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-057.semantic-freeze.v1.json",
+      "sha256": "190982e1707d931f97c33abbf1422fc188730ced875792619563f71a38642523",
+      "role": "SEMANTIC_AUTHORITY"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

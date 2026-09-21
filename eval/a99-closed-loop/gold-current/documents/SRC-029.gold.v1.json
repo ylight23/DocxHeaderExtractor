@@ -1,0 +1,54 @@
+{
+  "artifactKind": "a99_canonical_gold",
+  "schemaVersion": "a99-canonical-gold-v1",
+  "authorityId": "SRC-029",
+  "documentId": null,
+  "sourceId": "SRC-029",
+  "source": {
+    "fileName": "029_WB_RFP_Works_DesignBuild_2021.docx",
+    "mediaType": "DOCX",
+    "sourcePath": "todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.docx",
+    "sourceSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-029.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semantic": {
+    "headingSetExhaustive": true,
+    "semanticHeadingTotal": 356,
+    "headings": []
+  },
+  "occurrence": {
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "bindingCoordinateSystem": null,
+    "sourceUniverseSha256": null,
+    "unavailableReason": "no occurrence artifact describes this source under the current authority",
+    "claims": []
+  },
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-029.semantic-freeze.v1.json",
+      "sha256": "c6e790ab5e8f2f34d06820971578bd4bc4031eaeb497d3c1613717339251f81c",
+      "role": "SEMANTIC_AUTHORITY"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

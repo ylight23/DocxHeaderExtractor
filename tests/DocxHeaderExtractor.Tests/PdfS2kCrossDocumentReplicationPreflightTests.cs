@@ -11,9 +11,6 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
 {
     private const string StrictManifestPath = "eval/a99-closed-loop/strict-gold-manifest.v4.json";
     private const string CapabilityMatrixPath = "eval/a99-closed-loop/strict-gold-capability-matrix.v5.json";
-    private const string InventoryPath = "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json";
-    private const string NativeGoldPath =
-        "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json";
     private const string S2jAuditPath =
         "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/strict-omission-causal-audit.v1.json";
     private const string CurrentPromptHash =
@@ -67,11 +64,15 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
     {
         using var strictManifest = JsonDocument.Parse(File.ReadAllText(RepoPath(StrictManifestPath)));
         using var capability = JsonDocument.Parse(File.ReadAllText(RepoPath(CapabilityMatrixPath)));
-        using var inventory = JsonDocument.Parse(File.ReadAllText(RepoPath(InventoryPath)));
 
-        var inventoryById = inventory.RootElement.GetProperty("documents")
-            .EnumerateArray()
-            .ToDictionary(item => item.GetProperty("authorityKey").GetString()!, StringComparer.Ordinal);
+        // Current authority comes from the canonical Gold registry, not from a folder scan. The
+        // inventory this used to read is one of several legacy roots; which one a task happened to
+        // open decided what it believed the truth was.
+        var goldDocuments = CanonicalGoldRegistry.Entries
+            .ToDictionary(entry => entry.AuthorityId, entry => CanonicalGoldRegistry.Resolve(entry.AuthorityId),
+                StringComparer.Ordinal);
+        var inventoryById = goldDocuments.ToDictionary(
+            pair => pair.Key, pair => pair.Value.RootElement.GetProperty("source"), StringComparer.Ordinal);
         var strictDocuments = strictManifest.RootElement.GetProperty("documents")
             .EnumerateArray()
             .Select(item =>
@@ -88,9 +89,9 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
                     characterSpanEvaluable = item.GetProperty("characterSpanEvaluable").GetBoolean(),
                     currentInventoryPresent = current.ValueKind != JsonValueKind.Undefined,
                     currentSourcePath = current.ValueKind == JsonValueKind.Undefined
-                        ? null : current.GetProperty("authoritySourcePath").GetString(),
+                        ? null : current.GetProperty("sourcePath").GetString(),
                     currentSourceSha256 = current.ValueKind == JsonValueKind.Undefined
-                        ? null : current.GetProperty("currentSourceSha256").GetString(),
+                        ? null : current.GetProperty("sourceSha256").GetString(),
                 };
             })
             .ToArray();
@@ -105,10 +106,9 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
 
         var s2j = JsonDocument.Parse(File.ReadAllText(RepoPath(S2jAuditPath)));
         var s2jHash = CanonicalArtifactHash.OfTextFile(RepoPath(S2jAuditPath));
-        var gold = JsonDocument.Parse(File.ReadAllText(RepoPath(NativeGoldPath)));
-        var nativeGold = JsonSerializer.Deserialize<PdfGoldDocument>(gold.RootElement.GetRawText())!;
-        var nativeGoldUniverseHash = gold.RootElement.GetProperty("occurrenceAuthority")
-            .GetProperty("sourceUniverseSha256").GetString();
+        var nativeGold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var nativeGoldUniverseHash = goldDocuments["DOC-0252"].RootElement
+            .GetProperty("occurrence").GetProperty("sourceUniverseSha256").GetString();
 
         var report = new
         {
@@ -119,7 +119,7 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
                 authorityCommit = "56db83933b5373057a01f7826d28a65974330d61",
                 strictGoldManifest = StrictManifestPath,
                 capabilityMatrix = CapabilityMatrixPath,
-                currentInventory = InventoryPath,
+                currentGoldRegistry = CanonicalGoldRegistry.RegistryRelativePath,
                 currentPromptSha256 = CurrentPromptHash,
                 semanticContractSha256 = SemanticContractHash,
                 evaluatorContract = EvaluatorContract,
@@ -211,7 +211,7 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
 
     private static JsonElement BuildCandidate(string documentId, JsonElement inventory)
     {
-        var path = inventory.GetProperty("authoritySourcePath").GetString()!;
+        var path = inventory.GetProperty("sourcePath").GetString()!;
         var fullPath = RepoPath(path);
         var first = BuildSource(fullPath, inventory.GetProperty("mediaType").GetString()!);
         var second = BuildSource(fullPath, inventory.GetProperty("mediaType").GetString()!);
@@ -234,8 +234,7 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
         var nativeBindingIssues = Array.Empty<string>();
         if (native)
         {
-            using var nativeGoldDocument = JsonDocument.Parse(File.ReadAllText(RepoPath(NativeGoldPath)));
-            var nativeGold = JsonSerializer.Deserialize<PdfGoldDocument>(nativeGoldDocument.RootElement.GetRawText())!;
+            var nativeGold = CanonicalGoldRegistry.ResolveOccurrenceGold(documentId);
             var bound = PdfGoldBoundOccurrenceEvaluator.BindGold(
                 nativeGold, first.Aliases, out var bindingIssues);
             nativeBindingIssues = bindingIssues.ToArray();
@@ -261,18 +260,23 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
             ["mediaType"] = inventory.GetProperty("mediaType").GetString(),
             ["sourcePath"] = path,
             ["sourceSha256"] = first.SourceHash,
-            ["inventorySourceSha256"] = inventory.GetProperty("currentSourceSha256").GetString(),
-            ["sourceHashMatchesInventory"] = first.SourceHash == inventory.GetProperty("currentSourceSha256").GetString(),
+            ["registrySourceSha256"] = inventory.GetProperty("sourceSha256").GetString(),
+            ["sourceHashMatchesRegistry"] = first.SourceHash == inventory.GetProperty("sourceSha256").GetString(),
             ["sourceUniverseSha256"] = first.SourceUniverseSha256,
             ["aliasCatalogHash"] = first.AliasCatalogHash,
             ["aliasCount"] = first.AliasCount,
             ["parserLineCount"] = first.ParserLineCount,
             ["authorityBuildDeterministic"] = deterministic,
-            ["nativeGoldPath"] = native ? NativeGoldPath : null,
+            ["nativeGoldPath"] = native ? CanonicalGoldRegistry.Entry(documentId).CanonicalGoldPath : null,
             ["nativeEvaluatorV3Compatible"] = native,
             ["goldRebindPassed"] = native && nativeBindingIssues.Length == 0,
             ["goldBindingIssues"] = native ? nativeBindingIssues : exclusionReasons,
-            ["goldHeadingClaims"] = native ? 41 : inventory.GetProperty("semanticHeadingTotal").GetInt32(),
+            // Semantic total from the registry, and a separate flag for whether occurrence Gold
+            // exists. A document without native bindings is not a document without Gold.
+            ["semanticHeadingTotal"] = CanonicalGoldRegistry.SemanticHeadingTotal(documentId),
+            ["hasCanonicalSemanticGold"] = true,
+            ["hasCanonicalOccurrenceGold"] = CanonicalGoldRegistry.Entry(documentId).OccurrenceEvaluable,
+            ["goldHeadingClaims"] = native ? 41 : CanonicalGoldRegistry.SemanticHeadingTotal(documentId),
             ["goldHeadingAliases"] = native ? 38 : 0,
             ["legacyOccurrencePath"] = oldGoldExists ? oldGoldPath : null,
             ["legacyOccurrenceSchema"] = oldSchema,

@@ -27,8 +27,7 @@ public sealed class PdfS2iRoleAuthorityTests
     [Fact]
     public void Audit_role_authority_and_freeze_strict_persistent_omissions()
     {
-        var gold = JsonSerializer.Deserialize<PdfGoldDocument>(
-            File.ReadAllText(RepositoryPath(GoldPath)))!;
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
         var goldBound = PdfGoldBoundOccurrenceEvaluator.BindGold(
             gold, LoadBundle(1).AliasCatalog, out var bindingIssues);
         Assert.Empty(bindingIssues);

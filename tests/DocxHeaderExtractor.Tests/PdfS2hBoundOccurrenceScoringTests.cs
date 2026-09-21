@@ -23,8 +23,7 @@ public sealed class PdfS2hBoundOccurrenceScoringTests
     [Fact]
     public void Rescore_immutable_replays_by_canonical_bound_occurrence_only()
     {
-        var gold = JsonSerializer.Deserialize<PdfGoldDocument>(
-            File.ReadAllText(RepositoryPath(GoldPath)))!;
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
         var oldScore = JsonDocument.Parse(Read("offline-score.v1.json"));
         var repeats = new List<RepeatScore>();
 

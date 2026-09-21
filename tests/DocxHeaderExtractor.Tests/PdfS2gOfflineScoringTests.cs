@@ -32,8 +32,7 @@ public sealed class PdfS2gOfflineScoringTests
         var bundleRows = census.RootElement.GetProperty("bundles").EnumerateArray().ToArray();
         Assert.Equal(3, bundleRows.Length);
 
-        var gold = JsonSerializer.Deserialize<PdfGoldDocument>(
-            File.ReadAllText(RepositoryPath(GoldPath)))!;
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
         Assert.Equal(41, gold.Headings.Count);
 
         var scores = new List<RepeatScore>();
@@ -252,8 +251,7 @@ public sealed class PdfS2gOfflineScoringTests
         }
 
         private static PdfGoldDocument LoadGold() =>
-            JsonSerializer.Deserialize<PdfGoldDocument>(File.ReadAllText(
-                Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../..", GoldPath))))!;
+            CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
 
         private static double F1Score(double precision, double recall) =>
             precision + recall == 0 ? 0 : 2 * precision * recall / (precision + recall);
