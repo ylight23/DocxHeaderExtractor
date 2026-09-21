@@ -61,8 +61,11 @@ public static class DocumentSourceCatalogBuilder
     {
         ArgumentNullException.ThrowIfNull(segments);
 
-        var blocks = segments.Select((line, index) => new PdfSemanticBlock(
-            $"l{index + 1}",
+        // The block id is the line's own identity, not a running number, so the catalog, the
+        // candidate contexts and the atom catalog all key on one thing. A second id scheme here
+        // would be a second coordinate authority hiding behind a lookup that happens to work.
+        var blocks = segments.Select(line => new PdfSemanticBlock(
+            PdfLineIdentity.Of(line),
             [line],
             PdfStyleClusterProfile.StyleOf(line),
             line.Page,

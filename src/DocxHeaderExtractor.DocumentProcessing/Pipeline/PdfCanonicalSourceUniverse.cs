@@ -103,7 +103,7 @@ internal static class PdfCanonicalSourceUniverseBuilder
             lines.Count);
     }
 
-    private static CanonicalSemanticSourceEvidence EvidenceOf(
+    internal static CanonicalSemanticSourceEvidence EvidenceOf(
         PdfCandidateContext context,
         string alias,
         int ordinal,
@@ -150,7 +150,7 @@ internal static class PdfCanonicalSourceUniverseBuilder
             : "body";
     }
 
-    private static double Median(IEnumerable<double> values)
+    internal static double Median(IEnumerable<double> values)
     {
         var ordered = values.Where(value => value > 0).OrderBy(value => value).ToArray();
         return ordered.Length == 0 ? 0 : ordered[ordered.Length / 2];

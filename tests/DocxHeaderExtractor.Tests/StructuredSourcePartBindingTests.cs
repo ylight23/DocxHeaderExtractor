@@ -250,7 +250,7 @@ public sealed class StructuredSourcePartBindingTests
             var claim = $"{gold.Headings[ordinal].SourceAlias}#{ordinal}";
 
             // What canonical Gold says today, character for character.
-            var exact = Locate(atoms, goldTexts[ordinal], punctuationInsensitive: false, ref cursorExact);
+            var exact = StructuredSourcePartLocator.Locate(atoms, goldTexts[ordinal], punctuationInsensitive: false, ref cursorExact);
             var exactBinding = exact is null
                 ? new SemanticSourcePartsBinding(SemanticSourcePartsStatus.TextNotInAtom, [], "no atom run holds this text")
                 : Bind(atoms, [.. exact]);
@@ -259,7 +259,7 @@ public sealed class StructuredSourcePartBindingTests
             // The same heading written in the characters the source actually has. Where the two
             // differ it is Gold that is stale: the old line reconstruction dropped a period before
             // the claim was written, and this measures the source rather than that damage.
-            var source = Locate(atoms, goldTexts[ordinal], punctuationInsensitive: true, ref cursorSource);
+            var source = StructuredSourcePartLocator.Locate(atoms, goldTexts[ordinal], punctuationInsensitive: true, ref cursorSource);
             var sourceBinding = source is null
                 ? new SemanticSourcePartsBinding(SemanticSourcePartsStatus.TextNotInAtom, [], "no atom run holds this heading")
                 : Bind(atoms, [.. source]);
@@ -300,7 +300,7 @@ public sealed class StructuredSourcePartBindingTests
         // S0616 is the case the whole architecture turns on: the model emitted the complete
         // heading, and under block authority no single occurrence held it. Proven here from the
         // approved wording, against atoms alone.
-        var s0616 = Locate(atoms,
+        var s0616 = StructuredSourcePartLocator.Locate(atoms,
             "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
             punctuationInsensitive: true, ref cursorSource);
         var s0616Binding = s0616 is null
@@ -475,66 +475,6 @@ public sealed class StructuredSourcePartBindingTests
         using var document = PdfDocument.Open(Doc0252Path);
         var lines = PdfLineExtraction.ExtractLines(document, PdfLineGrouping.MidpointV1);
         return PdfSemanticBlockGrouper.Build(PdfLineBlockFilter.Analyze(lines), includeRiskLines: true);
-    }
-
-    /// <summary>
-    /// The fewest parts that represent <paramref name="target"/> exactly, or null when no run of
-    /// adjacent atoms holds it.
-    /// <para>
-    /// Punctuation-insensitive matching exists for one reason: the old line reconstruction dropped
-    /// characters before Gold was written against it. Matching on the reduced form finds the
-    /// heading; the parts that come back quote the source, not the reduced form.
-    /// </para>
-    /// </summary>
-    private static List<SemanticSourcePart>? Locate(
-        IReadOnlyList<SemanticSourceAtom> atoms, string target, bool punctuationInsensitive, ref int cursor)
-    {
-        var stream = new System.Text.StringBuilder();
-        var owner = new List<(int Atom, int Offset)>();
-
-        for (var index = 0; index < atoms.Count; index++)
-        {
-            if (!punctuationInsensitive && index > 0)
-            {
-                stream.Append(' ');
-                owner.Add((-1, -1));
-            }
-
-            var text = atoms[index].Text;
-            for (var at = 0; at < text.Length; at++)
-            {
-                var character = text[at];
-                if (punctuationInsensitive && (char.IsWhiteSpace(character) || char.IsPunctuation(character)))
-                    continue;
-                stream.Append(punctuationInsensitive ? char.ToLowerInvariant(character) : character);
-                owner.Add((index, at));
-            }
-        }
-
-        var wanted = punctuationInsensitive ? Reduce(target) : target;
-        if (wanted.Length == 0) return null;
-
-        var found = stream.ToString().IndexOf(wanted, Math.Min(cursor, Math.Max(0, stream.Length - 1)), StringComparison.Ordinal);
-        if (found < 0) found = stream.ToString().IndexOf(wanted, StringComparison.Ordinal);
-        if (found < 0) return null;
-        cursor = found + 1;
-
-        var first = owner[found];
-        var last = owner[found + wanted.Length - 1];
-        if (first.Atom < 0 || last.Atom < 0) return null;
-
-        var parts = new List<SemanticSourcePart>();
-        for (var index = first.Atom; index <= last.Atom; index++)
-        {
-            var text = atoms[index].Text;
-            var start = index == first.Atom ? first.Offset : 0;
-            var end = index == last.Atom ? last.Offset + 1 : text.Length;
-            parts.Add(start == 0 && end == text.Length
-                ? Whole(atoms[index].Alias)
-                : Verbatim(atoms[index].Alias, text[start..end]));
-        }
-
-        return parts;
     }
 
     private static string Reduce(string text) =>
