@@ -294,7 +294,7 @@ internal static class CanonicalSemanticEngine
                 }
                 foreach (var element in headings.EnumerateArray())
                 {
-                    if (ParseProposal(element) is not { } proposal)
+                    if (CanonicalSemanticProposalParser.TryParse(element) is not { } proposal)
                     {
                         issues.Add(new SemanticContractIssue("UNREADABLE_PROPOSAL", null,
                             "A heading entry omitted a required field and was dropped."));
@@ -309,96 +309,5 @@ internal static class CanonicalSemanticEngine
             };
         }
 
-        /// <summary>
-        /// Null when the entry cannot be read. Absent optional fields are fine; a field that is
-        /// present with the wrong JSON type is not, and costs this entry alone.
-        /// <para>
-        /// Every read goes through a typed accessor rather than <c>GetString</c>/<c>GetInt32</c>
-        /// directly. Those throw on type confusion, and the throw escaped this method, the entry
-        /// loop and the segment loop, so a single reply with <c>"occurrence": "1"</c> or
-        /// <c>"sourceAliases": "S0123"</c> ended the whole document with nothing recorded.
-        /// </para>
-        /// </summary>
-        private static CanonicalSemanticProposal? ParseProposal(JsonElement element)
-        {
-            if (element.ValueKind != JsonValueKind.Object) return null;
-            if (Text(element, "sourceAlias") is not { Length: > 0 } sourceAlias) return null;
-            if (!element.TryGetProperty("isHeading", out var isHeadingValue) ||
-                isHeadingValue.ValueKind is not (JsonValueKind.True or JsonValueKind.False))
-                return null;
-
-            if (!TryTextArray(element, "sourceAliases", out var sourceAliases)) return null;
-            if (!TryTextArray(element, "relationHints", out var relationHints)) return null;
-            if (!TryOrdinal(element, "occurrence", out var occurrence)) return null;
-            if (!TryText(element, "verbatimText", out var verbatimText)) return null;
-            if (!TryTextArray(element, "verbatimParts", out var verbatimParts)) return null;
-            if (!TryText(element, "semanticRole", out var semanticRole)) return null;
-            if (!TryText(element, "structuralType", out var structuralType)) return null;
-            if (!TryText(element, "scope", out var scope)) return null;
-            if (!TryText(element, "leftExactContext", out var left)) return null;
-            if (!TryText(element, "rightExactContext", out var right)) return null;
-            if (!TryText(element, "selectionMode", out var mode)) return null;
-
-            return new CanonicalSemanticProposal(
-                sourceAlias,
-                isHeadingValue.GetBoolean(),
-                verbatimText,
-                verbatimParts,
-                semanticRole,
-                structuralType,
-                scope,
-                relationHints,
-                sourceAliases,
-                occurrence,
-                left,
-                right,
-                mode);
-        }
-
-        private static string? Text(JsonElement element, string name) =>
-            element.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String
-                ? value.GetString()
-                : null;
-
-        /// <summary>False only when the field is present and is not a string or null.</summary>
-        private static bool TryText(JsonElement element, string name, out string? text)
-        {
-            text = null;
-            if (!element.TryGetProperty(name, out var value)) return true;
-            if (value.ValueKind == JsonValueKind.Null) return true;
-            if (value.ValueKind != JsonValueKind.String) return false;
-            text = value.GetString();
-            return true;
-        }
-
-        /// <summary>False only when the field is present and is not an array of strings.</summary>
-        private static bool TryTextArray(JsonElement element, string name, out string[]? items)
-        {
-            items = null;
-            if (!element.TryGetProperty(name, out var value)) return true;
-            if (value.ValueKind == JsonValueKind.Null) return true;
-            if (value.ValueKind != JsonValueKind.Array) return false;
-            var result = new List<string>();
-            foreach (var item in value.EnumerateArray())
-            {
-                // A null or non-string element makes the list unreadable: silently substituting an
-                // empty string would shift every later alias-to-part mapping by one.
-                if (item.ValueKind != JsonValueKind.String) return false;
-                result.Add(item.GetString()!);
-            }
-            items = [.. result];
-            return true;
-        }
-
-        /// <summary>False only when the field is present and is not a 32-bit integer.</summary>
-        private static bool TryOrdinal(JsonElement element, string name, out int? ordinal)
-        {
-            ordinal = null;
-            if (!element.TryGetProperty(name, out var value)) return true;
-            if (value.ValueKind == JsonValueKind.Null) return true;
-            if (value.ValueKind != JsonValueKind.Number || !value.TryGetInt32(out var number)) return false;
-            ordinal = number;
-            return true;
-        }
     }
 }

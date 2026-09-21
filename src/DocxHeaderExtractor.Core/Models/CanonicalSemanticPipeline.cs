@@ -54,6 +54,27 @@ public static class CanonicalSemanticPipeline
         if (!sourceHashVerified) throw new InvalidOperationException("source-hash-mismatch");
 
         var aliases = SemanticSourceAliasCatalog.FromCatalog(sourceCatalog);
+        return RunAliases(aliases, proposals, sourceSha256, expectedSourceSha256, ownedAliases);
+    }
+
+    /// <summary>
+    /// Executes the same deterministic post-model stages from a frozen alias catalog. Unlike the
+    /// source-catalog overload, this path does not reopen or reparse the source document.
+    /// </summary>
+    public static CanonicalSemanticPipelineResult RunAliases(
+        IReadOnlyList<SemanticSourceAlias> aliases,
+        IReadOnlyList<CanonicalSemanticProposal> proposals,
+        string sourceSha256,
+        string? expectedSourceSha256 = null,
+        IReadOnlySet<string>? ownedAliases = null)
+    {
+        ArgumentNullException.ThrowIfNull(aliases);
+        ArgumentNullException.ThrowIfNull(proposals);
+        ArgumentException.ThrowIfNullOrWhiteSpace(sourceSha256);
+        var sourceHashVerified = expectedSourceSha256 is null ||
+            string.Equals(sourceSha256, expectedSourceSha256, StringComparison.OrdinalIgnoreCase);
+        if (!sourceHashVerified) throw new InvalidOperationException("source-hash-mismatch");
+
         var aliasesByName = aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal);
 
         // Contract validation is deliberately before binding. It validates model-addressable
