@@ -82,7 +82,13 @@ internal static class PdfGoldBoundOccurrenceEvaluator
             SpuriousAliases = spurious,
         };
 
-        var roleMismatches = matched
+        // Only where Gold recorded a role. Silence is not a claim of "no role", so a matched
+        // heading Gold said nothing about is excluded from the denominator rather than counted
+        // wrong - the same rule the parent relation already follows.
+        var roleAdjudicated = matched
+            .Where(key => !string.IsNullOrEmpty(goldByKey[key].SemanticRole))
+            .ToArray();
+        var roleMismatches = roleAdjudicated
             .Where(key => !string.Equals(
                 goldByKey[key].SemanticRole,
                 predictedByKey[key].SemanticRole,
@@ -93,10 +99,11 @@ internal static class PdfGoldBoundOccurrenceEvaluator
             .Order(StringComparer.Ordinal)
             .ToArray();
         var roleScore = new PdfSemanticRoleScore(
-            matched.Length,
-            matched.Length - roleMismatches.Length,
+            roleAdjudicated.Length,
+            roleAdjudicated.Length - roleMismatches.Length,
             roleMismatches.Length)
         {
+            NotAdjudicated = matched.Length - roleAdjudicated.Length,
             Mismatches = roleMismatches,
         };
 

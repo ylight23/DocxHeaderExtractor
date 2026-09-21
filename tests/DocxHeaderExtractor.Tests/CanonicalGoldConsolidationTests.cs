@@ -313,6 +313,11 @@ public sealed class CanonicalGoldConsolidationTests
             goldRegistry = CanonicalGoldRegistry.RegistryRelativePath,
             promptSha256 = CanonicalArtifactHash.OfText(CanonicalSemanticEngine.SystemPrompt),
             semanticContractProtocol = CanonicalSemanticContract.ProtocolVersion,
+            // The schema itself, not its name. A protocol string survives a field being added or
+            // renamed, and a run whose contract drifted mid-flight produced provider responses that
+            // could not be scored - responses paid for and unusable. Recomputed at execution and
+            // compared byte for byte against this.
+            semanticContractSha256 = SemanticContractSha256(),
             evaluatorId = "a99-pdf-gold-evaluator-v3-bound-occurrence-semantic-role",
             model = "qwen/qwen3.7-flash",
             repetitions = Repetitions,
@@ -340,6 +345,68 @@ public sealed class CanonicalGoldConsolidationTests
 
         Assert.True(primaryCalls > 0);
     }
+
+    /// <summary>
+    /// The request schema as the engine will send it, hashed canonically. Computed here rather than
+    /// pinned as a literal so it cannot be copied forward from an older contract.
+    /// </summary>
+    internal static string SemanticContractSha256() =>
+        CanonicalArtifactHash.OfText(JsonSerializer.Serialize(
+            CanonicalSemanticContract.Schema(), FreezeArtifact.Json));
+
+    [Fact]
+    public void The_frozen_contract_hash_is_the_schema_the_engine_would_send()
+    {
+        // Recomputing must reproduce what the manifest froze; if it does not, the contract drifted
+        // and a run would spend calls it cannot score.
+        using var manifest = JsonDocument.Parse(File.ReadAllText(
+            TestRepository.Path(CanonicalGoldRegistry.Root + "/occurrence-baseline-preflight.v1.json")));
+
+        Assert.Equal(
+            SemanticContractSha256(),
+            manifest.RootElement.GetProperty("semanticContractSha256").GetString());
+        Assert.Equal(
+            CanonicalArtifactHash.OfText(CanonicalSemanticEngine.SystemPrompt),
+            manifest.RootElement.GetProperty("promptSha256").GetString());
+    }
+
+    [Fact]
+    public void Occurrence_identity_decides_membership_and_a_role_never_does()
+    {
+        // The evaluator gate the baseline depends on. A heading found with the wrong role is a role
+        // error and still a true positive; if role entered the identity, every role disagreement
+        // would arrive as a paired false negative and false positive.
+        var gold = new[] { Bound("S0001", 0, 10, "SECTION"), Bound("S0002", 0, 8, "ARTICLE") };
+        var predicted = new[] { Bound("S0001", 0, 10, "CHAPTER"), Bound("S0002", 0, 8, "ARTICLE") };
+
+        var evaluation = PdfGoldBoundOccurrenceEvaluator.EvaluateBound(gold, predicted);
+
+        Assert.Equal(2, evaluation.Semantic.TruePositive);
+        Assert.Equal(0, evaluation.Semantic.FalseNegative);
+        Assert.Equal(0, evaluation.Semantic.FalsePositive);
+        Assert.Equal(2, evaluation.SemanticRole.Compared);
+        Assert.Equal(1, evaluation.SemanticRole.Mismatched);
+    }
+
+    [Fact]
+    public void A_role_gold_never_recorded_is_excluded_rather_than_counted_wrong()
+    {
+        // DOC-0001 identifies seven headings and names a role for none of them. Counting those as
+        // mismatches would report zero role accuracy for a document nobody made a role claim about.
+        var gold = new[] { Bound("S0001", 0, 10, null), Bound("S0002", 0, 8, null) };
+        var predicted = new[] { Bound("S0001", 0, 10, "SECTION"), Bound("S0002", 0, 8, "ARTICLE") };
+
+        var evaluation = PdfGoldBoundOccurrenceEvaluator.EvaluateBound(gold, predicted);
+
+        Assert.Equal(2, evaluation.Semantic.TruePositive);
+        Assert.Equal(0, evaluation.SemanticRole.Compared);
+        Assert.Equal(0, evaluation.SemanticRole.Mismatched);
+        Assert.Equal(2, evaluation.SemanticRole.NotAdjudicated);
+        Assert.Equal(1.0, evaluation.SemanticRole.Accuracy);
+    }
+
+    private static PdfBoundOccurrence Bound(string alias, int start, int end, string? role) =>
+        new([new CanonicalSemanticBoundPart(alias, alias, 0, "text", start, end)], role!, alias, null);
 
     private const int Repetitions = 3;
 

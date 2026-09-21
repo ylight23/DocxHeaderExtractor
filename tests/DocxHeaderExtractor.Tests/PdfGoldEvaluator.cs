@@ -11,11 +11,24 @@ public sealed record PdfPredictedHeading(
     string? ParentSourceAlias = null,
     string? SemanticRole = null);
 
+/// <summary>
+/// Role agreement, over the headings where Gold actually recorded a role.
+/// <para>
+/// Role is an optional axis and never blocks occurrence scoring: membership is decided by source
+/// identity alone, so a heading found with the wrong role is a role error and still a true
+/// positive. Gold that recorded no role is silent about it, not asserting it has none - DOC-0001
+/// identifies seven headings without naming a role for any of them, and counting those as
+/// mismatches would report zero role accuracy for a document nobody made a role claim about.
+/// </para>
+/// </summary>
 public sealed record PdfSemanticRoleScore(
     [property: JsonPropertyName("compared")] int Compared,
     [property: JsonPropertyName("agreed")] int Agreed,
     [property: JsonPropertyName("mismatched")] int Mismatched)
 {
+    /// <summary>Matched headings Gold recorded no role for. Excluded from the denominator.</summary>
+    [JsonPropertyName("notAdjudicated")] public int NotAdjudicated { get; init; }
+
     [JsonPropertyName("accuracy")]
     public double Accuracy => Compared == 0 ? 1 : (double)Agreed / Compared;
 
