@@ -8,7 +8,9 @@ public sealed record CanonicalGoldEntry(
     string CanonicalGoldPath,
     string SourceSha256,
     int SemanticHeadingTotal,
-    bool SemanticEvaluable,
+    int MaterializedSemanticClaims,
+    bool SemanticCountAuthoritative,
+    bool SemanticClaimsEvaluable,
     bool OccurrenceEvaluable,
     bool CharacterSpanEvaluable,
     bool VisualBindingEvaluable,
@@ -93,7 +95,8 @@ public static class CanonicalGoldRegistry
         var entry = Entry(authorityId);
         var granted = capability switch
         {
-            GoldCapability.Semantic => entry.SemanticEvaluable,
+            GoldCapability.SemanticCount => entry.SemanticCountAuthoritative,
+            GoldCapability.SemanticClaims => entry.SemanticClaimsEvaluable,
             GoldCapability.Occurrence => entry.OccurrenceEvaluable,
             GoldCapability.CharacterSpan => entry.CharacterSpanEvaluable,
             GoldCapability.VisualBinding => entry.VisualBindingEvaluable,
@@ -151,7 +154,7 @@ public static class CanonicalGoldRegistry
             },
             Capabilities = new PdfGoldCapabilities
             {
-                SemanticEvaluable = entry.SemanticEvaluable,
+                SemanticEvaluable = entry.SemanticClaimsEvaluable,
                 OccurrenceEvaluable = entry.OccurrenceEvaluable,
             },
         };
@@ -170,7 +173,9 @@ public static class CanonicalGoldRegistry
                 item.GetProperty("canonicalGoldPath").GetString()!,
                 item.GetProperty("sourceSha256").GetString()!,
                 item.GetProperty("semanticHeadingTotal").GetInt32(),
-                item.GetProperty("semanticEvaluable").GetBoolean(),
+                item.GetProperty("materializedSemanticClaims").GetInt32(),
+                item.GetProperty("semanticCountAuthoritative").GetBoolean(),
+                item.GetProperty("semanticClaimsEvaluable").GetBoolean(),
                 item.GetProperty("occurrenceEvaluable").GetBoolean(),
                 item.GetProperty("characterSpanEvaluable").GetBoolean(),
                 item.GetProperty("visualBindingEvaluable").GetBoolean(),
@@ -181,9 +186,16 @@ public static class CanonicalGoldRegistry
     }
 }
 
+/// <summary>
+/// The axes a canonical Gold may be scored on. SemanticCount and SemanticClaims are deliberately
+/// separate: nineteen authorities carry a total a user approved and no row-level identities at all,
+/// and from a total alone there is no way to say which heading a run missed. Treating those as one
+/// capability promised precision and recall the data cannot support.
+/// </summary>
 public enum GoldCapability
 {
-    Semantic,
+    SemanticCount,
+    SemanticClaims,
     Occurrence,
     CharacterSpan,
     VisualBinding,

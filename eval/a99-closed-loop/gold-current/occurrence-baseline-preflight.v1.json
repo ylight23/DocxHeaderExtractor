@@ -1,0 +1,60 @@
+{
+  "artifactKind": "a99_occurrence_baseline_preflight",
+  "schemaVersion": "a99-occurrence-baseline-preflight-v1",
+  "experimentId": "A99-S2P-OCCURRENCE-BASELINE-V1",
+  "status": "PREFLIGHT_ONLY_NO_TRANSPORT",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldRegistry": "eval/a99-closed-loop/gold-current/registry.v1.json",
+  "promptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+  "semanticContractProtocol": "a99-canonical-semantic-vnext-v1",
+  "evaluatorId": "a99-pdf-gold-evaluator-v3-bound-occurrence-semantic-role",
+  "model": "qwen/qwen3.7-flash",
+  "repetitions": 3,
+  "documents": [
+    {
+      "authorityId": "DOC-0001",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0001.gold.v1.json",
+      "goldSha256": "3904295073179700f3c74e60d1f0b16eea19937c8aaea7ee5962ff0a6d9f2fcc",
+      "sourcePath": "bench/01-style-chuan.docx",
+      "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+      "sourceUniverseSha256": "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba",
+      "semanticHeadingTotal": 7,
+      "materializedSemanticClaims": 7,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 1,
+      "placementAllowancePerRepetition": 1
+    },
+    {
+      "authorityId": "DOC-0252",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+      "goldSha256": "af76bb34e1074ad0431044263ace837dac849ea07402145f58bf40b245eec95e",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "sourceUniverseSha256": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+      "semanticHeadingTotal": 41,
+      "materializedSemanticClaims": 41,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": false,
+      "semanticRequestsPerRepetition": 9,
+      "placementAllowancePerRepetition": 1
+    }
+  ],
+  "callBudget": {
+    "totalPrimaryCalls": 30,
+    "placementAllowance": 6,
+    "maxProviderCalls": 36
+  },
+  "failClosedGates": [
+    "canonical goldSha256 per authority",
+    "sourceSha256 per authority",
+    "sourceUniverseSha256 per authority",
+    "promptSha256",
+    "semantic contract protocol",
+    "model identity",
+    "evaluator identity",
+    "call budget not exceeded"
+  ],
+  "note": "Any mismatch at execution time means zero provider calls and a stop, not a run against whatever is on disk."
+}

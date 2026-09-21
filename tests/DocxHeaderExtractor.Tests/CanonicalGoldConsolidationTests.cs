@@ -1,4 +1,9 @@
 using System.Text.Json;
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Features;
+using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Policy;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -68,7 +73,9 @@ public sealed class CanonicalGoldConsolidationTests
                 canonicalGoldPath = $"{CanonicalGoldRegistry.Root}/documents/{authority.Id}.gold.v1.json",
                 sourceSha256 = authority.SourceSha256,
                 semanticHeadingTotal = authority.Total,
-                semanticEvaluable = true,
+                materializedSemanticClaims = authority.SemanticClaimCount,
+                semanticCountAuthoritative = true,
+                semanticClaimsEvaluable = authority.SemanticClaimCount == authority.Total && authority.Total > 0,
                 occurrenceEvaluable = authority.OccurrenceEvaluable,
                 characterSpanEvaluable = authority.CharacterSpanEvaluable,
                 visualBindingEvaluable = authority.VisualBindingEvaluable,
@@ -191,6 +198,10 @@ public sealed class CanonicalGoldConsolidationTests
             Assert.Equal(
                 entry.SemanticHeadingTotal,
                 root.GetProperty("semantic").GetProperty("semanticHeadingTotal").GetInt32());
+            // The capability a file declares has to match what it actually contains.
+            var claims = root.GetProperty("semantic").GetProperty("claims").GetArrayLength();
+            Assert.Equal(entry.MaterializedSemanticClaims, claims);
+            Assert.Equal(entry.SemanticClaimsEvaluable, claims == entry.SemanticHeadingTotal && claims > 0);
         }
     }
 
@@ -206,7 +217,12 @@ public sealed class CanonicalGoldConsolidationTests
     [Fact]
     public void An_evaluator_is_refused_the_axis_its_gold_does_not_carry()
     {
-        CanonicalGoldRegistry.RequireCapability("DOC-0252", GoldCapability.Semantic);
+        CanonicalGoldRegistry.RequireCapability("DOC-0252", GoldCapability.SemanticCount);
+        CanonicalGoldRegistry.RequireCapability("DOC-0252", GoldCapability.SemanticClaims);
+        // A count-only authority is authoritative about how many, and refuses to be asked which.
+        CanonicalGoldRegistry.RequireCapability("DOC-0205", GoldCapability.SemanticCount);
+        Assert.Throws<InvalidOperationException>(
+            () => CanonicalGoldRegistry.RequireCapability("DOC-0205", GoldCapability.SemanticClaims));
         CanonicalGoldRegistry.RequireCapability("DOC-0252", GoldCapability.Occurrence);
         CanonicalGoldRegistry.RequireCapability("DOC-0001", GoldCapability.CharacterSpan);
 
@@ -227,11 +243,140 @@ public sealed class CanonicalGoldConsolidationTests
             Assert.StartsWith(CanonicalGoldRegistry.Root + "/", entry.CanonicalGoldPath, StringComparison.Ordinal));
     }
 
+    // ---- provider baseline preflight ----------------------------------------------------------
+
+    /// <summary>The two authorities whose Gold can score an occurrence-level run today.</summary>
+    private static readonly string[] OccurrenceCohort = ["DOC-0001", "DOC-0252"];
+
+    [Fact]
+    public void The_occurrence_cohort_is_exactly_what_the_registry_can_score()
+    {
+        // Derived from capability, not from a list someone maintained. A count-only authority is
+        // excluded because it cannot say which heading a run missed, not because of its media type.
+        var cohort = CanonicalGoldRegistry.Entries
+            .Where(entry => entry.OccurrenceEvaluable && entry.SemanticClaimsEvaluable)
+            .Select(entry => entry.AuthorityId)
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+
+        Assert.Equal(OccurrenceCohort, cohort);
+        Assert.All(cohort, id => Assert.Equal(
+            CanonicalGoldRegistry.Entry(id).SemanticHeadingTotal,
+            CanonicalGoldRegistry.Entry(id).MaterializedSemanticClaims));
+    }
+
+    [Fact]
+    public async Task The_baseline_preflight_freezes_what_a_provider_run_would_send()
+    {
+        // Everything a later run must match before it is allowed to spend a call. The request plan
+        // is captured through the real lanes with a classifier that answers nothing, so the counts
+        // are measured rather than estimated - and no provider is contacted to measure them.
+        var documents = new List<object>();
+        var primaryCalls = 0;
+
+        foreach (var id in OccurrenceCohort)
+        {
+            var entry = CanonicalGoldRegistry.Entry(id);
+            using var gold = CanonicalGoldRegistry.Resolve(id);
+            var source = gold.RootElement.GetProperty("source");
+            var sourcePath = source.GetProperty("sourcePath").GetString()!;
+            var segments = await PlannedSegmentsAsync(sourcePath, source.GetProperty("mediaType").GetString()!);
+            primaryCalls += segments * Repetitions;
+
+            documents.Add(new
+            {
+                authorityId = id,
+                canonicalGoldPath = entry.CanonicalGoldPath,
+                goldSha256 = entry.GoldSha256,
+                sourcePath,
+                sourceSha256 = entry.SourceSha256,
+                sourceUniverseSha256 = gold.RootElement.GetProperty("occurrence")
+                    .GetProperty("sourceUniverseSha256").GetString(),
+                semanticHeadingTotal = entry.SemanticHeadingTotal,
+                materializedSemanticClaims = entry.MaterializedSemanticClaims,
+                occurrenceEvaluable = entry.OccurrenceEvaluable,
+                characterSpanEvaluable = entry.CharacterSpanEvaluable,
+                semanticRequestsPerRepetition = segments,
+                placementAllowancePerRepetition = PlacementAllowance,
+            });
+        }
+
+        var placement = OccurrenceCohort.Length * Repetitions * PlacementAllowance;
+        FreezeArtifact.AssertJson(CanonicalGoldRegistry.Root, "occurrence-baseline-preflight.v1.json", new
+        {
+            artifactKind = "a99_occurrence_baseline_preflight",
+            schemaVersion = "a99-occurrence-baseline-preflight-v1",
+            experimentId = "A99-S2P-OCCURRENCE-BASELINE-V1",
+            status = "PREFLIGHT_ONLY_NO_TRANSPORT",
+            providerCalls = 0,
+            modelCalls = 0,
+            goldRegistry = CanonicalGoldRegistry.RegistryRelativePath,
+            promptSha256 = CanonicalArtifactHash.OfText(CanonicalSemanticEngine.SystemPrompt),
+            semanticContractProtocol = CanonicalSemanticContract.ProtocolVersion,
+            evaluatorId = "a99-pdf-gold-evaluator-v3-bound-occurrence-semantic-role",
+            model = "qwen/qwen3.7-flash",
+            repetitions = Repetitions,
+            documents,
+            callBudget = new
+            {
+                totalPrimaryCalls = primaryCalls,
+                placementAllowance = placement,
+                maxProviderCalls = primaryCalls + placement,
+            },
+            failClosedGates = new[]
+            {
+                "canonical goldSha256 per authority",
+                "sourceSha256 per authority",
+                "sourceUniverseSha256 per authority",
+                "promptSha256",
+                "semantic contract protocol",
+                "model identity",
+                "evaluator identity",
+                "call budget not exceeded",
+            },
+            note = "Any mismatch at execution time means zero provider calls and a stop, not a " +
+                   "run against whatever is on disk.",
+        });
+
+        Assert.True(primaryCalls > 0);
+    }
+
+    private const int Repetitions = 3;
+
+    /// <summary>One placement round per document per repetition, allowed but not assumed.</summary>
+    private const int PlacementAllowance = 1;
+
+    /// <summary>
+    /// The number of semantic requests a run would send, measured by driving the real lane with a
+    /// classifier that records and answers nothing.
+    /// </summary>
+    private static async Task<int> PlannedSegmentsAsync(string sourcePath, string mediaType)
+    {
+        var path = TestRepository.Path(sourcePath);
+        using var capture = new RequestCapturingClassifier();
+        if (string.Equals(mediaType, "PDF", StringComparison.Ordinal))
+        {
+            await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None);
+        }
+        else
+        {
+            var source = new OpenXmlDocumentSource().Read(path);
+            var features = NumberingStyleFeatures.FromSourceDocument(source);
+            var derived = new DocumentFeatureDeriver().Derive(source);
+            var state = DocxPolicyStateBuilder.Build(source, features, derived, new ExtractionOptions());
+            var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
+            await DocxAuthorityPipeline.RunAsync(state, mode, capture);
+        }
+
+        return capture.Requests.Count;
+    }
+
     // ---- derivation ---------------------------------------------------------------------------
 
     private sealed record Authority(
         string Id,
         int Total,
+        int SemanticClaimCount,
         string SourceSha256,
         bool OccurrenceEvaluable,
         bool CharacterSpanEvaluable,
@@ -279,6 +424,7 @@ public sealed class CanonicalGoldConsolidationTests
         };
 
         var claims = new List<JsonElement>();
+        var semanticClaims = new List<object>();
         var occurrenceEvaluable = false;
         var characterSpanEvaluable = false;
         string? unavailable = "no occurrence artifact describes this source under the current authority";
@@ -304,6 +450,16 @@ public sealed class CanonicalGoldConsolidationTests
             if (sameSource && sameCount)
             {
                 claims.AddRange(bound.EnumerateArray().Select(item => item.Clone()));
+                // The occurrence review is what identified the headings, so it is also the
+                // row-level semantic truth. Projected, not re-decided: alias, text and role exactly
+                // as the reviewer recorded them, with nulls where they recorded nothing.
+                semanticClaims.AddRange(bound.EnumerateArray().Select(item => (object)new
+                {
+                    sourceAlias = Text(item, "sourceAlias"),
+                    verbatimText = Text(item, "verbatimText") ?? Text(item, "exactText"),
+                    selectionMode = Text(item, "selectionMode"),
+                    semanticRole = Text(item, "semanticRole"),
+                }));
                 occurrenceEvaluable = true;
                 characterSpanEvaluable = occurrenceText.Contains("utf16Span", StringComparison.Ordinal);
                 coordinateSystem = characterSpanEvaluable
@@ -357,10 +513,14 @@ public sealed class CanonicalGoldConsolidationTests
                 headingSetExhaustive = string.Equals(
                     root.GetProperty("truthDefinition").GetString(),
                     "ALL_TRUE_HEADING_OCCURRENCES", StringComparison.Ordinal),
+                approvedSemanticTotal = total,
                 semanticHeadingTotal = total,
-                // Empty where the approved authority is a count. A count is what was approved, and
-                // materialising rows from it would be inventing identities nobody reviewed.
-                headings = Array.Empty<object>(),
+                // Row-level identities exist only where a reviewer materialised them. Where the
+                // approved authority is a count, this stays empty and materializedSemanticClaims is
+                // zero: a total says how many headings there are, never which ones, and deriving
+                // rows from it would be inventing identities nobody looked at.
+                materializedSemanticClaims = semanticClaims.Count,
+                claims = semanticClaims.ToArray(),
             },
             occurrence = new
             {
@@ -375,7 +535,12 @@ public sealed class CanonicalGoldConsolidationTests
             },
             capabilities = new
             {
-                semanticEvaluable = true,
+                // The approved total is authoritative for every authority here.
+                semanticCountAuthoritative = true,
+                // Whether a scorer can say WHICH heading was missed. A count cannot: from 72 alone
+                // there is no way to know which of a run's proposals is a true positive, so calling
+                // that axis evaluable would promise precision and recall the data cannot support.
+                semanticClaimsEvaluable = semanticClaims.Count == total && total > 0,
                 occurrenceEvaluable,
                 characterSpanEvaluable,
                 visualBindingEvaluable = capabilities.TryGetProperty("visualBindingEvaluable", out var visual)
@@ -391,10 +556,15 @@ public sealed class CanonicalGoldConsolidationTests
         };
 
         return new Authority(
-            id, total, sourceSha, occurrenceEvaluable, characterSpanEvaluable,
+            id, total, semanticClaims.Count, sourceSha, occurrenceEvaluable, characterSpanEvaluable,
             capabilities.TryGetProperty("visualBindingEvaluable", out var vb) && vb.GetBoolean(),
             unavailable, claims, provenance, gold);
     }
+
+    private static string? Text(JsonElement element, string name) =>
+        element.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String
+            ? value.GetString()
+            : null;
 
     private static string RelativeTo(string absolute) =>
         Path.GetRelativePath(TestRepository.Root(), absolute).Replace(Path.DirectorySeparatorChar, '/');

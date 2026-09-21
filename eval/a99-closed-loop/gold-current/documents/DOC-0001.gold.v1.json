@@ -24,8 +24,53 @@
   },
   "semantic": {
     "headingSetExhaustive": true,
+    "approvedSemanticTotal": 7,
     "semanticHeadingTotal": 7,
-    "headings": []
+    "materializedSemanticClaims": 7,
+    "claims": [
+      {
+        "sourceAlias": "S0001",
+        "verbatimText": "Chương 1. Quy định chung",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0003",
+        "verbatimText": "1.1. Phạm vi điều chỉnh",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0005",
+        "verbatimText": "1.2. Đối tượng áp dụng",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0007",
+        "verbatimText": "1.2.1. Cơ quan quản lý",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0009",
+        "verbatimText": "1.2.2. Đơn vị trực thuộc",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0011",
+        "verbatimText": "Chương 2. Tổ chức thực hiện",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0013",
+        "verbatimText": "2.1. Phân công trách nhiệm",
+        "selectionMode": null,
+        "semanticRole": null
+      }
+    ]
   },
   "occurrence": {
     "occurrenceEvaluable": true,
@@ -107,7 +152,8 @@
     ]
   },
   "capabilities": {
-    "semanticEvaluable": true,
+    "semanticCountAuthoritative": true,
+    "semanticClaimsEvaluable": true,
     "occurrenceEvaluable": true,
     "characterSpanEvaluable": true,
     "visualBindingEvaluable": false,

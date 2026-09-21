@@ -24,8 +24,10 @@
   },
   "semantic": {
     "headingSetExhaustive": true,
+    "approvedSemanticTotal": 37,
     "semanticHeadingTotal": 37,
-    "headings": []
+    "materializedSemanticClaims": 0,
+    "claims": []
   },
   "occurrence": {
     "occurrenceEvaluable": false,
@@ -36,7 +38,8 @@
     "claims": []
   },
   "capabilities": {
-    "semanticEvaluable": true,
+    "semanticCountAuthoritative": true,
+    "semanticClaimsEvaluable": false,
     "occurrenceEvaluable": false,
     "characterSpanEvaluable": false,
     "visualBindingEvaluable": false,
