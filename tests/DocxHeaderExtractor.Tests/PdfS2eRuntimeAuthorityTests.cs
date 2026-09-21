@@ -168,6 +168,23 @@ public sealed class PdfS2eRuntimeAuthorityTests
         Assert.Empty(bundle.Proposals);
     }
 
+    [Fact]
+    public void Provider_postflight_blocks_scoring_when_replay_contract_identity_differs()
+    {
+        using var audit = JsonDocument.Parse(Read("postflight-audit.v1.json"));
+        var root = audit.RootElement;
+
+        Assert.Equal("PROVIDER_RUN_COMPLETE_BASELINE_BLOCKED", root.GetProperty("status").GetString());
+        Assert.Equal(29, root.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(3, root.GetProperty("replayBundles").GetInt32());
+        Assert.Equal("PASS", root.GetProperty("replayBundleReloadValidation").GetString());
+        Assert.False(root.GetProperty("semanticContractHashMatch").GetBoolean());
+        Assert.False(root.GetProperty("baselineUsableForScoring").GetBoolean());
+        Assert.NotEqual(
+            root.GetProperty("manifestSemanticContractHash").GetString(),
+            root.GetProperty("replaySemanticContractHash").GetString());
+    }
+
     private static async Task GenerateAsync()
     {
         var path = Path(Pdf);
