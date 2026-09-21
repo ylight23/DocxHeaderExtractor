@@ -13,7 +13,6 @@ using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Repair;
-using DocxHeaderExtractor.DocumentProcessing.Vision;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 Console.OutputEncoding = Encoding.UTF8;

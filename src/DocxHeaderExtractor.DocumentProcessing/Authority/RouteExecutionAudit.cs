@@ -238,4 +238,16 @@ public sealed record PdfVisualRecoveryTrace(
     [property: JsonPropertyName("mappedSpanStart")] int? MappedSpanStart = null,
     [property: JsonPropertyName("mappedSpanEnd")] int? MappedSpanEnd = null,
     [property: JsonPropertyName("validatorReason")] string? ValidatorReason = null,
-    [property: JsonPropertyName("attempts")] IReadOnlyList<DocxHeaderExtractor.DocumentProcessing.Vision.PdfVisualAttemptOutcome>? Attempts = null);
+    [property: JsonPropertyName("attempts")] IReadOnlyList<PdfVisualAttemptOutcome>? Attempts = null);
+
+/// <summary>
+/// One attempt a visual model made at a region, and how it ended.
+/// <para>
+/// Part of <see cref="PdfVisualRecoveryTrace.Attempts"/>, so it belongs with the audit contract.
+/// It used to live beside the image-question interfaces in Vision; those had implementations and
+/// no callers and were removed, and this record would have gone with them even though the audit
+/// still records it.
+/// </para>
+/// </summary>
+public sealed record PdfVisualAttemptOutcome(
+    int Attempt, string Status, int? HttpStatus, long ElapsedMs, string? Error);

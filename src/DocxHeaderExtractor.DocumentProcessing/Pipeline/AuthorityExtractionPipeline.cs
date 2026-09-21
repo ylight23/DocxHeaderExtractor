@@ -6,7 +6,6 @@ using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Vision;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
