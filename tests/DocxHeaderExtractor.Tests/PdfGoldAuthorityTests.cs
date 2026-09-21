@@ -459,90 +459,33 @@ public sealed class PdfGoldAuthorityTests
         Assert.Equal(AuthoritativeTotal, gold.Headings.Count);
 
         var occurrences = Blocks();
-        var aliases = occurrences
-            .Select((_, index) => $"S{index + 1:D4}")
-            .ToArray();
-        var indexOf = aliases
-            .Select((alias, index) => (alias, index))
-            .ToDictionary(item => item.alias, item => item.index, StringComparer.Ordinal);
+        var aliases = PdfSourceOccurrenceBoundary.Aliases(occurrences.Count);
 
-        // The offsets below read the occurrence text as its lines joined by a single space. If that
-        // ever stopped being how the projection composes, every span in this census would be off by
-        // a little and still look plausible, so it is checked rather than assumed.
+        // The offsets inside the classifier read an occurrence as its lines joined by a single
+        // space. If that stopped being how the projection composes, every span in this census would
+        // be off by a little and still look plausible, so it is checked rather than assumed.
         Assert.All(occurrences, occurrence => Assert.Equal(
             string.Join(PdfSourceOccurrenceBoundary.Separator,
                 occurrence.Lines.Select(line => line.Projection.VerbatimText)),
             occurrence.VerbatimText));
 
+        // Here the alias is authoritative, so it resolves the claims directly - and doubles as the
+        // check that the text locator agrees with it before that locator is trusted on a universe
+        // where aliases have been renumbered.
+        var byAlias = gold.Headings.Select(heading => Array.IndexOf(aliases, heading.SourceAlias)).ToArray();
+        Assert.DoesNotContain(-1, byAlias);
+        var located = PdfSourceOccurrenceBoundary.Locate(
+            occurrences, gold.Headings,
+            gold.Headings.Select((heading, ordinal) =>
+                heading.VerbatimText ?? occurrences[byAlias[ordinal]].VerbatimText).ToArray(),
+            out var unresolved);
+        Assert.Empty(unresolved);
+        Assert.Equal(byAlias, located);
+
+        var rows = PdfSourceOccurrenceBoundary.Classify(occurrences, gold.Headings, byAlias);
         var visualLines = PdfSourceOccurrenceBoundary.VisualLines(occurrences);
-        var lineOf = visualLines
-            .SelectMany(line => line.OccurrenceIndexes.Select(occurrence => (occurrence, line)))
-            .ToLookup(pair => pair.occurrence, pair => pair.line);
 
-        var rows = gold.Headings.Select((heading, ordinal) =>
-        {
-            var index = indexOf[heading.SourceAlias];
-            var occurrence = occurrences[index];
-            var goldText = heading.VerbatimText ?? occurrence.VerbatimText;
-
-            var carried = PdfSourceOccurrenceBoundary.LinesCarrying(occurrence, heading.VerbatimText);
-            var carriedLines = carried.Select(line => occurrence.Lines[line]).ToArray();
-            var headingLines = lineOf[index]
-                .Where(line => carriedLines.Any(parser =>
-                    parser.Page == line.Page &&
-                    parser.Top <= line.Top && parser.Bottom >= line.Bottom))
-                .DistinctBy(line => line.Index)
-                .OrderByDescending(line => line.Top)
-                .ToArray();
-            if (headingLines.Length == 0)
-                headingLines = lineOf[index].OrderByDescending(line => line.Top).ToArray();
-
-            // Fragmentation: the heading's own visual line is shared with another occurrence, so
-            // no single occurrence can hold the heading whatever the model says.
-            var foreign = headingLines
-                .SelectMany(line => line.OccurrenceIndexes)
-                .Where(other => other != index)
-                .Distinct()
-                .Order()
-                .Select(other => new { alias = aliases[other], text = occurrences[other].VerbatimText })
-                .ToArray();
-
-            var goldKey = PdfSourceOccurrenceBoundary.Key(goldText);
-            var occurrenceKey = PdfSourceOccurrenceBoundary.Key(occurrence.VerbatimText);
-
-            var classification =
-                foreign.Length > 0 ? "FRAGMENTED"
-                : goldKey != occurrenceKey ? "OVER_GROUPED"
-                : string.Equals(goldText, occurrence.VerbatimText, StringComparison.Ordinal) ? "EXACT_SOURCE_BOUNDARY"
-                : PdfSourceOccurrenceBoundary.KeyWithoutPunctuation(goldText)
-                    == PdfSourceOccurrenceBoundary.KeyWithoutPunctuation(occurrence.VerbatimText)
-                    ? "NORMALIZATION_ONLY"
-                    : "OTHER_REPRESENTATION_MISMATCH";
-
-            return new
-            {
-                // Keyed exactly as occurrence-baseline-v1/causal-forensic.v1.json keys the same
-                // claims, so the two artifacts can be read side by side without a mapping table.
-                claim = $"{heading.SourceAlias}#{ordinal}",
-                sourceAlias = heading.SourceAlias,
-                page = occurrence.Page,
-                selectionMode = heading.SelectionMode,
-                boundary = classification,
-                goldText,
-                occurrenceText = occurrence.VerbatimText,
-                occurrenceLineCount = occurrence.LineCount,
-                headingVisualLineCount = headingLines.Length,
-                // The whole visual line as the page has it, which is what the occurrence should
-                // have been able to reproduce.
-                visualLineText = headingLines.Select(line => line.Text).ToArray(),
-                occurrenceIsWholeVisualLine = headingLines.Length > 0 && foreign.Length == 0 &&
-                    PdfSourceOccurrenceBoundary.Key(string.Join(" ", headingLines.Select(line => line.Text)))
-                        == occurrenceKey,
-                foreignOccurrencesOnHeadingLine = foreign,
-            };
-        }).ToArray();
-
-        var census = rows.GroupBy(row => row.boundary)
+        var census = rows.GroupBy(row => row.Boundary)
             .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
 
         // ---- what the measured baseline lost, against what the source could express -------------
@@ -552,7 +495,7 @@ public sealed class PdfGoldAuthorityTests
             Path.Combine(TestRepository.Root(),
                 "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json"
                     .Replace('/', Path.DirectorySeparatorChar))));
-        var boundaryOf = rows.ToDictionary(row => row.claim, row => row.boundary, StringComparer.Ordinal);
+        var boundaryOf = rows.ToDictionary(row => row.Claim, row => row.Boundary, StringComparer.Ordinal);
         var losses = forensic.RootElement.GetProperty("lostOccurrences").EnumerateArray()
             .Where(loss => loss.GetProperty("persistent").GetBoolean())
             .Select(loss => new
@@ -570,34 +513,9 @@ public sealed class PdfGoldAuthorityTests
             .ToArray();
 
         // ---- punctuation ----------------------------------------------------------------------
-        // Isolation alone is not the defect. A punctuation occurrence that sits on its own visual
-        // line is merely small; one that sits on a line with text is a line the grouper took apart,
-        // and that is what destroys a heading boundary.
-        string[] marks = [".", ":", ";", ",", "-", "–", "—"];
-        var goldAliases = gold.Headings.Select(heading => heading.SourceAlias)
-            .ToHashSet(StringComparer.Ordinal);
-        var lineByOccurrence = visualLines
-            .SelectMany(line => line.OccurrenceIndexes.Select(occurrence => (occurrence, line)))
-            .ToLookup(pair => pair.occurrence, pair => pair.line);
-
-        var punctuation = marks.Select(mark =>
-        {
-            var matching = occurrences
-                .Select((occurrence, index) => (occurrence, index))
-                .Where(item => item.occurrence.VerbatimText.Trim() == mark)
-                .ToArray();
-            return new
-            {
-                mark,
-                occurrences = matching.Length,
-                sharingAVisualLineWithText = matching.Count(item =>
-                    lineByOccurrence[item.index].Any(line => line.SplitAcrossOccurrences)),
-                immediatelyBeforeAGoldAlias = matching.Count(item =>
-                    item.index + 1 < aliases.Length && goldAliases.Contains(aliases[item.index + 1])),
-            };
-        }).ToArray();
-
-        var dots = punctuation.Single(item => item.mark == ".");
+        var punctuation = PdfSourceOccurrenceBoundary.PunctuationCensus(
+            occurrences, rows.Select(row => row.OccurrenceIndex).Distinct().ToArray());
+        var dots = punctuation.Single(item => item.Mark == ".");
 
         FreezeArtifact.AssertJson("eval/a99-closed-loop/representation",
             "doc-0252-source-occurrence-boundary.v1.json", new
@@ -655,9 +573,9 @@ public sealed class PdfGoldAuthorityTests
 
             boundaryAudit = new
             {
-                total = rows.Length,
+                total = rows.Count,
                 census,
-                rows,
+                rows = rows.Select(PdfSourceOccurrenceBoundary.Serialize).ToArray(),
             },
 
             persistentBaselineLosses = new
@@ -675,9 +593,15 @@ public sealed class PdfGoldAuthorityTests
                 sourceOccurrences = occurrences.Count,
                 visualLines = visualLines.Count,
                 visualLinesSplitAcrossOccurrences = visualLines.Count(line => line.SplitAcrossOccurrences),
-                dotOnlyOccurrences = dots.occurrences,
-                dotImmediatelyBeforeAGoldAlias = dots.immediatelyBeforeAGoldAlias,
-                byMark = punctuation,
+                dotOnlyOccurrences = dots.Occurrences,
+                dotImmediatelyBeforeAGoldAlias = dots.ImmediatelyBeforeAGoldOccurrence,
+                byMark = punctuation.Select(item => new
+                {
+                    mark = item.Mark,
+                    occurrences = item.Occurrences,
+                    sharingAVisualLineWithText = item.SharingAVisualLineWithText,
+                    immediatelyBeforeAGoldOccurrence = item.ImmediatelyBeforeAGoldOccurrence,
+                }).ToArray(),
             },
 
             causalInterpretation = new
@@ -704,10 +628,10 @@ public sealed class PdfGoldAuthorityTests
         });
 
         // The two modes are both real, and the census is not silently empty on either side.
-        Assert.Equal(AuthoritativeTotal, rows.Length);
-        Assert.Contains(rows, row => row.boundary == "FRAGMENTED");
-        Assert.Contains(rows, row => row.boundary == "OVER_GROUPED");
-        Assert.Equal(166, dots.occurrences);
+        Assert.Equal(AuthoritativeTotal, rows.Count);
+        Assert.Contains(rows, row => row.Boundary == "FRAGMENTED");
+        Assert.Contains(rows, row => row.Boundary == "OVER_GROUPED");
+        Assert.Equal(166, dots.Occurrences);
     }
 
     // ---- helpers -----------------------------------------------------------------------------
