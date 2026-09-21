@@ -1,0 +1,63 @@
+{
+  "artifactKind": "a99_pdf_s2g_successor_bundle_census",
+  "schemaVersion": "a99-pdf-s2g-successor-bundle-census-v1",
+  "successorExperimentId": "DOC-0252-PDF-S2E-RUNTIME-B0-ADOPTION-V1",
+  "originalExperimentId": "DOC-0252-PDF-S2E-RUNTIME-B0",
+  "originalManifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+  "successorSemanticContractHash": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365",
+  "all3BundlesMatchSuccessorAuthority": true,
+  "manifestHashInBundleIsOriginalProvenance": true,
+  "bundles": [
+    {
+      "repeat": "r1",
+      "path": "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-0da7345e2d99.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "bundleHash": "181d016b0aa4d12816ed165396d11da5bb1e0bf11ac9ca09df7a96facf6d9174",
+      "proposalHash": "0da7345e2d9945f913cfeeb729974c2121dea22d8c9413a47b90f7fd67fd620e",
+      "aliasCatalogHash": "867a2dd5cccf46984a1b282e7a69916dbececb1f3a35da2e5b1e7f6379774305",
+      "sourceHash": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "sourceUniverseHash": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+      "promptHash": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "semanticContractHash": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365",
+      "modelIdentity": "qwen/qwen3.7-flash",
+      "modelRoute": "openai-chat-completions-v1",
+      "manifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+      "rawResponseHash": "18734bd2dc2156ffa2178bc5a83092e7aba31d5190eb474e93cf600f534e2173",
+      "proposalCount": 33,
+      "successorAuthorityFieldsMatch": true
+    },
+    {
+      "repeat": "r2",
+      "path": "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-19cc50359418.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "bundleHash": "88e8671d00b38248f0b02661358e5bb7447a8e02987da5d41f97f0e4c210f833",
+      "proposalHash": "19cc50359418980fcd1c8764057ec340160f9ddc922d0eacde1e3128a3b41955",
+      "aliasCatalogHash": "867a2dd5cccf46984a1b282e7a69916dbececb1f3a35da2e5b1e7f6379774305",
+      "sourceHash": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "sourceUniverseHash": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+      "promptHash": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "semanticContractHash": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365",
+      "modelIdentity": "qwen/qwen3.7-flash",
+      "modelRoute": "openai-chat-completions-v1",
+      "manifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+      "rawResponseHash": "8a46d44741ddf9ac0d8179b13094c37a15793f7f432ab1e4905ea261c632f7e1",
+      "proposalCount": 36,
+      "successorAuthorityFieldsMatch": true
+    },
+    {
+      "repeat": "r3",
+      "path": "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-a3e7dc1ba574.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "bundleHash": "d37016fc6ea9a06c9a9ff082f0c12f981ab41f77646291840ddb524649ae2406",
+      "proposalHash": "a3e7dc1ba574d63660d0c0ab841f8946a652e808237043e68a9c10e4b5ae23c2",
+      "aliasCatalogHash": "867a2dd5cccf46984a1b282e7a69916dbececb1f3a35da2e5b1e7f6379774305",
+      "sourceHash": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "sourceUniverseHash": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+      "promptHash": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "semanticContractHash": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365",
+      "modelIdentity": "qwen/qwen3.7-flash",
+      "modelRoute": "openai-chat-completions-v1",
+      "manifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+      "rawResponseHash": "0315eda2c1508664a0b28ac9a16d3f5a7a627569ec9ea530ed5ce7e274c99cf4",
+      "proposalCount": 33,
+      "successorAuthorityFieldsMatch": true
+    }
+  ]
+}
