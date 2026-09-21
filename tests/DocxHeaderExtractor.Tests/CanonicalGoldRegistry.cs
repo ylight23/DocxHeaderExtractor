@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -158,6 +159,53 @@ public static class CanonicalGoldRegistry
                 OccurrenceEvaluable = entry.OccurrenceEvaluable,
             },
         };
+    }
+
+    /// <summary>
+    /// Gold as bound occurrences, whichever coordinate system the authority recorded.
+    /// <para>
+    /// One resolver, two representations, because the reviews genuinely differ: DOC-0001 recorded
+    /// exact UTF-16 spans, DOC-0252 recorded alias and selection mode. Forcing either into the
+    /// other's shape would mean inventing coordinates on one side or discarding them on the other.
+    /// </para>
+    /// </summary>
+    internal static IReadOnlyList<PdfBoundOccurrence> ResolveBoundGold(
+        string authorityId, IReadOnlyList<SemanticSourceAlias> aliases)
+    {
+        RequireCapability(authorityId, GoldCapability.Occurrence);
+        using var gold = Resolve(authorityId);
+        var occurrence = gold.RootElement.GetProperty("occurrence");
+        var system = occurrence.GetProperty("bindingCoordinateSystem").GetString();
+
+        if (string.Equals(system, "SOURCE_ALIAS_PLUS_SELECTION_MODE", StringComparison.Ordinal))
+        {
+            var bound = PdfGoldBoundOccurrenceEvaluator.BindGold(
+                ResolveOccurrenceGold(authorityId), aliases, out var issues);
+            if (issues.Count > 0)
+                throw new InvalidOperationException(
+                    $"{authorityId} Gold does not bind: {string.Join("; ", issues)}");
+            return bound;
+        }
+
+        if (!string.Equals(system, "SOURCE_ALIAS_PLUS_UTF16_SPAN", StringComparison.Ordinal))
+            throw new InvalidOperationException($"{authorityId} records an unknown binding system '{system}'.");
+
+        var byAlias = aliases.ToDictionary(alias => alias.Alias, StringComparer.Ordinal);
+        return occurrence.GetProperty("claims").EnumerateArray().Select(claim =>
+        {
+            var alias = claim.GetProperty("sourceAlias").GetString()!;
+            if (!byAlias.TryGetValue(alias, out var catalogued))
+                throw new InvalidOperationException($"{authorityId} Gold names alias {alias}, absent from the universe.");
+            var span = claim.GetProperty("utf16Span");
+            return new PdfBoundOccurrence(
+                [new CanonicalSemanticBoundPart(
+                    alias, catalogued.SourceId, catalogued.SourceOrdinal,
+                    claim.GetProperty("exactText").GetString()!,
+                    span.GetProperty("start").GetInt32(),
+                    span.GetProperty("end").GetInt32())],
+                // The review recorded no role for these; role stays absent rather than guessed.
+                null!, alias);
+        }).ToArray();
     }
 
     private static IReadOnlyList<CanonicalGoldEntry> Read()
