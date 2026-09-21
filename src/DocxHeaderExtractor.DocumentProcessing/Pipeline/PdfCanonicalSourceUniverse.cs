@@ -63,7 +63,8 @@ internal static class PdfCanonicalSourceUniverseBuilder
 
     internal static PdfCanonicalSourceUniverse Build(
         string pdfPath,
-        IReadOnlyList<PdfLine> lines)
+        IReadOnlyList<PdfLine> lines,
+        PdfBlockGrouping grouping = PdfBlockGrouping.LegacyV1)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
         ArgumentNullException.ThrowIfNull(lines);
@@ -71,7 +72,7 @@ internal static class PdfCanonicalSourceUniverseBuilder
         var annotations = PdfLineBlockFilter.Analyze(lines);
         // Risk lines remain in the universe. Parser observations travel as evidence and never
         // become a candidate gate, because the universe is the recall ceiling for review/eval.
-        var blocks = PdfSemanticBlockGrouper.Build(annotations, includeRiskLines: true);
+        var blocks = PdfSemanticBlockGrouper.Build(annotations, includeRiskLines: true, grouping: grouping);
         var contexts = PdfCandidateContextBuilder.Build(blocks, annotations);
         var catalog = DocumentSourceCatalogBuilder.FromPdfParserBlocks(blocks, lines);
         var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog);
