@@ -438,6 +438,51 @@ public sealed class CanonicalGoldConsolidationTests
         return capture.Requests.Count;
     }
 
+    [Fact]
+    public void Every_active_source_universe_is_one_the_runtime_reproduces()
+    {
+        // The gate that refused the first transport attempt. An authority may record any number of
+        // historical universe hashes in provenance, but the one gates read has to be the one the
+        // lane that will run actually produces - otherwise claims were marked against a universe
+        // the run never sees, and the disagreement would read as a model error.
+        foreach (var id in OccurrenceCohort)
+        {
+            using var gold = CanonicalGoldRegistry.Resolve(id);
+            var root = gold.RootElement;
+            var source = root.GetProperty("source");
+            var active = root.GetProperty("occurrence").GetProperty("sourceUniverseSha256").GetString();
+
+            var runtime = RuntimeSourceUniverse(
+                TestRepository.Path(source.GetProperty("sourcePath").GetString()!),
+                source.GetProperty("mediaType").GetString()!,
+                source.GetProperty("sourceSha256").GetString()!);
+
+            Assert.Equal(runtime, active);
+        }
+    }
+
+    [Fact]
+    public void A_reconciled_universe_keeps_the_review_time_hash_as_history_only()
+    {
+        // History is preserved, not promoted. There is exactly one active identity; the older one
+        // lives in provenance where nothing gates on it, because "which hash applies here" is the
+        // ambiguity this work removed from Gold.
+        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        var provenance = gold.RootElement.GetProperty("provenance").EnumerateArray().ToArray();
+
+        var reconciliation = Assert.Single(provenance,
+            item => item.GetProperty("role").GetString() == "SOURCE_UNIVERSE_RECONCILIATION");
+        Assert.Equal("5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+            reconciliation.GetProperty("path").GetString());
+        Assert.Equal("cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+            reconciliation.GetProperty("sha256").GetString());
+
+        // DOC-0001 needed no reconciliation: its frozen hash already was the runtime one.
+        using var docx = CanonicalGoldRegistry.Resolve("DOC-0001");
+        Assert.DoesNotContain(docx.RootElement.GetProperty("provenance").EnumerateArray(),
+            item => item.GetProperty("role").GetString() == "SOURCE_UNIVERSE_RECONCILIATION");
+    }
+
     // ---- derivation ---------------------------------------------------------------------------
 
     private sealed record Authority(
@@ -497,6 +542,7 @@ public sealed class CanonicalGoldConsolidationTests
         string? unavailable = "no occurrence artifact describes this source under the current authority";
         string? coordinateSystem = null;
         string? sourceUniverseSha = null;
+        string? reviewTimeUniverseSha = null;
 
         var occurrencePath = TestRepository.Path($"{OccurrenceRoot}/{id}.occurrence-gold.v1.json");
         if (File.Exists(occurrencePath))
@@ -533,11 +579,26 @@ public sealed class CanonicalGoldConsolidationTests
                     ? "SOURCE_ALIAS_PLUS_UTF16_SPAN"
                     : "SOURCE_ALIAS_PLUS_SELECTION_MODE";
                 unavailable = null;
-                sourceUniverseSha = occurrenceRoot.TryGetProperty("sourceUniverseSha256", out var universe)
+                // The universe the runtime reproduces, not the one the review artifact recorded.
+                // Those were two serializations of the same occurrences - the review pack document
+                // against the runtime alias rows - and freezing the first in a field that gates
+                // against the second is what refused the first transport attempt. The recorded
+                // value is kept below as provenance; it is not a second active identity.
+                reviewTimeUniverseSha = occurrenceRoot.TryGetProperty("sourceUniverseSha256", out var universe)
                     ? universe.GetString()
                     : null;
+                sourceUniverseSha = RuntimeSourceUniverse(
+                    TestRepository.Path(root.GetProperty("authoritySourcePath").GetString()!),
+                    root.GetProperty("mediaType").GetString()!,
+                    sourceSha);
                 provenance.Add(new(RelativeTo(occurrencePath),
                     CanonicalArtifactHash.OfText(occurrenceText), "OCCURRENCE_AUTHORITY"));
+                if (reviewTimeUniverseSha is { Length: > 0 } &&
+                    !string.Equals(reviewTimeUniverseSha, sourceUniverseSha, StringComparison.Ordinal))
+                {
+                    provenance.Add(new(reviewTimeUniverseSha, sourceUniverseSha!,
+                        "SOURCE_UNIVERSE_RECONCILIATION"));
+                }
             }
             else
             {
@@ -626,6 +687,21 @@ public sealed class CanonicalGoldConsolidationTests
             id, total, semanticClaims.Count, sourceSha, occurrenceEvaluable, characterSpanEvaluable,
             capabilities.TryGetProperty("visualBindingEvaluable", out var vb) && vb.GetBoolean(),
             unavailable, claims, provenance, gold);
+    }
+
+    /// <summary>
+    /// The runtime identity of a source universe: what the lane that will run actually produces.
+    /// One producer per media type, both already owned by the runtime - nothing is re-parsed and
+    /// no second definition of a universe is introduced here.
+    /// </summary>
+    private static string RuntimeSourceUniverse(string path, string mediaType, string sourceSha)
+    {
+        if (string.Equals(mediaType, "PDF", StringComparison.OrdinalIgnoreCase))
+            return PdfCanonicalSourceUniverseBuilder.Build(path).SourceUniverseSha256;
+
+        var source = new OpenXmlDocumentSource().Read(path);
+        var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(source);
+        return DocxSourceUniverseHash.Compute(sourceSha, SemanticSourceAliasCatalog.FromCatalog(catalog));
     }
 
     private static string? Text(JsonElement element, string name) =>

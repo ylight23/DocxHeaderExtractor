@@ -169,4 +169,73 @@ public sealed class PdfS2dSourceUniverseAuthorityTests
                 RawModelResponseHash = "offline-s2d-raw-response"
             });
     }
+
+    /// <summary>
+    /// The review-time universe and the current runtime universe are the same occurrence universe.
+    /// <para>
+    /// Their hashes were never going to be equal: 5dd617b2... is the canonical hash of the review
+    /// pack document, and cb3c9af6... is the hash of the runtime alias rows under
+    /// a99-pdf-runtime-source-universe-v1. Two serializations of one universe. Canonical Gold
+    /// recorded the first in a field that gates against the second, which is why the pre-transport
+    /// check refused to run.
+    /// </para>
+    /// <para>
+    /// Equivalence is therefore proven on content - alias, order, sourceId, ordinal and text - not
+    /// by comparing digests of different schemas.
+    /// </para>
+    /// </summary>
+    [Fact]
+    public void The_review_time_universe_and_the_runtime_universe_are_the_same_occurrences()
+    {
+        using var pack = JsonDocument.Parse(File.ReadAllText(
+            Path("eval/a99-closed-loop/pdf-gold-doc0252/source-universe.v1.json")));
+        var reviewRows = pack.RootElement.GetProperty("rows").EnumerateArray()
+            .Select(row => (
+                Alias: row.GetProperty("sourceAlias").GetString()!,
+                SourceId: row.GetProperty("sourceId").GetString()!,
+                Ordinal: row.GetProperty("ordinal").GetInt32(),
+                Text: row.GetProperty("verbatimText").GetString()!))
+            .ToArray();
+
+        var universe = PdfCanonicalSourceUniverseBuilder.Build(Path(Pdf));
+        var runtimeRows = universe.Aliases
+            .OrderBy(alias => alias.SourceOrdinal)
+            .ThenBy(alias => alias.Alias, StringComparer.Ordinal)
+            .Select(alias => (Alias: alias.Alias, SourceId: alias.SourceId,
+                Ordinal: alias.SourceOrdinal, Text: alias.Text))
+            .ToArray();
+
+        Assert.Equal(1013, reviewRows.Length);
+        Assert.Equal(reviewRows.Length, runtimeRows.Length);
+        Assert.Equal(reviewRows.Select(row => row.Alias), runtimeRows.Select(row => row.Alias));
+        Assert.Equal(reviewRows.Select(row => row.SourceId), runtimeRows.Select(row => row.SourceId));
+        Assert.Equal(reviewRows.Select(row => row.Ordinal), runtimeRows.Select(row => row.Ordinal));
+        Assert.Equal(reviewRows.Select(row => row.Text), runtimeRows.Select(row => row.Text));
+    }
+
+    [Fact]
+    public void The_runtime_universe_hash_is_the_same_on_every_build()
+    {
+        var hashes = Enumerable.Range(0, 3)
+            .Select(_ => PdfCanonicalSourceUniverseBuilder.Build(Path(Pdf)).SourceUniverseSha256)
+            .ToArray();
+
+        Assert.Single(hashes.Distinct(StringComparer.Ordinal));
+        Assert.Equal(RuntimeHash, hashes[0]);
+    }
+
+    [Fact]
+    public void Every_canonical_gold_claim_still_binds_under_the_runtime_universe()
+    {
+        // The claims are what must survive; the hash is only how the universe is named.
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var universe = PdfCanonicalSourceUniverseBuilder.Build(Path(Pdf));
+
+        var bound = PdfGoldBoundOccurrenceEvaluator.BindGold(gold, universe.Aliases, out var issues);
+
+        Assert.Equal(41, gold.Headings.Count);
+        Assert.Equal(41, bound.Count);
+        Assert.Empty(issues);
+        Assert.Empty(PdfGoldValidator.Validate(gold, universe.Catalog, universe.Aliases));
+    }
 }

@@ -280,7 +280,7 @@
     "occurrenceEvaluable": true,
     "characterSpanEvaluable": false,
     "bindingCoordinateSystem": "SOURCE_ALIAS_PLUS_SELECTION_MODE",
-    "sourceUniverseSha256": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+    "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
     "unavailableReason": null,
     "claims": [
       {
@@ -713,6 +713,11 @@
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json",
       "sha256": "2ebbc6b8af28dec38514d0b53aa36599a00ca86e87af050bfb3008b98bef6d31",
       "role": "OCCURRENCE_AUTHORITY"
+    },
+    {
+      "path": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+      "sha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+      "role": "SOURCE_UNIVERSE_RECONCILIATION"
     }
   ],
   "providerCalls": 0,

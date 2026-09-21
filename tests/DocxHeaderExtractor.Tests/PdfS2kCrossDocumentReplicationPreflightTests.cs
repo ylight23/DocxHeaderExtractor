@@ -334,36 +334,4 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
         int ParserLineCount,
         DocumentSourceCatalog? Catalog,
         IReadOnlyList<SemanticSourceAlias> Aliases);
-
-    private static class DocxSourceUniverseHash
-    {
-        private static readonly JsonSerializerOptions Json = new()
-        {
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-        };
-
-        public static string Compute(string sourceHash, IReadOnlyList<SemanticSourceAlias> aliases)
-        {
-            var rows = aliases
-                .OrderBy(alias => alias.SourceOrdinal)
-                .ThenBy(alias => alias.Alias, StringComparer.Ordinal)
-                .Select(alias => new
-                {
-                    sourceAlias = alias.Alias,
-                    sourceId = alias.SourceId,
-                    ordinal = alias.SourceOrdinal,
-                    text = alias.Text,
-                    sourceStart = alias.SourceSpan.Start,
-                    sourceEnd = alias.SourceSpan.End,
-                })
-                .ToArray();
-            var json = JsonSerializer.Serialize(new
-            {
-                schemaVersion = "a99-docx-runtime-source-universe-v1",
-                sourceSha256 = sourceHash,
-                rows,
-            }, Json);
-            return Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(json)));
-        }
-    }
 }
