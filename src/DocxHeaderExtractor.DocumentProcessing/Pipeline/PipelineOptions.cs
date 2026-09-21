@@ -34,6 +34,12 @@ public sealed class PipelineOptions
     /// </summary>
     public PdfExperimentExecutionGate? ExperimentGate { get; set; }
 
+    /// <summary>
+    /// Explicit experiment-only replay capture. Null keeps ordinary extraction free of artifact
+    /// writes; when supplied, persistence is fail-closed unless the request is optional.
+    /// </summary>
+    public SemanticAuthorityReplayCaptureRequest? ReplayCapture { get; set; }
+
     /// <summary>Luôn giữ đoạn có style heading kể cả khi mô hình bỏ sót.</summary>
     public bool TrustStyles { get; set; } = true;
 

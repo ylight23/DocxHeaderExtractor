@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
@@ -9,6 +10,12 @@ public sealed record StructuralAuthorityResult(
     string Reason,
     IReadOnlySet<string>? EmittedElementIds = null)
 {
+    /// <summary>Immutable semantic proposals captured before source-aware validation, if enabled.</summary>
+    public SemanticAuthorityReplayBundle? ReplayBundle { get; init; }
+
+    /// <summary>Persistence outcome owned by an explicitly configured experiment harness.</summary>
+    public SemanticAuthorityReplayPersistenceResult? ReplayPersistence { get; init; }
+
     /// <summary>
     /// The parser-owned source catalog this producer reasoned over, carried out rather than
     /// reconstructed downstream.

@@ -214,6 +214,7 @@ internal static class CanonicalSemanticEngine
         {
             var evidence = input.SourceEvidence ?? [];
             var proposals = new List<CanonicalSemanticProposal>();
+            var parsedProposals = new List<CanonicalSemanticProposal>();
             var issues = new List<SemanticContractIssue>();
             for (var start = 0; start < evidence.Count; start += OwnedPerSegment)
             {
@@ -300,12 +301,15 @@ internal static class CanonicalSemanticEngine
                             "A heading entry omitted a required field and was dropped."));
                         continue;
                     }
+                    parsedProposals.Add(proposal);
                     if (ownedAliases.Contains(proposal.SourceAlias)) proposals.Add(proposal);
                 }
             }
             return new(proposals, new CanonicalSemanticInferenceTelemetry(classifier.ModelName))
             {
                 ContractIssues = issues,
+                ParsedProposals = parsedProposals.ToArray(),
+                RawModelResponseHash = SemanticAuthorityReplayHashing.RawModelResponseHash(RawResponses),
             };
         }
 

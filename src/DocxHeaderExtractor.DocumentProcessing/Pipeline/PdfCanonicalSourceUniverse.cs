@@ -42,6 +42,7 @@ internal sealed record PdfCanonicalSourceUniverse(
         {
             ExpectedSourceSha256 = SourceSha256,
             OwnedAliases = null,
+            SourceUniverseSha256 = SourceUniverseSha256,
         };
 }
 

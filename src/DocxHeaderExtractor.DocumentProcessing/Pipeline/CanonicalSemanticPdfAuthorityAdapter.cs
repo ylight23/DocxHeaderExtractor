@@ -25,7 +25,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         IHeaderClassifier? transport,
         CancellationToken cancellationToken,
         CanonicalSemanticExperiment? experiment = null,
-        SemanticLaneOptions? semanticLaneOptions = null)
+        SemanticLaneOptions? semanticLaneOptions = null,
+        SemanticAuthorityReplayCaptureRequest? replayCapture = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
@@ -42,7 +43,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             Path.GetFileNameWithoutExtension(pdfPath));
         var execution = await PdfLaneExecution.RunAsync(
             (lease, ct) => RunSemanticCoreAsync(
-                pdfPath, universe, transport, experiment, lease, checkpoint, ct),
+                pdfPath, universe, transport, experiment, replayCapture, lease, checkpoint, ct),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
             cancellationToken).ConfigureAwait(false);
 
@@ -75,11 +76,15 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         PdfCanonicalSourceUniverse universe,
         IHeaderClassifier? transport,
         CanonicalSemanticExperiment? experiment,
+        SemanticAuthorityReplayCaptureRequest? replayCapture,
         PdfLaneExecutionLease lease,
         PdfStageCheckpoint checkpoint,
         CancellationToken cancellationToken)
     {
-        var input = universe.CreateProductionInput(Path.GetFileNameWithoutExtension(pdfPath));
+        var input = universe.CreateProductionInput(Path.GetFileNameWithoutExtension(pdfPath)) with
+        {
+            ReplayCapture = replayCapture?.Metadata,
+        };
         await checkpoint.RecordSelectionAsync(
             universe.Blocks.Select(block => new PdfSelectedSourceIdentity(
                 block.Id,
@@ -105,6 +110,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
                 requestId: $"pdf:{Path.GetFileNameWithoutExtension(pdfPath)}",
                 cancellationToken: cancellationToken);
         }
+
+        var replayPersistence = replayCapture?.Persist(result.ReplayBundle);
 
         var decisions = result.TextPipeline.BoundHeadings.Select(item => new PdfBlockDecision(
             item.SourceId,
@@ -200,6 +207,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             // left to be reconstructed. The audit beside it records readable text for a person;
             // these are the occurrences themselves.
             SourceCatalog = universe.Catalog,
+            ReplayBundle = result.ReplayBundle,
+            ReplayPersistence = replayPersistence,
         };
     }
 

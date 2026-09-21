@@ -108,7 +108,8 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 ? (_options.DocumentDiagnosticsAnalyzer ?? DocumentDiagnosticRunner.Analyze)(policyState, mode)
                 : null;
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
-            var authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(policyState, mode, analyst, ct);
+            var authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(
+                policyState, mode, analyst, ct, replayCapture: _options.ReplayCapture);
             authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
             var audit = authority.Audit;
             const string route = "docx-canonical-vnext";

@@ -19,7 +19,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         DocumentModeReport mode,
         IHeaderClassifier? transport,
         CancellationToken cancellationToken,
-        CanonicalSemanticExperiment? experiment = null)
+        CanonicalSemanticExperiment? experiment = null,
+        SemanticAuthorityReplayCaptureRequest? replayCapture = null)
     {
         ArgumentNullException.ThrowIfNull(policyState);
         var source = DocxAuthorityPipeline.BuildForAudit(policyState, mode);
@@ -27,7 +28,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "empty-docx-source");
 
         var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(policyState.Source);
-        var aliasesBySourceId = SemanticSourceAliasCatalog.FromCatalog(catalog)
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog).ToArray();
+        var aliasesBySourceId = aliases
             .ToDictionary(item => item.SourceId, StringComparer.Ordinal);
         var sourceHash = CanonicalSemanticSourceHash.Compute(policyState.Source.SourcePath);
         var evidence = source.Contexts.Values
@@ -48,6 +50,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         {
             ExpectedSourceSha256 = sourceHash,
             OwnedAliases = null,
+            ReplayCapture = replayCapture?.Metadata,
         };
 
         CanonicalSemanticProductionResult result;
@@ -66,6 +69,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 requestId: $"docx:{policyState.Source.DocumentId}",
                 cancellationToken: cancellationToken);
         }
+
+        var replayPersistence = replayCapture?.Persist(result.ReplayBundle);
 
         var decisions = result.TextPipeline.BoundHeadings.Select(item => new PdfBlockDecision(
             item.SourceId,
@@ -204,7 +209,11 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         return new StructuralAuthorityResult(
             structuralAuthority,
             audit,
-            "docx-canonical-vnext-semantic-authority");
+            "docx-canonical-vnext-semantic-authority")
+        {
+            ReplayBundle = result.ReplayBundle,
+            ReplayPersistence = replayPersistence,
+        };
     }
 
     private static IReadOnlyList<CanonicalSemanticProposal> DeterministicProposals(

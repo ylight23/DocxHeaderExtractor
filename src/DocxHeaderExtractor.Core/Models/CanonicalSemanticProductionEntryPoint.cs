@@ -27,6 +27,15 @@ public sealed record CanonicalSemanticProductionInput(
 
     /// <summary>Explicit global semantic conflicts supplied by a resolver; never inferred here.</summary>
     public IReadOnlyList<CanonicalSemanticGlobalConflict> GlobalConflicts { get; init; } = [];
+
+    /// <summary>Parser-owned source-universe identity when the route has one.</summary>
+    public string? SourceUniverseSha256 { get; init; }
+
+    /// <summary>
+    /// Optional experiment-owned capture metadata. When present, the production entry point
+    /// freezes parsed proposals before source-aware validation; persistence remains outside Core.
+    /// </summary>
+    public SemanticAuthorityCaptureMetadata? ReplayCapture { get; init; }
 }
 
 /// <summary>Compact parser-owned evidence attached to one canonical source occurrence. It contains
@@ -80,6 +89,15 @@ public sealed record CanonicalSemanticTextInferenceResult(
 {
     /// <summary>Provider/parser contract issues captured before any binder is allowed to run.</summary>
     public IReadOnlyList<SemanticContractIssue> ContractIssues { get; init; } = [];
+
+    /// <summary>
+    /// All proposals parsed from model JSON, before segment ownership filtering. Null is retained
+    /// for compatibility with custom test models that predate replay capture.
+    /// </summary>
+    public IReadOnlyList<CanonicalSemanticProposal>? ParsedProposals { get; init; }
+
+    /// <summary>Hash of the ordered raw model responses used for this inference.</summary>
+    public string? RawModelResponseHash { get; init; }
 }
 
 public interface ICanonicalSemanticTextModel
@@ -174,6 +192,9 @@ public sealed record CanonicalSemanticProductionResult(
     public int GlobalReopenCalls { get; init; }
     public int PrimaryTextModelCalls => TextModelCalls;
     public int TotalModelCalls => TextModelCalls + VisualModelCalls + SemanticAdjudicationCalls + GlobalReopenCalls;
+
+    /// <summary>Immutable proposal capture made before source-aware validation, when requested.</summary>
+    public SemanticAuthorityReplayBundle? ReplayBundle { get; init; }
 }
 
 public static class CanonicalSemanticProductionEntryPoint
@@ -181,6 +202,8 @@ public static class CanonicalSemanticProductionEntryPoint
     public static CanonicalSemanticProductionResult Run(CanonicalSemanticProductionInput input)
     {
         ArgumentNullException.ThrowIfNull(input);
+        if (input.ReplayCapture is not null)
+            throw new InvalidOperationException("REPLAY_CAPTURE_REQUIRES_ASYNC_INFERENCE");
         if (input.SemanticProposals is null)
             throw new InvalidOperationException("LIVE_INFERENCE_REQUIRES_RUN_ASYNC");
         var aliases = SemanticSourceAliasCatalog.FromCatalog(input.SourceCatalog);
@@ -219,6 +242,10 @@ public static class CanonicalSemanticProductionEntryPoint
         var context = SemanticContextPacker.Pack(
             input.TargetEvidence, input.LocalContext, input.GlobalContext);
         var textInference = await textModel.InferAsync(input, context, requestId, cancellationToken);
+        var captureProposals = textInference.ParsedProposals ?? textInference.Proposals;
+        var replayBundle = input.ReplayCapture is null
+            ? null
+            : CreateReplayBundle(input, aliases, textInference, captureProposals);
         var primaryValidation = CanonicalSemanticContractValidator.ValidateProposals(
             textInference.Proposals,
             aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal),
@@ -278,7 +305,40 @@ public static class CanonicalSemanticProductionEntryPoint
             ContractIssues = allContractIssues,
             ContractValidProposalCount = primaryValidation.ValidProposals.Count,
             ContractInvalidProposalCount = textInference.Proposals.Count - primaryValidation.ValidProposals.Count,
+            ReplayBundle = replayBundle,
         };
+    }
+
+    private static SemanticAuthorityReplayBundle CreateReplayBundle(
+        CanonicalSemanticProductionInput input,
+        IReadOnlyList<SemanticSourceAlias> aliases,
+        CanonicalSemanticTextInferenceResult textInference,
+        IReadOnlyList<CanonicalSemanticProposal> captureProposals)
+    {
+        var capture = input.ReplayCapture!;
+        if (string.IsNullOrWhiteSpace(textInference.RawModelResponseHash))
+            throw new InvalidOperationException("REPLAY_CAPTURE_RAW_RESPONSE_HASH_MISSING");
+        if (input.SourceUniverseSha256 is not null &&
+            !string.Equals(input.SourceUniverseSha256, capture.SourceUniverseHash, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException("REPLAY_CAPTURE_SOURCE_UNIVERSE_HASH_MISMATCH");
+        return SemanticAuthorityReplayBundleFactory.Create(
+            input.DocumentId ?? throw new InvalidOperationException("REPLAY_CAPTURE_DOCUMENT_ID_MISSING"),
+            capture.SourceType,
+            input.SourceSha256,
+            input.SourceUniverseSha256 ?? capture.SourceUniverseHash,
+            aliases,
+            capture.ModelIdentity,
+            capture.ModelRoute,
+            capture.PromptHash,
+            textInference.RawModelResponseHash,
+            captureProposals,
+            capture.GoldId,
+            capture.GoldHash,
+            capture.EvaluatorIdentity,
+            capture.ManifestHash,
+            capture.RunId,
+            capture.Commit,
+            capture.CreatedAt);
     }
 
     private static CanonicalSemanticProductionResult RunPostInference(
