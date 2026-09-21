@@ -64,8 +64,9 @@ contracts, heading-provider implementations, prompt/cache
 adapters, fact-provider adapters, LLamaSharp/SGLang VLM adapters, and an allowlisted file resource
 resolver. Core exposes only package-free contracts. Web/MCP wire normal and review paths; CLI evaluation commands use an explicit Eval project boundary and the CLI normal path does not activate Eval. The hosts wire the resolver
 and trusted semantic registry into the common harness; the MCP subprocess worker composes the same
-source boundary plus runtime state adapters. Evaluation commands use `EvaluationProjectionBridge`
-and the normal extraction route never activates the Eval project.
+source boundary plus runtime state adapters. The normal extraction route never activates the Eval
+project. `EvaluationProjectionBridge` was the adapter that carried an outline across that boundary;
+it was removed once nothing called it, and no evaluation command had been reaching it.
 
 ## Persisted artifacts and ownership
 
