@@ -214,34 +214,6 @@ public sealed class PipelineOptions
     /// </summary>
     public bool SessionCodeFallback { get; set; }
 
-    /// <summary>
-    /// Tầng cắt ranh giới title/body bằng LLM few-shot cố định theo domain — chỉ chạy cho ứng viên
-    /// mà <see cref="InlineHeadingSplitter"/> KHÔNG tìm được ranh giới tất định (không phải mọi
-    /// heading dính body, chỉ phần còn lại sau khi luật rẻ hơn đã thử). Xem
-    /// <see cref="LlmBoundaryCutter"/> — bảng cứng đã đo 85,7%/95,0%/85,7% trên ba domain và thắng
-    /// retrieval động khi so đầu đối đầu (<c>docs/llm-boundary-few-shot-retrieval.md</c> §3/§4).
-    /// <para>
-    /// Mặc định TẮT — kết quả đã đo là trên HARNESS RIÊNG (55 ca cô lập, không qua pipeline thật),
-    /// chưa đo end-to-end qua route sản xuất này. Chỉ chạy khi mô hình đang bật (<c>--no-llm</c>
-    /// tắt luôn tầng này, vì đây là tầng gọi model).
-    /// </para>
-    /// </summary>
-    public bool LlmBoundaryCutFallback { get; set; }
-
-    /// <summary>
-    /// Hậu kiểm bằng ký hiệu đánh số của chính tài liệu: cùng dạng đánh số phải cùng cấp, và
-    /// dãy anh em phải liên tục từ 1. Không tốn giây suy luận nào và bắt được cả lỗi trượt cấp
-    /// của mô hình lẫn tiêu đề bị tầng lọc đánh rơi — xem <see cref="NumberingAudit"/>.
-    /// </summary>
-    public bool AuditNumbering { get; set; } = true;
-
-    /// <summary>
-    /// Cứu heading bị mô hình loại hẳn khi đánh số của tài liệu khẳng định nó là em kế tiếp của
-    /// một heading đã nhận (3.1 → 3.2). Bộ sắp cấp chỉ sửa được cấp của heading ĐÃ chọn, không
-    /// kéo lại được mục đã bị loại — xem <see cref="StructuralRecovery"/>.
-    /// </summary>
-    public bool RecoverNumberedSiblings { get; set; } = true;
-
     /// <summary>Ghi XML tinh gọn từ canonical model ra file để debug/đối chiếu source.</summary>
     public string? DumpXmlPath { get; set; }
 
@@ -253,33 +225,6 @@ public sealed class PipelineOptions
     /// production chỉ hỏi các ứng viên mơ hồ; style/rule và hậu kiểm cấu trúc xử lý phần chắc chắn.
     /// </summary>
     public bool ReviewAllParagraphs { get; set; }
-
-    /// <summary>
-    /// Sau khi chọn heading theo từng cửa sổ, chạy một lượt riêng để gán lại cấp trên danh sách
-    /// heading theo thứ tự toàn tài liệu. Tránh lỗi chunk cắt giữa heading cha và heading con.
-    /// </summary>
-    public bool GlobalHierarchy { get; set; } = true;
-
-    /// <summary>
-    /// Chạy bộ suy cấp TẤT ĐỊNH (<see cref="StructuralHierarchyResolver"/> +
-    /// <see cref="TableOfContentsAnchor"/>) cho kết quả deterministic, dù LLM đang bật hay tắt.
-    /// <para>
-    /// Hai bộ này không cần mô hình nhưng nằm trong <c>RunModelAsync</c>, nên đường không mô hình
-    /// chưa bao giờ chạy chúng. Đo được trên <c>bench/02-dinh-dang-thu-cong</c>: đúng cấp 28,6%
-    /// với 5/7 mục nông hơn đáp án một cấp, trong khi gọi thẳng resolver cho đúng cả 7.
-    /// </para>
-    /// <para>
-    /// <b>MẶC ĐỊNH BẬT</b>, khác với các cờ mới khác của dự án. Lý do: §10.4 cấm lật mặc định CHỈ
-    /// vì bench, nhưng đây không phải mã chưa kiểm chứng. <see cref="StructuralHierarchyResolver"/>
-    /// đã có bằng chứng đáp án NGƯỜI KIỂM (§31: đúng cấp 81,1% → 91,5% trên khoá luận thật) và
-    /// đường có mô hình chạy nó VÔ ĐIỀU KIỆN trong <c>RunModelAsync</c>. Nhưng route deterministic
-    /// short-circuit trước <c>RunModelAsync</c>, nên nếu bỏ bước này khi LLM bật thì chỉ riêng việc
-    /// dùng Qwen để bù/xác minh đã làm mất pin cấp của route tất định. Đo được trên nhóm WB: bật
-    /// Qwen 27B từng làm Nav+cấp sập do bỏ bước này; chạy lại bước tất định đưa cấp về 100%.
-    /// </para>
-    /// <para>Tắt bằng <c>--no-deterministic-hierarchy</c> để đối chứng. Xem handoff §51.</para>
-    /// </summary>
-    public bool DeterministicHierarchy { get; set; } = true;
 
     public Action<string>? Log { get; set; }
 

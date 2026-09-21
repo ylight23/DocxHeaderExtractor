@@ -95,14 +95,4 @@ public class NhanLabelledLamChaTests
         Assert.NotNull(doc1);
     }
 
-    /// <summary>
-    /// MẶC ĐỊNH BẬT — khác mọi cờ mới khác của dự án, và đó là chủ ý: bộ suy cấp này đã có bằng
-    /// chứng đáp án người kiểm (§31) và đường có mô hình chạy nó vô điều kiện. Test ghim lựa chọn
-    /// đó để không ai tắt nhầm khi dọn dẹp (§51).
-    /// </summary>
-    [Fact]
-    public void Co_tat_dinh_hierarchy_mac_dinh_BAT()
-    {
-        Assert.True(new PipelineOptions().DeterministicHierarchy);
-    }
 }

@@ -21,10 +21,9 @@ public static class StructuralHierarchyResolver
         ArgumentNullException.ThrowIfNull(state);
         var paragraphs = state.Paragraphs.ToDictionary(p => p.Index);
         var ordered = headings.OrderBy(h => h.Index).ToList();
-        // Khoá theo THAM CHIẾU HeadingRecord, không theo Index. Từ §51 hai tính năng gặp nhau:
-        // --split-merged sinh nhiều mục dùng chung một Index (chủ đích, để đáp án trong keys/ không
-        // hỏng vì dịch chỉ số) còn DeterministicHierarchy nay mặc định BẬT (§51). Khoá theo Index thì
-        // ToDictionary ném ArgumentException "same key" — crash tiềm ẩn, có test riêng ghim lại.
+        // Khoá theo THAM CHIẾU HeadingRecord, không theo Index. --split-merged sinh nhiều mục dùng
+        // chung một Index (chủ đích, để đáp án trong keys/ không hỏng vì dịch chỉ số). Khoá theo
+        // Index thì ToDictionary ném ArgumentException "same key" — crash tiềm ẩn, có test riêng ghim lại.
         // Khoá theo tham chiếu cũng ĐÚNG NGHĨA hơn: hai lát cắt có text khác nhau nên phải có
         // đường dẫn đánh số khác nhau, gộp chúng vào một khoá là mất thông tin.
         var paths = new Dictionary<HeadingRecord, int[]?>(ReferenceEqualityComparer.Instance);

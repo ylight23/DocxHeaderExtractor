@@ -267,7 +267,6 @@ public sealed class CommandLineOptions
                     o.Pipeline.DoclingSidecarFallback = true;
                     break;
                 case "--session-code-fallback": o.Pipeline.SessionCodeFallback = true; break;
-                case "--llm-boundary-cut-fallback": o.Pipeline.LlmBoundaryCutFallback = true; break;
                 case "--openrouter":
                     o.Provider.Backend = InferenceBackend.OpenRouter;
                     o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
@@ -346,7 +345,6 @@ public sealed class CommandLineOptions
                 case "--skip-styled": o.Pipeline.SkipStyledCandidates = true; break;
                 case "--style-auto-assign": o.Pipeline.StyleAutoAssign = true; break;
                 case "--two-pass": o.Pipeline.TwoPass = true; break;
-                case "--no-global-hierarchy": o.Pipeline.GlobalHierarchy = false; break;
                 case "--model-levels": o.Pipeline.LevelFromOutline = false; break;
                 case "--dump-xml": o.Pipeline.DumpXmlPath = Next(a); break;
                 case "--show-raw": o.Pipeline.ShowRawOutput = true; break;
@@ -367,9 +365,6 @@ public sealed class CommandLineOptions
                 case "--no-reuse-prefix": llama.ReusePromptPrefix = false; break;
                 case "--gpu-layers" or "-ngl": llama.GpuLayerCount = int.Parse(Next(a)); break;
                 case "--verbose-native": llama.VerboseNativeLog = true; break;
-                case "--no-audit": o.Pipeline.AuditNumbering = false; break;
-                case "--no-structural-recovery": o.Pipeline.RecoverNumberedSiblings = false; break;
-
                 case "--max-text": extraction.MaxTextLength = int.Parse(Next(a)); break;
                 case "--no-tables": extraction.IncludeTables = false; break;
                 case "--page-headers": extraction.IncludePageHeadersFooters = true; break;
@@ -384,8 +379,6 @@ public sealed class CommandLineOptions
                 case "--admin-outline": o.Pipeline.AdministrativeDeclaredOutline = true; break;
                 case "--style-outline": o.Pipeline.StyleDeclaredOutline = true; break;
                 case "--numbering-outline": o.Pipeline.NumberingDeclaredOutline = true; break;
-                case "--deterministic-hierarchy": o.Pipeline.DeterministicHierarchy = true; break;
-                case "--no-deterministic-hierarchy": o.Pipeline.DeterministicHierarchy = false; break;
                 case "--mode-only": extraction.ReportModeOnly = true; break;
                 case "--flag-repeated-labels": extraction.FlagRepeatedLabels = true; break;
                 case "--skip-corrupt": extraction.SkipCorruptParagraphs = true; break;
@@ -566,12 +559,8 @@ public sealed class CommandLineOptions
                                     ~24% nhưng ĐO ĐƯỢC là precision tụt 100% → 94%: các đoạn có
                                     style nằm xen kẽ đóng vai trò neo cho mô hình. Chỉ dùng khi
                                     ưu tiên tốc độ hơn độ chính xác.
-              --no-audit            Tắt hậu kiểm theo ký hiệu đánh số. Mặc định BẬT: đối chiếu
-                                    cấp giữa các mục cùng dạng đánh số và tìm lỗ hổng trong dãy
-                                    anh em, đánh dấu (?) chỗ đáng ngờ. Không gọi mô hình.
               --two-pass            Quét hai lượt với cách cắt khối khác nhau, đánh dấu (?)
                                     những đoạn hai lượt bất đồng để xem lại. Tốn gấp ~2 lần.
-              --no-global-hierarchy Không chạy lượt gán cấp riêng trên toàn bộ heading đã chọn
               --model-levels        Lấy cấp do mô hình đoán thay vì đọc w:outlineLvl trong file
 
         Ví dụ:
