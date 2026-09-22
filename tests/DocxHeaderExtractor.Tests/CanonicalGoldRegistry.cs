@@ -208,6 +208,132 @@ public static class CanonicalGoldRegistry
         }).ToArray();
     }
 
+    /// <summary>
+    /// A registry-entry-shaped view of a Gold file, read directly rather than from
+    /// <see cref="Entries"/>. Every field an entry needs already lives in the Gold file itself, so
+    /// this needs no registry lookup at all - which is the point: it is for reading a vintage of an
+    /// authority that the registry no longer names.
+    /// </summary>
+    public static CanonicalGoldEntry EntryAt(string canonicalGoldPath, string expectedGoldSha256)
+    {
+        using var gold = ResolveAt(canonicalGoldPath, expectedGoldSha256);
+        var root = gold.RootElement;
+        var source = root.GetProperty("source");
+        var semantic = root.GetProperty("semantic");
+        var capabilities = root.GetProperty("capabilities");
+        var approval = root.GetProperty("approval");
+        return new CanonicalGoldEntry(
+            root.GetProperty("authorityId").GetString()!,
+            canonicalGoldPath,
+            source.GetProperty("sourceSha256").GetString()!,
+            semantic.GetProperty("semanticHeadingTotal").GetInt32(),
+            semantic.GetProperty("materializedSemanticClaims").GetInt32(),
+            capabilities.GetProperty("semanticCountAuthoritative").GetBoolean(),
+            capabilities.GetProperty("semanticClaimsEvaluable").GetBoolean(),
+            capabilities.GetProperty("occurrenceEvaluable").GetBoolean(),
+            capabilities.GetProperty("characterSpanEvaluable").GetBoolean(),
+            capabilities.GetProperty("visualBindingEvaluable").GetBoolean(),
+            expectedGoldSha256,
+            approval.GetProperty("authority").GetString()!,
+            approval.GetProperty("userFinalApproval").GetBoolean());
+    }
+
+    /// <summary>The document behind <see cref="EntryAt"/>, hash-verified the same way.</summary>
+    public static JsonDocument ResolveAt(string canonicalGoldPath, string expectedGoldSha256)
+    {
+        var path = TestRepository.Path(canonicalGoldPath);
+        if (!File.Exists(path))
+            throw new FileNotFoundException($"No Gold file at {canonicalGoldPath}.", path);
+
+        var text = File.ReadAllText(path);
+        var actual = CanonicalArtifactHash.OfText(text);
+        if (!string.Equals(actual, expectedGoldSha256, StringComparison.Ordinal))
+            throw new InvalidOperationException(
+                $"{canonicalGoldPath} does not match the hash it was pinned at." +
+                $" expected {expectedGoldSha256}, file {actual}.");
+
+        return JsonDocument.Parse(text);
+    }
+
+    /// <summary>
+    /// Reads occurrence Gold from an explicit file rather than from whatever an authority id
+    /// currently resolves to.
+    /// <para>
+    /// Exists for exactly one situation: a document has migrated to a new coordinate authority, and
+    /// something still needs the vintage that ran before the migration - a historical replay
+    /// reproducing an old baseline, an audit comparing old against candidate. That vintage's bytes
+    /// are preserved on disk under their own name once a migration moves the id's registered entry
+    /// past them; this reads them directly, verifies them against the hash the caller names (so a
+    /// silent edit to preserved history is still caught), and never touches the registry at all.
+    /// </para>
+    /// </summary>
+    public static PdfGoldDocument ResolveOccurrenceGoldAt(
+        string canonicalGoldPath, string expectedGoldSha256, string authorityId)
+    {
+        var path = TestRepository.Path(canonicalGoldPath);
+        if (!File.Exists(path))
+            throw new FileNotFoundException($"No Gold file at {canonicalGoldPath}.", path);
+
+        var text = File.ReadAllText(path);
+        var actual = CanonicalArtifactHash.OfText(text);
+        if (!string.Equals(actual, expectedGoldSha256, StringComparison.Ordinal))
+            throw new InvalidOperationException(
+                $"{canonicalGoldPath} does not match the hash it was pinned at." +
+                $" expected {expectedGoldSha256}, file {actual}.");
+
+        using var gold = JsonDocument.Parse(text);
+        var root = gold.RootElement;
+        var occurrence = root.GetProperty("occurrence");
+        var capabilities = root.GetProperty("capabilities");
+        var source = root.GetProperty("source");
+        var semantic = root.GetProperty("semantic");
+        var approval = root.GetProperty("approval");
+
+        var system = occurrence.GetProperty("bindingCoordinateSystem").GetString();
+        if (!string.Equals(system, "SOURCE_ALIAS_PLUS_SELECTION_MODE", StringComparison.Ordinal))
+            throw new InvalidOperationException(
+                $"{canonicalGoldPath} binds as {system}; it cannot be read as alias-addressed occurrence Gold.");
+
+        var headings = occurrence.GetProperty("claims").EnumerateArray()
+            .Select(claim => JsonSerializer.Deserialize<PdfGoldHeading>(claim.GetRawText())!)
+            .ToArray();
+
+        return new PdfGoldDocument(authorityId, source.GetProperty("sourceSha256").GetString()!, headings)
+        {
+            SemanticHeadingTotal = semantic.GetProperty("semanticHeadingTotal").GetInt32(),
+            FinalAuthority = approval.GetProperty("authority").GetString()!,
+            SemanticHeadingTotalAuthority = new PdfGoldAuthorityRecord(
+                approval.GetProperty("authority").GetString()!,
+                approval.GetProperty("approvedAt").GetString() ?? string.Empty),
+            OccurrenceAuthority = new PdfGoldAuthorityRecord(
+                approval.GetProperty("authority").GetString()!,
+                approval.GetProperty("approvedAt").GetString() ?? string.Empty)
+            {
+                SourceUniverseSha256 = occurrence.TryGetProperty("sourceUniverseSha256", out var universe)
+                    ? universe.GetString()
+                    : null,
+            },
+            Capabilities = new PdfGoldCapabilities
+            {
+                SemanticEvaluable = capabilities.GetProperty("semanticClaimsEvaluable").GetBoolean(),
+                OccurrenceEvaluable = capabilities.GetProperty("occurrenceEvaluable").GetBoolean(),
+            },
+        };
+    }
+
+    /// <summary>The bound-occurrence view of <see cref="ResolveOccurrenceGoldAt"/>'s document.</summary>
+    internal static IReadOnlyList<PdfBoundOccurrence> ResolveBoundGoldAt(
+        string canonicalGoldPath, string expectedGoldSha256, string authorityId,
+        IReadOnlyList<SemanticSourceAlias> aliases)
+    {
+        var bound = PdfGoldBoundOccurrenceEvaluator.BindGold(
+            ResolveOccurrenceGoldAt(canonicalGoldPath, expectedGoldSha256, authorityId), aliases, out var issues);
+        if (issues.Count > 0)
+            throw new InvalidOperationException(
+                $"{canonicalGoldPath} does not bind: {string.Join("; ", issues)}");
+        return bound;
+    }
+
     private static IReadOnlyList<CanonicalGoldEntry> Read()
     {
         var path = TestRepository.Path(RegistryRelativePath);

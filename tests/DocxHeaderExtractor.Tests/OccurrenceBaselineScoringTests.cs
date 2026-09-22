@@ -21,6 +21,25 @@ public sealed class OccurrenceBaselineScoringTests
     private const string RunRoot = "eval/a99-closed-loop/occurrence-baseline-v1";
     private static readonly string[] Cohort = ["DOC-0001", "DOC-0252"];
 
+    // The baseline this scores ran against DOC-0252's legacy occurrence authority; its own frozen
+    // goldHash is that legacy hash. DOC-0252 has since migrated in the live registry, so scoring
+    // this historical run has to keep naming the vintage it actually ran against.
+    private const string LegacyDoc0252GoldPath =
+        "eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json";
+    private const string LegacyDoc0252GoldSha256 =
+        "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65";
+
+    private static CanonicalGoldEntry EntryFor(string id) =>
+        id == "DOC-0252"
+            ? CanonicalGoldRegistry.EntryAt(LegacyDoc0252GoldPath, LegacyDoc0252GoldSha256)
+            : CanonicalGoldRegistry.Entry(id);
+
+    private static IReadOnlyList<PdfBoundOccurrence> BoundGoldFor(
+        string id, IReadOnlyList<SemanticSourceAlias> aliases) =>
+        id == "DOC-0252"
+            ? CanonicalGoldRegistry.ResolveBoundGoldAt(LegacyDoc0252GoldPath, LegacyDoc0252GoldSha256, id, aliases)
+            : CanonicalGoldRegistry.ResolveBoundGold(id, aliases);
+
     [Fact]
     public void Score_the_baseline_against_canonical_gold()
     {
@@ -31,7 +50,7 @@ public sealed class OccurrenceBaselineScoringTests
 
         foreach (var id in Cohort)
         {
-            var entry = CanonicalGoldRegistry.Entry(id);
+            var entry = EntryFor(id);
             CanonicalGoldRegistry.RequireCapability(id, GoldCapability.Occurrence);
 
             var repeats = new List<object>();
@@ -44,7 +63,7 @@ public sealed class OccurrenceBaselineScoringTests
                 Assert.Equal(entry.SourceSha256, bundle.SourceHash);
                 Assert.Equal(entry.GoldSha256, bundle.GoldHash);
 
-                var goldBound = CanonicalGoldRegistry.ResolveBoundGold(id, bundle.AliasCatalog);
+                var goldBound = BoundGoldFor(id, bundle.AliasCatalog);
                 Assert.Equal(entry.SemanticHeadingTotal, goldBound.Count);
 
                 var replay = SemanticAuthorityReplay.Replay(bundle, bundle.SourceHash, bundle.SourceUniverseHash);
@@ -151,8 +170,8 @@ public sealed class OccurrenceBaselineScoringTests
     public void Characterize_where_DOC_0252_loses_each_occurrence()
     {
         const string Id = "DOC-0252";
-        var entry = CanonicalGoldRegistry.Entry(Id);
-        using var gold = CanonicalGoldRegistry.Resolve(Id);
+        var entry = EntryFor(Id);
+        using var gold = CanonicalGoldRegistry.ResolveAt(LegacyDoc0252GoldPath, LegacyDoc0252GoldSha256);
         var claims = gold.RootElement.GetProperty("occurrence").GetProperty("claims")
             .EnumerateArray().Select(claim => claim.Clone()).ToArray();
 
@@ -169,7 +188,7 @@ public sealed class OccurrenceBaselineScoringTests
                 .GroupBy(proposal => proposal.SourceAlias, StringComparer.Ordinal)
                 .ToDictionary(group => group.Key, group => group.ToArray(), StringComparer.Ordinal);
 
-            var goldBound = CanonicalGoldRegistry.ResolveBoundGold(Id, bundle.AliasCatalog);
+            var goldBound = BoundGoldFor(Id, bundle.AliasCatalog);
             var replay = SemanticAuthorityReplay.Replay(bundle, bundle.SourceHash, bundle.SourceUniverseHash);
             var predicted = replay.Pipeline.BoundHeadings
                 .Select(item => new PdfBoundOccurrence(item.Parts, item.SemanticRole, item.Alias))

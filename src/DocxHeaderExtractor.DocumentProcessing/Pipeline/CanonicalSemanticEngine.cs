@@ -149,6 +149,22 @@ internal static class CanonicalSemanticEngine
         experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
 
     /// <summary>
+    /// The shared core, plus whatever coordinate shape the lane's contract teaches.
+    /// <para>
+    /// A contract with no <see cref="SemanticCoordinateContract.PromptClause"/> gets exactly the
+    /// prompt it always got - DOCX and legacy PDF both fall here, which is what keeps their prompt
+    /// hashes unmoved by this seam existing at all. A contract that introduces a new coordinate
+    /// shape appends its own teaching text; the core paragraphs it is appended to are identical
+    /// either way, which is what keeps this one semantic core rather than two.
+    /// </para>
+    /// </summary>
+    internal static string SystemPromptFor(SemanticCoordinateContract contract, CanonicalSemanticExperiment experiment)
+    {
+        var core = SystemPromptFor(experiment);
+        return contract.PromptClause is null ? core : core + contract.PromptClause;
+    }
+
+    /// <summary>
     /// The semantic core. One reasoning model, one ontology, one set of instructions - and a
     /// coordinate contract handed in by the lane that knows how its source is addressed.
     /// <para>
@@ -267,7 +283,7 @@ internal static class CanonicalSemanticEngine
                         sourceEvidence,
                     });
                 var raw = await classifier.BoundaryCutAsync(
-                    SystemPromptFor(_experiment),
+                    SystemPromptFor(Contract, _experiment),
                     packet + "\nSCHEMA=" + JsonSerializer.Serialize(Contract.Schema()),
                     cancellationToken,
                     expectedItemCount: owned.Length);

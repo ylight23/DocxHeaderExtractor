@@ -25,6 +25,14 @@ public sealed record SemanticCoordinateContract(
     Func<object> SchemaFactory,
     Func<JsonElement, IReadOnlyList<SemanticContractIssue>> Validator)
 {
+    /// <summary>
+    /// Text appended to the shared semantic-core prompt to teach this contract's coordinate shape.
+    /// Null means the core prompt already covers it - true of both current contracts, since neither
+    /// has changed what it asks the model to return. A contract that introduces a new coordinate
+    /// shape, like structured sourceParts, supplies the fragment that teaches it.
+    /// </summary>
+    public string? PromptClause { get; init; }
+
     private static readonly JsonSerializerOptions Canonical = new()
     {
         WriteIndented = true,
@@ -61,13 +69,27 @@ public sealed record SemanticCoordinateContract(
         CanonicalSemanticContractValidator.ValidateJson);
 
     /// <summary>
-    /// PDF: alias plus a selection mode over the occurrence it names. Still the shared schema -
-    /// this lane has a structured multi-part successor validated in shadow, and adopting it is a
-    /// separate, explicit act.
+    /// PDF, unmigrated documents: alias plus a selection mode over the occurrence it names.
+    /// The legacy occurrence authority's contract - unchanged, and still the default for any PDF
+    /// whose authority profile has not declared the structured successor.
     /// </summary>
     public static readonly SemanticCoordinateContract PdfAliasSelection = new(
         "SOURCE_ALIAS_PLUS_SELECTION_MODE",
         CanonicalSemanticContract.ProtocolVersion,
         CanonicalSemanticContract.Schema,
         CanonicalSemanticContractValidator.ValidateJson);
+
+    /// <summary>
+    /// PDF, migrated documents only: an ordered list of exact selections over visual-segment
+    /// atoms. Not activated for the PDF lane as a whole - routing to this contract is a property
+    /// of the document's declared authority profile, never of it being a PDF.
+    /// </summary>
+    public static readonly SemanticCoordinateContract PdfStructuredSourceParts = new(
+        "STRUCTURED_SOURCE_PART_TUPLE",
+        SemanticSourcePartsContract.ProtocolVersion,
+        SemanticSourcePartsContract.Schema,
+        CanonicalSemanticContractValidator.ValidateJson)
+    {
+        PromptClause = PdfStructuredSourcePartsPromptClause.Text,
+    };
 }

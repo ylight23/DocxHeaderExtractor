@@ -23,6 +23,7 @@
 /eval/a99-closed-loop/representation/visual-line-segment-adjudication.v1.json text eol=lf
 /eval/a99-closed-loop/representation/doc-0252-structured-source-parts.v1.json text eol=lf
 /eval/a99-closed-loop/representation/doc-0252-segment-evidence-authority.v1.json text eol=lf
+/eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.occurrence-gold.v1.json text eol=lf
 
 # These benchmark artifacts are bound by raw SHA-256 in N12/N14. Keep their Git blobs byte-identical
 # in every checkout; their .json extension does not grant Git permission to rewrite line endings.

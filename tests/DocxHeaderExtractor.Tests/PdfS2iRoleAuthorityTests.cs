@@ -27,7 +27,7 @@ public sealed class PdfS2iRoleAuthorityTests
     [Fact]
     public void Audit_role_authority_and_freeze_strict_persistent_omissions()
     {
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
         var goldBound = PdfGoldBoundOccurrenceEvaluator.BindGold(
             gold, LoadBundle(1).AliasCatalog, out var bindingIssues);
         Assert.Empty(bindingIssues);

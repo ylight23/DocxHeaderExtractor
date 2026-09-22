@@ -227,7 +227,7 @@ public sealed class PdfSemanticBlockGrouperTests
     [Fact]
     public void The_shadow_block_grouping_separates_headings_from_what_follows_them()
     {
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
         Assert.Equal(GoldHeadings, gold.Headings.Count);
 
         // Both sides read the repaired visual lines from f314255. This task changes one stage, and

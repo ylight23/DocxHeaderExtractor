@@ -228,7 +228,7 @@ public sealed class PdfS2dSourceUniverseAuthorityTests
     public void Every_canonical_gold_claim_still_binds_under_the_runtime_universe()
     {
         // The claims are what must survive; the hash is only how the universe is named.
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
         var universe = PdfCanonicalSourceUniverseBuilder.Build(Path(Pdf));
 
         var bound = PdfGoldBoundOccurrenceEvaluator.BindGold(gold, universe.Aliases, out var issues);

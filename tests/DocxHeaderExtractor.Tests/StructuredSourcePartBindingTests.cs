@@ -226,7 +226,7 @@ public sealed class StructuredSourcePartBindingTests
     public void Every_approved_heading_binds_directly_to_segment_atoms()
     {
         var atoms = Doc0252Atoms();
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
         Assert.Equal(ApprovedHeadings, gold.Headings.Count);
 
         // Gold's texts come from the universe it was written against, where its aliases are

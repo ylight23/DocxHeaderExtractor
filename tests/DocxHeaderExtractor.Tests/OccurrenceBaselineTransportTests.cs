@@ -26,6 +26,10 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class OccurrenceBaselineTransportTests
 {
     private const string RunVariable = "A99_S2P_RUN";
+    private const string LegacyDoc0252GoldPath =
+        "eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json";
+    private const string LegacyDoc0252GoldSha256 =
+        "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65";
     private const int MaxProviderCalls = 36;
     private const int Repetitions = 3;
     private const string Model = "qwen/qwen3.7-flash";
@@ -104,8 +108,17 @@ public sealed class OccurrenceBaselineTransportTests
 
         foreach (var id in Cohort)
         {
-            var entry = CanonicalGoldRegistry.Entry(id);
-            using var gold = CanonicalGoldRegistry.Resolve(id);   // throws on gold hash mismatch
+            // The b187cc2 baseline this gates ran against DOC-0252's legacy occurrence authority.
+            // Its own frozen goldHash record (below, in the run artifact) is that legacy hash, so
+            // this gate has to name the same vintage - the id has since migrated in the live
+            // registry, and reading through it here would compare the baseline with an authority
+            // it never ran against.
+            var entry = id == "DOC-0252"
+                ? CanonicalGoldRegistry.EntryAt(LegacyDoc0252GoldPath, LegacyDoc0252GoldSha256)
+                : CanonicalGoldRegistry.Entry(id);
+            using var gold = id == "DOC-0252"
+                ? CanonicalGoldRegistry.ResolveAt(LegacyDoc0252GoldPath, LegacyDoc0252GoldSha256)
+                : CanonicalGoldRegistry.Resolve(id);   // throws on gold hash mismatch
             var source = gold.RootElement.GetProperty("source");
             var path = TestRepository.Path(source.GetProperty("sourcePath").GetString()!);
             var media = source.GetProperty("mediaType").GetString()!;

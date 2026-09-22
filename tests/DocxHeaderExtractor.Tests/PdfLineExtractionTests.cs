@@ -334,7 +334,7 @@ public sealed class PdfLineExtractionTests
     [Fact]
     public void The_shadow_universe_repairs_the_boundaries_the_audit_found()
     {
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
         Assert.Equal(AuthoritativeTotal, gold.Headings.Count);
 
         var before = Occurrences(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1);
@@ -541,7 +541,7 @@ public sealed class PdfLineExtractionTests
     [Fact]
     public void The_segment_universe_keeps_every_approved_heading_representable()
     {
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
         var reference = Occurrences(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1);
         var aliases = PdfSourceOccurrenceBoundary.Aliases(reference.Count);
         var goldTexts = gold.Headings

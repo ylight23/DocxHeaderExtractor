@@ -454,11 +454,19 @@ public sealed class CanonicalGoldConsolidationTests
             var root = gold.RootElement;
             var source = root.GetProperty("source");
             var active = root.GetProperty("occurrence").GetProperty("sourceUniverseSha256").GetString();
+            var structured = root.GetProperty("capabilities").TryGetProperty("structuredSourcePartsEvaluable", out var flag)
+                && flag.GetBoolean();
 
-            var runtime = RuntimeSourceUniverse(
-                TestRepository.Path(source.GetProperty("sourcePath").GetString()!),
-                source.GetProperty("mediaType").GetString()!,
-                source.GetProperty("sourceSha256").GetString()!);
+            // Which producer "the lane that will run" actually is depends on the authority's own
+            // declared profile, not on its media type - a PDF authority may be either.
+            var runtime = structured
+                ? PdfStructuredSourceAuthorityBuilder
+                    .Build(TestRepository.Path(source.GetProperty("sourcePath").GetString()!))
+                    .SourceAliasUniverseHash
+                : RuntimeSourceUniverse(
+                    TestRepository.Path(source.GetProperty("sourcePath").GetString()!),
+                    source.GetProperty("mediaType").GetString()!,
+                    source.GetProperty("sourceSha256").GetString()!);
 
             Assert.Equal(runtime, active);
         }
@@ -470,20 +478,38 @@ public sealed class CanonicalGoldConsolidationTests
         // History is preserved, not promoted. There is exactly one active identity; the older one
         // lives in provenance where nothing gates on it, because "which hash applies here" is the
         // ambiguity this work removed from Gold.
+        // DOC-0252's own reconciliation (review-pack hash 5dd617b2... against the legacy runtime
+        // universe cb3c9af6...) belongs to the legacy-occurrence chapter of its history, preserved
+        // in that predecessor Gold's own bytes (goldSha256 51e2f708..., unchanged on disk, and in
+        // git history) rather than restated here: the authority DOC-0252 now resolves as has moved
+        // to the structured profile, and its own active universe is the structured one. What this
+        // Gold keeps instead is the fact of that move - one predecessor hash, not a second active
+        // universe identity.
         using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
         var provenance = gold.RootElement.GetProperty("provenance").EnumerateArray().ToArray();
 
-        var reconciliation = Assert.Single(provenance,
+        var predecessor = Assert.Single(provenance,
+            item => item.GetProperty("role").GetString() == "MIGRATION_PREDECESSOR");
+        Assert.Equal("51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
+            predecessor.GetProperty("sha256").GetString());
+        Assert.DoesNotContain(provenance,
             item => item.GetProperty("role").GetString() == "SOURCE_UNIVERSE_RECONCILIATION");
-        Assert.Equal("5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
-            reconciliation.GetProperty("path").GetString());
-        Assert.Equal("cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
-            reconciliation.GetProperty("sha256").GetString());
 
-        // DOC-0001 needed no reconciliation: its frozen hash already was the runtime one.
+        // The predecessor Gold file itself is untouched: same bytes, same hash, still resolvable
+        // directly by path for historical replay - it is simply no longer what "DOC-0252" resolves
+        // to by id.
+        var predecessorPath = TestRepository.Path(
+            "eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json"
+                .Replace('/', Path.DirectorySeparatorChar));
+        Assert.True(File.Exists(predecessorPath), "the predecessor Gold must remain on disk as history");
+        Assert.Equal("51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
+            CanonicalArtifactHash.OfTextFile(predecessorPath));
+
+        // DOC-0001 needed no reconciliation and has not migrated: its frozen hash already was, and
+        // remains, the runtime one.
         using var docx = CanonicalGoldRegistry.Resolve("DOC-0001");
         Assert.DoesNotContain(docx.RootElement.GetProperty("provenance").EnumerateArray(),
-            item => item.GetProperty("role").GetString() == "SOURCE_UNIVERSE_RECONCILIATION");
+            item => item.GetProperty("role").GetString() is "SOURCE_UNIVERSE_RECONCILIATION" or "MIGRATION_PREDECESSOR");
     }
 
     // ---- derivation ---------------------------------------------------------------------------
@@ -546,9 +572,63 @@ public sealed class CanonicalGoldConsolidationTests
         string? coordinateSystem = null;
         string? sourceUniverseSha = null;
         string? reviewTimeUniverseSha = null;
+        var structuredSourcePartsEvaluable = false;
 
         var occurrencePath = TestRepository.Path($"{OccurrenceRoot}/{id}.occurrence-gold.v1.json");
-        if (File.Exists(occurrencePath))
+        // An authority declares the structured profile by the presence of this sibling file, next
+        // to its legacy one - not by its id. Any authority that gets one migrates the same way
+        // DOC-0252 did; nothing here names a document.
+        var structuredPath = TestRepository.Path(
+            $"{OccurrenceRoot}/{id}.structured-source-parts.occurrence-gold.v1.json");
+
+        if (File.Exists(structuredPath))
+        {
+            var structuredText = File.ReadAllText(structuredPath);
+            using var structured = JsonDocument.Parse(structuredText);
+            var structuredRoot = structured.RootElement;
+            var structuredSha = structuredRoot.GetProperty("sourceSha256").GetString();
+            var structuredTotal = structuredRoot.GetProperty("semanticHeadingTotal").GetInt32();
+            var bound = structuredRoot.GetProperty("boundOccurrences");
+
+            var sameSource = string.Equals(structuredSha, sourceSha, StringComparison.Ordinal);
+            var sameCount = structuredTotal == total && bound.GetArrayLength() == total;
+
+            if (sameSource && sameCount)
+            {
+                // Structured claims are a list of exact selections, not one alias plus one text -
+                // the shape a claim needs once a heading may span more than one coordinate atom.
+                claims.AddRange(bound.EnumerateArray().Select(item => item.Clone()));
+                semanticClaims.AddRange(bound.EnumerateArray().Select(item => (object)new
+                {
+                    sourceParts = item.GetProperty("sourceParts").Clone(),
+                    semanticRole = Text(item, "semanticRole"),
+                }));
+                occurrenceEvaluable = true;
+                characterSpanEvaluable = false;
+                structuredSourcePartsEvaluable = true;
+                coordinateSystem = "STRUCTURED_SOURCE_PART_TUPLE";
+                unavailable = null;
+                sourceUniverseSha = PdfStructuredSourceAuthorityBuilder
+                    .Build(TestRepository.Path(root.GetProperty("authoritySourcePath").GetString()!))
+                    .SourceAliasUniverseHash;
+                provenance.Add(new(RelativeTo(structuredPath),
+                    CanonicalArtifactHash.OfText(structuredText), "STRUCTURED_OCCURRENCE_AUTHORITY"));
+                var migration = structuredRoot.GetProperty("migration");
+                provenance.Add(new(
+                    $"predecessor-gold:{migration.GetProperty("kind").GetString()}",
+                    migration.GetProperty("predecessorGoldSha256").GetString()!,
+                    "MIGRATION_PREDECESSOR"));
+            }
+            else
+            {
+                unavailable = sameSource
+                    ? $"structured occurrence artifact describes {structuredTotal} headings against an approved total of {total}"
+                    : "structured occurrence artifact was taken against different source bytes";
+                provenance.Add(new(RelativeTo(structuredPath),
+                    CanonicalArtifactHash.OfText(structuredText), "NON_CANONICAL_PROVENANCE_ONLY"));
+            }
+        }
+        else if (File.Exists(occurrencePath))
         {
             var occurrenceText = File.ReadAllText(occurrencePath);
             using var occurrence = JsonDocument.Parse(occurrenceText);
@@ -664,21 +744,11 @@ public sealed class CanonicalGoldConsolidationTests
                 unavailableReason = unavailable,
                 claims = claims.ToArray(),
             },
-            capabilities = new
-            {
-                // The approved total is authoritative for every authority here.
-                semanticCountAuthoritative = true,
-                // Whether a scorer can say WHICH heading was missed. A count cannot: from 72 alone
-                // there is no way to know which of a run's proposals is a true positive, so calling
-                // that axis evaluable would promise precision and recall the data cannot support.
-                semanticClaimsEvaluable = semanticClaims.Count == total && total > 0,
-                occurrenceEvaluable,
-                characterSpanEvaluable,
-                visualBindingEvaluable = capabilities.TryGetProperty("visualBindingEvaluable", out var visual)
-                                         && visual.GetBoolean(),
-                hierarchyEvaluable = capabilities.TryGetProperty("hierarchyEvaluable", out var hierarchy)
-                                     && hierarchy.GetBoolean(),
-            },
+            capabilities = CapabilitiesOf(
+                occurrenceEvaluable, characterSpanEvaluable, semanticClaims.Count == total && total > 0,
+                capabilities.TryGetProperty("visualBindingEvaluable", out var visual) && visual.GetBoolean(),
+                capabilities.TryGetProperty("hierarchyEvaluable", out var hierarchy) && hierarchy.GetBoolean(),
+                structuredSourcePartsEvaluable),
             provenance = provenance
                 .Select(item => new { path = item.Path, sha256 = item.Sha256, role = item.Role })
                 .ToArray(),
@@ -705,6 +775,33 @@ public sealed class CanonicalGoldConsolidationTests
         var source = new OpenXmlDocumentSource().Read(path);
         var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(source);
         return DocxSourceUniverseHash.Compute(sourceSha, SemanticSourceAliasCatalog.FromCatalog(catalog));
+    }
+
+    /// <summary>
+    /// The two structured-profile fields are added only where they are true. Every authority that
+    /// has not migrated keeps the exact capabilities object it has always had, byte for byte - the
+    /// "absent, not false" rule this repository already applies to every other optional fact,
+    /// applied here so declaring one authority's new capability cannot move twenty others' hashes.
+    /// </summary>
+    private static object CapabilitiesOf(
+        bool occurrenceEvaluable, bool characterSpanEvaluable, bool semanticClaimsEvaluable,
+        bool visualBindingEvaluable, bool hierarchyEvaluable, bool structuredSourcePartsEvaluable)
+    {
+        var ordered = new Dictionary<string, object>
+        {
+            ["semanticCountAuthoritative"] = true,
+            ["semanticClaimsEvaluable"] = semanticClaimsEvaluable,
+            ["occurrenceEvaluable"] = occurrenceEvaluable,
+            ["characterSpanEvaluable"] = characterSpanEvaluable,
+            ["visualBindingEvaluable"] = visualBindingEvaluable,
+            ["hierarchyEvaluable"] = hierarchyEvaluable,
+        };
+        if (structuredSourcePartsEvaluable)
+        {
+            ordered["structuredSourcePartsEvaluable"] = true;
+            ordered["coordinateProfile"] = "STRUCTURED_SOURCE_PARTS";
+        }
+        return ordered;
     }
 
     private static string? Text(JsonElement element, string name) =>

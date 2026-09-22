@@ -32,7 +32,7 @@ public sealed class PdfS2gOfflineScoringTests
         var bundleRows = census.RootElement.GetProperty("bundles").EnumerateArray().ToArray();
         Assert.Equal(3, bundleRows.Length);
 
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
         Assert.Equal(41, gold.Headings.Count);
 
         var scores = new List<RepeatScore>();
@@ -251,7 +251,7 @@ public sealed class PdfS2gOfflineScoringTests
         }
 
         private static PdfGoldDocument LoadGold() =>
-            CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+            CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
 
         private static double F1Score(double precision, double recall) =>
             precision + recall == 0 ? 0 : 2 * precision * recall / (precision + recall);

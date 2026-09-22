@@ -18,7 +18,7 @@ namespace DocxHeaderExtractor.Tests;
 /// is untouched, and no request leaves the process.
 /// </para>
 /// </summary>
-public sealed class PdfSegmentEvidenceAuthorityTests
+public sealed class PdfStructuredSourceAuthorityBuilderTests
 {
     private const string Doc0252 = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
     private const string Artifacts = "eval/a99-closed-loop/representation";
@@ -91,8 +91,8 @@ public sealed class PdfSegmentEvidenceAuthorityTests
         // The property the rearrangement rests on. Blocks decide what the model is told about
         // where text sits; they no longer decide what any of it is called.
         var segments = Segments();
-        var continuation = PdfSegmentEvidenceAuthority.Build(segments, PdfBlockGrouping.ContinuationV2);
-        var legacy = PdfSegmentEvidenceAuthority.Build(segments, PdfBlockGrouping.LegacyV1);
+        var continuation = PdfStructuredSourceAuthorityBuilder.Build(segments, PdfBlockGrouping.ContinuationV2);
+        var legacy = PdfStructuredSourceAuthorityBuilder.Build(segments, PdfBlockGrouping.LegacyV1);
 
         Assert.Equal(continuation.SourceAliasUniverseHash, legacy.SourceAliasUniverseHash);
         Assert.Equal(
@@ -106,8 +106,8 @@ public sealed class PdfSegmentEvidenceAuthorityTests
     public void The_plan_is_deterministic()
     {
         var segments = Segments();
-        var first = PdfSegmentEvidenceAuthority.Build(segments);
-        var second = PdfSegmentEvidenceAuthority.Build(segments);
+        var first = PdfStructuredSourceAuthorityBuilder.Build(segments);
+        var second = PdfStructuredSourceAuthorityBuilder.Build(segments);
 
         Assert.Equal(first.SourceAliasUniverseHash, second.SourceAliasUniverseHash);
         Assert.Equal(first.ModelVisibleEvidenceHash, second.ModelVisibleEvidenceHash);
@@ -119,7 +119,7 @@ public sealed class PdfSegmentEvidenceAuthorityTests
     public void The_atoms_conserve_the_text_of_the_segments_they_came_from()
     {
         var segments = Segments();
-        var plan = PdfSegmentEvidenceAuthority.Build(segments);
+        var plan = PdfStructuredSourceAuthorityBuilder.Build(segments);
 
         Assert.Equal(
             segments.Select(line => line.Projection.VerbatimText),
@@ -188,7 +188,7 @@ public sealed class PdfSegmentEvidenceAuthorityTests
         // is identical under either grouping, and that the binder is handed atoms and never sees a
         // block at all. The case where these two were separate occurrences is the active universe,
         // where they are S0616 and S0618; that is recorded in doc-0252-structured-source-parts.
-        var legacy = PdfSegmentEvidenceAuthority.Build(Segments(), PdfBlockGrouping.LegacyV1);
+        var legacy = PdfStructuredSourceAuthorityBuilder.Build(Segments(), PdfBlockGrouping.LegacyV1);
         Assert.NotEqual(plan.ModelVisibleEvidenceHash, legacy.ModelVisibleEvidenceHash);
         Assert.Equal(bound.Identity, SemanticSourcePartBinder.Bind(legacy.Atoms,
             new SemanticSourcePartsProposal(
@@ -204,7 +204,7 @@ public sealed class PdfSegmentEvidenceAuthorityTests
     public void The_pre_migration_authority_is_frozen_with_its_four_hashes()
     {
         var plan = Plan();
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
+        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
         Assert.Equal(ApprovedHeadings, gold.Headings.Count);
 
         var representable = Representable(plan, gold, out var partCounts, out var claims);
@@ -242,9 +242,9 @@ public sealed class PdfSegmentEvidenceAuthorityTests
                 requestPlanSha256 = plan.RequestPlanHash,
                 producers = new
                 {
-                    sourceAliasUniverse = "PdfSegmentEvidenceAuthority.Build -> PdfSegmentAtomCatalog.FromSegments, schema a99-pdf-segment-atom-universe-v1",
-                    modelVisibleEvidence = "PdfSegmentEvidenceAuthority.Visible over PdfCanonicalSourceUniverseBuilder.EvidenceOf, schema a99-pdf-model-visible-evidence-v1",
-                    callPlan = "PdfSegmentEvidenceAuthority.Pack, OwnedPerSegment 120 and VisibleMargin 20, schema a99-pdf-context-pack-plan-v1",
+                    sourceAliasUniverse = "PdfStructuredSourceAuthorityBuilder.Build -> PdfSegmentAtomCatalog.FromSegments, schema a99-pdf-segment-atom-universe-v1",
+                    modelVisibleEvidence = "PdfStructuredSourceAuthorityBuilder.Visible over PdfCanonicalSourceUniverseBuilder.EvidenceOf, schema a99-pdf-model-visible-evidence-v1",
+                    callPlan = "PdfStructuredSourceAuthorityBuilder.Pack, OwnedPerSegment 120 and VisibleMargin 20, schema a99-pdf-context-pack-plan-v1",
                     requestPlan = "sha256 of each canonical request payload in order, schema a99-pdf-request-plan-v1",
                 },
             },
@@ -348,9 +348,9 @@ public sealed class PdfSegmentEvidenceAuthorityTests
         return PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3);
     }
 
-    private static PdfSegmentEvidencePlan Plan() => PdfSegmentEvidenceAuthority.Build(Segments());
+    private static PdfStructuredSourceAuthority Plan() => PdfStructuredSourceAuthorityBuilder.Build(Segments());
 
-    private static object Wrapped(PdfSegmentEvidencePlan plan)
+    private static object Wrapped(PdfStructuredSourceAuthority plan)
     {
         var first = plan.Atoms.Single(atom => atom.Alias == "L0359:S0");
         var second = plan.Atoms.Single(atom => atom.Alias == "L0360:S0");
@@ -376,7 +376,7 @@ public sealed class PdfSegmentEvidenceAuthorityTests
         };
     }
 
-    private static int PackOf(PdfSegmentEvidencePlan plan, string alias) =>
+    private static int PackOf(PdfStructuredSourceAuthority plan, string alias) =>
         plan.Packs.First(pack => pack.OwnedAliases.Contains(alias)).Index;
 
     /// <summary>
@@ -384,7 +384,7 @@ public sealed class PdfSegmentEvidenceAuthorityTests
     /// the texts Gold records. The locating is the same one the structured-binding audit used.
     /// </summary>
     private static int Representable(
-        PdfSegmentEvidencePlan plan, PdfGoldDocument gold, out List<int> partCounts, out object[] claims)
+        PdfStructuredSourceAuthority plan, PdfGoldDocument gold, out List<int> partCounts, out object[] claims)
     {
         var reference = ReferenceOccurrences();
         var aliases = PdfSourceOccurrenceBoundary.Aliases(reference.Count);

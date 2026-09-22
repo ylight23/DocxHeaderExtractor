@@ -13,7 +13,7 @@
   "lineage": {
     "note": "Where this candidate sits. Canonical Gold was frozen against the active universe, which is still what production builds; nothing here has replaced it.",
     "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
-    "goldFrozenAgainstSourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "goldFrozenAgainstSourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
     "activeRuntimeSourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
     "candidateReplacesActive": false
   },
@@ -23,9 +23,9 @@
     "callPlanSha256": "e532682353ca2ea0c73ec660baedb880fdfdafa9a5de7a6e61b242ddbdb648ed",
     "requestPlanSha256": "97952bd190c4ffffb77f30e12924efaf648c92d840228169a0c9adec74dd6d1d",
     "producers": {
-      "sourceAliasUniverse": "PdfSegmentEvidenceAuthority.Build -> PdfSegmentAtomCatalog.FromSegments, schema a99-pdf-segment-atom-universe-v1",
-      "modelVisibleEvidence": "PdfSegmentEvidenceAuthority.Visible over PdfCanonicalSourceUniverseBuilder.EvidenceOf, schema a99-pdf-model-visible-evidence-v1",
-      "callPlan": "PdfSegmentEvidenceAuthority.Pack, OwnedPerSegment 120 and VisibleMargin 20, schema a99-pdf-context-pack-plan-v1",
+      "sourceAliasUniverse": "PdfStructuredSourceAuthorityBuilder.Build -> PdfSegmentAtomCatalog.FromSegments, schema a99-pdf-segment-atom-universe-v1",
+      "modelVisibleEvidence": "PdfStructuredSourceAuthorityBuilder.Visible over PdfCanonicalSourceUniverseBuilder.EvidenceOf, schema a99-pdf-model-visible-evidence-v1",
+      "callPlan": "PdfStructuredSourceAuthorityBuilder.Pack, OwnedPerSegment 120 and VisibleMargin 20, schema a99-pdf-context-pack-plan-v1",
       "requestPlan": "sha256 of each canonical request payload in order, schema a99-pdf-request-plan-v1"
     }
   },

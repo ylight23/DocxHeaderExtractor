@@ -6,7 +6,7 @@ using DocxHeaderExtractor.Core.Models;
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>One deterministic request the provider would receive, built but never sent.</summary>
-internal sealed record PdfSegmentContextPack(
+internal sealed record PdfStructuredContextPack(
     int Index,
     IReadOnlyList<string> OwnedAliases,
     IReadOnlyList<string> VisibleAliases,
@@ -25,11 +25,11 @@ internal sealed record PdfSegmentContextPack(
 /// cover how it is cut into calls.
 /// </para>
 /// </summary>
-internal sealed record PdfSegmentEvidencePlan(
+internal sealed record PdfStructuredSourceAuthority(
     IReadOnlyList<SemanticSourceAtom> Atoms,
     IReadOnlyList<CanonicalSemanticSourceEvidence> Evidence,
     IReadOnlyDictionary<string, string> LayoutBlockByAtom,
-    IReadOnlyList<PdfSegmentContextPack> Packs,
+    IReadOnlyList<PdfStructuredContextPack> Packs,
     string SourceAliasUniverseHash,
     string ModelVisibleEvidenceHash,
     string CallPlanHash,
@@ -49,7 +49,7 @@ internal sealed record PdfSegmentEvidencePlan(
 /// this is the path a migration would switch to, measured first.
 /// </para>
 /// </summary>
-internal static class PdfSegmentEvidenceAuthority
+internal static class PdfStructuredSourceAuthorityBuilder
 {
     private static readonly JsonSerializerOptions Canonical = new()
     {
@@ -57,7 +57,7 @@ internal static class PdfSegmentEvidenceAuthority
         WriteIndented = false,
     };
 
-    public static PdfSegmentEvidencePlan Build(string pdfPath)
+    public static PdfStructuredSourceAuthority Build(string pdfPath)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
@@ -72,7 +72,7 @@ internal static class PdfSegmentEvidenceAuthority
     /// How the context labels are grouped. Varying it must leave the alias universe alone - that
     /// independence is the property the whole rearrangement rests on.
     /// </param>
-    public static PdfSegmentEvidencePlan Build(
+    public static PdfStructuredSourceAuthority Build(
         IReadOnlyList<PdfLine> segments, PdfBlockGrouping layout = PdfBlockGrouping.ContinuationV2)
     {
         ArgumentNullException.ThrowIfNull(segments);
@@ -104,7 +104,7 @@ internal static class PdfSegmentEvidenceAuthority
 
         var packs = Pack(evidence, layoutBlockByAtom, atoms);
 
-        return new PdfSegmentEvidencePlan(
+        return new PdfStructuredSourceAuthority(
             atoms,
             evidence,
             layoutBlockByAtom,
@@ -149,7 +149,7 @@ internal static class PdfSegmentEvidenceAuthority
     /// The same partition the production engine applies, over atoms instead of block occurrences.
     /// Owned entries may be claimed; the margin around them is readable context and never claimable.
     /// </summary>
-    private static IReadOnlyList<PdfSegmentContextPack> Pack(
+    private static IReadOnlyList<PdfStructuredContextPack> Pack(
         IReadOnlyList<CanonicalSemanticSourceEvidence> evidence,
         IReadOnlyDictionary<string, string> layoutBlockByAtom,
         IReadOnlyList<SemanticSourceAtom> atoms)
@@ -157,7 +157,7 @@ internal static class PdfSegmentEvidenceAuthority
         const int owns = CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.OwnedPerSegment;
         const int margin = CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.VisibleMargin;
 
-        var packs = new List<PdfSegmentContextPack>();
+        var packs = new List<PdfStructuredContextPack>();
         for (var start = 0; start < evidence.Count; start += owns)
         {
             var owned = evidence.Skip(start).Take(owns).ToArray();
@@ -185,7 +185,7 @@ internal static class PdfSegmentEvidenceAuthority
                 schema = SemanticSourcePartsContract.Schema(),
             }, Canonical);
 
-            packs.Add(new PdfSegmentContextPack(
+            packs.Add(new PdfStructuredContextPack(
                 packs.Count,
                 owned.Select(item => item.SourceAlias).ToArray(),
                 visible.Select(item => item.SourceAlias).ToArray(),

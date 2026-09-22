@@ -106,9 +106,11 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
 
         var s2j = JsonDocument.Parse(File.ReadAllText(RepoPath(S2jAuditPath)));
         var s2jHash = CanonicalArtifactHash.OfTextFile(RepoPath(S2jAuditPath));
-        var nativeGold = CanonicalGoldRegistry.ResolveOccurrenceGold("DOC-0252");
-        var nativeGoldUniverseHash = goldDocuments["DOC-0252"].RootElement
-            .GetProperty("occurrence").GetProperty("sourceUniverseSha256").GetString();
+        var nativeGold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
+        // From the same pinned legacy Gold as nativeGold itself, not from the live registry: this
+        // authority has since migrated, and goldDocuments["DOC-0252"] now names the structured
+        // successor's own universe - a different, later fact, not what this review recorded.
+        var nativeGoldUniverseHash = nativeGold.OccurrenceAuthority?.SourceUniverseSha256;
 
         var report = new
         {
@@ -234,7 +236,13 @@ public sealed class PdfS2kCrossDocumentReplicationPreflightTests
         var nativeBindingIssues = Array.Empty<string>();
         if (native)
         {
-            var nativeGold = CanonicalGoldRegistry.ResolveOccurrenceGold(documentId);
+            // "Native evaluator-v3 occurrence Gold" is what this check has always meant here -
+            // the legacy occurrence authority, preserved at its own path now that DOC-0252's
+            // registered authority has migrated to the structured coordinate system.
+            var nativeGold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt(
+                "eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json",
+                "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
+                documentId);
             var bound = PdfGoldBoundOccurrenceEvaluator.BindGold(
                 nativeGold, first.Aliases, out var bindingIssues);
             nativeBindingIssues = bindingIssues.ToArray();
