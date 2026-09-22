@@ -592,10 +592,9 @@ public sealed class PdfLineExtractionTests
                 visualRows = Lines(PdfLineGrouping.VisualLineV2).Count,
                 visualLineSegments = segments.Count,
                 occurrences = after.Count,
-                // The future coordinate system, built through its own seam and measured. Nothing
-                // routes through it; it is here so the atom count is a fact rather than a plan.
-                lineAtomCatalogUnits = DocumentSourceCatalogBuilder
-                    .FromPdfVisualLineSegments(segments).Units.Count,
+                // The future coordinate system, counted through the builder that owns it. Nothing
+                // routes through it yet; it is here so the atom count is a fact rather than a plan.
+                lineAtomCatalogUnits = PdfSegmentAtomCatalog.FromSegments(segments).Count,
                 boundary = census,
                 fullyRepresentable = rows.Count(row => row.FullyRepresentable),
                 notRepresentable = rows.Where(row => !row.FullyRepresentable)

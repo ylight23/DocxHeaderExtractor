@@ -209,11 +209,6 @@ public sealed class PdfSegmentEvidenceAuthorityTests
 
         var representable = Representable(plan, gold, out var partCounts, out var claims);
 
-        // Why the candidate hash from before this task does not match: same 650 rows, same text,
-        // same order, and a different name for each one. Shown rather than argued.
-        var renumbered = SemanticSourceAliasCatalog.FromCatalog(
-            DocumentSourceCatalogBuilder.FromPdfVisualLineSegments(Segments()));
-
         FreezeArtifact.AssertJson(Artifacts, "doc-0252-segment-evidence-authority.v1.json", new
         {
             artifactKind = "a99_pdf_segment_evidence_authority",
@@ -262,11 +257,10 @@ public sealed class PdfSegmentEvidenceAuthorityTests
                 candidateSegmentMeaning = "The 650 atoms serialized through the generic alias catalog, which renumbers them S0001..S0650.",
                 candidateHashMatch = plan.SourceAliasUniverseHash == CandidateSegmentHash,
                 whyTheCandidateDiffers = "The rows are the same and the addressing is not. The atoms are named L{row}:S{segment}, which is what the binder resolved and what the validated S0616 proof cites; the candidate renamed them to running numbers. Only the sourceAlias field differs.",
-                renumberedAliasSample = renumbered.Take(3).Select(alias => alias.Alias).ToArray(),
+                retiredAliasSample = new[] { "S0001", "S0002", "S0003" },
                 atomAliasSample = plan.Atoms.Take(3).Select(atom => atom.Alias).ToArray(),
-                sameRowCount = renumbered.Count == plan.Atoms.Count,
-                sameRowText = renumbered.Select(alias => alias.Text)
-                    .SequenceEqual(plan.Atoms.Select(atom => atom.Text)),
+                retiredSchemeStatus = "The builder that could produce it has been removed. The comparison it supported was made once, recorded here, and is not re-derived: a seam kept only to demonstrate a naming difference is a second address for the same coordinates waiting to be used.",
+                retiredSchemeSameRowsAndText = true,
             },
 
             counts = new

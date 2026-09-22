@@ -36,7 +36,7 @@
     "candidateSegmentMeaning": "The 650 atoms serialized through the generic alias catalog, which renumbers them S0001..S0650.",
     "candidateHashMatch": false,
     "whyTheCandidateDiffers": "The rows are the same and the addressing is not. The atoms are named L{row}:S{segment}, which is what the binder resolved and what the validated S0616 proof cites; the candidate renamed them to running numbers. Only the sourceAlias field differs.",
-    "renumberedAliasSample": [
+    "retiredAliasSample": [
       "S0001",
       "S0002",
       "S0003"
@@ -46,8 +46,8 @@
       "L0001:S0",
       "L0002:S0"
     ],
-    "sameRowCount": true,
-    "sameRowText": true
+    "retiredSchemeStatus": "The builder that could produce it has been removed. The comparison it supported was made once, recorded here, and is not re-derived: a seam kept only to demonstrate a naming difference is a second address for the same coordinates waiting to be used.",
+    "retiredSchemeSameRowsAndText": true
   },
   "counts": {
     "segmentAtoms": 650,
