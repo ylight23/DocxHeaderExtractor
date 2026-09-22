@@ -1,0 +1,190 @@
+{
+  "artifactKind": "a99_exp_masthead_metadata_v2_preflight",
+  "schemaVersion": "a99-exp-masthead-metadata-v2-preflight-v1",
+  "experimentId": "EXP_MASTHEAD_METADATA_V2",
+  "status": "EXP_MASTHEAD_METADATA_V2_AUTHORIZATION_READY",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "providerAuthorized": false,
+  "authorizedCommit": "0cd5c7b",
+  "hypothesis": "The exact E1 masthead semantic clause is evaluated again under the v2 source-parts coordinate contract, with coordinate responsibility held by the harness.",
+  "singleIntendedSemanticVariable": "presence of the byte-identical E1 masthead clause; source, source universe, Gold, packing, v2 contract, canonicalizer, binder, evaluator, model and relation ontology remain fixed.",
+  "authority": {
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "goldTargetCount": 14,
+    "protocol": "a99-semantic-source-parts-v2",
+    "contractSha256": "565bdc87749a1ce1246238cacd1eb7d550a19939dc9e42d23e76ab3a46a8b0ea",
+    "profile": "STRUCTURED_SOURCE_PARTS_V2",
+    "packing": "COHERENT_REGION_SEGMENTATION_V1",
+    "targetPacks": [
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_006"
+    ],
+    "model": "qwen/qwen3.7-flash",
+    "modelRoute": "OpenRouter",
+    "manifestHash": "fb62c1c696b4c30f0b71aed2e39f296ece3934c5870982fdc0e19bc62d64189c",
+    "evaluator": "a99-pdf-gold-evaluator-v4-structured-source-parts-semantic-role"
+  },
+  "baselineComparator": {
+    "promptSha256": "6340d1daf507a3d2bf5ce6fbef2b5d7b61735c0e0621a62f8e885ad8b2d8a66e",
+    "r1": { "tp": 14, "fp": 4, "fn": 0, "refusedOnShape": 0 },
+    "r2": { "tp": 14, "fp": 4, "fn": 0, "refusedOnShape": 1, "refusal": "TextNotInAtom" },
+    "r3": { "tp": 14, "fp": 6, "fn": 0, "refusedOnShape": 0 },
+    "unexpectedVerbatimText": 0,
+    "capturesRerun": false,
+    "scoreArtifactReused": true,
+    "falsePositiveAuditArtifact": "structured-v2-baseline-fp-identity-audit.v1.json"
+  },
+  "e1ClauseAuthority": {
+    "sourceCommit": "cf2735e",
+    "originalV1PromptSha256": "78396aa66a9dad6baef0cb24ee3468d9bfc740a4216acf3c51659c89eba54e5d",
+    "clauseSha256": "81d2c37cdf8542d9948396e59c653d017f69a8d1591b86279b85114b4cf6bfa8",
+    "clauseTextSha256": "81d2c37cdf8542d9948396e59c653d017f69a8d1591b86279b85114b4cf6bfa8",
+    "clauseCharacters": 722,
+    "byteIdenticalToOriginal": true,
+    "rewrite": false,
+    "semanticInsertionOrder": "BASE_SYSTEM_PROMPT + EXACT_E1_CLAUSE + V2_COORDINATE_CLAUSE",
+    "e1V2PromptSha256": "fb46d62cb7ddbb469d56a54f3c90e37d955c8fce85b8f75257ac19a14b2c64fa",
+    "e1V2PromptCharacters": 3956,
+    "crossGenreSafety": "NOT_ESTABLISHED"
+  },
+  "promptCompositionGate": {
+    "baselineV2PromptUnchanged": true,
+    "baselineV2PromptSha256": "6340d1daf507a3d2bf5ce6fbef2b5d7b61735c0e0621a62f8e885ad8b2d8a66e",
+    "e1ClauseBeforeV2CoordinateClause": true,
+    "selectionModeModelVisible": false,
+    "selectionModeHarnessDerived": true,
+    "relationOntologyUnchanged": true
+  },
+  "requestAuthority": {
+    "baselineUserMessageHashes": {
+      "PACK_005": "8f3b430a78608bb10d62fb3655d2742b236470b5f228967f6fd8b328896d8c16",
+      "PACK_006": "6d867a0d836ba0fbbe5f041fc046fc932fe2fea7f23f100f7f0a59301048cff0"
+    },
+    "e1V2ProviderBoundRequestHashes": {
+      "PACK_005": "173a5172a58018ac616b4b06c79f20c6f314db214cc406610da2937fe03b1977",
+      "PACK_006": "ac7f6905cfcf5377c92241d089815ab29bc4bb6db0fc40b17e67a953c0dbeec7"
+    },
+    "e1V2ProviderModelInputPlanSha256": "d788652788771cc6998fd5d94d531d07e939599bab2ae4b59b702aca7b3d037d",
+    "repeatInputEquivalent": true,
+    "userMessagesByteIdenticalToV2Baseline": true,
+    "systemPromptIsTheOnlyProviderRequestDifference": true
+  },
+  "semanticFamilyComparator": {
+    "MASTHEAD_FAMILY_1": {
+      "definition": "organization/programme identity represented by either composite L0513|L0514 or split L0513 and L0514",
+      "baselinePresence": { "r1": true, "r2": true, "r3": true },
+      "exactRepresentation": { "r1": "composite", "r2": "composite", "r3": "split" }
+    },
+    "MASTHEAD_FAMILY_2": {
+      "definition": "L0515 Hybrid Meeting",
+      "baselinePresence": { "r1": true, "r2": true, "r3": true }
+    },
+    "MASTHEAD_FAMILY_3": {
+      "definition": "L0516-derived event metadata claim",
+      "baselinePresence": { "r1": true, "r2": true, "r3": true }
+    },
+    "exactIdentityMetricsSecondary": true,
+    "armSuccessMustUseFamilySuppression": true
+  },
+  "nonTargetControls": {
+    "scheduleControl": {
+      "identity": "L0550:S0:0-56",
+      "baselinePresence": { "r1": true, "r2": true, "r3": true },
+      "mustNotBeCountedAsMastheadSuccess": true
+    },
+    "bodyControl": {
+      "identity": "L0396:S0:0-93",
+      "baselinePresence": {
+        "r1": "NOT_EMITTED",
+        "r2": "PROPOSED_BUT_REFUSED:TextNotInAtom",
+        "r3": "BOUND_FP"
+      },
+      "stabilityRequired": false,
+      "mustNotBeCountedAsMastheadSuccess": true
+    }
+  },
+  "goldRegressionGate": {
+    "targetGoldClaims": 14,
+    "perRepeatOutcomeClasses": [
+      "NOT_PROPOSED",
+      "PROPOSED_BUT_REFUSED",
+      "BOUND"
+    ],
+    "semanticRegression": "Gold claim NOT_PROPOSED",
+    "coordinateShapeRegression": "Gold claim PROPOSED_BUT_REFUSED",
+    "e1V2Results": "TO_BE_MEASURED"
+  },
+  "relationControls": {
+    "identities": [
+      "L0400:S0",
+      "L0420:S0",
+      "L0470:S0",
+      "L0507:S0"
+    ],
+    "baselineRelationValues": {
+      "r1": { "L0400:S0": "parent-node:ROOT", "L0420:S0": "parent-node:ROOT", "L0470:S0": "parent-node:ROOT", "L0507:S0": "parent-node:ROOT" },
+      "r2": { "L0400:S0": "parent-node:ROOT", "L0420:S0": "parent-node:ROOT", "L0470:S0": "parent-node:ROOT", "L0507:S0": "parent-node:ROOT" },
+      "r3": { "L0400:S0": "parent-node:ROOT", "L0420:S0": "parent-node:ROOT", "L0470:S0": "parent-node:ROOT", "L0507:S0": "parent-node:ROOT" }
+    },
+    "e1V2RelationValues": "TO_BE_MEASURED",
+    "classification": ["UNCHANGED", "RELATION_ONLY", "ROLE_ONLY", "MEMBERSHIP", "MULTIPLE"]
+  },
+  "noneAnalysis": {
+    "baseline": {
+      "r1": { "total": 3, "goldTp": 0, "fp": 3 },
+      "r2": { "total": 3, "goldTp": 0, "fp": 3 },
+      "r3": { "total": 4, "goldTp": 0, "fp": 4 }
+    },
+    "e1V2": "TO_BE_MEASURED",
+    "globalNonePolicySafe": "NOT_ESTABLISHED",
+    "scope": "DOC-0252 target masthead policy effect only; PACK_005/006 contain no positive Gold NONE control."
+  },
+  "captureReservationGate": {
+    "intendedCaptureIdentities": 6,
+    "fresh": true,
+    "atomicallyReservable": true,
+    "existingCaptureOrReservationFound": false,
+    "incompleteCaptureFound": false,
+    "remainingProviderCapacityTransferred": false
+  },
+  "callPlan": {
+    "repeats": 3,
+    "targetPacksPerRepeat": 2,
+    "primaryProviderCalls": 6,
+    "placementCalls": 0,
+    "proposedHardCap": 9,
+    "providerAuthorized": false,
+    "previousUnusedCapacity": { "unused": 1, "transferable": false }
+  },
+  "predeclaredOutcomes": {
+    "MASTHEAD_POLICY_SUPPORTED": "masthead semantic families materially disappear, all 14 Gold headings remain proposed/bound, no comparable new FP family appears, and no systematic relation regression is introduced.",
+    "MASTHEAD_POLICY_INSUFFICIENT": "masthead families remain substantially present without meaningful Gold regression.",
+    "MASTHEAD_POLICY_REGRESSIVE": "Gold heading membership is lost or relation/structural behavior is systematically degraded.",
+    "MIXED": "masthead suppression occurs together with regressions."
+  },
+  "historicalE1": {
+    "immutable": true,
+    "originalConclusion": "MIXED / insufficient + regressive",
+    "originalPromptSha256": "78396aa66a9dad6baef0cb24ee3468d9bfc740a4216acf3c51659c89eba54e5d",
+    "notRewritten": true
+  },
+  "protected": {
+    "goldModified": false,
+    "v2BaselineCapturesModified": false,
+    "v2BaselineScoreModified": false,
+    "v2BaselineAuditModified": false,
+    "v2ContractModified": false,
+    "canonicalizerModified": false,
+    "binderModified": false,
+    "evaluatorModified": false,
+    "packingModified": false,
+    "captureGuardModified": false,
+    "bodyExperimentRun": false,
+    "scheduleExperimentRun": false,
+    "providerCalls": 0,
+    "modelCalls": 0
+  }
+}

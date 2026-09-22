@@ -196,8 +196,14 @@ internal static class CanonicalSemanticEngine
     /// </summary>
     internal static string SystemPromptFor(SemanticCoordinateContract contract, CanonicalSemanticExperiment experiment)
     {
-        var core = SystemPromptFor(experiment);
-        return contract.PromptClause is null ? core : core + contract.PromptClause;
+        // Keep semantic interventions in the semantic section and append the coordinate contract
+        // after it. This preserves the original E1 insertion point when the arm is paired with a
+        // structured coordinate contract; putting E1 after coordinate serialization instructions
+        // would make prompt order an unintended experimental variable.
+        var prompt = experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
+        if (experiment.ConstrainNonStructuralMetadata)
+            prompt += NonStructuralMetadataClause;
+        return contract.PromptClause is null ? prompt : prompt + contract.PromptClause;
     }
 
     /// <summary>
