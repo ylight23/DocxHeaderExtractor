@@ -23,8 +23,15 @@ public sealed record PdfSemanticAuthorityProfile(
     string CoordinateSystem,
     SemanticCoordinateContract Contract,
     string EvaluatorId,
-    bool StructuredSourcePartsEvaluable)
+    bool StructuredSourcePartsEvaluable,
+    string SourceAuthorityId)
 {
+    /// <summary>Visual-segment atoms addressed as <c>L{row}:S{segment}</c>, carrying layout metadata.</summary>
+    public const string StructuredAtomSourceAuthority = "STRUCTURED_ATOMS";
+
+    /// <summary>The historical occurrence universe.</summary>
+    public const string LegacyOccurrenceSourceAuthority = "LEGACY_OCCURRENCES";
+
     /// <summary>
     /// The historical PDF authority: one bound occurrence per claim, addressed by alias and a
     /// selection mode. <see cref="CanonicalSemanticPdfAuthorityAdapter"/>'s existing behaviour,
@@ -35,7 +42,8 @@ public sealed record PdfSemanticAuthorityProfile(
         "SOURCE_ALIAS_PLUS_SELECTION_MODE",
         SemanticCoordinateContract.PdfAliasSelection,
         "a99-pdf-gold-evaluator-v3-bound-occurrence-semantic-role",
-        StructuredSourcePartsEvaluable: false);
+        StructuredSourcePartsEvaluable: false,
+        SourceAuthorityId: LegacyOccurrenceSourceAuthority);
 
     /// <summary>
     /// The structured authority: an ordered tuple of harness-resolved coordinates over
@@ -48,5 +56,6 @@ public sealed record PdfSemanticAuthorityProfile(
         "STRUCTURED_SOURCE_PART_TUPLE",
         SemanticCoordinateContract.PdfStructuredSourceParts,
         "a99-pdf-gold-evaluator-v4-structured-source-parts-semantic-role",
-        StructuredSourcePartsEvaluable: true);
+        StructuredSourcePartsEvaluable: true,
+        SourceAuthorityId: StructuredAtomSourceAuthority);
 }

@@ -51,9 +51,14 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
                     RepeatIdentity = replayCapture.Metadata.RepeatIdentity ?? replayCapture.Metadata.RunId,
                 },
             };
-        IPdfSemanticSourceAuthority universe = effectiveProfile.ProfileId switch
+        // Keyed on what the profile declares it reads, not on which profile it is. Switching on the
+        // identity made the source universe a fact stated outside the bundle, so a profile that named
+        // itself anything else silently got the legacy universe - and, with coherent packing, failed
+        // on absent layout metadata rather than on the mismatch that caused it.
+        IPdfSemanticSourceAuthority universe = effectiveProfile.SourceAuthorityId switch
         {
-            "STRUCTURED_SOURCE_PARTS" => PdfStructuredSourceAuthorityBuilder.Build(pdfPath),
+            PdfSemanticAuthorityProfile.StructuredAtomSourceAuthority =>
+                PdfStructuredSourceAuthorityBuilder.Build(pdfPath),
             _ => PdfCanonicalSourceUniverseBuilder.Build(pdfPath),
         };
         experimentGate?.EnsureLiveSourceUniverse(universe.SourceUniverseSha256);
