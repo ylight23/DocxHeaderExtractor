@@ -1,0 +1,307 @@
+{
+  "artifactKind": "a99_stage1_membership_preflight",
+  "schemaVersion": "a99-stage1-membership-preflight-v1",
+  "experimentId": "PHYSICAL_STAGE1_MEMBERSHIP_ONLY",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "providerAuthorized": false,
+  "hypothesis": {
+    "statement": "Removing structural placement and semantic role from the model's task changes, or does not change, semantic membership.",
+    "onlyIntendedChange": "monolithic semantic+role+placement task -> physical membership-only task",
+    "explicitlyNotAlsoTesting": [
+      "new masthead wording",
+      "E1 wording",
+      "E2 wording",
+      "a new candidate policy",
+      "new packing",
+      "new source evidence",
+      "new model settings"
+    ]
+  },
+  "protocol": {
+    "stage1": {
+      "protocolVersion": "a99-semantic-membership-v1",
+      "schemaSha256": "baac47daadb1047e843b1358f7a37dfe3d0736c1130672829efc7beb80b48ff2",
+      "promptSha256": "433b134d428bd9053157ea6bb5efab253de3f46fb8da19bc0d3e8fa16d453766",
+      "bindingId": "SEMANTIC_MEMBERSHIP_V1",
+      "coordinateSystem": "STRUCTURED_SOURCE_PART_TUPLE"
+    },
+    "predecessorsUnchanged": {
+      "sourcePartsV1": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+      "sourcePartsV2": "565bdc87749a1ce1246238cacd1eb7d550a19939dc9e42d23e76ab3a46a8b0ea",
+      "v2BaselinePromptSha256": "6340d1daf507a3d2bf5ce6fbef2b5d7b61735c0e0621a62f8e885ad8b2d8a66e"
+    }
+  },
+  "fieldOwnership": {
+    "modelDecides": [
+      "whether a claim is accepted",
+      "the source alias or aliases",
+      "the exact quoted text when selecting part of an occurrence",
+      "the order of source parts",
+      "DOCUMENT_LABEL or STRUCTURAL_UNIT"
+    ],
+    "modelDoesNotDecide": [
+      "selectionMode",
+      "offsets",
+      "structural parent",
+      "ROOT",
+      "NONE",
+      "hierarchy",
+      "semanticRole"
+    ],
+    "harnessOwns": [
+      "selectionMode",
+      "exact UTF-16 coordinates",
+      "AuthorityClaimId",
+      "grounding refusal",
+      "collision detection"
+    ],
+    "providerVisible": {
+      "semanticRole": false,
+      "relationFields": false,
+      "selectionMode": false,
+      "offsets": false,
+      "stage2Fields": false
+    }
+  },
+  "promptDerivation": {
+    "derivedFrom": "the clean structured-v2 baseline semantic core",
+    "newMembershipPolicyIntroduced": false,
+    "removed": [
+      {
+        "instruction": "REQUIRED for every heading: exactly one relationHints entry; parent-node:<alias> / ROOT / NONE",
+        "classification": "PLACEMENT_ONLY"
+      },
+      {
+        "instruction": "Putting a title at ROOT instead pushes every real section one level deeper",
+        "classification": "PLACEMENT_ONLY"
+      },
+      {
+        "instruction": "Never emit a numeric level; the harness derives level from relations",
+        "classification": "PLACEMENT_ONLY"
+      },
+      {
+        "instruction": "OPTIONAL same-node:<key> for another occurrence of a section already reported",
+        "classification": "PLACEMENT_ONLY",
+        "note": "Occurrence grouping is a graph question over accepted claims, so it belongs to the placement stage rather than to acceptance."
+      },
+      {
+        "instruction": "sourceAliases plural form",
+        "classification": "HARNESS_OWNED_COORDINATE",
+        "note": "Superseded by ordered sourceParts, which v2 already proved."
+      }
+    ],
+    "roleOnlyRemovals": {
+      "fromPrompt": 0,
+      "fromSchema": 1,
+      "note": "semanticRole never appeared in the prompt text - it existed only as a schema field. That is consistent with both arms mismatching Gold's ontology on all 42 target claims: nothing ever told the model what vocabulary to use."
+    },
+    "preservedMembershipContent": {
+      "what": "the document's own title and subtitle, running headers and footers, table and figure labels, form and signature labels are real labels and should still be reported",
+      "wasStatedIn": "the parent-node:NONE paragraph of the base prompt",
+      "nowCarriedBy": "the DOCUMENT_LABEL disposition",
+      "why": "That sentence is membership wearing a placement token. Dropping the paragraph wholesale would have narrowed what the model accepts and turned a task decomposition into an unauthorized policy change."
+    },
+    "justificationForEveryMembershipRemoval": "none were removed"
+  },
+  "requestAuthority": {
+    "document": "DOC-0252",
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+    "targetPacks": [
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_006"
+    ],
+    "baselineEvidencePacket005Sha256": "8f3b430a78608bb10d62fb3655d2742b236470b5f228967f6fd8b328896d8c16",
+    "baselineEvidencePacket006Sha256": "6d867a0d836ba0fbbe5f041fc046fc932fe2fea7f23f100f7f0a59301048cff0",
+    "stage1EvidencePacket005Sha256": "4e1261b3ad76a79fbe8944a57d3fa8eea6288ed29e9600ccb411586a497a037e",
+    "stage1EvidencePacket006Sha256": "282ece6eb446873ca9dca114d986b4aaac237da04d9b7fd7db979c490841445c",
+    "evidenceByteIdenticalToBaseline": false,
+    "evidenceContentIdenticalToBaseline": true,
+    "evidenceMeaning": "The packet the harness builds from atoms, ownership, margins and layout, before the schema is appended. It also carries the contract's protocol version, so a Stage-1 packet cannot be byte-identical to a v2 one.",
+    "evidenceProof": "The packets are equal once the protocol field, and only the protocol field, is neutralised; they are unequal without that. So atoms, ownership, margins and layout did not move, and the difference is one declared string.",
+    "honestyNote": "Reporting this as byte-identical would repeat the mislabelling that already cost one preflight its lineage.",
+    "stage1UserMessage005Sha256": "95715069df4220cecd8211779e587a379a7eca5bfa86ea9b9dcece92ed169fda",
+    "stage1UserMessage006Sha256": "9126c452f7e18c338a7dceae520864302f9f88e916a684200a2f1a530fc48483",
+    "userMessageNote": "The composer appends SCHEMA= to the packet, so the user message differs from the baseline's by exactly the schema. The packet inside it is asserted identical.",
+    "providerInputPack005Sha256": "a0735a5b48b30673d9bc379a3bd29ebc650a671ab4155b1ecc77bcb754d76e2b",
+    "providerInputPack006Sha256": "2763fd6b44cebd061d76d0d758c29d8eedb5ed5709b70a3fb99891c5942673f0",
+    "providerModelInputPlanSha256": "579712aadb2bbff2fb07329865bf7ba1fa4f9ad95c85dd4c0035e5c22d3c1c55",
+    "providerInputMeaning": "system prompt and user message together, composed exactly as the adapter composes them when it reserves a capture slot",
+    "providerInputDiffersFromBaseline": true,
+    "baselineProviderModelInputPlanSha256": "c0348ca82bf7cbccc1d7cd3222951754989752410a5260724941f4b3ffc0f45e",
+    "repeatByteEquivalent": true
+  },
+  "providerSettings": {
+    "model": "qwen/qwen3.7-flash",
+    "route": "OpenRouter",
+    "temperature": 0,
+    "reasoningEffort": "none",
+    "responseFormat": "json_object",
+    "seedOrDecodingParameterAddedForThisExperiment": false,
+    "unavoidableDifference": "none beyond the response schema itself"
+  },
+  "internalSeamReuse": {
+    "stage1AcceptedClaimReused": true,
+    "authorityClaimIdReused": true,
+    "stage1MembershipEvaluatorReused": true,
+    "canonicalizerReused": true,
+    "binderReused": true,
+    "secondCompetingRepresentation": false,
+    "note": "The provider-facing DTO is transport form; Stage1AcceptedClaim is authority form."
+  },
+  "failClosedCases": [
+    "unknown alias",
+    "quote not found in the named alias",
+    "ambiguous quote without disambiguation",
+    "duplicate source parts",
+    "overlapping parts",
+    "out-of-source-order multi-part claim",
+    "invalid membership disposition",
+    "malformed JSON or schema",
+    "AuthorityClaimId collision"
+  ],
+  "noWideningOnGroundingFailure": true,
+  "comparator": {
+    "arm": "STRUCTURED_V2_TARGET_BASELINE",
+    "promptSha256": "6340d1daf507a3d2bf5ce6fbef2b5d7b61735c0e0621a62f8e885ad8b2d8a66e",
+    "membership": [
+      "R1 14/4/0",
+      "R2 14/4/0",
+      "R3 14/6/0"
+    ],
+    "goldBound": "14/14 in every repeat",
+    "targetGoldCount": 14,
+    "mastheadFamilies": {
+      "f1": "L0513/L0514 organisation and programme masthead - PRESENT 3/3",
+      "f2": "L0515 meeting-format masthead - PRESENT 3/3",
+      "f3": "L0516-derived event, date and venue metadata - PRESENT 3/3"
+    },
+    "notUsedAsPrimaryComparator": [
+      "EXP_MASTHEAD_METADATA_V2",
+      "EXP_MASTHEAD_METADATA_E2_V2"
+    ]
+  },
+  "controls": [
+    {
+      "alias": "L0396:S0",
+      "role": "body proposition and source-grounding control",
+      "rule": "diagnostic only; its disappearance is not masthead success"
+    },
+    {
+      "alias": "L0550:S0",
+      "role": "schedule item",
+      "rule": "diagnostic only; its disappearance is not masthead success"
+    }
+  ],
+  "predeclaredMetrics": {
+    "perRepeat": [
+      "raw claims proposed",
+      "grounding refusals by reason",
+      "accepted bound claims",
+      "TP",
+      "FP",
+      "FN",
+      "masthead family F1/F2/F3 presence",
+      "other false-positive identities",
+      "AuthorityClaimId stability"
+    ],
+    "outcomeClasses": [
+      "NOT_PROPOSED",
+      "PROPOSED_BUT_REFUSED",
+      "BOUND"
+    ],
+    "metricsThatDoNotExist": [
+      "relation correctness",
+      "ROOT correctness",
+      "NONE usage",
+      "semanticRole agreement"
+    ],
+    "why": "Those outputs do not exist under this protocol, so there is nothing to measure and nothing that can quietly influence the membership score."
+  },
+  "predeclaredInterpretation": [
+    {
+      "outcome": "A",
+      "condition": "Gold stays 14/14 and masthead families materially contract",
+      "classification": "PHYSICAL_TASK_SEPARATION_AFFECTS_MEMBERSHIP",
+      "meaning": "The model could discriminate all along; the monolithic task was making it use that ability badly."
+    },
+    {
+      "outcome": "B",
+      "condition": "Gold stays 14/14 and masthead families remain substantially present",
+      "classification": "TWO_STAGE_SEPARATION_DOES_NOT_FIX_MEMBERSHIP_POLICY",
+      "meaning": "Placement and serialization coupling are eliminated as explanations. The problem is Stage-1 semantic discrimination and the membership policy itself."
+    },
+    {
+      "outcome": "C",
+      "condition": "Gold membership regresses",
+      "classification": "STAGE1_MEMBERSHIP_CONTRACT_REGRESSIVE"
+    },
+    {
+      "outcome": "D",
+      "condition": "grounding or contract integrity fails",
+      "classification": "STAGE1_PROTOCOL_INTEGRITY_DEFECT"
+    },
+    {
+      "notClassifiedBy": "the false-positive total alone"
+    }
+  ],
+  "captureRequirement": {
+    "replayComplete": true,
+    "perCall": [
+      "protocol",
+      "schema hash",
+      "prompt hash",
+      "packing policy",
+      "packId",
+      "repeat",
+      "exact request bytes and sha256",
+      "raw response bytes and sha256",
+      "provider and model lineage"
+    ],
+    "identities": {
+      "required": 6,
+      "fresh": true,
+      "slots": [
+        {
+          "repeat": 1,
+          "directoryExists": false,
+          "existingFiles": []
+        },
+        {
+          "repeat": 2,
+          "directoryExists": false,
+          "existingFiles": []
+        },
+        {
+          "repeat": 3,
+          "directoryExists": false,
+          "existingFiles": []
+        }
+      ],
+      "distinctFromPredecessors": "separate experiment root, and a prompt and provider-input hash shared with no other arm"
+    }
+  },
+  "callPlan": {
+    "repeats": 3,
+    "targetPacksPerRepeat": 2,
+    "stage1ProviderCalls": 6,
+    "stage2ProviderCalls": 0,
+    "placementCalls": 0,
+    "proposedHardCap": 9,
+    "stage2RequestGenerated": false,
+    "afterEachResponse": "validate, decode, canonicalize, bind, AuthorityClaimId, freeze accepted set, score membership, stop",
+    "historicalUnusedAllowance": "none transfers"
+  },
+  "stage2": {
+    "implemented": false,
+    "batchingPolicy": "DEFERRED"
+  },
+  "limitations": {
+    "materializedGold": "48 / 3955",
+    "crossGenreGeneralizationEstablished": false,
+    "singleDocument": "DOC-0252",
+    "note": "Even a successful result here is DOC-0252 evidence, not corpus-wide semantic proof."
+  }
+}

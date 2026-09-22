@@ -172,6 +172,49 @@ internal static class CanonicalSemanticEngine
         """;
 
     /// <summary>
+    /// The Stage-1 semantic core: membership, and no other task.
+    /// <para>
+    /// Derived from <see cref="RawSystemPrompt"/> by removing the instructions whose only purpose is
+    /// placement, occurrence-grouping or a coordinate the harness now owns. It is a decomposition of
+    /// the existing policy, not a refinement of it: no masthead rule, no E1 wording, no E2 wording,
+    /// and nothing new about what counts as a claim.
+    /// </para>
+    /// <para>
+    /// One piece of membership policy had to move rather than be dropped. The base prompt states
+    /// which things are real headings that hold no position in the section tree - the document's own
+    /// title and subtitle, running headers and footers, table and figure labels, form and signature
+    /// labels - inside the paragraph that explains parent-node:NONE. That sentence is membership
+    /// wearing a placement token. Deleting the paragraph wholesale would have quietly narrowed what
+    /// the model accepts and made the experiment a policy change; so the membership content is kept
+    /// and carried by the disposition instead, which is what the disposition is for.
+    /// </para>
+    /// </summary>
+    private const string RawStage1MembershipPrompt = """
+        You are the semantic membership stage of the A99 canonical document pipeline.
+        Decide semantic meaning only for the supplied parser-owned source aliases. Return strict
+        JSON matching the supplied schema. sourceAlias and verbatimText are the only source
+        references allowed. Do not return offsets, spans, pages, boxes, coordinates, or generated
+        text. Formatting and numbering are evidence, never deterministic truth.
+
+        sourceEvidence is in document order. Evaluate every alias in ownedSourceAliases and return
+        one claim for each accepted structural label you find among them. Entries marked
+        "owned": false are shown only so you can read the surrounding document; never return one of
+        them as a claim. The "attention" flag is a hint, not the set of allowed claims: any owned
+        occurrence may be one. Neighbouring entries are the local context; no context is repeated
+        per item.
+
+        REQUIRED for every claim: "membership", saying which kind of accepted label it is.
+          "STRUCTURAL_UNIT" - it opens and names a unit of the document whose content follows it.
+          "DOCUMENT_LABEL"  - it identifies the document or one of its parts without opening a unit:
+                              the document's own title and subtitle, running headers and footers,
+                              table and figure labels, form labels and signature labels. These are
+                              real labels and you should still report them.
+        Omit an occurrence entirely only when the evidence genuinely does not let you decide whether
+        it is an accepted label at all - that is an open question for a human, not a third kind of
+        membership.
+        """;
+
+    /// <summary>
     /// Normalizes to LF, because a prompt is bytes on the wire and must not depend on how the
     /// source file happened to be checked out.
     /// <para>
@@ -208,6 +251,24 @@ internal static class CanonicalSemanticEngine
     /// <summary>The EXP_MASTHEAD_METADATA_E2 clause, line endings settled before it is appended.</summary>
     internal static string MembershipBeforePlacementClause { get; } =
         NormalizePromptLineEndings(RawMembershipBeforePlacementClause);
+
+    /// <summary>The Stage-1 membership prompt, line endings settled.</summary>
+    internal static string Stage1MembershipPrompt { get; } =
+        NormalizePromptLineEndings(RawStage1MembershipPrompt);
+
+    /// <summary>
+    /// The Stage-1 request's system prompt: the membership core plus whatever the contract teaches
+    /// about naming source. No experiment clause is accepted here - a membership arm that also
+    /// carried a wording intervention would move two variables at once, which is the mistake this
+    /// whole stage exists to stop making.
+    /// </summary>
+    internal static string MembershipPromptFor(SemanticCoordinateContract contract)
+    {
+        ArgumentNullException.ThrowIfNull(contract);
+        return contract.PromptClause is null
+            ? Stage1MembershipPrompt
+            : Stage1MembershipPrompt + contract.PromptClause;
+    }
 
     /// <summary>The prompt this run sends. One clause per intervention, appended, never rewritten.</summary>
     internal static string SystemPromptFor(CanonicalSemanticExperiment experiment)

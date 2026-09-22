@@ -142,4 +142,21 @@ public sealed record SemanticCoordinateContract(
     {
         PromptClause = PdfStructuredSourcePartsV2PromptClause.Text,
     };
+
+    /// <summary>
+    /// Stage 1: membership only. The same coordinate system and the same binder as the structured
+    /// contracts, because the source-grounding seam is not what this changes - what changes is that
+    /// the reply has no field for a role or a relation, so the model is never told the placement
+    /// question exists.
+    /// </summary>
+    public static readonly SemanticCoordinateContract PdfSemanticMembershipV1 = new(
+        "STRUCTURED_SOURCE_PART_TUPLE",
+        SemanticMembershipContractV1.ProtocolVersion,
+        SemanticMembershipContractV1.Schema,
+        SemanticMembershipV1.ValidateJson,
+        SemanticMembershipV1.DecodeEntry,
+        SemanticMembershipV1.Binding)
+    {
+        PromptClause = SemanticMembershipV1PromptClause.Text,
+    };
 }
