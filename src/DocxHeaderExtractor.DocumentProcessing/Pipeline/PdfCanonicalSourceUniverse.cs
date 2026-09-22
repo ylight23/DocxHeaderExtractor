@@ -19,7 +19,7 @@ internal sealed record PdfCanonicalSourceUniverse(
     IReadOnlyDictionary<string, int> OrdinalBySourceId,
     IReadOnlyList<CanonicalSemanticSourceEvidence> Evidence,
     string SourceSha256,
-    int ParserLineCount)
+    int ParserLineCount) : IPdfSemanticSourceAuthority
 {
     /// <summary>
     /// Stable runtime identity of the parser universe. This is derived only from source rows and

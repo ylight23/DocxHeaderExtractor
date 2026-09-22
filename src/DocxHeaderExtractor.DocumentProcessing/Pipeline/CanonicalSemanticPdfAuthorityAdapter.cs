@@ -27,13 +27,23 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         CanonicalSemanticExperiment? experiment = null,
         SemanticLaneOptions? semanticLaneOptions = null,
         SemanticAuthorityReplayCaptureRequest? replayCapture = null,
-        PdfExperimentExecutionGate? experimentGate = null)
+        PdfExperimentExecutionGate? experimentGate = null,
+        PdfSemanticAuthorityProfile? profile = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
-        var universe = PdfCanonicalSourceUniverseBuilder.Build(pdfPath);
+        // No document-id, filename, or Gold-derived branching here: the profile is an explicit
+        // caller-supplied value, and ordinary production traffic never supplies one, which is what
+        // keeps every existing PDF upload on LegacyOccurrence without this file knowing it exists.
+        var effectiveProfile = profile ?? PdfSemanticAuthorityProfile.LegacyOccurrence;
+        IPdfSemanticSourceAuthority universe = effectiveProfile.ProfileId switch
+        {
+            "STRUCTURED_SOURCE_PARTS" => PdfStructuredSourceAuthorityBuilder.Build(pdfPath),
+            _ => PdfCanonicalSourceUniverseBuilder.Build(pdfPath),
+        };
         experimentGate?.EnsureLiveSourceUniverse(universe.SourceUniverseSha256);
         experimentGate?.EnsureLiveSemanticContract();
+        experimentGate?.EnsureLiveAuthorityProfile(effectiveProfile.ProfileId);
         if (universe.ParserLineCount == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer");
         if (universe.Blocks.Count == 0)
@@ -46,7 +56,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             Path.GetFileNameWithoutExtension(pdfPath));
         var execution = await PdfLaneExecution.RunAsync(
             (lease, ct) => RunSemanticCoreAsync(
-                pdfPath, universe, transport, experiment, replayCapture, lease, checkpoint, ct),
+                pdfPath, universe, transport, experiment, effectiveProfile, replayCapture, lease, checkpoint, ct),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
             cancellationToken).ConfigureAwait(false);
 
@@ -76,9 +86,10 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
 
     private static async Task<StructuralAuthorityResult> RunSemanticCoreAsync(
         string pdfPath,
-        PdfCanonicalSourceUniverse universe,
+        IPdfSemanticSourceAuthority universe,
         IHeaderClassifier? transport,
         CanonicalSemanticExperiment? experiment,
+        PdfSemanticAuthorityProfile profile,
         SemanticAuthorityReplayCaptureRequest? replayCapture,
         PdfLaneExecutionLease lease,
         PdfStageCheckpoint checkpoint,
@@ -107,7 +118,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         {
             canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
                 new LeaseBoundHeaderClassifier(transport, lease),
-                SemanticCoordinateContract.PdfAliasSelection,
+                profile.Contract,
                 experiment ?? CanonicalSemanticExperiment.Baseline);
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
                 input, canonicalModel,
@@ -126,7 +137,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             SemanticRole: CanonicalSemanticEngine.ParseSemanticRole(item.SemanticRole))).ToArray();
         await checkpoint.RecordSemanticBatchAsync(universe.Blocks, decisions, cancellationToken, lease)
             .ConfigureAwait(false);
-        var validated = PdfSemanticProposalBinder.BindAndValidate(universe, decisions);
+        var validated = PdfSemanticProposalBinder.BindAndValidate(universe.Contexts, decisions);
 
         var boundHeadings = transport is null
             ? result.TextPipeline.BoundHeadings

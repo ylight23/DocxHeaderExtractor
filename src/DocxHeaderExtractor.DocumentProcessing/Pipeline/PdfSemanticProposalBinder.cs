@@ -8,20 +8,20 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 internal static class PdfSemanticProposalBinder
 {
     public static IReadOnlyList<PdfValidatedHeading> BindAndValidate(
-        PdfCanonicalSourceUniverse universe,
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
         IReadOnlyList<PdfBlockDecision> decisions)
     {
-        ArgumentNullException.ThrowIfNull(universe);
+        ArgumentNullException.ThrowIfNull(contexts);
         ArgumentNullException.ThrowIfNull(decisions);
-        return PdfProposalValidator.Validate(universe.Contexts, decisions);
+        return PdfProposalValidator.Validate(contexts, decisions);
     }
 
     public static IReadOnlyList<PdfCandidateStageTrace> Trace(
-        PdfCanonicalSourceUniverse universe,
+        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
         IReadOnlyList<PdfBlockDecision> decisions)
     {
-        ArgumentNullException.ThrowIfNull(universe);
+        ArgumentNullException.ThrowIfNull(contexts);
         ArgumentNullException.ThrowIfNull(decisions);
-        return PdfProposalValidator.Trace(universe.Contexts, decisions);
+        return PdfProposalValidator.Trace(contexts, decisions);
     }
 }

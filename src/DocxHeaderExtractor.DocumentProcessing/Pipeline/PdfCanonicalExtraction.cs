@@ -88,7 +88,8 @@ public static class PdfCanonicalExtraction
                 file.LocalPath, gated ?? used, ct,
                 semanticLaneOptions: semanticLaneOptions,
                 replayCapture: options.ReplayCapture,
-                experimentGate: options.ExperimentGate);
+                experimentGate: options.ExperimentGate,
+                profile: options.PdfAuthorityProfile);
         }
         finally
         {

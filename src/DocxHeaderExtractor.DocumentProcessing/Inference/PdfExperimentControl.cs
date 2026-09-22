@@ -47,6 +47,17 @@ public sealed record PdfExperimentEvaluatorIdentity(
     [property: JsonPropertyName("hierarchyEvaluationMode")] string HierarchyEvaluationMode);
 
 /// <summary>
+/// Which coordinate authority a lane must run under - lane-neutral so a DOCX and a PDF document can
+/// both declare one shape. A PDF manifest names one of
+/// <c>Pipeline.PdfSemanticAuthorityProfile</c>'s two <c>ProfileId</c> values; nothing here
+/// prescribes what a non-PDF lane would use, only that the same three fields say it explicitly.
+/// </summary>
+public sealed record PdfExperimentAuthorityIdentity(
+    [property: JsonPropertyName("lane")] string Lane,
+    [property: JsonPropertyName("coordinateSystem")] string CoordinateSystem,
+    [property: JsonPropertyName("authorityProfile")] string AuthorityProfile);
+
+/// <summary>
 /// Immutable identity for one provider experiment. It is an execution authority, never semantic
 /// authority: changing any identity-bearing field creates a different experiment.
 /// </summary>
@@ -66,7 +77,14 @@ public sealed record PdfExperimentManifest(
     [property: JsonPropertyName("evaluator")] PdfExperimentEvaluatorIdentity Evaluator,
     [property: JsonPropertyName("semanticContractHash")]
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    string? SemanticContractHash = null)
+    string? SemanticContractHash = null,
+    // Absent on every manifest written before schema PdfExperimentExecutionGate.ProfileAwareSchemaVersion
+    // existed - those remain replayable exactly as recorded, resolving historically to
+    // LEGACY_OCCURRENCE. A manifest carrying that schema version must declare this explicitly; the
+    // gate fails closed rather than guessing one in.
+    [property: JsonPropertyName("authority")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    PdfExperimentAuthorityIdentity? Authority = null)
 {
     [JsonIgnore]
     public string ManifestHash => PdfExperimentManifestHasher.Compute(this);
@@ -127,6 +145,17 @@ public static class PdfExperimentManifestHasher
 /// </summary>
 public sealed class PdfExperimentExecutionGate
 {
+    /// <summary>
+    /// The manifest schema version at and after which an authority declaration is required. A
+    /// manifest below this version predates the concept entirely and is read under its historical
+    /// meaning (PDF always meant <c>LEGACY_OCCURRENCE</c>); a manifest at or above it that omits
+    /// <see cref="PdfExperimentManifest.Authority"/> is not an old manifest replaying correctly, it
+    /// is a new one with a hole in it, and is rejected rather than defaulted.
+    /// </summary>
+    public const string ProfileAwareSchemaVersion = "a99-pdf-experiment-manifest-v2";
+
+    private const string HistoricalPdfAuthorityProfile = "LEGACY_OCCURRENCE";
+
     private readonly PdfExperimentManifest _manifest;
     private readonly PdfExperimentApproval? _approval;
     private readonly PdfExperimentRuntimeBinding _runtime;
@@ -215,6 +244,31 @@ public sealed class PdfExperimentExecutionGate
             "LIVE_SOURCE_UNIVERSE_SHA_MISMATCH");
         Require(sourceUniverseSha256, _runtime.SourceUniverseSha256,
             "LIVE_RUNTIME_SOURCE_UNIVERSE_SHA_MISMATCH");
+    }
+
+    /// <summary>
+    /// Compares the runtime's actually-selected coordinate authority against what the manifest
+    /// declared, before the first provider call. This is deliberately a separate check from
+    /// <see cref="EnsureLiveSourceUniverse"/>: two different profiles over the same PDF can still
+    /// produce a source-universe hash the manifest happens to recognise from an earlier draft, and
+    /// a hash match must not stand in for the explicit declaration this exists to require.
+    /// </summary>
+    internal void EnsureLiveAuthorityProfile(string runtimeAuthorityProfile)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(runtimeAuthorityProfile);
+        EnsureReady();
+        Require(runtimeAuthorityProfile, DeclaredAuthorityProfile(), "AUTHORITY_PROFILE_MISMATCH");
+    }
+
+    private string DeclaredAuthorityProfile()
+    {
+        if (_manifest.Authority is { } authority)
+            return authority.AuthorityProfile;
+        if (string.Equals(_manifest.SchemaVersion, ProfileAwareSchemaVersion, StringComparison.Ordinal))
+            throw new InvalidOperationException("PDF_EXPERIMENT_AUTHORITY_PROFILE_DECLARATION_MISSING");
+        // A manifest below the profile-aware schema predates the concept: every manifest of that
+        // vintage was, by construction, a LEGACY_OCCURRENCE run - there was no other route to take.
+        return HistoricalPdfAuthorityProfile;
     }
 
     public void ReserveProviderCall(string stage)

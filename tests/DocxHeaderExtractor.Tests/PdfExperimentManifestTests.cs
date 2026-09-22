@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
@@ -105,6 +106,123 @@ public sealed class PdfExperimentManifestTests
             Assert.Contains("MISMATCH", error.Message, StringComparison.Ordinal);
         }
     }
+
+    // ---- §18: manifest-declared authority profile vs. runtime-selected profile ------------------
+
+    [Fact]
+    public void Historical_manifest_without_a_declaration_resolves_legacy_and_accepts_legacy_runtime()
+    {
+        // BuildManifest() uses schema v1, the version every manifest before this declaration
+        // existed was written under. It carries no Authority - and must not need one.
+        var manifest = BuildManifest();
+        Assert.Null(manifest.Authority);
+        Assert.NotEqual(PdfExperimentExecutionGate.ProfileAwareSchemaVersion, manifest.SchemaVersion);
+
+        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
+
+        gate.EnsureLiveAuthorityProfile("LEGACY_OCCURRENCE");
+    }
+
+    [Fact]
+    public void Historical_manifest_without_a_declaration_rejects_a_structured_runtime()
+    {
+        var manifest = BuildManifest();
+        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
+
+        var error = Assert.Throws<InvalidOperationException>(
+            () => gate.EnsureLiveAuthorityProfile("STRUCTURED_SOURCE_PARTS"));
+
+        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_MISMATCH", error.Message);
+    }
+
+    [Fact]
+    public void Profile_aware_manifest_matching_runtime_passes()
+    {
+        var manifest = ProfileAwareManifest("STRUCTURED_SOURCE_PARTS");
+        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
+
+        gate.EnsureLiveAuthorityProfile("STRUCTURED_SOURCE_PARTS");
+    }
+
+    [Fact]
+    public void Profile_aware_manifest_declaring_structured_rejects_a_legacy_runtime()
+    {
+        var manifest = ProfileAwareManifest("STRUCTURED_SOURCE_PARTS");
+        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
+
+        var error = Assert.Throws<InvalidOperationException>(
+            () => gate.EnsureLiveAuthorityProfile("LEGACY_OCCURRENCE"));
+
+        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_MISMATCH", error.Message);
+    }
+
+    [Fact]
+    public void Profile_aware_manifest_declaring_legacy_rejects_a_structured_runtime()
+    {
+        var manifest = ProfileAwareManifest("LEGACY_OCCURRENCE");
+        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
+
+        var error = Assert.Throws<InvalidOperationException>(
+            () => gate.EnsureLiveAuthorityProfile("STRUCTURED_SOURCE_PARTS"));
+
+        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_MISMATCH", error.Message);
+    }
+
+    [Fact]
+    public void Profile_aware_manifest_missing_its_declaration_fails_closed_regardless_of_runtime()
+    {
+        var manifest = BuildManifest() with
+        {
+            SchemaVersion = PdfExperimentExecutionGate.ProfileAwareSchemaVersion,
+            Authority = null,
+        };
+        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
+
+        var error = Assert.Throws<InvalidOperationException>(
+            () => gate.EnsureLiveAuthorityProfile("LEGACY_OCCURRENCE"));
+
+        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_DECLARATION_MISSING", error.Message);
+    }
+
+    [Fact]
+    public async Task Adapter_rejects_a_structured_run_under_a_manifest_declaring_legacy_before_any_transport()
+    {
+        // The source-universe hash must match the runtime the adapter actually builds too, or
+        // EnsureLiveSourceUniverse would reject the run first and this test would not be isolating
+        // the authority-profile check it exists to prove.
+        const string StructuredSourceAliasUniverseHash =
+            "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f";
+        var manifest = ProfileAwareManifest("LEGACY_OCCURRENCE") with
+        {
+            SourceUniverseSha256 = StructuredSourceAliasUniverseHash,
+            SemanticContractHash = SemanticAuthorityReplayHashing.SemanticContractHash(),
+        };
+        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest),
+            Runtime(manifest) with { SourceUniverseSha256 = StructuredSourceAliasUniverseHash });
+        using var fake = new RequestCapturingClassifier();
+
+        var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            CanonicalSemanticPdfAuthorityAdapter.RunAsync(
+                Path(Pdf), fake, CancellationToken.None,
+                experimentGate: gate,
+                profile: PdfSemanticAuthorityProfile.StructuredSourceParts));
+
+        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_MISMATCH", error.Message);
+        Assert.Equal(0, gate.ProviderCalls);
+        Assert.Empty(fake.Requests);
+    }
+
+    private static PdfExperimentManifest ProfileAwareManifest(string authorityProfile) =>
+        BuildManifest() with
+        {
+            SchemaVersion = PdfExperimentExecutionGate.ProfileAwareSchemaVersion,
+            Authority = new PdfExperimentAuthorityIdentity(
+                "PDF",
+                authorityProfile == "STRUCTURED_SOURCE_PARTS"
+                    ? "STRUCTURED_SOURCE_PART_TUPLE"
+                    : "SOURCE_ALIAS_PLUS_SELECTION_MODE",
+                authorityProfile),
+        };
 
     [Fact]
     public async Task Missing_approval_blocks_the_fake_transport()

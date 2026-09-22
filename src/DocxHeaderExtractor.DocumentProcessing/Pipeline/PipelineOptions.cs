@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Chunking;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
@@ -39,6 +40,16 @@ public sealed class PipelineOptions
     /// writes; when supplied, persistence is fail-closed unless the request is optional.
     /// </summary>
     public SemanticAuthorityReplayCaptureRequest? ReplayCapture { get; set; }
+
+    /// <summary>
+    /// Which PDF coordinate authority the semantic core reads: <c>LEGACY_OCCURRENCE</c> (parser
+    /// blocks) or <c>STRUCTURED_SOURCE_PARTS</c> (segment atoms). Internal - no public host adds a
+    /// setting for this. Null keeps every existing caller on ordinary production behaviour;
+    /// <see cref="CanonicalSemanticPdfAuthorityAdapter"/> is where the default
+    /// (<c>PdfSemanticAuthorityProfile.LegacyOccurrence</c>) is applied, so this field is never
+    /// independently defaulted in more than one place.
+    /// </summary>
+    internal PdfSemanticAuthorityProfile? PdfAuthorityProfile { get; set; }
 
     /// <summary>Luôn giữ đoạn có style heading kể cả khi mô hình bỏ sót.</summary>
     public bool TrustStyles { get; set; } = true;

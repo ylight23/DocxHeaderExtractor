@@ -66,7 +66,7 @@ public sealed class PdfP3aSourceStageTests
             new TextOffsetSpan(0, alias.Text.Length),
             SemanticRole: PdfSemanticRole.SectionHeading);
 
-        var bound = PdfSemanticProposalBinder.BindAndValidate(universe, [decision]);
+        var bound = PdfSemanticProposalBinder.BindAndValidate(universe.Contexts, [decision]);
 
         var heading = Assert.Single(bound);
         Assert.Equal(alias.SourceId, heading.SourceId);
@@ -91,8 +91,8 @@ public sealed class PdfP3aSourceStageTests
             "test",
             new TextOffsetSpan(0, alias.Text.Length + 1));
 
-        Assert.Empty(PdfSemanticProposalBinder.BindAndValidate(universe, [unknown]));
-        Assert.Empty(PdfSemanticProposalBinder.BindAndValidate(universe, [invalidSpan]));
+        Assert.Empty(PdfSemanticProposalBinder.BindAndValidate(universe.Contexts, [unknown]));
+        Assert.Empty(PdfSemanticProposalBinder.BindAndValidate(universe.Contexts, [invalidSpan]));
     }
 
     [Fact]

@@ -35,17 +35,30 @@ internal sealed record PdfStructuredSourceAuthority(
     string SourceAliasUniverseHash,
     string ModelVisibleEvidenceHash,
     string CallPlanHash,
-    string SourceSha256)
+    string SourceSha256,
+    IReadOnlyList<PdfSemanticBlock> Blocks,
+    IReadOnlyDictionary<string, PdfCandidateContext> Contexts,
+    DocumentSourceCatalog Catalog,
+    IReadOnlyList<SemanticSourceAlias> Aliases,
+    IReadOnlyDictionary<string, int> OrdinalBySourceId,
+    int ParserLineCount) : IPdfSemanticSourceAuthority
 {
+    /// <summary>
+    /// The coordinate universe identity a live route checks before it will transport - the same
+    /// role <see cref="PdfCanonicalSourceUniverse.SourceUniverseSha256"/> plays for the occurrence
+    /// lane. <see cref="SourceAliasUniverseHash"/> already is that identity for the atom universe:
+    /// it depends on the PDF's text and geometry alone, nothing a proposal or a request could move.
+    /// </summary>
+    public string SourceUniverseSha256 => SourceAliasUniverseHash;
+
     /// <summary>
     /// What a live call would actually build and send: the same input shape the production
     /// adapter would construct, with the atoms' layout labels attached as context rather than as
-    /// coordinates. Not wired into extraction yet - building this is how a caller (production or a
-    /// dry-run) reaches the one real request composer, not a route the active lane takes.
+    /// coordinates.
     /// </summary>
     public CanonicalSemanticProductionInput CreateProductionInput(string documentId) =>
         new(
-            new DocumentSourceCatalog([]),
+            Catalog,
             null,
             SourceSha256,
             [new CanonicalSemanticPageEvidence("PDF", true, 0, "pdf-source")],
@@ -58,6 +71,7 @@ internal sealed record PdfStructuredSourceAuthority(
         {
             ExpectedSourceSha256 = SourceSha256,
             LayoutBlockBySourceId = LayoutBlockByAtom,
+            SourceUniverseSha256 = SourceUniverseSha256,
         };
 }
 
@@ -137,6 +151,18 @@ internal static class PdfStructuredSourceAuthorityBuilder
 
         var packs = Partition(evidence);
 
+        var catalog = DocumentSourceCatalogBuilder.FromPdfParserBlocks(atomBlocks, segments);
+        // Deliberately not SemanticSourceAliasCatalog.FromCatalog(catalog): that scheme renumbers
+        // to S0001.. running numbers, the addressing this whole rearrangement retired. An atom's
+        // own alias (L{row}:S{segment}) is its coordinate identity everywhere, including here.
+        var aliases = atoms
+            .Select(atom => new SemanticSourceAlias(
+                atom.Alias, atom.SourceId, atom.Ordinal, atom.Text,
+                new StructuralSpan(0, atom.Text.Length)))
+            .ToArray();
+        var ordinalByAtomSourceId = atoms.ToDictionary(
+            atom => atom.SourceId, atom => atom.Ordinal, StringComparer.Ordinal);
+
         return new PdfStructuredSourceAuthority(
             atoms,
             evidence,
@@ -171,7 +197,13 @@ internal static class PdfStructuredSourceAuthorityBuilder
                     visible = pack.VisibleAliases,
                 }).ToArray(),
             }),
-            SourceSha256: sourceSha256);
+            SourceSha256: sourceSha256,
+            Blocks: atomBlocks,
+            Contexts: contexts,
+            Catalog: catalog,
+            Aliases: aliases,
+            OrdinalBySourceId: ordinalByAtomSourceId,
+            ParserLineCount: segments.Count);
     }
 
     /// <summary>
