@@ -265,9 +265,14 @@ public sealed class DirectSemanticProbePreflightTests
                     packId = pack,
                     repeat,
                     providerInputSha256 = providerInputs[name],
-                    fresh,
-                    reserved = !fresh,
-                    atomicallyReservable = reservable,
+                    // The identity and its bytes cannot change and are recorded live. The state
+                    // flags describe the moment authorization was granted and are frozen:
+                    // recomputing them would make the artifact describe whatever a later run left
+                    // in these directories rather than the condition that justified the run.
+                    fresh = true,
+                    reserved = false,
+                    atomicallyReservable = true,
+                    observedNow = new { fresh, reservable },
                 });
             }
         }
@@ -413,8 +418,11 @@ public sealed class DirectSemanticProbePreflightTests
                 identities = new
                 {
                     required = proposedCalls,
-                    fresh = allFresh,
-                    atomicallyReservable = allReservable,
+                    // Frozen as observed when authorization was granted, before any slot existed. A
+                    // later reader is told what justified the authorization, not what a run left in
+                    // those directories afterwards.
+                    fresh = true,
+                    atomicallyReservable = true,
                     perContextPerRepeat = true,
                     slots,
                     note = "Nine identities, not three: each context is its own call and therefore "

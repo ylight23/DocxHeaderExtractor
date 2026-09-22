@@ -310,7 +310,11 @@
           "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
           "fresh": true,
           "reserved": false,
-          "atomicallyReservable": true
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
         },
         {
           "identity": "PACK_001:r2",
@@ -319,7 +323,11 @@
           "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
           "fresh": true,
           "reserved": false,
-          "atomicallyReservable": true
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
         },
         {
           "identity": "PACK_001:r3",
@@ -328,7 +336,11 @@
           "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
           "fresh": true,
           "reserved": false,
-          "atomicallyReservable": true
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
         },
         {
           "identity": "PACK_005:r1",
@@ -337,7 +349,11 @@
           "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
           "fresh": true,
           "reserved": false,
-          "atomicallyReservable": true
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
         },
         {
           "identity": "PACK_005:r2",
@@ -346,7 +362,11 @@
           "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
           "fresh": true,
           "reserved": false,
-          "atomicallyReservable": true
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
         },
         {
           "identity": "PACK_005:r3",
@@ -355,7 +375,11 @@
           "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
           "fresh": true,
           "reserved": false,
-          "atomicallyReservable": true
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
         },
         {
           "identity": "PACK_006:r1",
@@ -364,7 +388,11 @@
           "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
           "fresh": true,
           "reserved": false,
-          "atomicallyReservable": true
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
         },
         {
           "identity": "PACK_006:r2",
@@ -373,7 +401,11 @@
           "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
           "fresh": true,
           "reserved": false,
-          "atomicallyReservable": true
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
         },
         {
           "identity": "PACK_006:r3",
@@ -382,7 +414,11 @@
           "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
           "fresh": true,
           "reserved": false,
-          "atomicallyReservable": true
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
         }
       ],
       "note": "Nine identities, not three: each context is its own call and therefore its own slot. Reservability is proven by performing an exclusive create and removing it, not inferred from a file being absent."
