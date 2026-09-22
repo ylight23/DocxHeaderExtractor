@@ -107,6 +107,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         {
             canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
                 new LeaseBoundHeaderClassifier(transport, lease),
+                SemanticCoordinateContract.PdfAliasSelection,
                 experiment ?? CanonicalSemanticExperiment.Baseline);
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
                 input, canonicalModel,
@@ -185,7 +186,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             validated.Select(item => item.SourceId).ToArray()) with
         {
             RawAnalystResponses = canonicalModel?.RawResponses ?? [],
-            ModelInputContracts = canonicalModel is null ? [] : [CanonicalSemanticContract.ProtocolVersion],
+            ModelInputContracts = canonicalModel is null ? [] : [canonicalModel.Contract.ProtocolVersion],
             ValidatedStructures = structures.Values.ToArray(),
             HierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, universe.Contexts),
             ConflictCensus = SemanticConflictCensus.Take(

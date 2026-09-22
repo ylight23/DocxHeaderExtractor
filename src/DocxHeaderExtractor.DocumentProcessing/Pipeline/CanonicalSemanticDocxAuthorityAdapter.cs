@@ -63,7 +63,9 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         else
         {
             canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
-                transport, experiment ?? CanonicalSemanticExperiment.Baseline);
+                transport,
+                SemanticCoordinateContract.DocxAliasSpan,
+                experiment ?? CanonicalSemanticExperiment.Baseline);
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
                 input, canonicalModel,
                 requestId: $"docx:{policyState.Source.DocumentId}",
@@ -152,7 +154,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             validated.Select(item => item.SourceId).ToArray()) with
         {
             RawAnalystResponses = canonicalModel?.RawResponses ?? [],
-            ModelInputContracts = canonicalModel is null ? [] : [CanonicalSemanticContract.ProtocolVersion],
+            ModelInputContracts = canonicalModel is null ? [] : [canonicalModel.Contract.ProtocolVersion],
             ModelRequests = result.PrimaryTextModelCalls == 0
                 ? []
                 : [new RouteModelRequestAudit(

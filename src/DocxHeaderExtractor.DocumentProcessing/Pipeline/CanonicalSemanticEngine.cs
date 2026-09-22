@@ -148,11 +148,24 @@ internal static class CanonicalSemanticEngine
     internal static string SystemPromptFor(CanonicalSemanticExperiment experiment) =>
         experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
 
+    /// <summary>
+    /// The semantic core. One reasoning model, one ontology, one set of instructions - and a
+    /// coordinate contract handed in by the lane that knows how its source is addressed.
+    /// <para>
+    /// It used to read that contract off a static, which quietly made every source format share one
+    /// answer to a question only the source can answer. The engine no longer chooses: it does not
+    /// look at a file extension, a runtime type or a flag, it uses what it was given.
+    /// </para>
+    /// </summary>
     internal sealed class HeaderClassifierCanonicalTextModel(
         IHeaderClassifier classifier,
+        SemanticCoordinateContract contract,
         CanonicalSemanticExperiment? experiment = null) : ICanonicalSemanticTextModel
     {
         private readonly CanonicalSemanticExperiment _experiment = experiment ?? CanonicalSemanticExperiment.Baseline;
+
+        /// <summary>The lane's coordinate contract, which builds the schema and checks the reply.</summary>
+        public SemanticCoordinateContract Contract { get; } = contract;
 
         public List<string> RawResponses { get; } = [];
 
@@ -238,7 +251,7 @@ internal static class CanonicalSemanticEngine
                 var packet = _experiment.CarryStructuralAncestors
                     ? JsonSerializer.Serialize(new
                     {
-                        protocol = CanonicalSemanticContract.ProtocolVersion,
+                        protocol = Contract.ProtocolVersion,
                         ownedSourceAliases = owned.Select(item => item.SourceAlias).ToArray(),
                         // The structural state already open where this segment begins, so a segment
                         // continuing inside a container is not shown that container's contents
@@ -249,13 +262,13 @@ internal static class CanonicalSemanticEngine
                     })
                     : JsonSerializer.Serialize(new
                     {
-                        protocol = CanonicalSemanticContract.ProtocolVersion,
+                        protocol = Contract.ProtocolVersion,
                         ownedSourceAliases = owned.Select(item => item.SourceAlias).ToArray(),
                         sourceEvidence,
                     });
                 var raw = await classifier.BoundaryCutAsync(
                     SystemPromptFor(_experiment),
-                    packet + "\nSCHEMA=" + JsonSerializer.Serialize(CanonicalSemanticContract.Schema()),
+                    packet + "\nSCHEMA=" + JsonSerializer.Serialize(Contract.Schema()),
                     cancellationToken,
                     expectedItemCount: owned.Length);
                 RawResponses.Add(raw);
@@ -275,7 +288,9 @@ internal static class CanonicalSemanticEngine
 
                 if (parsed is null) continue;
                 using var document = parsed;
-                var segmentIssues = CanonicalSemanticContractValidator.ValidateJson(document.RootElement);
+                // The same descriptor that produced the schema checks the reply. Validating against
+                // a different one would accept coordinates the model was never offered.
+                var segmentIssues = Contract.Validate(document.RootElement);
                 if (segmentIssues.Count > 0)
                 {
                     issues.AddRange(segmentIssues);

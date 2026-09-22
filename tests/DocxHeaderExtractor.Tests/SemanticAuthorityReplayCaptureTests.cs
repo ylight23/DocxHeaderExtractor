@@ -22,7 +22,8 @@ public sealed class SemanticAuthorityReplayCaptureTests
         };
 
         using var classifier = new RawJsonClassifier(raw);
-        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(classifier);
+        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+            classifier, SemanticCoordinateContract.PdfAliasSelection);
         var result = await CanonicalSemanticProductionEntryPoint.RunAsync(input, model);
 
         var bundle = result.ReplayBundle;
