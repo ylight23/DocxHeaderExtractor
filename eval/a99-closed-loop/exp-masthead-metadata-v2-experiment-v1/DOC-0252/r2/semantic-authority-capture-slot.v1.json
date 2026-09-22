@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "a99-semantic-authority-capture-reservation-v1",
+  "status": "TRANSPORT_CAPTURE_COMPLETE",
+  "identityHash": "f25ae32409aa9e1076fb118997bf1625052f844408fec18f2bb709792505bcae",
+  "documentId": "072_ICP_TAG_Minutes_Mar_2025",
+  "sourceHash": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseHash": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "modelIdentity": "qwen/qwen3.7-flash",
+  "modelRoute": "OpenRouter",
+  "promptHash": "fb46d62cb7ddbb469d56a54f3c90e37d955c8fce85b8f75257ac19a14b2c64fa",
+  "semanticContractHash": "565bdc87749a1ce1246238cacd1eb7d550a19939dc9e42d23e76ab3a46a8b0ea",
+  "profile": "STRUCTURED_SOURCE_PARTS_V2",
+  "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+  "repeatIdentity": "r2",
+  "runId": "EXP_MASTHEAD_METADATA_V2-r2",
+  "calls": [
+    {
+      "ordinal": 1,
+      "stage": "semantic",
+      "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "requestSha256": "173a5172a58018ac616b4b06c79f20c6f314db214cc406610da2937fe03b1977",
+      "requestBytes": 77991
+    },
+    {
+      "ordinal": 2,
+      "stage": "semantic",
+      "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+      "requestSha256": "ac7f6905cfcf5377c92241d089815ab29bc4bb6db0fc40b17e67a953c0dbeec7",
+      "requestBytes": 42115
+    }
+  ]
+}
