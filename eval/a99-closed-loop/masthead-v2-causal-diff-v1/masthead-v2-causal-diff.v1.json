@@ -1,0 +1,1076 @@
+{
+  "artifactKind": "a99_masthead_v2_causal_diff",
+  "schemaVersion": "a99-masthead-v2-causal-diff-v1",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "scoredFrom": "raw transport captures of both arms, replayed independently",
+  "lineage": {
+    "baseline": {
+      "id": "STRUCTURED_V2_TARGET_BASELINE",
+      "promptSha256": "6340d1daf507a3d2bf5ce6fbef2b5d7b61735c0e0621a62f8e885ad8b2d8a66e",
+      "root": "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252"
+    },
+    "armV2": {
+      "id": "EXP_MASTHEAD_METADATA_V2",
+      "promptSha256": "fb46d62cb7ddbb469d56a54f3c90e37d955c8fce85b8f75257ac19a14b2c64fa",
+      "root": "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252"
+    },
+    "shared": {
+      "protocolVersion": "a99-semantic-source-parts-v2",
+      "contractSha256": "565bdc87749a1ce1246238cacd1eb7d550a19939dc9e42d23e76ab3a46a8b0ea",
+      "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+      "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+      "targetPacks": [
+        "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "COHERENT_REGION_SEGMENTATION_V1:PACK_006"
+      ],
+      "targetGoldCount": 14,
+      "repeats": 3,
+      "model": "qwen/qwen3.7-flash"
+    },
+    "intendedDelta": "the masthead clause, and nothing else"
+  },
+  "integrity": {
+    "unexpectedVerbatimTextBaseline": 0,
+    "unexpectedVerbatimTextArm": 0,
+    "note": "The coordinate confound that invalidated the v1 comparison is absent from both arms."
+  },
+  "membershipDelta": {
+    "goldMembershipDeltaCount": 0,
+    "goldBindingDeltaCount": 0,
+    "rows": [],
+    "note": "Every one of the 14 target claims, in every repeat, in both arms."
+  },
+  "mastheadFamilyDelta": {
+    "suppressions": 0,
+    "persistences": 9,
+    "rows": [
+      {
+        "family": "international-program-and-tag",
+        "repeat": 1,
+        "baseline": "PRESENT",
+        "armV2": "PRESENT",
+        "baselineIdentities": [
+          "L0513:S0:0-38|L0514:S0:0-30"
+        ],
+        "armIdentities": [
+          "L0513:S0:0-38|L0514:S0:0-30"
+        ]
+      },
+      {
+        "family": "international-program-and-tag",
+        "repeat": 2,
+        "baseline": "PRESENT",
+        "armV2": "PRESENT",
+        "baselineIdentities": [
+          "L0513:S0:0-38|L0514:S0:0-30"
+        ],
+        "armIdentities": [
+          "L0513:S0:0-38|L0514:S0:0-30"
+        ]
+      },
+      {
+        "family": "international-program-and-tag",
+        "repeat": 3,
+        "baseline": "PRESENT",
+        "armV2": "PRESENT",
+        "baselineIdentities": [
+          "L0513:S0:0-38",
+          "L0514:S0:0-30"
+        ],
+        "armIdentities": [
+          "L0513:S0:0-38|L0514:S0:0-30"
+        ]
+      },
+      {
+        "family": "hybrid-meeting",
+        "repeat": 1,
+        "baseline": "PRESENT",
+        "armV2": "PRESENT",
+        "baselineIdentities": [
+          "L0515:S0:0-14"
+        ],
+        "armIdentities": [
+          "L0515:S0:0-14"
+        ]
+      },
+      {
+        "family": "hybrid-meeting",
+        "repeat": 2,
+        "baseline": "PRESENT",
+        "armV2": "PRESENT",
+        "baselineIdentities": [
+          "L0515:S0:0-14"
+        ],
+        "armIdentities": [
+          "L0515:S0:0-14"
+        ]
+      },
+      {
+        "family": "hybrid-meeting",
+        "repeat": 3,
+        "baseline": "PRESENT",
+        "armV2": "PRESENT",
+        "baselineIdentities": [
+          "L0515:S0:0-14"
+        ],
+        "armIdentities": [
+          "L0515:S0:0-14"
+        ]
+      },
+      {
+        "family": "date-venue-address",
+        "repeat": 1,
+        "baseline": "PRESENT",
+        "armV2": "PRESENT",
+        "baselineIdentities": [
+          "L0516:S0:0-15"
+        ],
+        "armIdentities": [
+          "L0516:S0:0-15",
+          "L0517:S0:0-22",
+          "L0518:S0:0-32"
+        ]
+      },
+      {
+        "family": "date-venue-address",
+        "repeat": 2,
+        "baseline": "PRESENT",
+        "armV2": "PRESENT",
+        "baselineIdentities": [
+          "L0516:S0:0-15"
+        ],
+        "armIdentities": [
+          "L0516:S0:0-15",
+          "L0517:S0:0-22",
+          "L0518:S0:0-32"
+        ]
+      },
+      {
+        "family": "date-venue-address",
+        "repeat": 3,
+        "baseline": "PRESENT",
+        "armV2": "PRESENT",
+        "baselineIdentities": [
+          "L0516:S0:0-15"
+        ],
+        "armIdentities": [
+          "L0516:S0:0-15"
+        ]
+      }
+    ],
+    "note": "Compared as families. A composite claim that splits is the same family, not a new false-positive kind."
+  },
+  "falsePositiveDelta": [
+    {
+      "repeat": 1,
+      "baselineCount": 4,
+      "armCount": 6,
+      "baselineOnlyExact": [],
+      "armOnlyExact": [
+        "L0517:S0:0-22",
+        "L0518:S0:0-32"
+      ],
+      "commonExact": [
+        "L0513:S0:0-38|L0514:S0:0-30",
+        "L0515:S0:0-14",
+        "L0516:S0:0-15",
+        "L0550:S0:0-56"
+      ],
+      "baselineOnlyByAtom": [],
+      "armOnlyByAtom": [
+        "L0517:S0",
+        "L0518:S0"
+      ]
+    },
+    {
+      "repeat": 2,
+      "baselineCount": 4,
+      "armCount": 6,
+      "baselineOnlyExact": [],
+      "armOnlyExact": [
+        "L0517:S0:0-22",
+        "L0518:S0:0-32"
+      ],
+      "commonExact": [
+        "L0513:S0:0-38|L0514:S0:0-30",
+        "L0515:S0:0-14",
+        "L0516:S0:0-15",
+        "L0550:S0:0-56"
+      ],
+      "baselineOnlyByAtom": [],
+      "armOnlyByAtom": [
+        "L0517:S0",
+        "L0518:S0"
+      ]
+    },
+    {
+      "repeat": 3,
+      "baselineCount": 6,
+      "armCount": 4,
+      "baselineOnlyExact": [
+        "L0396:S0:0-93",
+        "L0513:S0:0-38",
+        "L0514:S0:0-30"
+      ],
+      "armOnlyExact": [
+        "L0513:S0:0-38|L0514:S0:0-30"
+      ],
+      "commonExact": [
+        "L0515:S0:0-14",
+        "L0516:S0:0-15",
+        "L0550:S0:0-56"
+      ],
+      "baselineOnlyByAtom": [
+        "L0396:S0"
+      ],
+      "armOnlyByAtom": []
+    }
+  ],
+  "relationControlDelta": {
+    "rootToNoneReproduced": false,
+    "rootToNoneCount": 0,
+    "rows": [
+      {
+        "alias": "L0400:S0",
+        "repeat": 1,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "section_heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "ROLE_ONLY"
+      },
+      {
+        "alias": "L0400:S0",
+        "repeat": 2,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "UNCHANGED"
+      },
+      {
+        "alias": "L0400:S0",
+        "repeat": 3,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "section-heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "ROLE_ONLY"
+      },
+      {
+        "alias": "L0420:S0",
+        "repeat": 1,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "section_heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "ROLE_ONLY"
+      },
+      {
+        "alias": "L0420:S0",
+        "repeat": 2,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "UNCHANGED"
+      },
+      {
+        "alias": "L0420:S0",
+        "repeat": 3,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "section-heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "ROLE_ONLY"
+      },
+      {
+        "alias": "L0470:S0",
+        "repeat": 1,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "section_heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "ROLE_ONLY"
+      },
+      {
+        "alias": "L0470:S0",
+        "repeat": 2,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "UNCHANGED"
+      },
+      {
+        "alias": "L0470:S0",
+        "repeat": 3,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "section-heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "ROLE_ONLY"
+      },
+      {
+        "alias": "L0507:S0",
+        "repeat": 1,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "section_heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "ROLE_ONLY"
+      },
+      {
+        "alias": "L0507:S0",
+        "repeat": 2,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "UNCHANGED"
+      },
+      {
+        "alias": "L0507:S0",
+        "repeat": 3,
+        "baseline": {
+          "outcome": "BOUND",
+          "role": "section-heading",
+          "relation": "parent-node:ROOT"
+        },
+        "armV2": {
+          "outcome": "BOUND",
+          "role": "heading",
+          "relation": "parent-node:ROOT"
+        },
+        "classification": "ROLE_ONLY"
+      }
+    ]
+  },
+  "semanticRoleAttribution": {
+    "armMismatches": 42,
+    "preexistingInBaseline": 13,
+    "introducedByE1": 0,
+    "changedToDifferentWrongRole": 29,
+    "e1CorrectedBaselineRole": 0,
+    "regressionCausedByE1": false,
+    "rows": [
+      {
+        "identity": "L0400:S0:0-44",
+        "repeat": 1,
+        "goldRole": "AgendaItem",
+        "baselineRole": "section_heading",
+        "armRole": "heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0400:S0:0-44",
+        "repeat": 2,
+        "goldRole": "AgendaItem",
+        "baselineRole": "heading",
+        "armRole": "heading",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0400:S0:0-44",
+        "repeat": 3,
+        "goldRole": "AgendaItem",
+        "baselineRole": "section-heading",
+        "armRole": "heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0420:S0:0-40",
+        "repeat": 1,
+        "goldRole": "AgendaItem",
+        "baselineRole": "section_heading",
+        "armRole": "heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0420:S0:0-40",
+        "repeat": 2,
+        "goldRole": "AgendaItem",
+        "baselineRole": "heading",
+        "armRole": "heading",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0420:S0:0-40",
+        "repeat": 3,
+        "goldRole": "AgendaItem",
+        "baselineRole": "section-heading",
+        "armRole": "heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0470:S0:0-45",
+        "repeat": 1,
+        "goldRole": "AgendaItem",
+        "baselineRole": "section_heading",
+        "armRole": "heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0470:S0:0-45",
+        "repeat": 2,
+        "goldRole": "AgendaItem",
+        "baselineRole": "heading",
+        "armRole": "heading",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0470:S0:0-45",
+        "repeat": 3,
+        "goldRole": "AgendaItem",
+        "baselineRole": "section-heading",
+        "armRole": "heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0507:S0:0-30",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section_heading",
+        "armRole": "heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0507:S0:0-30",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "heading",
+        "armRole": "heading",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0507:S0:0-30",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0519:S0:0-6",
+        "repeat": 1,
+        "goldRole": "SectionHeading",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0519:S0:0-6",
+        "repeat": 2,
+        "goldRole": "SectionHeading",
+        "baselineRole": "section-header",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0519:S0:0-6",
+        "repeat": 3,
+        "goldRole": "SectionHeading",
+        "baselineRole": "section-header",
+        "armRole": "section-label",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0520:S0:0-51",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0520:S0:0-51",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0520:S0:0-51",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0521:S0:0-38",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0521:S0:0-38",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0521:S0:0-38",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0523:S0:0-50",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0523:S0:0-50",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0523:S0:0-50",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0526:S0:0-65",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0526:S0:0-65",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0526:S0:0-65",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0531:S0:0-64",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0531:S0:0-64",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0531:S0:0-64",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0536:S0:0-27",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0536:S0:0-27",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0536:S0:0-27",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0539:S0:0-51",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0539:S0:0-51",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0539:S0:0-51",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0540:S0:0-36",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0540:S0:0-36",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0540:S0:0-36",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      },
+      {
+        "identity": "L0553:S0:0-19",
+        "repeat": 1,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section-heading",
+        "armRole": "section-header",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0553:S0:0-19",
+        "repeat": 2,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section-heading",
+        "bucket": "CHANGED_TO_DIFFERENT_WRONG_ROLE"
+      },
+      {
+        "identity": "L0553:S0:0-19",
+        "repeat": 3,
+        "goldRole": "MeetingSection",
+        "baselineRole": "section",
+        "armRole": "section",
+        "bucket": "PREEXISTING_IN_BASELINE"
+      }
+    ],
+    "goldVocabulary": [
+      "AgendaItem",
+      "MeetingSection",
+      "SectionHeading"
+    ],
+    "modelVocabularyBaseline": [
+      "body_text",
+      "document-subtitle",
+      "document-title",
+      "document_title",
+      "heading",
+      "section",
+      "section-header",
+      "section-heading",
+      "section_heading",
+      "subtitle"
+    ],
+    "modelVocabularyArm": [
+      "address",
+      "document-subtitle",
+      "document-title",
+      "heading",
+      "section",
+      "section-header",
+      "section-heading",
+      "section-label",
+      "venue"
+    ],
+    "interpretation": "The two vocabularies do not intersect. All 42 mismatches are present in both arms, and none is attributable to the clause. This is an unconstrained role field measured against a Gold ontology, and it is a finding of its own - separate from anything the masthead wording does.",
+    "note": "A mismatch against Gold that the baseline already had is not an effect of the clause. Only a claim the baseline got right and this arm got wrong is attributable to it."
+  },
+  "noneDelta": {
+    "rows": [
+      {
+        "repeat": 1,
+        "baselineTotal": 6,
+        "baselineGold": 3,
+        "baselineFp": 3,
+        "armTotal": 6,
+        "armGold": 1,
+        "armFp": 5,
+        "added": [
+          "L0517:S0:0-22",
+          "L0518:S0:0-32"
+        ],
+        "removed": [
+          "L0520:S0:0-51",
+          "L0539:S0:0-51"
+        ]
+      },
+      {
+        "repeat": 2,
+        "baselineTotal": 4,
+        "baselineGold": 1,
+        "baselineFp": 3,
+        "armTotal": 5,
+        "armGold": 0,
+        "armFp": 5,
+        "added": [
+          "L0517:S0:0-22",
+          "L0518:S0:0-32"
+        ],
+        "removed": [
+          "L0519:S0:0-6"
+        ]
+      },
+      {
+        "repeat": 3,
+        "baselineTotal": 6,
+        "baselineGold": 1,
+        "baselineFp": 5,
+        "armTotal": 4,
+        "armGold": 1,
+        "armFp": 3,
+        "added": [
+          "L0513:S0:0-38|L0514:S0:0-30"
+        ],
+        "removed": [
+          "L0396:S0:0-93",
+          "L0513:S0:0-38",
+          "L0514:S0:0-30"
+        ]
+      }
+    ],
+    "newNoneIdentities": [
+      {
+        "repeat": 1,
+        "identity": "L0517:S0:0-22",
+        "isGold": false
+      },
+      {
+        "repeat": 1,
+        "identity": "L0518:S0:0-32",
+        "isGold": false
+      },
+      {
+        "repeat": 2,
+        "identity": "L0517:S0:0-22",
+        "isGold": false
+      },
+      {
+        "repeat": 2,
+        "identity": "L0518:S0:0-32",
+        "isGold": false
+      },
+      {
+        "repeat": 3,
+        "identity": "L0513:S0:0-38|L0514:S0:0-30",
+        "isGold": false
+      }
+    ]
+  },
+  "sourceGrounding": {
+    "control": "L0396:S0",
+    "baselineRefusals": 1,
+    "armRefusals": 3,
+    "rows": [
+      {
+        "repeat": 1,
+        "baseline": {
+          "Outcome": "NOT_A_HEADING",
+          "Reason": null,
+          "Identity": null,
+          "Role": "body_text",
+          "Relation": "parent-node:ROOT",
+          "quotedLength": 421,
+          "quotedPrefix": "considering the challenges and lessons learned, it was noted that the use of tra",
+          "atomPrefix": "definitions and discounts, and requires traditional price collection to continue",
+          "atomLength": 93,
+          "atomsActuallyContainingQuote": []
+        },
+        "armV2": {
+          "Outcome": "REFUSED_ON_SHAPE",
+          "Reason": "TextNotInAtom",
+          "Identity": null,
+          "Role": "heading",
+          "Relation": "parent-node:NONE",
+          "quotedLength": 421,
+          "quotedPrefix": "considering the challenges and lessons learned, it was noted that the use of tra",
+          "atomPrefix": "definitions and discounts, and requires traditional price collection to continue",
+          "atomLength": 93,
+          "atomsActuallyContainingQuote": []
+        }
+      },
+      {
+        "repeat": 2,
+        "baseline": {
+          "Outcome": "REFUSED_ON_SHAPE",
+          "Reason": "TextNotInAtom",
+          "Identity": null,
+          "Role": "heading",
+          "Relation": "parent-node:ROOT",
+          "quotedLength": 85,
+          "quotedPrefix": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme ",
+          "atomPrefix": "definitions and discounts, and requires traditional price collection to continue",
+          "atomLength": 93,
+          "atomsActuallyContainingQuote": [
+            "L0377:S0"
+          ]
+        },
+        "armV2": {
+          "Outcome": "REFUSED_ON_SHAPE",
+          "Reason": "TextNotInAtom",
+          "Identity": null,
+          "Role": "heading",
+          "Relation": "parent-node:ROOT",
+          "quotedLength": 85,
+          "quotedPrefix": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme ",
+          "atomPrefix": "definitions and discounts, and requires traditional price collection to continue",
+          "atomLength": 93,
+          "atomsActuallyContainingQuote": [
+            "L0377:S0"
+          ]
+        }
+      },
+      {
+        "repeat": 3,
+        "baseline": {
+          "Outcome": "BOUND",
+          "Reason": null,
+          "Identity": "L0396:S0:0-93",
+          "Role": "heading",
+          "Relation": "parent-node:NONE",
+          "quotedLength": 93,
+          "quotedPrefix": "definitions and discounts, and requires traditional price collection to continue",
+          "atomPrefix": "definitions and discounts, and requires traditional price collection to continue",
+          "atomLength": 93,
+          "atomsActuallyContainingQuote": [
+            "L0396:S0"
+          ]
+        },
+        "armV2": {
+          "Outcome": "REFUSED_ON_SHAPE",
+          "Reason": "TextNotInAtom",
+          "Identity": null,
+          "Role": "heading",
+          "Relation": "parent-node:ROOT",
+          "quotedLength": 85,
+          "quotedPrefix": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme ",
+          "atomPrefix": "definitions and discounts, and requires traditional price collection to continue",
+          "atomLength": 93,
+          "atomsActuallyContainingQuote": [
+            "L0377:S0"
+          ]
+        }
+      }
+    ],
+    "spreadBeyondControl": [],
+    "systematicIncrease": true,
+    "classification": "ALIAS_TEXT_MISALIGNMENT",
+    "note": "Under v2 this refusal is no longer a selection-mode defect. The model named one atom and quoted text that is not inside it, and the canonicalizer refused rather than widening the claim to the whole atom. That is the intended behaviour, and the canonicalizer is not weakened to make it disappear."
+  },
+  "scheduleControl": {
+    "alias": "L0550:S0",
+    "delta": 2,
+    "rows": [
+      {
+        "repeat": 1,
+        "baseline": {
+          "Outcome": "BOUND",
+          "Identity": "L0550:S0:0-56",
+          "Role": "section-heading",
+          "Relation": "parent-node:parent-node:L0539:S0",
+          "Reason": null
+        },
+        "armV2": {
+          "Outcome": "BOUND",
+          "Identity": "L0550:S0:0-56",
+          "Role": "section-header",
+          "Relation": "parent-node:L0539:S0",
+          "Reason": null
+        }
+      },
+      {
+        "repeat": 2,
+        "baseline": {
+          "Outcome": "BOUND",
+          "Identity": "L0550:S0:0-56",
+          "Role": "section",
+          "Relation": "parent-node:L0539:S0",
+          "Reason": null
+        },
+        "armV2": {
+          "Outcome": "BOUND",
+          "Identity": "L0550:S0:0-56",
+          "Role": "section-heading",
+          "Relation": "parent-node:L0539:S0",
+          "Reason": null
+        }
+      },
+      {
+        "repeat": 3,
+        "baseline": {
+          "Outcome": "BOUND",
+          "Identity": "L0550:S0:0-56",
+          "Role": "section",
+          "Relation": "parent-node:L0539:S0",
+          "Reason": null
+        },
+        "armV2": {
+          "Outcome": "BOUND",
+          "Identity": "L0550:S0:0-56",
+          "Role": "section",
+          "Relation": "parent-node:L0539:S0",
+          "Reason": null
+        }
+      }
+    ]
+  },
+  "variance": {
+    "baseline": {
+      "rawResponseHashDistinct": 6,
+      "proposalCounts": [
+        19,
+        19,
+        20
+      ],
+      "boundIdentitySetsDistinct": 2,
+      "roleAssignmentsDistinct": 3,
+      "relationAssignmentsDistinct": 3
+    },
+    "armV2": {
+      "rawResponseHashDistinct": 5,
+      "proposalCounts": [
+        21,
+        21,
+        19
+      ],
+      "boundIdentitySetsDistinct": 2,
+      "roleAssignmentsDistinct": 3,
+      "relationAssignmentsDistinct": 3
+    },
+    "note": "Raw JSON hash variance is not semantic instability: identical claims differ in whitespace and ordering. Bound-identity and family variance are the semantic measures."
+  },
+  "malformedRelationHints": {
+    "baseline": 8,
+    "armV2": 0,
+    "examples": [
+      "parent-node:parent-node:L0520:S0",
+      "parent-node:parent-node:L0539:S0"
+    ],
+    "note": "A relation hint carrying its own prefix twice - 8 in the baseline, none in the arm. It is the relation field repeating the shape problem the coordinate field has just been relieved of: the model serializing a structure the harness should own. Its absence here is not evidence that the clause fixes it, because nothing in the clause addresses relations and three repeats cannot separate that from chance."
+  },
+  "classification": {
+    "final": "MASTHEAD_POLICY_INSUFFICIENT",
+    "basis": "Masthead families, Gold membership, and attributable role/relation regression. Not the false-positive total, which mixes three mechanisms."
+  },
+  "recommendedNextDirection": "DESIGN_E2_SEMANTIC_WORDING",
+  "providerAccounting": {
+    "thisAudit": 0,
+    "baselineCalls": 6,
+    "armCalls": 6,
+    "unusedTransferred": 0,
+    "note": "Each experiment's accounting stays its own."
+  }
+}
