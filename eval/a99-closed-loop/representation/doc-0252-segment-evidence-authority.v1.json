@@ -21,13 +21,29 @@
     "sourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
     "modelVisibleEvidenceSha256": "5a2ab0477ee9c31648f7862b077a4c92fab070ecde1446321123c63c7637687f",
     "callPlanSha256": "e532682353ca2ea0c73ec660baedb880fdfdafa9a5de7a6e61b242ddbdb648ed",
-    "requestPlanSha256": "97952bd190c4ffffb77f30e12924efaf648c92d840228169a0c9adec74dd6d1d",
     "producers": {
       "sourceAliasUniverse": "PdfStructuredSourceAuthorityBuilder.Build -> PdfSegmentAtomCatalog.FromSegments, schema a99-pdf-segment-atom-universe-v1",
       "modelVisibleEvidence": "PdfStructuredSourceAuthorityBuilder.Visible over PdfCanonicalSourceUniverseBuilder.EvidenceOf, schema a99-pdf-model-visible-evidence-v1",
-      "callPlan": "PdfStructuredSourceAuthorityBuilder.Pack, OwnedPerSegment 120 and VisibleMargin 20, schema a99-pdf-context-pack-plan-v1",
-      "requestPlan": "sha256 of each canonical request payload in order, schema a99-pdf-request-plan-v1"
+      "callPlan": "PdfStructuredSourceAuthorityBuilder.Partition, OwnedPerSegment 120 and VisibleMargin 20, schema a99-pdf-context-pack-plan-v1"
     }
+  },
+  "requestAuthorityCorrection": {
+    "note": "PdfStructuredSourceAuthorityBuilder used to compute a fourth hash here, over a request format it invented for measurement. It disagreed with CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.InferAsync - same evidence, same six calls, different bytes - because it was never checked against production until a routing preflight built the real request and compared it. Discovered at PROVIDER_CALLS = 0.",
+    "predecessorRequestPlanSha256": "97952bd190c4ffffb77f30e12924efaf648c92d840228169a0c9adec74dd6d1d",
+    "predecessorStatus": "SYNTHETIC_REQUEST_SERIALIZATION_NOT_PROVIDER_BOUND",
+    "rootCause": "SCHEMA_SERIALIZED_INSIDE_JSON_IN_MEASUREMENT_HELPER_INSTEAD_OF_CANONICAL_POSTFIX_USED_BY_INFERASYNC. The predecessor also omitted the layout-block label InferAsync's own evidence shaping did not yet attach for this contract - a second, smaller finding surfaced by the same check, corrected in the same change that added CanonicalSemanticRequestComposer.",
+    "unchangedAuthorityDimensions": [
+      "SOURCE_ALIAS",
+      "MODEL_VISIBLE_EVIDENCE",
+      "CALL_PARTITION",
+      "GOLD",
+      "PROMPT",
+      "CONTRACT"
+    ],
+    "successorProviderModelInputPlanSha256": "a73e9e3c1fbeb4a83f1937e864fb310e4a0402b993252b82bb6a741ce4ff7dc3",
+    "successorProducer": "CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.ComposeRequests -> CanonicalSemanticRequestComposer.Compose, the same path InferAsync sends to a classifier",
+    "integrationProof": "recording.Requests (captured through a real InferAsync call, transport-free) equals ComposedRequests (the dry-run producer) byte for byte, both asserted above before this artifact is written.",
+    "predecessorNotMalicious": "A measurement artifact with narrower semantics than its name implied, not bad data: the source/evidence/partition dimensions it stood beside were, and remain, correct."
   },
   "terminology": {
     "blockDiagnosticSha256": "3b351411e1c773d14bf534f19c4ae721612716a4561396c757bc3ac35ed8b05c",
@@ -67,8 +83,8 @@
       "visible": 140,
       "firstOwned": "L0000:S0",
       "lastOwned": "L0117:S0",
-      "requestSha256": "9dc2438804cbff9630448204cb0329808e9a600b829b67d6b99509097d08fccd",
-      "requestChars": 43290
+      "requestSha256": "5b323e5ddd2e39fb5a7f2668b807f0c295834984a3e4788c5d18276d40b298c9",
+      "requestChars": 43306
     },
     {
       "Index": 1,
@@ -76,8 +92,8 @@
       "visible": 160,
       "firstOwned": "L0118:S0",
       "lastOwned": "L0237:S0",
-      "requestSha256": "8b8d1c30a960228877c494dd5007013f62fc43413539ed2c2d971bd7b34dcb78",
-      "requestChars": 47642
+      "requestSha256": "e6c6e4f9297ad9f4c6edcb6095d30f8939cec97c4d6da6bb5954bfbd84cf121a",
+      "requestChars": 46946
     },
     {
       "Index": 2,
@@ -85,8 +101,8 @@
       "visible": 160,
       "firstOwned": "L0238:S0",
       "lastOwned": "L0357:S0",
-      "requestSha256": "e58511cba4950abb2f3ee91e4acc586cc6886cedf2a061cbf87c8ef3ddd3d592",
-      "requestChars": 48412
+      "requestSha256": "e6e072509ba30a6204ea75a598767366fb9f937077b3a34ce8a1ccaeaea1b4a2",
+      "requestChars": 47662
     },
     {
       "Index": 3,
@@ -94,8 +110,8 @@
       "visible": 160,
       "firstOwned": "L0358:S0",
       "lastOwned": "L0477:S0",
-      "requestSha256": "b24eeec6f16c262c5a332277c31bf6eef9579f807c972e3202a8bc8d956ffe95",
-      "requestChars": 48783
+      "requestSha256": "b6467169d7c2429ccd937c28d549d89e310bfeb7da2b42c11c40e8fb99205c49",
+      "requestChars": 48234
     },
     {
       "Index": 4,
@@ -103,8 +119,8 @@
       "visible": 160,
       "firstOwned": "L0478:S0",
       "lastOwned": "L0570:S0",
-      "requestSha256": "616aa6394f384a35cb8493b44e6ee52fa1494088b1b42ed3b5f43fe6bd1d1c2b",
-      "requestChars": 43013
+      "requestSha256": "bf534e718ab97b8f44c53b9371afd426818456d54266a6bfafe284fd449ef5b3",
+      "requestChars": 42381
     },
     {
       "Index": 5,
@@ -112,8 +128,8 @@
       "visible": 70,
       "firstOwned": "L0570:S1",
       "lastOwned": "L0597:S0",
-      "requestSha256": "6cf76dc9d4a3bf79d25b2588a73eeaf4b5d890e0e8e61d8bea4c938db45c48db",
-      "requestChars": 16514
+      "requestSha256": "1bbff0fcf6676f4ae1375edce2c39e785b00b5fdfe959945fdb665edc6d5e7fb",
+      "requestChars": 16046
     }
   ],
   "contract": {
@@ -122,7 +138,7 @@
     "requestsCarryShadowSchema": true,
     "activeContractSwitched": false,
     "promptTemplateChanged": false,
-    "promptTemplateNote": "The active prompt template is untouched here. It teaches the single-alias response, so it cannot be reused for a sourceParts run - rewriting it, and recomputing its hash, belongs to the step that activates the contract."
+    "promptTemplateNote": "The active DOCX/legacy-PDF prompt template is untouched here. This artifact predates the structured PDF prompt clause, which the coordinate contract now supplies separately (SemanticCoordinateContract.PdfStructuredSourceParts.PromptClause); that activation is recorded where it happened, not restated here."
   },
   "representability": {
     "approvedHeadings": 41,
@@ -130,7 +146,7 @@
     "headings1Part": 41,
     "headings2Parts": 0,
     "headings3PlusParts": 0,
-    "note": "Measured over the texts canonical Gold records today. Sixteen of them still carry punctuation the old line reconstruction dropped, and that debt is migrated in the next step, not here.",
+    "note": "Measured over the texts canonical Gold records today. Sixteen of them still carry punctuation the old line reconstruction dropped; that debt was migrated in DOC-0252's structured Gold, not here.",
     "claims": [
       {
         "claim": "S0001#0",

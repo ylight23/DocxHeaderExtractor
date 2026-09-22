@@ -5,39 +5,65 @@ using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-/// <summary>One deterministic request the provider would receive, built but never sent.</summary>
-internal sealed record PdfStructuredContextPack(
+/// <summary>
+/// One request's worth of the deterministic partition: which atoms it owns, which it shows for
+/// context. Nothing here is serialized to a request - that step belongs to exactly one place,
+/// <see cref="CanonicalSemanticRequestComposer"/>, reached through
+/// <see cref="CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.ComposeRequests"/>.
+/// </summary>
+internal sealed record PdfStructuredEvidencePack(
     int Index,
     IReadOnlyList<string> OwnedAliases,
-    IReadOnlyList<string> VisibleAliases,
-    string RequestPayload,
-    string RequestSha256);
+    IReadOnlyList<string> VisibleAliases);
 
 /// <summary>
-/// What the model would actually be shown, and four hashes that pin it.
+/// The coordinate atoms of a PDF, the evidence attached to each, and how they partition into
+/// requests - three hashes that pin exactly that and nothing past it.
 /// <para>
-/// The alias universe and the evidence are separate authorities on purpose. A migration can leave
-/// every alias, its text and its order untouched while changing the facts attached to each one, the
-/// context around it, or how it is grouped into requests - and a preflight that only checked the
-/// universe would pass while the model read something else entirely. That gap is the reason this
-/// type exists: <see cref="SourceAliasUniverseHash"/> covers what a coordinate is,
-/// <see cref="ModelVisibleEvidenceHash"/> covers what is said about it, and the two plan hashes
-/// cover how it is cut into calls.
+/// A fourth hash used to live here, over a request format this type invented for measurement. It
+/// disagreed with what production actually sends, because inventing a second format is exactly how
+/// that happens. Request bytes are no longer this type's concern at all: build a
+/// <see cref="CanonicalSemanticProductionInput"/> from <see cref="CreateProductionInput"/> and ask
+/// the one real composer, the same way a live call would.
 /// </para>
 /// </summary>
 internal sealed record PdfStructuredSourceAuthority(
     IReadOnlyList<SemanticSourceAtom> Atoms,
     IReadOnlyList<CanonicalSemanticSourceEvidence> Evidence,
     IReadOnlyDictionary<string, string> LayoutBlockByAtom,
-    IReadOnlyList<PdfStructuredContextPack> Packs,
+    IReadOnlyList<PdfStructuredEvidencePack> Packs,
     string SourceAliasUniverseHash,
     string ModelVisibleEvidenceHash,
     string CallPlanHash,
-    string RequestPlanHash);
+    string SourceSha256)
+{
+    /// <summary>
+    /// What a live call would actually build and send: the same input shape the production
+    /// adapter would construct, with the atoms' layout labels attached as context rather than as
+    /// coordinates. Not wired into extraction yet - building this is how a caller (production or a
+    /// dry-run) reaches the one real request composer, not a route the active lane takes.
+    /// </summary>
+    public CanonicalSemanticProductionInput CreateProductionInput(string documentId) =>
+        new(
+            new DocumentSourceCatalog([]),
+            null,
+            SourceSha256,
+            [new CanonicalSemanticPageEvidence("PDF", true, 0, "pdf-source")],
+            Evidence.Select(item => item.CandidateAttention).ToArray(),
+            Evidence.Select(item => $"[{item.SourceAlias}] {item.ExactSourceText}").ToArray(),
+            [],
+            Evidence.SelectMany(item => item.LocalBefore.Concat(item.LocalAfter)).ToArray(),
+            DocumentId: documentId,
+            SourceEvidence: Evidence)
+        {
+            ExpectedSourceSha256 = SourceSha256,
+            LayoutBlockBySourceId = LayoutBlockByAtom,
+        };
+}
 
 /// <summary>
-/// Builds the coordinate atoms of a PDF, the evidence attached to each, and the requests they
-/// would be packed into - all without contacting anything.
+/// Builds the coordinate atoms of a PDF and the evidence attached to each - all without contacting
+/// anything, and without deciding what a request looks like.
 /// <para>
 /// Coordinates come from visual-line segments. Layout blocks travel alongside as a label, which is
 /// the whole point of the rearrangement: a block tells the model which lines were set together, and
@@ -65,15 +91,22 @@ internal static class PdfStructuredSourceAuthorityBuilder
         using (var document = UglyToad.PdfPig.PdfDocument.Open(pdfPath))
             segments = PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3);
 
-        return Build(segments);
+        return Build(segments, layout: PdfBlockGrouping.ContinuationV2,
+            sourceSha256: CanonicalSemanticSourceHash.Compute(pdfPath));
     }
 
     /// <param name="layout">
     /// How the context labels are grouped. Varying it must leave the alias universe alone - that
     /// independence is the property the whole rearrangement rests on.
     /// </param>
+    /// <param name="sourceSha256">
+    /// Only needed to build a <see cref="CanonicalSemanticProductionInput"/> afterwards. Every
+    /// other measurement here - the three hashes - depends on the PDF's text and geometry alone.
+    /// </param>
     public static PdfStructuredSourceAuthority Build(
-        IReadOnlyList<PdfLine> segments, PdfBlockGrouping layout = PdfBlockGrouping.ContinuationV2)
+        IReadOnlyList<PdfLine> segments,
+        PdfBlockGrouping layout = PdfBlockGrouping.ContinuationV2,
+        string sourceSha256 = "")
     {
         ArgumentNullException.ThrowIfNull(segments);
 
@@ -102,7 +135,7 @@ internal static class PdfStructuredSourceAuthorityBuilder
                 contexts[atom.SourceId], atom.Alias, atom.Ordinal, bodyFontSize))
             .ToArray();
 
-        var packs = Pack(evidence, layoutBlockByAtom, atoms);
+        var packs = Partition(evidence);
 
         return new PdfStructuredSourceAuthority(
             atoms,
@@ -138,26 +171,22 @@ internal static class PdfStructuredSourceAuthorityBuilder
                     visible = pack.VisibleAliases,
                 }).ToArray(),
             }),
-            RequestPlanHash: Hash(new
-            {
-                schemaVersion = "a99-pdf-request-plan-v1",
-                requests = packs.Select(pack => new { pack.Index, sha256 = pack.RequestSha256 }).ToArray(),
-            }));
+            SourceSha256: sourceSha256);
     }
 
     /// <summary>
-    /// The same partition the production engine applies, over atoms instead of block occurrences.
-    /// Owned entries may be claimed; the margin around them is readable context and never claimable.
+    /// The same partition the production engine applies, over atoms instead of block occurrences -
+    /// which owns which alias, and which margin surrounds it. Nothing here decides what those
+    /// aliases are shown as; that is <see cref="CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel"/>'s
+    /// job; the two must partition identically, which is why both use the same constants.
     /// </summary>
-    private static IReadOnlyList<PdfStructuredContextPack> Pack(
-        IReadOnlyList<CanonicalSemanticSourceEvidence> evidence,
-        IReadOnlyDictionary<string, string> layoutBlockByAtom,
-        IReadOnlyList<SemanticSourceAtom> atoms)
+    private static IReadOnlyList<PdfStructuredEvidencePack> Partition(
+        IReadOnlyList<CanonicalSemanticSourceEvidence> evidence)
     {
         const int owns = CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.OwnedPerSegment;
         const int margin = CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.VisibleMargin;
 
-        var packs = new List<PdfStructuredContextPack>();
+        var packs = new List<PdfStructuredEvidencePack>();
         for (var start = 0; start < evidence.Count; start += owns)
         {
             var owned = evidence.Skip(start).Take(owns).ToArray();
@@ -166,39 +195,21 @@ internal static class PdfStructuredSourceAuthorityBuilder
             var from = Math.Max(0, start - margin);
             var to = Math.Min(evidence.Count, start + owned.Length + margin);
             var visible = evidence.Skip(from).Take(to - from).ToArray();
-            var ownedAliases = owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);
 
-            var payload = JsonSerializer.Serialize(new
-            {
-                protocol = SemanticSourcePartsContract.ProtocolVersion,
-                ownedSourceAliases = owned.Select(item => item.SourceAlias).ToArray(),
-                openStructuralContext = owned[0].ActiveStructuralAncestors,
-                sourceEvidence = visible.Select(item => ownedAliases.Contains(item.SourceAlias)
-                    ? Visible(item, layoutBlockByAtom)
-                    : new
-                    {
-                        alias = item.SourceAlias,
-                        block = layoutBlockByAtom.GetValueOrDefault(item.SourceId),
-                        text = item.ExactSourceText,
-                        owned = false,
-                    }).ToArray(),
-                schema = SemanticSourcePartsContract.Schema(),
-            }, Canonical);
-
-            packs.Add(new PdfStructuredContextPack(
+            packs.Add(new PdfStructuredEvidencePack(
                 packs.Count,
                 owned.Select(item => item.SourceAlias).ToArray(),
-                visible.Select(item => item.SourceAlias).ToArray(),
-                payload,
-                Sha256(payload)));
+                visible.Select(item => item.SourceAlias).ToArray()));
         }
 
         return packs;
     }
 
     /// <summary>
-    /// One atom as the model sees it. The layout block is a label beside the alias, never instead
-    /// of it, so a claim can only ever be addressed to the atom.
+    /// One atom as the model sees it, for <see cref="PdfStructuredSourceAuthority.ModelVisibleEvidenceHash"/>
+    /// only - a measurement of what is attached to each alias, not a request serialization. Its
+    /// shape matches <c>HeaderClassifierCanonicalTextModel.OwnedEvidence</c>'s block-bearing branch
+    /// exactly, so the hash means what its name says.
     /// </summary>
     private static object Visible(
         CanonicalSemanticSourceEvidence item, IReadOnlyDictionary<string, string> layoutBlockByAtom) => new
@@ -226,8 +237,7 @@ internal static class PdfStructuredSourceAuthorityBuilder
         line.Right,
         PdfTextUtilities.Readable(line.Text));
 
-    private static string Hash(object value) => Sha256(JsonSerializer.Serialize(value, Canonical));
-
-    private static string Sha256(string value) =>
-        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
+    private static string Hash(object value) =>
+        Convert.ToHexStringLower(SHA256.HashData(
+            Encoding.UTF8.GetBytes(JsonSerializer.Serialize(value, Canonical))));
 }

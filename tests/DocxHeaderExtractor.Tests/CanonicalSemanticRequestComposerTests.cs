@@ -1,0 +1,200 @@
+using System.Security.Cryptography;
+using System.Text;
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+
+namespace DocxHeaderExtractor.Tests;
+
+/// <summary>
+/// One producer of final request bytes, proven to be the only one.
+/// <para>
+/// A routing preflight built a real request through
+/// <see cref="CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.InferAsync"/> and found it
+/// did not match the hash a measurement helper had frozen for the same six calls. Same evidence,
+/// same partition, different bytes: the helper embedded a contract's schema as a JSON field: the
+/// engine appends it as text after a literal <c>\nSCHEMA=</c>. Two implementations of one step,
+/// discovered only because something checked, at zero provider calls.
+/// </para>
+/// <para>
+/// <see cref="CanonicalSemanticRequestComposer"/> is now that one step. This file pins its exact
+/// output, proves <c>InferAsync</c> and the dry-run <c>ComposeRequests</c> path produce identical
+/// bytes for the same input, and proves DOCX and legacy PDF requests did not move.
+/// </para>
+/// </summary>
+public sealed class CanonicalSemanticRequestComposerTests
+{
+    private const string DocxContractHash =
+        "91005fabc2e978d5ab4d900bc66ebeb27e563628056b3073cef22896687ac72e";
+    private const string LegacyPdfPromptHash =
+        "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8";
+
+    [Fact]
+    public void Compose_concatenates_exactly_packet_then_the_literal_postfix_then_schema()
+    {
+        var schema = SemanticCoordinateContract.PdfStructuredSourceParts.Schema();
+        var expected = "{\"a\":1}\nSCHEMA=" + System.Text.Json.JsonSerializer.Serialize(schema);
+
+        Assert.Equal(expected, CanonicalSemanticRequestComposer.Compose(
+            "{\"a\":1}", SemanticCoordinateContract.PdfStructuredSourceParts));
+    }
+
+    [Fact]
+    public void The_object_overload_serializes_with_the_frameworks_own_default_options()
+    {
+        // Not the relaxed canonical-hashing encoder used elsewhere in this repository for freeze
+        // artifacts. Every request already on the wire was built with the framework default, and a
+        // different encoder here would be a byte-identical-looking but different composer - the
+        // defect this type exists to remove, reintroduced one call later.
+        var viaObject = CanonicalSemanticRequestComposer.Compose(
+            new { text = "Ả" }, SemanticCoordinateContract.PdfStructuredSourceParts);
+        var viaDefaultSerializer = System.Text.Json.JsonSerializer.Serialize(new { text = "Ả" });
+
+        Assert.StartsWith(viaDefaultSerializer, viaObject, StringComparison.Ordinal);
+        Assert.Contains("\\u1EA2", viaObject, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Hash_is_plain_sha256_of_the_exact_string()
+    {
+        Assert.Equal(
+            Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes("abc"))),
+            CanonicalSemanticRequestComposer.Hash("abc"));
+    }
+
+    // ---- InferAsync and the dry-run producer agree, for every lane ------------------------------
+
+    [Fact]
+    public async Task InferAsync_and_ComposeRequests_produce_identical_bytes_for_docx()
+    {
+        await AssertComposerMatchesInferAsync(SemanticCoordinateContract.DocxAliasSpan);
+    }
+
+    [Fact]
+    public async Task InferAsync_and_ComposeRequests_produce_identical_bytes_for_legacy_pdf()
+    {
+        await AssertComposerMatchesInferAsync(SemanticCoordinateContract.PdfAliasSelection);
+    }
+
+    [Fact]
+    public async Task InferAsync_and_ComposeRequests_produce_identical_bytes_for_structured_pdf()
+    {
+        await AssertComposerMatchesInferAsync(SemanticCoordinateContract.PdfStructuredSourceParts);
+    }
+
+    private static async Task AssertComposerMatchesInferAsync(SemanticCoordinateContract contract)
+    {
+        var input = SampleInput();
+        var composed = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+            new UnreachableClassifier(), contract)
+            .ComposeRequests(input)
+            .Select(segment => segment.RequestBytes)
+            .ToArray();
+
+        using var recording = new RecordingClassifier();
+        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(recording, contract);
+        await model.InferAsync(input, new SemanticContextPacket([], [], []), "composer-parity");
+
+        Assert.NotEmpty(composed);
+        Assert.Equal(composed, recording.Requests);
+    }
+
+    // ---- non-regression: no lane's bytes moved because this seam exists -------------------------
+
+    [Fact]
+    public async Task DOCX_request_bytes_are_unchanged()
+    {
+        var request = await SingleRequest(SemanticCoordinateContract.DocxAliasSpan);
+        Assert.Equal(DocxContractHash, SemanticCoordinateContract.DocxAliasSpan.SchemaHash());
+        Assert.Contains("\nSCHEMA=", request, StringComparison.Ordinal);
+        Assert.EndsWith(
+            System.Text.Json.JsonSerializer.Serialize(SemanticCoordinateContract.DocxAliasSpan.Schema()),
+            request, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task Legacy_PDF_request_bytes_are_unchanged()
+    {
+        var request = await SingleRequest(SemanticCoordinateContract.PdfAliasSelection);
+        Assert.Equal(LegacyPdfPromptHash, CanonicalSemanticRequestComposer.Hash(
+            CanonicalSemanticEngine.SystemPromptFor(
+                SemanticCoordinateContract.PdfAliasSelection, CanonicalSemanticExperiment.Baseline)));
+        Assert.DoesNotContain("\"block\":", request, StringComparison.Ordinal);
+    }
+
+    private static async Task<string> SingleRequest(SemanticCoordinateContract contract)
+    {
+        using var recording = new RecordingClassifier();
+        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(recording, contract);
+        await model.InferAsync(SampleInput(), new SemanticContextPacket([], [], []), "non-regression");
+        return Assert.Single(recording.Requests);
+    }
+
+    // ---- discovery: exactly one final-request producer -------------------------------------------
+
+    [Fact]
+    public void The_structured_PDF_authority_builder_no_longer_serializes_requests()
+    {
+        // The type that used to carry a second implementation now carries only a partition record -
+        // no RequestPayload, no schema, no "\nSCHEMA=" of its own.
+        var packType = typeof(PdfStructuredSourceAuthorityBuilder).Assembly
+            .GetType("DocxHeaderExtractor.DocumentProcessing.Pipeline.PdfStructuredEvidencePack")!;
+        var fieldNames = packType.GetProperties().Select(p => p.Name).ToArray();
+
+        Assert.DoesNotContain("RequestPayload", fieldNames);
+        Assert.DoesNotContain("RequestSha256", fieldNames);
+        Assert.Contains("OwnedAliases", fieldNames);
+        Assert.Contains("VisibleAliases", fieldNames);
+    }
+
+    private static CanonicalSemanticProductionInput SampleInput()
+    {
+        var evidence = new[]
+        {
+            new CanonicalSemanticSourceEvidence(
+                "S0001", "p1", 1, "Heading One", "document_body", null, 1, false, false,
+                ["test"], new { }, new { }, [], [], [], [], [],
+                new SemanticCandidateAttentionHint("S0001", true, "test")),
+            new CanonicalSemanticSourceEvidence(
+                "S0002", "p2", 2, "Heading Two", "document_body", null, 2, false, false,
+                ["test"], new { }, new { }, [], [], [], [], [],
+                new SemanticCandidateAttentionHint("S0002", true, "test")),
+        };
+        return new CanonicalSemanticProductionInput(
+            new DocumentSourceCatalog([]), null, "source-hash",
+            [new CanonicalSemanticPageEvidence("P0001", true, 0, "test")],
+            [], [], [], [], DocumentId: "DOC-COMPOSER-PARITY", SourceEvidence: evidence);
+    }
+
+    private sealed class UnreachableClassifier : IHeaderClassifier
+    {
+        public string ModelName => throw new InvalidOperationException();
+        public int ContextSize => throw new InvalidOperationException();
+        public string RuntimeDescription => throw new InvalidOperationException();
+        public int SharedPrefixTokens => throw new InvalidOperationException();
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
+            throw new InvalidOperationException("PROVIDER_CALLS must remain 0: composing a request must never transport.");
+        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
+        public void Dispose() { }
+    }
+
+    private sealed class RecordingClassifier : IHeaderClassifier
+    {
+        public List<string> Requests { get; } = [];
+        public string ModelName => "recording";
+        public int ContextSize => 8192;
+        public string RuntimeDescription => "recording";
+        public int SharedPrefixTokens => 0;
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        {
+            Requests.Add(userMessage);
+            return Task.FromResult("{\"headings\":[]}");
+        }
+        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
+        public void Dispose() { }
+    }
+}

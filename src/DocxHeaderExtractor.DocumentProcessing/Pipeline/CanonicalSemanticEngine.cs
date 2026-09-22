@@ -201,9 +201,18 @@ internal static class CanonicalSemanticEngine
         /// byte-identical to what it has always been and every frozen DOCX hash still holds.
         /// </para>
         /// </summary>
-        private static object OwnedEvidence(CanonicalSemanticSourceEvidence item) =>
-            item.TableDepth is { } tableDepth
-                ? new
+        /// <summary>
+        /// The layout label beside an owned item, absent for every lane whose atoms already are
+        /// its layout unit - DOCX and legacy PDF both fall here, which is what keeps their request
+        /// bytes exactly what they have always been. Only a lane whose <see cref="CanonicalSemanticProductionInput.LayoutBlockBySourceId"/>
+        /// is populated - today, the structured PDF profile - adds the field at all.
+        /// </summary>
+        private static object OwnedEvidence(
+            CanonicalSemanticSourceEvidence item, IReadOnlyDictionary<string, string>? layoutBlockBySourceId)
+        {
+            var block = layoutBlockBySourceId?.GetValueOrDefault(item.SourceId);
+            if (item.TableDepth is { } tableDepth)
+                return new
                 {
                     alias = item.SourceAlias,
                     text = item.ExactSourceText,
@@ -215,10 +224,12 @@ internal static class CanonicalSemanticEngine
                     numbering = item.NumberingFacts,
                     markers = item.MarkerFacts,
                     attention = item.CandidateAttention.HeuristicMatch,
-                }
-                : new
+                };
+            if (block is not null)
+                return new
                 {
                     alias = item.SourceAlias,
+                    block,
                     text = item.ExactSourceText,
                     owned = true,
                     scope = item.StructuralScope,
@@ -228,6 +239,28 @@ internal static class CanonicalSemanticEngine
                     markers = item.MarkerFacts,
                     attention = item.CandidateAttention.HeuristicMatch,
                 };
+            return new
+            {
+                alias = item.SourceAlias,
+                text = item.ExactSourceText,
+                owned = true,
+                scope = item.StructuralScope,
+                inTableOfContents = item.InTableOfContents,
+                style = item.StyleFacts,
+                numbering = item.NumberingFacts,
+                markers = item.MarkerFacts,
+                attention = item.CandidateAttention.HeuristicMatch,
+            };
+        }
+
+        private static object MarginEvidence(
+            CanonicalSemanticSourceEvidence item, IReadOnlyDictionary<string, string>? layoutBlockBySourceId)
+        {
+            var block = layoutBlockBySourceId?.GetValueOrDefault(item.SourceId);
+            return block is null
+                ? new { alias = item.SourceAlias, text = item.ExactSourceText, owned = false }
+                : new { alias = item.SourceAlias, block, text = item.ExactSourceText, owned = false };
+        }
 
         /// <summary>Owned occurrences evaluated per request. Keeps one document bounded.</summary>
         internal const int OwnedPerSegment = 120;
@@ -235,16 +268,27 @@ internal static class CanonicalSemanticEngine
         /// <summary>Neighbouring occurrences a segment may read but never claim.</summary>
         internal const int VisibleMargin = 20;
 
-        public async Task<CanonicalSemanticTextInferenceResult> InferAsync(
-            CanonicalSemanticProductionInput input,
-            SemanticContextPacket packedContext,
-            string requestId,
-            CancellationToken cancellationToken = default)
+        /// <summary>
+        /// One request's worth of owned evidence and the exact bytes composed for it. Built by
+        /// <see cref="ComposeSegments"/>, the one place that decides what a segment owns and what
+        /// it is shown - so a dry-run caller and <see cref="InferAsync"/> partition and compose
+        /// identically, not just coincidentally the same today.
+        /// </summary>
+        internal sealed record ComposedSegment(
+            IReadOnlyList<CanonicalSemanticSourceEvidence> Owned, string RequestBytes);
+
+        /// <summary>
+        /// Every request this input would produce, composed through
+        /// <see cref="CanonicalSemanticRequestComposer"/> - the same composition
+        /// <see cref="InferAsync"/> sends to a classifier, available here without one. A dry-run
+        /// caller uses this directly; nothing re-derives request bytes from fields on the side.
+        /// </summary>
+        public IReadOnlyList<ComposedSegment> ComposeRequests(CanonicalSemanticProductionInput input) =>
+            ComposeSegments(input).ToArray();
+
+        private IEnumerable<ComposedSegment> ComposeSegments(CanonicalSemanticProductionInput input)
         {
             var evidence = input.SourceEvidence ?? [];
-            var proposals = new List<CanonicalSemanticProposal>();
-            var parsedProposals = new List<CanonicalSemanticProposal>();
-            var issues = new List<SemanticContractIssue>();
             for (var start = 0; start < evidence.Count; start += OwnedPerSegment)
             {
                 var owned = evidence.Skip(start).Take(OwnedPerSegment).ToArray();
@@ -256,16 +300,16 @@ internal static class CanonicalSemanticEngine
                 // Evidence is already in document order, so a neighbour IS the local context.
                 // Owned entries carry the decision facts; margin entries carry text only.
                 var sourceEvidence = visible.Select(item => ownedAliases.Contains(item.SourceAlias)
-                    ? OwnedEvidence(item)
-                    : (object)new { alias = item.SourceAlias, text = item.ExactSourceText, owned = false })
+                    ? OwnedEvidence(item, input.LayoutBlockBySourceId)
+                    : (object)MarginEvidence(item, input.LayoutBlockBySourceId))
                     .ToArray();
 
                 // I7 adds a field; the baseline must not carry an empty one. Serialising
                 // openStructuralContext unconditionally made every baseline packet differ from the
                 // packet the pre-I7 code sent, which quietly moved the thing every arm is measured
                 // against. An arm that is off contributes nothing to the request at all.
-                var packet = _experiment.CarryStructuralAncestors
-                    ? JsonSerializer.Serialize(new
+                object packet = _experiment.CarryStructuralAncestors
+                    ? new
                     {
                         protocol = Contract.ProtocolVersion,
                         ownedSourceAliases = owned.Select(item => item.SourceAlias).ToArray(),
@@ -275,18 +319,37 @@ internal static class CanonicalSemanticEngine
                         // about parents: it says what was open, never what anything's parent is.
                         openStructuralContext = owned[0].ActiveStructuralAncestors,
                         sourceEvidence,
-                    })
-                    : JsonSerializer.Serialize(new
+                    }
+                    : new
                     {
                         protocol = Contract.ProtocolVersion,
                         ownedSourceAliases = owned.Select(item => item.SourceAlias).ToArray(),
                         sourceEvidence,
-                    });
+                    };
+
+                yield return new ComposedSegment(
+                    owned, CanonicalSemanticRequestComposer.Compose(packet, Contract));
+            }
+        }
+
+        public async Task<CanonicalSemanticTextInferenceResult> InferAsync(
+            CanonicalSemanticProductionInput input,
+            SemanticContextPacket packedContext,
+            string requestId,
+            CancellationToken cancellationToken = default)
+        {
+            var proposals = new List<CanonicalSemanticProposal>();
+            var parsedProposals = new List<CanonicalSemanticProposal>();
+            var issues = new List<SemanticContractIssue>();
+            foreach (var segment in ComposeSegments(input))
+            {
+                var owned = segment.Owned;
+                var ownedAliases = owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);
                 var raw = await classifier.BoundaryCutAsync(
                     SystemPromptFor(Contract, _experiment),
-                    packet + "\nSCHEMA=" + JsonSerializer.Serialize(Contract.Schema()),
+                    segment.RequestBytes,
                     cancellationToken,
-                    expectedItemCount: owned.Length);
+                    expectedItemCount: owned.Count);
                 RawResponses.Add(raw);
                 // A reply that is not JSON at all - truncated mid-object, wrapped in prose, empty -
                 // costs this segment. It used to throw out of the segment loop and end the document,

@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using UglyToad.PdfPig;
 
 namespace DocxHeaderExtractor.Tests;
@@ -32,6 +33,17 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
     /// <summary>The atom catalog serialized through the generic alias catalog, which renumbers.</summary>
     private const string CandidateSegmentHash =
         "86cad7d6b7a52391b4361ea1ad402774fa4bccf6af5570e3705f7582a6893c79";
+
+    private const string Doc0252SourceSha256 =
+        "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61";
+
+    /// <summary>
+    /// The request-plan hash a hand-rolled measurement helper produced, before this file's own
+    /// composer discovery showed it disagreed with production. Kept as a named predecessor, never
+    /// reused as authority.
+    /// </summary>
+    private const string PredecessorSyntheticRequestPlanHash =
+        "97952bd190c4ffffb77f30e12924efaf648c92d840228169a0c9adec74dd6d1d";
 
     // ---- every atom the model sees can be addressed ---------------------------------------------
 
@@ -99,7 +111,12 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
             continuation.Atoms.Select(atom => atom.Alias),
             legacy.Atoms.Select(atom => atom.Alias));
         Assert.NotEqual(continuation.ModelVisibleEvidenceHash, legacy.ModelVisibleEvidenceHash);
-        Assert.NotEqual(continuation.RequestPlanHash, legacy.RequestPlanHash);
+
+        // The consequence: different evidence composes into different requests, through the one
+        // real composer, with no request-specific logic of its own to keep in step.
+        Assert.NotEqual(
+            string.Concat(ComposedRequests(continuation)),
+            string.Concat(ComposedRequests(legacy)));
     }
 
     [Fact]
@@ -112,7 +129,7 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
         Assert.Equal(first.SourceAliasUniverseHash, second.SourceAliasUniverseHash);
         Assert.Equal(first.ModelVisibleEvidenceHash, second.ModelVisibleEvidenceHash);
         Assert.Equal(first.CallPlanHash, second.CallPlanHash);
-        Assert.Equal(first.RequestPlanHash, second.RequestPlanHash);
+        Assert.Equal(ComposedRequests(first), ComposedRequests(second));
     }
 
     [Fact]
@@ -137,6 +154,8 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
         var plan = Plan();
         var catalog = plan.Atoms.Select(atom => atom.Alias).ToHashSet(StringComparer.Ordinal);
         var blockIds = plan.LayoutBlockByAtom.Values.ToHashSet(StringComparer.Ordinal);
+        var requests = ComposedRequests(plan);
+        Assert.Equal(plan.Packs.Count, requests.Count);
 
         foreach (var pack in plan.Packs)
         {
@@ -146,9 +165,13 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
             // A block id appearing where an alias belongs would put the old coordinate authority
             // back into the request without anything else changing.
             Assert.All(pack.OwnedAliases, alias => Assert.DoesNotContain(alias, blockIds));
-            Assert.Contains("\"ownedSourceAliases\"", pack.RequestPayload);
-            Assert.Contains("sourceParts", pack.RequestPayload);
         }
+
+        Assert.All(requests, request =>
+        {
+            Assert.Contains("\"ownedSourceAliases\"", request);
+            Assert.Contains("sourceParts", request);
+        });
 
         Assert.Equal(
             plan.Atoms.Select(atom => atom.Alias),
@@ -167,11 +190,14 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
         Assert.StartsWith("2. A Survey Based Approach", first.Text, StringComparison.Ordinal);
         Assert.Equal("Comparisons", second.Text);
 
+        var requests = ComposedRequests(plan);
         var visible = plan.Packs
-            .Where(pack => pack.OwnedAliases.Contains(first.Alias) || pack.OwnedAliases.Contains(second.Alias))
+            .Select((pack, index) => (pack, index))
+            .Where(item => item.pack.OwnedAliases.Contains(first.Alias) || item.pack.OwnedAliases.Contains(second.Alias))
+            .Select(item => requests[item.index])
             .ToArray();
         Assert.All([first, second], atom => Assert.Contains(visible,
-            pack => pack.RequestPayload.Contains($"\"alias\":\"{atom.Alias}\"", StringComparison.Ordinal)));
+            request => request.Contains($"\"alias\":\"{atom.Alias}\"", StringComparison.Ordinal)));
 
         var bound = SemanticSourcePartBinder.Bind(plan.Atoms, new SemanticSourcePartsProposal(
         [
@@ -200,14 +226,33 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
 
     // ---- the frozen authority ---------------------------------------------------------------------
 
-    [Fact]
-    public void The_pre_migration_authority_is_frozen_with_its_four_hashes()
+[Fact]
+    public void The_successor_provider_model_input_authority_is_frozen()
     {
         var plan = Plan();
         var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
         Assert.Equal(ApprovedHeadings, gold.Headings.Count);
 
         var representable = Representable(plan, gold, out var partCounts, out var claims);
+
+        // The correction this whole file exists to record: request bytes now come from exactly
+        // one place, and this is the proof, not an assumption. A classifier that would throw if
+        // called captures what composing a request alone produces; a second, ordinary recording
+        // classifier captures what a real (if transport-free) InferAsync call actually sends. If
+        // request composition ever grew a second implementation again, this equality is what would
+        // catch it.
+        var composed = ComposedRequests(plan);
+        using var recording = new RecordingClassifier();
+        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+            recording, SemanticCoordinateContract.PdfStructuredSourceParts);
+        model.InferAsync(plan.CreateProductionInput("DOC-0252"), new SemanticContextPacket([], [], []), "successor-authority-proof")
+            .GetAwaiter().GetResult();
+
+        Assert.Equal(composed.Count, recording.Requests.Count);
+        Assert.Equal(composed, recording.Requests);
+
+        var providerModelInputPlanHash = CanonicalSemanticRequestComposer.Hash(string.Join(
+            "\u0000", composed.Select(CanonicalSemanticRequestComposer.Hash)));
 
         FreezeArtifact.AssertJson(Artifacts, "doc-0252-segment-evidence-authority.v1.json", new
         {
@@ -239,14 +284,28 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
                 sourceAliasUniverseSha256 = plan.SourceAliasUniverseHash,
                 modelVisibleEvidenceSha256 = plan.ModelVisibleEvidenceHash,
                 callPlanSha256 = plan.CallPlanHash,
-                requestPlanSha256 = plan.RequestPlanHash,
                 producers = new
                 {
                     sourceAliasUniverse = "PdfStructuredSourceAuthorityBuilder.Build -> PdfSegmentAtomCatalog.FromSegments, schema a99-pdf-segment-atom-universe-v1",
                     modelVisibleEvidence = "PdfStructuredSourceAuthorityBuilder.Visible over PdfCanonicalSourceUniverseBuilder.EvidenceOf, schema a99-pdf-model-visible-evidence-v1",
-                    callPlan = "PdfStructuredSourceAuthorityBuilder.Pack, OwnedPerSegment 120 and VisibleMargin 20, schema a99-pdf-context-pack-plan-v1",
-                    requestPlan = "sha256 of each canonical request payload in order, schema a99-pdf-request-plan-v1",
+                    callPlan = "PdfStructuredSourceAuthorityBuilder.Partition, OwnedPerSegment 120 and VisibleMargin 20, schema a99-pdf-context-pack-plan-v1",
                 },
+            },
+
+            requestAuthorityCorrection = new
+            {
+                note = "PdfStructuredSourceAuthorityBuilder used to compute a fourth hash here, over a request format it invented for measurement. It disagreed with CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.InferAsync - same evidence, same six calls, different bytes - because it was never checked against production until a routing preflight built the real request and compared it. Discovered at PROVIDER_CALLS = 0.",
+                predecessorRequestPlanSha256 = PredecessorSyntheticRequestPlanHash,
+                predecessorStatus = "SYNTHETIC_REQUEST_SERIALIZATION_NOT_PROVIDER_BOUND",
+                rootCause = "SCHEMA_SERIALIZED_INSIDE_JSON_IN_MEASUREMENT_HELPER_INSTEAD_OF_CANONICAL_POSTFIX_USED_BY_INFERASYNC. The predecessor also omitted the layout-block label InferAsync's own evidence shaping did not yet attach for this contract - a second, smaller finding surfaced by the same check, corrected in the same change that added CanonicalSemanticRequestComposer.",
+                unchangedAuthorityDimensions = new[]
+                {
+                    "SOURCE_ALIAS", "MODEL_VISIBLE_EVIDENCE", "CALL_PARTITION", "GOLD", "PROMPT", "CONTRACT",
+                },
+                successorProviderModelInputPlanSha256 = providerModelInputPlanHash,
+                successorProducer = "CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.ComposeRequests -> CanonicalSemanticRequestComposer.Compose, the same path InferAsync sends to a classifier",
+                integrationProof = "recording.Requests (captured through a real InferAsync call, transport-free) equals ComposedRequests (the dry-run producer) byte for byte, both asserted above before this artifact is written.",
+                predecessorNotMalicious = "A measurement artifact with narrower semantics than its name implied, not bad data: the source/evidence/partition dimensions it stood beside were, and remain, correct.",
             },
 
             terminology = new
@@ -276,15 +335,15 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
                 totalPrimaryCallsForThreeRepeats = plan.Packs.Count * 3,
             },
 
-            packs = plan.Packs.Select(pack => new
+            packs = plan.Packs.Select((pack, index) => new
             {
                 pack.Index,
                 owned = pack.OwnedAliases.Count,
                 visible = pack.VisibleAliases.Count,
                 firstOwned = pack.OwnedAliases[0],
                 lastOwned = pack.OwnedAliases[^1],
-                requestSha256 = pack.RequestSha256,
-                requestChars = pack.RequestPayload.Length,
+                requestSha256 = CanonicalSemanticRequestComposer.Hash(composed[index]),
+                requestChars = composed[index].Length,
             }).ToArray(),
 
             contract = new
@@ -294,7 +353,7 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
                 requestsCarryShadowSchema = true,
                 activeContractSwitched = false,
                 promptTemplateChanged = false,
-                promptTemplateNote = "The active prompt template is untouched here. It teaches the single-alias response, so it cannot be reused for a sourceParts run - rewriting it, and recomputing its hash, belongs to the step that activates the contract.",
+                promptTemplateNote = "The active DOCX/legacy-PDF prompt template is untouched here. This artifact predates the structured PDF prompt clause, which the coordinate contract now supplies separately (SemanticCoordinateContract.PdfStructuredSourceParts.PromptClause); that activation is recorded where it happened, not restated here.",
             },
 
             representability = new
@@ -304,7 +363,7 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
                 headings1Part = partCounts.Count(count => count == 1),
                 headings2Parts = partCounts.Count(count => count == 2),
                 headings3PlusParts = partCounts.Count(count => count >= 3),
-                note = "Measured over the texts canonical Gold records today. Sixteen of them still carry punctuation the old line reconstruction dropped, and that debt is migrated in the next step, not here.",
+                note = "Measured over the texts canonical Gold records today. Sixteen of them still carry punctuation the old line reconstruction dropped; that debt was migrated in DOC-0252's structured Gold, not here.",
                 claims,
             },
 
@@ -314,6 +373,7 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
         Assert.Equal(ApprovedHeadings, representable);
         Assert.Equal(Atoms, plan.Atoms.Count);
         Assert.NotEqual(BlockDiagnosticHash, plan.SourceAliasUniverseHash);
+        Assert.NotEqual(PredecessorSyntheticRequestPlanHash, providerModelInputPlanHash);
     }
 
     // ---- helpers ----------------------------------------------------------------------------------
@@ -348,7 +408,61 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
         return PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3);
     }
 
-    private static PdfStructuredSourceAuthority Plan() => PdfStructuredSourceAuthorityBuilder.Build(Segments());
+    private static PdfStructuredSourceAuthority Plan() =>
+        PdfStructuredSourceAuthorityBuilder.Build(Segments(), sourceSha256: Doc0252SourceSha256);
+
+    /// <summary>
+    /// Every request the plan would actually produce, through the one real composer - the same
+    /// path <see cref="CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.InferAsync"/>
+    /// sends to a classifier, reached here without one.
+    /// </summary>
+    private static IReadOnlyList<string> ComposedRequests(PdfStructuredSourceAuthority plan)
+    {
+        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+            new UnreachableClassifier(), SemanticCoordinateContract.PdfStructuredSourceParts);
+        return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))
+            .Select(segment => segment.RequestBytes)
+            .ToArray();
+    }
+
+    /// <summary>A classifier that must never be called - proof that composing requests transports nothing.</summary>
+    private sealed class UnreachableClassifier : IHeaderClassifier
+    {
+        public string ModelName => throw new InvalidOperationException("composing a request must not need a model name");
+        public int ContextSize => throw new InvalidOperationException();
+        public string RuntimeDescription => throw new InvalidOperationException();
+        public int SharedPrefixTokens => throw new InvalidOperationException();
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
+            throw new InvalidOperationException("PROVIDER_CALLS must remain 0: composing a request must never transport.");
+        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
+        public void Dispose() { }
+    }
+
+    /// <summary>
+    /// Captures the exact bytes InferAsync sends, without transporting them anywhere - the no-network
+    /// proof that <see cref="CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.InferAsync"/>
+    /// and its own dry-run <c>ComposeRequests</c> genuinely produce the same bytes, not just similar
+    /// ones.
+    /// </summary>
+    private sealed class RecordingClassifier : IHeaderClassifier
+    {
+        public List<string> Requests { get; } = [];
+        public string ModelName => "recording";
+        public int ContextSize => 8192;
+        public string RuntimeDescription => "recording";
+        public int SharedPrefixTokens => 0;
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        {
+            Requests.Add(userMessage);
+            return Task.FromResult("{\"headings\":[]}");
+        }
+        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) => throw new NotSupportedException();
+        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => throw new NotSupportedException();
+        public void Dispose() { }
+    }
 
     private static object Wrapped(PdfStructuredSourceAuthority plan)
     {

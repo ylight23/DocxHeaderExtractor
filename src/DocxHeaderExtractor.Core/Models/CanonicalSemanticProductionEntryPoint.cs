@@ -36,6 +36,18 @@ public sealed record CanonicalSemanticProductionInput(
     /// freezes parsed proposals before source-aware validation; persistence remains outside Core.
     /// </summary>
     public SemanticAuthorityCaptureMetadata? ReplayCapture { get; init; }
+
+    /// <summary>
+    /// The layout label beside each source id, when the lane's atoms are finer than its layout
+    /// blocks. Null for every lane that has no such distinction - DOCX paragraphs and legacy PDF
+    /// occurrences are their own layout unit, so there is nothing to label them with.
+    /// <para>
+    /// A label, never a coordinate: it travels beside <see cref="SourceEvidence"/> rather than
+    /// inside it, so a source id remains addressable by its own alias whether or not this map is
+    /// present, and no evidence-shaping code has to know why the map exists to use it correctly.
+    /// </para>
+    /// </summary>
+    public IReadOnlyDictionary<string, string>? LayoutBlockBySourceId { get; init; }
 }
 
 /// <summary>Compact parser-owned evidence attached to one canonical source occurrence. It contains
