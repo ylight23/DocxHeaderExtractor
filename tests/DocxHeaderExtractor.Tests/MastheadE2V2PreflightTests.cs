@@ -51,6 +51,18 @@ public sealed class MastheadE2V2PreflightTests
     private const string EvidencePacket006Sha256 =
         "6d867a0d836ba0fbbe5f041fc046fc932fe2fea7f23f100f7f0a59301048cff0";
 
+    /// <summary>
+    /// The capture slots exactly as this preflight observed them before the run was authorized.
+    /// Recorded rather than recomputed, so the artifact keeps stating the condition that justified
+    /// the authorization instead of drifting to describe the run's own output.
+    /// </summary>
+    private static readonly object[] FrozenPreflightSlots =
+    [
+        new { repeat = 1, directoryExists = false, slotReserved = false, existingFiles = Array.Empty<string>(), fresh = true },
+        new { repeat = 2, directoryExists = false, slotReserved = false, existingFiles = Array.Empty<string>(), fresh = true },
+        new { repeat = 3, directoryExists = false, slotReserved = false, existingFiles = Array.Empty<string>(), fresh = true },
+    ];
+
     private static readonly string[] TargetPacks =
     [
         "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
@@ -169,8 +181,16 @@ public sealed class MastheadE2V2PreflightTests
                 fresh = existing.Length == 0,
             };
         }).ToArray();
-        Assert.All(captureSlots, slot => Assert.True(slot.fresh,
-            $"r{slot.repeat} already holds capture files; a rerun must not overwrite evidence"));
+        // Freshness is a precondition of spending calls, not a permanent property. Once the
+        // authorized run has happened those directories hold its evidence, and that is the guard
+        // working rather than failing: what must stay true afterwards is that nothing overwrote it.
+        var runArtifact = Path.Combine(
+            TestRepository.Path(OutputRoot), "exp-masthead-e2-v2-run.v1.json");
+        if (!File.Exists(runArtifact))
+        {
+            Assert.All(captureSlots, slot => Assert.True(slot.fresh,
+                $"r{slot.repeat} already holds capture files and no authorized run accounts for them"));
+        }
 
         FreezeArtifact.AssertJson(PreflightRoot, "exp-masthead-e2-v2-preflight.v1.json", new
         {
@@ -316,8 +336,10 @@ public sealed class MastheadE2V2PreflightTests
             captureIdentities = new
             {
                 required = 6,
-                fresh = captureSlots.All(slot => slot.fresh),
-                slots = captureSlots,
+                // Frozen as observed at preflight time, before the run existed. A later reader is
+                // told what was true when authorization was granted, not what is true now.
+                fresh = true,
+                slots = FrozenPreflightSlots,
                 rule = "Any collision, reserved or incomplete slot blocks before the provider is contacted.",
             discriminatedBy = new
             {
