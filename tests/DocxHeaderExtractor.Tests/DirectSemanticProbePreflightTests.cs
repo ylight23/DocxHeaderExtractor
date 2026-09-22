@@ -479,6 +479,68 @@ public sealed class DirectSemanticProbePreflightTests
         });
     }
 
+    /// <summary>
+    /// The probe's frozen items and pack contexts, built once and used by both the preflight and
+    /// the runner. Two copies of this logic could drift and would agree only by coincidence; the
+    /// plan hash asserted in the preflight is what proves neither has moved.
+    /// </summary>
+    internal static ProbeBuild Build(PdfStructuredSourceAuthority plan)
+    {
+        var gold = GoldClaims();
+        var packs = ComposeAllPacks(plan);
+        var ownership = packs.ToDictionary(
+            pair => pair.Key, pair => PacketAliases(pair.Value), StringComparer.Ordinal);
+
+        string PackOf(string alias) => ownership.First(pair => pair.Value.Contains(alias)).Key;
+
+        var stageOneOwned = StageOnePacks
+            .SelectMany(pack => ownership[pack]).ToHashSet(StringComparer.Ordinal);
+
+        var positives = gold
+            .Where(claim => stageOneOwned.Contains(FirstAlias(claim.Key)))
+            .OrderBy(claim => claim.Key, StringComparer.Ordinal)
+            .Select(claim => new ProbeItem(
+                ItemId(claim.Key), claim.Key, PackOf(FirstAlias(claim.Key)),
+                "STRUCTURAL_UNIT", claim.Value, TextOf(plan, claim.Key)))
+            .ToArray();
+
+        var negatives = MastheadFamilies.Select(family =>
+        {
+            var identity = string.Join("|", family.Aliases.Select(alias =>
+            {
+                var atom = plan.Atoms.First(item => item.Alias == alias);
+                return $"{alias}:0-{atom.Text.Length}";
+            }));
+            return new ProbeItem(
+                ItemId(identity), identity, PackOf(family.Aliases[0]),
+                "NON_STRUCTURAL", $"masthead-family-{family.Family}", TextOf(plan, identity));
+        }).ToArray();
+
+        var documentTitle = gold.Single(claim => claim.Value == "DocumentTitle");
+        var labelControl = new ProbeItem(
+            ItemId(documentTitle.Key), documentTitle.Key, PackOf(FirstAlias(documentTitle.Key)),
+            "DOCUMENT_LABEL", documentTitle.Value, TextOf(plan, documentTitle.Key));
+
+        var items = positives.Concat(negatives).Append(labelControl)
+            .OrderBy(item => item.Identity, StringComparer.Ordinal).ToArray();
+
+        return new ProbeBuild(items, packs, ownership, gold, positives, negatives, labelControl);
+    }
+
+    /// <summary>One call's bytes, composed exactly as the run will compose them.</summary>
+    internal static string ComposeRequest(string stageOneRequest, ProbeItem[] items) =>
+        ProbePacket(stageOneRequest, items) + "\nSCHEMA=" + JsonSerializer.Serialize(
+            ProbeSchema(items.Select(item => item.ItemId).ToArray()));
+
+    internal sealed record ProbeBuild(
+        ProbeItem[] Items,
+        Dictionary<string, string> Packs,
+        Dictionary<string, HashSet<string>> Ownership,
+        Dictionary<string, string> Gold,
+        ProbeItem[] Positives,
+        ProbeItem[] Negatives,
+        ProbeItem LabelControl);
+
     // ---- the probe contract -------------------------------------------------------------------
 
     /// <summary>
@@ -556,7 +618,7 @@ public sealed class DirectSemanticProbePreflightTests
 
     // ---- helpers -------------------------------------------------------------------------------
 
-    private static string ItemId(string identity) =>
+    internal static string ItemId(string identity) =>
         "ITEM-" + Convert.ToHexString(
             SHA256.HashData(Encoding.UTF8.GetBytes(identity)))[..8].ToUpperInvariant();
 
@@ -595,7 +657,7 @@ public sealed class DirectSemanticProbePreflightTests
             .ToDictionary(segment => segment.PackId, segment => segment.RequestBytes, StringComparer.Ordinal);
     }
 
-    private static HashSet<string> PacketAliases(string requestBytes)
+    internal static HashSet<string> PacketAliases(string requestBytes)
     {
         var marker = requestBytes.LastIndexOf("\nSCHEMA=", StringComparison.Ordinal);
         using var packet = JsonDocument.Parse(marker < 0 ? requestBytes : requestBytes[..marker]);
@@ -603,13 +665,13 @@ public sealed class DirectSemanticProbePreflightTests
             .Select(item => item.GetString()!).ToHashSet(StringComparer.Ordinal);
     }
 
-    private static string FirstAlias(string identity)
+    internal static string FirstAlias(string identity)
     {
         var first = identity.Split('|')[0];
         return first[..first.LastIndexOf(':')];
     }
 
-    private static Dictionary<string, string> GoldClaims()
+    internal static Dictionary<string, string> GoldClaims()
     {
         using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
