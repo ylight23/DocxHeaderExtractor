@@ -1,0 +1,770 @@
+{
+  "artifactKind": "a99_pdf_targeted_packing_score_and_causal_compare",
+  "schemaVersion": "a99-pdf-targeted-packing-score-and-causal-compare-v1",
+  "status": "TARGETED_PACKING_CAUSAL_RESULT_UNRESOLVED",
+  "completeness": "PARTIAL_REPLAY_ONLY",
+  "experimentId": "A99-S2C-TARGETED-PACKING-DOC-0252",
+  "authority": {
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "promptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+    "contractSha256": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "goldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+    "profile": "STRUCTURED_SOURCE_PARTS",
+    "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+    "targetPacks": [
+      5,
+      6,
+      7
+    ],
+    "targetCallPlanHash": "f48345682885647d33749597a0dbb293024d4e255f300ed571c3fdf7948994fe",
+    "targetProviderModelInputPlanHash": "b82868e9aecd086c00b00a7433cc0d48409576db54fb4c5097717451358036db"
+  },
+  "freezeIntegrity": {
+    "repeats": 3,
+    "semanticCalls": 9,
+    "providerCalls": 9,
+    "placementCalls": 0,
+    "hardCap": 12,
+    "rawResponsePayloadFiles": 0,
+    "rawResponsePayloadsPersisted": false,
+    "exactGap": "The run persisted per-call response hashes and replay bundles, but not the raw JSON response bodies. Decode failure counts and raw-byte verification cannot be independently completed from hashes.",
+    "bundleHashes": [
+      {
+        "repeat": 1,
+        "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\structured-context-packing-experiment-v1\\DOC-0252\\r1\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-8460aef056bf.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+        "sha256": "c0eeb5104af22a454bfefce9f16a7324cc467e858fce63e1957e6cf9fbc2f7b8",
+        "rawResponsePayload": false
+      },
+      {
+        "repeat": 2,
+        "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\structured-context-packing-experiment-v1\\DOC-0252\\r2\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-8460aef056bf.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+        "sha256": "4020396b9683fd5ae8f4781e4293c2c3838696c8a3739189788293e743d1ebdc",
+        "rawResponsePayload": false
+      },
+      {
+        "repeat": 3,
+        "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\structured-context-packing-experiment-v1\\DOC-0252\\r3\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-426e3e1c8616.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+        "sha256": "bb8113f1f81c006bd2edfaffea2a8648db4423f10f186cc72793db6950fb1000",
+        "rawResponsePayload": false
+      }
+    ]
+  },
+  "inputEquivalence": {
+    "pack5": true,
+    "pack6": true,
+    "pack7": true,
+    "requestHashes": [
+      {
+        "pack": 5,
+        "requestSha256": "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da"
+      },
+      {
+        "pack": 6,
+        "requestSha256": "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96"
+      },
+      {
+        "pack": 7,
+        "requestSha256": "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      }
+    ]
+  },
+  "targetGold": {
+    "total": 18,
+    "byPack": {
+      "pack5": 4,
+      "pack6": 10,
+      "pack7": 4
+    },
+    "splitClaims": []
+  },
+  "perRepeat": [
+    {
+      "repeat": 1,
+      "providerCalls": 3,
+      "modelCalls": 3,
+      "requestHashes": [
+        "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      ],
+      "responseHashes": [
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "375c3e16cd0610bac050063fe9b58077130a2cfaf1e2d14c05be1a85807bde54",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ],
+      "rawResponsePayloadsPersisted": false,
+      "rawResponseGap": "Only response hashes were persisted; raw JSON response bodies are absent.",
+      "replayBundleFileSha256": "c0eeb5104af22a454bfefce9f16a7324cc467e858fce63e1957e6cf9fbc2f7b8",
+      "replayBundleHash": "c84e0ef6ea9e9c5da55c3a871a4cd0b97e572267a88341369641b6e4093dbbdd",
+      "bundleProposalCount": 23,
+      "targetBound": 23,
+      "targetTruePositive": 16,
+      "targetFalsePositive": 7,
+      "targetFalseNegative": 2,
+      "targetPrecision": 0.695652,
+      "targetRecall": 0.888889,
+      "targetF1": 0.780488,
+      "perPack": [
+        {
+          "pack": 5,
+          "repeat": 1,
+          "decoded": null,
+          "decodedStatus": "UNAVAILABLE_RAW_RESPONSE_NOT_PERSISTED",
+          "capturedHeadingProposals": 6,
+          "bound": 6,
+          "rejected": null,
+          "rejectedStatus": "NO_REJECTIONS_OBSERVED_IN_REPLAY_BUNDLE",
+          "truePositive": 4,
+          "falsePositive": 2,
+          "falseNegative": 0,
+          "precision": 0.666667,
+          "recall": 1,
+          "f1": 0.8,
+          "identities": [
+            "L0396:S0:0-93",
+            "L0400:S0:0-44",
+            "L0420:S0:0-40",
+            "L0470:S0:0-45",
+            "L0507:S0:0-30",
+            "L0513:S0:0-38|L0514:S0:0-30"
+          ]
+        },
+        {
+          "pack": 6,
+          "repeat": 1,
+          "decoded": null,
+          "decodedStatus": "UNAVAILABLE_RAW_RESPONSE_NOT_PERSISTED",
+          "capturedHeadingProposals": 13,
+          "bound": 13,
+          "rejected": null,
+          "rejectedStatus": "NO_REJECTIONS_OBSERVED_IN_REPLAY_BUNDLE",
+          "truePositive": 9,
+          "falsePositive": 4,
+          "falseNegative": 1,
+          "precision": 0.692308,
+          "recall": 0.9,
+          "f1": 0.782609,
+          "identities": [
+            "L0515:S0:0-14",
+            "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+            "L0519:S0:0-6",
+            "L0520:S0:0-51",
+            "L0521:S0:0-38",
+            "L0523:S0:0-50",
+            "L0526:S0:0-65",
+            "L0531:S0:0-64",
+            "L0536:S0:0-27",
+            "L0539:S0:0-51",
+            "L0540:S0:0-36",
+            "L0550:S0:0-56",
+            "L0553:S0:0-19"
+          ]
+        },
+        {
+          "pack": 7,
+          "repeat": 1,
+          "decoded": null,
+          "decodedStatus": "UNAVAILABLE_RAW_RESPONSE_NOT_PERSISTED",
+          "capturedHeadingProposals": 4,
+          "bound": 4,
+          "rejected": null,
+          "rejectedStatus": "NO_REJECTIONS_OBSERVED_IN_REPLAY_BUNDLE",
+          "truePositive": 3,
+          "falsePositive": 1,
+          "falseNegative": 1,
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1": 0.75,
+          "identities": [
+            "L0556:S0:0-29",
+            "L0557:S0:0-36",
+            "L0566:S0:0-42",
+            "L0576:S0:0-42"
+          ]
+        }
+      ]
+    },
+    {
+      "repeat": 2,
+      "providerCalls": 3,
+      "modelCalls": 3,
+      "requestHashes": [
+        "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      ],
+      "responseHashes": [
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "375c3e16cd0610bac050063fe9b58077130a2cfaf1e2d14c05be1a85807bde54",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ],
+      "rawResponsePayloadsPersisted": false,
+      "rawResponseGap": "Only response hashes were persisted; raw JSON response bodies are absent.",
+      "replayBundleFileSha256": "4020396b9683fd5ae8f4781e4293c2c3838696c8a3739189788293e743d1ebdc",
+      "replayBundleHash": "c84e0ef6ea9e9c5da55c3a871a4cd0b97e572267a88341369641b6e4093dbbdd",
+      "bundleProposalCount": 23,
+      "targetBound": 23,
+      "targetTruePositive": 16,
+      "targetFalsePositive": 7,
+      "targetFalseNegative": 2,
+      "targetPrecision": 0.695652,
+      "targetRecall": 0.888889,
+      "targetF1": 0.780488,
+      "perPack": [
+        {
+          "pack": 5,
+          "repeat": 2,
+          "decoded": null,
+          "decodedStatus": "UNAVAILABLE_RAW_RESPONSE_NOT_PERSISTED",
+          "capturedHeadingProposals": 6,
+          "bound": 6,
+          "rejected": null,
+          "rejectedStatus": "NO_REJECTIONS_OBSERVED_IN_REPLAY_BUNDLE",
+          "truePositive": 4,
+          "falsePositive": 2,
+          "falseNegative": 0,
+          "precision": 0.666667,
+          "recall": 1,
+          "f1": 0.8,
+          "identities": [
+            "L0396:S0:0-93",
+            "L0400:S0:0-44",
+            "L0420:S0:0-40",
+            "L0470:S0:0-45",
+            "L0507:S0:0-30",
+            "L0513:S0:0-38|L0514:S0:0-30"
+          ]
+        },
+        {
+          "pack": 6,
+          "repeat": 2,
+          "decoded": null,
+          "decodedStatus": "UNAVAILABLE_RAW_RESPONSE_NOT_PERSISTED",
+          "capturedHeadingProposals": 13,
+          "bound": 13,
+          "rejected": null,
+          "rejectedStatus": "NO_REJECTIONS_OBSERVED_IN_REPLAY_BUNDLE",
+          "truePositive": 9,
+          "falsePositive": 4,
+          "falseNegative": 1,
+          "precision": 0.692308,
+          "recall": 0.9,
+          "f1": 0.782609,
+          "identities": [
+            "L0515:S0:0-14",
+            "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+            "L0519:S0:0-6",
+            "L0520:S0:0-51",
+            "L0521:S0:0-38",
+            "L0523:S0:0-50",
+            "L0526:S0:0-65",
+            "L0531:S0:0-64",
+            "L0536:S0:0-27",
+            "L0539:S0:0-51",
+            "L0540:S0:0-36",
+            "L0550:S0:0-56",
+            "L0553:S0:0-19"
+          ]
+        },
+        {
+          "pack": 7,
+          "repeat": 2,
+          "decoded": null,
+          "decodedStatus": "UNAVAILABLE_RAW_RESPONSE_NOT_PERSISTED",
+          "capturedHeadingProposals": 4,
+          "bound": 4,
+          "rejected": null,
+          "rejectedStatus": "NO_REJECTIONS_OBSERVED_IN_REPLAY_BUNDLE",
+          "truePositive": 3,
+          "falsePositive": 1,
+          "falseNegative": 1,
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1": 0.75,
+          "identities": [
+            "L0556:S0:0-29",
+            "L0557:S0:0-36",
+            "L0566:S0:0-42",
+            "L0576:S0:0-42"
+          ]
+        }
+      ]
+    },
+    {
+      "repeat": 3,
+      "providerCalls": 3,
+      "modelCalls": 3,
+      "requestHashes": [
+        "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      ],
+      "responseHashes": [
+        "0b7d66121e8a952b6a48fba7272a00a23aabd48ed19bc4b5dc22a261a29b312a",
+        "375c3e16cd0610bac050063fe9b58077130a2cfaf1e2d14c05be1a85807bde54",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ],
+      "rawResponsePayloadsPersisted": false,
+      "rawResponseGap": "Only response hashes were persisted; raw JSON response bodies are absent.",
+      "replayBundleFileSha256": "bb8113f1f81c006bd2edfaffea2a8648db4423f10f186cc72793db6950fb1000",
+      "replayBundleHash": "b435866aca9ddcc88d1c6573f88c91cbbe1c8b4ced06b34988bb1173b42fb495",
+      "bundleProposalCount": 23,
+      "targetBound": 23,
+      "targetTruePositive": 16,
+      "targetFalsePositive": 7,
+      "targetFalseNegative": 2,
+      "targetPrecision": 0.695652,
+      "targetRecall": 0.888889,
+      "targetF1": 0.780488,
+      "perPack": [
+        {
+          "pack": 5,
+          "repeat": 3,
+          "decoded": null,
+          "decodedStatus": "UNAVAILABLE_RAW_RESPONSE_NOT_PERSISTED",
+          "capturedHeadingProposals": 6,
+          "bound": 6,
+          "rejected": null,
+          "rejectedStatus": "NO_REJECTIONS_OBSERVED_IN_REPLAY_BUNDLE",
+          "truePositive": 4,
+          "falsePositive": 2,
+          "falseNegative": 0,
+          "precision": 0.666667,
+          "recall": 1,
+          "f1": 0.8,
+          "identities": [
+            "L0396:S0:0-93",
+            "L0400:S0:0-44",
+            "L0420:S0:0-40",
+            "L0470:S0:0-45",
+            "L0507:S0:0-30",
+            "L0513:S0:0-38|L0514:S0:0-30"
+          ]
+        },
+        {
+          "pack": 6,
+          "repeat": 3,
+          "decoded": null,
+          "decodedStatus": "UNAVAILABLE_RAW_RESPONSE_NOT_PERSISTED",
+          "capturedHeadingProposals": 13,
+          "bound": 13,
+          "rejected": null,
+          "rejectedStatus": "NO_REJECTIONS_OBSERVED_IN_REPLAY_BUNDLE",
+          "truePositive": 9,
+          "falsePositive": 4,
+          "falseNegative": 1,
+          "precision": 0.692308,
+          "recall": 0.9,
+          "f1": 0.782609,
+          "identities": [
+            "L0515:S0:0-14",
+            "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+            "L0519:S0:0-6",
+            "L0520:S0:0-51",
+            "L0521:S0:0-38",
+            "L0523:S0:0-50",
+            "L0526:S0:0-65",
+            "L0531:S0:0-64",
+            "L0536:S0:0-27",
+            "L0539:S0:0-51",
+            "L0540:S0:0-36",
+            "L0550:S0:0-56",
+            "L0553:S0:0-19"
+          ]
+        },
+        {
+          "pack": 7,
+          "repeat": 3,
+          "decoded": null,
+          "decodedStatus": "UNAVAILABLE_RAW_RESPONSE_NOT_PERSISTED",
+          "capturedHeadingProposals": 4,
+          "bound": 4,
+          "rejected": null,
+          "rejectedStatus": "NO_REJECTIONS_OBSERVED_IN_REPLAY_BUNDLE",
+          "truePositive": 3,
+          "falsePositive": 1,
+          "falseNegative": 1,
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1": 0.75,
+          "identities": [
+            "L0556:S0:0-29",
+            "L0557:S0:0-36",
+            "L0566:S0:0-42",
+            "L0576:S0:0-42"
+          ]
+        }
+      ]
+    }
+  ],
+  "identityStability": [
+    {
+      "pack": 5,
+      "allThree": [
+        "L0396:S0:0-93",
+        "L0400:S0:0-44",
+        "L0420:S0:0-40",
+        "L0470:S0:0-45",
+        "L0507:S0:0-30",
+        "L0513:S0:0-38|L0514:S0:0-30"
+      ],
+      "r1Only": [],
+      "r2Only": [],
+      "r3Only": [],
+      "pairwise": {
+        "r1r2": 6,
+        "r1r3": 6,
+        "r2r3": 6
+      }
+    },
+    {
+      "pack": 6,
+      "allThree": [
+        "L0515:S0:0-14",
+        "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+        "L0519:S0:0-6",
+        "L0520:S0:0-51",
+        "L0521:S0:0-38",
+        "L0523:S0:0-50",
+        "L0526:S0:0-65",
+        "L0531:S0:0-64",
+        "L0536:S0:0-27",
+        "L0539:S0:0-51",
+        "L0540:S0:0-36",
+        "L0550:S0:0-56",
+        "L0553:S0:0-19"
+      ],
+      "r1Only": [],
+      "r2Only": [],
+      "r3Only": [],
+      "pairwise": {
+        "r1r2": 13,
+        "r1r3": 13,
+        "r2r3": 13
+      }
+    },
+    {
+      "pack": 7,
+      "allThree": [
+        "L0556:S0:0-29",
+        "L0557:S0:0-36",
+        "L0566:S0:0-42",
+        "L0576:S0:0-42"
+      ],
+      "r1Only": [],
+      "r2Only": [],
+      "r3Only": [],
+      "pairwise": {
+        "r1r2": 4,
+        "r1r3": 4,
+        "r2r3": 4
+      }
+    }
+  ],
+  "pack5ResponseDifference": {
+    "rawResponseHashes": [
+      "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+      "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+      "0b7d66121e8a952b6a48fba7272a00a23aabd48ed19bc4b5dc22a261a29b312a"
+    ],
+    "rawBytesDiffer": true,
+    "boundIdentityStable": true,
+    "semanticRoleAndRelationHintsStable": false,
+    "conclusion": "raw_response_differs_and_non_membership_fingerprint_differs"
+  },
+  "packs6And7Stability": [
+    {
+      "pack": 6,
+      "rawResponseByteIdentical": true,
+      "boundIdentityEqual": true,
+      "metricsEqual": true
+    },
+    {
+      "pack": 7,
+      "rawResponseByteIdentical": true,
+      "boundIdentityEqual": true,
+      "metricsEqual": true
+    }
+  ],
+  "oldPack5Overlap": {
+    "sourceOrdinalRange": [
+      480,
+      599
+    ],
+    "perRepeat": [
+      {
+        "repeat": 1,
+        "proposals": 2,
+        "truePositive": 1,
+        "falsePositive": 1,
+        "falseNegative": 0
+      },
+      {
+        "repeat": 2,
+        "proposals": 2,
+        "truePositive": 1,
+        "falsePositive": 1,
+        "falseNegative": 0
+      },
+      {
+        "repeat": 3,
+        "proposals": 2,
+        "truePositive": 1,
+        "falsePositive": 1,
+        "falseNegative": 0
+      }
+    ]
+  },
+  "oldPack5Comparator": {
+    "sourceOrdinalRange": [
+      480,
+      599
+    ],
+    "perRepeat": [
+      {
+        "repeat": 1,
+        "proposals": 15,
+        "truePositive": 11,
+        "falsePositive": 4,
+        "falseNegative": 3,
+        "identities": [
+          "L0478:S0:0-24",
+          "L0507:S0:0-30",
+          "L0513:S0:0-38|L0514:S0:0-30|L0515:S0:0-14|L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32|L0519:S0:0-6",
+          "L0520:S0:0-51",
+          "L0521:S0:0-38",
+          "L0523:S0:0-50",
+          "L0526:S0:0-65",
+          "L0531:S0:0-64",
+          "L0536:S0:0-27",
+          "L0539:S0:0-51",
+          "L0540:S0:0-36",
+          "L0554:S0:0-60",
+          "L0556:S0:0-29",
+          "L0557:S0:0-36",
+          "L0566:S0:0-42"
+        ]
+      },
+      {
+        "repeat": 2,
+        "proposals": 79,
+        "truePositive": 13,
+        "falsePositive": 66,
+        "falseNegative": 1,
+        "identities": [
+          "L0478:S0:0-24",
+          "L0507:S0:0-30",
+          "L0513:S0:0-38",
+          "L0514:S0:0-30",
+          "L0515:S0:0-14",
+          "L0516:S0:0-15",
+          "L0517:S0:0-22",
+          "L0518:S0:0-32",
+          "L0519:S0:0-6",
+          "L0520:S0:0-51",
+          "L0521:S0:0-38",
+          "L0522:S0:0-13",
+          "L0522:S1:0-55",
+          "L0523:S0:0-50",
+          "L0524:S0:0-13",
+          "L0524:S1:0-67",
+          "L0526:S0:0-65",
+          "L0527:S0:0-13",
+          "L0527:S1:0-66",
+          "L0528:S0:0-13",
+          "L0528:S1:0-41",
+          "L0529:S0:0-13",
+          "L0529:S1:0-70",
+          "L0531:S0:0-64",
+          "L0532:S0:0-68",
+          "L0534:S0:0-13",
+          "L0534:S1:0-73",
+          "L0535:S0:0-13",
+          "L0535:S1:0-77",
+          "L0536:S0:0-27",
+          "L0537:S0:0-13",
+          "L0537:S1:0-70",
+          "L0539:S0:0-51",
+          "L0540:S0:0-36",
+          "L0541:S0:0-13",
+          "L0541:S1:0-76",
+          "L0543:S0:0-13",
+          "L0543:S1:0-66",
+          "L0545:S0:0-13",
+          "L0545:S1:0-74",
+          "L0546:S0:0-13",
+          "L0546:S1:0-37",
+          "L0547:S0:0-1",
+          "L0547:S1:0-48",
+          "L0548:S0:0-1",
+          "L0548:S1:0-69",
+          "L0550:S0:0-56",
+          "L0551:S0:0-1",
+          "L0551:S1:0-65",
+          "L0552:S0:0-1",
+          "L0552:S1:0-65",
+          "L0553:S0:0-19",
+          "L0554:S0:0-60",
+          "L0556:S0:0-29",
+          "L0557:S0:0-36",
+          "L0558:S0:0-1",
+          "L0558:S1:0-77",
+          "L0559:S0:0-1",
+          "L0559:S1:0-56",
+          "L0560:S0:0-1",
+          "L0560:S1:0-48",
+          "L0561:S0:0-1",
+          "L0561:S1:0-37",
+          "L0562:S0:0-1",
+          "L0562:S1:0-32",
+          "L0563:S0:0-1",
+          "L0563:S1:0-51",
+          "L0564:S0:0-1",
+          "L0564:S1:0-64",
+          "L0565:S0:0-1",
+          "L0565:S1:0-36",
+          "L0566:S0:0-42",
+          "L0567:S0:0-1",
+          "L0567:S1:0-31",
+          "L0568:S0:0-1",
+          "L0568:S1:0-34",
+          "L0569:S0:0-1",
+          "L0569:S1:0-30",
+          "L0570:S0:0-1"
+        ]
+      },
+      {
+        "repeat": 3,
+        "proposals": 16,
+        "truePositive": 12,
+        "falsePositive": 4,
+        "falseNegative": 2,
+        "identities": [
+          "L0478:S0:0-24",
+          "L0507:S0:0-30",
+          "L0513:S0:0-38|L0514:S0:0-30",
+          "L0515:S0:0-14|L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32|L0519:S0:0-6",
+          "L0520:S0:0-51",
+          "L0521:S0:0-38",
+          "L0523:S0:0-50",
+          "L0526:S0:0-65",
+          "L0531:S0:0-64",
+          "L0536:S0:0-27",
+          "L0539:S0:0-51",
+          "L0540:S0:0-36",
+          "L0553:S0:0-19",
+          "L0556:S0:0-29",
+          "L0557:S0:0-36",
+          "L0566:S0:0-42"
+        ]
+      }
+    ]
+  },
+  "oldPack5FalsePositiveTracking": {
+    "oldR2FpTotal": 66,
+    "reemission": [
+      {
+        "repeat": 1,
+        "reemitted": [
+          "L0515:S0:0-14",
+          "L0540:S0:0-36",
+          "L0550:S0:0-56"
+        ],
+        "reemittedCount": 3,
+        "neverReemitted": 63
+      },
+      {
+        "repeat": 2,
+        "reemitted": [
+          "L0515:S0:0-14",
+          "L0540:S0:0-36",
+          "L0550:S0:0-56"
+        ],
+        "reemittedCount": 3,
+        "neverReemitted": 63
+      },
+      {
+        "repeat": 3,
+        "reemitted": [
+          "L0515:S0:0-14",
+          "L0540:S0:0-36",
+          "L0550:S0:0-56"
+        ],
+        "reemittedCount": 3,
+        "neverReemitted": 63
+      }
+    ],
+    "taxonomy": {
+      "BULLET_OR_GLYPH_ONLY": 16,
+      "PARTICIPANT_NAME_AND_AFFILIATION": 12,
+      "AGENDA_TIME_SLOT_ONLY": 12,
+      "OTHER_TITLE_LIKE_ROW": 11,
+      "AGENDA_ITEM_TITLE_WITH_PRESENTER": 9,
+      "AGENDA_TIME_SLOT_WITH_TITLE": 3,
+      "BODY_SENTENCE_FRAGMENT": 1,
+      "DATE_LINE": 1,
+      "ADDRESS_LINE": 1
+    }
+  },
+  "newFpIdentities": [
+    {
+      "identity": "L0396:S0:0-93",
+      "text": "definitions and discounts, and requires traditional price collection to continue in parallel.",
+      "role": "heading",
+      "taxonomy": "BODY_SENTENCE_FRAGMENT",
+      "pack": 5
+    },
+    {
+      "identity": "L0513:S0:0-38|L0514:S0:0-30",
+      "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
+      "role": "heading",
+      "taxonomy": "TITLE_BLOCK_METADATA",
+      "pack": 5
+    },
+    {
+      "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+      "text": "March 7-8, 2025 Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105",
+      "role": "document-subtitle",
+      "taxonomy": "TITLE_BLOCK_METADATA",
+      "pack": 6
+    },
+    {
+      "identity": "L0576:S0:0-42",
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "role": "section-heading",
+      "taxonomy": "OTHER_TITLE_LIKE_ROW",
+      "pack": 7
+    }
+  ],
+  "variance": {
+    "oldProposalRange": 65,
+    "newTargetProposalRange": 0,
+    "oldFpRange": 62,
+    "newTargetFpRange": 0,
+    "targetProposalCounts": [
+      23,
+      23,
+      23
+    ],
+    "targetFpCounts": [
+      7,
+      7,
+      7
+    ],
+    "note": "Target totals are derived from replay bundles. Raw-response decoded/rejected counts remain unavailable."
+  },
+  "causal": {
+    "classification": "UNRESOLVED",
+    "reason": "Replay bundles support bound-identity and Gold-overlap analysis, but the required raw response payloads were not persisted, so the full structured decode/rejection and raw-byte integrity gates cannot pass.",
+    "provisionalObservation": "Persisted bundle proposal totals are 23/23/23 and request hashes are equal per pack; this is not promoted to an established causal result."
+  },
+  "baselineScoreChanged": false,
+  "promptChanged": false,
+  "goldChanged": false,
+  "packingChangedAfterRun": false,
+  "additionalProviderCallsDuringScoring": 0,
+  "providerAuthorizedForMoreCalls": false,
+  "modelCallsDuringScoring": 0,
+  "providerCallsDuringScoring": 0
+}

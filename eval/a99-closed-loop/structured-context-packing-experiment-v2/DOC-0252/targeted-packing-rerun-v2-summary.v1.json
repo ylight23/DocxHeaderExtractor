@@ -1,0 +1,104 @@
+{
+  "artifactKind": "a99_doc0252_authority_grade_targeted_packing_rerun_v2",
+  "schemaVersion": "a99-doc0252-targeted-packing-rerun-v2",
+  "status": "TRANSPORT_CAPTURE_COMPLETE_AND_REPLAY_MATERIALIZATION_COMPLETE",
+  "approval": "explicit-user-approval-current-turn",
+  "documentId": "DOC-0252",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "profile": "STRUCTURED_SOURCE_PARTS",
+  "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+  "targetPackIds": [
+    "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+    "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+    "COHERENT_REGION_SEGMENTATION_V1:PACK_007"
+  ],
+  "repeats": 3,
+  "primarySemanticCalls": 9,
+  "placementCalls": 0,
+  "maximumProviderCalls": 12,
+  "promptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+  "structuredContractSha256": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+  "goldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+  "manifestHash": "fb62c1c696b4c30f0b71aed2e39f296ece3934c5870982fdc0e19bc62d64189c",
+  "model": "qwen/qwen3.7-flash",
+  "providerRoute": "OpenRouter",
+  "scoringPerformed": false,
+  "runs": [
+    {
+      "documentId": "DOC-0252",
+      "repeat": 1,
+      "profile": "STRUCTURED_SOURCE_PARTS",
+      "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+      "runPlacement": false,
+      "providerCalls": 3,
+      "transportCaptureStatus": "TRANSPORT_CAPTURE_COMPLETE",
+      "replayMaterializationStatus": "REPLAY_MATERIALIZATION_COMPLETE",
+      "bundlePath": "eval\\a99-closed-loop\\structured-context-packing-experiment-v2\\DOC-0252\\r1\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-683d4272bee0.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "transportCapturePath": "eval\\a99-closed-loop\\structured-context-packing-experiment-v2\\DOC-0252\\r1\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+      "bundleHash": "74b1cc360d7538be5adc86c920ae92e940a31a1fcc70cabfec75caad6e82d208",
+      "captureHash": "486215798ef2a93e366f4ecbd1db275c27cb056e8ce18da426ea50151a77e00c",
+      "bundleRawModelResponseHash": "49c9cfc1768c614a5542b1c76466d98904d39a405ddb61ce36fb74dd4ef8fd9d",
+      "requestHashes": [
+        "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      ],
+      "rawResponseHashes": [
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "71487c62426098ad06eff774564ed644d095f47b2f279cbf86a2cf26ba5e0d4b",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": 2,
+      "profile": "STRUCTURED_SOURCE_PARTS",
+      "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+      "runPlacement": false,
+      "providerCalls": 3,
+      "transportCaptureStatus": "TRANSPORT_CAPTURE_COMPLETE",
+      "replayMaterializationStatus": "REPLAY_MATERIALIZATION_COMPLETE",
+      "bundlePath": "eval\\a99-closed-loop\\structured-context-packing-experiment-v2\\DOC-0252\\r2\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-3e8f42d0cd80.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "transportCapturePath": "eval\\a99-closed-loop\\structured-context-packing-experiment-v2\\DOC-0252\\r2\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+      "bundleHash": "475b895fdd5f3027ae53cca0e20c04b5b5e1d28a2820d03dd759ccf88649c0a7",
+      "captureHash": "f57e6c47d35e09c138d3d03e2796a4bbb2b1b81e7f6cd18fb86e6fec2b5a44d7",
+      "bundleRawModelResponseHash": "ff8f500665c0c3e4320fbc65949a37333cc183dc6bff09352217dcde2c557c0d",
+      "requestHashes": [
+        "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      ],
+      "rawResponseHashes": [
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "89c62ce564f051c3c58f45c39a34f0a89faf5ce8570610df7ed72f6abaecfb9c",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "repeat": 3,
+      "profile": "STRUCTURED_SOURCE_PARTS",
+      "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+      "runPlacement": false,
+      "providerCalls": 3,
+      "transportCaptureStatus": "TRANSPORT_CAPTURE_COMPLETE",
+      "replayMaterializationStatus": "REPLAY_MATERIALIZATION_COMPLETE",
+      "bundlePath": "eval\\a99-closed-loop\\structured-context-packing-experiment-v2\\DOC-0252\\r3\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-3e8f42d0cd80.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "transportCapturePath": "eval\\a99-closed-loop\\structured-context-packing-experiment-v2\\DOC-0252\\r3\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+      "bundleHash": "77cc16f1261778b17c032433a7df01d3d01e27dd7b5a035eeeab5ddd669ab3f1",
+      "captureHash": "89c0f304a6739dea1835004239edd8d81c1ca39b36e96cd784e386d113164450",
+      "bundleRawModelResponseHash": "b7c563cb974cbe42a15b82e17f59ec4a7bb479e1d15c969befd7093154609a3e",
+      "requestHashes": [
+        "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      ],
+      "rawResponseHashes": [
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "13ea14774d9e13eb5bb62b9a75a2bc9076ec0efd7eaabdbcafa0099c62d769a4",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ]
+    }
+  ]
+}
