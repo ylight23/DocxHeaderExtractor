@@ -1,0 +1,311 @@
+{
+  "artifactKind": "a99_exp_masthead_metadata_score",
+  "schemaVersion": "a99-exp-masthead-metadata-score-v1",
+  "experimentId": "EXP_MASTHEAD_METADATA",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "additionalProviderCallsDuringScoring": 0,
+  "scoredFrom": "the experiment's own transport captures",
+  "authority": {
+    "experimentPromptSha256": "78396aa66a9dad6baef0cb24ee3468d9bfc740a4216acf3c51659c89eba54e5d",
+    "predecessorPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+    "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "onlyVariable": "the appended system-prompt clause; evidence packets, packing, contract, binder, evaluator, Gold, model and settings are those of the arm being compared to"
+  },
+  "baselineForComparison": {
+    "artifact": "targeted-packing-rerun-v2-successor-score.v1.json",
+    "packsFiveAndSixOnly": {
+      "truePositive": 14,
+      "falsePositive": 5,
+      "falseNegative": 0
+    },
+    "perRepeatIdentical": true,
+    "mastheadFalsePositives": [
+      "L0513:S0:0-38|L0514:S0:0-30",
+      "L0515:S0:0-14",
+      "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32"
+    ],
+    "otherFalsePositives": [
+      "L0396:S0:0-93 (body proposition)",
+      "L0550:S0:0-56 (schedule item)"
+    ]
+  },
+  "perRepeat": [
+    {
+      "repeat": 1,
+      "truePositive": 10,
+      "falsePositive": 3,
+      "falseNegative": 4
+    },
+    {
+      "repeat": 2,
+      "truePositive": 14,
+      "falsePositive": 5,
+      "falseNegative": 0
+    },
+    {
+      "repeat": 3,
+      "truePositive": 14,
+      "falsePositive": 5,
+      "falseNegative": 0
+    }
+  ],
+  "perCell": [
+    {
+      "repeat": 1,
+      "pack": "PACK_005",
+      "headingProposals": 5,
+      "bound": 0,
+      "refused": 5,
+      "refusalReasons": {
+        "UnexpectedVerbatimText": 5
+      },
+      "partShapes": {
+        "WHOLE_ALIAS+verbatimText=True": 6
+      },
+      "truePositive": 0,
+      "falsePositive": 0,
+      "falseNegative": 4,
+      "treeLessClaims": 0,
+      "falsePositiveIdentities": [],
+      "responseSha256": "dc155ba8f0c8cea8628d067d6d492d4787fe9189a00945f94a82fc8295a601e0",
+      "responseBytes": 1833
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "headingProposals": 13,
+      "bound": 13,
+      "refused": 0,
+      "refusalReasons": {},
+      "partShapes": {
+        "WHOLE_ALIAS+verbatimText=False": 15
+      },
+      "truePositive": 10,
+      "falsePositive": 3,
+      "falseNegative": 0,
+      "treeLessClaims": 3,
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0515:S0:0-14",
+          "text": "Hybrid Meeting",
+          "hints": "parent-node:NONE",
+          "isMastheadTarget": true
+        },
+        {
+          "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+          "text": "March 7-8, 2025 Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105",
+          "hints": "parent-node:NONE",
+          "isMastheadTarget": true
+        },
+        {
+          "identity": "L0550:S0:0-56",
+          "text": "14:00 – 15:00 Improving Reliability of Price Comparisons",
+          "hints": "parent-node:L0539:S0",
+          "isMastheadTarget": false
+        }
+      ],
+      "responseSha256": "13ea14774d9e13eb5bb62b9a75a2bc9076ec0efd7eaabdbcafa0099c62d769a4",
+      "responseBytes": 3798
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_005",
+      "headingProposals": 6,
+      "bound": 6,
+      "refused": 0,
+      "refusalReasons": {},
+      "partShapes": {
+        "WHOLE_ALIAS+verbatimText=False": 6,
+        "VERBATIM_TEXT+verbatimText=True": 1
+      },
+      "truePositive": 4,
+      "falsePositive": 2,
+      "falseNegative": 0,
+      "treeLessClaims": 2,
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
+          "hints": "parent-node:NONE",
+          "isMastheadTarget": true
+        },
+        {
+          "identity": "L0396:S0:0-93",
+          "text": "definitions and discounts, and requires traditional price collection to continue in parallel.",
+          "hints": "parent-node:ROOT",
+          "isMastheadTarget": false
+        }
+      ],
+      "responseSha256": "d0a1d18b12a3aa16f7ff21efe82f8ad879ef87f38b8f52cd9c72bb4a0602a4c1",
+      "responseBytes": 1839
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "headingProposals": 13,
+      "bound": 13,
+      "refused": 0,
+      "refusalReasons": {},
+      "partShapes": {
+        "WHOLE_ALIAS+verbatimText=False": 15
+      },
+      "truePositive": 10,
+      "falsePositive": 3,
+      "falseNegative": 0,
+      "treeLessClaims": 3,
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0515:S0:0-14",
+          "text": "Hybrid Meeting",
+          "hints": "parent-node:NONE",
+          "isMastheadTarget": true
+        },
+        {
+          "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+          "text": "March 7-8, 2025 Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105",
+          "hints": "parent-node:NONE",
+          "isMastheadTarget": true
+        },
+        {
+          "identity": "L0550:S0:0-56",
+          "text": "14:00 – 15:00 Improving Reliability of Price Comparisons",
+          "hints": "parent-node:L0539:S0",
+          "isMastheadTarget": false
+        }
+      ],
+      "responseSha256": "13ea14774d9e13eb5bb62b9a75a2bc9076ec0efd7eaabdbcafa0099c62d769a4",
+      "responseBytes": 3798
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_005",
+      "headingProposals": 6,
+      "bound": 6,
+      "refused": 0,
+      "refusalReasons": {},
+      "partShapes": {
+        "WHOLE_ALIAS+verbatimText=False": 6,
+        "VERBATIM_TEXT+verbatimText=True": 1
+      },
+      "truePositive": 4,
+      "falsePositive": 2,
+      "falseNegative": 0,
+      "treeLessClaims": 1,
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
+          "hints": "parent-node:NONE",
+          "isMastheadTarget": true
+        },
+        {
+          "identity": "L0396:S0:0-93",
+          "text": "definitions and discounts, and requires traditional price collection to continue in parallel.",
+          "hints": "parent-node:ROOT",
+          "isMastheadTarget": false
+        }
+      ],
+      "responseSha256": "959fd8238024b953a73711649e7c2a0f0332fbfa2933a7132f2635e25a117b74",
+      "responseBytes": 1839
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "headingProposals": 13,
+      "bound": 13,
+      "refused": 0,
+      "refusalReasons": {},
+      "partShapes": {
+        "WHOLE_ALIAS+verbatimText=False": 15
+      },
+      "truePositive": 10,
+      "falsePositive": 3,
+      "falseNegative": 0,
+      "treeLessClaims": 3,
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0515:S0:0-14",
+          "text": "Hybrid Meeting",
+          "hints": "parent-node:NONE",
+          "isMastheadTarget": true
+        },
+        {
+          "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+          "text": "March 7-8, 2025 Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105",
+          "hints": "parent-node:NONE",
+          "isMastheadTarget": true
+        },
+        {
+          "identity": "L0550:S0:0-56",
+          "text": "14:00 – 15:00 Improving Reliability of Price Comparisons",
+          "hints": "parent-node:L0539:S0",
+          "isMastheadTarget": false
+        }
+      ],
+      "responseSha256": "13ea14774d9e13eb5bb62b9a75a2bc9076ec0efd7eaabdbcafa0099c62d769a4",
+      "responseBytes": 3798
+    }
+  ],
+  "primaryCausalCheck": {
+    "question": "were the three masthead claims removed?",
+    "answer": "no",
+    "stillEmittedByRepeatCount": {
+      "L0513:S0:0-38|L0514:S0:0-30": 2,
+      "L0515:S0:0-14": 3,
+      "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32": 3
+    },
+    "note": "L0515 and the date-venue-address tuple are emitted in all three repeats. The programme/group tuple is emitted in the two repeats whose pack bound at all; in the third nothing from that pack bound, so its absence is not evidence of removal."
+  },
+  "regressionGate": {
+    "question": "did any approved heading in packs 5 or 6 become a false negative?",
+    "answer": "yes, in one repeat",
+    "lostGold": [
+      {
+        "repeat": 1,
+        "pack": "PACK_005",
+        "lost": [
+          "L0400:S0:0-44",
+          "L0420:S0:0-40",
+          "L0470:S0:0-45",
+          "L0507:S0:0-30"
+        ],
+        "cause": [
+          "UnexpectedVerbatimText"
+        ]
+      }
+    ],
+    "cause": "UnexpectedVerbatimText. In repeat 1 the model returned every part as WHOLE_ALIAS carrying a redundant verbatimText, which the binder refuses by rule - a whole-alias selection names an occurrence and quotes nothing. All four approved headings of that pack were named correctly and refused on shape.",
+    "notASemanticLoss": "The model did not fail to find them. This is output-shape instability, and it appeared only under the new prompt: the arm it is compared against returned a well-formed shape in all three of its repeats."
+  },
+  "treeLessRelationUse": {
+    "baseline": {
+      "emitted": 6,
+      "approved": 1,
+      "mastheadFalsePositives": 3
+    },
+    "experiment": "unchanged in kind - the masthead claims still arrive under the tree-less relation, and in repeat 1 the clause appears to have pushed genuine section headings into it as well: L0400, L0420, L0470 and L0507 were all returned with parent-node:NONE where the compared arm returned them under ROOT.",
+    "reading": "The clause narrowed nothing the model was doing and unsettled something it had been doing correctly."
+  },
+  "outcomeClassification": {
+    "verdict": "MIXED",
+    "insufficient": "the three targeted claims persist",
+    "regression": "four approved headings lost in one repeat, on reply shape rather than judgement",
+    "whyNotOverrestrictive": "no approved heading was rejected for being metadata; the clause did not make the model stricter about structure, it made its output less stable",
+    "conclusionScope": "DOC-0252 causal evidence. Six calls, one document, one clause."
+  },
+  "whatThisSuggestsNext": {
+    "observation": "The clause was written as a paragraph of policy appended after the relation rules, and the model's behaviour under it changed most in how it filled in relations and part shapes - not in what it selected. A clause that argues about categories may be reaching the wrong part of the task.",
+    "notProposedHere": "No replacement wording is proposed from a single arm. What this run establishes is that the masthead distinction is not carried by this phrasing, and that prompt edits in this position can disturb reply shape.",
+    "unchangedQuestions": [
+      "EXP_BODY_PROPOSITION and EXP_SCHEDULE_ITEM remain unrun and unaffected",
+      "cross-genre safety remains unestablished at 48 of 3955 materialized claims"
+    ]
+  },
+  "providerAccounting": {
+    "callsSpent": 6,
+    "hardCap": 9,
+    "unusedCapacity": 3,
+    "authorizedForMore": false
+  }
+}
