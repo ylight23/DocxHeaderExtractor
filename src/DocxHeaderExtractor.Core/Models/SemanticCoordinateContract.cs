@@ -118,4 +118,28 @@ public sealed record SemanticCoordinateContract(
     {
         PromptClause = PdfStructuredSourcePartsPromptClause.Text,
     };
+
+    /// <summary>
+    /// PDF, structured successor: the same coordinate system with the selection mode taken back.
+    /// <para>
+    /// v1 asked the model to declare WHOLE_ALIAS or VERBATIM_TEXT beside the alias and the quote.
+    /// That is a comparison against the source, not a judgement about meaning, and a reply could be
+    /// valid at every layer and still be refused by the binder for getting it wrong - which cost
+    /// four approved headings in one measured run. Here the model names an occurrence and quotes
+    /// the words when it means part of one; the harness derives the rest.
+    /// </para>
+    /// <para>
+    /// v1 remains, unchanged and still the authority for every run captured under it.
+    /// </para>
+    /// </summary>
+    public static readonly SemanticCoordinateContract PdfStructuredSourcePartsV2 = new(
+        "STRUCTURED_SOURCE_PART_TUPLE",
+        SemanticSourcePartsContractV2.ProtocolVersion,
+        SemanticSourcePartsContractV2.Schema,
+        CanonicalSemanticContractValidator.ValidateJson,
+        SemanticSourcePartsV2.Decode,
+        SemanticSourcePartsV2.Binding)
+    {
+        PromptClause = PdfStructuredSourcePartsV2PromptClause.Text,
+    };
 }
