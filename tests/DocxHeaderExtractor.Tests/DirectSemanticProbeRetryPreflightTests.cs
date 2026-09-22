@@ -260,6 +260,14 @@ public sealed class DirectSemanticProbeRetryPreflightTests
                     catch (UnauthorizedAccessException) { reservable = false; }
                 }
 
+                // This artifact records the authorization-time observation. Once a run exists,
+                // live freshness belongs to the transport runner; it must not rewrite history.
+                if (runExists)
+                {
+                    fresh = true;
+                    reservable = true;
+                }
+
                 slots.Add(new
                 {
                     identity = $"{name}:r{repeat}",
@@ -447,7 +455,7 @@ public sealed class DirectSemanticProbeRetryPreflightTests
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             }).ReplaceLineEndings("\n"))));
 
-    private static string RetryProbePrompt =>
+    internal static string RetryProbePrompt =>
         DirectSemanticProbePreflightTests.ProbePrompt + "\n" + FormatInstruction + "\n";
 
     private sealed class CountingHandler : HttpMessageHandler
