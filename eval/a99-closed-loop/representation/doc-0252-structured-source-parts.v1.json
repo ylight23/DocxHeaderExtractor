@@ -228,19 +228,19 @@
         "sourceStatus": "Bound",
         "goldTextMigrationRequired": false,
         "parts": 1,
-        "identity": "L0107:S0:0-39",
+        "identity": "L0107:S0:0-40",
         "sourceParts": [
           {
             "SourceAlias": "L0107:S0",
-            "SelectionMode": "VERBATIM_TEXT",
-            "VerbatimText": "Commonwealth of Independent States (CIS"
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
           }
         ],
         "boundText": [
-          "Commonwealth of Independent States (CIS"
+          "Commonwealth of Independent States (CIS)"
         ],
         "locality": [],
-        "projectedText": "Commonwealth of Independent States (CIS"
+        "projectedText": "Commonwealth of Independent States (CIS)"
       },
       {
         "claim": "S0199#8",
@@ -550,19 +550,19 @@
         "sourceStatus": "Bound",
         "goldTextMigrationRequired": true,
         "parts": 1,
-        "identity": "L0377:S0:0-84",
+        "identity": "L0377:S0:0-85",
         "sourceParts": [
           {
             "SourceAlias": "L0377:S0",
-            "SelectionMode": "VERBATIM_TEXT",
-            "VerbatimText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP"
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
           }
         ],
         "boundText": [
-          "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP"
+          "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)"
         ],
         "locality": [],
-        "projectedText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP"
+        "projectedText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)"
       },
       {
         "claim": "S0693#22",
@@ -849,19 +849,19 @@
         "sourceStatus": "Bound",
         "goldTextMigrationRequired": false,
         "parts": 1,
-        "identity": "L0540:S0:0-35",
+        "identity": "L0540:S0:0-36",
         "sourceParts": [
           {
             "SourceAlias": "L0540:S0",
-            "SelectionMode": "VERBATIM_TEXT",
-            "VerbatimText": "SESSION V: Current Research (Cont’d"
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
           }
         ],
         "boundText": [
-          "SESSION V: Current Research (Cont’d"
+          "SESSION V: Current Research (Cont’d)"
         ],
         "locality": [],
-        "projectedText": "SESSION V: Current Research (Cont’d"
+        "projectedText": "SESSION V: Current Research (Cont’d)"
       },
       {
         "claim": "S0946#35",
@@ -964,19 +964,19 @@
         "sourceStatus": "Bound",
         "goldTextMigrationRequired": false,
         "parts": 1,
-        "identity": "L0576:S0:0-41",
+        "identity": "L0576:S0:0-42",
         "sourceParts": [
           {
             "SourceAlias": "L0576:S0",
-            "SelectionMode": "VERBATIM_TEXT",
-            "VerbatimText": "ICP Inter-Agency Coordination Group (IACG"
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
           }
         ],
         "boundText": [
-          "ICP Inter-Agency Coordination Group (IACG"
+          "ICP Inter-Agency Coordination Group (IACG)"
         ],
         "locality": [],
-        "projectedText": "ICP Inter-Agency Coordination Group (IACG"
+        "projectedText": "ICP Inter-Agency Coordination Group (IACG)"
       },
       {
         "claim": "S0994#40",

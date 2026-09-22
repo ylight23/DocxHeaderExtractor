@@ -42,25 +42,21 @@ public sealed class PdfStructuredGoldMigrationTests
         "International Price Comparisons";
 
     /// <summary>
-    /// The four claims whose migrated selection stopped one character short of the heading their
-    /// own approvedWording records, authorized for selection-only correction.
+    /// The four claims whose migrated selection once stopped one character short of the heading
+    /// their own approvedWording recorded - a closing parenthesis, in every case.
     /// <para>
-    /// Every one of them ends in a closing parenthesis, and the locator this migration searches
-    /// with skips punctuation while building its search stream - so the match ended at the last
-    /// letter and the whole-atom case that should have produced WHOLE_ALIAS was never seen. The
-    /// locator's own defect is left alone here on purpose: repairing it is a separate change with
-    /// its own regression, and mixing it into a Gold mutation would make neither reviewable.
-    /// </para>
-    /// <para>
-    /// This is not a re-adjudication. Membership stays at 41, the approved wording is untouched,
-    /// the alias and part order are untouched; only the selection inside the named atom changes,
-    /// and only to the text the same claim already says was approved.
+    /// They were corrected under explicit authorization as a data patch, naming each alias. The
+    /// patch is gone: <see cref="StructuredSourcePartLocator"/> no longer loses a target's terminal
+    /// punctuation when it projects a reduced match back onto source offsets, so this migration now
+    /// derives the same four selections from the source instead of being told them. The list
+    /// remains only as the record of which claims that was, and as the thing the regression below
+    /// checks the algorithm against.
     /// </para>
     /// </summary>
     private static readonly string[] FullAtomBoundaryCorrections =
         ["L0107:S0", "L0377:S0", "L0540:S0", "L0576:S0"];
 
-    /// <summary>The structured Gold these corrections supersede, kept as predecessor provenance.</summary>
+    /// <summary>The structured Gold these corrections superseded, kept as predecessor provenance.</summary>
     private const string BoundaryCorrectionPredecessorGoldSha256 =
         "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e";
 
@@ -112,7 +108,6 @@ public sealed class PdfStructuredGoldMigrationTests
 
             var parts = StructuredSourcePartLocator.Locate(atoms, approvedWording, punctuationInsensitive: true, ref cursor);
             Assert.True(parts is not null, $"{sourceAlias}: '{approvedWording}' not found in the structured atom universe");
-            parts = ApplyAuthorizedBoundaryCorrection(atoms, parts!, approvedWording);
 
             var bound = SemanticSourcePartBinder.Bind(atoms, new SemanticSourcePartsProposal(parts!));
             Assert.True(bound.IsBound, $"{sourceAlias}: {bound.Status} - {bound.Reason}");
@@ -185,47 +180,22 @@ public sealed class PdfStructuredGoldMigrationTests
         });
 
         Assert.Equal(ApprovedHeadings, rows.Count);
+
+        // The four claims that were once corrected by name are now produced by the locator itself:
+        // each selects its whole atom, and nothing here tells it to. If the projection defect ever
+        // returns, these stop being WHOLE_ALIAS and this fails before the Gold artifact is written.
+        foreach (var alias in FullAtomBoundaryCorrections)
+        {
+            var row = rows.Single(item => ((dynamic)item).sourceParts[0].sourceAlias == alias);
+            Assert.Equal(CanonicalSemanticSelectionMode.WholeAlias, (string)((dynamic)row).sourceParts[0].selectionMode);
+            Assert.Equal(atoms.Single(atom => atom.Alias == alias).Text, (string)((dynamic)row).projectedText);
+        }
         Assert.All(partCounts, count => Assert.InRange(count, 1, 2));
         Assert.Equal(1, partCounts.Count(count => count == 2));
         Assert.Equal(40, partCounts.Count(count => count == 1));
     }
 
 
-    /// <summary>
-    /// Extends a named claim's final selection to its whole atom, and refuses to do it on anything
-    /// it was not authorized for or cannot prove.
-    /// <para>
-    /// The proof required is the one the audit ran on: the selection stops short of the atom, what
-    /// it omits is punctuation, and the claim's own approved wording ends with exactly that. A
-    /// correction that cannot show all three is not applied - an authorization names which claims
-    /// may be corrected, not what the correction may assume.
-    /// </para>
-    /// </summary>
-    private static List<SemanticSourcePart> ApplyAuthorizedBoundaryCorrection(
-        IReadOnlyList<SemanticSourceAtom> atoms,
-        List<SemanticSourcePart> parts,
-        string approvedWording)
-    {
-        var last = parts[^1];
-        if (!FullAtomBoundaryCorrections.Contains(last.SourceAlias, StringComparer.Ordinal)) return parts;
-
-        var atom = atoms.Single(item => item.Alias == last.SourceAlias);
-        var selected = last.SelectionMode == CanonicalSemanticSelectionMode.WholeAlias
-            ? atom.Text
-            : last.VerbatimText ?? string.Empty;
-        Assert.NotEqual(atom.Text, selected);
-        Assert.StartsWith(selected, atom.Text, StringComparison.Ordinal);
-
-        var omitted = atom.Text[selected.Length..];
-        Assert.All(omitted.ToCharArray(), character => Assert.True(
-            char.IsPunctuation(character) || char.IsSymbol(character),
-            $"{last.SourceAlias}: omitted '{character}' is not punctuation"));
-        Assert.EndsWith(omitted, approvedWording, StringComparison.Ordinal);
-
-        var corrected = parts.Take(parts.Count - 1).ToList();
-        corrected.Add(new SemanticSourcePart(last.SourceAlias, CanonicalSemanticSelectionMode.WholeAlias));
-        return corrected;
-    }
 
     private static string Doc0252Path => System.IO.Path.Combine(
         TestRepository.Root(), Doc0252.Replace('/', System.IO.Path.DirectorySeparatorChar));
