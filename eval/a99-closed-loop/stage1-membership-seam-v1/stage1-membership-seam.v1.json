@@ -1,0 +1,324 @@
+{
+  "artifactKind": "a99_stage1_membership_seam",
+  "schemaVersion": "a99-stage1-membership-seam-v1",
+  "phases": [
+    "A: internal Stage-1 model and projection",
+    "B: Stage-1 membership evaluator"
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "providerVisible": false,
+  "providerRequestBytesChanged": false,
+  "productionRuntimeRouted": false,
+  "internalModel": {
+    "types": [
+      "Stage1MembershipDisposition",
+      "Stage1SourceCoordinate",
+      "Stage1AuthorityClaimId",
+      "Stage1AcceptedClaim",
+      "Stage1Projection",
+      "Stage1MembershipEvaluator",
+      "Stage1ProposalState",
+      "Stage1MembershipScore"
+    ],
+    "acceptedClaimCarries": [
+      "authority claim id",
+      "ordered canonical coordinate tuple",
+      "document source sha256",
+      "membership disposition"
+    ],
+    "acceptedClaimDoesNotCarry": [
+      "semanticRole",
+      "relationHints",
+      "parent-node",
+      "ROOT",
+      "NONE",
+      "placement edge",
+      "model-chosen selectionMode",
+      "model-chosen offsets"
+    ],
+    "note": "The excluded fields have nowhere to live in the type, so independence is structural rather than a rule someone must remember."
+  },
+  "authorityIdentity": {
+    "algorithm": "SHA-256",
+    "bits": 256,
+    "domainSeparator": "a99-semantic-membership-claim-v1",
+    "input": [
+      "domain separator",
+      "document source sha256",
+      "ordered (sourceAlias, startUtf16, endUtf16)"
+    ],
+    "encoding": "each field length-prefixed and unit-separated (0x1F)",
+    "framingRationale": "Concatenation alone would let an alias ending in a digit and an offset beginning with one serialize identically to a different tuple. A wider hash does not fix an ambiguous encoding.",
+    "displayForm": "C + first 8 hex of the digest, diagnostics only, never authoritative",
+    "collisionPolicy": "AUTHORITY_CLAIM_ID_COLLISION, fail closed, never merge"
+  },
+  "membershipDisposition": {
+    "values": [
+      "DOCUMENT_LABEL",
+      "STRUCTURAL_UNIT"
+    ],
+    "noneIntroduced": false,
+    "usedAsRetrospectiveFilter": false,
+    "rule": "Every bound structured-v2 claim projects to exactly one accepted claim. Disposition classifies the accepted set; it never removes anything from it."
+  },
+  "projectionInvariant": {
+    "input": "harness-bound source identity, after validate, decode, canonicalize and bind",
+    "unboundInputAccepted": false,
+    "lossless": true,
+    "setEqualityBothDirections": true,
+    "rows": [
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 1,
+        "currentBoundClaims": 18,
+        "stage1AcceptedClaims": 18,
+        "setEquality": true,
+        "score": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "frozen": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "identicalWithoutRelationAndRole": true
+      },
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 2,
+        "currentBoundClaims": 18,
+        "stage1AcceptedClaims": 18,
+        "setEquality": true,
+        "score": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "frozen": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "identicalWithoutRelationAndRole": true
+      },
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 3,
+        "currentBoundClaims": 20,
+        "stage1AcceptedClaims": 20,
+        "setEquality": true,
+        "score": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "frozen": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "identicalWithoutRelationAndRole": true
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 1,
+        "currentBoundClaims": 20,
+        "stage1AcceptedClaims": 20,
+        "setEquality": true,
+        "score": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "frozen": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "identicalWithoutRelationAndRole": true
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 2,
+        "currentBoundClaims": 20,
+        "stage1AcceptedClaims": 20,
+        "setEquality": true,
+        "score": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "frozen": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "identicalWithoutRelationAndRole": true
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 3,
+        "currentBoundClaims": 18,
+        "stage1AcceptedClaims": 18,
+        "setEquality": true,
+        "score": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "frozen": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "identicalWithoutRelationAndRole": true
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 1,
+        "currentBoundClaims": 20,
+        "stage1AcceptedClaims": 20,
+        "setEquality": true,
+        "score": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "frozen": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "identicalWithoutRelationAndRole": true
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 2,
+        "currentBoundClaims": 17,
+        "stage1AcceptedClaims": 17,
+        "setEquality": true,
+        "score": {
+          "tp": 14,
+          "fp": 3,
+          "fn": 0
+        },
+        "frozen": {
+          "tp": 14,
+          "fp": 3,
+          "fn": 0
+        },
+        "identicalWithoutRelationAndRole": true
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 3,
+        "currentBoundClaims": 20,
+        "stage1AcceptedClaims": 20,
+        "setEquality": true,
+        "score": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "frozen": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "identicalWithoutRelationAndRole": true
+      }
+    ]
+  },
+  "independence": {
+    "relationFieldsRequiredForStage1": false,
+    "semanticRoleRequiredForStage1": false,
+    "method": "Each repeat was projected twice - once from the full reply, once with relationHints, parent-node and semanticRole removed before decoding - and the accepted identity sets compared.",
+    "evaluatorRequiresStage2": false,
+    "dependencyDirection": "structured-v2 bound result -> Stage1Projection -> Stage1MembershipEvaluator"
+  },
+  "identityStatistics": {
+    "totalProjectedClaims": 171,
+    "uniqueCoordinateIdentities": 23,
+    "uniqueAuthorityClaimIds": 23,
+    "authorityClaimIdCollisions": 0,
+    "stableAcrossArmsAndRepeats": true
+  },
+  "multiPartProof": {
+    "identity": "L0359:S0:0-99|L0360:S0:0-11",
+    "authorityClaimId": "C:482d787d768dd3e5a117cfb1e715d1edc75c3f1218d14dd91b8d71646ba3df40",
+    "displayClaimId": "C482D787D",
+    "orderSensitive": true,
+    "documentNamespaced": true,
+    "derivedFromJoinedNormalizedText": false
+  },
+  "evaluatorSemantics": {
+    "consumes": [
+      "accepted Stage-1 claims",
+      "Gold membership authority"
+    ],
+    "emits": [
+      "TP",
+      "FP",
+      "FN",
+      "and the identity set behind each"
+    ],
+    "diagnosticStatesKeptSeparate": [
+      "NOT_PROPOSED",
+      "PROPOSED_BUT_REFUSED",
+      "BOUND"
+    ],
+    "refusedProposalBecomesAcceptedClaim": false,
+    "placementCanAffectScore": false,
+    "goldMatching": "canonical ordered bound identity, never normalized text, role string, joined source text or model output order"
+  },
+  "futureProtocolSeam": {
+    "supports": "a99-semantic-membership-v1",
+    "implementedHere": false,
+    "newProviderPromptHash": false,
+    "newProviderSchemaAuthority": false,
+    "requestRebaseline": false
+  },
+  "firstProviderExperiment": {
+    "id": "PHYSICAL_STAGE1_MEMBERSHIP_ONLY",
+    "executed": false,
+    "document": "DOC-0252",
+    "packs": [
+      "PACK_005",
+      "PACK_006"
+    ],
+    "repeats": 3,
+    "stage1ProviderCalls": 6,
+    "stage2ProviderCalls": 0,
+    "sequence": "validate, canonicalize, bind, freeze immutable claim ids, score membership, stop",
+    "stage2RequestCreated": false,
+    "comparator": {
+      "arm": "STRUCTURED_V2_TARGET_BASELINE",
+      "gold": "14/14 bound in every repeat",
+      "mastheadFamilies": {
+        "f1": "PRESENT 3/3",
+        "f2": "PRESENT 3/3",
+        "f3": "PRESENT 3/3"
+      },
+      "measured": [
+        "Gold membership",
+        "masthead family presence",
+        "other false-positive identities",
+        "grounding refusals"
+      ],
+      "relationMetricExists": false
+    }
+  },
+  "stage2": {
+    "deferred": true,
+    "batchingPolicy": "DEFERRED"
+  },
+  "limitations": {
+    "singleDocument": "DOC-0252",
+    "materializedGold": "48 / 3955",
+    "crossGenreGeneralization": "NOT_ESTABLISHED",
+    "whatThisDoesNotShow": "That separating the stages changes membership behaviour. This is infrastructure; the question is still open and needs the 6-call experiment."
+  }
+}
