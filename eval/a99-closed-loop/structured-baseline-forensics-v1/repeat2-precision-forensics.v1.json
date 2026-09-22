@@ -1,0 +1,2534 @@
+{
+  "artifactKind": "a99_structured_baseline_precision_forensics",
+  "schemaVersion": "a99-structured-baseline-precision-forensics-v1",
+  "experimentId": "A99-S2P-STRUCTURED-BASELINE-V1",
+  "question": "Where did repeat 2's 73 false positives come from, given byte-identical requests?",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "intervention": "NONE - diagnosis only; prompt, hints, contract, Gold, binder and evaluator are untouched.",
+  "frozen": {
+    "rawResponsesSha256": "c1122ec1361c7e2895e95261b7c83dd27e4c25933397987ecc4be490833b5df6",
+    "goldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+    "sourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "modelVisibleEvidenceSha256": "5a2ab0477ee9c31648f7862b077a4c92fab070ecde1446321123c63c7637687f",
+    "goldClaims": 41
+  },
+  "inputEquivalence": {
+    "packs": [
+      {
+        "pack": 1,
+        "repeat1": "5b323e5ddd2e39fb5a7f2668b807f0c295834984a3e4788c5d18276d40b298c9",
+        "repeat2": "5b323e5ddd2e39fb5a7f2668b807f0c295834984a3e4788c5d18276d40b298c9",
+        "repeat3": "5b323e5ddd2e39fb5a7f2668b807f0c295834984a3e4788c5d18276d40b298c9",
+        "requestChars": 43306,
+        "identical": true
+      },
+      {
+        "pack": 2,
+        "repeat1": "e6c6e4f9297ad9f4c6edcb6095d30f8939cec97c4d6da6bb5954bfbd84cf121a",
+        "repeat2": "e6c6e4f9297ad9f4c6edcb6095d30f8939cec97c4d6da6bb5954bfbd84cf121a",
+        "repeat3": "e6c6e4f9297ad9f4c6edcb6095d30f8939cec97c4d6da6bb5954bfbd84cf121a",
+        "requestChars": 46946,
+        "identical": true
+      },
+      {
+        "pack": 3,
+        "repeat1": "e6e072509ba30a6204ea75a598767366fb9f937077b3a34ce8a1ccaeaea1b4a2",
+        "repeat2": "e6e072509ba30a6204ea75a598767366fb9f937077b3a34ce8a1ccaeaea1b4a2",
+        "repeat3": "e6e072509ba30a6204ea75a598767366fb9f937077b3a34ce8a1ccaeaea1b4a2",
+        "requestChars": 47662,
+        "identical": true
+      },
+      {
+        "pack": 4,
+        "repeat1": "b6467169d7c2429ccd937c28d549d89e310bfeb7da2b42c11c40e8fb99205c49",
+        "repeat2": "b6467169d7c2429ccd937c28d549d89e310bfeb7da2b42c11c40e8fb99205c49",
+        "repeat3": "b6467169d7c2429ccd937c28d549d89e310bfeb7da2b42c11c40e8fb99205c49",
+        "requestChars": 48234,
+        "identical": true
+      },
+      {
+        "pack": 5,
+        "repeat1": "bf534e718ab97b8f44c53b9371afd426818456d54266a6bfafe284fd449ef5b3",
+        "repeat2": "bf534e718ab97b8f44c53b9371afd426818456d54266a6bfafe284fd449ef5b3",
+        "repeat3": "bf534e718ab97b8f44c53b9371afd426818456d54266a6bfafe284fd449ef5b3",
+        "requestChars": 42381,
+        "identical": true
+      },
+      {
+        "pack": 6,
+        "repeat1": "1bbff0fcf6676f4ae1375edce2c39e785b00b5fdfe959945fdb665edc6d5e7fb",
+        "repeat2": "1bbff0fcf6676f4ae1375edce2c39e785b00b5fdfe959945fdb665edc6d5e7fb",
+        "repeat3": "1bbff0fcf6676f4ae1375edce2c39e785b00b5fdfe959945fdb665edc6d5e7fb",
+        "requestChars": 16046,
+        "identical": true
+      }
+    ],
+    "identicalPacks": 6,
+    "totalPacks": 6
+  },
+  "perPack": [
+    {
+      "pack": 1,
+      "repeat": 1,
+      "responseChars": 2488,
+      "entries": 9,
+      "headingTrue": 9,
+      "headingFalse": 0,
+      "bound": 9,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 7,
+      "falsePositive": 2,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 1,
+      "repeat": 2,
+      "responseChars": 2488,
+      "entries": 9,
+      "headingTrue": 9,
+      "headingFalse": 0,
+      "bound": 9,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 7,
+      "falsePositive": 2,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 1,
+      "repeat": 3,
+      "responseChars": 2484,
+      "entries": 9,
+      "headingTrue": 9,
+      "headingFalse": 0,
+      "bound": 9,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 7,
+      "falsePositive": 2,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 2,
+      "repeat": 1,
+      "responseChars": 1869,
+      "entries": 7,
+      "headingTrue": 7,
+      "headingFalse": 0,
+      "bound": 7,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 6,
+      "falsePositive": 1,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 2,
+      "repeat": 2,
+      "responseChars": 2122,
+      "entries": 8,
+      "headingTrue": 8,
+      "headingFalse": 0,
+      "bound": 8,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 6,
+      "falsePositive": 2,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 2,
+      "repeat": 3,
+      "responseChars": 2122,
+      "entries": 8,
+      "headingTrue": 8,
+      "headingFalse": 0,
+      "bound": 8,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 6,
+      "falsePositive": 2,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 3,
+      "repeat": 1,
+      "responseChars": 1616,
+      "entries": 6,
+      "headingTrue": 6,
+      "headingFalse": 0,
+      "bound": 6,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 6,
+      "falsePositive": 0,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 3,
+      "repeat": 2,
+      "responseChars": 1604,
+      "entries": 6,
+      "headingTrue": 6,
+      "headingFalse": 0,
+      "bound": 6,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 6,
+      "falsePositive": 0,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 3,
+      "repeat": 3,
+      "responseChars": 1604,
+      "entries": 6,
+      "headingTrue": 6,
+      "headingFalse": 0,
+      "bound": 6,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 6,
+      "falsePositive": 0,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 4,
+      "repeat": 1,
+      "responseChars": 1687,
+      "entries": 6,
+      "headingTrue": 6,
+      "headingFalse": 0,
+      "bound": 6,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 4,
+      "falsePositive": 2,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 4,
+      "repeat": 2,
+      "responseChars": 1687,
+      "entries": 6,
+      "headingTrue": 6,
+      "headingFalse": 0,
+      "bound": 6,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 4,
+      "falsePositive": 2,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 4,
+      "repeat": 3,
+      "responseChars": 1687,
+      "entries": 6,
+      "headingTrue": 6,
+      "headingFalse": 0,
+      "bound": 6,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 4,
+      "falsePositive": 2,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 5,
+      "repeat": 1,
+      "responseChars": 4567,
+      "entries": 15,
+      "headingTrue": 15,
+      "headingFalse": 0,
+      "bound": 15,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 11,
+      "falsePositive": 4,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 5,
+      "repeat": 2,
+      "responseChars": 20902,
+      "entries": 80,
+      "headingTrue": 80,
+      "headingFalse": 0,
+      "bound": 79,
+      "rejected": 1,
+      "rejectionReasons": [
+        "OutOfOwnedSegment"
+      ],
+      "truePositive": 13,
+      "falsePositive": 66,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 5,
+      "repeat": 3,
+      "responseChars": 4863,
+      "entries": 16,
+      "headingTrue": 16,
+      "headingFalse": 0,
+      "bound": 16,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 12,
+      "falsePositive": 4,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 6,
+      "repeat": 1,
+      "responseChars": 548,
+      "entries": 2,
+      "headingTrue": 2,
+      "headingFalse": 0,
+      "bound": 2,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 1,
+      "falsePositive": 1,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 6,
+      "repeat": 2,
+      "responseChars": 548,
+      "entries": 2,
+      "headingTrue": 2,
+      "headingFalse": 0,
+      "bound": 2,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 1,
+      "falsePositive": 1,
+      "headingPositiveRate": 1
+    },
+    {
+      "pack": 6,
+      "repeat": 3,
+      "responseChars": 548,
+      "entries": 2,
+      "headingTrue": 2,
+      "headingFalse": 0,
+      "bound": 2,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 1,
+      "falsePositive": 1,
+      "headingPositiveRate": 1
+    }
+  ],
+  "repeatTotals": [
+    {
+      "repeat": 1,
+      "bound": 45,
+      "truePositive": 35,
+      "falsePositive": 10,
+      "falseNegative": 6
+    },
+    {
+      "repeat": 2,
+      "bound": 110,
+      "truePositive": 37,
+      "falsePositive": 73,
+      "falseNegative": 4
+    },
+    {
+      "repeat": 3,
+      "bound": 47,
+      "truePositive": 36,
+      "falsePositive": 11,
+      "falseNegative": 5
+    }
+  ],
+  "repeat2FalsePositiveConcentration": {
+    "total": 73,
+    "byPack": {
+      "pack1": 2,
+      "pack2": 2,
+      "pack4": 2,
+      "pack5": 66,
+      "pack6": 1
+    },
+    "largestPackShare": 0.9041
+  },
+  "crossRepeatFalsePositives": {
+    "repeat2Total": 73,
+    "repeat2Only": 63,
+    "sharedWithRepeat1": 9,
+    "sharedWithRepeat3": 9,
+    "sharedWithAllThree": 8,
+    "repeat1Total": 10,
+    "repeat3Total": 11
+  },
+  "repeat2FalsePositives": [
+    {
+      "identity": "L0001:S0:0-24",
+      "Pack": 1,
+      "aliases": [
+        "L0001:S0"
+      ],
+      "text": "TECHNICAL ADVISORY GROUP",
+      "SemanticRole": "document-subtitle",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b2",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": true,
+      "sharedWithR3": true,
+      "repeat2Only": false,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0107:S0:0-40",
+      "Pack": 1,
+      "aliases": [
+        "L0107:S0"
+      ],
+      "text": "Commonwealth of Independent States (CIS)",
+      "SemanticRole": "subsubsection-heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b64",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": true,
+      "sharedWithR3": true,
+      "repeat2Only": false,
+      "overlapsGoldAtom": true,
+      "atomDistanceToNearestGold": 0,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 5,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "C_BOUNDARY_ALTERNATIVE_OF_GOLD_HEADING"
+    },
+    {
+      "identity": "L0118:S0:0-104",
+      "Pack": 2,
+      "aliases": [
+        "L0118:S0"
+      ],
+      "text": "on the matter. Member economies have expressed concerns about discrepancies with official figures in the",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b71",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": true,
+      "sharedWithR3": true,
+      "repeat2Only": false,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 5,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 15,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0164:S0:0-1",
+      "Pack": 2,
+      "aliases": [
+        "L0164:S0"
+      ],
+      "text": "4",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b106",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": true,
+      "repeat2Only": false,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "PAGE_NUMBER_LIKE",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0358:S0:0-47",
+      "Pack": 4,
+      "aliases": [
+        "L0358:S0"
+      ],
+      "text": "technology for price collection and validation.",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b233",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": true,
+      "sharedWithR3": true,
+      "repeat2Only": false,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": true,
+      "wordCount": 6,
+      "sourceFunction": "BODY_SENTENCE_FRAGMENT",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0377:S0:0-85",
+      "Pack": 4,
+      "aliases": [
+        "L0377:S0"
+      ],
+      "text": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b246",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": true,
+      "sharedWithR3": true,
+      "repeat2Only": false,
+      "overlapsGoldAtom": true,
+      "atomDistanceToNearestGold": 0,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 12,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "C_BOUNDARY_ALTERNATIVE_OF_GOLD_HEADING"
+    },
+    {
+      "identity": "L0478:S0:0-24",
+      "Pack": 5,
+      "aliases": [
+        "L0478:S0"
+      ],
+      "text": "from the ICP 2017 cycle.",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b314",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": true,
+      "sharedWithR3": true,
+      "repeat2Only": false,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 8,
+      "endsWithSentencePunctuation": true,
+      "wordCount": 5,
+      "sourceFunction": "BODY_SENTENCE_FRAGMENT",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0513:S0:0-38",
+      "Pack": 5,
+      "aliases": [
+        "L0513:S0"
+      ],
+      "text": "International Comparison Program (ICP)",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b337",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 6,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 4,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0514:S0:0-30",
+      "Pack": 5,
+      "aliases": [
+        "L0514:S0"
+      ],
+      "text": "TECHNICAL ADVISORY GROUP (TAG)",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b337",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 5,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 4,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0515:S0:0-14",
+      "Pack": 5,
+      "aliases": [
+        "L0515:S0"
+      ],
+      "text": "Hybrid Meeting",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b338",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 4,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 2,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0516:S0:0-15",
+      "Pack": 5,
+      "aliases": [
+        "L0516:S0"
+      ],
+      "text": "March 7-8, 2025",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b339",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 3,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "DATE_LINE",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0517:S0:0-22",
+      "Pack": 5,
+      "aliases": [
+        "L0517:S0"
+      ],
+      "text": "Bamboo Room, Ease 1345",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b340",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 4,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0518:S0:0-32",
+      "Pack": 5,
+      "aliases": [
+        "L0518:S0"
+      ],
+      "text": "1345 6th Ave, New York, NY 10105",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b341",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 7,
+      "sourceFunction": "ADDRESS_LINE",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0522:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0522:S0"
+      ],
+      "text": "09:00 – 09:15",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b345",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0522:S1:0-55",
+      "Pack": 5,
+      "aliases": [
+        "L0522:S1"
+      ],
+      "text": "Welcome and Opening Remarks [TAG Co-Chairs, World Bank]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b346",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 8,
+      "sourceFunction": "AGENDA_ITEM_TITLE_WITH_PRESENTER",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0524:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0524:S0"
+      ],
+      "text": "09:15 – 10:15",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b348",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0524:S1:0-67",
+      "Pack": 5,
+      "aliases": [
+        "L0524:S1"
+      ],
+      "text": "Update on the ICP 2021 and 2024 Cycles [World Bank and ICP Regional",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b349",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 13,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0527:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0527:S0"
+      ],
+      "text": "10:30 – 11:15",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b352",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0527:S1:0-66",
+      "Pack": 5,
+      "aliases": [
+        "L0527:S1"
+      ],
+      "text": "Research Topics Emerging from the Previous ICP Cycles [World Bank]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b353",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 10,
+      "sourceFunction": "AGENDA_ITEM_TITLE_WITH_PRESENTER",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0528:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0528:S0"
+      ],
+      "text": "11:15 – 12:00",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b354",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 3,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0528:S1:0-41",
+      "Pack": 5,
+      "aliases": [
+        "L0528:S1"
+      ],
+      "text": "Forthcoming Research Topics [Prasada Rao]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b355",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 4,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 5,
+      "sourceFunction": "AGENDA_ITEM_TITLE_WITH_PRESENTER",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0529:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0529:S0"
+      ],
+      "text": "12:00 – 12:30",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b356",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 3,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0529:S1:0-70",
+      "Pack": 5,
+      "aliases": [
+        "L0529:S1"
+      ],
+      "text": "Setting Up a Short- and Long-Term Research and Development Agenda [Co-",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b357",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 11,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0532:S0:0-68",
+      "Pack": 5,
+      "aliases": [
+        "L0532:S0"
+      ],
+      "text": "14:00 – 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b360",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 11,
+      "sourceFunction": "AGENDA_TIME_SLOT_WITH_TITLE",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0534:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0534:S0"
+      ],
+      "text": "14:15 – 15:00",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b362",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 3,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0534:S1:0-73",
+      "Pack": 5,
+      "aliases": [
+        "L0534:S1"
+      ],
+      "text": "Terms of Reference for a Task Force on Annual PPP Production [World Bank]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b363",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 3,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 13,
+      "sourceFunction": "AGENDA_ITEM_TITLE_WITH_PRESENTER",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0535:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0535:S0"
+      ],
+      "text": "15:00 – 15:45",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b364",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0535:S1:0-77",
+      "Pack": 5,
+      "aliases": [
+        "L0535:S1"
+      ],
+      "text": "Terms of Reference for a Task Force on ICP Classification Update [World Bank]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b365",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 13,
+      "sourceFunction": "AGENDA_ITEM_TITLE_WITH_PRESENTER",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0537:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0537:S0"
+      ],
+      "text": "16:00 – 17:00",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b367",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0537:S1:0-70",
+      "Pack": 5,
+      "aliases": [
+        "L0537:S1"
+      ],
+      "text": "The Treatment of Import and Export Prices in International Comparisons",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b368",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 10,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0540:S0:0-36",
+      "Pack": 5,
+      "aliases": [
+        "L0540:S0"
+      ],
+      "text": "SESSION V: Current Research (Cont’d)",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b371",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": true,
+      "sharedWithR3": true,
+      "repeat2Only": false,
+      "overlapsGoldAtom": true,
+      "atomDistanceToNearestGold": 0,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 5,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "C_BOUNDARY_ALTERNATIVE_OF_GOLD_HEADING"
+    },
+    {
+      "identity": "L0541:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0541:S0"
+      ],
+      "text": "09:00 – 09:45",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b372",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0541:S1:0-76",
+      "Pack": 5,
+      "aliases": [
+        "L0541:S1"
+      ],
+      "text": "A Survey Based Approach to Adjustment for Quality Differences in Services in",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b373",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 12,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0543:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0543:S0"
+      ],
+      "text": "09:45 – 10:30",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b375",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 4,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0543:S1:0-66",
+      "Pack": 5,
+      "aliases": [
+        "L0543:S1"
+      ],
+      "text": "Treatment of Scanner (Transaction) Data in the European Comparison",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b376",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 5,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 9,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0545:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0545:S0"
+      ],
+      "text": "10:45 – 11:30",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b378",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 7,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0545:S1:0-74",
+      "Pack": 5,
+      "aliases": [
+        "L0545:S1"
+      ],
+      "text": "Treatment of Negative Expenditures in ICP [Prasada Rao and Sergey Sergeev]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b379",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 8,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 11,
+      "sourceFunction": "AGENDA_ITEM_TITLE_WITH_PRESENTER",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0546:S0:0-13",
+      "Pack": 5,
+      "aliases": [
+        "L0546:S0"
+      ],
+      "text": "11:30 – 12:30",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b380",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 9,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 3,
+      "sourceFunction": "AGENDA_TIME_SLOT_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0546:S1:0-37",
+      "Pack": 5,
+      "aliases": [
+        "L0546:S1"
+      ],
+      "text": "Fine Tuning Global Linking Procedures",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b381",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 10,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 5,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0547:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0547:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b383",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 10,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0547:S1:0-48",
+      "Pack": 5,
+      "aliases": [
+        "L0547:S1"
+      ],
+      "text": "Alternative Global Linking Methods [Robert Hill]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b382",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 9,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 6,
+      "sourceFunction": "AGENDA_ITEM_TITLE_WITH_PRESENTER",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0548:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0548:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b384",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 8,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0548:S1:0-69",
+      "Pack": 5,
+      "aliases": [
+        "L0548:S1"
+      ],
+      "text": "Similarity Linking Within and Between Regions [Erwin Diewert and Yuri",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b385",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 7,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 10,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0550:S0:0-56",
+      "Pack": 5,
+      "aliases": [
+        "L0550:S0"
+      ],
+      "text": "14:00 – 15:00 Improving Reliability of Price Comparisons",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b387",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 5,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 8,
+      "sourceFunction": "AGENDA_TIME_SLOT_WITH_TITLE",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0551:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0551:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b388",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 4,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0551:S1:0-65",
+      "Pack": 5,
+      "aliases": [
+        "L0551:S1"
+      ],
+      "text": "Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b389",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 3,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 10,
+      "sourceFunction": "AGENDA_ITEM_TITLE_WITH_PRESENTER",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0552:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0552:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "table",
+      "block": "b390",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0552:S1:0-65",
+      "Pack": 5,
+      "aliases": [
+        "L0552:S1"
+      ],
+      "text": "Alternative Basic Heading PPP Aggregation Methods [Yuri Dikhanov]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b391",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 8,
+      "sourceFunction": "AGENDA_ITEM_TITLE_WITH_PRESENTER",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0554:S0:0-60",
+      "Pack": 5,
+      "aliases": [
+        "L0554:S0"
+      ],
+      "text": "15:00 – 15:15 Any Other Business and Closing [TAG Co-Chairs]",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "document_body",
+      "block": "b393",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": true,
+      "sharedWithR3": false,
+      "repeat2Only": false,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 10,
+      "sourceFunction": "AGENDA_TIME_SLOT_WITH_TITLE",
+      "goldRelation": "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD"
+    },
+    {
+      "identity": "L0558:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0558:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b398",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0558:S1:0-77",
+      "Pack": 5,
+      "aliases": [
+        "L0558:S1"
+      ],
+      "text": "Paul Schreyer, Economic Statistics Center of Excellence (ESCoE), TAG Co-Chair",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b397",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 10,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0559:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0559:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b400",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 3,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0559:S1:0-56",
+      "Pack": 5,
+      "aliases": [
+        "L0559:S1"
+      ],
+      "text": "D.S. Prasada Rao, University of Queensland, TAG Co-Chair",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b399",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 4,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 8,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0560:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0560:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b402",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 5,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0560:S1:0-48",
+      "Pack": 5,
+      "aliases": [
+        "L0560:S1"
+      ],
+      "text": "W. Erwin Diewert, University of British Columbia",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b401",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 6,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 7,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0561:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0561:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b404",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 7,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0561:S1:0-37",
+      "Pack": 5,
+      "aliases": [
+        "L0561:S1"
+      ],
+      "text": "Mary O’Mahony, King's Business School",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b403",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 8,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 5,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0562:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0562:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b406",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 8,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0562:S1:0-32",
+      "Pack": 5,
+      "aliases": [
+        "L0562:S1"
+      ],
+      "text": "Xianchun Xu, Tsinghua University",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b405",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 7,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 4,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0563:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0563:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b408",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 6,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0563:S1:0-51",
+      "Pack": 5,
+      "aliases": [
+        "L0563:S1"
+      ],
+      "text": "Robert C. Feenstra, University of California, Davis",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b407",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 5,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 7,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0564:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0564:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b410",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 4,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0564:S1:0-64",
+      "Pack": 5,
+      "aliases": [
+        "L0564:S1"
+      ],
+      "text": "Paul Konijn, Statistical Office of the European Union (Eurostat)",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b409",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 3,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 9,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0565:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0565:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b412",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0565:S1:0-36",
+      "Pack": 5,
+      "aliases": [
+        "L0565:S1"
+      ],
+      "text": "Nada Hamadeh, former ICP Global Lead",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b411",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 6,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0567:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0567:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b415",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 1,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0567:S1:0-31",
+      "Pack": 5,
+      "aliases": [
+        "L0567:S1"
+      ],
+      "text": "Robert Hill, University of Graz",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b414",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 2,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 5,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0568:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0568:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b416",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 3,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0568:S1:0-34",
+      "Pack": 5,
+      "aliases": [
+        "L0568:S1"
+      ],
+      "text": "Sergey Sergeev, Independent Expert",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b417",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 4,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 4,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0569:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0569:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b418",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 5,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0569:S1:0-30",
+      "Pack": 5,
+      "aliases": [
+        "L0569:S1"
+      ],
+      "text": "Yang Wang, Tsinghua University",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b417",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 6,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 4,
+      "sourceFunction": "PARTICIPANT_NAME_AND_AFFILIATION",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0570:S0:0-1",
+      "Pack": 5,
+      "aliases": [
+        "L0570:S0"
+      ],
+      "text": "–",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix_table",
+      "block": "b420",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": false,
+      "sharedWithR3": false,
+      "repeat2Only": true,
+      "overlapsGoldAtom": false,
+      "atomDistanceToNearestGold": 7,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 1,
+      "sourceFunction": "BULLET_OR_GLYPH_ONLY",
+      "goldRelation": "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY"
+    },
+    {
+      "identity": "L0576:S0:0-42",
+      "Pack": 6,
+      "aliases": [
+        "L0576:S0"
+      ],
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "SemanticRole": "heading",
+      "PartCount": 1,
+      "selectionModes": [
+        "WHOLE_ALIAS"
+      ],
+      "scope": "appendix",
+      "block": "b431",
+      "candidateHinted": true,
+      "anyPartHinted": true,
+      "sharedWithR1": true,
+      "sharedWithR3": true,
+      "repeat2Only": false,
+      "overlapsGoldAtom": true,
+      "atomDistanceToNearestGold": 0,
+      "endsWithSentencePunctuation": false,
+      "wordCount": 5,
+      "sourceFunction": "OTHER_TITLE_LIKE_ROW",
+      "goldRelation": "C_BOUNDARY_ALTERNATIVE_OF_GOLD_HEADING"
+    }
+  ],
+  "correlations": {
+    "candidateHint": {
+      "repeat2FalsePositivesAllPartsHinted": 73,
+      "repeat2FalsePositivesAnyPartHinted": 73,
+      "repeat2FalsePositivesUnhinted": 0,
+      "repeat2TruePositivesHinted": 37,
+      "hintedAtomsInDocument": 650,
+      "totalAtoms": 650
+    },
+    "proximity": {
+      "overlapsAGoldAtom": 4,
+      "withinOneAtom": 21,
+      "withinFiveAtoms": 55,
+      "fartherThanFive": 18
+    },
+    "shape": {
+      "multiPartClaims": 0,
+      "endingInSentencePunctuation": 2,
+      "bySemanticRole": {
+        "heading": 71,
+        "document-subtitle": 1,
+        "subsubsection-heading": 1
+      },
+      "byScope": {
+        "document_body": 30,
+        "table": 19,
+        "appendix_table": 12,
+        "appendix": 12
+      }
+    }
+  },
+  "taxonomy": {
+    "bySourceFunction": {
+      "OTHER_TITLE_LIKE_ROW": 16,
+      "BULLET_OR_GLYPH_ONLY": 16,
+      "PARTICIPANT_NAME_AND_AFFILIATION": 12,
+      "AGENDA_TIME_SLOT_ONLY": 12,
+      "AGENDA_ITEM_TITLE_WITH_PRESENTER": 9,
+      "AGENDA_TIME_SLOT_WITH_TITLE": 3,
+      "BODY_SENTENCE_FRAGMENT": 2,
+      "PAGE_NUMBER_LIKE": 1,
+      "DATE_LINE": 1,
+      "ADDRESS_LINE": 1
+    },
+    "byGoldRelation": {
+      "A_CLEAR_NON_HEADING_UNDER_CURRENT_GOLD_POLICY": 45,
+      "B_PLAUSIBLE_HEADING_NOT_IN_APPROVED_GOLD": 24,
+      "C_BOUNDARY_ALTERNATIVE_OF_GOLD_HEADING": 4
+    },
+    "repeat2OnlyBySourceFunction": {
+      "BULLET_OR_GLYPH_ONLY": 16,
+      "PARTICIPANT_NAME_AND_AFFILIATION": 12,
+      "AGENDA_TIME_SLOT_ONLY": 12,
+      "OTHER_TITLE_LIKE_ROW": 10,
+      "AGENDA_ITEM_TITLE_WITH_PRESENTER": 9,
+      "AGENDA_TIME_SLOT_WITH_TITLE": 2,
+      "DATE_LINE": 1,
+      "ADDRESS_LINE": 1
+    }
+  },
+  "responseShape": [
+    {
+      "repeat": 1,
+      "pack": 1,
+      "responseChars": 2488,
+      "proposalObjects": 9,
+      "headingTrue": 9,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 1,
+      "pack": 2,
+      "responseChars": 1869,
+      "proposalObjects": 7,
+      "headingTrue": 7,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 1,
+      "pack": 3,
+      "responseChars": 1616,
+      "proposalObjects": 6,
+      "headingTrue": 6,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 1,
+      "pack": 4,
+      "responseChars": 1687,
+      "proposalObjects": 6,
+      "headingTrue": 6,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 1,
+      "pack": 5,
+      "responseChars": 4567,
+      "proposalObjects": 15,
+      "headingTrue": 15,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 1,
+      "pack": 6,
+      "responseChars": 548,
+      "proposalObjects": 2,
+      "headingTrue": 2,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 2,
+      "pack": 1,
+      "responseChars": 2488,
+      "proposalObjects": 9,
+      "headingTrue": 9,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 2,
+      "pack": 2,
+      "responseChars": 2122,
+      "proposalObjects": 8,
+      "headingTrue": 8,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 2,
+      "pack": 3,
+      "responseChars": 1604,
+      "proposalObjects": 6,
+      "headingTrue": 6,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 2,
+      "pack": 4,
+      "responseChars": 1687,
+      "proposalObjects": 6,
+      "headingTrue": 6,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 2,
+      "pack": 5,
+      "responseChars": 20902,
+      "proposalObjects": 80,
+      "headingTrue": 80,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 2,
+      "pack": 6,
+      "responseChars": 548,
+      "proposalObjects": 2,
+      "headingTrue": 2,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 3,
+      "pack": 1,
+      "responseChars": 2484,
+      "proposalObjects": 9,
+      "headingTrue": 9,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 3,
+      "pack": 2,
+      "responseChars": 2122,
+      "proposalObjects": 8,
+      "headingTrue": 8,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 3,
+      "pack": 3,
+      "responseChars": 1604,
+      "proposalObjects": 6,
+      "headingTrue": 6,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 3,
+      "pack": 4,
+      "responseChars": 1687,
+      "proposalObjects": 6,
+      "headingTrue": 6,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 3,
+      "pack": 5,
+      "responseChars": 4863,
+      "proposalObjects": 16,
+      "headingTrue": 16,
+      "headingFalse": 0
+    },
+    {
+      "repeat": 3,
+      "pack": 6,
+      "responseChars": 548,
+      "proposalObjects": 2,
+      "headingTrue": 2,
+      "headingFalse": 0
+    }
+  ],
+  "providerParameters": {
+    "model": "qwen/qwen3.7-flash",
+    "temperature": 0,
+    "reasoningEffort": "none",
+    "responseFormat": "json_object",
+    "topP": "NOT_SENT",
+    "topK": "NOT_SENT",
+    "seed": "NOT_SENT",
+    "providerRoute": "NOT_RECORDED",
+    "persistedInRunArtifact": false,
+    "note": "Read from the transport that issued the calls, which sends these values on every request, so all three repeats used them. The run artifact itself did not persist them. temperature=0 did not make the provider deterministic: four of six packs returned byte-identical replies across all three repeats and pack 5 did not."
+  },
+  "statelessness": {
+    "requestBytesIdenticalAcrossRepeats": true,
+    "evidence": "Every pack's request hash is equal across all three repeats (inputEquivalence above). A packet is composed in CanonicalSemanticEngine.ComposeSegments from the source evidence window alone; replies are appended to RawResponses and never read back into a later packet, and the classifier is called once per segment with no conversation state. Had pack 5's reply reached pack 6's request, pack 6's bytes would differ in repeat 2, where that reply was four times longer. They do not."
+  },
+  "placementCalls": {
+    "semanticExtractionCallsPerRepeat": 6,
+    "placementCallsTriggered": {
+      "repeat1": 1,
+      "repeat2": 1,
+      "repeat3": 1
+    },
+    "totalCallsIfReplayedWithProvider": {
+      "repeat1": 7,
+      "repeat2": 7,
+      "repeat3": 7
+    },
+    "measuredBy": "offline replay of the captured replies through the production adapter; FrozenReplyClassifier.CallsBeyondRecording counts what a provider would have been asked.",
+    "note": "Unreachable during the frozen run: DOC-0252 materialized no headings then, so the placement pass had nothing to place. The 21-call figure describes extraction only and is not a budget for a future run."
+  },
+  "goldStability": {
+    "foundInAllThree": 35,
+    "foundOnlyInRepeat2": [
+      {
+        "identity": "L0519:S0:0-6",
+        "text": "Agenda"
+      }
+    ],
+    "missedOnlyInRepeat2": [],
+    "missedInAllThree": [
+      {
+        "identity": "L0107:S0:0-39",
+        "text": "Commonwealth of Independent States (CIS"
+      },
+      {
+        "identity": "L0377:S0:0-84",
+        "text": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP"
+      },
+      {
+        "identity": "L0540:S0:0-35",
+        "text": "SESSION V: Current Research (Cont’d"
+      },
+      {
+        "identity": "L0576:S0:0-41",
+        "text": "ICP Inter-Agency Coordination Group (IACG"
+      }
+    ]
+  }
+}
