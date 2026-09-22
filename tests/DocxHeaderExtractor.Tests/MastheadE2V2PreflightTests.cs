@@ -35,6 +35,22 @@ public sealed class MastheadE2V2PreflightTests
     private const string E1PromptSha256 =
         "fb46d62cb7ddbb469d56a54f3c90e37d955c8fce85b8f75257ac19a14b2c64fa";
 
+    // Two different byte authorities, kept apart on purpose. The evidence packet is the user
+    // message and is identical in every arm, which is what proves packing did not move. The
+    // provider input is what is actually sent - system prompt and user message together - and it
+    // must differ per arm, because the clause lives in the prompt. Calling the first one a request
+    // hash is what made this preflight's lineage ambiguous.
+    private const string E1ProviderPack005Sha256 =
+        "173a5172a58018ac616b4b06c79f20c6f314db214cc406610da2937fe03b1977";
+    private const string E1ProviderPack006Sha256 =
+        "ac7f6905cfcf5377c92241d089815ab29bc4bb6db0fc40b17e67a953c0dbeec7";
+    private const string E1ProviderPlanSha256 =
+        "d788652788771cc6998fd5d94d531d07e939599bab2ae4b59b702aca7b3d037d";
+    private const string EvidencePacket005Sha256 =
+        "8f3b430a78608bb10d62fb3655d2742b236470b5f228967f6fd8b328896d8c16";
+    private const string EvidencePacket006Sha256 =
+        "6d867a0d836ba0fbbe5f041fc046fc932fe2fea7f23f100f7f0a59301048cff0";
+
     private static readonly string[] TargetPacks =
     [
         "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
@@ -105,12 +121,29 @@ public sealed class MastheadE2V2PreflightTests
         var baselineRequests = Compose(plan, CanonicalSemanticExperiment.Baseline);
         Assert.Equal(baselineRequests.Values, requests.Values);
 
-        var requestHashes = requests.ToDictionary(
+        // Authority 1: the evidence packet, i.e. the user message alone. Identical across all arms.
+        var evidenceHashes = requests.ToDictionary(
             pair => pair.Key.Split(':')[1],
             pair => CanonicalSemanticRequestComposer.Hash(pair.Value),
             StringComparer.Ordinal);
-        var planHash = CanonicalSemanticRequestComposer.Hash(
-            string.Join("\u0000", requests.Values.Select(CanonicalSemanticRequestComposer.Hash)));
+        Assert.Equal(EvidencePacket005Sha256, evidenceHashes["PACK_005"]);
+        Assert.Equal(EvidencePacket006Sha256, evidenceHashes["PACK_006"]);
+
+        // Authority 2: the bytes that actually reach the provider, composed exactly as
+        // CanonicalSemanticPdfAuthorityAdapter reserves them before transport.
+        var providerHashes = ProviderInputHashes(requests, e2);
+        var planHash = ProviderPlanHash(requests, e2);
+        var baselineProviderHashes = ProviderInputHashes(baselineRequests, baseline);
+        var baselineProviderPlan = ProviderPlanHash(baselineRequests, baseline);
+
+        // The same evidence under a different prompt must produce different provider input, or the
+        // arm would not be distinguishable on the wire at all.
+        Assert.NotEqual(baselineProviderHashes["PACK_005"], providerHashes["PACK_005"]);
+        Assert.NotEqual(baselineProviderHashes["PACK_006"], providerHashes["PACK_006"]);
+        Assert.NotEqual(baselineProviderPlan, planHash);
+        Assert.NotEqual(E1ProviderPack005Sha256, providerHashes["PACK_005"]);
+        Assert.NotEqual(E1ProviderPack006Sha256, providerHashes["PACK_006"]);
+        Assert.NotEqual(E1ProviderPlanSha256, planHash);
 
         // ---- §5 known-Gold safety, over every materialized claim in the corpus ----------------------
         var goldRisk = AssessGoldRisk();
@@ -200,15 +233,28 @@ public sealed class MastheadE2V2PreflightTests
                 contractSha256 = V2ContractSha256,
                 packingPolicy = SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1.PolicyId,
                 targetPacks = TargetPacks,
-                pack005RequestSha256 = requestHashes["PACK_005"],
-                pack006RequestSha256 = requestHashes["PACK_006"],
-                providerModelInputPlanSha256 = planHash,
-                repeatByteEquivalent = true,
+                evidencePacket005Sha256 = evidenceHashes["PACK_005"],
+                evidencePacket006Sha256 = evidenceHashes["PACK_006"],
                 evidencePacketsIdenticalToBaseline = true,
-                sharedWithBaselineAndE1 = "The pack request hashes and this plan hash are the same across "
-                    + "the baseline, E1 and E2, because the request bytes are the evidence packets and the "
-                    + "clause lives in the system prompt. They confirm the packets did not move; they do "
-                    + "not identify an arm. The prompt hash is what distinguishes the arms.",
+                evidencePacketMeaning = "The user message alone. Identical in the baseline, E1 and E2, which "
+                    + "is what proves evidence and packing did not move. It does not identify an arm and is "
+                    + "never a provider request hash.",
+
+                providerInputPack005Sha256 = providerHashes["PACK_005"],
+                providerInputPack006Sha256 = providerHashes["PACK_006"],
+                providerModelInputPlanSha256 = planHash,
+                providerInputMeaning = "The bytes that actually reach the provider - system prompt and user "
+                    + "message together - composed exactly as the adapter reserves them before transport.",
+                providerInputDiffersFromBaseline = true,
+                providerInputDiffersFromE1 = true,
+                baselineProviderInputPlanSha256 = baselineProviderPlan,
+                e1ProviderInputPlanSha256 = E1ProviderPlanSha256,
+                baselineArtifactLabelling = "The v2 baseline preflight recorded 8d360359 under the name "
+                    + "providerModelInputPlanSha256, but that value is the evidence-packet plan, not the "
+                    + "provider-input plan. The baseline's true provider-input plan is the value derived "
+                    + "here. That artifact is historical and is left exactly as it was recorded; the "
+                    + "correction lives here, where the two authorities are named apart.",
+                repeatByteEquivalent = true,
             },
 
             goldSafety = new
@@ -273,6 +319,16 @@ public sealed class MastheadE2V2PreflightTests
                 fresh = captureSlots.All(slot => slot.fresh),
                 slots = captureSlots,
                 rule = "Any collision, reserved or incomplete slot blocks before the provider is contacted.",
+            discriminatedBy = new
+            {
+                evidencePacketHash = "IDENTICAL across baseline, E1 and E2 - cannot discriminate",
+                promptSha256 = "DISTINCT per arm",
+                providerInputHash = "DISTINCT per arm",
+                outputRoot = OutputRoot,
+                note = "The arms write to separate experiment roots and carry distinct prompt and "
+                    + "provider-input hashes in their capture metadata, so identical evidence packet "
+                    + "hashes cannot cause a collision.",
+            },
             },
 
             callPlan = new
@@ -310,6 +366,24 @@ public sealed class MastheadE2V2PreflightTests
                 + "cross-genre cohort this corpus cannot currently supply.",
         });
     }
+
+    /// <summary>
+    /// The provider-bound bytes for each pack: system prompt and user message serialized together,
+    /// exactly as <c>CanonicalSemanticPdfAuthorityAdapter</c> composes them when it reserves a
+    /// capture slot. Hashing the user message alone would describe the evidence, not the request.
+    /// </summary>
+    private static Dictionary<string, string> ProviderInputHashes(
+        Dictionary<string, string> requests, string systemPrompt) =>
+        requests.ToDictionary(
+            pair => pair.Key.Split(':')[1],
+            pair => SemanticAuthorityTransportCall.Sha256Utf8(
+                JsonSerializer.Serialize(new { systemPrompt, userMessage = pair.Value })),
+            StringComparer.Ordinal);
+
+    private static string ProviderPlanHash(Dictionary<string, string> requests, string systemPrompt) =>
+        CanonicalSemanticRequestComposer.Hash(string.Join(
+            "\u0000", TargetPacks.Select(pack => SemanticAuthorityTransportCall.Sha256Utf8(
+                JsonSerializer.Serialize(new { systemPrompt, userMessage = requests[pack] })))));
 
     private static Dictionary<string, string> Compose(
         PdfStructuredSourceAuthority plan, CanonicalSemanticExperiment experiment)

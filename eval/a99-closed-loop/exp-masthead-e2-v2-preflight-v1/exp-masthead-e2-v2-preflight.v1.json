@@ -54,12 +54,20 @@
       "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
       "COHERENT_REGION_SEGMENTATION_V1:PACK_006"
     ],
-    "pack005RequestSha256": "8f3b430a78608bb10d62fb3655d2742b236470b5f228967f6fd8b328896d8c16",
-    "pack006RequestSha256": "6d867a0d836ba0fbbe5f041fc046fc932fe2fea7f23f100f7f0a59301048cff0",
-    "providerModelInputPlanSha256": "8d3603598358acaf0fae53624202f0658bbf6f699aff891e8b263360919d13f2",
-    "repeatByteEquivalent": true,
+    "evidencePacket005Sha256": "8f3b430a78608bb10d62fb3655d2742b236470b5f228967f6fd8b328896d8c16",
+    "evidencePacket006Sha256": "6d867a0d836ba0fbbe5f041fc046fc932fe2fea7f23f100f7f0a59301048cff0",
     "evidencePacketsIdenticalToBaseline": true,
-    "sharedWithBaselineAndE1": "The pack request hashes and this plan hash are the same across the baseline, E1 and E2, because the request bytes are the evidence packets and the clause lives in the system prompt. They confirm the packets did not move; they do not identify an arm. The prompt hash is what distinguishes the arms."
+    "evidencePacketMeaning": "The user message alone. Identical in the baseline, E1 and E2, which is what proves evidence and packing did not move. It does not identify an arm and is never a provider request hash.",
+    "providerInputPack005Sha256": "af9edf0563601bd7281a0dfd4c05e31ee2bc46c7c23672a090ffbcf9302b258b",
+    "providerInputPack006Sha256": "93292c853c1e65da4820cbde6095adcacf5bc29c8fab6f2b5085a4a72438abb9",
+    "providerModelInputPlanSha256": "349724f59801c696d77ad394e36e2880d2cb5590375c1ef11aa9debbe66626be",
+    "providerInputMeaning": "The bytes that actually reach the provider - system prompt and user message together - composed exactly as the adapter reserves them before transport.",
+    "providerInputDiffersFromBaseline": true,
+    "providerInputDiffersFromE1": true,
+    "baselineProviderInputPlanSha256": "c0348ca82bf7cbccc1d7cd3222951754989752410a5260724941f4b3ffc0f45e",
+    "e1ProviderInputPlanSha256": "d788652788771cc6998fd5d94d531d07e939599bab2ae4b59b702aca7b3d037d",
+    "baselineArtifactLabelling": "The v2 baseline preflight recorded 8d360359 under the name providerModelInputPlanSha256, but that value is the evidence-packet plan, not the provider-input plan. The baseline's true provider-input plan is the value derived here. That artifact is historical and is left exactly as it was recorded; the correction lives here, where the two authorities are named apart.",
+    "repeatByteEquivalent": true
   },
   "goldSafety": {
     "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
@@ -245,7 +253,14 @@
         "fresh": true
       }
     ],
-    "rule": "Any collision, reserved or incomplete slot blocks before the provider is contacted."
+    "rule": "Any collision, reserved or incomplete slot blocks before the provider is contacted.",
+    "discriminatedBy": {
+      "evidencePacketHash": "IDENTICAL across baseline, E1 and E2 - cannot discriminate",
+      "promptSha256": "DISTINCT per arm",
+      "providerInputHash": "DISTINCT per arm",
+      "outputRoot": "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252",
+      "note": "The arms write to separate experiment roots and carry distinct prompt and provider-input hashes in their capture metadata, so identical evidence packet hashes cannot cause a collision."
+    }
   },
   "callPlan": {
     "repeats": 3,
