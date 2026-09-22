@@ -50,7 +50,15 @@ public sealed record CanonicalSemanticProposal(
     [property: JsonPropertyName("occurrence")] int? Occurrence = null,
     [property: JsonPropertyName("leftExactContext")] string? LeftExactContext = null,
     [property: JsonPropertyName("rightExactContext")] string? RightExactContext = null,
-    [property: JsonPropertyName("selectionMode")] string? SelectionMode = null);
+    [property: JsonPropertyName("selectionMode")] string? SelectionMode = null,
+    // The complete ordered tuple a structured-coordinate contract's reply carries, and the only
+    // thing that identifies such a claim: a heading occupying part of one atom and a heading
+    // spanning two are different claims that no scalar alias can tell apart. Null for contracts
+    // that do not issue this shape, and omitted from serialization when null so every artifact
+    // written under the legacy shape keeps its bytes.
+    [property: JsonPropertyName("sourceParts")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    IReadOnlyList<SemanticSourcePart>? SourceParts = null);
 
 public static class CanonicalSemanticSelectionMode
 {

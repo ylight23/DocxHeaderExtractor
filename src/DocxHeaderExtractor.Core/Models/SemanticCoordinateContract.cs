@@ -23,7 +23,8 @@ public sealed record SemanticCoordinateContract(
     string CoordinateSystem,
     string ProtocolVersion,
     Func<object> SchemaFactory,
-    Func<JsonElement, IReadOnlyList<SemanticContractIssue>> Validator)
+    Func<JsonElement, IReadOnlyList<SemanticContractIssue>> Validator,
+    Func<JsonElement, SemanticProposalDecodeResult> Decoder)
 {
     /// <summary>
     /// Text appended to the shared semantic-core prompt to teach this contract's coordinate shape.
@@ -59,6 +60,15 @@ public sealed record SemanticCoordinateContract(
     public IReadOnlyList<SemanticContractIssue> Validate(JsonElement payload) => Validator(payload);
 
     /// <summary>
+    /// Materializes one heading entry of a reply into proposals, under the contract that issued the
+    /// schema the model answered. Paired with <see cref="Schema"/> and <see cref="Validate"/> for
+    /// the same reason they are paired with each other, and learned the hard way: a reply written
+    /// in this contract's shape and read by another contract's decoder does not fail, it comes back
+    /// empty, and an empty measurement is indistinguishable from a model that found nothing.
+    /// </summary>
+    public SemanticProposalDecodeResult Decode(JsonElement heading) => Decoder(heading);
+
+    /// <summary>
     /// DOCX: alias plus an exact UTF-16 span inside it. The span is what a paragraph needs and
     /// what its Gold is written in; nothing about a PDF's segmented rows applies to it.
     /// </summary>
@@ -66,7 +76,8 @@ public sealed record SemanticCoordinateContract(
         "SOURCE_ALIAS_PLUS_UTF16_SPAN",
         CanonicalSemanticContract.ProtocolVersion,
         CanonicalSemanticContract.Schema,
-        CanonicalSemanticContractValidator.ValidateJson);
+        CanonicalSemanticContractValidator.ValidateJson,
+        SemanticProposalDecoder.DecodeAliasScalar);
 
     /// <summary>
     /// PDF, unmigrated documents: alias plus a selection mode over the occurrence it names.
@@ -77,7 +88,8 @@ public sealed record SemanticCoordinateContract(
         "SOURCE_ALIAS_PLUS_SELECTION_MODE",
         CanonicalSemanticContract.ProtocolVersion,
         CanonicalSemanticContract.Schema,
-        CanonicalSemanticContractValidator.ValidateJson);
+        CanonicalSemanticContractValidator.ValidateJson,
+        SemanticProposalDecoder.DecodeAliasScalar);
 
     /// <summary>
     /// PDF, migrated documents only: an ordered list of exact selections over visual-segment
@@ -88,7 +100,8 @@ public sealed record SemanticCoordinateContract(
         "STRUCTURED_SOURCE_PART_TUPLE",
         SemanticSourcePartsContract.ProtocolVersion,
         SemanticSourcePartsContract.Schema,
-        CanonicalSemanticContractValidator.ValidateJson)
+        CanonicalSemanticContractValidator.ValidateJson,
+        SemanticProposalDecoder.DecodeSourceParts)
     {
         PromptClause = PdfStructuredSourcePartsPromptClause.Text,
     };

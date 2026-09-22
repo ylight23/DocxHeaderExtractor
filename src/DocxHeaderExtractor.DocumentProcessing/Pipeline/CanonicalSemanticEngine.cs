@@ -389,14 +389,19 @@ internal static class CanonicalSemanticEngine
                 }
                 foreach (var element in headings.EnumerateArray())
                 {
-                    if (CanonicalSemanticProposalParser.TryParse(element) is not { } proposal)
+                    // Decoded by the contract that issued the schema this reply answers. Reading it
+                    // with any other contract's decoder returns nothing and reports nothing, which
+                    // is how a structured run once scored zero against replies that were correct.
+                    var decoded = Contract.Decode(element);
+                    foreach (var failure in decoded.Failures)
                     {
-                        issues.Add(new SemanticContractIssue("UNREADABLE_PROPOSAL", null,
-                            "A heading entry omitted a required field and was dropped."));
-                        continue;
+                        issues.Add(new SemanticContractIssue(failure.Code, null, failure.Detail));
                     }
-                    parsedProposals.Add(proposal);
-                    if (ownedAliases.Contains(proposal.SourceAlias)) proposals.Add(proposal);
+                    foreach (var proposal in decoded.Proposals)
+                    {
+                        parsedProposals.Add(proposal);
+                        if (ownedAliases.Contains(proposal.SourceAlias)) proposals.Add(proposal);
+                    }
                 }
             }
             return new(proposals, new CanonicalSemanticInferenceTelemetry(classifier.ModelName))
