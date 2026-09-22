@@ -1,0 +1,52 @@
+{
+  "artifactKind": "a99_stage1_membership_transport_incident",
+  "schemaVersion": "a99-stage1-membership-transport-incident-v1",
+  "experimentId": "PHYSICAL_STAGE1_MEMBERSHIP_ONLY",
+  "head": "b2b02630a3dc56cc121231b4be9433b57d4787b9",
+  "status": "ABORTED_BEFORE_ANY_USABLE_EVIDENCE",
+  "authorizedStage1Calls": 6,
+  "stage1CallsSpent": 1,
+  "stage1CallsRemainingUnderThisAuthorization": 5,
+  "stage2CallsSpent": 0,
+  "placementCallsSpent": 0,
+  "usableRepeats": 0,
+  "reauthorizationRequired": true,
+  "reauthorizationReason": "A clean run needs 6 calls. Only 5 remain under this authorization, and the hard cap of 9 was declared a safety ceiling rather than permission.",
+
+  "whatHappened": {
+    "summary": "The first Stage-1 call returned 825 characters of truncated, unparseable JSON, and the runner threw while parsing it before the bytes had reached disk.",
+    "gatesAtTimeOfCall": "all MATCH - protocol, schema baac47da, prompt 433b134d, both provider-input hashes, plan hash 579712aa, packs, repeats, call counts, working tree clean",
+    "notAProviderFault": "The provider answered the request it was given. The request was not the one the real route sends."
+  },
+
+  "rootCause": {
+    "defect": "TRANSPORT_PARAMETER_PARITY_NOT_FROZEN",
+    "detail": "CanonicalSemanticEngine calls BoundaryCutAsync with expectedItemCount set to the pack's owned-alias count. That value sizes the provider's output budget: 96 + owned*128, so PACK_005 with 119 owned aliases gets 15328 tokens. The runner omitted the argument, so it defaulted to 0, fell back to counting \"id\" in the payload, found none, and clamped max_tokens to the 256-token floor. 825 characters is that floor.",
+    "why_the_preflight_missed_it": "The preflight froze and compared request bytes and provider-input bytes, and those were correct. max_tokens is derived from a call argument that is not part of the frozen bytes, so byte parity was necessary but not sufficient to prove the call was the same call.",
+    "secondDefect": "SPENT_CALL_BYTES_NOT_DURABLE",
+    "secondDetail": "The runner parsed each response before writing the capture, so an unparseable reply threw and its bytes were lost. A paid call whose evidence only reaches disk if the whole repeat succeeds is a call that can be lost, and this one was."
+  },
+
+  "evidenceLost": {
+    "rawResponseBytes": 825,
+    "preserved": false,
+    "note": "Only the length and the call ledger survive, in stage1-membership-run.v1.json. The response body itself is gone. This is recorded rather than glossed because a spent call that produced no retained evidence is the thing most worth being honest about."
+  },
+
+  "fixesApplied": {
+    "providerCallsUsed": 0,
+    "changes": [
+      "The runner now passes expectedItemCount exactly as the engine does, from the pack's owned-alias count read back out of the packet it sends.",
+      "The capture is written after every call, before the response is parsed, so no paid call can lose its bytes again.",
+      "An unparseable response is recorded as an integrity fault with its bytes retained, then aborts the run."
+    ]
+  },
+
+  "captureSlots": {
+    "r1": "RESERVED, holds the pre-transport reservation only. It must be recovered explicitly before any rerun; the freshness gate will otherwise refuse to start.",
+    "r2": "never created",
+    "r3": "never created"
+  },
+
+  "stateOfTheExperiment": "No Stage-1 membership evidence exists. Nothing was scored, nothing was concluded, and no Stage-2 request was composed or sent at any point."
+}

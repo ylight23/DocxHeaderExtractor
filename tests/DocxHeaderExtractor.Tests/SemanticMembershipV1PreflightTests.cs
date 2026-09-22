@@ -43,6 +43,18 @@ public sealed class SemanticMembershipV1PreflightTests
 
     private const string Model = "qwen/qwen3.7-flash";
 
+    /// <summary>
+    /// The capture slots exactly as this preflight observed them before authorization. Recorded
+    /// rather than recomputed, so the artifact keeps stating the condition that justified the
+    /// authorization instead of drifting to describe what a later run left in those directories.
+    /// </summary>
+    private static readonly object[] FrozenPreflightSlots =
+    [
+        new { repeat = 1, directoryExists = false, existingFiles = Array.Empty<string>() },
+        new { repeat = 2, directoryExists = false, existingFiles = Array.Empty<string>() },
+        new { repeat = 3, directoryExists = false, existingFiles = Array.Empty<string>() },
+    ];
+
     private static readonly string[] TargetPacks =
     [
         "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
@@ -488,8 +500,11 @@ public sealed class SemanticMembershipV1PreflightTests
                 identities = new
                 {
                     required = 6,
+                    // Frozen as observed when authorization was granted, before any call existed. A
+                    // later reader is told what justified the authorization, not what the run left
+                    // behind afterwards.
                     fresh = true,
-                    slots = captureSlots,
+                    slots = FrozenPreflightSlots,
                     distinctFromPredecessors = "separate experiment root, and a prompt and provider-input "
                         + "hash shared with no other arm",
                 },
