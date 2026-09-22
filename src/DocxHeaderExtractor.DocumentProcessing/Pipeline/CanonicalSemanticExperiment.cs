@@ -36,7 +36,19 @@ internal sealed record CanonicalSemanticExperiment(
     public static readonly CanonicalSemanticExperiment NonStructuralMetadataConstrained =
         new(false, false) { ConstrainNonStructuralMetadata = true };
 
-    public string Name => ConstrainNonStructuralMetadata
+    /// <summary>
+    /// EXP_MASTHEAD_METADATA_E2. Not a second category list: one invariant, that heading membership
+    /// is decided before placement and that parent-node:NONE cannot admit a span which establishes
+    /// no structural unit. Separately switchable from E1 so the two are never measured together.
+    /// </summary>
+    public bool RequireMembershipBeforePlacement { get; init; }
+
+    public static readonly CanonicalSemanticExperiment MembershipBeforePlacement =
+        new(false, false) { RequireMembershipBeforePlacement = true };
+
+    public string Name => RequireMembershipBeforePlacement
+        ? "E2-membership-before-placement"
+        : ConstrainNonStructuralMetadata
         ? "E1-masthead-metadata"
         : (CarryStructuralAncestors, CommunicatePartialSpan) switch
     {

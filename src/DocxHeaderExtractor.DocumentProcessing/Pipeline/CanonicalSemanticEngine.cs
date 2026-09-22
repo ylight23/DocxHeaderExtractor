@@ -144,6 +144,34 @@ internal static class CanonicalSemanticEngine
         """;
 
     /// <summary>
+    /// EXP_MASTHEAD_METADATA_E2. Where E1 said what metadata is, this says in what order the two
+    /// questions are answered.
+    /// <para>
+    /// E1 named the category and suppressed nothing: all three masthead families survived all three
+    /// repeats. The reasoning it left available was that prominent identifying text might still be
+    /// an accepted label, and that the tree-less relation was somewhere to put it. So this clause
+    /// adds an invariant rather than more categories - eligibility is decided first, and the
+    /// placement value cannot be the reason a span is admitted.
+    /// </para>
+    /// </summary>
+    private const string RawMembershipBeforePlacementClause = """
+
+        Heading eligibility comes before placement. First decide whether the source span itself is
+        an accepted structural label. Report it only if it is either the document's own canonical
+        title, or it opens and names a distinct structural unit at that location.
+
+        A masthead or identification block that merely states or restates the organisation,
+        programme, event, meeting format, date, venue, address, or similar facts about the document
+        or occasion is descriptive metadata, not a new structural unit. This remains true when the
+        block appears at the beginning of an annex, schedule, attachment, or later section: location
+        and visual prominence do not by themselves make the repeated identity a heading.
+
+        Apply parent-node, including NONE, only after the span has independently passed heading
+        eligibility. parent-node:NONE describes the placement of an already accepted heading; it
+        must never be used to admit text that otherwise establishes no structural unit.
+        """;
+
+    /// <summary>
     /// Normalizes to LF, because a prompt is bytes on the wire and must not depend on how the
     /// source file happened to be checked out.
     /// <para>
@@ -177,11 +205,16 @@ internal static class CanonicalSemanticEngine
     internal static string NonStructuralMetadataClause { get; } =
         NormalizePromptLineEndings(RawNonStructuralMetadataClause);
 
+    /// <summary>The EXP_MASTHEAD_METADATA_E2 clause, line endings settled before it is appended.</summary>
+    internal static string MembershipBeforePlacementClause { get; } =
+        NormalizePromptLineEndings(RawMembershipBeforePlacementClause);
+
     /// <summary>The prompt this run sends. One clause per intervention, appended, never rewritten.</summary>
     internal static string SystemPromptFor(CanonicalSemanticExperiment experiment)
     {
         var prompt = experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
-        return experiment.ConstrainNonStructuralMetadata ? prompt + NonStructuralMetadataClause : prompt;
+        if (experiment.ConstrainNonStructuralMetadata) prompt += NonStructuralMetadataClause;
+        return experiment.RequireMembershipBeforePlacement ? prompt + MembershipBeforePlacementClause : prompt;
     }
 
     /// <summary>
@@ -203,6 +236,8 @@ internal static class CanonicalSemanticEngine
         var prompt = experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
         if (experiment.ConstrainNonStructuralMetadata)
             prompt += NonStructuralMetadataClause;
+        if (experiment.RequireMembershipBeforePlacement)
+            prompt += MembershipBeforePlacementClause;
         return contract.PromptClause is null ? prompt : prompt + contract.PromptClause;
     }
 

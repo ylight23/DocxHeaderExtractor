@@ -1,0 +1,273 @@
+{
+  "artifactKind": "a99_exp_masthead_e2_v2_preflight",
+  "schemaVersion": "a99-exp-masthead-e2-v2-preflight-v1",
+  "experimentId": "EXP_MASTHEAD_METADATA_E2_V2",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "providerAuthorized": false,
+  "causalPredecessors": {
+    "baselineV2": {
+      "scores": [
+        "R1 14/4/0",
+        "R2 14/4/0",
+        "R3 14/6/0"
+      ],
+      "promptSha256": "6340d1daf507a3d2bf5ce6fbef2b5d7b61735c0e0621a62f8e885ad8b2d8a66e"
+    },
+    "e1V2": {
+      "scores": [
+        "R1 14/6/0",
+        "R2 14/6/0",
+        "R3 14/4/0"
+      ],
+      "promptSha256": "fb46d62cb7ddbb469d56a54f3c90e37d955c8fce85b8f75257ac19a14b2c64fa",
+      "result": "MASTHEAD_POLICY_INSUFFICIENT",
+      "mastheadFamilySuppressions": 0,
+      "mastheadFamilyPersistences": 9,
+      "rootToNoneReproduced": false,
+      "roleRegressionAttributed": 0
+    },
+    "note": "Frozen as they stand. Nothing here rewrites them."
+  },
+  "hypothesis": {
+    "id": "MEMBERSHIP_BEFORE_PLACEMENT",
+    "statement": "Separating heading eligibility from placement, and forbidding parent-node:NONE from admitting an otherwise ineligible span, will suppress masthead metadata without changing Gold heading membership.",
+    "whyNotMoreCategories": "E1 already named the category and suppressed nothing. What it left available was the reasoning that prominent identifying text might still be an accepted label, with the tree-less relation as somewhere to put it.",
+    "notOptionC": "An invariant stated in the prompt, not enforced by a contract. Whether stating it suffices is exactly what this measures."
+  },
+  "promptAuthority": {
+    "e2PromptSha256": "93cead4cb4e8d3dee5018b789a1d95a2807b69bfa81ac5f85726de3aba0682ed",
+    "clauseChars": 955,
+    "clauseSha256": "1cfbeaf20fd024cf50b446ac911e274c6970c9244cb85ad34fb8eb534b9fc734",
+    "composition": "BASE_SYSTEM_PROMPT -> E2_ELIGIBILITY_CLAUSE -> V2_COORDINATE_CLAUSE",
+    "precedesCoordinateClause": true,
+    "combinedWithE1": false,
+    "relationOntologyModified": false,
+    "documentSpecificWording": false
+  },
+  "requestAuthority": {
+    "document": "DOC-0252",
+    "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "contractSha256": "565bdc87749a1ce1246238cacd1eb7d550a19939dc9e42d23e76ab3a46a8b0ea",
+    "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+    "targetPacks": [
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_006"
+    ],
+    "pack005RequestSha256": "8f3b430a78608bb10d62fb3655d2742b236470b5f228967f6fd8b328896d8c16",
+    "pack006RequestSha256": "6d867a0d836ba0fbbe5f041fc046fc932fe2fea7f23f100f7f0a59301048cff0",
+    "providerModelInputPlanSha256": "8d3603598358acaf0fae53624202f0658bbf6f699aff891e8b263360919d13f2",
+    "repeatByteEquivalent": true,
+    "evidencePacketsIdenticalToBaseline": true,
+    "sharedWithBaselineAndE1": "The pack request hashes and this plan hash are the same across the baseline, E1 and E2, because the request bytes are the evidence packets and the clause lives in the system prompt. They confirm the packets did not move; they do not identify an arm. The prompt hash is what distinguishes the arms."
+  },
+  "goldSafety": {
+    "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "materializedClaims": 48,
+    "knownGoldTpsAtRisk": 0,
+    "targetGoldClaims": 14,
+    "targetGoldTpsAtRisk": 0,
+    "targetGold": [
+      {
+        "Identity": "L0400:S0:0-44",
+        "Role": "AgendaItem",
+        "Text": "4 Treatment of Negative Expenditures in ICP",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0420:S0:0-40",
+        "Role": "AgendaItem",
+        "Text": "5 Fine Tuning Global Linking Procedures",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0470:S0:0-45",
+        "Role": "AgendaItem",
+        "Text": "6 Improving Reliability of Price Comparisons",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0507:S0:0-30",
+        "Role": "MeetingSection",
+        "Text": "Session VI: Any Other Business",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0519:S0:0-6",
+        "Role": "SectionHeading",
+        "Text": "Agenda",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0520:S0:0-51",
+        "Role": "MeetingSection",
+        "Text": "DAY 1: Friday March 7 2025 | Chair: Paul SCHREYER",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0521:S0:0-38",
+        "Role": "MeetingSection",
+        "Text": "SESSION I: Welcome and Opening Remarks",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0523:S0:0-50",
+        "Role": "MeetingSection",
+        "Text": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0526:S0:0-65",
+        "Role": "MeetingSection",
+        "Text": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0531:S0:0-64",
+        "Role": "MeetingSection",
+        "Text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0536:S0:0-27",
+        "Role": "MeetingSection",
+        "Text": "SESSION V: Current Research",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0539:S0:0-51",
+        "Role": "MeetingSection",
+        "Text": "DAY 2: Saturday March 8 2025 | Chair: Prasada RAO",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0540:S0:0-36",
+        "Role": "MeetingSection",
+        "Text": "SESSION V: Current Research (Cont’d)",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      },
+      {
+        "Identity": "L0553:S0:0-19",
+        "Role": "MeetingSection",
+        "Text": "SESSION VI: Closing",
+        "Admission": "B-opens-and-names-a-structural-unit"
+      }
+    ],
+    "admissionTest": "Each claim must satisfy A (the document's canonical title) or B (opens and names a structural unit at that location) - the clause's own two admissions.",
+    "crossGenreNoneSafety": "NOT_ESTABLISHED",
+    "crossGenreNote": "48 of 3955 approved headings are materialized corpus-wide. This checks the claims that exist; it is not a corpus-wide safety proof."
+  },
+  "targetFamilies": [
+    {
+      "Family": "international-program-and-tag",
+      "Aliases": [
+        "L0513:S0",
+        "L0514:S0"
+      ],
+      "baselineV2": "PRESENT 3/3",
+      "e1V2": "PRESENT 3/3",
+      "desiredEffect": "family-level suppression"
+    },
+    {
+      "Family": "hybrid-meeting",
+      "Aliases": [
+        "L0515:S0"
+      ],
+      "baselineV2": "PRESENT 3/3",
+      "e1V2": "PRESENT 3/3",
+      "desiredEffect": "family-level suppression"
+    },
+    {
+      "Family": "date-venue-address",
+      "Aliases": [
+        "L0516:S0",
+        "L0517:S0",
+        "L0518:S0"
+      ],
+      "baselineV2": "PRESENT 3/3",
+      "e1V2": "PRESENT 3/3",
+      "desiredEffect": "family-level suppression"
+    }
+  ],
+  "controls": {
+    "nonTarget": [
+      {
+        "alias": "L0550:S0",
+        "role": "schedule item",
+        "rule": "tracked, not targeted; success may not be claimed from suppressing it"
+      },
+      {
+        "alias": "L0396:S0",
+        "role": "body proposition and source-grounding control",
+        "rule": "tracked, not targeted; TextNotInAtom must remain a visible refusal"
+      }
+    ],
+    "relation": {
+      "aliases": [
+        "L0400:S0",
+        "L0420:S0",
+        "L0470:S0",
+        "L0507:S0"
+      ],
+      "baselineV2": "ROOT in all repeats",
+      "e1V2": "ROOT_TO_NONE not reproduced",
+      "predeclared": "Any systematic ROOT->NONE caused by E2 is regression evidence."
+    }
+  },
+  "outOfScope": {
+    "semanticRoleOntology": "The free-text role field does not intersect Gold's ontology (MeetingSection, AgendaItem, SectionHeading). Not fixed here, not constrained here, and E2 success is not scored from role wording. Recorded for diagnostics only.",
+    "relationSerialization": "parent-node:parent-node:... appears 8 times in the baseline. Not repaired here.",
+    "sourceGrounding": "L0396 alias/text misalignment stays a control. The canonicalizer is not weakened and any TextNotInAtom stays visible as a refusal."
+  },
+  "captureIdentities": {
+    "required": 6,
+    "fresh": true,
+    "slots": [
+      {
+        "repeat": 1,
+        "directoryExists": false,
+        "slotReserved": false,
+        "existingFiles": [],
+        "fresh": true
+      },
+      {
+        "repeat": 2,
+        "directoryExists": false,
+        "slotReserved": false,
+        "existingFiles": [],
+        "fresh": true
+      },
+      {
+        "repeat": 3,
+        "directoryExists": false,
+        "slotReserved": false,
+        "existingFiles": [],
+        "fresh": true
+      }
+    ],
+    "rule": "Any collision, reserved or incomplete slot blocks before the provider is contacted."
+  },
+  "callPlan": {
+    "repeats": 3,
+    "targetPacksPerRepeat": 2,
+    "primaryProviderCalls": 6,
+    "placementCalls": 0,
+    "proposedHardCap": 9,
+    "previousUnusedAllowance": {
+      "baselineV2": 3,
+      "e1V2": 3,
+      "transferable": false,
+      "note": "Historical. Neither authorizes anything here."
+    }
+  },
+  "successCriteria": {
+    "declaredBefore": "any output of this arm exists",
+    "supported": "masthead family presence materially decreases, all 14 target Gold headings remain semantically proposed and bound, no new systematic Gold relation regression, and no comparable replacement false-positive family appears",
+    "insufficient": "masthead families substantially persist while Gold behaviour stays intact",
+    "regressive": "Gold membership or systematic relation behaviour degrades",
+    "mixed": "suppression together with regression",
+    "notJudgedBy": "the false-positive total alone, which mixes three mechanisms"
+  },
+  "ifInsufficient": "Continuing to add prose would be low yield. The next step would be an explicit two-stage decision contract rather than E3 and E4 wording.",
+  "conclusionScope": "DOC-0252 causal evidence. Freezing this clause production-wide would need a cross-genre cohort this corpus cannot currently supply."
+}
