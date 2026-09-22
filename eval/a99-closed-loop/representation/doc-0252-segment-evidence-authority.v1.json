@@ -10,6 +10,13 @@
   "canonicalGoldMigrated": false,
   "note": "This is what a migration would switch to, measured before switching. The active lane still builds its universe from parser blocks.",
   "whyFourHashes": "A universe hash says what a coordinate is. It does not say what the model is told about it, nor how that is cut into requests. All three can change while the first stays still, which is how a preflight comes back green over an input nobody checked.",
+  "lineage": {
+    "note": "Where this candidate sits. Canonical Gold was frozen against the active universe, which is still what production builds; nothing here has replaced it.",
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "goldFrozenAgainstSourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "activeRuntimeSourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "candidateReplacesActive": false
+  },
   "hashes": {
     "sourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
     "modelVisibleEvidenceSha256": "5a2ab0477ee9c31648f7862b077a4c92fab070ecde1446321123c63c7637687f",

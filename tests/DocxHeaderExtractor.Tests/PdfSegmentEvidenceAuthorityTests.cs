@@ -51,6 +51,21 @@ public sealed class PdfSegmentEvidenceAuthorityTests
         Assert.All(plan.Evidence, item => Assert.Contains(item.SourceAlias, catalog));
         Assert.All(plan.Evidence, item => Assert.False(string.IsNullOrWhiteSpace(item.ExactSourceText)));
         Assert.Empty(plan.Packs.Where(pack => pack.OwnedAliases.Count == 0));
+
+        // Both keys reach the same atom, and they are one namespace rather than two: the evidence
+        // is addressed by the alias, the context by the source id, and every atom has exactly one
+        // of each. A layout block id is never either of them - that separation is what stops the
+        // old coordinate authority from reappearing through a lookup that happens to succeed.
+        var sourceIds = plan.Atoms.Select(atom => atom.SourceId).ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(Atoms, sourceIds.Count);
+        Assert.Equal(
+            plan.Atoms.Select(atom => atom.SourceId),
+            plan.Evidence.Select(item => item.SourceId));
+        Assert.All(plan.LayoutBlockByAtom.Values, block =>
+        {
+            Assert.DoesNotContain(block, catalog);
+            Assert.DoesNotContain(block, sourceIds);
+        });
     }
 
     [Fact]
@@ -215,6 +230,15 @@ public sealed class PdfSegmentEvidenceAuthorityTests
 
             whyFourHashes = "A universe hash says what a coordinate is. It does not say what the model is told about it, nor how that is cut into requests. All three can change while the first stays still, which is how a preflight comes back green over an input nobody checked.",
 
+            lineage = new
+            {
+                note = "Where this candidate sits. Canonical Gold was frozen against the active universe, which is still what production builds; nothing here has replaced it.",
+                sourceSha256 = GoldSource(),
+                goldFrozenAgainstSourceUniverseSha256 = GoldUniverse(),
+                activeRuntimeSourceUniverseSha256 = ActiveUniverse(),
+                candidateReplacesActive = false,
+            },
+
             hashes = new
             {
                 sourceAliasUniverseSha256 = plan.SourceAliasUniverseHash,
@@ -299,6 +323,27 @@ public sealed class PdfSegmentEvidenceAuthorityTests
     }
 
     // ---- helpers ----------------------------------------------------------------------------------
+
+    /// <summary>The source universe canonical Gold was frozen against, read from Gold itself.</summary>
+    private static string GoldUniverse()
+    {
+        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        return gold.RootElement.GetProperty("occurrence").GetProperty("sourceUniverseSha256").GetString()!;
+    }
+
+    private static string GoldSource()
+    {
+        using var document = CanonicalGoldRegistry.Resolve("DOC-0252");
+        return document.RootElement.GetProperty("source").GetProperty("sourceSha256").GetString()!;
+    }
+
+    /// <summary>What production builds today, recomputed rather than quoted.</summary>
+    private static string ActiveUniverse()
+    {
+        using var document = PdfDocument.Open(Doc0252Path);
+        var lines = PdfLineExtraction.ExtractLines(document, PdfLineGrouping.MidpointV1);
+        return PdfCanonicalSourceUniverseBuilder.Build(Doc0252Path, lines).SourceUniverseSha256;
+    }
 
     private static string Doc0252Path => System.IO.Path.Combine(
         TestRepository.Root(), Doc0252.Replace('/', System.IO.Path.DirectorySeparatorChar));
