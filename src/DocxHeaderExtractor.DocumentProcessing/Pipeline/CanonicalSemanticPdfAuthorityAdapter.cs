@@ -1,3 +1,4 @@
+using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
@@ -65,6 +66,10 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         experimentGate?.EnsureLiveSemanticContract();
         experimentGate?.EnsureLiveAuthorityProfile(effectiveProfile.ProfileId);
         experimentGate?.EnsureLivePackingPolicy(effectivePackingPolicy.PolicyId);
+        if (replayCapture is not null &&
+            !string.Equals(replayCapture.Metadata.SourceUniverseHash, universe.SourceUniverseSha256,
+                StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException("REPLAY_CAPTURE_SOURCE_UNIVERSE_HASH_MISMATCH");
         if (universe.ParserLineCount == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer");
         if (universe.Blocks.Count == 0)
@@ -147,6 +152,32 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
                 experiment ?? CanonicalSemanticExperiment.Baseline,
                 packingPolicy,
                 selectedPackIds);
+            if (replayCapture is not null)
+            {
+                var systemPrompt = CanonicalSemanticEngine.SystemPromptFor(
+                    profile.Contract, experiment ?? CanonicalSemanticExperiment.Baseline);
+                var plannedCalls = canonicalModel.ComposeRequests(input)
+                    .Select((segment, index) =>
+                    {
+                        var requestPayload = JsonSerializer.Serialize(new
+                        {
+                            systemPrompt,
+                            userMessage = segment.RequestBytes,
+                        });
+                        return new SemanticAuthorityCaptureCallIdentity(
+                            index + 1,
+                            "semantic",
+                            segment.PackId,
+                            SemanticAuthorityTransportCall.Sha256Utf8(requestPayload),
+                            System.Text.Encoding.UTF8.GetByteCount(requestPayload));
+                    })
+                    .ToArray();
+                replayCapture = replayCapture.Reserve(
+                    input.DocumentId ?? throw new InvalidOperationException("REPLAY_CAPTURE_DOCUMENT_ID_MISSING"),
+                    input.SourceSha256,
+                    profile.Contract.SchemaHash(),
+                    plannedCalls);
+            }
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
                 input, canonicalModel,
                 requestId: $"pdf:{Path.GetFileNameWithoutExtension(pdfPath)}",

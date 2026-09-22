@@ -1,0 +1,40 @@
+{
+  "artifactKind": "a99_structured_v2_target_baseline_capture_incident",
+  "schemaVersion": "a99-structured-v2-target-baseline-capture-incident-v1",
+  "baselineId": "STRUCTURED_V2_TARGET_BASELINE",
+  "documentId": "DOC-0252",
+  "authorizedCommit": "b62a412",
+  "profile": "STRUCTURED_SOURCE_PARTS_V2",
+  "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+  "targetPacks": [
+    "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+    "COHERENT_REGION_SEGMENTATION_V1:PACK_006"
+  ],
+  "authorizedPrimaryCalls": 6,
+  "accidentalDuplicateCalls": 2,
+  "observedProviderCalls": 8,
+  "hardCap": 9,
+  "unusedAllowance": 1,
+  "additionalCallsAuthorized": 0,
+  "officialBaselineCaptures": [
+    "r1",
+    "r2",
+    "r3"
+  ],
+  "officialBaselineCaptureStatus": "REPLAY_COMPLETE",
+  "duplicateAttemptStatus": "REJECTED_BY_CAPTURE_IDENTITY_COLLISION",
+  "duplicateAttemptArtifacts": {
+    "transportCaptureOverwritten": false,
+    "officialCapturesModified": false,
+    "orphanReplayBundlePreserved": true,
+    "runSummaryRecordsAbort": true
+  },
+  "incident": "A duplicate transport attempt was made against the already captured r1 identity. The attempt was rejected after transport identity collision; no official transport capture was overwritten. No further provider call is authorized under this baseline.",
+  "remediation": "Pre-transport atomic capture reservation with crash-preserving slot and fail-closed replay completion.",
+  "providerCallsAfterRemediation": 0,
+  "modelCallsAfterRemediation": 0,
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "promptSha256": "6340d1daf507a3d2bf5ce6fbef2b5d7b61735c0e0621a62f8e885ad8b2d8a66e",
+  "contractSha256": "565bdc87749a1ce1246238cacd1eb7d550a19939dc9e42d23e76ab3a46a8b0ea"
+}

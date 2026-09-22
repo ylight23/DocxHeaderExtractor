@@ -52,6 +52,12 @@ public sealed record SemanticAuthorityTransportCall(
             Convert.ToBase64String(responseBytes));
     }
 
+    public static string Sha256Utf8(string value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+        return Sha256(Encoding.UTF8.GetBytes(value));
+    }
+
     public IReadOnlyList<string> Validate()
     {
         var errors = new List<string>();
