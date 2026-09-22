@@ -1,0 +1,492 @@
+{
+  "artifactKind": "a99_structured_context_packing_preflight",
+  "schemaVersion": "a99-structured-context-packing-preflight-v1",
+  "experimentLineage": "successor to A99-S2P-STRUCTURED-BASELINE-V1; the baseline is not replaced",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "providerAuthorized": false,
+  "hypothesis": {
+    "claim": "The repeat-2 precision collapse is a property of one request's composition, not of the model's instructions. One request owned flowing prose, an agenda laid out as rows, and the opening of an annex; its reply grew from 15 claims to 80 while the other five requests stayed within one claim of each other.",
+    "intervention": "Change where requests begin. Nothing else: same atoms, same evidence, same prompt, same contract, same candidate hints, same binder, same evaluator, same model.",
+    "falsifiable": "If a successor pack derived from old pack 5 still explodes, composition was not the cause and the next thing to test is what the prompt says about repeated structural rows - which this experiment deliberately does not touch, so that the answer means something."
+  },
+  "predecessorAuthority": {
+    "sourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "modelVisibleEvidenceSha256": "5a2ab0477ee9c31648f7862b077a4c92fab070ecde1446321123c63c7637687f",
+    "callPlanSha256": "e532682353ca2ea0c73ec660baedb880fdfdafa9a5de7a6e61b242ddbdb648ed",
+    "providerModelInputPlanSha256": "a73e9e3c1fbeb4a83f1937e864fb310e4a0402b993252b82bb6a741ce4ff7dc3",
+    "status": "BASELINE_PREDECESSOR - these two describe the six-pack partition and the bytes it produced. A successor partition changes both by construction; they remain the identity of the run already scored and are not carried forward as active gates.",
+    "unchangedByThisIntervention": [
+      "SOURCE_ALIAS_UNIVERSE_HASH",
+      "MODEL_VISIBLE_EVIDENCE content universe",
+      "GOLD",
+      "PROMPT",
+      "CONTRACT",
+      "CANDIDATE_HINTS",
+      "BINDER",
+      "EVALUATOR",
+      "MODEL"
+    ],
+    "changedByThisIntervention": [
+      "CALL_PLAN_HASH",
+      "PROVIDER_MODEL_INPUT_PLAN_HASH"
+    ]
+  },
+  "rule": {
+    "id": "COHERENT_REGION_SEGMENTATION_V1",
+    "statement": "A request may not span a sustained change of layout regime or of annex membership. Two signals, both already computed for every atom, and neither derived from this document: (1) layout regime - whether the atom's layout block holds only that atom, which distinguishes a region set as rows from one set as wrapped paragraphs; (2) annex membership - whether the parser's structural scope is an appendix scope. A run shorter than the visible margin is an interruption and stays inside its neighbour. Each segment is then cut into requests by the unchanged ownership ceiling.",
+    "signals": [
+      "layout block cardinality (existing LayoutBlockByAtom)",
+      "structural scope family (existing PdfCandidateContext scope)"
+    ],
+    "constants": {
+      "ownedPerSegment": 120,
+      "minimumSegmentRun": 20,
+      "note": "Both already exist; MinimumSegmentRun reuses VisibleMargin's value rather than adding a tuned threshold."
+    },
+    "forbiddenInputs": [
+      "document id",
+      "file name",
+      "heading text or keywords",
+      "Gold aliases",
+      "known false-positive aliases",
+      "page numbers specific to a document"
+    ],
+    "goldUsedForBoundaries": false
+  },
+  "sourceIntegrity": {
+    "sourceAtomsBefore": 650,
+    "sourceAtomsAfter": 650,
+    "sourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "everyAtomOwnedExactlyOnce": true,
+    "atomsRemoved": 0,
+    "candidateHintsChanged": false,
+    "hintedAtoms": 650,
+    "totalAtoms": 650,
+    "hintNote": "650/650 atoms are hinted today, so the hint separates nothing. Left exactly as it is: changing packing and hints together would make the next result unattributable.",
+    "responseProtocolChanged": false,
+    "responseProtocolNote": "Captured replies carried only isHeading=true entries. The contract permits a positives-only list, so this is recorded rather than corrected here."
+  },
+  "oldPartition": [
+    {
+      "pack": 1,
+      "atoms": 120,
+      "firstAlias": "L0000:S0",
+      "lastAlias": "L0117:S0"
+    },
+    {
+      "pack": 2,
+      "atoms": 120,
+      "firstAlias": "L0118:S0",
+      "lastAlias": "L0237:S0"
+    },
+    {
+      "pack": 3,
+      "atoms": 120,
+      "firstAlias": "L0238:S0",
+      "lastAlias": "L0357:S0"
+    },
+    {
+      "pack": 4,
+      "atoms": 120,
+      "firstAlias": "L0358:S0",
+      "lastAlias": "L0477:S0"
+    },
+    {
+      "pack": 5,
+      "atoms": 120,
+      "firstAlias": "L0478:S0",
+      "lastAlias": "L0570:S0"
+    },
+    {
+      "pack": 6,
+      "atoms": 50,
+      "firstAlias": "L0570:S1",
+      "lastAlias": "L0597:S0"
+    }
+  ],
+  "successorPartition": [
+    {
+      "pack": 1,
+      "atomCount": 38,
+      "atomRange": {
+        "Start": 0,
+        "End": 37
+      },
+      "firstAlias": "L0000:S0",
+      "lastAlias": "L0037:S0",
+      "pageRange": {
+        "first": 1,
+        "last": 2
+      },
+      "regime": "ROW/MAIN",
+      "layoutBlocks": 23,
+      "scopes": {
+        "document_body": 34,
+        "table": 2,
+        "quoted_replacement": 2
+      },
+      "characters": 2987,
+      "predecessorPacks": [
+        1
+      ]
+    },
+    {
+      "pack": 2,
+      "atomCount": 120,
+      "atomRange": {
+        "Start": 38,
+        "End": 157
+      },
+      "firstAlias": "L0038:S0",
+      "lastAlias": "L0155:S0",
+      "pageRange": {
+        "first": 2,
+        "last": 4
+      },
+      "regime": "FLOW/MAIN",
+      "layoutBlocks": 75,
+      "scopes": {
+        "document_body": 112,
+        "table": 6,
+        "quoted_replacement": 2
+      },
+      "characters": 9791,
+      "predecessorPacks": [
+        1,
+        2
+      ]
+    },
+    {
+      "pack": 3,
+      "atomCount": 120,
+      "atomRange": {
+        "Start": 158,
+        "End": 277
+      },
+      "firstAlias": "L0156:S0",
+      "lastAlias": "L0275:S0",
+      "pageRange": {
+        "first": 4,
+        "last": 7
+      },
+      "regime": "FLOW/MAIN",
+      "layoutBlocks": 74,
+      "scopes": {
+        "document_body": 117,
+        "table": 3
+      },
+      "characters": 10830,
+      "predecessorPacks": [
+        2,
+        3
+      ]
+    },
+    {
+      "pack": 4,
+      "atomCount": 120,
+      "atomRange": {
+        "Start": 278,
+        "End": 397
+      },
+      "firstAlias": "L0276:S0",
+      "lastAlias": "L0395:S0",
+      "pageRange": {
+        "first": 7,
+        "last": 10
+      },
+      "regime": "FLOW/MAIN",
+      "layoutBlocks": 88,
+      "scopes": {
+        "document_body": 117,
+        "table": 3
+      },
+      "characters": 10892,
+      "predecessorPacks": [
+        3,
+        4
+      ]
+    },
+    {
+      "pack": 5,
+      "atomCount": 119,
+      "atomRange": {
+        "Start": 398,
+        "End": 516
+      },
+      "firstAlias": "L0396:S0",
+      "lastAlias": "L0514:S0",
+      "pageRange": {
+        "first": 10,
+        "last": 13
+      },
+      "regime": "FLOW/MAIN",
+      "layoutBlocks": 77,
+      "scopes": {
+        "document_body": 112,
+        "quoted_replacement": 4,
+        "table": 3
+      },
+      "characters": 10868,
+      "predecessorPacks": [
+        4,
+        5
+      ]
+    },
+    {
+      "pack": 6,
+      "atomCount": 57,
+      "atomRange": {
+        "Start": 517,
+        "End": 573
+      },
+      "firstAlias": "L0515:S0",
+      "lastAlias": "L0555:S0",
+      "pageRange": {
+        "first": 13,
+        "last": 14
+      },
+      "regime": "ROW/MAIN",
+      "layoutBlocks": 57,
+      "scopes": {
+        "document_body": 37,
+        "table": 20
+      },
+      "characters": 2002,
+      "predecessorPacks": [
+        5
+      ]
+    },
+    {
+      "pack": 7,
+      "atomCount": 54,
+      "atomRange": {
+        "Start": 574,
+        "End": 627
+      },
+      "firstAlias": "L0556:S0",
+      "lastAlias": "L0585:S1",
+      "pageRange": {
+        "first": 15,
+        "last": 15
+      },
+      "regime": "ROW/ANNEX",
+      "layoutBlocks": 51,
+      "scopes": {
+        "appendix": 30,
+        "appendix_table": 24
+      },
+      "characters": 1434,
+      "predecessorPacks": [
+        5,
+        6
+      ]
+    },
+    {
+      "pack": 8,
+      "atomCount": 22,
+      "atomRange": {
+        "Start": 628,
+        "End": 649
+      },
+      "firstAlias": "L0586:S0",
+      "lastAlias": "L0597:S0",
+      "pageRange": {
+        "first": 15,
+        "last": 15
+      },
+      "regime": "ROW/ANNEX",
+      "layoutBlocks": 22,
+      "scopes": {
+        "appendix_table": 11,
+        "appendix": 11
+      },
+      "characters": 336,
+      "predecessorPacks": [
+        6
+      ]
+    }
+  ],
+  "oldPack5": {
+    "atomRange": {
+      "start": 480,
+      "end": 599
+    },
+    "atoms": 120,
+    "splitInto": [
+      {
+        "pack": 5,
+        "atomRange": {
+          "Start": 398,
+          "End": 516
+        },
+        "key": "FLOW/MAIN",
+        "atomsFromOldPack5": 37
+      },
+      {
+        "pack": 6,
+        "atomRange": {
+          "Start": 517,
+          "End": 573
+        },
+        "key": "ROW/MAIN",
+        "atomsFromOldPack5": 57
+      },
+      {
+        "pack": 7,
+        "atomRange": {
+          "Start": 574,
+          "End": 627
+        },
+        "key": "ROW/ANNEX",
+        "atomsFromOldPack5": 26
+      }
+    ]
+  },
+  "oldRepeat2FalsePositiveMapping": {
+    "total": 73,
+    "bySuccessorPack": {
+      "pack1": 1,
+      "pack2": 2,
+      "pack3": 1,
+      "pack4": 2,
+      "pack5": 3,
+      "pack6": 40,
+      "pack7": 24
+    },
+    "note": "Diagnostic only. The captured replies answered the six-pack partition and are not replies to these packs; this says where those source rows now sit, not what the model would say about them."
+  },
+  "goldOverlay": {
+    "claims": 41,
+    "representable": 41,
+    "identitiesChanged": false,
+    "claimsSplitAcrossPacks": 0,
+    "byPack": {
+      "pack1": 4,
+      "pack2": 7,
+      "pack3": 5,
+      "pack4": 6,
+      "pack5": 4,
+      "pack6": 10,
+      "pack7": 4,
+      "pack8": 1
+    }
+  },
+  "coherence": {
+    "note": "Raw counts, not a score: how many structural scopes and layout regimes each request would own. The baseline's pack 5 owned five scopes and both regimes.",
+    "oldPack5Scopes": {
+      "document_body": 71,
+      "table": 21,
+      "appendix": 14,
+      "appendix_table": 12,
+      "quoted_replacement": 2
+    },
+    "successorScopeCounts": [
+      {
+        "pack": 1,
+        "distinctScopes": 3,
+        "regime": "ROW/MAIN"
+      },
+      {
+        "pack": 2,
+        "distinctScopes": 3,
+        "regime": "FLOW/MAIN"
+      },
+      {
+        "pack": 3,
+        "distinctScopes": 2,
+        "regime": "FLOW/MAIN"
+      },
+      {
+        "pack": 4,
+        "distinctScopes": 2,
+        "regime": "FLOW/MAIN"
+      },
+      {
+        "pack": 5,
+        "distinctScopes": 3,
+        "regime": "FLOW/MAIN"
+      },
+      {
+        "pack": 6,
+        "distinctScopes": 2,
+        "regime": "ROW/MAIN"
+      },
+      {
+        "pack": 7,
+        "distinctScopes": 2,
+        "regime": "ROW/ANNEX"
+      },
+      {
+        "pack": 8,
+        "distinctScopes": 2,
+        "regime": "ROW/ANNEX"
+      }
+    ]
+  },
+  "callPlan": {
+    "doc0252": {
+      "semanticCallsPerRepeat": 8,
+      "placementCallsPerRepeat": "NOT_DETERMINABLE_OFFLINE",
+      "placementObservedUnderOldPacking": 1,
+      "placementAllowancePerRepeat": 2,
+      "totalCallsPerRepeatAtAllowance": 10
+    },
+    "doc0001": {
+      "semanticCallsPerRepeat": 1,
+      "placementObservedOffline": [
+        0,
+        0,
+        1
+      ],
+      "placementAllowancePerRepeat": 1,
+      "totalCallsPerRepeatAtAllowance": 2,
+      "note": "Unchanged by this intervention: DOCX packing is not touched. Measured by replaying its three captured replies through the production DOCX adapter."
+    },
+    "repeats": 3,
+    "fullSuccessorPrimaryCalls": 27,
+    "fullSuccessorCallsAtAllowance": 36,
+    "proposedHardCap": 42,
+    "capRationale": "Semantic calls are deterministic from the partition. Placement is not: it fires only when headings remain unplaced, so it depends on replies that do not exist yet. The cap is the deterministic count plus a stated placement allowance plus six, and it is not inherited from the previous run: 21/27 described extraction under a six-pack partition before placement was reachable at all.",
+    "previousAuthorization": {
+      "calls": 21,
+      "cap": 27,
+      "unusedCapacity": 6,
+      "transferable": false,
+      "note": "The six unused calls are not authorization for this experiment."
+    }
+  },
+  "targetedExperiment": {
+    "question": "Does splitting old pack 5 remove its instability?",
+    "packs": [
+      5,
+      6,
+      7
+    ],
+    "targetPacksPerRepeat": 3,
+    "repeats": 3,
+    "targetPrimaryCalls": 9,
+    "targetProposedHardCap": 12,
+    "placement": "not exercised - a partial-document extraction has no document-wide placement pass",
+    "note": "Chosen as the successors of the request that failed, not sized to fit any leftover capacity."
+  },
+  "successCriteria": {
+    "declaredBefore": "any successor provider output exists",
+    "primaryComparison": "each successor pack derived from old pack 5, against old pack 5's own three repeats: 15 claims / 11 TP / 4 FP, 80 / 13 / 66, 16 / 12 / 4.",
+    "measures": [
+      "heading proposal count per pack per repeat",
+      "bound proposal count per pack per repeat",
+      "TP, FP, FN per pack per repeat",
+      "false-positive identities per pack per repeat",
+      "response size in characters per call",
+      "cross-repeat variance of claim count per pack"
+    ],
+    "rules": [
+      "no repeat is discarded as an outlier",
+      "no repeat is selected for being the best",
+      "all three repeats enter the result",
+      "the baseline is not rescored or replaced"
+    ],
+    "whatWouldFalsifyTheHypothesis": "a successor pack derived from old pack 5 showing the same order-of-magnitude claim-count jump in any repeat"
+  }
+}
