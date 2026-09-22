@@ -1,0 +1,374 @@
+{
+  "artifactKind": "a99_residual_semantic_mechanism_audit",
+  "schemaVersion": "a99-residual-semantic-mechanism-audit-v1",
+  "authorityId": "DOC-0252",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "promptChanged": false,
+  "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+  "goldClaims": 41,
+  "scoredResult": {
+    "perRepeat": [
+      {
+        "repeat": 1,
+        "truePositive": 18,
+        "falsePositive": 5,
+        "falseNegative": 0
+      },
+      {
+        "repeat": 2,
+        "truePositive": 18,
+        "falsePositive": 5,
+        "falseNegative": 0
+      },
+      {
+        "repeat": 3,
+        "truePositive": 18,
+        "falsePositive": 5,
+        "falseNegative": 0
+      }
+    ],
+    "precision": 0.7826,
+    "recall": 1,
+    "f1": 0.878
+  },
+  "framing": "These five are the model's own errors. Packing variance is gone, Gold's boundary debt is corrected, and recall is 1.0 - nothing here is a measurement artifact.",
+  "promptPolicyObservation": {
+    "finding": "Four of the five carry relationHints parent-node:NONE, and the model reached that honestly: the prompt tells it to. NONE is defined as 'a heading but holds NO position in the section tree', to be used for 'the document's own title and subtitle, running headers and footers, table and figure labels', with the explicit instruction that 'they are real headings and you should still report them'.",
+    "consequence": "The model is following the instruction and Gold is scoring it wrong. Gold keeps exactly one such claim for this document - its own title, L0000:S0 - and keeps no repeated masthead, no date, no venue, no address, no meeting-mode line.",
+    "noneClaimsInThisRun": 6,
+    "noneClaimsThatAreGold": 1,
+    "noneClaimsThatAreFalsePositives": 4,
+    "implication": "The intervention is not 'teach the model to find fewer headings'. It is to narrow what the NONE category admits, which is a policy the prompt states and can restate without touching how sections are found."
+  },
+  "mechanisms": [
+    {
+      "id": "A_BODY_PROPOSITION",
+      "falsePositives": [
+        "L0396:S0:0-93"
+      ],
+      "evidence": {
+        "identity": "L0396:S0:0-93",
+        "aliases": [
+          "L0396:S0"
+        ],
+        "text": "definitions and discounts, and requires traditional price collection to continue in parallel.",
+        "page": 10,
+        "atomOrdinal": 398,
+        "scopes": [
+          "document_body"
+        ],
+        "modelSemanticRole": "heading",
+        "modelRelationHints": [
+          "parent-node:NONE"
+        ],
+        "precedingSource": [
+          "L0394:S0: not necessarily lead to lower workload, since different suppliers may have different data structures, and it is",
+          "L0395:S0: necessary to identify and link GTINs to PPP survey items. Additionally, scanner data lacks details on item"
+        ],
+        "followingSource": [
+          "L0397:S0: The TAG acknowledged these developments in price data collection, recognizing the importance of",
+          "L0398:S0: modernizing data collection and sources. Additionally, it was noted that the use of AI may facilitate the"
+        ]
+      },
+      "whatItIs": "The tail of a wrapped prose sentence. The atom before it ends mid-clause ('scanner data lacks details on item') and this one completes it ('definitions and discounts, and requires traditional price collection to continue in parallel.'). It opens lowercase, carries a finite verb, and closes the sentence.",
+      "contrastiveGold": [
+        {
+          "alias": "L0400:S0",
+          "text": "4. Treatment of Negative Expenditures in ICP",
+          "role": "AgendaItem",
+          "why": "the next heading in the same region: an ordinal and a noun phrase, no predicate, no sentence period"
+        },
+        {
+          "alias": "L0470:S0",
+          "text": "6. Improving Reliability of Price Comparisons",
+          "role": "AgendaItem",
+          "why": "same shape, same region"
+        },
+        {
+          "alias": "L0507:S0",
+          "text": "Session VI: Any Other Business",
+          "role": "MeetingSection",
+          "why": "a session heading in the same pack"
+        }
+      ],
+      "discriminator": "A heading names a division of the document; it does not assert something about the subject. Text that continues or completes a sentence, or that states a proposition with a finite verb and sentence-final punctuation, is body text however it is set.",
+      "surfaceSignalsDeliberatelyNotUsed": "font size, boldness, or being alone on a line - the region is uniformly set and none of those separate it from its neighbours.",
+      "classification": "PROMPT_SEMANTIC_POLICY"
+    },
+    {
+      "id": "B_MASTHEAD_AND_EVENT_METADATA",
+      "falsePositives": [
+        "L0513:S0:0-38|L0514:S0:0-30",
+        "L0515:S0:0-14",
+        "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32"
+      ],
+      "evidence": [
+        {
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "aliases": [
+            "L0513:S0",
+            "L0514:S0"
+          ],
+          "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
+          "page": 13,
+          "atomOrdinal": 515,
+          "scopes": [
+            "document_body",
+            "document_body"
+          ],
+          "modelSemanticRole": "heading",
+          "modelRelationHints": [
+            "parent-node:NONE"
+          ],
+          "precedingSource": [
+            "L0511:S0: groups and conferences on international comparisons.",
+            "L0512:S0: 12"
+          ],
+          "followingSource": [
+            "L0515:S0: Hybrid Meeting",
+            "L0516:S0: March 7-8, 2025"
+          ]
+        },
+        {
+          "identity": "L0515:S0:0-14",
+          "aliases": [
+            "L0515:S0"
+          ],
+          "text": "Hybrid Meeting",
+          "page": 13,
+          "atomOrdinal": 517,
+          "scopes": [
+            "document_body"
+          ],
+          "modelSemanticRole": "document-title",
+          "modelRelationHints": [
+            "parent-node:NONE"
+          ],
+          "precedingSource": [
+            "L0513:S0: International Comparison Program (ICP)",
+            "L0514:S0: TECHNICAL ADVISORY GROUP (TAG)"
+          ],
+          "followingSource": [
+            "L0516:S0: March 7-8, 2025",
+            "L0517:S0: Bamboo Room, Ease 1345"
+          ]
+        },
+        {
+          "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+          "aliases": [
+            "L0516:S0",
+            "L0517:S0",
+            "L0518:S0"
+          ],
+          "text": "March 7-8, 2025 Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105",
+          "page": 13,
+          "atomOrdinal": 518,
+          "scopes": [
+            "table",
+            "document_body",
+            "table"
+          ],
+          "modelSemanticRole": "document-subtitle",
+          "modelRelationHints": [
+            "parent-node:NONE"
+          ],
+          "precedingSource": [
+            "L0514:S0: TECHNICAL ADVISORY GROUP (TAG)",
+            "L0515:S0: Hybrid Meeting"
+          ],
+          "followingSource": [
+            "L0519:S0: Agenda",
+            "L0520:S0: DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER"
+          ]
+        }
+      ],
+      "whatItIs": "One local system, not three findings: the annex opens by restating the programme and group that met, then how it met, then when and where. Immediately after them the annex's actual structure begins - 'Agenda', then 'DAY 1: ...', then 'SESSION I: ...' - and Gold keeps all three of those.",
+      "contrastiveGold": [
+        {
+          "alias": "L0519:S0",
+          "text": "Agenda",
+          "role": "SectionHeading",
+          "why": "the annex's own section heading, three atoms later - kept by Gold and by the model"
+        },
+        {
+          "alias": "L0520:S0",
+          "text": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+          "role": "MeetingSection",
+          "why": "kept, and it contains a date - so 'mentions a date' cannot be the rule"
+        },
+        {
+          "alias": "L0556:S0",
+          "text": "Annex 2: List of Participants",
+          "role": "AppendixHeading",
+          "why": "the other annex's heading, same function"
+        },
+        {
+          "alias": "L0000:S0",
+          "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+          "role": "DocumentTitle",
+          "why": "the document's own title, kept once - the category this must not destroy"
+        }
+      ],
+      "discriminator": "A masthead identifies the document or the event it records; a heading divides the document. Report the document's own title once. A later block that restates the organisation, event, date, venue, address or meeting mode is identifying the same event again, not opening a new division, and nothing is filed under it.",
+      "whyNotSurfaceBased": "Every one of these is visually prominent and centred, and so is 'Agenda' directly beneath them. Prominence separates none of them.",
+      "classification": "PROMPT_SEMANTIC_POLICY"
+    },
+    {
+      "id": "C_SCHEDULED_AGENDA_ENTRY",
+      "falsePositives": [
+        "L0550:S0:0-56"
+      ],
+      "evidence": {
+        "identity": "L0550:S0:0-56",
+        "aliases": [
+          "L0550:S0"
+        ],
+        "text": "14:00 – 15:00 Improving Reliability of Price Comparisons",
+        "page": 14,
+        "atomOrdinal": 566,
+        "scopes": [
+          "document_body"
+        ],
+        "modelSemanticRole": "section-heading",
+        "modelRelationHints": [
+          "parent-node:ROOT"
+        ],
+        "precedingSource": [
+          "L0548:S1: Similarity Linking Within and Between Regions [Erwin Diewert and Yuri",
+          "L0549:S0: Dikhanov]"
+        ],
+        "followingSource": [
+          "L0551:S0: –",
+          "L0551:S1: Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]"
+        ]
+      },
+      "whatItIs": "A scheduled row of the agenda: a clock range and the activity that fills it. The model rejected every other such row in the same request - eighteen of them - and kept this one. What is different about it is not its function but its form: it carries no presenter attribution in brackets, it sits alone in one atom rather than split across a time atom and a title atom, and its wording is identical to a real heading it had already accepted earlier in the document (L0470:S0, '6. Improving Reliability of Price Comparisons').",
+      "contrastiveGold": [
+        {
+          "alias": "L0470:S0",
+          "text": "6. Improving Reliability of Price Comparisons",
+          "role": "AgendaItem",
+          "why": "the same words as a genuine agenda-item heading in the minutes body"
+        },
+        {
+          "alias": "L0520:S0",
+          "text": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+          "role": "MeetingSection",
+          "why": "a kept agenda heading that contains a date and a chair"
+        },
+        {
+          "alias": "L0540:S0",
+          "text": "SESSION V: Current Research (Cont’d)",
+          "role": "MeetingSection",
+          "why": "a kept session heading inside the same agenda annex"
+        }
+      ],
+      "rejectedSiblings": "L0522, L0524, L0527, L0528, L0529, L0532, L0534, L0535, L0537, L0541, L0543, L0545, L0546, L0547, L0548, L0551, L0552, L0554 - all scheduled rows, all correctly omitted in every repeat.",
+      "discriminator": "A scheduled entry says when an activity happens; a heading says which part of the document follows. In a schedule, the day and session rows divide it and the timed activity rows fill it. The same wording can be a heading elsewhere in the document, where it heads the account of that activity.",
+      "whyNotRegex": "'Contains a time' would be wrong twice over: two kept Gold headings carry a date and a chair, and a genuine heading may legitimately contain one.",
+      "classification": "PROMPT_SEMANTIC_POLICY"
+    }
+  ],
+  "goldRiskScan": {
+    "note": "Each candidate rule run over all 41 Gold claims, not argued from the five.",
+    "ruleA_wouldRejectSentencesAndFragments": {
+      "goldEndingInSentencePunctuation": [],
+      "goldStartingLowercase": [],
+      "goldClaimsPotentiallyHit": 0
+    },
+    "ruleB_wouldRejectEventMetadata": {
+      "goldThatIsEventMetadata": [],
+      "goldContainingADate": [
+        "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+        "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO"
+      ],
+      "goldClaimsPotentiallyHit": 0,
+      "caution": "Two Gold headings contain a date (DAY 1 / DAY 2 rows). A rule phrased as 'a line containing a date is metadata' would reject both. A rule phrased by function - does it open a division that content is filed under - keeps them.",
+      "mustNotReject": "L0000:S0, the document's own title."
+    },
+    "ruleC_wouldRejectScheduledEntries": {
+      "goldStartingWithClockTime": [],
+      "goldClaimsPotentiallyHit": 0,
+      "caution": "No Gold heading opens with a clock time today, so a surface rule would appear free. It is still the wrong rule: it encodes this document's layout rather than the distinction, and a schedule whose sessions are timed would break it."
+    }
+  },
+  "proposedPromptChanges": [
+    {
+      "rule": "B_MASTHEAD_AND_EVENT_METADATA",
+      "smallestChange": "Narrow what the NONE category admits. Today it reads 'Use NONE for the document's own title and subtitle, running headers and footers, table and figure labels, form labels and signature labels.' Add that a block restating the organisation, event, date, venue, address or meeting mode is identifying the document or event rather than heading a part of it, and is not returned - while the document's own title still is, once.",
+      "generality": "Stated over document/event identity, not over this document's words.",
+      "addressesFalsePositives": 3
+    },
+    {
+      "rule": "C_SCHEDULED_AGENDA_ENTRY",
+      "smallestChange": "Add that in a schedule or programme, the rows that divide it - a day, a session - are headings, and the rows that fill it with timed activities are entries within it, even when an entry's wording matches a heading found elsewhere.",
+      "generality": "Stated over schedule structure, with no mention of time formats.",
+      "addressesFalsePositives": 1
+    },
+    {
+      "rule": "A_BODY_PROPOSITION",
+      "smallestChange": "Add that text which continues or completes a sentence, or which asserts a proposition rather than naming a part of the document, is body text however it is set.",
+      "generality": "Stated over grammatical function, with no mention of layout.",
+      "addressesFalsePositives": 1
+    }
+  ],
+  "experiments": [
+    {
+      "id": "EXPERIMENT_A_MASTHEAD",
+      "rule": "B_MASTHEAD_AND_EVENT_METADATA",
+      "falsePositivesTargeted": 3,
+      "targetPacks": [
+        "PACK_005",
+        "PACK_006"
+      ],
+      "reason": "the masthead spans the boundary: its first claim is owned by pack 5, the rest by pack 6",
+      "repeats": 3,
+      "semanticCalls": 6,
+      "placementCalls": 0,
+      "proposedHardCap": 9,
+      "goldAtRisk": "L0000:S0 only, and only if the rule is phrased by surface prominence rather than by function"
+    },
+    {
+      "id": "EXPERIMENT_B_SCHEDULE",
+      "rule": "C_SCHEDULED_AGENDA_ENTRY",
+      "falsePositivesTargeted": 1,
+      "targetPacks": [
+        "PACK_006"
+      ],
+      "repeats": 3,
+      "semanticCalls": 3,
+      "placementCalls": 0,
+      "proposedHardCap": 6,
+      "goldAtRisk": "the DAY and SESSION rows of the same annex - 9 Gold claims sit in this pack"
+    },
+    {
+      "id": "EXPERIMENT_C_PROPOSITION",
+      "rule": "A_BODY_PROPOSITION",
+      "falsePositivesTargeted": 1,
+      "targetPacks": [
+        "PACK_005"
+      ],
+      "repeats": 3,
+      "semanticCalls": 3,
+      "placementCalls": 0,
+      "proposedHardCap": 6,
+      "goldAtRisk": "none identified: no Gold claim in this document is a sentence"
+    }
+  ],
+  "recommendedOrder": {
+    "first": "EXPERIMENT_A_MASTHEAD",
+    "why": "three of the five false positives, one coherent mechanism, and the clearest contrast - the annex's real heading sits three atoms below the masthead and is kept by both Gold and the model, so the distinction is visible inside one request.",
+    "second": "EXPERIMENT_C_PROPOSITION",
+    "whySecond": "no Gold claim in this document is a sentence, so it carries the least regression risk, and it is independent of the annex entirely.",
+    "third": "EXPERIMENT_B_SCHEDULE",
+    "whyThird": "highest Gold risk - the rule has to separate rows that divide a schedule from rows that fill it, and nine kept headings sit in the same request as the one error.",
+    "doNotCombine": "Three rules in one prompt change would make an improved score unattributable, which is the mistake this whole sequence has been avoiding."
+  },
+  "candidateHints": {
+    "hintedAtoms": 650,
+    "totalAtoms": 650,
+    "inScope": false,
+    "note": "Still 650/650 and still non-discriminating, and still not causal for these five: the model rejected 18 scheduled rows that carry the same hint as the one it kept."
+  }
+}
