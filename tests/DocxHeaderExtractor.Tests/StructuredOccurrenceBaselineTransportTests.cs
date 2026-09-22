@@ -51,7 +51,7 @@ public sealed class StructuredOccurrenceBaselineTransportTests
     private const string ExpectedDoc0252SourceUniverse =
         "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f";
     private const string ExpectedDoc0252Gold =
-        "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e";
+        "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e";
 
     private static readonly string[] Cohort = ["DOC-0001", "DOC-0252"];
 

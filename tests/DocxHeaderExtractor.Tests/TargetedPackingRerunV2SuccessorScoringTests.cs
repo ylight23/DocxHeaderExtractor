@@ -7,7 +7,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
-/// Scores the coherent-packing rerun from the bytes the provider actually returned.
+/// Rescores the coherent-packing rerun against the corrected Gold, from the same captured bytes.
 /// <para>
 /// The run captured nine exchanges and deliberately stopped short of scoring them. This file
 /// starts where that stopped: for every call it takes the persisted raw response, validates it
@@ -21,7 +21,7 @@ namespace DocxHeaderExtractor.Tests;
 /// claims on three identical inputs. Under the coherent partition, do its successors still do that?
 /// </para>
 /// </summary>
-public sealed class TargetedPackingRerunV2ScoringTests
+public sealed class TargetedPackingRerunV2SuccessorScoringTests
 {
     private const string V2Root = "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252";
     private const string ScoreRoot = V2Root;
@@ -36,16 +36,12 @@ public sealed class TargetedPackingRerunV2ScoringTests
     private const string SourceUniverseSha256 = "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f";
     private const string PromptSha256 = "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e";
     private const string ContractSha256 = "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f";
-    private const string GoldSha256 = "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e";
+    private const string GoldSha256 = "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e";
 
-    /// <summary>
-    /// The Gold this result was produced against, pinned by path and hash rather than by authority
-    /// id. DOC-0252's selections were later corrected for four headings whose migrated coordinates
-    /// stopped one character short of their own approved wording, which moved the authority's hash;
-    /// resolving by id here would score a finished run against a Gold it never ran against.
-    /// </summary>
-    private const string PredecessorGoldPath =
-        "eval/a99-closed-loop/gold-current/documents/DOC-0252.structured-boundary-predecessor.gold.v1.json";
+    /// <summary>The Gold the run itself named, which its frozen summary still records.</summary>
+    private const string PredecessorGoldSha256 =
+        "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e";
+
     private const string ManifestSha256 = "fb62c1c696b4c30f0b71aed2e39f296ece3934c5870982fdc0e19bc62d64189c";
 
     private static readonly string[] TargetPacks =
@@ -59,7 +55,7 @@ public sealed class TargetedPackingRerunV2ScoringTests
     private const string OldMixedPackId = "FIXED_OWNED_COUNT_120:PACK_005";
 
     [Fact]
-    public void Score_the_authority_grade_targeted_packing_rerun()
+    public void Rescore_the_targeted_packing_rerun_against_the_corrected_gold()
     {
         // ---- §1/§2 run authority ------------------------------------------------------------------
         using var summary = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(V2Root + "/targeted-packing-rerun-v2-summary.v1.json")));
@@ -78,10 +74,10 @@ public sealed class TargetedPackingRerunV2ScoringTests
         Assert.Equal(SourceUniverseSha256, run.GetProperty("sourceUniverseSha256").GetString());
         Assert.Equal(PromptSha256, run.GetProperty("promptSha256").GetString());
         Assert.Equal(ContractSha256, run.GetProperty("structuredContractSha256").GetString());
-        Assert.Equal(GoldSha256, run.GetProperty("goldSha256").GetString());
+        Assert.Equal(PredecessorGoldSha256, run.GetProperty("goldSha256").GetString());
         Assert.Equal(ManifestSha256, run.GetProperty("manifestHash").GetString());
         Assert.Equal(TargetPacks, run.GetProperty("targetPackIds").EnumerateArray().Select(item => item.GetString()!));
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(PredecessorGoldPath, GoldSha256).GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
 
         // ---- §3 transport capture integrity, recomputed from the bytes -----------------------------
         var captures = Enumerable.Range(1, 3).Select(LoadCapture).ToArray();
@@ -290,10 +286,19 @@ public sealed class TargetedPackingRerunV2ScoringTests
         var packingVarianceResolved = stability.All(item => item.membershipIdentical);
         var residualBias = residualStable.Length > 0;
 
-        FreezeArtifact.AssertJson(ScoreRoot, "targeted-packing-rerun-v2-score.v1.json", new
+        FreezeArtifact.AssertJson(ScoreRoot, "targeted-packing-rerun-v2-successor-score.v1.json", new
         {
-            artifactKind = "a99_doc0252_targeted_packing_rerun_v2_score",
-            schemaVersion = "a99-doc0252-targeted-packing-rerun-v2-score-v1",
+            artifactKind = "a99_doc0252_targeted_packing_rerun_v2_successor_score",
+            schemaVersion = "a99-doc0252-targeted-packing-rerun-v2-successor-score-v1",
+            supersedes = new
+            {
+                artifact = "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/targeted-packing-rerun-v2-score.v1.json",
+                reason = "scored against the Gold whose four boundary selections have since been corrected",
+                predecessorGoldSha256 = PredecessorGoldSha256,
+                predecessorArtifactUnchanged = true,
+                sameProviderResponses = true,
+                providerCallsAdded = 0,
+            },
             scoredFrom = "persisted transport capture raw response bytes",
             providerCalls = 0,
             modelCalls = 0,
@@ -537,7 +542,7 @@ public sealed class TargetedPackingRerunV2ScoringTests
 
     private static Dictionary<string, GoldClaim> GoldClaims()
     {
-        using var gold = CanonicalGoldRegistry.ResolveAt(PredecessorGoldPath, GoldSha256);
+        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .ToDictionary(
                 claim => claim.GetProperty("identity").GetString()!,

@@ -42,6 +42,29 @@ public sealed class PdfStructuredGoldMigrationTests
         "International Price Comparisons";
 
     /// <summary>
+    /// The four claims whose migrated selection stopped one character short of the heading their
+    /// own approvedWording records, authorized for selection-only correction.
+    /// <para>
+    /// Every one of them ends in a closing parenthesis, and the locator this migration searches
+    /// with skips punctuation while building its search stream - so the match ended at the last
+    /// letter and the whole-atom case that should have produced WHOLE_ALIAS was never seen. The
+    /// locator's own defect is left alone here on purpose: repairing it is a separate change with
+    /// its own regression, and mixing it into a Gold mutation would make neither reviewable.
+    /// </para>
+    /// <para>
+    /// This is not a re-adjudication. Membership stays at 41, the approved wording is untouched,
+    /// the alias and part order are untouched; only the selection inside the named atom changes,
+    /// and only to the text the same claim already says was approved.
+    /// </para>
+    /// </summary>
+    private static readonly string[] FullAtomBoundaryCorrections =
+        ["L0107:S0", "L0377:S0", "L0540:S0", "L0576:S0"];
+
+    /// <summary>The structured Gold these corrections supersede, kept as predecessor provenance.</summary>
+    private const string BoundaryCorrectionPredecessorGoldSha256 =
+        "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e";
+
+    /// <summary>
     /// The predecessor Gold this migration reads from, pinned by path and hash rather than by
     /// authority id. Reading "whatever DOC-0252 currently resolves to" would make this script
     /// non-idempotent the moment it succeeds once: the id resolves to its own output afterwards,
@@ -89,6 +112,7 @@ public sealed class PdfStructuredGoldMigrationTests
 
             var parts = StructuredSourcePartLocator.Locate(atoms, approvedWording, punctuationInsensitive: true, ref cursor);
             Assert.True(parts is not null, $"{sourceAlias}: '{approvedWording}' not found in the structured atom universe");
+            parts = ApplyAuthorizedBoundaryCorrection(atoms, parts!, approvedWording);
 
             var bound = SemanticSourcePartBinder.Bind(atoms, new SemanticSourcePartsProposal(parts!));
             Assert.True(bound.IsBound, $"{sourceAlias}: {bound.Status} - {bound.Reason}");
@@ -142,6 +166,19 @@ public sealed class PdfStructuredGoldMigrationTests
                 remove = 0,
                 needsReview = 0,
                 textMigratedClaims = rows.Count(row => (bool)row.GetType().GetProperty("textMigrated")!.GetValue(row)!),
+                boundaryCorrection = new
+                {
+                    kind = "SOURCE_SELECTION_BOUNDARY_CORRECTION",
+                    predecessorGoldSha256 = BoundaryCorrectionPredecessorGoldSha256,
+                    correctedAliases = FullAtomBoundaryCorrections,
+                    semanticMembershipChanged = false,
+                    approvedWordingChanged = false,
+                    authorization = "explicit user authorization, DOC-0252 only, selection-only, named per alias",
+                    note = "Each of these selections stopped one character short of the heading its own "
+                        + "approvedWording records - a closing parenthesis dropped by the punctuation-"
+                        + "insensitive locator this migration searches with. The selections now cover their "
+                        + "whole atom. The locator itself is unchanged and is corrected separately.",
+                },
                 note = "Coordinate representation and source-faithful wording changed. No heading was added, removed, or re-adjudicated; the 41-heading membership approved for DOC-0252 is reused, not re-approved.",
             },
             boundOccurrences = rows,
@@ -151,6 +188,43 @@ public sealed class PdfStructuredGoldMigrationTests
         Assert.All(partCounts, count => Assert.InRange(count, 1, 2));
         Assert.Equal(1, partCounts.Count(count => count == 2));
         Assert.Equal(40, partCounts.Count(count => count == 1));
+    }
+
+
+    /// <summary>
+    /// Extends a named claim's final selection to its whole atom, and refuses to do it on anything
+    /// it was not authorized for or cannot prove.
+    /// <para>
+    /// The proof required is the one the audit ran on: the selection stops short of the atom, what
+    /// it omits is punctuation, and the claim's own approved wording ends with exactly that. A
+    /// correction that cannot show all three is not applied - an authorization names which claims
+    /// may be corrected, not what the correction may assume.
+    /// </para>
+    /// </summary>
+    private static List<SemanticSourcePart> ApplyAuthorizedBoundaryCorrection(
+        IReadOnlyList<SemanticSourceAtom> atoms,
+        List<SemanticSourcePart> parts,
+        string approvedWording)
+    {
+        var last = parts[^1];
+        if (!FullAtomBoundaryCorrections.Contains(last.SourceAlias, StringComparer.Ordinal)) return parts;
+
+        var atom = atoms.Single(item => item.Alias == last.SourceAlias);
+        var selected = last.SelectionMode == CanonicalSemanticSelectionMode.WholeAlias
+            ? atom.Text
+            : last.VerbatimText ?? string.Empty;
+        Assert.NotEqual(atom.Text, selected);
+        Assert.StartsWith(selected, atom.Text, StringComparison.Ordinal);
+
+        var omitted = atom.Text[selected.Length..];
+        Assert.All(omitted.ToCharArray(), character => Assert.True(
+            char.IsPunctuation(character) || char.IsSymbol(character),
+            $"{last.SourceAlias}: omitted '{character}' is not punctuation"));
+        Assert.EndsWith(omitted, approvedWording, StringComparison.Ordinal);
+
+        var corrected = parts.Take(parts.Count - 1).ToList();
+        corrected.Add(new SemanticSourcePart(last.SourceAlias, CanonicalSemanticSelectionMode.WholeAlias));
+        return corrected;
     }
 
     private static string Doc0252Path => System.IO.Path.Combine(

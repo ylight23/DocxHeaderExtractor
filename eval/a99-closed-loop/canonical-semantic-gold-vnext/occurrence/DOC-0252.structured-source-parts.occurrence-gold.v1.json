@@ -15,6 +15,20 @@
     "remove": 0,
     "needsReview": 0,
     "textMigratedClaims": 16,
+    "boundaryCorrection": {
+      "kind": "SOURCE_SELECTION_BOUNDARY_CORRECTION",
+      "predecessorGoldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+      "correctedAliases": [
+        "L0107:S0",
+        "L0377:S0",
+        "L0540:S0",
+        "L0576:S0"
+      ],
+      "semanticMembershipChanged": false,
+      "approvedWordingChanged": false,
+      "authorization": "explicit user authorization, DOC-0252 only, selection-only, named per alias",
+      "note": "Each of these selections stopped one character short of the heading its own approvedWording records - a closing parenthesis dropped by the punctuation-insensitive locator this migration searches with. The selections now cover their whole atom. The locator itself is unchanged and is corrected separately."
+    },
     "note": "Coordinate representation and source-faithful wording changed. No heading was added, removed, or re-adjudicated; the 41-heading membership approved for DOC-0252 is reused, not re-approved."
   },
   "boundOccurrences": [
@@ -159,16 +173,16 @@
       "sourceParts": [
         {
           "sourceAlias": "L0107:S0",
-          "selectionMode": "VERBATIM_TEXT",
-          "verbatimText": "Commonwealth of Independent States (CIS",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
           "occurrence": null,
           "leftExactContext": null,
           "rightExactContext": null
         }
       ],
       "semanticRole": "LocalSubheading",
-      "identity": "L0107:S0:0-39",
-      "projectedText": "Commonwealth of Independent States (CIS"
+      "identity": "L0107:S0:0-40",
+      "projectedText": "Commonwealth of Independent States (CIS)"
     },
     {
       "sourceAlias": "S0199",
@@ -433,16 +447,16 @@
       "sourceParts": [
         {
           "sourceAlias": "L0377:S0",
-          "selectionMode": "VERBATIM_TEXT",
-          "verbatimText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
           "occurrence": null,
           "leftExactContext": null,
           "rightExactContext": null
         }
       ],
       "semanticRole": "AgendaItem",
-      "identity": "L0377:S0:0-84",
-      "projectedText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP"
+      "identity": "L0377:S0:0-85",
+      "projectedText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)"
     },
     {
       "sourceAlias": "S0693",
@@ -680,16 +694,16 @@
       "sourceParts": [
         {
           "sourceAlias": "L0540:S0",
-          "selectionMode": "VERBATIM_TEXT",
-          "verbatimText": "SESSION V: Current Research (Cont’d",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
           "occurrence": null,
           "leftExactContext": null,
           "rightExactContext": null
         }
       ],
       "semanticRole": "MeetingSection",
-      "identity": "L0540:S0:0-35",
-      "projectedText": "SESSION V: Current Research (Cont’d"
+      "identity": "L0540:S0:0-36",
+      "projectedText": "SESSION V: Current Research (Cont’d)"
     },
     {
       "sourceAlias": "S0946",
@@ -775,16 +789,16 @@
       "sourceParts": [
         {
           "sourceAlias": "L0576:S0",
-          "selectionMode": "VERBATIM_TEXT",
-          "verbatimText": "ICP Inter-Agency Coordination Group (IACG",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
           "occurrence": null,
           "leftExactContext": null,
           "rightExactContext": null
         }
       ],
       "semanticRole": "LocalSubheading",
-      "identity": "L0576:S0:0-41",
-      "projectedText": "ICP Inter-Agency Coordination Group (IACG"
+      "identity": "L0576:S0:0-42",
+      "projectedText": "ICP Inter-Agency Coordination Group (IACG)"
     },
     {
       "sourceAlias": "S0994",

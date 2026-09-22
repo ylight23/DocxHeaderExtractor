@@ -21,17 +21,26 @@ public sealed class StructuredGoldTextBoundaryAuditTests
     private const string Doc0252Pdf =
         "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
     private const string GoldSha256 = "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e";
+
+    /// <summary>
+    /// The Gold this result was produced against, pinned by path and hash rather than by authority
+    /// id. DOC-0252's selections were later corrected for four headings whose migrated coordinates
+    /// stopped one character short of their own approved wording, which moved the authority's hash;
+    /// resolving by id here would score a finished run against a Gold it never ran against.
+    /// </summary>
+    private const string PredecessorGoldPath =
+        "eval/a99-closed-loop/gold-current/documents/DOC-0252.structured-boundary-predecessor.gold.v1.json";
     private const string SourceUniverseSha256 = "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f";
 
     [Fact]
     public void Audit_every_structured_gold_selection_against_its_own_atoms()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(PredecessorGoldPath, GoldSha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         Assert.Equal(SourceUniverseSha256, plan.SourceUniverseSha256);
         var atomByAlias = plan.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
 
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(PredecessorGoldPath, GoldSha256);
         var claims = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray().ToArray();
         Assert.Equal(41, claims.Length);
 

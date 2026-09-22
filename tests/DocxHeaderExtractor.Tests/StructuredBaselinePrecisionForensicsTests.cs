@@ -27,6 +27,15 @@ public sealed class StructuredBaselinePrecisionForensicsTests
     private const string Doc0252GoldSha256 =
         "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e";
 
+    /// <summary>
+    /// The Gold this result was produced against, pinned by path and hash rather than by authority
+    /// id. DOC-0252's selections were later corrected for four headings whose migrated coordinates
+    /// stopped one character short of their own approved wording, which moved the authority's hash;
+    /// resolving by id here would score a finished run against a Gold it never ran against.
+    /// </summary>
+    private const string PredecessorGoldPath =
+        "eval/a99-closed-loop/gold-current/documents/DOC-0252.structured-boundary-predecessor.gold.v1.json";
+
     private const int Repeats = 3;
     private const int Packs = 6;
 
@@ -34,7 +43,7 @@ public sealed class StructuredBaselinePrecisionForensicsTests
     public void Characterize_the_repeat_two_precision_collapse()
     {
         Assert.Equal(RawResponsesSha256, CanonicalArtifactHash.OfTextFile(TestRepository.Path(RawResponses)));
-        Assert.Equal(Doc0252GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(Doc0252GoldSha256, CanonicalGoldRegistry.EntryAt(PredecessorGoldPath, Doc0252GoldSha256).GoldSha256);
 
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         var atomByAlias = plan.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
@@ -423,7 +432,7 @@ public sealed class StructuredBaselinePrecisionForensicsTests
 
     private static Dictionary<string, GoldClaim> GoldClaims()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(PredecessorGoldPath, Doc0252GoldSha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .ToDictionary(
                 claim => claim.GetProperty("identity").GetString()!,

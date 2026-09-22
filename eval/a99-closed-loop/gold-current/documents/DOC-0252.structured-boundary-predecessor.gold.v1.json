@@ -123,8 +123,8 @@
         "sourceParts": [
           {
             "sourceAlias": "L0107:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "Commonwealth of Independent States (CIS",
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
@@ -313,8 +313,8 @@
         "sourceParts": [
           {
             "sourceAlias": "L0377:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP",
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
@@ -482,8 +482,8 @@
         "sourceParts": [
           {
             "sourceAlias": "L0540:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "SESSION V: Current Research (Cont’d",
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
@@ -547,8 +547,8 @@
         "sourceParts": [
           {
             "sourceAlias": "L0576:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "ICP Inter-Agency Coordination Group (IACG",
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
@@ -719,16 +719,16 @@
         "sourceParts": [
           {
             "sourceAlias": "L0107:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "Commonwealth of Independent States (CIS",
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
           }
         ],
         "semanticRole": "LocalSubheading",
-        "identity": "L0107:S0:0-40",
-        "projectedText": "Commonwealth of Independent States (CIS)"
+        "identity": "L0107:S0:0-39",
+        "projectedText": "Commonwealth of Independent States (CIS"
       },
       {
         "sourceAlias": "S0199",
@@ -993,16 +993,16 @@
         "sourceParts": [
           {
             "sourceAlias": "L0377:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP",
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
           }
         ],
         "semanticRole": "AgendaItem",
-        "identity": "L0377:S0:0-85",
-        "projectedText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)"
+        "identity": "L0377:S0:0-84",
+        "projectedText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP"
       },
       {
         "sourceAlias": "S0693",
@@ -1240,16 +1240,16 @@
         "sourceParts": [
           {
             "sourceAlias": "L0540:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "SESSION V: Current Research (Cont’d",
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
           }
         ],
         "semanticRole": "MeetingSection",
-        "identity": "L0540:S0:0-36",
-        "projectedText": "SESSION V: Current Research (Cont’d)"
+        "identity": "L0540:S0:0-35",
+        "projectedText": "SESSION V: Current Research (Cont’d"
       },
       {
         "sourceAlias": "S0946",
@@ -1335,16 +1335,16 @@
         "sourceParts": [
           {
             "sourceAlias": "L0576:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "ICP Inter-Agency Coordination Group (IACG",
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
           }
         ],
         "semanticRole": "LocalSubheading",
-        "identity": "L0576:S0:0-42",
-        "projectedText": "ICP Inter-Agency Coordination Group (IACG)"
+        "identity": "L0576:S0:0-41",
+        "projectedText": "ICP Inter-Agency Coordination Group (IACG"
       },
       {
         "sourceAlias": "S0994",
@@ -1385,18 +1385,13 @@
     },
     {
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.occurrence-gold.v1.json",
-      "sha256": "322d431ff7be7af47034b8df711b9b23b247480900fdf5266ed0d0fb08b1b754",
+      "sha256": "0508acf262a336c09e29323c99c89a16abf7ea86fedf638830651ff4d4376b71",
       "role": "STRUCTURED_OCCURRENCE_AUTHORITY"
     },
     {
       "path": "predecessor-gold:SOURCE_COORDINATE_AND_VERBATIM_FIDELITY_MIGRATION",
       "sha256": "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
       "role": "MIGRATION_PREDECESSOR"
-    },
-    {
-      "path": "predecessor-gold:SOURCE_SELECTION_BOUNDARY_CORRECTION",
-      "sha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
-      "role": "BOUNDARY_CORRECTION_PREDECESSOR"
     }
   ],
   "providerCalls": 0,

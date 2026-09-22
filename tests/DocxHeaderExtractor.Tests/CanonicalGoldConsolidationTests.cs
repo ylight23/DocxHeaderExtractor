@@ -618,6 +618,14 @@ public sealed class CanonicalGoldConsolidationTests
                     $"predecessor-gold:{migration.GetProperty("kind").GetString()}",
                     migration.GetProperty("predecessorGoldSha256").GetString()!,
                     "MIGRATION_PREDECESSOR"));
+                // A selection-only correction applied after that migration carries its own
+                // predecessor: the Gold every experiment run so far was scored against. Recorded
+                // beside the migration's, not in place of it - the two describe different steps.
+                if (migration.TryGetProperty("boundaryCorrection", out var boundaryCorrection))
+                    provenance.Add(new(
+                        $"predecessor-gold:{boundaryCorrection.GetProperty("kind").GetString()}",
+                        boundaryCorrection.GetProperty("predecessorGoldSha256").GetString()!,
+                        "BOUNDARY_CORRECTION_PREDECESSOR"));
             }
             else
             {
