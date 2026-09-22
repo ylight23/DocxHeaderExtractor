@@ -1,0 +1,175 @@
+{
+  "artifactKind": "a99_structured_gold_text_boundary_audit",
+  "schemaVersion": "a99-structured-gold-text-boundary-audit-v1",
+  "authorityId": "DOC-0252",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldModified": false,
+  "goldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+  "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "goldClaims": 41,
+  "question": "Two claims scored as a false positive and a false negative in every repeat of the coherent-packing rerun, differing from the model only by a final ')'. Is the model over-selecting, or does Gold stop one character short of the heading it approved?",
+  "answer": {
+    "boundaryDebtConfirmed": 4,
+    "requiresReview": 0,
+    "note": "Gold disagrees with itself in these claims: approvedWording - the string a person approved - is exactly the atom's full text, while the migrated sourceParts select all of it but the last character. No semantic judgement is needed to see it, and none is proposed: membership, role and the approved wording all stay as they are."
+  },
+  "rootCause": {
+    "where": "StructuredSourcePartLocator.Locate, punctuationInsensitive branch (tests/DocxHeaderExtractor.Tests/StructuredSourcePartLocator.cs)",
+    "what": "The locator builds its search stream by skipping whitespace and punctuation, so a target ending in ')' matches up to its last letter. The end offset is then taken from that last matched character, which lands one short of the atom's end - and the whole-atom case, which would have produced WHOLE_ALIAS, is never recognised.",
+    "whyOnlyThese": "It can only bite a heading whose approved wording ends in punctuation. Four of the forty-one do, and all four are affected; the other thirty-seven end in a letter or digit and are unaffected.",
+    "usedBy": "PdfStructuredGoldMigrationTests, when DOC-0252's Gold was migrated from legacy occurrence coordinates to structured sourceParts."
+  },
+  "confirmedDebt": [
+    {
+      "sourceAlias": "S0173",
+      "identity": "L0107:S0:0-39",
+      "lastPartAlias": "L0107:S0",
+      "approvedWording": "Commonwealth of Independent States (CIS)",
+      "projectedText": "Commonwealth of Independent States (CIS",
+      "atomText": "Commonwealth of Independent States (CIS)",
+      "atomLength": 40,
+      "selectedEnd": 39,
+      "omittedTail": ")",
+      "omittedCodePoints": [
+        "U+0029"
+      ],
+      "selectionMatchesApprovedWording": false,
+      "approvedEqualsWholeAtomText": true,
+      "selectionMode": "VERBATIM_TEXT",
+      "classification": "GOLD_TEXT_BOUNDARY_DEBT_CONFIRMED"
+    },
+    {
+      "sourceAlias": "S0649",
+      "identity": "L0377:S0:0-84",
+      "lastPartAlias": "L0377:S0",
+      "approvedWording": "3 Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "projectedText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP",
+      "atomText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+      "atomLength": 85,
+      "selectedEnd": 84,
+      "omittedTail": ")",
+      "omittedCodePoints": [
+        "U+0029"
+      ],
+      "selectionMatchesApprovedWording": false,
+      "approvedEqualsWholeAtomText": false,
+      "selectionMode": "VERBATIM_TEXT",
+      "classification": "GOLD_TEXT_BOUNDARY_DEBT_CONFIRMED"
+    },
+    {
+      "sourceAlias": "S0935",
+      "identity": "L0540:S0:0-35",
+      "lastPartAlias": "L0540:S0",
+      "approvedWording": "SESSION V: Current Research (Cont’d)",
+      "projectedText": "SESSION V: Current Research (Cont’d",
+      "atomText": "SESSION V: Current Research (Cont’d)",
+      "atomLength": 36,
+      "selectedEnd": 35,
+      "omittedTail": ")",
+      "omittedCodePoints": [
+        "U+0029"
+      ],
+      "selectionMatchesApprovedWording": false,
+      "approvedEqualsWholeAtomText": true,
+      "selectionMode": "VERBATIM_TEXT",
+      "classification": "GOLD_TEXT_BOUNDARY_DEBT_CONFIRMED"
+    },
+    {
+      "sourceAlias": "S0987",
+      "identity": "L0576:S0:0-41",
+      "lastPartAlias": "L0576:S0",
+      "approvedWording": "ICP Inter-Agency Coordination Group (IACG)",
+      "projectedText": "ICP Inter-Agency Coordination Group (IACG",
+      "atomText": "ICP Inter-Agency Coordination Group (IACG)",
+      "atomLength": 42,
+      "selectedEnd": 41,
+      "omittedTail": ")",
+      "omittedCodePoints": [
+        "U+0029"
+      ],
+      "selectionMatchesApprovedWording": false,
+      "approvedEqualsWholeAtomText": true,
+      "selectionMode": "VERBATIM_TEXT",
+      "classification": "GOLD_TEXT_BOUNDARY_DEBT_CONFIRMED"
+    }
+  ],
+  "requiresReview": [],
+  "punctuationRestoredByMigration": {
+    "count": 14,
+    "note": "The opposite direction and not a defect: these claims' coordinates render MORE text than their approvedWording holds, because the legacy line reconstruction had dropped punctuation that the atom stream still has. The selection is source-faithful; the approved string is the stale one. Recorded here so a reader does not count them.",
+    "examples": [
+      {
+        "lastPartAlias": "L0026:S0",
+        "approvedWording": "1 Global office update",
+        "projectedText": "1. Global office update"
+      },
+      {
+        "lastPartAlias": "L0078:S0",
+        "approvedWording": "2 Regional updates",
+        "projectedText": "2. Regional updates"
+      },
+      {
+        "lastPartAlias": "L0166:S0",
+        "approvedWording": "1 Research Topics Emerging from the Previous ICP Cycles",
+        "projectedText": "1. Research Topics Emerging from the Previous ICP Cycles"
+      }
+    ]
+  },
+  "proposedCorrection": {
+    "applied": false,
+    "scope": "the last part's selection of each confirmed claim, and nothing else",
+    "change": "selectionMode VERBATIM_TEXT with a truncated verbatimText becomes WHOLE_ALIAS, because in every confirmed case the approved heading is exactly the atom's text",
+    "semanticMembershipChanged": false,
+    "goldCountBefore": 41,
+    "goldCountAfter": 41,
+    "identityChanges": [
+      {
+        "lastPartAlias": "L0107:S0",
+        "before": "L0107:S0:0-39",
+        "after": "L0107:S0:0-40",
+        "beforeText": "Commonwealth of Independent States (CIS",
+        "afterText": "Commonwealth of Independent States (CIS)"
+      },
+      {
+        "lastPartAlias": "L0377:S0",
+        "before": "L0377:S0:0-84",
+        "after": "L0377:S0:0-85",
+        "beforeText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP",
+        "afterText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)"
+      },
+      {
+        "lastPartAlias": "L0540:S0",
+        "before": "L0540:S0:0-35",
+        "after": "L0540:S0:0-36",
+        "beforeText": "SESSION V: Current Research (Cont’d",
+        "afterText": "SESSION V: Current Research (Cont’d)"
+      },
+      {
+        "lastPartAlias": "L0576:S0",
+        "before": "L0576:S0:0-41",
+        "after": "L0576:S0:0-42",
+        "beforeText": "ICP Inter-Agency Coordination Group (IACG",
+        "afterText": "ICP Inter-Agency Coordination Group (IACG)"
+      }
+    ],
+    "blastRadius": {
+      "note": "Correcting these changes four claim identities and therefore DOC-0252's Gold hash, which is named by the registry, by both experiment runs' frozen summaries and by every score artifact already committed. The captures themselves are unaffected - they record what the provider returned - but every scored result would be recomputed against a different Gold identity.",
+      "artifactsNamingCurrentGoldHash": [
+        "eval/a99-closed-loop/gold-current/registry.v1.json",
+        "eval/a99-closed-loop/occurrence-baseline-structured-v1/run.v1.json",
+        "eval/a99-closed-loop/occurrence-baseline-structured-v1/offline-score.v1.json",
+        "eval/a99-closed-loop/structured-baseline-forensics-v1/repeat2-precision-forensics.v1.json",
+        "eval/a99-closed-loop/structured-context-packing-preflight-v1/context-packing-intervention.v1.json",
+        "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/targeted-packing-rerun-v2-summary.v1.json",
+        "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/targeted-packing-rerun-v2-score.v1.json"
+      ],
+      "authorization": "DOC-0252's Gold carries approvalAuthority USER and userFinalApproval true, and the one prior correction of this kind (S0616) was named explicitly in its migration's authorization. This audit therefore stops at the proposal."
+    }
+  },
+  "observedImpactOnScoredRuns": {
+    "note": "What these four claims have been costing, measured from artifacts already committed rather than predicted.",
+    "fixed120Baseline": "all four appear in the baseline's missedInAllThree list, and three of them appear as stable false positives in the same runs - the model named the heading, Gold recorded a different end, and the pair was counted twice as an error.",
+    "coherentPackingRerunV2": "two of the four fall inside target packs 5-7 and account for both false negatives and two of the seven stable false positives in every repeat."
+  }
+}
