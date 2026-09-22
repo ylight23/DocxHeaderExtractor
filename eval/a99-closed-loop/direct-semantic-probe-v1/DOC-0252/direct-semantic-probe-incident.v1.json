@@ -1,0 +1,61 @@
+{
+  "artifactKind": "a99_direct_semantic_probe_incident",
+  "schemaVersion": "a99-direct-semantic-probe-incident-v1",
+  "probeId": "DIRECT_SEMANTIC_DISCRIMINATION_PROBE",
+  "authorizedBaseCommit": "df1d9bc56b0515805452d2fa9a0f2f18be76fb14",
+  "executedAt": "2e751816d600cf6632cdb160f353340b502e1bf2",
+  "status": "HALTED_ON_FIRST_REQUEST_REJECTION",
+
+  "providerAccounting": {
+    "authorizedCalls": 9,
+    "callsMade": 0,
+    "callsBilled": 0,
+    "callLedgerEntries": 0,
+    "responsesReceived": 0,
+    "replacementCalls": 0,
+    "note": "The provider rejected the request with HTTP 400 before generating anything, so no call completed and nothing was billed. The authorization is untouched: 9 calls remain unspent."
+  },
+
+  "whatHappened": {
+    "summary": "The first request was rejected with 400: \"'messages' must contain the word 'json' in some form, to use 'response_format' of type 'json_object'.\"",
+    "gatesAtTimeOfRequest": "all MATCH - schema 20f937f1, prompt 57797bdc, the three provider inputs, plan 3e3048d6, transport parameters 38/4960, 119/15328, 57/7392, ancestry, clean tree, whitelist, and 9/9 slots reserved exclusively",
+    "notAModelResult": "No model ever saw the probe. This says nothing whatever about semantic discrimination."
+  },
+
+  "rootCause": {
+    "defect": "PROBE_PROMPT_OMITS_THE_JSON_TOKEN",
+    "detail": "The route sends response_format json_object, and the provider requires the literal word 'json' to appear somewhere in the messages. Every existing production prompt happens to satisfy this - the Stage-1 membership prompt says 'Return strict JSON matching the supplied schema' - because they were all derived from a base prompt that says it. The probe prompt was written fresh and functional, and never mentions the output format at all.",
+    "whyThePreflightMissedIt": "The preflight froze both layers it knew about: model input (prompt, packet, schema) and transport call (model, temperature, reasoning, max_tokens). This is a third thing - a compatibility constraint between a transport parameter and the content of the model input. Neither layer is wrong on its own; the pair is invalid, and nothing checked the pair.",
+    "generalLesson": "response_format constrains what the prompt must contain. A preflight that validates the prompt and the transport parameters separately can still freeze a combination the provider will refuse."
+  },
+
+  "captureSlots": {
+    "reserved": 9,
+    "used": 0,
+    "state": "RESERVED_UNUSED",
+    "paths": "r1, r2, r3 each holding PACK_001, PACK_005 and PACK_006 capture slots",
+    "handling": "Left in place. A reserved slot is recovered deliberately, not silently reused, even when it is certain that nothing was spent against it.",
+    "containsEvidence": false
+  },
+
+  "whyThisCannotBeFixedUnderThisAuthorization": {
+    "reason": "The fix is to add the output format to the probe prompt, which changes PROBE_PROMPT_HASH, and therefore all three provider-input hashes and the provider-input plan hash.",
+    "pinnedValuesThatWouldChange": [
+      "PROBE_PROMPT_HASH 57797bdced0e9918607cbf0a55239a746303d2445c103c4e8cb27012cd9b2fd8",
+      "PACK_001_PROVIDER_INPUT_HASH 237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+      "PACK_005_PROVIDER_INPUT_HASH 7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+      "PACK_006_PROVIDER_INPUT_HASH e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+      "PROVIDER_INPUT_PLAN_HASH 3e3048d63575c4ac6281c5e95480752e3b1144bf52be004de291899bb084c64d"
+    ],
+    "unchanged": [
+      "PROBE_SCHEMA_HASH 20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+      "the three labels and their functional definitions",
+      "the 18 items: 14 Gold positives, 3 masthead negatives, 1 document-label control",
+      "the three pack contexts and their composition",
+      "model, temperature, reasoning mode, response format and every max_tokens value"
+    ],
+    "decision": "Stopped and reported rather than editing a pinned authority. The only change needed is one sentence about the output format, which is semantically inert with respect to what the probe measures, but it is still a change to a value that was explicitly authorized."
+  },
+
+  "stateOfTheProbe": "No probe evidence exists. Nothing was scored, nothing was concluded, and no inference about the model is available or permitted from this run."
+}
