@@ -22,7 +22,23 @@ internal sealed record CanonicalSemanticExperiment(
     /// <summary>B2, I8. Prompt contract changes; context and source are untouched.</summary>
     public static readonly CanonicalSemanticExperiment PartialSpanOnly = new(false, true);
 
-    public string Name => (CarryStructuralAncestors, CommunicatePartialSpan) switch
+    /// <summary>
+    /// EXP_MASTHEAD_METADATA. One semantic clause: prominent text that identifies the document or
+    /// the occasion it records is not promoted to a heading, and the tree-less relation is not a
+    /// place to put text that establishes no structural unit.
+    /// <para>
+    /// An init property rather than a positional parameter, so every existing arm keeps the
+    /// constructor it had and its prompt hash with it.
+    /// </para>
+    /// </summary>
+    public bool ConstrainNonStructuralMetadata { get; init; }
+
+    public static readonly CanonicalSemanticExperiment NonStructuralMetadataConstrained =
+        new(false, false) { ConstrainNonStructuralMetadata = true };
+
+    public string Name => ConstrainNonStructuralMetadata
+        ? "E1-masthead-metadata"
+        : (CarryStructuralAncestors, CommunicatePartialSpan) switch
     {
         (false, false) => "B0-baseline",
         (true, false) => "B1-i7-structural-ancestors",

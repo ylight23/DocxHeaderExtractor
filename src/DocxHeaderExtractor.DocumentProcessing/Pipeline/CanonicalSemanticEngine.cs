@@ -114,6 +114,35 @@ internal static class CanonicalSemanticEngine
         duplicate is rejected rather than guessed at.
         """;
 
+
+    /// <summary>
+    /// EXP_MASTHEAD_METADATA. Says that prominence is not structure, and fences the tree-less
+    /// relation so it cannot absorb what prominence alone suggests.
+    /// <para>
+    /// Deliberately additive. It removes no category the policy already admits - a subtitle, a
+    /// running header, a table or figure label may still be reported where the policy admits them,
+    /// because no approved claim in the corpus adjudicates those either way and absence of evidence
+    /// is not evidence of absence. What it adds is the test those categories were missing: a claim
+    /// reported outside the section tree must still be a label the policy accepts, not merely text
+    /// that looks like one.
+    /// </para>
+    /// </summary>
+    private const string RawNonStructuralMetadataClause = """
+
+        Prominence is not structure. A block is not a heading merely because it is set apart and
+        names an organisation, an event, a meeting or session format, a date, a venue, an address,
+        or similar descriptive detail. That identifies the document or the occasion it records; it
+        does not divide the document.
+
+        Report such a block only if it is the document's own accepted title, or if it names a
+        structural unit whose content follows beneath it. Where the same identity is stated again
+        later - at the head of an annex, a schedule or an attachment - restating it opens no new
+        unit and is not reported.
+
+        parent-node:NONE is for the accepted labels named above, not a place to put prominent text
+        that establishes no structural unit.
+        """;
+
     /// <summary>
     /// Normalizes to LF, because a prompt is bytes on the wire and must not depend on how the
     /// source file happened to be checked out.
@@ -144,9 +173,16 @@ internal static class CanonicalSemanticEngine
     /// <summary>The I8 clause, line endings settled before it is appended.</summary>
     internal static string PartialSpanClause { get; } = NormalizePromptLineEndings(RawPartialSpanClause);
 
+    /// <summary>The EXP_MASTHEAD_METADATA clause, line endings settled before it is appended.</summary>
+    internal static string NonStructuralMetadataClause { get; } =
+        NormalizePromptLineEndings(RawNonStructuralMetadataClause);
+
     /// <summary>The prompt this run sends. One clause per intervention, appended, never rewritten.</summary>
-    internal static string SystemPromptFor(CanonicalSemanticExperiment experiment) =>
-        experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
+    internal static string SystemPromptFor(CanonicalSemanticExperiment experiment)
+    {
+        var prompt = experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
+        return experiment.ConstrainNonStructuralMetadata ? prompt + NonStructuralMetadataClause : prompt;
+    }
 
     /// <summary>
     /// The shared core, plus whatever coordinate shape the lane's contract teaches.
