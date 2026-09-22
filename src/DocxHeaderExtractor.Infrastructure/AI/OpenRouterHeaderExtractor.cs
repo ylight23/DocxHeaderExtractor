@@ -255,6 +255,13 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         CancellationToken ct = default,
         int expectedItemCount = 0)
     {
+        // Fail here rather than at the provider. This request is about to be sent with
+        // response_format json_object, and that option constrains what the messages must contain;
+        // discovering the mismatch as a remote 400 costs a round trip and produces an error whose
+        // cause is three layers away from the code that caused it.
+        TransportCompatibility.EnsureCompatible(
+            systemPrompt, userMessage, TransportCompatibility.JsonObjectResponseFormat);
+
         var body = new
         {
             model = _options.Model,

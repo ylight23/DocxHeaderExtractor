@@ -50,7 +50,7 @@ public sealed class OpenRouterTests
         var blocks = Enumerable.Range(0, 32).Select(index =>
             $"{{\"id\":\"DOC-0116:source-paragraph-{index:D3}-long-stable-id\",\"source_text\":\"A realistic source paragraph payload for output-budget testing.\",\"source_length\":64}}");
         var user = $"{{\"blocks\":[{string.Join(',', blocks)}]}}";
-        await model.BoundaryCutAsync("role system", user);
+        await model.BoundaryCutAsync("role system. Return JSON.", user);
 
         using var request = JsonDocument.Parse(handler.Body);
         using var materialized = JsonDocument.Parse(request.RootElement.GetProperty("messages")[1]
