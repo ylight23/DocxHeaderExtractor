@@ -255,7 +255,12 @@
         "maxTokens": 7392
       }
     ],
-    "providerModelInputPlanSha256": "3e3048d63575c4ac6281c5e95480752e3b1144bf52be004de291899bb084c64d"
+    "pack001ProviderInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+    "pack005ProviderInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+    "pack006ProviderInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+    "providerModelInputPlanSha256": "3e3048d63575c4ac6281c5e95480752e3b1144bf52be004de291899bb084c64d",
+    "repeatIdenticalProviderInputs": true,
+    "planHashUnchangedSincePreflight": true
   },
   "transportCallAuthority": {
     "model": "qwen/qwen3.7-flash",
@@ -295,23 +300,92 @@
     "identities": {
       "required": 9,
       "fresh": true,
+      "atomicallyReservable": true,
+      "perContextPerRepeat": true,
       "slots": [
         {
+          "identity": "PACK_001:r1",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
           "repeat": 1,
-          "directoryExists": false,
-          "existingFiles": []
+          "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true
         },
         {
+          "identity": "PACK_001:r2",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
           "repeat": 2,
-          "directoryExists": false,
-          "existingFiles": []
+          "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true
         },
         {
+          "identity": "PACK_001:r3",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
           "repeat": 3,
-          "directoryExists": false,
-          "existingFiles": []
+          "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true
+        },
+        {
+          "identity": "PACK_005:r1",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+          "repeat": 1,
+          "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true
+        },
+        {
+          "identity": "PACK_005:r2",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+          "repeat": 2,
+          "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true
+        },
+        {
+          "identity": "PACK_005:r3",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+          "repeat": 3,
+          "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true
+        },
+        {
+          "identity": "PACK_006:r1",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+          "repeat": 1,
+          "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true
+        },
+        {
+          "identity": "PACK_006:r2",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+          "repeat": 2,
+          "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true
+        },
+        {
+          "identity": "PACK_006:r3",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+          "repeat": 3,
+          "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true
         }
-      ]
+      ],
+      "note": "Nine identities, not three: each context is its own call and therefore its own slot. Reservability is proven by performing an exclusive create and removing it, not inferred from a file being absent."
     }
   },
   "metrics": {

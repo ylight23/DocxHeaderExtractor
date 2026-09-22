@@ -185,21 +185,99 @@ public sealed class DirectSemanticProbePreflightTests
         // Deterministic.
         Assert.Equal(schemaHash, CanonicalHash(ProbeSchema(items.Select(item => item.ItemId).ToArray())));
 
-        // ---- §14 capture identities ----------------------------------------------------------------------
-        var slots = Enumerable.Range(1, Repeats).Select(repeat =>
+        // The plan was frozen before this correction and must not have moved: this task adds gates,
+        // it does not touch the prompt, the schema, the targets, the controls or the context.
+        Assert.Equal("3e3048d63575c4ac6281c5e95480752e3b1144bf52be004de291899bb084c64d", planHash);
+
+        // Named per-context provider inputs, and the same bytes for every repeat. A repeat that
+        // composed differently would make repeat variance a property of the harness rather than of
+        // the model.
+        var providerInputs = calls.ToDictionary(
+            call => call.packId.Split(':')[1], call => call.providerInputSha256, StringComparer.Ordinal);
+        for (var repeat = 1; repeat <= Repeats; repeat++)
         {
-            var directory = Path.Combine(TestRepository.Path(OutputRoot), $"r{repeat}");
-            return new
+            var recomposed = byPack.ToDictionary(
+                group => group.Key.Split(':')[1],
+                group =>
+                {
+                    var packet = ProbePacket(packs[group.Key], group.ToArray());
+                    var request = packet + "\nSCHEMA=" + JsonSerializer.Serialize(
+                        ProbeSchema(group.Select(item => item.ItemId).ToArray()));
+                    return SemanticAuthorityTransportCall.Sha256Utf8(
+                        JsonSerializer.Serialize(new { systemPrompt = prompt, userMessage = request }));
+                },
+                StringComparer.Ordinal);
+            Assert.Equal(providerInputs, recomposed);
+        }
+
+        // Transport authority, derived rather than copied.
+        Assert.Equal(38, calls.Single(call => call.packId.EndsWith("PACK_001", StringComparison.Ordinal)).expectedItemCount);
+        Assert.Equal(4960, calls.Single(call => call.packId.EndsWith("PACK_001", StringComparison.Ordinal)).maxTokens);
+        Assert.Equal(119, calls.Single(call => call.packId.EndsWith("PACK_005", StringComparison.Ordinal)).expectedItemCount);
+        Assert.Equal(15328, calls.Single(call => call.packId.EndsWith("PACK_005", StringComparison.Ordinal)).maxTokens);
+        Assert.Equal(57, calls.Single(call => call.packId.EndsWith("PACK_006", StringComparison.Ordinal)).expectedItemCount);
+        Assert.Equal(7392, calls.Single(call => call.packId.EndsWith("PACK_006", StringComparison.Ordinal)).maxTokens);
+
+        // ---- §14 nine capture identities: one per context per repeat ---------------------------------
+        // Not three. Each context is its own call and therefore its own slot, and the last run
+        // showed what it costs to discover an occupied slot after the authority already matched.
+        var runArtifact = Path.Combine(TestRepository.Path(OutputRoot), "direct-semantic-probe-run.v1.json");
+        var alreadyRun = File.Exists(runArtifact);
+
+        var slots = new List<object>();
+        var allFresh = true;
+        var allReservable = true;
+
+        foreach (var pack in byPack.Select(group => group.Key))
+        {
+            for (var repeat = 1; repeat <= Repeats; repeat++)
             {
-                repeat,
-                directoryExists = Directory.Exists(directory),
-                existingFiles = Directory.Exists(directory)
-                    ? Directory.GetFiles(directory).Select(Path.GetFileName).ToArray()
-                    : [],
-            };
-        }).ToArray();
-        if (!File.Exists(Path.Combine(TestRepository.Path(OutputRoot), "direct-semantic-probe-run.v1.json")))
-            Assert.All(slots, slot => Assert.Empty(slot.existingFiles));
+                var name = pack.Split(':')[1];
+                var directory = Path.Combine(TestRepository.Path(OutputRoot), $"r{repeat}");
+                var slotPath = Path.Combine(directory, $"{name}.capture-slot.v1.json");
+                var fresh = !File.Exists(slotPath);
+                if (!fresh) allFresh = false;
+
+                // Reservability is proven by performing the reservation the runner will perform -
+                // an exclusive create - and then removing it, rather than by inferring it from the
+                // absence of a file.
+                var reservable = false;
+                if (fresh && !alreadyRun)
+                {
+                    try
+                    {
+                        Directory.CreateDirectory(directory);
+                        using (var handle = new FileStream(
+                            slotPath, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+                        {
+                            reservable = true;
+                        }
+                        File.Delete(slotPath);
+                    }
+                    catch (IOException) { reservable = false; }
+                    catch (UnauthorizedAccessException) { reservable = false; }
+                }
+                if (!reservable) allReservable = false;
+
+                slots.Add(new
+                {
+                    identity = $"{name}:r{repeat}",
+                    packId = pack,
+                    repeat,
+                    providerInputSha256 = providerInputs[name],
+                    fresh,
+                    reserved = !fresh,
+                    atomicallyReservable = reservable,
+                });
+            }
+        }
+
+        Assert.Equal(9, slots.Count);
+        if (!alreadyRun)
+        {
+            Assert.True(allFresh, "a capture slot already exists");
+            Assert.True(allReservable, "a capture slot could not be exclusively created");
+        }
 
         FreezeArtifact.AssertJson(PreflightRoot, "direct-semantic-probe-preflight.v1.json", new
         {
@@ -300,7 +378,12 @@ public sealed class DirectSemanticProbePreflightTests
                     + "three calls rather than two. Batching it into a Stage-1 pack would change the "
                     + "context the decision depends on.",
                 calls,
+                pack001ProviderInputSha256 = providerInputs["PACK_001"],
+                pack005ProviderInputSha256 = providerInputs["PACK_005"],
+                pack006ProviderInputSha256 = providerInputs["PACK_006"],
                 providerModelInputPlanSha256 = planHash,
+                repeatIdenticalProviderInputs = true,
+                planHashUnchangedSincePreflight = true,
             },
 
             transportCallAuthority = new
@@ -327,7 +410,17 @@ public sealed class DirectSemanticProbePreflightTests
                     parseStatus = "FAILED",
                     semanticScoring = "STOP",
                 },
-                identities = new { required = proposedCalls, fresh = true, slots },
+                identities = new
+                {
+                    required = proposedCalls,
+                    fresh = allFresh,
+                    atomicallyReservable = allReservable,
+                    perContextPerRepeat = true,
+                    slots,
+                    note = "Nine identities, not three: each context is its own call and therefore "
+                        + "its own slot. Reservability is proven by performing an exclusive create "
+                        + "and removing it, not inferred from a file being absent.",
+                },
             },
 
             metrics = new
