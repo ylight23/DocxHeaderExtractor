@@ -1,0 +1,378 @@
+{
+  "artifactKind": "a99_structured_v2_baseline_false_positive_identity_audit",
+  "schemaVersion": "a99-structured-v2-baseline-false-positive-identity-audit-v1",
+  "status": "STRUCTURED_V2_BASELINE_FP_IDENTITIES_CHARACTERIZED",
+  "authority": {
+    "startHead": "81ae3cc",
+    "protocol": "a99-semantic-source-parts-v2",
+    "packing": "COHERENT_REGION_SEGMENTATION_V1",
+    "packs": [
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_006"
+    ],
+    "repeats": 3,
+    "officialProviderCalls": 6,
+    "placementCalls": 0,
+    "goldTargetCount": 14,
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "promptSha256": "6340d1daf507a3d2bf5ce6fbef2b5d7b61735c0e0621a62f8e885ad8b2d8a66e",
+    "contractSha256": "565bdc87749a1ce1246238cacd1eb7d550a19939dc9e42d23e76ab3a46a8b0ea",
+    "manifestHash": "fb62c1c696b4c30f0b71aed2e39f296ece3934c5870982fdc0e19bc62d64189c",
+    "score": {
+      "r1": { "tp": 14, "fp": 4, "fn": 0, "refusedOnShape": 0 },
+      "r2": { "tp": 14, "fp": 4, "fn": 0, "refusedOnShape": 1 },
+      "r3": { "tp": 14, "fp": 6, "fn": 0, "refusedOnShape": 0 }
+    },
+    "unexpectedVerbatimText": 0
+  },
+  "provenance": {
+    "scoredFromTransportCapturesOnly": true,
+    "rawResponseBytesDecodedBeforeScoring": true,
+    "pipeline": [
+      "transport raw response bytes",
+      "DecodeSourcePartsV2",
+      "canonicalize",
+      "bind",
+      "evaluate"
+    ],
+    "scoreArtifactUsedAsAuthority": false,
+    "baselineCapturesChanged": false,
+    "scoreArtifactChanged": false,
+    "replayBundleParity": [
+      {
+        "repeat": "r1",
+        "transportCalls": 2,
+        "transportCaptureStatus": "TRANSPORT_CAPTURE_COMPLETE",
+        "replayMaterializationStatus": "REPLAY_MATERIALIZATION_COMPLETE",
+        "bundleHash": "fa1507c327743a51bb1894c39b0aea55d9da2ef03e5fc3705834f638e74b0b33",
+        "transportBundleHashEqualsReplayBundleHash": true
+      },
+      {
+        "repeat": "r2",
+        "transportCalls": 2,
+        "transportCaptureStatus": "TRANSPORT_CAPTURE_COMPLETE",
+        "replayMaterializationStatus": "REPLAY_MATERIALIZATION_COMPLETE",
+        "bundleHash": "4e671baa46de60cddc87d48e8b70f485914aa7acc3472c89205fd4a3cc15afc5",
+        "transportBundleHashEqualsReplayBundleHash": true
+      },
+      {
+        "repeat": "r3",
+        "transportCalls": 2,
+        "transportCaptureStatus": "TRANSPORT_CAPTURE_COMPLETE",
+        "replayMaterializationStatus": "REPLAY_MATERIALIZATION_COMPLETE",
+        "bundleHash": "0442958d191d9d18a234b9fc60570d759821ccaa343b422a7fddcaa3b98386f4",
+        "transportBundleHashEqualsReplayBundleHash": true
+      }
+    ]
+  },
+  "exactFalsePositiveIdentitySets": {
+    "R1_FP_IDENTITIES": [
+      "L0513:S0:0-38|L0514:S0:0-30",
+      "L0515:S0:0-14",
+      "L0516:S0:0-15",
+      "L0550:S0:0-56"
+    ],
+    "R2_FP_IDENTITIES": [
+      "L0513:S0:0-38|L0514:S0:0-30",
+      "L0515:S0:0-14",
+      "L0516:S0:0-15",
+      "L0550:S0:0-56"
+    ],
+    "R3_FP_IDENTITIES": [
+      "L0396:S0:0-93",
+      "L0513:S0:0-38",
+      "L0514:S0:0-30",
+      "L0515:S0:0-14",
+      "L0516:S0:0-15",
+      "L0550:S0:0-56"
+    ],
+    "FP_ALL_THREE": [
+      "L0515:S0:0-14",
+      "L0516:S0:0-15",
+      "L0550:S0:0-56"
+    ],
+    "FP_R1_R2_ONLY": [
+      "L0513:S0:0-38|L0514:S0:0-30"
+    ],
+    "FP_R1_R3_ONLY": [],
+    "FP_R2_R3_ONLY": [],
+    "FP_R1_ONLY": [],
+    "FP_R2_ONLY": [],
+    "FP_R3_ONLY": [
+      "L0396:S0:0-93",
+      "L0513:S0:0-38",
+      "L0514:S0:0-30"
+    ],
+    "FP_UNION_COUNT": 7,
+    "FP_INTERSECTION_COUNT": 3
+  },
+  "identityDetails": [
+    {
+      "identity": "L0396:S0:0-93",
+      "sourceAliases": ["L0396:S0"],
+      "exactSourceText": "definitions and discounts, and requires traditional price collection to continue in parallel.",
+      "pack": "PACK_005",
+      "rawRepeatPresence": ["r3"],
+      "semanticRoleByRepeat": { "r3": "heading" },
+      "relationByRepeat": { "r3": ["parent-node:NONE"] },
+      "taxonomy": "BODY_PROPOSITION"
+    },
+    {
+      "identity": "L0513:S0:0-38|L0514:S0:0-30",
+      "sourceAliases": ["L0513:S0", "L0514:S0"],
+      "exactSourceTextByAlias": {
+        "L0513:S0": "International Comparison Program (ICP)",
+        "L0514:S0": "TECHNICAL ADVISORY GROUP (TAG)"
+      },
+      "pack": "PACK_005",
+      "rawRepeatPresence": ["r1", "r2"],
+      "semanticRoleByRepeat": { "r1": "document_title", "r2": "heading" },
+      "relationByRepeat": { "r1": ["parent-node:NONE"], "r2": ["parent-node:NONE"] },
+      "taxonomy": "MASTHEAD_METADATA"
+    },
+    {
+      "identity": "L0513:S0:0-38",
+      "sourceAliases": ["L0513:S0"],
+      "exactSourceText": "International Comparison Program (ICP)",
+      "pack": "PACK_005",
+      "rawRepeatPresence": ["r3"],
+      "semanticRoleByRepeat": { "r3": "heading" },
+      "relationByRepeat": { "r3": ["parent-node:NONE"] },
+      "taxonomy": "MASTHEAD_METADATA_SPLIT_IDENTITY"
+    },
+    {
+      "identity": "L0514:S0:0-30",
+      "sourceAliases": ["L0514:S0"],
+      "exactSourceText": "TECHNICAL ADVISORY GROUP (TAG)",
+      "pack": "PACK_005",
+      "rawRepeatPresence": ["r3"],
+      "semanticRoleByRepeat": { "r3": "heading" },
+      "relationByRepeat": { "r3": ["parent-node:NONE"] },
+      "taxonomy": "MASTHEAD_METADATA_SPLIT_IDENTITY"
+    },
+    {
+      "identity": "L0515:S0:0-14",
+      "sourceAliases": ["L0515:S0"],
+      "exactSourceText": "Hybrid Meeting",
+      "pack": "PACK_006",
+      "rawRepeatPresence": ["r1", "r2", "r3"],
+      "semanticRoleByRepeat": {
+        "r1": "document-title",
+        "r2": "document-title",
+        "r3": "document-title"
+      },
+      "relationByRepeat": {
+        "r1": ["parent-node:NONE"],
+        "r2": ["parent-node:NONE"],
+        "r3": ["parent-node:NONE"]
+      },
+      "taxonomy": "MASTHEAD_METADATA"
+    },
+    {
+      "identity": "L0516:S0:0-15",
+      "sourceAliases": ["L0516:S0"],
+      "exactSourceText": "March 7-8, 2025",
+      "pack": "PACK_006",
+      "rawRepeatPresence": ["r1", "r2", "r3"],
+      "semanticRoleByRepeat": {
+        "r1": "subtitle",
+        "r2": "document-subtitle",
+        "r3": "document-subtitle"
+      },
+      "relationByRepeat": {
+        "r1": ["parent-node:NONE"],
+        "r2": ["parent-node:NONE"],
+        "r3": ["parent-node:NONE"]
+      },
+      "taxonomy": "MASTHEAD_METADATA"
+    },
+    {
+      "identity": "L0550:S0:0-56",
+      "sourceAliases": ["L0550:S0"],
+      "exactSourceText": "14:00 – 15:00 Improving Reliability of Price Comparisons",
+      "pack": "PACK_006",
+      "rawRepeatPresence": ["r1", "r2", "r3"],
+      "semanticRoleByRepeat": {
+        "r1": "section-heading",
+        "r2": "section",
+        "r3": "section"
+      },
+      "relationByRepeat": {
+        "r1": ["parent-node:parent-node:L0539:S0"],
+        "r2": ["parent-node:L0539:S0"],
+        "r3": ["parent-node:L0539:S0"]
+      },
+      "taxonomy": "SCHEDULE_ITEM"
+    }
+  ],
+  "packAttribution": {
+    "PACK_005_FP_COUNTS": { "r1": 1, "r2": 1, "r3": 3 },
+    "PACK_006_FP_COUNTS": { "r1": 3, "r2": 3, "r3": 3 }
+  },
+  "knownResidualMechanisms": [
+    {
+      "mechanism": "BODY_PROPOSITION",
+      "knownIdentity": "L0396:S0",
+      "exactBoundIdentityByRepeat": {
+        "r1": "NOT_EMITTED_EXPLICIT_NOT_HEADING",
+        "r2": "NOT_EMITTED_REFUSED_ON_SHAPE",
+        "r3": "L0396:S0:0-93"
+      }
+    },
+    {
+      "mechanism": "MASTHEAD_METADATA",
+      "knownIdentity": "L0513:S0|L0514:S0",
+      "exactBoundIdentityByRepeat": {
+        "r1": "L0513:S0:0-38|L0514:S0:0-30",
+        "r2": "L0513:S0:0-38|L0514:S0:0-30",
+        "r3": "NOT_EMITTED_AS_COMPOSITE_SPLIT_INTO_L0513_AND_L0514"
+      }
+    },
+    {
+      "mechanism": "MASTHEAD_METADATA",
+      "knownIdentity": "L0515:S0",
+      "exactBoundIdentityByRepeat": {
+        "r1": "L0515:S0:0-14",
+        "r2": "L0515:S0:0-14",
+        "r3": "L0515:S0:0-14"
+      }
+    },
+    {
+      "mechanism": "MASTHEAD_METADATA",
+      "knownIdentity": "L0516:S0|L0517:S0|L0518:S0",
+      "exactBoundIdentityByRepeat": {
+        "r1": "NOT_EMITTED_AS_COMPOSITE_L0516_ONLY_EMITTED",
+        "r2": "NOT_EMITTED_AS_COMPOSITE_L0516_ONLY_EMITTED",
+        "r3": "NOT_EMITTED_AS_COMPOSITE_L0516_ONLY_EMITTED"
+      }
+    },
+    {
+      "mechanism": "SCHEDULE_ITEM",
+      "knownIdentity": "L0550:S0",
+      "exactBoundIdentityByRepeat": {
+        "r1": "L0550:S0:0-56",
+        "r2": "L0550:S0:0-56",
+        "r3": "L0550:S0:0-56"
+      }
+    }
+  ],
+  "mastheadComparator": {
+    "L0513_L0514_exact_presence": { "r1": true, "r2": true, "r3": false },
+    "L0513_split_presence": { "r1": false, "r2": false, "r3": true },
+    "L0514_split_presence": { "r1": false, "r2": false, "r3": true },
+    "L0515_presence": { "r1": true, "r2": true, "r3": true },
+    "L0516_L0517_L0518_exact_presence": { "r1": false, "r2": false, "r3": false },
+    "L0516_presence": { "r1": true, "r2": true, "r3": true },
+    "L0517_presence": { "r1": false, "r2": false, "r3": false },
+    "L0518_presence": { "r1": false, "r2": false, "r3": false },
+    "MASTHEAD_FP_PER_REPEAT": { "r1": 3, "r2": 3, "r3": 4 },
+    "MASTHEAD_FP_STABLE_ALL_THREE": [
+      "L0515:S0:0-14",
+      "L0516:S0:0-15"
+    ],
+    "mechanismPresentAllThree": true
+  },
+  "bodyScheduleBaseline": {
+    "BODY_L0396_PRESENCE": {
+      "r1": "NOT_EMITTED_EXPLICIT_NOT_HEADING",
+      "r2": "NOT_EMITTED_REFUSED_ON_SHAPE",
+      "r3": "EMITTED"
+    },
+    "SCHEDULE_L0550_PRESENCE": { "r1": true, "r2": true, "r3": true }
+  },
+  "newV2OnlyFalsePositiveIdentities": {
+    "NEW_V2_FP_IDENTITIES": [
+      "L0513:S0:0-38",
+      "L0514:S0:0-30"
+    ],
+    "NEW_V2_FP_COUNT": 2,
+    "taxonomy": "MASTHEAD_METADATA_SPLIT_IDENTITY",
+    "interpretation": "These are representation-level split identities of the known masthead composite, not a new semantic source family."
+  },
+  "textNotInAtom": {
+    "identity": "L0396:S0",
+    "quotedText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+    "sourceAtomText": "definitions and discounts, and requires traditional price collection to continue in parallel.",
+    "reason": "The model assigned the neighbouring section-heading text to L0396:S0, but that exact text is absent from the L0396 atom. The captured source evidence places the section heading on a different, non-owned neighbouring alias.",
+    "classification": "KNOWN_BODY_PROPOSITION_FP_FAMILY",
+    "causedGoldFn": false,
+    "refusedOnShape": true,
+    "repeat": "r2"
+  },
+  "membershipVsMetadata": {
+    "classification": "MEMBERSHIP_VARIABLE",
+    "commonIdentityMetadataClassification": "MEMBERSHIP_STABLE_METADATA_VARIABLE",
+    "commonIdentities": [
+      "L0515:S0:0-14",
+      "L0516:S0:0-15",
+      "L0550:S0:0-56"
+    ],
+    "observations": [
+      "L0515 text and NONE relation are stable; role spelling is stable.",
+      "L0516 text and NONE relation are stable; role changes from subtitle to document-subtitle after R1.",
+      "L0550 text is stable; role and parent relation encoding differ in R1 from R2/R3.",
+      "The R1/R2 masthead composite becomes two exact identities in R3, and L0396 appears only in R3."
+    ]
+  },
+  "noneAnalysis": {
+    "definition": "A NONE claim has relationHints containing parent-node:NONE and isHeading=true.",
+    "R1": {
+      "NONE_CLAIMS_TOTAL": 3,
+      "NONE_GOLD_TP": 0,
+      "NONE_FP": 3,
+      "identities": [
+        "L0513:S0:0-38|L0514:S0:0-30",
+        "L0515:S0:0-14",
+        "L0516:S0:0-15"
+      ]
+    },
+    "R2": {
+      "NONE_CLAIMS_TOTAL": 3,
+      "NONE_GOLD_TP": 0,
+      "NONE_FP": 3,
+      "identities": [
+        "L0513:S0:0-38|L0514:S0:0-30",
+        "L0515:S0:0-14",
+        "L0516:S0:0-15"
+      ]
+    },
+    "R3": {
+      "NONE_CLAIMS_TOTAL": 4,
+      "NONE_GOLD_TP": 0,
+      "NONE_FP": 4,
+      "identities": [
+        "L0513:S0:0-38",
+        "L0514:S0:0-30",
+        "L0515:S0:0-14",
+        "L0516:S0:0-15"
+      ]
+    },
+    "sameNoneOverAdmissionPatternAsV1": true
+  },
+  "comparatorReadiness": {
+    "clearMastheadPresencePattern": true,
+    "captureReplayIntegrity": true,
+    "goldTargetPopulationRemains14": true,
+    "allGoldTruePositivesRemainBound": true,
+    "coordinateShapeConfound": false,
+    "MASTHEAD_V2_COMPARATOR_READY": true
+  },
+  "accounting": {
+    "OFFICIAL_BASELINE_CALLS": 6,
+    "ACCIDENTAL_DUPLICATE_CALLS": 2,
+    "TOTAL_PROVIDER_CALLS_OBSERVED": 8,
+    "HARD_CAP": 9,
+    "UNUSED_CAPACITY": 1,
+    "PROVIDER_AUTHORIZED_FOR_MORE_CALLS": false,
+    "MODEL_CALLS": 0,
+    "PROVIDER_CALLS": 0
+  },
+  "scope": {
+    "mastheadArmRun": false,
+    "bodyPropositionRun": false,
+    "scheduleItemRun": false,
+    "baselineRunArtifactsModified": false,
+    "captureGuardModified": false
+  }
+}
