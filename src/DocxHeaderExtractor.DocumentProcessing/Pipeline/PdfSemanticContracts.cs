@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -32,7 +33,10 @@ internal sealed record PdfBlockDecision(
     TextOffsetSpan? HeadingSpan = null,
     string? ProposedParentId = null,
     PdfSemanticRole SemanticRole = PdfSemanticRole.Unknown,
-    TextOffsetSpan? ProposedSourceSpan = null);
+    TextOffsetSpan? ProposedSourceSpan = null,
+    // The bound claim's ordered parts, for a coordinate system whose claims can span several
+    // source occurrences. Null everywhere else, which is every lane that had one span per claim.
+    IReadOnlyList<CanonicalSemanticBoundPart>? Parts = null);
 
 /// <summary>Independent execution budget for the semantic lane.</summary>
 public sealed record SemanticLaneOptions(

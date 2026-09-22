@@ -48,6 +48,37 @@ public sealed record CanonicalSemanticProductionInput(
     /// </para>
     /// </summary>
     public IReadOnlyDictionary<string, string>? LayoutBlockBySourceId { get; init; }
+
+    /// <summary>
+    /// The coordinate contract this lane is running under. Null keeps the alias-span behaviour every
+    /// caller had before contracts became selectable, so a lane that does not supply one is not
+    /// choosing a default - it is unchanged.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public SemanticCoordinateContract? CoordinateContract { get; init; }
+
+    /// <summary>
+    /// The source aliases the lane itself issued, when its addressing is not the running
+    /// <c>S0001..</c> numbering derived from a catalog. A structured PDF addresses atoms as
+    /// <c>L{row}:S{segment}</c>, and re-deriving aliases from its catalog would renumber them into
+    /// a scheme the model was never shown and Gold does not record.
+    /// </summary>
+    public IReadOnlyList<SemanticSourceAlias>? SourceAliases { get; init; }
+
+    /// <summary>
+    /// The coordinate atoms a structured binding resolves against. Null for lanes whose coordinate
+    /// system has no atoms below the alias.
+    /// </summary>
+    public IReadOnlyList<SemanticSourceAtom>? SourceAtoms { get; init; }
+
+    /// <summary>The binding this lane's contract owns; alias-span when no contract was supplied.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public SemanticCoordinateBinding Binding => CoordinateContract?.Binding ?? SemanticCoordinateBinding.AliasSpan;
+
+    /// <summary>The lane's own aliases, or the catalog-derived ones when it issued none.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public IReadOnlyList<SemanticSourceAlias> Aliases =>
+        SourceAliases ?? SemanticSourceAliasCatalog.FromCatalog(SourceCatalog);
 }
 
 /// <summary>Compact parser-owned evidence attached to one canonical source occurrence. It contains
@@ -218,8 +249,8 @@ public static class CanonicalSemanticProductionEntryPoint
             throw new InvalidOperationException("REPLAY_CAPTURE_REQUIRES_ASYNC_INFERENCE");
         if (input.SemanticProposals is null)
             throw new InvalidOperationException("LIVE_INFERENCE_REQUIRES_RUN_ASYNC");
-        var aliases = SemanticSourceAliasCatalog.FromCatalog(input.SourceCatalog);
-        var validation = CanonicalSemanticContractValidator.ValidateProposals(
+        var aliases = input.Aliases;
+        var validation = input.Binding.ValidateProposals(
             input.SemanticProposals, aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal), input.OwnedAliases);
         var normalization = SemanticConflictNormalizer.Normalize(validation.ValidProposals, aliases);
         var result = RunPostInference(input, normalization.BindingReadyProposals, input.SemanticProposals,
@@ -245,7 +276,7 @@ public static class CanonicalSemanticProductionEntryPoint
         ArgumentNullException.ThrowIfNull(textModel);
         var pages = input.Pages ?? throw new ArgumentNullException(nameof(input.Pages));
         var profile = ModalityProfiler.Profile(pages);
-        var aliases = SemanticSourceAliasCatalog.FromCatalog(input.SourceCatalog);
+        var aliases = input.Aliases;
 
         // Candidate hints are attention metadata only. Every owned alias remains eligible.
         foreach (var alias in aliases)
@@ -258,7 +289,7 @@ public static class CanonicalSemanticProductionEntryPoint
         var replayBundle = input.ReplayCapture is null
             ? null
             : CreateReplayBundle(input, aliases, textInference, captureProposals);
-        var primaryValidation = CanonicalSemanticContractValidator.ValidateProposals(
+        var primaryValidation = input.Binding.ValidateProposals(
             textInference.Proposals,
             aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal),
             input.OwnedAliases);
@@ -277,7 +308,7 @@ public static class CanonicalSemanticProductionEntryPoint
             normalization, aliases, input, context, adjudicationModel, requestId, cancellationToken);
         var globalReopen = await CanonicalSemanticGlobalReopenCoordinator.ResolveAsync(
             globalConflicts, aliases, globalReopenModel, requestId, cancellationToken: cancellationToken);
-        var globalValidation = CanonicalSemanticContractValidator.ValidateProposals(
+        var globalValidation = input.Binding.ValidateProposals(
             globalReopen.AcceptedAlternatives,
             aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal),
             input.OwnedAliases);
@@ -372,12 +403,13 @@ public static class CanonicalSemanticProductionEntryPoint
     {
         var pages = input.Pages ?? throw new ArgumentNullException(nameof(input.Pages));
         var profile = ModalityProfiler.Profile(pages);
-        var aliases = SemanticSourceAliasCatalog.FromCatalog(input.SourceCatalog);
+        var aliases = input.Aliases;
         foreach (var alias in aliases)
             _ = SemanticCandidatePolicy.CanAcceptOwnedOccurrence(alias.Alias, input.CandidateHints);
         var context = SemanticContextPacker.Pack(input.TargetEvidence, input.LocalContext, input.GlobalContext);
-        var text = CanonicalSemanticPipeline.Run(input.SourceCatalog, semanticProposals,
-            input.SourceSha256, input.ExpectedSourceSha256, input.OwnedAliases);
+        var text = CanonicalSemanticPipeline.RunAliases(aliases, semanticProposals,
+            input.SourceSha256, input.ExpectedSourceSha256, input.OwnedAliases,
+            input.Binding, input.SourceAtoms);
 
         var visualOccurrences = input.VisualBlocks is { Count: > 0 }
             ? VisualRecovery.Recover(input.VisualBlocks)

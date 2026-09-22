@@ -72,6 +72,12 @@ internal sealed record PdfStructuredSourceAuthority(
             ExpectedSourceSha256 = SourceSha256,
             LayoutBlockBySourceId = LayoutBlockByAtom,
             SourceUniverseSha256 = SourceUniverseSha256,
+            // The contract that issued the schema also validates, decodes and binds. Its aliases
+            // are the atoms' own - deriving them from the catalog instead would renumber every
+            // coordinate into a scheme the model was never shown.
+            CoordinateContract = SemanticCoordinateContract.PdfStructuredSourceParts,
+            SourceAliases = Aliases,
+            SourceAtoms = Atoms,
         };
 }
 

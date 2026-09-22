@@ -137,7 +137,20 @@ internal sealed record PdfValidatedHeading(
     DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan HeadingSpan,
     PdfBlockRole Role,
     string StructuralScope,
-    string ValidationBasis);
+    string ValidationBasis)
+{
+    /// <summary>
+    /// The claim's complete ordered coordinate tuple, when its coordinate system has one. Null
+    /// where a claim is one selection inside one occurrence - a DOCX paragraph, a legacy PDF block -
+    /// because there is nothing a tuple would say that <see cref="HeadingSpan"/> does not.
+    /// <para>
+    /// A heading that wraps across two atoms is two parts here and stays two parts through
+    /// materialization. The alternative - carrying only the first and letting the span stand for
+    /// the whole - is the truncation the structured coordinate system exists to remove.
+    /// </para>
+    /// </summary>
+    public IReadOnlyList<CanonicalSemanticBoundPart>? Parts { get; init; }
+}
 
 /// <summary>
 /// Embedded verbatim in the frozen <c>pdf_hierarchy_facts</c> artifact
@@ -373,7 +386,10 @@ internal static class PdfProposalValidator
             var context = contexts[decision.Id];
             return new PdfValidatedHeading(
                 decision.Id, decision.HeadingSpan!, decision.Role, context.Source.StructuralScope,
-                "source-grounded-pointer-span");
+                "source-grounded-pointer-span")
+            {
+                Parts = decision.Parts,
+            };
         })
         .ToArray();
 

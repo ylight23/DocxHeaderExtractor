@@ -68,22 +68,19 @@ internal static class CanonicalStructureMaterializer
         {
             var sourceParagraph = occurrences[item.SourceId];
             var hierarchy = structures[item.SourceId];
-            var sourceFacts = new SourceFacts
-            {
-                SourceId = sourceParagraph.SourceId,
-                RawText = sourceParagraph.Text,
-                Source = new SourceAnchor
-                {
-                    SourceType = "docx",
-                    ParagraphId = sourceParagraph.SourceId,
-                    ParagraphIndex = sourceParagraph.SourceOrdinal,
-                },
-                RawSpan = new SourceTextSpan(0, sourceParagraph.Text.Length),
-            };
+            var sourceFacts = FactsFor(sourceParagraph);
+            // A claim that occupies several source occurrences supplies facts for each of them. The
+            // structural contract already addresses a claim as a list of sources, so a heading that
+            // wraps across two atoms is expressed as the two selections it actually is - there is no
+            // span covering both, because between them lies the end of one piece of text and the
+            // start of another, and inventing one would be the truncation in reverse.
+            var claimFacts = item.Parts is { Count: > 1 } parts
+                ? parts.Select(part => FactsFor(occurrences[part.SourceId])).ToArray()
+                : [sourceFacts];
             var candidate = new StructuralCandidate
             {
                 CandidateId = item.SourceId,
-                ObservedSourceFacts = [sourceFacts],
+                ObservedSourceFacts = claimFacts,
             };
             // Two different states both end without a level, and the reason is kept because they
             // mean opposite things to a reviewer: "unresolved" is an absence of judgement and needs
@@ -98,11 +95,13 @@ internal static class CanonicalStructureMaterializer
                 CandidateId = item.SourceId,
                 Type = StructuralElementType.Heading,
                 Role = ProposedRole.HeadingTopic,
-                ProposedSources =
-                [
-                    new ProposedSourceReference(item.SourceId,
-                        new StructuralSpan(item.HeadingSpan.Start, item.HeadingSpan.End)),
-                ],
+                ProposedSources = item.Parts is { Count: > 1 } claimParts
+                    ? claimParts.Select(part => new ProposedSourceReference(
+                        part.SourceId, new StructuralSpan(part.Start, part.End))).ToArray()
+                    : [
+                        new ProposedSourceReference(item.SourceId,
+                            new StructuralSpan(item.HeadingSpan.Start, item.HeadingSpan.End)),
+                    ],
                 ProposedParentId = hierarchy.ParentId is { } parent
                     ? elementIdBySourceId.GetValueOrDefault(parent)
                     : null,
@@ -142,6 +141,19 @@ internal static class CanonicalStructureMaterializer
                 element.ParentId!, element.Id, StructuralRelationType.ParentChild));
         return ValidatedStructure.FromElements(elements, relationProposals);
     }
+
+    private static SourceFacts FactsFor(CanonicalSourceOccurrence occurrence) => new()
+    {
+        SourceId = occurrence.SourceId,
+        RawText = occurrence.Text,
+        Source = new SourceAnchor
+        {
+            SourceType = "docx",
+            ParagraphId = occurrence.SourceId,
+            ParagraphIndex = occurrence.SourceOrdinal,
+        },
+        RawSpan = new SourceTextSpan(0, occurrence.Text.Length),
+    };
 }
 
 /// <summary>

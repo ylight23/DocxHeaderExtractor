@@ -66,7 +66,8 @@ public sealed class SemanticCoordinateContractTests
             "a99-probe-contract-v1",
             () => new { type = "object", probe = true },
             CanonicalSemanticContractValidator.ValidateJson,
-            SemanticProposalDecoder.DecodeAliasScalar);
+            SemanticProposalDecoder.DecodeAliasScalar,
+            SemanticCoordinateBinding.AliasSpan);
 
         var active = await RequestFor(SemanticCoordinateContract.PdfAliasSelection);
         var probed = await RequestFor(probe);
@@ -90,7 +91,8 @@ public sealed class SemanticCoordinateContractTests
             "PROBE_COORDINATES", CanonicalSemanticContract.ProtocolVersion,
             () => new { type = "object", probe = true },
             CanonicalSemanticContractValidator.ValidateJson,
-            SemanticProposalDecoder.DecodeAliasScalar);
+            SemanticProposalDecoder.DecodeAliasScalar,
+            SemanticCoordinateBinding.AliasSpan);
 
         var activePrompt = await PromptFor(SemanticCoordinateContract.PdfAliasSelection);
         var probedPrompt = await PromptFor(probe);
@@ -110,7 +112,8 @@ public sealed class SemanticCoordinateContractTests
             "PROBE_COORDINATES", "a99-probe-contract-v1",
             CanonicalSemanticContract.Schema,
             _ => [new SemanticContractIssue("PROBE_REFUSED", null, "this contract refuses every reply")],
-            SemanticProposalDecoder.DecodeAliasScalar);
+            SemanticProposalDecoder.DecodeAliasScalar,
+            SemanticCoordinateBinding.AliasSpan);
 
         var result = await RunWith(refusing);
 

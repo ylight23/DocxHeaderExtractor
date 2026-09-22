@@ -61,12 +61,21 @@ public static class CanonicalSemanticPipeline
     /// Executes the same deterministic post-model stages from a frozen alias catalog. Unlike the
     /// source-catalog overload, this path does not reopen or reparse the source document.
     /// </summary>
+    /// <param name="binding">
+    /// The coordinate contract's own validator and binder. Null keeps the alias-span binding every
+    /// caller used before a second coordinate system existed.
+    /// </param>
+    /// <param name="atoms">
+    /// The coordinate atoms a structured binding resolves against; unused by alias-span binding.
+    /// </param>
     public static CanonicalSemanticPipelineResult RunAliases(
         IReadOnlyList<SemanticSourceAlias> aliases,
         IReadOnlyList<CanonicalSemanticProposal> proposals,
         string sourceSha256,
         string? expectedSourceSha256 = null,
-        IReadOnlySet<string>? ownedAliases = null)
+        IReadOnlySet<string>? ownedAliases = null,
+        SemanticCoordinateBinding? binding = null,
+        IReadOnlyList<SemanticSourceAtom>? atoms = null)
     {
         ArgumentNullException.ThrowIfNull(aliases);
         ArgumentNullException.ThrowIfNull(proposals);
@@ -86,19 +95,22 @@ public static class CanonicalSemanticPipeline
         // callers reach it directly, and binding an unvalidated proposal is the one thing this
         // boundary exists to prevent. An invalid proposal therefore yields exactly one issue,
         // raised by whichever of the two saw it first, and never reaches the binder.
+        var coordinateBinding = binding ?? SemanticCoordinateBinding.AliasSpan;
         var contractIssues = new List<SemanticContractIssue>();
         var contractValid = new List<CanonicalSemanticProposal>(proposals.Count);
         foreach (var proposal in proposals)
         {
-            var issues = CanonicalSemanticContractValidator.Validate(proposal, aliasesByName, ownedAliases);
+            var issues = coordinateBinding.ValidateProposal(proposal, aliasesByName, ownedAliases);
             if (issues.Count == 0)
                 contractValid.Add(proposal);
             else
                 contractIssues.AddRange(issues);
         }
 
-        var bound = CanonicalSemanticExactBinder.Bind(
-            contractValid, aliases, ownedAliases, out var observations);
+        var outcome = coordinateBinding.Bind(new SemanticCoordinateBindingRequest(
+            contractValid, aliases, ownedAliases, atoms));
+        var bound = outcome.Bound;
+        var observations = outcome.Observations;
         var bindingValidation = CanonicalSemanticHardBindingValidator.Validate(
             bound, aliases, sourceSha256, expectedSourceSha256 ?? sourceSha256);
         if (!bindingValidation.IsValid)

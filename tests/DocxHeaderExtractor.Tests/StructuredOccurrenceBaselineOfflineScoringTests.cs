@@ -324,15 +324,12 @@ public sealed class StructuredOccurrenceBaselineOfflineScoringTests
     }
 
     [Fact]
-    public async Task Structured_claims_still_stop_at_the_legacy_span_pipeline_downstream_of_decoding()
+    public async Task Structured_claims_reach_canonical_structure_through_the_production_route()
     {
-        // The boundary this repair does NOT cross, asserted rather than left to be discovered the
-        // way the decoder defect was. Proposals now reach the pipeline intact; what turns them into
-        // canonical structure is still the legacy span binder, which addresses a claim by one alias
-        // and an offset inside it and has nothing to do with an ordered atom tuple. The offline
-        // scorer above binds these same claims correctly through SemanticSourcePartBinder, so the
-        // captured run is measurable - but a live structured extraction still produces no elements,
-        // and that is a separate, named piece of work rather than a surprise.
+        // The boundary this used to stop at. Decoding was repaired first and proposals reached the
+        // pipeline intact, where a validator and binder written for one alias and one span refused
+        // every one of them - the same defect as the decoder's, one stage later. Now the contract
+        // that issued the schema also owns the binding, and the captured replies materialize.
         var replies = CapturedResponses("DOC-0252").Take(Doc0252CallsPerRepeat).ToArray();
         using var replay = new FrozenReplyClassifier(replies);
 
@@ -340,9 +337,168 @@ public sealed class StructuredOccurrenceBaselineOfflineScoringTests
             TestRepository.Path(Doc0252Pdf), replay, CancellationToken.None,
             profile: PdfSemanticAuthorityProfile.StructuredSourceParts);
 
-        Assert.Equal(0, replay.CallsBeyondRecording);
-        Assert.Equal(Doc0252CallsPerRepeat, replay.Requests.Count);
-        Assert.Empty(authority.Structure.Elements);
+        // Six discovery calls are replayed. Anything past them is the placement pass, which only
+        // runs when headings remain unplaced - so before this repair it could not run at all, and
+        // its appearance here is itself evidence that claims now reach structural resolution.
+        Assert.Equal(Doc0252CallsPerRepeat, replies.Length);
+        Assert.NotEmpty(authority.Structure.Elements);
+
+        // The text is the claim's own projection, not an atom's raw text: a heading the parser
+        // split across rows reads as one heading here.
+        Assert.Contains(authority.Structure.Elements,
+            element => element.Text == "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM");
+    }
+
+    [Fact]
+    public async Task Production_binding_matches_the_offline_binder_claim_for_claim()
+    {
+        // One binder, two callers - proven rather than assumed. If the live pipeline ever grew its
+        // own interpretation of a structured claim, the baseline score computed offline would stop
+        // describing what production does, and nothing else would say so.
+        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
+
+        for (var repeat = 0; repeat < Repeats; repeat++)
+        {
+            var replies = CapturedResponses("DOC-0252")
+                .Skip(repeat * Doc0252CallsPerRepeat).Take(Doc0252CallsPerRepeat).ToArray();
+            using var replay = new FrozenReplyClassifier(replies);
+            var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+                replay, SemanticCoordinateContract.PdfStructuredSourceParts);
+
+            var result = await CanonicalSemanticProductionEntryPoint.RunAsync(
+                plan.CreateProductionInput("DOC-0252"), model, requestId: $"parity-r{repeat + 1}");
+
+            var production = result.TextPipeline.BoundHeadings
+                .Select(heading => string.Join("|", heading.Parts.Select(part => $"{part.Alias}:{part.Start}-{part.End}")))
+                .ToHashSet(StringComparer.Ordinal);
+            var offline = OfflineBoundIdentities(plan, repeat);
+
+            Assert.Equal(offline, production);
+        }
+    }
+
+    [Fact]
+    public async Task A_two_atom_heading_materializes_through_the_whole_production_route()
+    {
+        // S0616 end to end, on the real document: the heading whose legacy occurrence was truncated,
+        // claimed as the two atoms it actually occupies. Every stage is the production one - decode,
+        // validate, bind, resolve, materialize - and the element that comes out carries both parts'
+        // text, which is the entire point of the coordinate migration.
+        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
+
+        // S0616's two atoms, asserted to still be what this document holds rather than trusted:
+        // the heading runs to the end of one visual row and finishes on the next.
+        var first = plan.Atoms.Single(atom => atom.Alias == "L0359:S0");
+        var second = plan.Atoms.Single(atom => atom.Alias == "L0360:S0");
+        Assert.StartsWith("2. A Survey Based Approach", first.Text, StringComparison.Ordinal);
+        Assert.Equal("Comparisons", second.Text.Trim());
+
+        var pack = plan.Packs.Single(item => item.OwnedAliases.Contains(first.Alias));
+        Assert.Contains(second.Alias, pack.OwnedAliases);
+
+        var claim = $$"""
+            {"headings":[{"isHeading":true,"semanticRole":"section-heading","relationHints":[],
+              "sourceParts":[{"sourceAlias":"{{first.Alias}}","selectionMode":"WHOLE_ALIAS"},
+                             {"sourceAlias":"{{second.Alias}}","selectionMode":"WHOLE_ALIAS"}]}]}
+            """;
+        var replies = plan.Packs
+            .Select(item => item.Index == pack.Index ? claim : """{"headings":[]}""")
+            .ToArray();
+
+        using var replay = new FrozenReplyClassifier(replies);
+        var authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
+            TestRepository.Path(Doc0252Pdf), replay, CancellationToken.None,
+            profile: PdfSemanticAuthorityProfile.StructuredSourceParts);
+
+        var element = Assert.Single(authority.Structure.Elements);
+        Assert.Contains(first.Text.Trim(), element.Text, StringComparison.Ordinal);
+        Assert.Contains(second.Text.Trim(), element.Text, StringComparison.Ordinal);
+
+        // Not the first atom alone - the collapse this coordinate system exists to prevent.
+        Assert.NotEqual(first.Text, element.Text);
+    }
+
+    [Fact]
+    public void A_structured_claim_that_cannot_bind_is_refused_by_name_not_dropped()
+    {
+        // Decodes cleanly, names real atoms, and still cannot be bound: the two atoms are far apart
+        // in the document. The refusal keeps the binder's own reason rather than becoming an absence.
+        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
+        var proposal = new CanonicalSemanticProposal(
+            "L0000:S0", true, null, SourceParts:
+            [
+                new SemanticSourcePart("L0000:S0", CanonicalSemanticSelectionMode.WholeAlias),
+                new SemanticSourcePart("L0300:S0", CanonicalSemanticSelectionMode.WholeAlias),
+            ]);
+
+        var outcome = SemanticCoordinateContract.PdfStructuredSourceParts.BindProposals(
+            new SemanticCoordinateBindingRequest([proposal], plan.Aliases, null, plan.Atoms));
+
+        var refusal = SemanticSourcePartBinder.Bind(
+            plan.Atoms, new SemanticSourcePartsProposal(proposal.SourceParts!));
+        Assert.False(refusal.IsBound);
+
+        Assert.Empty(outcome.Bound);
+        var observation = Assert.Single(outcome.Observations);
+        // The binder's own verdict, carried through under its own name rather than flattened.
+        Assert.Equal(refusal.Status.ToString(), observation.Reason);
+        Assert.NotEqual(CanonicalSemanticBindingStatus.NonHeadingIgnored, observation.Status);
+    }
+
+    [Fact]
+    public void A_model_saying_not_a_heading_is_distinguishable_from_a_claim_that_would_not_bind()
+    {
+        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
+        var declined = new CanonicalSemanticProposal(
+            "L0000:S0", false, null, SourceParts:
+            [new SemanticSourcePart("L0000:S0", CanonicalSemanticSelectionMode.WholeAlias)]);
+
+        var outcome = SemanticCoordinateContract.PdfStructuredSourceParts.BindProposals(
+            new SemanticCoordinateBindingRequest([declined], plan.Aliases, null, plan.Atoms));
+
+        Assert.Empty(outcome.Bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.NonHeadingIgnored, Assert.Single(outcome.Observations).Status);
+    }
+
+    [Fact]
+    public void The_legacy_binding_is_the_one_the_alias_span_contracts_still_use()
+    {
+        Assert.Equal("ALIAS_SPAN", SemanticCoordinateContract.DocxAliasSpan.Binding.BindingId);
+        Assert.Equal("ALIAS_SPAN", SemanticCoordinateContract.PdfAliasSelection.Binding.BindingId);
+        Assert.Equal("STRUCTURED_SOURCE_PARTS", SemanticCoordinateContract.PdfStructuredSourceParts.Binding.BindingId);
+
+        // Schema, validator, decoder and binder are one selection. A contract cannot be assembled
+        // from one coordinate system's schema and another's binder without saying so here.
+        Assert.Same(SemanticCoordinateBinding.AliasSpan, SemanticCoordinateContract.DocxAliasSpan.Binding);
+        Assert.Same(SemanticCoordinateBinding.SourceParts, SemanticCoordinateContract.PdfStructuredSourceParts.Binding);
+    }
+
+    /// <summary>
+    /// The identities the offline scorer resolves for one repeat, through the same binder the live
+    /// pipeline reaches - the comparison basis for parity, computed the way the baseline was.
+    /// </summary>
+    private static HashSet<string> OfflineBoundIdentities(PdfStructuredSourceAuthority plan, int repeat)
+    {
+        var responses = CapturedResponses("DOC-0252");
+        var identities = new HashSet<string>(StringComparer.Ordinal);
+
+        for (var pack = 0; pack < Doc0252CallsPerRepeat; pack++)
+        {
+            var owned = plan.Packs[pack].OwnedAliases.ToHashSet(StringComparer.Ordinal);
+            using var document = JsonDocument.Parse(responses[(repeat * Doc0252CallsPerRepeat) + pack]);
+            foreach (var element in document.RootElement.GetProperty("headings").EnumerateArray())
+            {
+                foreach (var proposal in SemanticCoordinateContract.PdfStructuredSourceParts.Decode(element).Proposals)
+                {
+                    if (!proposal.IsHeading || !owned.Contains(proposal.SourceAlias)) continue;
+                    var binding = SemanticSourcePartBinder.Bind(
+                        plan.Atoms, new SemanticSourcePartsProposal(proposal.SourceParts!));
+                    if (binding.IsBound) identities.Add(binding.Identity);
+                }
+            }
+        }
+
+        return identities;
     }
 
     // ---- reading the captured evidence ------------------------------------------------------------

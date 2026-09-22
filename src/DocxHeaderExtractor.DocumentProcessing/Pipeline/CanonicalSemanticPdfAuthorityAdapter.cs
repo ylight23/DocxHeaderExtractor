@@ -134,7 +134,11 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             1,
             "canonical-vnext-semantic-contract",
             new TextOffsetSpan(item.Start, item.End),
-            SemanticRole: CanonicalSemanticEngine.ParseSemanticRole(item.SemanticRole))).ToArray();
+            SemanticRole: CanonicalSemanticEngine.ParseSemanticRole(item.SemanticRole),
+            // Carried only when the claim occupies more than one source occurrence. A single-part
+            // claim is already fully described by the span above, and passing a one-element tuple
+            // would make two identical things look like two different ones downstream.
+            Parts: item.Parts.Count > 1 ? item.Parts : null)).ToArray();
         await checkpoint.RecordSemanticBatchAsync(universe.Blocks, decisions, cancellationToken, lease)
             .ConfigureAwait(false);
         var validated = PdfSemanticProposalBinder.BindAndValidate(universe.Contexts, decisions);
