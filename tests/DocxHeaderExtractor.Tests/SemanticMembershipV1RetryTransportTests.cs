@@ -40,7 +40,22 @@ public sealed class SemanticMembershipV1RetryTransportTests
 
     private const string ExperimentId = "PHYSICAL_STAGE1_MEMBERSHIP_ONLY";
     private const string RunLineage = "physical-stage1-membership-only-retry-v1";
-    private const string AuthorizedHead = "76c4fa47249aa3bea454223dc0af4cf60cf6d934";
+    /// <summary>
+    /// The commit this run is authorized against. An exact-HEAD gate cannot be satisfied by the
+    /// commit that changes the gate itself, so authorization is anchored to a base commit and the
+    /// descendant is constrained instead: it must contain nothing but this file.
+    /// </summary>
+    private const string AuthorizedBaseCommit = "ba58bb46d07855232aa0e0cfceb1d4303e2d8150";
+
+    /// <summary>
+    /// Every path a descendant of the base commit may touch. Anything under src/ blocks: the
+    /// production extraction this run needs is already in the base commit, so a later source change
+    /// would mean the call envelope is no longer the one that was authorized.
+    /// </summary>
+    private static readonly string[] AuthorizedDescendantPaths =
+    [
+        "tests/DocxHeaderExtractor.Tests/SemanticMembershipV1RetryTransportTests.cs",
+    ];
     private const int AbortedAttemptCalls = 1;
     private const int MaxOutputTokens = 32768;
     private const string SchemaSha256 = "baac47daadb1047e843b1358f7a37dfe3d0736c1130672829efc7beb80b48ff2";
@@ -88,7 +103,16 @@ public sealed class SemanticMembershipV1RetryTransportTests
         // precondition of spending money, not a property that holds forever, and asserting it
         // permanently would turn every uncommitted edit into a failing test.
         var head = Head();
-        Assert.Equal(AuthorizedHead, head);
+        Assert.Equal(40, head.Length);
+        Assert.True(IsAncestor(AuthorizedBaseCommit, head),
+            $"{AuthorizedBaseCommit} is not an ancestor of {head}");
+
+        var changed = ChangedPathsSince(AuthorizedBaseCommit);
+        var unauthorized = changed
+            .Where(path => !AuthorizedDescendantPaths.Contains(path, StringComparer.Ordinal))
+            .Order(StringComparer.Ordinal).ToArray();
+        Assert.Empty(unauthorized);
+        Assert.Empty(changed.Where(path => path.StartsWith("src/", StringComparison.Ordinal)));
         Assert.True(WorkingTreeClean(),
             "tracked files are modified; the frozen authority is not what this tree would send");
 
@@ -348,6 +372,8 @@ public sealed class SemanticMembershipV1RetryTransportTests
                 schemaVersion = "a99-stage1-membership-retry-run-v1",
                 experimentId = ExperimentId,
                 head = Head(),
+                authorizedBaseCommit = AuthorizedBaseCommit,
+                descendantChangedPaths = ChangedPathsSince(AuthorizedBaseCommit),
                 approval = "explicit-user-authorization, DOC-0252 only, packs 5 and 6, "
                     + "6 Stage-1 calls, 0 Stage-2 calls, cap 9",
                 documentId = "DOC-0252",
@@ -522,6 +548,26 @@ public sealed class SemanticMembershipV1RetryTransportTests
     }
 
     private static string Head() => Git("rev-parse HEAD");
+
+    private static bool IsAncestor(string candidate, string descendant)
+    {
+        using var process = System.Diagnostics.Process.Start(new ProcessStartInfo(
+            "git", $"merge-base --is-ancestor {candidate} {descendant}")
+        {
+            WorkingDirectory = TestRepository.Root(),
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+        })!;
+        process.WaitForExit();
+        return process.ExitCode == 0;
+    }
+
+    private static string[] ChangedPathsSince(string baseCommit) =>
+        Git($"diff --name-only {baseCommit}..HEAD")
+            .Split('\n', StringSplitOptions.RemoveEmptyEntries)
+            .Select(line => line.Trim())
+            .Where(line => line.Length > 0)
+            .ToArray();
 
     private static bool WorkingTreeClean()
     {
