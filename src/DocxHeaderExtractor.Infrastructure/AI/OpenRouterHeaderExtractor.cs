@@ -352,7 +352,22 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         throw new FormatException("OpenRouter response không có choices[0].message.content.");
     }
 
-    private int BoundaryOutputBudget(string userMessage, int expectedItemCount)
+    private int BoundaryOutputBudget(string userMessage, int expectedItemCount) =>
+        BoundaryOutputBudgetFor(userMessage, expectedItemCount, _options.MaxOutputTokens);
+
+    /// <summary>
+    /// The output budget this route would send for a given call, as a function rather than a value
+    /// buried in a request body.
+    /// <para>
+    /// It is exposed so an experiment can freeze the transport parameters it intends to send and
+    /// assert them against the production formula. Request-byte parity is not enough to prove two
+    /// calls are the same call: max_tokens is derived from an argument that appears nowhere in
+    /// those bytes, and a run that omitted it once clamped a 119-item request to the 256-token
+    /// floor and truncated the reply.
+    /// </para>
+    /// </summary>
+    internal static int BoundaryOutputBudgetFor(
+        string userMessage, int expectedItemCount, int maxOutputTokens)
     {
         // The budget scales with how many source items the request asks about. Both identifier
         // spellings must be counted: the legacy boundary protocol names them "id", the canonical
@@ -364,9 +379,9 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         // A canonical semantic item answers with verbatim text, role, type, scope and relation
         // hints, so it needs far more than a legacy boundary item's couple of integers.
         if (expectedItemCount > 0)
-            return Math.Clamp(96 + expectedItemCount * 128, 256, _options.MaxOutputTokens);
+            return Math.Clamp(96 + expectedItemCount * 128, 256, maxOutputTokens);
         var legacy = CountOccurrences(userMessage, "\"id\"", StringComparison.Ordinal);
-        return Math.Clamp(96 + legacy * 64, 256, _options.MaxOutputTokens);
+        return Math.Clamp(96 + legacy * 64, 256, maxOutputTokens);
     }
 
     private static int CountOccurrences(string text, string token, StringComparison comparison)
