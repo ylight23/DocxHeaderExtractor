@@ -1,0 +1,537 @@
+{
+  "artifactKind": "a99_direct_semantic_context_ablation_preflight",
+  "schemaVersion": "a99-direct-semantic-context-ablation-preflight-v1",
+  "documentId": "DOC-0252",
+  "providerAuthorized": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "firstModel": {
+    "model": "qwen/qwen3.7-flash",
+    "classification": "DIRECT_SEMANTIC_DISCRIMINATION_LIMIT_OBSERVED",
+    "mechanism": "DOCUMENT_LABEL_ATTRACTOR",
+    "f1": "0/3 DOCUMENT_LABEL",
+    "agenda": "0/3 DOCUMENT_LABEL",
+    "f2": "3/3",
+    "f3": "3/3",
+    "structuralControls": "39/42; 13/14 each repeat",
+    "documentLabelControl": "3/3"
+  },
+  "authority": {
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "model": "qwen/qwen3.7-flash",
+    "promptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+    "schemaSha256": "20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+    "labels": [
+      "STRUCTURAL_UNIT",
+      "DOCUMENT_LABEL",
+      "NON_STRUCTURAL"
+    ],
+    "expectedLabelsProviderVisible": false,
+    "itemIdentityMappingIdentical": true,
+    "itemOwnershipMappingIdentical": true
+  },
+  "arms": [
+    {
+      "id": "FULL_CONTEXT",
+      "policyHash": "879d374171fea3faa6c18ecc6c996ddccb0ca5f5ad91de8283463ce94cc5f986",
+      "policy": "The exact production direct-probe context composition, rebuilt under this lineage.",
+      "sourceDerived": true,
+      "goldUsedForContext": false,
+      "packContextHashes": {
+        "PACK_001": "fa2b4701c3124cd052e3f40159e5d498c813da9d6a26421464ba7e60f9653c4d",
+        "PACK_005": "cdc70c21a1c10ac3c1fa1ceb927a1046f6abe5d8f4f179bb11104370327de396",
+        "PACK_006": "2d030f3deea92b5d366fa849488ed0d7e29981f2605566493beab58d87890a49"
+      },
+      "providerInputHashes": {
+        "PACK_001": "22d3bbe551900fd0e47f0144054e66c16ef12b03f030540c34b9856886450d37",
+        "PACK_005": "8ce58a9c478f481f6d021f83b2e849953f1d5b1e378186405d7dd4d5fb555866",
+        "PACK_006": "127573c38acfbcaca27dd713a9054cd627a02ac8e3469c0c538f9e1f6b3e86fd"
+      },
+      "providerInputPlanHash": "a792fb0f03b2c6c16facecba5485ed48dc7742610f7542e0936ca88ecd59243b",
+      "nonContextRequestHash": "90158cc34bb036cf4fc36fc15e92a3585e9ca0581a95c02d03fd64316fc80498",
+      "expectedItemCounts": {
+        "PACK_001": 38,
+        "PACK_005": 119,
+        "PACK_006": 57
+      },
+      "maxTokens": {
+        "PACK_001": 4960,
+        "PACK_005": 15328,
+        "PACK_006": 7392
+      },
+      "transport": {
+        "model": "qwen/qwen3.7-flash",
+        "temperature": 0,
+        "reasoning": "none",
+        "responseFormat": "json_object",
+        "maxOutputTokens": 32768,
+        "route": "OpenRouter"
+      },
+      "transportCompatible": true,
+      "repeats": 3,
+      "proposedCalls": 9,
+      "captures": [
+        {
+          "Identity": "r1/PACK_001",
+          "Repeat": 1,
+          "Pack": "PACK_001",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r1/r1/PACK_001.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r1/PACK_005",
+          "Repeat": 1,
+          "Pack": "PACK_005",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r1/r1/PACK_005.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r1/PACK_006",
+          "Repeat": 1,
+          "Pack": "PACK_006",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r1/r1/PACK_006.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r2/PACK_001",
+          "Repeat": 2,
+          "Pack": "PACK_001",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r2/r2/PACK_001.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r2/PACK_005",
+          "Repeat": 2,
+          "Pack": "PACK_005",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r2/r2/PACK_005.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r2/PACK_006",
+          "Repeat": 2,
+          "Pack": "PACK_006",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r2/r2/PACK_006.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r3/PACK_001",
+          "Repeat": 3,
+          "Pack": "PACK_001",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r3/r3/PACK_001.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r3/PACK_005",
+          "Repeat": 3,
+          "Pack": "PACK_005",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r3/r3/PACK_005.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r3/PACK_006",
+          "Repeat": 3,
+          "Pack": "PACK_006",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r3/r3/PACK_006.capture-slot.v1.json"
+        }
+      ]
+    },
+    {
+      "id": "LOCAL_CONTEXT_RADIUS_3",
+      "policyHash": "3f9f038de886ccfbfcb3fa74d26d41f9a20a6e66acda50acdfde3d91f1bb2890",
+      "policy": "For every frozen item, target aliases plus three preceding and three following source atoms; overlapping windows unioned in source order.",
+      "sourceDerived": true,
+      "goldUsedForContext": false,
+      "packContextHashes": {
+        "PACK_001": "c7fd7af199979b8f5f5ad15a32ac8b401e6019689d8ae1699a356a1dcc989f39",
+        "PACK_005": "7eee02fc3beaed34d544e30153e76dfc2bab80f4731a0a9e1f397381b7e0b4a4",
+        "PACK_006": "3b756f34691d37fc1470c157a24432ed395d83d908501f4053b0320d3a481b24"
+      },
+      "providerInputHashes": {
+        "PACK_001": "e397f7c078b913be32946cb6d7693c0830058e7c9ff8b32edf9b7c6fea8d13e0",
+        "PACK_005": "937dad9ec75a804c985f8a19609691d1557075570c538ec926d8613d28e2eb82",
+        "PACK_006": "e38133321ef390d41bac5870b3d9ee37803d6e5533fa7515c2e74ca0043e554a"
+      },
+      "providerInputPlanHash": "303cf743b89b88ba0f85bb1e2f20e15e482d9b2d2aa27fd4a815462bb48e09bf",
+      "nonContextRequestHash": "90158cc34bb036cf4fc36fc15e92a3585e9ca0581a95c02d03fd64316fc80498",
+      "expectedItemCounts": {
+        "PACK_001": 38,
+        "PACK_005": 119,
+        "PACK_006": 57
+      },
+      "maxTokens": {
+        "PACK_001": 4960,
+        "PACK_005": 15328,
+        "PACK_006": 7392
+      },
+      "transport": {
+        "model": "qwen/qwen3.7-flash",
+        "temperature": 0,
+        "reasoning": "none",
+        "responseFormat": "json_object",
+        "maxOutputTokens": 32768,
+        "route": "OpenRouter"
+      },
+      "transportCompatible": true,
+      "repeats": 3,
+      "proposedCalls": 9,
+      "captures": [
+        {
+          "Identity": "r1/PACK_001",
+          "Repeat": 1,
+          "Pack": "PACK_001",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r1/r1/PACK_001.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r1/PACK_005",
+          "Repeat": 1,
+          "Pack": "PACK_005",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r1/r1/PACK_005.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r1/PACK_006",
+          "Repeat": 1,
+          "Pack": "PACK_006",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r1/r1/PACK_006.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r2/PACK_001",
+          "Repeat": 2,
+          "Pack": "PACK_001",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r2/r2/PACK_001.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r2/PACK_005",
+          "Repeat": 2,
+          "Pack": "PACK_005",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r2/r2/PACK_005.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r2/PACK_006",
+          "Repeat": 2,
+          "Pack": "PACK_006",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r2/r2/PACK_006.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r3/PACK_001",
+          "Repeat": 3,
+          "Pack": "PACK_001",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r3/r3/PACK_001.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r3/PACK_005",
+          "Repeat": 3,
+          "Pack": "PACK_005",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r3/r3/PACK_005.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r3/PACK_006",
+          "Repeat": 3,
+          "Pack": "PACK_006",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r3/r3/PACK_006.capture-slot.v1.json"
+        }
+      ]
+    },
+    {
+      "id": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "policyHash": "0e2408334ca81e8db83b2211de0540e2d0d0f27e9cf6e52793c0bb190d814343",
+      "policy": "For every frozen item, target aliases plus immediate source neighbors and up to two nearest preceding/following document-body evidence entries carrying existing structural marker families.",
+      "sourceDerived": true,
+      "goldUsedForContext": false,
+      "packContextHashes": {
+        "PACK_001": "42f71bdff1307f9e6a28b600b74e50c642108571f38b18d2d94c4586fd95989e",
+        "PACK_005": "01885c30d97751c09f603e8c24e6d22fd0280f66283c2a6106a305ba693fdfac",
+        "PACK_006": "7b3c769ee3d506f8b82b96dc1e5382c1640574d3beae05f2cec155f5d1d6932b"
+      },
+      "providerInputHashes": {
+        "PACK_001": "6100103e77fd944a81ca1ccafe6da3580d675753d82a1a6c0b45d2b767ff5398",
+        "PACK_005": "a3c4b78a0349c5505cbfa8844e18be8eb3d87e4cd20b802f1368466d4fee6c10",
+        "PACK_006": "21a157554bf1c977f2cd9d6f92629384e5cb9afb550a9bae13ca4bb7a7094831"
+      },
+      "providerInputPlanHash": "297387401a96bbc8f5f800456b6e4d9f579a1b04cfef92ffca574deff885cf68",
+      "nonContextRequestHash": "90158cc34bb036cf4fc36fc15e92a3585e9ca0581a95c02d03fd64316fc80498",
+      "expectedItemCounts": {
+        "PACK_001": 38,
+        "PACK_005": 119,
+        "PACK_006": 57
+      },
+      "maxTokens": {
+        "PACK_001": 4960,
+        "PACK_005": 15328,
+        "PACK_006": 7392
+      },
+      "transport": {
+        "model": "qwen/qwen3.7-flash",
+        "temperature": 0,
+        "reasoning": "none",
+        "responseFormat": "json_object",
+        "maxOutputTokens": 32768,
+        "route": "OpenRouter"
+      },
+      "transportCompatible": true,
+      "repeats": 3,
+      "proposedCalls": 9,
+      "captures": [
+        {
+          "Identity": "r1/PACK_001",
+          "Repeat": 1,
+          "Pack": "PACK_001",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r1/r1/PACK_001.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r1/PACK_005",
+          "Repeat": 1,
+          "Pack": "PACK_005",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r1/r1/PACK_005.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r1/PACK_006",
+          "Repeat": 1,
+          "Pack": "PACK_006",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r1/r1/PACK_006.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r2/PACK_001",
+          "Repeat": 2,
+          "Pack": "PACK_001",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r2/r2/PACK_001.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r2/PACK_005",
+          "Repeat": 2,
+          "Pack": "PACK_005",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r2/r2/PACK_005.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r2/PACK_006",
+          "Repeat": 2,
+          "Pack": "PACK_006",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r2/r2/PACK_006.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r3/PACK_001",
+          "Repeat": 3,
+          "Pack": "PACK_001",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r3/r3/PACK_001.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r3/PACK_005",
+          "Repeat": 3,
+          "Pack": "PACK_005",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r3/r3/PACK_005.capture-slot.v1.json"
+        },
+        {
+          "Identity": "r3/PACK_006",
+          "Repeat": 3,
+          "Pack": "PACK_006",
+          "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/r3/r3/PACK_006.capture-slot.v1.json"
+        }
+      ]
+    }
+  ],
+  "differenceAudit": {
+    "onlyContextChanged": true,
+    "schemaBytesIdentical": true,
+    "semanticPromptBytesIdentical": true,
+    "itemIdsIdentical": true,
+    "expectedLabelsIdenticalInScorer": true,
+    "modelIdentical": true,
+    "transportSettingsIdentical": true,
+    "providerVisibleDelta": "context evidence only"
+  },
+  "capture": {
+    "futureRoot": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252",
+    "identitiesRequired": 27,
+    "identitiesFresh": true,
+    "identitiesDistinct": true,
+    "identitiesAtomicallyReservable": true,
+    "permanentReservationsCreated": false,
+    "slots": [
+      {
+        "Identity": "FULL_CONTEXT/r1/PACK_001",
+        "Repeat": 1,
+        "Pack": "PACK_001",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full_context/r1/PACK_001.capture-slot.v1.json"
+      },
+      {
+        "Identity": "FULL_CONTEXT/r1/PACK_005",
+        "Repeat": 1,
+        "Pack": "PACK_005",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full_context/r1/PACK_005.capture-slot.v1.json"
+      },
+      {
+        "Identity": "FULL_CONTEXT/r1/PACK_006",
+        "Repeat": 1,
+        "Pack": "PACK_006",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full_context/r1/PACK_006.capture-slot.v1.json"
+      },
+      {
+        "Identity": "FULL_CONTEXT/r2/PACK_001",
+        "Repeat": 2,
+        "Pack": "PACK_001",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full_context/r2/PACK_001.capture-slot.v1.json"
+      },
+      {
+        "Identity": "FULL_CONTEXT/r2/PACK_005",
+        "Repeat": 2,
+        "Pack": "PACK_005",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full_context/r2/PACK_005.capture-slot.v1.json"
+      },
+      {
+        "Identity": "FULL_CONTEXT/r2/PACK_006",
+        "Repeat": 2,
+        "Pack": "PACK_006",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full_context/r2/PACK_006.capture-slot.v1.json"
+      },
+      {
+        "Identity": "FULL_CONTEXT/r3/PACK_001",
+        "Repeat": 3,
+        "Pack": "PACK_001",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full_context/r3/PACK_001.capture-slot.v1.json"
+      },
+      {
+        "Identity": "FULL_CONTEXT/r3/PACK_005",
+        "Repeat": 3,
+        "Pack": "PACK_005",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full_context/r3/PACK_005.capture-slot.v1.json"
+      },
+      {
+        "Identity": "FULL_CONTEXT/r3/PACK_006",
+        "Repeat": 3,
+        "Pack": "PACK_006",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full_context/r3/PACK_006.capture-slot.v1.json"
+      },
+      {
+        "Identity": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_001",
+        "Repeat": 1,
+        "Pack": "PACK_001",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local_context_radius_3/r1/PACK_001.capture-slot.v1.json"
+      },
+      {
+        "Identity": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_005",
+        "Repeat": 1,
+        "Pack": "PACK_005",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local_context_radius_3/r1/PACK_005.capture-slot.v1.json"
+      },
+      {
+        "Identity": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_006",
+        "Repeat": 1,
+        "Pack": "PACK_006",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local_context_radius_3/r1/PACK_006.capture-slot.v1.json"
+      },
+      {
+        "Identity": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_001",
+        "Repeat": 2,
+        "Pack": "PACK_001",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local_context_radius_3/r2/PACK_001.capture-slot.v1.json"
+      },
+      {
+        "Identity": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_005",
+        "Repeat": 2,
+        "Pack": "PACK_005",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local_context_radius_3/r2/PACK_005.capture-slot.v1.json"
+      },
+      {
+        "Identity": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_006",
+        "Repeat": 2,
+        "Pack": "PACK_006",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local_context_radius_3/r2/PACK_006.capture-slot.v1.json"
+      },
+      {
+        "Identity": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_001",
+        "Repeat": 3,
+        "Pack": "PACK_001",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local_context_radius_3/r3/PACK_001.capture-slot.v1.json"
+      },
+      {
+        "Identity": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_005",
+        "Repeat": 3,
+        "Pack": "PACK_005",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local_context_radius_3/r3/PACK_005.capture-slot.v1.json"
+      },
+      {
+        "Identity": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_006",
+        "Repeat": 3,
+        "Pack": "PACK_006",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local_context_radius_3/r3/PACK_006.capture-slot.v1.json"
+      },
+      {
+        "Identity": "MINIMAL_STRUCTURAL_CONTEXT_V1/r1/PACK_001",
+        "Repeat": 1,
+        "Pack": "PACK_001",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/minimal_structural_context_v1/r1/PACK_001.capture-slot.v1.json"
+      },
+      {
+        "Identity": "MINIMAL_STRUCTURAL_CONTEXT_V1/r1/PACK_005",
+        "Repeat": 1,
+        "Pack": "PACK_005",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/minimal_structural_context_v1/r1/PACK_005.capture-slot.v1.json"
+      },
+      {
+        "Identity": "MINIMAL_STRUCTURAL_CONTEXT_V1/r1/PACK_006",
+        "Repeat": 1,
+        "Pack": "PACK_006",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/minimal_structural_context_v1/r1/PACK_006.capture-slot.v1.json"
+      },
+      {
+        "Identity": "MINIMAL_STRUCTURAL_CONTEXT_V1/r2/PACK_001",
+        "Repeat": 2,
+        "Pack": "PACK_001",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/minimal_structural_context_v1/r2/PACK_001.capture-slot.v1.json"
+      },
+      {
+        "Identity": "MINIMAL_STRUCTURAL_CONTEXT_V1/r2/PACK_005",
+        "Repeat": 2,
+        "Pack": "PACK_005",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/minimal_structural_context_v1/r2/PACK_005.capture-slot.v1.json"
+      },
+      {
+        "Identity": "MINIMAL_STRUCTURAL_CONTEXT_V1/r2/PACK_006",
+        "Repeat": 2,
+        "Pack": "PACK_006",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/minimal_structural_context_v1/r2/PACK_006.capture-slot.v1.json"
+      },
+      {
+        "Identity": "MINIMAL_STRUCTURAL_CONTEXT_V1/r3/PACK_001",
+        "Repeat": 3,
+        "Pack": "PACK_001",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/minimal_structural_context_v1/r3/PACK_001.capture-slot.v1.json"
+      },
+      {
+        "Identity": "MINIMAL_STRUCTURAL_CONTEXT_V1/r3/PACK_005",
+        "Repeat": 3,
+        "Pack": "PACK_005",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/minimal_structural_context_v1/r3/PACK_005.capture-slot.v1.json"
+      },
+      {
+        "Identity": "MINIMAL_STRUCTURAL_CONTEXT_V1/r3/PACK_006",
+        "Repeat": 3,
+        "Pack": "PACK_006",
+        "Path": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/minimal_structural_context_v1/r3/PACK_006.capture-slot.v1.json"
+      }
+    ]
+  },
+  "callPlan": {
+    "fullContext": 9,
+    "localContext": 9,
+    "minimalStructuralContext": 9,
+    "totalProposedProviderCalls": 27,
+    "placementCalls": 0,
+    "repeats": 3
+  },
+  "primaryComparison": {
+    "items": [
+      "F1",
+      "Agenda"
+    ],
+    "controls": [
+      "F2",
+      "F3",
+      "14 structural controls",
+      "document-label control"
+    ],
+    "scoring": "F1/Agenda correct per 3; controls per 3; structural 42 per arm; confusion matrix per arm"
+  },
+  "interpretation": {
+    "contextContribution": "If narrower arms fix both F1 and Agenda while controls remain strong",
+    "contextBoundary": "If all arms retain both DOCUMENT_LABEL errors while controls remain strong",
+    "tradeoff": "If narrowing fixes one primary target and degrades the other",
+    "controlFailure": "If narrowing materially damages structural or document-label controls",
+    "crossGenreGeneralizationEstablished": false,
+    "materializedGold": "48/3955; one document"
+  },
+  "status": "CONTEXT_ABLATION_AUTHORIZATION_READY"
+}
