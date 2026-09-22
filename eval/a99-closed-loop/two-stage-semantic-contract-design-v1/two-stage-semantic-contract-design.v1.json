@@ -551,6 +551,32 @@
     "notRecommended": "A third prompt-only arm.",
     "whatWouldFalsifyThis": "If Phase B shows membership scored independently is already stable and the masthead false positives are a placement artifact after all, Stage 2 is not where the problem lives and this recommendation should be revisited."
   },
+  "amendedBy": {
+    "audit": "eval/a99-closed-loop/stage1-projection-identity-audit-v1",
+    "corrections": [
+      {
+        "field": "doc0252Projection.membershipScoredWithoutAnyRelation",
+        "was": "14 TP / 4 FP / 0 FN, labelled as baseline r1",
+        "correction": "Correct for that repeat, but it was restated without its scope and read as a claim about all nine. False positives range from 3 to 6. The audit records every repeat, and all nine reproduce their historical scores exactly."
+      },
+      {
+        "field": "stage2Contract.claimIdScheme",
+        "was": "C{ordinal} / C + 8 hex",
+        "correction": "Superseded. Eight hex characters is 32 bits, where birthday collisions matter well below this corpus's size. The authority id is now SHA-256 over a domain separator, the document source hash and the ordered coordinate tuple, with the short form demoted to a display id that is never accepted without lookup."
+      },
+      {
+        "field": "costModel / migrationPhases.E",
+        "was": "first experiment compares v2 against the full two-stage path, 9 or 12 calls",
+        "correction": "Superseded by PHYSICAL_STAGE1_MEMBERSHIP_ONLY: 6 Stage-1 calls, 0 Stage-2 calls, membership scored and frozen before any placement question exists. Not creating the placement request is a cleaner intervention than creating it and ignoring it."
+      },
+      {
+        "field": "costModel.batching",
+        "was": "9 batched per document per repeat",
+        "correction": "DEFERRED. Document-batched placement changes context relative to per-pack execution, and that decision should follow Stage-1 measurement."
+      }
+    ],
+    "unchanged": "RECOMMENDED_SUCCESSOR_DESIGN = OPTION_B. The audit tested the projection and the identity, and falsified neither."
+  },
   "limitations": {
     "materializedGold": "48 / 3955",
     "twoStageArchitectureFeasible": "established technically by the projections here",
