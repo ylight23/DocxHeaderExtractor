@@ -1,0 +1,315 @@
+{
+  "artifactKind": "a99_physical_stage1_membership_only_score",
+  "schemaVersion": "a99-physical-stage1-membership-only-score-v1",
+  "experimentId": "PHYSICAL_STAGE1_MEMBERSHIP_ONLY",
+  "runLineage": "physical-stage1-membership-only-retry-v1",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "scoredFrom": "the retry lineage's transport captures, replayed from raw bytes",
+  "authority": {
+    "protocol": "a99-semantic-membership-v1",
+    "schemaSha256": "baac47daadb1047e843b1358f7a37dfe3d0736c1130672829efc7beb80b48ff2",
+    "promptSha256": "433b134d428bd9053157ea6bb5efab253de3f46fb8da19bc0d3e8fa16d453766",
+    "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "targetGoldCount": 14,
+    "repeats": 3
+  },
+  "providerAccounting": {
+    "abortedAttemptCalls": 1,
+    "retryAuthorityCalls": 6,
+    "totalProviderCallsObserved": 7,
+    "usableAuthorityCalls": 6,
+    "usableRepeats": 3,
+    "stage2ProviderCalls": 0,
+    "placementCalls": 0,
+    "abortedAttemptUsedForInference": false
+  },
+  "whatTheModelSaw": {
+    "shown": [
+      "source evidence",
+      "the membership question"
+    ],
+    "notShown": [
+      "semanticRole",
+      "relationHints",
+      "parent-node",
+      "ROOT",
+      "NONE",
+      "selectionMode",
+      "offsets",
+      "any sign that a placement stage exists"
+    ]
+  },
+  "membership": [
+    {
+      "repeat": 1,
+      "claimsProposed": 19,
+      "claimsAccepted": 19,
+      "refusedOnGrounding": 0,
+      "refusals": [],
+      "truePositive": 14,
+      "falsePositive": 5,
+      "falseNegative": 0,
+      "baseline": {
+        "tp": 14,
+        "fp": 4,
+        "fn": 0
+      },
+      "documentLabels": 5,
+      "structuralUnits": 14,
+      "falsePositiveIdentities": [
+        "L0513:S0:0-38|L0514:S0:0-30",
+        "L0515:S0:0-14",
+        "L0516:S0:0-15",
+        "L0517:S0:0-22",
+        "L0518:S0:0-32"
+      ],
+      "falseNegativeIdentities": [],
+      "outcomeStates": {
+        "Bound": 14
+      }
+    },
+    {
+      "repeat": 2,
+      "claimsProposed": 16,
+      "claimsAccepted": 16,
+      "refusedOnGrounding": 0,
+      "refusals": [],
+      "truePositive": 14,
+      "falsePositive": 2,
+      "falseNegative": 0,
+      "baseline": {
+        "tp": 14,
+        "fp": 4,
+        "fn": 0
+      },
+      "documentLabels": 2,
+      "structuralUnits": 14,
+      "falsePositiveIdentities": [
+        "L0513:S0:0-38|L0514:S0:0-30",
+        "L0515:S0:0-14|L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32"
+      ],
+      "falseNegativeIdentities": [],
+      "outcomeStates": {
+        "Bound": 14
+      }
+    },
+    {
+      "repeat": 3,
+      "claimsProposed": 16,
+      "claimsAccepted": 16,
+      "refusedOnGrounding": 0,
+      "refusals": [],
+      "truePositive": 14,
+      "falsePositive": 2,
+      "falseNegative": 0,
+      "baseline": {
+        "tp": 14,
+        "fp": 6,
+        "fn": 0
+      },
+      "documentLabels": 2,
+      "structuralUnits": 14,
+      "falsePositiveIdentities": [
+        "L0513:S0:0-38|L0514:S0:0-30",
+        "L0515:S0:0-14|L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32"
+      ],
+      "falseNegativeIdentities": [],
+      "outcomeStates": {
+        "Bound": 14
+      }
+    }
+  ],
+  "mastheadFamilies": {
+    "comparator": "baseline: F1 3/3, F2 3/3, F3 3/3 present",
+    "suppressions": 2,
+    "persistences": 7,
+    "rows": [
+      {
+        "family": "international-program-and-tag",
+        "repeat": 1,
+        "stage1": "PRESENT",
+        "baseline": "PRESENT",
+        "identities": [
+          "L0513:S0:0-38|L0514:S0:0-30"
+        ]
+      },
+      {
+        "family": "hybrid-meeting",
+        "repeat": 1,
+        "stage1": "PRESENT",
+        "baseline": "PRESENT",
+        "identities": [
+          "L0515:S0:0-14"
+        ]
+      },
+      {
+        "family": "date-venue-address",
+        "repeat": 1,
+        "stage1": "PRESENT",
+        "baseline": "PRESENT",
+        "identities": [
+          "L0516:S0:0-15",
+          "L0517:S0:0-22",
+          "L0518:S0:0-32"
+        ]
+      },
+      {
+        "family": "international-program-and-tag",
+        "repeat": 2,
+        "stage1": "PRESENT",
+        "baseline": "PRESENT",
+        "identities": [
+          "L0513:S0:0-38|L0514:S0:0-30"
+        ]
+      },
+      {
+        "family": "hybrid-meeting",
+        "repeat": 2,
+        "stage1": "PRESENT",
+        "baseline": "PRESENT",
+        "identities": [
+          "L0515:S0:0-14|L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32"
+        ]
+      },
+      {
+        "family": "date-venue-address",
+        "repeat": 2,
+        "stage1": "ABSENT",
+        "baseline": "PRESENT",
+        "identities": []
+      },
+      {
+        "family": "international-program-and-tag",
+        "repeat": 3,
+        "stage1": "PRESENT",
+        "baseline": "PRESENT",
+        "identities": [
+          "L0513:S0:0-38|L0514:S0:0-30"
+        ]
+      },
+      {
+        "family": "hybrid-meeting",
+        "repeat": 3,
+        "stage1": "PRESENT",
+        "baseline": "PRESENT",
+        "identities": [
+          "L0515:S0:0-14|L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32"
+        ]
+      },
+      {
+        "family": "date-venue-address",
+        "repeat": 3,
+        "stage1": "ABSENT",
+        "baseline": "PRESENT",
+        "identities": []
+      }
+    ]
+  },
+  "controls": {
+    "note": "Tracked, not targeted. Their disappearance is not masthead success.",
+    "rows": [
+      {
+        "alias": "L0396:S0",
+        "repeat": 1,
+        "outcome": "NOT_ACCEPTED",
+        "identity": null,
+        "disposition": null
+      },
+      {
+        "alias": "L0550:S0",
+        "repeat": 1,
+        "outcome": "NOT_ACCEPTED",
+        "identity": null,
+        "disposition": null
+      },
+      {
+        "alias": "L0396:S0",
+        "repeat": 2,
+        "outcome": "NOT_ACCEPTED",
+        "identity": null,
+        "disposition": null
+      },
+      {
+        "alias": "L0550:S0",
+        "repeat": 2,
+        "outcome": "NOT_ACCEPTED",
+        "identity": null,
+        "disposition": null
+      },
+      {
+        "alias": "L0396:S0",
+        "repeat": 3,
+        "outcome": "NOT_ACCEPTED",
+        "identity": null,
+        "disposition": null
+      },
+      {
+        "alias": "L0550:S0",
+        "repeat": 3,
+        "outcome": "NOT_ACCEPTED",
+        "identity": null,
+        "disposition": null
+      }
+    ]
+  },
+  "grounding": {
+    "refusalReasons": {},
+    "note": "A refusal here is the canonicalizer declining to ground a claim, not a semantic miss. The two are never summed."
+  },
+  "identityStability": {
+    "distinctIdentities": 20,
+    "identitiesWithMoreThanOneClaimId": 0,
+    "dispositions": {
+      "DocumentLabel": 9,
+      "StructuralUnit": 42
+    }
+  },
+  "classification": {
+    "final": "TWO_STAGE_SEPARATION_DOES_NOT_FIX_MEMBERSHIP_POLICY",
+    "goldIntact": true,
+    "coreFamiliesIntact": true,
+    "presentRepeatsPerFamily": {
+      "international-program-and-tag": 3,
+      "hybrid-meeting": 3,
+      "date-venue-address": 1
+    },
+    "basis": "Gold membership and per-family masthead presence. Not the false-positive total, which mixes mechanisms and moved in a direction this experiment does not claim credit for.",
+    "reading": "The two stable masthead families are untouched at 3/3 each with the placement and role tasks entirely removed from the request. Only the date-venue family moved, and that family was already the intermittent one across every previous arm. So placement coupling, role naming, selection mode and coordinate serialization are all eliminated as explanations for the masthead error, and what remains is Stage-1 semantic discrimination under the current membership policy.",
+    "whatThisDoesNotShow": "That the model cannot make this distinction. It shows that this policy, as written, does not get it to - a statement about the policy and this model, not about language models."
+  },
+  "falsePositiveNote": "Stage-1 false positives were 5/2/2 against the baseline's 4/4/6. The totals are lower in two repeats, but the masthead families the experiment targeted are still there, so the movement is not read as success.",
+  "crossArmFamilyContext": {
+    "note": "Presence counts out of three repeats, from each arm's own frozen artifacts.",
+    "international_program_and_tag": {
+      "baseline": 3,
+      "e1": 3,
+      "e2": 3,
+      "stage1": 3
+    },
+    "hybrid_meeting": {
+      "baseline": 3,
+      "e1": 3,
+      "e2": 3,
+      "stage1": 3
+    },
+    "date_venue_address": {
+      "baseline": 3,
+      "e1": 2,
+      "e2": 2,
+      "stage1": 1
+    },
+    "reading": "The date-venue family has been the unstable one in every arm including the baseline's successors. Its further contraction here is not distinguishable from that instability on three repeats."
+  },
+  "metricsThatDoNotExist": [
+    "relation correctness",
+    "ROOT correctness",
+    "NONE usage",
+    "semanticRole agreement"
+  ],
+  "limitations": {
+    "singleDocument": "DOC-0252",
+    "materializedGold": "48 / 3955",
+    "crossGenreGeneralizationEstablished": false
+  }
+}
