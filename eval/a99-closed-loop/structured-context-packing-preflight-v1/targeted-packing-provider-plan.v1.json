@@ -1,0 +1,263 @@
+{
+  "artifactKind": "a99_pdf_targeted_packing_provider_preflight",
+  "schemaVersion": "a99-pdf-targeted-packing-provider-preflight-v1",
+  "authorityId": "DOC-0252",
+  "status": "TARGETED_PACKING_EXPERIMENT_AUTHORIZATION_READY",
+  "currentHead": "98a4f3b62ef127e763836dd69e6ad93bcf5d531e",
+  "previousPreflight": {
+    "status": "REJECTED_WRONG_COORDINATE_PROFILE_AUTHORITY",
+    "promptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+    "contractSha256": "91005fabc2e978d5ab4d900bc66ebeb27e563628056b3073cef22896687ac72e",
+    "providerAuthorized": false,
+    "modelCalls": 0,
+    "providerCalls": 0,
+    "note": "The predecessor request hashes were not promoted; they were derived while the authority tuple reported the legacy coordinate profile."
+  },
+  "providerAuthorized": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "correctedPreflightFinding": {
+    "previousStatus": "TARGETED_PACKING_EXPERIMENT_BLOCKED",
+    "resolution": "EXECUTABLE_PACKING_POLICY_AND_REAL_RECORDING_BOUNDARY_ADDED",
+    "providerCallsBeforeResolution": 0,
+    "note": "The earlier candidate hashes were not promoted. The active fields below are regenerated from the structured profile plus coherent policy through the production adapter and RecordingClassifier."
+  },
+  "blockingFindingsResolved": [
+    {
+      "code": "TARGET_PACKS_NOT_REACHABLE_THROUGH_RECORDING_BOUNDARY",
+      "severity": "BLOCKING",
+      "evidence": "CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.ComposeRequests and InferAsync use the fixed OwnedPerSegment=120 partition. PdfStructuredSourceAuthorityBuilder.Packs is the old six-pack partition and is not consumed as a successor 5/6/7 packing input by the production engine.",
+      "consequence": "Resolved by the explicit execution packing capability and target-pack selection seam.",
+      "resolution": "Production adapter -> structured profile -> coherent policy -> engine -> CanonicalSemanticRequestComposer -> RecordingClassifier now captures the target bytes with provider transport disabled."
+    }
+  ],
+  "causalHypothesis": {
+    "question": "When the same evidence is split at coherent structural regions instead of mechanical 120-atom boundaries, does enumeration instability disappear from the agenda and annex successors?",
+    "intervention": "generic coherent-region packing only",
+    "unchanged": [
+      "source atoms",
+      "source alias universe",
+      "model-visible evidence content",
+      "prompt",
+      "semantic contract",
+      "candidate hints",
+      "binder",
+      "evaluator",
+      "model identity"
+    ],
+    "placement": "excluded; target stops after semantic response, decode, bind and score",
+    "interpretation": [
+      "PACKING_HYPOTHESIS_SUPPORTED",
+      "PACKING_HYPOTHESIS_NOT_SUPPORTED",
+      "MIXED"
+    ]
+  },
+  "sourceAuthority": {
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "modelVisibleEvidenceSha256": "5a2ab0477ee9c31648f7862b077a4c92fab070ecde1446321123c63c7637687f",
+    "sourceAtoms": 650,
+    "goldIdentitiesChanged": false
+  },
+  "predecessorAuthority": {
+    "callPlanHash": "e532682353ca2ea0c73ec660baedb880fdfdafa9a5de7a6e61b242ddbdb648ed",
+    "providerModelInputPlanHash": "a73e9e3c1fbeb4a83f1937e864fb310e4a0402b993252b82bb6a741ce4ff7dc3",
+    "unusedCapacityTransferred": false
+  },
+  "defaultRouteNonRegression": {
+    "packingPolicyId": "FIXED_OWNED_COUNT_120",
+    "packingPolicyVersion": "a99-fixed-owned-count-120-v1",
+    "packs": 6,
+    "callPlanHash": "e532682353ca2ea0c73ec660baedb880fdfdafa9a5de7a6e61b242ddbdb648ed",
+    "providerModelInputPlanHash": "a73e9e3c1fbeb4a83f1937e864fb310e4a0402b993252b82bb6a741ce4ff7dc3",
+    "requestBytesUnchanged": true
+  },
+  "successorAuthority": {
+    "fullPartitionHash": "31cbb4b5e042cb602cb4cfff8061f34b39c5a9f4d304c318047d08ebdabd9eae",
+    "partitionSchema": "a99-pdf-successor-coherent-region-call-plan-v2",
+    "packingPolicyId": "COHERENT_REGION_SEGMENTATION_V1",
+    "packingPolicyVersion": "a99-coherent-region-segmentation-v1",
+    "repeats": 3,
+    "packs": [
+      {
+        "pack": 1,
+        "region": "ROW/MAIN",
+        "atomOrdinalRange": [0, 37],
+        "aliasRange": ["L0000:S0", "L0037:S0"]
+      },
+      {
+        "pack": 2,
+        "region": "FLOW/MAIN",
+        "atomOrdinalRange": [38, 157],
+        "aliasRange": ["L0038:S0", "L0155:S0"]
+      },
+      {
+        "pack": 3,
+        "region": "FLOW/MAIN",
+        "atomOrdinalRange": [158, 277],
+        "aliasRange": ["L0156:S0", "L0275:S0"]
+      },
+      {
+        "pack": 4,
+        "region": "FLOW/MAIN",
+        "atomOrdinalRange": [278, 397],
+        "aliasRange": ["L0276:S0", "L0395:S0"]
+      },
+      {
+        "pack": 5,
+        "region": "FLOW/MAIN",
+        "atomOrdinalRange": [398, 516],
+        "aliasRange": ["L0396:S0", "L0514:S0"]
+      },
+      {
+        "pack": 6,
+        "region": "ROW/MAIN",
+        "atomOrdinalRange": [517, 573],
+        "aliasRange": ["L0515:S0", "L0555:S0"]
+      },
+      {
+        "pack": 7,
+        "region": "ROW/ANNEX",
+        "atomOrdinalRange": [574, 627],
+        "aliasRange": ["L0556:S0", "L0585:S1"]
+      },
+      {
+        "pack": 8,
+        "region": "ROW/ANNEX",
+        "atomOrdinalRange": [628, 649],
+        "aliasRange": ["L0586:S0", "L0597:S0"]
+      }
+    ]
+  },
+  "targetPlan": {
+    "authorityStatus": "FROZEN_FROM_PRODUCTION_RECORDING_CAPTURE",
+    "packOrder": [5, 6, 7],
+    "targetCallPlanHash": "f48345682885647d33749597a0dbb293024d4e255f300ed571c3fdf7948994fe",
+    "targetProviderModelInputPlanHash": "b82868e9aecd086c00b00a7433cc0d48409576db54fb4c5097717451358036db",
+    "packingPolicyId": "COHERENT_REGION_SEGMENTATION_V1",
+    "packingPolicyVersion": "a99-coherent-region-segmentation-v1",
+    "targetPackIds": [
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_007"
+    ],
+    "repeats": 3,
+    "targetPrimaryCalls": 9,
+    "targetPlacementCalls": 0,
+    "targetMaxProviderCalls": 12,
+    "repeatInputEquivalence": true,
+    "packs": [
+      {
+        "pack": 5,
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "region": "FLOW/MAIN prose-tail",
+        "sourceOrdinalRange": [398, 516],
+        "sourceAliasRange": ["L0396:S0", "L0514:S0"],
+        "ownedAtoms": 119,
+        "visibleAtoms": 159,
+        "requestSha256": "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "requestChars": 46371,
+        "requestBytes": 46371,
+        "repeatRequestHashes": [
+          "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+          "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+          "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da"
+        ]
+      },
+      {
+        "pack": 6,
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "region": "ROW/MAIN agenda",
+        "sourceOrdinalRange": [517, 573],
+        "sourceAliasRange": ["L0515:S0", "L0555:S0"],
+        "ownedAtoms": 57,
+        "visibleAtoms": 97,
+        "requestSha256": "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "requestChars": 22623,
+        "requestBytes": 22623,
+        "repeatRequestHashes": [
+          "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+          "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+          "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96"
+        ]
+      },
+      {
+        "pack": 7,
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_007",
+        "region": "ROW/ANNEX annex/participant",
+        "sourceOrdinalRange": [574, 627],
+        "sourceAliasRange": ["L0556:S0", "L0585:S1"],
+        "ownedAtoms": 54,
+        "visibleAtoms": 94,
+        "requestSha256": "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055",
+        "requestChars": 19341,
+        "requestBytes": 19341,
+        "repeatRequestHashes": [
+          "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055",
+          "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055",
+          "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+        ]
+      }
+    ]
+  },
+  "modelSettings": {
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "OpenRouter",
+    "temperature": 0,
+    "reasoningEffort": "none",
+    "responseFormat": "json_object",
+    "topP": "NOT_SENT",
+    "topK": "NOT_SENT",
+    "seed": "NOT_SENT",
+    "settingsEvidence": "OpenRouterHeaderExtractor request builder; absent fields are not inferred."
+  },
+  "authorityTuple": {
+    "promptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+    "activeSemanticContractSha256": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "structuredShadowContractSha256": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "goldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+    "manifestHash": "fb62c1c696b4c30f0b71aed2e39f296ece3934c5870982fdc0e19bc62d64189c"
+  },
+  "baselineComparator": {
+    "oldPack": 5,
+    "repeats": [
+      { "proposals": 15, "tp": 11, "fp": 4 },
+      { "proposals": 80, "tp": 13, "fp": 66 },
+      { "proposals": 16, "tp": 12, "fp": 4 }
+    ],
+    "rescoreSuccessorAsBaseline": false,
+    "discardOutlier": false
+  },
+  "producer": {
+    "sourceAndEvidence": "PdfStructuredSourceAuthorityBuilder.Build",
+    "packingIntervention": "COHERENT_REGION_SEGMENTATION_V1 from existing offline preflight authority",
+    "requestBytes": "CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel -> CanonicalSemanticRequestComposer.Compose with PdfSemanticAuthorityProfile.StructuredSourceParts contract",
+    "recordingBoundary": "CanonicalSemanticPdfAuthorityAdapter -> PdfSemanticAuthorityProfile.StructuredSourceParts -> CoherentRegionSegmentationV1 -> HeaderClassifierCanonicalTextModel -> CanonicalSemanticRequestComposer -> RecordingClassifier",
+    "transport": "not invoked"
+  },
+  "gate": {
+    "headMatch": true,
+    "profile": "STRUCTURED_SOURCE_PARTS",
+    "coordinateSystem": "STRUCTURED_SOURCE_PART_TUPLE",
+    "structuredPromptMatch": true,
+    "structuredContractMatch": true,
+    "sourcePartsSchemaPresent": true,
+    "legacySingleAliasSchemaActive": false,
+    "recordingClassifierByteParity": true,
+    "targetRecordingCapture": "PASS",
+    "packingPolicyId": "COHERENT_REGION_SEGMENTATION_V1",
+    "packingPolicyVersion": "a99-coherent-region-segmentation-v1",
+    "packingPolicyRuntimeMatch": true,
+    "sourceAliasUniverseMatch": true,
+    "targetPacksMatch": true,
+    "repeatCountMatch": true,
+    "plannedCallsMatch": true,
+    "placementCalls": 0,
+    "providerAuthorized": false,
+    "modelCalls": 0,
+    "providerCalls": 0
+  },
+  "rawBaselineResponsesChanged": false,
+  "goldChanged": false,
+  "finalState": "TARGETED_PACKING_EXPERIMENT_AUTHORIZATION_READY"
+}

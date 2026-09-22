@@ -28,7 +28,10 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         SemanticLaneOptions? semanticLaneOptions = null,
         SemanticAuthorityReplayCaptureRequest? replayCapture = null,
         PdfExperimentExecutionGate? experimentGate = null,
-        PdfSemanticAuthorityProfile? profile = null)
+        PdfSemanticAuthorityProfile? profile = null,
+        ISemanticEvidencePackingPolicy? packingPolicy = null,
+        IReadOnlySet<string>? selectedPackIds = null,
+        bool runPlacement = true)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
@@ -44,6 +47,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         experimentGate?.EnsureLiveSourceUniverse(universe.SourceUniverseSha256);
         experimentGate?.EnsureLiveSemanticContract();
         experimentGate?.EnsureLiveAuthorityProfile(effectiveProfile.ProfileId);
+        experimentGate?.EnsureLivePackingPolicy(
+            (packingPolicy ?? SemanticEvidencePackingPolicies.Default).PolicyId);
         if (universe.ParserLineCount == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer");
         if (universe.Blocks.Count == 0)
@@ -56,7 +61,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             Path.GetFileNameWithoutExtension(pdfPath));
         var execution = await PdfLaneExecution.RunAsync(
             (lease, ct) => RunSemanticCoreAsync(
-                pdfPath, universe, transport, experiment, effectiveProfile, replayCapture, lease, checkpoint, ct),
+                pdfPath, universe, transport, experiment, effectiveProfile, replayCapture,
+                packingPolicy, selectedPackIds, runPlacement, lease, checkpoint, ct),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
             cancellationToken).ConfigureAwait(false);
 
@@ -91,6 +97,9 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         CanonicalSemanticExperiment? experiment,
         PdfSemanticAuthorityProfile profile,
         SemanticAuthorityReplayCaptureRequest? replayCapture,
+        ISemanticEvidencePackingPolicy? packingPolicy,
+        IReadOnlySet<string>? selectedPackIds,
+        bool runPlacement,
         PdfLaneExecutionLease lease,
         PdfStageCheckpoint checkpoint,
         CancellationToken cancellationToken)
@@ -119,7 +128,9 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
                 new LeaseBoundHeaderClassifier(transport, lease),
                 profile.Contract,
-                experiment ?? CanonicalSemanticExperiment.Baseline);
+                experiment ?? CanonicalSemanticExperiment.Baseline,
+                packingPolicy,
+                selectedPackIds);
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
                 input, canonicalModel,
                 requestId: $"pdf:{Path.GetFileNameWithoutExtension(pdfPath)}",
@@ -143,7 +154,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             .ConfigureAwait(false);
         var validated = PdfSemanticProposalBinder.BindAndValidate(universe.Contexts, decisions);
 
-        var boundHeadings = transport is null
+        var boundHeadings = transport is null || !runPlacement
             ? result.TextPipeline.BoundHeadings
             : await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
                 result.TextPipeline.BoundHeadings, transport, cancellationToken);

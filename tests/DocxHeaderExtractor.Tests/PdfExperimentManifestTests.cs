@@ -185,6 +185,45 @@ public sealed class PdfExperimentManifestTests
     }
 
     [Fact]
+    public void Historical_manifest_without_packing_declaration_retains_fixed_policy()
+    {
+        var manifest = BuildManifest();
+        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
+
+        gate.EnsureLivePackingPolicy(SemanticEvidencePackingPolicies.FixedOwnedCount120Id);
+    }
+
+    [Fact]
+    public void Declared_packing_policy_must_match_runtime_before_transport()
+    {
+        var manifest = BuildManifest() with
+        {
+            PackingPolicyId = SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1Id,
+        };
+        var approval = Approval(manifest);
+
+        var matching = new PdfExperimentExecutionGate(
+            manifest,
+            approval,
+            Runtime(manifest) with
+            {
+                PackingPolicyId = SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1Id,
+            });
+        matching.EnsureLivePackingPolicy(SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1Id);
+
+        var mismatching = new PdfExperimentExecutionGate(
+            manifest,
+            approval,
+            Runtime(manifest) with
+            {
+                PackingPolicyId = SemanticEvidencePackingPolicies.FixedOwnedCount120Id,
+            });
+        var error = Assert.Throws<InvalidOperationException>(() =>
+            mismatching.EnsureLivePackingPolicy(SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1Id));
+        Assert.Equal("PDF_EXPERIMENT_PACKING_POLICY_MISMATCH", error.Message);
+    }
+
+    [Fact]
     public async Task Adapter_rejects_a_structured_run_under_a_manifest_declaring_legacy_before_any_transport()
     {
         // The source-universe hash must match the runtime the adapter actually builds too, or

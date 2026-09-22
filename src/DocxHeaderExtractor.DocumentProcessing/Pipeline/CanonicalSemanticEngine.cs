@@ -176,12 +176,23 @@ internal static class CanonicalSemanticEngine
     internal sealed class HeaderClassifierCanonicalTextModel(
         IHeaderClassifier classifier,
         SemanticCoordinateContract contract,
-        CanonicalSemanticExperiment? experiment = null) : ICanonicalSemanticTextModel
+        CanonicalSemanticExperiment? experiment = null,
+        ISemanticEvidencePackingPolicy? packingPolicy = null,
+        IReadOnlySet<string>? selectedPackIds = null) : ICanonicalSemanticTextModel
     {
         private readonly CanonicalSemanticExperiment _experiment = experiment ?? CanonicalSemanticExperiment.Baseline;
+        private readonly ISemanticEvidencePackingPolicy _packingPolicy =
+            packingPolicy ?? SemanticEvidencePackingPolicies.Default;
+        private readonly IReadOnlySet<string>? _selectedPackIds = selectedPackIds;
 
         /// <summary>The lane's coordinate contract, which builds the schema and checks the reply.</summary>
         public SemanticCoordinateContract Contract { get; } = contract;
+
+        /// <summary>The request-partition policy used by this execution.</summary>
+        public string PackingPolicyId => _packingPolicy.PolicyId;
+
+        /// <summary>The immutable policy version used by this execution.</summary>
+        public string PackingPolicyVersion => _packingPolicy.PolicyVersion;
 
         public List<string> RawResponses { get; } = [];
 
@@ -263,10 +274,10 @@ internal static class CanonicalSemanticEngine
         }
 
         /// <summary>Owned occurrences evaluated per request. Keeps one document bounded.</summary>
-        internal const int OwnedPerSegment = 120;
+        internal const int OwnedPerSegment = SemanticEvidencePackingPolicies.OwnedPerPack;
 
         /// <summary>Neighbouring occurrences a segment may read but never claim.</summary>
-        internal const int VisibleMargin = 20;
+        internal const int VisibleMargin = SemanticEvidencePackingPolicies.VisibleMargin;
 
         /// <summary>
         /// One request's worth of owned evidence and the exact bytes composed for it. Built by
@@ -275,7 +286,10 @@ internal static class CanonicalSemanticEngine
         /// identically, not just coincidentally the same today.
         /// </summary>
         internal sealed record ComposedSegment(
-            IReadOnlyList<CanonicalSemanticSourceEvidence> Owned, string RequestBytes);
+            IReadOnlyList<CanonicalSemanticSourceEvidence> Owned, string RequestBytes)
+        {
+            public string PackId { get; init; } = string.Empty;
+        }
 
         /// <summary>
         /// Every request this input would produce, composed through
@@ -289,13 +303,19 @@ internal static class CanonicalSemanticEngine
         private IEnumerable<ComposedSegment> ComposeSegments(CanonicalSemanticProductionInput input)
         {
             var evidence = input.SourceEvidence ?? [];
-            for (var start = 0; start < evidence.Count; start += OwnedPerSegment)
+            var packs = _packingPolicy.BuildPacks(evidence, input.LayoutBlockBySourceId);
+            if (_selectedPackIds is not null)
             {
-                var owned = evidence.Skip(start).Take(OwnedPerSegment).ToArray();
-                if (owned.Length == 0) break;
-                var from = Math.Max(0, start - VisibleMargin);
-                var to = Math.Min(evidence.Count, start + owned.Length + VisibleMargin);
-                var visible = evidence.Skip(from).Take(to - from).ToArray();
+                var knownPackIds = packs.Select(pack => pack.PackId).ToHashSet(StringComparer.Ordinal);
+                if (_selectedPackIds.Count == 0 || _selectedPackIds.Any(id => !knownPackIds.Contains(id)))
+                    throw new InvalidOperationException("SEMANTIC_PACK_SELECTION_INVALID");
+                packs = packs.Where(pack => _selectedPackIds.Contains(pack.PackId)).ToArray();
+            }
+
+            foreach (var pack in packs)
+            {
+                var owned = pack.Owned;
+                var visible = pack.Visible;
                 var ownedAliases = owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);
                 // Evidence is already in document order, so a neighbour IS the local context.
                 // Owned entries carry the decision facts; margin entries carry text only.
@@ -328,7 +348,10 @@ internal static class CanonicalSemanticEngine
                     };
 
                 yield return new ComposedSegment(
-                    owned, CanonicalSemanticRequestComposer.Compose(packet, Contract));
+                    owned, CanonicalSemanticRequestComposer.Compose(packet, Contract))
+                {
+                    PackId = pack.PackId,
+                };
             }
         }
 

@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Inference;
 
@@ -84,7 +85,12 @@ public sealed record PdfExperimentManifest(
     // gate fails closed rather than guessing one in.
     [property: JsonPropertyName("authority")]
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    PdfExperimentAuthorityIdentity? Authority = null)
+    PdfExperimentAuthorityIdentity? Authority = null,
+    // Packing is an execution dimension, independent of the coordinate authority above. Historical
+    // manifests omit it and therefore retain the fixed-120 interpretation.
+    [property: JsonPropertyName("packingPolicy")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    string? PackingPolicyId = null)
 {
     [JsonIgnore]
     public string ManifestHash => PdfExperimentManifestHasher.Compute(this);
@@ -106,7 +112,8 @@ public sealed record PdfExperimentRuntimeBinding(
     string TransportProtocol,
     PdfExperimentRoutingIdentity Routing,
     string OccurrenceEvaluatorContractVersion,
-    bool SemanticRoleEvaluationEnabled);
+    bool SemanticRoleEvaluationEnabled,
+    string? PackingPolicyId = null);
 
 public sealed record PdfExperimentApproval(
     string ManifestHash,
@@ -212,6 +219,13 @@ public sealed class PdfExperimentExecutionGate
                 SemanticAuthorityReplayHashing.SemanticContractHash(),
                 "SEMANTIC_CONTRACT_HASH_MISMATCH");
         }
+
+        if (_manifest.PackingPolicyId is { } manifestPackingPolicy)
+        {
+            Require(_runtime.PackingPolicyId ?? SemanticEvidencePackingPolicies.FixedOwnedCount120Id,
+                manifestPackingPolicy,
+                "PACKING_POLICY_MISMATCH");
+        }
     }
 
     /// <summary>
@@ -258,6 +272,21 @@ public sealed class PdfExperimentExecutionGate
         ArgumentException.ThrowIfNullOrWhiteSpace(runtimeAuthorityProfile);
         EnsureReady();
         Require(runtimeAuthorityProfile, DeclaredAuthorityProfile(), "AUTHORITY_PROFILE_MISMATCH");
+    }
+
+    /// <summary>
+    /// Binds the runtime request partition to the manifest. Omitting the field on an older
+    /// manifest deliberately means the historical fixed-120 policy; a declared intervention must
+    /// match explicitly before the lane can reach a classifier.
+    /// </summary>
+    internal void EnsureLivePackingPolicy(string runtimePackingPolicy)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(runtimePackingPolicy);
+        EnsureReady();
+        var declared = _manifest.PackingPolicyId ?? SemanticEvidencePackingPolicies.FixedOwnedCount120Id;
+        Require(runtimePackingPolicy, declared, "PACKING_POLICY_MISMATCH");
+        if (_runtime.PackingPolicyId is { } runtimeBinding)
+            Require(runtimePackingPolicy, runtimeBinding, "RUNTIME_PACKING_POLICY_MISMATCH");
     }
 
     private string DeclaredAuthorityProfile()

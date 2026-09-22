@@ -5,7 +5,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
-/// A candidate packing rule, measured before anything is changed.
+/// The coherence packing plan and its frozen experiment provenance.
 /// <para>
 /// The repeat-2 collapse was local: 66 of 73 false positives came from one request, whose reply
 /// grew from 15 claims to 80 while the other five requests stayed put. That request is the one that
@@ -14,8 +14,8 @@ namespace DocxHeaderExtractor.Tests;
 /// thing to try is a different cut with every other input held still.
 /// </para>
 /// <para>
-/// Nothing here is wired into production. The rule is applied to the frozen atom universe to
-/// produce a plan, and the plan is what a successor experiment would be authorized against.
+/// The test consumes the same production packing capability used by the structured PDF route. It
+/// freezes only the plan; it does not authorize or transport provider calls.
 /// </para>
 /// </summary>
 public sealed class StructuredContextPackingPreflightTests
@@ -64,11 +64,7 @@ public sealed class StructuredContextPackingPreflightTests
         var blockByIndex = plan.Atoms
             .Select(atom => plan.LayoutBlockByAtom.GetValueOrDefault(atom.SourceId, atom.SourceId))
             .ToArray();
-        var atomsPerBlock = blockByIndex
-            .GroupBy(block => block, StringComparer.Ordinal)
-            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
-
-        var successor = Partition(plan, scopeByAlias, blockByIndex, atomsPerBlock);
+        var successor = Partition(plan);
 
         // Every atom the baseline showed the model is still shown to it, in exactly one pack.
         Assert.Equal(plan.Atoms.Count, successor.Sum(pack => pack.End - pack.Start + 1));
@@ -330,41 +326,18 @@ public sealed class StructuredContextPackingPreflightTests
     }
 
     /// <summary>
-    /// The rule itself, applied to the frozen atoms. Deliberately a local function of this preflight
-    /// rather than a production change: what it produces is a plan to be approved, and production
-    /// packing stays as it is until it is.
+    /// The preflight consumes the production policy directly. This keeps the frozen plan and the
+    /// execution path on one deterministic partition implementation.
     /// </summary>
-    private static Segment[] Partition(
-        PdfStructuredSourceAuthority plan,
-        IReadOnlyDictionary<string, string> scopeByAlias,
-        IReadOnlyList<string> blockByIndex,
-        IReadOnlyDictionary<string, int> atomsPerBlock)
+    private static Segment[] Partition(PdfStructuredSourceAuthority plan)
     {
-        var keys = plan.Atoms.Select((atom, index) =>
-        {
-            var rowRegime = atomsPerBlock[blockByIndex[index]] == 1;
-            var annex = scopeByAlias.GetValueOrDefault(atom.Alias, string.Empty)
-                .StartsWith("appendix", StringComparison.Ordinal);
-            return $"{(rowRegime ? "ROW" : "FLOW")}/{(annex ? "ANNEX" : "MAIN")}";
-        }).ToArray();
-
-        var segments = new List<Segment>();
-        for (var index = 0; index < keys.Length;)
-        {
-            var end = index;
-            while (end < keys.Length && keys[end] == keys[index]) end++;
-            if (segments.Count > 0 && end - index < MinimumSegmentRun)
-                segments[^1] = segments[^1] with { End = end - 1 };
-            else
-                segments.Add(new Segment(index, end - 1, keys[index]));
-            index = end;
-        }
-
-        var packs = new List<Segment>();
-        foreach (var segment in segments)
-            for (var start = segment.Start; start <= segment.End; start += OwnedPerSegment)
-                packs.Add(new Segment(start, Math.Min(segment.End, start + OwnedPerSegment - 1), segment.Key));
-        return packs.ToArray();
+        return SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1
+            .BuildPacks(plan.Evidence, plan.LayoutBlockByAtom)
+            .Select(pack => new Segment(
+                pack.Owned[0].SourceOrdinal,
+                pack.Owned[^1].SourceOrdinal,
+                pack.RegionKey))
+            .ToArray();
     }
 
     private static object Describe(

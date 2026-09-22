@@ -202,6 +202,59 @@ public sealed class PdfAuthorityProfileRoutingTests
         Assert.DoesNotContain(plan.Atoms, atom => System.Text.RegularExpressions.Regex.IsMatch(atom.Alias, @"^S\d{4}$"));
     }
 
+    [Fact]
+    public void Coherent_region_policy_builds_the_generic_eight_pack_successor_without_source_loss()
+    {
+        var plan = PdfStructuredSourceAuthorityBuilder.Build(Path(Pdf));
+        var policy = SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1;
+        var packs = policy.BuildPacks(plan.Evidence, plan.LayoutBlockByAtom);
+
+        Assert.Equal(SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1Id, policy.PolicyId);
+        Assert.Equal(8, packs.Count);
+        Assert.Equal(
+            new[] { (0, 37), (38, 157), (158, 277), (278, 397), (398, 516), (517, 573), (574, 627), (628, 649) },
+            packs.Select(pack => (pack.Owned[0].SourceOrdinal, pack.Owned[^1].SourceOrdinal)));
+        Assert.Equal(650, packs.SelectMany(pack => pack.Owned).Count());
+        Assert.Equal(650, packs.SelectMany(pack => pack.Owned)
+            .Select(item => item.SourceId).Distinct(StringComparer.Ordinal).Count());
+        Assert.Equal("2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+            plan.SourceUniverseSha256);
+    }
+
+    [Fact]
+    public async Task Targeted_successor_packs_capture_structured_requests_through_the_real_adapter()
+    {
+        var plan = PdfStructuredSourceAuthorityBuilder.Build(Path(Pdf));
+        var policy = SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1;
+        var targetPackIds = policy.BuildPacks(plan.Evidence, plan.LayoutBlockByAtom)
+            .Skip(4).Take(3).Select(pack => pack.PackId).ToHashSet(StringComparer.Ordinal);
+
+        using var recording = new RequestCapturingClassifier();
+        await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
+            Path(Pdf), recording, CancellationToken.None,
+            profile: PdfSemanticAuthorityProfile.StructuredSourceParts,
+            packingPolicy: policy,
+            selectedPackIds: targetPackIds,
+            runPlacement: false);
+
+        Assert.Equal(3, recording.Requests.Count);
+        Assert.Equal(new[] { 119, 57, 54 }, recording.Requests.Select(request => request.ExpectedItemCount));
+        Assert.All(recording.Requests, request =>
+            Assert.Equal(
+                "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+                CanonicalArtifactHash.OfText(request.SystemPrompt)));
+        Assert.Equal(
+            new[]
+            {
+                "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+                "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+                "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055",
+            },
+            recording.Requests.Select(request => CanonicalSemanticRequestComposer.Hash(request.UserMessage)));
+        Assert.All(recording.Requests, request => Assert.Contains("sourceParts", request.UserMessage));
+        Assert.All(recording.Requests, request => Assert.DoesNotContain("S0001", request.UserMessage));
+    }
+
     private static string Path(string relativePath) =>
         System.IO.Path.Combine(TestRepository.Root(), relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
 }

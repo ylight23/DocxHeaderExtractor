@@ -91,8 +91,9 @@ internal sealed record PdfStructuredSourceAuthority(
 /// own alias, so a claim naming two of them is naming two things the model actually read.
 /// </para>
 /// <para>
-/// Nothing here is wired into extraction. The active lane still builds its universe from blocks;
-/// this is the path a migration would switch to, measured first.
+/// The structured PDF profile uses this source authority. Request partitioning remains a separate
+/// execution capability on the semantic engine, so the same source universe can run under the
+/// default fixed policy or an explicitly selected experiment policy.
 /// </para>
 /// </summary>
 internal static class PdfStructuredSourceAuthorityBuilder
