@@ -39,6 +39,18 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         // caller-supplied value, and ordinary production traffic never supplies one, which is what
         // keeps every existing PDF upload on LegacyOccurrence without this file knowing it exists.
         var effectiveProfile = profile ?? PdfSemanticAuthorityProfile.LegacyOccurrence;
+        var effectivePackingPolicy = packingPolicy ?? SemanticEvidencePackingPolicies.Default;
+        replayCapture = replayCapture is null
+            ? null
+            : replayCapture with
+            {
+                Metadata = replayCapture.Metadata with
+                {
+                    Profile = effectiveProfile.ProfileId,
+                    PackingPolicy = effectivePackingPolicy.PolicyId,
+                    RepeatIdentity = replayCapture.Metadata.RepeatIdentity ?? replayCapture.Metadata.RunId,
+                },
+            };
         IPdfSemanticSourceAuthority universe = effectiveProfile.ProfileId switch
         {
             "STRUCTURED_SOURCE_PARTS" => PdfStructuredSourceAuthorityBuilder.Build(pdfPath),
@@ -47,8 +59,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         experimentGate?.EnsureLiveSourceUniverse(universe.SourceUniverseSha256);
         experimentGate?.EnsureLiveSemanticContract();
         experimentGate?.EnsureLiveAuthorityProfile(effectiveProfile.ProfileId);
-        experimentGate?.EnsureLivePackingPolicy(
-            (packingPolicy ?? SemanticEvidencePackingPolicies.Default).PolicyId);
+        experimentGate?.EnsureLivePackingPolicy(effectivePackingPolicy.PolicyId);
         if (universe.ParserLineCount == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer");
         if (universe.Blocks.Count == 0)
@@ -62,7 +73,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         var execution = await PdfLaneExecution.RunAsync(
             (lease, ct) => RunSemanticCoreAsync(
                 pdfPath, universe, transport, experiment, effectiveProfile, replayCapture,
-                packingPolicy, selectedPackIds, runPlacement, lease, checkpoint, ct),
+                effectivePackingPolicy, selectedPackIds, runPlacement, lease, checkpoint, ct),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
             cancellationToken).ConfigureAwait(false);
 
@@ -137,7 +148,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
                 cancellationToken: cancellationToken);
         }
 
-        var replayPersistence = replayCapture?.Persist(result.ReplayBundle);
+        var replayPersistence = replayCapture?.Persist(result.ReplayBundle, result.TransportCalls);
 
         var decisions = result.TextPipeline.BoundHeadings.Select(item => new PdfBlockDecision(
             item.SourceId,

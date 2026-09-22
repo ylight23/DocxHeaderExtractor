@@ -36,6 +36,18 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             .OrderBy(item => item.Source.SourceOrdinal)
             .Select(item => EvidenceOf(item, aliasesBySourceId[item.Source.SourceId].Alias))
             .ToArray();
+        replayCapture = replayCapture is null
+            ? null
+            : replayCapture with
+            {
+                Metadata = replayCapture.Metadata with
+                {
+                    Profile = replayCapture.Metadata.Profile ?? "DOCX_ALIAS_SPAN",
+                    PackingPolicy = replayCapture.Metadata.PackingPolicy ?? "FIXED_OWNED_COUNT_120",
+                    RepeatIdentity = replayCapture.Metadata.RepeatIdentity ?? replayCapture.Metadata.RunId,
+                },
+            };
+
         var input = new CanonicalSemanticProductionInput(
             catalog,
             null,
@@ -72,7 +84,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 cancellationToken: cancellationToken);
         }
 
-        var replayPersistence = replayCapture?.Persist(result.ReplayBundle);
+        var replayPersistence = replayCapture?.Persist(result.ReplayBundle, result.TransportCalls);
 
         var decisions = result.TextPipeline.BoundHeadings.Select(item => new PdfBlockDecision(
             item.SourceId,

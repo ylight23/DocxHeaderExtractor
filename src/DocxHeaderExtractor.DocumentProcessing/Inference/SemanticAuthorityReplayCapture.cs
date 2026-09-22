@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Models;
@@ -13,7 +14,12 @@ public sealed record SemanticAuthorityReplayCaptureRequest(
     string ArtifactDirectory,
     bool RequireReplayBundle = true)
 {
-    public SemanticAuthorityReplayPersistenceResult Persist(SemanticAuthorityReplayBundle? bundle)
+    public SemanticAuthorityReplayPersistenceResult Persist(SemanticAuthorityReplayBundle? bundle) =>
+        Persist(bundle, []);
+
+    public SemanticAuthorityReplayPersistenceResult Persist(
+        SemanticAuthorityReplayBundle? bundle,
+        IReadOnlyList<SemanticAuthorityTransportCall>? transportCalls)
     {
         if (bundle is null)
         {
@@ -24,11 +30,43 @@ public sealed record SemanticAuthorityReplayCaptureRequest(
 
         try
         {
+            var calls = transportCalls ?? throw new InvalidOperationException(
+                "REPLAY_CAPTURE_TRANSPORT_CALLS_NOT_CAPTURED");
+            if (calls.Count > 0 &&
+                (string.IsNullOrWhiteSpace(Metadata.Profile) ||
+                 string.IsNullOrWhiteSpace(Metadata.PackingPolicy) ||
+                 string.IsNullOrWhiteSpace(Metadata.RepeatIdentity ?? Metadata.RunId)))
+                throw new InvalidOperationException("REPLAY_CAPTURE_LINEAGE_METADATA_MISSING");
+            if (calls.Count == 0 && !string.Equals(
+                bundle.RawModelResponseHash,
+                SemanticAuthorityReplayHashing.RawModelResponseHash([]),
+                StringComparison.OrdinalIgnoreCase))
+                throw new InvalidOperationException("REPLAY_CAPTURE_RAW_RESPONSE_NOT_PERSISTED");
+            var capture = SemanticAuthorityTransportCaptureFactory.Create(bundle, Metadata, calls);
+            var captureErrors = SemanticAuthorityTransportCaptureFactory.Validate(capture);
+            if (captureErrors.Count > 0)
+                throw new InvalidOperationException("TRANSPORT_CAPTURE_INVALID: " + string.Join(",", captureErrors));
+
+            if (calls.Count > 0)
+            {
+                var rawResponses = calls
+                    .OrderBy(call => call.Ordinal)
+                    .Select(call => Encoding.UTF8.GetString(Convert.FromBase64String(call.RawResponseUtf8Base64)))
+                    .ToArray();
+                var expectedRawHash = SemanticAuthorityReplayHashing.RawModelResponseHash(rawResponses);
+                if (!string.Equals(expectedRawHash, bundle.RawModelResponseHash, StringComparison.OrdinalIgnoreCase))
+                    throw new InvalidOperationException("REPLAY_CAPTURE_RAW_RESPONSE_HASH_MISMATCH");
+            }
+
             var path = SemanticAuthorityReplayArtifactWriter.WriteAtomic(bundle, ArtifactDirectory);
-            return new(true, path, null);
+            // The replay bundle is not considered complete until the transport envelope containing
+            // every raw response body has also reached durable storage. Callers receive only after
+            // both artifacts have passed their independent round-trip validation.
+            var transportPath = SemanticAuthorityReplayArtifactWriter.WriteTransportAtomic(capture, ArtifactDirectory);
+            return new(true, path, null, transportPath);
         }
         catch (Exception error) when (!RequireReplayBundle &&
-            error is IOException or UnauthorizedAccessException or ArgumentException)
+            error is IOException or UnauthorizedAccessException or ArgumentException or InvalidOperationException)
         {
             return new(false, null, error.GetType().Name + ": " + error.Message);
         }
@@ -38,7 +76,8 @@ public sealed record SemanticAuthorityReplayCaptureRequest(
 public sealed record SemanticAuthorityReplayPersistenceResult(
     bool Persisted,
     string? ArtifactPath,
-    string? Error);
+    string? Error,
+    string? TransportArtifactPath = null);
 
 /// <summary>Writes one validated replay authority artifact with a stable identity and atomic move.</summary>
 public static class SemanticAuthorityReplayArtifactWriter
@@ -110,6 +149,65 @@ public static class SemanticAuthorityReplayArtifactWriter
         }
     }
 
+    public static string WriteTransportAtomic(
+        SemanticAuthorityTransportCapture capture,
+        string artifactDirectory)
+    {
+        ArgumentNullException.ThrowIfNull(capture);
+        ArgumentException.ThrowIfNullOrWhiteSpace(artifactDirectory);
+        var errors = SemanticAuthorityTransportCaptureFactory.Validate(capture);
+        if (errors.Count > 0)
+            throw new InvalidOperationException("TRANSPORT_CAPTURE_INVALID: " + string.Join(",", errors));
+
+        Directory.CreateDirectory(artifactDirectory);
+        var path = Path.Combine(artifactDirectory, StableTransportFileName(capture));
+        if (File.Exists(path))
+        {
+            var existing = ReadTransport(path);
+            if (string.Equals(existing.CaptureHash, capture.CaptureHash, StringComparison.OrdinalIgnoreCase))
+                return path;
+            throw new InvalidOperationException("TRANSPORT_CAPTURE_ID_COLLISION");
+        }
+
+        var temp = path + "." + Guid.NewGuid().ToString("N") + ".tmp";
+        try
+        {
+            var json = JsonSerializer.Serialize(capture, Json);
+            using (var stream = new FileStream(
+                temp, FileMode.CreateNew, FileAccess.Write, FileShare.None, 64 * 1024,
+                FileOptions.SequentialScan))
+            using (var writer = new StreamWriter(
+                stream, new System.Text.UTF8Encoding(false), 64 * 1024, leaveOpen: true))
+            {
+                writer.Write(json);
+                writer.Flush();
+                stream.Flush(flushToDisk: true);
+            }
+
+            var roundTrip = ReadTransport(temp);
+            var roundTripErrors = SemanticAuthorityTransportCaptureFactory.Validate(roundTrip);
+            if (roundTripErrors.Count > 0)
+                throw new InvalidOperationException("TRANSPORT_CAPTURE_ROUNDTRIP_INVALID: " +
+                    string.Join(",", roundTripErrors));
+
+            try
+            {
+                File.Move(temp, path, overwrite: false);
+            }
+            catch (IOException) when (File.Exists(path))
+            {
+                var raced = ReadTransport(path);
+                if (!string.Equals(raced.CaptureHash, capture.CaptureHash, StringComparison.OrdinalIgnoreCase))
+                    throw new InvalidOperationException("TRANSPORT_CAPTURE_ID_COLLISION");
+            }
+            return path;
+        }
+        finally
+        {
+            if (File.Exists(temp)) File.Delete(temp);
+        }
+    }
+
     public static string StableFileName(SemanticAuthorityReplayBundle bundle)
     {
         ArgumentNullException.ThrowIfNull(bundle);
@@ -122,10 +220,26 @@ public static class SemanticAuthorityReplayArtifactWriter
             "semantic-authority-replay.v1.json");
     }
 
+    public static string StableTransportFileName(SemanticAuthorityTransportCapture capture)
+    {
+        ArgumentNullException.ThrowIfNull(capture);
+        return string.Join('.',
+            SafeSegment(capture.DocumentId),
+            "source-" + Prefix(capture.SourceHash),
+            "universe-" + Prefix(capture.SourceUniverseHash),
+            "transport-capture.v1.json");
+    }
+
     private static SemanticAuthorityReplayBundle Read(string path)
     {
         var bundle = JsonSerializer.Deserialize<SemanticAuthorityReplayBundle>(File.ReadAllText(path), Json);
         return bundle ?? throw new InvalidOperationException("REPLAY_ARTIFACT_EMPTY");
+    }
+
+    private static SemanticAuthorityTransportCapture ReadTransport(string path)
+    {
+        var capture = JsonSerializer.Deserialize<SemanticAuthorityTransportCapture>(File.ReadAllText(path), Json);
+        return capture ?? throw new InvalidOperationException("TRANSPORT_CAPTURE_EMPTY");
     }
 
     private static string Prefix(string value) =>

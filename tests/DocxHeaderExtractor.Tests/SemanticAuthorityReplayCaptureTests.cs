@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
@@ -32,6 +33,10 @@ public sealed class SemanticAuthorityReplayCaptureTests
         Assert.Contains(bundle.Proposals, proposal => proposal.SourceAlias == "S9999");
         Assert.Single(result.TextPipeline.BoundHeadings);
         Assert.Equal(SemanticAuthorityReplayHashing.RawModelResponseHash([raw]), bundle.RawModelResponseHash);
+        var transportCall = Assert.Single(result.TransportCalls);
+        Assert.Equal("semantic", transportCall.Stage);
+        Assert.Equal(raw, Encoding.UTF8.GetString(Convert.FromBase64String(transportCall.RawResponseUtf8Base64)));
+        Assert.Empty(transportCall.Validate());
     }
 
     [Fact]
@@ -133,6 +138,80 @@ public sealed class SemanticAuthorityReplayCaptureTests
         finally
         {
             if (File.Exists(occupiedPath)) File.Delete(occupiedPath);
+        }
+    }
+
+    [Fact]
+    public void Transport_capture_persists_exact_request_and_response_before_replay_is_complete()
+    {
+        var directory = Path.Combine(Path.GetTempPath(), "dhx-transport-capture-test-" + Guid.NewGuid().ToString("N"));
+        const string raw = "{\"headings\":[]}";
+        try
+        {
+            var bundle = SemanticAuthorityReplayBundleFactory.Create(
+                "DOC-CAPTURE", "PDF", "source-hash", "universe-hash",
+                [new SemanticSourceAlias("S0001", "p1", 1, "Heading", new(0, 7))],
+                "synthetic-model", "offline-test-route", "prompt-hash",
+                SemanticAuthorityReplayHashing.RawModelResponseHash([raw]),
+                []);
+            var call = SemanticAuthorityTransportCall.Create(
+                1, "semantic", "pack-0001", "{\"systemPrompt\":\"p\",\"userMessage\":\"u\"}", raw);
+            var request = new SemanticAuthorityReplayCaptureRequest(
+                new SemanticAuthorityCaptureMetadata(
+                    "PDF", "universe-hash", "synthetic-model", "offline-test-route", "prompt-hash",
+                    Profile: "STRUCTURED_SOURCE_PARTS", PackingPolicy: "COHERENT_REGION_SEGMENTATION_V1",
+                    RepeatIdentity: "r1"),
+                directory);
+
+            var result = request.Persist(bundle, [call]);
+
+            Assert.True(result.Persisted);
+            Assert.NotNull(result.ArtifactPath);
+            Assert.NotNull(result.TransportArtifactPath);
+            using var document = JsonDocument.Parse(File.ReadAllText(result.TransportArtifactPath!));
+            var root = document.RootElement;
+            Assert.Equal(SemanticAuthorityTransportCaptureSchema.Version,
+                root.GetProperty("schemaVersion").GetString());
+            Assert.Equal(SemanticAuthorityTransportCaptureSchema.TransportCaptureComplete,
+                root.GetProperty("transportCaptureStatus").GetString());
+            Assert.Equal(SemanticAuthorityTransportCaptureSchema.ReplayMaterializationComplete,
+                root.GetProperty("replayMaterializationStatus").GetString());
+            Assert.Equal(raw, Encoding.UTF8.GetString(Convert.FromBase64String(
+                root.GetProperty("calls")[0].GetProperty("rawResponseUtf8Base64").GetString()!)));
+            Assert.Empty(SemanticAuthorityTransportCaptureFactory.Validate(
+                JsonSerializer.Deserialize<SemanticAuthorityTransportCapture>(
+                    File.ReadAllText(result.TransportArtifactPath!))!));
+            Assert.Equal(2, Directory.GetFiles(directory, "*.json").Length);
+        }
+        finally
+        {
+            if (Directory.Exists(directory)) Directory.Delete(directory, recursive: true);
+        }
+    }
+
+    [Fact]
+    public void Required_capture_rejects_response_hash_without_raw_response_body()
+    {
+        var directory = Path.Combine(Path.GetTempPath(), "dhx-transport-missing-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            var rawHash = SemanticAuthorityReplayHashing.RawModelResponseHash(["provider-body"]);
+            var bundle = SemanticAuthorityReplayBundleFactory.Create(
+                "DOC-CAPTURE", "PDF", "source-hash", "universe-hash",
+                [new SemanticSourceAlias("S0001", "p1", 1, "Heading", new(0, 7))],
+                "synthetic-model", "offline-test-route", "prompt-hash", rawHash, []);
+            var request = new SemanticAuthorityReplayCaptureRequest(
+                new SemanticAuthorityCaptureMetadata("PDF", "universe-hash", "model", "route", "prompt"),
+                directory);
+
+            var error = Assert.Throws<InvalidOperationException>(() => request.Persist(bundle, []));
+
+            Assert.Equal("REPLAY_CAPTURE_RAW_RESPONSE_NOT_PERSISTED", error.Message);
+            Assert.False(Directory.Exists(directory));
+        }
+        finally
+        {
+            if (Directory.Exists(directory)) Directory.Delete(directory, recursive: true);
         }
     }
 

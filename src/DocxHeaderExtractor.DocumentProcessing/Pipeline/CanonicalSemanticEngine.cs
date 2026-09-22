@@ -195,6 +195,7 @@ internal static class CanonicalSemanticEngine
         public string PackingPolicyVersion => _packingPolicy.PolicyVersion;
 
         public List<string> RawResponses { get; } = [];
+        public List<SemanticAuthorityTransportCall> TransportCalls { get; } = [];
 
         /// <summary>
         /// Request-shaped view of one owned occurrence. LocalBefore/LocalAfter are deliberately
@@ -368,12 +369,24 @@ internal static class CanonicalSemanticEngine
             {
                 var owned = segment.Owned;
                 var ownedAliases = owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);
+                var systemPrompt = SystemPromptFor(Contract, _experiment);
+                var requestPayload = JsonSerializer.Serialize(new
+                {
+                    systemPrompt,
+                    userMessage = segment.RequestBytes,
+                });
                 var raw = await classifier.BoundaryCutAsync(
-                    SystemPromptFor(Contract, _experiment),
+                    systemPrompt,
                     segment.RequestBytes,
                     cancellationToken,
                     expectedItemCount: owned.Count);
                 RawResponses.Add(raw);
+                TransportCalls.Add(SemanticAuthorityTransportCall.Create(
+                    RawResponses.Count,
+                    "semantic",
+                    segment.PackId,
+                    requestPayload,
+                    raw));
                 // A reply that is not JSON at all - truncated mid-object, wrapped in prose, empty -
                 // costs this segment. It used to throw out of the segment loop and end the document,
                 // so one bad reply among sixteen discarded the other fifteen with no record of why.
@@ -432,6 +445,7 @@ internal static class CanonicalSemanticEngine
                 ContractIssues = issues,
                 ParsedProposals = parsedProposals.ToArray(),
                 RawModelResponseHash = SemanticAuthorityReplayHashing.RawModelResponseHash(RawResponses),
+                TransportCalls = TransportCalls.ToArray(),
             };
         }
 

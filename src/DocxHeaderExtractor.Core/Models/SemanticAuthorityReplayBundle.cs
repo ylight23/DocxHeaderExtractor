@@ -27,7 +27,10 @@ public sealed record SemanticAuthorityCaptureMetadata(
     string? ManifestHash = null,
     string? RunId = null,
     string? Commit = null,
-    DateTimeOffset? CreatedAt = null);
+    DateTimeOffset? CreatedAt = null,
+    string? Profile = null,
+    string? PackingPolicy = null,
+    string? RepeatIdentity = null);
 
 /// <summary>
 /// Immutable authority captured after model JSON has become semantic proposals and before any
@@ -150,6 +153,8 @@ public static class SemanticAuthorityReplayHashing
         ArgumentNullException.ThrowIfNull(responses);
         return HashValue(responses);
     }
+
+    public static string CanonicalValueHash<T>(T value) => HashValue(value);
 
     public static string SemanticContractHash() => HashValue(CanonicalSemanticContract.Schema());
 

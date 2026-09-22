@@ -141,6 +141,13 @@ public sealed record CanonicalSemanticTextInferenceResult(
 
     /// <summary>Hash of the ordered raw model responses used for this inference.</summary>
     public string? RawModelResponseHash { get; init; }
+
+    /// <summary>
+    /// Replay-complete transport evidence. A provider-backed result must carry one entry per
+    /// successful semantic call so the capture boundary can persist the exact request/response
+    /// bytes before downstream binding or scoring.
+    /// </summary>
+    public IReadOnlyList<SemanticAuthorityTransportCall> TransportCalls { get; init; } = [];
 }
 
 public interface ICanonicalSemanticTextModel
@@ -238,6 +245,9 @@ public sealed record CanonicalSemanticProductionResult(
 
     /// <summary>Immutable proposal capture made before source-aware validation, when requested.</summary>
     public SemanticAuthorityReplayBundle? ReplayBundle { get; init; }
+
+    /// <summary>Transport evidence paired with <see cref="ReplayBundle"/>.</summary>
+    public IReadOnlyList<SemanticAuthorityTransportCall> TransportCalls { get; init; } = [];
 }
 
 public static class CanonicalSemanticProductionEntryPoint
@@ -349,6 +359,7 @@ public static class CanonicalSemanticProductionEntryPoint
             ContractValidProposalCount = primaryValidation.ValidProposals.Count,
             ContractInvalidProposalCount = textInference.Proposals.Count - primaryValidation.ValidProposals.Count,
             ReplayBundle = replayBundle,
+            TransportCalls = textInference.TransportCalls,
         };
     }
 
