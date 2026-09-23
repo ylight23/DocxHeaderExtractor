@@ -221,13 +221,13 @@ public sealed class SecondModelMinimalReplayPreflightTests
                 reasoning = "none",
                 providerFallbacksAllowed = false,
                 providerOptions = new
-                {
-                    order = new[] { "OpenAI" },
-                    zdr = false,
-                    data_collection = "deny",
-                    require_parameters = true,
-                    allow_fallbacks = false,
-                },
+            {
+                order = new[] { "OpenAI" },
+                zdr = false,
+                data_collection = "deny",
+                require_parameters = true,
+                allow_fallbacks = false,
+            },
                 compatibilityValidatedOffline = true,
                 transportDeltas = new[]
                 {
@@ -304,7 +304,7 @@ public sealed class SecondModelMinimalReplayPreflightTests
         SemanticAuthorityTransportCall.Sha256Utf8(JsonSerializer.Serialize(new
         {
             model = SecondModelId,
-            provider = ProviderBackend,
+            providerBackend = ProviderBackend,
             transportProtocol = TransportProtocol,
             endpoint = ProviderEndpoint,
             temperature = 0,
@@ -316,11 +316,11 @@ public sealed class SecondModelMinimalReplayPreflightTests
                 new { role = "user", content = userMessage },
             },
             response_format = new { type = ResponseFormat },
-                providerOptions = new
-                {
-                    order = new[] { "OpenAI" },
-                    zdr = false,
-                    data_collection = "deny",
+            provider = new
+            {
+                order = new[] { "OpenAI" },
+                zdr = false,
+                data_collection = "deny",
                 require_parameters = true,
                 allow_fallbacks = false,
             },
