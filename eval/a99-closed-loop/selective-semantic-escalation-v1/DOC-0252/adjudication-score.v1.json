@@ -1,0 +1,39 @@
+{
+  "artifactKind": "a99_selective_semantic_escalation_adjudication_score",
+  "schemaVersion": "a99-selective-semantic-escalation-adjudication-score-v1",
+  "status": "SCORED_OFFLINE",
+  "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "perItem": [
+    {
+      "itemId": "ITEM-505430BB",
+      "adjudicatorFinalLabel": "DOCUMENT_LABEL",
+      "adjudicatorSelfReportedResolved": true,
+      "goldLabel": "DOCUMENT_LABEL",
+      "matchesGold": true,
+      "escalatedCaseResolution": "RESOLVED_CORRECT",
+      "vlmEligibleUnderProtocol": false
+    },
+    {
+      "itemId": "ITEM-CCE2C592",
+      "adjudicatorFinalLabel": "DOCUMENT_LABEL",
+      "adjudicatorSelfReportedResolved": true,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "matchesGold": false,
+      "escalatedCaseResolution": "RESOLVED_INCORRECT",
+      "vlmEligibleUnderProtocol": false
+    }
+  ],
+  "summary": {
+    "bothSelfReportedResolved": true,
+    "bothCorrect": false,
+    "anyResolvedButIncorrect": true,
+    "headline": "The text adjudicator resolved both cases by its own report (resolved=true for both), but only one of the two matches Gold R2. Self-reported resolution does not imply correctness - ITEM-CCE2C592 (Agenda) was confidently adjudicated to the wrong label."
+  },
+  "protocolNote": "Per the frozen escalation protocol, only an UNRESOLVED (or layout-dependent) case is eligible for VLM. RESOLVED_INCORRECT is a distinct, new outcome this run surfaced: the adjudicator's self-reported 'resolved' flag is not a reliable proxy for correctness on this item. Whether to treat RESOLVED_INCORRECT as VLM-eligible, or to require a different remediation (e.g. a second independent adjudication, or accepting the disagreement as unresolved regardless of the self-report), is a protocol decision for the requester, not something this scorer decides unilaterally.",
+  "vlmCallsMadeThisRun": 0,
+  "goldUsage": "Evaluation-only, applied after both adjudicator responses were already committed; never shown to the adjudicator.",
+  "generalizationEstablished": false,
+  "scope": "DOC-0252 only, the 2 items flagged by the frozen signal, 1 adjudication attempt per item (no repeats). Not evidence about the remaining corpus or about adjudicator reliability in general."
+}
