@@ -406,7 +406,7 @@
             "rightExactContext": null
           }
         ],
-        "semanticRole": "DocumentTitle"
+        "semanticRole": "SectionHeading"
       },
       {
         "sourceParts": [
@@ -1143,7 +1143,7 @@
             "rightExactContext": null
           }
         ],
-        "semanticRole": "DocumentTitle",
+        "semanticRole": "SectionHeading",
         "identity": "L0519:S0:0-6",
         "projectedText": "Agenda"
       },
@@ -1433,13 +1433,8 @@
     },
     {
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.occurrence-gold.v1.json",
-      "sha256": "8f0635c37e230c36356f10ce36110ad1e301e2afcef242a1099c9debf77e6887",
-      "role": "STRUCTURED_OCCURRENCE_AUTHORITY"
-    },
-    {
-      "path": "predecessor-gold:HUMAN_APPROVED_GOLD_CORRECTION",
       "sha256": "b4beacc4e758f858e785d7e37700fd04862f41726326159ec30721ad47e47ec0",
-      "role": "GOLD_CORRECTION_PREDECESSOR"
+      "role": "STRUCTURED_OCCURRENCE_AUTHORITY"
     },
     {
       "path": "predecessor-gold:HUMAN_APPROVED_GOLD_CORRECTION",

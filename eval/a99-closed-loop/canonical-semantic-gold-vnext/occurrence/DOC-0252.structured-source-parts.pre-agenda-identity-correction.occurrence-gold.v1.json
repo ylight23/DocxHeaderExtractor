@@ -10,75 +10,49 @@
     "kind": "HUMAN_APPROVED_GOLD_CORRECTION",
     "correctedAt": "2026-09-23",
     "predecessorCoordinateProfile": "STRUCTURED_SOURCE_PARTS",
-    "predecessorGoldSha256": "b4beacc4e758f858e785d7e37700fd04862f41726326159ec30721ad47e47ec0",
-    "semanticMembershipChanged": false,
-    "add": 0,
+    "predecessorGoldSha256": "322d431ff7be7af47034b8df711b9b23b247480900fdf5266ed0d0fb08b1b754",
+    "semanticMembershipChanged": true,
+    "add": 1,
     "remove": 0,
-    "changed": 1,
     "needsReview": 0,
-    "itemId": "ITEM-CCE2C592",
-    "changedIdentity": "L0519:S0:0-6",
-    "oldSemanticRole": "SectionHeading",
-    "newSemanticRole": "DocumentTitle",
-    "oldExpectedLabel": "STRUCTURAL_UNIT",
+    "itemId": "ITEM-505430BB",
+    "addedIdentity": "L0513:S0:0-38|L0514:S0:0-30",
+    "addedSemanticRole": "DocumentTitle",
+    "oldExpectedLabel": "NON_STRUCTURAL",
     "newExpectedLabel": "DOCUMENT_LABEL",
-    "abstractSemanticFunction": "IDENTITY",
-    "reason": "Human re-review, informed by textual, structural, and visual (VLM) evidence gathered across the context-ablation, text-adjudicator, and VLM-escalation lineages, determined this occurrence primarily identifies the embedded 'Agenda' artifact rather than serving as an internal structural parent of the content beneath it. The DAY/SESSION occurrences provide the structural hierarchy inside that artifact; only the label naming the artifact itself changes role. The decision is semantic-function based (IDENTITY vs. STRUCTURE), not a claim that any model or scorer proved the prior Gold classification wrong.",
+    "reason": "Human re-review determined this occurrence functions as a document-level identifying/title-block label for the embedded meeting/agenda artifact, not ordinary organization/date/venue metadata. The decision is semantic-function based, not typography-based.",
     "unaffectedControl": {
-      "itemId": "ITEM-505430BB",
-      "identity": "L0513:S0:0-38|L0514:S0:0-30",
-      "semanticRole": "DocumentTitle",
-      "note": "Established by the prior correction (R1 to R2); unaffected by this one."
+      "itemId": "ITEM-CCE2C592",
+      "identity": "L0519:S0:0-6",
+      "semanticRole": "SectionHeading",
+      "note": "Agenda is unchanged by this correction."
     },
     "priorMigration": {
-      "kind": "HUMAN_APPROVED_GOLD_CORRECTION",
-      "correctedAt": "2026-09-23",
-      "predecessorCoordinateProfile": "STRUCTURED_SOURCE_PARTS",
-      "predecessorGoldSha256": "322d431ff7be7af47034b8df711b9b23b247480900fdf5266ed0d0fb08b1b754",
-      "semanticMembershipChanged": true,
-      "add": 1,
+      "kind": "SOURCE_COORDINATE_AND_VERBATIM_FIDELITY_MIGRATION",
+      "predecessorCoordinateProfile": "LEGACY_OCCURRENCE",
+      "predecessorGoldSha256": "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
+      "semanticMembershipChanged": false,
+      "add": 0,
       "remove": 0,
       "needsReview": 0,
-      "itemId": "ITEM-505430BB",
-      "addedIdentity": "L0513:S0:0-38|L0514:S0:0-30",
-      "addedSemanticRole": "DocumentTitle",
-      "oldExpectedLabel": "NON_STRUCTURAL",
-      "newExpectedLabel": "DOCUMENT_LABEL",
-      "reason": "Human re-review determined this occurrence functions as a document-level identifying/title-block label for the embedded meeting/agenda artifact, not ordinary organization/date/venue metadata. The decision is semantic-function based, not typography-based.",
-      "unaffectedControl": {
-        "itemId": "ITEM-CCE2C592",
-        "identity": "L0519:S0:0-6",
-        "semanticRole": "SectionHeading",
-        "note": "Agenda is unchanged by this correction."
-      },
-      "priorMigration": {
-        "kind": "SOURCE_COORDINATE_AND_VERBATIM_FIDELITY_MIGRATION",
-        "predecessorCoordinateProfile": "LEGACY_OCCURRENCE",
-        "predecessorGoldSha256": "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
+      "textMigratedClaims": 16,
+      "boundaryCorrection": {
+        "kind": "SOURCE_SELECTION_BOUNDARY_CORRECTION",
+        "predecessorGoldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+        "correctedAliases": [
+          "L0107:S0",
+          "L0377:S0",
+          "L0540:S0",
+          "L0576:S0"
+        ],
         "semanticMembershipChanged": false,
-        "add": 0,
-        "remove": 0,
-        "needsReview": 0,
-        "textMigratedClaims": 16,
-        "boundaryCorrection": {
-          "kind": "SOURCE_SELECTION_BOUNDARY_CORRECTION",
-          "predecessorGoldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
-          "correctedAliases": [
-            "L0107:S0",
-            "L0377:S0",
-            "L0540:S0",
-            "L0576:S0"
-          ],
-          "semanticMembershipChanged": false,
-          "approvedWordingChanged": false,
-          "authorization": "explicit user authorization, DOC-0252 only, selection-only, named per alias",
-          "note": "Each of these selections stopped one character short of the heading its own approvedWording records - a closing parenthesis dropped by the punctuation-insensitive locator this migration searches with. The selections now cover their whole atom. The locator itself is unchanged and is corrected separately."
-        },
-        "note": "Coordinate representation and source-faithful wording changed. No heading was added, removed, or re-adjudicated; the 41-heading membership approved for DOC-0252 is reused, not re-approved."
+        "approvedWordingChanged": false,
+        "authorization": "explicit user authorization, DOC-0252 only, selection-only, named per alias",
+        "note": "Each of these selections stopped one character short of the heading its own approvedWording records - a closing parenthesis dropped by the punctuation-insensitive locator this migration searches with. The selections now cover their whole atom. The locator itself is unchanged and is corrected separately."
       },
-      "note": "One claim added, none removed, none re-adjudicated. The 41 claims this migration carried forward are reused as-is; only the coordinate representation and source-faithful wording of those 41 were ever in scope for the migration that produced the predecessor this correction is layered on top of."
+      "note": "Coordinate representation and source-faithful wording changed. No heading was added, removed, or re-adjudicated; the 41-heading membership approved for DOC-0252 is reused, not re-approved."
     },
-    "note": "One claim's semantic role changed, none added, none removed, none re-adjudicated beyond Agenda itself. The 42 claims this correction is layered on top of are reused as-is except for Agenda's own row."
+    "note": "One claim added, none removed, none re-adjudicated. The 41 claims this migration carried forward are reused as-is; only the coordinate representation and source-faithful wording of those 41 were ever in scope for the migration that produced the predecessor this correction is layered on top of."
   },
   "boundOccurrences": [
     {
@@ -625,7 +599,7 @@
           "rightExactContext": null
         }
       ],
-      "semanticRole": "DocumentTitle",
+      "semanticRole": "SectionHeading",
       "identity": "L0519:S0:0-6",
       "projectedText": "Agenda"
     },

@@ -26,7 +26,12 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class Doc0252GoldCorrectionItem505430bbTests
 {
     private const string OutputRoot = "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence";
-    private const string OutputName = "DOC-0252.structured-source-parts.occurrence-gold.v1.json";
+
+    // This was the live occurrence-gold path until the 2026-09-23 Agenda-identity correction
+    // (Doc0252GoldCorrectionAgendaIdentityR3Tests) layered on top of it. What this test generates is
+    // now the fixed R2 vintage that correction's own predecessor pins by hash - not the live file -
+    // so its output moved to the preserved-snapshot name rather than staying at the live one.
+    private const string OutputName = "DOC-0252.structured-source-parts.pre-agenda-identity-correction.occurrence-gold.v1.json";
     private const string Doc0252Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
     private const string SourceSha256 = "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61";
     private const int PredecessorHeadings = 41;
