@@ -1,0 +1,308 @@
+{
+  "artifactKind": "a99_haiku_context_ablation_confirmation_score_gold_r3_rescore",
+  "schemaVersion": "a99-haiku-context-ablation-confirmation-score-gold-r3-rescore-v1",
+  "documentId": "DOC-0252",
+  "model": "Haiku",
+  "status": "RESCORED_OFFLINE_UNDER_GOLD_R3",
+  "supersedesForCurrentConclusion": "eval/a99-closed-loop/haiku-context-ablation-confirmation-v1/DOC-0252/haiku-context-ablation-score.v1.json",
+  "goldSha256Old": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "goldSha256New": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+  "onlyChangedInput": "ITEM-CCE2C592 (Agenda) expected label: STRUCTURAL_UNIT (R2) -> DOCUMENT_LABEL (R3). Every raw returned value in every cell is unchanged.",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "arms": [
+    {
+      "armId": "FULL_CONTEXT",
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 0,
+        "total": 3,
+        "returnedByRepeat": [
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL",
+          "STRUCTURAL_UNIT"
+        ]
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 0,
+        "total": 3,
+        "returnedByRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ]
+      },
+      "F2": {
+        "itemId": "ITEM-2D78F82D",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "F3": {
+        "itemId": "ITEM-968E70AF",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "structuralControls": {
+        "correct": 39,
+        "total": 39,
+        "itemCount": 13
+      },
+      "documentLabelControl": {
+        "correct": 3,
+        "total": 9,
+        "itemCount": 3,
+        "items": [
+          "ITEM-505430BB",
+          "ITEM-AB89229E",
+          "ITEM-CCE2C592"
+        ]
+      },
+      "confusionMatrix": {
+        "expectedActual": {
+          "STRUCTURAL_UNIT": {
+            "STRUCTURAL_UNIT": 39,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 0
+          },
+          "DOCUMENT_LABEL": {
+            "STRUCTURAL_UNIT": 4,
+            "DOCUMENT_LABEL": 3,
+            "NON_STRUCTURAL": 2
+          },
+          "NON_STRUCTURAL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 6
+          }
+        },
+        "totalDecisions": 54,
+        "correct": 48,
+        "accuracy": 0.8888888888888888
+      }
+    },
+    {
+      "armId": "LOCAL_CONTEXT_RADIUS_3",
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 0,
+        "total": 3,
+        "returnedByRepeat": [
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL"
+        ]
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 0,
+        "total": 3,
+        "returnedByRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ]
+      },
+      "F2": {
+        "itemId": "ITEM-2D78F82D",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "F3": {
+        "itemId": "ITEM-968E70AF",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "structuralControls": {
+        "correct": 39,
+        "total": 39,
+        "itemCount": 13
+      },
+      "documentLabelControl": {
+        "correct": 3,
+        "total": 9,
+        "itemCount": 3,
+        "items": [
+          "ITEM-505430BB",
+          "ITEM-AB89229E",
+          "ITEM-CCE2C592"
+        ]
+      },
+      "confusionMatrix": {
+        "expectedActual": {
+          "STRUCTURAL_UNIT": {
+            "STRUCTURAL_UNIT": 39,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 0
+          },
+          "DOCUMENT_LABEL": {
+            "STRUCTURAL_UNIT": 3,
+            "DOCUMENT_LABEL": 3,
+            "NON_STRUCTURAL": 3
+          },
+          "NON_STRUCTURAL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 6
+          }
+        },
+        "totalDecisions": 54,
+        "correct": 48,
+        "accuracy": 0.8888888888888888
+      }
+    },
+    {
+      "armId": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 1,
+        "total": 1,
+        "returnedByRepeat": [
+          "DOCUMENT_LABEL"
+        ]
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 0,
+        "total": 1,
+        "returnedByRepeat": [
+          "STRUCTURAL_UNIT"
+        ]
+      },
+      "F2": {
+        "itemId": "ITEM-2D78F82D",
+        "expected": "NON_STRUCTURAL",
+        "correct": 1,
+        "total": 1
+      },
+      "F3": {
+        "itemId": "ITEM-968E70AF",
+        "expected": "NON_STRUCTURAL",
+        "correct": 1,
+        "total": 1
+      },
+      "structuralControls": {
+        "correct": 13,
+        "total": 13,
+        "itemCount": 13
+      },
+      "documentLabelControl": {
+        "correct": 2,
+        "total": 3,
+        "itemCount": 3,
+        "items": [
+          "ITEM-505430BB",
+          "ITEM-AB89229E",
+          "ITEM-CCE2C592"
+        ]
+      },
+      "confusionMatrix": {
+        "expectedActual": {
+          "STRUCTURAL_UNIT": {
+            "STRUCTURAL_UNIT": 13,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 0
+          },
+          "DOCUMENT_LABEL": {
+            "STRUCTURAL_UNIT": 1,
+            "DOCUMENT_LABEL": 2,
+            "NON_STRUCTURAL": 0
+          },
+          "NON_STRUCTURAL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 2
+          }
+        },
+        "totalDecisions": 18,
+        "correct": 17,
+        "accuracy": 0.9444444444444444
+      }
+    },
+    {
+      "armId": "FULL_STRUCTURED_CONTEXT_V2",
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 2,
+        "total": 3,
+        "returnedByRepeat": [
+          "NON_STRUCTURAL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ]
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 0,
+        "total": 3,
+        "returnedByRepeat": [
+          "STRUCTURAL_UNIT",
+          "NON_STRUCTURAL",
+          "STRUCTURAL_UNIT"
+        ]
+      },
+      "F2": {
+        "itemId": "ITEM-2D78F82D",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "F3": {
+        "itemId": "ITEM-968E70AF",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "structuralControls": {
+        "correct": 39,
+        "total": 39,
+        "itemCount": 13
+      },
+      "documentLabelControl": {
+        "correct": 5,
+        "total": 9,
+        "itemCount": 3,
+        "items": [
+          "ITEM-505430BB",
+          "ITEM-AB89229E",
+          "ITEM-CCE2C592"
+        ]
+      },
+      "confusionMatrix": {
+        "expectedActual": {
+          "STRUCTURAL_UNIT": {
+            "STRUCTURAL_UNIT": 39,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 0
+          },
+          "DOCUMENT_LABEL": {
+            "STRUCTURAL_UNIT": 2,
+            "DOCUMENT_LABEL": 5,
+            "NON_STRUCTURAL": 2
+          },
+          "NON_STRUCTURAL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 6
+          }
+        },
+        "totalDecisions": 54,
+        "correct": 50,
+        "accuracy": 0.9259259259259259
+      }
+    }
+  ],
+  "headline": "Under R3, Haiku never once returns DOCUMENT_LABEL for Agenda across any arm (FULL, LOCAL, MINIMAL, or FULL_STRUCTURED_CONTEXT_V2) - the model that appeared to 'get Agenda right everywhere' under R2 is wrong everywhere under R3. This is the mirror image of Qwen's FULL/LOCAL arms, which happen to already say DOCUMENT_LABEL and become correct."
+}

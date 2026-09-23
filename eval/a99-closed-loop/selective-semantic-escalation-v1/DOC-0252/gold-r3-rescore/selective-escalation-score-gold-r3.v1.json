@@ -1,0 +1,35 @@
+{
+  "artifactKind": "a99_selective_semantic_escalation_score_gold_r3_rescore",
+  "schemaVersion": "a99-selective-semantic-escalation-score-gold-r3-rescore-v1",
+  "itemId": "ITEM-CCE2C592",
+  "status": "RESCORED_OFFLINE_UNDER_GOLD_R3",
+  "goldSha256Old": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "goldSha256New": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "vlmCalls": 0,
+  "textAdjudicator": {
+    "finalLabel": "DOCUMENT_LABEL",
+    "resolvedSelfReport": true,
+    "goldR3": "DOCUMENT_LABEL",
+    "correctUnderR3": true,
+    "classification": "RESOLVED_CORRECT_UNDER_GOLD_R3",
+    "previousClassification": "RESOLVED_INCORRECT (Gold R2) - SUPERSEDED_BY_GOLD_R3"
+  },
+  "vlm": {
+    "legacyProjectedLabel": "DOCUMENT_LABEL",
+    "goldR3": "DOCUMENT_LABEL",
+    "correctUnderR3": true,
+    "classification": "VLM_IDENTITY_CORRECT_UNDER_GOLD_R3",
+    "previousClassification": "VLM_ESCALATION_INCONCLUSIVE_SAME_ATTRACTOR (Gold R2) - SUPERSEDED_BY_GOLD_R3"
+  },
+  "adjudicatorEvidenceConflict": {
+    "stillTrue": true,
+    "dominantPooledLabel": "STRUCTURAL_UNIT",
+    "adjudicatorLabel": "DOCUMENT_LABEL",
+    "conflict": true,
+    "interpretationUnderR3": "The adjudicator is correct under R3 despite disagreeing with the dominant pooled vote. ADJUDICATOR_EVIDENCE_CONFLICT remains an escalation/disagreement signal, not evidence that the adjudicator is wrong - the dominant pooled label (STRUCTURAL_UNIT) is itself wrong under the human-approved Gold. This is the concrete negative example for MAJORITY != SEMANTIC AUTHORITY: the pooled 11-4-1 majority disagreed with human-approved semantic authority."
+  },
+  "dominantLabelAuthority": false,
+  "contextSignalDefinitionChanged": false
+}
