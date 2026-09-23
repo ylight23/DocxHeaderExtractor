@@ -48,7 +48,9 @@ public sealed class SelectiveSemanticEscalationV1PreflightTests
     private static readonly (string ArmId, string ViewId)[] ViewAssignment =
         [(Full, "VIEW_1"), (StructuredV2, "VIEW_2"), (Minimal, "VIEW_3")];
 
-    private static readonly (string ItemId, string Pack)[] ItemPacks =
+    // internal: reused by SelectiveSemanticEscalationV1TextAdjudicatorTransportTests so the real
+    // adjudicator call sends exactly this preflight-verified payload, not a reimplementation of it.
+    internal static readonly (string ItemId, string Pack)[] ItemPacks =
         [("ITEM-505430BB", "PACK_005"), ("ITEM-CCE2C592", "PACK_006")];
 
     // "correct" and "Agenda" are deliberately excluded: they occur organically in DOC-0252's real
@@ -283,7 +285,7 @@ public sealed class SelectiveSemanticEscalationV1PreflightTests
     // Request construction
     // ---------------------------------------------------------------------------------------
 
-    private static AdjudicationRequest BuildAdjudicationRequest(string itemId)
+    internal static AdjudicationRequest BuildAdjudicationRequest(string itemId)
     {
         var triggered = ReadTriggerSet();
         if (!triggered.Contains(itemId, StringComparer.Ordinal))
@@ -430,5 +432,5 @@ public sealed class SelectiveSemanticEscalationV1PreflightTests
         return source[braceStart..(i + 1)];
     }
 
-    private sealed record AdjudicationRequest(object ModelFacingPayload, object ScaffoldingOnlyPayload, object FrozenView);
+    internal sealed record AdjudicationRequest(object ModelFacingPayload, object ScaffoldingOnlyPayload, object FrozenView);
 }

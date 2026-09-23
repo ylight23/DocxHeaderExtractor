@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "a99-selective-semantic-escalation-adjudication-transport-capture-v1",
+  "itemId": "ITEM-CCE2C592",
+  "model": "qwen/qwen3.7-flash",
+  "providerRoute": "OpenRouter",
+  "providerInputHash": "599068876d002ae8588e403231ed2e35d993cd1c601e286b3028ecc992072217",
+  "responseFormat": "json_object",
+  "maxTokens": 256,
+  "transportCaptureStatus": "TRANSPORT_CAPTURE_COMPLETE",
+  "rawResponseCaptured": true,
+  "rawResponseSha256": "28c2d25d6d838c10ac5023a41da5909c67caa6cd344ca2ecda25658307c8ef96",
+  "rawResponseBytes": 56,
+  "rawResponseUtf8Base64": "ewogICJmaW5hbExhYmVsIjogIkRPQ1VNRU5UX0xBQkVMIiwKICAicmVzb2x2ZWQiOiB0cnVlCn0=",
+  "parseStatus": "OK",
+  "contractStatus": "PASS",
+  "finalLabel": "DOCUMENT_LABEL",
+  "resolved": true,
+  "fault": null
+}
