@@ -48,8 +48,15 @@ public sealed class OccurrenceBaselineTransportTests
         var report = VerifyGates();
 
         Assert.All(report, line => Assert.DoesNotContain("MISMATCH", line, StringComparison.Ordinal));
-        Assert.Equal(Cohort.Length, CanonicalGoldRegistry.Entries
-            .Count(entry => entry.OccurrenceEvaluable && entry.SemanticClaimsEvaluable));
+        // Cohort names the fixed, already-spent scope of the real provider run this baseline recorded
+        // - not a live-recomputed list. DOC-0205 has since also become occurrence- and
+        // semantic-claims-evaluable, but joining the qualifying set does not retroactively authorize a
+        // call against it under this baseline, so it is deliberately not added to Cohort.
+        Assert.All(Cohort, id =>
+        {
+            var entry = CanonicalGoldRegistry.Entry(id);
+            Assert.True(entry.OccurrenceEvaluable && entry.SemanticClaimsEvaluable);
+        });
     }
 
     [Fact]

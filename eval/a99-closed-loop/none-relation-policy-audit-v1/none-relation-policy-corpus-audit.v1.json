@@ -7,12 +7,12 @@
   "question": "Before narrowing a shared instruction, what does the approved corpus evidence about headings that hold no position in the section tree?",
   "corpusCoverage": {
     "authorities": 21,
-    "authoritiesCarryingClaimLevelData": 2,
+    "authoritiesCarryingClaimLevelData": 3,
     "approvedHeadingsInCorpus": 3955,
-    "materializedClaimsInCorpus": 48,
-    "coverageOfApprovedHeadings": 0.0121,
-    "finding": "Nineteen of twenty-one approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 48 of 3955 approved headings, about 1.2%, exist as claims at all.",
-    "consequence": "Everything below is evidence from two documents in two genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
+    "materializedClaimsInCorpus": 120,
+    "coverageOfApprovedHeadings": 0.0303,
+    "finding": "Eighteen of twenty-one approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 120 of 3955 approved headings, about 3%, exist as claims at all.",
+    "consequence": "Everything below is evidence from three documents (DOC-0205 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
     "byAuthority": [
       {
         "AuthorityId": "DOC-0001",
@@ -47,8 +47,8 @@
       {
         "AuthorityId": "DOC-0205",
         "approvedHeadings": 72,
-        "materializedClaims": 0,
-        "carriesClaimLevelData": false
+        "materializedClaims": 72,
+        "carriesClaimLevelData": true
       },
       {
         "AuthorityId": "DOC-0252",
@@ -147,7 +147,7 @@
     "identities": [
       "DOC-0252 L0000:S0 'MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM' (DocumentTitle)"
     ],
-    "shareOfMaterializedClaims": 0.0208,
+    "shareOfMaterializedClaims": 0.0083,
     "byPromptCategory": {
       "documentTitle": {
         "admittedByPrompt": true,
@@ -196,7 +196,7 @@
     "reading": "Used as a policy on one lane and as a catch-all on the other, from the same instruction. What separates them is not the lane but whether the document contains prominent text that is not structural - and this instruction gives the model no way to say so except by reporting it."
   },
   "genreEvidence": {
-    "unevidencedGenres": "19 authorities - textbooks, reports and other minutes among them - record totals only. Whether any of them contains an approved masthead, running header or table label cannot be read from Gold.",
+    "unevidencedGenres": "18 authorities - textbooks, reports and other minutes among them - record totals only. Whether any of them contains an approved masthead, running header or table label cannot be read from Gold.",
     "evidenced": [
       {
         "authority": "DOC-0001",
@@ -216,6 +216,19 @@
         "reading": "Every approved heading is a numbered structural unit and every claim the model returned was tree-positioned, in all three repeats. The category is never exercised here, so narrowing it cannot cost this document anything."
       },
       {
+        "authority": "DOC-0205",
+        "genre": "legal decree, Vietnamese, DOCX lane",
+        "approvedHeadings": 72,
+        "roles": {
+          "article": 57,
+          "section": 9,
+          "chapter": 5,
+          "DocumentTitle": 1
+        },
+        "treeLessClaims": 1,
+        "reading": "Materialized into canonical Gold after DOC-0001 and DOC-0252 (71 prior-approved chapter/article headings plus one human-approved addition, the document's own title). The corpus's Gold claims were never model-classified for this document, so unlike DOC-0001 and DOC-0252 there is no captured model reply to compare against - this row reports only what Gold itself contains, not how the tree-less category performed here. Its one DocumentTitle-role claim is the document's own opening title (position 0), the same kind of claim the ontology review excludes by design as not evidencing dual-function ambiguity; it is reported here for completeness, not folded into the DOC-0252-scoped recommendation below."
+      },
+      {
         "authority": "DOC-0252",
         "genre": "meeting minutes with an agenda annex, English, PDF lane",
         "approvedHeadings": 41,
@@ -228,7 +241,7 @@
           "AppendixHeading": 1
         },
         "treeLessClaims": 1,
-        "reading": "The only document in the corpus that exercises the category, and the only one where it goes wrong. Its annex restates the event at the top of a page, which is exactly the shape the instruction's 'title and subtitle' clause invites."
+        "reading": "The only document in the corpus with a captured model reply that exercises the category, and the only one where it goes wrong. Its annex restates the event at the top of a page, which is exactly the shape the instruction's 'title and subtitle' clause invites."
       }
     ]
   },
@@ -243,12 +256,12 @@
       "any rule keyed to a document genre",
       "any wording drawn from DOC-0252"
     ],
-    "evidenceStrength": "Supported where the corpus can speak, and the corpus speaks for 1.2% of its own approved headings. The narrowing is safe for the one document that never uses the category and corrects four of five errors in the one that does; beyond those two it is a judgement, not a measurement."
+    "evidenceStrength": "Supported where the corpus can speak, and the corpus speaks for 3% of its own approved headings. The narrowing is safe for the one document that never uses the category and corrects four of five errors in the one that does; beyond those two (DOC-0205's own materialization has no captured model reply to measure against at all) it is a judgement, not a measurement."
   },
   "recommendation": {
     "proceedToExperiment": "EXP_MASTHEAD_METADATA",
     "scope": "DOC-0252 PACK_005 and PACK_006, three repeats, 6 semantic calls, proposed cap 9",
-    "why": "The cross-corpus question is answerable only for two documents, and both of them point the same way. Waiting for corpus-wide claim data would mean materializing 3907 approved headings that no one has been asked to materialize - a far larger piece of work than the change it would inform.",
+    "why": "The cross-corpus question with a captured model reply to check is answerable only for two documents, and both of them point the same way. DOC-0205's Gold was materialized without a corresponding model run, so it cannot inform this comparison either way. Waiting for corpus-wide claim data would mean materializing 3835 more approved headings that no one has been asked to materialize - a far larger piece of work than the change it would inform.",
     "doFirst": "State the narrowing by function, and measure it on the one document that exercises the category, before it is carried to lanes whose documents have never been claim-level evaluated.",
     "residualRisk": "A genre that legitimately wants a masthead kept would regress silently, because no approved claim anywhere in the corpus would catch it. Recorded here rather than resolved.",
     "experimentNames": [

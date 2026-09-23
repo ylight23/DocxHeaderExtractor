@@ -15,8 +15,9 @@ namespace DocxHeaderExtractor.Tests;
 /// </para>
 /// <para>
 /// What this experiment can conclude is bounded and the bound is recorded in its own artifact: the
-/// corpus materializes 48 of 3955 approved headings, so a result here is causal evidence about one
-/// document, not proof about the ontology.
+/// corpus materializes 120 of 3956 approved headings (DOC-0001, DOC-0205, and DOC-0252 pinned to the
+/// R1 vintage this experiment ran against), so a result here is causal evidence about one document,
+/// not proof about the ontology.
 /// </para>
 /// </summary>
 public sealed class MastheadMetadataExperimentPreflightTests
@@ -122,13 +123,13 @@ public sealed class MastheadMetadataExperimentPreflightTests
 
             corpusLimitation = new
             {
-                materializedApprovedClaims = 48,
-                approvedHeadingsInCorpus = 3955,
-                materializedAuthorities = 2,
-                authorities = 21,
+                materializedApprovedClaims = goldRisk.ByAuthority.Sum(a => (int)((dynamic)a).claims),
+                approvedHeadingsInCorpus = CanonicalGoldRegistry.Entries.Sum(e => e.SemanticHeadingTotal),
+                materializedAuthorities = goldRisk.ByAuthority.Count,
+                authorities = CanonicalGoldRegistry.Entries.Count,
                 crossGenreNoneSafety = "NOT_ESTABLISHED",
-                statement = "Nineteen authorities record a heading total and no headings, so no approved claim "
-                    + "outside these two documents can confirm or refute this clause. A result here is causal "
+                statement = "Eighteen authorities record a heading total and no headings, so no approved claim "
+                    + "outside these three documents can confirm or refute this clause. A result here is causal "
                     + "evidence about DOC-0252. It is not a corpus-wide semantic proof and must not be "
                     + "recorded as one.",
             },
@@ -151,13 +152,14 @@ public sealed class MastheadMetadataExperimentPreflightTests
 
             goldSanityCheck = new
             {
-                scope = "all 48 materialized approved claims in the corpus",
+                scope = $"all {goldRisk.ByAuthority.Sum(a => (int)((dynamic)a).claims)} materialized approved claims in the corpus",
                 claimsAtRisk = goldRisk.ClaimsAtRisk,
                 documentTitlePreserved = goldRisk.DocumentTitlePreserved,
                 reasoning = goldRisk.Reasoning,
                 byAuthority = goldRisk.ByAuthority,
-                limitation = "A limited safety check, not corpus-wide proof: 3907 approved headings have no "
-                    + "claim to check.",
+                limitation = $"A limited safety check, not corpus-wide proof: "
+                    + $"{CanonicalGoldRegistry.Entries.Sum(e => e.SemanticHeadingTotal) - goldRisk.ByAuthority.Sum(a => (int)((dynamic)a).claims)} "
+                    + "approved headings have no claim to check.",
             },
 
             requestAuthority = new
@@ -280,11 +282,13 @@ public sealed class MastheadMetadataExperimentPreflightTests
         }
 
         return new GoldRisk(atRisk, titlePreserved,
-            "Each materialized claim satisfies one of the clause's two admissions. One is the document's "
-            + "accepted title (DOC-0252 L0000:S0). Every other claim in both documents names a unit whose "
+            "Each materialized claim satisfies one of the clause's two admissions. Two are an accepted "
+            + "document title (DOC-0252 L0000:S0, and DOC-0205's own opening title added by its 71-to-72 "
+            + "occurrence migration). Every other claim across all three documents names a unit whose "
             + "content follows beneath it - sessions, agenda items, regional subheadings, an annex heading, "
-            + "and DOC-0001's numbered chapters and articles. None is an organisation, event, mode, date, "
-            + "venue or address line, so none is reached by the clause.",
+            + "DOC-0001's numbered chapters and articles, and DOC-0205's own numbered chapters, sections and "
+            + "articles. None is an organisation, event, mode, date, venue or address line, so none is "
+            + "reached by the clause.",
             byAuthority);
     }
 

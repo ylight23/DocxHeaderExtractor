@@ -291,8 +291,9 @@ public sealed class MastheadE2V2PreflightTests
                 admissionTest = "Each claim must satisfy A (the document's canonical title) or B (opens and "
                     + "names a structural unit at that location) - the clause's own two admissions.",
                 crossGenreNoneSafety = "NOT_ESTABLISHED",
-                crossGenreNote = "48 of 3955 approved headings are materialized corpus-wide. This checks the "
-                    + "claims that exist; it is not a corpus-wide safety proof.",
+                crossGenreNote = $"{goldRisk.Total} of {CanonicalGoldRegistry.Entries.Sum(e => e.SemanticHeadingTotal)} "
+                    + "approved headings are materialized corpus-wide. This checks the claims that exist; it "
+                    + "is not a corpus-wide safety proof.",
             },
 
             targetFamilies = MastheadFamilies.Select(family => new

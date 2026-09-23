@@ -13,8 +13,8 @@ namespace DocxHeaderExtractor.Tests;
 /// question is what the rest of the corpus evidences.
 /// </para>
 /// <para>
-/// The answer is mostly that it cannot say, and that is the finding: nineteen of the twenty-one
-/// approved authorities record a heading total and no headings. This audit reports what the two
+/// The answer is mostly that it cannot say, and that is the finding: eighteen of the twenty-one
+/// approved authorities record a heading total and no headings. This audit reports what the three
 /// that do record them show, and states plainly how much of the corpus that is.
 /// </para>
 /// </summary>
@@ -69,12 +69,14 @@ public sealed class NoneRelationPolicyCorpusAuditTests
         var totalMaterialized = authorities.Sum(item => item.materializedClaims);
 
         // The corpus can only answer for what it materializes, and it materializes very little.
-        Assert.Equal(2, withClaims.Length);
+        Assert.Equal(3, withClaims.Length);
 
-        // ---- the only tree-less claim the corpus evidences ---------------------------------------
+        // ---- the only tree-less claim this audit's recommendation is scoped to -------------------
         var doc0252 = withClaims.Single(item => item.AuthorityId == "DOC-0252");
         var doc0001 = withClaims.Single(item => item.AuthorityId == "DOC-0001");
+        var doc0205 = withClaims.Single(item => item.AuthorityId == "DOC-0205");
         var documentTitleClaims = doc0252.roles.GetValueOrDefault("DocumentTitle");
+        var doc0205DocumentTitleClaims = doc0205.roles.GetValueOrDefault("DocumentTitle");
 
         // What the model did with the category, on both lanes, from replies already captured.
         var noneUsage = NoneUsageFromCapturedReplies();
@@ -97,14 +99,15 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                 approvedHeadingsInCorpus = totalApproved,
                 materializedClaimsInCorpus = totalMaterialized,
                 coverageOfApprovedHeadings = Math.Round((double)totalMaterialized / totalApproved, 4),
-                finding = "Nineteen of twenty-one approved authorities record a heading total and no headings. "
+                finding = "Eighteen of twenty-one approved authorities record a heading total and no headings. "
                     + "Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list "
                     + "or span was synthesized from the total.' A corpus-wide audit of which claims need a "
-                    + "tree-less relation is therefore not answerable from Gold - 48 of 3955 approved "
-                    + "headings, about 1.2%, exist as claims at all.",
-                consequence = "Everything below is evidence from two documents in two genres and two "
-                    + "languages. It is enough to say what the category is used for where it is used, and not "
-                    + "enough to say that no genre needs it wider.",
+                    + "tree-less relation is therefore not answerable from Gold - "
+                    + $"{totalMaterialized} of {totalApproved} approved headings, about "
+                    + $"{Math.Round((double)totalMaterialized / totalApproved * 100, 1)}%, exist as claims at all.",
+                consequence = "Everything below is evidence from three documents (DOC-0205 materialized after "
+                    + "the other two) in three genres and two languages. It is enough to say what the category "
+                    + "is used for where it is used, and not enough to say that no genre needs it wider.",
                 byAuthority = authorities.Select(item => new
                 {
                     item.AuthorityId,
@@ -140,7 +143,7 @@ public sealed class NoneRelationPolicyCorpusAuditTests
             // ---- Q4: genre variation, as far as two genres allow ----------------------------------
             genreEvidence = new
             {
-                unevidencedGenres = "19 authorities - textbooks, reports and other minutes among them - record "
+                unevidencedGenres = "18 authorities - textbooks, reports and other minutes among them - record "
                     + "totals only. Whether any of them contains an approved masthead, running header or table "
                     + "label cannot be read from Gold.",
                 evidenced = new object[]
@@ -159,14 +162,32 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                 },
                 new
                 {
+                    authority = "DOC-0205",
+                    genre = "legal decree, Vietnamese, DOCX lane",
+                    approvedHeadings = doc0205.approvedHeadings,
+                    roles = doc0205.roles,
+                    treeLessClaims = doc0205DocumentTitleClaims,
+                    reading = "Materialized into canonical Gold after DOC-0001 and DOC-0252 (71 prior-approved "
+                        + "chapter/article headings plus one human-approved addition, the document's own title). "
+                        + "The corpus's Gold claims were never model-classified for this document, so unlike "
+                        + "DOC-0001 and DOC-0252 there is no captured model reply to compare against - this row "
+                        + "reports only what Gold itself contains, not how the tree-less category performed "
+                        + "here. Its one DocumentTitle-role claim is the document's own opening title (position "
+                        + "0), the same kind of claim the ontology review excludes by design as not evidencing "
+                        + "dual-function ambiguity; it is reported here for completeness, not folded into the "
+                        + "DOC-0252-scoped recommendation below.",
+                },
+                new
+                {
                     authority = "DOC-0252",
                     genre = "meeting minutes with an agenda annex, English, PDF lane",
                     approvedHeadings = doc0252.approvedHeadings,
                     roles = doc0252.roles,
                     treeLessClaims = documentTitleClaims,
-                    reading = "The only document in the corpus that exercises the category, and the only one "
-                        + "where it goes wrong. Its annex restates the event at the top of a page, which is "
-                        + "exactly the shape the instruction's 'title and subtitle' clause invites.",
+                    reading = "The only document in the corpus with a captured model reply that exercises the "
+                        + "category, and the only one where it goes wrong. Its annex restates the event at the "
+                        + "top of a page, which is exactly the shape the instruction's 'title and subtitle' "
+                        + "clause invites.",
                 },
                 },
             },
@@ -193,20 +214,24 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                     "any rule keyed to a document genre",
                     "any wording drawn from DOC-0252",
                 },
-                evidenceStrength = "Supported where the corpus can speak, and the corpus speaks for 1.2% of "
-                    + "its own approved headings. The narrowing is safe for the one document that never uses "
-                    + "the category and corrects four of five errors in the one that does; beyond those two it "
-                    + "is a judgement, not a measurement.",
+                evidenceStrength = $"Supported where the corpus can speak, and the corpus speaks for "
+                    + $"{Math.Round((double)totalMaterialized / totalApproved * 100, 1)}% of its own approved "
+                    + "headings. The narrowing is safe for the one document that never uses the category and "
+                    + "corrects four of five errors in the one that does; beyond those two (DOC-0205's own "
+                    + "materialization has no captured model reply to measure against at all) it is a "
+                    + "judgement, not a measurement.",
             },
 
             recommendation = new
             {
                 proceedToExperiment = "EXP_MASTHEAD_METADATA",
                 scope = "DOC-0252 PACK_005 and PACK_006, three repeats, 6 semantic calls, proposed cap 9",
-                why = "The cross-corpus question is answerable only for two documents, and both of them point "
-                      + "the same way. Waiting for corpus-wide claim data would mean materializing 3907 "
-                      + "approved headings that no one has been asked to materialize - a far larger piece of "
-                      + "work than the change it would inform.",
+                why = "The cross-corpus question with a captured model reply to check is answerable only for "
+                      + "two documents, and both of them point the same way. DOC-0205's Gold was materialized "
+                      + "without a corresponding model run, so it cannot inform this comparison either way. "
+                      + $"Waiting for corpus-wide claim data would mean materializing {totalApproved - totalMaterialized} "
+                      + "more approved headings that no one has been asked to materialize - a far larger piece "
+                      + "of work than the change it would inform.",
                 doFirst = "State the narrowing by function, and measure it on the one document that exercises "
                     + "the category, before it is carried to lanes whose documents have never been claim-level "
                     + "evaluated.",
