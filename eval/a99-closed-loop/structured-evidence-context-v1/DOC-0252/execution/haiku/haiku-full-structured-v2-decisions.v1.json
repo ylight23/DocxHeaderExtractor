@@ -1,0 +1,82 @@
+{
+  "task": "HAIKU_FULL_STRUCTURED_CONTEXT_V2_CONFIRMATION",
+  "model": "Haiku",
+  "arm": "FULL_STRUCTURED_CONTEXT_V2",
+  "contentSource": "eval/a99-closed-loop/structured-evidence-context-v2/DOC-0252 (execution-candidate.v1.json), rendered per-pack as ITEMS TO CLASSIFY + hierarchical SOURCE REGIONS",
+  "repeats": [
+    {
+      "repeat": 1,
+      "decisions": [
+        { "itemId": "ITEM-AB89229E", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-BAAD25EE", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-1D843A9F", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-82675EC0", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-024B8661", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-505430BB", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-2D78F82D", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-968E70AF", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-CCE2C592", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5348EA2B", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5EFE8569", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2F026398", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E96B316E", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-13ADC8F7", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-811FC894", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-4C05B3C2", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-959D3FCB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E14B4B93", "label": "STRUCTURAL_UNIT" }
+      ]
+    },
+    {
+      "repeat": 2,
+      "decisions": [
+        { "itemId": "ITEM-AB89229E", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-BAAD25EE", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-1D843A9F", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-82675EC0", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-024B8661", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-505430BB", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-2D78F82D", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-968E70AF", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-CCE2C592", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-5348EA2B", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5EFE8569", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2F026398", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E96B316E", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-13ADC8F7", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-811FC894", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-4C05B3C2", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-959D3FCB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E14B4B93", "label": "STRUCTURAL_UNIT" }
+      ]
+    },
+    {
+      "repeat": 3,
+      "decisions": [
+        { "itemId": "ITEM-AB89229E", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-BAAD25EE", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-1D843A9F", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-82675EC0", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-024B8661", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-505430BB", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-2D78F82D", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-968E70AF", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-CCE2C592", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5348EA2B", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5EFE8569", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2F026398", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E96B316E", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-13ADC8F7", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-811FC894", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-4C05B3C2", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-959D3FCB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E14B4B93", "label": "STRUCTURAL_UNIT" }
+      ]
+    }
+  ],
+  "goldRead": false,
+  "priorResultsRead": false,
+  "qwenResultsRead": false,
+  "externalProviderCalls": 0,
+  "openRouterCalls": 0
+}
