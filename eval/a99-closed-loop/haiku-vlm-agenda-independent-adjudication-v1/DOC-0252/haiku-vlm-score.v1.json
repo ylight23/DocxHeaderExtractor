@@ -1,0 +1,30 @@
+{
+  "artifactKind": "a99_haiku_vlm_agenda_independent_adjudication_score",
+  "schemaVersion": "a99-haiku-vlm-agenda-independent-adjudication-score-v1",
+  "task": "HAIKU_VLM_AGENDA_INDEPENDENT_ADJUDICATION_V1",
+  "status": "SCORED_OFFLINE",
+  "goldSha256": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "haikuVlm": {
+    "model": "Haiku",
+    "modality": "vision, independent subagent call, no text-arm context",
+    "repeats": 1,
+    "semanticFunction": "STRUCTURE",
+    "resolvedSelfReport": true,
+    "visualEvidence": "The word 'Agenda' appears centered on the page, positioned between the document's introductory metadata block (meeting title, date, location) above and the day-by-day session structure below. It functions as a heading/divider that marks the transition from introductory information to the organized agenda content that follows. The positioning and spacing show it serves to introduce and organize where the subsequent structured content (days, sessions, and timed items) belongs within the already-identified meeting document artifact."
+  },
+  "goldR3SemanticFunction": "IDENTITY",
+  "matchesGoldR3": false,
+  "outcome": "HAIKU_VLM_STRUCTURE_PRIOR_PERSISTS_ACROSS_TEXT_AND_VISION",
+  "interpretation": "Haiku's STRUCTURE answer persists across both text (FULL/LOCAL/MINIMAL/FULL_STRUCTURED_CONTEXT_V2 - all STRUCTURE) and now vision (this call, also STRUCTURE), under a fully blind, three-way-balanced question that did not prime toward any class. This is evidence for a stable STRUCTURE prior specific to this model on this item, not a text-rendering artifact and not a framing/priming effect of the earlier text prompts - the boundary must be held as human-approved authority (R3), not resolved by adding more Haiku evidence or more repeats.",
+  "doesNotEstablish": [
+    "That Haiku is unreliable in general - this is one item, one document.",
+    "That vision evidence is less trustworthy than text evidence - the opposite pattern (VLM agreeing with R3) was already observed for this same model family via Qwen.",
+    "Anything about cross-document or cross-model generalization."
+  ],
+  "modelCalls": 1,
+  "providerCalls": 0,
+  "generalizationEstablished": false,
+  "scope": "DOC-0252 only, ITEM-CCE2C592, one Haiku vision call, no repeats (as specified). Not evidence about the remaining corpus or about Haiku's reliability in general."
+}
