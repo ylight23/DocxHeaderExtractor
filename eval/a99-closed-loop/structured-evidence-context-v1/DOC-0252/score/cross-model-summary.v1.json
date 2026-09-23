@@ -1,0 +1,59 @@
+{
+  "artifactKind": "a99_structured_evidence_context_v2_cross_model_summary",
+  "schemaVersion": "a99-structured-evidence-context-v2-cross-model-summary-v1",
+  "documentId": "DOC-0252",
+  "task": "STRUCTURED_EVIDENCE_CONTEXT_V2_EXECUTION",
+  "executionCandidateAuthority": "eval/a99-closed-loop/structured-evidence-context-v2/DOC-0252/execution-candidate.v1.json",
+  "v1PreflightOnly": "eval/a99-closed-loop/structured-evidence-context-v1/DOC-0252 (topology-sanity-report.v1.json) is historical-only and was NOT executed against any model; only V2 was executed.",
+  "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "goldRevision": "R2",
+  "contentHeldConstant": true,
+  "goldChanged": false,
+  "productionChanged": false,
+  "modelCalls": { "qwen": 9, "haiku": 3, "total": 12 },
+  "providerCalls": { "openRouter": 9, "note": "Haiku ran as a blind subagent classification, not an OpenRouter/provider transport call." },
+  "preRegisteredNamedObservations": {
+    "qwenAgendaUnderFull": "Qwen answers ITEM-CCE2C592 (Agenda) as DOCUMENT_LABEL under FULL_CONTEXT, wrong 3/3 -> question was: does V2 return STRUCTURAL_UNIT?",
+    "qwenAgendaUnderV2": "2/3 STRUCTURAL_UNIT (correct), 1/3 still DOCUMENT_LABEL (wrong) -> PARTIALLY YES",
+    "haikuF1UnderFull": "Haiku answers ITEM-505430BB (F1) as NON_STRUCTURAL/STRUCTURAL_UNIT under FULL_CONTEXT, wrong 0/3 -> question was: does V2 return DOCUMENT_LABEL?",
+    "haikuF1UnderV2": "2/3 DOCUMENT_LABEL (correct), 1/3 still NON_STRUCTURAL (wrong) -> PARTIALLY YES"
+  },
+  "perModelResult": {
+    "qwen": {
+      "fullAccuracy": "51/54 (0.9444)",
+      "v2Accuracy": "53/54 (0.9815)",
+      "agendaDelta": "0/3 -> 2/3 (improved)",
+      "f1Delta": "3/3 -> 3/3 (unchanged, already correct)",
+      "controlRegressions": []
+    },
+    "haiku": {
+      "fullAccuracy": "51/54 (0.9444)",
+      "v2Accuracy": "52/54 (0.9630)",
+      "f1Delta": "0/3 -> 2/3 (improved)",
+      "agendaDelta": "3/3 -> 2/3 (REGRESSED)",
+      "controlRegressions": [
+        { "itemId": "ITEM-CCE2C592", "control": "Agenda", "from": "3/3", "to": "2/3" }
+      ]
+    }
+  },
+  "caseClassification": {
+    "consideredCases": {
+      "A": "STRUCTURED_CONTEXT_CROSS_MODEL_BENEFIT_SUPPORTED - both models' target failure fixed, zero control regressions in either model.",
+      "B": "MODEL_SPECIFIC_BENEFIT_QWEN - only Qwen improves.",
+      "C": "MODEL_SPECIFIC_BENEFIT_HAIKU - only Haiku improves.",
+      "D": "TOPOLOGY_PARTITION_ALONE_INSUFFICIENT - neither model improves.",
+      "E": "STRUCTURED_CONTEXT_TRADEOFF_OBSERVED - improvement is real but a new control regression appears in at least one model."
+    },
+    "actualOutcome": "Both models show real, partial improvement on their own pre-identified failure item (Qwen Agenda 0/3->2/3; Haiku F1 0/3->2/3), and neither model reaches full 3/3 stability on that item. Case A is excluded because Haiku's previously-stable Agenda control regressed (3/3 -> 2/3). Cases B/C/D are excluded because both models did improve on their target item. Case E's condition (real improvement + a new control regression in at least one model) is met by Haiku's Agenda regression.",
+    "selected": "E",
+    "classification": "STRUCTURED_CONTEXT_TRADEOFF_OBSERVED"
+  },
+  "interpretation": "Reorganizing FULL_CONTEXT's identical source content into a neutral PAGE->BLOCK->ATOM hierarchy (FULL_STRUCTURED_CONTEXT_V2) partially recovers the semantic-role decision each model was individually getting wrong under flat FULL_CONTEXT: Qwen's Agenda hierarchy confusion and Haiku's F1 metadata-vs-title confusion both move toward the correct label, without either model's improvement being complete (both remain 2/3, not 3/3). This supports SEMANTIC_SCOPE_ORGANIZATION_CAUSALLY_CONTRIBUTES in a weak/partial sense and weakens (without eliminating) CONTEXT_LENGTH_ALONE_EXPLANATION, since content length was held exactly constant between FULL_CONTEXT and FULL_STRUCTURED_CONTEXT_V2 and only organization changed. However, the result is not a clean win: Haiku's previously rock-stable Agenda answer (STRUCTURAL_UNIT, 3/3 under FULL_CONTEXT and under the earlier MINIMAL/LOCAL confirmation) flipped to NON_STRUCTURAL on exactly one of three repeats under V2. This is a genuine new instability introduced by the structured presentation for at least one model, not a pre-existing failure being fixed. The correct, non-overreaching conclusion is that neutral hierarchical presentation causally contributes to recovering some lost semantic-role accuracy on this frozen DOC-0252 cohort, under these tested models and this configuration, at the cost of introducing a new (so far single-repeat) instability elsewhere. It does not license 'structured context is better' as a general or production claim, and does not generalize beyond DOC-0252 or beyond qwen/qwen3.7-flash and Haiku under this exact prompt/schema.",
+  "doesNotEstablish": [
+    "That FULL_STRUCTURED_CONTEXT_V2 is production-ready or should replace FULL_CONTEXT.",
+    "That structured presentation is universally beneficial across documents, models, or item types.",
+    "That the Agenda regression in Haiku is a stable property of V2 rather than repeat-level noise (n=3 per arm; only one repeat differs)."
+  ],
+  "crossGenreGeneralizationEstablished": false,
+  "scope": "DOC-0252 only, one document, two models (Qwen, Haiku). Not evidence about the remaining corpus."
+}

@@ -1,0 +1,62 @@
+{
+  "artifactKind": "a99_structured_evidence_context_v2_haiku_score",
+  "schemaVersion": "a99-structured-evidence-context-v2-haiku-score-v1",
+  "documentId": "DOC-0252",
+  "model": "Haiku",
+  "task": "STRUCTURED_EVIDENCE_CONTEXT_V2_EXECUTION",
+  "executionCandidateAuthority": "eval/a99-closed-loop/structured-evidence-context-v2/DOC-0252/execution-candidate.v1.json",
+  "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "goldRevision": "R2",
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "status": "SCORED_OFFLINE",
+  "baseline": {
+    "arm": "FULL_CONTEXT",
+    "note": "Not rerun. Existing frozen Haiku blind decisions read from eval/a99-closed-loop/haiku-context-ablation-confirmation-v1/DOC-0252/haiku-context-ablation-decisions.v1.json (evidence commit f49562f), same source already scored in haiku-context-ablation-score.v1.json.",
+    "F1": { "itemId": "ITEM-505430BB", "expected": "DOCUMENT_LABEL", "correct": 0, "total": 3, "returnedByRepeat": ["NON_STRUCTURAL", "NON_STRUCTURAL", "STRUCTURAL_UNIT"] },
+    "Agenda": { "itemId": "ITEM-CCE2C592", "expected": "STRUCTURAL_UNIT", "correct": 3, "total": 3, "returnedByRepeat": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "F2": { "itemId": "ITEM-2D78F82D", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3 },
+    "F3": { "itemId": "ITEM-968E70AF", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3 },
+    "structuralControls": { "correct": 42, "total": 42 },
+    "documentLabelControl": { "correct": 3, "total": 6 },
+    "confusionMatrix": {
+      "expected/actual": {
+        "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 42, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 0 },
+        "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 1, "DOCUMENT_LABEL": 3, "NON_STRUCTURAL": 2 },
+        "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+      },
+      "totalDecisions": 54, "correct": 51, "accuracy": 0.9444444444444444
+    }
+  },
+  "treatment": {
+    "arm": "FULL_STRUCTURED_CONTEXT_V2",
+    "evidenceRoot": "eval/a99-closed-loop/structured-evidence-context-v1/DOC-0252/execution/haiku/haiku-full-structured-v2-decisions.v1.json",
+    "note": "Real blind subagent confirmation, 3 independent repeats, no Gold/prior-result/Qwen visibility (goldRead=false, priorResultsRead=false, qwenResultsRead=false, externalProviderCalls=0).",
+    "F1": { "itemId": "ITEM-505430BB", "expected": "DOCUMENT_LABEL", "correct": 2, "total": 3, "returnedByRepeat": ["NON_STRUCTURAL", "DOCUMENT_LABEL", "DOCUMENT_LABEL"], "delta": "IMPROVED: 0/3 -> 2/3" },
+    "Agenda": { "itemId": "ITEM-CCE2C592", "expected": "STRUCTURAL_UNIT", "correct": 2, "total": 3, "returnedByRepeat": ["STRUCTURAL_UNIT", "NON_STRUCTURAL", "STRUCTURAL_UNIT"], "delta": "REGRESSED: 3/3 -> 2/3" },
+    "F2": { "itemId": "ITEM-2D78F82D", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "delta": "unchanged" },
+    "F3": { "itemId": "ITEM-968E70AF", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "delta": "unchanged" },
+    "structuralControls": { "correct": 41, "total": 42, "delta": "REGRESSED: 42/42 -> 41/42 (driven entirely by Agenda's repeat-2 flip to NON_STRUCTURAL; the other 13 structural items were already 39/39 and remain 39/39)" },
+    "documentLabelControl": { "correct": 5, "total": 6, "delta": "IMPROVED: 3/6 -> 5/6 (ITEM-AB89229E stays 3/3; F1 gains 2)" },
+    "confusionMatrix": {
+      "expected/actual": {
+        "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 41, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 1 },
+        "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 5, "NON_STRUCTURAL": 1 },
+        "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+      },
+      "totalDecisions": 54, "correct": 52, "accuracy": 0.9629629629629629
+    }
+  },
+  "controlRegressions": [
+    { "itemId": "ITEM-CCE2C592", "control": "Agenda / structuralControls", "from": "3/3", "to": "2/3", "detail": "Repeat 2 flipped from STRUCTURAL_UNIT (correct) to NON_STRUCTURAL (wrong). Repeats 1 and 3 unaffected." }
+  ],
+  "controlImprovements": [
+    { "itemId": "ITEM-505430BB", "control": "F1 / documentLabelControl", "from": "0/3", "to": "2/3" }
+  ],
+  "otherSixteenItemsCheck": "All 16 non-F1/non-Agenda items returned identical labels in every repeat under FULL_STRUCTURED_CONTEXT_V2 as under FULL_CONTEXT (verified item-by-item, all 48 decisions match). The only observed change outside F1 is the single Agenda regression at repeat 2.",
+  "summary": "For Haiku, structured V2 presentation improves the previously-broken F1 control (0/3 -> 2/3, not fully stable) but introduces a new one-repeat regression on the previously-stable Agenda control (3/3 -> 2/3). Net decision-level accuracy still rises (51/54 -> 52/54) because F1 gains two correct decisions against Agenda's loss of one, but this is a genuine trade-off, not a clean win.",
+  "rawResponseModified": false,
+  "goldModified": false,
+  "crossGenreGeneralizationEstablished": false,
+  "scope": "DOC-0252 only, one document, one model (Haiku), blind classification. Not evidence about the remaining corpus."
+}
