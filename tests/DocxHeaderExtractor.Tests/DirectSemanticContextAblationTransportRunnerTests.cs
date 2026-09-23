@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -27,7 +26,6 @@ public sealed class DirectSemanticContextAblationTransportRunnerTests
         "eval/a99-closed-loop/second-model-minimal-replay-preflight-v1";
     private const string Doc0252Pdf =
         "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
-    private const string AuthorizedBaseCommit = "af30ed9007669f66a61e6420a4d79537ec04c9a8";
     private const string RunVariable = "A99_DIRECT_SEMANTIC_CONTEXT_ABLATION_V1_RUN";
     private const string Model = "qwen/qwen3.7-flash";
     private const string ResponseFormat = TransportCompatibility.JsonObjectResponseFormat;
@@ -643,15 +641,6 @@ internal sealed class FrozenContextAblationAuthority
     private const string PreflightFile = "direct-semantic-context-ablation-preflight.v1.json";
     private const string Doc0252Pdf =
         "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
-    private const string CaptureRoot =
-        "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252";
-    private const string ScoreRoot =
-        "eval/a99-closed-loop/direct-semantic-context-ablation-score-v1/DOC-0252";
-    private const string SecondModelPreflightRoot =
-        "eval/a99-closed-loop/second-model-minimal-replay-preflight-v1";
-    private const string SecondModelRunnerCaptureRoot =
-        "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252";
-    private const string AuthorizedBaseCommit = "af30ed9007669f66a61e6420a4d79537ec04c9a8";
     private const string ExpectedModel = "qwen/qwen3.7-flash";
     private const string ResponseFormat = TransportCompatibility.JsonObjectResponseFormat;
     private const int Repeats = 3;
@@ -708,28 +697,17 @@ internal sealed class FrozenContextAblationAuthority
 
     public static FrozenContextAblationAuthority Load()
     {
-        var head = Git("rev-parse HEAD");
-        Assert.True(IsAncestor(AuthorizedBaseCommit, head),
-            $"{AuthorizedBaseCommit} is not an ancestor of {head}");
-        var changedSinceBase = Git($"diff --name-only {AuthorizedBaseCommit}..HEAD")
-            .Split('\n', StringSplitOptions.RemoveEmptyEntries)
-            .Select(line => line.Trim())
-            .ToArray();
-        Assert.All(changedSinceBase, path => Assert.True(
-            path.Equals("tests/DocxHeaderExtractor.Tests/DirectSemanticContextAblationTransportRunnerTests.cs",
-                StringComparison.Ordinal)
-            || path.Equals("tests/DocxHeaderExtractor.Tests/DirectSemanticContextAblationScoringTests.cs",
-                StringComparison.Ordinal)
-            || path.Equals("tests/DocxHeaderExtractor.Tests/SecondModelMinimalReplayPreflightTests.cs",
-                StringComparison.Ordinal)
-            || path.Equals("tests/DocxHeaderExtractor.Tests/SecondModelMinimalReplayTransportTests.cs",
-                StringComparison.Ordinal)
-            || path.StartsWith(CaptureRoot + "/", StringComparison.Ordinal)
-            || path.StartsWith(ScoreRoot + "/", StringComparison.Ordinal)
-            || path.StartsWith(SecondModelPreflightRoot + "/", StringComparison.Ordinal)
-            || path.StartsWith(SecondModelRunnerCaptureRoot + "/", StringComparison.Ordinal),
-            $"unexpected descendant path {path}"));
-
+        // Historical experiment authority is pinned semantic inputs + a pinned Gold vintage +
+        // pinned provider/capture authority - not "HEAD only differs from a fixed base commit in
+        // an allowed path list". The latter was tried here first and broke the first time a later,
+        // unrelated evaluation touched a file outside its allowlist (it would keep breaking every
+        // time the repository legitimately gains a new lineage - new evaluations, new Gold
+        // revisions, new score artifacts, new independent experiments - none of which make this
+        // runner's own frozen plan non-reproducible). What actually has to stay pinned is asserted
+        // directly below: the prompt, schema and per-arm plan hashes recorded in the preflight
+        // artifact, and Gold itself - which DirectSemanticProbePreflightTests.Build resolves via
+        // HistoricalGoldVintages.Doc0252R1Path/Doc0252R1Sha256, not via whatever "DOC-0252"
+        // currently resolves to.
         var artifactPath = TestRepository.Path(Path.Combine(PreflightRoot, PreflightFile));
         using var artifact = JsonDocument.Parse(File.ReadAllText(artifactPath));
         var root = artifact.RootElement;
@@ -742,6 +720,11 @@ internal sealed class FrozenContextAblationAuthority
         Assert.Equal("CONTEXT_ABLATION_AUTHORIZATION_READY", root.GetProperty("status").GetString());
         var onlyContextChanged = root.GetProperty("differenceAudit").GetProperty("onlyContextChanged").GetBoolean();
         Assert.True(onlyContextChanged);
+
+        // The Gold vintage this plan's ExpectedLabel derivation actually ran against, pinned
+        // explicitly here rather than only inherited implicitly from Build's own internals.
+        Assert.Equal(HistoricalGoldVintages.Doc0252R1Sha256, CanonicalArtifactHash.OfTextFile(
+            TestRepository.Path(HistoricalGoldVintages.Doc0252R1Path)));
 
         var sourcePath = TestRepository.Path(Doc0252Pdf);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(sourcePath);
@@ -1020,32 +1003,6 @@ internal sealed class FrozenContextAblationAuthority
     private static string Sha256CanonicalJson(JsonNode value) =>
         Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(
             value.ToJsonString(FreezeArtifact.Json).ReplaceLineEndings("\n"))));
-
-    private static bool IsAncestor(string candidate, string descendant)
-    {
-        using var process = Process.Start(new ProcessStartInfo(
-            "git", $"merge-base --is-ancestor {candidate} {descendant}")
-        {
-            WorkingDirectory = TestRepository.Root(),
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-        })!;
-        process.WaitForExit();
-        return process.ExitCode == 0;
-    }
-
-    private static string Git(string arguments)
-    {
-        using var process = Process.Start(new ProcessStartInfo("git", arguments)
-        {
-            WorkingDirectory = TestRepository.Root(),
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-        })!;
-        var output = process.StandardOutput.ReadToEnd().Trim();
-        process.WaitForExit();
-        return output;
-    }
 
     private enum ContextWindowPolicy
     {
