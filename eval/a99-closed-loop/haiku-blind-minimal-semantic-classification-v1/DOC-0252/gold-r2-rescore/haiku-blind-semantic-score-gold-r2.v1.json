@@ -1,0 +1,63 @@
+{
+  "artifactKind": "a99_haiku_blind_minimal_semantic_classification_score_gold_r2_rescore",
+  "schemaVersion": "a99-haiku-blind-minimal-semantic-classification-score-gold-r2-rescore-v1",
+  "documentId": "DOC-0252",
+  "model": "Haiku",
+  "task": "HAIKU_BLIND_MINIMAL_SEMANTIC_CLASSIFICATION_V1",
+  "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+  "status": "RESCORED_OFFLINE_UNDER_GOLD_R2",
+  "supersedes": {
+    "artifact": "eval/a99-closed-loop/haiku-blind-minimal-semantic-classification-v1/DOC-0252/haiku-blind-semantic-score.v1.json",
+    "commit": "1126726",
+    "note": "That artifact is HISTORICAL and immutable; it remains a correct description of the score under Gold R1. It is not deleted or edited. This file is the CURRENT conclusion, scored under Gold R2. Haiku did not change its answer between the two files - the same evidence commit (59c7976) is rescored both times."
+  },
+  "evidenceCommit": "59c7976c2416ed019c3cc36a23ca354dca326b56",
+  "evidenceSha256": "4249ca1595e0008eaea066b48963f18d80e199ef0d586c9fb3307716e7125cb8",
+  "goldCorrection": "eval/a99-closed-loop/gold-corrections/DOC-0252-ITEM-505430BB-document-label-correction.v1.json",
+  "goldSha256Old": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+  "goldSha256New": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "itemCount": 18,
+  "externalProviderCalls": 0,
+  "openRouterCalls": 0,
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "qwenArtifactsModified": false,
+  "haikuRawEvidenceModified": false,
+  "metrics": {
+    "F1": { "old": "0/1", "new": "1/1" },
+    "Agenda": { "old": "1/1", "new": "1/1", "note": "Unchanged." },
+    "F2": { "old": "1/1", "new": "1/1", "note": "Unchanged." },
+    "F3": { "old": "1/1", "new": "1/1", "note": "Unchanged." },
+    "structuralControls": { "old": "14/14", "new": "14/14", "note": "Unchanged: ITEM-505430BB was never in this bucket." },
+    "documentLabelControl": {
+      "old": "1/1 (ITEM-AB89229E only)",
+      "new": "2/2 (ITEM-AB89229E + ITEM-505430BB, both correct)"
+    }
+  },
+  "confusionMatrix": {
+    "expected/actual": {
+      "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 14, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 0 },
+      "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 2, "NON_STRUCTURAL": 0 },
+      "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 2 }
+    },
+    "totalDecisions": 18,
+    "correct": 18,
+    "accuracy": 1.0,
+    "oldAccuracy": 0.9444444444444444
+  },
+  "perItemChange": [
+    { "itemId": "ITEM-505430BB", "identity": "L0513:S0:0-38|L0514:S0:0-30", "haiku": "DOCUMENT_LABEL", "expectedOld": "NON_STRUCTURAL", "correctOld": false, "expectedNew": "DOCUMENT_LABEL", "correctNew": true }
+  ],
+  "unaffectedItems": 17,
+  "finalClassification": "HAIKU_F1_DOCUMENT_LABEL_CORRECT_UNDER_REVISED_GOLD",
+  "previousInterpretation": {
+    "classification": "HAIKU_REPLICATES_QWEN_F1_BOUNDARY",
+    "status": "SUPERSEDED_BY_GOLD_REVISION",
+    "note": "That classification read Haiku's DOCUMENT_LABEL answer for ITEM-505430BB as reproducing Qwen's error. Haiku did not make an error: Gold R1 recorded this occurrence's class incorrectly. Under R2, Haiku scores 18/18, and the earlier read (a second independent model converging on the same wrong answer as Qwen) is retracted, not because Haiku changed anything, but because the label it was being checked against changed."
+  },
+  "interpretation": "Blind Haiku classified ITEM-505430BB as DOCUMENT_LABEL with no knowledge of Gold, Qwen, or Luna answers. Under the revised, human-approved Gold, that answer is correct. Qwen (direct-semantic-context-ablation-score-v1/DOC-0252/gold-r2-rescore) reached the same answer independently, in every context arm. The finding is not that both models are correct in general; it is that on this one document, this one occurrence, both models' independent DOCUMENT_LABEL answer matches the revised Gold.",
+  "modelChangedAnswer": false,
+  "goldChanged": true,
+  "crossGenreGeneralizationEstablished": false,
+  "status_final": "HAIKU_BLIND_MINIMAL_SEMANTIC_CLASSIFICATION_RESCORED_UNDER_GOLD_R2"
+}
