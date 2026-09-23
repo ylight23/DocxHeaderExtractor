@@ -1,0 +1,120 @@
+{
+  "artifactKind": "a99_haiku_context_ablation_confirmation_score",
+  "schemaVersion": "a99-haiku-context-ablation-confirmation-score-v1",
+  "documentId": "DOC-0252",
+  "model": "Haiku",
+  "task": "HAIKU_CONTEXT_ABLATION_CONFIRMATION_V1",
+  "evidenceCommit": "f49562f",
+  "evidenceSha256": "2d097826b746dfc4431fa36e044080450e282918dad9d6f86b39b8ce62ae5af9",
+  "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "goldRevision": "R2",
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "qwenArtifactsModified": false,
+  "status": "SCORED_OFFLINE",
+  "minimalBaseline": {
+    "note": "Not rerun. Existing frozen blind result, evidence commit 59c7976, rescored under Gold R2 in commit 40b51d5.",
+    "correct": 18,
+    "total": 18,
+    "accuracy": 1.0,
+    "f1": "1/1 correct (DOCUMENT_LABEL)",
+    "agenda": "1/1 correct (STRUCTURAL_UNIT)"
+  },
+  "arms": [
+    {
+      "armId": "FULL_CONTEXT",
+      "repeats": 3,
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "returnedByRepeat": ["NON_STRUCTURAL", "NON_STRUCTURAL", "STRUCTURAL_UNIT"],
+        "correct": 0,
+        "total": 3,
+        "stability": "FULLY_VARIABLE (majority 2/3 NON_STRUCTURAL, 1/3 STRUCTURAL_UNIT; never DOCUMENT_LABEL)"
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByRepeat": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"],
+        "correct": 3,
+        "total": 3,
+        "stability": "STABLE_3_OF_3"
+      },
+      "F2": { "itemId": "ITEM-2D78F82D", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "stability": "STABLE_3_OF_3" },
+      "F3": { "itemId": "ITEM-968E70AF", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "stability": "STABLE_3_OF_3" },
+      "structuralControls": { "correct": 42, "total": 42, "note": "14 items x 3 repeats, all STABLE_3_OF_3, all correct." },
+      "documentLabelControl": {
+        "correct": 3,
+        "total": 6,
+        "note": "2 items x 3 repeats: ITEM-AB89229E 3/3 correct; ITEM-505430BB 0/3 correct."
+      },
+      "confusionMatrix": {
+        "expected/actual": {
+          "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 42, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 0 },
+          "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 1, "DOCUMENT_LABEL": 3, "NON_STRUCTURAL": 2 },
+          "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+        },
+        "totalDecisions": 54, "correct": 51, "accuracy": 0.9444444444444444
+      }
+    },
+    {
+      "armId": "LOCAL_CONTEXT_RADIUS_3",
+      "repeats": 3,
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "returnedByRepeat": ["NON_STRUCTURAL", "NON_STRUCTURAL", "NON_STRUCTURAL"],
+        "correct": 0,
+        "total": 3,
+        "stability": "STABLE_3_OF_3 (wrong every time)"
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByRepeat": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"],
+        "correct": 3,
+        "total": 3,
+        "stability": "STABLE_3_OF_3"
+      },
+      "F2": { "itemId": "ITEM-2D78F82D", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "stability": "STABLE_3_OF_3" },
+      "F3": { "itemId": "ITEM-968E70AF", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "stability": "STABLE_3_OF_3" },
+      "structuralControls": { "correct": 42, "total": 42, "note": "14 items x 3 repeats, all STABLE_3_OF_3, all correct." },
+      "documentLabelControl": {
+        "correct": 3,
+        "total": 6,
+        "note": "2 items x 3 repeats: ITEM-AB89229E 3/3 correct; ITEM-505430BB 0/3 correct."
+      },
+      "confusionMatrix": {
+        "expected/actual": {
+          "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 42, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 0 },
+          "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 3, "NON_STRUCTURAL": 3 },
+          "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+        },
+        "totalDecisions": 54, "correct": 51, "accuracy": 0.9444444444444444
+      }
+    }
+  ],
+  "armDeltaTable": [
+    { "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1", "F1": "1/1", "Agenda": "1/1", "structuralControls": "14/14", "documentLabelControl": "2/2", "accuracy": "18/18" },
+    { "arm": "LOCAL_CONTEXT_RADIUS_3", "F1": "0/3", "Agenda": "3/3", "structuralControls": "42/42", "documentLabelControl": "3/6", "accuracy": "51/54" },
+    { "arm": "FULL_CONTEXT", "F1": "0/3", "Agenda": "3/3", "structuralControls": "42/42", "documentLabelControl": "3/6", "accuracy": "51/54" }
+  ],
+  "haikuClassification": "HAIKU_F1_CONTEXT_SENSITIVE_AGENDA_CONTEXT_STABLE",
+  "classificationDerivation": "Only one item's correctness changes across arms for Haiku: ITEM-505430BB (F1), correct (DOCUMENT_LABEL) only under MINIMAL_STRUCTURAL_CONTEXT_V1 and wrong under both FULL_CONTEXT and LOCAL_CONTEXT_RADIUS_3 (never once answered DOCUMENT_LABEL outside MINIMAL, across all 6 repeats). ITEM-CCE2C592 (Agenda) and every other item are correct and STABLE_3_OF_3 in every arm Haiku was run in.",
+  "comparisonWithQwen": {
+    "note": "Qwen's own context-ablation cohort (eval/a99-closed-loop/direct-semantic-context-ablation-score-v1, rescored under R2 in gold-r2-rescore/) shows the mirror-image pattern.",
+    "qwen": {
+      "F1": "correct (DOCUMENT_LABEL) in all three arms, including FULL_CONTEXT",
+      "Agenda": "wrong (DOCUMENT_LABEL instead of STRUCTURAL_UNIT) under FULL_CONTEXT and LOCAL_CONTEXT_RADIUS_3; correct only under MINIMAL_STRUCTURAL_CONTEXT_V1"
+    },
+    "haiku": {
+      "F1": "wrong (never DOCUMENT_LABEL) under FULL_CONTEXT and LOCAL_CONTEXT_RADIUS_3; correct only under MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "Agenda": "correct (STRUCTURAL_UNIT) in all three arms, including FULL_CONTEXT"
+    },
+    "interpretation": "Both models perform best under MINIMAL_STRUCTURAL_CONTEXT_V1 (18/18 and, for Qwen, its own 18/18 under R2), so narrower context is genuinely helpful on this document. But the two models are not sensitive to context in the same place: narrowing context fixes Qwen's Agenda confusion while leaving F1 unaffected (F1 is already correct for Qwen in every arm under R2); narrowing context fixes Haiku's F1 confusion while leaving Agenda unaffected (Agenda is already correct for Haiku in every arm). Neither model shows the other model's context-sensitive failure. This weakens any claim that MINIMAL_STRUCTURAL_CONTEXT_V1 helps for a single shared mechanistic reason across models - each model's own confusion is narrowed differently by the same context reduction."
+  },
+  "rawResponseModified": false,
+  "goldModified": false,
+  "crossGenreGeneralizationEstablished": false,
+  "scope": "DOC-0252 only, one document, two models (Qwen, Haiku), blind classification. Not evidence about the remaining corpus."
+}
