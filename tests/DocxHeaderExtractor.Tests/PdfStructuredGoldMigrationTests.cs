@@ -28,7 +28,16 @@ public sealed class PdfStructuredGoldMigrationTests
 {
     private const string Doc0252 = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
     private const string OutputRoot = "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence";
-    private const string OutputName = "DOC-0252.structured-source-parts.occurrence-gold.v1.json";
+
+    /// <summary>
+    /// This migration's own frozen output, preserved under its own name since the 2026-09-23
+    /// ITEM-505430BB correction (see <see cref="Doc0252GoldCorrectionItem505430bbTests"/>) took over
+    /// the active <c>DOC-0252.structured-source-parts.occurrence-gold.v1.json</c> name. This file
+    /// still adds 0 and removes 0, exactly as its own asserts below require; the correction is a
+    /// later, separate step layered on top of it, not a change to what this migration did.
+    /// </summary>
+    private const string OutputName =
+        "DOC-0252.structured-source-parts.pre-item505430bb-document-label-correction.occurrence-gold.v1.json";
     private const int ApprovedHeadings = 41;
     private const string SourceSha256 =
         "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61";

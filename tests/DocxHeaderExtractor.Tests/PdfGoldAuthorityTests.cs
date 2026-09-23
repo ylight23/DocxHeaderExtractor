@@ -28,6 +28,13 @@ public sealed class PdfGoldAuthorityTests
         "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61";
     private const int AuthoritativeTotal = 41;
 
+    /// <summary>
+    /// The live semantic freeze's current total, after the 2026-09-23 ITEM-505430BB correction.
+    /// <see cref="AuthoritativeTotal"/> stays 41: it names the fixed legacy/pinned vintages several
+    /// other tests in this file read by hash, not the live authority.
+    /// </summary>
+    private const int CurrentAuthoritativeTotal = 42;
+
     // ---- the source universe a reviewer works from -------------------------------------------
 
     [Fact]
@@ -86,7 +93,7 @@ public sealed class PdfGoldAuthorityTests
 
         Assert.Equal("PDF", root.GetProperty("mediaType").GetString());
         Assert.Equal(AuthoritativeSourceSha, root.GetProperty("sourceSha256").GetString());
-        Assert.Equal(AuthoritativeTotal, root.GetProperty("semanticHeadingTotal").GetInt32());
+        Assert.Equal(CurrentAuthoritativeTotal, root.GetProperty("semanticHeadingTotal").GetInt32());
         Assert.True(root.GetProperty("capabilities").GetProperty("semanticEvaluable").GetBoolean());
         Assert.True(root.GetProperty("capabilities").GetProperty("occurrenceEvaluable").GetBoolean());
         Assert.Equal(

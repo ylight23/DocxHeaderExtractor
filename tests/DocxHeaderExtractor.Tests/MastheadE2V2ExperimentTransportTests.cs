@@ -165,7 +165,7 @@ public sealed class MastheadE2V2ExperimentTransportTests
         lines.Add(Check("selectionModeHarnessDerived", "true", "true"));
         lines.Add(Check("sourceHash", SourceSha256, CanonicalArtifactHash.OfBytes(path)));
         lines.Add(Check("sourceUniverse", SourceUniverseSha256, plan.SourceUniverseSha256));
-        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256));
+        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256));
         lines.Add(Check("v2Contract", V2ContractSha256, contract.SchemaHash()));
         lines.Add(Check("evaluator", EvaluatorId, V2Profile.EvaluatorId));
         lines.Add(Check("e2Clause", E2ClauseSha256,
@@ -205,7 +205,7 @@ public sealed class MastheadE2V2ExperimentTransportTests
             CanonicalSemanticRequestComposer.Hash(string.Join("\u0000", TargetPacks.Select(pack =>
                 SemanticAuthorityTransportCall.Sha256Utf8(providerRequests[pack]))))));
 
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         var identities = gold.RootElement.GetProperty("occurrence").GetProperty("claims")
             .EnumerateArray().Select(claim => claim.GetProperty("identity").GetString()!).ToArray();
         var targetGold = identities.Count(identity =>

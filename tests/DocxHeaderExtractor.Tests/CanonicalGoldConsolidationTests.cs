@@ -35,7 +35,7 @@ public sealed class CanonicalGoldConsolidationTests
     private static readonly (string Id, int Total)[] Expected =
     [
         ("DOC-0001", 7), ("DOC-0092", 145), ("DOC-0123", 362), ("DOC-0133", 123),
-        ("DOC-0202", 111), ("DOC-0205", 72), ("DOC-0252", 41), ("DOC-0255", 18),
+        ("DOC-0202", 111), ("DOC-0205", 72), ("DOC-0252", 42), ("DOC-0255", 18),
         ("DOC-0256", 34), ("DOC-0258", 37), ("DOC-0259", 18), ("DOC-0264", 159),
         ("SRC-003", 231), ("SRC-029", 356), ("SRC-041", 297), ("SRC-042", 262),
         ("SRC-044", 254), ("SRC-053", 277), ("SRC-054", 316), ("SRC-055", 4),
@@ -114,7 +114,7 @@ public sealed class CanonicalGoldConsolidationTests
         Assert.Equal(37, byId["DOC-0258"].Total);
         Assert.Equal(34, byId["DOC-0256"].Total);
         Assert.Equal(159, byId["DOC-0264"].Total);
-        Assert.Equal(41, byId["DOC-0252"].Total);
+        Assert.Equal(42, byId["DOC-0252"].Total);
 
         // And none of them claims occurrence truth it does not have.
         foreach (var id in new[] { "DOC-0205", "DOC-0258", "DOC-0256", "DOC-0264" })
@@ -130,7 +130,7 @@ public sealed class CanonicalGoldConsolidationTests
         Assert.True(byId["DOC-0001"].OccurrenceEvaluable);
         Assert.True(byId["DOC-0252"].OccurrenceEvaluable);
         Assert.Equal(7, byId["DOC-0001"].Claims.Count);
-        Assert.Equal(41, byId["DOC-0252"].Claims.Count);
+        Assert.Equal(42, byId["DOC-0252"].Claims.Count);
 
         // DOC-0001 binds with UTF-16 spans; DOC-0252 binds by alias and selection mode. One root
         // does not mean one coordinate system.
@@ -613,19 +613,10 @@ public sealed class CanonicalGoldConsolidationTests
                     .SourceAliasUniverseHash;
                 provenance.Add(new(RelativeTo(structuredPath),
                     CanonicalArtifactHash.OfText(structuredText), "STRUCTURED_OCCURRENCE_AUTHORITY"));
-                var migration = structuredRoot.GetProperty("migration");
-                provenance.Add(new(
-                    $"predecessor-gold:{migration.GetProperty("kind").GetString()}",
-                    migration.GetProperty("predecessorGoldSha256").GetString()!,
-                    "MIGRATION_PREDECESSOR"));
-                // A selection-only correction applied after that migration carries its own
-                // predecessor: the Gold every experiment run so far was scored against. Recorded
-                // beside the migration's, not in place of it - the two describe different steps.
-                if (migration.TryGetProperty("boundaryCorrection", out var boundaryCorrection))
-                    provenance.Add(new(
-                        $"predecessor-gold:{boundaryCorrection.GetProperty("kind").GetString()}",
-                        boundaryCorrection.GetProperty("predecessorGoldSha256").GetString()!,
-                        "BOUNDARY_CORRECTION_PREDECESSOR"));
+                // Walked rather than read once: a later correction (add/remove a claim) can be
+                // layered on top of the coordinate migration, and each layer's own predecessor must
+                // stay traceable rather than the newest layer's hash overwriting the older one's role.
+                AddMigrationLineage(structuredRoot.GetProperty("migration"), provenance);
             }
             else
             {
@@ -819,4 +810,34 @@ public sealed class CanonicalGoldConsolidationTests
 
     private static string RelativeTo(string absolute) =>
         Path.GetRelativePath(TestRepository.Root(), absolute).Replace(Path.DirectorySeparatorChar, '/');
+
+    /// <summary>
+    /// One <c>MIGRATION_PREDECESSOR</c>-shaped step can have another layered on top of it - a
+    /// coordinate migration, then later a membership correction that adds or removes a claim without
+    /// touching coordinates. Each layer names its own kind and predecessor hash rather than the
+    /// newest layer's hash silently standing in for an older layer's role; a layer nests the one
+    /// before it as <c>priorMigration</c>, the same way the original migration nested its own
+    /// <c>boundaryCorrection</c>.
+    /// </summary>
+    private static void AddMigrationLineage(JsonElement migration, List<ProvenanceItem> provenance)
+    {
+        var kind = migration.GetProperty("kind").GetString()!;
+        var role = kind == "SOURCE_COORDINATE_AND_VERBATIM_FIDELITY_MIGRATION"
+            ? "MIGRATION_PREDECESSOR"
+            : "GOLD_CORRECTION_PREDECESSOR";
+        provenance.Add(new($"predecessor-gold:{kind}",
+            migration.GetProperty("predecessorGoldSha256").GetString()!, role));
+
+        // A selection-only correction applied within a migration carries its own predecessor: the
+        // Gold every experiment run so far was scored against. Recorded beside the migration's, not
+        // in place of it - the two describe different steps.
+        if (migration.TryGetProperty("boundaryCorrection", out var boundaryCorrection))
+            provenance.Add(new(
+                $"predecessor-gold:{boundaryCorrection.GetProperty("kind").GetString()}",
+                boundaryCorrection.GetProperty("predecessorGoldSha256").GetString()!,
+                "BOUNDARY_CORRECTION_PREDECESSOR"));
+
+        if (migration.TryGetProperty("priorMigration", out var priorMigration))
+            AddMigrationLineage(priorMigration, provenance);
+    }
 }

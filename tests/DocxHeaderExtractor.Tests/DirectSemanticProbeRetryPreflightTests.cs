@@ -129,7 +129,7 @@ public sealed class DirectSemanticProbeRetryPreflightTests
     [Fact]
     public void Freeze_the_retry_authority_before_any_call()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         var build = DirectSemanticProbePreflightTests.Build(plan);
         Assert.Equal(18, build.Items.Length);

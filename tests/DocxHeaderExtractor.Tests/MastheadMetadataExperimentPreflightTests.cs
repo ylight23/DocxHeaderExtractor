@@ -41,7 +41,7 @@ public sealed class MastheadMetadataExperimentPreflightTests
     [Fact]
     public void Freeze_the_masthead_metadata_experiment_before_any_call()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         Assert.Equal(SourceUniverseSha256, plan.SourceUniverseSha256);
         Assert.Equal(StructuredContractSha256, SemanticCoordinateContract.PdfStructuredSourceParts.SchemaHash());
@@ -247,7 +247,11 @@ public sealed class MastheadMetadataExperimentPreflightTests
 
         foreach (var entry in CanonicalGoldRegistry.Entries)
         {
-            using var gold = CanonicalGoldRegistry.Resolve(entry.AuthorityId);
+            // DOC-0252 is pinned to the R1 vintage this experiment actually ran against; every
+            // other authority resolves live because no other authority has been revised.
+            using var gold = entry.AuthorityId == "DOC-0252"
+                ? CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256)
+                : CanonicalGoldRegistry.Resolve(entry.AuthorityId);
             var claims = gold.RootElement.GetProperty("semantic").GetProperty("claims").EnumerateArray().ToArray();
             if (claims.Length == 0) continue;
 

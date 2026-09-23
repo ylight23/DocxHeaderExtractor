@@ -30,7 +30,7 @@ public sealed class ResidualSemanticMechanismAuditTests
     [Fact]
     public void Characterize_the_five_residual_semantic_false_positives()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         var atomByAlias = plan.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
         var scopeByAlias = plan.Evidence.ToDictionary(
@@ -395,7 +395,7 @@ public sealed class ResidualSemanticMechanismAuditTests
 
     private static Dictionary<string, GoldClaim> GoldClaims()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .ToDictionary(
                 claim => claim.GetProperty("identity").GetString()!,

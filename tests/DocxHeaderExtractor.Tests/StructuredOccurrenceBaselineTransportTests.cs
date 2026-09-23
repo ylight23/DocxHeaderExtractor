@@ -142,7 +142,7 @@ public sealed class StructuredOccurrenceBaselineTransportTests
         }
 
         // DOC-0252-specific: the two identities that make this run structured rather than legacy.
-        lines.Add(Check("doc0252 goldHash", ExpectedDoc0252Gold, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256));
+        lines.Add(Check("doc0252 goldHash", ExpectedDoc0252Gold, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256));
         lines.Add(Check("doc0252 sourceUniverse", ExpectedDoc0252SourceUniverse,
             PdfStructuredSourceAuthorityBuilder.Build(
                 TestRepository.Path("todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf"

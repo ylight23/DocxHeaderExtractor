@@ -164,7 +164,7 @@ public sealed class DirectSemanticProbeContinuationTransportTests
             : Check("head", AuthorizedCommit, Head()));
         lines.Add(Check("sourceHash", SourceSha256, CanonicalArtifactHash.OfBytes(sourcePath)));
         lines.Add(Check("sourceUniverse", SourceUniverseSha256, plan.SourceUniverseSha256));
-        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256));
+        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256));
         lines.Add(Check("schemaHash", SchemaSha256, CanonicalHash(
             DirectSemanticProbePreflightTests.ProbeSchema(
                 build.Items.Select(item => item.ItemId).ToArray()))));

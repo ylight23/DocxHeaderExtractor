@@ -59,7 +59,7 @@ public sealed class MastheadV2CausalDiffTests
     [Fact]
     public void Compare_the_masthead_v2_arm_against_the_v2_baseline()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var contract = SemanticCoordinateContract.PdfStructuredSourcePartsV2;
         Assert.Equal(V2ContractSha256, contract.SchemaHash());
         Assert.NotEqual(BaselinePromptSha256, ArmPromptSha256);   // the one intended delta
@@ -618,7 +618,7 @@ public sealed class MastheadV2CausalDiffTests
 
     private static Dictionary<string, string> GoldClaims()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .ToDictionary(
                 claim => claim.GetProperty("identity").GetString()!,

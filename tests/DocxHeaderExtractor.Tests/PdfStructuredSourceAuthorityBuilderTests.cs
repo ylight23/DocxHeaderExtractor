@@ -381,13 +381,13 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
     /// <summary>The source universe canonical Gold was frozen against, read from Gold itself.</summary>
     private static string GoldUniverse()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("sourceUniverseSha256").GetString()!;
     }
 
     private static string GoldSource()
     {
-        using var document = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var document = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return document.RootElement.GetProperty("source").GetProperty("sourceSha256").GetString()!;
     }
 

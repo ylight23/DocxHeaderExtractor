@@ -79,7 +79,7 @@ public sealed class MastheadE2V2PreflightTests
     [Fact]
     public void Freeze_the_e2_eligibility_gate_before_any_call()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         Assert.Equal(SourceUniverseSha256, plan.SourceUniverseSha256);
 
@@ -428,7 +428,7 @@ public sealed class MastheadE2V2PreflightTests
     {
         var segments = StructuredV2TargetBaselineTransportTests.ComposeRequests(plan);
         var owned = segments.Values.SelectMany(segment => segment.Owned).ToHashSet(StringComparer.Ordinal);
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
 
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Where(claim => owned.Contains(StructuredV2TargetBaselineTransportTests.FirstAlias(
@@ -459,7 +459,11 @@ public sealed class MastheadE2V2PreflightTests
         var atRisk = 0;
         foreach (var entry in CanonicalGoldRegistry.Entries)
         {
-            using var gold = CanonicalGoldRegistry.Resolve(entry.AuthorityId);
+            // DOC-0252 is pinned to the R1 vintage this experiment actually ran against; every
+            // other authority resolves live because no other authority has been revised.
+            using var gold = entry.AuthorityId == "DOC-0252"
+                ? CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256)
+                : CanonicalGoldRegistry.Resolve(entry.AuthorityId);
             if (!gold.RootElement.TryGetProperty("semantic", out var semantic)) continue;
             foreach (var claim in semantic.GetProperty("claims").EnumerateArray())
             {

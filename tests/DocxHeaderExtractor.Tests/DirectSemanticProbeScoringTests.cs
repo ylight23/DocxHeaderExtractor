@@ -66,7 +66,7 @@ public sealed class DirectSemanticProbeScoringTests
         var build = DirectSemanticProbePreflightTests.Build(plan);
         Assert.Equal(SourceSha256, CanonicalArtifactHash.OfBytes(TestRepository.Path(Doc0252Pdf)));
         Assert.Equal(SourceUniverseSha256, plan.SourceUniverseSha256);
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         Assert.Equal(PromptSha256, CanonicalArtifactHash.OfText(
             DirectSemanticProbeRetryPreflightTests.RetryProbePrompt));
         Assert.Equal(SchemaSha256, HashSchema(build.Items.Select(item => item.ItemId).ToArray()));

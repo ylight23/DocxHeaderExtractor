@@ -128,7 +128,7 @@ public sealed class MastheadMetadataExperimentTransportTests
         lines.Add(Check("sourceHash", SourceSha256,
             CanonicalArtifactHash.OfBytes(TestRepository.Path(Doc0252Pdf))));
         lines.Add(Check("sourceUniverse", SourceUniverseSha256, plan.SourceUniverseSha256));
-        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256));
+        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256));
         lines.Add(Check("structuredContract", StructuredContractSha256,
             SemanticCoordinateContract.PdfStructuredSourceParts.SchemaHash()));
 

@@ -24,9 +24,9 @@
   },
   "semantic": {
     "headingSetExhaustive": true,
-    "approvedSemanticTotal": 42,
-    "semanticHeadingTotal": 42,
-    "materializedSemanticClaims": 42,
+    "approvedSemanticTotal": 41,
+    "semanticHeadingTotal": 41,
+    "materializedSemanticClaims": 41,
     "claims": [
       {
         "sourceParts": [
@@ -373,27 +373,6 @@
           }
         ],
         "semanticRole": "MeetingSection"
-      },
-      {
-        "sourceParts": [
-          {
-            "sourceAlias": "L0513:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
-            "occurrence": null,
-            "leftExactContext": null,
-            "rightExactContext": null
-          },
-          {
-            "sourceAlias": "L0514:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
-            "occurrence": null,
-            "leftExactContext": null,
-            "rightExactContext": null
-          }
-        ],
-        "semanticRole": "DocumentTitle"
       },
       {
         "sourceParts": [
@@ -1102,33 +1081,6 @@
         "projectedText": "Session VI: Any Other Business"
       },
       {
-        "sourceAlias": "S0910",
-        "approvedWording": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
-        "recordedLegacyText": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
-        "textMigrated": false,
-        "sourceParts": [
-          {
-            "sourceAlias": "L0513:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
-            "occurrence": null,
-            "leftExactContext": null,
-            "rightExactContext": null
-          },
-          {
-            "sourceAlias": "L0514:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
-            "occurrence": null,
-            "leftExactContext": null,
-            "rightExactContext": null
-          }
-        ],
-        "semanticRole": "DocumentTitle",
-        "identity": "L0513:S0:0-38|L0514:S0:0-30",
-        "projectedText": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)"
-      },
-      {
         "sourceAlias": "S0911",
         "approvedWording": "Agenda",
         "recordedLegacyText": "Agenda",
@@ -1428,18 +1380,13 @@
   "provenance": [
     {
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0252.semantic-freeze.v1.json",
-      "sha256": "8c5a1c926080d8caf3d110747a56fa2c6c5f0a0c8cfa78023b3446cdfd571cc6",
+      "sha256": "abf7da69b0ddfd1663165798a8c0064229e0c2c623ad1a2cc9c09d7550e77624",
       "role": "SEMANTIC_AUTHORITY"
     },
     {
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.occurrence-gold.v1.json",
-      "sha256": "b4beacc4e758f858e785d7e37700fd04862f41726326159ec30721ad47e47ec0",
-      "role": "STRUCTURED_OCCURRENCE_AUTHORITY"
-    },
-    {
-      "path": "predecessor-gold:HUMAN_APPROVED_GOLD_CORRECTION",
       "sha256": "322d431ff7be7af47034b8df711b9b23b247480900fdf5266ed0d0fb08b1b754",
-      "role": "GOLD_CORRECTION_PREDECESSOR"
+      "role": "STRUCTURED_OCCURRENCE_AUTHORITY"
     },
     {
       "path": "predecessor-gold:SOURCE_COORDINATE_AND_VERBATIM_FIDELITY_MIGRATION",

@@ -34,7 +34,7 @@ public sealed class SemanticCoordinateCouplingAuditTests
     [Fact]
     public void Characterize_the_semantic_relation_and_coordinate_coupling()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         var atomByAlias = plan.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
 
@@ -345,7 +345,7 @@ public sealed class SemanticCoordinateCouplingAuditTests
         var derivable = 0;
         var counterexamples = new List<object>();
 
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         foreach (var claim in gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray())
         {
             var parts = claim.GetProperty("sourceParts").EnumerateArray().ToArray();

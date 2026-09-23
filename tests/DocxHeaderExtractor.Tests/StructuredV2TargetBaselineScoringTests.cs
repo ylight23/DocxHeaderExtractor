@@ -36,7 +36,7 @@ public sealed class StructuredV2TargetBaselineScoringTests
     [Fact]
     public void Score_the_structured_v2_target_baseline()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         var contract = SemanticCoordinateContract.PdfStructuredSourcePartsV2;
 
@@ -262,7 +262,7 @@ public sealed class StructuredV2TargetBaselineScoringTests
 
     private static Dictionary<string, string> GoldClaims()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .ToDictionary(
                 claim => claim.GetProperty("identity").GetString()!,

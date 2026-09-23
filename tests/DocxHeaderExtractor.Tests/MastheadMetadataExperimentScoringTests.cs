@@ -48,7 +48,7 @@ public sealed class MastheadMetadataExperimentScoringTests
     [Fact]
     public void Score_the_masthead_metadata_experiment()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
 
         var owned = OwnedByPack(plan);
@@ -299,7 +299,7 @@ public sealed class MastheadMetadataExperimentScoringTests
 
     private static HashSet<string> GoldIdentities()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(claim => claim.GetProperty("identity").GetString()!)
             .ToHashSet(StringComparer.Ordinal);

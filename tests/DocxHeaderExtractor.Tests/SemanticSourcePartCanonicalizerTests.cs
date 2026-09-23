@@ -137,7 +137,7 @@ public sealed class SemanticSourcePartCanonicalizerTests
         // The primary invariant: canonicalization must reproduce the approved corpus exactly, not
         // merely fail to contradict it.
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         var claims = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray().ToArray();
         Assert.Equal(41, claims.Length);
 
@@ -175,7 +175,7 @@ public sealed class SemanticSourcePartCanonicalizerTests
     public void The_multi_part_gold_claim_survives_canonicalization_as_two_parts()
     {
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         var claim = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Single(item => item.GetProperty("sourceParts").GetArrayLength() > 1);
 

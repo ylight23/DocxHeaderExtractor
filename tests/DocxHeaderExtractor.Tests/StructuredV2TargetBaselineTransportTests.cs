@@ -144,7 +144,7 @@ public sealed class StructuredV2TargetBaselineTransportTests
         lines.Add(Check("sourceHash", SourceSha256,
             CanonicalArtifactHash.OfBytes(TestRepository.Path(Doc0252Pdf))));
         lines.Add(Check("sourceUniverse", SourceUniverseSha256, plan.SourceUniverseSha256));
-        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256));
+        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256));
         lines.Add(Check("v2Contract", V2ContractSha256, v2.SchemaHash()));
         lines.Add(Check("evaluator", EvaluatorId, V2Profile.EvaluatorId));
 
@@ -177,7 +177,7 @@ public sealed class StructuredV2TargetBaselineTransportTests
                 "\u0000", segments.Values.Select(item => CanonicalSemanticRequestComposer.Hash(item.Request))))));
 
         // The Gold population these packs own, derived rather than trusted.
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         var identities = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(claim => claim.GetProperty("identity").GetString()!).ToArray();
         var targetGold = identities.Count(identity =>

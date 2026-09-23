@@ -27,7 +27,7 @@ public sealed class StructuredCoordinateCanonicalizationTests
     [Fact]
     public void Freeze_the_v2_request_authority_and_what_it_changed()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         Assert.Equal(SourceUniverseSha256, plan.SourceUniverseSha256);
 

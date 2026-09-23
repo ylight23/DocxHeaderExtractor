@@ -77,7 +77,7 @@ public sealed class TargetedPackingRerunV2SuccessorScoringTests
         Assert.Equal(PredecessorGoldSha256, run.GetProperty("goldSha256").GetString());
         Assert.Equal(ManifestSha256, run.GetProperty("manifestHash").GetString());
         Assert.Equal(TargetPacks, run.GetProperty("targetPackIds").EnumerateArray().Select(item => item.GetString()!));
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
 
         // ---- §3 transport capture integrity, recomputed from the bytes -----------------------------
         var captures = Enumerable.Range(1, 3).Select(LoadCapture).ToArray();
@@ -542,7 +542,7 @@ public sealed class TargetedPackingRerunV2SuccessorScoringTests
 
     private static Dictionary<string, GoldClaim> GoldClaims()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .ToDictionary(
                 claim => claim.GetProperty("identity").GetString()!,

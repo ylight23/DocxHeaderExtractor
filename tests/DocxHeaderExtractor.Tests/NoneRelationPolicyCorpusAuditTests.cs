@@ -27,18 +27,24 @@ public sealed class NoneRelationPolicyCorpusAuditTests
     [Fact]
     public void Audit_what_the_corpus_evidences_about_tree_less_headings()
     {
-        Assert.Equal(Doc0252GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(Doc0252GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
 
         var authorities = CanonicalGoldRegistry.Entries
             .Select(entry =>
             {
-                using var gold = CanonicalGoldRegistry.Resolve(entry.AuthorityId);
+                // DOC-0252 is pinned to the R1 vintage this audit actually ran against; every
+                // other authority resolves live because no other authority has been revised.
+                using var gold = entry.AuthorityId == "DOC-0252"
+                    ? CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256)
+                    : CanonicalGoldRegistry.Resolve(entry.AuthorityId);
                 var semantic = gold.RootElement.GetProperty("semantic");
                 var claims = semantic.GetProperty("claims").EnumerateArray().ToArray();
                 return new
                 {
                     entry.AuthorityId,
-                    approvedHeadings = entry.SemanticHeadingTotal,
+                    // Read from the resolved (possibly R1-pinned) Gold itself, not the live
+                    // registry entry, so a pinned historical vintage is reflected consistently.
+                    approvedHeadings = semantic.GetProperty("semanticHeadingTotal").GetInt32(),
                     materializedClaims = claims.Length,
                     carriesClaimLevelData = claims.Length > 0,
                     roles = claims

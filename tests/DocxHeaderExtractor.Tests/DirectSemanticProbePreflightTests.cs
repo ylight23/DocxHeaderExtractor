@@ -53,7 +53,7 @@ public sealed class DirectSemanticProbePreflightTests
     [Fact]
     public void Freeze_the_direct_semantic_probe_before_any_call()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         Assert.Equal(SourceUniverseSha256, plan.SourceUniverseSha256);
 
@@ -681,7 +681,7 @@ public sealed class DirectSemanticProbePreflightTests
 
     internal static Dictionary<string, string> GoldClaims()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .ToDictionary(
                 claim => claim.GetProperty("identity").GetString()!,

@@ -211,7 +211,7 @@ public sealed class Stage1MembershipSeamTests
     [Fact]
     public void The_seam_reproduces_every_frozen_repeat_exactly()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         Assert.Equal(SourceSha256, CanonicalArtifactHash.OfBytes(TestRepository.Path(Doc0252Pdf)));
 
@@ -532,7 +532,7 @@ public sealed class Stage1MembershipSeamTests
 
     private static HashSet<string> GoldIdentities()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(claim => claim.GetProperty("identity").GetString()!)
             .ToHashSet(StringComparer.Ordinal);

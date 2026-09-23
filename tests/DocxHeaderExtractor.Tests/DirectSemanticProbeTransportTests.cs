@@ -191,7 +191,7 @@ public sealed class DirectSemanticProbeTransportTests
         lines.Add(Check("probe", ProbeId, ProbeId));
         lines.Add(Check("sourceHash", SourceSha256, CanonicalArtifactHash.OfBytes(path)));
         lines.Add(Check("sourceUniverse", SourceUniverseSha256, plan.SourceUniverseSha256));
-        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256));
+        lines.Add(Check("goldHash", GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256));
         lines.Add(Check("items", "18", build.Items.Length.ToString()));
 
         var prompt = DirectSemanticProbePreflightTests.ProbePrompt;

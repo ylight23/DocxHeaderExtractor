@@ -13,8 +13,18 @@ public sealed class PdfExperimentManifestTests
     private const string GoldPack = "eval/a99-closed-loop/pdf-gold-doc0252";
     private const string OccurrenceGold =
         "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json";
+    // The path this manifest's frozen identity names - unchanged, since it is part of that frozen
+    // identity (ManifestHash is computed over it as a string, not just over file content).
     private const string SemanticFreeze =
         "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0252.semantic-freeze.v1.json";
+
+    // Where those same bytes actually live now that DOC-0252's live semantic freeze has moved past
+    // them (2026-09-23 ITEM-505430BB correction): this manifest names a canary execution that
+    // already happened against the 41-claim Gold, so it reads the preserved pre-correction vintage
+    // rather than whatever the live path currently holds.
+    private const string SemanticFreezeContent =
+        "eval/a99-closed-loop/gold-current/documents/" +
+        "DOC-0252.pre-item505430bb-document-label-correction.semantic-freeze.v1.json";
     private const string Preflight = "eval/a99-closed-loop/pdf-canary-072/preflight.v1.json";
 
     [Fact]
@@ -421,7 +431,7 @@ public sealed class PdfExperimentManifestTests
                 CanonicalArtifactHash.OfTextFile(Path(OccurrenceGold)), 41, true),
             new PdfExperimentSemanticAuthorityIdentity(
                 SemanticFreeze,
-                CanonicalArtifactHash.OfTextFile(Path(SemanticFreeze)), 41),
+                CanonicalArtifactHash.OfTextFile(Path(SemanticFreezeContent)), 41),
             new PdfExperimentModelIdentity("OpenRouter", "qwen/qwen3.7-flash", "openai-chat-completions-v1"),
             new PdfExperimentPromptIdentity("canonical-semantic-shared-b0-v1",
                 request.GetProperty("systemPromptSha256").GetString()!),

@@ -46,7 +46,7 @@ public sealed class SemanticMembershipV1ScoringTests
     [Fact]
     public void Score_the_physical_stage1_membership_experiment()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         var contract = SemanticCoordinateContract.PdfSemanticMembershipV1;
         Assert.Equal(SchemaSha256, contract.SchemaHash());
@@ -353,7 +353,7 @@ public sealed class SemanticMembershipV1ScoringTests
 
     private static HashSet<string> GoldIdentities()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(claim => claim.GetProperty("identity").GetString()!)
             .ToHashSet(StringComparer.Ordinal);

@@ -47,7 +47,7 @@ public sealed class StageOneProjectionAndIdentityTests
     [Fact]
     public void Verify_lossless_stage1_projection_and_harden_claim_identity()
     {
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         var contract = SemanticCoordinateContract.PdfStructuredSourcePartsV2;
         var gold = GoldIdentities();
@@ -490,7 +490,7 @@ public sealed class StageOneProjectionAndIdentityTests
 
     private static HashSet<string> GoldIdentities()
     {
-        using var gold = CanonicalGoldRegistry.Resolve("DOC-0252");
+        using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         return gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(claim => claim.GetProperty("identity").GetString()!)
             .ToHashSet(StringComparer.Ordinal);

@@ -61,7 +61,7 @@ public sealed class DirectSemanticContextAblationScoringTests
         var build = DirectSemanticProbePreflightTests.Build(plan);
         Assert.Equal(SourceSha256, CanonicalArtifactHash.OfBytes(TestRepository.Path(Doc0252Pdf)));
         Assert.Equal(SourceUniverseSha256, plan.SourceUniverseSha256);
-        Assert.Equal(GoldSha256, CanonicalGoldRegistry.Entry("DOC-0252").GoldSha256);
+        Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
         Assert.Equal(27, authority.Cells.Count);
 
         var itemsById = build.Items.ToDictionary(item => item.ItemId, StringComparer.Ordinal);
