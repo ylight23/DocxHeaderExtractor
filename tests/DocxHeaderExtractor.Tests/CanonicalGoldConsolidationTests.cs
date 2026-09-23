@@ -116,8 +116,12 @@ public sealed class CanonicalGoldConsolidationTests
         Assert.Equal(159, byId["DOC-0264"].Total);
         Assert.Equal(42, byId["DOC-0252"].Total);
 
-        // And none of them claims occurrence truth it does not have.
-        foreach (var id in new[] { "DOC-0205", "DOC-0258", "DOC-0256", "DOC-0264" })
+        // DOC-0205 is the one exception: its occurrence set was migrated deliberately (see
+        // Occurrence_is_imported_only_where_the_source_and_the_heading_set_match) - 71 prior-approved
+        // headings promoted verbatim plus one human-approved addition (the document title), reaching
+        // the same total of 72 the semantic authority already recorded. The rest still claim nothing
+        // they do not have.
+        foreach (var id in new[] { "DOC-0258", "DOC-0256", "DOC-0264" })
             Assert.False(byId[id].OccurrenceEvaluable, $"{id} imported an occurrence set it should not have");
     }
 
@@ -126,19 +130,24 @@ public sealed class CanonicalGoldConsolidationTests
     {
         var byId = Authorities().ToDictionary(authority => authority.Id, StringComparer.Ordinal);
 
-        // Two authorities qualify, and both were checked against the source bytes and the count.
+        // Three authorities qualify, and all were checked against the source bytes and the count.
         Assert.True(byId["DOC-0001"].OccurrenceEvaluable);
         Assert.True(byId["DOC-0252"].OccurrenceEvaluable);
+        Assert.True(byId["DOC-0205"].OccurrenceEvaluable);
         Assert.Equal(7, byId["DOC-0001"].Claims.Count);
         Assert.Equal(42, byId["DOC-0252"].Claims.Count);
+        Assert.Equal(72, byId["DOC-0205"].Claims.Count);
 
         // DOC-0001 binds with UTF-16 spans; DOC-0252 binds by alias and selection mode. One root
-        // does not mean one coordinate system.
+        // does not mean one coordinate system. DOC-0205 mixes both within itself: 71 of its 72
+        // entries carry a promoted UTF-16 span, and its one added entry (the document title) does
+        // not - promoted text without an independently re-verified offset.
         Assert.True(byId["DOC-0001"].CharacterSpanEvaluable);
         Assert.False(byId["DOC-0252"].CharacterSpanEvaluable);
+        Assert.True(byId["DOC-0205"].CharacterSpanEvaluable);
 
         // Everything else carries semantic truth and says plainly that it has no bindings.
-        foreach (var authority in Authorities().Where(item => item.Id is not ("DOC-0001" or "DOC-0252")))
+        foreach (var authority in Authorities().Where(item => item.Id is not ("DOC-0001" or "DOC-0252" or "DOC-0205")))
         {
             Assert.False(authority.OccurrenceEvaluable, $"{authority.Id} claims occurrence truth");
             Assert.Empty(authority.Claims);
@@ -220,17 +229,21 @@ public sealed class CanonicalGoldConsolidationTests
         CanonicalGoldRegistry.RequireCapability("DOC-0252", GoldCapability.SemanticCount);
         CanonicalGoldRegistry.RequireCapability("DOC-0252", GoldCapability.SemanticClaims);
         // A count-only authority is authoritative about how many, and refuses to be asked which.
-        CanonicalGoldRegistry.RequireCapability("DOC-0205", GoldCapability.SemanticCount);
+        CanonicalGoldRegistry.RequireCapability("DOC-0256", GoldCapability.SemanticCount);
         Assert.Throws<InvalidOperationException>(
-            () => CanonicalGoldRegistry.RequireCapability("DOC-0205", GoldCapability.SemanticClaims));
+            () => CanonicalGoldRegistry.RequireCapability("DOC-0256", GoldCapability.SemanticClaims));
         CanonicalGoldRegistry.RequireCapability("DOC-0252", GoldCapability.Occurrence);
         CanonicalGoldRegistry.RequireCapability("DOC-0001", GoldCapability.CharacterSpan);
+        // DOC-0205's occurrence set was migrated in - it now claims both which and how many.
+        CanonicalGoldRegistry.RequireCapability("DOC-0205", GoldCapability.SemanticClaims);
+        CanonicalGoldRegistry.RequireCapability("DOC-0205", GoldCapability.Occurrence);
+        CanonicalGoldRegistry.RequireCapability("DOC-0205", GoldCapability.CharacterSpan);
 
         // DOC-0252 binds by alias, so a character-span score would be invented.
         Assert.Throws<InvalidOperationException>(
             () => CanonicalGoldRegistry.RequireCapability("DOC-0252", GoldCapability.CharacterSpan));
         Assert.Throws<InvalidOperationException>(
-            () => CanonicalGoldRegistry.RequireCapability("DOC-0205", GoldCapability.Occurrence));
+            () => CanonicalGoldRegistry.RequireCapability("DOC-0256", GoldCapability.Occurrence));
         Assert.Throws<InvalidOperationException>(
             () => CanonicalGoldRegistry.RequireCapability("DOC-0202", GoldCapability.VisualBinding));
     }
@@ -246,7 +259,7 @@ public sealed class CanonicalGoldConsolidationTests
     // ---- provider baseline preflight ----------------------------------------------------------
 
     /// <summary>The two authorities whose Gold can score an occurrence-level run today.</summary>
-    private static readonly string[] OccurrenceCohort = ["DOC-0001", "DOC-0252"];
+    private static readonly string[] OccurrenceCohort = ["DOC-0001", "DOC-0205", "DOC-0252"];
 
     [Fact]
     public void The_occurrence_cohort_is_exactly_what_the_registry_can_score()
