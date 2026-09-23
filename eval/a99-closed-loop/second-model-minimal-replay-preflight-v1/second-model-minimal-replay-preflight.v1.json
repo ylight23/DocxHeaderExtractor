@@ -27,11 +27,11 @@
     "PACK_006": "21a157554bf1c977f2cd9d6f92629384e5cb9afb550a9bae13ca4bb7a7094831"
   },
   "secondModelProviderInputHashes": {
-    "PACK_001": "9c9c7b24abcb1c23af8f36549ae4a74d1292dc4daf0891942ff015d2210d7161",
-    "PACK_005": "fceb85491dbff6b0d47979fc2ed8745a8d5b901c09f35b96b9032f893f678484",
-    "PACK_006": "e66fad6c0c5fcd54bc036d72b417b74763f8972200f58742ab5b01acb1e16ab2"
+    "PACK_001": "df6a721d9a5ca74ed20dcd6369dad964a35789e283857e6e87c023c134502a49",
+    "PACK_005": "cfaa3115adcadd0ee84fcc6e6c0a3a7a57948817eac5d6de5ee9079cdecf920d",
+    "PACK_006": "69b8f42824da444302e1a3580381d8d4b4ac5d20b5eb6f50b46cba4b82c152be"
   },
-  "secondModelProviderInputPlanHash": "8e6cdeac3699cc3af8f154ad7743d43f2d334be79f530ad1876533a307476637",
+  "secondModelProviderInputPlanHash": "6feea0cc1f1de0bc3a0cb7539e837b041d84b8dde6b1daf625337cd8bbd30250",
   "messageHashes": {
     "PACK_001": "be6581b0a45486d9535a613c743f1d315a293c565510693aa3df446cc1cb3a5d",
     "PACK_005": "a0d704e594aaaf0df71152c219ec7ee5212df311eae807b20c7f26052de339a8",
@@ -45,16 +45,25 @@
     "semanticMessagesByteIdenticalToQwen": true
   },
   "transport": {
+    "providerBackend": "OpenRouter",
     "providerRoute": "OpenRouter",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "transportProtocol": "openai-chat-completions-v1",
     "responseFormat": "json_object",
     "temperature": 0,
     "reasoning": "none",
-    "modelFallbacks": "future runner must pin false",
+    "providerFallbacksAllowed": false,
+    "providerOptions": {
+      "zdr": false,
+      "data_collection": "deny",
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
     "compatibilityValidatedOffline": true,
     "transportDeltas": [
       "model identity changes",
-      "provider-input identity includes second model id",
-      "future runner must disable silent provider fallback"
+      "provider-input identity includes model and routing object",
+      "provider fallback is explicitly disabled"
     ]
   },
   "expectedItemCounts": {

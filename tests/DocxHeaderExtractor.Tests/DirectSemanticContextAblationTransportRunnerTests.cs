@@ -23,6 +23,8 @@ public sealed class DirectSemanticContextAblationTransportRunnerTests
         "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252";
     private const string ScoreRoot =
         "eval/a99-closed-loop/direct-semantic-context-ablation-score-v1/DOC-0252";
+    private const string SecondModelPreflightRoot =
+        "eval/a99-closed-loop/second-model-minimal-replay-preflight-v1";
     private const string Doc0252Pdf =
         "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
     private const string AuthorizedBaseCommit = "af30ed9007669f66a61e6420a4d79537ec04c9a8";
@@ -645,6 +647,8 @@ internal sealed class FrozenContextAblationAuthority
         "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252";
     private const string ScoreRoot =
         "eval/a99-closed-loop/direct-semantic-context-ablation-score-v1/DOC-0252";
+    private const string SecondModelPreflightRoot =
+        "eval/a99-closed-loop/second-model-minimal-replay-preflight-v1";
     private const string AuthorizedBaseCommit = "af30ed9007669f66a61e6420a4d79537ec04c9a8";
     private const string ExpectedModel = "qwen/qwen3.7-flash";
     private const string ResponseFormat = TransportCompatibility.JsonObjectResponseFormat;
@@ -714,8 +718,11 @@ internal sealed class FrozenContextAblationAuthority
                 StringComparison.Ordinal)
             || path.Equals("tests/DocxHeaderExtractor.Tests/DirectSemanticContextAblationScoringTests.cs",
                 StringComparison.Ordinal)
+            || path.Equals("tests/DocxHeaderExtractor.Tests/SecondModelMinimalReplayPreflightTests.cs",
+                StringComparison.Ordinal)
             || path.StartsWith(CaptureRoot + "/", StringComparison.Ordinal)
-            || path.StartsWith(ScoreRoot + "/", StringComparison.Ordinal),
+            || path.StartsWith(ScoreRoot + "/", StringComparison.Ordinal)
+            || path.StartsWith(SecondModelPreflightRoot + "/", StringComparison.Ordinal),
             $"unexpected descendant path {path}"));
 
         var artifactPath = TestRepository.Path(Path.Combine(PreflightRoot, PreflightFile));

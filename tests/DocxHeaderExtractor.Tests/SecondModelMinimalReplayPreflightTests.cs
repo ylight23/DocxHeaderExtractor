@@ -36,6 +36,9 @@ public sealed class SecondModelMinimalReplayPreflightTests
         "af543e432f25a2562ba3472935a02981160578091b8951ec3f192cd00c56fdc3";
     private const string QwenModel = "qwen/qwen3.7-flash";
     private const string SecondModelId = "openai/gpt-4.1";
+    private const string ProviderBackend = "OpenRouter";
+    private const string TransportProtocol = "openai-chat-completions-v1";
+    private const string ProviderEndpoint = "https://openrouter.ai/api/v1/chat/completions";
     private const string PromptSha256 =
         "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387";
     private const string SchemaSha256 =
@@ -106,7 +109,7 @@ public sealed class SecondModelMinimalReplayPreflightTests
             Assert.Equal(repeat, root.GetProperty("repeat").GetInt32());
             Assert.Equal(pack, root.GetProperty("pack").GetString());
             Assert.Equal(QwenModel, root.GetProperty("model").GetString());
-            Assert.Equal("OpenRouter", root.GetProperty("providerRoute").GetString());
+            Assert.Equal(ProviderBackend, root.GetProperty("providerRoute").GetString());
             Assert.Equal(ResponseFormat, root.GetProperty("responseFormat").GetString());
             Assert.Equal(ContextPolicyHash, root.GetProperty("policyHash").GetString());
             Assert.Equal(minimalArm.GetProperty("packContextHashes").GetProperty(pack).GetString(),
@@ -148,8 +151,8 @@ public sealed class SecondModelMinimalReplayPreflightTests
             // The semantic messages are identical; the new authority deliberately binds the
             // model identity into its provider-input identity so the future runner cannot collide
             // with Qwen reservations while still comparing the same prompt/context bytes.
-            secondProviderInputs[pack] = SemanticAuthorityTransportCall.Sha256Utf8(
-                JsonSerializer.Serialize(new { model = SecondModelId, systemPrompt, userMessage }));
+            secondProviderInputs[pack] = SecondModelTransportIdentityHash(
+                systemPrompt, userMessage, budget);
             cells.Add(new CellAuthority(
                 $"r{repeat}/{pack}", repeat, pack, contextHash, qwenInputHash,
                 secondProviderInputs[pack], userMessage, systemPrompt));
@@ -209,17 +212,27 @@ public sealed class SecondModelMinimalReplayPreflightTests
             },
             transport = new
             {
-                providerRoute = "OpenRouter",
+                providerBackend = ProviderBackend,
+                providerRoute = ProviderBackend,
+                endpoint = ProviderEndpoint,
+                transportProtocol = TransportProtocol,
                 responseFormat = ResponseFormat,
                 temperature = 0,
                 reasoning = "none",
-                modelFallbacks = "future runner must pin false",
+                providerFallbacksAllowed = false,
+                providerOptions = new
+                {
+                    zdr = false,
+                    data_collection = "deny",
+                    require_parameters = true,
+                    allow_fallbacks = false,
+                },
                 compatibilityValidatedOffline = true,
                 transportDeltas = new[]
                 {
                     "model identity changes",
-                    "provider-input identity includes second model id",
-                    "future runner must disable silent provider fallback",
+                    "provider-input identity includes model and routing object",
+                    "provider fallback is explicitly disabled",
                 },
             },
             expectedItemCounts = expectedCounts,
@@ -284,6 +297,32 @@ public sealed class SecondModelMinimalReplayPreflightTests
 
     private static string Sha256File(string path) =>
         Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(path)));
+
+    private static string SecondModelTransportIdentityHash(
+        string systemPrompt, string userMessage, int maxTokens) =>
+        SemanticAuthorityTransportCall.Sha256Utf8(JsonSerializer.Serialize(new
+        {
+            model = SecondModelId,
+            provider = ProviderBackend,
+            transportProtocol = TransportProtocol,
+            endpoint = ProviderEndpoint,
+            temperature = 0,
+            max_tokens = maxTokens,
+            reasoning = new { effort = "none" },
+            messages = new[]
+            {
+                new { role = "system", content = systemPrompt },
+                new { role = "user", content = userMessage },
+            },
+            response_format = new { type = ResponseFormat },
+            providerOptions = new
+            {
+                zdr = false,
+                data_collection = "deny",
+                require_parameters = true,
+                allow_fallbacks = false,
+            },
+        }));
 
     private static bool IsAncestor(string candidate, string descendant) =>
         Git($"merge-base --is-ancestor {candidate} {descendant}", allowFailure: true).Length == 0;
