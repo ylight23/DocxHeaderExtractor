@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "a99-selective-semantic-escalation-vlm-transport-failure-v1",
+  "itemId": "ITEM-CCE2C592",
+  "transportStatus": "FAILED",
+  "errorType": "System.Net.Http.HttpRequestException",
+  "message": "OpenRouter returned 404 Not Found: {\"error\":{\"message\":\"No endpoints found for anthropic/claude-3.5-sonnet.\",\"code\":404},\"user_id\":\"user_3HIWseSvek9HMXyFgnKkZuubz1K\"}"
+}
