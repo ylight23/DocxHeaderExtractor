@@ -352,7 +352,9 @@ public sealed class SelectiveSemanticEscalationV1PreflightTests
         return new AdjudicationRequest(modelFacingPayload, scaffoldingOnly, frozenView);
     }
 
-    private static Dictionary<string, string[]> ReadCandidateLabels(string itemId)
+    // internal: reused by SelectiveSemanticEscalationV1EvidenceConflictTests to compute the
+    // Gold-free ADJUDICATOR_EVIDENCE_CONFLICT signal from the exact same merged view evidence.
+    internal static Dictionary<string, string[]> ReadCandidateLabels(string itemId)
     {
         using var doc = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(PerModelMatrixFile)));
         string[] Merge(string model, string field)

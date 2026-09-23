@@ -1,0 +1,35 @@
+{
+  "artifactKind": "a99_selective_semantic_escalation_evidence_conflict_signal",
+  "schemaVersion": "a99-selective-semantic-escalation-evidence-conflict-signal-v1",
+  "signalDefinition": "ADJUDICATOR_EVIDENCE_CONFLICT = true iff the adjudicator's final label differs from the label most frequent across the pooled repeat-label multiset of every model run on every one of the three frozen, source-faithful views. Computed without Gold: both operands (adjudicator output, pooled view evidence) are observable at runtime.",
+  "dominantLabelWarning": "The dominant/pooled label is a CONFLICT-DETECTION SIGNAL ONLY, never a semantic answer. An 11-4-1 split means 'disagreement worth investigating', not 'the 11 side is correct'. Nothing in this pipeline may substitute the dominant label for the adjudicator's or a downstream escalation step's actual decision.",
+  "goldUsedInSignalConstruction": false,
+  "items": [
+    {
+      "itemId": "ITEM-505430BB",
+      "adjudicatorFinalLabel": "DOCUMENT_LABEL",
+      "evidenceTally": {
+        "DOCUMENT_LABEL": 12,
+        "NON_STRUCTURAL": 3,
+        "STRUCTURAL_UNIT": 1
+      },
+      "dominantLabel": "DOCUMENT_LABEL",
+      "adjudicatorEvidenceConflict": false,
+      "visualLayoutRelevant": false,
+      "visualLayoutRationale": "No conflict signal fired for this item (adjudicator agrees with the pooled evidence); there is nothing to escalate, so visual relevance is not evaluated."
+    },
+    {
+      "itemId": "ITEM-CCE2C592",
+      "adjudicatorFinalLabel": "DOCUMENT_LABEL",
+      "evidenceTally": {
+        "DOCUMENT_LABEL": 4,
+        "STRUCTURAL_UNIT": 11,
+        "NON_STRUCTURAL": 1
+      },
+      "dominantLabel": "STRUCTURAL_UNIT",
+      "adjudicatorEvidenceConflict": true,
+      "visualLayoutRelevant": true,
+      "visualLayoutRationale": "The disagreement is between a masthead/title block (group, date, venue) and a section heading beneath it in the same visual hierarchy - exactly the kind of typography, spatial grouping, and header/body separation a text-only rendering can flatten away. Plausibly resolvable by visual evidence, not by re-reading the same text again."
+    }
+  ]
+}

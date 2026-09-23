@@ -1,0 +1,27 @@
+{
+  "artifactKind": "a99_selective_semantic_escalation_decision",
+  "schemaVersion": "a99-selective-semantic-escalation-decision-v1",
+  "pipeline": "context-sensitive item -> text adjudicator -> (unresolved OR repeat-unstable OR ADJUDICATOR_EVIDENCE_CONFLICT) -> visual relevance? -> yes: VLM / no: independent text adjudicator or review",
+  "decisions": [
+    {
+      "itemId": "ITEM-505430BB",
+      "contextSensitive": true,
+      "textAdjudicatorResolved": true,
+      "repeatInstabilityEvaluable": false,
+      "adjudicatorEvidenceConflict": false,
+      "visualLayoutRelevant": false,
+      "decision": "ACCEPT_TEXT_ADJUDICATION"
+    },
+    {
+      "itemId": "ITEM-CCE2C592",
+      "contextSensitive": true,
+      "textAdjudicatorResolved": true,
+      "repeatInstabilityEvaluable": false,
+      "adjudicatorEvidenceConflict": true,
+      "visualLayoutRelevant": true,
+      "decision": "VLM_ESCALATION"
+    }
+  ],
+  "vlmCallsMadeThisRun": 0,
+  "note": "Decisions are derived entirely from CONTEXT_SENSITIVITY (prior experiment) and ADJUDICATOR_EVIDENCE_CONFLICT (this file), neither of which uses Gold. VISUAL_LAYOUT_RELEVANT is the one human-authored judgment in this table (see rationale per item in evidence-conflict-signal.v1.json) and is not derived from Gold either."
+}
