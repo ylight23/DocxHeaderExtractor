@@ -38,6 +38,15 @@ public sealed class SecondModelMinimalReplayTransportTests
 
     private static readonly string[] Packs = ["PACK_001", "PACK_005", "PACK_006"];
 
+    /// <summary>
+    /// r1/PACK_001 is no longer pre-run: commit f17e689 recorded a real, failed GPT-4.1 transport
+    /// attempt for it. That capture is immutable historical evidence, not debris, so this identity
+    /// is TERMINAL_FAILED / HISTORICAL_ABORTED rather than READY_TO_RUN - excluded from the pre-run
+    /// freshness check below and verified as terminal instead. See also
+    /// SecondModelMinimalReplayPreflightTests.HistoricalAbortedCellIdentity.
+    /// </summary>
+    private const string HistoricalAbortedCellIdentity = "r1/PACK_001";
+
     [Fact]
     public void Runner_is_disabled_without_exact_authorization_flag()
     {
@@ -45,8 +54,56 @@ public sealed class SecondModelMinimalReplayTransportTests
 
         var authority = LoadAuthority();
         Assert.Equal(MaxCalls, authority.Count);
-        Assert.All(authority, cell =>
-            Assert.False(File.Exists(TestRepository.Path(cell.ReservationPath))));
+
+        // PRE_RUN_FRESHNESS: every identity except the one historical failure is untouched.
+        Assert.All(authority.Where(cell => cell.Identity != HistoricalAbortedCellIdentity),
+            cell => Assert.False(File.Exists(TestRepository.Path(cell.ReservationPath))));
+
+        // POST_FAILURE_IMMUTABILITY: r1/PACK_001's reservation is real, permanent, historical
+        // evidence (commit f17e689) - not an artifact this runner may reuse or overwrite.
+        var historical = authority.Single(cell => cell.Identity == HistoricalAbortedCellIdentity);
+        Assert.True(File.Exists(TestRepository.Path(historical.ReservationPath)));
+        Assert.True(File.Exists(TestRepository.Path(historical.CapturePath)));
+    }
+
+    [Fact]
+    public void Historical_failed_cell_slot_cannot_be_reused_or_auto_resumed()
+    {
+        var authority = LoadAuthority();
+        var historical = authority.Single(cell => cell.Identity == HistoricalAbortedCellIdentity);
+        var reservationPath = TestRepository.Path(historical.ReservationPath);
+        var capturePath = TestRepository.Path(historical.CapturePath);
+        Assert.True(File.Exists(reservationPath));
+        Assert.True(File.Exists(capturePath));
+
+        using var capture = JsonDocument.Parse(File.ReadAllText(capturePath));
+        var root = capture.RootElement;
+        Assert.Equal(HistoricalAbortedCellIdentity, root.GetProperty("cell").GetString());
+        var status = root.GetProperty("status").GetString();
+        Assert.NotEqual("PASS", status);
+        Assert.Equal("HTTP_ERROR", status);
+        Assert.Equal("HTTP 404 Not Found", root.GetProperty("fault").GetString());
+        var rawResponse = Decode(root, "rawResponseUtf8Base64");
+        Assert.Equal(root.GetProperty("rawResponseSha256").GetString(),
+            SemanticAuthorityTransportCall.Sha256Utf8(rawResponse));
+
+        // Reserve()/WriteCapture() both write via WriteExclusive, which opens with
+        // FileMode.CreateNew - the same mechanism that made this slot permanent in the first
+        // place now refuses to let a real rerun recreate or overwrite it. This is what actually
+        // enforces "no slot reuse, no auto-resume, fails before any provider transport" for a real
+        // run attempted against the historical lineage: the very first thing
+        // Run_real_second_model_minimal_replay_only_when_explicitly_enabled would do for this
+        // identity is Reserve(cell), before any HTTP call, so provider calls stay at 0.
+        Assert.Throws<IOException>(() =>
+        {
+            using var stream = new FileStream(
+                reservationPath, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+        });
+        Assert.Throws<IOException>(() =>
+        {
+            using var stream = new FileStream(
+                capturePath, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+        });
     }
 
     [Fact]
@@ -175,8 +232,18 @@ public sealed class SecondModelMinimalReplayTransportTests
             var identity = $"r{repeat}/{pack}";
             var reservationPath = $"{CaptureRoot}/r{repeat}/{pack}.capture-slot.v1.json";
             var capturePath = $"{CaptureRoot}/r{repeat}/{pack}.transport-capture.v1.json";
-            Assert.False(File.Exists(TestRepository.Path(reservationPath)));
-            Assert.False(File.Exists(TestRepository.Path(capturePath)));
+            if (identity == HistoricalAbortedCellIdentity)
+            {
+                // POST_FAILURE_IMMUTABILITY: verified in full by
+                // Runner_is_disabled_without_exact_authorization_flag and
+                // Historical_failed_cell_slot_cannot_be_reused_or_auto_resumed; here it is only
+                // excluded from the PRE_RUN_FRESHNESS check below.
+            }
+            else
+            {
+                Assert.False(File.Exists(TestRepository.Path(reservationPath)));
+                Assert.False(File.Exists(TestRepository.Path(capturePath)));
+            }
             cells.Add(new CellAuthority(
                 identity, repeat, pack, systemPrompt, userMessage, expectedCount, budget,
                 qwen.GetProperty("itemIds").EnumerateArray().Select(item => item.GetString()!).ToArray(),

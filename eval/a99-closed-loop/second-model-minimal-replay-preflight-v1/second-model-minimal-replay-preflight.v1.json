@@ -81,66 +81,88 @@
   },
   "capture": {
     "identitiesRequired": 9,
-    "identitiesFresh": true,
+    "identitiesFresh": 8,
+    "identitiesHistoricalAborted": 1,
     "identitiesDistinct": true,
     "identitiesAtomicallyReservable": true,
-    "permanentReservationsCreated": false,
+    "permanentReservationsCreated": true,
     "slots": [
       {
         "identity": "r1/PACK_001",
         "repeat": 1,
         "pack": "PACK_001",
-        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r1/PACK_001.capture-slot.v1.json"
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r1/PACK_001.capture-slot.v1.json",
+        "fresh": false
       },
       {
         "identity": "r1/PACK_005",
         "repeat": 1,
         "pack": "PACK_005",
-        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r1/PACK_005.capture-slot.v1.json"
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r1/PACK_005.capture-slot.v1.json",
+        "fresh": true
       },
       {
         "identity": "r1/PACK_006",
         "repeat": 1,
         "pack": "PACK_006",
-        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r1/PACK_006.capture-slot.v1.json"
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r1/PACK_006.capture-slot.v1.json",
+        "fresh": true
       },
       {
         "identity": "r2/PACK_001",
         "repeat": 2,
         "pack": "PACK_001",
-        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r2/PACK_001.capture-slot.v1.json"
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r2/PACK_001.capture-slot.v1.json",
+        "fresh": true
       },
       {
         "identity": "r2/PACK_005",
         "repeat": 2,
         "pack": "PACK_005",
-        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r2/PACK_005.capture-slot.v1.json"
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r2/PACK_005.capture-slot.v1.json",
+        "fresh": true
       },
       {
         "identity": "r2/PACK_006",
         "repeat": 2,
         "pack": "PACK_006",
-        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r2/PACK_006.capture-slot.v1.json"
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r2/PACK_006.capture-slot.v1.json",
+        "fresh": true
       },
       {
         "identity": "r3/PACK_001",
         "repeat": 3,
         "pack": "PACK_001",
-        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r3/PACK_001.capture-slot.v1.json"
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r3/PACK_001.capture-slot.v1.json",
+        "fresh": true
       },
       {
         "identity": "r3/PACK_005",
         "repeat": 3,
         "pack": "PACK_005",
-        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r3/PACK_005.capture-slot.v1.json"
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r3/PACK_005.capture-slot.v1.json",
+        "fresh": true
       },
       {
         "identity": "r3/PACK_006",
         "repeat": 3,
         "pack": "PACK_006",
-        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r3/PACK_006.capture-slot.v1.json"
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r3/PACK_006.capture-slot.v1.json",
+        "fresh": true
       }
     ]
+  },
+  "lineage": {
+    "id": "SECOND_MODEL_MINIMAL_REPLAY_V1",
+    "state": "HISTORICAL_ABORTED",
+    "resumable": false,
+    "autoResumeAllowed": false,
+    "slotReuseAllowed": false,
+    "historicalAbortedIdentities": [
+      "r1/PACK_001"
+    ],
+    "failureCommit": "f17e6890e033fbe60e68c374fc24fcde5044a7c3",
+    "reason": "GPT-4.1 replay was superseded operationally by later internal Luna/Haiku work after r1/PACK_001's transport attempt failed (HTTP 404). No continuation or retry lineage is planned; the remaining 8 identities stay pre-run-fresh but are not scheduled to run."
   },
   "comparator": {
     "f1": "0/3 DOCUMENT_LABEL; expected NON_STRUCTURAL",

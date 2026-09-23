@@ -52,6 +52,18 @@ public sealed class SecondModelMinimalReplayPreflightTests
 
     private static readonly string[] Packs = ["PACK_001", "PACK_005", "PACK_006"];
 
+    /// <summary>
+    /// r1/PACK_001 is no longer pre-run: commit f17e689 recorded a real, failed GPT-4.1 transport
+    /// attempt for it (HTTP 404 - no upstream endpoint could serve the pinned "OpenAI"-only,
+    /// no-fallback routing). That capture is immutable historical evidence, not debris, so this
+    /// identity is excluded from the pre-run freshness check and instead verified as terminal.
+    /// GPT-4.1 replay was superseded operationally by later internal Luna/Haiku work; there is no
+    /// continuation lineage, and this identity's slot is never reused.
+    /// </summary>
+    private const string HistoricalAbortedCellIdentity = "r1/PACK_001";
+
+    private const string HistoricalFailureCommit = "f17e6890e033fbe60e68c374fc24fcde5044a7c3";
+
     [Fact]
     public void Freeze_second_model_minimal_replay_preflight_without_provider_calls()
     {
@@ -174,9 +186,44 @@ public sealed class SecondModelMinimalReplayPreflightTests
             repeat = cell.Repeat,
             pack = cell.Pack,
             path = $"{FutureCaptureRoot}/r{cell.Repeat}/{cell.Pack}.capture-slot.v1.json",
+            fresh = cell.Identity != HistoricalAbortedCellIdentity,
         }).ToArray();
-        Assert.All(futureSlots, slot => Assert.False(File.Exists(TestRepository.Path(slot.path))));
-        Assert.True(ProbeAtomicReservation(ProposedCalls));
+
+        // PRE_RUN_FRESHNESS: every identity except the one historical failure must still be an
+        // untouched slot, eligible to start.
+        Assert.All(futureSlots.Where(slot => slot.fresh),
+            slot => Assert.False(File.Exists(TestRepository.Path(slot.path))));
+        Assert.True(ProbeAtomicReservation(ProposedCalls - 1));
+
+        // POST_FAILURE_IMMUTABILITY: r1/PACK_001's reservation and capture already exist as
+        // immutable historical evidence. Verify the evidence itself - cell identity, terminal
+        // (non-PASS) status, and raw-response hash integrity - rather than asserting absence.
+        var historicalSlot = futureSlots.Single(slot => slot.identity == HistoricalAbortedCellIdentity);
+        var historicalReservationPath = TestRepository.Path(historicalSlot.path);
+        var historicalCapturePath = TestRepository.Path(historicalSlot.path.Replace(
+            "capture-slot.v1.json", "transport-capture.v1.json", StringComparison.Ordinal));
+        Assert.True(File.Exists(historicalReservationPath),
+            $"expected historical reservation evidence at {historicalSlot.path}");
+        Assert.True(File.Exists(historicalCapturePath),
+            $"expected historical capture evidence beside {historicalSlot.path}");
+
+        using var reservation = JsonDocument.Parse(File.ReadAllText(historicalReservationPath));
+        Assert.Equal("CAPTURE_SLOT_RESERVED", reservation.RootElement.GetProperty("status").GetString());
+        Assert.Equal(HistoricalAbortedCellIdentity, reservation.RootElement.GetProperty("cell").GetString());
+
+        using var historicalCapture = JsonDocument.Parse(File.ReadAllText(historicalCapturePath));
+        var historicalRoot = historicalCapture.RootElement;
+        Assert.Equal(HistoricalAbortedCellIdentity, historicalRoot.GetProperty("cell").GetString());
+        Assert.Equal("TRANSPORT_CAPTURE_COMPLETE",
+            historicalRoot.GetProperty("transportCaptureStatus").GetString());
+        var historicalStatus = historicalRoot.GetProperty("status").GetString();
+        Assert.NotEqual("PASS", historicalStatus);
+        Assert.Equal("HTTP_ERROR", historicalStatus);
+        Assert.Equal("HTTP 404 Not Found", historicalRoot.GetProperty("fault").GetString());
+        Assert.True(historicalRoot.GetProperty("rawResponseCaptured").GetBoolean());
+        var historicalRawResponse = Decode(historicalRoot, "rawResponseUtf8Base64");
+        Assert.Equal(historicalRoot.GetProperty("rawResponseSha256").GetString(),
+            SemanticAuthorityTransportCall.Sha256Utf8(historicalRawResponse));
 
         FreezeArtifact.AssertJson(PreflightRoot, PreflightFile, new
         {
@@ -241,11 +288,26 @@ public sealed class SecondModelMinimalReplayPreflightTests
             capture = new
             {
                 identitiesRequired = ProposedCalls,
-                identitiesFresh = true,
+                identitiesFresh = futureSlots.Count(slot => slot.fresh),
+                identitiesHistoricalAborted = futureSlots.Count(slot => !slot.fresh),
                 identitiesDistinct = true,
                 identitiesAtomicallyReservable = true,
-                permanentReservationsCreated = false,
+                permanentReservationsCreated = true,
                 slots = futureSlots,
+            },
+            lineage = new
+            {
+                id = "SECOND_MODEL_MINIMAL_REPLAY_V1",
+                state = "HISTORICAL_ABORTED",
+                resumable = false,
+                autoResumeAllowed = false,
+                slotReuseAllowed = false,
+                historicalAbortedIdentities = new[] { HistoricalAbortedCellIdentity },
+                failureCommit = HistoricalFailureCommit,
+                reason = "GPT-4.1 replay was superseded operationally by later internal Luna/Haiku " +
+                    "work after r1/PACK_001's transport attempt failed (HTTP 404). No continuation " +
+                    "or retry lineage is planned; the remaining 8 identities stay pre-run-fresh but " +
+                    "are not scheduled to run.",
             },
             comparator = new
             {
