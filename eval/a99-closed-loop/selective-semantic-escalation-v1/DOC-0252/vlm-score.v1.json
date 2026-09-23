@@ -1,0 +1,33 @@
+{
+  "artifactKind": "a99_selective_semantic_escalation_vlm_score",
+  "schemaVersion": "a99-selective-semantic-escalation-vlm-score-v1",
+  "itemId": "ITEM-CCE2C592",
+  "status": "SCORED_OFFLINE",
+  "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "vlm": {
+    "model": "qwen/qwen3.7-flash",
+    "modality": "vision (rendered PDF page image)",
+    "semanticFunction": "IDENTITY",
+    "legacyProjectedLabel": "DOCUMENT_LABEL",
+    "visualEvidence": "The word 'Agenda' is centered on the page, positioned below the meeting details (date, location) and directly above the detailed schedule content, functioning as the document's title or label."
+  },
+  "goldLabel": "STRUCTURAL_UNIT",
+  "dominantPooledLabel": "STRUCTURAL_UNIT",
+  "matchesGold": false,
+  "matchesDominantEvidence": false,
+  "interpretation": "The VLM reproduced the same DOCUMENT_LABEL judgment the text adjudicator reached, via a genuinely different modality (a rendered page image, not text views or pooled labels). Its own stated rationale - the word is centered, positioned like a title - shows this is a real, modality-independent lexical/positional attractor for this item, not a text-rendering artifact that visual evidence could see past. Escalating to VLM was still the right call: it tested a real, falsifiable hypothesis (that visual layout evidence would disambiguate this case) with a genuinely informative negative result, rather than assuming visual evidence would confirm the majority view.",
+  "finalPipelineState": {
+    "contextSensitive": true,
+    "textAdjudicatorResolved": true,
+    "adjudicatorEvidenceConflict": true,
+    "visualLayoutRelevant": true,
+    "vlmEscalated": true,
+    "vlmResult": "DOCUMENT_LABEL",
+    "outcome": "VLM_ESCALATION_INCONCLUSIVE_SAME_ATTRACTOR"
+  },
+  "productionNote": "This item remains an open case for DOC-0252: two independent evaluation paths (text adjudicator, VLM) now agree with each other (DOCUMENT_LABEL) but disagree with the pooled majority evidence and Gold (STRUCTURAL_UNIT). The correct next step is human review, not accepting either model output or the pooled vote as authority - see evidence-conflict-signal.v1.json's own warning that the dominant label is a conflict signal, not semantic authority.",
+  "generalizationEstablished": false,
+  "scope": "DOC-0252 only, ITEM-CCE2C592, one VLM call. Not evidence about VLM escalation's effectiveness in general."
+}
