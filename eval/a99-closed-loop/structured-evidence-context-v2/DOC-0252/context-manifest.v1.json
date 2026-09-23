@@ -1,0 +1,143 @@
+{
+  "artifactKind": "a99_structured_evidence_context_manifest",
+  "schemaVersion": "a99-structured-evidence-context-manifest-v2",
+  "documentId": "DOC-0252",
+  "experiment": "STRUCTURED_EVIDENCE_CONTEXT_V2",
+  "arms": [
+    "FULL_CONTEXT",
+    "FULL_STRUCTURED_CONTEXT_V2"
+  ],
+  "referenceArmOnly": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+  "itemCount": 18,
+  "groupingSignal": "page (top level) then existing layout block id (second level)",
+  "items": [
+    {
+      "itemId": "ITEM-AB89229E",
+      "pack": "PACK_001",
+      "pageRegionCount": 2,
+      "blockCount": 29,
+      "contentHash": "567dab4b2a95134f41847cf5315c2fcb7762f154731b2f56c22dd6bbeed6c93d"
+    },
+    {
+      "itemId": "ITEM-BAAD25EE",
+      "pack": "PACK_005",
+      "pageRegionCount": 5,
+      "blockCount": 113,
+      "contentHash": "d9e1f755a278955ade4d9cd478a35eba5814a69248f38e06389e87f1e4518a71"
+    },
+    {
+      "itemId": "ITEM-1D843A9F",
+      "pack": "PACK_005",
+      "pageRegionCount": 5,
+      "blockCount": 113,
+      "contentHash": "d9e1f755a278955ade4d9cd478a35eba5814a69248f38e06389e87f1e4518a71"
+    },
+    {
+      "itemId": "ITEM-82675EC0",
+      "pack": "PACK_005",
+      "pageRegionCount": 5,
+      "blockCount": 113,
+      "contentHash": "d9e1f755a278955ade4d9cd478a35eba5814a69248f38e06389e87f1e4518a71"
+    },
+    {
+      "itemId": "ITEM-024B8661",
+      "pack": "PACK_005",
+      "pageRegionCount": 5,
+      "blockCount": 113,
+      "contentHash": "d9e1f755a278955ade4d9cd478a35eba5814a69248f38e06389e87f1e4518a71"
+    },
+    {
+      "itemId": "ITEM-505430BB",
+      "pack": "PACK_005",
+      "pageRegionCount": 5,
+      "blockCount": 113,
+      "contentHash": "d9e1f755a278955ade4d9cd478a35eba5814a69248f38e06389e87f1e4518a71"
+    },
+    {
+      "itemId": "ITEM-2D78F82D",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-968E70AF",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-CCE2C592",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-5348EA2B",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-5EFE8569",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-2F026398",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-E96B316E",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-13ADC8F7",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-811FC894",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-4C05B3C2",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-959D3FCB",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    },
+    {
+      "itemId": "ITEM-E14B4B93",
+      "pack": "PACK_006",
+      "pageRegionCount": 4,
+      "blockCount": 90,
+      "contentHash": "710bf82154883b01dcaa5c788fe4c7ce0020e8a8f02d5ac08ccf8ff34bf06a04"
+    }
+  ],
+  "modelCalls": 0,
+  "providerCalls": 0
+}

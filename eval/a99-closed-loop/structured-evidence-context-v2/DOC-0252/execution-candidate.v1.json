@@ -1,0 +1,16 @@
+{
+  "artifactKind": "a99_structured_evidence_context_execution_candidate",
+  "schemaVersion": "a99-structured-evidence-context-execution-candidate-v1",
+  "documentId": "DOC-0252",
+  "executionCandidate": "V2",
+  "reason": "Topology-based, not accuracy-based (no model or Gold result was consulted to make this choice). V1's grouping signal (block id) produced 55-96% single-atom regions per pack - it tests HIGHLY_SEGMENTED_LAYOUT_CONTEXT rather than the intended SAME_CONTENT + NEUTRAL_STRUCTURAL_ORGANIZATION. V2 groups by page first (a real physical layout boundary) with block preserved as a second level, giving 4-5 top-level regions per pack instead of 90-113, while keeping the finer block signal available one level down rather than discarding it. V2's markup overhead relative to the shared FULL_CONTEXT flat baseline is also roughly half of V1's on every audited item (see wrapper-overhead-comparison.v1.json), independently supporting V2 as the lower-confound candidate on structural grounds alone.",
+  "v1Retained": "frozen, immutable, not superseded as a historical record - just not the arm carried forward to provider execution",
+  "frozenBeforeAnyModelSeesInput": {
+    "promptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+    "schemaSha256": "20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+    "note": "Content/topology/provider-input hashes for all 18 items are recorded per item in context-manifest.v1.json (contentHash) and each item's content-proof-v2.v1.json (contentHash, canonicalGlobalSourceOrderPreserved, flatteningEquivalence). No provider call has been made against V2."
+  },
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "providerExecutionAuthorized": false
+}
