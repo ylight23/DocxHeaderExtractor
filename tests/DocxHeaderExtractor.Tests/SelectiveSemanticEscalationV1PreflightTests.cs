@@ -384,18 +384,28 @@ public sealed class SelectiveSemanticEscalationV1PreflightTests
         var rootEl = doc.RootElement;
         var providerInputHash = rootEl.GetProperty("providerInputHash").GetString();
 
-        if (!rootEl.TryGetProperty("userMessageUtf8Base64", out var userMessageProp))
+        if (rootEl.TryGetProperty("userMessageUtf8Base64", out var userMessageProp))
         {
-            // FULL_STRUCTURED_CONTEXT_V2's transport capture only persisted the raw response, not the
-            // raw request, at capture time. The request is still fully deterministic (same builder that
-            // produced providerInputHash below) and will be re-derived and hash-verified against this
-            // exact providerInputHash before any real adjudication call is sent.
-            return (false, null, null, providerInputHash,
-                "raw request bytes were not persisted for FULL_STRUCTURED_CONTEXT_V2 at capture time (only the raw response was captured); will be re-derived deterministically and verified against providerInputHash before real execution");
+            var text = Encoding.UTF8.GetString(Convert.FromBase64String(userMessageProp.GetString()!));
+            return (true, text, Sha256(text), providerInputHash, null);
         }
 
-        var text = Encoding.UTF8.GetString(Convert.FromBase64String(userMessageProp.GetString()!));
-        return (true, text, Sha256(text), providerInputHash, null);
+        // FULL_STRUCTURED_CONTEXT_V2's own transport capture only persisted the raw response, not the
+        // raw request, at capture time - but the exact request bytes have since been materialized and
+        // hash-verified against this providerInputHash by
+        // SelectiveSemanticEscalationV1V2ViewMaterializationTests, so this is not a reconstruction
+        // guess: it is the byte-verified same bytes that were actually sent.
+        var materializedPath = TestRepository.Path(
+            "eval/a99-closed-loop/selective-semantic-escalation-v1/DOC-0252/materialized-v2-view.v1.json");
+        Assert.True(File.Exists(materializedPath), $"missing {materializedPath}");
+        using var materialized = JsonDocument.Parse(File.ReadAllText(materializedPath));
+        var view = materialized.RootElement.GetProperty("views").EnumerateArray()
+            .Single(v => v.GetProperty("pack").GetString() == pack);
+        Assert.True(view.GetProperty("providerInputHashVerified").GetBoolean());
+        Assert.Equal(providerInputHash, view.GetProperty("providerInputHash").GetString());
+        var materializedText = view.GetProperty("userMessage").GetString()!;
+        Assert.Equal(view.GetProperty("userMessageSha256").GetString(), Sha256(materializedText));
+        return (true, materializedText, Sha256(materializedText), providerInputHash, null);
     }
 
     private static string Sha256(string value) =>

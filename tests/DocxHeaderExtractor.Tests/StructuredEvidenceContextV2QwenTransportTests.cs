@@ -225,8 +225,11 @@ public sealed class StructuredEvidenceContextV2QwenTransportTests
     }
 
     // ---- cell construction --------------------------------------------------------------------
+    // BuildCells/BuildPackRequest/Cell/PackRequest are internal (not private) so
+    // SelectiveSemanticEscalationV1V2ViewMaterializationTests can derive the FULL_STRUCTURED_CONTEXT_V2
+    // adjudicator view from this exact same deterministic builder, rather than reimplementing it.
 
-    private static IReadOnlyList<Cell> BuildCells()
+    internal static IReadOnlyList<Cell> BuildCells()
     {
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(SourcePdf));
         var pageByAlias = plan.Atoms.ToDictionary(a => a.Alias, a => a.Page, StringComparer.Ordinal);
@@ -245,7 +248,7 @@ public sealed class StructuredEvidenceContextV2QwenTransportTests
         return cells;
     }
 
-    private static PackRequest BuildPackRequest(string pack, IReadOnlyDictionary<string, int> pageByAlias)
+    internal static PackRequest BuildPackRequest(string pack, IReadOnlyDictionary<string, int> pageByAlias)
     {
         var path = TestRepository.Path(Path.Combine(FullContextCaptureRoot, $"{pack}.transport-capture.v1.json"));
         using var document = JsonDocument.Parse(File.ReadAllText(path));
@@ -511,11 +514,11 @@ public sealed class StructuredEvidenceContextV2QwenTransportTests
         stream.Flush(true);
     }
 
-    private sealed record PackRequest(
+    internal sealed record PackRequest(
         string Pack, string SystemPrompt, string PromptSha256, string UserMessage,
         string ProviderInputHash, int ExpectedItemCount, int MaxTokens, string[] ItemIds);
 
-    private sealed record Cell(
+    internal sealed record Cell(
         string ArmId, int Repeat, string Pack, string Identity,
         string SystemPrompt, string PromptSha256, string UserMessage,
         string ProviderInputHash, int ExpectedItemCount, int MaxTokens, string[] ItemIds)
