@@ -1,0 +1,24 @@
+{
+  "artifactKind": "a99_selective_semantic_escalation_preflight_report",
+  "schemaVersion": "a99-selective-semantic-escalation-preflight-report-v1",
+  "status": "DESIGNED_NOT_EXECUTED",
+  "task": "SELECTIVE_SEMANTIC_ESCALATION_V1",
+  "triggerSource": "CONTEXT_TOPOLOGY_DISAGREEMENT_SIGNAL_V1 cross-model CONTEXT_SENSITIVITY (Gold-free at construction)",
+  "escalatedItems": [
+    "ITEM-505430BB",
+    "ITEM-CCE2C592"
+  ],
+  "stableItemCount": 16,
+  "stableItemsReachableByEscalation": false,
+  "adjudicatorContractFrozen": true,
+  "vlmEligibilityDesigned": true,
+  "vlmCallsMade": 0,
+  "textAdjudicatorCallsMade": 0,
+  "escalatedCaseResolution": "PENDING_REAL_ADJUDICATION",
+  "goldChanged": false,
+  "productionChanged": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "nextStep": "Await separate, explicit authorization before any real text-adjudicator or VLM call.",
+  "scope": "DOC-0252 only, the two items already flagged by the frozen signal. Not evidence about the remaining corpus."
+}
