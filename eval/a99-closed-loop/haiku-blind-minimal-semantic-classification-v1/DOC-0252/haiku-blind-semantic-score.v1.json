@@ -1,0 +1,79 @@
+{
+  "artifactKind": "a99_haiku_blind_minimal_semantic_classification_score",
+  "schemaVersion": "a99-haiku-blind-minimal-semantic-classification-score-v1",
+  "documentId": "DOC-0252",
+  "model": "Haiku",
+  "task": "HAIKU_BLIND_MINIMAL_SEMANTIC_CLASSIFICATION_V1",
+  "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+  "evidenceCommit": "59c7976c2416ed019c3cc36a23ca354dca326b56",
+  "evidenceSha256": "4249ca1595e0008eaea066b48963f18d80e199ef0d586c9fb3307716e7125cb8",
+  "qwenComparatorScoreCommit": "cba024d8d89456344a7627632706b37c2f160ec0",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+  "cohortComplete": true,
+  "itemCount": 18,
+  "independentRepeatIsolation": false,
+  "transportParityWithQwen": false,
+  "externalProviderCalls": 0,
+  "openRouterCalls": 0,
+  "apiKeysUsed": false,
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "qwenArtifactsModified": false,
+  "note": "Haiku ran one blind pass only (no repeats), so all metrics below are out of the single-pass denominator, matching the Qwen single-repeat comparator view used for this comparison (Qwen is stable 3-of-3 across repeats in the MINIMAL_STRUCTURAL_CONTEXT_V1 arm, so repeat 1 is representative).",
+  "metrics": {
+    "F1": { "qwen": "0/1", "haiku": "0/1" },
+    "Agenda": { "qwen": "1/1", "haiku": "1/1" },
+    "F2": { "qwen": "1/1", "haiku": "1/1" },
+    "F3": { "qwen": "1/1", "haiku": "1/1" },
+    "structuralControls": { "qwen": "14/14", "haiku": "14/14" },
+    "documentLabelControl": { "qwen": "1/1", "haiku": "1/1" }
+  },
+  "confusionMatrix": {
+    "expected/actual": {
+      "STRUCTURAL_UNIT": {
+        "STRUCTURAL_UNIT": 14,
+        "DOCUMENT_LABEL": 0,
+        "NON_STRUCTURAL": 0
+      },
+      "DOCUMENT_LABEL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 1,
+        "NON_STRUCTURAL": 0
+      },
+      "NON_STRUCTURAL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 1,
+        "NON_STRUCTURAL": 2
+      }
+    },
+    "totalDecisions": 18,
+    "correct": 17,
+    "accuracy": 0.9444444444444444
+  },
+  "perItemMapping": [
+    { "itemId": "ITEM-AB89229E", "identity": "L0000:S0:0-47", "caseLabel": "documentLabelControl", "expected": "DOCUMENT_LABEL", "haiku": "DOCUMENT_LABEL", "correct": true },
+    { "itemId": "ITEM-BAAD25EE", "identity": "L0400:S0:0-44", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-1D843A9F", "identity": "L0420:S0:0-40", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-82675EC0", "identity": "L0470:S0:0-45", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-024B8661", "identity": "L0507:S0:0-30", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-505430BB", "identity": "L0513:S0:0-38|L0514:S0:0-30", "caseLabel": "F1", "expected": "NON_STRUCTURAL", "haiku": "DOCUMENT_LABEL", "correct": false },
+    { "itemId": "ITEM-2D78F82D", "identity": "L0515:S0:0-14", "caseLabel": "F2", "expected": "NON_STRUCTURAL", "haiku": "NON_STRUCTURAL", "correct": true },
+    { "itemId": "ITEM-968E70AF", "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32", "caseLabel": "F3", "expected": "NON_STRUCTURAL", "haiku": "NON_STRUCTURAL", "correct": true },
+    { "itemId": "ITEM-CCE2C592", "identity": "L0519:S0:0-6", "caseLabel": "Agenda", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-5348EA2B", "identity": "L0520:S0:0-51", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-5EFE8569", "identity": "L0521:S0:0-38", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-2F026398", "identity": "L0523:S0:0-50", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-E96B316E", "identity": "L0526:S0:0-65", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-13ADC8F7", "identity": "L0531:S0:0-64", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-811FC894", "identity": "L0536:S0:0-27", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-4C05B3C2", "identity": "L0539:S0:0-51", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-959D3FCB", "identity": "L0540:S0:0-36", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true },
+    { "itemId": "ITEM-E14B4B93", "identity": "L0553:S0:0-19", "caseLabel": "structuralControl", "expected": "STRUCTURAL_UNIT", "haiku": "STRUCTURAL_UNIT", "correct": true }
+  ],
+  "finalClassification": "HAIKU_REPLICATES_QWEN_F1_BOUNDARY",
+  "interpretation": "Haiku, classifying blind with no knowledge of Gold, Qwen, or Luna answers, reproduced Qwen's exact error pattern on DOC-0252 MINIMAL_STRUCTURAL_CONTEXT_V1: it misclassified ITEM-505430BB (the 'International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)' masthead recurrence, F1, expected NON_STRUCTURAL) as DOCUMENT_LABEL, while getting every structural control (14/14), the Agenda case, F2, F3, and the document-label control correct. This is the opposite pattern from Luna, which fixed F1. A second independent model converging on the same F1 error as Qwen weakens the claim that F1 is a Qwen-specific defect and is more consistent with F1 being a genuinely ambiguous boundary case in the MINIMAL_STRUCTURAL_CONTEXT_V1 arm (a masthead recurrence with organisation-name styling that plausibly reads as document-identifying even though Gold does not treat it as a heading).",
+  "crossGenreGeneralizationEstablished": false,
+  "status": "HAIKU_BLIND_MINIMAL_SEMANTIC_CLASSIFICATION_SCORED_OFFLINE"
+}
