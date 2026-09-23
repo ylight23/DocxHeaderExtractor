@@ -222,6 +222,7 @@ public sealed class SecondModelMinimalReplayPreflightTests
                 providerFallbacksAllowed = false,
                 providerOptions = new
                 {
+                    order = new[] { "OpenAI" },
                     zdr = false,
                     data_collection = "deny",
                     require_parameters = true,
@@ -315,10 +316,11 @@ public sealed class SecondModelMinimalReplayPreflightTests
                 new { role = "user", content = userMessage },
             },
             response_format = new { type = ResponseFormat },
-            providerOptions = new
-            {
-                zdr = false,
-                data_collection = "deny",
+                providerOptions = new
+                {
+                    order = new[] { "OpenAI" },
+                    zdr = false,
+                    data_collection = "deny",
                 require_parameters = true,
                 allow_fallbacks = false,
             },

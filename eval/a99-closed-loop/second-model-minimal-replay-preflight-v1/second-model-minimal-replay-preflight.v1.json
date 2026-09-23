@@ -27,11 +27,11 @@
     "PACK_006": "21a157554bf1c977f2cd9d6f92629384e5cb9afb550a9bae13ca4bb7a7094831"
   },
   "secondModelProviderInputHashes": {
-    "PACK_001": "df6a721d9a5ca74ed20dcd6369dad964a35789e283857e6e87c023c134502a49",
-    "PACK_005": "cfaa3115adcadd0ee84fcc6e6c0a3a7a57948817eac5d6de5ee9079cdecf920d",
-    "PACK_006": "69b8f42824da444302e1a3580381d8d4b4ac5d20b5eb6f50b46cba4b82c152be"
+    "PACK_001": "a27c1d4f894dba138a09f9f3173b1ab862fc4922b7fd74b34a936301b87476dc",
+    "PACK_005": "b950a99e7d1e3ff562b0da7d28f72b3664d0e19aba8b5bf56a4835295ba979ef",
+    "PACK_006": "ab4204507fda3df19ca35135dc4c252c46861999582b80b8f45150b7be0e9543"
   },
-  "secondModelProviderInputPlanHash": "6feea0cc1f1de0bc3a0cb7539e837b041d84b8dde6b1daf625337cd8bbd30250",
+  "secondModelProviderInputPlanHash": "f0997381573ace029299bf656e6dc154abc0120ac824d38236de35bf69a59656",
   "messageHashes": {
     "PACK_001": "be6581b0a45486d9535a613c743f1d315a293c565510693aa3df446cc1cb3a5d",
     "PACK_005": "a0d704e594aaaf0df71152c219ec7ee5212df311eae807b20c7f26052de339a8",
@@ -54,6 +54,9 @@
     "reasoning": "none",
     "providerFallbacksAllowed": false,
     "providerOptions": {
+      "order": [
+        "OpenAI"
+      ],
       "zdr": false,
       "data_collection": "deny",
       "require_parameters": true,
