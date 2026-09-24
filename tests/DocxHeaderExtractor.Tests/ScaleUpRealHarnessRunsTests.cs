@@ -10,11 +10,17 @@ using DocxHeaderExtractor.Infrastructure.AI;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
-/// Scale-up evidence for itemising the remaining count-only Gold: the production harness,
-/// qwen/qwen3.7-flash, on the lane that matches each (fixed) source - the DOCX adapter for DOCX, the
-/// PDF adapter's structured profile for PDF (the legacy profile merges standalone label lines).
-/// Gated, real spend, every call through <see cref="BudgetedClassifier"/> with its ledger kept.
-/// Evidence for the user's heading decisions, not a Gold write.
+/// Blind prediction runs of the production harness, qwen/qwen3.7-flash, on the lane that matches each
+/// (fixed) source - the DOCX adapter for DOCX, the PDF adapter's structured profile for PDF (the
+/// legacy profile merges standalone label lines). Gated, real spend, every call through
+/// <see cref="BudgetedClassifier"/> with its ledger kept. The output is a prediction, compared with
+/// Gold only after both are final; it is never an input to Gold.
+/// <para>
+/// The ceiling defaults to the measured packs plus headroom and placement runs, as in production.
+/// The committed step-3 runs predate that: placement was off for PDF and, with the ceiling at
+/// exactly the pack count, could not run for DOCX - their heading sets are unaffected (placement
+/// only adds parent relations), their hierarchy is.
+/// </para>
 /// </summary>
 public sealed class ScaleUpRealHarnessRunsTests
 {
@@ -52,9 +58,7 @@ public sealed class ScaleUpRealHarnessRunsTests
     public void Planned_calls_per_run_are_measured_offline()
     {
         if (Environment.GetEnvironmentVariable("A99_SCALEUP_PLAN") != "1") return;
-        var plan = Sources.Select(pair => $"{pair.Key}={(pair.Value.Media == "DOCX"
-            ? Math.Ceiling(DocxEvidence(pair.Value.Path) / 120.0)
-            : PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pair.Value.Path)).Packs.Count)}");
+        var plan = Sources.Select(pair => $"{pair.Key}={PlannedCalls(pair.Value.Media, pair.Value.Path)}");
         Assert.Fail(string.Join(" ", plan));
     }
 
@@ -64,8 +68,13 @@ public sealed class ScaleUpRealHarnessRunsTests
         if (Environment.GetEnvironmentVariable("A99_SCALEUP_RUN") != "1") return;
         var id = Environment.GetEnvironmentVariable("A99_SCALEUP_ID")!;
         var repeat = Environment.GetEnvironmentVariable("A99_SCALEUP_REPEAT")!;
-        var ceiling = int.Parse(Environment.GetEnvironmentVariable("A99_SCALEUP_CEILING")!);
         var (media, path) = Sources[id];
+        // The ceiling leaves room past the measured packs, so the placement follow-up (and anything
+        // else production would send) is not silently cut off by the budget. A99_SCALEUP_CEILING
+        // still overrides it outright.
+        var plannedCalls = PlannedCalls(media, path);
+        var headroom = int.TryParse(Environment.GetEnvironmentVariable("A99_SCALEUP_HEADROOM"), out var h) ? h : 2;
+        var ceiling = int.TryParse(Environment.GetEnvironmentVariable("A99_SCALEUP_CEILING"), out var c) ? c : plannedCalls + headroom;
         var lane = media == "DOCX" ? "docx" : "pdf-structured";
 
         var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
@@ -97,7 +106,7 @@ public sealed class ScaleUpRealHarnessRunsTests
             {
                 var result = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
                     TestRepository.Path(path), budgeted, CancellationToken.None,
-                    profile: PdfSemanticAuthorityProfile.StructuredSourceParts, runPlacement: false,
+                    profile: PdfSemanticAuthorityProfile.StructuredSourceParts, runPlacement: true,
                     // The default five-minute lane deadline fits a pilot-sized PDF, not 40-100 packs;
                     // four hours is the CLI's own ceiling for --pdf-stage-semantic-lane-deadline.
                     semanticLaneOptions: new SemanticLaneOptions(
@@ -121,7 +130,9 @@ public sealed class ScaleUpRealHarnessRunsTests
             sourceSha256 = CanonicalArtifactHash.OfBytes(TestRepository.Path(path)),
             model = Model,
             lane,
-            placement = false,
+            placement = true,
+            plannedCalls,
+            ceiling,
             repeat,
             providerCallsMade = budgeted.CallsMade,
             rateLimitedAttempts = retry.RefusedAttempts,
@@ -176,6 +187,10 @@ public sealed class ScaleUpRealHarnessRunsTests
         public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => inner.ClassifyHierarchyAsync(context, headings, ct);
         public void Dispose() => inner.Dispose();
     }
+
+    private static int PlannedCalls(string media, string path) => media == "DOCX"
+        ? (int)Math.Ceiling(DocxEvidence(path) / 120.0)
+        : PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(path)).Packs.Count;
 
     private static int DocxEvidence(string path)
     {
