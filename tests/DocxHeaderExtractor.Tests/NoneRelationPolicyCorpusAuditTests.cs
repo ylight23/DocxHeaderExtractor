@@ -13,9 +13,10 @@ namespace DocxHeaderExtractor.Tests;
 /// question is what the rest of the corpus evidences.
 /// </para>
 /// <para>
-/// The answer is mostly that it cannot say, and that is the finding: sixteen of the twenty-one
-/// approved authorities record a heading total and no headings. This audit reports what the five
-/// that do record them show, and states plainly how much of the corpus that is.
+/// The answer is mostly that it cannot say, and that is the finding: most approved authorities
+/// record a heading total and no headings. This audit reports what the itemised ones show (the set
+/// is derived from the registry and grows as Gold is itemised), and states plainly how much of the
+/// corpus that is.
 /// </para>
 /// </summary>
 public sealed class NoneRelationPolicyCorpusAuditTests
@@ -69,7 +70,8 @@ public sealed class NoneRelationPolicyCorpusAuditTests
         var totalMaterialized = authorities.Sum(item => item.materializedClaims);
 
         // The corpus can only answer for what it materializes, and it materializes very little.
-        Assert.Equal(5, withClaims.Length);
+        Assert.Equal(CanonicalGoldRegistry.Entries.Count(e => e.MaterializedSemanticClaims > 0), withClaims.Length);
+        var otherItemised = withClaims.Where(item => item.AuthorityId is not ("DOC-0001" or "DOC-0205" or "DOC-0252" or "DOC-0256" or "DOC-0258")).ToArray();
 
         // ---- the only tree-less claim this audit's recommendation is scoped to -------------------
         var doc0252 = withClaims.Single(item => item.AuthorityId == "DOC-0252");
@@ -116,13 +118,13 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                 approvedHeadingsInCorpus = totalApproved,
                 materializedClaimsInCorpus = totalMaterialized,
                 coverageOfApprovedHeadings = Math.Round((double)totalMaterialized / totalApproved, 4),
-                finding = "Sixteen of twenty-one approved authorities record a heading total and no headings. "
+                finding = $"{authorities.Length - withClaims.Length} of {authorities.Length} approved authorities record a heading total and no headings. "
                     + "Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list "
                     + "or span was synthesized from the total.' A corpus-wide audit of which claims need a "
                     + "tree-less relation is therefore not answerable from Gold - "
                     + $"{totalMaterialized} of {totalApproved} approved headings, about "
                     + $"{Math.Round((double)totalMaterialized / totalApproved * 100, 1)}%, exist as claims at all.",
-                consequence = "Everything below is evidence from five documents (DOC-0205, DOC-0256 and "
+                consequence = $"Everything below is evidence from {withClaims.Length} documents (all but DOC-0001 and DOC-0252 itemised later) "
                     + "DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say "
                     + "what the category is used for where it is used, and not enough to say that no genre needs "
                     + "it wider.",
@@ -220,6 +222,18 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                         + "(eval/a99-closed-loop/doc0256-real-harness-exploration-v1, both PDF lanes) did not "
                         + "report its masthead date or meeting-mode lines; their relation hints are in the "
                         + "ledger but are not counted here.",
+                },
+                new
+                {
+                    authority = "pilot itemisations",
+                    documents = otherItemised.Select(item => new { item.AuthorityId, item.approvedHeadings, item.roles }).ToArray(),
+                    reading = "Itemised on 2026-09-24 from a pilot: DOC-0255 and DOC-0259 (minutes, DOCX lane, sources "
+                        + "regenerated from their PDFs) and SRC-055 (a financial review, PDF). Roles were not assigned. "
+                        + "The pilot's three qwen3.7-flash runs per minutes document (eval/a99-closed-loop/pilot-real-"
+                        + "harness-v1) put every masthead date and meeting-mode line in the tree-less relation in all "
+                        + "three runs - the same catch-all shape DOC-0252 shows - and the user excluded them from Gold. "
+                        + "DOC-0259's Gold does keep 'Tuesday, April 30, 2024', which opens the agenda's day and whose "
+                        + "text is a date: a date-text heading the proposed wording would also reach.",
                 },
                 new
                 {

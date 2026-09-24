@@ -7,15 +7,15 @@
   "source": {
     "fileName": "075_FORTIS_GC_Minutes_Nov21_2024.docx",
     "mediaType": "DOCX",
-    "sourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/075_FORTIS_GC_Minutes_Nov21_2024.docx",
-    "sourceSha256": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+    "sourcePath": "todo10_8/generated-docx-v2/05_bien_ban_hop/075_FORTIS_GC_Minutes_Nov21_2024.docx",
+    "sourceSha256": "3dde848f456267ed7890390e2b0331b801ca25e60a6a8f3e33fe1c4c2d819cc5",
     "sourceLineageStatus": "VERIFIED"
   },
   "approval": {
     "authority": "USER",
     "userFinalApproval": true,
     "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
-    "approvedAt": "2026-09-12",
+    "approvedAt": "2026-09-24",
     "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
     "semanticTruthReusedFrom": [
       "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0255.semantic-freeze.v1.json"
@@ -24,24 +24,426 @@
   },
   "semantic": {
     "headingSetExhaustive": true,
-    "approvedSemanticTotal": 18,
-    "semanticHeadingTotal": 18,
-    "materializedSemanticClaims": 0,
-    "claims": []
+    "approvedSemanticTotal": 20,
+    "semanticHeadingTotal": 20,
+    "materializedSemanticClaims": 20,
+    "claims": [
+      {
+        "sourceAlias": "S0001",
+        "verbatimText": "MEETING MINUTES",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0002",
+        "verbatimText": "Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0004",
+        "verbatimText": "Opening:",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0006",
+        "verbatimText": "Present:",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0012",
+        "verbatimText": "Item 1: Document Approval.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0021",
+        "verbatimText": "Item 2: Operating Context.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0022",
+        "verbatimText": "Item 3: Strategic Directions.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0026",
+        "verbatimText": "Item 4: Work Plan, Budget, and Fees.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0027",
+        "verbatimText": "Item 5: Communications Strategy.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0028",
+        "verbatimText": "Item 6: Appointment of the Chair.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0030",
+        "verbatimText": "Attachment:Agreed Agenda",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0031",
+        "verbatimText": "AGENDA for FIRST MEETING",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0032",
+        "verbatimText": "Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0033",
+        "verbatimText": "Agenda Items",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0034",
+        "verbatimText": "1. Document Approval.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0035",
+        "verbatimText": "2. Operating Context.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0036",
+        "verbatimText": "3. Strategic Directions.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0037",
+        "verbatimText": "4. Work Plan, Budget, and Fees.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0038",
+        "verbatimText": "5. Communications Strategy.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0039",
+        "verbatimText": "6. Appointment of the Chair.",
+        "selectionMode": "VERBATIM_TEXT",
+        "semanticRole": null
+      }
+    ]
   },
   "occurrence": {
-    "occurrenceEvaluable": false,
-    "characterSpanEvaluable": false,
-    "bindingCoordinateSystem": null,
-    "sourceUniverseSha256": null,
-    "unavailableReason": "no occurrence artifact describes this source under the current authority",
-    "claims": []
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "bindingCoordinateSystem": "SOURCE_ALIAS_PLUS_UTF16_SPAN",
+    "sourceUniverseSha256": "1858c515776aab078279f0b4751d7393eeb5ba76ba24659d284cfa2ca10e9ba9",
+    "unavailableReason": null,
+    "claims": [
+      {
+        "headingOrdinal": 0,
+        "sourceAlias": "S0001",
+        "sourceId": "body[1]/p[1]",
+        "exactText": "MEETING MINUTES",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 15
+        },
+        "evidence": "model 3/3 DOCUMENT_LABEL"
+      },
+      {
+        "headingOrdinal": 1,
+        "sourceAlias": "S0002",
+        "sourceId": "body[1]/p[2]",
+        "exactText": "Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 147
+        },
+        "evidence": "model 3/3 DOCUMENT_LABEL"
+      },
+      {
+        "headingOrdinal": 2,
+        "sourceAlias": "S0004",
+        "sourceId": "body[1]/p[4]",
+        "exactText": "Opening:",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 8
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 3,
+        "sourceAlias": "S0006",
+        "sourceId": "body[1]/p[6]",
+        "exactText": "Present:",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 8
+        },
+        "evidence": "model 3/3"
+      },
+      {
+        "headingOrdinal": 4,
+        "sourceAlias": "S0012",
+        "sourceId": "body[1]/p[12]",
+        "exactText": "Item 1: Document Approval.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "Item 1: Document Approval.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 26
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 5,
+        "sourceAlias": "S0021",
+        "sourceId": "body[1]/p[21]",
+        "exactText": "Item 2: Operating Context.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "Item 2: Operating Context.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 26
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 6,
+        "sourceAlias": "S0022",
+        "sourceId": "body[1]/p[22]",
+        "exactText": "Item 3: Strategic Directions.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "Item 3: Strategic Directions.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 29
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 7,
+        "sourceAlias": "S0026",
+        "sourceId": "body[1]/p[26]",
+        "exactText": "Item 4: Work Plan, Budget, and Fees.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "Item 4: Work Plan, Budget, and Fees.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 36
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 8,
+        "sourceAlias": "S0027",
+        "sourceId": "body[1]/p[27]",
+        "exactText": "Item 5: Communications Strategy.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "Item 5: Communications Strategy.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 32
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 9,
+        "sourceAlias": "S0028",
+        "sourceId": "body[1]/p[28]",
+        "exactText": "Item 6: Appointment of the Chair.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "Item 6: Appointment of the Chair.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 33
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 10,
+        "sourceAlias": "S0030",
+        "sourceId": "body[1]/p[30]",
+        "exactText": "Attachment:Agreed Agenda",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 24
+        },
+        "evidence": "model 3/3 DOCUMENT_LABEL"
+      },
+      {
+        "headingOrdinal": 11,
+        "sourceAlias": "S0031",
+        "sourceId": "body[1]/p[31]",
+        "exactText": "AGENDA for FIRST MEETING",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 24
+        },
+        "evidence": "model 3/3 DOCUMENT_LABEL"
+      },
+      {
+        "headingOrdinal": 12,
+        "sourceAlias": "S0032",
+        "sourceId": "body[1]/p[32]",
+        "exactText": "Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 147
+        },
+        "evidence": "model 3/3 DOCUMENT_LABEL"
+      },
+      {
+        "headingOrdinal": 13,
+        "sourceAlias": "S0033",
+        "sourceId": "body[1]/p[33]",
+        "exactText": "Agenda Items",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 12
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 14,
+        "sourceAlias": "S0034",
+        "sourceId": "body[1]/p[34]",
+        "exactText": "1. Document Approval.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "1. Document Approval.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 21
+        },
+        "evidence": "kept: bold agenda-item label, model 0/3"
+      },
+      {
+        "headingOrdinal": 15,
+        "sourceAlias": "S0035",
+        "sourceId": "body[1]/p[35]",
+        "exactText": "2. Operating Context.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "2. Operating Context.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 21
+        },
+        "evidence": "kept: bold agenda-item label, model 0/3"
+      },
+      {
+        "headingOrdinal": 16,
+        "sourceAlias": "S0036",
+        "sourceId": "body[1]/p[36]",
+        "exactText": "3. Strategic Directions.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "3. Strategic Directions.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 24
+        },
+        "evidence": "kept: bold agenda-item label, model 0/3"
+      },
+      {
+        "headingOrdinal": 17,
+        "sourceAlias": "S0037",
+        "sourceId": "body[1]/p[37]",
+        "exactText": "4. Work Plan, Budget, and Fees.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "4. Work Plan, Budget, and Fees.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 31
+        },
+        "evidence": "kept: bold agenda-item label, model 0/3"
+      },
+      {
+        "headingOrdinal": 18,
+        "sourceAlias": "S0038",
+        "sourceId": "body[1]/p[38]",
+        "exactText": "5. Communications Strategy.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "5. Communications Strategy.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 27
+        },
+        "evidence": "kept: bold agenda-item label, model 0/3"
+      },
+      {
+        "headingOrdinal": 19,
+        "sourceAlias": "S0039",
+        "sourceId": "body[1]/p[39]",
+        "exactText": "6. Appointment of the Chair.",
+        "selectionMode": "VERBATIM_TEXT",
+        "verbatimText": "6. Appointment of the Chair.",
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 28
+        },
+        "evidence": "kept: bold agenda-item label, model 0/3"
+      }
+    ]
   },
   "capabilities": {
     "semanticCountAuthoritative": true,
-    "semanticClaimsEvaluable": false,
-    "occurrenceEvaluable": false,
-    "characterSpanEvaluable": false,
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
     "visualBindingEvaluable": false,
     "hierarchyEvaluable": false
   },
@@ -50,6 +452,31 @@
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0255.semantic-freeze.v1.json",
       "sha256": "b1b01037e40e79b69875126fd671d4446e6ed14c8a6d13ff955729816b8b9e29",
       "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "gold-correction:DOC-0255:itemised-total-18-to-20:2026-09-24",
+      "sha256": "e393714fce186b82cfc3eef24a2ba6a57b5d0e488f071bd7e12e6ddfe5812e44",
+      "role": "GOLD_CORRECTION_PREDECESSOR"
+    },
+    {
+      "path": "eval/a99-closed-loop/generated-docx-v2/DOC-0255.conversion-manifest.v1.json",
+      "sha256": "9771a1b983a2bbdcf0f25cbc364ac22720fe0c870dd5a7d97630923b0700fe5e",
+      "role": "SOURCE_REGENERATION"
+    },
+    {
+      "path": "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0255/docx-r1.v1.json",
+      "sha256": "b864b803bdb0c67be1ca74d2b2c8c66ce63c9bf55a3a40f789e01df9300c3b84",
+      "role": "PILOT_EVIDENCE"
+    },
+    {
+      "path": "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0255/docx-r2.v1.json",
+      "sha256": "e9352117ce6f30a6e9112b979bf899689361a1cade1645551e02797d60558cfc",
+      "role": "PILOT_EVIDENCE"
+    },
+    {
+      "path": "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0255/docx-r3.v1.json",
+      "sha256": "2489ea0d6208b1922862daced920bce200c21814a6a6977a117c2dd134f11cf8",
+      "role": "PILOT_EVIDENCE"
     }
   ],
   "providerCalls": 0,

@@ -56,6 +56,20 @@
       "placementAllowancePerRepetition": 1
     },
     {
+      "authorityId": "DOC-0255",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0255.gold.v1.json",
+      "goldSha256": "9f3850d1f5eb33c6fef809adf1e294f26c89a6f692f7cf799d70bfb1979b5b30",
+      "sourcePath": "todo10_8/generated-docx-v2/05_bien_ban_hop/075_FORTIS_GC_Minutes_Nov21_2024.docx",
+      "sourceSha256": "3dde848f456267ed7890390e2b0331b801ca25e60a6a8f3e33fe1c4c2d819cc5",
+      "sourceUniverseSha256": "1858c515776aab078279f0b4751d7393eeb5ba76ba24659d284cfa2ca10e9ba9",
+      "semanticHeadingTotal": 20,
+      "materializedSemanticClaims": 20,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 1,
+      "placementAllowancePerRepetition": 1
+    },
+    {
       "authorityId": "DOC-0256",
       "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0256.gold.v1.json",
       "goldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
@@ -82,12 +96,40 @@
       "characterSpanEvaluable": true,
       "semanticRequestsPerRepetition": 2,
       "placementAllowancePerRepetition": 1
+    },
+    {
+      "authorityId": "DOC-0259",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0259.gold.v1.json",
+      "goldSha256": "cd029bc6c614e468dfa1c290d7b938abc267f3d3327ef47bdf2e9ed523f536e4",
+      "sourcePath": "todo10_8/generated-docx-v2/05_bien_ban_hop/079_ICP_TAG_Minutes_Apr_2024.docx",
+      "sourceSha256": "b1af73ad0f471af9e29f6f7ac964436d3d4d19b58215a6a07c11aaa8cb58a2b7",
+      "sourceUniverseSha256": "93c7d732eb32fb96c981b5a13cbf6eb87f8112a4fa0d966e7ad94853cd3eba0d",
+      "semanticHeadingTotal": 20,
+      "materializedSemanticClaims": 20,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 1,
+      "placementAllowancePerRepetition": 1
+    },
+    {
+      "authorityId": "SRC-055",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-055.gold.v1.json",
+      "goldSha256": "c8b45bdc8016095e85bfcb9d6cce4de74ae9ac329f193c633905fd5029a81250",
+      "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/055_IDA_External_Review_FY25.pdf",
+      "sourceSha256": "3b9d4317f2e8ca32ff9288d5f7c653fefd7231d5656a5b8a996be656b1dee455",
+      "sourceUniverseSha256": "fee4532b65a164275eb7b43726f08426c39eff55558998abad2f96b22fa75606",
+      "semanticHeadingTotal": 4,
+      "materializedSemanticClaims": 4,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": false,
+      "semanticRequestsPerRepetition": 44,
+      "placementAllowancePerRepetition": 1
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 66,
-    "placementAllowance": 15,
-    "maxProviderCalls": 81
+    "totalPrimaryCalls": 204,
+    "placementAllowance": 24,
+    "maxProviderCalls": 228
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",

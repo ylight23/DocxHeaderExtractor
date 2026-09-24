@@ -24,13 +24,98 @@
     "visualBindingEvaluable": false,
     "hierarchyEvaluable": false
   },
-  "occurrence": null,
-  "occurrenceUnavailableReason": "no occurrence artifact describes this source under the current authority",
+  "occurrence": {
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "claims": [
+      {
+        "approvedWording": "Independent Accountant’s Review Report",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0000:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0000:S0:0-37",
+        "projectedText": "IndependentAccountant’s Review Report",
+        "evidence": "typography: one of the four bold lines set larger than or apart from the body; user-approved"
+      },
+      {
+        "approvedWording": "Management’s Assertion Regarding Commitments and Disbursements for IDA Projects",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0052:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          },
+          {
+            "sourceAlias": "L0053:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0052:S0:0-46|L0053:S0:0-29",
+        "projectedText": "Management’sAssertion RegardingCommitments and Disbursementsfor IDA Projects",
+        "evidence": "typography: one of the four bold lines set larger than or apart from the body; user-approved"
+      },
+      {
+        "approvedWording": "IDA Projects Commitment and Disbursement Schedule",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0061:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0061:S0:0-49",
+        "projectedText": "IDA Projects Commitment and Disbursement Schedule",
+        "evidence": "typography: one of the four bold lines set larger than or apart from the body; user-approved"
+      },
+      {
+        "approvedWording": "Notes on the IDA Projects Commitment and Disbursement Schedule",
+        "sourceParts": [
+          {
+            "sourceAlias": "L5592:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L5592:S0:0-62",
+        "projectedText": "Notes on the IDA Projects Commitment and Disbursement Schedule",
+        "evidence": "typography: one of the four bold lines set larger than or apart from the body; user-approved"
+      }
+    ]
+  },
+  "occurrenceUnavailableReason": null,
   "provenance": [
     {
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-055.semantic-freeze.v1.json",
       "sha256": "468f5ba07c993d2bca34a4c8702b07a7b2146af2788ec78fc60606674d5bdc68",
       "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "gold-correction:SRC-055:itemised-by-typography:2026-09-24",
+      "sha256": "58f2fc60199c2f32f5d26243f653b887c9c052339fcd230aebac74e0a223ad9b",
+      "role": "GOLD_CORRECTION_PREDECESSOR"
     }
   ]
 }

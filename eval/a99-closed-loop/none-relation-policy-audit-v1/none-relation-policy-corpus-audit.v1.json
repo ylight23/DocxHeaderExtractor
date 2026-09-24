@@ -7,12 +7,12 @@
   "question": "Before narrowing a shared instruction, what does the approved corpus evidence about headings that hold no position in the section tree?",
   "corpusCoverage": {
     "authorities": 21,
-    "authoritiesCarryingClaimLevelData": 5,
-    "approvedHeadingsInCorpus": 3955,
-    "materializedClaimsInCorpus": 191,
-    "coverageOfApprovedHeadings": 0.0483,
-    "finding": "Sixteen of twenty-one approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 191 of 3955 approved headings, about 4.8%, exist as claims at all.",
-    "consequence": "Everything below is evidence from five documents (DOC-0205, DOC-0256 and DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
+    "authoritiesCarryingClaimLevelData": 8,
+    "approvedHeadingsInCorpus": 3959,
+    "materializedClaimsInCorpus": 235,
+    "coverageOfApprovedHeadings": 0.0594,
+    "finding": "13 of 21 approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 235 of 3959 approved headings, about 5.9%, exist as claims at all.",
+    "consequence": "Everything below is evidence from 8 documents (all but DOC-0001 and DOC-0252 itemised later) DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
     "byAuthority": [
       {
         "AuthorityId": "DOC-0001",
@@ -58,9 +58,9 @@
       },
       {
         "AuthorityId": "DOC-0255",
-        "approvedHeadings": 18,
-        "materializedClaims": 0,
-        "carriesClaimLevelData": false
+        "approvedHeadings": 20,
+        "materializedClaims": 20,
+        "carriesClaimLevelData": true
       },
       {
         "AuthorityId": "DOC-0256",
@@ -76,9 +76,9 @@
       },
       {
         "AuthorityId": "DOC-0259",
-        "approvedHeadings": 18,
-        "materializedClaims": 0,
-        "carriesClaimLevelData": false
+        "approvedHeadings": 20,
+        "materializedClaims": 20,
+        "carriesClaimLevelData": true
       },
       {
         "AuthorityId": "DOC-0264",
@@ -131,8 +131,8 @@
       {
         "AuthorityId": "SRC-055",
         "approvedHeadings": 4,
-        "materializedClaims": 0,
-        "carriesClaimLevelData": false
+        "materializedClaims": 4,
+        "carriesClaimLevelData": true
       },
       {
         "AuthorityId": "SRC-057",
@@ -147,7 +147,7 @@
     "identities": [
       "DOC-0252 L0000:S0 'MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM' (DocumentTitle)"
     ],
-    "shareOfMaterializedClaims": 0.0052,
+    "shareOfMaterializedClaims": 0.0043,
     "byPromptCategory": {
       "documentTitle": {
         "admittedByPrompt": true,
@@ -254,6 +254,33 @@
         "reading": "The sister document of DOC-0258 (the next meeting of the same group), itemised to its approved 34 in structured PDF atoms; roles were not assigned. The same nine Annex 2 organisation names are approved headings here. Six qwen3.7-flash runs (eval/a99-closed-loop/doc0256-real-harness-exploration-v1, both PDF lanes) did not report its masthead date or meeting-mode lines; their relation hints are in the ledger but are not counted here."
       },
       {
+        "authority": "pilot itemisations",
+        "documents": [
+          {
+            "AuthorityId": "DOC-0255",
+            "approvedHeadings": 20,
+            "roles": {
+              "(none)": 20
+            }
+          },
+          {
+            "AuthorityId": "DOC-0259",
+            "approvedHeadings": 20,
+            "roles": {
+              "(none)": 20
+            }
+          },
+          {
+            "AuthorityId": "SRC-055",
+            "approvedHeadings": 4,
+            "roles": {
+              "(none)": 4
+            }
+          }
+        ],
+        "reading": "Itemised on 2026-09-24 from a pilot: DOC-0255 and DOC-0259 (minutes, DOCX lane, sources regenerated from their PDFs) and SRC-055 (a financial review, PDF). Roles were not assigned. The pilot's three qwen3.7-flash runs per minutes document (eval/a99-closed-loop/pilot-real-harness-v1) put every masthead date and meeting-mode line in the tree-less relation in all three runs - the same catch-all shape DOC-0252 shows - and the user excluded them from Gold. DOC-0259's Gold does keep 'Tuesday, April 30, 2024', which opens the agenda's day and whose text is a date: a date-text heading the proposed wording would also reach."
+      },
+      {
         "authority": "DOC-0258",
         "genre": "meeting minutes with an agenda annex and a participant annex, English, DOCX lane",
         "approvedHeadings": 37,
@@ -276,12 +303,12 @@
       "any rule keyed to a document genre",
       "any wording drawn from DOC-0252"
     ],
-    "evidenceStrength": "Supported where the corpus can speak, and the corpus speaks for 4.8% of its own approved headings. The narrowing is safe for the one document that never uses the category and corrects four of five errors in the one that does; beyond those two (DOC-0205 has no captured model reply to measure against, and DOC-0258's replies carry no relation hints) it is a judgement, not a measurement. The organisation wording in particular is not safe as written: DOC-0256 and DOC-0258 each have nine approved structural headings whose text is an organisation name, and the clause would have to be reworded to exempt a label that opens its own unit before it is carried beyond DOC-0252."
+    "evidenceStrength": "Supported where the corpus can speak, and the corpus speaks for 5.9% of its own approved headings. The narrowing is safe for the one document that never uses the category and corrects four of five errors in the one that does; beyond those two (DOC-0205 has no captured model reply to measure against, and DOC-0258's replies carry no relation hints) it is a judgement, not a measurement. The organisation wording in particular is not safe as written: DOC-0256 and DOC-0258 each have nine approved structural headings whose text is an organisation name, and the clause would have to be reworded to exempt a label that opens its own unit before it is carried beyond DOC-0252."
   },
   "recommendation": {
     "proceedToExperiment": "EXP_MASTHEAD_METADATA",
     "scope": "DOC-0252 PACK_005 and PACK_006, three repeats, 6 semantic calls, proposed cap 9",
-    "why": "The cross-corpus question with a captured model reply to check is answerable only for two documents, and both of them point the same way. DOC-0205's, DOC-0256's and DOC-0258's Gold were materialized without a counted relation-hint capture, so they cannot inform this comparison either way. Waiting for corpus-wide claim data would mean materializing 3764 more approved headings that no one has been asked to materialize - a far larger piece of work than the change it would inform.",
+    "why": "The cross-corpus question with a captured model reply to check is answerable only for two documents, and both of them point the same way. DOC-0205's, DOC-0256's and DOC-0258's Gold were materialized without a counted relation-hint capture, so they cannot inform this comparison either way. Waiting for corpus-wide claim data would mean materializing 3724 more approved headings that no one has been asked to materialize - a far larger piece of work than the change it would inform.",
     "doFirst": "State the narrowing by function, and measure it on the one document that exercises the category, before it is carried to lanes whose documents have never been claim-level evaluated.",
     "residualRisk": "A genre that legitimately wants a masthead kept would regress silently, because no approved claim anywhere in the corpus would catch it. Recorded here rather than resolved.",
     "experimentNames": [

@@ -128,8 +128,8 @@ public sealed class MastheadMetadataExperimentPreflightTests
                 materializedAuthorities = goldRisk.ByAuthority.Count,
                 authorities = CanonicalGoldRegistry.Entries.Count,
                 crossGenreNoneSafety = "NOT_ESTABLISHED",
-                statement = "Sixteen authorities record a heading total and no headings, so no approved claim "
-                    + "outside these five documents can confirm or refute this clause. A result here is causal "
+                statement = $"{CanonicalGoldRegistry.Entries.Count - goldRisk.ByAuthority.Count} authorities record a heading total and no headings, so no approved claim "
+                    + $"outside these {goldRisk.ByAuthority.Count} documents can confirm or refute this clause. A result here is causal "
                     + "evidence about DOC-0252. It is not a corpus-wide semantic proof and must not be "
                     + "recorded as one.",
             },
@@ -282,16 +282,16 @@ public sealed class MastheadMetadataExperimentPreflightTests
         }
 
         return new GoldRisk(atRisk, titlePreserved,
-            "Each materialized claim satisfies one of the clause's two admissions. Two carry the accepted "
-            + "document-title role (DOC-0252 L0000:S0, and DOC-0205's own opening title added by its 71-to-72 "
-            + "occurrence migration); DOC-0256's and DOC-0258's titles are in their sets too but carry no "
-            + "assigned role. Every other claim across all five documents names a unit whose content follows beneath it - "
-            + "sessions, agenda items, regional subheadings, annex headings, DOC-0001's and DOC-0205's "
-            + "numbered chapters, sections and articles, and DOC-0256's and DOC-0258's agenda days and "
-            + "Annex 2 attendee lists. None is an event, mode, date, venue or address line. Eighteen "
-            + "claims (nine each in DOC-0256 and DOC-0258) are organisation names, but each opens its own attendee list, so the structural admission covers "
-            + "them and they are not counted at risk here - the clause's organisation wording would need to "
-            + "keep that admission explicit before being carried beyond DOC-0252.",
+            "Each materialized claim satisfies one of the clause's two admissions: an accepted document "
+            + "title or title-block label, or a unit whose content follows beneath it (sessions, agenda items "
+            + "and days, regional and list subheadings, annex headings, numbered chapters, sections and "
+            + "articles, report and schedule headings). None is a masthead date or meeting-mode line - those "
+            + "were excluded from every itemised Gold. Two kinds of approved claim sit close to the clause's "
+            + "wording and are not counted at risk only because a structural or title admission covers them: "
+            + "organisation names (the Annex 2 list headers of DOC-0256 and DOC-0258, and DOC-0255's committee "
+            + "name in its title blocks), and DOC-0259's 'Tuesday, April 30, 2024', a day header whose text is "
+            + "a date. The clause would need to keep both admissions explicit before being carried beyond "
+            + "DOC-0252.",
             byAuthority);
     }
 
