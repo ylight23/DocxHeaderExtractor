@@ -1,0 +1,22 @@
+{
+  "artifactKind": "a99_known_flaky_infra_tests",
+  "policy": "Recorded, not fixed: no timeout or production change is made only to turn the suite green until a failure reproduces reliably. A failure of one of these in a full-suite run is re-run alone before it is treated as a regression.",
+  "tests": [
+    {
+      "status": "KNOWN_FLAKY_INFRA_TEST",
+      "test": "DocxHeaderExtractor.Tests.McpStdioIntegrationTests.Stdio_server_advertises_only_the_three_read_only_tools",
+      "file": "tests/DocxHeaderExtractor.Tests/McpIntegrationTests.cs",
+      "observed": "2026-09-25: failed once in a full-suite run (1336/1337) during the DOC-0123 Gold materialization; passed on two isolated re-runs",
+      "suspectedCause": "stdio server process startup timing under full-suite load",
+      "blocksGold": false
+    },
+    {
+      "status": "KNOWN_FLAKY_INFRA_TEST",
+      "test": "DocxHeaderExtractor.Tests.PdfLaneExecutionTests.Cancellation_quarantines_late_success_and_late_failure",
+      "file": "tests/DocxHeaderExtractor.Tests/PdfLaneExecutionTests.cs",
+      "observed": "2026-09-24: failed in a full-suite run; passed when run alone",
+      "suspectedCause": "cancellation timing under full-suite load",
+      "blocksGold": false
+    }
+  ]
+}
