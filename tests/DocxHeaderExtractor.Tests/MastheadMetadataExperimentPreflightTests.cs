@@ -15,8 +15,8 @@ namespace DocxHeaderExtractor.Tests;
 /// </para>
 /// <para>
 /// What this experiment can conclude is bounded and the bound is recorded in its own artifact: the
-/// corpus materializes only a few percent of its approved headings (DOC-0001, DOC-0205, DOC-0258, and
-/// DOC-0252 pinned to the R1 vintage this experiment ran against - the artifact records the exact
+/// corpus materializes only a few percent of its approved headings (DOC-0001, DOC-0205, DOC-0256, DOC-0258,
+/// and DOC-0252 pinned to the R1 vintage this experiment ran against - the artifact records the exact
 /// count), so a result here is causal evidence about one document, not proof about the ontology.
 /// </para>
 /// </summary>
@@ -128,8 +128,8 @@ public sealed class MastheadMetadataExperimentPreflightTests
                 materializedAuthorities = goldRisk.ByAuthority.Count,
                 authorities = CanonicalGoldRegistry.Entries.Count,
                 crossGenreNoneSafety = "NOT_ESTABLISHED",
-                statement = "Seventeen authorities record a heading total and no headings, so no approved claim "
-                    + "outside these four documents can confirm or refute this clause. A result here is causal "
+                statement = "Sixteen authorities record a heading total and no headings, so no approved claim "
+                    + "outside these five documents can confirm or refute this clause. A result here is causal "
                     + "evidence about DOC-0252. It is not a corpus-wide semantic proof and must not be "
                     + "recorded as one.",
             },
@@ -284,12 +284,12 @@ public sealed class MastheadMetadataExperimentPreflightTests
         return new GoldRisk(atRisk, titlePreserved,
             "Each materialized claim satisfies one of the clause's two admissions. Two carry the accepted "
             + "document-title role (DOC-0252 L0000:S0, and DOC-0205's own opening title added by its 71-to-72 "
-            + "occurrence migration); DOC-0258's title is in its set too but carries no assigned role. Every "
-            + "other claim across all four documents names a unit whose content follows beneath it - "
+            + "occurrence migration); DOC-0256's and DOC-0258's titles are in their sets too but carry no "
+            + "assigned role. Every other claim across all five documents names a unit whose content follows beneath it - "
             + "sessions, agenda items, regional subheadings, annex headings, DOC-0001's and DOC-0205's "
-            + "numbered chapters, sections and articles, and DOC-0258's agenda days and Annex 2 attendee "
-            + "lists. None is an event, mode, date, venue or address line. Nine DOC-0258 claims are "
-            + "organisation names, but each opens its own attendee list, so the structural admission covers "
+            + "numbered chapters, sections and articles, and DOC-0256's and DOC-0258's agenda days and "
+            + "Annex 2 attendee lists. None is an event, mode, date, venue or address line. Eighteen "
+            + "claims (nine each in DOC-0256 and DOC-0258) are organisation names, but each opens its own attendee list, so the structural admission covers "
             + "them and they are not counted at risk here - the clause's organisation wording would need to "
             + "keep that admission explicit before being carried beyond DOC-0252.",
             byAuthority);

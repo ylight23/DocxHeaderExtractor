@@ -13,8 +13,8 @@ namespace DocxHeaderExtractor.Tests;
 /// question is what the rest of the corpus evidences.
 /// </para>
 /// <para>
-/// The answer is mostly that it cannot say, and that is the finding: seventeen of the twenty-one
-/// approved authorities record a heading total and no headings. This audit reports what the four
+/// The answer is mostly that it cannot say, and that is the finding: sixteen of the twenty-one
+/// approved authorities record a heading total and no headings. This audit reports what the five
 /// that do record them show, and states plainly how much of the corpus that is.
 /// </para>
 /// </summary>
@@ -69,13 +69,20 @@ public sealed class NoneRelationPolicyCorpusAuditTests
         var totalMaterialized = authorities.Sum(item => item.materializedClaims);
 
         // The corpus can only answer for what it materializes, and it materializes very little.
-        Assert.Equal(4, withClaims.Length);
+        Assert.Equal(5, withClaims.Length);
 
         // ---- the only tree-less claim this audit's recommendation is scoped to -------------------
         var doc0252 = withClaims.Single(item => item.AuthorityId == "DOC-0252");
         var doc0001 = withClaims.Single(item => item.AuthorityId == "DOC-0001");
         var doc0205 = withClaims.Single(item => item.AuthorityId == "DOC-0205");
         var doc0258 = withClaims.Single(item => item.AuthorityId == "DOC-0258");
+        var doc0256 = withClaims.Single(item => item.AuthorityId == "DOC-0256");
+        // Structured claims carry no text in semantic.claims; the approved wording lives on the
+        // occurrence claim beside its source parts.
+        using var doc0256Gold = CanonicalGoldRegistry.Resolve("DOC-0256");
+        var doc0256OrganisationHeadings = doc0256Gold.RootElement.GetProperty("occurrence").GetProperty("claims")
+            .EnumerateArray().Count(claim => IsAnnex2Organisation(claim.GetProperty("approvedWording").GetString()!));
+        Assert.Equal(9, doc0256OrganisationHeadings);
         var doc0258OrganisationHeadings = doc0258.texts.Count(text =>
             text is "African Development Bank (AfDB)" or "Asian Development Bank (ADB)"
                 or "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)"
@@ -109,14 +116,14 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                 approvedHeadingsInCorpus = totalApproved,
                 materializedClaimsInCorpus = totalMaterialized,
                 coverageOfApprovedHeadings = Math.Round((double)totalMaterialized / totalApproved, 4),
-                finding = "Seventeen of twenty-one approved authorities record a heading total and no headings. "
+                finding = "Sixteen of twenty-one approved authorities record a heading total and no headings. "
                     + "Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list "
                     + "or span was synthesized from the total.' A corpus-wide audit of which claims need a "
                     + "tree-less relation is therefore not answerable from Gold - "
                     + $"{totalMaterialized} of {totalApproved} approved headings, about "
                     + $"{Math.Round((double)totalMaterialized / totalApproved * 100, 1)}%, exist as claims at all.",
-                consequence = "Everything below is evidence from four documents (DOC-0205 and DOC-0258 "
-                    + "materialized after the other two) in three genres and two languages. It is enough to say "
+                consequence = "Everything below is evidence from five documents (DOC-0205, DOC-0256 and "
+                    + "DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say "
                     + "what the category is used for where it is used, and not enough to say that no genre needs "
                     + "it wider.",
                 byAuthority = authorities.Select(item => new
@@ -154,7 +161,7 @@ public sealed class NoneRelationPolicyCorpusAuditTests
             // ---- Q4: genre variation, as far as two genres allow ----------------------------------
             genreEvidence = new
             {
-                unevidencedGenres = "17 authorities - textbooks, reports and other minutes among them - record "
+                unevidencedGenres = "16 authorities - textbooks, reports and other minutes among them - record "
                     + "totals only. Whether any of them contains an approved masthead, running header or table "
                     + "label cannot be read from Gold.",
                 evidenced = new object[]
@@ -199,6 +206,20 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                         + "category, and the only one where it goes wrong. Its annex restates the event at the "
                         + "top of a page, which is exactly the shape the instruction's 'title and subtitle' "
                         + "clause invites.",
+                },
+                new
+                {
+                    authority = "DOC-0256",
+                    genre = "meeting minutes with an agenda annex and a participant annex, English, PDF lane",
+                    approvedHeadings = doc0256.approvedHeadings,
+                    roles = doc0256.roles,
+                    organisationNamedHeadings = doc0256OrganisationHeadings,
+                    reading = "The sister document of DOC-0258 (the next meeting of the same group), itemised to its "
+                        + "approved 34 in structured PDF atoms; roles were not assigned. The same nine Annex 2 "
+                        + "organisation names are approved headings here. Six qwen3.7-flash runs "
+                        + "(eval/a99-closed-loop/doc0256-real-harness-exploration-v1, both PDF lanes) did not "
+                        + "report its masthead date or meeting-mode lines; their relation hints are in the "
+                        + "ledger but are not counted here.",
                 },
                 new
                 {
@@ -249,8 +270,8 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                     + "corrects four of five errors in the one that does; beyond those two (DOC-0205 has no "
                     + "captured model reply to measure against, and DOC-0258's replies carry no relation hints) "
                     + "it is a judgement, not a measurement. The organisation wording in particular is not "
-                    + "safe as written: DOC-0258 has nine approved structural headings whose text is an "
-                    + "organisation name, and the clause would have to be reworded to exempt a label that "
+                    + "safe as written: DOC-0256 and DOC-0258 each have nine approved structural headings whose "
+                    + "text is an organisation name, and the clause would have to be reworded to exempt a label that "
                     + "opens its own unit before it is carried beyond DOC-0252.",
             },
 
@@ -259,8 +280,8 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                 proceedToExperiment = "EXP_MASTHEAD_METADATA",
                 scope = "DOC-0252 PACK_005 and PACK_006, three repeats, 6 semantic calls, proposed cap 9",
                 why = "The cross-corpus question with a captured model reply to check is answerable only for "
-                      + "two documents, and both of them point the same way. DOC-0205's and DOC-0258's Gold were "
-                      + "materialized without a relation-hint capture, so they cannot inform this comparison "
+                      + "two documents, and both of them point the same way. DOC-0205's, DOC-0256's and DOC-0258's Gold "
+                      + "were materialized without a counted relation-hint capture, so they cannot inform this comparison "
                       + "either way. "
                       + $"Waiting for corpus-wide claim data would mean materializing {totalApproved - totalMaterialized} "
                       + "more approved headings that no one has been asked to materialize - a far larger piece "
@@ -335,6 +356,15 @@ public sealed class NoneRelationPolicyCorpusAuditTests
                 + "say so except by reporting it.",
         };
     }
+
+    private static bool IsAnnex2Organisation(string text) =>
+        text is "African Development Bank (AfDB)" or "Asian Development Bank (ADB)"
+            or "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)"
+            or "Organisation for Economic Co-operation and Development (OECD)"
+            or "Statistical Office of the European Communities (Eurostat)"
+            or "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)"
+            or "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)"
+            or "International Monetary Fund (IMF)" or "World Bank";
 
     private static (int Total, int None) CountRelations(string artifact, string documentId)
     {

@@ -56,6 +56,20 @@
       "placementAllowancePerRepetition": 1
     },
     {
+      "authorityId": "DOC-0256",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0256.gold.v1.json",
+      "goldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+      "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf",
+      "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "sourceUniverseSha256": "5640889907eea803eb3196a3d4498743c4f5131054f69bde3d382845662e3e72",
+      "semanticHeadingTotal": 34,
+      "materializedSemanticClaims": 34,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": false,
+      "semanticRequestsPerRepetition": 6,
+      "placementAllowancePerRepetition": 1
+    },
+    {
       "authorityId": "DOC-0258",
       "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0258.gold.v1.json",
       "goldSha256": "bbe57adf06d69b03bde48068e1b7a509c40a34eed23da7f4f2a50bc3e987ae60",
@@ -71,9 +85,9 @@
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 39,
-    "placementAllowance": 12,
-    "maxProviderCalls": 51
+    "totalPrimaryCalls": 57,
+    "placementAllowance": 15,
+    "maxProviderCalls": 72
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",

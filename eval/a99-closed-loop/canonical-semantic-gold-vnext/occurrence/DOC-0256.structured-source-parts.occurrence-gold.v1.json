@@ -1,0 +1,660 @@
+{
+  "artifactKind": "a99_pdf_structured_occurrence_gold",
+  "schemaVersion": "a99-pdf-structured-occurrence-gold-v1",
+  "documentId": "DOC-0256",
+  "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+  "coordinateProfile": "STRUCTURED_SOURCE_PARTS",
+  "coordinateSystem": "STRUCTURED_SOURCE_PART_TUPLE",
+  "sourceAliasUniverseSha256": "5640889907eea803eb3196a3d4498743c4f5131054f69bde3d382845662e3e72",
+  "semanticHeadingTotal": 34,
+  "migration": {
+    "kind": "HUMAN_APPROVED_GOLD_CORRECTION",
+    "correctedAt": "2026-09-24",
+    "predecessorGoldSha256": "2c6fdabf5c914d4f7d06097c59dd9755b1f194aae9c4150c27e4495ad43ee8c1",
+    "predecessorCapability": "SEMANTIC_COUNT_ONLY",
+    "semanticMembershipChanged": false,
+    "totalChanged": false,
+    "itemised": 34,
+    "historicalOccurrence": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0256.occurrence-gold-v1.json",
+    "historicalOccurrenceSha256": "f5375304796c5569e82fa1ac19fd8e3f01653ad9448c09484891504aa41834a9",
+    "historicalOccurrenceSourceNote": "Taken against an earlier export of the same PDF (06aec4f8...); all 24 headings' text is present in this source.",
+    "kept": [
+      "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "African Development Bank (AfDB)",
+      "Asian Development Bank (ADB)",
+      "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+      "Organisation for Economic Co-operation and Development (OECD)",
+      "Statistical Office of the European Communities (Eurostat)",
+      "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+      "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+      "International Monetary Fund (IMF)",
+      "World Bank"
+    ],
+    "notHeadings": "Masthead date and meeting-mode lines; timed agenda rows.",
+    "evidence": "eval/a99-closed-loop/doc0256-real-harness-exploration-v1",
+    "rolesAssigned": false,
+    "reviewer": "USER"
+  },
+  "boundOccurrences": [
+    {
+      "approvedWording": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0000:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        },
+        {
+          "sourceAlias": "L0001:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0000:S0:0-47|L0001:S0:0-39",
+      "projectedText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM INTER-AGENCY COORDINATION GROUP MEETING",
+      "parserTextDiffers": false,
+      "origin": "KEPT_2026_09_24"
+    },
+    {
+      "approvedWording": "Welcome and meeting objectives",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0004:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0004:S0:0-30",
+      "projectedText": "Welcome and meeting objectives",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Regional updates on the ICP 2021 cycle implementation",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0022:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0022:S0:0-53",
+      "projectedText": "Regional updates on the ICP 2021 cycle implementation",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Africa",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0023:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0023:S0:0-6",
+      "projectedText": "Africa",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Asia and the Pacific",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0047:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0047:S0:0-20",
+      "projectedText": "Asia and the Pacific",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Commonwealth of Independent States",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0076:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0076:S0:0-34",
+      "projectedText": "Commonwealth of Independent States",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Eurostat–OECD PPP Program",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0101:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0101:S0:0-25",
+      "projectedText": "Eurostat–OECD PPP Program",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Latin America and the Caribbean",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0125:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0125:S0:0-31",
+      "projectedText": "Latin America and the Caribbean",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Western Asia",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0148:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0148:S0:0-12",
+      "projectedText": "Western Asia",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Global updates on the ICP 2021 cycle implementation",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0172:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0172:S0:0-51",
+      "projectedText": "Global updates on the ICP 2021 cycle implementation",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Data review: Household consumption price and importance data",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0210:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0210:S0:0-60",
+      "projectedText": "Data review: Household consumption price and importance data",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Data review: Housing prices and volumes",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0232:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0232:S0:0-39",
+      "projectedText": "Data review: Housing prices and volumes",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Data review: Private Education",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0249:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0249:S0:0-30",
+      "projectedText": "Data review: Private Education",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Data review: Government compensation and productivity adjustment",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0255:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0255:S0:0-64",
+      "projectedText": "Data review: Government compensation and productivity adjustment",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Data review: Machinery and equipment and construction",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0268:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0268:S0:0-53",
+      "projectedText": "Data review: Machinery and equipment and construction",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Data review: 2017-2021 National Accounts expenditures",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0282:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0282:S0:0-53",
+      "projectedText": "Data review: 2017-2021 National Accounts expenditures",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Data review: 2017-2021 Population and market exchange rates",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0304:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0304:S0:0-59",
+      "projectedText": "Data review: 2017-2021 Population and market exchange rates",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0312:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0312:S0:0-102",
+      "projectedText": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Planning for the ICP 2024 cycle",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0332:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0332:S0:0-31",
+      "projectedText": "Planning for the ICP 2024 cycle",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Annex 1: Meeting Agenda",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0359:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0359:S0:0-23",
+      "projectedText": "Annex 1: Meeting Agenda",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0360:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0360:S0:0-32",
+      "projectedText": "DAY 1: TUESDAY, OCTOBER 31, 2023",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0383:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0383:S0:0-34",
+      "projectedText": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0394:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0394:S0:0-33",
+      "projectedText": "DAY 3: THURSDAY, NOVEMBER 2, 2023",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0405:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0405:S0:0-31",
+      "projectedText": "DAY 4: FRIDAY, NOVEMBER 3, 2023",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "Annex 2: List of participants",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0421:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0421:S0:0-29",
+      "projectedText": "Annex 2: List of participants",
+      "parserTextDiffers": false,
+      "origin": "HISTORICAL_24"
+    },
+    {
+      "approvedWording": "African Development Bank (AfDB)",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0422:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0422:S0:0-31",
+      "projectedText": "African Development Bank (AfDB)",
+      "parserTextDiffers": false,
+      "origin": "KEPT_2026_09_24"
+    },
+    {
+      "approvedWording": "Asian Development Bank (ADB)",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0427:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0427:S0:0-28",
+      "projectedText": "Asian Development Bank (ADB)",
+      "parserTextDiffers": false,
+      "origin": "KEPT_2026_09_24"
+    },
+    {
+      "approvedWording": "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0430:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0430:S0:0-85",
+      "projectedText": "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)",
+      "parserTextDiffers": false,
+      "origin": "KEPT_2026_09_24"
+    },
+    {
+      "approvedWording": "Organisation for Economic Co-operation and Development (OECD)",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0433:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0433:S0:0-61",
+      "projectedText": "Organisation for Economic Co-operation and Development (OECD)",
+      "parserTextDiffers": false,
+      "origin": "KEPT_2026_09_24"
+    },
+    {
+      "approvedWording": "Statistical Office of the European Communities (Eurostat)",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0436:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0436:S0:0-57",
+      "projectedText": "Statistical Office of the European Communities (Eurostat)",
+      "parserTextDiffers": false,
+      "origin": "KEPT_2026_09_24"
+    },
+    {
+      "approvedWording": "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0439:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0439:S0:0-81",
+      "projectedText": "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)",
+      "parserTextDiffers": false,
+      "origin": "KEPT_2026_09_24"
+    },
+    {
+      "approvedWording": "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0443:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0443:S0:0-73",
+      "projectedText": "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)",
+      "parserTextDiffers": false,
+      "origin": "KEPT_2026_09_24"
+    },
+    {
+      "approvedWording": "International Monetary Fund (IMF)",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0446:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0446:S0:0-34",
+      "projectedText": "International Monetary Fund (IM F)",
+      "parserTextDiffers": true,
+      "origin": "KEPT_2026_09_24"
+    },
+    {
+      "approvedWording": "World Bank",
+      "sourceParts": [
+        {
+          "sourceAlias": "L0448:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
+        }
+      ],
+      "semanticRole": null,
+      "identity": "L0448:S0:0-10",
+      "projectedText": "World Bank",
+      "parserTextDiffers": false,
+      "origin": "KEPT_2026_09_24"
+    }
+  ]
+}
