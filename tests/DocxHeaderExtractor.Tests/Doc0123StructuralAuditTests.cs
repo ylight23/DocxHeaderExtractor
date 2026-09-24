@@ -383,6 +383,13 @@ public sealed partial class Doc0123StructuralAuditTests
                 note = "KEEP/REMOVE/ADD_FROM_OLD and AMBIGUOUS_OF_OLD count items known to be in the old Gold: every item of the itemised sections, plus old items named in its recorded vnext delta (Section X). FRONT_MATTER and SECTION_IX compare by section count only (bySection).",
             },
             bySection,
+            axesOntology = OccurrenceSemanticAxesTests.OntologyId,
+            roleByVerdict = items.GroupBy(i => AxesOf(i).OccurrenceRole).OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => new
+            {
+                keep = g.Count(i => i.Verdict == Verdict.Keep),
+                ambiguous = g.Count(i => i.Verdict == Verdict.Ambiguous),
+                remove = g.Count(i => i.Verdict == Verdict.Remove),
+            }),
             modelCrossCheck = new
             {
                 distinctProposals = classified.Length,
@@ -391,11 +398,81 @@ public sealed partial class Doc0123StructuralAuditTests
                 structuralKeepProposedByModel = keep.Count(Proposed),
                 structuralKeepMissedByModel = keep.Where(i => !Proposed(i)).Select(i => new { i.Section, alias = i.Aliases[0], i.Text }).ToArray(),
             },
-            removals = remove.Select(i => new { i.Section, i.Aliases, i.Text, i.Category, i.Reason, i.InOld }).ToArray(),
-            ambiguousItems = ambiguous.Select(i => new { i.Section, i.Aliases, i.Text, i.Category, i.Reason, i.InOld }).ToArray(),
-            structuralReview = keep.Select(i => new { i.Section, i.Aliases, i.Text, i.Rule, i.Reason, i.InOld }).ToArray(),
+            removals = remove.Select(i => new { i.Section, i.Aliases, i.Text, i.Category, i.Reason, i.InOld, axes = AxesOf(i) }).ToArray(),
+            ambiguousItems = ambiguous.Select(i => new { i.Section, i.Aliases, i.Text, i.Category, i.Reason, i.InOld, axes = AxesOf(i) }).ToArray(),
+            structuralReview = keep.Select(i => new { i.Section, i.Aliases, i.Text, i.Rule, i.Reason, i.InOld, axes = AxesOf(i) }).ToArray(),
             proposals = classified,
         });
+    }
+
+    /// <summary>
+    /// An item on the OCCURRENCE_SEMANTIC_AXES_V1 axes. These describe the occurrence; they do not
+    /// decide isHeading, which stays the item's verdict (and, for the ambiguous ones, the user's call).
+    /// </summary>
+    private sealed record Axes(string[] SemanticFunctions, string PrimaryFunction, string Scope, string OccurrenceRole, string? InformationType = null);
+
+    private static readonly Dictionary<string, Axes> AxesByAlias = new(StringComparer.Ordinal)
+    {
+        // Titles of the document and of the documents embedded in it.
+        ["S0001"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REGION_OPENER"),
+        ["S0042"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REGION_OPENER"),
+        ["S0104"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REGION_OPENER"),
+        ["S0072"] = new(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT", "REGION_OPENER"),
+        // Navigation regions: the opener identifies the table of contents / forms.
+        ["S0117"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
+        ["S0133"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
+        ["S0759"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
+        ["S0876"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
+        ["S1740"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
+        ["S2954"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
+        // Parts.
+        ["S0048"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
+        ["S0061"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
+        ["S0065"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
+        ["S2010"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
+        ["S2251"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
+        ["S2846"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
+        ["S2866"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
+        ["S2921"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
+        ["S2823"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "EMBEDDED_ARTIFACT", "REGION_OPENER"),
+        // Ambiguous and removed items - each described, membership left to the verdict.
+        ["S0012"] = new(["INFORMATION"], "INFORMATION", "REVISION_ENTRY", "REGION_OPENER", "TEMPORAL_METADATA"),
+        ["S0014"] = new(["INFORMATION"], "INFORMATION", "REVISION_ENTRY", "REGION_OPENER", "TEMPORAL_METADATA"),
+        ["S0019"] = new(["INFORMATION"], "INFORMATION", "REVISION_ENTRY", "REGION_OPENER", "TEMPORAL_METADATA"),
+        ["S0021"] = new(["INFORMATION"], "INFORMATION", "REVISION_ENTRY", "REGION_OPENER", "TEMPORAL_METADATA"),
+        ["S0073"] = new(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT", "SUBTITLE"),
+        ["S1341"] = new(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT", "REGION_OPENER"),
+        ["S1389"] = new(["STRUCTURE"], "STRUCTURE", "LIST", "LOCAL_LABEL"),
+        ["S1962"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
+        ["S2009"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REPEATED_TITLE"),
+        ["S2845"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REPEATED_TITLE"),
+        ["S2865"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REPEATED_TITLE"),
+        ["S2920"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REPEATED_TITLE"),
+        ["S2973"] = new(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT", "REPEATED_TITLE"),
+        ["S3170"] = new(["IDENTITY"], "IDENTITY", "FORM", "SUBTITLE"),
+        ["S3184"] = new(["IDENTITY"], "IDENTITY", "FORM", "SUBTITLE"),
+        ["S3201"] = new(["IDENTITY"], "IDENTITY", "FORM", "SUBTITLE"),
+        ["S1027"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
+        ["S1046"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
+        ["S1067"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
+        ["S1109"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
+        ["S1125"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
+        ["S1971"] = new(["STRUCTURE"], "STRUCTURE", "TABLE", "LOCAL_LABEL"),
+        ["S1977"] = new(["STRUCTURE"], "STRUCTURE", "TABLE", "LOCAL_LABEL"),
+    };
+
+    private static readonly HashSet<string> FormStyles = ["SPDForms1", "SPDForm2", "S9Header", "SectionXHeading", "SectionVHeading2"];
+
+    private static Axes AxesOf(Item item)
+    {
+        if (AxesByAlias.TryGetValue(item.Aliases[0], out var named)) return named;
+        var style = item.Rule.StartsWith("style:", StringComparison.Ordinal) ? item.Rule["style:".Length..] : "";
+        if (style is "Head0") return new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER");
+        if (style is "Head11b" || item.Reason.StartsWith("summary section label", StringComparison.Ordinal))
+            return new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "SECTION", "REGION_OPENER");
+        if (FormStyles.Contains(style)) return new(["IDENTITY", "STRUCTURE"], "IDENTITY", "FORM", "REGION_OPENER");
+        if (item.Rule == "clause-head") return new(["STRUCTURE"], "STRUCTURE", "CLAUSE", "REGION_OPENER");
+        return new(["STRUCTURE"], "STRUCTURE", "SECTION", "REGION_OPENER");
     }
 
     /// <summary>A proposal no structural rule claimed, placed by what the source shows about it.</summary>

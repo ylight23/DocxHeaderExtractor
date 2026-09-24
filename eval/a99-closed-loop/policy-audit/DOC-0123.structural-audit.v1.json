@@ -169,6 +169,34 @@
       "reconciliation": "keep 18, ambiguous 4, old 19"
     }
   ],
+  "axesOntology": "OCCURRENCE_SEMANTIC_AXES_V1",
+  "roleByVerdict": {
+    "CAPTION": {
+      "keep": 0,
+      "ambiguous": 6,
+      "remove": 0
+    },
+    "LOCAL_LABEL": {
+      "keep": 0,
+      "ambiguous": 1,
+      "remove": 2
+    },
+    "REGION_OPENER": {
+      "keep": 347,
+      "ambiguous": 5,
+      "remove": 0
+    },
+    "REPEATED_TITLE": {
+      "keep": 0,
+      "ambiguous": 5,
+      "remove": 0
+    },
+    "SUBTITLE": {
+      "keep": 0,
+      "ambiguous": 4,
+      "remove": 0
+    }
+  },
   "modelCrossCheck": {
     "distinctProposals": 529,
     "byCategory": {
@@ -345,7 +373,16 @@
       "Text": "Key Personnel for Design",
       "Category": "TABLE_LABEL",
       "Reason": "row-group label inside the personnel table (exclude 1)",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "TABLE",
+        "OccurrenceRole": "LOCAL_LABEL",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -355,7 +392,16 @@
       "Text": "Key Personnel for Construction",
       "Category": "TABLE_LABEL",
       "Reason": "row-group label inside the personnel table (exclude 1)",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "TABLE",
+        "OccurrenceRole": "LOCAL_LABEL",
+        "InformationType": null
+      }
     }
   ],
   "ambiguousItems": [
@@ -367,7 +413,16 @@
       "Text": "March 2025",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "revision entry date: heads that revision's note (policy 9) or is metadata (exclude 12)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "INFORMATION"
+        ],
+        "PrimaryFunction": "INFORMATION",
+        "Scope": "REVISION_ENTRY",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": "TEMPORAL_METADATA"
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -377,7 +432,16 @@
       "Text": "July 2023",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "revision entry date",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "INFORMATION"
+        ],
+        "PrimaryFunction": "INFORMATION",
+        "Scope": "REVISION_ENTRY",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": "TEMPORAL_METADATA"
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -387,7 +451,16 @@
       "Text": "January 2021",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "revision entry date",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "INFORMATION"
+        ],
+        "PrimaryFunction": "INFORMATION",
+        "Scope": "REVISION_ENTRY",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": "TEMPORAL_METADATA"
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -397,7 +470,16 @@
       "Text": "December 2019",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "revision entry date",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "INFORMATION"
+        ],
+        "PrimaryFunction": "INFORMATION",
+        "Scope": "REVISION_ENTRY",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": "TEMPORAL_METADATA"
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -410,7 +492,16 @@
       "Text": "Request for Proposals Works (Design and Build) (After Initial Selection)",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "the notice's own title block, directly under its heading: a second title or part of it",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "EMBEDDED_ARTIFACT",
+        "OccurrenceRole": "SUBTITLE",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -420,7 +511,16 @@
       "Text": "CODE OF CONDUCT FOR CONTRACTOR’S PERSONNEL",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "the code's own title inside its form, directly under the form heading",
-      "InOld": false
+      "InOld": false,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "EMBEDDED_ARTIFACT",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -430,7 +530,16 @@
       "Text": "Examples of sexual harassment in a work context",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "introduces the list beneath it: local heading (policy 9) or list lead-in",
-      "InOld": false
+      "InOld": false,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "LIST",
+        "OccurrenceRole": "LOCAL_LABEL",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -440,7 +549,16 @@
       "Text": "Contractor’s Representative and Key Personnel",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "repeats the styled heading just above and names the table below it: table title (exclude 3) or heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TABLE",
+        "OccurrenceRole": "CAPTION",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -450,7 +568,16 @@
       "Text": "Particular Conditions",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "repeated document title above each Part: a heading or part of the Part heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRole": "REPEATED_TITLE",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -460,7 +587,16 @@
       "Text": "Particular Conditions",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "repeated document title above Part C",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRole": "REPEATED_TITLE",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -470,7 +606,16 @@
       "Text": "Particular Conditions",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "repeated document title above Part D",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRole": "REPEATED_TITLE",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -480,7 +625,16 @@
       "Text": "Particular Conditions",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "repeated document title above Part E",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRole": "REPEATED_TITLE",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -490,7 +644,16 @@
       "Text": "Notification of Intention to Award",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "the letter's own title repeated under the form heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "EMBEDDED_ARTIFACT",
+        "OccurrenceRole": "REPEATED_TITLE",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -500,7 +663,16 @@
       "Text": "ES Demand Guarantee",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "subtitle of the security form: second title or part of it",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "SUBTITLE",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -510,7 +682,16 @@
       "Text": "Demand Guarantee",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "subtitle of the security form",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "SUBTITLE",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -520,7 +701,16 @@
       "Text": "Demand Guarantee",
       "Category": "STRUCTURAL_HEADING",
       "Reason": "subtitle of the security form",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "SUBTITLE",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -530,7 +720,16 @@
       "Text": "Table A. Local Currency",
       "Category": "TABLE_CAPTION",
       "Reason": "\"Table A. Local Currency\" names the one table below it (exclude 3) though styled as a form heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TABLE",
+        "OccurrenceRole": "CAPTION",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -540,7 +739,16 @@
       "Text": "Table B. Foreign Currency (FC)",
       "Category": "TABLE_CAPTION",
       "Reason": "\"Table B. Foreign Currency (FC)\" names the one table below it",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TABLE",
+        "OccurrenceRole": "CAPTION",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -550,7 +758,16 @@
       "Text": "Table C. Summary of Payment Currencies",
       "Category": "TABLE_CAPTION",
       "Reason": "\"Table C. Summary of Payment Currencies\" names the tables below it",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TABLE",
+        "OccurrenceRole": "CAPTION",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -560,7 +777,16 @@
       "Text": "Sample Schedule of Priced Activities Table",
       "Category": "TABLE_CAPTION",
       "Reason": "\"Sample Schedule of Priced Activities Table\" names the one sample table below it",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TABLE",
+        "OccurrenceRole": "CAPTION",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -570,7 +796,16 @@
       "Text": "Sample Schedule of Priced Sub-activities Table",
       "Category": "TABLE_CAPTION",
       "Reason": "\"Sample Schedule of Priced Sub-activities Table\" names the one sample table below it",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TABLE",
+        "OccurrenceRole": "CAPTION",
+        "InformationType": null
+      }
     }
   ],
   "structuralReview": [
@@ -586,7 +821,16 @@
       "Text": "STANDARD PROCUREMENT DOCUMENT Request for Proposals Works Design and Build (Single-Stage Request for Proposals, after Initial Selection)",
       "Rule": "named",
       "Reason": "cover title block: the document title",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -596,7 +840,16 @@
       "Text": "Revisions",
       "Rule": "named",
       "Reason": "opens the revision history",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -606,7 +859,16 @@
       "Text": "Preface",
       "Rule": "named",
       "Reason": "opens the preface",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -616,7 +878,16 @@
       "Text": "Summary",
       "Rule": "named",
       "Reason": "opens the summary",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -626,7 +897,16 @@
       "Text": "Specific Procurement Notice",
       "Rule": "named",
       "Reason": "summary entry heading its explanatory block",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -636,7 +916,16 @@
       "Text": "Specific Procurement Notice - Request for Proposal (RFP) to Initially Selected Proposers",
       "Rule": "named",
       "Reason": "summary entry heading its explanatory block",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -646,7 +935,17 @@
       "Text": "PART 1 – REQUEST FOR PROPOSAL PROCEDURES",
       "Rule": "named",
       "Reason": "summary part label heading its block",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -656,7 +955,17 @@
       "Text": "Section I - Instructions to Proposers (ITP)",
       "Rule": "named",
       "Reason": "summary section label heading its explanatory block",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -666,7 +975,17 @@
       "Text": "Section II - Proposal Data Sheet (PDS)",
       "Rule": "named",
       "Reason": "summary section label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -676,7 +995,17 @@
       "Text": "Section III - Evaluation and Qualification Criteria",
       "Rule": "named",
       "Reason": "summary section label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -686,7 +1015,17 @@
       "Text": "Section IV - Proposal Forms",
       "Rule": "named",
       "Reason": "summary section label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -696,7 +1035,17 @@
       "Text": "Section V - Eligible Countries",
       "Rule": "named",
       "Reason": "summary section label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -706,7 +1055,17 @@
       "Text": "Section VI - Fraud and Corruption",
       "Rule": "named",
       "Reason": "summary section label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -716,7 +1075,17 @@
       "Text": "PART 2 – EMPLOYER’S REQUIREMENTS",
       "Rule": "named",
       "Reason": "summary part label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -726,7 +1095,17 @@
       "Text": "Section VII - Employer’s Requirements",
       "Rule": "named",
       "Reason": "summary section label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -736,7 +1115,17 @@
       "Text": "PART 3 – CONDITIONS OF CONTRACT AND CONTRACT FORMS",
       "Rule": "named",
       "Reason": "summary part label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -746,7 +1135,17 @@
       "Text": "Section VIII - General Conditions (GC)",
       "Rule": "named",
       "Reason": "summary section label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -756,7 +1155,17 @@
       "Text": "Section IX - Particular Conditions (PC)",
       "Rule": "named",
       "Reason": "summary section label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -766,7 +1175,17 @@
       "Text": "Section X - Contract Forms",
       "Rule": "named",
       "Reason": "summary section label",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -776,7 +1195,16 @@
       "Text": "Notice of Request for Proposals",
       "Rule": "named",
       "Reason": "opens the notice template",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "EMBEDDED_ARTIFACT",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -789,7 +1217,16 @@
       "Text": "Request for Proposals Works Design and Build (Single-Stage RFP after Initial Selection)",
       "Rule": "named",
       "Reason": "cover title of the RFP document proper",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -799,7 +1236,17 @@
       "Text": "Table of Content",
       "Rule": "named",
       "Reason": "opens the table of contents region",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TOC",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -809,7 +1256,16 @@
       "Text": "A. General",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -819,7 +1275,16 @@
       "Text": "B. RFP Document",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -829,7 +1294,16 @@
       "Text": "C. Preparation of Proposals",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -839,7 +1313,16 @@
       "Text": "D. Submission of Proposals",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -849,7 +1332,16 @@
       "Text": "E. Opening of Technical Parts of Proposals",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -859,7 +1351,16 @@
       "Text": "G. Evaluation of Technical Parts of Proposals",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -869,7 +1370,16 @@
       "Text": "H. Opening of Financial Parts",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -879,7 +1389,16 @@
       "Text": "I. Evaluation of Financial Part",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -889,7 +1408,16 @@
       "Text": "J. Evaluation of Combined Technical and Financial Part",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -899,7 +1427,16 @@
       "Text": "K. Award of Contract",
       "Rule": "named",
       "Reason": "PDS group heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -909,7 +1446,17 @@
       "Text": "Contents",
       "Rule": "named",
       "Reason": "opens the section's local contents",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TOC",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -919,7 +1466,16 @@
       "Text": "1.1 Update of Information",
       "Rule": "named",
       "Reason": "numbered criterion heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -929,7 +1485,16 @@
       "Text": "1.2 Financial Resources",
       "Rule": "named",
       "Reason": "numbered criterion heading (mis-styled Footer)",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -939,7 +1504,16 @@
       "Text": "1.3 Contractor’s Representative and Key Personnel",
       "Rule": "named",
       "Reason": "numbered criterion heading (mis-styled Footer)",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -949,7 +1523,16 @@
       "Text": "1.4 Equipment",
       "Rule": "named",
       "Reason": "numbered criterion heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -959,7 +1542,16 @@
       "Text": "1.5 Subcontractors",
       "Rule": "named",
       "Reason": "numbered criterion heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -969,7 +1561,16 @@
       "Text": "TECHINICAL PROPOSAL SCORING METHOLOGY",
       "Rule": "named",
       "Reason": "opens the scoring methodology",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -979,7 +1580,17 @@
       "Text": "Table of Forms",
       "Rule": "named",
       "Reason": "opens the forms list region",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TOC",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -989,7 +1600,16 @@
       "Text": "General`",
       "Rule": "named",
       "Reason": "daywork local heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -999,7 +1619,16 @@
       "Text": "Daywork Labour",
       "Rule": "named",
       "Reason": "daywork local heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -1009,7 +1638,16 @@
       "Text": "Daywork Materials",
       "Rule": "named",
       "Reason": "daywork local heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -1019,7 +1657,16 @@
       "Text": "Daywork Contractor’s Equipment",
       "Rule": "named",
       "Reason": "daywork local heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -1029,7 +1676,16 @@
       "Text": "REQUIRED CONDUCT",
       "Rule": "named",
       "Reason": "code of conduct local heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -1039,7 +1695,16 @@
       "Text": "RAISING CONCERNS",
       "Rule": "named",
       "Reason": "code of conduct local heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -1049,7 +1714,16 @@
       "Text": "CONSEQUENCES OF VIOLATING THE CODE OF CONDUCT",
       "Rule": "named",
       "Reason": "code of conduct local heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -1060,7 +1734,16 @@
       "Text": "ATTACHMENT 1 TO THE CODE OF CONDUCT FORM BEHAVIORS CONSTITUTING SEXUAL EXPLOITATION AND ABUSE (SEA) AND BEHAVIORS CONSTITUTING SEXUAL HARASSMENT (SH",
       "Rule": "named",
       "Reason": "attachment heading (two lines, one heading)",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -1070,7 +1753,16 @@
       "Text": "Declaration",
       "Rule": "named",
       "Reason": "opens the declaration part of the resume form",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_V",
@@ -1080,7 +1772,16 @@
       "Text": "Eligibility for the Provision of Goods, Works and non-consulting Services in Bank-Financed Procurement",
       "Rule": "named",
       "Reason": "section's only subheading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VI",
@@ -1090,7 +1791,16 @@
       "Text": "Purpose",
       "Rule": "named",
       "Reason": "numbered F&C heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VI",
@@ -1100,7 +1810,16 @@
       "Text": "Requirements",
       "Rule": "named",
       "Reason": "numbered F&C heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1110,7 +1829,16 @@
       "Text": "Notes on preparing the Employer’s Requirements",
       "Rule": "named",
       "Reason": "opens the preparation notes",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1120,7 +1848,16 @@
       "Text": "Management and Safety of Hazardous Materials",
       "Rule": "named",
       "Reason": "ES requirement heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1130,7 +1867,16 @@
       "Text": "Resource Efficiency and Pollution Prevention and Management",
       "Rule": "named",
       "Reason": "ES requirement heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1140,7 +1886,16 @@
       "Text": "Resource efficiency",
       "Rule": "named",
       "Reason": "ES requirement subheading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1150,7 +1905,16 @@
       "Text": "Pollution prevention and management",
       "Rule": "named",
       "Reason": "ES requirement subheading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1160,7 +1924,16 @@
       "Text": "Biodiversity Conservation and Sustainable Management of Living Natural Resources",
       "Rule": "named",
       "Reason": "ES requirement heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1170,7 +1943,16 @@
       "Text": "Road Safety",
       "Rule": "named",
       "Reason": "ES requirement heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1180,7 +1962,16 @@
       "Text": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
       "Rule": "named",
       "Reason": "ES option 1 heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1190,7 +1981,16 @@
       "Text": "Suggested content for an Environmental and Social Policy (Statement)",
       "Rule": "named",
       "Reason": "ES option 2 heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1200,7 +2000,16 @@
       "Text": "Minimum Content of ES requirements",
       "Rule": "named",
       "Reason": "ES option 2 heading",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -1210,7 +2019,16 @@
       "Text": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES",
       "Rule": "named",
       "Reason": "ES option 2 heading (repeat occurrence)",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1220,7 +2038,17 @@
       "Text": "Part A – Contract Data",
       "Rule": "named",
       "Reason": "part heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1230,7 +2058,17 @@
       "Text": "Part B – Special Provisions",
       "Rule": "named",
       "Reason": "part heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1240,7 +2078,16 @@
       "Text": "4.24.1 Forced Labour",
       "Rule": "named",
       "Reason": "numbered sub-clause heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1250,7 +2097,16 @@
       "Text": "4.24.2 Child labour",
       "Rule": "named",
       "Reason": "numbered sub-clause heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1260,7 +2116,16 @@
       "Text": "4.24.3 Serious Safety Issues",
       "Rule": "named",
       "Reason": "numbered sub-clause heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1270,7 +2135,16 @@
       "Text": "4.24.4 Obtaining natural resource materials in relation to supplier",
       "Rule": "named",
       "Reason": "numbered sub-clause heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1280,7 +2154,17 @@
       "Text": "Appendix- General Conditions of DAAB Agreement",
       "Rule": "named",
       "Reason": "appendix heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "EMBEDDED_ARTIFACT",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1290,7 +2174,16 @@
       "Text": "Definitions",
       "Rule": "named",
       "Reason": "DAAB clause heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1300,7 +2193,16 @@
       "Text": "General provisions",
       "Rule": "named",
       "Reason": "DAAB clause heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1310,7 +2212,16 @@
       "Text": "Warranties",
       "Rule": "named",
       "Reason": "DAAB clause heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1320,7 +2231,16 @@
       "Text": "7. Confidentiality",
       "Rule": "named",
       "Reason": "DAAB clause heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1330,7 +2250,16 @@
       "Text": "9. Fees and Expenses",
       "Rule": "named",
       "Reason": "DAAB clause heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1340,7 +2269,17 @@
       "Text": "Part C- Fraud and Corruption",
       "Rule": "named",
       "Reason": "part heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1350,7 +2289,16 @@
       "Text": "1. Purpose",
       "Rule": "named",
       "Reason": "numbered F&C heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1360,7 +2308,16 @@
       "Text": "2. Requirements",
       "Rule": "named",
       "Reason": "numbered F&C heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1370,7 +2327,17 @@
       "Text": "Part D- Environmental and Social (ES)",
       "Rule": "named",
       "Reason": "part heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1380,7 +2347,16 @@
       "Text": "Metrics for Progress Reports",
       "Rule": "named",
       "Reason": "opens the metrics list",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1390,7 +2366,16 @@
       "Text": "Metrics for regular reporting:",
       "Rule": "named",
       "Reason": "opens the regular-reporting metrics",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1400,7 +2385,17 @@
       "Text": "Part E- Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment Performance Declaration for Subcontractors",
       "Rule": "named",
       "Reason": "part heading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -1410,7 +2405,16 @@
       "Text": "SEA and/or SH Declaration",
       "Rule": "named",
       "Reason": "declaration heading inside Part E",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -1420,7 +2424,16 @@
       "Text": "The successful Proposer",
       "Rule": "named",
       "Reason": "numbered local heading 1 of the notification",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -1430,7 +2443,16 @@
       "Text": "Other Proposers",
       "Rule": "named",
       "Reason": "numbered local heading 2 (bold lead-in before the instruction)",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -1440,7 +2462,16 @@
       "Text": "Reason/s why your Proposal was unsuccessful",
       "Rule": "named",
       "Reason": "numbered local heading 3 (bold lead-in before the instruction)",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -1450,7 +2481,16 @@
       "Text": "How to request a debriefing",
       "Rule": "named",
       "Reason": "numbered local heading 4",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -1460,7 +2500,16 @@
       "Text": "How to make a complaint",
       "Rule": "named",
       "Reason": "numbered local heading 5",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -1470,7 +2519,16 @@
       "Text": "Standstill Period",
       "Rule": "named",
       "Reason": "numbered local heading 6",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -1480,7 +2538,16 @@
       "Text": "Details of beneficial ownership",
       "Rule": "named",
       "Reason": "opens the ownership details",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "FRONT_MATTER",
@@ -1490,7 +2557,16 @@
       "Text": "Standard Procurement Document",
       "Rule": "style:Title",
       "Reason": "template heading style Title",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "PART_1",
@@ -1500,7 +2576,17 @@
       "Text": "PART 1 – Request for Proposal Procedures",
       "Rule": "style:Head0",
       "Reason": "template heading style Head0",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1510,7 +2596,17 @@
       "Text": "Section I - Instructions to Proposers (ITP)",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1520,7 +2616,17 @@
       "Text": "Table of Content",
       "Rule": "style:Heading1",
       "Reason": "template heading style Heading1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TOC",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1530,7 +2636,16 @@
       "Text": "Section I - Instructions to Proposers",
       "Rule": "style:Heading1",
       "Reason": "template heading style Heading1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1540,7 +2655,16 @@
       "Text": "A. General",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1550,7 +2674,16 @@
       "Text": "Scope of Proposal",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1560,7 +2693,16 @@
       "Text": "Source of Funds",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1570,7 +2712,16 @@
       "Text": "Fraud and Corruption",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1580,7 +2731,16 @@
       "Text": "Eligible Proposers",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1590,7 +2750,16 @@
       "Text": "Eligible Materials, Equipment, and Services",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1600,7 +2769,16 @@
       "Text": "B. Contents of RFP Document",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1610,7 +2788,16 @@
       "Text": "Sections of RFP Document",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1620,7 +2807,16 @@
       "Text": "Clarification of RFP Document, Site Visit, Pre-Proposal Meeting",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1630,7 +2826,16 @@
       "Text": "Amendment of RFP Document",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1640,7 +2845,16 @@
       "Text": "Cost of Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1650,7 +2864,16 @@
       "Text": "Contacting the Employer",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1660,7 +2883,16 @@
       "Text": "Language of Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1670,7 +2902,16 @@
       "Text": "C. Preparation of Proposals",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1680,7 +2921,16 @@
       "Text": "Documents Comprising the Proposal",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1690,7 +2940,16 @@
       "Text": "Letter of Proposal, and Schedules",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1700,7 +2959,16 @@
       "Text": "Alternative Technical Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1710,7 +2978,16 @@
       "Text": "Proposal Prices",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1720,7 +2997,16 @@
       "Text": "Proposal Currencies",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1730,7 +3016,16 @@
       "Text": "Documents Establishing the Qualification of the Proposer",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1740,7 +3035,16 @@
       "Text": "Documents Establishing Conformity of the Works",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1750,7 +3054,16 @@
       "Text": "Securing the Proposal",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1760,7 +3073,16 @@
       "Text": "Period of Validity of Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1770,7 +3092,16 @@
       "Text": "Format and Signing of Proposal",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1780,7 +3111,16 @@
       "Text": "D. Submission of Proposals",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1790,7 +3130,16 @@
       "Text": "Submission, Sealing and Marking of Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1800,7 +3149,16 @@
       "Text": "Deadline for Submission of Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1810,7 +3168,16 @@
       "Text": "Late Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1820,7 +3187,16 @@
       "Text": "Withdrawal, Substitution, and Modification of Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1830,7 +3206,16 @@
       "Text": "E. Opening of Technical Parts of Proposals",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1840,7 +3225,16 @@
       "Text": "Opening of Technical Part by Employer",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1850,7 +3244,16 @@
       "Text": "F. Evaluation of Proposals – General Provisions",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1860,7 +3263,16 @@
       "Text": "Confidentiality",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1870,7 +3282,16 @@
       "Text": "Clarification of Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1880,7 +3301,16 @@
       "Text": "Deviations, Reservations, and Omissions",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1890,7 +3320,16 @@
       "Text": "G. Evaluation of Technical Parts of Proposals",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1900,7 +3339,16 @@
       "Text": "Determination of Responsiveness of Technical Parts",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1910,7 +3358,16 @@
       "Text": "Evaluation of Technical Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1920,7 +3377,16 @@
       "Text": "Evaluation of Proposer’s Qualification",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1930,7 +3396,16 @@
       "Text": "Notification of evaluation of Technical Parts",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1940,7 +3415,16 @@
       "Text": "H. Opening of Financial Parts",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1950,7 +3434,16 @@
       "Text": "Public Opening of Financial Parts when BAFO or negotiations do not apply",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1960,7 +3453,16 @@
       "Text": "Opening of Financial Parts when BAFO or negotiations apply",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1970,7 +3472,16 @@
       "Text": "I. Evaluation of Financial Part",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1980,7 +3491,16 @@
       "Text": "Nonmaterial Nonconformities",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -1990,7 +3510,16 @@
       "Text": "Arithmetic Correction",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2000,7 +3529,16 @@
       "Text": "Conversion to Single Currency",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2010,7 +3548,16 @@
       "Text": "Margin of Preference",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2020,7 +3567,16 @@
       "Text": "Evaluation Process Financial Parts",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2030,7 +3586,16 @@
       "Text": "Abnormally Low Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2040,7 +3605,16 @@
       "Text": "Unbalanced or Front Loaded Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2050,7 +3624,16 @@
       "Text": "J. Evaluation of Combined Technical and Financial Part",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2060,7 +3643,16 @@
       "Text": "Evaluation of Combined Technical and Financial Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2070,7 +3662,16 @@
       "Text": "Best and Final Offer (BAFO)",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2080,7 +3681,16 @@
       "Text": "Most Advantageous Proposal (MAP)",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2090,7 +3700,16 @@
       "Text": "Negotiations",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2100,7 +3719,16 @@
       "Text": "Employer’s Right to Accept Any Proposal, and to Reject Any or All Proposals",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2110,7 +3738,16 @@
       "Text": "Standstill Period",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2120,7 +3757,16 @@
       "Text": "Notification of Intention to Award",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2130,7 +3776,16 @@
       "Text": "K. Award of Contract",
       "Rule": "style:HeadingSPD010",
       "Reason": "template heading style HeadingSPD010",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2140,7 +3795,16 @@
       "Text": "Award Criteria",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2150,7 +3814,16 @@
       "Text": "Notification of Award",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2160,7 +3833,16 @@
       "Text": "Debriefing by the Employer",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2170,7 +3852,16 @@
       "Text": "Signing of Contract",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2180,7 +3871,16 @@
       "Text": "Performance Security",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_I",
@@ -2190,7 +3890,16 @@
       "Text": "Procurement Related Complaint",
       "Rule": "style:HeadingSPD02",
       "Reason": "template heading style HeadingSPD02",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_II",
@@ -2200,7 +3909,17 @@
       "Text": "Section II - Proposal Data Sheet (PDS)",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2210,7 +3929,17 @@
       "Text": "Section III. Evaluation and Qualification Criteria",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2220,7 +3949,16 @@
       "Text": "Technical Part",
       "Rule": "style:SEC3h1",
       "Reason": "template heading style SEC3h1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2230,7 +3968,16 @@
       "Text": "Qualification",
       "Rule": "style:SEC3h2",
       "Reason": "template heading style SEC3h2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2240,7 +3987,16 @@
       "Text": "Evaluation of Technical Part (ITP 31)",
       "Rule": "style:SEC3h2",
       "Reason": "template heading style SEC3h2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2250,7 +4006,16 @@
       "Text": "Financial Part",
       "Rule": "style:SEC3h1",
       "Reason": "template heading style SEC3h1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2260,7 +4025,16 @@
       "Text": "Margin of Preference",
       "Rule": "style:SEC3h2",
       "Reason": "template heading style SEC3h2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2270,7 +4044,16 @@
       "Text": "Evaluation of Financial Part (ITP 40.1(f) )",
       "Rule": "style:SEC3h2",
       "Reason": "template heading style SEC3h2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2280,7 +4063,16 @@
       "Text": "Time Schedule",
       "Rule": "style:Heading4",
       "Reason": "template heading style Heading4",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2290,7 +4082,16 @@
       "Text": "Life Cycle Costs",
       "Rule": "style:Heading4",
       "Reason": "template heading style Heading4",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2300,7 +4101,16 @@
       "Text": "Sustainable Procurement",
       "Rule": "style:Heading4",
       "Reason": "template heading style Heading4",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2310,7 +4120,16 @@
       "Text": "Specific additional criteria",
       "Rule": "style:Heading4",
       "Reason": "template heading style Heading4",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2320,7 +4139,16 @@
       "Text": "Combined Evaluation",
       "Rule": "style:SEC3h2",
       "Reason": "template heading style SEC3h2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_III",
@@ -2330,7 +4158,16 @@
       "Text": "Multiple Contracts (ITP 40.3)",
       "Rule": "style:SEC3h2",
       "Reason": "template heading style SEC3h2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2340,7 +4177,17 @@
       "Text": "Section IV - Proposal Forms",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2350,7 +4197,17 @@
       "Text": "Proposal Forms",
       "Rule": "style:SPDForms1",
       "Reason": "template heading style SPDForms1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2360,7 +4217,17 @@
       "Text": "Letter of Proposal - Technical Part",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2370,7 +4237,17 @@
       "Text": "Letter of Proposal - Financial Part",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2380,7 +4257,17 @@
       "Text": "Appendix to Proposal",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2390,7 +4277,17 @@
       "Text": "Schedule of Cost Indexation",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2400,7 +4297,17 @@
       "Text": "Table of Adjustment Data",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2410,7 +4317,17 @@
       "Text": "Schedule of Priced Activities and Sub-activities",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2420,7 +4337,17 @@
       "Text": "Daywork Schedule",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2430,7 +4357,17 @@
       "Text": "Schedule of Daywork Rates: 1. Labor",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2440,7 +4377,17 @@
       "Text": "Schedule of Daywork Rates: 2. Materials",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2450,7 +4397,17 @@
       "Text": "Schedule of Daywork Rates: 3. Contractor’s Equipment",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2460,7 +4417,17 @@
       "Text": "Daywork Summary",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2470,7 +4437,17 @@
       "Text": "Specified Provisional Sums",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2480,7 +4457,17 @@
       "Text": "Grand Summary",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2490,7 +4477,17 @@
       "Text": "Schedule of Payments",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2500,7 +4497,17 @@
       "Text": "Schedule of Performance Guarantees and Performance Damages",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2510,7 +4517,17 @@
       "Text": "Technical Proposal Forms",
       "Rule": "style:SPDForms1",
       "Reason": "template heading style SPDForms1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2520,7 +4537,17 @@
       "Text": "Design Proposal",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2530,7 +4557,17 @@
       "Text": "Construction Management Strategy",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2540,7 +4577,17 @@
       "Text": "Method Statement for key construction activities",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2550,7 +4597,17 @@
       "Text": "Sustainable Procurement Proposal",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2560,7 +4617,17 @@
       "Text": "Code of Conduct for Contractor’s Personnel (ES) Form",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2570,7 +4637,17 @@
       "Text": "Work Program",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2580,7 +4657,17 @@
       "Text": "Contract Personnel Organization Chart",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2590,7 +4677,17 @@
       "Text": "Risk assessment and Proposed Management Plan",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2600,7 +4697,17 @@
       "Text": "Contractor’s Equipment",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2610,7 +4717,17 @@
       "Text": "Personnel",
       "Rule": "style:SPDForms1",
       "Reason": "template heading style SPDForms1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2620,7 +4737,17 @@
       "Text": "Key Personnel qualifications and resource schedule",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2630,7 +4757,17 @@
       "Text": "Resume and Declaration",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2640,7 +4777,17 @@
       "Text": "Contractor’s Representative and Key Personnel",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2650,7 +4797,17 @@
       "Text": "Subcontractors",
       "Rule": "style:SPDForms1",
       "Reason": "template heading style SPDForms1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2660,7 +4817,17 @@
       "Text": "Proposed Subcontractors",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2670,7 +4837,17 @@
       "Text": "Qualification Forms",
       "Rule": "style:SPDForms1",
       "Reason": "template heading style SPDForms1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2680,7 +4857,17 @@
       "Text": "Proposer Information Sheet",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2690,7 +4877,17 @@
       "Text": "Party to JV Information Sheet",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2700,7 +4897,17 @@
       "Text": "Historical Contract Non-Performance, Pending Litigation and Litigation History",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2710,7 +4917,17 @@
       "Text": "Environmental and Social Performance Declaration",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2720,7 +4937,17 @@
       "Text": "Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment Performance Declaration",
       "Rule": "style:SectionVHeading2",
       "Reason": "template heading style SectionVHeading2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2730,7 +4957,17 @@
       "Text": "Current Contract Commitments / Works in Progress",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2740,7 +4977,17 @@
       "Text": "Financial Resources",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2750,7 +4997,17 @@
       "Text": "Others",
       "Rule": "style:SPDForm2",
       "Reason": "template heading style SPDForm2",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2760,7 +5017,17 @@
       "Text": "Form of Proposal Security – Demand Guarantee",
       "Rule": "style:SPDForms1",
       "Reason": "template heading style SPDForms1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IV",
@@ -2770,7 +5037,17 @@
       "Text": "Form of Proposal-Securing Declaration",
       "Rule": "style:SPDForms1",
       "Reason": "template heading style SPDForms1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_V",
@@ -2780,7 +5057,17 @@
       "Text": "Section V - Eligible Countries",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VI",
@@ -2790,7 +5077,17 @@
       "Text": "Section VI - Fraud and Corruption",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "PART_2",
@@ -2800,7 +5097,17 @@
       "Text": "PART 2 –Employer’s Requirements",
       "Rule": "style:Head0",
       "Reason": "template heading style Head0",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2810,7 +5117,17 @@
       "Text": "Section VII. Employer’s Requirements",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2820,7 +5137,17 @@
       "Text": "Table of Content",
       "Rule": "style:Heading1",
       "Reason": "template heading style Heading1",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TOC",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2830,7 +5157,16 @@
       "Text": "Employer’s Requirements",
       "Rule": "style:SPD3EmployersRequirement",
       "Reason": "template heading style SPD3EmployersRequirement",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2840,7 +5176,16 @@
       "Text": "Environmental and Social (ES) requirements",
       "Rule": "style:SPD3EmployersRequirement",
       "Reason": "template heading style SPD3EmployersRequirement",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2850,7 +5195,16 @@
       "Text": "Environmental and Social (ES) requirements",
       "Rule": "style:SPD3EmployersRequirement",
       "Reason": "template heading style SPD3EmployersRequirement",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2860,7 +5214,16 @@
       "Text": "Scope of the Works",
       "Rule": "style:SPD3EmployersRequirement",
       "Reason": "template heading style SPD3EmployersRequirement",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2870,7 +5233,16 @@
       "Text": "Site Information",
       "Rule": "style:SPD3EmployersRequirement",
       "Reason": "template heading style SPD3EmployersRequirement",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2880,7 +5252,16 @@
       "Text": "Contractor’s Representative and Key Personnel",
       "Rule": "style:SPD3EmployersRequirement",
       "Reason": "template heading style SPD3EmployersRequirement",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2890,7 +5271,16 @@
       "Text": "Specifications",
       "Rule": "style:SPD3EmployersRequirement",
       "Reason": "template heading style SPD3EmployersRequirement",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2900,7 +5290,16 @@
       "Text": "Drawings",
       "Rule": "style:SPD3EmployersRequirement",
       "Reason": "template heading style SPD3EmployersRequirement",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VII",
@@ -2910,7 +5309,16 @@
       "Text": "Supplementary Information",
       "Rule": "style:SPD3EmployersRequirement",
       "Reason": "template heading style SPD3EmployersRequirement",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "PART_3",
@@ -2920,7 +5328,17 @@
       "Text": "PART 3 – Conditions of Contract and Contract Forms",
       "Rule": "style:Head0",
       "Reason": "template heading style Head0",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "DOCUMENT_PART",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_VIII",
@@ -2930,7 +5348,17 @@
       "Text": "Section VIII - General Conditions (GC)",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": true
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -2940,7 +5368,17 @@
       "Text": "Section IX - Particular Conditions (PC)",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -2950,7 +5388,17 @@
       "Text": "Section X - Contract Forms",
       "Rule": "style:Head11b",
       "Reason": "template heading style Head11b",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "SECTION",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -2960,7 +5408,17 @@
       "Text": "Table of Forms",
       "Rule": "style:Subtitle2",
       "Reason": "template heading style Subtitle2",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TOC",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -2970,7 +5428,17 @@
       "Text": "Notification of Intention to Award",
       "Rule": "style:S9Header",
       "Reason": "template heading style S9Header",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -2980,7 +5448,17 @@
       "Text": "Beneficial Ownership Disclosure Form",
       "Rule": "style:SectionXHeading",
       "Reason": "template heading style SectionXHeading",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -2990,7 +5468,17 @@
       "Text": "Letter of Acceptance",
       "Rule": "style:S9Header",
       "Reason": "template heading style S9Header",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -3000,7 +5488,17 @@
       "Text": "Contract Agreement",
       "Rule": "style:S9Header",
       "Reason": "template heading style S9Header",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -3010,7 +5508,17 @@
       "Text": "Performance Security – Option 1: Demand Guarantee",
       "Rule": "style:S9Header",
       "Reason": "template heading style S9Header",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -3020,7 +5528,17 @@
       "Text": "Performance Security – Option 2: Performance Bond",
       "Rule": "style:S9Header",
       "Reason": "template heading style S9Header",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -3030,7 +5548,17 @@
       "Text": "Environmental and Social (ES ) Performance Security",
       "Rule": "style:S9Header",
       "Reason": "template heading style S9Header",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -3040,7 +5568,17 @@
       "Text": "Advance Payment Security",
       "Rule": "style:S9Header",
       "Reason": "template heading style S9Header",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_X",
@@ -3050,7 +5588,17 @@
       "Text": "Retention Money Security",
       "Rule": "style:S9Header",
       "Reason": "template heading style S9Header",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3061,7 +5609,16 @@
       "Text": "Sub-Clause 1.1.4 Base Date",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3072,7 +5629,16 @@
       "Text": "Sub-Clause 1.1.49 Laws",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3083,7 +5649,16 @@
       "Text": "Sub-Clause 1.1.59 Particular Conditions",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3094,7 +5669,16 @@
       "Text": "Sub-Clause 1.1.74 Site",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3105,7 +5689,16 @@
       "Text": "Sub-Clause 1.1.83 Tender",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3115,7 +5708,16 @@
       "Text": "Sub-Clause 1.1 91 Bank",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title in one paragraph",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3126,7 +5728,16 @@
       "Text": "Sub-Clause 1.1.92 Borrower",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3137,7 +5748,16 @@
       "Text": "Sub-Clause 1.1.93 ES",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3148,7 +5768,16 @@
       "Text": "Sub-Clause 1.1.94 Sexual Exploitation and Abuse (SEA), and Sexual Harassment (SH)",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3159,7 +5788,16 @@
       "Text": "Sub-Clause 1.1.95 Milestone",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3170,7 +5808,16 @@
       "Text": "Sub-Clause 1.1.96 Milestone Certificate",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3181,7 +5828,16 @@
       "Text": "Sub-Clause 1.2 Interpretation",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3192,7 +5848,16 @@
       "Text": "Sub-Clause 1.5 Priority of Documents",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3203,7 +5868,16 @@
       "Text": "Sub-Clause 1.6 Contract Agreement",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3214,7 +5888,16 @@
       "Text": "Sub-Clause 1.12 Confidentiality",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3225,7 +5908,16 @@
       "Text": "Sub-Clause 1.17 Inspections & Audit by the Bank",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3236,7 +5928,16 @@
       "Text": "Sub-Clause 2.4 Employer’s Financial Arrangements",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3247,7 +5948,16 @@
       "Text": "Sub-Clause 2.6 Employer-Supplied Materials and Employer’s Equipment",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3258,7 +5968,16 @@
       "Text": "Sub-Clause 3.1 The Engineer",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3269,7 +5988,16 @@
       "Text": "Sub-Clause 3.2 Engineer’s Duties and Authority",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3280,7 +6008,16 @@
       "Text": "Sub-Clause 3.3 Engineer’s Representative",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3291,7 +6028,16 @@
       "Text": "Sub-Clause 3.4 Delegation by the Engineer",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3302,7 +6048,16 @@
       "Text": "Sub-Clause 3.6 Replacement of the Engineer",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3313,7 +6068,16 @@
       "Text": "Sub-Clause 4.1 Contractor’s General Obligations",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3324,7 +6088,16 @@
       "Text": "Sub-Clause 4.2 Performance Security and ES Performance Security",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3336,7 +6109,16 @@
       "Text": "Sub-Clause 4.2.1 Contractor’s obligations",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3347,7 +6129,16 @@
       "Text": "Sub-Clause 4.2.2 Claims under the Performance Security",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3358,7 +6149,16 @@
       "Text": "Sub-Clause 4.2.3 Return of Performance Security",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3369,7 +6169,16 @@
       "Text": "Sub-Clause 4.3 Contractor’s Representative",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3379,7 +6188,16 @@
       "Text": "Sub-Clause 4.4 Subcontractors",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title in one paragraph",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3390,7 +6208,16 @@
       "Text": "Sub-Clause 4.5.1 Objection to nomination",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3401,7 +6228,16 @@
       "Text": "Sub-Clause 4.6 Co-operation",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3412,7 +6248,16 @@
       "Text": "Sub-Clause 4.8 Health and Safety Obligations",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3423,7 +6268,16 @@
       "Text": "Sub-Clause 4.15 Access Route",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3434,7 +6288,16 @@
       "Text": "Sub-Clause 4.18 Protection of the Environment",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3445,7 +6308,16 @@
       "Text": "Sub-Clause 4.20 Progress Reports",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3456,7 +6328,16 @@
       "Text": "Sub-Clause 4.21 Security of the Site",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3467,7 +6348,16 @@
       "Text": "Sub-Clause 4.23 Archaeological and Geological Findings",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3478,7 +6368,16 @@
       "Text": "Sub-Clause 4.24 Suppliers (other than Subcontractors)",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3489,7 +6388,16 @@
       "Text": "Sub-Clause 4.25 Code of Conduct",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3500,7 +6408,16 @@
       "Text": "Sub-Clause 4.26 Milestones",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3511,7 +6428,16 @@
       "Text": "Sub-Clause 5.4 Technical Standards and Regulations",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3522,7 +6448,16 @@
       "Text": "Sub-Clause 6.1 Engagement of Staff and Labour",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3533,7 +6468,16 @@
       "Text": "Sub-Clause 6.2 Rates of Wages and Conditions of Labour",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3544,7 +6488,16 @@
       "Text": "Sub-Clause 6.5 Working Hours",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3555,7 +6508,16 @@
       "Text": "Sub-Clause 6.6 Facilities for Staff and Labour",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3566,7 +6528,16 @@
       "Text": "Sub-Clause 6.7 Health and Safety of Personnel",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3577,7 +6548,16 @@
       "Text": "Sub-Clause 6.9 Contractor’s Personnel",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3588,7 +6568,16 @@
       "Text": "Sub-Clause 6.12 Key Personnel",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3599,7 +6588,16 @@
       "Text": "Sub-Clause 6.13 Foreign Personnel",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3610,7 +6608,16 @@
       "Text": "Sub-Clause 6.14 Supply of Foodstuffs",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3621,7 +6628,16 @@
       "Text": "Sub-Clause 6.15 Supply of Water",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3632,7 +6648,16 @@
       "Text": "Sub-Clause 6.16 Measures against Insect and Pest Nuisance",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3643,7 +6668,16 @@
       "Text": "Sub-Clause 6.17 Alcoholic Liquor or Drugs",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3654,7 +6688,16 @@
       "Text": "Sub-Clause 6.18 Arms and Ammunition",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3665,7 +6708,16 @@
       "Text": "Sub-Clause 6.19 Festivals and Religious Customs",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3676,7 +6728,16 @@
       "Text": "Sub-Clause 6.20 Funeral Arrangements",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3687,7 +6748,16 @@
       "Text": "Sub-Clause 6.21 Forced Labour",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3698,7 +6768,16 @@
       "Text": "Sub-Clause 6.22 Child Labour",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3709,7 +6788,16 @@
       "Text": "Sub-Clause 6.23 Employment Records of Workers",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3720,7 +6808,16 @@
       "Text": "Sub-Clause 6.24 Workers’ Organisations",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3731,7 +6828,16 @@
       "Text": "Sub-Clause 6.25 Non-Discrimination and Equal Opportunity",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3742,7 +6848,16 @@
       "Text": "Sub-Clause 6.26 Contractor’s Personnel Grievance Mechanism",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3753,7 +6868,16 @@
       "Text": "Sub-Clause 6.27 Training of Contractor’s Personnel",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3763,7 +6887,16 @@
       "Text": "Sub-Clause 7.3 Inspection",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title in one paragraph",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3774,7 +6907,16 @@
       "Text": "Sub-Clause 7.7 Ownership of Plant and Materials",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3785,7 +6927,16 @@
       "Text": "Sub-Clause 8.1 Commencement of Work",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3796,7 +6947,16 @@
       "Text": "Sub-Clause 11.7 Right of Access after Taking Over",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3807,7 +6967,16 @@
       "Text": "Sub-Clause 13.3.1 Variation by Instruction",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3818,7 +6987,16 @@
       "Text": "Sub-Clause 13.4 Provisional Sums",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3829,7 +7007,16 @@
       "Text": "Sub-Clause 13.6 Adjustments for Changes in Laws",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3840,7 +7027,16 @@
       "Text": "Sub-Clause 14.1 The Contract Price",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3851,7 +7047,16 @@
       "Text": "Sub-Clause 14.1 The Contract Price",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3862,7 +7067,16 @@
       "Text": "Sub-Clause 14.2.1 Advance Payment Guarantee",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3873,7 +7087,16 @@
       "Text": "Sub-Clause 14.3 Application for Interim Payment",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3884,7 +7107,16 @@
       "Text": "Sub-Clause 14.4 Schedule of Payments",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3895,7 +7127,16 @@
       "Text": "Sub-Clause 14.6.2 Withholding (amounts in) an IPC",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3906,7 +7147,16 @@
       "Text": "Sub-Clause 14.7 Payment",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3917,7 +7167,16 @@
       "Text": "Sub-Clause 14.9 Release of Retention Money",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3928,7 +7187,16 @@
       "Text": "Sub-Clause 14.15 Currencies of Payment",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3939,7 +7207,16 @@
       "Text": "Sub-Clause 15.1 Notice to Correct",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3950,7 +7227,16 @@
       "Text": "Sub-Clause 15.2.1 Notice",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3961,7 +7247,16 @@
       "Text": "Sub-Clause 15.8 Fraud and Corruption",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3972,7 +7267,16 @@
       "Text": "Sub-Clause 16.1 Suspension by Contractor",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3983,7 +7287,16 @@
       "Text": "Sub-Clause 16.2.1 Notice",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -3994,7 +7307,16 @@
       "Text": "Sub-Clause 16.2.2 Termination",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4005,7 +7327,16 @@
       "Text": "Sub-Clause 16.3 Contractor’s Obligations After Termination",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4015,7 +7346,16 @@
       "Text": "Sub-Clause 17.1 Responsibility for Care of the Works",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title in one paragraph",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4026,7 +7366,16 @@
       "Text": "Sub-Clause 17.7 Use of Employer’s Accommodation/Facilities",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4037,7 +7386,16 @@
       "Text": "Sub-Clause 18.1 Exceptional Events",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4048,7 +7406,16 @@
       "Text": "Sub-Clause 18.4 Consequences of an Exceptional Event",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4059,7 +7426,16 @@
       "Text": "Sub-Clause 18.5 Optional Termination",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4070,7 +7446,16 @@
       "Text": "Sub-Clause 19.1 General Requirements",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4081,7 +7466,16 @@
       "Text": "Sub-Clause 19.2 insurance to be provided by the Contractor",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4092,7 +7486,16 @@
       "Text": "Sub-Clause 19.2.5 Injury to employees",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4103,7 +7506,16 @@
       "Text": "Sub-Clause 20.1 Claims",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4114,7 +7526,16 @@
       "Text": "Sub-Clause 20.2 Claims for Payment and/or EOT",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4125,7 +7546,16 @@
       "Text": "Sub-Clause 21.1 Constitution of the DAAB",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4136,7 +7566,16 @@
       "Text": "Sub-Clause 21.2 Failure to Appoint DAAB Member (s)",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     },
     {
       "Section": "SECTION_IX",
@@ -4147,7 +7586,16 @@
       "Text": "Sub-Clause 21.6 Arbitration",
       "Rule": "clause-head",
       "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
-      "InOld": null
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "CLAUSE",
+        "OccurrenceRole": "REGION_OPENER",
+        "InformationType": null
+      }
     }
   ],
   "proposals": [
