@@ -8,25 +8,23 @@ using DocxHeaderExtractor.DocumentProcessing.Policy;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
-/// Consolidates every user-approved Gold authority into one root, and proves it was a move rather
-/// than a re-decision.
+/// Generates the consumer view of Gold - <c>gold-current/registry.v1.json</c> and
+/// <c>gold-current/documents/{ID}.gold.v1.json</c> - from the one authored file per document in
+/// <c>eval/a99-closed-loop/gold/</c> (see <see cref="GoldAuthoredSourceTests"/>), and nothing else.
 /// <para>
-/// Nothing here judges a document. Each canonical file is derived from the semantic freeze the user
-/// already approved, plus an occurrence artifact only where that artifact provably describes the
-/// same source and the same heading set. No provider call, no model call, no re-review.
+/// Nothing here judges a document. Every decision is copied from the authored file; only what
+/// follows from it - claim projections, capabilities, the runtime source universe - is derived. No
+/// provider call, no model call, no re-review.
 /// </para>
 /// <para>
-/// The rule that matters when the two disagree: the latest user-approved semantic truth is primary.
-/// An older occurrence artifact covering fewer headings does not reduce the total - DOC-0205 is 72
-/// with a 71-heading artifact beside it, DOC-0258 is 37 against an older 24, DOC-0256 is 34 against
-/// an older 24. In each case the artifact is not imported and the source is simply not occurrence-
-/// evaluable yet, which is a smaller loss than a quietly wrong total.
+/// The authored files were migrated on 2026-09-24 from the older two-input layout (a semantic freeze
+/// plus an occurrence artifact under canonical-semantic-gold-vnext); regenerating from them reproduced
+/// every consumer file byte for byte. The rule that governed that layout still holds: the approved
+/// semantic total is primary, and an itemised list that does not add up to it fails closed.
 /// </para>
 /// </summary>
 public sealed class CanonicalGoldConsolidationTests
 {
-    private const string SemanticRoot = "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic";
-    private const string OccurrenceRoot = "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence";
 
     /// <summary>
     /// The totals this consolidation must preserve. Pinned so that a move which changed one would
@@ -554,164 +552,92 @@ public sealed class CanonicalGoldConsolidationTests
 
     private sealed record ProvenanceItem(string Path, string Sha256, string Role);
 
-    private static IReadOnlyList<Authority> Authorities()
-    {
-        var directory = TestRepository.Path(SemanticRoot);
-        return Directory.EnumerateFiles(directory, "*.semantic-freeze.v1.json")
-            .OrderBy(path => Path.GetFileName(path), StringComparer.Ordinal)
-            .Select(Build)
-            .ToArray();
-    }
+    private static IReadOnlyList<Authority> Authorities() =>
+        GoldAuthoredSourceTests.AuthoredFiles().Select(file => Build(file.Path)).ToArray();
 
-    private static Authority Build(string semanticPath)
+    /// <summary>
+    /// One authored file in, one consumer view out. Everything a person decided is copied; only what
+    /// follows from it - projections, capabilities, the runtime source universe - is derived here.
+    /// </summary>
+    private static Authority Build(string authoredPath)
     {
-        var semanticText = File.ReadAllText(semanticPath);
-        using var semantic = JsonDocument.Parse(semanticText);
-        var root = semantic.RootElement;
-        var id = root.GetProperty("authorityKey").GetString()!;
-        var record = root.GetProperty("authorityRecord");
+        using var authored = JsonDocument.Parse(File.ReadAllText(authoredPath));
+        var root = authored.RootElement;
+        Assert.Equal(GoldAuthoredSourceTests.AuthoredSchema, root.GetProperty("schemaVersion").GetString());
+        var id = root.GetProperty("authorityId").GetString()!;
+        var source = root.GetProperty("source");
+        var approval = root.GetProperty("approval");
 
-        // Only a current, verified, user-approved freeze becomes active Gold.
-        Assert.Equal("FROZEN_SEMANTIC_VNEXT", root.GetProperty("status").GetString());
-        Assert.Equal("VERIFIED", root.GetProperty("sourceLineageStatus").GetString());
-        Assert.True(record.GetProperty("userFinalApproval").GetBoolean());
-        Assert.Equal("USER", record.GetProperty("finalAuthority").GetString());
+        // Only a current, verified, user-approved Gold becomes active.
+        Assert.Equal("VERIFIED", source.GetProperty("sourceLineageStatus").GetString());
+        Assert.True(approval.GetProperty("userFinalApproval").GetBoolean());
+        Assert.Equal("USER", approval.GetProperty("authority").GetString());
 
         var total = root.GetProperty("semanticHeadingTotal").GetInt32();
-        var sourceSha = root.GetProperty("sourceSha256").GetString()!;
-        var capabilities = root.GetProperty("capabilities");
-        var provenance = new List<ProvenanceItem>
-        {
-            new(RelativeTo(semanticPath), CanonicalArtifactHash.OfText(semanticText), "SEMANTIC_AUTHORITY"),
-        };
+        var sourceSha = source.GetProperty("sourceSha256").GetString()!;
+        var sourcePath = source.GetProperty("sourcePath").GetString()!;
+        var mediaType = source.GetProperty("mediaType").GetString()!;
+        var truthDefinition = approval.GetProperty("truthDefinition").GetString();
+        var declared = root.GetProperty("declaredCapabilities");
 
         var claims = new List<JsonElement>();
         var semanticClaims = new List<object>();
         var occurrenceEvaluable = false;
         var characterSpanEvaluable = false;
-        string? unavailable = "no occurrence artifact describes this source under the current authority";
+        var structuredSourcePartsEvaluable = false;
         string? coordinateSystem = null;
         string? sourceUniverseSha = null;
-        string? reviewTimeUniverseSha = null;
-        var structuredSourcePartsEvaluable = false;
+        var unavailable = Text(root, "occurrenceUnavailableReason");
 
-        var occurrencePath = TestRepository.Path($"{OccurrenceRoot}/{id}.occurrence-gold.v1.json");
-        // An authority declares the structured profile by the presence of this sibling file, next
-        // to its legacy one - not by its id. Any authority that gets one migrates the same way
-        // DOC-0252 did; nothing here names a document.
-        var structuredPath = TestRepository.Path(
-            $"{OccurrenceRoot}/{id}.structured-source-parts.occurrence-gold.v1.json");
-
-        if (File.Exists(structuredPath))
+        var occurrence = root.GetProperty("occurrence");
+        if (occurrence.ValueKind == JsonValueKind.Object)
         {
-            var structuredText = File.ReadAllText(structuredPath);
-            using var structured = JsonDocument.Parse(structuredText);
-            var structuredRoot = structured.RootElement;
-            var structuredSha = structuredRoot.GetProperty("sourceSha256").GetString();
-            var structuredTotal = structuredRoot.GetProperty("semanticHeadingTotal").GetInt32();
-            var bound = structuredRoot.GetProperty("boundOccurrences");
+            var bound = occurrence.GetProperty("claims");
+            // Fail closed: an itemised Gold that does not add up to its approved total is not Gold.
+            Assert.Equal(total, bound.GetArrayLength());
+            claims.AddRange(bound.EnumerateArray().Select(item => item.Clone()));
+            occurrenceEvaluable = true;
+            unavailable = null;
 
-            var sameSource = string.Equals(structuredSha, sourceSha, StringComparison.Ordinal);
-            var sameCount = structuredTotal == total && bound.GetArrayLength() == total;
-
-            if (sameSource && sameCount)
+            switch (occurrence.GetProperty("coordinateSystem").GetString())
             {
-                // Structured claims are a list of exact selections, not one alias plus one text -
-                // the shape a claim needs once a heading may span more than one coordinate atom.
-                claims.AddRange(bound.EnumerateArray().Select(item => item.Clone()));
-                semanticClaims.AddRange(bound.EnumerateArray().Select(item => (object)new
-                {
-                    sourceParts = item.GetProperty("sourceParts").Clone(),
-                    semanticRole = Text(item, "semanticRole"),
-                }));
-                occurrenceEvaluable = true;
-                characterSpanEvaluable = false;
-                structuredSourcePartsEvaluable = true;
-                coordinateSystem = "STRUCTURED_SOURCE_PART_TUPLE";
-                unavailable = null;
-                sourceUniverseSha = PdfStructuredSourceAuthorityBuilder
-                    .Build(TestRepository.Path(root.GetProperty("authoritySourcePath").GetString()!))
-                    .SourceAliasUniverseHash;
-                provenance.Add(new(RelativeTo(structuredPath),
-                    CanonicalArtifactHash.OfText(structuredText), "STRUCTURED_OCCURRENCE_AUTHORITY"));
-                // Walked rather than read once: a later correction (add/remove a claim) can be
-                // layered on top of the coordinate migration, and each layer's own predecessor must
-                // stay traceable rather than the newest layer's hash overwriting the older one's role.
-                AddMigrationLineage(structuredRoot.GetProperty("migration"), provenance);
-            }
-            else
-            {
-                unavailable = sameSource
-                    ? $"structured occurrence artifact describes {structuredTotal} headings against an approved total of {total}"
-                    : "structured occurrence artifact was taken against different source bytes";
-                provenance.Add(new(RelativeTo(structuredPath),
-                    CanonicalArtifactHash.OfText(structuredText), "NON_CANONICAL_PROVENANCE_ONLY"));
+                case "STRUCTURED_SOURCE_PARTS":
+                    semanticClaims.AddRange(bound.EnumerateArray().Select(item => (object)new
+                    {
+                        sourceParts = item.GetProperty("sourceParts").Clone(),
+                        semanticRole = Text(item, "semanticRole"),
+                    }));
+                    structuredSourcePartsEvaluable = true;
+                    coordinateSystem = "STRUCTURED_SOURCE_PART_TUPLE";
+                    sourceUniverseSha = PdfStructuredSourceAuthorityBuilder
+                        .Build(TestRepository.Path(sourcePath)).SourceAliasUniverseHash;
+                    break;
+                case "SOURCE_ALIAS":
+                    // Projected, not re-decided: alias, text and role exactly as recorded.
+                    semanticClaims.AddRange(bound.EnumerateArray().Select(item => (object)new
+                    {
+                        sourceAlias = Text(item, "sourceAlias"),
+                        verbatimText = Text(item, "verbatimText") ?? Text(item, "exactText"),
+                        selectionMode = Text(item, "selectionMode"),
+                        semanticRole = Text(item, "semanticRole"),
+                    }));
+                    characterSpanEvaluable = bound.EnumerateArray().Any(item => item.TryGetProperty("utf16Span", out _));
+                    coordinateSystem = characterSpanEvaluable
+                        ? "SOURCE_ALIAS_PLUS_UTF16_SPAN"
+                        : "SOURCE_ALIAS_PLUS_SELECTION_MODE";
+                    sourceUniverseSha = RuntimeSourceUniverse(TestRepository.Path(sourcePath), mediaType, sourceSha);
+                    break;
+                default:
+                    throw new InvalidOperationException($"{id}: unknown coordinate system");
             }
         }
-        else if (File.Exists(occurrencePath))
-        {
-            var occurrenceText = File.ReadAllText(occurrencePath);
-            using var occurrence = JsonDocument.Parse(occurrenceText);
-            var occurrenceRoot = occurrence.RootElement;
-            var occurrenceSha = occurrenceRoot.GetProperty("sourceSha256").GetString();
-            var occurrenceTotal = occurrenceRoot.GetProperty("semanticHeadingTotal").GetInt32();
-            var bound = occurrenceRoot.TryGetProperty("boundOccurrences", out var explicitBindings)
-                ? explicitBindings
-                : occurrenceRoot.GetProperty("headings");
 
-            // The import policy, checked rather than assumed: same source bytes, same heading set.
-            var sameSource = string.Equals(occurrenceSha, sourceSha, StringComparison.Ordinal);
-            var sameCount = occurrenceTotal == total && bound.GetArrayLength() == total;
-
-            if (sameSource && sameCount)
-            {
-                claims.AddRange(bound.EnumerateArray().Select(item => item.Clone()));
-                // The occurrence review is what identified the headings, so it is also the
-                // row-level semantic truth. Projected, not re-decided: alias, text and role exactly
-                // as the reviewer recorded them, with nulls where they recorded nothing.
-                semanticClaims.AddRange(bound.EnumerateArray().Select(item => (object)new
-                {
-                    sourceAlias = Text(item, "sourceAlias"),
-                    verbatimText = Text(item, "verbatimText") ?? Text(item, "exactText"),
-                    selectionMode = Text(item, "selectionMode"),
-                    semanticRole = Text(item, "semanticRole"),
-                }));
-                occurrenceEvaluable = true;
-                characterSpanEvaluable = occurrenceText.Contains("utf16Span", StringComparison.Ordinal);
-                coordinateSystem = characterSpanEvaluable
-                    ? "SOURCE_ALIAS_PLUS_UTF16_SPAN"
-                    : "SOURCE_ALIAS_PLUS_SELECTION_MODE";
-                unavailable = null;
-                // The universe the runtime reproduces, not the one the review artifact recorded.
-                // Those were two serializations of the same occurrences - the review pack document
-                // against the runtime alias rows - and freezing the first in a field that gates
-                // against the second is what refused the first transport attempt. The recorded
-                // value is kept below as provenance; it is not a second active identity.
-                reviewTimeUniverseSha = occurrenceRoot.TryGetProperty("sourceUniverseSha256", out var universe)
-                    ? universe.GetString()
-                    : null;
-                sourceUniverseSha = RuntimeSourceUniverse(
-                    TestRepository.Path(root.GetProperty("authoritySourcePath").GetString()!),
-                    root.GetProperty("mediaType").GetString()!,
-                    sourceSha);
-                provenance.Add(new(RelativeTo(occurrencePath),
-                    CanonicalArtifactHash.OfText(occurrenceText), "OCCURRENCE_AUTHORITY"));
-                if (reviewTimeUniverseSha is { Length: > 0 } &&
-                    !string.Equals(reviewTimeUniverseSha, sourceUniverseSha, StringComparison.Ordinal))
-                {
-                    provenance.Add(new(reviewTimeUniverseSha, sourceUniverseSha!,
-                        "SOURCE_UNIVERSE_RECONCILIATION"));
-                }
-            }
-            else
-            {
-                unavailable = sameSource
-                    ? $"occurrence artifact describes {occurrenceTotal} headings against an approved total of {total}"
-                    : "occurrence artifact was taken against different source bytes";
-                provenance.Add(new(RelativeTo(occurrencePath),
-                    CanonicalArtifactHash.OfText(occurrenceText), "NON_CANONICAL_PROVENANCE_ONLY"));
-            }
-        }
+        var provenance = root.GetProperty("provenance").EnumerateArray()
+            .Select(item => new ProvenanceItem(
+                item.GetProperty("path").GetString()!,
+                item.GetProperty("sha256").GetString()!,
+                item.GetProperty("role").GetString()!))
+            .ToList();
 
         var isDocument = id.StartsWith("DOC-", StringComparison.Ordinal);
         var gold = new
@@ -723,33 +649,31 @@ public sealed class CanonicalGoldConsolidationTests
             sourceId = isDocument ? null : id,
             source = new
             {
-                fileName = root.GetProperty("fileName").GetString(),
-                mediaType = root.GetProperty("mediaType").GetString(),
-                sourcePath = root.GetProperty("authoritySourcePath").GetString(),
+                fileName = source.GetProperty("fileName").GetString(),
+                mediaType,
+                sourcePath,
                 sourceSha256 = sourceSha,
-                sourceLineageStatus = root.GetProperty("sourceLineageStatus").GetString(),
+                sourceLineageStatus = source.GetProperty("sourceLineageStatus").GetString(),
             },
             approval = new
             {
                 authority = "USER",
                 userFinalApproval = true,
-                approvalBasis = root.GetProperty("finalAuthority").GetString(),
-                approvedAt = record.GetProperty("approvedAt").GetString(),
-                truthDefinition = root.GetProperty("truthDefinition").GetString(),
-                semanticTruthReusedFrom = new[] { RelativeTo(semanticPath) },
+                approvalBasis = Text(approval, "approvalBasis"),
+                approvedAt = Text(approval, "approvedAt"),
+                truthDefinition,
+                semanticTruthReusedFrom = approval.GetProperty("semanticTruthReusedFrom").EnumerateArray()
+                    .Select(item => item.GetString()!).ToArray(),
                 reReviewedDuringConsolidation = false,
             },
             semantic = new
             {
-                headingSetExhaustive = string.Equals(
-                    root.GetProperty("truthDefinition").GetString(),
-                    "ALL_TRUE_HEADING_OCCURRENCES", StringComparison.Ordinal),
+                headingSetExhaustive = string.Equals(truthDefinition, "ALL_TRUE_HEADING_OCCURRENCES", StringComparison.Ordinal),
                 approvedSemanticTotal = total,
                 semanticHeadingTotal = total,
                 // Row-level identities exist only where a reviewer materialised them. Where the
-                // approved authority is a count, this stays empty and materializedSemanticClaims is
-                // zero: a total says how many headings there are, never which ones, and deriving
-                // rows from it would be inventing identities nobody looked at.
+                // approved authority is a count, this stays empty: a total says how many headings
+                // there are, never which ones.
                 materializedSemanticClaims = semanticClaims.Count,
                 claims = semanticClaims.ToArray(),
             },
@@ -758,16 +682,14 @@ public sealed class CanonicalGoldConsolidationTests
                 occurrenceEvaluable,
                 characterSpanEvaluable,
                 bindingCoordinateSystem = coordinateSystem,
-                // The source universe the reviewer marked against, so a later change to how the
-                // universe is built is visible rather than silently rebinding the claims.
                 sourceUniverseSha256 = sourceUniverseSha,
                 unavailableReason = unavailable,
                 claims = claims.ToArray(),
             },
             capabilities = CapabilitiesOf(
                 occurrenceEvaluable, characterSpanEvaluable, semanticClaims.Count == total && total > 0,
-                capabilities.TryGetProperty("visualBindingEvaluable", out var visual) && visual.GetBoolean(),
-                capabilities.TryGetProperty("hierarchyEvaluable", out var hierarchy) && hierarchy.GetBoolean(),
+                declared.GetProperty("visualBindingEvaluable").GetBoolean(),
+                declared.GetProperty("hierarchyEvaluable").GetBoolean(),
                 structuredSourcePartsEvaluable),
             provenance = provenance
                 .Select(item => new { path = item.Path, sha256 = item.Sha256, role = item.Role })
@@ -778,7 +700,7 @@ public sealed class CanonicalGoldConsolidationTests
 
         return new Authority(
             id, total, semanticClaims.Count, sourceSha, occurrenceEvaluable, characterSpanEvaluable,
-            capabilities.TryGetProperty("visualBindingEvaluable", out var vb) && vb.GetBoolean(),
+            declared.GetProperty("visualBindingEvaluable").GetBoolean(),
             unavailable, claims, provenance, gold);
     }
 
@@ -832,33 +754,4 @@ public sealed class CanonicalGoldConsolidationTests
     private static string RelativeTo(string absolute) =>
         Path.GetRelativePath(TestRepository.Root(), absolute).Replace(Path.DirectorySeparatorChar, '/');
 
-    /// <summary>
-    /// One <c>MIGRATION_PREDECESSOR</c>-shaped step can have another layered on top of it - a
-    /// coordinate migration, then later a membership correction that adds or removes a claim without
-    /// touching coordinates. Each layer names its own kind and predecessor hash rather than the
-    /// newest layer's hash silently standing in for an older layer's role; a layer nests the one
-    /// before it as <c>priorMigration</c>, the same way the original migration nested its own
-    /// <c>boundaryCorrection</c>.
-    /// </summary>
-    private static void AddMigrationLineage(JsonElement migration, List<ProvenanceItem> provenance)
-    {
-        var kind = migration.GetProperty("kind").GetString()!;
-        var role = kind == "SOURCE_COORDINATE_AND_VERBATIM_FIDELITY_MIGRATION"
-            ? "MIGRATION_PREDECESSOR"
-            : "GOLD_CORRECTION_PREDECESSOR";
-        provenance.Add(new($"predecessor-gold:{kind}",
-            migration.GetProperty("predecessorGoldSha256").GetString()!, role));
-
-        // A selection-only correction applied within a migration carries its own predecessor: the
-        // Gold every experiment run so far was scored against. Recorded beside the migration's, not
-        // in place of it - the two describe different steps.
-        if (migration.TryGetProperty("boundaryCorrection", out var boundaryCorrection))
-            provenance.Add(new(
-                $"predecessor-gold:{boundaryCorrection.GetProperty("kind").GetString()}",
-                boundaryCorrection.GetProperty("predecessorGoldSha256").GetString()!,
-                "BOUNDARY_CORRECTION_PREDECESSOR"));
-
-        if (migration.TryGetProperty("priorMigration", out var priorMigration))
-            AddMigrationLineage(priorMigration, provenance);
-    }
 }

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "a99-gold-authored-v1",
+  "authorityId": "SRC-044",
+  "source": {
+    "fileName": "044_IDA_Financial_Statements_June_2024.pdf",
+    "mediaType": "PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf",
+    "sourceSha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-044.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semanticHeadingTotal": 254,
+  "declaredCapabilities": {
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "occurrence": null,
+  "occurrenceUnavailableReason": "no occurrence artifact describes this source under the current authority",
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-044.semantic-freeze.v1.json",
+      "sha256": "36c12030ae826ab469a7424a6099e42fc510dcd066584cb1f0321cd0d15dba23",
+      "role": "SEMANTIC_AUTHORITY"
+    }
+  ]
+}

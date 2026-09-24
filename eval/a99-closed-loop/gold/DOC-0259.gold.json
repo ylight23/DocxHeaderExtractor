@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "a99-gold-authored-v1",
+  "authorityId": "DOC-0259",
+  "source": {
+    "fileName": "079_ICP_TAG_Minutes_Apr_2024.docx",
+    "mediaType": "DOCX",
+    "sourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/079_ICP_TAG_Minutes_Apr_2024.docx",
+    "sourceSha256": "1c946a0ed13bd27cafb4ef281807ecfed6605340fca51029e72a904cf651c777",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0259.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semanticHeadingTotal": 18,
+  "declaredCapabilities": {
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "occurrence": null,
+  "occurrenceUnavailableReason": "no occurrence artifact describes this source under the current authority",
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0259.semantic-freeze.v1.json",
+      "sha256": "9cc80245a102d4c1aec22bb40853859547ffef768bc2f342f67eae3e3385e06f",
+      "role": "SEMANTIC_AUTHORITY"
+    }
+  ]
+}

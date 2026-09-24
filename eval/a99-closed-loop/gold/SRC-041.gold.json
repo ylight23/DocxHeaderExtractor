@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "a99-gold-authored-v1",
+  "authorityId": "SRC-041",
+  "source": {
+    "fileName": "041_IBRD_Financial_Statements_June_2025.pdf",
+    "mediaType": "PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+    "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-041.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semanticHeadingTotal": 297,
+  "declaredCapabilities": {
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "occurrence": null,
+  "occurrenceUnavailableReason": "no occurrence artifact describes this source under the current authority",
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-041.semantic-freeze.v1.json",
+      "sha256": "b438f4dcdc20bda88f2f74f2ab66ebb49980d9ededf8b23b4725f61edf7f640d",
+      "role": "SEMANTIC_AUTHORITY"
+    }
+  ]
+}

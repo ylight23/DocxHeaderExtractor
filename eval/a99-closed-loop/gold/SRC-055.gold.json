@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "a99-gold-authored-v1",
+  "authorityId": "SRC-055",
+  "source": {
+    "fileName": "055_IDA_External_Review_FY25.pdf",
+    "mediaType": "PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/055_IDA_External_Review_FY25.pdf",
+    "sourceSha256": "3b9d4317f2e8ca32ff9288d5f7c653fefd7231d5656a5b8a996be656b1dee455",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-055.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semanticHeadingTotal": 4,
+  "declaredCapabilities": {
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "occurrence": null,
+  "occurrenceUnavailableReason": "no occurrence artifact describes this source under the current authority",
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-055.semantic-freeze.v1.json",
+      "sha256": "468f5ba07c993d2bca34a4c8702b07a7b2146af2788ec78fc60606674d5bdc68",
+      "role": "SEMANTIC_AUTHORITY"
+    }
+  ]
+}
