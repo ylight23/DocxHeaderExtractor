@@ -1,0 +1,127 @@
+{
+  "artifactKind": "a99_pilot_real_harness_run",
+  "documentId": "DOC-0259",
+  "sourcePath": "todo10_8/generated-docx-v2/05_bien_ban_hop/079_ICP_TAG_Minutes_Apr_2024.docx",
+  "sourceSha256": "b1af73ad0f471af9e29f6f7ac964436d3d4d19b58215a6a07c11aaa8cb58a2b7",
+  "model": "qwen/qwen3.7-flash",
+  "lane": "docx",
+  "placement": false,
+  "repeat": "3",
+  "providerCallsMade": 1,
+  "failure": null,
+  "reason": "docx-canonical-vnext-semantic-authority",
+  "elementCount": 16,
+  "elements": [
+    {
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "sourceIds": [
+        "body[1]/p[1]"
+      ]
+    },
+    {
+      "text": "TECHNICAL ADVISORY GROUP",
+      "sourceIds": [
+        "body[1]/p[2]"
+      ]
+    },
+    {
+      "text": "APRIL 30, 2024",
+      "sourceIds": [
+        "body[1]/p[3]"
+      ]
+    },
+    {
+      "text": "Online meeting",
+      "sourceIds": [
+        "body[1]/p[4]"
+      ]
+    },
+    {
+      "text": "Welcome and meeting objectives",
+      "sourceIds": [
+        "body[1]/p[5]"
+      ]
+    },
+    {
+      "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
+      "sourceIds": [
+        "body[1]/p[58]"
+      ]
+    },
+    {
+      "text": "Online Meeting",
+      "sourceIds": [
+        "body[1]/p[59]"
+      ]
+    },
+    {
+      "text": "April 30, 2024",
+      "sourceIds": [
+        "body[1]/p[60]"
+      ]
+    },
+    {
+      "text": "Agenda",
+      "sourceIds": [
+        "body[1]/p[61]"
+      ]
+    },
+    {
+      "text": "Tuesday, April 30, 2024",
+      "sourceIds": [
+        "body[1]/p[62]"
+      ]
+    },
+    {
+      "text": "08:00 \u2013 08:10 Welcome and opening remarks",
+      "sourceIds": [
+        "body[1]/p[63]"
+      ]
+    },
+    {
+      "text": "Annex 2: List of Participants",
+      "sourceIds": [
+        "body[1]/p[72]"
+      ]
+    },
+    {
+      "text": "ICP Technical Advisory Group members",
+      "sourceIds": [
+        "body[1]/p[73]"
+      ]
+    },
+    {
+      "text": "ICP experts, guest speakers, and observers",
+      "sourceIds": [
+        "body[1]/p[79]"
+      ]
+    },
+    {
+      "text": "ICP Inter-Agency Coordination Group (IACG)",
+      "sourceIds": [
+        "body[1]/p[83]"
+      ]
+    },
+    {
+      "text": "World Bank",
+      "sourceIds": [
+        "body[1]/p[91]"
+      ]
+    }
+  ],
+  "ledger": [
+    {
+      "Ordinal": 1,
+      "DocumentId": "DOC-0259",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "34669c0cd30e1645136e45629cdca81e9f332ad90b85b82eccf81ebc992ac934",
+      "ResponseSha256": "b8f49b384de4edaee3be4807d159dc5cc2e6c045f73659208a386b3be1980b6f",
+      "RequestChars": 50676,
+      "ResponseChars": 9952,
+      "ElapsedMs": 29488,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0001\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0001\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022document-title\u0022,\n      \u0022structuralType\u0022: \u0022title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0002\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0002\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022TECHNICAL ADVISORY GROUP\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022TECHNICAL ADVISORY GROUP\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022subtitle\u0022,\n      \u0022structuralType\u0022: \u0022subtitle\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0003\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0003\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022APRIL 30, 2024\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022APRIL 30, 2024\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022date-label\u0022,\n      \u0022structuralType\u0022: \u0022label\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0004\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0004\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Online meeting\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Online meeting\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022meeting-type\u0022,\n      \u0022structuralType\u0022: \u0022label\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0005\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0005\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Welcome and meeting objectives\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Welcome and meeting objectives\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0009\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0009\u0022,\n        \u0022S0064\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Session I: ICP 2021 cycle results\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Session I: ICP 2021 cycle results\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0010\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0010\u0022,\n        \u0022S0065\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022ICP 2021 results and forecasts\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022ICP 2021 results and forecasts\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022subsection-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0009\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0027\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0027\u0022,\n        \u0022S0066\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Revised ICP 2017 results\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Revised ICP 2017 results\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022subsection-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0009\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0033\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0033\u0022,\n        \u0022S0067\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Revised ICP 2017 \\u2013 ICP 2021 PPP time series\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Revised ICP 2017 \\u2013 ICP 2021 PPP time series\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022subsection-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0009\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0038\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0038\u0022,\n        \u0022S0068\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Revised ICP 2017 and ICP 2021 non-benchmark country estimates\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Revised ICP 2017 and ICP 2021 non-benchmark country estimates\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022subsection-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0009\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0043\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0043\u0022,\n        \u0022S0069\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Session II: Closing\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Session II: Closing\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0044\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0044\u0022,\n        \u0022S0070\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Next steps, any other business, and closing remarks\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Next steps, any other business, and closing remarks\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022subsection-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0043\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0058\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0058\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022running-header\u0022,\n      \u0022structuralType\u0022: \u0022header\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0059\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0059\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Online Meeting\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Online Meeting\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022running-header\u0022,\n      \u0022structuralType\u0022: \u0022header\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0060\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0060\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022April 30, 2024\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022April 30, 2024\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022running-header\u0022,\n      \u0022structuralType\u0022: \u0022header\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0061\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0061\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Agenda\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Agenda\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0062\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0062\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Tuesday, April 30, 2024\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Tuesday, April 30, 2024\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022subsection-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0061\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0063\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0063\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u002208:00 \\u2013 08:10 Welcome and opening remarks\u0022,\n      \u0022verbatimParts\u0022: [\n        \u002208:00 \\u2013 08:10 Welcome and opening remarks\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022agenda-item\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0062\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0072\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0072\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Annex 2: List of Participants\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Annex 2: List of Participants\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022appendix-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0073\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0073\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022ICP Technical Advisory Group members\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022ICP Technical Advisory Group members\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022list-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0072\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0079\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0079\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022ICP experts, guest speakers, and observers\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022ICP experts, guest speakers, and observers\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022list-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0072\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0083\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0083\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022ICP Inter-Agency Coordination Group (IACG)\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022ICP Inter-Agency Coordination Group (IACG)\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022list-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0072\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0091\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0091\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022World Bank\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022World Bank\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022list-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0072\u0022\n      ]\n    }\n  ]\n}"
+    }
+  ]
+}
