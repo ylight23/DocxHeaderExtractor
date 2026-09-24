@@ -1,0 +1,30 @@
+{
+  "artifactKind": "a99_source_regeneration_manifest",
+  "schemaVersion": "a99-source-regeneration-manifest-v1",
+  "documentId": "DOC-0205",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "originalDocument": {
+    "path": "todo10_8/heading_corpus_100/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.doc",
+    "sha256": "128e10058b6648a316c864c49c4a4015098b6b4dad07c4ea95996a50bf5b5004",
+    "format": "Word 97-2003 (.doc)"
+  },
+  "regeneratedDocx": {
+    "path": "todo10_8/generated-docx-v2/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sha256": "65e8da60883c331e2ad490bea2df4d28d6f02a5bd249efb0defc998666268acf",
+    "paragraphs": 485
+  },
+  "supersedes": {
+    "path": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
+    "defect": "the whole decree in one paragraph"
+  },
+  "converter": {
+    "tool": "LibreOffice (buildid cd7284b4cbbfeb507e630c1aac019f4157393acb)",
+    "command": "soffice --headless --norestore --convert-to docx <original .doc>",
+    "carries": "the .doc's own paragraphs, runs and styles as LibreOffice reads them; nothing added",
+    "bytesAreNotReproducible": "the package embeds conversion timestamps; the committed file is the authority and its sha256 is pinned here"
+  },
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-24"
+}

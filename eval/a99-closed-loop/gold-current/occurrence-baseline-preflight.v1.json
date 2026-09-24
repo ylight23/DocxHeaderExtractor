@@ -30,15 +30,15 @@
     {
       "authorityId": "DOC-0205",
       "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0205.gold.v1.json",
-      "goldSha256": "e1672a8d2077e07de650ed5843daea4f24a50bdfa184494d72443283c893c546",
-      "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
-      "sourceSha256": "b145e31a58e76cad1c77967c639884d1c566020d344d725ca145fafb5de86878",
-      "sourceUniverseSha256": "3134a6ea9a3f65bc3423985a0ed1b3a0568813d7d3e2a3d2063ea2fe6a8eac5e",
+      "goldSha256": "97dcb124df1540992a7a1a0e193b094d8b426bbf730ea8588d1aa8e7667189f3",
+      "sourcePath": "todo10_8/generated-docx-v2/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+      "sourceSha256": "65e8da60883c331e2ad490bea2df4d28d6f02a5bd249efb0defc998666268acf",
+      "sourceUniverseSha256": "09f6a243dca1ec6f3dde3cc66d5fa07c80d2134ea73ac2a5cb5a71df8c8299d7",
       "semanticHeadingTotal": 72,
       "materializedSemanticClaims": 72,
       "occurrenceEvaluable": true,
       "characterSpanEvaluable": true,
-      "semanticRequestsPerRepetition": 1,
+      "semanticRequestsPerRepetition": 4,
       "placementAllowancePerRepetition": 1
     },
     {
@@ -85,9 +85,9 @@
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 57,
+    "totalPrimaryCalls": 66,
     "placementAllowance": 15,
-    "maxProviderCalls": 72
+    "maxProviderCalls": 81
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",
