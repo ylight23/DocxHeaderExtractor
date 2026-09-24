@@ -116,12 +116,11 @@ public sealed class CanonicalGoldConsolidationTests
         Assert.Equal(159, byId["DOC-0264"].Total);
         Assert.Equal(42, byId["DOC-0252"].Total);
 
-        // DOC-0205 is the one exception: its occurrence set was migrated deliberately (see
-        // Occurrence_is_imported_only_where_the_source_and_the_heading_set_match) - 71 prior-approved
-        // headings promoted verbatim plus one human-approved addition (the document title), reaching
-        // the same total of 72 the semantic authority already recorded. The rest still claim nothing
-        // they do not have.
-        foreach (var id in new[] { "DOC-0258", "DOC-0256", "DOC-0264" })
+        // DOC-0205 and DOC-0258 are the exceptions: their occurrence sets were migrated deliberately
+        // (see Occurrence_is_imported_only_where_the_source_and_the_heading_set_match), each reaching
+        // exactly the total the semantic authority already recorded - never the older artifact's
+        // smaller count. The rest still claim nothing they do not have.
+        foreach (var id in new[] { "DOC-0256", "DOC-0264" })
             Assert.False(byId[id].OccurrenceEvaluable, $"{id} imported an occurrence set it should not have");
     }
 
@@ -130,13 +129,15 @@ public sealed class CanonicalGoldConsolidationTests
     {
         var byId = Authorities().ToDictionary(authority => authority.Id, StringComparer.Ordinal);
 
-        // Three authorities qualify, and all were checked against the source bytes and the count.
+        // Four authorities qualify, and all were checked against the source bytes and the count.
         Assert.True(byId["DOC-0001"].OccurrenceEvaluable);
         Assert.True(byId["DOC-0252"].OccurrenceEvaluable);
         Assert.True(byId["DOC-0205"].OccurrenceEvaluable);
+        Assert.True(byId["DOC-0258"].OccurrenceEvaluable);
         Assert.Equal(7, byId["DOC-0001"].Claims.Count);
         Assert.Equal(42, byId["DOC-0252"].Claims.Count);
         Assert.Equal(72, byId["DOC-0205"].Claims.Count);
+        Assert.Equal(37, byId["DOC-0258"].Claims.Count);
 
         // DOC-0001 binds with UTF-16 spans; DOC-0252 binds by alias and selection mode. One root
         // does not mean one coordinate system. DOC-0205 mixes both within itself: 71 of its 72
@@ -145,9 +146,12 @@ public sealed class CanonicalGoldConsolidationTests
         Assert.True(byId["DOC-0001"].CharacterSpanEvaluable);
         Assert.False(byId["DOC-0252"].CharacterSpanEvaluable);
         Assert.True(byId["DOC-0205"].CharacterSpanEvaluable);
+        // DOC-0258's every heading is a whole paragraph of its regenerated source, so each span is
+        // the full alias - measured, not promoted.
+        Assert.True(byId["DOC-0258"].CharacterSpanEvaluable);
 
         // Everything else carries semantic truth and says plainly that it has no bindings.
-        foreach (var authority in Authorities().Where(item => item.Id is not ("DOC-0001" or "DOC-0252" or "DOC-0205")))
+        foreach (var authority in Authorities().Where(item => item.Id is not ("DOC-0001" or "DOC-0252" or "DOC-0205" or "DOC-0258")))
         {
             Assert.False(authority.OccurrenceEvaluable, $"{authority.Id} claims occurrence truth");
             Assert.Empty(authority.Claims);
@@ -259,7 +263,7 @@ public sealed class CanonicalGoldConsolidationTests
     // ---- provider baseline preflight ----------------------------------------------------------
 
     /// <summary>The two authorities whose Gold can score an occurrence-level run today.</summary>
-    private static readonly string[] OccurrenceCohort = ["DOC-0001", "DOC-0205", "DOC-0252"];
+    private static readonly string[] OccurrenceCohort = ["DOC-0001", "DOC-0205", "DOC-0252", "DOC-0258"];
 
     [Fact]
     public void The_occurrence_cohort_is_exactly_what_the_registry_can_score()

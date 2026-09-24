@@ -54,12 +54,26 @@
       "characterSpanEvaluable": false,
       "semanticRequestsPerRepetition": 9,
       "placementAllowancePerRepetition": 1
+    },
+    {
+      "authorityId": "DOC-0258",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0258.gold.v1.json",
+      "goldSha256": "bbe57adf06d69b03bde48068e1b7a509c40a34eed23da7f4f2a50bc3e987ae60",
+      "sourcePath": "todo10_8/generated-docx-v2/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+      "sourceSha256": "e630588a9f42b7cdbe6245819c38d50309cc377e2ec292185926a4dc0badc369",
+      "sourceUniverseSha256": "b7757db243f28cc5207b182786a9050d9297d04d695f9cc7df546085803c1e72",
+      "semanticHeadingTotal": 37,
+      "materializedSemanticClaims": 37,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 2,
+      "placementAllowancePerRepetition": 1
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 33,
-    "placementAllowance": 9,
-    "maxProviderCalls": 42
+    "totalPrimaryCalls": 39,
+    "placementAllowance": 12,
+    "maxProviderCalls": 51
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",
