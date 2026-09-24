@@ -173,16 +173,16 @@
     "distinctProposals": 529,
     "byCategory": {
       "STRUCTURAL_HEADING": 389,
-      "TABLE_LABEL": 81,
+      "TABLE_LABEL": 80,
       "TABLE_CAPTION": 9,
       "FIELD_LABEL": 20,
       "RUNNING_HEADER_FOOTER": 0,
       "FOOTNOTE_NOTE": 4,
       "NAVIGATION": 10,
-      "OTHER_NON_HEADING": 16
+      "OTHER_NON_HEADING": 17
     },
-    "ambiguousProposed": 17,
-    "structuralKeepProposedByModel": 331,
+    "ambiguousProposed": 18,
+    "structuralKeepProposedByModel": 317,
     "structuralKeepMissedByModel": [
       {
         "Section": "FRONT_MATTER",
@@ -220,6 +220,66 @@
         "Text": "General`"
       },
       {
+        "Section": "SECTION_V",
+        "alias": "S1715",
+        "Text": "Eligibility for the Provision of Goods, Works and non-consulting Services in Bank-Financed Procurement"
+      },
+      {
+        "Section": "SECTION_VI",
+        "alias": "S1721",
+        "Text": "Purpose"
+      },
+      {
+        "Section": "SECTION_VI",
+        "alias": "S1723",
+        "Text": "Requirements"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1751",
+        "Text": "Notes on preparing the Employer’s Requirements"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1884",
+        "Text": "Management and Safety of Hazardous Materials"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1886",
+        "Text": "Resource Efficiency and Pollution Prevention and Management"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1888",
+        "Text": "Resource efficiency"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1893",
+        "Text": "Pollution prevention and management"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1897",
+        "Text": "Biodiversity Conservation and Sustainable Management of Living Natural Resources"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1903",
+        "Text": "Road Safety"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1905",
+        "Text": "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1913",
+        "Text": "Suggested content for an Environmental and Social Policy (Statement)"
+      },
+      {
         "Section": "SECTION_IX",
         "alias": "S2869",
         "Text": "Metrics for regular reporting:"
@@ -245,6 +305,11 @@
         "Text": "Details of beneficial ownership"
       },
       {
+        "Section": "SECTION_I",
+        "alias": "S0200",
+        "Text": "Section I - Instructions to Proposers"
+      },
+      {
         "Section": "SECTION_IV",
         "alias": "S1488",
         "Text": "Proposed Subcontractors"
@@ -258,6 +323,11 @@
         "Section": "SECTION_IV",
         "alias": "S1518",
         "Text": "Party to JV Information Sheet"
+      },
+      {
+        "Section": "SECTION_VII",
+        "alias": "S1750",
+        "Text": "Employer’s Requirements"
       },
       {
         "Section": "SECTION_IX",
@@ -2990,7 +3060,7 @@
       ],
       "Text": "Sub-Clause 1.1.4 Base Date",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3001,7 +3071,7 @@
       ],
       "Text": "Sub-Clause 1.1.49 Laws",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3012,7 +3082,7 @@
       ],
       "Text": "Sub-Clause 1.1.59 Particular Conditions",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3023,7 +3093,7 @@
       ],
       "Text": "Sub-Clause 1.1.74 Site",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3034,7 +3104,7 @@
       ],
       "Text": "Sub-Clause 1.1.83 Tender",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3055,7 +3125,7 @@
       ],
       "Text": "Sub-Clause 1.1.92 Borrower",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3066,7 +3136,7 @@
       ],
       "Text": "Sub-Clause 1.1.93 ES",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3077,7 +3147,7 @@
       ],
       "Text": "Sub-Clause 1.1.94 Sexual Exploitation and Abuse (SEA), and Sexual Harassment (SH)",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3088,7 +3158,7 @@
       ],
       "Text": "Sub-Clause 1.1.95 Milestone",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3099,7 +3169,7 @@
       ],
       "Text": "Sub-Clause 1.1.96 Milestone Certificate",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3110,7 +3180,7 @@
       ],
       "Text": "Sub-Clause 1.2 Interpretation",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3121,7 +3191,7 @@
       ],
       "Text": "Sub-Clause 1.5 Priority of Documents",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3132,7 +3202,7 @@
       ],
       "Text": "Sub-Clause 1.6 Contract Agreement",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3143,7 +3213,7 @@
       ],
       "Text": "Sub-Clause 1.12 Confidentiality",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3154,7 +3224,7 @@
       ],
       "Text": "Sub-Clause 1.17 Inspections & Audit by the Bank",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3165,7 +3235,7 @@
       ],
       "Text": "Sub-Clause 2.4 Employer’s Financial Arrangements",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3176,7 +3246,7 @@
       ],
       "Text": "Sub-Clause 2.6 Employer-Supplied Materials and Employer’s Equipment",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3187,7 +3257,7 @@
       ],
       "Text": "Sub-Clause 3.1 The Engineer",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3198,7 +3268,7 @@
       ],
       "Text": "Sub-Clause 3.2 Engineer’s Duties and Authority",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3209,7 +3279,7 @@
       ],
       "Text": "Sub-Clause 3.3 Engineer’s Representative",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3220,7 +3290,7 @@
       ],
       "Text": "Sub-Clause 3.4 Delegation by the Engineer",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3231,7 +3301,7 @@
       ],
       "Text": "Sub-Clause 3.6 Replacement of the Engineer",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3242,7 +3312,7 @@
       ],
       "Text": "Sub-Clause 4.1 Contractor’s General Obligations",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3253,18 +3323,19 @@
       ],
       "Text": "Sub-Clause 4.2 Performance Security and ES Performance Security",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
       "Section": "SECTION_IX",
       "Aliases": [
         "S2395",
-        "S2396"
+        "S2396",
+        "S2397"
       ],
-      "Text": "Sub-Clause 4.2.1 Contractor’s",
+      "Text": "Sub-Clause 4.2.1 Contractor’s obligations",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3275,7 +3346,7 @@
       ],
       "Text": "Sub-Clause 4.2.2 Claims under the Performance Security",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3286,7 +3357,7 @@
       ],
       "Text": "Sub-Clause 4.2.3 Return of Performance Security",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3297,7 +3368,7 @@
       ],
       "Text": "Sub-Clause 4.3 Contractor’s Representative",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3318,7 +3389,7 @@
       ],
       "Text": "Sub-Clause 4.5.1 Objection to nomination",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3329,7 +3400,7 @@
       ],
       "Text": "Sub-Clause 4.6 Co-operation",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3340,7 +3411,7 @@
       ],
       "Text": "Sub-Clause 4.8 Health and Safety Obligations",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3351,7 +3422,7 @@
       ],
       "Text": "Sub-Clause 4.15 Access Route",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3362,7 +3433,7 @@
       ],
       "Text": "Sub-Clause 4.18 Protection of the Environment",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3373,7 +3444,7 @@
       ],
       "Text": "Sub-Clause 4.20 Progress Reports",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3384,7 +3455,7 @@
       ],
       "Text": "Sub-Clause 4.21 Security of the Site",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3395,7 +3466,7 @@
       ],
       "Text": "Sub-Clause 4.23 Archaeological and Geological Findings",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3406,7 +3477,7 @@
       ],
       "Text": "Sub-Clause 4.24 Suppliers (other than Subcontractors)",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3417,7 +3488,7 @@
       ],
       "Text": "Sub-Clause 4.25 Code of Conduct",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3428,7 +3499,7 @@
       ],
       "Text": "Sub-Clause 4.26 Milestones",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3439,7 +3510,7 @@
       ],
       "Text": "Sub-Clause 5.4 Technical Standards and Regulations",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3450,7 +3521,7 @@
       ],
       "Text": "Sub-Clause 6.1 Engagement of Staff and Labour",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3461,7 +3532,7 @@
       ],
       "Text": "Sub-Clause 6.2 Rates of Wages and Conditions of Labour",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3472,7 +3543,7 @@
       ],
       "Text": "Sub-Clause 6.5 Working Hours",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3483,7 +3554,7 @@
       ],
       "Text": "Sub-Clause 6.6 Facilities for Staff and Labour",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3494,7 +3565,7 @@
       ],
       "Text": "Sub-Clause 6.7 Health and Safety of Personnel",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3505,7 +3576,7 @@
       ],
       "Text": "Sub-Clause 6.9 Contractor’s Personnel",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3516,7 +3587,7 @@
       ],
       "Text": "Sub-Clause 6.12 Key Personnel",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3527,7 +3598,7 @@
       ],
       "Text": "Sub-Clause 6.13 Foreign Personnel",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3538,7 +3609,7 @@
       ],
       "Text": "Sub-Clause 6.14 Supply of Foodstuffs",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3549,7 +3620,7 @@
       ],
       "Text": "Sub-Clause 6.15 Supply of Water",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3560,7 +3631,7 @@
       ],
       "Text": "Sub-Clause 6.16 Measures against Insect and Pest Nuisance",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3571,7 +3642,7 @@
       ],
       "Text": "Sub-Clause 6.17 Alcoholic Liquor or Drugs",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3582,7 +3653,7 @@
       ],
       "Text": "Sub-Clause 6.18 Arms and Ammunition",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3593,7 +3664,7 @@
       ],
       "Text": "Sub-Clause 6.19 Festivals and Religious Customs",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3604,7 +3675,7 @@
       ],
       "Text": "Sub-Clause 6.20 Funeral Arrangements",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3615,7 +3686,7 @@
       ],
       "Text": "Sub-Clause 6.21 Forced Labour",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3626,7 +3697,7 @@
       ],
       "Text": "Sub-Clause 6.22 Child Labour",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3637,7 +3708,7 @@
       ],
       "Text": "Sub-Clause 6.23 Employment Records of Workers",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3648,7 +3719,7 @@
       ],
       "Text": "Sub-Clause 6.24 Workers’ Organisations",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3659,7 +3730,7 @@
       ],
       "Text": "Sub-Clause 6.25 Non-Discrimination and Equal Opportunity",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3670,7 +3741,7 @@
       ],
       "Text": "Sub-Clause 6.26 Contractor’s Personnel Grievance Mechanism",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3681,7 +3752,7 @@
       ],
       "Text": "Sub-Clause 6.27 Training of Contractor’s Personnel",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3702,7 +3773,7 @@
       ],
       "Text": "Sub-Clause 7.7 Ownership of Plant and Materials",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3713,7 +3784,7 @@
       ],
       "Text": "Sub-Clause 8.1 Commencement of Work",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3724,7 +3795,7 @@
       ],
       "Text": "Sub-Clause 11.7 Right of Access after Taking Over",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3735,7 +3806,7 @@
       ],
       "Text": "Sub-Clause 13.3.1 Variation by Instruction",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3746,7 +3817,7 @@
       ],
       "Text": "Sub-Clause 13.4 Provisional Sums",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3757,7 +3828,7 @@
       ],
       "Text": "Sub-Clause 13.6 Adjustments for Changes in Laws",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3768,7 +3839,7 @@
       ],
       "Text": "Sub-Clause 14.1 The Contract Price",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3779,7 +3850,7 @@
       ],
       "Text": "Sub-Clause 14.1 The Contract Price",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3790,7 +3861,7 @@
       ],
       "Text": "Sub-Clause 14.2.1 Advance Payment Guarantee",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3801,7 +3872,7 @@
       ],
       "Text": "Sub-Clause 14.3 Application for Interim Payment",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3812,7 +3883,7 @@
       ],
       "Text": "Sub-Clause 14.4 Schedule of Payments",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3823,7 +3894,7 @@
       ],
       "Text": "Sub-Clause 14.6.2 Withholding (amounts in) an IPC",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3834,7 +3905,7 @@
       ],
       "Text": "Sub-Clause 14.7 Payment",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3845,7 +3916,7 @@
       ],
       "Text": "Sub-Clause 14.9 Release of Retention Money",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3856,7 +3927,7 @@
       ],
       "Text": "Sub-Clause 14.15 Currencies of Payment",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3867,7 +3938,7 @@
       ],
       "Text": "Sub-Clause 15.1 Notice to Correct",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3878,7 +3949,7 @@
       ],
       "Text": "Sub-Clause 15.2.1 Notice",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3889,7 +3960,7 @@
       ],
       "Text": "Sub-Clause 15.8 Fraud and Corruption",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3900,7 +3971,7 @@
       ],
       "Text": "Sub-Clause 16.1 Suspension by Contractor",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3911,7 +3982,7 @@
       ],
       "Text": "Sub-Clause 16.2.1 Notice",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3922,7 +3993,7 @@
       ],
       "Text": "Sub-Clause 16.2.2 Termination",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3933,7 +4004,7 @@
       ],
       "Text": "Sub-Clause 16.3 Contractor’s Obligations After Termination",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3954,7 +4025,7 @@
       ],
       "Text": "Sub-Clause 17.7 Use of Employer’s Accommodation/Facilities",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3965,7 +4036,7 @@
       ],
       "Text": "Sub-Clause 18.1 Exceptional Events",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3976,7 +4047,7 @@
       ],
       "Text": "Sub-Clause 18.4 Consequences of an Exceptional Event",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3987,7 +4058,7 @@
       ],
       "Text": "Sub-Clause 18.5 Optional Termination",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -3998,7 +4069,7 @@
       ],
       "Text": "Sub-Clause 19.1 General Requirements",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -4009,7 +4080,7 @@
       ],
       "Text": "Sub-Clause 19.2 insurance to be provided by the Contractor",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -4020,7 +4091,7 @@
       ],
       "Text": "Sub-Clause 19.2.5 Injury to employees",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -4031,7 +4102,7 @@
       ],
       "Text": "Sub-Clause 20.1 Claims",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -4042,7 +4113,7 @@
       ],
       "Text": "Sub-Clause 20.2 Claims for Payment and/or EOT",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -4053,7 +4124,7 @@
       ],
       "Text": "Sub-Clause 21.1 Constitution of the DAAB",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -4064,7 +4135,7 @@
       ],
       "Text": "Sub-Clause 21.2 Failure to Appoint DAAB Member (s)",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     },
     {
@@ -4075,7 +4146,7 @@
       ],
       "Text": "Sub-Clause 21.6 Arbitration",
       "Rule": "clause-head",
-      "Reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "Reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "InOld": null
     }
   ],
@@ -4566,8 +4637,7 @@
     },
     {
       "aliases": [
-        "S0126",
-        "S0256"
+        "S0126"
       ],
       "text": "Section VII. Employer’s Requirements 115",
       "modelRole": "section-heading",
@@ -4589,8 +4659,7 @@
     },
     {
       "aliases": [
-        "S0128",
-        "S0258"
+        "S0128"
       ],
       "text": "Section VIII - General Conditions (GC) 134",
       "modelRole": "section-heading",
@@ -4601,8 +4670,7 @@
     },
     {
       "aliases": [
-        "S0129",
-        "S0259"
+        "S0129"
       ],
       "text": "Section IX - Particular Conditions (PC) 135",
       "modelRole": "section-heading",
@@ -4613,8 +4681,7 @@
     },
     {
       "aliases": [
-        "S0130",
-        "S0260"
+        "S0130"
       ],
       "text": "Section X - Contract Forms 194",
       "modelRole": "section-heading",
@@ -4625,8 +4692,7 @@
     },
     {
       "aliases": [
-        "S0131",
-        "S0118"
+        "S0131"
       ],
       "text": "PART 1 – Request for Proposal Procedures",
       "modelRole": "part-heading",
@@ -4637,9 +4703,7 @@
     },
     {
       "aliases": [
-        "S0132",
-        "S0119",
-        "S0200"
+        "S0132"
       ],
       "text": "Section I - Instructions to Proposers (ITP)",
       "modelRole": "section-heading",
@@ -4650,8 +4714,7 @@
     },
     {
       "aliases": [
-        "S0133",
-        "S0117"
+        "S0133"
       ],
       "text": "Table of Content",
       "modelRole": "heading",
@@ -4662,8 +4725,7 @@
     },
     {
       "aliases": [
-        "S0201",
-        "S0134"
+        "S0201"
       ],
       "text": "A. General",
       "modelRole": "subsection-heading",
@@ -4674,8 +4736,7 @@
     },
     {
       "aliases": [
-        "S0202",
-        "S0135"
+        "S0202"
       ],
       "text": "Scope of Proposal",
       "modelRole": "subsubsection-heading",
@@ -4686,8 +4747,7 @@
     },
     {
       "aliases": [
-        "S0218",
-        "S0136"
+        "S0218"
       ],
       "text": "Source of Funds",
       "modelRole": "subsubsection-heading",
@@ -4698,8 +4758,7 @@
     },
     {
       "aliases": [
-        "S0221",
-        "S0137"
+        "S0221"
       ],
       "text": "Fraud and Corruption",
       "modelRole": "subsubsection-heading",
@@ -4710,8 +4769,7 @@
     },
     {
       "aliases": [
-        "S0224",
-        "S0138"
+        "S0224"
       ],
       "text": "Eligible Proposers",
       "modelRole": "subsubsection-heading",
@@ -6427,9 +6485,7 @@
     },
     {
       "aliases": [
-        "S1326",
-        "S1330",
-        "S1337"
+        "S1326"
       ],
       "text": "Code of Conduct for Contractor’s Personnel (ES) Form",
       "modelRole": "heading",
@@ -6484,14 +6540,13 @@
     },
     {
       "aliases": [
-        "S1379",
-        "S1380"
+        "S1379"
       ],
       "text": "ATTACHMENT 1: Behaviors constituting Sexual Exploitation and Abuse (SEA) and behaviors constituting Sexual Harassment (SH)",
       "modelRole": "heading",
       "section": "SECTION_IV",
-      "category": "STRUCTURAL_HEADING",
-      "reason": "attachment heading (two lines, one heading)",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -6793,50 +6848,7 @@
     },
     {
       "aliases": [
-        "S1680",
-        "S1681",
-        "S1682",
-        "S1683",
-        "S1684",
-        "S1685",
-        "S1686",
-        "S1687",
-        "S1688",
-        "S1689",
-        "S1690",
-        "S1691",
-        "S1692",
-        "S1693",
-        "S1694"
-      ],
-      "text": "Form of Proposal Security – Demand Guarantee",
-      "modelRole": "title",
-      "section": "SECTION_IV",
-      "category": "STRUCTURAL_HEADING",
-      "reason": "template heading style SPDForms1",
-      "ambiguous": false
-    },
-    {
-      "aliases": [
-        "S1695",
-        "S1696",
-        "S1697",
-        "S1698",
-        "S1699",
-        "S1700",
-        "S1701",
-        "S1702",
-        "S1703",
-        "S1704",
-        "S1705",
-        "S1706",
-        "S1707",
-        "S1708",
-        "S1709",
-        "S1710",
-        "S1711",
-        "S1712",
-        "S1713"
+        "S1695"
       ],
       "text": "Form of Proposal-Securing Declaration",
       "modelRole": "title",
@@ -6847,11 +6859,7 @@
     },
     {
       "aliases": [
-        "S1714",
-        "S1715",
-        "S1716",
-        "S1717",
-        "S1718"
+        "S1714"
       ],
       "text": "Section V - Eligible Countries",
       "modelRole": "section_heading",
@@ -6862,25 +6870,7 @@
     },
     {
       "aliases": [
-        "S1719",
-        "S1720",
-        "S1721",
-        "S1722",
-        "S1723",
-        "S1724",
-        "S1725",
-        "S1726",
-        "S1727",
-        "S1728",
-        "S1729",
-        "S1730",
-        "S1731",
-        "S1732",
-        "S1733",
-        "S1734",
-        "S1735",
-        "S1736",
-        "S1737"
+        "S1719"
       ],
       "text": "Section VI - Fraud and Corruption",
       "modelRole": "section_heading",
@@ -6891,69 +6881,7 @@
     },
     {
       "aliases": [
-        "S1738",
-        "S1739",
-        "S1740",
-        "S1741",
-        "S1742",
-        "S1743",
-        "S1744",
-        "S1745",
-        "S1746",
-        "S1747",
-        "S1748",
-        "S1749",
-        "S1750",
-        "S1751",
-        "S1752",
-        "S1753",
-        "S1754",
-        "S1755",
-        "S1756",
-        "S1757",
-        "S1758",
-        "S1759",
-        "S1760",
-        "S1761",
-        "S1762",
-        "S1763",
-        "S1764",
-        "S1765",
-        "S1766",
-        "S1767",
-        "S1768",
-        "S1769",
-        "S1770",
-        "S1771",
-        "S1772",
-        "S1773",
-        "S1774",
-        "S1775",
-        "S1776",
-        "S1777",
-        "S1778",
-        "S1779",
-        "S1780",
-        "S1781",
-        "S1782",
-        "S1783",
-        "S1784",
-        "S1785",
-        "S1786",
-        "S1787",
-        "S1788",
-        "S1789",
-        "S1790",
-        "S1791",
-        "S1792",
-        "S1793",
-        "S1794",
-        "S1795",
-        "S1796",
-        "S1797",
-        "S1798",
-        "S1799",
-        "S1800"
+        "S1738"
       ],
       "text": "PART 2 –Employer’s Requirements",
       "modelRole": "part_heading",
@@ -6964,68 +6892,7 @@
     },
     {
       "aliases": [
-        "S1739",
-        "S1740",
-        "S1741",
-        "S1742",
-        "S1743",
-        "S1744",
-        "S1745",
-        "S1746",
-        "S1747",
-        "S1748",
-        "S1749",
-        "S1750",
-        "S1751",
-        "S1752",
-        "S1753",
-        "S1754",
-        "S1755",
-        "S1756",
-        "S1757",
-        "S1758",
-        "S1759",
-        "S1760",
-        "S1761",
-        "S1762",
-        "S1763",
-        "S1764",
-        "S1765",
-        "S1766",
-        "S1767",
-        "S1768",
-        "S1769",
-        "S1770",
-        "S1771",
-        "S1772",
-        "S1773",
-        "S1774",
-        "S1775",
-        "S1776",
-        "S1777",
-        "S1778",
-        "S1779",
-        "S1780",
-        "S1781",
-        "S1782",
-        "S1783",
-        "S1784",
-        "S1785",
-        "S1786",
-        "S1787",
-        "S1788",
-        "S1789",
-        "S1790",
-        "S1791",
-        "S1792",
-        "S1793",
-        "S1794",
-        "S1795",
-        "S1796",
-        "S1797",
-        "S1798",
-        "S1799",
-        "S1800"
+        "S1739"
       ],
       "text": "Section VII. Employer’s Requirements",
       "modelRole": "section_heading",
@@ -7036,16 +6903,7 @@
     },
     {
       "aliases": [
-        "S1740",
-        "S1741",
-        "S1742",
-        "S1743",
-        "S1744",
-        "S1745",
-        "S1746",
-        "S1747",
-        "S1748",
-        "S1749"
+        "S1740"
       ],
       "text": "Table of Content",
       "modelRole": "table_label",
@@ -7056,42 +6914,7 @@
     },
     {
       "aliases": [
-        "S1801",
-        "S1802",
-        "S1803",
-        "S1804",
-        "S1805",
-        "S1806",
-        "S1807",
-        "S1808",
-        "S1809",
-        "S1810",
-        "S1811",
-        "S1812",
-        "S1813",
-        "S1814",
-        "S1815",
-        "S1816",
-        "S1817",
-        "S1818",
-        "S1819",
-        "S1820",
-        "S1821",
-        "S1822",
-        "S1823",
-        "S1824",
-        "S1825",
-        "S1826",
-        "S1827",
-        "S1828",
-        "S1829",
-        "S1830",
-        "S1831",
-        "S1832",
-        "S1833",
-        "S1834",
-        "S1835",
-        "S1836"
+        "S1801"
       ],
       "text": "General Design Obligations",
       "modelRole": "section-title",
@@ -7102,74 +6925,7 @@
     },
     {
       "aliases": [
-        "S1840",
-        "S1841",
-        "S1842",
-        "S1843",
-        "S1844",
-        "S1845",
-        "S1846",
-        "S1847",
-        "S1848",
-        "S1849",
-        "S1850",
-        "S1851",
-        "S1852",
-        "S1853",
-        "S1854",
-        "S1855",
-        "S1856",
-        "S1857",
-        "S1858",
-        "S1859",
-        "S1860",
-        "S1861",
-        "S1862",
-        "S1863",
-        "S1864",
-        "S1865",
-        "S1866",
-        "S1867",
-        "S1868",
-        "S1869",
-        "S1870",
-        "S1871",
-        "S1872",
-        "S1873",
-        "S1874",
-        "S1875",
-        "S1876",
-        "S1877",
-        "S1878",
-        "S1879",
-        "S1880",
-        "S1881",
-        "S1882",
-        "S1883",
-        "S1884",
-        "S1885",
-        "S1886",
-        "S1887",
-        "S1888",
-        "S1889",
-        "S1890",
-        "S1891",
-        "S1892",
-        "S1893",
-        "S1894",
-        "S1895",
-        "S1896",
-        "S1897",
-        "S1898",
-        "S1899",
-        "S1900",
-        "S1901",
-        "S1902",
-        "S1903",
-        "S1904",
-        "S1905",
-        "S1906",
-        "S1907"
+        "S1840"
       ],
       "text": "Environmental and Social (ES) requirements",
       "modelRole": "section-title",
@@ -7180,19 +6936,7 @@
     },
     {
       "aliases": [
-        "S1908",
-        "S1909",
-        "S1910",
-        "S1911",
-        "S1912",
-        "S1913",
-        "S1914",
-        "S1915",
-        "S1916",
-        "S1917",
-        "S1918",
-        "S1919",
-        "S1920"
+        "S1908"
       ],
       "text": "Environmental and Social (ES) requirements",
       "modelRole": "section-title",
@@ -7256,6 +7000,18 @@
       "category": "STRUCTURAL_HEADING",
       "reason": "template heading style SPD3EmployersRequirement",
       "ambiguous": false
+    },
+    {
+      "aliases": [
+        "S1962",
+        "S1960"
+      ],
+      "text": "Contractor’s Representative and Key Personnel",
+      "modelRole": "heading",
+      "section": "SECTION_VII",
+      "category": "STRUCTURAL_HEADING",
+      "reason": "repeats the styled heading just above and names the table below it: table title (exclude 3) or heading",
+      "ambiguous": true
     },
     {
       "aliases": [
@@ -7831,9 +7587,7 @@
     },
     {
       "aliases": [
-        "S2163",
-        "S2164",
-        "S2165"
+        "S2163"
       ],
       "text": "Period for the Employer to make final payment to the Contractor",
       "modelRole": "section-title",
@@ -7844,8 +7598,7 @@
     },
     {
       "aliases": [
-        "S2169",
-        "S2170"
+        "S2169"
       ],
       "text": "Number of additional paper copies of draft Final Statement",
       "modelRole": "section-title",
@@ -7856,8 +7609,7 @@
     },
     {
       "aliases": [
-        "S2171",
-        "S2172"
+        "S2171"
       ],
       "text": "Forces of nature, the risks of which are allocated to the Contractor",
       "modelRole": "section-title",
@@ -7868,8 +7620,7 @@
     },
     {
       "aliases": [
-        "S2173",
-        "S2174"
+        "S2173"
       ],
       "text": "Permitted deductible limits",
       "modelRole": "section-title",
@@ -7880,9 +7631,7 @@
     },
     {
       "aliases": [
-        "S2185",
-        "S2186",
-        "S2187"
+        "S2185"
       ],
       "text": "Additional amount to be insured (as a percentage of the replacement value, if less or more than 15%)",
       "modelRole": "section-title",
@@ -7893,8 +7642,7 @@
     },
     {
       "aliases": [
-        "S2188",
-        "S2189"
+        "S2188"
       ],
       "text": "List of risks arising from Exceptional Events which shall not be excluded from the insurance cover for the Works",
       "modelRole": "section-title",
@@ -7905,8 +7653,7 @@
     },
     {
       "aliases": [
-        "S2190",
-        "S2191"
+        "S2190"
       ],
       "text": "Extent of insurance required for Goods",
       "modelRole": "section-title",
@@ -7917,9 +7664,7 @@
     },
     {
       "aliases": [
-        "S2192",
-        "S2193",
-        "S2194"
+        "S2192"
       ],
       "text": "Amount of insurance required for Goods",
       "modelRole": "section-title",
@@ -7930,9 +7675,7 @@
     },
     {
       "aliases": [
-        "S2195",
-        "S2196",
-        "S2197"
+        "S2195"
       ],
       "text": "Insurance required against liability for fitness for purpose",
       "modelRole": "section-title",
@@ -7943,8 +7686,7 @@
     },
     {
       "aliases": [
-        "S2198",
-        "S2199"
+        "S2198"
       ],
       "text": "Period of insurance required for liability for breach of professional duty",
       "modelRole": "section-title",
@@ -7955,8 +7697,7 @@
     },
     {
       "aliases": [
-        "S2200",
-        "S2201"
+        "S2200"
       ],
       "text": "Amount of insurance required for injury to persons and damage to property",
       "modelRole": "section-title",
@@ -7967,8 +7708,7 @@
     },
     {
       "aliases": [
-        "S2202",
-        "S2203"
+        "S2202"
       ],
       "text": "Other insurances required by Laws and by local practice (give details)",
       "modelRole": "section-title",
@@ -7979,9 +7719,7 @@
     },
     {
       "aliases": [
-        "S2203",
-        "S2204",
-        "S2205"
+        "S2203"
       ],
       "text": "Time for appointment of DAAB member(s)",
       "modelRole": "section-title",
@@ -7992,11 +7730,7 @@
     },
     {
       "aliases": [
-        "S2206",
-        "S2207",
-        "S2208",
-        "S2209",
-        "S2210"
+        "S2206"
       ],
       "text": "The DAAB shall be comprised of",
       "modelRole": "section-title",
@@ -8007,16 +7741,7 @@
     },
     {
       "aliases": [
-        "S2211",
-        "S2212",
-        "S2213",
-        "S2214",
-        "S2215",
-        "S2216",
-        "S2217",
-        "S2218",
-        "S2219",
-        "S2220"
+        "S2211"
       ],
       "text": "List of proposed members of DAAB",
       "modelRole": "section-title",
@@ -8027,13 +7752,7 @@
     },
     {
       "aliases": [
-        "S2221",
-        "S2222",
-        "S2223",
-        "S2224",
-        "S2225",
-        "S2226",
-        "S2227"
+        "S2221"
       ],
       "text": "Rules of arbitration:",
       "modelRole": "section-title",
@@ -8044,9 +7763,7 @@
     },
     {
       "aliases": [
-        "S2228",
-        "S2229",
-        "S2230"
+        "S2228"
       ],
       "text": "Place of arbitration",
       "modelRole": "section-title",
@@ -8097,46 +7814,43 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
       "aliases": [
         "S2256",
-        "S2257",
         "S2258"
       ],
       "text": "Laws",
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
       "aliases": [
         "S2260",
-        "S2261",
         "S2262"
       ],
       "text": "Particular Conditions",
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
       "aliases": [
         "S2264",
-        "S2265",
         "S2266"
       ],
       "text": "Site",
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8148,7 +7862,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8160,7 +7874,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8172,7 +7886,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8183,7 +7897,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8194,7 +7908,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8205,7 +7919,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8216,7 +7930,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8227,7 +7941,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8238,7 +7952,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8249,7 +7963,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8260,7 +7974,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8271,7 +7985,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8282,7 +7996,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8293,7 +8007,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8304,7 +8018,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8315,7 +8029,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8326,7 +8040,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8337,7 +8051,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8348,7 +8062,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8359,7 +8073,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8370,7 +8084,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8381,7 +8095,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8392,7 +8106,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8403,7 +8117,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8414,7 +8128,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8425,7 +8139,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8436,7 +8150,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8447,7 +8161,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8458,7 +8172,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8469,7 +8183,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8480,7 +8194,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8491,7 +8205,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8502,7 +8216,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8513,7 +8227,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8524,7 +8238,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8535,7 +8249,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8546,7 +8260,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8557,7 +8271,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8567,8 +8281,8 @@
       "text": "obligations",
       "modelRole": "heading",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "STRUCTURAL_HEADING",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8579,7 +8293,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8590,7 +8304,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8601,7 +8315,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8612,7 +8326,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8623,7 +8337,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8634,7 +8348,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8656,7 +8370,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8667,7 +8381,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8678,7 +8392,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8689,7 +8403,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8700,7 +8414,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8711,7 +8425,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8722,7 +8436,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8733,7 +8447,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8744,7 +8458,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8755,7 +8469,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8777,7 +8491,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8788,7 +8502,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8799,7 +8513,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8810,7 +8524,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8832,7 +8546,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8843,7 +8557,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8854,7 +8568,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8865,7 +8579,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8920,7 +8634,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8931,7 +8645,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8942,7 +8656,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8953,7 +8667,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8965,7 +8679,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8977,7 +8691,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -8989,7 +8703,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9001,7 +8715,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9013,7 +8727,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9025,7 +8739,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9037,7 +8751,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9049,7 +8763,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9061,7 +8775,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9073,7 +8787,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9085,7 +8799,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9097,7 +8811,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9109,7 +8823,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9121,7 +8835,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9133,7 +8847,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9145,7 +8859,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9157,7 +8871,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9169,7 +8883,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9181,7 +8895,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9193,7 +8907,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9205,7 +8919,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9217,7 +8931,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9229,7 +8943,7 @@
       "modelRole": "section-title",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9251,7 +8965,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9262,7 +8976,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9273,7 +8987,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9284,7 +8998,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9295,7 +9009,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9306,7 +9020,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9317,7 +9031,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9328,7 +9042,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9339,7 +9053,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9350,7 +9064,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9361,7 +9075,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9372,7 +9086,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9383,7 +9097,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9394,7 +9108,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9405,7 +9119,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9416,7 +9130,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9427,7 +9141,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9438,7 +9152,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9449,7 +9163,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9460,7 +9174,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9471,7 +9185,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9482,7 +9196,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9493,7 +9207,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9504,7 +9218,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9515,7 +9229,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9526,7 +9240,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9537,7 +9251,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9548,7 +9262,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9559,7 +9273,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9570,7 +9284,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9581,7 +9295,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9592,7 +9306,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9603,7 +9317,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9614,7 +9328,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9625,7 +9339,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9636,7 +9350,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9647,7 +9361,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9658,7 +9372,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9669,7 +9383,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9680,7 +9394,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9691,7 +9405,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9702,7 +9416,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9714,13 +9428,12 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
       "aliases": [
-        "S2769",
-        "S2770"
+        "S2769"
       ],
       "text": "Sub-Clause 17.1 Responsibility for Care of the Works",
       "modelRole": "heading",
@@ -9738,7 +9451,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9750,7 +9463,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9762,7 +9475,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9774,7 +9487,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9786,7 +9499,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9798,7 +9511,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9810,7 +9523,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9822,7 +9535,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9834,7 +9547,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9846,7 +9559,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9858,7 +9571,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {
@@ -9870,7 +9583,7 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "PC sub-clause number and title (two paragraphs, one heading)",
+      "reason": "PC sub-clause number and title (consecutive paragraphs, one heading)",
       "ambiguous": false
     },
     {

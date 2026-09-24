@@ -263,9 +263,15 @@ public sealed partial class Doc0123StructuralAuditTests
             if (claimed.Contains(i) || !ClauseHead().IsMatch(text) || ClauseBodyMarker().IsMatch(text) || text.Length > 80) continue;
             if (ClauseNumberOnly().IsMatch(text))
             {
-                Assert.False(claimed.Contains(i + 1), $"title of {aliases[i].Alias} already decided");
-                Add(new("SECTION_IX", [aliases[i].Alias, aliases[i + 1].Alias], text + " " + TextOf(i + 1), Verdict.Keep,
-                    "STRUCTURAL_HEADING", "clause-head", "PC sub-clause number and title (two paragraphs, one heading)", null));
+                // The title is the next paragraph, and runs on through further Heading3 paragraphs
+                // when it wraps (4.2.1: "Contractor's" / "obligations").
+                var end = i + 2;
+                while (end < appendix && ParagraphOf(end).Style.StyleId == "Heading3" && !ClauseHead().IsMatch(TextOf(end))
+                    && !ClauseBodyMarker().IsMatch(TextOf(end))) end++; // not "The Sub-Clause is replaced with:"
+                var span = Enumerable.Range(i, end - i).ToArray();
+                Assert.DoesNotContain(span, claimed.Contains);
+                Add(new("SECTION_IX", span.Select(k => aliases[k].Alias).ToArray(), string.Join(" ", span.Select(TextOf)), Verdict.Keep,
+                    "STRUCTURAL_HEADING", "clause-head", "PC sub-clause number and title (consecutive paragraphs, one heading)", null));
             }
             else
             {
@@ -283,10 +289,18 @@ public sealed partial class Doc0123StructuralAuditTests
             foreach (var h in response.RootElement.GetProperty("headings").EnumerateArray())
             {
                 if (!h.TryGetProperty("isHeading", out var isHeading) || !isHeading.GetBoolean()) continue;
-                var named = h.TryGetProperty("sourceAliases", out var list) && list.ValueKind == JsonValueKind.Array
+                // sourceAliases often spans a whole region (heading plus the content under it), so
+                // the heading is the primary alias plus any listed alias carrying a verbatim part.
+                var primary = h.GetProperty("sourceAlias").GetString()!;
+                var parts = h.TryGetProperty("verbatimParts", out var vp) && vp.ValueKind == JsonValueKind.Array
+                    ? vp.EnumerateArray().Select(x => Squash(x.GetString() ?? "")).Where(x => x.Length > 0).ToArray()
+                    : [];
+                var listed = h.TryGetProperty("sourceAliases", out var list) && list.ValueKind == JsonValueKind.Array
                     ? list.EnumerateArray().Select(x => x.GetString()!).ToArray()
-                    : [h.GetProperty("sourceAlias").GetString()!];
-                named = named.Where(index.ContainsKey).ToArray();
+                    : [];
+                var named = new[] { primary }
+                    .Concat(listed.Where(a => a != primary && index.ContainsKey(a) && parts.Any(part => Squash(TextOf(index[a])).Contains(part, StringComparison.Ordinal))))
+                    .Where(index.ContainsKey).Distinct().ToArray();
                 if (named.Length == 0) continue;
                 proposals.TryAdd(string.Join("+", named), (named, h.TryGetProperty("verbatimText", out var v) ? v.GetString() ?? "" : "",
                     h.TryGetProperty("semanticRole", out var r) ? r.GetString() ?? "" : ""));
