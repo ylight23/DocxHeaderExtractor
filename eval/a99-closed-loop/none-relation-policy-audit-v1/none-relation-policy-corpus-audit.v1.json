@@ -7,12 +7,12 @@
   "question": "Before narrowing a shared instruction, what does the approved corpus evidence about headings that hold no position in the section tree?",
   "corpusCoverage": {
     "authorities": 21,
-    "authoritiesCarryingClaimLevelData": 3,
+    "authoritiesCarryingClaimLevelData": 4,
     "approvedHeadingsInCorpus": 3955,
-    "materializedClaimsInCorpus": 120,
-    "coverageOfApprovedHeadings": 0.0303,
-    "finding": "Eighteen of twenty-one approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 120 of 3955 approved headings, about 3%, exist as claims at all.",
-    "consequence": "Everything below is evidence from three documents (DOC-0205 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
+    "materializedClaimsInCorpus": 157,
+    "coverageOfApprovedHeadings": 0.0397,
+    "finding": "Seventeen of twenty-one approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 157 of 3955 approved headings, about 4%, exist as claims at all.",
+    "consequence": "Everything below is evidence from four documents (DOC-0205 and DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
     "byAuthority": [
       {
         "AuthorityId": "DOC-0001",
@@ -71,8 +71,8 @@
       {
         "AuthorityId": "DOC-0258",
         "approvedHeadings": 37,
-        "materializedClaims": 0,
-        "carriesClaimLevelData": false
+        "materializedClaims": 37,
+        "carriesClaimLevelData": true
       },
       {
         "AuthorityId": "DOC-0259",
@@ -147,7 +147,7 @@
     "identities": [
       "DOC-0252 L0000:S0 'MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM' (DocumentTitle)"
     ],
-    "shareOfMaterializedClaims": 0.0083,
+    "shareOfMaterializedClaims": 0.0064,
     "byPromptCategory": {
       "documentTitle": {
         "admittedByPrompt": true,
@@ -196,7 +196,7 @@
     "reading": "Used as a policy on one lane and as a catch-all on the other, from the same instruction. What separates them is not the lane but whether the document contains prominent text that is not structural - and this instruction gives the model no way to say so except by reporting it."
   },
   "genreEvidence": {
-    "unevidencedGenres": "18 authorities - textbooks, reports and other minutes among them - record totals only. Whether any of them contains an approved masthead, running header or table label cannot be read from Gold.",
+    "unevidencedGenres": "17 authorities - textbooks, reports and other minutes among them - record totals only. Whether any of them contains an approved masthead, running header or table label cannot be read from Gold.",
     "evidenced": [
       {
         "authority": "DOC-0001",
@@ -242,6 +242,16 @@
         },
         "treeLessClaims": 1,
         "reading": "The only document in the corpus with a captured model reply that exercises the category, and the only one where it goes wrong. Its annex restates the event at the top of a page, which is exactly the shape the instruction's 'title and subtitle' clause invites."
+      },
+      {
+        "authority": "DOC-0258",
+        "genre": "meeting minutes with an agenda annex and a participant annex, English, DOCX lane",
+        "approvedHeadings": 37,
+        "roles": {
+          "(none)": 37
+        },
+        "organisationNamedHeadings": 9,
+        "reading": "Materialized after the other three (24 historical headings plus 13 kept by the user, 37, on a source regenerated from its PDF); roles were not assigned, so tree-less claims cannot be counted from Gold. Two facts bear on the proposal below. First, nine approved headings are organisation names - each opens its own attendee list in Annex 2, so they are structural units, but their text is exactly what a clause worded 'text that identifies an organisation is not promoted' names. Second, three exploratory qwen3.7-flash runs on this document (eval/a99-closed-loop/doc0258-real-harness-exploration-v1, on the superseded source) reported the masthead date and meeting-mode lines as headings in all three - the same shape DOC-0252 shows. Their relation hints were not captured, so they are not counted as tree-less claims here."
       }
     ]
   },
@@ -256,12 +266,12 @@
       "any rule keyed to a document genre",
       "any wording drawn from DOC-0252"
     ],
-    "evidenceStrength": "Supported where the corpus can speak, and the corpus speaks for 3% of its own approved headings. The narrowing is safe for the one document that never uses the category and corrects four of five errors in the one that does; beyond those two (DOC-0205's own materialization has no captured model reply to measure against at all) it is a judgement, not a measurement."
+    "evidenceStrength": "Supported where the corpus can speak, and the corpus speaks for 4% of its own approved headings. The narrowing is safe for the one document that never uses the category and corrects four of five errors in the one that does; beyond those two (DOC-0205 has no captured model reply to measure against, and DOC-0258's replies carry no relation hints) it is a judgement, not a measurement. The organisation wording in particular is not safe as written: DOC-0258 has nine approved structural headings whose text is an organisation name, and the clause would have to be reworded to exempt a label that opens its own unit before it is carried beyond DOC-0252."
   },
   "recommendation": {
     "proceedToExperiment": "EXP_MASTHEAD_METADATA",
     "scope": "DOC-0252 PACK_005 and PACK_006, three repeats, 6 semantic calls, proposed cap 9",
-    "why": "The cross-corpus question with a captured model reply to check is answerable only for two documents, and both of them point the same way. DOC-0205's Gold was materialized without a corresponding model run, so it cannot inform this comparison either way. Waiting for corpus-wide claim data would mean materializing 3835 more approved headings that no one has been asked to materialize - a far larger piece of work than the change it would inform.",
+    "why": "The cross-corpus question with a captured model reply to check is answerable only for two documents, and both of them point the same way. DOC-0205's and DOC-0258's Gold were materialized without a relation-hint capture, so they cannot inform this comparison either way. Waiting for corpus-wide claim data would mean materializing 3798 more approved headings that no one has been asked to materialize - a far larger piece of work than the change it would inform.",
     "doFirst": "State the narrowing by function, and measure it on the one document that exercises the category, before it is carried to lanes whose documents have never been claim-level evaluated.",
     "residualRisk": "A genre that legitimately wants a masthead kept would regress silently, because no approved claim anywhere in the corpus would catch it. Recorded here rather than resolved.",
     "experimentNames": [

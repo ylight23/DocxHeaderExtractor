@@ -13,12 +13,12 @@
     "note": "A clause for either would make an improved score unattributable to this one."
   },
   "corpusLimitation": {
-    "materializedApprovedClaims": 120,
+    "materializedApprovedClaims": 157,
     "approvedHeadingsInCorpus": 3956,
-    "materializedAuthorities": 3,
+    "materializedAuthorities": 4,
     "authorities": 21,
     "crossGenreNoneSafety": "NOT_ESTABLISHED",
-    "statement": "Eighteen authorities record a heading total and no headings, so no approved claim outside these three documents can confirm or refute this clause. A result here is causal evidence about DOC-0252. It is not a corpus-wide semantic proof and must not be recorded as one."
+    "statement": "Seventeen authorities record a heading total and no headings, so no approved claim outside these four documents can confirm or refute this clause. A result here is causal evidence about DOC-0252. It is not a corpus-wide semantic proof and must not be recorded as one."
   },
   "promptAuthority": {
     "predecessorPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
@@ -32,10 +32,10 @@
     "documentSpecificWording": "none - checked against the document's own terms"
   },
   "goldSanityCheck": {
-    "scope": "all 120 materialized approved claims in the corpus",
+    "scope": "all 157 materialized approved claims in the corpus",
     "claimsAtRisk": 0,
     "documentTitlePreserved": true,
-    "reasoning": "Each materialized claim satisfies one of the clause's two admissions. Two are an accepted document title (DOC-0252 L0000:S0, and DOC-0205's own opening title added by its 71-to-72 occurrence migration). Every other claim across all three documents names a unit whose content follows beneath it - sessions, agenda items, regional subheadings, an annex heading, DOC-0001's numbered chapters and articles, and DOC-0205's own numbered chapters, sections and articles. None is an organisation, event, mode, date, venue or address line, so none is reached by the clause.",
+    "reasoning": "Each materialized claim satisfies one of the clause's two admissions. Two carry the accepted document-title role (DOC-0252 L0000:S0, and DOC-0205's own opening title added by its 71-to-72 occurrence migration); DOC-0258's title is in its set too but carries no assigned role. Every other claim across all four documents names a unit whose content follows beneath it - sessions, agenda items, regional subheadings, annex headings, DOC-0001's and DOC-0205's numbered chapters, sections and articles, and DOC-0258's agenda days and Annex 2 attendee lists. None is an event, mode, date, venue or address line. Nine DOC-0258 claims are organisation names, but each opens its own attendee list, so the structural admission covers them and they are not counted at risk here - the clause's organisation wording would need to keep that admission explicit before being carried beyond DOC-0252.",
     "byAuthority": [
       {
         "AuthorityId": "DOC-0001",
@@ -57,9 +57,16 @@
         "acceptedDocumentTitles": 1,
         "structuralUnits": 40,
         "atRisk": 0
+      },
+      {
+        "AuthorityId": "DOC-0258",
+        "claims": 37,
+        "acceptedDocumentTitles": 0,
+        "structuralUnits": 37,
+        "atRisk": 0
       }
     ],
-    "limitation": "A limited safety check, not corpus-wide proof: 3836 approved headings have no claim to check."
+    "limitation": "A limited safety check, not corpus-wide proof: 3799 approved headings have no claim to check."
   },
   "requestAuthority": {
     "profile": "STRUCTURED_SOURCE_PARTS",

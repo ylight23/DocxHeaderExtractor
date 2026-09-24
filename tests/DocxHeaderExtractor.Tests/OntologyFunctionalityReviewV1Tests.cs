@@ -9,23 +9,22 @@ namespace DocxHeaderExtractor.Tests;
 /// plausibly nest beneath it. Zero model, provider, or VLM calls; nothing here re-reviews or changes
 /// any approved Gold.
 /// <para>
-/// The corpus-coverage constraint this file surfaces first, before any finding: 3 of the 21
-/// CANONICAL approved authorities (DOC-0001, DOC-0205, DOC-0252) carry a materialized claims list in
-/// the live registry - the other 18 record only an approved heading total, per their own freeze
-/// artifacts ("Semantic total is authoritative; no occurrence list or span was synthesized from the
-/// total"), already established by <see cref="NoneRelationPolicyCorpusAuditTests"/>. Materializing a
-/// claims list is necessary but not sufficient for THIS heuristic: it also needs a per-claim identity
-/// and text field the <see cref="Row"/> extraction can read, and two of the three - DOC-0001 and
-/// DOC-0205 - use a legacy occurrence schema (<c>sourceAlias</c> + <c>exactText</c>, no
-/// <c>identity</c>/<c>semanticRole</c> field) the current extraction does not recognize, so both scan
-/// as <c>claimsScanned = 0</c> despite carrying materialized claims. Only DOC-0252 (the
-/// structured-source-parts schema, which does carry <c>identity</c> and <c>semanticRole</c>) is
-/// actually reviewable by this heuristic today. DOC-0205 was migrated into canonical Gold's occurrence
-/// path in the same session that added this note (71 prior-approved headings promoted verbatim plus
-/// one human-approved addition, the document title, reaching 72) - the migration is genuine (it is
-/// occurrence- and character-span-evaluable, and now contributes to every corpus-wide claims-count
-/// downstream of the registry), but it does not, by itself, extend what this specific heuristic can
-/// see.
+/// The corpus-coverage constraint this file surfaces first, before any finding: 4 of the 21
+/// CANONICAL approved authorities (DOC-0001, DOC-0205, DOC-0252, DOC-0258) carry a materialized claims
+/// list in the live registry - the other 17 record only an approved heading total, per their own
+/// freeze artifacts ("Semantic total is authoritative; no occurrence list or span was synthesized from
+/// the total"), already established by <see cref="NoneRelationPolicyCorpusAuditTests"/>.
+/// Materializing a claims list is necessary but not sufficient for THIS heuristic: it also needs a
+/// per-claim identity and text field the <see cref="Row"/> extraction can read, and three of the four
+/// - DOC-0001, DOC-0205 and DOC-0258 - use a legacy occurrence schema (<c>sourceAlias</c> +
+/// <c>exactText</c>, no <c>identity</c> field, and no assigned <c>semanticRole</c>) the current
+/// extraction does not recognize, so they scan as <c>claimsScanned = 0</c> despite carrying
+/// materialized claims. Only DOC-0252 (the structured-source-parts schema, which does carry
+/// <c>identity</c> and <c>semanticRole</c>) is actually reviewable by this heuristic today. DOC-0205
+/// (71 promoted + the document title = 72) and DOC-0258 (24 historical + 13 kept in
+/// DOC0258_GOLD37_DELTA_AUDIT_V1 = 37, on a source regenerated from its PDF) were migrated into
+/// canonical Gold's occurrence path after this review first ran - the migrations are genuine, but
+/// they do not, by themselves, extend what this specific heuristic can see.
 /// <para>
 /// This is a narrower claim than "only 2 documents ever had occurrence-level Gold materialized":
 /// <c>strict-gold-v3</c> (PROVENANCE_ONLY, not the canonical authority) independently materializes
@@ -33,8 +32,9 @@ namespace DocxHeaderExtractor.Tests;
 /// occurrences total. strict-gold-v3 is an older snapshot format, so its per-document counts do not
 /// always match today's canonical totals: DOC-0205's own strict-gold-v3 snapshot (71) still disagrees
 /// with the canonical total (72, since the migration added the title as a 72nd entry sourced from the
-/// original docx directly, not from strict-gold-v3), and DOC-0256 (24 vs. 34) and DOC-0258 (24 vs. 37)
-/// remain unmigrated for the same reason, per <see cref="CanonicalGoldConsolidationTests"/>'s own rule
+/// original docx directly, not from strict-gold-v3), DOC-0258's (24) disagrees with its canonical 37
+/// for the same kind of reason (its 13 additions were kept by the user, not read from strict-gold-v3),
+/// and DOC-0256 (24 vs. 34) remains unmigrated, per <see cref="CanonicalGoldConsolidationTests"/>'s own rule
 /// that semantic truth is never reduced to fit an older occurrence artifact. DOC-0252's strict-gold-v3
 /// count (27) also predates its own canonical total (42, after the R1-&gt;R2 and R2-&gt;R3 corrections
 /// this whole lineage made) - but DOC-0252 IS canonical, through its own separate, current
@@ -59,15 +59,16 @@ public sealed class OntologyFunctionalityReviewV1Tests
         var registry = ReadRegistry();
         Assert.Equal(21, registry.Length);
         var carriers = registry.Where(a => a.MaterializedSemanticClaims > 0).ToArray();
-        Assert.Equal(3, carriers.Length);
-        Assert.Equal(new[] { "DOC-0001", "DOC-0205", "DOC-0252" }, carriers.Select(a => a.AuthorityId).OrderBy(x => x, StringComparer.Ordinal));
+        Assert.Equal(4, carriers.Length);
+        Assert.Equal(new[] { "DOC-0001", "DOC-0205", "DOC-0252", "DOC-0258" }, carriers.Select(a => a.AuthorityId).OrderBy(x => x, StringComparer.Ordinal));
 
         // Carrying a materialized claims list is not the same as being scannable by THIS heuristic:
-        // DOC-0001 and DOC-0205 both use the legacy occurrence schema (sourceAlias + exactText, no
-        // identity/semanticRole field), so Row extraction reads null for both and they scan as zero
-        // rows despite carrying claims. Only DOC-0252's structured-source-parts schema is scannable.
+        // DOC-0001, DOC-0205 and DOC-0258 use the legacy occurrence schema (sourceAlias + exactText,
+        // no identity field), so Row extraction reads null for them and they scan as zero rows
+        // despite carrying claims. Only DOC-0252's structured-source-parts schema is scannable.
         Assert.Equal(0, ScanAuthority("DOC-0001").ClaimsScanned);
         Assert.Equal(0, ScanAuthority("DOC-0205").ClaimsScanned);
+        Assert.Equal(0, ScanAuthority("DOC-0258").ClaimsScanned);
         Assert.Equal(42, ScanAuthority("DOC-0252").ClaimsScanned);
     }
 
@@ -106,13 +107,15 @@ public sealed class OntologyFunctionalityReviewV1Tests
         var doc0001 = ScanAuthority("DOC-0001");
         var doc0205 = ScanAuthority("DOC-0205");
         var doc0252 = ScanAuthority("DOC-0252");
+        var doc0258 = ScanAuthority("DOC-0258");
         // "Carries materialized claims" (registry-level) is not the same as "scannable by this
-        // heuristic" (needs identity + text + role Row extraction can read). DOC-0001 and DOC-0205
-        // both carry claims but use the legacy sourceAlias/exactText schema with no identity or
-        // semanticRole field, so they scan as zero rows; only DOC-0252 is actually reviewable.
-        var reviewableClaims = doc0001.ClaimsScanned + doc0205.ClaimsScanned + doc0252.ClaimsScanned;
-        var allCandidates = doc0001.Candidates.Concat(doc0205.Candidates).Concat(doc0252.Candidates).ToArray();
-        var allTopologyOnly = doc0001.TopologyOnlyMatches.Concat(doc0205.TopologyOnlyMatches).Concat(doc0252.TopologyOnlyMatches).ToArray();
+        // heuristic" (needs identity + text + role Row extraction can read). DOC-0001, DOC-0205 and
+        // DOC-0258 carry claims but use the legacy sourceAlias/exactText schema with no identity
+        // field, so they scan as zero rows; only DOC-0252 is actually reviewable.
+        var scans = new[] { doc0001, doc0205, doc0252, doc0258 };
+        var reviewableClaims = scans.Sum(scan => scan.ClaimsScanned);
+        var allCandidates = scans.SelectMany(scan => scan.Candidates).ToArray();
+        var allTopologyOnly = scans.SelectMany(scan => scan.TopologyOnlyMatches).ToArray();
         var strictGoldV3 = ReadStrictGoldV3Counts();
         var canonicalTotals = registry.ToDictionary(a => a.AuthorityId, a => a.SemanticHeadingTotal, StringComparer.Ordinal);
 
@@ -131,7 +134,7 @@ public sealed class OntologyFunctionalityReviewV1Tests
             {
                 count = materializedClaimsAcrossCarriers,
                 authorities = carriers.Select(a => a.AuthorityId).OrderBy(x => x, StringComparer.Ordinal).ToArray(),
-                note = "Registry-level fact: these 3 authorities carry a non-empty semantic.claims list. This is NOT the same as 'reviewable by this heuristic' - see ontologyReviewableClaims below, which is strictly narrower.",
+                note = "Registry-level fact: these 4 authorities carry a non-empty semantic.claims list. This is NOT the same as 'reviewable by this heuristic' - see ontologyReviewableClaims below, which is strictly narrower.",
             },
             ontologyReviewableClaims = new
             {
@@ -139,7 +142,7 @@ public sealed class OntologyFunctionalityReviewV1Tests
                 ofApprovedHeadings = totalHeadings,
                 fraction = Math.Round((double)reviewableClaims / totalHeadings, 4),
                 authorities = new[] { "DOC-0252" },
-                note = "'Reviewable claims' means: claims this review's Row extraction can actually parse an identity, text, and role from. DOC-0001 and DOC-0205 both carry a materialized claims list (registry-level) but use the legacy sourceAlias/exactText schema with no identity or semanticRole field, so they contribute 0 scannable rows each; only DOC-0252's structured-source-parts schema is scannable today.",
+                note = "'Reviewable claims' means: claims this review's Row extraction can actually parse an identity, text, and role from. DOC-0001, DOC-0205 and DOC-0258 carry a materialized claims list (registry-level) but use the legacy sourceAlias/exactText schema with no identity field, so they contribute 0 scannable rows each; only DOC-0252's structured-source-parts schema is scannable today.",
             },
             corpusCoverage = new
             {
@@ -150,10 +153,10 @@ public sealed class OntologyFunctionalityReviewV1Tests
                 approvedHeadingsInCorpus = totalHeadings,
                 reviewableClaimsInCorpus = reviewableClaims,
                 coverageOfApprovedHeadings = Math.Round((double)reviewableClaims / totalHeadings, 4),
-                caveat = "This review can only examine canonical claims from DOC-0252 - the other 20 authorities either record only an approved heading total, or (DOC-0001, DOC-0205) carry a materialized claims list this heuristic's field extraction cannot parse, so 'no dual-function candidate found there' cannot be claimed; it can only be said that no such candidate is visible with the data this heuristic can actually read.",
+                caveat = "This review can only examine canonical claims from DOC-0252 - the other 20 authorities either record only an approved heading total, or (DOC-0001, DOC-0205, DOC-0258) carry a materialized claims list this heuristic's field extraction cannot parse, so 'no dual-function candidate found there' cannot be claimed; it can only be said that no such candidate is visible with the data this heuristic can actually read.",
                 distinctFromOccurrenceLevelGoldEverMaterialized = new
                 {
-                    claim = "1/21 authority (DOC-0252) is claim-reviewable by THIS heuristic; 3/21 (DOC-0001, DOC-0205, DOC-0252) carry a materialized claims list at the registry level. Neither of those is the same fact as '5/21 authorities ever had occurrence-level Gold materialized' (see strictGoldV3ProvenanceOnlyData below).",
+                    claim = "1/21 authority (DOC-0252) is claim-reviewable by THIS heuristic; 4/21 (DOC-0001, DOC-0205, DOC-0252, DOC-0258) carry a materialized claims list at the registry level. Neither of those is the same fact as '5/21 authorities ever had occurrence-level Gold materialized' (see strictGoldV3ProvenanceOnlyData below).",
                     strictGoldV3ProvenanceOnlyData = strictGoldV3.Select(d => new
                     {
                         authorityId = d.AuthorityId,
@@ -162,7 +165,7 @@ public sealed class OntologyFunctionalityReviewV1Tests
                         matchesCanonicalTotal = d.HeadingCount == canonicalTotals[d.AuthorityId],
                     }).OrderBy(d => d.authorityId, StringComparer.Ordinal).ToArray(),
                     strictGoldV3TotalOccurrences = strictGoldV3.Sum(d => d.HeadingCount),
-                    explanation = "eval/a99-closed-loop/strict-gold-v3/ (marked PROVENANCE_ONLY in the lineage inventory, not the canonical authority) independently materializes exact-text occurrence data for 5 documents totaling 153 occurrences - an older snapshot format whose per-document counts do not always match today's canonical totals. DOC-0205 was migrated into canonical Gold's occurrence path directly from its own approved provenance (71 prior-approved headings plus one human-approved title addition) rather than from strict-gold-v3, which is why its own strict-gold-v3 count (71) still disagrees with the canonical total (72). DOC-0256 and DOC-0258 remain unmigrated because their strict-gold-v3 occurrence counts do not match the currently-approved semantic total - CanonicalGoldConsolidationTests never reduces semantic truth to fit an older occurrence artifact. DOC-0252's strict-gold-v3 count also does not match its current canonical total, but DOC-0252 IS canonical - through a separate, current structured-source-parts occurrence pipeline, unrelated to this older strict-gold-v3 snapshot. Only DOC-0001's strict-gold-v3 count still agrees with its canonical total. Either way, none of DOC-0205/DOC-0256/DOC-0258's strict-gold-v3 data was usable directly by this review's heuristic even where occurrence text/role data exists, because that data is not canonically authoritative (and, for DOC-0205 specifically, the canonical schema it did migrate into is not this heuristic's scannable shape either).",
+                    explanation = "eval/a99-closed-loop/strict-gold-v3/ (marked PROVENANCE_ONLY in the lineage inventory, not the canonical authority) independently materializes exact-text occurrence data for 5 documents totaling 153 occurrences - an older snapshot format whose per-document counts do not always match today's canonical totals. DOC-0205 was migrated into canonical Gold's occurrence path directly from its own approved provenance (71 prior-approved headings plus one human-approved title addition) rather than from strict-gold-v3, which is why its own strict-gold-v3 count (71) still disagrees with the canonical total (72). DOC-0258 was migrated the same way - 24 historical headings plus 13 kept by the user in DOC0258_GOLD37_DELTA_AUDIT_V1, reaching its approved 37, on a source regenerated from its PDF - so its strict-gold-v3 count (24) also still disagrees. DOC-0256 remains unmigrated because its strict-gold-v3 occurrence count does not match the currently-approved semantic total - CanonicalGoldConsolidationTests never reduces semantic truth to fit an older occurrence artifact. DOC-0252's strict-gold-v3 count also does not match its current canonical total, but DOC-0252 IS canonical - through a separate, current structured-source-parts occurrence pipeline, unrelated to this older strict-gold-v3 snapshot. Only DOC-0001's strict-gold-v3 count still agrees with its canonical total. Either way, none of DOC-0205/DOC-0256/DOC-0258's strict-gold-v3 data was usable directly by this review's heuristic even where occurrence text/role data exists, because that data is not canonically authoritative (and, for DOC-0205 and DOC-0258, the canonical schema they did migrate into is not this heuristic's scannable shape either).",
                 },
             },
 
@@ -177,6 +180,7 @@ public sealed class OntologyFunctionalityReviewV1Tests
             doc0001 = new { authorityId = "DOC-0001", claimsScanned = doc0001.ClaimsScanned, candidates = doc0001.Candidates, topologyOnlyMatches = doc0001.TopologyOnlyMatches, note = "Carries a materialized claims list (7 headings) but uses the legacy sourceAlias/exactText schema with no identity or semanticRole field, so this heuristic's Row extraction reads every row as null and scans 0 rows." },
             doc0205 = new { authorityId = "DOC-0205", claimsScanned = doc0205.ClaimsScanned, candidates = doc0205.Candidates, topologyOnlyMatches = doc0205.TopologyOnlyMatches, note = "Migrated into canonical Gold's occurrence path (71 prior-approved headings plus one human-approved title addition, reaching 72) in the same session that added this note. Uses the same legacy sourceAlias/exactText schema as DOC-0001, so it also scans 0 rows despite carrying a materialized claims list." },
             doc0252 = new { authorityId = "DOC-0252", claimsScanned = doc0252.ClaimsScanned, candidates = doc0252.Candidates, topologyOnlyMatches = doc0252.TopologyOnlyMatches },
+            doc0258 = new { authorityId = "DOC-0258", claimsScanned = doc0258.ClaimsScanned, candidates = doc0258.Candidates, topologyOnlyMatches = doc0258.TopologyOnlyMatches, note = "Migrated into canonical Gold's occurrence path (24 historical headings plus 13 kept by the user, reaching 37, on a source regenerated from its PDF) after this review first ran. Uses the same legacy sourceAlias/exactText schema as DOC-0001 and no roles were assigned, so it also scans 0 rows. Its Annex 2 organisation headings - each opening its own attendee list - are the kind of topology this heuristic looks for, but it cannot see them." },
 
             findings = new
             {
@@ -196,7 +200,7 @@ public sealed class OntologyFunctionalityReviewV1Tests
                 agendaBoundaryCase = "SUPPORTED_BY_REVIEWABLE_DATA",
                 heuristicRecallEstablished = false,
                 corpusGeneralization = "NOT_ESTABLISHED",
-                reasoning = "Among the 42 semantic claims with enough data to review (all DOC-0252 - DOC-0001 and DOC-0205 both carry materialized claims lists but in a schema this heuristic's Row extraction cannot parse), this pre-registered heuristic detected exactly one dual-function candidate: Agenda. It did not detect evidence that the single-label ontology is a systemic problem. Coverage is only 42/3956 (about 1.1%), and the heuristic's sensitivity/recall has not been established - a claim can be a genuine dual-function occurrence and still be missed if its label is longer than 2 words, its children carry several different semanticRoles instead of one homogeneous run, its nested content does not sit immediately after it, its artifact boundary is expressed through layout rather than a run of consecutive claims, its wording is not 'generic' even though it is both identity- and structure-bearing, or its authority's schema simply lacks the identity/role fields this heuristic reads. So the remaining corpus cannot be inferred to be free of other boundary cases from this result.",
+                reasoning = "Among the 42 semantic claims with enough data to review (all DOC-0252 - DOC-0001, DOC-0205 and DOC-0258 carry materialized claims lists but in a schema this heuristic's Row extraction cannot parse), this pre-registered heuristic detected exactly one dual-function candidate: Agenda. It did not detect evidence that the single-label ontology is a systemic problem. Coverage is only 42/3956 (about 1.1%), and the heuristic's sensitivity/recall has not been established - a claim can be a genuine dual-function occurrence and still be missed if its label is longer than 2 words, its children carry several different semanticRoles instead of one homogeneous run, its nested content does not sit immediately after it, its artifact boundary is expressed through layout rather than a run of consecutive claims, its wording is not 'generic' even though it is both identity- and structure-bearing, or its authority's schema simply lacks the identity/role fields this heuristic reads. So the remaining corpus cannot be inferred to be free of other boundary cases from this result.",
                 annexContrastCaveat = "Annex 2: List of Participants is a useful contrast - it shows topology (a heading opening several nested children) is not by itself sufficient to imply ambiguity. But its exclusion (by the 'generic text' condition) only demonstrates this heuristic's current behavior, not a proven fact that Annex 2 is single-function - a different, more sensitive heuristic or a human review could still find it ambiguous.",
             },
 
@@ -204,7 +208,7 @@ public sealed class OntologyFunctionalityReviewV1Tests
             goldChanged = false,
             crossDocumentGeneralization = false,
             generalizationEstablished = false,
-            scope = "DOC-0252 only, the one authority whose occurrence schema this heuristic's Row extraction can parse. DOC-0001 and DOC-0205 carry materialized claims lists but in a schema (sourceAlias/exactText, no identity or semanticRole) this heuristic cannot read, so they scan as zero rows despite being materialized. Not evidence about the remaining 18 authorities' unmaterialized headings, and not evidence about this heuristic's sensitivity on any data it has not been tested against.",
+            scope = "DOC-0252 only, the one authority whose occurrence schema this heuristic's Row extraction can parse. DOC-0001, DOC-0205 and DOC-0258 carry materialized claims lists but in a schema (sourceAlias/exactText, no identity) this heuristic cannot read, so they scan as zero rows despite being materialized. Not evidence about the remaining 17 authorities' unmaterialized headings, and not evidence about this heuristic's sensitivity on any data it has not been tested against.",
         });
     }
 

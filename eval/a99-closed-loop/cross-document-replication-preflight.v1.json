@@ -146,8 +146,8 @@
         "occurrenceEvaluable": false,
         "characterSpanEvaluable": false,
         "currentInventoryPresent": true,
-        "currentSourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
-        "currentSourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30"
+        "currentSourcePath": "todo10_8/generated-docx-v2/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+        "currentSourceSha256": "e630588a9f42b7cdbe6245819c38d50309cc377e2ec292185926a4dc0badc369"
       },
       {
         "documentId": "DOC-0264",
@@ -326,13 +326,13 @@
     {
       "documentId": "DOC-0258",
       "mediaType": "DOCX",
-      "sourcePath": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
-      "sourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
-      "registrySourceSha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+      "sourcePath": "todo10_8/generated-docx-v2/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+      "sourceSha256": "e630588a9f42b7cdbe6245819c38d50309cc377e2ec292185926a4dc0badc369",
+      "registrySourceSha256": "e630588a9f42b7cdbe6245819c38d50309cc377e2ec292185926a4dc0badc369",
       "sourceHashMatchesRegistry": true,
-      "sourceUniverseSha256": "18286ac2f4b3c3abb2a89a409fb30818c4d277b32e6b22e906726f158ab2039f",
-      "aliasCatalogHash": "871ba7af092a8fe26403f290392a6570b3238651df6fb48fcc78e379d5107540",
-      "aliasCount": 146,
+      "sourceUniverseSha256": "b7757db243f28cc5207b182786a9050d9297d04d695f9cc7df546085803c1e72",
+      "aliasCatalogHash": "89d39bb7e164174ac45f6e725ad2cd9775ced4c8aa7b6eecbd833c30b26c4e89",
+      "aliasCount": 168,
       "parserLineCount": 0,
       "authorityBuildDeterministic": true,
       "nativeGoldPath": null,
@@ -340,12 +340,12 @@
       "goldRebindPassed": false,
       "goldBindingIssues": [
         "NON_CURRENT_EVALUATOR_V3_SCHEMA",
-        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "SOURCE_HASH_MISMATCH",
         "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
       ],
       "semanticHeadingTotal": 37,
       "hasCanonicalSemanticGold": true,
-      "hasCanonicalOccurrenceGold": false,
+      "hasCanonicalOccurrenceGold": true,
       "goldHeadingClaims": 37,
       "goldHeadingAliases": 0,
       "legacyOccurrencePath": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0258.occurrence-gold-v1.json",
@@ -356,7 +356,7 @@
       "eligibleForNewProviderReplication": false,
       "exclusionReasons": [
         "NON_CURRENT_EVALUATOR_V3_SCHEMA",
-        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "SOURCE_HASH_MISMATCH",
         "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
       ]
     },
@@ -433,7 +433,7 @@
         "documentId": "DOC-0258",
         "reasons": [
           "NON_CURRENT_EVALUATOR_V3_SCHEMA",
-          "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+          "SOURCE_HASH_MISMATCH",
           "NO_CURRENT_NATIVE_OCCURRENCE_GOLD"
         ]
       },
