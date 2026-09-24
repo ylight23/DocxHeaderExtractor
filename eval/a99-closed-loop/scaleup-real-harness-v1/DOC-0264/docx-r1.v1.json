@@ -1,0 +1,1430 @@
+{
+  "artifactKind": "a99_scaleup_real_harness_run",
+  "documentId": "DOC-0264",
+  "sourcePath": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
+  "sourceSha256": "a69e55265f53b556367a82e2c06a29c2eaa7fd2e19784e3200bdfb3355c09c5e",
+  "model": "qwen/qwen3.7-flash",
+  "lane": "docx",
+  "placement": false,
+  "repeat": "1",
+  "providerCallsMade": 12,
+  "rateLimitedAttempts": 0,
+  "timedOutAttempts": 0,
+  "failure": null,
+  "reason": "docx-canonical-vnext-semantic-authority",
+  "elementCount": 209,
+  "elements": [
+    {
+      "text": "THE PRESIDENT",
+      "sourceIds": [
+        "body[1]/tbl[1]/tr[1]/tc[1]/p[1]"
+      ]
+    },
+    {
+      "text": "No. 18/2019/L-CTN",
+      "sourceIds": [
+        "body[1]/tbl[1]/tr[1]/tc[1]/p[2]"
+      ]
+    },
+    {
+      "text": "THE SOCIALIST REPUBLIC OF VIETNAM Independence - Freedom - Happiness",
+      "sourceIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[1]"
+      ]
+    },
+    {
+      "text": "Hanoi, December 03, 2019",
+      "sourceIds": [
+        "body[1]/tbl[1]/tr[1]/tc[2]/p[2]"
+      ]
+    },
+    {
+      "text": "Order",
+      "sourceIds": [
+        "body[1]/p[3]"
+      ]
+    },
+    {
+      "text": "On the promulgation of law",
+      "sourceIds": [
+        "body[1]/p[4]"
+      ]
+    },
+    {
+      "text": "THE NATIONAL ASSEMBLY",
+      "sourceIds": [
+        "body[1]/tbl[2]/tr[1]/tc[1]/p[1]"
+      ]
+    },
+    {
+      "text": "THE SOCIALIST REPUBLIC OF VIETNAM Independence - Freedom - Happiness",
+      "sourceIds": [
+        "body[1]/tbl[2]/tr[1]/tc[3]/p[1]"
+      ]
+    },
+    {
+      "text": "No. 54/2019/QH14",
+      "sourceIds": [
+        "body[1]/tbl[2]/tr[2]/tc[1]/p[1]"
+      ]
+    },
+    {
+      "text": "LAW ON SECURITIES",
+      "sourceIds": [
+        "body[1]/p[16]"
+      ]
+    },
+    {
+      "text": "Chapter I",
+      "sourceIds": [
+        "body[1]/p[21]"
+      ]
+    },
+    {
+      "text": "GENERAL PROVISIONS",
+      "sourceIds": [
+        "body[1]/p[22]"
+      ]
+    },
+    {
+      "text": "Article 1. Scope of regulation",
+      "sourceIds": [
+        "body[1]/p[23]"
+      ]
+    },
+    {
+      "text": "Article 2. Subjects of application",
+      "sourceIds": [
+        "body[1]/p[25]"
+      ]
+    },
+    {
+      "text": "Article 3. Application of the Securities Law and relevant laws",
+      "sourceIds": [
+        "body[1]/p[29]"
+      ]
+    },
+    {
+      "text": "Article 4. Interpretation of terms",
+      "sourceIds": [
+        "body[1]/p[31]"
+      ]
+    },
+    {
+      "text": "Article 5. Principles of securities and securities market activities",
+      "sourceIds": [
+        "body[1]/p[103]"
+      ]
+    },
+    {
+      "text": "Article 6. Securities market development policies",
+      "sourceIds": [
+        "body[1]/p[108]"
+      ]
+    },
+    {
+      "text": "Article 7. Measures to ensure security and safety of the securities market",
+      "sourceIds": [
+        "body[1]/p[112]"
+      ]
+    },
+    {
+      "text": "Article 8. State management of securities and securities market",
+      "sourceIds": [
+        "body[1]/p[122]"
+      ]
+    },
+    {
+      "text": "Article 9. The State Securities Commission",
+      "sourceIds": [
+        "body[1]/p[130]"
+      ]
+    },
+    {
+      "text": "Article 10. Securities-related socio-professional organizations",
+      "sourceIds": [
+        "body[1]/p[150]"
+      ]
+    },
+    {
+      "text": "Article 11. Professional securities investors",
+      "sourceIds": [
+        "body[1]/p[153]"
+      ]
+    },
+    {
+      "text": "Article 12. Prohibited acts in securities and securities market activities",
+      "sourceIds": [
+        "body[1]/p[161]"
+      ]
+    },
+    {
+      "text": "Chapter II",
+      "sourceIds": [
+        "body[1]/p[169]"
+      ]
+    },
+    {
+      "text": "OFFERING OF SECURITIES",
+      "sourceIds": [
+        "body[1]/p[170]"
+      ]
+    },
+    {
+      "text": "Section 1",
+      "sourceIds": [
+        "body[1]/p[171]"
+      ]
+    },
+    {
+      "text": "PUBLIC OFFERING OF SECURITIES",
+      "sourceIds": [
+        "body[1]/p[172]"
+      ]
+    },
+    {
+      "text": "Article 13. Securities par value",
+      "sourceIds": [
+        "body[1]/p[173]"
+      ]
+    },
+    {
+      "text": "Article 14. Forms of public offering of securities",
+      "sourceIds": [
+        "body[1]/p[177]"
+      ]
+    },
+    {
+      "text": "Article 15. Conditions for public offering of securities",
+      "sourceIds": [
+        "body[1]/p[180]"
+      ]
+    },
+    {
+      "text": "Article 16. Registration of public offering of securities",
+      "sourceIds": [
+        "body[1]/p[213]"
+      ]
+    },
+    {
+      "text": "Article 17. Conditions for issuance underwriting of securities to the public",
+      "sourceIds": [
+        "body[1]/p[220]"
+      ]
+    },
+    {
+      "text": "Article 18. Dossiers of registration of public offering of securities",
+      "sourceIds": [
+        "body[1]/p[226]"
+      ]
+    },
+    {
+      "text": "3. A dossier of registration of public offering of bonds must comprise:",
+      "sourceIds": [
+        "body[1]/p[242]"
+      ]
+    },
+    {
+      "text": "4. A dossier of registration of public offering of convertible bonds must comprise:",
+      "sourceIds": [
+        "body[1]/p[251]"
+      ]
+    },
+    {
+      "text": "5. A dossier of registration of public offering of fund certificates must comprise:",
+      "sourceIds": [
+        "body[1]/p[258]"
+      ]
+    },
+    {
+      "text": "6. A dossier of registration of public offering of stocks or bonds must be accompanied with a decision of the Board of Directors or Members\u2019 Council or company owner approving such dossier. For public offering of stocks of credit institutions, such a dossier must contain the State Bank of Vietnam\u2019s written approval of charter capital change. For public offering of securities of insurance business institutions that leads to charter capital change, such a dossier must contain the Ministry of Finance\u2019s written approval of charter capital change.",
+      "sourceIds": [
+        "body[1]/p[264]"
+      ]
+    },
+    {
+      "text": "7. When a dossier of registration of public offering of securities is partially or wholly certified by related institutions or individuals, the issuing institution shall send such certifications to the State Securities Commission.",
+      "sourceIds": [
+        "body[1]/p[265]"
+      ]
+    },
+    {
+      "text": "8. Information in dossiers of registration of public offering of securities must be accurate and truthful, cause no misleading and have adequate important contents which exert an impact on investors\u2019 decisions.",
+      "sourceIds": [
+        "body[1]/p[266]"
+      ]
+    },
+    {
+      "text": "9. When submitting a dossier of registration of public offering of securities to the State Securities Commission, an issuing institution shall concurrently submit a dossier of registration of listing or registration of securities for trading under Clause 4, Article 48 of this Law, except the offering of open-end fund certificates.",
+      "sourceIds": [
+        "body[1]/p[267]"
+      ]
+    },
+    {
+      "text": "Article 19. Prospectus",
+      "sourceIds": [
+        "body[1]/p[268]"
+      ]
+    },
+    {
+      "text": "1. For a public offering of stocks or bonds, a prospectus must have the following contents:",
+      "sourceIds": [
+        "body[1]/p[269]"
+      ]
+    },
+    {
+      "text": "2. For a public offering of fund certificates, a prospectus must have the following contents:",
+      "sourceIds": [
+        "body[1]/p[274]"
+      ]
+    },
+    {
+      "text": "3. Signatures in prospectus:",
+      "sourceIds": [
+        "body[1]/p[281]"
+      ]
+    },
+    {
+      "text": "4. The Minister of Finance shall provide the model prospectus.",
+      "sourceIds": [
+        "body[1]/p[284]"
+      ]
+    },
+    {
+      "text": "Article 20. Financial statements",
+      "sourceIds": [
+        "body[1]/p[285]"
+      ]
+    },
+    {
+      "text": "1. Financial statements shall be made in accordance with the accounting law.",
+      "sourceIds": [
+        "body[1]/p[286]"
+      ]
+    },
+    {
+      "text": "2. An issuing institution being a parent company shall submit consolidated financial statements in accordance with the accounting law.",
+      "sourceIds": [
+        "body[1]/p[287]"
+      ]
+    },
+    {
+      "text": "3. Annual financial statements shall be audited by audit firms accredited to audit public-interest units in the field of securities. Audit opinions for financial statements are unqualified opinions. In case an audit opinion is a qualified opinion, the exception does not impact offering conditions. An issuing institution must have documents on reasonable explanation about, and an audit firm\u2019s certification of, impacts of the exception.",
+      "sourceIds": [
+        "body[1]/p[288]"
+      ]
+    },
+    {
+      "text": "4. If a dossier is submitted within 60 days after the last day of an annual accounting period, the annual financial statement of the preceding year in the initial dossier may be an unaudited one which, however, must be accompanied with audited financial statements of the 2 preceding years.",
+      "sourceIds": [
+        "body[1]/p[289]"
+      ]
+    },
+    {
+      "text": "5. If the accounting period of the latest financial statement ends more than 90 days after the date of submission of a complete and valid dossier of registration of public offering of securities to the State Securities Commission, the issuing institution shall make an additional financial statement counting to the latest month or quarter.",
+      "sourceIds": [
+        "body[1]/p[290]"
+      ]
+    },
+    {
+      "text": "Article 21. Accredited audit firms and certified public accountants",
+      "sourceIds": [
+        "body[1]/p[291]"
+      ]
+    },
+    {
+      "text": "1. The State Securities Commission shall consider, approve and publicize list of accredited audit firms and list of certified public accountants to audit public-interest units in the field of securities.",
+      "sourceIds": [
+        "body[1]/p[292]"
+      ]
+    },
+    {
+      "text": "2. Public-interest units in the field of securities include public companies, listed institutions, institutions with trading registration, institutions offering securities to the public, securities companies, securities investment fund management companies, securities investment companies, and securities investment funds.",
+      "sourceIds": [
+        "body[1]/p[293]"
+      ]
+    },
+    {
+      "text": "3. An audit firm accredited to audit public-interest units in the field of securities shall comply with regulations on independent audit and has the following obligations:",
+      "sourceIds": [
+        "body[1]/p[294]"
+      ]
+    },
+    {
+      "text": "4. The Government shall detail this Article.",
+      "sourceIds": [
+        "body[1]/p[299]"
+      ]
+    },
+    {
+      "text": "Article 22. Modification and supplementation of dossiers of registration of public offering of securities",
+      "sourceIds": [
+        "body[1]/p[300]"
+      ]
+    },
+    {
+      "text": "1. If inaccurate information is detected or important information is omitted in its dossier of registration of public offering of securities, or when finding it necessary to explain an equivocal issue, an issuing institution shall modify or supplement the dossier or make a written explanation.",
+      "sourceIds": [
+        "body[1]/p[301]"
+      ]
+    },
+    {
+      "text": "2. In the course of examining a dossier of registration of public offering of securities of an issuing institution, the State Securities Commission may request the issuing institution to modify or supplement its dossier in order to ensure that the disclosed information is accurate, truthful and adequate, thus protecting lawful rights and interests of investors.",
+      "sourceIds": [
+        "body[1]/p[302]"
+      ]
+    },
+    {
+      "text": "3. After the State Securities Commission grants a certificate of registration of public offering of securities, if there arises an important information related to the dossier of registration of public offering of securities, the issuing institution shall, within 7 working days, disclose such information by the method specified in Clause 3, Article 25 of this Law and modify or supplement the dossier.",
+      "sourceIds": [
+        "body[1]/p[303]"
+      ]
+    },
+    {
+      "text": "4. A document on modification or supplementation of a dossier of registration of public offering of securities to be sent to the State Securities Commission must bear signatures of the persons who have signed the dossier or persons holding the same titles.",
+      "sourceIds": [
+        "body[1]/p[304]"
+      ]
+    },
+    {
+      "text": "5. The time limit for examination of a dossier of registration of public offering of securities in the cases specified in Clauses 1 and 2 of this Article shall be counted from the date the State Securities Commission receives a complete and valid document on the dossier modification or supplementation.",
+      "sourceIds": [
+        "body[1]/p[305]"
+      ]
+    },
+    {
+      "text": "Article 23. Responsibilities of institutions and individuals related to dossiers of registration of public offering of securities",
+      "sourceIds": [
+        "body[1]/p[306]"
+      ]
+    },
+    {
+      "text": "1. Issuing institutions shall take responsibility before law for the accuracy, truthfulness and adequacy of their dossiers of registration of public offering of securities.",
+      "sourceIds": [
+        "body[1]/p[307]"
+      ]
+    },
+    {
+      "text": "2. Issuance consultancy institutions, issuance underwriting institutions, accredited audit firms, persons who sign audit reports and any institutions and individuals that certify dossiers of registration of public offering of securities shall take responsibility before law for matters related to such dossiers.",
+      "sourceIds": [
+        "body[1]/p[308]"
+      ]
+    },
+    {
+      "text": "Article 24. Use of information before public offering of securities",
+      "sourceIds": [
+        "body[1]/p[309]"
+      ]
+    },
+    {
+      "text": "Article 25. Grant of certificate of registration of public offering of securities",
+      "sourceIds": [
+        "body[1]/p[311]"
+      ]
+    },
+    {
+      "text": "1. Within 30 days after receiving a complete and valid dossier of registration of public offering of securities, the State Securities Commission shall grant a certificate of registration of public offering of securities; in case of refusal to grant such a certificate, it shall reply in writing, clearly stating the reason.",
+      "sourceIds": [
+        "body[1]/p[312]"
+      ]
+    },
+    {
+      "text": "2. A certificate of registration of public offering of securities granted by the State Securities Commission is a document certifying that a dossier of registration of public offering of securities fully satisfies the law-prescribed conditions and procedures.",
+      "sourceIds": [
+        "body[1]/p[313]"
+      ]
+    },
+    {
+      "text": "3. Within 7 working days after its certificate of registration of public offering of securities becomes effective, an issuing institution shall publish an issuance announcement on an online newspaper or a printed newspaper for 3 consecutive issues.",
+      "sourceIds": [
+        "body[1]/p[314]"
+      ]
+    },
+    {
+      "text": "4. Securities may only be offered to the public after their issuance is announced under Clause 3 of this Article.",
+      "sourceIds": [
+        "body[1]/p[315]"
+      ]
+    },
+    {
+      "text": "Article 26. Distribution of securities",
+      "sourceIds": [
+        "body[1]/p[316]"
+      ]
+    },
+    {
+      "text": "1. Securities of an issuing institution may only be distributed after it ensures that securities buyers have accessed the prospectus in its dossier of registration of public offering of securities which is posted up at the places indicated in the issuance announcement.",
+      "sourceIds": [
+        "body[1]/p[317]"
+      ]
+    },
+    {
+      "text": "2. An issuing institution, issuance underwriting institution or issuance agent shall distribute securities in a fair and open manner and ensure a period of at least 20 days for investors to register to buy securities, unless offered securities are covered warrants for which such time limit shall be stated in the issuance announcement.",
+      "sourceIds": [
+        "body[1]/p[318]"
+      ]
+    },
+    {
+      "text": "3. Securities payments shall be transferred into an escrow account opened at a bank or foreign bank branch until the offering is completed and reported to the State Securities Commission.",
+      "sourceIds": [
+        "body[1]/p[320]"
+      ]
+    },
+    {
+      "text": "4. An issuing institution shall complete the distribution of its securities within 90 days after the certificate of public offering of securities becomes effective. In case it cannot complete the distribution of securities within this time limit, the State Securities Commission may consider extending the time limit for distribution of securities for no more than 30 days. In case of registration of securities offering to be made in installments, the interval between two offering installments must not exceed 12 months.",
+      "sourceIds": [
+        "body[1]/p[321]"
+      ]
+    },
+    {
+      "text": "5. An issuing institution or issuance underwriting institution shall send a report on results of an offering to the State Securities Commission within 10 days after the completion of the offering, accompanied with a written certification by a bank or foreign bank branch where an escrow account is opened of the proceeds from the offering.",
+      "sourceIds": [
+        "body[1]/p[322]"
+      ]
+    },
+    {
+      "text": "6. An issuing institution, issuance underwriting institution or issuance agent shall deliver securities or securities ownership certificates to buyers within 30 days after the offering is completed.",
+      "sourceIds": [
+        "body[1]/p[323]"
+      ]
+    },
+    {
+      "text": "Article 27. Suspension of public offering of securities",
+      "sourceIds": [
+        "body[1]/p[324]"
+      ]
+    },
+    {
+      "text": "1. The State Securities Commission may suspend a public offering of securities for up to 60 days in the following cases:",
+      "sourceIds": [
+        "body[1]/p[325]"
+      ]
+    },
+    {
+      "text": "2. Within 7 working days after its public offering of securities is suspended, an issuing institution shall announce the suspension by the method specified in Clause 3, Article 25 of this Law and call the issued securities when investors so request and, at the same time, refund the received money amounts to investors within 15 days after the latter so request.",
+      "sourceIds": [
+        "body[1]/p[328]"
+      ]
+    },
+    {
+      "text": "3. After errors leading to the suspension of a public offering of securities are addressed, the State Securities Commission shall issue a notice on suspension cancellation and the offering of securities may be resumed.",
+      "sourceIds": [
+        "body[1]/p[329]"
+      ]
+    },
+    {
+      "text": "4. Within 7 working days after a notice on suspension cancellation is issued, an issuing institution shall announce the suspension cancellation by the method specified in Clause 3, Article 25 of this Law.",
+      "sourceIds": [
+        "body[1]/p[330]"
+      ]
+    },
+    {
+      "text": "Article 28. Cancellation of public offering of securities",
+      "sourceIds": [
+        "body[1]/p[331]"
+      ]
+    },
+    {
+      "text": "1. The State Securities Commission shall decide to cancel a public offering of securities in the following cases:",
+      "sourceIds": [
+        "body[1]/p[332]"
+      ]
+    },
+    {
+      "text": "2. In addition to the cases specified in Clause 1 of this Article, a public offering of securities may be cancelled under a legally effective court judgment or ruling, an arbitration award or a decision of a competent agency as prescribed by law.",
+      "sourceIds": [
+        "body[1]/p[336]"
+      ]
+    },
+    {
+      "text": "3. Within 7 working days after its public offering of securities is cancelled, an issuing institution shall announce the cancellation by the method specified in Clause 3, Article 25 of this Law and call the issued securities and concurrently refund the received money amounts to investors within 15 days after the offering is cancelled. Past this time limit, the issuing institution shall pay damages to investors according to their reached agreements.",
+      "sourceIds": [
+        "body[1]/p[337]"
+      ]
+    },
+    {
+      "text": "Article 29. Obligations of issuing institutions",
+      "sourceIds": [
+        "body[1]/p[338]"
+      ]
+    },
+    {
+      "text": "1. An issuing institution that has completed a public offering of stocks and become a public company under Point b, Clause 1, Article 32 of this Law is not required to submit a public company registration dossier prescribed in Clause 1, Article 33 of this Law to the State Securities Commission.",
+      "sourceIds": [
+        "body[1]/p[339]"
+      ]
+    },
+    {
+      "text": "2. An issuing institution that has carried out a public offering of securities shall complete its dossier of registration of securities listing or securities trading within 30 days after the offering is completed.",
+      "sourceIds": [
+        "body[1]/p[340]"
+      ]
+    },
+    {
+      "text": "3. An issuing institution that has completed a public offering of bonds shall fulfill the obligation to disclose information prescribed in this Law.",
+      "sourceIds": [
+        "body[1]/p[341]"
+      ]
+    },
+    {
+      "text": "Section 2",
+      "sourceIds": [
+        "body[1]/p[342]"
+      ]
+    },
+    {
+      "text": "PRIVATE PLACEMENT OF SECURITIES",
+      "sourceIds": [
+        "body[1]/p[343]"
+      ]
+    },
+    {
+      "text": "Article 30. Private placement of securities of issuing institutions other than public companies",
+      "sourceIds": [
+        "body[1]/p[344]"
+      ]
+    },
+    {
+      "text": "Article 31. Private placement of securities of public companies, securities companies and securities investment fund management companies",
+      "sourceIds": [
+        "body[1]/p[346]"
+      ]
+    },
+    {
+      "text": "1. Conditions for private placement of stocks, convertible bonds or bonds accompanied with warrants of a public company:",
+      "sourceIds": [
+        "body[1]/p[347]"
+      ]
+    },
+    {
+      "text": "2. Conditions for private placement of bonds of a public company not falling into the cases specified in Clause 1 of this Article:",
+      "sourceIds": [
+        "body[1]/p[353]"
+      ]
+    },
+    {
+      "text": "3. Securities companies and securities investment fund management companies other than public companies that privately place stocks, convertible bonds or bonds accompanied with warrants must satisfy the conditions prescribed in Clause 1 of this Article.",
+      "sourceIds": [
+        "body[1]/p[360]"
+      ]
+    },
+    {
+      "text": "4. Conditions for private placement of bonds of a securities company or securities investment fund management company that is not a public company and does not fall into the case specified in Clause 3 of this Article:",
+      "sourceIds": [
+        "body[1]/p[361]"
+      ]
+    },
+    {
+      "text": "Chapter III",
+      "sourceIds": [
+        "body[1]/p[367]"
+      ]
+    },
+    {
+      "text": "PUBLIC COMPANIES",
+      "sourceIds": [
+        "body[1]/p[368]"
+      ]
+    },
+    {
+      "text": "Section 1",
+      "sourceIds": [
+        "body[1]/p[369]"
+      ]
+    },
+    {
+      "text": "GENERAL PROVISIONS ON PUBLIC COMPANIES",
+      "sourceIds": [
+        "body[1]/p[370]"
+      ]
+    },
+    {
+      "text": "Section 2",
+      "sourceIds": [
+        "body[1]/p[470]"
+      ]
+    },
+    {
+      "text": "CORPORATE GOVERNANCE APPLICABLE TO PUBLIC COMPANIES",
+      "sourceIds": [
+        "body[1]/p[471]"
+      ]
+    },
+    {
+      "text": "2. The Shareholders\u2019 General Meeting may be convened and held in accordance with the following provisions:",
+      "sourceIds": [
+        "body[1]/p[487]"
+      ]
+    },
+    {
+      "text": "3. The composition, structure, responsibilities and obligations of the Board of Directors must comply with the following provisions:",
+      "sourceIds": [
+        "body[1]/p[492]"
+      ]
+    },
+    {
+      "text": "4. The nomination and self-nomination for election of members of the Board of Directors must comply with the Law on Enterprises, relevant laws and following provisions:",
+      "sourceIds": [
+        "body[1]/p[496]"
+      ]
+    },
+    {
+      "text": "5. Members of the Board of Directors have the following rights and responsibilities:",
+      "sourceIds": [
+        "body[1]/p[499]"
+      ]
+    },
+    {
+      "text": "6. A public company shall comply with the following provisions on prevention of conflicts of interest and transparent information disclosure:",
+      "sourceIds": [
+        "body[1]/p[506]"
+      ]
+    },
+    {
+      "text": "7. The Government shall detail this Article.",
+      "sourceIds": [
+        "body[1]/p[511]"
+      ]
+    },
+    {
+      "text": "Article 42. Organization of a securities trading market",
+      "sourceIds": [
+        "body[1]/p[515]"
+      ]
+    },
+    {
+      "text": "Article 43. Organization and operation of the Vietnam Stock Exchange and its subsidiary companies",
+      "sourceIds": [
+        "body[1]/p[518]"
+      ]
+    },
+    {
+      "text": "Article 44. Organizational and managerial apparatus of the Vietnam Stock Exchange",
+      "sourceIds": [
+        "body[1]/p[522]"
+      ]
+    },
+    {
+      "text": "Article 45. Charter of the Vietnam Stock Exchange",
+      "sourceIds": [
+        "body[1]/p[526]"
+      ]
+    },
+    {
+      "text": "Article 46. Rights and obligations of the Vietnam Stock Exchange",
+      "sourceIds": [
+        "body[1]/p[544]"
+      ]
+    },
+    {
+      "text": "Article 47. Members of the Vietnam Stock Exchange",
+      "sourceIds": [
+        "body[1]/p[568]"
+      ]
+    },
+    {
+      "text": "Article 48. Securities listing and trading registration",
+      "sourceIds": [
+        "body[1]/p[584]"
+      ]
+    },
+    {
+      "text": "Article 49. Suspension, termination and resumption of trading activities of the Vietnam Stock Exchange and its subsidiary companies",
+      "sourceIds": [
+        "body[1]/p[589]"
+      ]
+    },
+    {
+      "text": "Article 50. Securities trading",
+      "sourceIds": [
+        "body[1]/p[594]"
+      ]
+    },
+    {
+      "text": "Article 51. Participation of foreign investors and foreign-invested economic institutions in Vietnam\u2019s securities market",
+      "sourceIds": [
+        "body[1]/p[600]"
+      ]
+    },
+    {
+      "text": "Article 65. Protection of customers\u2019 assets",
+      "sourceIds": [
+        "body[1]/p[728]"
+      ]
+    },
+    {
+      "text": "Article 66. Payment support funds",
+      "sourceIds": [
+        "body[1]/p[731]"
+      ]
+    },
+    {
+      "text": "Article 67. Clearing funds",
+      "sourceIds": [
+        "body[1]/p[735]"
+      ]
+    },
+    {
+      "text": "Article 68. Suspension, termination or resumption of securities registration, depository, clearing and payment activities of the Vietnam Securities Depository and Clearing Corporation",
+      "sourceIds": [
+        "body[1]/p[739]"
+      ]
+    },
+    {
+      "text": "Article 69. Payment banks",
+      "sourceIds": [
+        "body[1]/p[744]"
+      ]
+    },
+    {
+      "text": "Chapter VI",
+      "sourceIds": [
+        "body[1]/p[760]"
+      ]
+    },
+    {
+      "text": "SECURITIES COMPANIES, SECURITIES INVESTMENT FUND MANAGEMENT COMPANIES",
+      "sourceIds": [
+        "body[1]/p[761]"
+      ]
+    },
+    {
+      "text": "Section 1",
+      "sourceIds": [
+        "body[1]/p[762]"
+      ]
+    },
+    {
+      "text": "ESTABLISHMENT AND SECURITIES BUSINESS LICENSES",
+      "sourceIds": [
+        "body[1]/p[763]"
+      ]
+    },
+    {
+      "text": "Article 70. Competence to grant, re-grant, modify and revoke establishment and securities business licenses",
+      "sourceIds": [
+        "body[1]/p[764]"
+      ]
+    },
+    {
+      "text": "Article 71. Enterprise registration, business registration",
+      "sourceIds": [
+        "body[1]/p[766]"
+      ]
+    },
+    {
+      "text": "Article 72. Business operations of securities companies",
+      "sourceIds": [
+        "body[1]/p[770]"
+      ]
+    },
+    {
+      "text": "Article 73. Business operations of securities investment fund management companies",
+      "sourceIds": [
+        "body[1]/p[778]"
+      ]
+    },
+    {
+      "text": "Article 74. Conditions for grant of establishment and securities business licenses for securities companies",
+      "sourceIds": [
+        "body[1]/p[784]"
+      ]
+    },
+    {
+      "text": "Article 75. Conditions for grant of establishment and securities business licenses for securities investment fund management companies",
+      "sourceIds": [
+        "body[1]/p[805]"
+      ]
+    },
+    {
+      "text": "Article 76. Conditions for grant of establishment and securities business licenses for Vietnam-based branches of foreign securities companies or fund management companies",
+      "sourceIds": [
+        "body[1]/p[825]"
+      ]
+    },
+    {
+      "text": "Article 77. Foreign investors\u2019 holding rate in securities companies or securities investment fund management companies",
+      "sourceIds": [
+        "body[1]/p[838]"
+      ]
+    },
+    {
+      "text": "Article 78. Representative offices of foreign securities companies or fund management companies",
+      "sourceIds": [
+        "body[1]/p[848]"
+      ]
+    },
+    {
+      "text": "Article 79. Dossiers and procedures for grant, re-grant, modification and revocation of establishment and securities business licenses and operation registration certificates",
+      "sourceIds": [
+        "body[1]/p[859]"
+      ]
+    },
+    {
+      "text": "Article 80. Charter of securities companies or securities investment fund management companies",
+      "sourceIds": [
+        "body[1]/p[862]"
+      ]
+    },
+    {
+      "text": "Article 81. Contents of establishment and securities business licenses",
+      "sourceIds": [
+        "body[1]/p[865]"
+      ]
+    },
+    {
+      "text": "Article 82. Names of securities companies and securities investment fund management companies",
+      "sourceIds": [
+        "body[1]/p[880]"
+      ]
+    },
+    {
+      "text": "Article 83. Disclosure of operation information",
+      "sourceIds": [
+        "body[1]/p[891]"
+      ]
+    },
+    {
+      "text": "Article 84. Date of official commencement of operation",
+      "sourceIds": [
+        "body[1]/p[895]"
+      ]
+    },
+    {
+      "text": "Article 85. Maintenance of conditions for grant of establishment and securities business licenses",
+      "sourceIds": [
+        "body[1]/p[906]"
+      ]
+    },
+    {
+      "text": "Article 86. Operation of securities companies, securities investment fund management companies and Vietnam-based branches and representative offices of foreign securities companies or fund management companies",
+      "sourceIds": [
+        "body[1]/p[917]"
+      ]
+    },
+    {
+      "text": "Article 87. Activities requiring approval of the State Securities Commission",
+      "sourceIds": [
+        "body[1]/p[928]"
+      ]
+    },
+    {
+      "text": "Article 88. Management of assets of customers",
+      "sourceIds": [
+        "body[1]/p[938]"
+      ]
+    },
+    {
+      "text": "Article 89. Obligations of securities companies and Vietnam-based branches or foreign securities companies",
+      "sourceIds": [
+        "body[1]/p[943]"
+      ]
+    },
+    {
+      "text": "Article 90. Obligations of securities investment fund management companies and Vietnam-based branches of foreign fund management companies",
+      "sourceIds": [
+        "body[1]/p[956]"
+      ]
+    },
+    {
+      "text": "Article 91. Restrictions on securities companies, securities investment fund management companies and Vietnam-based branches of foreign securities companies and fund management companies",
+      "sourceIds": [
+        "body[1]/p[961]"
+      ]
+    },
+    {
+      "text": "Article 92. Financial safety",
+      "sourceIds": [
+        "body[1]/p[973]"
+      ]
+    },
+    {
+      "text": "Section 3",
+      "sourceIds": [
+        "body[1]/p[977]"
+      ]
+    },
+    {
+      "text": "REORGANIZATION, SUSPENSION, AND REVOCATION OF ESTABLISHMENT AND SECURITIES BUSINESS LICENSES",
+      "sourceIds": [
+        "body[1]/p[978]"
+      ]
+    },
+    {
+      "text": "Article 93. Reorganization of securities companies and securities investment fund management companies",
+      "sourceIds": [
+        "body[1]/p[979]"
+      ]
+    },
+    {
+      "text": "Article 94. Suspension from operation of securities companies, securities investment fund management companies, or Vietnam-based branches of foreign securities companies or fund management companies",
+      "sourceIds": [
+        "body[1]/p[987]"
+      ]
+    },
+    {
+      "text": "Article 95. Revocation of establishment and securities business licenses of securities companies, securities investment fund management companies, or Vietnam-based branches of foreign securities companies or fund management companies",
+      "sourceIds": [
+        "body[1]/p[998]"
+      ]
+    },
+    {
+      "text": "Article 96. Dissolution or bankruptcy of securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securities companies and fund management companies",
+      "sourceIds": [
+        "body[1]/p[1011]"
+      ]
+    },
+    {
+      "text": "Section 4",
+      "sourceIds": [
+        "body[1]/p[1015]"
+      ]
+    },
+    {
+      "text": "SECURITIES PRACTICE",
+      "sourceIds": [
+        "body[1]/p[1016]"
+      ]
+    },
+    {
+      "text": "Article 97. Securities practice certificates",
+      "sourceIds": [
+        "body[1]/p[1017]"
+      ]
+    },
+    {
+      "text": "Article 98. Responsibilities of securities practitioners",
+      "sourceIds": [
+        "body[1]/p[1033]"
+      ]
+    },
+    {
+      "text": "Chapter VII",
+      "sourceIds": [
+        "body[1]/p[1042]"
+      ]
+    },
+    {
+      "text": "SECURITIES INVESTMENT FUNDS, SECURITIES INVESTMENT COMPANIES AND SUPERVISORY BANKS",
+      "sourceIds": [
+        "body[1]/p[1043]"
+      ]
+    },
+    {
+      "text": "Section 1",
+      "sourceIds": [
+        "body[1]/p[1044]"
+      ]
+    },
+    {
+      "text": "GENERAL PROVISIONS ON SECURITIES INVESTMENT FUNDS",
+      "sourceIds": [
+        "body[1]/p[1045]"
+      ]
+    },
+    {
+      "text": "Article 99. Types of securities investment funds",
+      "sourceIds": [
+        "body[1]/p[1046]"
+      ]
+    },
+    {
+      "text": "Article 100. Formation and organization of operation of securities investment funds",
+      "sourceIds": [
+        "body[1]/p[1049]"
+      ]
+    },
+    {
+      "text": "Article 101. Rights and obligations of investors participating in securities investment funds",
+      "sourceIds": [
+        "body[1]/p[1054]"
+      ]
+    },
+    {
+      "text": "Article 102. Investors\u2019 general meetings of securities investment funds",
+      "sourceIds": [
+        "body[1]/p[1067]"
+      ]
+    },
+    {
+      "text": "Article 103. Charters of securities investment funds",
+      "sourceIds": [
+        "body[1]/p[1081]"
+      ]
+    },
+    {
+      "text": "Article 104. Dissolution of securities investment funds",
+      "sourceIds": [
+        "body[1]/p[1102]"
+      ]
+    },
+    {
+      "text": "Article 105. Consolidation and merger of securities investment funds",
+      "sourceIds": [
+        "body[1]/p[1117]"
+      ]
+    },
+    {
+      "text": "Article 106. Determination of net asset value of securities investment funds",
+      "sourceIds": [
+        "body[1]/p[1119]"
+      ]
+    },
+    {
+      "text": "Article 107. Reports on securities investment funds",
+      "sourceIds": [
+        "body[1]/p[1126]"
+      ]
+    },
+    {
+      "text": "Article 108. Mobilization of capital for formation of public funds",
+      "sourceIds": [
+        "body[1]/p[1130]"
+      ]
+    },
+    {
+      "text": "Article 109. Boards of Trustees of public funds",
+      "sourceIds": [
+        "body[1]/p[1136]"
+      ]
+    },
+    {
+      "text": "Article 110. Restrictions on public funds",
+      "sourceIds": [
+        "body[1]/p[1141]"
+      ]
+    },
+    {
+      "text": "Article 111. Open-end funds",
+      "sourceIds": [
+        "body[1]/p[1158]"
+      ]
+    },
+    {
+      "text": "Article 112. Closed-end funds",
+      "sourceIds": [
+        "body[1]/p[1165]"
+      ]
+    },
+    {
+      "text": "Article 113. Formation of member funds",
+      "sourceIds": [
+        "body[1]/p[1175]"
+      ]
+    },
+    {
+      "text": "Article 114. Securities investment companies",
+      "sourceIds": [
+        "body[1]/p[1184]"
+      ]
+    },
+    {
+      "text": "Article 115. Establishment and operation of securities investment companies",
+      "sourceIds": [
+        "body[1]/p[1187]"
+      ]
+    },
+    {
+      "text": "Article 116. Supervisory banks",
+      "sourceIds": [
+        "body[1]/p[1198]"
+      ]
+    },
+    {
+      "text": "Article 117. Restrictions on supervisory banks",
+      "sourceIds": [
+        "body[1]/p[1210]"
+      ]
+    },
+    {
+      "text": "Chapter VIII",
+      "sourceIds": [
+        "body[1]/p[1214]"
+      ]
+    },
+    {
+      "text": "INFORMATION DISCLOSURE",
+      "sourceIds": [
+        "body[1]/p[1215]"
+      ]
+    },
+    {
+      "text": "Article 118. Subjects obliged to disclose information",
+      "sourceIds": [
+        "body[1]/p[1216]"
+      ]
+    },
+    {
+      "text": "Article 119. Principles of information disclosure",
+      "sourceIds": [
+        "body[1]/p[1230]"
+      ]
+    },
+    {
+      "text": "Article 120. Disclosure of information by public companies",
+      "sourceIds": [
+        "body[1]/p[1236]"
+      ]
+    },
+    {
+      "text": "Article 121. Disclosure of information by institutions issuing corporate bonds to the public",
+      "sourceIds": [
+        "body[1]/p[1259]"
+      ]
+    },
+    {
+      "text": "Article 122. Disclosure of information by institutions listing corporate bonds",
+      "sourceIds": [
+        "body[1]/p[1268]"
+      ]
+    },
+    {
+      "text": "Article 123. Disclosure of information by securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securities companies or fund management companies",
+      "sourceIds": [
+        "body[1]/p[1274]"
+      ]
+    },
+    {
+      "text": "Article 124. Disclosure of information about public funds",
+      "sourceIds": [
+        "body[1]/p[1288]"
+      ]
+    },
+    {
+      "text": "Article 125. Disclosure of information about public securities investment companies",
+      "sourceIds": [
+        "body[1]/p[1306]"
+      ]
+    },
+    {
+      "text": "Article 126. Disclosure of information by the Vietnam Stock Exchange and its subsidiary companies and Vietnam Securities Depository and Clearing Corporation",
+      "sourceIds": [
+        "body[1]/p[1316]"
+      ]
+    },
+    {
+      "text": "Article 127. Disclosure of information by majority shareholders and groups of affiliated persons owning at least 5% of voting stocks of a public company; investors and groups of affiliated persons owning at least 5% of fund certificates of a closed-end fund; and groups of affiliated foreign investors owning at least 5% of voting stocks of an issuing organization or at least 5% of fund certificates of a closed-end fund",
+      "sourceIds": [
+        "body[1]/p[1327]"
+      ]
+    },
+    {
+      "text": "Article 128. Disclosure of information by insiders and their affiliated persons",
+      "sourceIds": [
+        "body[1]/p[1336]"
+      ]
+    },
+    {
+      "text": "Article 129. Securities inspectorate",
+      "sourceIds": [
+        "body[1]/p[1342]"
+      ]
+    },
+    {
+      "text": "Article 130. Tasks and powers of the State Securities Commission regarding inspection, examination, and handling of violations of the law on securities and securities market",
+      "sourceIds": [
+        "body[1]/p[1351]"
+      ]
+    },
+    {
+      "text": "Article 131. Coordination among agencies, organizations and individuals in inspecting, examining, and handling violations of the law on securities and securities market",
+      "sourceIds": [
+        "body[1]/p[1359]"
+      ]
+    },
+    {
+      "text": "Article 132. Handling of violations",
+      "sourceIds": [
+        "body[1]/p[1365]"
+      ]
+    },
+    {
+      "text": "Article 133. Settlement of disputes and payment of damages",
+      "sourceIds": [
+        "body[1]/p[1373]"
+      ]
+    },
+    {
+      "text": "Article 134. Effect",
+      "sourceIds": [
+        "body[1]/p[1380]"
+      ]
+    },
+    {
+      "text": "Article 135. Transitional provisions",
+      "sourceIds": [
+        "body[1]/p[1383]"
+      ]
+    },
+    {
+      "text": "This Law was passed on November 26, 2019, by the XIVth National Assembly of the Socialist Republic of Vietnam at its 8th session.-",
+      "sourceIds": [
+        "body[1]/p[1398]"
+      ]
+    },
+    {
+      "text": "Chairwoman of the National Assembly NGUYEN THI KIM NGAN",
+      "sourceIds": [
+        "body[1]/p[1399]"
+      ]
+    }
+  ],
+  "ledger": [
+    {
+      "Ordinal": 1,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "ffa6266e40ce7760684dc536f2896ac2e2485e510b60581af7983e152c710114",
+      "ResponseSha256": "3d0a1be634aabb3876b6ba1f12b5c9568506a0e1397a972d6b81b33af5019825",
+      "RequestChars": 66753,
+      "ResponseChars": 5593,
+      "ElapsedMs": 15709,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0001\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022THE PRESIDENT\u0022,\n      \u0022semanticRole\u0022: \u0022document-title\u0022,\n      \u0022structuralType\u0022: \u0022title\u0022,\n      \u0022scope\u0022: \u0022table\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0002\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022No. 18/2019/L-CTN\u0022,\n      \u0022semanticRole\u0022: \u0022document-subtitle\u0022,\n      \u0022structuralType\u0022: \u0022subtitle\u0022,\n      \u0022scope\u0022: \u0022table\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0003\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022THE SOCIALIST REPUBLIC OF VIETNAM Independence - Freedom - Happiness\u0022,\n      \u0022semanticRole\u0022: \u0022running-header\u0022,\n      \u0022structuralType\u0022: \u0022header\u0022,\n      \u0022scope\u0022: \u0022table\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0004\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Hanoi, December 03, 2019\u0022,\n      \u0022semanticRole\u0022: \u0022date-line\u0022,\n      \u0022structuralType\u0022: \u0022label\u0022,\n      \u0022scope\u0022: \u0022table\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0005\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Order\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0006\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022On the promulgation of law\u0022,\n      \u0022semanticRole\u0022: \u0022section-subtitle\u0022,\n      \u0022structuralType\u0022: \u0022subtitle\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0005\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0014\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022THE NATIONAL ASSEMBLY\u0022,\n      \u0022semanticRole\u0022: \u0022document-title\u0022,\n      \u0022structuralType\u0022: \u0022title\u0022,\n      \u0022scope\u0022: \u0022table\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0015\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022THE SOCIALIST REPUBLIC OF VIETNAM Independence - Freedom - Happiness\u0022,\n      \u0022semanticRole\u0022: \u0022running-header\u0022,\n      \u0022structuralType\u0022: \u0022header\u0022,\n      \u0022scope\u0022: \u0022table\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0016\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022No. 54/2019/QH14\u0022,\n      \u0022semanticRole\u0022: \u0022document-subtitle\u0022,\n      \u0022structuralType\u0022: \u0022subtitle\u0022,\n      \u0022scope\u0022: \u0022table\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0017\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022LAW ON SECURITIES\u0022,\n      \u0022semanticRole\u0022: \u0022document-title\u0022,\n      \u0022structuralType\u0022: \u0022title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0020\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chapter I\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0021\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022GENERAL PROVISIONS\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0020\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0022\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 1. Scope of regulation\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0021\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0024\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 2. Subjects of application\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0021\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0028\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 3. Application of the Securities Law and relevant laws\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0021\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0030\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 4. Interpretation of terms\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0021\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0102\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 5. Principles of securities and securities market activities\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0021\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0107\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 6. Securities market development policies\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0021\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0111\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 7. Measures to ensure security and safety of the securities market\u0022,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0021\u0022\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 2,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "22df555eead8214eec2060e37d94b7f11473392705fa963be033f291811475b2",
+      "ResponseSha256": "66e610b128851a339f6a19ff1c50456777f6a6dc536bf5ef194e0d807a3463f7",
+      "RequestChars": 69576,
+      "ResponseChars": 4553,
+      "ElapsedMs": 12897,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0121\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 8. State management of securities and securities market\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0129\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 9. The State Securities Commission\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0149\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 10. Securities-related socio-professional organizations\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0152\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 11. Professional securities investors\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0160\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 12. Prohibited acts in securities and securities market activities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0168\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chapter II\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0169\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022OFFERING OF SECURITIES\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0168\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0170\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 1\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0169\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0171\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022PUBLIC OFFERING OF SECURITIES\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022subsection_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0170\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0172\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 13. Securities par value\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0171\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0176\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 14. Forms of public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0171\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0179\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 15. Conditions for public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0171\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0212\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 16. Registration of public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0171\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0219\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 17. Conditions for issuance underwriting of securities to the public\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0171\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0225\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 18. Dossiers of registration of public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0171\u0022\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 3,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "a1080401332f33caf48a324a1193603165a8bd840228008d4eab508234c404f2",
+      "ResponseSha256": "0a6aeb60d8e0a4c42105b4785b7fc48c9652b925a2c0d52ffe563c33a30100f7",
+      "RequestChars": 73743,
+      "ResponseChars": 29604,
+      "ElapsedMs": 64813,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0241\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. A dossier of registration of public offering of bonds must comprise:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0225\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0250\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. A dossier of registration of public offering of convertible bonds must comprise:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0225\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0257\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00225. A dossier of registration of public offering of fund certificates must comprise:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0225\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0263\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00226. A dossier of registration of public offering of stocks or bonds must be accompanied with a decision of the Board of Directors or Members\u2019 Council or company owner approving such dossier. For public offering of stocks of credit institutions, such a dossier must contain the State Bank of Vietnam\u2019s written approval of charter capital change. For public offering of securities of insurance business institutions that leads to charter capital change, such a dossier must contain the Ministry of Finance\u2019s written approval of charter capital change.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0225\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0264\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00227. When a dossier of registration of public offering of securities is partially or wholly certified by related institutions or individuals, the issuing institution shall send such certifications to the State Securities Commission.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0225\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0265\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00228. Information in dossiers of registration of public offering of securities must be accurate and truthful, cause no misleading and have adequate important contents which exert an impact on investors\u2019 decisions.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0225\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0266\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00229. When submitting a dossier of registration of public offering of securities to the State Securities Commission, an issuing institution shall concurrently submit a dossier of registration of listing or registration of securities for trading under Clause 4, Article 48 of this Law, except the offering of open-end fund certificates.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0225\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0267\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 19. Prospectus\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0268\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. For a public offering of stocks or bonds, a prospectus must have the following contents:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0267\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0273\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. For a public offering of fund certificates, a prospectus must have the following contents:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0267\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0280\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. Signatures in prospectus:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0267\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0283\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. The Minister of Finance shall provide the model prospectus.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0267\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0284\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 20. Financial statements\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0285\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. Financial statements shall be made in accordance with the accounting law.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0284\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0286\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. An issuing institution being a parent company shall submit consolidated financial statements in accordance with the accounting law.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0284\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0287\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. Annual financial statements shall be audited by audit firms accredited to audit public-interest units in the field of securities. Audit opinions for financial statements are unqualified opinions. In case an audit opinion is a qualified opinion, the exception does not impact offering conditions. An issuing institution must have documents on reasonable explanation about, and an audit firm\u2019s certification of, impacts of the exception.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0284\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0288\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. If a dossier is submitted within 60 days after the last day of an annual accounting period, the annual financial statement of the preceding year in the initial dossier may be an unaudited one which, however, must be accompanied with audited financial statements of the 2 preceding years.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0284\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0289\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00225. If the accounting period of the latest financial statement ends more than 90 days after the date of submission of a complete and valid dossier of registration of public offering of securities to the State Securities Commission, the issuing institution shall make an additional financial statement counting to the latest month or quarter.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0284\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0290\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 21. Accredited audit firms and certified public accountants\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0291\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. The State Securities Commission shall consider, approve and publicize list of accredited audit firms and list of certified public accountants to audit public-interest units in the field of securities.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0290\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0292\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. Public-interest units in the field of securities include public companies, listed institutions, institutions with trading registration, institutions offering securities to the public, securities companies, securities investment fund management companies, securities investment companies, and securities investment funds.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0290\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0293\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. An audit firm accredited to audit public-interest units in the field of securities shall comply with regulations on independent audit and has the following obligations:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0290\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0298\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. The Government shall detail this Article.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0290\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0299\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 22. Modification and supplementation of dossiers of registration of public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0300\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. If inaccurate information is detected or important information is omitted in its dossier of registration of public offering of securities, or when finding it necessary to explain an equivocal issue, an issuing institution shall modify or supplement the dossier or make a written explanation.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0299\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0301\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. In the course of examining a dossier of registration of public offering of securities of an issuing institution, the State Securities Commission may request the issuing institution to modify or supplement its dossier in order to ensure that the disclosed information is accurate, truthful and adequate, thus protecting lawful rights and interests of investors.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0299\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0302\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. After the State Securities Commission grants a certificate of registration of public offering of securities, if there arises an important information related to the dossier of registration of public offering of securities, the issuing institution shall, within 7 working days, disclose such information by the method specified in Clause 3, Article 25 of this Law and modify or supplement the dossier.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0299\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0303\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. A document on modification or supplementation of a dossier of registration of public offering of securities to be sent to the State Securities Commission must bear signatures of the persons who have signed the dossier or persons holding the same titles.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0299\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0304\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00225. The time limit for examination of a dossier of registration of public offering of securities in the cases specified in Clauses 1 and 2 of this Article shall be counted from the date the State Securities Commission receives a complete and valid document on the dossier modification or supplementation.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0299\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0305\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 23. Responsibilities of institutions and individuals related to dossiers of registration of public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0306\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. Issuing institutions shall take responsibility before law for the accuracy, truthfulness and adequacy of their dossiers of registration of public offering of securities.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0305\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0307\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. Issuance consultancy institutions, issuance underwriting institutions, accredited audit firms, persons who sign audit reports and any institutions and individuals that certify dossiers of registration of public offering of securities shall take responsibility before law for matters related to such dossiers.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0305\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0308\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 24. Use of information before public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0310\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 25. Grant of certificate of registration of public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0311\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. Within 30 days after receiving a complete and valid dossier of registration of public offering of securities, the State Securities Commission shall grant a certificate of registration of public offering of securities; in case of refusal to grant such a certificate, it shall reply in writing, clearly stating the reason.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0310\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0312\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. A certificate of registration of public offering of securities granted by the State Securities Commission is a document certifying that a dossier of registration of public offering of securities fully satisfies the law-prescribed conditions and procedures.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0310\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0313\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. Within 7 working days after its certificate of registration of public offering of securities becomes effective, an issuing institution shall publish an issuance announcement on an online newspaper or a printed newspaper for 3 consecutive issues.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0310\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0314\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. Securities may only be offered to the public after their issuance is announced under Clause 3 of this Article.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0310\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0315\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 26. Distribution of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0316\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. Securities of an issuing institution may only be distributed after it ensures that securities buyers have accessed the prospectus in its dossier of registration of public offering of securities which is posted up at the places indicated in the issuance announcement.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0315\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0317\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. An issuing institution, issuance underwriting institution or issuance agent shall distribute securities in a fair and open manner and ensure a period of at least 20 days for investors to register to buy securities, unless offered securities are covered warrants for which such time limit shall be stated in the issuance announcement.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0315\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0319\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. Securities payments shall be transferred into an escrow account opened at a bank or foreign bank branch until the offering is completed and reported to the State Securities Commission.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0315\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0320\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. An issuing institution shall complete the distribution of its securities within 90 days after the certificate of public offering of securities becomes effective. In case it cannot complete the distribution of securities within this time limit, the State Securities Commission may consider extending the time limit for distribution of securities for no more than 30 days. In case of registration of securities offering to be made in installments, the interval between two offering installments must not exceed 12 months.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0315\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0321\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00225. An issuing institution or issuance underwriting institution shall send a report on results of an offering to the State Securities Commission within 10 days after the completion of the offering, accompanied with a written certification by a bank or foreign bank branch where an escrow account is opened of the proceeds from the offering.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0315\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0322\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00226. An issuing institution, issuance underwriting institution or issuance agent shall deliver securities or securities ownership certificates to buyers within 30 days after the offering is completed.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0315\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0323\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 27. Suspension of public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0324\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. The State Securities Commission may suspend a public offering of securities for up to 60 days in the following cases:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0323\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0327\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. Within 7 working days after its public offering of securities is suspended, an issuing institution shall announce the suspension by the method specified in Clause 3, Article 25 of this Law and call the issued securities when investors so request and, at the same time, refund the received money amounts to investors within 15 days after the latter so request.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0323\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0328\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. After errors leading to the suspension of a public offering of securities are addressed, the State Securities Commission shall issue a notice on suspension cancellation and the offering of securities may be resumed.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0323\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0329\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. Within 7 working days after a notice on suspension cancellation is issued, an issuing institution shall announce the suspension cancellation by the method specified in Clause 3, Article 25 of this Law.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0323\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0330\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 28. Cancellation of public offering of securities\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0331\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. The State Securities Commission shall decide to cancel a public offering of securities in the following cases:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0330\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0335\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. In addition to the cases specified in Clause 1 of this Article, a public offering of securities may be cancelled under a legally effective court judgment or ruling, an arbitration award or a decision of a competent agency as prescribed by law.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0330\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0336\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. Within 7 working days after its public offering of securities is cancelled, an issuing institution shall announce the cancellation by the method specified in Clause 3, Article 25 of this Law and call the issued securities and concurrently refund the received money amounts to investors within 15 days after the offering is cancelled. Past this time limit, the issuing institution shall pay damages to investors according to their reached agreements.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0330\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0337\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 29. Obligations of issuing institutions\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0338\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. An issuing institution that has completed a public offering of stocks and become a public company under Point b, Clause 1, Article 32 of this Law is not required to submit a public company registration dossier prescribed in Clause 1, Article 33 of this Law to the State Securities Commission.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0337\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0339\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. An issuing institution that has carried out a public offering of securities shall complete its dossier of registration of securities listing or securities trading within 30 days after the offering is completed.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0337\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0340\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. An issuing institution that has completed a public offering of bonds shall fulfill the obligation to disclose information prescribed in this Law.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0337\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0341\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 2\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0342\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022PRIVATE PLACEMENT OF SECURITIES\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section-title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0341\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0343\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 30. Private placement of securities of issuing institutions other than public companies\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0341\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0345\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 31. Private placement of securities of public companies, securities companies and securities investment fund management companies\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0341\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0346\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00221. Conditions for private placement of stocks, convertible bonds or bonds accompanied with warrants of a public company:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0345\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0352\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. Conditions for private placement of bonds of a public company not falling into the cases specified in Clause 1 of this Article:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0345\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0359\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. Securities companies and securities investment fund management companies other than public companies that privately place stocks, convertible bonds or bonds accompanied with warrants must satisfy the conditions prescribed in Clause 1 of this Article.\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0345\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0360\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. Conditions for private placement of bonds of a securities company or securities investment fund management company that is not a public company and does not fall into the case specified in Clause 3 of this Article:\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022clause\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0345\u0022\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 4,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "625e72f005c568a1eb67aa72bf174960474570bbe8b1c6a74ec579958b998a97",
+      "ResponseSha256": "770e0c8bcbbad6494591384bbb7b5e6d73949e4f4c22c75f288b0a38ea8f9c8a",
+      "RequestChars": 71720,
+      "ResponseChars": 7527,
+      "ElapsedMs": 21278,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0365\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0365\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chapter III\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Chapter III\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0366\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0366\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022PUBLIC COMPANIES\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022PUBLIC COMPANIES\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0365\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0367\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0367\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 1\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Section 1\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0366\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0368\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0368\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022GENERAL PROVISIONS ON PUBLIC COMPANIES\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022GENERAL PROVISIONS ON PUBLIC COMPANIES\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0367\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0369\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0369\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 32. Public companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 32.\u0022,\n        \u0022Public companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0368\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0375\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0375\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 33. Public company registration dossiers\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 33.\u0022,\n        \u0022Public company registration dossiers\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0368\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0384\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0384\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 34. Rights and obligations of public companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 34.\u0022,\n        \u0022Rights and obligations of public companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0368\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0392\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0392\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 35. Public bid\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 35.\u0022,\n        \u0022Public bid\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0368\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0406\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0406\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 36. Redemption by public companies of their own stocks\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 36.\u0022,\n        \u0022Redemption by public companies of their own stocks\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0368\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0435\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0435\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 37. Reports on stock redemption, information disclosure and performance of stock redemption\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 37.\u0022,\n        \u0022Reports on stock redemption, information disclosure and performance of stock redemption\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0368\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0456\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0456\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 38. Cancellation of status of public companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 38.\u0022,\n        \u0022Cancellation of status of public companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0368\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0462\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0462\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 39. Dossiers of cancellation of public company status\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 39.\u0022,\n        \u0022Dossiers of cancellation of public company status\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0368\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0468\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0468\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 2\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Section 2\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0366\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0469\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0469\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022CORPORATE GOVERNANCE APPLICABLE TO PUBLIC COMPANIES\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022CORPORATE GOVERNANCE APPLICABLE TO PUBLIC COMPANIES\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0468\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0470\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0470\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 40. Principles of corporate governance applicable to public companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 40.\u0022,\n        \u0022Principles of corporate governance applicable to public companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0469\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0478\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0478\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 41. Contents of corporate governance applicable to public companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 41.\u0022,\n        \u0022Contents of corporate governance applicable to public companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0469\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 5,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "5fd909109f5de6c9a367345bf94a4793a50d93ad9e10d990ba7b1bc600af1149",
+      "ResponseSha256": "93eb28db61c5d6c0766ec2da925b396605cd354bec2bfd177a62c921ca0e0840",
+      "RequestChars": 69476,
+      "ResponseChars": 9322,
+      "ElapsedMs": 21365,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0485\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0485\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00222. The Shareholders\u2019 General Meeting may be convened and held in accordance with the following provisions:\u0022,\n      \u0022verbatimParts\u0022: [\n        \u00222. The Shareholders\u2019 General Meeting may be convened and held in accordance with the following provisions:\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section-subpart\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0479\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0490\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0490\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00223. The composition, structure, responsibilities and obligations of the Board of Directors must comply with the following provisions:\u0022,\n      \u0022verbatimParts\u0022: [\n        \u00223. The composition, structure, responsibilities and obligations of the Board of Directors must comply with the following provisions:\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section-subpart\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0479\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0494\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0494\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00224. The nomination and self-nomination for election of members of the Board of Directors must comply with the Law on Enterprises, relevant laws and following provisions:\u0022,\n      \u0022verbatimParts\u0022: [\n        \u00224. The nomination and self-nomination for election of members of the Board of Directors must comply with the Law on Enterprises, relevant laws and following provisions:\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section-subpart\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0479\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0497\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0497\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00225. Members of the Board of Directors have the following rights and responsibilities:\u0022,\n      \u0022verbatimParts\u0022: [\n        \u00225. Members of the Board of Directors have the following rights and responsibilities:\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section-subpart\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0479\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0504\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0504\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00226. A public company shall comply with the following provisions on prevention of conflicts of interest and transparent information disclosure:\u0022,\n      \u0022verbatimParts\u0022: [\n        \u00226. A public company shall comply with the following provisions on prevention of conflicts of interest and transparent information disclosure:\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section-subpart\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0479\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0509\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0509\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u00227. The Government shall detail this Article.\u0022,\n      \u0022verbatimParts\u0022: [\n        \u00227. The Government shall detail this Article.\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section-subpart\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0479\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0510\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0510\u0022,\n        \u0022S0511\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chapter IV SECURITIES TRADING MARKET\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Chapter IV\u0022,\n        \u0022SECURITIES TRADING MARKET\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0512\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0512\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 42. Organization of a securities trading market\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 42. Organization of a securities trading market\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0515\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0515\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 43. Organization and operation of the Vietnam Stock Exchange and its subsidiary companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 43. Organization and operation of the Vietnam Stock Exchange and its subsidiary companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0519\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0519\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 44. Organizational and managerial apparatus of the Vietnam Stock Exchange\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 44. Organizational and managerial apparatus of the Vietnam Stock Exchange\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0523\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0523\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 45. Charter of the Vietnam Stock Exchange\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 45. Charter of the Vietnam Stock Exchange\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0541\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0541\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 46. Rights and obligations of the Vietnam Stock Exchange\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 46. Rights and obligations of the Vietnam Stock Exchange\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0565\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0565\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 47. Members of the Vietnam Stock Exchange\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 47. Members of the Vietnam Stock Exchange\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0581\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0581\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 48. Securities listing and trading registration\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 48. Securities listing and trading registration\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0586\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0586\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 49. Suspension, termination and resumption of trading activities of the Vietnam Stock Exchange and its subsidiary companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 49. Suspension, termination and resumption of trading activities of the Vietnam Stock Exchange and its subsidiary companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0591\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0591\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 50. Securities trading\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 50. Securities trading\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0597\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0597\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 51. Participation of foreign investors and foreign-invested economic institutions in Vietnam\u2019s securities market\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 51. Participation of foreign investors and foreign-invested economic institutions in Vietnam\u2019s securities market\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0510\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 6,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "1792fd577c8df9bcf95a6cec77d56fe8fe1b35c84a4b43c31a81d9e81c27447b",
+      "ResponseSha256": "81efecacef33894ed4e2175f0ac0f51a280608092f9fca986c003afe620d84d4",
+      "RequestChars": 69923,
+      "ResponseChars": 4707,
+      "ElapsedMs": 12825,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0601\u0022,\n      \u0022verbatimText\u0022: \u0022SECURITIES REGISTRATION, DEPOSITORY, CLEARING AND PAYMENT\u0022,\n      \u0022semanticRole\u0022: \u0022Chapter Title\u0022,\n      \u0022structuralType\u0022: \u0022chapter\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0602\u0022,\n      \u0022verbatimText\u0022: \u0022Article 52. Establishment and operation of the Vietnam Securities Depository and Clearing Corporation\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0606\u0022,\n      \u0022verbatimText\u0022: \u0022Article 53. Organizational and managerial structure of the Vietnam Securities Depository and Clearing Corporation\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0610\u0022,\n      \u0022verbatimText\u0022: \u0022Article 54. Charter of the Vietnam Securities Depository and Clearing Corporation\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0628\u0022,\n      \u0022verbatimText\u0022: \u0022Article 55. Rights and obligations of the Vietnam Securities Depository and Clearing Corporation\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0652\u0022,\n      \u0022verbatimText\u0022: \u0022Article 56. Members of the Vietnam Securities Depository and Clearing Corporation\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0676\u0022,\n      \u0022verbatimText\u0022: \u0022Article 57. Conditions for registration of securities depository activities\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0682\u0022,\n      \u0022verbatimText\u0022: \u0022Article 58. Dossiers for registration of securities depository activities\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0690\u0022,\n      \u0022verbatimText\u0022: \u0022Article 59. Time limits for grant of certificates of registration of securities depository activities\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0693\u0022,\n      \u0022verbatimText\u0022: \u0022Article 60. Suspension of securities depository activities and revocation of certificates of registration of securities depository activities\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0705\u0022,\n      \u0022verbatimText\u0022: \u0022Article 61. Securities registration\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0711\u0022,\n      \u0022verbatimText\u0022: \u0022Article 62. Securities depository\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0716\u0022,\n      \u0022verbatimText\u0022: \u0022Article 63. Clearing and payment for securities transactions\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0720\u0022,\n      \u0022verbatimText\u0022: \u0022Article 64. Establishment and transfer of ownership rights and other rights over securities\u0022,\n      \u0022semanticRole\u0022: \u0022Article\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0601\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 7,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "49377923f924562465c88f045af3b33f46edb5ac825f51373ac86f60ecbe89a6",
+      "ResponseSha256": "46934d1eae8a73fb7565df6ddf57550857e55fb9091ffe36181bba45f3c09036",
+      "RequestChars": 70257,
+      "ResponseChars": 7341,
+      "ElapsedMs": 18858,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0724\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0724\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 65. Protection of customers\u2019 assets\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0727\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0727\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 66. Payment support funds\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0731\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0731\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 67. Clearing funds\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0735\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0735\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 68. Suspension, termination or resumption of securities registration, depository, clearing and payment activities of the Vietnam Securities Depository and Clearing Corporation\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0740\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0740\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 69. Payment banks\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0755\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0755\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chapter VI\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0756\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0756\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022SECURITIES COMPANIES, SECURITIES INVESTMENT FUND MANAGEMENT COMPANIES\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section-title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0755\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0757\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0757\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 1\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0756\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0758\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0758\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022ESTABLISHMENT AND SECURITIES BUSINESS LICENSES\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022subsection-title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0757\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0759\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0759\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 70. Competence to grant, re-grant, modify and revoke establishment and securities business licenses\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0758\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0761\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0761\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 71. Enterprise registration, business registration\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0758\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0765\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0765\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 72. Business operations of securities companies\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0758\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0773\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0773\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 73. Business operations of securities investment fund management companies\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0758\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0779\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0779\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 74. Conditions for grant of establishment and securities business licenses for securities companies\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0758\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0800\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0800\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 75. Conditions for grant of establishment and securities business licenses for securities investment fund management companies\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0758\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0820\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0820\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 76. Conditions for grant of establishment and securities business licenses for Vietnam-based branches of foreign securities companies or fund management companies\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0758\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0833\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0833\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 77. Foreign investors\u2019 holding rate in securities companies or securities investment fund management companies\u0022,\n      \u0022verbatimParts\u0022: [],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0758\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 8,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "1d8bbfea5c5d37eb9ff7b3cf273af2c1ff306f13db71d48e97a526b24aa21c7b",
+      "ResponseSha256": "5919eb76cca373b028e9308fc93c245d5c6a4a2bc7458908a844dc8fd814ab3c",
+      "RequestChars": 74918,
+      "ResponseChars": 8879,
+      "ElapsedMs": 19453,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0843\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0843\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 78. Representative offices of foreign securities companies or fund management companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 78. Representative offices of foreign securities companies or fund management companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0854\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0854\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 79. Dossiers and procedures for grant, re-grant, modification and revocation of establishment and securities business licenses and operation registration certificates\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 79. Dossiers and procedures for grant, re-grant, modification and revocation of establishment and securities business licenses and operation registration certificates\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0857\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0857\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 80. Charter of securities companies or securities investment fund management companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 80. Charter of securities companies or securities investment fund management companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0860\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0860\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 81. Contents of establishment and securities business licenses\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 81. Contents of establishment and securities business licenses\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0875\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0875\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 82. Names of securities companies and securities investment fund management companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 82. Names of securities companies and securities investment fund management companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0886\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0886\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 83. Disclosure of operation information\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 83. Disclosure of operation information\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0890\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0890\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 84. Date of official commencement of operation\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 84. Date of official commencement of operation\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0899\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0899\u0022,\n        \u0022S0900\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 2 OPERATION OF SECURITIES COMPANIES AND SECURITIES INVESTMENT FUND MANAGEMENT COMPANIES\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Section 2\u0022,\n        \u0022OPERATION OF SECURITIES COMPANIES AND SECURITIES INVESTMENT FUND MANAGEMENT COMPANIES\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0901\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0901\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 85. Maintenance of conditions for grant of establishment and securities business licenses\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 85. Maintenance of conditions for grant of establishment and securities business licenses\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:parent-node:S0899\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0912\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0912\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 86. Operation of securities companies, securities investment fund management companies and Vietnam-based branches and representative offices of foreign securities companies or fund management companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 86. Operation of securities companies, securities investment fund management companies and Vietnam-based branches and representative offices of foreign securities companies or fund management companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:parent-node:S0899\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0923\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0923\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 87. Activities requiring approval of the State Securities Commission\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 87. Activities requiring approval of the State Securities Commission\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:parent-node:S0899\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0933\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0933\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 88. Management of assets of customers\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 88. Management of assets of customers\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:parent-node:S0899\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0938\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0938\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 89. Obligations of securities companies and Vietnam-based branches or foreign securities companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 89. Obligations of securities companies and Vietnam-based branches or foreign securities companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:parent-node:S0899\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0951\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0951\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 90. Obligations of securities investment fund management companies and Vietnam-based branches of foreign fund management companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 90. Obligations of securities investment fund management companies and Vietnam-based branches of foreign fund management companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:parent-node:S0899\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0956\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0956\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 91. Restrictions on securities companies, securities investment fund management companies and Vietnam-based branches of foreign securities companies and fund management companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 91. Restrictions on securities companies, securities investment fund management companies and Vietnam-based branches of foreign securities companies and fund management companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:parent-node:S0899\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 9,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "c8025a8c0b32051783103f8cf2ae996eaeb0dc1c30d52aa568013665feb90cd8",
+      "ResponseSha256": "4b74f524f86647eff1d0a8d0129db97e88196662990adc3b328d13a82138ce55",
+      "RequestChars": 68955,
+      "ResponseChars": 6650,
+      "ElapsedMs": 16615,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0968\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 92. Financial safety\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0972\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 3\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_label\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0973\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022REORGANIZATION, SUSPENSION, AND REVOCATION OF ESTABLISHMENT AND SECURITIES BUSINESS LICENSES\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0974\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 93. Reorganization of securities companies and securities investment fund management companies\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0973\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0982\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 94. Suspension from operation of securities companies, securities investment fund management companies, or Vietnam-based branches of foreign securities companies or fund management companies\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0973\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0993\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 95. Revocation of establishment and securities business licenses of securities companies, securities investment fund management companies, or Vietnam-based branches of foreign securities companies or fund management companies\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0973\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1006\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 96. Dissolution or bankruptcy of securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securities companies and fund management companies\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0973\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1010\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 4\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_label\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1011\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022SECURITIES PRACTICE\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1012\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 97. Securities practice certificates\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1011\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1028\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 98. Responsibilities of securities practitioners\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1011\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1036\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chapter VII\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter_label\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1037\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022SECURITIES INVESTMENT FUNDS, SECURITIES INVESTMENT COMPANIES AND SUPERVISORY BANKS\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1038\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 1\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_label\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1039\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022GENERAL PROVISIONS ON SECURITIES INVESTMENT FUNDS\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1037\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1040\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 99. Types of securities investment funds\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1039\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1043\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 100. Formation and organization of operation of securities investment funds\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1039\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1048\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 101. Rights and obligations of investors participating in securities investment funds\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1039\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1061\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 102. Investors\u2019 general meetings of securities investment funds\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1039\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1075\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 103. Charters of securities investment funds\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1039\u0022\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 10,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "696dca89cd310734a63f53fd7724c7aaf1303ee5ed1fea539787fce326596091",
+      "ResponseSha256": "b7628b618945567d8f4a64ec7eaaea1ab3f4e5a380fe5b2d5a3e9172379328ca",
+      "RequestChars": 68355,
+      "ResponseChars": 7578,
+      "ElapsedMs": 21351,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S1096\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1096\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 104. Dissolution of securities investment funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 104. Dissolution of securities investment funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1111\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1111\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 105. Consolidation and merger of securities investment funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 105. Consolidation and merger of securities investment funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1113\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1113\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 106. Determination of net asset value of securities investment funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 106. Determination of net asset value of securities investment funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1120\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1120\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 107. Reports on securities investment funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 107. Reports on securities investment funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1122\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1122\u0022,\n        \u0022S1123\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 2\\nPUBLIC FUNDS AND MEMBER FUNDS\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Section 2\u0022,\n        \u0022PUBLIC FUNDS AND MEMBER FUNDS\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1124\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1124\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 108. Mobilization of capital for formation of public funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 108. Mobilization of capital for formation of public funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1122\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1130\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1130\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 109. Boards of Trustees of public funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 109. Boards of Trustees of public funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1122\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1135\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1135\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 110. Restrictions on public funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 110. Restrictions on public funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1122\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1152\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1152\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 111. Open-end funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 111. Open-end funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1122\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1159\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1159\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 112. Closed-end funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 112. Closed-end funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1122\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1169\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1169\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 113. Formation of member funds\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 113. Formation of member funds\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1122\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1176\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1176\u0022,\n        \u0022S1177\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 3\\nSECURITIES INVESTMENT COMPANIES\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Section 3\u0022,\n        \u0022SECURITIES INVESTMENT COMPANIES\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1178\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1178\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 114. Securities investment companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 114. Securities investment companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1176\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1181\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1181\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 115. Establishment and operation of securities investment companies\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 115. Establishment and operation of securities investment companies\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1176\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1190\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1190\u0022,\n        \u0022S1191\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Section 4\\nSUPERVISORY BANKS\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Section 4\u0022,\n        \u0022SUPERVISORY BANKS\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1192\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1192\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 116. Supervisory banks\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 116. Supervisory banks\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1190\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 11,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "c6976319e9f1d2ddcc1e4ab1a8dd61c26969cca3a0b1c6d9a27deb448874cca1",
+      "ResponseSha256": "4b54ca0c477caf14dab0903929c9628dec61f253e89fed5b90fde8d7f6bb7d4a",
+      "RequestChars": 65473,
+      "ResponseChars": 4668,
+      "ElapsedMs": 12981,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S1204\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 117. Restrictions on supervisory banks\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1207\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chapter VIII\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1208\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022INFORMATION DISCLOSURE\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1207\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1209\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 118. Subjects obliged to disclose information\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1223\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 119. Principles of information disclosure\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1229\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 120. Disclosure of information by public companies\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1252\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 121. Disclosure of information by institutions issuing corporate bonds to the public\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1261\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 122. Disclosure of information by institutions listing corporate bonds\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1267\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 123. Disclosure of information by securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securities companies or fund management companies\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1281\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 124. Disclosure of information about public funds\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1299\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 125. Disclosure of information about public securities investment companies\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1309\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 126. Disclosure of information by the Vietnam Stock Exchange and its subsidiary companies and Vietnam Securities Depository and Clearing Corporation\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1320\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 127. Disclosure of information by majority shareholders and groups of affiliated persons owning at least 5% of voting stocks of a public company; investors and groups of affiliated persons owning at least 5% of fund certificates of a closed-end fund; and groups of affiliated foreign investors owning at least 5% of voting stocks of an issuing organization or at least 5% of fund certificates of a closed-end fund\u0022,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S1208\u0022\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 12,
+      "DocumentId": "DOC-0264",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "e58cebe1d08234c4382881999486b1dbf6218d58c05add255a410cd3b9dc4ea6",
+      "ResponseSha256": "85f3d0e7affc914592900183fbcb6ed2d4193e4f52d24f9ad6745cad3b2e7629",
+      "RequestChars": 46000,
+      "ResponseChars": 11731,
+      "ElapsedMs": 26115,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S1329\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1329\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 128. Disclosure of information by insiders and their affiliated persons\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 128. Disclosure of information by insiders and their affiliated persons\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u0022c/ Other cases as specified by law.\u0022,\n      \u0022rightExactContext\u0022: \u00221. Insiders of public companies, public securities investment companies and public funds and their affiliated persons shall disclose information before and after they conduct transactions or when there are changes in the ownership of stocks, the right to buy stocks or convertible bonds, the right to buy convertible bonds or fund certificates, or the right to buy fund certificates or covered warrants based on securities of public companies, public securities investment companies, and public funds.\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1332\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1332\u0022,\n        \u0022S1333\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chapter IX\\nINSPECTION, HANDLING OF VIOLATIONS, SETTLEMENT OF DISPUTES AND PAYMENT OF DAMAGES\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Chapter IX\u0022,\n        \u0022INSPECTION, HANDLING OF VIOLATIONS, SETTLEMENT OF DISPUTES AND PAYMENT OF DAMAGES\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u00222. Clause 1 of this Article is not applicable to cases where exchange-traded funds conduct exchange transactions or the value of trading securities does not reach the minimum value subject to information disclosure and other cases as specified by law.\u0022,\n      \u0022rightExactContext\u0022: \u0022Article 129. Securities inspectorate\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1334\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1334\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 129. Securities inspectorate\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 129. Securities inspectorate\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u0022INSPECTION, HANDLING OF VIOLATIONS, SETTLEMENT OF DISPUTES AND PAYMENT OF DAMAGES\u0022,\n      \u0022rightExactContext\u0022: \u00221. The securities inspectorate is a specialized inspectorate in the field of securities and securities market.\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1343\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1343\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 130. Tasks and powers of the State Securities Commission regarding inspection, examination, and handling of violations of the law on securities and securities market\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 130. Tasks and powers of the State Securities Commission regarding inspection, examination, and handling of violations of the law on securities and securities market\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u0022d/ To perform other tasks and exercise other powers as provided by law.\u0022,\n      \u0022rightExactContext\u0022: \u00221. Regarding inspection, examination, and handling of violations of the law on securities and securities market, in addition to the tasks and powers provided by the inspection law, law on handling of administrative violations and other relevant laws, the State Securities Commission has the following tasks and powers:\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1351\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1351\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 131. Coordination among agencies, organizations and individuals in inspecting, examining, and handling violations of the law on securities and securities market\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 131. Coordination among agencies, organizations and individuals in inspecting, examining, and handling violations of the law on securities and securities market\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u00224. When supervising, detecting and handling cross-border violations related to Vietnam\u2019s securities market, the State Securities Commission shall coordinate with foreign securities market surveillance authorities in inspecting, investigating, verifying, collecting and sharing information.\u0022,\n      \u0022rightExactContext\u0022: \u00221. Agencies, organizations and individuals shall provide information, documents and data, explain and come to provide information at the request of the State Securities Commission under Point a, Clause 1, Article 130 of this Law.\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1357\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1357\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 132. Handling of violations\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 132. Handling of violations\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u00225. Agencies, organizations and individuals shall, within the ambit of their tasks and powers, sufficiently and promptly provide information, documents and data kept and managed by them to the State Securities Commission when requested. Agencies, organizations or individuals may refuse to provide information, documents and data if there are grounds to believe that requests are made in contravention of Article 130 of this Law, or requested information, documents and data are irrelevant to inspected or examined subjects or subjects showing signs of committing violations. If unable to provide information, documents and data, agencies, organizations or individuals shall notify such in writing to the State Securities Commission, clearly stating reasons.\u0022,\n      \u0022rightExactContext\u0022: \u00221. Organizations and individuals that violate this Law and other laws regarding securities and securities market activities shall, depending on nature and severity of their violations, be administratively sanctioned or examined for penal liability. If causing damage, they shall pay compensation in accordance with law.\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1365\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1365\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 133. Settlement of disputes and payment of damages\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 133. Settlement of disputes and payment of damages\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u00227. The Government shall provide sanctioning competence, level and form for each act of securities-related administrative violation.\u0022,\n      \u0022rightExactContext\u0022: \u00221. In cases lawful rights and interests of institutions or individuals in securities and securities market activities are infringed upon, or disputes arise in securities and securities market activities in Vietnam, the protection of such lawful rights and interests or settlement of such disputes may be carried out through negotiation or conciliation, or brought to Vietnam\u2019s arbitration or court for settlement in accordance with law.\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1369\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1369\u0022,\n        \u0022S1370\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chapter X\\nIMPLEMENTATION PROVISIONS\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Chapter X\u0022,\n        \u0022IMPLEMENTATION PROVISIONS\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022chapter\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u00223. The competence and procedures to protect lawful rights and interests of institutions and individuals, or to settle disputes arising in securities and securities market activities must comply with law.\u0022,\n      \u0022rightExactContext\u0022: \u0022Article 134. Effect\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1371\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1371\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 134. Effect\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 134. Effect\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u0022IMPLEMENTATION PROVISIONS\u0022,\n      \u0022rightExactContext\u0022: \u00221. This Law takes effect on January 1, 2021.\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1374\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1374\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Article 135. Transitional provisions\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Article 135. Transitional provisions\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022article\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u00222. Law No.70/2006/QH11 on Securities and Law No. 62/2010/QH12 Amending and Supplementing a Number of Articles of the Law on Securities cease to be effective on the effective date of this Law.\u0022,\n      \u0022rightExactContext\u0022: \u00221. Within 2 years after this Law takes effect, securities companies, securities investment fund management companies, and Vietnam-based branches of foreign securities companies or fund management companies that are granted licenses before the effective date of this Law shall satisfy the conditions for grant of licenses as follows:\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1389\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1389\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022This Law was passed on November 26, 2019, by the XIVth National Assembly of the Socialist Republic of Vietnam at its 8th session.-\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022This Law was passed on November 26, 2019, by the XIVth National Assembly of the Socialist Republic of Vietnam at its 8th session.-\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022signature_block\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u00227. The Government shall detail this Article.\u0022,\n      \u0022rightExactContext\u0022: \u0022Chairwoman of the National Assembly NGUYEN THI KIM NGAN\u0022\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S1390\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S1390\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Chairwoman of the National Assembly NGUYEN THI KIM NGAN\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Chairwoman of the National Assembly NGUYEN THI KIM NGAN\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022signature_label\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1,\n      \u0022leftExactContext\u0022: \u0022This Law was passed on November 26, 2019, by the XIVth National Assembly of the Socialist Republic of Vietnam at its 8th session.-\u0022,\n      \u0022rightExactContext\u0022: \u0022\u0022\n    }\n  ]\n}"
+    }
+  ]
+}
