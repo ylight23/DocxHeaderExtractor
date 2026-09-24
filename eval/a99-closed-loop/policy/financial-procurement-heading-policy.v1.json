@@ -1,0 +1,112 @@
+{
+  "artifactKind": "a99_heading_policy",
+  "policyId": "FINANCIAL_PROCUREMENT_HEADING_POLICY_V1",
+  "status": "FROZEN",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-24",
+  "scope": [
+    "DOC-0123",
+    "DOC-0133",
+    "SRC-029",
+    "SRC-041",
+    "SRC-042",
+    "SRC-044",
+    "SRC-053",
+    "SRC-054"
+  ],
+  "definition": "CANONICAL HEADING = occurrence whose primary document function is to identify or organize a semantic region of the document.",
+  "include": [
+    "Document / report title",
+    "Part / Chapter / Section / Subsection headings",
+    "Numbered contractual/procurement sections and clauses",
+    "Annex / Appendix / Schedule headings",
+    "Financial statement titles when they identify a statement artifact",
+    "\"Note X – ...\" / \"Note X: ...\" when it opens a complete note section",
+    "MD&A section/subsection headings",
+    "Form/template section headings when they organize a region",
+    "Local headings inside a form/document when subsequent content belongs under them"
+  ],
+  "exclude": [
+    "Table row labels",
+    "Table column headers",
+    "Ordinary table captions/titles",
+    "Ordinary figure captions/titles",
+    "Repeated running headers/footers",
+    "Page numbers",
+    "Footnotes / explanatory notes such as \"a. Includes...\"",
+    "Source lines",
+    "Field labels: Name, Address, Employer, Bidder, Date, Amount, etc.",
+    "Bullet/list item labels that do not open a structural region",
+    "TOC/navigation entries when they merely point elsewhere",
+    "Repeated metadata"
+  ],
+  "hardCaseTest": {
+    "question": "If I remove the table/form/body content immediately following this text, does this text still identify or organize a document region?",
+    "yes": "heading candidate",
+    "no": "label/caption/metadata"
+  },
+  "examples": [
+    {
+      "text": "Note 7 – Investments",
+      "followedBy": "several paragraphs + tables",
+      "verdict": "HEADING"
+    },
+    {
+      "text": "Table 7. Investments by Country",
+      "followedBy": "one table",
+      "verdict": "CAPTION, NOT HEADING"
+    },
+    {
+      "text": "Contract Data",
+      "followedBy": "multiple fields/sections underneath",
+      "verdict": "HEADING"
+    },
+    {
+      "text": "Employer:",
+      "followedBy": "World Bank",
+      "verdict": "FIELD LABEL, NOT HEADING"
+    }
+  ],
+  "captionRule": "A numbered table/figure title (\"Table D1: ...\") is not accepted by default. It is a heading only when that occurrence opens an independent structural region rather than naming the table or figure immediately below it.",
+  "consistentWith": [
+    "src/DocxHeaderExtractor.Infrastructure/AI/HeaderPrompt.cs (captions of figures/tables are not headings)",
+    "src/DocxHeaderExtractor.DocumentProcessing/OpenXmlLayer/HeadingHeuristics.cs (IsObjectCaption)",
+    "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/StyleDeclaredOutline.cs (caption exclusion X2)"
+  ],
+  "auditCategories": [
+    "STRUCTURAL_HEADING",
+    "TABLE_LABEL",
+    "TABLE_CAPTION",
+    "FIELD_LABEL",
+    "RUNNING_HEADER_FOOTER",
+    "FOOTNOTE_NOTE",
+    "NAVIGATION",
+    "OTHER_NON_HEADING"
+  ],
+  "method": {
+    "candidates": "a deterministic candidate list built from each document's structure and source",
+    "modelRole": "the eight frozen qwen3.7-flash runs in eval/a99-closed-loop/scaleup-real-harness-v1 are evidence to compare against, never an automatic accept",
+    "newModelCalls": 0,
+    "goldWritesInThisPhase": false,
+    "perDocumentReport": [
+      "OLD_GOLD_TOTAL",
+      "STRUCTURAL_REVIEW_TOTAL",
+      "KEEP_FROM_OLD",
+      "REMOVE_FROM_OLD",
+      "ADD_TO_OLD",
+      "AMBIGUOUS",
+      "FINAL_CANDIDATE_TOTAL",
+      "USER_APPROVAL_REQUIRED"
+    ],
+    "order": [
+      "DOC-0123",
+      "DOC-0133",
+      "SRC-029",
+      "SRC-041",
+      "SRC-042",
+      "SRC-044",
+      "SRC-053",
+      "SRC-054"
+    ]
+  }
+}
