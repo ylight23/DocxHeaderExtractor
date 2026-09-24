@@ -1,0 +1,41 @@
+{
+  "artifactKind": "a99_doc0256_real_harness_exploration",
+  "documentId": "DOC-0256",
+  "model": "qwen/qwen3.7-flash",
+  "profile": "STRUCTURED_SOURCE_PARTS",
+  "placement": false,
+  "repeat": "1",
+  "providerCallsMade": 2,
+  "failure": "HttpRequestException: OpenRouter tr\u1EA3 429 Too Many Requests: {\u0022error\u0022:{\u0022message\u0022:\u0022Provider returned error\u0022,\u0022code\u0022:429,\u0022metadata\u0022:{\u0022raw\u0022:\u0022qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\u0022,\u0022provider_name\u0022:\u0022Alibaba\u0022,\u0022is_byok\u0022:false,\u0022provider_error_code\u0022:\u0022insufficient_quota\u0022,\u0022limit_source\u0022:\u0022upstream_provider_shared_pool\u0022,\u0022remedy_hint\u0022:\u0022Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a\u2026",
+  "reason": null,
+  "elementCount": 0,
+  "elements": [],
+  "ledger": [
+    {
+      "Ordinal": 1,
+      "DocumentId": "DOC-0256",
+      "Repeat": 0,
+      "Stage": "semantic-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "99b27a00d3c95a47ec50b4503dab5592416cb05b262f8142bfb5d7c8af8fd7be",
+      "ResponseSha256": "d1c232c2e5f51c4b5e0975129156636c03323d81427c8c932c83d44d1625d0b6",
+      "RequestChars": 44102,
+      "ResponseChars": 2995,
+      "ElapsedMs": 9658,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022document_title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0000:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022subtitle\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0001:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022date\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0002:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022location_type\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0003:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0004:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0022:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022subsection_heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0022:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0023:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022subsection_heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0022:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0047:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022subsection_heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0022:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0076:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022subsection_heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0022:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0101:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022subsection_heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0022:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0125:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 2,
+      "DocumentId": "DOC-0256",
+      "Repeat": 0,
+      "Stage": "semantic-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "1732c8aa6e8148d6f7a8210fa481edde8aa4f1eac53ff07c43eea50096a33394",
+      "ResponseSha256": "88190b2e654c7a13299aedd9f802a25f656f7a368d981329257fe72a2b49a553",
+      "RequestChars": 46189,
+      "ResponseChars": 1327,
+      "ElapsedMs": 4920,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0125:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0148:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0172:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0210:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0232:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    }
+  ]
+}
