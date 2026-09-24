@@ -1,0 +1,25 @@
+{
+  "artifactKind": "a99_source_regeneration_manifest",
+  "schemaVersion": "a99-source-regeneration-manifest-v1",
+  "documentId": "SRC-003",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "originalPdf": {
+    "path": "todo10_8/heading_corpus_100/01_phap_quy/003_Luat_Doanh_nghiep_59-2020-QH14.pdf",
+    "sha256": "909d1da77ead7b5db5e4c3ddcae5e9aeb74405af75ed5a56c30eb7a24ca39060"
+  },
+  "regeneratedDocx": {
+    "path": "todo10_8/heading_corpus_95_word/01_phap_quy/003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+    "sha256": "74159f9855a0de0534291d1c949e4f8a1088750f44d091c20b67719c0c4d5d1a",
+    "paragraphs": 1849
+  },
+  "replacesInPlace": {
+    "path": "todo10_8/heading_corpus_95_word/01_phap_quy/003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+    "sha256": "dedc7827c8d6930a2cd174fe95aa943c0ad958281a689369dd028e21dd765b0c",
+    "producedBy": "pdf2docx",
+    "defect": "chapter and article headings merged into neighbouring text"
+  },
+  "converter": "tests/DocxHeaderExtractor.Tests/PdfLineDocxConverter.cs (the rules recorded in DOC-0258.conversion-manifest.v1.json)",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-24"
+}

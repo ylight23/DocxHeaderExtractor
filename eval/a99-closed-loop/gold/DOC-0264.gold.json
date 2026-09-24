@@ -5,7 +5,7 @@
     "fileName": "084_Luat_Chung_khoan_2019_EN.docx",
     "mediaType": "DOCX",
     "sourcePath": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
-    "sourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+    "sourceSha256": "a69e55265f53b556367a82e2c06a29c2eaa7fd2e19784e3200bdfb3355c09c5e",
     "sourceLineageStatus": "VERIFIED"
   },
   "approval": {
@@ -31,6 +31,16 @@
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0264.semantic-freeze.v1.json",
       "sha256": "6be30be8845414d6060c69145f4327d03c8653a1d6d5e0c007f3ec64d1bbddfd",
       "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "gold-correction:DOC-0264:source-fixed-in-place:2026-09-24",
+      "sha256": "5a225a1aa558923c3b5479506749071874b4a0fb04ebfeb454cf5fade7ffdb79",
+      "role": "GOLD_CORRECTION_PREDECESSOR"
+    },
+    {
+      "path": "eval/a99-closed-loop/generated-docx-v2/DOC-0264.conversion-manifest.v1.json",
+      "sha256": "1bf94aa46e72c910701bd616c06c2ee9123defa3086dca17d0cabe7631636a30",
+      "role": "SOURCE_REGENERATION"
     }
   ]
 }

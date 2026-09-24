@@ -157,7 +157,7 @@
         "characterSpanEvaluable": false,
         "currentInventoryPresent": true,
         "currentSourcePath": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
-        "currentSourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117"
+        "currentSourceSha256": "a69e55265f53b556367a82e2c06a29c2eaa7fd2e19784e3200bdfb3355c09c5e"
       },
       {
         "documentId": "DOC-0265",
@@ -364,12 +364,12 @@
       "documentId": "DOC-0264",
       "mediaType": "DOCX",
       "sourcePath": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
-      "sourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
-      "registrySourceSha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+      "sourceSha256": "a69e55265f53b556367a82e2c06a29c2eaa7fd2e19784e3200bdfb3355c09c5e",
+      "registrySourceSha256": "a69e55265f53b556367a82e2c06a29c2eaa7fd2e19784e3200bdfb3355c09c5e",
       "sourceHashMatchesRegistry": true,
-      "sourceUniverseSha256": "f97a2ae622ed57887229060ac4b84e0f2822672f41c42c62c268c9730a398ba4",
-      "aliasCatalogHash": "11d50363276f02718c278646576ad63fefcab4eeb116d77e0ddd74500ad47728",
-      "aliasCount": 3,
+      "sourceUniverseSha256": "71ad4f2f783f38b4cf784550745a95cbcc1d620d486db8fbb6ee2976222ad934",
+      "aliasCatalogHash": "1fe56b9deec76bc6bab68f6f8218345edf2bafd0aad83cfb0a07d9e3fbe42e2c",
+      "aliasCount": 1390,
       "parserLineCount": 0,
       "authorityBuildDeterministic": true,
       "nativeGoldPath": null,
@@ -377,7 +377,7 @@
       "goldRebindPassed": false,
       "goldBindingIssues": [
         "NON_CURRENT_EVALUATOR_V3_SCHEMA",
-        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "SOURCE_HASH_MISMATCH",
         "OCCURRENCE_MATERIALIZATION_BLOCKED"
       ],
       "semanticHeadingTotal": 159,
@@ -393,7 +393,7 @@
       "eligibleForNewProviderReplication": false,
       "exclusionReasons": [
         "NON_CURRENT_EVALUATOR_V3_SCHEMA",
-        "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+        "SOURCE_HASH_MISMATCH",
         "OCCURRENCE_MATERIALIZATION_BLOCKED"
       ]
     }
@@ -441,7 +441,7 @@
         "documentId": "DOC-0264",
         "reasons": [
           "NON_CURRENT_EVALUATOR_V3_SCHEMA",
-          "LEGACY_OCCURRENCE_ARTIFACT_NOT_CURRENT_GOLD",
+          "SOURCE_HASH_MISMATCH",
           "OCCURRENCE_MATERIALIZATION_BLOCKED"
         ]
       }

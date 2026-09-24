@@ -5,10 +5,10 @@
   "documentId": null,
   "sourceId": "SRC-029",
   "source": {
-    "fileName": "029_WB_RFP_Works_DesignBuild_2021.docx",
-    "mediaType": "DOCX",
-    "sourcePath": "todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.docx",
-    "sourceSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+    "fileName": "029_WB_RFP_Works_DesignBuild_2021.pdf",
+    "mediaType": "PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+    "sourceSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
     "sourceLineageStatus": "VERIFIED"
   },
   "approval": {
@@ -50,6 +50,16 @@
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-029.semantic-freeze.v1.json",
       "sha256": "c6e790ab5e8f2f34d06820971578bd4bc4031eaeb497d3c1613717339251f81c",
       "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "gold-correction:SRC-029:source-fixed-in-place:2026-09-24",
+      "sha256": "cec8384e3e6da1d4a14d6022f09cf579017bfb54e5cbfd77f2b28168ce100440",
+      "role": "GOLD_CORRECTION_PREDECESSOR"
+    },
+    {
+      "path": "eval/a99-closed-loop/generated-docx-v2/SRC-029.conversion-manifest.v1.json",
+      "sha256": "f02835f870478db81d86f3d3293466a568798003fd45055dbb40978fff2b111b",
+      "role": "SOURCE_REGENERATION"
     }
   ],
   "providerCalls": 0,
