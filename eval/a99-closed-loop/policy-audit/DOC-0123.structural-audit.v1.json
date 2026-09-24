@@ -14,16 +14,16 @@
   "goldWritten": false,
   "summary": {
     "OLD_GOLD_TOTAL": 362,
-    "STRUCTURAL_REVIEW_TOTAL": 347,
+    "STRUCTURAL_REVIEW_TOTAL": 359,
     "KEEP_FROM_OLD": 192,
-    "REMOVE_FROM_OLD": 2,
-    "ADD_TO_OLD": 0,
-    "AMBIGUOUS": 21,
-    "AMBIGUOUS_OF_OLD": 6,
-    "FINAL_CANDIDATE_TOTAL": 347,
+    "REMOVE_FROM_OLD": 8,
+    "ADD_TO_OLD": 2,
+    "AMBIGUOUS": 0,
+    "AMBIGUOUS_OF_OLD": 0,
+    "FINAL_CANDIDATE_TOTAL": 359,
     "FINAL_CANDIDATE_RANGE": {
-      "min": 347,
-      "max": 368
+      "min": 359,
+      "max": 359
     },
     "USER_APPROVAL_REQUIRED": true,
     "oldItemisedSections": [
@@ -45,11 +45,11 @@
     {
       "section": "FRONT_MATTER",
       "oldGold": 25,
-      "structuralKeep": 23,
-      "ambiguous": 5,
+      "structuralKeep": 28,
+      "ambiguous": 0,
       "removedFromOld": 0,
       "oldItemised": false,
-      "reconciliation": "keep 23, ambiguous 5, old 25"
+      "reconciliation": "keep 28, ambiguous 0, old 25"
     },
     {
       "section": "PART_1",
@@ -90,11 +90,11 @@
     {
       "section": "SECTION_IV",
       "oldGold": 59,
-      "structuralKeep": 54,
-      "ambiguous": 7,
-      "removedFromOld": 0,
+      "structuralKeep": 56,
+      "ambiguous": 0,
+      "removedFromOld": 5,
       "oldItemised": true,
-      "reconciliation": "keep 54, ambiguous 7, old 59"
+      "reconciliation": "keep 56, ambiguous 0, old 59"
     },
     {
       "section": "SECTION_V",
@@ -127,10 +127,10 @@
       "section": "SECTION_VII",
       "oldGold": 25,
       "structuralKeep": 22,
-      "ambiguous": 1,
-      "removedFromOld": 2,
+      "ambiguous": 0,
+      "removedFromOld": 3,
       "oldItemised": true,
-      "reconciliation": "keep 22, ambiguous 1, old 25"
+      "reconciliation": "keep 22, ambiguous 0, old 25"
     },
     {
       "section": "PART_3",
@@ -153,8 +153,8 @@
     {
       "section": "SECTION_IX",
       "oldGold": 125,
-      "structuralKeep": 121,
-      "ambiguous": 4,
+      "structuralKeep": 125,
+      "ambiguous": 0,
       "removedFromOld": 0,
       "oldItemised": false,
       "reconciliation": "keep+ambiguous = old"
@@ -162,56 +162,71 @@
     {
       "section": "SECTION_X",
       "oldGold": 19,
-      "structuralKeep": 18,
-      "ambiguous": 4,
+      "structuralKeep": 19,
+      "ambiguous": 0,
       "removedFromOld": 0,
       "oldItemised": false,
-      "reconciliation": "keep 18, ambiguous 4, old 19"
+      "reconciliation": "keep+ambiguous = old"
     }
   ],
-  "axesOntology": "OCCURRENCE_SEMANTIC_AXES_V1",
+  "axesOntology": "OCCURRENCE_SEMANTIC_AXES_V2",
   "roleByVerdict": {
     "CAPTION": {
       "keep": 0,
-      "ambiguous": 6,
-      "remove": 0
+      "ambiguous": 0,
+      "remove": 6
     },
     "LOCAL_LABEL": {
       "keep": 0,
-      "ambiguous": 1,
+      "ambiguous": 0,
       "remove": 2
     },
     "REGION_OPENER": {
-      "keep": 347,
-      "ambiguous": 5,
+      "keep": 358,
+      "ambiguous": 0,
       "remove": 0
     },
-    "REPEATED_TITLE": {
-      "keep": 0,
-      "ambiguous": 5,
-      "remove": 0
-    },
-    "SUBTITLE": {
-      "keep": 0,
-      "ambiguous": 4,
+    "REGION_OPENER+LOCAL_LABEL": {
+      "keep": 1,
+      "ambiguous": 0,
       "remove": 0
     }
   },
   "modelCrossCheck": {
     "distinctProposals": 529,
     "byCategory": {
-      "STRUCTURAL_HEADING": 389,
+      "STRUCTURAL_HEADING": 388,
       "TABLE_LABEL": 80,
-      "TABLE_CAPTION": 9,
+      "TABLE_CAPTION": 10,
       "FIELD_LABEL": 20,
       "RUNNING_HEADER_FOOTER": 0,
       "FOOTNOTE_NOTE": 4,
       "NAVIGATION": 10,
       "OTHER_NON_HEADING": 17
     },
-    "ambiguousProposed": 18,
-    "structuralKeepProposedByModel": 317,
+    "ambiguousProposed": 0,
+    "structuralKeepProposedByModel": 324,
     "structuralKeepMissedByModel": [
+      {
+        "Section": "FRONT_MATTER",
+        "alias": "S0012",
+        "Text": "March 2025"
+      },
+      {
+        "Section": "FRONT_MATTER",
+        "alias": "S0014",
+        "Text": "July 2023"
+      },
+      {
+        "Section": "FRONT_MATTER",
+        "alias": "S0019",
+        "Text": "January 2021"
+      },
+      {
+        "Section": "FRONT_MATTER",
+        "alias": "S0021",
+        "Text": "December 2019"
+      },
       {
         "Section": "FRONT_MATTER",
         "alias": "S0044",
@@ -246,6 +261,11 @@
         "Section": "SECTION_IV",
         "alias": "S1144",
         "Text": "General`"
+      },
+      {
+        "Section": "SECTION_IV",
+        "alias": "S1389",
+        "Text": "Examples of sexual harassment in a work context"
       },
       {
         "Section": "SECTION_V",
@@ -368,6 +388,30 @@
     {
       "Section": "SECTION_VII",
       "Aliases": [
+        "S1962"
+      ],
+      "Text": "Contractor’s Representative and Key Personnel",
+      "Category": "TABLE_CAPTION",
+      "Reason": "user decision 2026-09-24: repeats the styled heading above and names the table below it (exclude 3)",
+      "InOld": true,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "TABLE",
+        "OccurrenceRoles": [
+          "CAPTION"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
+        "InformationType": null
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "SECTION_VII",
+      "Aliases": [
         "S1971"
       ],
       "Text": "Key Personnel for Design",
@@ -380,9 +424,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "TABLE",
-        "OccurrenceRole": "LOCAL_LABEL",
+        "OccurrenceRoles": [
+          "LOCAL_LABEL"
+        ],
+        "TitleRelation": "NONE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -399,318 +448,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "TABLE",
-        "OccurrenceRole": "LOCAL_LABEL",
+        "OccurrenceRoles": [
+          "LOCAL_LABEL"
+        ],
+        "TitleRelation": "NONE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
-    }
-  ],
-  "ambiguousItems": [
-    {
-      "Section": "FRONT_MATTER",
-      "Aliases": [
-        "S0012"
-      ],
-      "Text": "March 2025",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "revision entry date: heads that revision's note (policy 9) or is metadata (exclude 12)",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "INFORMATION"
-        ],
-        "PrimaryFunction": "INFORMATION",
-        "Scope": "REVISION_ENTRY",
-        "OccurrenceRole": "REGION_OPENER",
-        "InformationType": "TEMPORAL_METADATA"
-      }
-    },
-    {
-      "Section": "FRONT_MATTER",
-      "Aliases": [
-        "S0014"
-      ],
-      "Text": "July 2023",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "revision entry date",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "INFORMATION"
-        ],
-        "PrimaryFunction": "INFORMATION",
-        "Scope": "REVISION_ENTRY",
-        "OccurrenceRole": "REGION_OPENER",
-        "InformationType": "TEMPORAL_METADATA"
-      }
-    },
-    {
-      "Section": "FRONT_MATTER",
-      "Aliases": [
-        "S0019"
-      ],
-      "Text": "January 2021",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "revision entry date",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "INFORMATION"
-        ],
-        "PrimaryFunction": "INFORMATION",
-        "Scope": "REVISION_ENTRY",
-        "OccurrenceRole": "REGION_OPENER",
-        "InformationType": "TEMPORAL_METADATA"
-      }
-    },
-    {
-      "Section": "FRONT_MATTER",
-      "Aliases": [
-        "S0021"
-      ],
-      "Text": "December 2019",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "revision entry date",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "INFORMATION"
-        ],
-        "PrimaryFunction": "INFORMATION",
-        "Scope": "REVISION_ENTRY",
-        "OccurrenceRole": "REGION_OPENER",
-        "InformationType": "TEMPORAL_METADATA"
-      }
-    },
-    {
-      "Section": "FRONT_MATTER",
-      "Aliases": [
-        "S0073",
-        "S0074",
-        "S0075",
-        "S0076"
-      ],
-      "Text": "Request for Proposals Works (Design and Build) (After Initial Selection)",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "the notice's own title block, directly under its heading: a second title or part of it",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "EMBEDDED_ARTIFACT",
-        "OccurrenceRole": "SUBTITLE",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_IV",
-      "Aliases": [
-        "S1341"
-      ],
-      "Text": "CODE OF CONDUCT FOR CONTRACTOR’S PERSONNEL",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "the code's own title inside its form, directly under the form heading",
-      "InOld": false,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "EMBEDDED_ARTIFACT",
-        "OccurrenceRole": "REGION_OPENER",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_IV",
-      "Aliases": [
-        "S1389"
-      ],
-      "Text": "Examples of sexual harassment in a work context",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "introduces the list beneath it: local heading (policy 9) or list lead-in",
-      "InOld": false,
-      "axes": {
-        "SemanticFunctions": [
-          "STRUCTURE"
-        ],
-        "PrimaryFunction": "STRUCTURE",
-        "Scope": "LIST",
-        "OccurrenceRole": "LOCAL_LABEL",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_VII",
-      "Aliases": [
-        "S1962"
-      ],
-      "Text": "Contractor’s Representative and Key Personnel",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "repeats the styled heading just above and names the table below it: table title (exclude 3) or heading",
-      "InOld": true,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "TABLE",
-        "OccurrenceRole": "CAPTION",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_IX",
-      "Aliases": [
-        "S2009"
-      ],
-      "Text": "Particular Conditions",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "repeated document title above each Part: a heading or part of the Part heading",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "DOCUMENT",
-        "OccurrenceRole": "REPEATED_TITLE",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_IX",
-      "Aliases": [
-        "S2845"
-      ],
-      "Text": "Particular Conditions",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "repeated document title above Part C",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "DOCUMENT",
-        "OccurrenceRole": "REPEATED_TITLE",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_IX",
-      "Aliases": [
-        "S2865"
-      ],
-      "Text": "Particular Conditions",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "repeated document title above Part D",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "DOCUMENT",
-        "OccurrenceRole": "REPEATED_TITLE",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_IX",
-      "Aliases": [
-        "S2920"
-      ],
-      "Text": "Particular Conditions",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "repeated document title above Part E",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "DOCUMENT",
-        "OccurrenceRole": "REPEATED_TITLE",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_X",
-      "Aliases": [
-        "S2973"
-      ],
-      "Text": "Notification of Intention to Award",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "the letter's own title repeated under the form heading",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "EMBEDDED_ARTIFACT",
-        "OccurrenceRole": "REPEATED_TITLE",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_X",
-      "Aliases": [
-        "S3170"
-      ],
-      "Text": "ES Demand Guarantee",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "subtitle of the security form: second title or part of it",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "FORM",
-        "OccurrenceRole": "SUBTITLE",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_X",
-      "Aliases": [
-        "S3184"
-      ],
-      "Text": "Demand Guarantee",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "subtitle of the security form",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "FORM",
-        "OccurrenceRole": "SUBTITLE",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_X",
-      "Aliases": [
-        "S3201"
-      ],
-      "Text": "Demand Guarantee",
-      "Category": "STRUCTURAL_HEADING",
-      "Reason": "subtitle of the security form",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "FORM",
-        "OccurrenceRole": "SUBTITLE",
-        "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -727,9 +472,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TABLE",
-        "OccurrenceRole": "CAPTION",
+        "OccurrenceRoles": [
+          "CAPTION"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -746,9 +496,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TABLE",
-        "OccurrenceRole": "CAPTION",
+        "OccurrenceRoles": [
+          "CAPTION"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -765,9 +520,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TABLE",
-        "OccurrenceRole": "CAPTION",
+        "OccurrenceRoles": [
+          "CAPTION"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -784,9 +544,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TABLE",
-        "OccurrenceRole": "CAPTION",
+        "OccurrenceRoles": [
+          "CAPTION"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -803,11 +568,17 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TABLE",
-        "OccurrenceRole": "CAPTION",
+        "OccurrenceRoles": [
+          "CAPTION"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     }
   ],
+  "ambiguousItems": [],
   "structuralReview": [
     {
       "Section": "FRONT_MATTER",
@@ -828,9 +599,19 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "DOCUMENT",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S0002",
+        "S0003",
+        "S0004",
+        "S0005"
+      ]
     },
     {
       "Section": "FRONT_MATTER",
@@ -847,9 +628,114 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "FRONT_MATTER",
+      "Aliases": [
+        "S0012"
+      ],
+      "Text": "March 2025",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: revision date opening its revision note",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "INFORMATION",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "INFORMATION",
+        "Scope": "REVISION_ENTRY",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "NONE",
+        "RepeatStatus": "FIRST",
+        "InformationType": "TEMPORAL_METADATA"
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "FRONT_MATTER",
+      "Aliases": [
+        "S0014"
+      ],
+      "Text": "July 2023",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: revision date opening its revision note",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "INFORMATION",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "INFORMATION",
+        "Scope": "REVISION_ENTRY",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "NONE",
+        "RepeatStatus": "FIRST",
+        "InformationType": "TEMPORAL_METADATA"
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "FRONT_MATTER",
+      "Aliases": [
+        "S0019"
+      ],
+      "Text": "January 2021",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: revision date opening its revision note",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "INFORMATION",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "INFORMATION",
+        "Scope": "REVISION_ENTRY",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "NONE",
+        "RepeatStatus": "FIRST",
+        "InformationType": "TEMPORAL_METADATA"
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "FRONT_MATTER",
+      "Aliases": [
+        "S0021"
+      ],
+      "Text": "December 2019",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: revision date opening its revision note",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "INFORMATION",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "INFORMATION",
+        "Scope": "REVISION_ENTRY",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "NONE",
+        "RepeatStatus": "FIRST",
+        "InformationType": "TEMPORAL_METADATA"
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -866,9 +752,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -885,9 +776,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -904,9 +800,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -923,9 +824,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -943,9 +849,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -963,9 +874,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -983,9 +899,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1003,9 +924,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1023,9 +949,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1043,9 +974,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1063,9 +999,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1083,9 +1024,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1103,9 +1049,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1123,9 +1074,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1143,9 +1099,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1163,9 +1124,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1183,9 +1149,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "FRONT_MATTER",
@@ -1202,9 +1173,45 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "EMBEDDED_ARTIFACT",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "FRONT_MATTER",
+      "Aliases": [
+        "S0073",
+        "S0074",
+        "S0075",
+        "S0076"
+      ],
+      "Text": "Request for Proposals Works (Design and Build) (After Initial Selection)",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: title block of the embedded notice, one claim of four parts",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "EMBEDDED_ARTIFACT",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
+        "InformationType": null
+      },
+      "titlePartAliases": [
+        "S0074",
+        "S0075",
+        "S0076"
+      ]
     },
     {
       "Section": "FRONT_MATTER",
@@ -1224,9 +1231,18 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "DOCUMENT",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S0105",
+        "S0106",
+        "S0107"
+      ]
     },
     {
       "Section": "FRONT_MATTER",
@@ -1244,9 +1260,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TOC",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1263,9 +1284,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1282,9 +1308,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1301,9 +1332,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1320,9 +1356,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1339,9 +1380,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1358,9 +1404,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1377,9 +1428,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1396,9 +1452,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1415,9 +1476,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -1434,9 +1500,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -1454,9 +1525,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TOC",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -1473,9 +1549,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -1492,9 +1573,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -1511,9 +1597,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -1530,9 +1621,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -1549,9 +1645,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -1568,9 +1669,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1588,9 +1694,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TOC",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1607,9 +1718,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1626,9 +1742,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1645,9 +1766,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1664,9 +1790,38 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "SECTION_IV",
+      "Aliases": [
+        "S1341"
+      ],
+      "Text": "CODE OF CONDUCT FOR CONTRACTOR’S PERSONNEL",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: title of the embedded code, whose prose follows",
+      "InOld": false,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "EMBEDDED_ARTIFACT",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
+        "InformationType": null
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1683,9 +1838,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1702,9 +1862,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1721,9 +1886,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1741,9 +1911,41 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S1381"
+      ]
+    },
+    {
+      "Section": "SECTION_IV",
+      "Aliases": [
+        "S1389"
+      ],
+      "Text": "Examples of sexual harassment in a work context",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: bold numbered subheading opening its list of examples",
+      "InOld": false,
+      "axes": {
+        "SemanticFunctions": [
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "STRUCTURE",
+        "Scope": "LIST",
+        "OccurrenceRoles": [
+          "REGION_OPENER",
+          "LOCAL_LABEL"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
+        "InformationType": null
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -1760,9 +1962,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_V",
@@ -1779,9 +1986,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VI",
@@ -1798,9 +2010,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VI",
@@ -1817,9 +2034,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -1836,9 +2058,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -1855,9 +2082,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -1874,9 +2106,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -1893,9 +2130,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -1912,9 +2154,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -1931,9 +2178,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -1950,9 +2202,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -1969,9 +2226,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -1988,9 +2250,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -2007,9 +2274,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -2026,9 +2298,38 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "SECTION_IX",
+      "Aliases": [
+        "S2009"
+      ],
+      "Text": "Particular Conditions",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: document title above Part A, opening it",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
+        "InformationType": null
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2046,9 +2347,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2066,9 +2372,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2085,9 +2396,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2104,9 +2420,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2123,9 +2444,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2142,9 +2468,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2162,9 +2493,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "EMBEDDED_ARTIFACT",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2181,9 +2517,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2200,9 +2541,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2219,9 +2565,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2238,9 +2589,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2257,9 +2613,38 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "SECTION_IX",
+      "Aliases": [
+        "S2845"
+      ],
+      "Text": "Particular Conditions",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: repeated document title opening Part C",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
+        "InformationType": null
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2277,9 +2662,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2296,9 +2686,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2315,9 +2710,38 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "SECTION_IX",
+      "Aliases": [
+        "S2865"
+      ],
+      "Text": "Particular Conditions",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: repeated document title opening Part D",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
+        "InformationType": null
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2335,9 +2759,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2354,9 +2783,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2373,9 +2807,38 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "SECTION_IX",
+      "Aliases": [
+        "S2920"
+      ],
+      "Text": "Particular Conditions",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: repeated document title opening Part E",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "DOCUMENT",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
+        "InformationType": null
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2393,9 +2856,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -2412,9 +2880,38 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "SECTION_X",
+      "Aliases": [
+        "S2973"
+      ],
+      "Text": "Notification of Intention to Award",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: repeated title at the form boundary, before the notification body",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "EMBEDDED_ARTIFACT",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
+        "InformationType": null
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -2431,9 +2928,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -2450,9 +2952,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -2469,9 +2976,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -2488,9 +3000,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -2507,9 +3024,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -2526,9 +3048,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -2545,9 +3072,98 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
+    },
+    {
+      "Section": "SECTION_X",
+      "Aliases": [
+        "S3169",
+        "S3170"
+      ],
+      "Text": "Environmental and Social (ES ) Performance Security ES Demand Guarantee",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: form title of two lines, one claim (ES Demand Guarantee is a title part)",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
+        "InformationType": null
+      },
+      "titlePartAliases": [
+        "S3170"
+      ]
+    },
+    {
+      "Section": "SECTION_X",
+      "Aliases": [
+        "S3183",
+        "S3184"
+      ],
+      "Text": "Advance Payment Security Demand Guarantee",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: form title of two lines, one claim (Demand Guarantee is a title part)",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
+        "InformationType": null
+      },
+      "titlePartAliases": [
+        "S3184"
+      ]
+    },
+    {
+      "Section": "SECTION_X",
+      "Aliases": [
+        "S3200",
+        "S3201"
+      ],
+      "Text": "Retention Money Security Demand Guarantee",
+      "Rule": "named",
+      "Reason": "user decision 2026-09-24: form title of two lines, one claim (Demand Guarantee is a title part)",
+      "InOld": null,
+      "axes": {
+        "SemanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "PrimaryFunction": "IDENTITY",
+        "Scope": "FORM",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
+        "InformationType": null
+      },
+      "titlePartAliases": [
+        "S3201"
+      ]
     },
     {
       "Section": "FRONT_MATTER",
@@ -2564,9 +3180,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "DOCUMENT",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "PART_1",
@@ -2584,9 +3205,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2604,9 +3230,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2624,9 +3255,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TOC",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2643,9 +3279,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2662,9 +3303,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2681,9 +3327,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2700,9 +3351,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2719,9 +3375,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2738,9 +3399,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2757,9 +3423,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2776,9 +3447,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2795,9 +3471,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2814,9 +3495,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2833,9 +3519,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2852,9 +3543,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2871,9 +3567,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2890,9 +3591,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2909,9 +3615,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2928,9 +3639,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2947,9 +3663,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2966,9 +3687,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -2985,9 +3711,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3004,9 +3735,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3023,9 +3759,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3042,9 +3783,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3061,9 +3807,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3080,9 +3831,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3099,9 +3855,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3118,9 +3879,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3137,9 +3903,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3156,9 +3927,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3175,9 +3951,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3194,9 +3975,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3213,9 +3999,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3232,9 +4023,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3251,9 +4047,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3270,9 +4071,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3289,9 +4095,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3308,9 +4119,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3327,9 +4143,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3346,9 +4167,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3365,9 +4191,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3384,9 +4215,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3403,9 +4239,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3422,9 +4263,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3441,9 +4287,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3460,9 +4311,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3479,9 +4335,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3498,9 +4359,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3517,9 +4383,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3536,9 +4407,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3555,9 +4431,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3574,9 +4455,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3593,9 +4479,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3612,9 +4503,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3631,9 +4527,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3650,9 +4551,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3669,9 +4575,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3688,9 +4599,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3707,9 +4623,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3726,9 +4647,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3745,9 +4671,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3764,9 +4695,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3783,9 +4719,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3802,9 +4743,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3821,9 +4767,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3840,9 +4791,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3859,9 +4815,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3878,9 +4839,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_I",
@@ -3897,9 +4863,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_II",
@@ -3917,9 +4888,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -3937,9 +4913,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -3956,9 +4937,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -3975,9 +4961,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -3994,9 +4985,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -4013,9 +5009,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -4032,9 +5033,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -4051,9 +5057,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -4070,9 +5081,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -4089,9 +5105,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -4108,9 +5129,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -4127,9 +5153,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -4146,9 +5177,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_III",
@@ -4165,9 +5201,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4185,9 +5226,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4205,9 +5251,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4225,9 +5276,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4245,9 +5301,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4265,9 +5326,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4285,9 +5351,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4305,9 +5376,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4325,9 +5401,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4345,9 +5426,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4365,9 +5451,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4385,9 +5476,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4405,9 +5501,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4425,9 +5526,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4445,9 +5551,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4465,9 +5576,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4485,9 +5601,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4505,9 +5626,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4525,9 +5651,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4545,9 +5676,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4565,9 +5701,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4585,9 +5726,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4605,9 +5751,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4625,9 +5776,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4645,9 +5801,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4665,9 +5826,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4685,9 +5851,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4705,9 +5876,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4725,9 +5901,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4745,9 +5926,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4765,9 +5951,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4785,9 +5976,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4805,9 +6001,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4825,9 +6026,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4845,9 +6051,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4865,9 +6076,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4885,9 +6101,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4905,9 +6126,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4925,9 +6151,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4945,9 +6176,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4965,9 +6201,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -4985,9 +6226,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -5005,9 +6251,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -5025,9 +6276,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IV",
@@ -5045,9 +6301,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_V",
@@ -5065,9 +6326,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VI",
@@ -5085,9 +6351,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "PART_2",
@@ -5105,9 +6376,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5125,9 +6401,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5145,9 +6426,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TOC",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5164,9 +6450,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5183,9 +6474,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5202,9 +6498,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5221,9 +6522,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5240,9 +6546,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5259,9 +6570,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5278,9 +6594,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5297,9 +6618,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VII",
@@ -5316,9 +6642,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "PART_3",
@@ -5336,9 +6667,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "DOCUMENT_PART",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_VIII",
@@ -5356,9 +6692,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -5376,9 +6717,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -5396,9 +6742,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "SECTION",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -5416,9 +6767,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "TOC",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -5436,9 +6792,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -5456,9 +6817,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -5476,9 +6842,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -5496,9 +6867,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -5516,9 +6892,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_X",
@@ -5536,69 +6917,14 @@
         ],
         "PrimaryFunction": "IDENTITY",
         "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_X",
-      "Aliases": [
-        "S3169"
-      ],
-      "Text": "Environmental and Social (ES ) Performance Security",
-      "Rule": "style:S9Header",
-      "Reason": "template heading style S9Header",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY",
-          "STRUCTURE"
+        "OccurrenceRoles": [
+          "REGION_OPENER"
         ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_X",
-      "Aliases": [
-        "S3183"
-      ],
-      "Text": "Advance Payment Security",
-      "Rule": "style:S9Header",
-      "Reason": "template heading style S9Header",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY",
-          "STRUCTURE"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
-        "InformationType": null
-      }
-    },
-    {
-      "Section": "SECTION_X",
-      "Aliases": [
-        "S3200"
-      ],
-      "Text": "Retention Money Security",
-      "Rule": "style:S9Header",
-      "Reason": "template heading style S9Header",
-      "InOld": null,
-      "axes": {
-        "SemanticFunctions": [
-          "IDENTITY",
-          "STRUCTURE"
-        ],
-        "PrimaryFunction": "IDENTITY",
-        "Scope": "FORM",
-        "OccurrenceRole": "REGION_OPENER",
-        "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -5616,9 +6942,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2253"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5636,9 +6969,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2256"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5656,9 +6996,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2260"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5676,9 +7023,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2264"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5696,9 +7050,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2268"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5715,9 +7076,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -5735,9 +7101,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2274"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5755,9 +7128,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2277"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5775,9 +7155,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2280"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5795,9 +7182,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2286"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5815,9 +7209,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2289"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5835,9 +7236,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2292"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5855,9 +7263,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2303"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5875,9 +7290,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2310"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5895,9 +7317,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2314"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5915,9 +7344,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2320"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5935,9 +7371,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2324"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5955,9 +7398,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2330"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5975,9 +7425,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2344"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -5995,9 +7452,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2348"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6015,9 +7479,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2356"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6035,9 +7506,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2360"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6055,9 +7533,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2364"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6075,9 +7560,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2368"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6095,9 +7587,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2383"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6116,9 +7615,17 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2396",
+        "S2397"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6136,9 +7643,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2402"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6156,9 +7670,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2405"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6176,9 +7697,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2408"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6195,9 +7723,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -6215,9 +7748,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2419"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6235,9 +7775,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2426"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6255,9 +7802,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2430"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6275,9 +7829,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2452"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6295,9 +7856,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2457"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6315,9 +7883,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2465"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6335,9 +7910,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2474"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6355,9 +7937,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2484"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6375,9 +7964,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2491"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6395,9 +7991,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2503"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6415,9 +8018,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2511"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6435,9 +8045,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2529"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6455,9 +8072,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2535"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6475,9 +8099,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2540"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6495,9 +8126,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2548"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6515,9 +8153,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2552"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6535,9 +8180,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2556"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6555,9 +8207,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2560"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6575,9 +8234,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2574"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6595,9 +8261,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2579"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6615,9 +8288,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2583"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6635,9 +8315,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2586"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6655,9 +8342,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2589"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6675,9 +8369,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2592"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6695,9 +8396,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2595"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6715,9 +8423,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2598"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6735,9 +8450,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2601"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6755,9 +8477,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2604"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6775,9 +8504,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2608"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6795,9 +8531,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2619"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6815,9 +8558,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2622"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6835,9 +8585,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2625"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6855,9 +8612,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2629"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6875,9 +8639,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2635"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6894,9 +8665,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -6914,9 +8690,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2644"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6934,9 +8717,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2648"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6954,9 +8744,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2659"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6974,9 +8771,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2663"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -6994,9 +8798,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2666"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7014,9 +8825,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2670"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7034,9 +8852,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2674"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7054,9 +8879,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "REPEATED",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2682"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7074,9 +8906,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2697"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7094,9 +8933,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2701"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7114,9 +8960,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2704"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7134,9 +8987,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2709"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7154,9 +9014,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2721"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7174,9 +9041,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2727"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7194,9 +9068,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2732"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7214,9 +9095,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2735"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7234,9 +9122,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2742"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7254,9 +9149,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2745"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7274,9 +9176,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2750"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7294,9 +9203,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2754"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7314,9 +9230,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2760"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7334,9 +9257,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2764"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7353,9 +9283,14 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": []
     },
     {
       "Section": "SECTION_IX",
@@ -7373,9 +9308,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2775"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7393,9 +9335,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2780"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7413,9 +9362,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2784"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7433,9 +9389,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2788"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7453,9 +9416,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2791"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7473,9 +9443,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2796"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7493,9 +9470,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2800"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7513,9 +9497,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2804"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7533,9 +9524,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2807"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7553,9 +9551,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2811"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7573,9 +9578,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2815"
+      ]
     },
     {
       "Section": "SECTION_IX",
@@ -7593,9 +9605,16 @@
         ],
         "PrimaryFunction": "STRUCTURE",
         "Scope": "CLAUSE",
-        "OccurrenceRole": "REGION_OPENER",
+        "OccurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "TitleRelation": "TITLE",
+        "RepeatStatus": "FIRST",
         "InformationType": null
-      }
+      },
+      "titlePartAliases": [
+        "S2818"
+      ]
     }
   ],
   "proposals": [
@@ -7882,8 +9901,8 @@
       "modelRole": "section_heading",
       "section": "FRONT_MATTER",
       "category": "STRUCTURAL_HEADING",
-      "reason": "the notice's own title block, directly under its heading: a second title or part of it",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: title block of the embedded notice, one claim of four parts",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -7893,8 +9912,8 @@
       "modelRole": "subject",
       "section": "FRONT_MATTER",
       "category": "STRUCTURAL_HEADING",
-      "reason": "the notice's own title block, directly under its heading: a second title or part of it",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: title block of the embedded notice, one claim of four parts",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -7904,8 +9923,8 @@
       "modelRole": "modifier",
       "section": "FRONT_MATTER",
       "category": "STRUCTURAL_HEADING",
-      "reason": "the notice's own title block, directly under its heading: a second title or part of it",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: title block of the embedded notice, one claim of four parts",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -7915,8 +9934,8 @@
       "modelRole": "modifier",
       "section": "FRONT_MATTER",
       "category": "STRUCTURAL_HEADING",
-      "reason": "the notice's own title block, directly under its heading: a second title or part of it",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: title block of the embedded notice, one claim of four parts",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -9665,7 +11684,7 @@
       "section": "SECTION_IV",
       "category": "TABLE_CAPTION",
       "reason": "\"Table A. Local Currency\" names the one table below it (exclude 3) though styled as a form heading",
-      "ambiguous": true
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -9676,7 +11695,7 @@
       "section": "SECTION_IV",
       "category": "TABLE_CAPTION",
       "reason": "\"Table B. Foreign Currency (FC)\" names the one table below it",
-      "ambiguous": true
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -9687,7 +11706,7 @@
       "section": "SECTION_IV",
       "category": "TABLE_CAPTION",
       "reason": "\"Table C. Summary of Payment Currencies\" names the tables below it",
-      "ambiguous": true
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -9731,7 +11750,7 @@
       "section": "SECTION_IV",
       "category": "TABLE_CAPTION",
       "reason": "\"Sample Schedule of Priced Activities Table\" names the one sample table below it",
-      "ambiguous": true
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -9742,7 +11761,7 @@
       "section": "SECTION_IV",
       "category": "TABLE_CAPTION",
       "reason": "\"Sample Schedule of Priced Sub-activities Table\" names the one sample table below it",
-      "ambiguous": true
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -9950,8 +11969,8 @@
       "modelRole": "heading",
       "section": "SECTION_IV",
       "category": "STRUCTURAL_HEADING",
-      "reason": "the code's own title inside its form, directly under the form heading",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: title of the embedded code, whose prose follows",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -10457,9 +12476,9 @@
       "text": "Contractor’s Representative and Key Personnel",
       "modelRole": "heading",
       "section": "SECTION_VII",
-      "category": "STRUCTURAL_HEADING",
-      "reason": "repeats the styled heading just above and names the table below it: table title (exclude 3) or heading",
-      "ambiguous": true
+      "category": "TABLE_CAPTION",
+      "reason": "user decision 2026-09-24: repeats the styled heading above and names the table below it (exclude 3)",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -10535,8 +12554,8 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "repeated document title above each Part: a heading or part of the Part heading",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: document title above Part A, opening it",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -13098,8 +15117,8 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "repeated document title above Part C",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: repeated document title opening Part C",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -13153,8 +15172,8 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "repeated document title above Part D",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: repeated document title opening Part D",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -13186,8 +15205,8 @@
       "modelRole": "heading",
       "section": "SECTION_IX",
       "category": "STRUCTURAL_HEADING",
-      "reason": "repeated document title above Part E",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: repeated document title opening Part E",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -13407,7 +15426,7 @@
       "modelRole": "Section Title",
       "section": "SECTION_X",
       "category": "STRUCTURAL_HEADING",
-      "reason": "template heading style S9Header",
+      "reason": "user decision 2026-09-24: form title of two lines, one claim (ES Demand Guarantee is a title part)",
       "ambiguous": false
     },
     {
@@ -13418,8 +15437,8 @@
       "modelRole": "Subsection Title",
       "section": "SECTION_X",
       "category": "STRUCTURAL_HEADING",
-      "reason": "subtitle of the security form: second title or part of it",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: form title of two lines, one claim (ES Demand Guarantee is a title part)",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -13429,7 +15448,7 @@
       "modelRole": "Section Title",
       "section": "SECTION_X",
       "category": "STRUCTURAL_HEADING",
-      "reason": "template heading style S9Header",
+      "reason": "user decision 2026-09-24: form title of two lines, one claim (Demand Guarantee is a title part)",
       "ambiguous": false
     },
     {
@@ -13440,8 +15459,8 @@
       "modelRole": "Subsection Title",
       "section": "SECTION_X",
       "category": "STRUCTURAL_HEADING",
-      "reason": "subtitle of the security form",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: form title of two lines, one claim (Demand Guarantee is a title part)",
+      "ambiguous": false
     },
     {
       "aliases": [
@@ -13451,7 +15470,7 @@
       "modelRole": "Section Title",
       "section": "SECTION_X",
       "category": "STRUCTURAL_HEADING",
-      "reason": "template heading style S9Header",
+      "reason": "user decision 2026-09-24: form title of two lines, one claim (Demand Guarantee is a title part)",
       "ambiguous": false
     },
     {
@@ -13462,8 +15481,8 @@
       "modelRole": "Subsection Title",
       "section": "SECTION_X",
       "category": "STRUCTURAL_HEADING",
-      "reason": "subtitle of the security form",
-      "ambiguous": true
+      "reason": "user decision 2026-09-24: form title of two lines, one claim (Demand Guarantee is a title part)",
+      "ambiguous": false
     }
   ]
 }

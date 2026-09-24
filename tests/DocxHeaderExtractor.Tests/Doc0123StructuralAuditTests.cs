@@ -65,13 +65,13 @@ public sealed partial class Doc0123StructuralAuditTests
         "SPDForms1", "SPDForm2", "SPD3EmployersRequirement", "SectionVHeading2", "S9Header", "Subtitle2", "SectionXHeading",
     ];
 
-    private enum Verdict { Keep, Remove, Ambiguous }
+    internal enum Verdict { Keep, Remove, Ambiguous }
 
     /// <summary>
     /// A decided occurrence. Aliases lists the paragraphs it spans; Text is what it must read.
     /// InOld: whether the old Gold counted it (null where the old set is not itemised).
     /// </summary>
-    private sealed record Item(string Section, string[] Aliases, string Text, Verdict Verdict, string Category, string Rule, string Reason, bool? InOld);
+    internal sealed record Item(string Section, string[] Aliases, string Text, Verdict Verdict, string Category, string Rule, string Reason, bool? InOld);
 
     /// <summary>Bold local headings the template leaves unstyled, and composites. Each is asserted by text.</summary>
     private static readonly (string[] Aliases, string Text, Verdict Verdict, string Reason, bool? InOld)[] Named =
@@ -79,10 +79,10 @@ public sealed partial class Doc0123StructuralAuditTests
         // FRONT_MATTER - old items not identified, so InOld is null throughout.
         (["S0001", "S0002", "S0003", "S0004", "S0005"], "STANDARD PROCUREMENT DOCUMENT Request for Proposals Works Design and Build (Single-Stage Request for Proposals, after Initial Selection)", Verdict.Keep, "cover title block: the document title", null),
         (["S0011"], "Revisions", Verdict.Keep, "opens the revision history", null),
-        (["S0012"], "March 2025", Verdict.Ambiguous, "revision entry date: heads that revision's note (policy 9) or is metadata (exclude 12)", null),
-        (["S0014"], "July 2023", Verdict.Ambiguous, "revision entry date", null),
-        (["S0019"], "January 2021", Verdict.Ambiguous, "revision entry date", null),
-        (["S0021"], "December 2019", Verdict.Ambiguous, "revision entry date", null),
+        (["S0012"], "March 2025", Verdict.Keep, "user decision 2026-09-24: revision date opening its revision note", null),
+        (["S0014"], "July 2023", Verdict.Keep, "user decision 2026-09-24: revision date opening its revision note", null),
+        (["S0019"], "January 2021", Verdict.Keep, "user decision 2026-09-24: revision date opening its revision note", null),
+        (["S0021"], "December 2019", Verdict.Keep, "user decision 2026-09-24: revision date opening its revision note", null),
         (["S0023"], "Preface", Verdict.Keep, "opens the preface", null),
         (["S0043"], "Summary", Verdict.Keep, "opens the summary", null),
         (["S0044"], "Specific Procurement Notice", Verdict.Keep, "summary entry heading its explanatory block", null),
@@ -101,7 +101,7 @@ public sealed partial class Doc0123StructuralAuditTests
         (["S0068"], "Section IX - Particular Conditions (PC)", Verdict.Keep, "summary section label", null),
         (["S0070"], "Section X - Contract Forms", Verdict.Keep, "summary section label", null),
         (["S0072"], "Notice of Request for Proposals", Verdict.Keep, "opens the notice template", null),
-        (["S0073", "S0074", "S0075", "S0076"], "Request for Proposals Works (Design and Build) (After Initial Selection)", Verdict.Ambiguous, "the notice's own title block, directly under its heading: a second title or part of it", null),
+        (["S0073", "S0074", "S0075", "S0076"], "Request for Proposals Works (Design and Build) (After Initial Selection)", Verdict.Keep, "user decision 2026-09-24: title block of the embedded notice, one claim of four parts", null),
         (["S0104", "S0105", "S0106", "S0107"], "Request for Proposals Works Design and Build (Single-Stage RFP after Initial Selection)", Verdict.Keep, "cover title of the RFP document proper", null),
         (["S0117"], "Table of Content", Verdict.Keep, "opens the table of contents region", null),
         // SECTION_II - the PDS groups A-K; the "ITP n.n" cells beside them are row references (exclude 1).
@@ -129,12 +129,12 @@ public sealed partial class Doc0123StructuralAuditTests
         (["S1146"], "Daywork Labour", Verdict.Keep, "daywork local heading", true),
         (["S1155"], "Daywork Materials", Verdict.Keep, "daywork local heading", true),
         (["S1162"], "Daywork Contractor’s Equipment", Verdict.Keep, "daywork local heading", true),
-        (["S1341"], "CODE OF CONDUCT FOR CONTRACTOR’S PERSONNEL", Verdict.Ambiguous, "the code's own title inside its form, directly under the form heading", false),
+        (["S1341"], "CODE OF CONDUCT FOR CONTRACTOR’S PERSONNEL", Verdict.Keep, "user decision 2026-09-24: title of the embedded code, whose prose follows", false),
         (["S1346"], "REQUIRED CONDUCT", Verdict.Keep, "code of conduct local heading", true),
         (["S1364"], "RAISING CONCERNS", Verdict.Keep, "code of conduct local heading", true),
         (["S1370"], "CONSEQUENCES OF VIOLATING THE CODE OF CONDUCT", Verdict.Keep, "code of conduct local heading", true),
         (["S1380", "S1381"], "ATTACHMENT 1 TO THE CODE OF CONDUCT FORM BEHAVIORS CONSTITUTING SEXUAL EXPLOITATION AND ABUSE (SEA) AND BEHAVIORS CONSTITUTING SEXUAL HARASSMENT (SH", Verdict.Keep, "attachment heading (two lines, one heading)", true),
-        (["S1389"], "Examples of sexual harassment in a work context", Verdict.Ambiguous, "introduces the list beneath it: local heading (policy 9) or list lead-in", false),
+        (["S1389"], "Examples of sexual harassment in a work context", Verdict.Keep, "user decision 2026-09-24: bold numbered subheading opening its list of examples", false),
         (["S1468"], "Declaration", Verdict.Keep, "opens the declaration part of the resume form", true),
         // SECTION_V, SECTION_VI
         (["S1715"], "Eligibility for the Provision of Goods, Works and non-consulting Services in Bank-Financed Procurement", Verdict.Keep, "section's only subheading", true),
@@ -152,11 +152,11 @@ public sealed partial class Doc0123StructuralAuditTests
         (["S1913"], "Suggested content for an Environmental and Social Policy (Statement)", Verdict.Keep, "ES option 2 heading", true),
         (["S1928"], "Minimum Content of ES requirements", Verdict.Keep, "ES option 2 heading", true),
         (["S1939"], "SPECIFIED PROVISIONAL SUMS for ES OUTCOMES", Verdict.Keep, "ES option 2 heading (repeat occurrence)", true),
-        (["S1962"], "Contractor’s Representative and Key Personnel", Verdict.Ambiguous, "repeats the styled heading just above and names the table below it: table title (exclude 3) or heading", true),
+        (["S1962"], "Contractor’s Representative and Key Personnel", Verdict.Remove, "user decision 2026-09-24: repeats the styled heading above and names the table below it (exclude 3)", true),
         (["S1971"], "Key Personnel for Design", Verdict.Remove, "row-group label inside the personnel table (exclude 1)", true),
         (["S1977"], "Key Personnel for Construction", Verdict.Remove, "row-group label inside the personnel table (exclude 1)", true),
         // SECTION_IX - old items not identified exactly.
-        (["S2009"], "Particular Conditions", Verdict.Ambiguous, "repeated document title above each Part: a heading or part of the Part heading", null),
+        (["S2009"], "Particular Conditions", Verdict.Keep, "user decision 2026-09-24: document title above Part A, opening it", null),
         (["S2010"], "Part A – Contract Data", Verdict.Keep, "part heading", null),
         (["S2251"], "Part B – Special Provisions", Verdict.Keep, "part heading", null),
         (["S2493"], "4.24.1 Forced Labour", Verdict.Keep, "numbered sub-clause heading", null),
@@ -169,19 +169,19 @@ public sealed partial class Doc0123StructuralAuditTests
         (["S2828"], "Warranties", Verdict.Keep, "DAAB clause heading", null),
         (["S2838"], "7. Confidentiality", Verdict.Keep, "DAAB clause heading", null),
         (["S2842"], "9. Fees and Expenses", Verdict.Keep, "DAAB clause heading", null),
-        (["S2845"], "Particular Conditions", Verdict.Ambiguous, "repeated document title above Part C", null),
+        (["S2845"], "Particular Conditions", Verdict.Keep, "user decision 2026-09-24: repeated document title opening Part C", null),
         (["S2846"], "Part C- Fraud and Corruption", Verdict.Keep, "part heading", null),
         (["S2848"], "1. Purpose", Verdict.Keep, "numbered F&C heading", null),
         (["S2850"], "2. Requirements", Verdict.Keep, "numbered F&C heading", null),
-        (["S2865"], "Particular Conditions", Verdict.Ambiguous, "repeated document title above Part D", null),
+        (["S2865"], "Particular Conditions", Verdict.Keep, "user decision 2026-09-24: repeated document title opening Part D", null),
         (["S2866"], "Part D- Environmental and Social (ES)", Verdict.Keep, "part heading", null),
         (["S2867"], "Metrics for Progress Reports", Verdict.Keep, "opens the metrics list", null),
         (["S2869"], "Metrics for regular reporting:", Verdict.Keep, "opens the regular-reporting metrics", null),
-        (["S2920"], "Particular Conditions", Verdict.Ambiguous, "repeated document title above Part E", null),
+        (["S2920"], "Particular Conditions", Verdict.Keep, "user decision 2026-09-24: repeated document title opening Part E", null),
         (["S2921"], "Part E- Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment Performance Declaration for Subcontractors", Verdict.Keep, "part heading", null),
         (["S2924"], "SEA and/or SH Declaration", Verdict.Keep, "declaration heading inside Part E", null),
         // SECTION_X
-        (["S2973"], "Notification of Intention to Award", Verdict.Ambiguous, "the letter's own title repeated under the form heading", null),
+        (["S2973"], "Notification of Intention to Award", Verdict.Keep, "user decision 2026-09-24: repeated title at the form boundary, before the notification body", null),
         (["S2983"], "The successful Proposer", Verdict.Keep, "numbered local heading 1 of the notification", true),
         (["S2992"], "Other Proposers", Verdict.Keep, "numbered local heading 2 (bold lead-in before the instruction)", true),
         (["S3024"], "Reason/s why your Proposal was unsuccessful", Verdict.Keep, "numbered local heading 3 (bold lead-in before the instruction)", true),
@@ -189,27 +189,34 @@ public sealed partial class Doc0123StructuralAuditTests
         (["S3038"], "How to make a complaint", Verdict.Keep, "numbered local heading 5", true),
         (["S3054"], "Standstill Period", Verdict.Keep, "numbered local heading 6", true),
         (["S3083"], "Details of beneficial ownership", Verdict.Keep, "opens the ownership details", true),
-        (["S3170"], "ES Demand Guarantee", Verdict.Ambiguous, "subtitle of the security form: second title or part of it", null),
-        (["S3184"], "Demand Guarantee", Verdict.Ambiguous, "subtitle of the security form", null),
-        (["S3201"], "Demand Guarantee", Verdict.Ambiguous, "subtitle of the security form", null),
+        (["S3169", "S3170"], "Environmental and Social (ES ) Performance Security ES Demand Guarantee", Verdict.Keep, "user decision 2026-09-24: form title of two lines, one claim (ES Demand Guarantee is a title part)", null),
+        (["S3183", "S3184"], "Advance Payment Security Demand Guarantee", Verdict.Keep, "user decision 2026-09-24: form title of two lines, one claim (Demand Guarantee is a title part)", null),
+        (["S3200", "S3201"], "Retention Money Security Demand Guarantee", Verdict.Keep, "user decision 2026-09-24: form title of two lines, one claim (Demand Guarantee is a title part)", null),
     ];
 
     /// <summary>Styled paragraphs the policy reads differently from the template.</summary>
     private static readonly Dictionary<string, (Verdict Verdict, string Category, string Reason)> StyledOverrides = new(StringComparer.Ordinal)
     {
-        ["S1027"] = (Verdict.Ambiguous, "TABLE_CAPTION", "\"Table A. Local Currency\" names the one table below it (exclude 3) though styled as a form heading"),
-        ["S1046"] = (Verdict.Ambiguous, "TABLE_CAPTION", "\"Table B. Foreign Currency (FC)\" names the one table below it"),
-        ["S1067"] = (Verdict.Ambiguous, "TABLE_CAPTION", "\"Table C. Summary of Payment Currencies\" names the tables below it"),
-        ["S1109"] = (Verdict.Ambiguous, "TABLE_CAPTION", "\"Sample Schedule of Priced Activities Table\" names the one sample table below it"),
-        ["S1125"] = (Verdict.Ambiguous, "TABLE_CAPTION", "\"Sample Schedule of Priced Sub-activities Table\" names the one sample table below it"),
+        ["S1027"] = (Verdict.Remove, "TABLE_CAPTION", "\"Table A. Local Currency\" names the one table below it (exclude 3) though styled as a form heading"),
+        ["S1046"] = (Verdict.Remove, "TABLE_CAPTION", "\"Table B. Foreign Currency (FC)\" names the one table below it"),
+        ["S1067"] = (Verdict.Remove, "TABLE_CAPTION", "\"Table C. Summary of Payment Currencies\" names the tables below it"),
+        ["S1109"] = (Verdict.Remove, "TABLE_CAPTION", "\"Sample Schedule of Priced Activities Table\" names the one sample table below it"),
+        ["S1125"] = (Verdict.Remove, "TABLE_CAPTION", "\"Sample Schedule of Priced Sub-activities Table\" names the one sample table below it"),
     };
 
     [GeneratedRegex(@"^Sub-?Clause\s+[\d.\s]+(\([a-z]\))?(\s+\S.*)?$")] private static partial Regex ClauseHead();
     [GeneratedRegex(@"\b(is replaced|is deleted|are added|is amended)\b|:")] private static partial Regex ClauseBodyMarker();
     [GeneratedRegex(@"^Sub-?Clause\s+[\d.\s]+$")] private static partial Regex ClauseNumberOnly();
 
-    [Fact]
-    public void Audit()
+    /// <summary>The source as the audit reads it, and every decided item - shared with the Gold materialization.</summary>
+    internal sealed record AuditBuild(
+        SemanticSourceAlias[] Aliases,
+        Dictionary<string, int> Index,
+        Dictionary<string, SourceParagraph> ById,
+        List<Item> Items,
+        Func<int, string> SectionOf);
+
+    internal static AuditBuild BuildItems()
     {
         var document = new OpenXmlDocumentSource().Read(TestRepository.Path(Source));
         var byId = document.Paragraphs.ToDictionary(p => p.SourceId, StringComparer.Ordinal);
@@ -235,7 +242,7 @@ public sealed partial class Doc0123StructuralAuditTests
         {
             var joined = Squash(string.Join(" ", named.Select(a => TextOf(index[a]))));
             Assert.True(joined.StartsWith(Squash(text), StringComparison.Ordinal), $"{named[0]}: expected '{text}', found '{joined}'");
-            var category = verdict == Verdict.Remove ? "TABLE_LABEL" : "STRUCTURAL_HEADING";
+            var category = verdict != Verdict.Remove ? "STRUCTURAL_HEADING" : named[0] == "S1962" ? "TABLE_CAPTION" : "TABLE_LABEL";
             Add(new(SectionOf(index[named[0]]), named, text, verdict, category, "named", reason, inOld));
         }
 
@@ -279,6 +286,16 @@ public sealed partial class Doc0123StructuralAuditTests
                     "PC sub-clause number and title in one paragraph", null));
             }
         }
+
+        return new AuditBuild(aliases, index, byId, items, SectionOf);
+    }
+
+    [Fact]
+    public void Audit()
+    {
+        var (aliases, index, byId, items, SectionOf) = BuildItems();
+        string TextOf(int i) => aliases[i].Text.Trim();
+        SourceParagraph ParagraphOf(int i) => byId[aliases[i].SourceId];
 
         // 4. Every model proposal, placed in a category.
         using var run = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(ModelRun)));
@@ -332,6 +349,7 @@ public sealed partial class Doc0123StructuralAuditTests
 
         bool Proposed(Item item) => item.Aliases.Any(a => proposals.Values.Any(p => p.Aliases.Contains(a)));
 
+        var described = Describe(items, index);
         var keep = items.Where(i => i.Verdict == Verdict.Keep).ToArray();
         var ambiguous = items.Where(i => i.Verdict == Verdict.Ambiguous).ToArray();
         var remove = items.Where(i => i.Verdict == Verdict.Remove).ToArray();
@@ -384,7 +402,7 @@ public sealed partial class Doc0123StructuralAuditTests
             },
             bySection,
             axesOntology = OccurrenceSemanticAxesTests.OntologyId,
-            roleByVerdict = items.GroupBy(i => AxesOf(i).OccurrenceRole).OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => new
+            roleByVerdict = items.GroupBy(i => string.Join("+", described[i].Axes.OccurrenceRoles)).OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => new
             {
                 keep = g.Count(i => i.Verdict == Verdict.Keep),
                 ambiguous = g.Count(i => i.Verdict == Verdict.Ambiguous),
@@ -398,81 +416,99 @@ public sealed partial class Doc0123StructuralAuditTests
                 structuralKeepProposedByModel = keep.Count(Proposed),
                 structuralKeepMissedByModel = keep.Where(i => !Proposed(i)).Select(i => new { i.Section, alias = i.Aliases[0], i.Text }).ToArray(),
             },
-            removals = remove.Select(i => new { i.Section, i.Aliases, i.Text, i.Category, i.Reason, i.InOld, axes = AxesOf(i) }).ToArray(),
-            ambiguousItems = ambiguous.Select(i => new { i.Section, i.Aliases, i.Text, i.Category, i.Reason, i.InOld, axes = AxesOf(i) }).ToArray(),
-            structuralReview = keep.Select(i => new { i.Section, i.Aliases, i.Text, i.Rule, i.Reason, i.InOld, axes = AxesOf(i) }).ToArray(),
+            removals = remove.Select(i => new { i.Section, i.Aliases, i.Text, i.Category, i.Reason, i.InOld, axes = described[i].Axes, titlePartAliases = described[i].TitlePartAliases }).ToArray(),
+            ambiguousItems = ambiguous.Select(i => new { i.Section, i.Aliases, i.Text, i.Category, i.Reason, i.InOld, axes = described[i].Axes, titlePartAliases = described[i].TitlePartAliases }).ToArray(),
+            structuralReview = keep.Select(i => new { i.Section, i.Aliases, i.Text, i.Rule, i.Reason, i.InOld, axes = described[i].Axes, titlePartAliases = described[i].TitlePartAliases }).ToArray(),
             proposals = classified,
         });
     }
 
     /// <summary>
-    /// An item on the OCCURRENCE_SEMANTIC_AXES_V1 axes. These describe the occurrence; they do not
-    /// decide isHeading, which stays the item's verdict (and, for the ambiguous ones, the user's call).
+    /// An item on the OCCURRENCE_SEMANTIC_AXES_V2 axes. These describe the occurrence; they do not decide
+    /// isHeading, which is the item's verdict. Repeat status is computed from the source (see Describe).
     /// </summary>
-    private sealed record Axes(string[] SemanticFunctions, string PrimaryFunction, string Scope, string OccurrenceRole, string? InformationType = null);
+    internal sealed record Axes(string[] SemanticFunctions, string PrimaryFunction, string Scope, string[] OccurrenceRoles,
+        string TitleRelation, string RepeatStatus = "FIRST", string? InformationType = null);
+
+    private static Axes Opener(string[] functions, string primary, string scope) => new(functions, primary, scope, ["REGION_OPENER"], "TITLE");
 
     private static readonly Dictionary<string, Axes> AxesByAlias = new(StringComparer.Ordinal)
     {
         // Titles of the document and of the documents embedded in it.
-        ["S0001"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REGION_OPENER"),
-        ["S0042"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REGION_OPENER"),
-        ["S0104"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REGION_OPENER"),
-        ["S0072"] = new(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT", "REGION_OPENER"),
+        ["S0001"] = Opener(["IDENTITY"], "IDENTITY", "DOCUMENT"),
+        ["S0042"] = Opener(["IDENTITY"], "IDENTITY", "DOCUMENT"),
+        ["S0104"] = Opener(["IDENTITY"], "IDENTITY", "DOCUMENT"),
+        ["S0072"] = Opener(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT"),
+        ["S0073"] = Opener(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT"),
+        ["S1341"] = Opener(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT"),
+        ["S2823"] = Opener(["IDENTITY", "STRUCTURE"], "IDENTITY", "EMBEDDED_ARTIFACT"),
+        ["S2973"] = Opener(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT"),
+        ["S2009"] = Opener(["IDENTITY"], "IDENTITY", "DOCUMENT"),
+        ["S2845"] = Opener(["IDENTITY"], "IDENTITY", "DOCUMENT"),
+        ["S2865"] = Opener(["IDENTITY"], "IDENTITY", "DOCUMENT"),
+        ["S2920"] = Opener(["IDENTITY"], "IDENTITY", "DOCUMENT"),
         // Navigation regions: the opener identifies the table of contents / forms.
-        ["S0117"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
-        ["S0133"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
-        ["S0759"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
-        ["S0876"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
-        ["S1740"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
-        ["S2954"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC", "REGION_OPENER"),
+        ["S0117"] = Opener(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC"),
+        ["S0133"] = Opener(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC"),
+        ["S0759"] = Opener(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC"),
+        ["S0876"] = Opener(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC"),
+        ["S1740"] = Opener(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC"),
+        ["S2954"] = Opener(["IDENTITY", "STRUCTURE"], "IDENTITY", "TOC"),
         // Parts.
-        ["S0048"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
-        ["S0061"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
-        ["S0065"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
-        ["S2010"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
-        ["S2251"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
-        ["S2846"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
-        ["S2866"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
-        ["S2921"] = new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER"),
-        ["S2823"] = new(["IDENTITY", "STRUCTURE"], "IDENTITY", "EMBEDDED_ARTIFACT", "REGION_OPENER"),
-        // Ambiguous and removed items - each described, membership left to the verdict.
-        ["S0012"] = new(["INFORMATION"], "INFORMATION", "REVISION_ENTRY", "REGION_OPENER", "TEMPORAL_METADATA"),
-        ["S0014"] = new(["INFORMATION"], "INFORMATION", "REVISION_ENTRY", "REGION_OPENER", "TEMPORAL_METADATA"),
-        ["S0019"] = new(["INFORMATION"], "INFORMATION", "REVISION_ENTRY", "REGION_OPENER", "TEMPORAL_METADATA"),
-        ["S0021"] = new(["INFORMATION"], "INFORMATION", "REVISION_ENTRY", "REGION_OPENER", "TEMPORAL_METADATA"),
-        ["S0073"] = new(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT", "SUBTITLE"),
-        ["S1341"] = new(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT", "REGION_OPENER"),
-        ["S1389"] = new(["STRUCTURE"], "STRUCTURE", "LIST", "LOCAL_LABEL"),
-        ["S1962"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
-        ["S2009"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REPEATED_TITLE"),
-        ["S2845"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REPEATED_TITLE"),
-        ["S2865"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REPEATED_TITLE"),
-        ["S2920"] = new(["IDENTITY"], "IDENTITY", "DOCUMENT", "REPEATED_TITLE"),
-        ["S2973"] = new(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT", "REPEATED_TITLE"),
-        ["S3170"] = new(["IDENTITY"], "IDENTITY", "FORM", "SUBTITLE"),
-        ["S3184"] = new(["IDENTITY"], "IDENTITY", "FORM", "SUBTITLE"),
-        ["S3201"] = new(["IDENTITY"], "IDENTITY", "FORM", "SUBTITLE"),
-        ["S1027"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
-        ["S1046"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
-        ["S1067"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
-        ["S1109"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
-        ["S1125"] = new(["IDENTITY"], "IDENTITY", "TABLE", "CAPTION"),
-        ["S1971"] = new(["STRUCTURE"], "STRUCTURE", "TABLE", "LOCAL_LABEL"),
-        ["S1977"] = new(["STRUCTURE"], "STRUCTURE", "TABLE", "LOCAL_LABEL"),
+        ["S0048"] = Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART"),
+        ["S0061"] = Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART"),
+        ["S0065"] = Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART"),
+        ["S2010"] = Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART"),
+        ["S2251"] = Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART"),
+        ["S2846"] = Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART"),
+        ["S2866"] = Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART"),
+        ["S2921"] = Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART"),
+        // Revision dates: information that opens its revision note.
+        ["S0012"] = new(["INFORMATION", "STRUCTURE"], "INFORMATION", "REVISION_ENTRY", ["REGION_OPENER"], "NONE", InformationType: "TEMPORAL_METADATA"),
+        ["S0014"] = new(["INFORMATION", "STRUCTURE"], "INFORMATION", "REVISION_ENTRY", ["REGION_OPENER"], "NONE", InformationType: "TEMPORAL_METADATA"),
+        ["S0019"] = new(["INFORMATION", "STRUCTURE"], "INFORMATION", "REVISION_ENTRY", ["REGION_OPENER"], "NONE", InformationType: "TEMPORAL_METADATA"),
+        ["S0021"] = new(["INFORMATION", "STRUCTURE"], "INFORMATION", "REVISION_ENTRY", ["REGION_OPENER"], "NONE", InformationType: "TEMPORAL_METADATA"),
+        ["S1389"] = new(["STRUCTURE"], "STRUCTURE", "LIST", ["REGION_OPENER", "LOCAL_LABEL"], "TITLE"),
+        // Removed: table captions and table-local labels.
+        ["S1962"] = new(["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE"),
+        ["S1027"] = new(["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE"),
+        ["S1046"] = new(["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE"),
+        ["S1067"] = new(["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE"),
+        ["S1109"] = new(["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE"),
+        ["S1125"] = new(["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE"),
+        ["S1971"] = new(["STRUCTURE"], "STRUCTURE", "TABLE", ["LOCAL_LABEL"], "NONE"),
+        ["S1977"] = new(["STRUCTURE"], "STRUCTURE", "TABLE", ["LOCAL_LABEL"], "NONE"),
     };
 
     private static readonly HashSet<string> FormStyles = ["SPDForms1", "SPDForm2", "S9Header", "SectionXHeading", "SectionVHeading2"];
 
-    private static Axes AxesOf(Item item)
+    private static Axes BaseAxesOf(Item item)
     {
         if (AxesByAlias.TryGetValue(item.Aliases[0], out var named)) return named;
         var style = item.Rule.StartsWith("style:", StringComparison.Ordinal) ? item.Rule["style:".Length..] : "";
-        if (style is "Head0") return new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART", "REGION_OPENER");
+        if (style is "Head0") return Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "DOCUMENT_PART");
         if (style is "Head11b" || item.Reason.StartsWith("summary section label", StringComparison.Ordinal))
-            return new(["IDENTITY", "STRUCTURE"], "STRUCTURE", "SECTION", "REGION_OPENER");
-        if (FormStyles.Contains(style)) return new(["IDENTITY", "STRUCTURE"], "IDENTITY", "FORM", "REGION_OPENER");
-        if (item.Rule == "clause-head") return new(["STRUCTURE"], "STRUCTURE", "CLAUSE", "REGION_OPENER");
-        return new(["STRUCTURE"], "STRUCTURE", "SECTION", "REGION_OPENER");
+            return Opener(["IDENTITY", "STRUCTURE"], "STRUCTURE", "SECTION");
+        if (FormStyles.Contains(style) || item.Reason.Contains("form title of two lines", StringComparison.Ordinal))
+            return Opener(["IDENTITY", "STRUCTURE"], "IDENTITY", "FORM");
+        if (item.Rule == "clause-head") return Opener(["STRUCTURE"], "STRUCTURE", "CLAUSE");
+        return Opener(["STRUCTURE"], "STRUCTURE", "SECTION");
+    }
+
+    /// <summary>
+    /// Axes for every item, repeat status included: REPEATED when an earlier decided item carries the
+    /// same text (whitespace and case aside). Parts after the first of a multi-part title are TITLE_PART.
+    /// </summary>
+    internal static Dictionary<Item, (Axes Axes, string[] TitlePartAliases)> Describe(IReadOnlyList<Item> items, IReadOnlyDictionary<string, int> index)
+    {
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var result = new Dictionary<Item, (Axes, string[])>();
+        foreach (var item in items.OrderBy(i => index[i.Aliases[0]]))
+        {
+            var axes = BaseAxesOf(item) with { RepeatStatus = seen.Add(Squash(item.Text)) ? "FIRST" : "REPEATED" };
+            result[item] = (axes, axes.TitleRelation == "TITLE" ? item.Aliases.Skip(1).ToArray() : []);
+        }
+        return result;
     }
 
     /// <summary>A proposal no structural rule claimed, placed by what the source shows about it.</summary>
