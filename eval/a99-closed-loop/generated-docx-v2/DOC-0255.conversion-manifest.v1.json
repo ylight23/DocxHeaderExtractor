@@ -1,0 +1,24 @@
+{
+  "artifactKind": "a99_source_regeneration_manifest",
+  "schemaVersion": "a99-source-regeneration-manifest-v1",
+  "documentId": "DOC-0255",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "originalPdf": {
+    "path": "todo10_8/heading_corpus_100/05_bien_ban_hop/075_FORTIS_GC_Minutes_Nov21_2024.pdf",
+    "sha256": "c48a9e9ac95820685c48def8b91df697484f81996cb6c4094234ed6c8319afc3"
+  },
+  "regeneratedDocx": {
+    "path": "todo10_8/generated-docx-v2/05_bien_ban_hop/075_FORTIS_GC_Minutes_Nov21_2024.docx",
+    "sha256": "3dde848f456267ed7890390e2b0331b801ca25e60a6a8f3e33fe1c4c2d819cc5",
+    "paragraphs": 40
+  },
+  "supersedes": {
+    "path": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/075_FORTIS_GC_Minutes_Nov21_2024.docx",
+    "sha256": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+    "producedBy": "pdf2docx"
+  },
+  "converter": "tests/DocxHeaderExtractor.Tests/PdfLineDocxConverter.cs (the rules recorded in DOC-0258.conversion-manifest.v1.json)",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-24"
+}
