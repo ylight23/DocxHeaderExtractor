@@ -24,6 +24,34 @@ public sealed class FinancialProcurementHeadingPolicyTests
         "OTHER_NON_HEADING",
     ];
 
+    /// <summary>
+    /// The financial-statement distinctions the user froze on 2026-09-25 before the DOC-0133 audit, on
+    /// the OCCURRENCE_SEMANTIC_AXES_V2 axes. Table depth is evidence, never the decision: a table can
+    /// hold a statement title or a note heading as well as captions, column headers and row labels.
+    /// </summary>
+    [Fact]
+    public void Freeze_the_financial_occurrence_distinctions()
+    {
+        FreezeArtifact.AssertJson("eval/a99-closed-loop/policy", "financial-occurrence-distinctions.v1.json", new
+        {
+            artifactKind = "a99_heading_policy_addendum",
+            policyId = PolicyId,
+            ontology = OccurrenceSemanticAxesTests.OntologyId,
+            approvedBy = "USER",
+            approvedAt = "2026-09-25",
+            tableDepthRule = "tableDepth (or a table-like layout in a PDF) is evidence about an occurrence, not a decision gate: \"inside a table\" does not mean \"not a heading\"",
+            distinctions = new object[]
+            {
+                new { kind = "STATEMENT_TITLE", example = "Statement of Financial Position", semanticFunctions = new[] { "IDENTITY" }, scope = "FINANCIAL_STATEMENT", isHeading = "true" },
+                new { kind = "NOTE_TITLE", example = "Note 7 - Investments", semanticFunctions = new[] { "STRUCTURE", "IDENTITY" }, scope = "NOTE", isHeading = "true" },
+                new { kind = "TABLE_CAPTION", example = "Table 4. Commitments by Region", semanticFunctions = new[] { "IDENTITY" }, scope = "TABLE", isHeading = "false by default (policy caption rule)" },
+                new { kind = "COLUMN_HEADER", example = "2025 | 2024", semanticFunctions = new[] { "INFORMATION" }, scope = "TABLE_COLUMN", isHeading = "false" },
+                new { kind = "ROW_LABEL", example = "Cash and cash equivalents", semanticFunctions = new[] { "INFORMATION" }, scope = "TABLE_ROW", isHeading = "false" },
+            },
+            expectation = "the final count is decided by the source: neither the old Gold total nor the model's proposal count is a target",
+        });
+    }
+
     [Fact]
     public void Freeze_the_policy()
     {
