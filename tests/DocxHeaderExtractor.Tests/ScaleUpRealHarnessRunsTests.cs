@@ -97,7 +97,11 @@ public sealed class ScaleUpRealHarnessRunsTests
             {
                 var result = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
                     TestRepository.Path(path), budgeted, CancellationToken.None,
-                    profile: PdfSemanticAuthorityProfile.StructuredSourceParts, runPlacement: false);
+                    profile: PdfSemanticAuthorityProfile.StructuredSourceParts, runPlacement: false,
+                    // The default five-minute lane deadline fits a pilot-sized PDF, not 40-100 packs;
+                    // four hours is the CLI's own ceiling for --pdf-stage-semantic-lane-deadline.
+                    semanticLaneOptions: new SemanticLaneOptions(
+                        TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(10), TimeSpan.FromHours(4)));
                 reason = result.Reason;
                 elements = result.Structure.Elements.Select(e => (object)new { text = e.Text, sourceIds = e.Sources.Select(s => s.SourceId).ToArray() }).ToArray();
             }
@@ -151,7 +155,9 @@ public sealed class ScaleUpRealHarnessRunsTests
             for (var attempt = 0; ; attempt++)
             {
                 try { return await inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount); }
-                catch (HttpRequestException error) when (error.Message.Contains("429", StringComparison.Ordinal) && attempt < 7)
+                catch (HttpRequestException error) when (attempt < 7 && (error.Message.Contains("429", StringComparison.Ordinal)
+                    // A connection that never opened (TLS, socket): no completion came back.
+                    || error.InnerException is IOException or System.Security.Authentication.AuthenticationException or System.Net.Sockets.SocketException))
                 {
                     RefusedAttempts++;
                     await Task.Delay(TimeSpan.FromSeconds(30 * Math.Pow(2, Math.Min(attempt, 3))), ct);
