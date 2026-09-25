@@ -150,5 +150,37 @@ public sealed partial class Src029ResidualClassificationTests
         });
     }
 
+    /// <summary>
+    /// User decision 2026-09-25 (OCCURRENCE_SEMANTIC_AXES_V3): the repeatStatus finding is not an ontology
+    /// gap. The classification above stays as committed (ee15108); this amends its one axis finding.
+    /// </summary>
+    [Fact]
+    public void Amend_the_repeat_status_finding()
+    {
+        FreezeArtifact.AssertJson(Src029BlindScoreTests.Root, "SRC-029.residual-classification-amendment.v1.json", new
+        {
+            artifactKind = "a99_generic_audit_residual_classification_amendment",
+            study = "SRC029_BLIND_GENERALIZATION_AUDIT_V1",
+            amends = new
+            {
+                path = $"{Src029BlindScoreTests.Root}/SRC-029.residual-classification.v1.json",
+                sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path($"{Src029BlindScoreTests.Root}/SRC-029.residual-classification.v1.json")),
+                finding = "axisFindings[repeatStatus]",
+            },
+            decidedBy = "USER",
+            decidedAt = "2026-09-25",
+            previousBucket = "C",
+            cause = "RESPONSIBILITY_PLACEMENT_ERROR",
+            reason = "a repeat relation was inferred per occurrence, from lexical recurrence, before semantic identity existed. Under OCCURRENCE_SEMANTIC_AXES_V3 repeatStatus is no semantic axis: PRIMARY / REPEAT / CONTINUATION is derived between canonical claims after identity resolution. Not an ontology gap and not fixed by teaching the engine which occurrences may anchor a repeat",
+            ontology = new
+            {
+                path = "eval/a99-closed-loop/policy/occurrence-semantic-axes.v3.json",
+                sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path("eval/a99-closed-loop/policy/occurrence-semantic-axes.v3.json")),
+            },
+            engineConsequence = "V1.1 proposes no repeatStatus",
+            ontologyGapsAfterAmendment = 0,
+        });
+    }
+
     [GeneratedRegex(@"^\s*(?:OR|Or|or|AND|And|and|and/or|AND/OR)\s*$")] private static partial Regex Connective();
 }

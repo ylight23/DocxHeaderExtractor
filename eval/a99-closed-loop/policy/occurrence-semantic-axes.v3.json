@@ -1,0 +1,136 @@
+{
+  "artifactKind": "a99_occurrence_ontology",
+  "ontologyId": "OCCURRENCE_SEMANTIC_AXES_V3",
+  "supersedes": {
+    "path": "eval/a99-closed-loop/policy/occurrence-semantic-axes.v2.json",
+    "ontologyId": "OCCURRENCE_SEMANTIC_AXES_V2",
+    "defect": "repeatStatus (FIRST / REPEATED) was an occurrence-level axis: it asked each occurrence whether it repeats without saying what it repeats, before any semantic identity existed. That is a relation between canonical claims and belongs to the identity resolver, not to semantic prediction",
+    "evidence": "SRC029_BLIND_GENERALIZATION_AUDIT_V1: 11 exact true positives disagree on repeatStatus; each has an earlier same-text occurrence that is not a canonical claim (contents entry, list item, prose mention)"
+  },
+  "status": "FROZEN",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-25",
+  "semanticAxes": [
+    {
+      "axis": "semanticFunctions",
+      "values": [
+        "IDENTITY",
+        "STRUCTURE",
+        "INFORMATION"
+      ],
+      "cardinality": "one or more, with one primaryFunction among them"
+    },
+    {
+      "axis": "scope",
+      "values": [
+        "DOCUMENT",
+        "DOCUMENT_PART",
+        "EMBEDDED_ARTIFACT",
+        "SECTION",
+        "CLAUSE",
+        "FORM",
+        "FORM_FIELD",
+        "TABLE",
+        "LIST",
+        "TOC",
+        "EVENT",
+        "REVISION_ENTRY",
+        "NOTE"
+      ],
+      "cardinality": "the object the occurrence is about"
+    },
+    {
+      "axis": "occurrenceRoles",
+      "values": [
+        "REGION_OPENER",
+        "LOCAL_LABEL",
+        "CAPTION",
+        "FIELD_LABEL",
+        "METADATA",
+        "NAVIGATION",
+        "BODY_CONTENT",
+        "PAGE_FURNITURE"
+      ],
+      "cardinality": "one or more: how the occurrence behaves in the layout"
+    },
+    {
+      "axis": "titleRelation",
+      "values": [
+        "NONE",
+        "TITLE",
+        "TITLE_PART"
+      ],
+      "cardinality": "TITLE names an artifact or unit; TITLE_PART is one line of a multi-line title and is a source part of that title's claim, never a claim of its own"
+    },
+    {
+      "axis": "informationType",
+      "values": [
+        "TEMPORAL_METADATA",
+        "LOCATION",
+        "VERSION",
+        "AUTHOR",
+        "STATUS",
+        "QUANTITY"
+      ],
+      "cardinality": "only when INFORMATION is among the functions",
+      "openItem": "carried unchanged from V2. Approved Gold also uses ISSUER_METADATA and STATUS_METADATA (DOC-0133) and APPLICABILITY_METADATA (SRC-029 A1), which this list does not contain; reconciling the vocabulary is a separate user decision"
+    },
+    {
+      "axis": "isHeading",
+      "values": [
+        "true",
+        "false"
+      ],
+      "cardinality": "decided last - never implied by one axis alone"
+    }
+  ],
+  "removedAxes": [
+    {
+      "axis": "repeatStatus",
+      "replacedBy": "occurrenceRelation, derived after semantic identity resolution"
+    }
+  ],
+  "derivedGraphProperties": [
+    {
+      "property": "semanticNodeId",
+      "values": "opaque node id",
+      "derivedBy": "semantic identity resolution over bound canonical claims",
+      "rule": "claims are the same node when they manifest the same semantic object; same text is not same node (an outer report and an embedded report with near-identical titles are two nodes)"
+    },
+    {
+      "property": "occurrenceRelation",
+      "values": [
+        "PRIMARY",
+        "REPEAT",
+        "CONTINUATION"
+      ],
+      "derivedBy": "the global occurrence resolver, from the claims of one semantic node, their source order and context",
+      "rule": "exists only between canonical semantic claims after identity resolution; an occurrence that is not a canonical claim never enters the graph and cannot anchor a repeat, so no list of excluded occurrence kinds is needed"
+    }
+  ],
+  "neverPredicted": [
+    "semanticNodeId",
+    "occurrenceRelation"
+  ],
+  "order": [
+    "What does it say? (semanticFunctions)",
+    "What object is it about? (scope)",
+    "How does it behave in the layout? (occurrenceRoles, titleRelation)",
+    "Is this occurrence a heading? (isHeading)",
+    "After binding and identity resolution: which node, and PRIMARY / REPEAT / CONTINUATION (derived)"
+  ],
+  "principles": [
+    "Semantic function is not heading status: IDENTITY of a TABLE in a CAPTION role is not a heading.",
+    "METADATA is not an absolute non-heading: INFORMATION in a REGION_OPENER role can open a region.",
+    "A repeat or continuation of a node is still a claim of its own: its heading status is decided like any other occurrence's.",
+    "A title that wraps over lines is one claim: its lines are TITLE_PART source parts of that claim.",
+    "The model proposes the semantic axes; identity, occurrence relation, hierarchy and projection are derived after binding."
+  ],
+  "vocabularyPolicy": "fail closed: a value outside this ontology is refused and reported, never mapped to the nearest value",
+  "migration": {
+    "v2Artifacts": "unchanged; repeatStatus in Gold frozen under V2 stays as a historical field",
+    "scoring": "not compared under V3; the SRC-029 raw score (adf11f4) keeps its V2 repeatStatus row as recorded",
+    "src029Residuals": "the 11 repeatStatus disagreements are RESPONSIBILITY_PLACEMENT_ERROR (a relation inferred before identity resolution), not an ontology gap"
+  },
+  "modelContractChanged": false
+}

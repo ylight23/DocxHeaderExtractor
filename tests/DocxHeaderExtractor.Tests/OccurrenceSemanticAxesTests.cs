@@ -31,6 +31,11 @@ public sealed class OccurrenceSemanticAxesTests
 
     public static readonly string[] RepeatStatuses = ["FIRST", "REPEATED"];
 
+    /// <summary>V3: V2 without repeatStatus. V2 stays the id of every artifact frozen under it.</summary>
+    public const string OntologyV3Id = "OCCURRENCE_SEMANTIC_AXES_V3";
+
+    public static readonly string[] OccurrenceRelations = ["PRIMARY", "REPEAT", "CONTINUATION"];
+
     /// <summary>
     /// OCCURRENCE_CLASSIFICATION_PRINCIPLES_V1 (user, 2026-09-25): how the ontology is applied to any
     /// document, of any genre and media type - and the test that the pipeline is general rather than
@@ -205,6 +210,121 @@ public sealed class OccurrenceSemanticAxesTests
                 mapping = new { IDENTITY = "DOCUMENT_LABEL", STRUCTURE = "STRUCTURAL_UNIT", INFORMATION = "NON_STRUCTURAL" },
                 lossy = true,
                 lostDistinctions = new[] { "INFORMATION + REGION_OPENER", "IDENTITY + STRUCTURE", "IDENTITY + CAPTION", "REPEATED + REGION_OPENER" },
+            },
+            modelContractChanged = false,
+        });
+    }
+
+    /// <summary>
+    /// OCCURRENCE_SEMANTIC_AXES_V3 (user, 2026-09-25): repeatStatus leaves the semantic axes. Whether an
+    /// occurrence repeats or continues another is not a property one occurrence can be judged to have: it
+    /// is a relation between canonical claims, and exists only after semantic identity is resolved. The
+    /// SRC-029 blind run showed the cost of deciding it early - the engine counted contents entries and
+    /// prose mentions as earlier occurrences, the Gold rule did not, and neither was defined. Placing the
+    /// relation after identity resolution needs no list of which kinds of occurrence may anchor a repeat:
+    /// an occurrence that is not a canonical claim is not in the identity graph at all.
+    /// </summary>
+    [Fact]
+    public void Freeze_the_ontology_v3()
+    {
+        FreezeArtifact.AssertJson("eval/a99-closed-loop/policy", "occurrence-semantic-axes.v3.json", new
+        {
+            artifactKind = "a99_occurrence_ontology",
+            ontologyId = OntologyV3Id,
+            supersedes = new
+            {
+                path = "eval/a99-closed-loop/policy/occurrence-semantic-axes.v2.json",
+                ontologyId = OntologyId,
+                defect = "repeatStatus (FIRST / REPEATED) was an occurrence-level axis: it asked each occurrence whether it repeats without saying what it repeats, before any semantic identity existed. That is a relation between canonical claims and belongs to the identity resolver, not to semantic prediction",
+                evidence = "SRC029_BLIND_GENERALIZATION_AUDIT_V1: 11 exact true positives disagree on repeatStatus; each has an earlier same-text occurrence that is not a canonical claim (contents entry, list item, prose mention)",
+            },
+            status = "FROZEN",
+            approvedBy = "USER",
+            approvedAt = "2026-09-25",
+            semanticAxes = new object[]
+            {
+                new
+                {
+                    axis = "semanticFunctions",
+                    values = (object)Functions,
+                    cardinality = "one or more, with one primaryFunction among them",
+                },
+                new
+                {
+                    axis = "scope",
+                    values = (object)new[] { "DOCUMENT", "DOCUMENT_PART", "EMBEDDED_ARTIFACT", "SECTION", "CLAUSE", "FORM", "FORM_FIELD", "TABLE", "LIST", "TOC", "EVENT", "REVISION_ENTRY", "NOTE" },
+                    cardinality = "the object the occurrence is about",
+                },
+                new
+                {
+                    axis = "occurrenceRoles",
+                    values = (object)Roles,
+                    cardinality = "one or more: how the occurrence behaves in the layout",
+                },
+                new
+                {
+                    axis = "titleRelation",
+                    values = (object)TitleRelations,
+                    cardinality = "TITLE names an artifact or unit; TITLE_PART is one line of a multi-line title and is a source part of that title's claim, never a claim of its own",
+                },
+                new
+                {
+                    axis = "informationType",
+                    values = (object)new[] { "TEMPORAL_METADATA", "LOCATION", "VERSION", "AUTHOR", "STATUS", "QUANTITY" },
+                    cardinality = "only when INFORMATION is among the functions",
+                    openItem = "carried unchanged from V2. Approved Gold also uses ISSUER_METADATA and STATUS_METADATA (DOC-0133) and APPLICABILITY_METADATA (SRC-029 A1), which this list does not contain; reconciling the vocabulary is a separate user decision",
+                },
+                new
+                {
+                    axis = "isHeading",
+                    values = (object)new[] { "true", "false" },
+                    cardinality = "decided last - never implied by one axis alone",
+                },
+            },
+            removedAxes = new[]
+            {
+                new { axis = "repeatStatus", replacedBy = "occurrenceRelation, derived after semantic identity resolution" },
+            },
+            derivedGraphProperties = new object[]
+            {
+                new
+                {
+                    property = "semanticNodeId",
+                    values = (object)"opaque node id",
+                    derivedBy = "semantic identity resolution over bound canonical claims",
+                    rule = "claims are the same node when they manifest the same semantic object; same text is not same node (an outer report and an embedded report with near-identical titles are two nodes)",
+                },
+                new
+                {
+                    property = "occurrenceRelation",
+                    values = (object)OccurrenceRelations,
+                    derivedBy = "the global occurrence resolver, from the claims of one semantic node, their source order and context",
+                    rule = "exists only between canonical semantic claims after identity resolution; an occurrence that is not a canonical claim never enters the graph and cannot anchor a repeat, so no list of excluded occurrence kinds is needed",
+                },
+            },
+            neverPredicted = new[] { "semanticNodeId", "occurrenceRelation" },
+            order = new[]
+            {
+                "What does it say? (semanticFunctions)",
+                "What object is it about? (scope)",
+                "How does it behave in the layout? (occurrenceRoles, titleRelation)",
+                "Is this occurrence a heading? (isHeading)",
+                "After binding and identity resolution: which node, and PRIMARY / REPEAT / CONTINUATION (derived)",
+            },
+            principles = new[]
+            {
+                "Semantic function is not heading status: IDENTITY of a TABLE in a CAPTION role is not a heading.",
+                "METADATA is not an absolute non-heading: INFORMATION in a REGION_OPENER role can open a region.",
+                "A repeat or continuation of a node is still a claim of its own: its heading status is decided like any other occurrence's.",
+                "A title that wraps over lines is one claim: its lines are TITLE_PART source parts of that claim.",
+                "The model proposes the semantic axes; identity, occurrence relation, hierarchy and projection are derived after binding.",
+            },
+            vocabularyPolicy = "fail closed: a value outside this ontology is refused and reported, never mapped to the nearest value",
+            migration = new
+            {
+                v2Artifacts = "unchanged; repeatStatus in Gold frozen under V2 stays as a historical field",
+                scoring = "not compared under V3; the SRC-029 raw score (adf11f4) keeps its V2 repeatStatus row as recorded",
+                src029Residuals = "the 11 repeatStatus disagreements are RESPONSIBILITY_PLACEMENT_ERROR (a relation inferred before identity resolution), not an ontology gap",
             },
             modelContractChanged = false,
         });
