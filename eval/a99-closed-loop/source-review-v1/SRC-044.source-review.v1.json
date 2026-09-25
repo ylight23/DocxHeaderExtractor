@@ -1,0 +1,105 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC044_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf",
+      "sha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "goldFileRead": false,
+    "countOnlyTotalUsed": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; its blind proposals were committed before the review and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-044/review_tool.py",
+      "sha256": "1f94e200714162a9b3b0bb6043fe1cbe5e63a0fab2e54cbba97f24344e6c190b"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-044/atom-layout-facts.tsv",
+      "sha256": "57b8a03722bddb1e11071e1406cf2d11d6805e89db2e834ceeb0ba0178d6a1eb"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-044/review-items.json",
+      "sha256": "fbc57bba4d448fc477f5863d93e0ba65fded8821353cfb2f4ce80792be025a86"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 7268,
+    "CLEAR_HEADING": 201,
+    "CLEAR_NON_HEADING_SET_APART": 97,
+    "AMBIGUOUS": 0,
+    "PROPOSED_RANGE": {
+      "min": 201,
+      "max": 201
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells and rows, chart values, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 7,
+      "nonHeadings": 3,
+      "ambiguous": 0
+    },
+    {
+      "section": "MDA",
+      "headings": 125,
+      "nonHeadings": 13,
+      "ambiguous": 0
+    },
+    {
+      "section": "NOTES",
+      "headings": 48,
+      "nonHeadings": 47,
+      "ambiguous": 0
+    },
+    {
+      "section": "FS_PART",
+      "headings": 7,
+      "nonHeadings": 15,
+      "ambiguous": 0
+    },
+    {
+      "section": "STATEMENTS",
+      "headings": 14,
+      "nonHeadings": 19,
+      "ambiguous": 0
+    }
+  ],
+  "headingsByPattern": {
+    "A2_PRECEDENT_REPEATED_TITLE": 8,
+    "A3_PRECEDENT_PART_LABEL_ON_CONTENTS_PAGE": 1,
+    "A5_PRECEDENT_CONTENTS_GROUP_LABEL": 1,
+    "APPENDIX_TITLE": 1,
+    "COVER_BLOCK": 1,
+    "EMBEDDED_REPORT": 3,
+    "MDA_SECTION_TITLE": 11,
+    "MDA_SUBHEADING": 113,
+    "NOTES_PART": 1,
+    "NOTE_SUBHEADING": 34,
+    "NOTE_TITLE": 13,
+    "PART_TITLE_BLOCK": 2,
+    "STATEMENT_TITLE": 7,
+    "TOC_OPENER": 5
+  },
+  "nonHeadingsByPattern": {
+    "CAPTION_CONTINUATION": 1,
+    "CHART_OR_TABLE_INTERNAL": 11,
+    "CONTENTS_ENTRY": 11,
+    "COVER_BLOCK": 2,
+    "NUMBERED_CAPTION": 47,
+    "PART_TITLE_BLOCK": 4,
+    "RUNNING_HEADER": 1,
+    "S042_A1_PRECEDENT_BOX_TITLE": 1,
+    "STATEMENT_SUBTITLE": 19
+  },
+  "ambiguous": [],
+  "bindingFailures": []
+}
