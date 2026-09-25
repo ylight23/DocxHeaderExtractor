@@ -1,0 +1,69 @@
+{
+  "artifactKind": "a99_generic_audit_residual_classification",
+  "study": "SRC053_BLIND_GENERALIZATION_AUDIT_V1",
+  "rawScore": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-053.blind-score.v1_2.json",
+    "sha256": "8fea09d884fc444b976543304dcab64b6e692bae5a9a9166d1b7a46f39fd2cb5",
+    "commit": "bf15b80"
+  },
+  "modelProviderVlmCalls": 0,
+  "status": "reviewer classification; the raw score is not edited; V1.2 and the extraction are not changed",
+  "residuals": {
+    "goldNotEngineTrue": 271,
+    "nonGoldTrue": 0
+  },
+  "byBucket": {
+    "A": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "B_KNOWN": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "B_NEW": {
+      "goldNotEngineTrue": 271,
+      "nonGoldTrue": 0
+    },
+    "C": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "D": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    }
+  },
+  "byCause": [
+    {
+      "cause": "PDF_TEXT_MATRIX_TYPOGRAPHY_NOT_READ",
+      "bucket": "B_NEW",
+      "layer": "production PDF line extraction (PdfLineExtraction), upstream of the audit engine",
+      "reason": "this PDF sets its type size through the text matrix (Tf 1, scaled by Tm). The lane reads Letter.FontSize - the Tf operand - and bold only from FontDetails.IsBold, so every atom reached the engine at size 1 and not bold. The glyphs themselves (PdfPig Letter.PointSize, font names Times-Bold / Times-Roman) carry 10-24pt bold headings over 9-10pt body. Without size or weight nothing is 'set apart strongly', so no occurrence can be TRUE and most are never proposed",
+      "generic": "any PDF whose producer scales text by the matrix rather than the font size; no document-specific trait",
+      "goldNotEngineTrue": 271,
+      "goldBuckets": {
+        "EXACT_FALSE": 1,
+        "EXACT_NEEDS_REVIEW": 50,
+        "PARTIAL_FALSE": 4,
+        "PARTIAL_NEEDS_REVIEW": 3,
+        "UNPROPOSED": 213
+      },
+      "nonGoldTrue": 0,
+      "recordedBeforeGold": "d3152ce (evidence profile noted in the blind-run commit)"
+    }
+  ],
+  "secondaryCausesObservable": false,
+  "secondaryCausesNote": "with the primary evidence missing for every atom, no other cause can be observed on this source; the A / B_KNOWN causes of SRC-042 / SRC-044 may be present underneath",
+  "knownGapsRecurring": [],
+  "ontologyGaps": 0,
+  "documentSpecificExceptions": [],
+  "gate": {
+    "heldOutF1": 0,
+    "ontologyGaps": 0,
+    "documentSpecificExceptions": 0,
+    "passed": false,
+    "basis": "the gate the user set on 2026-09-25 (D ~ 0, C ~ 0 and high F1): C = 0 and D = 0 hold, F1 does not",
+    "consequence": "the chain continues to SRC-054 only if the gate passes; it stops here for the user's decision"
+  }
+}
