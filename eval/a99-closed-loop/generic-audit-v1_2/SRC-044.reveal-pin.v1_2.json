@@ -1,0 +1,99 @@
+{
+  "artifactKind": "a99_generic_audit_reveal_pin",
+  "study": "SRC044_BLIND_GENERALIZATION_AUDIT_V1",
+  "checkpoint": {
+    "goldClaims": 201,
+    "bind": "201/201",
+    "duplicateIdentities": 0,
+    "sharedCharacters": 0,
+    "sourceHash": "PASS",
+    "hierarchyEvaluable": false,
+    "engineProposalsOpened": "NO",
+    "modelProviderCalls": 0,
+    "fullSuite": "GREEN (1445/1445 at c2dfee5)",
+    "releaseBuild": "0 errors",
+    "gitDiffCheck": "PASS"
+  },
+  "gold": {
+    "commit": "c2dfee5",
+    "path": "eval/a99-closed-loop/gold/SRC-044.gold.json",
+    "authoredGoldSha256": "c4a83cd6e3e9cb444fcd7afb11bef779f2c5ff7ffbed41729a23581cd29255e4",
+    "registryGoldSha256": "477a8219e315052daa40a78e72490a3a9387353f14c2cfecbca300d679c241c3",
+    "registry": {
+      "path": "eval/a99-closed-loop/gold-current/registry.v1.json",
+      "sha256": "5b1eeb357a75f97082e3b553e3030ceca237e24a7171b14ac68c8dafa51d34e4",
+      "commit": "ab1278c"
+    }
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf",
+    "sha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b"
+  },
+  "engine": {
+    "commit": "ad44d78",
+    "identity": {
+      "engine": "GENERIC_AUDIT_ENGINE_V1.2",
+      "files": [
+        {
+          "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_2/SourceEvidence.cs",
+          "sha256": "1945b0766345a86b298b5ccdca3f2b24adbb8e4099f3d5fcc443dabf26ea6074"
+        },
+        {
+          "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_2/SemanticAuditEngine.cs",
+          "sha256": "acc6c21438846a7363733fb78100151eb49d5fe711b999b995924878984f744d"
+        }
+      ],
+      "constants": {
+        "largerThanBodyRatio": 1.08,
+        "bodySizeToleranceRatio": 0.97,
+        "shortLabelMaxWords": 20,
+        "compositeMaxParts": 6,
+        "furnitureMinPages": 3,
+        "furnitureMinBandShare": 0.8,
+        "navigationRunMin": 3,
+        "lineGapMaxFontRatio": 1.8,
+        "sameSizeRatioTolerance": 0.02,
+        "bracketSpanMaxLines": 15,
+        "formMinFillInFields": 2,
+        "averageCharWidthFontRatio": 0.5,
+        "centredMarginToleranceRatio": 0.05,
+        "columnGutterFontRatio": 1,
+        "figureRegionMaxLines": 60
+      },
+      "ontology": "OCCURRENCE_SEMANTIC_AXES_V3"
+    }
+  },
+  "engineMatchesPreregistration": true,
+  "requestContract": {
+    "requestVersion": "V2_ATTENTION_FREE",
+    "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.freeze.json",
+    "sha256": "ee7c776988e35968915d5e5448223dfc3d64cec997d643d56ac9cb41f1690ac3"
+  },
+  "scorer": {
+    "id": "GENERIC_EXACT_SCORER_V1",
+    "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_1/ExactScorer.cs",
+    "sha256": "4790a2bf1b9ab57924005633e38f2cabe1f477e38b726ed09205907451e65d71"
+  },
+  "harness": {
+    "path": "tests/DocxHeaderExtractor.Tests/Src044BlindScoreTests.cs",
+    "sha256": "7bedcbd2c76a1a7a526afd6c949e56c6fcec239c8a5dfd7425575a831db8d4b2"
+  },
+  "preregistration": {
+    "commit": "370447e",
+    "sha256": "a3277a7ba25ea7edc59e556591d3a97438128671a6e1ed40215a4da090a5f4c4"
+  },
+  "packingPolicy": "FIXED_OWNED_COUNT_120 (default); COHERENT_REGION_SEGMENTATION_V1 not selected",
+  "proposals": {
+    "commit": "6d59c9d",
+    "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-044.proposals.v1_2.json",
+    "sha256": "df3b2defe43af87eb1f487a2a7398e4ae9bc77df90ead896912ae9fd763131ad",
+    "gitBlob": "d854651265f746297eb13301f9019ad0be181e63",
+    "contentRead": false
+  },
+  "rules": [
+    "reveal once; the raw score is committed as written, a bad result included",
+    "residuals are classified afterwards; V1.2 is not changed and this baseline is not rewritten",
+    "a Gold error found later becomes a new Gold revision; this score stays against the Gold pinned here",
+    "only then: the historical 254 delta audit, and SRC-053 if the gate passes"
+  ]
+}
