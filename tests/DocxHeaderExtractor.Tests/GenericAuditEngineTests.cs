@@ -201,6 +201,76 @@ public sealed partial class GenericAuditEngineTests
         });
     }
 
+    /// <summary>
+    /// The blind run: refuses to run on an engine other than the pre-registered one, reads no Gold, and
+    /// freezes the source evidence profile and the proposals for commit before any review.
+    /// </summary>
+    [Fact]
+    public void Blind_src029()
+    {
+        using var prereg = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{Root}/SRC-029.preregistration.v1.json")));
+        Assert.True(System.Text.Json.Nodes.JsonNode.DeepEquals(
+                System.Text.Json.Nodes.JsonNode.Parse(prereg.RootElement.GetProperty("engineIdentity").GetRawText()),
+                System.Text.Json.Nodes.JsonNode.Parse(JsonSerializer.Serialize(EngineIdentity(), FreezeArtifact.Json))),
+            "the engine is not the pre-registered one");
+        Assert.Equal(prereg.RootElement.GetProperty("source").GetProperty("sha256").GetString(), CanonicalArtifactHash.OfBytes(TestRepository.Path(Src029)));
+
+        var profile = SourceEvidenceProfile.FromPdf(TestRepository.Path(Src029));
+        var hypotheses = SemanticAuditEngine.Propose(profile);
+        Assert.Equal(JsonSerializer.Serialize(hypotheses), JsonSerializer.Serialize(SemanticAuditEngine.Propose(SourceEvidenceProfile.FromPdf(TestRepository.Path(Src029)))));
+
+        var occ = profile.Occurrences;
+        FreezeArtifact.AssertJson(Root, "SRC-029.evidence-profile.v1.json", new
+        {
+            artifactKind = "a99_source_evidence_profile",
+            study = "SRC029_BLIND_GENERALIZATION_AUDIT_V1",
+            source = new { path = Src029, sha256 = CanonicalArtifactHash.OfBytes(TestRepository.Path(Src029)) },
+            media = profile.Media,
+            occurrences = occ.Count,
+            pages = profile.PageCount,
+            body = new { fontSize = profile.BodyFontSize, bold = profile.BodyBold, italic = profile.BodyItalic },
+            typographyClusters = occ.GroupBy(o => (o.FontSize, o.Bold, o.Italic)).OrderByDescending(g => g.Count())
+                .Select(g => new { fontSize = g.Key.FontSize, bold = g.Key.Bold, italic = g.Key.Italic, occurrences = g.Count(), meanWords = Math.Round(g.Average(o => o.WordCount), 1) }).ToArray(),
+            repeatedTexts = profile.Repetition.Where(r => r.Value.Count >= 3).OrderByDescending(r => r.Value.Count).Take(40)
+                .Select(r => new { key = r.Key, r.Value.Count, r.Value.Pages, bandShare = Math.Round(r.Value.BandShare, 2) }).ToArray(),
+            lexicalShapes = new
+            {
+                figuresOnly = occ.Count(o => LexicalShape.IsFiguresOnly(o.Text)),
+                dates = occ.Count(o => LexicalShape.IsDate(o.Text)),
+                numberedCaptions = occ.Count(o => LexicalShape.IsNumberedCaption(o.Text)),
+                structuralLabels = occ.Count(o => LexicalShape.IsStructuralLabel(o.Text)),
+                fillInFields = occ.Count(o => LexicalShape.IsFillInField(o.Text)),
+                bracketedNotes = occ.Count(o => LexicalShape.IsBracketedNote(o.Text)),
+                trailingPageNumbers = occ.Count(o => LexicalShape.HasTrailingPageNumber(o.Text)),
+            },
+            multiSegmentRows = occ.Count(o => o.RowSegmentCount > 1),
+            rowsWithFigures = occ.Count(o => o.RowHasFigures),
+        });
+
+        FreezeArtifact.AssertJson(Root, "SRC-029.proposals.v1.json", new
+        {
+            artifactKind = "a99_generic_audit_proposals",
+            study = "SRC029_BLIND_GENERALIZATION_AUDIT_V1",
+            engineIdentity = EngineIdentity(),
+            preregistrationSha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path($"{Root}/SRC-029.preregistration.v1.json")),
+            ontology = OccurrenceSemanticAxesTests.OntologyId,
+            documentId = "SRC-029",
+            source = new { path = Src029, sha256 = CanonicalArtifactHash.OfBytes(TestRepository.Path(Src029)), media = "PDF" },
+            modelCalls = 0,
+            goldReadBeforeFreeze = false,
+            counts = new
+            {
+                occurrences = hypotheses.Sum(h => h.Aliases.Length),
+                hypotheses = hypotheses.Count,
+                byProposal = hypotheses.GroupBy(h => h.ProposedIsHeading).OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
+                byRoles = hypotheses.GroupBy(h => string.Join("+", h.OccurrenceRoles)).OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
+                byEvidence = hypotheses.SelectMany(h => h.Evidence.Where(e => !e.StartsWith("followed by", StringComparison.Ordinal)))
+                    .GroupBy(e => e).OrderByDescending(g => g.Count()).ToDictionary(g => g.Key, g => g.Count()),
+            },
+            hypotheses = hypotheses.Where(h => h.ProposedIsHeading != "FALSE" || h.Prominence >= 1000).ToArray(),
+        });
+    }
+
     // ---- generic in fact -------------------------------------------------------------------------
 
     private static readonly string[] EngineFiles =
