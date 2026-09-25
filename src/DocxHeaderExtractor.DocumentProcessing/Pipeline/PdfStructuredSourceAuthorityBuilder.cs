@@ -278,7 +278,10 @@ internal static class PdfStructuredSourceAuthorityBuilder
             attention = item.CandidateAttention.HeuristicMatch,
         };
 
-    /// <summary>The same measurement for V2_ATTENTION_FREE: no harness judgement attached.</summary>
+    /// <summary>
+    /// The same measurement for V2_ATTENTION_FREE: no harness judgement attached - no attention flag,
+    /// and physical location facts in place of the scope label and the contents flag.
+    /// </summary>
     private static object VisibleV2(
         CanonicalSemanticSourceEvidence item, IReadOnlyDictionary<string, string> layoutBlockByAtom) => new
         {
@@ -286,8 +289,7 @@ internal static class PdfStructuredSourceAuthorityBuilder
             block = layoutBlockByAtom.GetValueOrDefault(item.SourceId),
             text = item.ExactSourceText,
             owned = true,
-            scope = item.StructuralScope,
-            inTableOfContents = item.InTableOfContents,
+            location = item.LocationFacts,
             style = item.StyleFacts,
             numbering = item.NumberingFacts,
             markers = item.MarkerFacts,

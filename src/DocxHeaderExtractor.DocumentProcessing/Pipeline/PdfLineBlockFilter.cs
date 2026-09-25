@@ -10,6 +10,23 @@ internal sealed record PdfLineBlockAnnotation(
     bool PageNumber,
     string Reason)
 {
+    /// <summary>
+    /// TOP, BOTTOM or BODY: the line's vertical position against the document's own extent - the same
+    /// measurement behind <see cref="HeaderFooterZone"/>, with the side kept. A position, not a role.
+    /// </summary>
+    public string PageBand { get; init; } = "BODY";
+
+    /// <summary>
+    /// How many distinct pages carry a line with the same normalized text (case folded, standalone
+    /// numbers masked, alphanumerics only), and the first and last of them. Counts, not a verdict:
+    /// <see cref="Repeated"/> is the harness's threshold over the same count.
+    /// </summary>
+    public int SameNormalizedTextPageCount { get; init; } = 1;
+
+    public int SameNormalizedTextFirstPage { get; init; }
+
+    public int SameNormalizedTextLastPage { get; init; }
+
     public bool ExcludeFromSemanticSamples =>
         PageNumber ||
         TableLike ||
@@ -72,6 +89,12 @@ internal static class PdfLineBlockFilter
             .Select(g => g.Key)
             .ToHashSet();
 
+        var pagesByKey = lines
+            .Select(l => (l.Page, Key: RepeatKey(l.Text)))
+            .Where(x => x.Key.Length > 0)
+            .GroupBy(x => x.Key)
+            .ToDictionary(g => g.Key, g => g.Select(x => x.Page).Distinct().Order().ToArray());
+
         var minY = lines.Min(l => l.Y);
         var maxY = lines.Max(l => l.Y);
         var span = Math.Max(1, maxY - minY);
@@ -89,13 +112,20 @@ internal static class PdfLineBlockFilter
             if (repeated) reasons.Add("repeated");
             if (headerFooter) reasons.Add("header-footer-zone");
             if (tableLike) reasons.Add("table-like");
+            var samePages = pagesByKey.TryGetValue(RepeatKey(line.Text), out var found) ? found : [line.Page];
             return new PdfLineBlockAnnotation(
                 line,
                 repeated,
                 headerFooter,
                 tableLike,
                 pageNumber,
-                reasons.Count == 0 ? "semantic-candidate" : string.Join(",", reasons));
+                reasons.Count == 0 ? "semantic-candidate" : string.Join(",", reasons))
+            {
+                PageBand = PageBandOf(line, minY, span),
+                SameNormalizedTextPageCount = samePages.Length,
+                SameNormalizedTextFirstPage = samePages[0],
+                SameNormalizedTextLastPage = samePages[^1],
+            };
         }).ToList();
     }
 
@@ -122,6 +152,13 @@ internal static class PdfLineBlockFilter
     {
         var relative = (line.Y - minY) / span;
         return relative <= 0.08 || relative >= 0.92;
+    }
+
+    // PDF user space grows upward, so the top of the extent is the high end.
+    private static string PageBandOf(PdfLine line, double minY, double span)
+    {
+        var relative = (line.Y - minY) / span;
+        return relative >= 0.92 ? "TOP" : relative <= 0.08 ? "BOTTOM" : "BODY";
     }
 
     private static bool IsPageNumber(string text) =>

@@ -137,6 +137,17 @@ internal static class PdfCanonicalSourceUniverseBuilder
                 alias, attention, attention ? "pdf-layout-candidate" : "pdf-layout-non-candidate"))
         {
             ActiveStructuralAncestors = context.ActiveHeadingStack,
+            // What the V2 request shows in place of the scope label: where the occurrence sits and how
+            // often its text recurs, so the model - not the harness - decides it is page furniture or
+            // a contents entry.
+            LocationFacts = new
+            {
+                page = source.Page,
+                pageBand = source.PageBand,
+                sameNormalizedTextPageCount = source.SameNormalizedTextPageCount,
+                sameNormalizedTextFirstPage = source.SameNormalizedTextFirstPage,
+                sameNormalizedTextLastPage = source.SameNormalizedTextLastPage,
+            },
         };
     }
 

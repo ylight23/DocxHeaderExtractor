@@ -288,6 +288,12 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             new SemanticCandidateAttentionHint(alias, paragraph.IsCandidate, paragraph.IsCandidate ? "policy-candidate" : "policy-non-candidate"))
         {
             ActiveStructuralAncestors = context.ModelContext.ActiveHeadingStack,
+            // Raw OOXML: the bookmarks this paragraph links to. Replaces the "table_of_contents" scope
+            // and the TOC flag in the V2 request - the model reads a "_Toc" anchor, the style name and
+            // the trailing page number itself, rather than being told the harness's conclusion.
+            LocationFacts = source.HyperlinkAnchors.Count == 0
+                ? null
+                : new { hyperlinkAnchors = source.HyperlinkAnchors },
         };
     }
 }

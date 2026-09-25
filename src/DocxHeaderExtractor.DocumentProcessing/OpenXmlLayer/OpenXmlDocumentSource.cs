@@ -104,6 +104,7 @@ public sealed class OpenXmlDocumentSource
             TableDepth = walked.TableDepth,
             SectionIndex = walked.SectionIndex,
             InTableOfContents = IsTableOfContentsEntry(paragraph, style?.Name ?? styleId),
+            HyperlinkAnchors = HyperlinkAnchorsOf(paragraph),
         };
     }
 
@@ -145,7 +146,16 @@ public sealed class OpenXmlDocumentSource
             SectionIndex = paragraph.SectionIndex,
         },
         InTableOfContents = paragraph.InTableOfContents,
+        HyperlinkAnchors = paragraph.HyperlinkAnchors,
     };
+
+    /// <summary>The bookmark each internal hyperlink in the paragraph points at, in source order, as written.</summary>
+    private static IReadOnlyList<string> HyperlinkAnchorsOf(Paragraph paragraph) =>
+        paragraph.Descendants<Hyperlink>()
+            .Select(link => link.Anchor?.Value)
+            .Where(anchor => !string.IsNullOrEmpty(anchor))
+            .Cast<string>()
+            .ToArray();
 
     private static bool IsTableOfContentsEntry(Paragraph paragraph, string? styleName)
     {
@@ -358,4 +368,5 @@ internal sealed class OpenXmlSourceParagraph
     public int TableDepth { get; init; }
     public int SectionIndex { get; init; }
     public bool InTableOfContents { get; set; }
+    public IReadOnlyList<string> HyperlinkAnchors { get; init; } = [];
 }

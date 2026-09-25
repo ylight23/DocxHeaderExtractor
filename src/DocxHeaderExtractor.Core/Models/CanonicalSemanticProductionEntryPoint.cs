@@ -117,6 +117,17 @@ public sealed record CanonicalSemanticSourceEvidence(
     /// Context only: it reports what a reader would already have seen, never who anything parents to.
     /// </summary>
     public IReadOnlyList<string> ActiveStructuralAncestors { get; init; } = [];
+
+    /// <summary>
+    /// Where the occurrence physically sits, as the V2 request shows it: observable measurements only,
+    /// never a reading of what the occurrence is. Null when the lane has nothing to report here.
+    /// <para>
+    /// This replaces <see cref="StructuralScope"/> and <see cref="InTableOfContents"/> in what the
+    /// model sees. Those are the harness's own conclusions ("running page artifact", "table of
+    /// contents") about the very question the model is asked, so they stay internal.
+    /// </para>
+    /// </summary>
+    public object? LocationFacts { get; init; }
 }
 
 public sealed record CanonicalSemanticInferenceTelemetry(

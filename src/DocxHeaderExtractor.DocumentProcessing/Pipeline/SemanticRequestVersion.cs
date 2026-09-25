@@ -19,7 +19,11 @@ internal enum SemanticRequestVersion
     /// </summary>
     V1_ATTENTION_LEGACY = 1,
 
-    /// <summary>Production: source facts only; no attention, candidate or salience label of the harness's own.</summary>
+    /// <summary>
+    /// Production: source facts only; no attention, candidate or salience label of the harness's own,
+    /// and no pre-interpreted location either - page, page band, recurrence and hyperlink anchors in
+    /// place of the scope label and the contents flag (A99_GENERIC_PIPELINE_HARDCODE_AUDIT_V1).
+    /// </summary>
     V2_ATTENTION_FREE = 2,
 }
 

@@ -367,48 +367,86 @@ internal static class CanonicalSemanticEngine
         /// its layout unit - DOCX and legacy PDF both fall here, which is what keeps their request
         /// bytes exactly what they have always been. Only a lane whose <see cref="CanonicalSemanticProductionInput.LayoutBlockBySourceId"/>
         /// is populated - today, the structured PDF profile - adds the field at all.
+        /// <para>
+        /// V2 shows observable source facts only (HARNESS MAY REPORT OBSERVABLE SOURCE FACTS; IT MUST
+        /// NOT PRE-INTERPRET THEIR MEANING). The scope label and the contents flag are the harness's
+        /// own reading - "running page artifact", "table of contents" - of the question the model is
+        /// asked, so they are replaced by <see cref="CanonicalSemanticSourceEvidence.LocationFacts"/>:
+        /// page, page band, recurrence, hyperlink anchors. The field is omitted, not sent empty, when a
+        /// lane has nothing to report.
+        /// </para>
         /// </summary>
         private static object OwnedEvidence(
             CanonicalSemanticSourceEvidence item, IReadOnlyDictionary<string, string>? layoutBlockBySourceId)
         {
             var block = layoutBlockBySourceId?.GetValueOrDefault(item.SourceId);
+            var location = item.LocationFacts;
             if (item.TableDepth is { } tableDepth)
-                return new
-                {
-                    alias = item.SourceAlias,
-                    text = item.ExactSourceText,
-                    owned = true,
-                    scope = item.StructuralScope,
-                    tableDepth,
-                    inTableOfContents = item.InTableOfContents,
-                    style = item.StyleFacts,
-                    numbering = item.NumberingFacts,
-                    markers = item.MarkerFacts,
-                };
+                return location is null
+                    ? new
+                    {
+                        alias = item.SourceAlias,
+                        text = item.ExactSourceText,
+                        owned = true,
+                        tableDepth,
+                        style = item.StyleFacts,
+                        numbering = item.NumberingFacts,
+                        markers = item.MarkerFacts,
+                    }
+                    : new
+                    {
+                        alias = item.SourceAlias,
+                        text = item.ExactSourceText,
+                        owned = true,
+                        tableDepth,
+                        location,
+                        style = item.StyleFacts,
+                        numbering = item.NumberingFacts,
+                        markers = item.MarkerFacts,
+                    };
             if (block is not null)
-                return new
+                return location is null
+                    ? new
+                    {
+                        alias = item.SourceAlias,
+                        block,
+                        text = item.ExactSourceText,
+                        owned = true,
+                        style = item.StyleFacts,
+                        numbering = item.NumberingFacts,
+                        markers = item.MarkerFacts,
+                    }
+                    : new
+                    {
+                        alias = item.SourceAlias,
+                        block,
+                        text = item.ExactSourceText,
+                        owned = true,
+                        location,
+                        style = item.StyleFacts,
+                        numbering = item.NumberingFacts,
+                        markers = item.MarkerFacts,
+                    };
+            return location is null
+                ? new
                 {
                     alias = item.SourceAlias,
-                    block,
                     text = item.ExactSourceText,
                     owned = true,
-                    scope = item.StructuralScope,
-                    inTableOfContents = item.InTableOfContents,
+                    style = item.StyleFacts,
+                    numbering = item.NumberingFacts,
+                    markers = item.MarkerFacts,
+                }
+                : new
+                {
+                    alias = item.SourceAlias,
+                    text = item.ExactSourceText,
+                    owned = true,
+                    location,
                     style = item.StyleFacts,
                     numbering = item.NumberingFacts,
                     markers = item.MarkerFacts,
                 };
-            return new
-            {
-                alias = item.SourceAlias,
-                text = item.ExactSourceText,
-                owned = true,
-                scope = item.StructuralScope,
-                inTableOfContents = item.InTableOfContents,
-                style = item.StyleFacts,
-                numbering = item.NumberingFacts,
-                markers = item.MarkerFacts,
-            };
         }
 
         private static object MarginEvidence(

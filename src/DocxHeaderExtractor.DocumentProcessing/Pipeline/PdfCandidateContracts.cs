@@ -49,6 +49,20 @@ internal sealed record PdfSourceFacts(
     /// <summary>Stable parser line identities retained for source/audit correlation.</summary>
     public IReadOnlyList<string> LineIds { get; init; } = [];
 
+    /// <summary>
+    /// Physical position, reported to the model in place of <see cref="StructuralScope"/>: the page
+    /// band of the block's lines (MIXED when they differ), and on how many pages - first to last - its
+    /// normalized text recurs. For a multi-line block that is its least-recurring line, since the block
+    /// recurs as a whole at most that often. Null where no line annotation was available.
+    /// </summary>
+    public string? PageBand { get; init; }
+
+    public int? SameNormalizedTextPageCount { get; init; }
+
+    public int? SameNormalizedTextFirstPage { get; init; }
+
+    public int? SameNormalizedTextLastPage { get; init; }
+
     /// <summary>Structured fact provenance for validator authority checks.</summary>
     public IReadOnlyList<PdfObservedEvidence> EvidenceDetails { get; init; } = [];
 
@@ -273,6 +287,9 @@ internal static class PdfCandidateContextBuilder
         return result;
     }
 
+    private static PdfLineBlockAnnotation? LeastRecurring(IReadOnlyList<PdfLineBlockAnnotation> annotations) =>
+        annotations.Count == 0 ? null : annotations.MinBy(a => a.SameNormalizedTextPageCount);
+
     private static PdfSourceFacts BuildFacts(
         PdfSemanticBlock block,
         IReadOnlyDictionary<string, PdfLineBlockAnnotation> annotationByLine,
@@ -323,6 +340,11 @@ internal static class PdfCandidateContextBuilder
             ItalicRatio = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.ItalicRatio),
             FontSize = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.FontSize),
             LineIds = block.Lines.Select(LineKey).ToArray(),
+            PageBand = sourceAnnotations.Length == 0 ? null
+                : sourceAnnotations.Select(a => a.PageBand).Distinct().Count() == 1 ? sourceAnnotations[0].PageBand : "MIXED",
+            SameNormalizedTextPageCount = LeastRecurring(sourceAnnotations)?.SameNormalizedTextPageCount,
+            SameNormalizedTextFirstPage = LeastRecurring(sourceAnnotations)?.SameNormalizedTextFirstPage,
+            SameNormalizedTextLastPage = LeastRecurring(sourceAnnotations)?.SameNormalizedTextLastPage,
             EvidenceDetails = evidence.Select(item => new PdfObservedEvidence(item, "true",
                 item is "standalone_line" or "multi_line_cluster" or "table_like" or "header_footer_zone" or "repeated_region"
                     ? "layout_parser"

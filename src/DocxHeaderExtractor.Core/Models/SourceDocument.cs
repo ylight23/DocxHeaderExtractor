@@ -32,6 +32,12 @@ public sealed record SourceParagraph
     public required SourceNumberingFacts Numbering { get; init; }
     public required SourceLayoutFacts Layout { get; init; }
     public bool InTableOfContents { get; init; }
+
+    /// <summary>
+    /// The bookmark name of every internal hyperlink in the paragraph, as written in the OOXML. A raw
+    /// fact: a Word-generated contents entry links to a "_Toc..." bookmark, but nothing here says so.
+    /// </summary>
+    public IReadOnlyList<string> HyperlinkAnchors { get; init; } = [];
 }
 
 /// <summary>Formatting span over normalized source text, retaining run-level provenance.</summary>
