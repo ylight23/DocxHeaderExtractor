@@ -1,0 +1,268 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC053_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+      "sha256": "6d3cd46d6297031fd3fd4c2afd066f8d947f18d55ef1418a185e5ef9e0a344da"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "goldFileRead": false,
+    "countOnlyTotalUsed": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; its blind proposals were committed before the review and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-053/review_tool.py",
+      "sha256": "b44817fdf49d61f162b5846756aa23603f3900f83d8fc7b4988631f3da11c83e"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-053/atom-layout-facts.tsv",
+      "sha256": "6374053a2468fc0439ae1fafbee1cc360f368647cdc26e14484faada32a1a036"
+    },
+    "atomGlyphFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-053/atom-glyph-facts.tsv",
+      "sha256": "9113855f771b1489fea0cbebb850ace068386d4a720a04602b5bb7791d1ccb46",
+      "writer": "ScaleUpSurveyDiagnosticTests.Dump_pdf_atom_glyph_facts"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-053/review-items.json",
+      "sha256": "aa502c6adb4d44d20402457eaca7919384a4cda4e2ee5cbd33dd1a0be972f53d"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 8966,
+    "CLEAR_HEADING": 266,
+    "CLEAR_NON_HEADING_SET_APART": 252,
+    "AMBIGUOUS": 7,
+    "PROPOSED_RANGE": {
+      "min": 266,
+      "max": 273
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells and rows, chart values, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 7,
+      "nonHeadings": 4,
+      "ambiguous": 2
+    },
+    {
+      "section": "MDA",
+      "headings": 147,
+      "nonHeadings": 108,
+      "ambiguous": 4
+    },
+    {
+      "section": "NOTES",
+      "headings": 80,
+      "nonHeadings": 73,
+      "ambiguous": 0
+    },
+    {
+      "section": "FS_PART",
+      "headings": 17,
+      "nonHeadings": 8,
+      "ambiguous": 0
+    },
+    {
+      "section": "STATEMENTS",
+      "headings": 14,
+      "nonHeadings": 58,
+      "ambiguous": 0
+    },
+    {
+      "section": "BACK",
+      "headings": 1,
+      "nonHeadings": 1,
+      "ambiguous": 1
+    }
+  ],
+  "headingsByPattern": {
+    "A2_PRECEDENT_REPEATED_TITLE": 7,
+    "A5_PRECEDENT_CONTENTS_GROUP_LABEL": 1,
+    "EMBEDDED_REPORT": 4,
+    "FRONT_SECTION_TITLE": 2,
+    "FS_SUBHEADING": 11,
+    "MDA_SECTION_TITLE": 18,
+    "MDA_SUBHEADING": 134,
+    "NOTES_PART": 1,
+    "NOTE_SUBHEADING": 65,
+    "NOTE_TITLE": 14,
+    "PART_TITLE_BLOCK": 1,
+    "STATEMENT_TITLE": 7,
+    "TOC_OPENER": 1
+  },
+  "nonHeadingsByPattern": {
+    "CAPTION_CONTINUATION": 3,
+    "CHART_OR_TABLE_INTERNAL": 118,
+    "CONTENTS_ENTRY": 3,
+    "COVER_BLOCK": 2,
+    "NUMBERED_CAPTION": 95,
+    "PAGE_NOTICE": 1,
+    "PART_TITLE_BLOCK": 2,
+    "QUALIFICATION_NOTE": 2,
+    "RUN_IN_LEAD": 1,
+    "S042_A1_PRECEDENT_BOX_TITLE": 1,
+    "SECTION_SUBTITLE": 1,
+    "SIGNATURE": 2,
+    "STATEMENT_FOOTER": 7,
+    "STATEMENT_SUBTITLE": 14
+  },
+  "ambiguous": [
+    {
+      "Pattern": "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER",
+      "Page": 1,
+      "aliases": [
+        "L0000:S0"
+      ],
+      "Text": "Information Statement",
+      "Reason": "14pt bold 'Information Statement' above the 24pt bold issuer name: the document-type title with the issuer set larger below it. The SRC-042 / SRC-044 precedent (issuer above the title is metadata) had the title and issuer at one size, the title below",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER",
+      "Page": 1,
+      "aliases": [
+        "L0001:S0"
+      ],
+      "Text": "International Development Association",
+      "Reason": "24pt bold issuer name under the 14pt document-type label: issuer metadata by the SRC-042 precedent, or the second part of the cover title",
+      "axes": {
+        "semanticFunctions": [
+          "INFORMATION"
+        ],
+        "primaryFunction": "INFORMATION",
+        "scope": "DOCUMENT",
+        "occurrenceRoles": [
+          "METADATA"
+        ],
+        "titleRelation": "NONE",
+        "informationType": "ISSUER_METADATA"
+      }
+    },
+    {
+      "Pattern": "S053_Q2_ITALIC_STANDALONE_LABEL",
+      "Page": 15,
+      "aliases": [
+        "L0572:S0"
+      ],
+      "Text": "Windowfor Host Communities and Refugees (WHR)",
+      "Reason": "10pt italic (not bold) standalone label at the margin over its own prose: the WHR sub-window under GROW (its sibling windows are 10pt bold). Function reads as a heading; the typographic weight differs from every heading the user has decided (bold)",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S053_Q2_ITALIC_STANDALONE_LABEL",
+      "Page": 54,
+      "aliases": [
+        "L2128:S0"
+      ],
+      "Text": "Interest Rate Risk",
+      "Reason": "10pt italic (not bold) standalone label at the margin over its own prose: 'Interest Rate Risk' under the 10.5pt 'Market Risk'. Function reads as a heading; the typographic weight differs from every heading the user has decided (bold)",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S053_Q2_ITALIC_STANDALONE_LABEL",
+      "Page": 55,
+      "aliases": [
+        "L2188:S0"
+      ],
+      "Text": "Exchange Rate Risk",
+      "Reason": "10pt italic (not bold) standalone label at the margin over its own prose: 'Exchange Rate Risk' under the 10.5pt 'Market Risk'. Function reads as a heading; the typographic weight differs from every heading the user has decided (bold)",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S053_Q4_BULLETED_LABEL_OVER_SUBLIST",
+      "Page": 21,
+      "aliases": [
+        "L0828:S0"
+      ],
+      "Text": "• OtherAdjustments:",
+      "Reason": "the third bullet of a list whose other bullets are run-in items ('Activities directly funded ...: These are ...'); this one is only 'Other Adjustments:' and its content is an enumerated sub-list (i., ii.). A list item label, or a bulleted sub-heading (precedent SRC-029 (user-decided 2026-09-25) S029_A4: the bullet is not a gate)",
+      "axes": {
+        "semanticFunctions": [
+          "INFORMATION"
+        ],
+        "primaryFunction": "INFORMATION",
+        "scope": "LIST",
+        "occurrenceRoles": [
+          "LOCAL_LABEL"
+        ],
+        "titleRelation": "NONE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S053_Q1_BACK_COVER_TITLE_BLOCK",
+      "Page": 132,
+      "aliases": [
+        "L5185:S0"
+      ],
+      "Text": "Information Statement",
+      "Reason": "10pt bold centered 'Information Statement' atop the back cover, over the issuer name and logo, the disclaimers and the contents list",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    }
+  ],
+  "bindingFailures": []
+}

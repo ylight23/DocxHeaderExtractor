@@ -131,5 +131,36 @@ public sealed class ScaleUpSurveyDiagnosticTests
         }));
     }
 
+    /// <summary>
+    /// For a PDF whose text matrix carries the type size (Tf 1, scaled by Tm), the line facts above read size 1 and
+    /// no bold. This writes what the glyphs themselves say: their effective point size and their font names, taken
+    /// from the letters inside each atom's box. Diagnostic only; it changes nothing the pipeline reads.
+    /// </summary>
+    [Fact]
+    public void Dump_pdf_atom_glyph_facts()
+    {
+        var spec = Environment.GetEnvironmentVariable("A99_PDF_GLYPH_FACTS");
+        if (spec is null) return;
+        var parts = spec.Split('|');
+        var pdf = TestRepository.Path(parts[0]);
+        var atoms = PdfStructuredSourceAuthorityBuilder.Build(pdf).Atoms;
+        using var document = UglyToad.PdfPig.PdfDocument.Open(pdf);
+        var lines = PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3)
+            .GroupBy(PdfLineIdentity.Of, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
+        var letters = document.GetPages().ToDictionary(p => p.Number, p => p.Letters.Where(l => !string.IsNullOrWhiteSpace(l.Value)).ToArray());
+        File.WriteAllLines(parts[1], atoms.Select(a =>
+        {
+            var l = lines[a.SourceId];
+            var inside = letters[a.Page].Where(g =>
+                g.BoundingBox.Left >= l.Left - 0.5 && g.BoundingBox.Right <= l.Right + 0.5 &&
+                g.BoundingBox.Bottom >= l.Bottom - 0.5 && g.BoundingBox.Top <= l.Top + 0.5).ToArray();
+            var sizes = inside.Select(g => g.PointSize).Order().ToArray();
+            var size = sizes.Length == 0 ? 0 : sizes[sizes.Length / 2];
+            var fonts = inside.GroupBy(g => (g.FontName ?? "").Split('+')[^1]).OrderByDescending(g => g.Count())
+                .Select(g => $"{g.Key}:{g.Count()}");
+            return $"{a.Alias}\t{a.Page}\t{a.Row}\t{a.Segment}\t{size:0.0}\t{string.Join(",", fonts)}\t{l.Left:0}\t{l.Right:0}\t{l.Y:0}\t{a.Text.Replace('\t', ' ')}";
+        }));
+    }
+
     private static string Norm(string s) => string.Join(" ", s.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
 }
