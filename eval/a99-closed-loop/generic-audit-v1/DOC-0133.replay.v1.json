@@ -1,0 +1,2398 @@
+{
+  "artifactKind": "a99_generic_audit_replay",
+  "engine": "GENERIC_AUDIT_ENGINE_V1",
+  "documentId": "DOC-0133",
+  "proposalsSha256": "9aff2da2f9aa81a3e2da46dad8e7d6e75d3ee87118ebebfa678fe0403eda21c0",
+  "goldTotal": 112,
+  "membership": {
+    "truePositives": 82,
+    "falsePositives": 7,
+    "falseNegativesProposedForReview": 18,
+    "falseNegativesProposedFalse": 12,
+    "nonGoldProposedForReview": 160,
+    "exactCompositeMatches": 82,
+    "compositeMismatches": []
+  },
+  "axisDisagreementsOnTruePositives": {
+    "primaryFunction": 3,
+    "scope": 17,
+    "roles": 0,
+    "scopePairs": {
+      "DOCUMENT_PART <- engine SECTION": 1,
+      "DOCUMENT_PART <- engine TOC": 1,
+      "EMBEDDED_ARTIFACT <- engine SECTION": 1,
+      "NOTE <- engine SECTION": 12,
+      "TOC <- engine SECTION": 2
+    }
+  },
+  "genericity": {
+    "documentIdReferences": 0,
+    "sourcePathOrGoldReferences": 0,
+    "absoluteTypographyOrPageGates": 0,
+    "literalTextComparisonsInEngine": 0,
+    "regexInEngine": 0,
+    "literalTextOutsideLexicalShapes": 0,
+    "goldTotalLiterals": 0,
+    "lexicalShapes": [
+      "IsFiguresOnly",
+      "IsBuiltInContentsStyle",
+      "IsDate",
+      "IsNumberedCaption",
+      "IsStructuralLabel",
+      "IsBareStructuralLabel",
+      "IsFillInField",
+      "IsFootnoteLead",
+      "IsParentheticalStatus",
+      "HasTrailingPageNumber",
+      "EndsSentence",
+      "EndsWithColon"
+    ],
+    "modelCalls": 0
+  },
+  "falseNegativesForReview": [
+    {
+      "goldText": "Management’s Discussion & Analysis and Condensed Quarterly Financial Statements",
+      "engineText": "Management’s Discussion & Analysis and",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "one label over 2 source occurrences",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Management’s Discussion and Analysis",
+      "engineText": "Management’s Discussion and Analysis",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "EvaluatedAccountingStandards:",
+      "engineText": "EvaluatedAccountingStandards:",
+      "engineRoles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "goldText": "AccountingStandards UnderEvaluation:",
+      "engineText": "AccountingStandards UnderEvaluation:",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "AccountingforBorrowings atAmortized Cost",
+      "engineText": "AccountingforBorrowings atAmortized Cost",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 15 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "SwapAgreements",
+      "engineText": "SwapAgreements",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 12 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "SecuritiesLending",
+      "engineText": "SecuritiesLending",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 31 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Guaranteesprovided",
+      "engineText": "Guaranteesprovided",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 14 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Guarantees received",
+      "engineText": "Guarantees received",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 5 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Expenses",
+      "engineText": "Expenses",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 4 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Revenue",
+      "engineText": "Revenue",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 6 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Duefrom banks",
+      "engineText": "Duefrom banks",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Loans andLoan commitments",
+      "engineText": "Loans andLoan commitments",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Investmentsecurities",
+      "engineText": "Investmentsecurities",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 12 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Securities purchased under resale agreements, Securities sold under repurchase agreements, and Securities lent undersecurities lendingagreements",
+      "engineText": "Securities purchased under resale agreements, Securities sold under repurchase agreements, and Securities lent undersecurities lendingagreements",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 1 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Borrowings",
+      "engineText": "Borrowings",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 19 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Derivative instruments",
+      "engineText": "Derivative instruments",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Valuation adjustments onfairvalue option electedliabilities",
+      "engineText": "Valuation adjustments onfairvalue option electedliabilities",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 5 body line(s) before a peer"
+      ]
+    }
+  ],
+  "falseNegativesProposedFalseItems": [
+    {
+      "goldText": "Section I: Executive Summary",
+      "engineText": "Section I: Executive Summary",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "followed by 9 lesser label(s) before a peer",
+        "followed by 26 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "Summary Financial Results",
+      "engineText": "Summary Financial Results",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 21 body line(s) before a peer",
+        "followed by 6 lesser label(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "Net Income",
+      "engineText": "Net Income",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 18 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 6 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "Allocable Income",
+      "engineText": "Allocable Income",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 11 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 6 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "Net Income",
+      "engineText": "Net Income",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 6 lesser label(s) before a peer",
+        "followed by 18 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "Section IV: Risk Management",
+      "engineText": "Section IV: Risk Management",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 36 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "Risk Governance",
+      "engineText": "Risk Governance",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 15 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "CONDENSED BALANCE SHEETS",
+      "engineText": "CONDENSED BALANCE SHEETS",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "followed by 7 lesser label(s) before a peer",
+        "followed by 28 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "CONDENSED STATEMENTS OF INCOME",
+      "engineText": "CONDENSED STATEMENTS OF INCOME",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 7 lesser label(s) before a peer",
+        "followed by 33 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "CONDENSED STATEMENTS OF COMPREHENSIVE INCOME",
+      "engineText": "CONDENSED STATEMENTS OF COMPREHENSIVE INCOME",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 31 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "CONDENSED STATEMENTS OF CHANGES IN RETAINED EARNINGS",
+      "engineText": "CONDENSED STATEMENTS OF CHANGES IN RETAINED EARNINGS",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 7 lesser label(s) before a peer",
+        "followed by 31 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "CONDENSED STATEMENTS OF CASH FLOWS",
+      "engineText": "CONDENSED STATEMENTS OF CASH FLOWS",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 33 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    }
+  ],
+  "falsePositives": [
+    {
+      "text": "$207 million in FY25 YTD and $206 million in FY24 YTD.",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 39 table/figure item(s) before a peer",
+        "opens a run of contents entries"
+      ]
+    },
+    {
+      "text": "TopTen Country Exposuresᵃ",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 15 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 24 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "This page left intentionally blank",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 12 lesser label(s) before a peer",
+        "followed by 26 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Borrowings—Notes EandJ",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 10 table/figure item(s) before a peer",
+        "opens a run of contents entries"
+      ]
+    },
+    {
+      "text": "Receivables / Payables related to:",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 6 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "opens a run of contents entries"
+      ]
+    },
+    {
+      "text": "Amounts",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 36 table/figure item(s) before a peer",
+        "opens a run of contents entries"
+      ]
+    },
+    {
+      "text": "Amounts",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 36 table/figure item(s) before a peer",
+        "opens a run of contents entries"
+      ]
+    }
+  ],
+  "nonGoldForReview": [
+    {
+      "text": "International Bank forReconstruction and",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Development",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars, exceptratios which are in percentages",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 9 lesser label(s) before a peer",
+        "followed by 31 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "As ofand forthe",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "As ofand forthe nine months fiscalyearended ended March 31, June 30,",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 4 source occurrences",
+        "followed by 2 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Lending Highlights (Section III)",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Loans and Guarantees",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 15 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Income Statement (Section III)",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 10 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Balance Sheet (Section III)",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 21 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Non-GAAP Measures",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 19 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "1 The other WBG institutions are the International Development Association (IDA), the International Finance Corporation (IFC), the",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Multilateral Investment Guarantee Agency (MIGA), and the International Centre forSettlement ofInvestment Disputes (ICSID). The",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars - YTD",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 6 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "FY21 FY22 FY23 FY24 FY25",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "In billions ofU.S. dollars",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 26 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Gross",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "In billions ofU.S. dollars",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "Borrowing Portfolio In billions ofU.S. dollars",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table 2: Condensed Statements of Income",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 37 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Impact on income",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 39 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "•",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 4 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "•",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "•",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 13 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer"
+      ]
+    },
+    {
+      "text": "(including related derivatives) costs ᵃ",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 20 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars, YTD",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Figure 5: Net Loans Outstanding",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 29 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In billions ofU.S. dollars In billions ofU.S. dollars",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 30 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "a",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 31 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Figure 8: Borrowing Portfolio (original maturities)",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 14 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In billions ofU.S. dollars",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 14 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Adjustments to arrive at net non-interest expenses - allocable income basis",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 10 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table 8: Unrealized Mark-to-market Gains (Losses) on Non-trading Portfolios a",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 26 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 26 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Amount",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Board of Governors-approved and Other Transfers Reported in the Condensed Statements of Income a:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 15 table/figure item(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Board of Governors-approved Allocations Reported as Transfers Within Retained Earnings:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 2 table/figure item(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "(LPF1)",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "c.The Grant Facility for Project Preparation (GFPP) provides grants to support preparation of World Bank financed lending",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "Changes in Surplus",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 14 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Variance",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Due to",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Due to",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "In billions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Bilateral Guarantees Received",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 32 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Other CreditEnhancements Received",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 14 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Investments",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Net Swap",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 40 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "As ofJune 30, 2024",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Investments",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Net Swap",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 40 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Non-Commercial",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Table 14: Liquidity Levels for FY25",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In billions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Management’s Discussion and Analysis Section V: Governance",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Assets",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Due from banks—Notes C andJ",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 18 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Loans outstanding—Notes D, H andJ",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 25 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Liabilities",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Equity",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Capitalstock—Note B",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 9 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "June 30, 2024)",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "followed by 1 body line(s) before a peer",
+        "followed by 9 table/figure item(s) before a peer",
+        "date shape",
+        "stands alone over its own prose"
+      ]
+    },
+    {
+      "text": "Nonnegotiable, non-interest-bearing demand obligations on account ofsubscribed capital",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 1 body line(s) before a peer",
+        "followed by 6 lesser label(s) before a peer",
+        "followed by 23 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Three Months Ended Nine Months Ended",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "March 31, March 31,",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Interestrevenue",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 30 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Provision forlosses on loans and otherexposures, (charge) release —Note D",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 4 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Non-interestrevenue",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 20 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Non-interest expenses",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 25 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Non-functional currency translation adjustment (losses) gains, net",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 4 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Unrealizedmark-to-market (losses) gains on Investments-Trading portfolio, net—Notes FandJ",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 4 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Unrealizedmark-to-marketgains (losses) on non-trading portfolios, net—Notes FandJ",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 4 body line(s) before a peer",
+        "followed by 6 lesser label(s) before a peer",
+        "followed by 30 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Other comprehensive income (loss) —Note I",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 33 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Cash flows from investing activities",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 23 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Cash flows from financing activities",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 27 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Cash flows from operating activities",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 38 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Supplemental disclosure",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 17 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "2022-03, Fair Value Measurement (Topic 820) Fair ValueMeasurement ofEquity Securities Subject to Contractual",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 6 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "In November 2024, the FASB issued ASU 2024-03, Income Statement—Reporting Comprehensive Income—",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Expense Disaggregation Disclosures (Subtopic 220-40), which requires disaggregated disclosure of income",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "2025-01, Income Statement—Reporting Comprehensive Income—Expense Disaggregation Disclosures (Subtopic",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "In November 2023, the FASB issued ASU 2023-07, Segment Reporting (Topic 280): Improvements to Reportable",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "In October 2023, the FASB issued ASU 2023-06, DisclosureImprovements: Codification Amendments in Response to the SEC’s Disclosure Update and Simplification Initiative. The new guidance is intended to align U.S. GAAP",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 3 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table B1: IBRD's Shares",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Authorized shares",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Table B2: IBRD's Capital",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 29 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Uncalledportion of",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 29 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table C1: Investments - Trading composition",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 22 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Securities sold under repurchase agreements, securities lent under",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 37 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "a",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 38 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table C3: Net investment portfolio composition",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table C4: Collateral received",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 12 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 24 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table D1: Loan portfolio aging structure",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 34 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table D1.1",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 34 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 40 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table D3: Loan portfolio vintage disclosure",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 34 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Disbursed Converted as of",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 1 body line(s) before a peer",
+        "followed by 39 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table D3.1",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 34 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Disbursed Converted as of",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 1 body line(s) before a peer",
+        "followed by 39 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Reportedas:",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "CondensedBalance Sheets Condensed Statements ofIncome",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 3 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "March 31, 2025 June 30, 2024",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Location on the",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 36 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars Forthe nine months ended and as of",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Loans",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Table E1: Borrowings and borrowing-related derivatives, at fair value",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Portfolio",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Table F1: Derivative assets and liabilities before and after netting adjustments",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 36 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "March 31, 2025 June 30, 2024",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 38 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table F2.1",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 34 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table F3: Unrealized mark-to-market gains or losses on non-trading derivatives",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 9 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table F4: Unrealized mark-to-market gains or losses on net investment-trading portfolio",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 7 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Reported as: March 31, March 31,",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table G1: Retained earnings composition",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 31 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table H1: IBRD’s receivables and payables with affiliated organizations",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 37 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "March 31, 2025 June 30, 2024",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 39 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table H2: Revenue from contracts with clients",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 36 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table H3: Receivables and contract liabilities related to revenue from contracts with clients",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 8 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table I1: AOCI/AOCL changes",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 33 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Nine Months Ended March 31, 2025",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Table I1.1:",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 33 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Nine Months Ended March 31, 2024",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Table J1: Fair value and carrying amount offinancial assets and liabilities",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 34 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Assets",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 28 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Liabilities",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 20 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table J2: Fair value hierarchy ofIBRD’s assets and liabilities",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 34 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Assets:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 38 table/figure item(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Liabilities:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 36 table/figure item(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Table J2.1:",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 34 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Assets:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 38 table/figure item(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Liabilities:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 36 table/figure item(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Table J3: Level 3 Borrowings and derivatives valuation technique and quantitative information regarding the significant unobservable inputs:",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 12 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 25 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Fair Value as",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 5 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table J4: Borrowings and derivatives inter level transfers",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 32 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table J4.1:",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 32 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table J5: Borrowings Level 3 changes",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 35 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table J6: Derivatives Level 3 changes",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 8 lesser label(s) before a peer",
+        "followed by 30 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table J6.1:",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 8 lesser label(s) before a peer",
+        "followed by 30 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table J7: Unrealized gains or losses relating to IBRD’s Level 3 borrowings and derivatives",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 6 body line(s) before a peer",
+        "followed by 7 lesser label(s) before a peer",
+        "followed by 23 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table J8: Borrowings fair value and contractual principal balance",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 11 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "In millions ofU.S. dollars",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "PrincipalAmount Due",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Fair Value Upon Maturity Difference",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 11 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Table J9.1:",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 17 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Unrealized",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Unrealized",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Table K1: Pension Plans benefit costs",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 30 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table K1.1",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 30 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table K2: Pension service cost",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 33 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table K2.1:",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 33 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    }
+  ]
+}
