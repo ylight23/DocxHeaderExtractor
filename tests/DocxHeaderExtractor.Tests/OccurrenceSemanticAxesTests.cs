@@ -31,6 +31,82 @@ public sealed class OccurrenceSemanticAxesTests
 
     public static readonly string[] RepeatStatuses = ["FIRST", "REPEATED"];
 
+    /// <summary>
+    /// OCCURRENCE_CLASSIFICATION_PRINCIPLES_V1 (user, 2026-09-25): how the ontology is applied to any
+    /// document, of any genre and media type - and the test that the pipeline is general rather than
+    /// tuned document by document. Frozen after DOC-0133 so the six remaining financial and procurement
+    /// audits validate the ontology instead of growing a rule set of their own.
+    /// </summary>
+    [Fact]
+    public void Freeze_the_classification_principles()
+    {
+        FreezeArtifact.AssertJson("eval/a99-closed-loop/policy", "occurrence-classification-principles.v1.json", new
+        {
+            artifactKind = "a99_occurrence_classification_principles",
+            principlesId = "OCCURRENCE_CLASSIFICATION_PRINCIPLES_V1",
+            ontology = OntologyId,
+            approvedBy = "USER",
+            approvedAt = "2026-09-25",
+            firstPrinciple = "CLASSIFY OCCURRENCES, NOT STRINGS: the same text with a different document function can have a different isHeading (a date over a revision note vs a date on a cover; a part title on its contents page vs the same words as a running header).",
+            decisionQuestions = new[]
+            {
+                "What is this?",
+                "What object or scope does it refer to?",
+                "What does this occurrence do here?",
+                "Does it open or identify a semantic region?",
+            },
+            functionalRules = new[]
+            {
+                new { kind = "PAGE_FURNITURE", condition = "whose function is only page navigation or repetition", isHeading = "false" },
+                new { kind = "ORDINARY_CAPTION", condition = "whose scope is only the figure or table object it names", isHeading = "false" },
+                new { kind = "NAVIGATION_ENTRY", condition = "whose function is only to point to another occurrence", isHeading = "false" },
+                new { kind = "REGION_OPENER", condition = "that establishes a semantic content region", isHeading = "candidate true" },
+            },
+            ordinaryMatters = "\"Ordinary\" and \"only\" are part of the rules: a title that looks like a table or list caption but opens a whole region (\"Annex 2: List of Participants\") is not excluded as a caption.",
+            confirmedPatterns = new[]
+            {
+                "Running header/footer occurrences are false. No blacklist by text: the same text at an occurrence that truly opens a region can be true.",
+                "Financial table row and row-group labels are false, bold or not, with or without a Note reference.",
+                "Ordinary table/figure captions are false, whatever their font size.",
+                "A note-local label is not auto-true by its typography; it is true when it stands alone and opens coherent prose or data below it.",
+                "A cover or title block is decomposed first: title-bearing lines form one composite claim; issuer, date and audit status are metadata, not parts of that claim just because they share the cover.",
+                "Unit lines and reporting-period column headings are false.",
+                "Footnotes and letter-notes under tables are false.",
+                "A contents region or sub-region opener is true; individual contents entries are false.",
+                "Chart and panel internal labels are false when they only name a series, panel or chart-local object; font or bold does not promote them.",
+            },
+            compositeHeadings = "A semantic heading can span several source occurrences (cover titles, wrapped legal and PDF headings, form titles, statement titles, agenda titles): it is one claim with sourceParts, in every genre.",
+            genre = "Genre may inform context packing or a prior; it never changes the definition of isHeading. No per-genre rule sets.",
+            informationTypeAdditions = new
+            {
+                ISSUER_METADATA = "the issuing body named on a cover or part title page",
+                STATUS_METADATA = "an audit or approval status such as \"(Unaudited)\"",
+                note = "additive to OCCURRENCE_SEMANTIC_AXES_V2's informationType values",
+            },
+            generalizationPass = new[]
+            {
+                "No hardcoded document ID.",
+                "No hardcoded literal heading text.",
+                "No font, style or tableDepth used as a decision gate.",
+                "No Gold count used as a target.",
+                "No genre changing the definition of isHeading.",
+                "One ontology explains DOCX and PDF, legal, meeting, procurement and financial documents.",
+                "A new document adds evidence, not an exception rule.",
+                "The model decides semantics; the binder/harness decides coordinates.",
+                "isHeading exists before task projection.",
+                "Gold is independent of model prediction.",
+            },
+            status = new
+            {
+                generalizedGoldOntologyDesign = "YES",
+                generalizedOfflineAudit = "YES",
+                productionLlmContractAligned = "NOT YET - the model still returns sourceAlias(es), isHeading, verbatim text/parts, semanticRole, structuralType, scope and relationHints, not the axes",
+                endToEndPipelineGeneric = "NOT YET FULLY",
+                next = "audit SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054 with this ontology as its validation; extend the ontology only for a genuinely general semantic concept, never for one document",
+            },
+        });
+    }
+
     [Fact]
     public void Freeze_the_ontology()
     {
