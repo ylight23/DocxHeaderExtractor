@@ -1,0 +1,35 @@
+{
+  "artifactKind": "a99_source_evidence_profile",
+  "study": "SRC053_BLIND_GENERALIZATION_AUDIT_V1",
+  "source": {
+    "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+    "sha256": "6d3cd46d6297031fd3fd4c2afd066f8d947f18d55ef1418a185e5ef9e0a344da"
+  },
+  "media": "PDF",
+  "occurrences": 8966,
+  "pages": 132,
+  "body": {
+    "fontSize": 1,
+    "bold": false,
+    "italic": false
+  },
+  "typographyClusters": [
+    {
+      "fontSize": 1,
+      "bold": false,
+      "italic": false,
+      "occurrences": 8138,
+      "meanWords": 11.2
+    },
+    {
+      "fontSize": 1,
+      "bold": false,
+      "italic": true,
+      "occurrences": 828,
+      "meanWords": 4.9
+    }
+  ],
+  "boldLeads": 0,
+  "multiSegmentRows": 5069,
+  "rowsWithFigures": 4041
+}
