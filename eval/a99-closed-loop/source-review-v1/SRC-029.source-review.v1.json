@@ -16,7 +16,7 @@
   "inputs": {
     "reviewTool": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-029/review_tool.py",
-      "sha256": "9b4a6c6bf3ae08249611dae990d911f3ea6258d9a9d4bf544ab94014a34b1a54"
+      "sha256": "e81d58f946de7978922decf501bd8e24fafd28b646e5443e56f4664483523f8a"
     },
     "atomLayoutFacts": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-029/atom-layout-facts.tsv",
@@ -24,19 +24,19 @@
     },
     "reviewItems": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-029/review-items.json",
-      "sha256": "466afc3bb44202101efcddd36b2f8b052a2cf06bc5503a072b742b89d14f932a"
+      "sha256": "dfb33039c8689168ce89400173e8290f55bd79e63ee55ddc9bba84fe35d56e47"
     }
   },
   "summary": {
     "SOURCE_OCCURRENCES": 7794,
-    "CLEAR_HEADING": 368,
-    "CLEAR_NON_HEADING_SET_APART": 29,
-    "AMBIGUOUS": 7,
+    "CLEAR_HEADING": 374,
+    "CLEAR_NON_HEADING_SET_APART": 31,
+    "AMBIGUOUS": 0,
     "PROPOSED_RANGE": {
-      "min": 368,
-      "max": 375
+      "min": 374,
+      "max": 374
     },
-    "BINDING_FAILURES": 3,
+    "BINDING_FAILURES": 5,
     "USER_APPROVAL_REQUIRED": true,
     "note": "every other atom is a non-heading by the reviewer's reading (body, table cells, fields, notes, contents entries, page furniture); only set-apart non-headings are listed"
   },
@@ -44,8 +44,8 @@
     {
       "section": "FRONT",
       "headings": 26,
-      "nonHeadings": 3,
-      "ambiguous": 1
+      "nonHeadings": 4,
+      "ambiguous": 0
     },
     {
       "section": "PART_1",
@@ -73,9 +73,9 @@
     },
     {
       "section": "SECTION_IV",
-      "headings": 56,
-      "nonHeadings": 17,
-      "ambiguous": 3
+      "headings": 59,
+      "nonHeadings": 18,
+      "ambiguous": 0
     },
     {
       "section": "SECTION_V",
@@ -97,9 +97,9 @@
     },
     {
       "section": "SECTION_VII",
-      "headings": 15,
+      "headings": 18,
       "nonHeadings": 3,
-      "ambiguous": 3
+      "ambiguous": 0
     },
     {
       "section": "PART_3",
@@ -151,6 +151,9 @@
     "REPEATED_DOCUMENT_TITLE": 4,
     "REPEATED_FORM_TITLE": 1,
     "REVISION_DATE_OPENER": 2,
+    "S029_A2_LIST_LEAD_IN_SIBLING": 1,
+    "S029_A3_INNER_FORM_TITLE": 2,
+    "S029_A4_BULLETED_SUBHEADING": 3,
     "SECTION_OPENER": 4,
     "SECTION_SUBHEADING": 1,
     "SECTION_TITLE": 11,
@@ -159,161 +162,33 @@
     "SUMMARY_SECTION_LABEL": 10,
     "TOC_OPENER": 6
   },
-  "ambiguous": [
-    {
-      "Pattern": "S029_A1_COVER_APPLICABILITY_QUALIFIER",
-      "Page": 1,
-      "aliases": [
-        "L0006:S0",
-        "L0007:S0",
-        "L0008:S0"
-      ],
-      "Text": "For Projects with Project Concept Notes (PCN) Decision Notes dated after October 1, 2018",
-      "Reason": "18pt bold lines under the cover title stating which projects the document is for - part of the title claim, a subtitle, or metadata?",
-      "axes": {
-        "semanticFunctions": [
-          "INFORMATION",
-          "IDENTITY"
-        ],
-        "primaryFunction": "INFORMATION",
-        "scope": "DOCUMENT",
-        "occurrenceRoles": [
-          "METADATA"
-        ],
-        "titleRelation": "TITLE_PART",
-        "informationType": null
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-25",
+    "membershipTotal": 374,
+    "patterns": [
+      {
+        "pattern": "S029_A1_COVER_APPLICABILITY_QUALIFIER",
+        "decision": "FALSE: INFORMATION / DOCUMENT / METADATA, informationType APPLICABILITY_METADATA, titleRelation NONE (not a title part of a claim it is not in)"
+      },
+      {
+        "pattern": "S029_A2_LIST_LEAD_IN_SIBLING",
+        "decision": "TRUE: STRUCTURE / LIST / REGION_OPENER + LOCAL_LABEL; sentence-like wording is not body prose automatically"
+      },
+      {
+        "pattern": "S029_A3_INNER_FORM_TITLE",
+        "decision": "both TRUE: the repeated declaration title keeps heading status (repeatStatus is independent of isHeading); the CON-4 title claim is the title line only, its qualification lines are INFORMATION with titleRelation NONE"
+      },
+      {
+        "pattern": "S029_A4_BULLETED_SUBHEADING",
+        "decision": "all three TRUE: STRUCTURE / SECTION / REGION_OPENER + LOCAL_LABEL; the bullet is not a decision gate"
+      },
+      {
+        "pattern": "T1/T2 binder limits",
+        "decision": "not partial binding: fix the binder generically (GENERIC_MULTIPART_BINDER_V2) and bind the five headings in full before freezing Gold"
       }
-    },
-    {
-      "Pattern": "S029_A2_LIST_LEAD_IN_SIBLING",
-      "Page": 100,
-      "aliases": [
-        "L2930:S0"
-      ],
-      "Text": "(1) Examples ofsexual exploitation and abuse include, but are not limitedto:",
-      "Reason": "bold numbered sibling of the approved '(2) Examples ...' heading, opening its own bullet list, but phrased as a lead-in sentence ('include, but are not limited to')",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "LIST",
-        "occurrenceRoles": [
-          "REGION_OPENER",
-          "LOCAL_LABEL"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S029_A3_INNER_FORM_TITLE",
-      "Page": 113,
-      "aliases": [
-        "L3216:S0"
-      ],
-      "Text": "Environmental and SocialPerformance Declaration",
-      "Reason": "the declaration's own title repeated in 16pt regular inside its form, under the 18pt bold form title",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "EMBEDDED_ARTIFACT",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S029_A3_INNER_FORM_TITLE",
-      "Page": 115,
-      "aliases": [
-        "L3275:S0",
-        "L3276:S0",
-        "L3277:S0"
-      ],
-      "Text": "SEAand/or SHDeclaration in accordancewith SectionIII, Qualification Criteria, andRequirements oftheInitial Selection Document",
-      "Reason": "centered 11pt bold title of the declaration inside Form CON-4, with its 'in accordance with ... Document' qualifier lines",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "EMBEDDED_ARTIFACT",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S029_A4_BULLETED_SUBHEADING",
-      "Page": 135,
-      "aliases": [
-        "L3766:S0"
-      ],
-      "Text": "• Resource efficiency",
-      "Reason": "bold-italic label with a bullet, among bullets that are sentences; the same labels were headings without bullets in DOC-0123",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S029_A4_BULLETED_SUBHEADING",
-      "Page": 135,
-      "aliases": [
-        "L3779:S0"
-      ],
-      "Text": "• Pollutionprevention andmanagement",
-      "Reason": "bold-italic label with a bullet, among bullets that are sentences; the same labels were headings without bullets in DOC-0123",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S029_A4_BULLETED_SUBHEADING",
-      "Page": 135,
-      "aliases": [
-        "L3796:S0"
-      ],
-      "Text": "• Biodiversity Conservation andSustainableManagementofLivingNaturalResources",
-      "Reason": "bold-italic label with a bullet, among bullets that are sentences; the same labels were headings without bullets in DOC-0123",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    }
-  ],
+    ]
+  },
   "pageBreakHeadings": [
     {
       "claim": "Sub-Clause 14.3",
@@ -333,6 +208,11 @@
       "reason": "'L4787:S0' and 'L4789:S0' are not adjacent in the source"
     },
     {
+      "Text": "Sub-Clause 14.3 Application for Interim Payment",
+      "Pattern": "PC_SUBCLAUSE_TITLE",
+      "reason": "'L5519:S0' and 'L5523:S0' are on different pages"
+    },
+    {
       "Text": "Sub-Clause 21.1 Constitution ofthe DAAB",
       "Pattern": "PC_SUBCLAUSE_TITLE",
       "reason": "'L5782:S0' and 'L5784:S0' are not adjacent in the source"
@@ -341,6 +221,11 @@
       "Text": "Sub-Clause 21.6 Arbitration",
       "Pattern": "PC_SUBCLAUSE_TITLE",
       "reason": "'L5802:S0' and 'L5804:S0' are not adjacent in the source"
+    },
+    {
+      "Text": "Sub-Clause 21.10 Dissatisfaction with DAAB’s decision on SEA/SH Referrals",
+      "Pattern": "PC_SUBCLAUSE_TITLE",
+      "reason": "'L5847:S0' and 'L5850:S0' are on different pages"
     }
   ]
 }

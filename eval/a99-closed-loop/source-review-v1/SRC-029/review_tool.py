@@ -80,15 +80,16 @@ CAPTION = ax(["IDENTITY"], "IDENTITY", "TABLE", ("CAPTION",))
 META = lambda info: ax(["INFORMATION"], "INFORMATION", "DOCUMENT", ("METADATA",), "NONE", info)
 REV = ax(["INFORMATION", "STRUCTURE"], "INFORMATION", "REVISION_ENTRY", ("REGION_OPENER",), "NONE", "TEMPORAL_METADATA")
 P23 = "precedent DOC-0123 (user-decided 2026-09-24/25)"
+U = "user decision 2026-09-25: "
 H, N, Q = "HEADING", "NON_HEADING", "AMBIGUOUS"
 
 # ---------------- front matter ----------------
 add("FRONT", [whole("L0000:S0"), whole("L0000:S1"), whole("L0001:S0"), whole("L0002:S0"), whole("L0003:S0"), whole("L0004:S0"), whole("L0005:S0")],
     H, "COVER_TITLE_BLOCK", "cover title block: " + P23, DOC,
     "STANDARD PROCUREMENT DOCUMENT Request for Proposals Works Design and Build (Single-Stage Request for Proposals, after Initial Selection)")
-add("FRONT", [whole("L0006:S0"), whole("L0007:S0"), whole("L0008:S0")], Q, "S029_A1_COVER_APPLICABILITY_QUALIFIER",
-    "18pt bold lines under the cover title stating which projects the document is for - part of the title claim, a subtitle, or metadata?",
-    ax(["INFORMATION", "IDENTITY"], "INFORMATION", "DOCUMENT", ("METADATA",), "TITLE_PART"))
+add("FRONT", [whole("L0006:S0"), whole("L0007:S0"), whole("L0008:S0")], N, "S029_A1_COVER_APPLICABILITY_QUALIFIER",
+    "user decision 2026-09-25: applicability metadata: says which projects the document is for, identifies no new artifact and opens no region; not part of the cover title claim",
+    META("APPLICABILITY_METADATA"))
 add("FRONT", [whole("L0009:S0")], N, "CONNECTIVE", "'AND' joining two qualifiers", META(None))
 add("FRONT", [whole("L0012:S0")], N, "COVER_DATE", "cover date: " + P23 + " (cover date is metadata)", META("TEMPORAL_METADATA"))
 add("FRONT", [whole("L0017:S0")], H, "SECTION_OPENER", "opens the revision history: " + P23, SEC, "Revisions")
@@ -184,16 +185,19 @@ add("SECTION_IV", [whole("L2926:S0"), whole("L2927:S0"), whole("L2928:S0")], H, 
     "attachment heading of three lines, one claim: " + P23, SEC)
 add("SECTION_IV", [whole("L2939:S0")], H, "LIST_OPENER", "bold numbered subheading opening its examples: " + P23,
     ax(["STRUCTURE"], "STRUCTURE", "LIST", ("REGION_OPENER", "LOCAL_LABEL")))
-add("SECTION_IV", [whole("L2930:S0")], Q, "S029_A2_LIST_LEAD_IN_SIBLING",
-    "bold numbered sibling of the approved '(2) Examples ...' heading, opening its own bullet list, but phrased as a lead-in sentence ('include, but are not limited to')",
+add("SECTION_IV", [whole("L2930:S0")], H, "S029_A2_LIST_LEAD_IN_SIBLING",
+    "user decision 2026-09-25: opens a coherent list region; sentence-like wording does not make it body prose",
     ax(["STRUCTURE"], "STRUCTURE", "LIST", ("REGION_OPENER", "LOCAL_LABEL")))
 add("SECTION_IV", [whole("L3052:S0")], H, "FORM_LOCAL_HEADING", "opens the declaration part of the resume form: " + P23, SEC)
-add("SECTION_IV", [whole("L3216:S0")], Q, "S029_A3_INNER_FORM_TITLE",
-    "the declaration's own title repeated in 16pt regular inside its form, under the 18pt bold form title",
+add("SECTION_IV", [whole("L3216:S0")], H, "S029_A3_INNER_FORM_TITLE",
+    "user decision 2026-09-25: the declaration's own title at the form boundary; a repeat keeps its heading status",
     ax(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT"))
-add("SECTION_IV", [whole("L3275:S0"), whole("L3276:S0"), whole("L3277:S0")], Q, "S029_A3_INNER_FORM_TITLE",
-    "centered 11pt bold title of the declaration inside Form CON-4, with its 'in accordance with ... Document' qualifier lines",
+add("SECTION_IV", [whole("L3275:S0")], H, "S029_A3_INNER_FORM_TITLE",
+    "user decision 2026-09-25: the declaration's title; the claim is the title line only",
     ax(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT"))
+add("SECTION_IV", [whole("L3276:S0"), whole("L3277:S0")], N, "S029_A3_INNER_FORM_TITLE",
+    "user decision 2026-09-25: qualification lines under the declaration title ('in accordance with ... Document'): context, not part of the title",
+    META(None))
 
 # Sections V, VI
 add("SECTION_V", [whole("L3440:S0")], H, "SECTION_TITLE", "section title", SECT)
@@ -213,9 +217,9 @@ add("SECTION_VII", [whole("L3547:S0")], H, "SECTION_OPENER", "opens the preparat
 for a in ["L3759:S0", "L3762:S0", "L3809:S0", "L3812:S0"]:
     add("SECTION_VII", [whole(a)], H, "ES_REQUIREMENT_HEADING", "ES requirement heading: " + P23, SEC)
 for a in ["L3766:S0", "L3779:S0", "L3796:S0"]:
-    add("SECTION_VII", [whole(a)], Q, "S029_A4_BULLETED_SUBHEADING",
-        "bold-italic label with a bullet, among bullets that are sentences; the same labels were headings without bullets in DOC-0123",
-        SEC)
+    add("SECTION_VII", [whole(a)], H, "S029_A4_BULLETED_SUBHEADING",
+        "user decision 2026-09-25: standalone label opening its own paragraph; the bullet is not a decision gate",
+        ax(["STRUCTURE"], "STRUCTURE", "SECTION", ("REGION_OPENER", "LOCAL_LABEL")))
 add("SECTION_VII", [whole("L3843:S0")], N, "TABLE_TITLE_REPEAT", "repeats the heading above and names the table: " + P23, CAPTION)
 for a in ["L3851:S0", "L3861:S0"]:
     add("SECTION_VII", [whole(a)], N, "TABLE_GROUP_LABEL", "row-group label inside the personnel table: " + P23,
@@ -254,12 +258,19 @@ for r in R:
     else:
         cur = None
 fused = {"L5718:S0": "Intellectual and Industrial"}   # a title line fused with the body's closing quotation
+# Titles continued at the top of the next page: named explicitly, never discovered by proximity.
+continued = {"Sub-Clause 14.3": ["L5523:S0", "L5524:S0"], "Sub-Clause 21.10": ["L5850:S0", "L5851:S0", "L5852:S0"]}
 for group in pc:
     parts = []
     for a, lab in group:
         lab = fused.get(a, lab)
         parts.append(whole(a) if lab == text(a) else verb(a, lab))
-    add("SECTION_IX", parts, H, "PC_SUBCLAUSE_TITLE", "PC sub-clause number and title: " + P23, CLAUSE)
+    head = parts[0]["verbatimText"] or text(parts[0]["sourceAlias"])
+    reason = "PC sub-clause number and title: " + P23
+    if head in continued:
+        parts += [whole(a) for a in continued[head]]
+        reason += "; " + U + "the title continues at the top of the next page (explicit parts)"
+    add("SECTION_IX", parts, H, "PC_SUBCLAUSE_TITLE", reason, CLAUSE)
 for a, t in [("L4808:S1", None), ("L4819:S0", None), ("L4828:S0", None)]:
     add("SECTION_IX", [whole(a)], H, "NUMBERED_SUBCLAUSE_HEADING", "numbered sub-clause heading: " + P23, SEC)
 nxt = R[IDX["L4840:S0"] + 1][0]

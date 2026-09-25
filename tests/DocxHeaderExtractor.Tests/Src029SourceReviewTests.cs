@@ -111,6 +111,19 @@ public sealed class Src029SourceReviewTests
             headingsByPattern = items.Where(i => i.Verdict == "HEADING").GroupBy(i => i.Pattern)
                 .OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
             ambiguous = items.Where(i => i.Verdict == "AMBIGUOUS").Select(i => new { i.Pattern, i.Page, aliases = i.Parts.Select(p => p.SourceAlias).ToArray(), i.Text, i.Reason, axes = i.Axes }).ToArray(),
+            userDecisions = new
+            {
+                decidedAt = "2026-09-25",
+                membershipTotal = 374,
+                patterns = new[]
+                {
+                    new { pattern = "S029_A1_COVER_APPLICABILITY_QUALIFIER", decision = "FALSE: INFORMATION / DOCUMENT / METADATA, informationType APPLICABILITY_METADATA, titleRelation NONE (not a title part of a claim it is not in)" },
+                    new { pattern = "S029_A2_LIST_LEAD_IN_SIBLING", decision = "TRUE: STRUCTURE / LIST / REGION_OPENER + LOCAL_LABEL; sentence-like wording is not body prose automatically" },
+                    new { pattern = "S029_A3_INNER_FORM_TITLE", decision = "both TRUE: the repeated declaration title keeps heading status (repeatStatus is independent of isHeading); the CON-4 title claim is the title line only, its qualification lines are INFORMATION with titleRelation NONE" },
+                    new { pattern = "S029_A4_BULLETED_SUBHEADING", decision = "all three TRUE: STRUCTURE / SECTION / REGION_OPENER + LOCAL_LABEL; the bullet is not a decision gate" },
+                    new { pattern = "T1/T2 binder limits", decision = "not partial binding: fix the binder generically (GENERIC_MULTIPART_BINDER_V2) and bind the five headings in full before freezing Gold" },
+                },
+            },
             pageBreakHeadings = new[]
             {
                 new { claim = "Sub-Clause 14.3", titleOnNextPage = "Application for Interim Payment", pages = "188 -> 189" },
