@@ -9,7 +9,8 @@ namespace DocxHeaderExtractor.Tests;
 /// ontology; the scorer that will join its proposals with a Gold that does not exist yet; the production
 /// request contract and packing policy any model run on this source would use; the source itself; and
 /// the gaps known before SRC-041, so that its residuals can be split into known and new. Nothing is
-/// read from SRC-041's Gold file, which holds only a count-only total recorded on a retired source.
+/// read from SRC-041's Gold file, which holds only a count-only total (a user-approved review of this same PDF
+/// with no occurrence list - see the erratum in SRC-041.authority-lineage.v1.json).
 /// </para>
 /// </summary>
 public sealed class Src041BlindGeneralizationTests
@@ -62,6 +63,8 @@ public sealed class Src041BlindGeneralizationTests
                 modelCallsAuthorized = 0,
             },
             source = new { path = Pdf, sha256 = CanonicalArtifactHash.OfBytes(TestRepository.Path(Pdf)), media = "PDF" },
+            // Erratum (SRC-041.authority-lineage.v1.json): the count-only total was a review of this same PDF, not of
+            // a retired DOCX. The frozen pre-registration keeps the text it was committed with.
             sourceNote = "SRC-041's Gold file holds only a count-only total recorded on a retired pdf2docx DOCX; it is not opened, and that total is neither engine input nor target. Occurrence Gold is authored on the original PDF after the blind proposals are committed.",
             developmentEvidence = new
             {

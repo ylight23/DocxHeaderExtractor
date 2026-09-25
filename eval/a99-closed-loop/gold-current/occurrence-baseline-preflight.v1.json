@@ -154,6 +154,20 @@
       "placementAllowancePerRepetition": 1
     },
     {
+      "authorityId": "SRC-041",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-041.gold.v1.json",
+      "goldSha256": "e6ae7b0934bf145e07be89699dd5ef52e337b0b4e5cfafc60877040a8aa8a153",
+      "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "sourceUniverseSha256": "7770864ee6870409b393ca004c23d6d9f546d084c57d4e685b0d0a1e357b744b",
+      "semanticHeadingTotal": 280,
+      "materializedSemanticClaims": 280,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 63,
+      "placementAllowancePerRepetition": 1
+    },
+    {
       "authorityId": "SRC-055",
       "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-055.gold.v1.json",
       "goldSha256": "c8b45bdc8016095e85bfcb9d6cce4de74ae9ac329f193c633905fd5029a81250",
@@ -169,9 +183,9 @@
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 474,
-    "placementAllowance": 33,
-    "maxProviderCalls": 507
+    "totalPrimaryCalls": 663,
+    "placementAllowance": 36,
+    "maxProviderCalls": 699
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",

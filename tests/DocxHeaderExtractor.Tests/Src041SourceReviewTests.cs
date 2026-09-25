@@ -9,7 +9,8 @@ namespace DocxHeaderExtractor.Tests;
 /// <para>
 /// The reviewer read only the original PDF (sha256 bcd55336...dc38) through its structured-lane atoms and
 /// their layout facts (atom-layout-facts.tsv), with no model call, without opening the engine's committed
-/// blind proposals (10b3317), SRC-041's Gold file or its count-only total, or the retired DOCX.
+/// blind proposals (10b3317), SRC-041's Gold file or its count-only total (a review of this same PDF, with no
+/// occurrence list), or any converted DOCX.
 /// review_tool.py records the reading. Decisions the user took on DOC-0133 - this report's quarterly
 /// sibling - and the frozen financial policy are applied as precedent and say so. The reviewer also
 /// designed the engine, so this is not a double-blind annotation.
