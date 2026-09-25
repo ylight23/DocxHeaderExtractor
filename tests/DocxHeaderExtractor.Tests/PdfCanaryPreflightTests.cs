@@ -184,7 +184,8 @@ public sealed class PdfCanaryPreflightTests
     private static async Task<(RequestCapturingClassifier Capture, object? Unused)> CaptureAsync(string path)
     {
         using var capture = new RequestCapturingClassifier();
-        await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None, HistoricalRequest.Baseline);
+        await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None, HistoricalRequest.Baseline,
+            sourceFacts: PdfSourceFactsVersion.V1_NominalFontSize);
         return (capture, null);
     }
 

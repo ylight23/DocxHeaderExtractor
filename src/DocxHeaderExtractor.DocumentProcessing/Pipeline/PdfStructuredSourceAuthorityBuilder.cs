@@ -110,13 +110,20 @@ internal static class PdfStructuredSourceAuthorityBuilder
         WriteIndented = false,
     };
 
-    public static PdfStructuredSourceAuthority Build(string pdfPath)
+    /// <param name="facts">
+    /// Which typography facts the evidence carries. The atom universe - aliases, text, geometry - is the
+    /// same under every version; the model-visible evidence is not. The default is the version every
+    /// frozen authority was built with; <see cref="CanonicalSemanticPdfAuthorityAdapter"/> passes the
+    /// production version.
+    /// </param>
+    public static PdfStructuredSourceAuthority Build(
+        string pdfPath, PdfSourceFactsVersion facts = PdfSourceFactsVersion.V1_NominalFontSize)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
         IReadOnlyList<PdfLine> segments;
         using (var document = UglyToad.PdfPig.PdfDocument.Open(pdfPath))
-            segments = PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3);
+            segments = PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3, facts);
 
         return Build(segments, layout: PdfBlockGrouping.ContinuationV2,
             sourceSha256: CanonicalSemanticSourceHash.Compute(pdfPath));

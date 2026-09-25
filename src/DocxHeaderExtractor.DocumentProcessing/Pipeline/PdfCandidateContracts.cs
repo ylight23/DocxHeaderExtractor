@@ -46,6 +46,13 @@ internal sealed record PdfSourceFacts(
     /// <summary>Absolute point size. Only ever reported to the model relative to the document.</summary>
     public double FontSize { get; init; }
 
+    /// <summary>
+    /// The block's typography with each fact's origin (<see cref="PdfLineTypography"/>, averaged over its
+    /// lines; the font name and bold evidence source of its first line that has one). Null when the lines
+    /// carry none.
+    /// </summary>
+    public PdfLineTypography? Typography { get; init; }
+
     /// <summary>Stable parser line identities retained for source/audit correlation.</summary>
     public IReadOnlyList<string> LineIds { get; init; } = [];
 
@@ -287,6 +294,22 @@ internal static class PdfCandidateContextBuilder
         return result;
     }
 
+    private static PdfLineTypography? TypographyOf(IReadOnlyList<PdfLine> lines)
+    {
+        var typed = lines.Select(line => line.Typography).OfType<PdfLineTypography>().ToArray();
+        if (typed.Length == 0) return null;
+        var bold = typed.FirstOrDefault(t => t.BoldEvidenceSource != PdfLineTypography.None);
+        return new PdfLineTypography(
+            typed[0].Version,
+            typed.Average(t => t.NominalFontSize),
+            typed.Average(t => t.EffectivePointSize),
+            typed.Average(t => t.FontBoldFlagRatio),
+            typed.Average(t => t.FontNameBoldRatio),
+            typed.Average(t => t.DerivedBoldRatio),
+            bold?.BoldEvidenceSource ?? PdfLineTypography.None,
+            typed.Select(t => t.FontName).FirstOrDefault(n => n.Length > 0) ?? "");
+    }
+
     private static PdfLineBlockAnnotation? LeastRecurring(IReadOnlyList<PdfLineBlockAnnotation> annotations) =>
         annotations.Count == 0 ? null : annotations.MinBy(a => a.SameNormalizedTextPageCount);
 
@@ -339,6 +362,7 @@ internal static class PdfCandidateContextBuilder
             BoldRatio = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.BoldRatio),
             ItalicRatio = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.ItalicRatio),
             FontSize = block.Lines.Count == 0 ? 0 : block.Lines.Average(line => line.FontSize),
+            Typography = TypographyOf(block.Lines),
             LineIds = block.Lines.Select(LineKey).ToArray(),
             PageBand = sourceAnnotations.Length == 0 ? null
                 : sourceAnnotations.Select(a => a.PageBand).Distinct().Count() == 1 ? sourceAnnotations[0].PageBand : "MIXED",

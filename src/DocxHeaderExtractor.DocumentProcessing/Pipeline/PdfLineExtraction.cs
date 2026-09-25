@@ -31,6 +31,90 @@ internal sealed record PdfLine(
         get => _projection ?? PdfSourceTextProjection.Identity(Text);
         init => _projection = value;
     }
+
+    /// <summary>
+    /// What the glyphs say about type, each fact with its origin, whichever version fed
+    /// <see cref="FontSize"/> and <see cref="BoldRatio"/>. Null on a line built from a string.
+    /// </summary>
+    public PdfLineTypography? Typography { get; init; }
+}
+
+/// <summary>
+/// Which typography facts a PDF line reports. Only the facts differ between versions: glyph geometry -
+/// line membership, word gaps, segmentation - is the same under both, so the text and the atom universe
+/// of a PDF do not depend on this choice.
+/// </summary>
+internal enum PdfSourceFactsVersion
+{
+    /// <summary>
+    /// PDF_SOURCE_FACTS_V1: size is the Tf operand (<c>Letter.FontSize</c>), weight only the font's
+    /// declared flag (<c>FontDetails.IsBold</c>). Every source universe and request frozen before
+    /// PDF_SOURCE_FACTS_V2 was built with it, and replays of them must keep using it.
+    /// </summary>
+    V1_NominalFontSize,
+
+    /// <summary>
+    /// PDF_SOURCE_FACTS_V2: size is the glyph's effective point size (<c>Letter.PointSize</c> - the Tf
+    /// operand scaled by the text matrix), weight the declared flag or, where the font declares none, the
+    /// style its name states. A producer that sets type as Tf 1 and scales by Tm reports every glyph at
+    /// size 1 under V1; V2 reads the size it is drawn at.
+    /// </summary>
+    V2_EffectivePointSize,
+}
+
+internal static class PdfSourceFactsVersions
+{
+    /// <summary>The version production builds with.</summary>
+    public const PdfSourceFactsVersion Current = PdfSourceFactsVersion.V2_EffectivePointSize;
+
+    public static string Id(PdfSourceFactsVersion version) => version switch
+    {
+        PdfSourceFactsVersion.V1_NominalFontSize => "PDF_SOURCE_FACTS_V1",
+        PdfSourceFactsVersion.V2_EffectivePointSize => "PDF_SOURCE_FACTS_V2",
+        _ => throw new ArgumentOutOfRangeException(nameof(version)),
+    };
+}
+
+/// <summary>
+/// A line's typography with the origin of each fact, so an audit can tell a size read from the text
+/// matrix from one read from the font operator, and a weight the font declares from one its name states.
+/// Ratios are over the line's characters, the same weighting <see cref="PdfLine.BoldRatio"/> uses.
+/// </summary>
+internal sealed record PdfLineTypography(
+    PdfSourceFactsVersion Version,
+    double NominalFontSize,
+    double EffectivePointSize,
+    double FontBoldFlagRatio,
+    double FontNameBoldRatio,
+    double DerivedBoldRatio,
+    string BoldEvidenceSource,
+    string FontName)
+{
+    public const string FromFontDetails = "FONT_DETAILS";
+    public const string FromFontName = "FONT_NAME";
+    public const string FromBoth = "FONT_DETAILS+FONT_NAME";
+    public const string None = "NONE";
+
+    /// <summary>
+    /// Whether a font's name states a bold style: a weight word in the style part of a PostScript name
+    /// ("Times-Bold", "Arial,BoldItalic", "SegoeUI-Semibold", "ArialBoldMT"). A generic fallback for fonts
+    /// that declare no weight - the standard 14 fonts carry no descriptor at all.
+    /// </summary>
+    public static bool NameStatesBold(string? fontName)
+    {
+        if (string.IsNullOrWhiteSpace(fontName)) return false;
+        var name = fontName;
+        var plus = name.IndexOf('+');
+        if (plus >= 0) name = name[(plus + 1)..];
+        name = name.ToLowerInvariant();
+        if (name.Contains("bold", StringComparison.Ordinal)) return true;
+        var styleStart = name.IndexOfAny(['-', ',']);
+        if (styleStart < 0) return false;
+        var style = name[(styleStart + 1)..];
+        return style.Contains("black", StringComparison.Ordinal) ||
+               style.Contains("heavy", StringComparison.Ordinal) ||
+               style.Contains("demi", StringComparison.Ordinal);
+    }
 }
 
 /// <summary>How glyphs are gathered into a line.</summary>
@@ -188,8 +272,17 @@ internal sealed class PdfVisualLineBucket
 
 internal static class PdfLineExtraction
 {
+    /// <param name="facts">
+    /// Which typography facts the lines report. It changes <see cref="PdfLine.FontSize"/>,
+    /// <see cref="PdfLine.BoldRatio"/> and <see cref="PdfLine.LeadingBoldPrefix"/> only: the grouping
+    /// below measures glyphs by their nominal size under every version, so text and geometry are fixed.
+    /// Like <paramref name="grouping"/>, the default is what every frozen artifact was built with; the
+    /// production builders pass <see cref="PdfSourceFactsVersions.Current"/>.
+    /// </param>
     public static IReadOnlyList<PdfLine> ExtractLines(
-        PdfDocument doc, PdfLineGrouping grouping = PdfLineGrouping.MidpointV1)
+        PdfDocument doc,
+        PdfLineGrouping grouping = PdfLineGrouping.MidpointV1,
+        PdfSourceFactsVersion facts = PdfSourceFactsVersion.V1_NominalFontSize)
     {
         var lines = new List<PdfLine>();
         foreach (var page in doc.GetPages())
@@ -255,6 +348,8 @@ internal static class PdfLineExtraction
                 var verbatimLength = 0;
                 var glyphOrdinal = 0;
                 var boldFlags = new List<bool>();
+                var fontBoldFlags = new List<bool>();
+                var nameBoldFlags = new List<bool>();
                 var italicFlags = new List<bool>();
                 var fontNames = new List<string>();
                 var fillColors = new List<string>();
@@ -269,6 +364,8 @@ internal static class PdfLineExtraction
                             rawLength += 1;
                             pieces.Add(" ");
                             boldFlags.Add(boldFlags.Count > 0 && boldFlags[^1]);
+                            fontBoldFlags.Add(fontBoldFlags.Count > 0 && fontBoldFlags[^1]);
+                            nameBoldFlags.Add(nameBoldFlags.Count > 0 && nameBoldFlags[^1]);
                             italicFlags.Add(italicFlags.Count > 0 && italicFlags[^1]);
                             fontNames.Add(fontNames.Count > 0 ? fontNames[^1] : "");
                             fillColors.Add(fillColors.Count > 0 ? fillColors[^1] : "");
@@ -292,9 +389,13 @@ internal static class PdfLineExtraction
                     matchPieces.Add(letter.Value);
                     var fontName = NormalizeFontName(letter.FontName ?? letter.FontDetails?.Name ?? "");
                     var fillColor = ColorKey(letter.FillColor ?? letter.Color);
+                    var declaredBold = letter.FontDetails?.IsBold ?? false;
+                    var namedBold = PdfLineTypography.NameStatesBold(letter.FontName ?? letter.FontDetails?.Name);
                     foreach (var _ in letter.Value)
                     {
-                        boldFlags.Add(letter.FontDetails?.IsBold ?? false);
+                        boldFlags.Add(declaredBold);
+                        fontBoldFlags.Add(declaredBold);
+                        nameBoldFlags.Add(namedBold);
                         italicFlags.Add(letter.FontDetails?.IsItalic ?? false);
                         fontNames.Add(fontName);
                         fillColors.Add(fillColor);
@@ -308,7 +409,20 @@ internal static class PdfLineExtraction
                 var canonicalMatch = PdfTextUtilities.CanonicalForMatch(matchText);
                 if (text.Length == 0) continue;
 
-                var boldRatio = boldFlags.Count == 0 ? 0.0 : boldFlags.Count(b => b) / (double)boldFlags.Count;
+                var derivedFlags = fontBoldFlags.Zip(nameBoldFlags, (declared, named) => declared || named).ToList();
+                var typography = new PdfLineTypography(
+                    facts,
+                    ordered.Average(l => l.FontSize),
+                    ordered.Average(l => l.PointSize),
+                    Ratio(fontBoldFlags),
+                    Ratio(nameBoldFlags),
+                    Ratio(derivedFlags),
+                    BoldEvidenceSource(fontBoldFlags, nameBoldFlags),
+                    Dominant(fontNames));
+                var effective = facts == PdfSourceFactsVersion.V2_EffectivePointSize;
+                if (effective) boldFlags = derivedFlags;
+
+                var boldRatio = Ratio(boldFlags);
                 var italicRatio = italicFlags.Count == 0 ? 0.0 : italicFlags.Count(b => b) / (double)italicFlags.Count;
                 var leadingBoldLen = 0;
                 while (leadingBoldLen < boldFlags.Count && boldFlags[leadingBoldLen]) leadingBoldLen++;
@@ -319,7 +433,7 @@ internal static class PdfLineExtraction
                 lines.Add(new PdfLine(
                     page.Number,
                     ordered.Average(MidY),
-                    ordered.Average(l => l.FontSize),
+                    effective ? typography.EffectivePointSize : typography.NominalFontSize,
                     text,
                     boldRatio,
                     leadingBoldPrefix,
@@ -335,6 +449,7 @@ internal static class PdfLineExtraction
                 {
                     Projection = new PdfSourceTextProjection(
                         raw, string.Concat(matchPieces), spanMap, PdfSourceTextProjection.CurrentVersion),
+                    Typography = typography,
                 });
             }
         }
@@ -384,6 +499,20 @@ internal static class PdfLineExtraction
         }
 
         return segments;
+    }
+
+    private static double Ratio(IReadOnlyList<bool> flags) =>
+        flags.Count == 0 ? 0.0 : flags.Count(b => b) / (double)flags.Count;
+
+    /// <summary>Which evidence made the line's bold characters bold.</summary>
+    private static string BoldEvidenceSource(IReadOnlyList<bool> declared, IReadOnlyList<bool> named)
+    {
+        var fromDetails = declared.Any(b => b);
+        var fromNameOnly = named.Where((b, i) => b && !declared[i]).Any();
+        return fromDetails && fromNameOnly ? PdfLineTypography.FromBoth
+            : fromDetails ? PdfLineTypography.FromFontDetails
+            : fromNameOnly ? PdfLineTypography.FromFontName
+            : PdfLineTypography.None;
     }
 
     private static double MidY(Letter l) => (l.BoundingBox.Bottom + l.BoundingBox.Top) / 2.0;

@@ -100,10 +100,11 @@ public sealed partial class ModelVisibleAttentionBoundaryTests
             Assert.DoesNotMatch(Forbidden(), request.SystemPrompt);
         }
 
-        // Legacy occurrence profile (the default): every occurrence is owned by exactly one request.
+        // Legacy occurrence profile (the default): every occurrence of the universe production built - under the
+        // current source facts - is owned by exactly one request.
         var owned = pdf.SelectMany(r => OwnedAliases(r.UserMessage)).ToArray();
         Assert.Equal(owned.Length, owned.Distinct(StringComparer.Ordinal).Count());
-        Assert.Equal(PdfCanonicalSourceUniverseBuilder.Build(TestRepository.Path(Pdf)).Evidence.Count, owned.Length);
+        Assert.Equal(PdfCanonicalSourceUniverseBuilder.Build(TestRepository.Path(Pdf), PdfSourceFactsVersions.Current).Evidence.Count, owned.Length);
 
         // Structured atom profile: every atom is owned by exactly one request, and no label either.
         using var structured = new RequestCapturingClassifier();
@@ -112,7 +113,7 @@ public sealed partial class ModelVisibleAttentionBoundaryTests
         Assert.All(structured.Requests, r => Assert.DoesNotMatch(Forbidden(), r.UserMessage));
         var atoms = structured.Requests.SelectMany(r => OwnedAliases(r.UserMessage)).ToArray();
         Assert.Equal(atoms.Length, atoms.Distinct(StringComparer.Ordinal).Count());
-        Assert.Equal(PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Pdf)).Atoms.Count, atoms.Length);
+        Assert.Equal(PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Pdf), PdfSourceFactsVersions.Current).Atoms.Count, atoms.Length);
     }
 
     /// <summary>

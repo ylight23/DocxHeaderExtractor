@@ -182,16 +182,35 @@ public sealed partial class GenericPipelineHardcodeAuditTests
     /// <summary>
     /// The V2 contract, frozen once the audit passed: the prompts it sends and the exact request bytes
     /// it composes for one structured PDF and one DOCX. From here a change to anything the model sees
-    /// is a new request version with its own freeze, never an edit that moves this one.
+    /// is a new request version with its own freeze, never an edit that moves this one. It was frozen
+    /// under PDF_SOURCE_FACTS_V1, and replays under it.
     /// </summary>
     [Fact]
-    public async Task Freeze_the_v2_model_visible_contract()
+    public Task Freeze_the_v2_model_visible_contract() =>
+        FreezeContract("MODEL_VISIBLE_CONTRACT_V2.freeze.json", PdfSourceFactsVersion.V1_NominalFontSize, extra: null);
+
+    /// <summary>
+    /// The same request version over PDF_SOURCE_FACTS_V2, production's current source facts: the PDF
+    /// evidence now carries the raw typography behind Bold and RelativeFontSize. A freeze of its own, so the
+    /// V1-facts contract above stays reproducible.
+    /// </summary>
+    [Fact]
+    public Task Freeze_the_v2_model_visible_contract_over_pdf_source_facts_v2() =>
+        FreezeContract("MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V2.freeze.json", PdfSourceFactsVersion.V2_EffectivePointSize,
+            extra: new
+            {
+                pdfSourceFacts = PdfSourceFactsVersions.Id(PdfSourceFactsVersion.V2_EffectivePointSize),
+                supersedesForProduction = "MODEL_VISIBLE_CONTRACT_V2.freeze.json (PDF_SOURCE_FACTS_V1), kept for replay",
+                change = "PDF style facts add Typography { sourceFacts, effectivePointSize, fontName, fontBoldFlag, derivedBold, boldEvidenceSource }; Bold and RelativeFontSize are computed from the effective point size and the derived weight. DOCX requests are unchanged",
+            });
+
+    private static async Task FreezeContract(string name, PdfSourceFactsVersion facts, object? extra)
     {
         const string pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
         const string docx = "bench/01-style-chuan.docx";
         using var pdfCapture = new RequestCapturingClassifier();
         await CanonicalSemanticPdfAuthorityAdapter.RunAsync(TestRepository.Path(pdf), pdfCapture, CancellationToken.None,
-            profile: PdfSemanticAuthorityProfile.StructuredSourceParts);
+            profile: PdfSemanticAuthorityProfile.StructuredSourceParts, sourceFacts: facts);
         var source = new OpenXmlDocumentSource().Read(TestRepository.Path(docx));
         var state = DocxPolicyStateBuilder.Build(source,
             NumberingStyleFeatures.FromSourceDocument(source),
@@ -204,7 +223,7 @@ public sealed partial class GenericPipelineHardcodeAuditTests
         static string Plan(IEnumerable<CapturedRequest> requests) => CanonicalSemanticRequestComposer.Hash(string.Join(
             "\u0000", requests.Select(r => CanonicalSemanticRequestComposer.Hash(r.UserMessage))));
 
-        FreezeArtifact.AssertJson(Dir, "MODEL_VISIBLE_CONTRACT_V2.freeze.json", new
+        var contract = new
         {
             artifactKind = "a99_model_visible_contract_freeze",
             requestVersion = SemanticRequestVersions.ProductionDefault.ToString(),
@@ -214,7 +233,7 @@ public sealed partial class GenericPipelineHardcodeAuditTests
             structuredPdf = new
             {
                 path = pdf,
-                modelVisibleEvidenceSha256 = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf)).ModelVisibleEvidenceHashV2,
+                modelVisibleEvidenceSha256 = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf), facts).ModelVisibleEvidenceHashV2,
                 requests = pdfCapture.Requests.Count,
                 providerModelInputPlanSha256 = Plan(pdfCapture.Requests),
             },
@@ -224,7 +243,9 @@ public sealed partial class GenericPipelineHardcodeAuditTests
                 requests = docxCapture.Requests.Count,
                 providerModelInputPlanSha256 = Plan(docxCapture.Requests),
             },
-        });
+        };
+        if (extra is null) FreezeArtifact.AssertJson(Dir, name, contract);
+        else FreezeArtifact.AssertJson(Dir, name, new { contract, sourceFacts = extra });
     }
 
     private sealed record Scan(

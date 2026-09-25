@@ -32,9 +32,14 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         PdfSemanticAuthorityProfile? profile = null,
         ISemanticEvidencePackingPolicy? packingPolicy = null,
         IReadOnlySet<string>? selectedPackIds = null,
-        bool runPlacement = true)
+        bool runPlacement = true,
+        PdfSourceFactsVersion? sourceFacts = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
+
+        // Production reads the current typography facts. A replay of a request frozen under an earlier
+        // version names that version; nothing here infers it from the document.
+        var facts = sourceFacts ?? PdfSourceFactsVersions.Current;
 
         // No document-id, filename, or Gold-derived branching here: the profile is an explicit
         // caller-supplied value, and ordinary production traffic never supplies one, which is what
@@ -59,8 +64,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         IPdfSemanticSourceAuthority universe = effectiveProfile.SourceAuthorityId switch
         {
             PdfSemanticAuthorityProfile.StructuredAtomSourceAuthority =>
-                PdfStructuredSourceAuthorityBuilder.Build(pdfPath),
-            _ => PdfCanonicalSourceUniverseBuilder.Build(pdfPath),
+                PdfStructuredSourceAuthorityBuilder.Build(pdfPath, facts),
+            _ => PdfCanonicalSourceUniverseBuilder.Build(pdfPath, facts),
         };
         experimentGate?.EnsureLiveSourceUniverse(universe.SourceUniverseSha256);
         experimentGate?.EnsureLiveSemanticContract();

@@ -64,7 +64,7 @@ public sealed class PdfAuthorityProfileRoutingTests
         using var recording = new RequestCapturingClassifier();
         await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
             path, recording, CancellationToken.None, HistoricalRequest.Baseline,
-            profile: PdfSemanticAuthorityProfile.StructuredSourceParts);
+            profile: PdfSemanticAuthorityProfile.StructuredSourceParts, sourceFacts: PdfSourceFactsVersion.V1_NominalFontSize);
 
         Assert.NotEmpty(recording.Requests);
         Assert.All(recording.Requests, request =>
@@ -129,7 +129,7 @@ public sealed class PdfAuthorityProfileRoutingTests
         using var recording = new RequestCapturingClassifier();
         await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
             path, recording, CancellationToken.None, HistoricalRequest.Baseline,
-            profile: PdfSemanticAuthorityProfile.StructuredSourceParts);
+            profile: PdfSemanticAuthorityProfile.StructuredSourceParts, sourceFacts: PdfSourceFactsVersion.V1_NominalFontSize);
         return recording.Requests;
     }
 
@@ -236,7 +236,7 @@ public sealed class PdfAuthorityProfileRoutingTests
             profile: PdfSemanticAuthorityProfile.StructuredSourceParts,
             packingPolicy: policy,
             selectedPackIds: targetPackIds,
-            runPlacement: false);
+            runPlacement: false, sourceFacts: PdfSourceFactsVersion.V1_NominalFontSize);
 
         Assert.Equal(3, recording.Requests.Count);
         Assert.Equal(new[] { 119, 57, 54 }, recording.Requests.Select(request => request.ExpectedItemCount));

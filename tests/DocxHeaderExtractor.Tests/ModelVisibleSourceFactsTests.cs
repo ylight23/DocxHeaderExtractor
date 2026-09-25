@@ -33,7 +33,14 @@ public sealed partial class ModelVisibleSourceFactsTests
     private static readonly string[] PdfLocationKeys =
         ["page", "pageBand", "sameNormalizedTextPageCount", "sameNormalizedTextFirstPage", "sameNormalizedTextLastPage"];
     private static readonly string[] DocxStyleKeys = ["StyleId", "StyleName", "OutlineLevel", "Bold"];
-    private static readonly string[] PdfStyleKeys = ["Bold", "Italic", "RelativeFontSize", "LineCount"];
+    private static readonly string[] PdfStyleKeys = ["Bold", "Italic", "RelativeFontSize", "LineCount", "Typography"];
+
+    /// <summary>
+    /// PDF_SOURCE_FACTS_V2's raw typography: what the glyphs report and where each fact came from - a size in
+    /// points, a font name, two weights with their origin. None of it names a heading or a level.
+    /// </summary>
+    private static readonly string[] PdfTypographyKeys =
+        ["sourceFacts", "effectivePointSize", "fontName", "fontBoldFlag", "derivedBold", "boldEvidenceSource"];
     private static readonly string[] MarginKeys = ["alias", "block", "text", "owned"];
 
     [Fact]
@@ -77,6 +84,13 @@ public sealed partial class ModelVisibleSourceFactsTests
                 if (item.TryGetProperty("location", out var location))
                     Assert.All(location.EnumerateObject(), p => Assert.Contains(p.Name, locationKeys));
                 Assert.All(item.GetProperty("style").EnumerateObject(), p => Assert.Contains(p.Name, styleKeys));
+                if (item.GetProperty("style").TryGetProperty("Typography", out var typography))
+                {
+                    Assert.All(typography.EnumerateObject(), p => Assert.Contains(p.Name, PdfTypographyKeys));
+                    Assert.Equal(JsonValueKind.Number, typography.GetProperty("effectivePointSize").ValueKind);
+                    Assert.Contains(typography.GetProperty("boldEvidenceSource").GetString(),
+                        new[] { "FONT_DETAILS", "FONT_NAME", "FONT_DETAILS+FONT_NAME", "NONE" });
+                }
                 Assert.All(item.GetProperty("markers").EnumerateArray(), m => Assert.Matches(MarkerFact(), m.GetString()!));
             }
         }

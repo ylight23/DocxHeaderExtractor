@@ -231,7 +231,8 @@ public sealed class PdfExperimentArmPacketTests
     {
         var path = Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar));
         using var capture = new RequestCapturingClassifier();
-        await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None, HistoricalRequest.Of(experiment));
+        await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None, HistoricalRequest.Of(experiment),
+            sourceFacts: PdfSourceFactsVersion.V1_NominalFontSize);
         return capture.Requests;
     }
 

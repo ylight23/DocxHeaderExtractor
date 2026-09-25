@@ -48,14 +48,19 @@ internal sealed record PdfCanonicalSourceUniverse(
 
 internal static class PdfCanonicalSourceUniverseBuilder
 {
-    public static PdfCanonicalSourceUniverse Build(string pdfPath)
+    /// <param name="facts">
+    /// Which typography facts the universe carries. The default is the version every frozen universe was
+    /// built with; <see cref="CanonicalSemanticPdfAuthorityAdapter"/> passes the production version.
+    /// </param>
+    public static PdfCanonicalSourceUniverse Build(
+        string pdfPath, PdfSourceFactsVersion facts = PdfSourceFactsVersion.V1_NominalFontSize)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
         IReadOnlyList<PdfLine> lines;
         using (var document = PdfDocument.Open(pdfPath))
         {
-            lines = PdfLineExtraction.ExtractLines(document);
+            lines = PdfLineExtraction.ExtractLines(document, facts: facts);
         }
 
         return Build(pdfPath, lines);
@@ -126,7 +131,7 @@ internal static class PdfCanonicalSourceUniverseBuilder
             InContentControl: false,
             InTableOfContents: source.StructuralScope == "table_of_contents",
             ["pdf-parser-source", $"scope:{source.StructuralScope}", $"page:{source.Page}"],
-            new { Bold = bold, Italic = italic, RelativeFontSize = relativeFontSize, LineCount = source.LineCount },
+            StyleFactsOf(source, bold, italic, relativeFontSize),
             new { },
             [],
             CanonicalSemanticEngine.MarkerFactsOf(source),
@@ -147,6 +152,35 @@ internal static class PdfCanonicalSourceUniverseBuilder
                 sameNormalizedTextPageCount = source.SameNormalizedTextPageCount,
                 sameNormalizedTextFirstPage = source.SameNormalizedTextFirstPage,
                 sameNormalizedTextLastPage = source.SameNormalizedTextLastPage,
+            },
+        };
+    }
+
+    /// <summary>
+    /// The style an occurrence declares. Under PDF_SOURCE_FACTS_V1 exactly the shape every frozen request
+    /// carried; under V2 the same judgements plus the raw typography they rest on and where each came from -
+    /// facts to weigh, not a decision: nothing here says what a size or a weight means.
+    /// </summary>
+    private static object StyleFactsOf(PdfSourceFacts source, bool bold, bool italic, string relativeFontSize)
+    {
+        var typography = source.Typography;
+        if (typography is null || typography.Version == PdfSourceFactsVersion.V1_NominalFontSize)
+            return new { Bold = bold, Italic = italic, RelativeFontSize = relativeFontSize, LineCount = source.LineCount };
+
+        return new
+        {
+            Bold = bold,
+            Italic = italic,
+            RelativeFontSize = relativeFontSize,
+            LineCount = source.LineCount,
+            Typography = new
+            {
+                sourceFacts = PdfSourceFactsVersions.Id(typography.Version),
+                effectivePointSize = Math.Round(typography.EffectivePointSize, 1),
+                fontName = typography.FontName,
+                fontBoldFlag = typography.FontBoldFlagRatio >= 0.5,
+                derivedBold = typography.DerivedBoldRatio >= 0.5,
+                boldEvidenceSource = typography.BoldEvidenceSource,
             },
         };
     }
