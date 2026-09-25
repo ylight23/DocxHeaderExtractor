@@ -1,0 +1,64 @@
+{
+  "artifactKind": "a99_gold_authority_lineage",
+  "authorityId": "SRC-044",
+  "modelProviderVlmCalls": 0,
+  "previousSemanticAuthority": {
+    "source": "original PDF (the same bytes as the current authority)",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf",
+    "sourceSha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b",
+    "total": 254,
+    "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "exactOccurrenceFreeze": false,
+    "occurrenceList": false,
+    "occurrenceIdentities": "UNAVAILABLE",
+    "exactSpans": "UNAVAILABLE",
+    "status": "SUPERSEDED",
+    "role": "provenance_only",
+    "artifact": {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-044.semantic-freeze.v1.json",
+      "sha256": "36c12030ae826ab469a7424a6099e42fc510dcd066584cb1f0321cd0d15dba23"
+    }
+  },
+  "supersededBecause": "the current authority names every occurrence and binds each one exactly to the source, independently of the engine and of the previous count; the previous authority is a total without occurrence identities",
+  "historicalAuthorityDelta": {
+    "HISTORICAL_AUTHORITY_DELTA": -53,
+    "CAUSE": "UNRESOLVED",
+    "meaning": "a difference between two authorities over the same PDF; not evidence that the current Gold misses any occurrence",
+    "followUp": "a historical delta audit only after the Gold and the raw blind score are committed: source-level evidence only, never engine predictions; the previous review's own record names the 8 occurrences its re-audit added (all repeated display titles, which the current Gold contains)",
+    "goldRevisionRule": "a Gold error found later becomes a new Gold revision with its own provenance; the blind score stays scored against the Gold frozen at the reveal"
+  },
+  "currentCanonicalAuthority": {
+    "source": "original PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf",
+    "sourceSha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b",
+    "total": 201,
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "hierarchyEvaluable": false,
+    "membershipDecision": {
+      "decidedBy": "PRECEDENT",
+      "precedents": [
+        "SRC-042 A2, A3, A5, S042_A1 (revised 336c6b6)",
+        "SRC-041",
+        "DOC-0133 P3, P6"
+      ],
+      "newUserDecisions": 0,
+      "ambiguousOccurrences": 0,
+      "authorization": "user, 2026-09-25: run the held-out chain continuously; only a review's ambiguous patterns go to the user before the Gold freeze",
+      "appliedAt": "2026-09-25",
+      "review": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-044.source-review.v1.json",
+        "sha256": "07f52499fab308d315354e3485b16993d8a7a5be38cb16f21d11045feb9c59ae"
+      },
+      "reviewItems": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-044/review-items.json",
+        "sha256": "fbc57bba4d448fc477f5863d93e0ba65fded8821353cfb2f4ce80792be025a86"
+      }
+    },
+    "engineProposalsRead": false,
+    "status": "CURRENT_OCCURRENCE_LEVEL_AUTHORITY"
+  }
+}
