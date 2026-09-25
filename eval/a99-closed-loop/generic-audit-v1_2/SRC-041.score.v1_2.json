@@ -1,0 +1,4758 @@
+{
+  "artifactKind": "a99_generic_audit_engine_comparison",
+  "scorer": "GENERIC_EXACT_SCORER_V1",
+  "documentId": "SRC-041",
+  "role": "DEVELOPMENT (V1.1's held-out test; not a generalization result for V1.2)",
+  "gold": {
+    "path": "eval/a99-closed-loop/gold/SRC-041.gold.json",
+    "sha256": "2eb920d2490c94c955f177aab3b40c3ca9c19c4b316cb6c43369633cafd5f34a",
+    "claims": 280
+  },
+  "proposals": {
+    "v1_1": {
+      "path": "eval/a99-closed-loop/generic-audit-v1_1/SRC-041.proposals.v1_1.json",
+      "sha256": "cc4aee0bb7185aea2ca91a114d18e89ade999a19da15ff7bcb9f541a870b85bf"
+    },
+    "v1_2": {
+      "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-041.proposals.v1_2.json",
+      "sha256": "39c5f05f3b0c8654f43c77348b1ecef431774c03c1a45f2d8024d1dda3cf8390"
+    }
+  },
+  "modelProviderVlmCalls": 0,
+  "v1_1": {
+    "headline": {
+      "goldClaims": 280,
+      "hypothesesListed": 2013,
+      "TRUE": 279,
+      "NEEDS_REVIEW": 371,
+      "unbindable": 0,
+      "truePositives": 264,
+      "falsePositives": 15,
+      "falseNegatives": 16,
+      "truePrecision": 0.9462,
+      "trueRecall": 0.9429,
+      "f1": 0.9445,
+      "needsReviewCaptureOfGold": 0.5,
+      "needsReviewCaptureIncludingPartial": 0.625,
+      "falseOnGold": 2,
+      "partialOnly": 6,
+      "reviewNoiseOutsideGold": 360,
+      "nonGoldReviewTouchingGold": 3,
+      "falsePositivesTouchingGold": 1,
+      "goldMultipartClaims": 15,
+      "exactMultipartMatches": 10,
+      "goldClaimsWithPartialPart": 0,
+      "exactMatchesWithPartialPart": 0,
+      "goldBuckets": {
+        "EXACT_TRUE": 264,
+        "EXACT_NEEDS_REVIEW": 8,
+        "EXACT_FALSE": 2,
+        "PARTIAL_TRUE": 1,
+        "PARTIAL_NEEDS_REVIEW": 2,
+        "PARTIAL_FALSE": 3,
+        "UNPROPOSED": 0
+      }
+    },
+    "axesOnTruePositives": {
+      "compared": 264,
+      "semanticFunctions": {
+        "disagreements": 21,
+        "pairs": {
+          "gold IDENTITY <- engine STRUCTURE": 8,
+          "gold IDENTITY+STRUCTURE <- engine STRUCTURE": 8,
+          "gold STRUCTURE <- engine IDENTITY+STRUCTURE": 4,
+          "gold IDENTITY <- engine IDENTITY+STRUCTURE": 1
+        }
+      },
+      "primaryFunction": {
+        "disagreements": 15,
+        "pairs": {
+          "gold IDENTITY <- engine STRUCTURE": 14,
+          "gold STRUCTURE <- engine IDENTITY": 1
+        }
+      },
+      "scope": {
+        "disagreements": 32,
+        "pairs": {
+          "gold NOTE <- engine SECTION": 15,
+          "gold FINANCIAL_STATEMENT <- engine SECTION": 7,
+          "gold DOCUMENT_PART <- engine SECTION": 4,
+          "gold TOC <- engine SECTION": 3,
+          "gold EMBEDDED_ARTIFACT <- engine SECTION": 1,
+          "gold EMBEDDED_ARTIFACT <- engine TOC": 1,
+          "gold SECTION <- engine TOC": 1
+        }
+      },
+      "occurrenceRoles": {
+        "disagreements": 0,
+        "pairs": {}
+      },
+      "titleRelation": {
+        "disagreements": 0,
+        "pairs": {}
+      },
+      "informationType": {
+        "disagreements": 0,
+        "pairs": {}
+      }
+    }
+  },
+  "v1_2": {
+    "headline": {
+      "goldClaims": 280,
+      "hypothesesListed": 2081,
+      "TRUE": 273,
+      "NEEDS_REVIEW": 220,
+      "unbindable": 0,
+      "truePositives": 270,
+      "falsePositives": 3,
+      "falseNegatives": 10,
+      "truePrecision": 0.989,
+      "trueRecall": 0.9643,
+      "f1": 0.9765,
+      "needsReviewCaptureOfGold": 0.9,
+      "needsReviewCaptureIncludingPartial": 0.9,
+      "falseOnGold": 1,
+      "partialOnly": 0,
+      "reviewNoiseOutsideGold": 211,
+      "nonGoldReviewTouchingGold": 0,
+      "falsePositivesTouchingGold": 0,
+      "goldMultipartClaims": 15,
+      "exactMultipartMatches": 15,
+      "goldClaimsWithPartialPart": 0,
+      "exactMatchesWithPartialPart": 0,
+      "goldBuckets": {
+        "EXACT_TRUE": 270,
+        "EXACT_NEEDS_REVIEW": 9,
+        "EXACT_FALSE": 1,
+        "PARTIAL_TRUE": 0,
+        "PARTIAL_NEEDS_REVIEW": 0,
+        "PARTIAL_FALSE": 0,
+        "UNPROPOSED": 0
+      }
+    },
+    "axesOnTruePositives": {
+      "compared": 270,
+      "semanticFunctions": {
+        "disagreements": 26,
+        "pairs": {
+          "gold IDENTITY <- engine STRUCTURE": 14,
+          "gold IDENTITY+STRUCTURE <- engine STRUCTURE": 9,
+          "gold STRUCTURE <- engine IDENTITY+STRUCTURE": 3
+        }
+      },
+      "primaryFunction": {
+        "disagreements": 21,
+        "pairs": {
+          "gold IDENTITY <- engine STRUCTURE": 21
+        }
+      },
+      "scope": {
+        "disagreements": 37,
+        "pairs": {
+          "gold NOTE <- engine SECTION": 15,
+          "gold FINANCIAL_STATEMENT <- engine SECTION": 11,
+          "gold DOCUMENT_PART <- engine SECTION": 4,
+          "gold TOC <- engine SECTION": 4,
+          "gold EMBEDDED_ARTIFACT <- engine SECTION": 3
+        }
+      },
+      "occurrenceRoles": {
+        "disagreements": 0,
+        "pairs": {}
+      },
+      "titleRelation": {
+        "disagreements": 0,
+        "pairs": {}
+      },
+      "informationType": {
+        "disagreements": 0,
+        "pairs": {}
+      }
+    }
+  },
+  "changedClaims": [
+    {
+      "goldText": "Management’s Discussion & Analysis and Financial Statements",
+      "v1_1": "PARTIAL_NEEDS_REVIEW",
+      "v1_2": "EXACT_NEEDS_REVIEW",
+      "regression": false,
+      "v1_2Engine": [
+        {
+          "Text": "Management’s Discussion & Analysis and Financial Statements",
+          "state": "NEEDS_REVIEW",
+          "evidence": [
+            "set apart strongly from the body text",
+            "one label over 3 source occurrences",
+            "a peer or stronger label follows directly: opens nothing"
+          ]
+        }
+      ]
+    },
+    {
+      "goldText": "Supplementary Information",
+      "v1_1": "PARTIAL_NEEDS_REVIEW",
+      "v1_2": "EXACT_TRUE",
+      "regression": false,
+      "v1_2Engine": [
+        {
+          "Text": "Supplementary Information",
+          "state": "TRUE",
+          "evidence": [
+            "set apart strongly from the body text"
+          ]
+        }
+      ]
+    },
+    {
+      "goldText": "IndependentAuditor's Report",
+      "v1_1": "EXACT_FALSE",
+      "v1_2": "EXACT_TRUE",
+      "regression": false,
+      "v1_2Engine": [
+        {
+          "Text": "IndependentAuditor's Report",
+          "state": "TRUE",
+          "evidence": [
+            "set apart strongly from the body text"
+          ]
+        }
+      ]
+    },
+    {
+      "goldText": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER",
+      "v1_1": "PARTIAL_TRUE",
+      "v1_2": "EXACT_TRUE",
+      "regression": false,
+      "v1_2Engine": [
+        {
+          "Text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER",
+          "state": "TRUE",
+          "evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences"
+          ]
+        }
+      ]
+    },
+    {
+      "goldText": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
+      "v1_1": "PARTIAL_FALSE",
+      "v1_2": "EXACT_TRUE",
+      "regression": false,
+      "v1_2Engine": [
+        {
+          "Text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
+          "state": "TRUE",
+          "evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences"
+          ]
+        }
+      ]
+    },
+    {
+      "goldText": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
+      "v1_1": "PARTIAL_FALSE",
+      "v1_2": "EXACT_TRUE",
+      "regression": false,
+      "v1_2Engine": [
+        {
+          "Text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
+          "state": "TRUE",
+          "evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences"
+          ]
+        }
+      ]
+    },
+    {
+      "goldText": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
+      "v1_1": "PARTIAL_FALSE",
+      "v1_2": "EXACT_TRUE",
+      "regression": false,
+      "v1_2Engine": [
+        {
+          "Text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
+          "state": "TRUE",
+          "evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences"
+          ]
+        }
+      ]
+    }
+  ],
+  "v1_2Residuals": {
+    "goldNotEngineTrue": [
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L0002:S0:0-34|L0003:S0:0-3|L0004:S0:0-20",
+        "goldText": "Management’s Discussion & Analysis and Financial Statements",
+        "engine": [
+          {
+            "Index": 1,
+            "Text": "Management’s Discussion & Analysis and Financial Statements",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 3 source occurrences",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "L0002:S0:0-34|L0003:S0:0-3|L0004:S0:0-20",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "L0006:S0:0-36",
+        "goldText": "Management’s Discussion and Analysis",
+        "engine": [
+          {
+            "Index": 3,
+            "Text": "Management’s Discussion and Analysis",
+            "state": "FALSE",
+            "Roles": [
+              "PAGE_FURNITURE"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "repeats in the page's top/bottom band across pages, or is a page number there"
+            ],
+            "identity": "L0006:S0:0-36",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L0816:S0:0-56",
+        "goldText": "Adjustments to Net Income to arrive at Allocable Income:",
+        "engine": [
+          {
+            "Index": 288,
+            "Text": "Adjustments to Net Income to arrive at Allocable Income:",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "FIELD_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 13 body line(s) before a peer",
+              "followed by 6 lesser label(s) before a peer",
+              "followed by 21 table/figure item(s) before a peer",
+              "colon-ended label"
+            ],
+            "identity": "L0816:S0:0-56",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1822:S0:0-26",
+        "goldText": "Financial Risk Committees:",
+        "engine": [
+          {
+            "Index": 670,
+            "Text": "Financial Risk Committees:",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "FIELD_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 23 body line(s) before a peer",
+              "colon-ended label"
+            ],
+            "identity": "L1822:S0:0-26",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1848:S0:0-28",
+        "goldText": "Operational Risk Committees:",
+        "engine": [
+          {
+            "Index": 676,
+            "Text": "Operational Risk Committees:",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "FIELD_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 28 body line(s) before a peer",
+              "followed by 5 lesser label(s) before a peer",
+              "followed by 1 table/figure item(s) before a peer",
+              "colon-ended label"
+            ],
+            "identity": "L1848:S0:0-28",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2514:S0:0-29",
+        "goldText": "Loans to borrowing countries:",
+        "engine": [
+          {
+            "Index": 902,
+            "Text": "Loans to borrowing countries:",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "FIELD_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 2 body line(s) before a peer",
+              "colon-ended label"
+            ],
+            "identity": "L2514:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2517:S0:0-22",
+        "goldText": "LiquidAsset Portfolio:",
+        "engine": [
+          {
+            "Index": 903,
+            "Text": "LiquidAsset Portfolio:",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "FIELD_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 9 body line(s) before a peer",
+              "colon-ended label"
+            ],
+            "identity": "L2517:S0:0-22",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3185:S0:0-27",
+        "goldText": "IndependentAuditor's Report",
+        "engine": [
+          {
+            "Index": 1152,
+            "Text": "IndependentAuditor's Report",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "L3185:S0:0-27",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4248:S0:0-31",
+        "goldText": "Evaluated Accounting Standards:",
+        "engine": [
+          {
+            "Index": 1367,
+            "Text": "Evaluated Accounting Standards:",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "FIELD_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 15 body line(s) before a peer",
+              "colon-ended label"
+            ],
+            "identity": "L4248:S0:0-31",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4264:S0:0-38",
+        "goldText": "Accounting Standards Under Evaluation:",
+        "engine": [
+          {
+            "Index": 1368,
+            "Text": "Accounting Standards Under Evaluation:",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "FIELD_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 12 body line(s) before a peer",
+              "followed by 4 lesser label(s) before a peer",
+              "colon-ended label"
+            ],
+            "identity": "L4264:S0:0-38",
+            "UnboundReason": null
+          }
+        ]
+      }
+    ],
+    "nonGoldTrue": [
+      {
+        "hypothesis": {
+          "Index": 68,
+          "Text": "FY21 FY22 FY23 FY24 FY25",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 25 table/figure item(s) before a peer"
+          ],
+          "identity": "L0362:S0:0-24",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1120,
+          "Text": "Eligible Borrowing Member Countries by Region as ofJune 30, 2025",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 19 body line(s) before a peer",
+            "followed by 7 lesser label(s) before a peer",
+            "followed by 14 table/figure item(s) before a peer"
+          ],
+          "identity": "L3139:S0:0-64",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2014,
+          "Text": "K8.1",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "begins its page: an artifact boundary"
+          ],
+          "identity": "L5818:S0:0-4",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      }
+    ],
+    "nonGoldNeedsReview": [
+      {
+        "hypothesis": {
+          "Index": 0,
+          "Text": "International Bank forReconstruction and Development",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0000:S0:0-40|L0001:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2,
+          "Text": "June 30, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 38 table/figure item(s) before a peer",
+            "date shape",
+            "stands alone over its own prose"
+          ],
+          "identity": "L0005:S0:0-13",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 37,
+          "Text": "Table 1: Selected Financial Data",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0299:S0:0-32",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 38,
+          "Text": "In millions ofU.S. dollars, exceptratios which are in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0300:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 39,
+          "Text": "As ofand forthe fiscalyears endedJune 30",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L0301:S0:0-40",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 40,
+          "Text": "Lending Highlights Loans and Guarantees",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "one label over 2 source occurrences",
+            "the label is the lead of a line that continues as body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 38 table/figure item(s) before a peer"
+          ],
+          "identity": "L0303:S0:0-18|L0304:S0:0-20",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 43,
+          "Text": "Non-GAAP Measures:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 30 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L0317:S0:0-18",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 61,
+          "Text": "In millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0354:S0:0-26",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 62,
+          "Text": "Allocable income Net Income/Loss",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0355:S0:0-16|L0356:S0:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 63,
+          "Text": "Unrealized gains/losseson non-trading portfolios",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0357:S0:0-48",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 70,
+          "Text": "In billions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 25 table/figure item(s) before a peer"
+          ],
+          "identity": "L0368:S0:0-26",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 76,
+          "Text": "Gross",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0379:S0:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 86,
+          "Text": "Ratio in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer"
+          ],
+          "identity": "L0414:S0:0-20",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 125,
+          "Text": "Table 4 below provides an interest rate and volume analysis of IBRD's interest revenue and borrowing",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 2 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0500:S0:0-100",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 126,
+          "Text": "Table 4: Rate and Volume Analysis of Changes in Interest Revenue and Borrowing Expenses",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 17 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0503:S0:0-87",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 134,
+          "Text": "Table 5: Statement ofAllocable Income (non-GAAP Measures)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 32 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0520:S0:0-57",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 151,
+          "Text": "Figure 2: Loan Interest Revenue and Funding Cost (Including Related Derivatives)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 24 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 14 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0545:S0:0-43|L0546:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 154,
+          "Text": "In millions ofU.S. dollars In millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 25 body line(s) before a peer",
+            "followed by 14 table/figure item(s) before a peer"
+          ],
+          "identity": "L0547:S0:0-53",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 167,
+          "Text": "Figure 5: Net Loans Outstanding",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 25 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0589:S1:0-31",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 176,
+          "Text": "Figure 7: Investment Revenue, Net",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0626:S1:0-33",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 181,
+          "Text": "Figure 8: Borrowings (Original Maturities)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0647:S0:0-42",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 185,
+          "Text": "Figure 9: Net Non-Interest Expenses (Reported Basis)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 5 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0670:S0:0-52",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 188,
+          "Text": "Table 6: Net Non-Interest Expenses",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 38 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0680:S0:0-34",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 212,
+          "Text": "Adjustments to arrive at net non-interest expenses - non-GAAP measure",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 13 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 8 table/figure item(s) before a peer"
+          ],
+          "identity": "L0704:S0:0-69",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 226,
+          "Text": "Table 7: Budget Anchor Ratio",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 36 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0723:S0:0-28",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 250,
+          "Text": "Unrealized mark-to-market gains (losses) on non-trading portfolios -",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 table/figure item(s) before a peer"
+          ],
+          "identity": "L0747:S0:0-68",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 261,
+          "Text": "Table 9: Allocable Income and Recommended Allocations",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0788:S0:0-53",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 270,
+          "Text": "Adjustments to Reconcile Net Income to Allocable Income:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 19 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L0792:S0:0-56",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 275,
+          "Text": "Recommended Allocations",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 13 table/figure item(s) before a peer"
+          ],
+          "identity": "L0800:S0:0-23",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 290,
+          "Text": "Table 10: Board of Governors-approved Transfers and Allocations",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 6 lesser label(s) before a peer",
+            "followed by 20 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0825:S0:0-63",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 295,
+          "Text": "Board of Governors-approved Transfers Reported in the Statements of Income a:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 15 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L0828:S0:0-77",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 297,
+          "Text": "Board of Governors-approved Allocations Reported as Reclassifications Within Retained Earnings:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L0833:S0:0-95",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 298,
+          "Text": "(LPF1)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer"
+          ],
+          "identity": "L0836:S0:0-6",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 315,
+          "Text": "Table 11: Retained Earnings Composition",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 11 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0931:S0:0-39",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 323,
+          "Text": "allocations $ 293 $ 35,240 $ 1,290 $ — $ 1,642 $ 1,082 $ 8 $ 828 $ 40,383",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer"
+          ],
+          "identity": "L0947:S0:0-73",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 364,
+          "Text": "Figure 10: Percentage Share of Lending Categories forAnnual Net Commitments",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 22 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1027:S0:0-75",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 372,
+          "Text": "Box 1: Components of Loan spread",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 11 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1071:S0:0-32",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 386,
+          "Text": "Box 2: Loans with Other Financial Terms as ofJune 30, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 30 body line(s) before a peer",
+            "followed by 7 lesser label(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1100:S0:0-58",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 391,
+          "Text": "Special Development Policy Loans (SDPLs)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 6 body line(s) before a peer"
+          ],
+          "identity": "L1118:S0:0-19|L1119:S0:0-20",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 392,
+          "Text": "Loan-Related Derivatives",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 5 body line(s) before a peer"
+          ],
+          "identity": "L1125:S0:0-12|L1126:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 393,
+          "Text": "Loans with IFC",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer"
+          ],
+          "identity": "L1131:S0:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 396,
+          "Text": "Table 15: Country Pricing Group and Maturity Premium (in Basis Points)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 15 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1139:S0:0-70",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 398,
+          "Text": "C",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer"
+          ],
+          "identity": "L1148:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 399,
+          "Text": "D 5-115",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer"
+          ],
+          "identity": "L1150:S0:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 406,
+          "Text": "Table 16: Loan Terms Available During Financial Year Ended June 30, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 8 lesser label(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1158:S0:0-72",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 429,
+          "Text": "Table 17: Loans Outstanding by Interest Rate Structure, Excluding Derivatives",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 6 lesser label(s) before a peer",
+            "followed by 30 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1213:S0:0-77",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 454,
+          "Text": "In millions ofU.S. dollars, exceptratios which are in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 22 table/figure item(s) before a peer"
+          ],
+          "identity": "L1232:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 464,
+          "Text": "Box 3: Types of Guarantees Provided by IBRD",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 30 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1260:S0:0-43",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 466,
+          "Text": "Project-based guarantees",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "one label over 2 source occurrences",
+            "the label is the lead of a line that continues as body text",
+            "followed by 6 body line(s) before a peer"
+          ],
+          "identity": "L1266:S0:0-13|L1267:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 468,
+          "Text": "guarantees",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer"
+          ],
+          "identity": "L1274:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 469,
+          "Text": "Guarantees for enclave operations",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 15 body line(s) before a peer"
+          ],
+          "identity": "L1277:S0:0-14|L1278:S0:0-18",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 471,
+          "Text": "Table 19: Exposure Exchange Agreements",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 29 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1295:S0:0-38",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 497,
+          "Text": "Table 21: Credit Enhancements Received",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1334:S0:0-38",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 524,
+          "Text": "Box 4: Financing Instruments",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 20 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1420:S0:0-28",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 526,
+          "Text": "Table 22: RAMP - Assets and Revenues",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 11 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1445:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 532,
+          "Text": "Table 23: Funds Held in Trust by IBRD",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 23 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1460:S0:0-37",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 545,
+          "Text": "Table 24: Liquid Asset Portfolio by Asset Class",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 15 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1490:S0:0-47",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 546,
+          "Text": "In millions ofU.S. dollars, exceptratios which are in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer"
+          ],
+          "identity": "L1491:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 566,
+          "Text": "Table 26: Effect of Derivatives on Currency Composition ofthe Borrowing Portfolio – June 30, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1561:S0:0-97",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 567,
+          "Text": "In millions ofU.S. dollars, exceptratios which are in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L1562:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 568,
+          "Text": "Borrowings excluding derivatives",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 6 body line(s) before a peer",
+            "followed by 13 table/figure item(s) before a peer"
+          ],
+          "identity": "L1563:S0:0-20|L1564:S1:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 573,
+          "Text": "Table 27 summarizes IBRD’s short-term borrowings, which mainly include discount notes, securities lent",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1578:S0:0-102",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 577,
+          "Text": "Table 27: Short-Term Borrowings",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1589:S0:0-31",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 578,
+          "Text": "In millions ofU.S. dollars, exceptrates which are in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L1590:S0:0-64",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 581,
+          "Text": "Discount notes a",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 8 table/figure item(s) before a peer"
+          ],
+          "identity": "L1592:S0:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 582,
+          "Text": "Securities lent or sold under repurchase agreements b",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 table/figure item(s) before a peer"
+          ],
+          "identity": "L1595:S0:0-53",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 583,
+          "Text": "Other short-term borrowings a",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 7 table/figure item(s) before a peer"
+          ],
+          "identity": "L1598:S0:0-29",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 588,
+          "Text": "Table 28: Funding Operations Indicators",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1611:S0:0-39",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 589,
+          "Text": "In millions ofU.S. dollars, exceptmaturities which are in years",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 table/figure item(s) before a peer"
+          ],
+          "identity": "L1612:S0:0-63",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 593,
+          "Text": "Issuances a",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 10 table/figure item(s) before a peer"
+          ],
+          "identity": "L1614:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 594,
+          "Text": "Maturities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 table/figure item(s) before a peer"
+          ],
+          "identity": "L1618:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 595,
+          "Text": "Called/Repurchased",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 4 table/figure item(s) before a peer"
+          ],
+          "identity": "L1621:S0:0-18",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 598,
+          "Text": "Table 29: Maturity Profile of Medium Long-Term Debt",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 29 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1625:S0:0-51",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 615,
+          "Text": "In millions ofU.S. dollars, exceptratios which are in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 15 table/figure item(s) before a peer"
+          ],
+          "identity": "L1634:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 626,
+          "Text": "Table 31: Breakdown of IBRD Subscribed Capital",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 20 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1663:S0:0-46",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 627,
+          "Text": "In millions ofU.S. dollars, exceptratios which are in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 20 table/figure item(s) before a peer"
+          ],
+          "identity": "L1664:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 642,
+          "Text": "Table 32: Usable Paid-in Capital",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1715:S0:0-32",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 665,
+          "Text": "Figure 12: Management Risk Committee Structure for Financial and Operational Risks",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1813:S0:0-82",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 680,
+          "Text": "Box 5: Summary of IBRD's Specific Risk Categories",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 12 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1865:S0:0-49",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 725,
+          "Text": "Table 34 provides a reconciliation of IBRD’s total equity (Table 2) to the usable equity amounts presented",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1992:S0:0-106",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 738,
+          "Text": "Less - adjustments to retained earnings (Table 11):",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 21 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L1999:S0:0-51",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 742,
+          "Text": "Less - adjustments to accumulated other comprehensive income:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 9 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L2007:S0:0-61",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 746,
+          "Text": "Other adjustments:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 17 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L2011:S0:0-18",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 770,
+          "Text": "Box 6: Treatment of Overdue Payments",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 31 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2159:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 777,
+          "Text": "Box 7: Eligibility Criteria for IBRD's Investments a",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 33 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2252:S0:0-52",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 830,
+          "Text": "Table 36: Non-Commercial Counterparty Credit Risk",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 18 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 12 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2321:S0:0-49",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 843,
+          "Text": "Table 37: Effect of Credit on IBRD Portfolios",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 10 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2390:S0:0-45",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 856,
+          "Text": "Table 38 below where the amount represents the dollar change in fair value corresponding to a one basis",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2425:S0:0-103",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 857,
+          "Text": "Table 38: Effect of Interest Rates on IBRD's Portfolios",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 13 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2427:S0:0-55",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 868,
+          "Text": "Figure 15 depicts the effect of derivatives on the overall sensitivity of borrowing, loan, other ALM and",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 5 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2441:S0:0-104",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 869,
+          "Text": "Figure 15: Sensitivity to Interest Rates",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 32 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2447:S0:0-40",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 871,
+          "Text": "In millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L2449:S0:0-26",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 872,
+          "Text": "As ofJune 30, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 32 table/figure item(s) before a peer"
+          ],
+          "identity": "L2450:S0:0-18",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 910,
+          "Text": "Table 39: Liquidity Levels",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2575:S0:0-26",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 918,
+          "Text": "•",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 20 body line(s) before a peer"
+          ],
+          "identity": "L2626:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 960,
+          "Text": "Table 42 presents the summary of the fair value of financial instruments recorded at fair value on a",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 5 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2773:S0:0-100",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 961,
+          "Text": "Table 42: FairValue Level 3 Summary",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 14 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 21 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2779:S0:0-35",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 994,
+          "Text": "Table 43 and Table 44 provide reconciliations of the components of IBRD’s statements of income (Table",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L3004:S0:0-101",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 995,
+          "Text": "Table 43: Interest Revenue, Net of Borrowings Expenses",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 31 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L3006:S0:0-54",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1016,
+          "Text": "Borrowing Expenses",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 12 table/figure item(s) before a peer"
+          ],
+          "identity": "L3020:S0:0-18",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1021,
+          "Text": "Table 44: Total Revenue on Interest Earning Assets, Net",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 14 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L3025:S0:0-55",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1046,
+          "Text": "Table 33.",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 31 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L3057:S0:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1121,
+          "Text": "Region Countries",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 19 body line(s) before a peer"
+          ],
+          "identity": "L3140:S0:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1123,
+          "Text": "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3158:S0:0-53",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1153,
+          "Text": "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3187:S0:0-53",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1157,
+          "Text": "June 30, 2025 andJune 30, 2024",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 30 table/figure item(s) before a peer"
+          ],
+          "identity": "L3192:S0:0-30",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1158,
+          "Text": "Expressedin millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3193:S0:0-35",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1160,
+          "Text": "Assets",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3195:S0:0-6",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1161,
+          "Text": "Due from banks—Notes C andJ",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 18 table/figure item(s) before a peer"
+          ],
+          "identity": "L3196:S0:0-27",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1165,
+          "Text": "Receivables",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 7 table/figure item(s) before a peer"
+          ],
+          "identity": "L3205:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1166,
+          "Text": "Loans outstanding—Notes D, H andJ",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer"
+          ],
+          "identity": "L3209:S0:0-33",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1167,
+          "Text": "Otherassets",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer"
+          ],
+          "identity": "L3218:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1171,
+          "Text": "Liabilities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3226:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1172,
+          "Text": "Borrowings—Notes EandJ",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 table/figure item(s) before a peer"
+          ],
+          "identity": "L3227:S0:0-22",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1173,
+          "Text": "Securities sold underrepurchase agreements, securities lent under",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3231:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1174,
+          "Text": "securities lending agreements, andpayable forcash collateralreceived—",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 6 table/figure item(s) before a peer"
+          ],
+          "identity": "L3232:S0:0-69",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1177,
+          "Text": "Otherliabilities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 11 table/figure item(s) before a peer"
+          ],
+          "identity": "L3235:S0:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1179,
+          "Text": "Equity",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3241:S0:0-6",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1180,
+          "Text": "Capitalstock—Note B",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 9 table/figure item(s) before a peer"
+          ],
+          "identity": "L3242:S0:0-19",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1181,
+          "Text": "June 30, 2024)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "followed by 9 table/figure item(s) before a peer",
+            "date shape",
+            "stands alone over its own prose"
+          ],
+          "identity": "L3244:S0:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1182,
+          "Text": "Nonnegotiable, noninterest-bearing demand obligations on account of",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 table/figure item(s) before a peer"
+          ],
+          "identity": "L3249:S0:0-67",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1184,
+          "Text": "Receivable and deferred amounts to maintain value ofcurrencyholdings —",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 17 table/figure item(s) before a peer"
+          ],
+          "identity": "L3251:S0:0-70",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1193,
+          "Text": "Expressedin millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 36 table/figure item(s) before a peer"
+          ],
+          "identity": "L3261:S0:0-35",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1195,
+          "Text": "Interestrevenue",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 25 table/figure item(s) before a peer"
+          ],
+          "identity": "L3263:S0:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1198,
+          "Text": "Provision forlosses on loans and otherexposures, release",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 table/figure item(s) before a peer"
+          ],
+          "identity": "L3270:S0:0-56",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1200,
+          "Text": "Non-interestrevenue",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer"
+          ],
+          "identity": "L3272:S0:0-19",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1201,
+          "Text": "Non-interest expenses",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 24 table/figure item(s) before a peer"
+          ],
+          "identity": "L3277:S0:0-21",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1206,
+          "Text": "Unrealizedmark-to-marketgains on Investments-Trading",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 table/figure item(s) before a peer"
+          ],
+          "identity": "L3284:S0:0-52",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1208,
+          "Text": "Unrealizedmark-to-market gains (losses) on non-trading",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3286:S0:0-54",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1209,
+          "Text": "portfolios, net",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 25 table/figure item(s) before a peer"
+          ],
+          "identity": "L3287:S0:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1214,
+          "Text": "Expressedin millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3298:S0:0-35",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1217,
+          "Text": "Other comprehensive income —Note I",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 27 table/figure item(s) before a peer"
+          ],
+          "identity": "L3301:S0:0-34",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1237,
+          "Text": "Expressedin millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3357:S0:0-35",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1239,
+          "Text": "Cash flows from investing activities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 28 table/figure item(s) before a peer"
+          ],
+          "identity": "L3359:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1240,
+          "Text": "Cash flows from financing activities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer"
+          ],
+          "identity": "L3368:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1241,
+          "Text": "Cash flows from operating activities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 33 table/figure item(s) before a peer"
+          ],
+          "identity": "L3380:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1247,
+          "Text": "Supplemental disclosure",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 20 table/figure item(s) before a peer"
+          ],
+          "identity": "L3408:S0:0-23",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1280,
+          "Text": "Notes",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 6 lesser label(s) before a peer"
+          ],
+          "identity": "L3513:S0:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1323,
+          "Text": "Total - June 30, 2025 2,709,291 100 % 326,835 22,911 303,924 2,868,429 100 %",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3751:S0:0-76",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1324,
+          "Text": "Total - June 30, 2024 2,678,098 323,072 22,452 300,620 2,835,535",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3752:S0:0-64",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1369,
+          "Text": "Income—Expense Disaggregation Disclosures (Subtopic 220-40), which requires disaggregated",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer"
+          ],
+          "identity": "L4266:S0:0-89",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1370,
+          "Text": "Comprehensive Income—Expense Disaggregation Disclosures (Subtopic 220-40): Clarifying the Effective",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer"
+          ],
+          "identity": "L4271:S0:0-99",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1374,
+          "Text": "Table B1: IBRD's Shares",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4285:S0:0-23",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1378,
+          "Text": "Table B2: IBRD's Capital",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 29 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4294:S0:0-24",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1391,
+          "Text": "Table C1: Investments - Trading composition",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 22 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4331:S0:0-43",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1405,
+          "Text": "Securities sold under repurchase agreements, securities lent under",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer"
+          ],
+          "identity": "L4353:S0:0-66",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1406,
+          "Text": "a",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer"
+          ],
+          "identity": "L4354:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1408,
+          "Text": "Derivative assets",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 12 table/figure item(s) before a peer"
+          ],
+          "identity": "L4356:S0:0-17",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1409,
+          "Text": "Derivative liabilities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 28 table/figure item(s) before a peer"
+          ],
+          "identity": "L4361:S0:0-22",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1421,
+          "Text": "Table C3: Net investment portfolio composition",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 12 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4377:S0:0-46",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1428,
+          "Text": "Table C4: Collateral received",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4408:S0:0-29",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1434,
+          "Text": "Table D6: Loans in nonaccrual status). The total accumulated provision for losses on loans in accrual",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 4 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4467:S0:0-101",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1435,
+          "Text": "Table D1: Loans outstanding by currency and interest rate structure",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 12 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 7 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4473:S0:0-67",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1443,
+          "Text": "Table D1.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 14 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 13 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4493:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1455,
+          "Text": "Table D2: Loans maturity structure",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 33 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4519:S0:0-34",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1464,
+          "Text": "Table D2.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 33 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4538:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1474,
+          "Text": "Table D3: Loans outstanding aging structure",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 36 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4600:S0:0-43",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1487,
+          "Text": "Table D3.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 36 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4615:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1516,
+          "Text": "Table D5: Loans outstanding vintage disclosure",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4650:S0:0-46",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1540,
+          "Text": "Table D5.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4667:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1581,
+          "Text": "Reportedas:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L4738:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1582,
+          "Text": "Balance Sheets Statements ofIncome",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 13 body line(s) before a peer"
+          ],
+          "identity": "L4739:S0:0-34",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1627,
+          "Text": "Table E1: Borrowings and borrowing-related derivatives, at fairvalue",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 17 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4837:S0:0-68",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1631,
+          "Text": "Table E2: Interest rate composition of Borrowings",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 31 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4855:S0:0-49",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1632,
+          "Text": "In millions ofU.S. dollars, except as otherwise noted",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 31 table/figure item(s) before a peer"
+          ],
+          "identity": "L4856:S0:0-53",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1633,
+          "Text": "June 30, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 30 table/figure item(s) before a peer",
+            "date shape",
+            "stands alone over its own prose"
+          ],
+          "identity": "L4857:S0:0-13",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1639,
+          "Text": "Table E3: Currency composition of Borrowings (before derivatives)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 12 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4866:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1642,
+          "Text": "Table E4: Maturity structure of Borrowings",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4874:S0:0-42",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1648,
+          "Text": "Portfolio",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L4893:S0:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1654,
+          "Text": "Table F1: Derivative assets and liabilities before and after netting adjustments",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 37 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4930:S0:0-80",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1674,
+          "Text": "Table F2.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4966:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1681,
+          "Text": "Table F3: Unrealized mark-to-market gains or losses on non-trading derivatives",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4999:S0:0-78",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1687,
+          "Text": "Table F4: Unrealized mark-to-market gains or losses on net investment-trading portfolio",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 18 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5014:S0:0-87",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1698,
+          "Text": "Table G1: Retained earnings composition",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 31 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5029:S0:0-39",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1706,
+          "Text": "Table G2: Board of Governors-approved transfers expensed",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 25 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5047:S0:0-56",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1716,
+          "Text": "Table H1: IBRD’s receivables and payables with affiliated organizations",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5071:S0:0-71",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1727,
+          "Text": "Table H2: Revenue from contracts with clients",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 27 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5101:S0:0-45",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1732,
+          "Text": "Table H3: Receivables and contract liabilities related to revenue from contracts with clients",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 7 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5119:S0:0-93",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1744,
+          "Text": "Table I1: AOCI/AOCL changes",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5150:S0:0-27",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1759,
+          "Text": "Table I1.1:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5164:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1774,
+          "Text": "Table I1.2:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5179:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1804,
+          "Text": "Table J1: Fairvalue and carrying amount offinancial assets and liabilities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5261:S0:0-74",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1812,
+          "Text": "Table J2: Fairvalue hierarchy of IBRD’s assets and liabilities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 33 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5286:S0:0-62",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1819,
+          "Text": "Liabilities:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L5306:S0:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1825,
+          "Text": "Table J2.1:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5323:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1832,
+          "Text": "Liabilities:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 36 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L5343:S0:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1837,
+          "Text": "Table J3: Level 3 Borrowings and derivatives valuation technique and quantitative information regarding the significant unobservable inputs:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 15 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5387:S0:0-93|L5388:S0:0-46",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1849,
+          "Text": "Table J4: Borrowings and derivatives inter level transfers",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 37 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5410:S0:0-58",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1855,
+          "Text": "Table J5: Borrowings Level 3 changes",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 25 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5429:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1859,
+          "Text": "Table J6: Derivatives Level 3 changes",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5441:S0:0-37",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1860,
+          "Text": "Table J7: Unrealized gains or losses relating to IBRD’s Level 3 borrowings and derivatives",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 19 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5459:S0:0-90",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1867,
+          "Text": "Table J8: Borrowings fairvalue and contractual principal balance",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 17 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5473:S0:0-64",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1872,
+          "Text": "Table J9: Changes in fairvalue due to IBRD’s own credit risk",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 14 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5483:S0:0-60",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1874,
+          "Text": "Unrealizedmark-to-marketgains (losses) due to DVA on fair value option",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 14 table/figure item(s) before a peer"
+          ],
+          "identity": "L5485:S0:0-70",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1878,
+          "Text": "Table J10: Unrealized mark-to-market gains or losses on investments-trading, and non-trading portfolios, net",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 2 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5493:S0:0-92|L5494:S0:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1889,
+          "Text": "Table J10.1:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5509:S0:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1900,
+          "Text": "Table J10.2:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 35 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5525:S0:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1916,
+          "Text": "Table K1: Pension Plan benefit costs",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 32 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5560:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1932,
+          "Text": "Table K2: Pension service cost",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 6 lesser label(s) before a peer",
+            "followed by 21 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5594:S0:0-30",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1948,
+          "Text": "Accumulated Benefit",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 8 table/figure item(s) before a peer"
+          ],
+          "identity": "L5641:S0:0-19",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1952,
+          "Text": "Table K4: Amounts included in Accumulated Other Comprehensive Income as ofJune 30, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5652:S0:0-87",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1958,
+          "Text": "Table K4.1: Amounts included in Accumulated Other Comprehensive Income as ofJune 30, 2024",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 21 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5660:S0:0-89",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1965,
+          "Text": "Table K5: Weighted average assumptions used to determine projected benefit obligations",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 34 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5687:S0:0-86",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1976,
+          "Text": "Table K6: Weighted average assumptions used to determine net periodic pension cost",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 37 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5699:S0:0-82",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2002,
+          "Text": "Table K8: Plan assets fairvalue hierarchy",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 6 lesser label(s) before a peer",
+            "followed by 28 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5786:S0:0-41",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2010,
+          "Text": "Equitysecurities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 22 table/figure item(s) before a peer"
+          ],
+          "identity": "L5800:S0:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2028,
+          "Text": "Equitysecurities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 39 table/figure item(s) before a peer"
+          ],
+          "identity": "L5832:S0:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2050,
+          "Text": "Table L1: Expenses for Bank-executed activities for trust funds",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 7 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5954:S0:0-63",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2055,
+          "Text": "Table L2: Undisbursed contributions by third party donors to Bank-executed activities for trust funds",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 2 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 5 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5963:S0:0-95|L5964:S0:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2060,
+          "Text": "Table L3: Trust fund administration revenues",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 8 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5972:S0:0-44",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2067,
+          "Text": "Table M1: Revenues by products/services",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 6 lesser label(s) before a peer",
+            "followed by 26 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L6000:S0:0-39",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      }
+    ]
+  }
+}
