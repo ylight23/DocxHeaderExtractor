@@ -113,4 +113,64 @@ public sealed class Src041BlindGeneralizationTests
             modelCalls = 0,
         });
     }
+
+    /// <summary>
+    /// The blind run (protocol step 2): refuses to run on an engine or source other than the pre-registered
+    /// ones, reads no Gold, and freezes the evidence profile and the proposals for commit before any review.
+    /// </summary>
+    [Fact]
+    public void Blind_src041()
+    {
+        using var prereg = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{Root}/SRC-041.preregistration.v1_1.json")));
+        Assert.True(System.Text.Json.Nodes.JsonNode.DeepEquals(
+                System.Text.Json.Nodes.JsonNode.Parse(prereg.RootElement.GetProperty("engineIdentity").GetRawText()),
+                System.Text.Json.Nodes.JsonNode.Parse(JsonSerializer.Serialize(GenericAuditEngineV11Tests.EngineIdentity(), FreezeArtifact.Json))),
+            "the engine is not the pre-registered one");
+        Assert.Equal(prereg.RootElement.GetProperty("source").GetProperty("sha256").GetString(), CanonicalArtifactHash.OfBytes(TestRepository.Path(Pdf)));
+        Assert.Equal(prereg.RootElement.GetProperty("scorer").GetProperty("sha256").GetString(), CanonicalArtifactHash.OfTextFile(TestRepository.Path(ScorerFile)));
+
+        var profile = GenericAudit.V1_1.SourceEvidenceProfile.FromPdf(TestRepository.Path(Pdf));
+        var hypotheses = GenericAudit.V1_1.SemanticAuditEngine.Propose(profile);
+        Assert.Equal(JsonSerializer.Serialize(hypotheses),
+            JsonSerializer.Serialize(GenericAudit.V1_1.SemanticAuditEngine.Propose(GenericAudit.V1_1.SourceEvidenceProfile.FromPdf(TestRepository.Path(Pdf)))));
+
+        var occ = profile.Occurrences;
+        FreezeArtifact.AssertJson(Root, "SRC-041.evidence-profile.v1_1.json", new
+        {
+            artifactKind = "a99_source_evidence_profile",
+            study = "SRC041_BLIND_GENERALIZATION_AUDIT_V1",
+            source = new { path = Pdf, sha256 = CanonicalArtifactHash.OfBytes(TestRepository.Path(Pdf)) },
+            media = profile.Media,
+            occurrences = occ.Count,
+            pages = profile.PageCount,
+            body = new { fontSize = profile.BodyFontSize, bold = profile.BodyBold, italic = profile.BodyItalic },
+            typographyClusters = occ.GroupBy(o => (o.FontSize, o.Bold, o.Italic)).OrderByDescending(g => g.Count()).ThenBy(g => g.Key.FontSize)
+                .Select(g => new { fontSize = g.Key.FontSize, bold = g.Key.Bold, italic = g.Key.Italic, occurrences = g.Count(), meanWords = Math.Round(g.Average(o => o.WordCount), 1) }).ToArray(),
+            boldLeads = occ.Count(o => o.BoldLead is not null),
+            multiSegmentRows = occ.Count(o => o.RowSegmentCount > 1),
+            rowsWithFigures = occ.Count(o => o.RowHasFigures),
+        });
+
+        FreezeArtifact.AssertJson(Root, "SRC-041.proposals.v1_1.json", new
+        {
+            artifactKind = "a99_generic_audit_proposals",
+            study = "SRC041_BLIND_GENERALIZATION_AUDIT_V1",
+            engineIdentity = GenericAuditEngineV11Tests.EngineIdentity(),
+            preregistrationSha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path($"{Root}/SRC-041.preregistration.v1_1.json")),
+            documentId = "SRC-041",
+            role = "HELD_OUT (blind)",
+            source = new { path = Pdf, sha256 = CanonicalArtifactHash.OfBytes(TestRepository.Path(Pdf)), media = "PDF" },
+            modelCalls = 0,
+            goldReadBeforeFreeze = false,
+            counts = new
+            {
+                sourceParts = hypotheses.Sum(h => h.Parts.Length),
+                hypotheses = hypotheses.Count,
+                leadParts = hypotheses.Sum(h => h.Parts.Count(p => p.Verbatim is not null)),
+                byProposal = hypotheses.GroupBy(h => h.ProposedIsHeading).OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
+                byRoles = hypotheses.GroupBy(h => string.Join("+", h.OccurrenceRoles)).OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
+            },
+            hypotheses = hypotheses.Where(h => h.ProposedIsHeading != "FALSE" || h.Prominence >= 1000).ToArray(),
+        });
+    }
 }
