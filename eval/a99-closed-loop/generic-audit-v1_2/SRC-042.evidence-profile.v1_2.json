@@ -1,0 +1,413 @@
+{
+  "artifactKind": "a99_source_evidence_profile",
+  "study": "SRC042_BLIND_GENERALIZATION_AUDIT_V1",
+  "source": {
+    "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+    "sha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf"
+  },
+  "media": "PDF",
+  "occurrences": 7888,
+  "pages": 130,
+  "body": {
+    "fontSize": 10,
+    "bold": false,
+    "italic": false
+  },
+  "typographyClusters": [
+    {
+      "fontSize": 8,
+      "bold": false,
+      "italic": false,
+      "occurrences": 2960,
+      "meanWords": 2.5
+    },
+    {
+      "fontSize": 10,
+      "bold": false,
+      "italic": false,
+      "occurrences": 2537,
+      "meanWords": 12.8
+    },
+    {
+      "fontSize": 8,
+      "bold": false,
+      "italic": true,
+      "occurrences": 605,
+      "meanWords": 4.8
+    },
+    {
+      "fontSize": 9,
+      "bold": false,
+      "italic": false,
+      "occurrences": 541,
+      "meanWords": 3.7
+    },
+    {
+      "fontSize": 8,
+      "bold": true,
+      "italic": false,
+      "occurrences": 275,
+      "meanWords": 2.1
+    },
+    {
+      "fontSize": 10.7,
+      "bold": false,
+      "italic": false,
+      "occurrences": 261,
+      "meanWords": 1.4
+    },
+    {
+      "fontSize": 10,
+      "bold": true,
+      "italic": false,
+      "occurrences": 137,
+      "meanWords": 5.5
+    },
+    {
+      "fontSize": 12,
+      "bold": true,
+      "italic": false,
+      "occurrences": 96,
+      "meanWords": 3.2
+    },
+    {
+      "fontSize": 11,
+      "bold": true,
+      "italic": false,
+      "occurrences": 64,
+      "meanWords": 3.7
+    },
+    {
+      "fontSize": 14,
+      "bold": true,
+      "italic": false,
+      "occurrences": 58,
+      "meanWords": 3.1
+    },
+    {
+      "fontSize": 9,
+      "bold": true,
+      "italic": true,
+      "occurrences": 44,
+      "meanWords": 4.9
+    },
+    {
+      "fontSize": 10,
+      "bold": false,
+      "italic": true,
+      "occurrences": 32,
+      "meanWords": 6.8
+    },
+    {
+      "fontSize": 9.3,
+      "bold": false,
+      "italic": false,
+      "occurrences": 25,
+      "meanWords": 1.8
+    },
+    {
+      "fontSize": 9,
+      "bold": true,
+      "italic": false,
+      "occurrences": 24,
+      "meanWords": 4.1
+    },
+    {
+      "fontSize": 7.9,
+      "bold": false,
+      "italic": false,
+      "occurrences": 20,
+      "meanWords": 5.8
+    },
+    {
+      "fontSize": 16,
+      "bold": false,
+      "italic": false,
+      "occurrences": 20,
+      "meanWords": 3.6
+    },
+    {
+      "fontSize": 9,
+      "bold": false,
+      "italic": true,
+      "occurrences": 16,
+      "meanWords": 3
+    },
+    {
+      "fontSize": 7.8,
+      "bold": false,
+      "italic": false,
+      "occurrences": 14,
+      "meanWords": 2.8
+    },
+    {
+      "fontSize": 7,
+      "bold": false,
+      "italic": true,
+      "occurrences": 13,
+      "meanWords": 14.5
+    },
+    {
+      "fontSize": 7.5,
+      "bold": false,
+      "italic": false,
+      "occurrences": 12,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 7.8,
+      "bold": false,
+      "italic": true,
+      "occurrences": 12,
+      "meanWords": 3.2
+    },
+    {
+      "fontSize": 10.7,
+      "bold": true,
+      "italic": false,
+      "occurrences": 12,
+      "meanWords": 1.8
+    },
+    {
+      "fontSize": 14,
+      "bold": false,
+      "italic": false,
+      "occurrences": 12,
+      "meanWords": 3.6
+    },
+    {
+      "fontSize": 5.2,
+      "bold": false,
+      "italic": false,
+      "occurrences": 11,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 7.9,
+      "bold": false,
+      "italic": true,
+      "occurrences": 11,
+      "meanWords": 3.8
+    },
+    {
+      "fontSize": 18,
+      "bold": true,
+      "italic": false,
+      "occurrences": 10,
+      "meanWords": 4
+    },
+    {
+      "fontSize": 7.9,
+      "bold": true,
+      "italic": false,
+      "occurrences": 8,
+      "meanWords": 6.2
+    },
+    {
+      "fontSize": 5.2,
+      "bold": false,
+      "italic": true,
+      "occurrences": 7,
+      "meanWords": 1.4
+    },
+    {
+      "fontSize": 7.8,
+      "bold": true,
+      "italic": false,
+      "occurrences": 6,
+      "meanWords": 3.8
+    },
+    {
+      "fontSize": 24,
+      "bold": false,
+      "italic": false,
+      "occurrences": 5,
+      "meanWords": 2.4
+    },
+    {
+      "fontSize": 11,
+      "bold": false,
+      "italic": true,
+      "occurrences": 4,
+      "meanWords": 4.5
+    },
+    {
+      "fontSize": 6.5,
+      "bold": false,
+      "italic": false,
+      "occurrences": 3,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 7.6,
+      "bold": false,
+      "italic": false,
+      "occurrences": 3,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 7.7,
+      "bold": false,
+      "italic": false,
+      "occurrences": 3,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 7.4,
+      "bold": false,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 7.5,
+      "bold": false,
+      "italic": true,
+      "occurrences": 2,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 7.6,
+      "bold": false,
+      "italic": true,
+      "occurrences": 2,
+      "meanWords": 3
+    },
+    {
+      "fontSize": 11.6,
+      "bold": true,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 16,
+      "bold": true,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 7
+    },
+    {
+      "fontSize": 6.6,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 7.1,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 7.3,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 7.5,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 4
+    },
+    {
+      "fontSize": 8,
+      "bold": true,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 8.6,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 5
+    },
+    {
+      "fontSize": 9.2,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 13
+    },
+    {
+      "fontSize": 9.3,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 4
+    },
+    {
+      "fontSize": 9.7,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 3
+    },
+    {
+      "fontSize": 9.7,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 9.9,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 14
+    },
+    {
+      "fontSize": 10.2,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 10.3,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 16
+    },
+    {
+      "fontSize": 10.8,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 11
+    },
+    {
+      "fontSize": 11.6,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 13.3,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 3
+    },
+    {
+      "fontSize": 15,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 10
+    }
+  ],
+  "boldLeads": 117,
+  "multiSegmentRows": 4150,
+  "rowsWithFigures": 3176
+}
