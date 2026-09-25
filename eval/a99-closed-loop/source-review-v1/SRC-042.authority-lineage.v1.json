@@ -1,0 +1,56 @@
+{
+  "artifactKind": "a99_gold_authority_lineage",
+  "authorityId": "SRC-042",
+  "modelProviderVlmCalls": 0,
+  "previousSemanticAuthority": {
+    "source": "original PDF (the same bytes as the current authority)",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+    "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+    "total": 262,
+    "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "exactOccurrenceFreeze": false,
+    "occurrenceList": false,
+    "occurrenceIdentities": "UNAVAILABLE",
+    "exactSpans": "UNAVAILABLE",
+    "status": "SUPERSEDED",
+    "role": "provenance_only",
+    "artifact": {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-042.semantic-freeze.v1.json",
+      "sha256": "1cfe5c24b1335e32f2ab148cd835288f2ef47df1c582dfa36453e6b32cb7b8a3"
+    }
+  },
+  "supersededBecause": "the current authority names every occurrence and binds each one exactly to the source, independently of the engine and of the previous count; the previous authority is a total without occurrence identities",
+  "historicalAuthorityDelta": {
+    "HISTORICAL_AUTHORITY_DELTA": -9,
+    "CAUSE": "UNRESOLVED",
+    "meaning": "a difference between two authorities over the same PDF; not evidence that the current Gold misses any occurrence",
+    "followUp": "a historical delta audit only after the Gold and the raw blind score are committed: source-level evidence only, never engine predictions; the previous review's own record names the 8 occurrences its re-audit added (all repeated display titles, which the current Gold contains)",
+    "goldRevisionRule": "a Gold error found later becomes a new Gold revision with its own provenance; the blind score stays scored against the Gold frozen at the reveal"
+  },
+  "currentCanonicalAuthority": {
+    "source": "original PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+    "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+    "total": 253,
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "hierarchyEvaluable": false,
+    "membershipDecision": {
+      "decidedBy": "USER",
+      "decidedAt": "2026-09-25",
+      "review": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-042.source-review.v1.json",
+        "sha256": "b9956c63453aa9ecf57dde1bf332b38b27bfaa246af2e46f9518504a8c9c32a1"
+      },
+      "reviewItems": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-042/review-items.json",
+        "sha256": "447ded538f5d6fbca119a8f3cdd0248e910d5a34ebde70483801519b78df04da"
+      }
+    },
+    "engineProposalsRead": false,
+    "status": "CURRENT_OCCURRENCE_LEVEL_AUTHORITY"
+  }
+}
