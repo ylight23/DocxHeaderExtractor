@@ -1,0 +1,161 @@
+{
+  "artifactKind": "a99_pdf_source_facts_development_diagnostic",
+  "study": "PDF_SOURCE_FACTS_V2_DEVELOPMENT_DIAGNOSTIC",
+  "engine": "GENERIC_AUDIT_ENGINE_V1.2",
+  "engineOverV2": "GENERIC_AUDIT_ENGINE_V1.2 over PDF_SOURCE_FACTS_V2",
+  "scorer": "GENERIC_EXACT_SCORER_V1",
+  "status": "DEVELOPMENT_DIAGNOSTIC - not a held-out measurement; no engine change was made against it",
+  "modelProviderVlmCalls": 0,
+  "rows": [
+    {
+      "documentId": "SRC-029",
+      "role": "already revealed / developed on: a regression check of the facts change",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-029.gold.json",
+        "sha256": "8fdb86c5cafa4bd9546e34402c0fe4cf79f70ac04bf263024b28a181bf21d78b"
+      },
+      "pdfSourceFactsV1": {
+        "goldClaims": 374,
+        "engineTrue": 436,
+        "truePositives": 308,
+        "falsePositives": 128,
+        "falseNegatives": 66,
+        "precision": 0.7064,
+        "recall": 0.8235,
+        "f1": 0.7605,
+        "needsReviewOnGold": 20
+      },
+      "pdfSourceFactsV2": {
+        "goldClaims": 374,
+        "engineTrue": 436,
+        "truePositives": 308,
+        "falsePositives": 128,
+        "falseNegatives": 66,
+        "precision": 0.7064,
+        "recall": 0.8235,
+        "f1": 0.7605,
+        "needsReviewOnGold": 20
+      }
+    },
+    {
+      "documentId": "SRC-041",
+      "role": "already revealed / developed on: a regression check of the facts change",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-041.gold.json",
+        "sha256": "2eb920d2490c94c955f177aab3b40c3ca9c19c4b316cb6c43369633cafd5f34a"
+      },
+      "pdfSourceFactsV1": {
+        "goldClaims": 280,
+        "engineTrue": 273,
+        "truePositives": 270,
+        "falsePositives": 3,
+        "falseNegatives": 10,
+        "precision": 0.989,
+        "recall": 0.9643,
+        "f1": 0.9765,
+        "needsReviewOnGold": 9
+      },
+      "pdfSourceFactsV2": {
+        "goldClaims": 280,
+        "engineTrue": 272,
+        "truePositives": 270,
+        "falsePositives": 2,
+        "falseNegatives": 10,
+        "precision": 0.9926,
+        "recall": 0.9643,
+        "f1": 0.9782,
+        "needsReviewOnGold": 9
+      }
+    },
+    {
+      "documentId": "SRC-042",
+      "role": "already revealed / developed on: a regression check of the facts change",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-042.gold.json",
+        "sha256": "19c64342d1792498da7b69d95e5a07f3683c763e35981a22e8717eed9322ac3c"
+      },
+      "pdfSourceFactsV1": {
+        "goldClaims": 253,
+        "engineTrue": 252,
+        "truePositives": 247,
+        "falsePositives": 5,
+        "falseNegatives": 6,
+        "precision": 0.9802,
+        "recall": 0.9763,
+        "f1": 0.9782,
+        "needsReviewOnGold": 5
+      },
+      "pdfSourceFactsV2": {
+        "goldClaims": 253,
+        "engineTrue": 252,
+        "truePositives": 247,
+        "falsePositives": 5,
+        "falseNegatives": 6,
+        "precision": 0.9802,
+        "recall": 0.9763,
+        "f1": 0.9782,
+        "needsReviewOnGold": 5
+      }
+    },
+    {
+      "documentId": "SRC-044",
+      "role": "already revealed / developed on: a regression check of the facts change",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-044.gold.json",
+        "sha256": "c4a83cd6e3e9cb444fcd7afb11bef779f2c5ff7ffbed41729a23581cd29255e4"
+      },
+      "pdfSourceFactsV1": {
+        "goldClaims": 201,
+        "engineTrue": 198,
+        "truePositives": 196,
+        "falsePositives": 2,
+        "falseNegatives": 5,
+        "precision": 0.9899,
+        "recall": 0.9751,
+        "f1": 0.9824,
+        "needsReviewOnGold": 4
+      },
+      "pdfSourceFactsV2": {
+        "goldClaims": 201,
+        "engineTrue": 197,
+        "truePositives": 196,
+        "falsePositives": 1,
+        "falseNegatives": 5,
+        "precision": 0.9949,
+        "recall": 0.9751,
+        "f1": 0.9849,
+        "needsReviewOnGold": 4
+      }
+    },
+    {
+      "documentId": "SRC-053",
+      "role": "the source that exposed PDF_TEXT_MATRIX_TYPOGRAPHY_NOT_READ; its held-out score stays the raw F1 0",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-053.gold.json",
+        "sha256": "34af6c82f78f89b29676490afbba203ec028572b8c9c00e8d7acce0f1da2bb2e"
+      },
+      "pdfSourceFactsV1": {
+        "goldClaims": 271,
+        "engineTrue": 0,
+        "truePositives": 0,
+        "falsePositives": 0,
+        "falseNegatives": 271,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "needsReviewOnGold": 50
+      },
+      "pdfSourceFactsV2": {
+        "goldClaims": 271,
+        "engineTrue": 248,
+        "truePositives": 234,
+        "falsePositives": 14,
+        "falseNegatives": 37,
+        "precision": 0.9435,
+        "recall": 0.8635,
+        "f1": 0.9017,
+        "needsReviewOnGold": 26
+      }
+    }
+  ]
+}
