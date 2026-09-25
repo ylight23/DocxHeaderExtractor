@@ -1,0 +1,130 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC042_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+      "sha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "goldFileRead": false,
+    "countOnlyTotalUsed": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; its blind proposals were committed before the review and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-042/review_tool.py",
+      "sha256": "54992c407c7a85cd90abe94409f4c472ae01889b56da294c8c36556923e1a6c7"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-042/atom-layout-facts.tsv",
+      "sha256": "362d3325c6c0862f86a0675822c61af16f6e257dbf961beeb3c8ba64ff41c78b"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-042/review-items.json",
+      "sha256": "707aba4f51d26845c19c5e74abb2ea3521cce43bce026def9d7318fc9d0f6924"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 7888,
+    "CLEAR_HEADING": 253,
+    "CLEAR_NON_HEADING_SET_APART": 161,
+    "AMBIGUOUS": 1,
+    "PROPOSED_RANGE": {
+      "min": 253,
+      "max": 254
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells and rows, chart values, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 7,
+      "nonHeadings": 4,
+      "ambiguous": 0
+    },
+    {
+      "section": "MDA",
+      "headings": 145,
+      "nonHeadings": 75,
+      "ambiguous": 1
+    },
+    {
+      "section": "NOTES",
+      "headings": 80,
+      "nonHeadings": 47,
+      "ambiguous": 0
+    },
+    {
+      "section": "FS_PART",
+      "headings": 7,
+      "nonHeadings": 15,
+      "ambiguous": 0
+    },
+    {
+      "section": "STATEMENTS",
+      "headings": 14,
+      "nonHeadings": 20,
+      "ambiguous": 0
+    }
+  ],
+  "headingsByPattern": {
+    "A2_PRECEDENT_REPEATED_TITLE": 8,
+    "A3_PRECEDENT_PART_LABEL_ON_CONTENTS_PAGE": 1,
+    "A5_PRECEDENT_CONTENTS_GROUP_LABEL": 1,
+    "APPENDIX_TITLE": 1,
+    "COVER_BLOCK": 1,
+    "EMBEDDED_REPORT": 3,
+    "ITALIC_LOCAL_LABEL": 4,
+    "MDA_SECTION_TITLE": 11,
+    "MDA_SUBHEADING": 129,
+    "NOTES_PART": 1,
+    "NOTE_SUBHEADING": 65,
+    "NOTE_TITLE": 14,
+    "PART_TITLE_BLOCK": 2,
+    "STATEMENT_TITLE": 7,
+    "TOC_OPENER": 5
+  },
+  "nonHeadingsByPattern": {
+    "BLANK_PAGE_NOTICE": 1,
+    "CAPTION_CONTINUATION": 2,
+    "CHART_OR_TABLE_INTERNAL": 23,
+    "CONTENTS_ENTRY": 11,
+    "COVER_BLOCK": 2,
+    "NUMBERED_CAPTION": 95,
+    "PART_TITLE_BLOCK": 4,
+    "RUNNING_HEADER": 2,
+    "STATEMENT_SUBTITLE": 20,
+    "TABLE_PART_TITLE": 1
+  },
+  "ambiguous": [
+    {
+      "Pattern": "S042_A1_BOX_OF_PROSE",
+      "Page": 30,
+      "aliases": [
+        "L1100:S0"
+      ],
+      "Text": "Box 2: Financing Principles",
+      "Reason": "numbered box title over a box of enumerated prose principles ((i) IDA may provide financing ..., (ii) ...), not a table or diagram. SRC-041's box titles were captions because each box held a table or diagram it names; does a box of prose open a region of its own?",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "TABLE",
+        "occurrenceRoles": [
+          "CAPTION",
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    }
+  ],
+  "bindingFailures": []
+}
