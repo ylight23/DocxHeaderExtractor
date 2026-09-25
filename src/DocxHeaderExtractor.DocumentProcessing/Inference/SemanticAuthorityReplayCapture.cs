@@ -41,7 +41,13 @@ public sealed record SemanticAuthorityCaptureReservation(
     [property: JsonPropertyName("packingPolicy")] string? PackingPolicy,
     [property: JsonPropertyName("repeatIdentity")] string? RepeatIdentity,
     [property: JsonPropertyName("runId")] string? RunId,
-    [property: JsonPropertyName("calls")] IReadOnlyList<SemanticAuthorityCaptureCallIdentity> Calls);
+    [property: JsonPropertyName("calls")] IReadOnlyList<SemanticAuthorityCaptureCallIdentity> Calls)
+{
+    /// <summary>Recorded from V2_ATTENTION_FREE onward; absent, and out of the identity hash, before.</summary>
+    [JsonPropertyName("requestVersion")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? RequestVersion { get; init; }
+}
 
 /// <summary>
 /// Experiment/harness-owned persistence request. The semantic engine creates the bundle; this
@@ -81,7 +87,26 @@ public sealed record SemanticAuthorityReplayCaptureRequest(
                 documentId, sourceHash, Metadata.SourceUniverseHash));
 
         var frozenCalls = calls.OrderBy(call => call.Ordinal).ToArray();
-        var identityHash = SemanticAuthorityReplayHashing.CanonicalValueHash(new
+        // A run without a request version hashes exactly as every reservation before versions did.
+        var identityHash = Metadata.RequestVersion is { } requestVersion
+            ? SemanticAuthorityReplayHashing.CanonicalValueHash(new
+            {
+                schemaVersion = SemanticAuthorityCaptureReservationSchema.Version,
+                documentId,
+                sourceHash,
+                sourceUniverseHash = Metadata.SourceUniverseHash,
+                modelIdentity = Metadata.ModelIdentity,
+                modelRoute = Metadata.ModelRoute,
+                promptHash = Metadata.PromptHash,
+                semanticContractHash,
+                requestVersion,
+                profile = Metadata.Profile,
+                packingPolicy = Metadata.PackingPolicy,
+                repeatIdentity = Metadata.RepeatIdentity ?? Metadata.RunId,
+                runId = Metadata.RunId,
+                calls = frozenCalls,
+            })
+            : SemanticAuthorityReplayHashing.CanonicalValueHash(new
         {
             schemaVersion = SemanticAuthorityCaptureReservationSchema.Version,
             documentId,
@@ -112,7 +137,10 @@ public sealed record SemanticAuthorityReplayCaptureRequest(
             Metadata.PackingPolicy,
             Metadata.RepeatIdentity ?? Metadata.RunId,
             Metadata.RunId,
-            frozenCalls);
+            frozenCalls)
+        {
+            RequestVersion = Metadata.RequestVersion,
+        };
         if (File.Exists(transportPath))
         {
             try

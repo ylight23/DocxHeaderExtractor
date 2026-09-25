@@ -149,12 +149,12 @@ public sealed class StructuredOccurrenceBaselineTransportTests
                     .Replace('/', Path.DirectorySeparatorChar))).SourceUniverseSha256));
         lines.Add(Check("doc0252 promptHash", Doc0252ExpectedPrompt,
             CanonicalArtifactHash.OfText(CanonicalSemanticEngine.SystemPromptFor(
-                SemanticCoordinateContract.PdfStructuredSourceParts, CanonicalSemanticExperiment.Baseline))));
+                SemanticCoordinateContract.PdfStructuredSourceParts, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline)))));
         lines.Add(Check("doc0252 coordinateContractSha256", ExpectedStructuredCoordinateContract,
             SemanticCoordinateContract.PdfStructuredSourceParts.SchemaHash()));
 
         lines.Add(Check("doc0001 promptHash", Doc0001ExpectedPrompt,
-            CanonicalArtifactHash.OfText(CanonicalSemanticEngine.SystemPrompt)));
+            CanonicalArtifactHash.OfText(HistoricalRequest.SystemPrompt)));
         lines.Add(Check("semanticContractSha256", ExpectedSemanticContract,
             CanonicalArtifactHash.OfText(JsonSerializer.Serialize(
                 CanonicalSemanticContract.Schema(), FreezeArtifact.Json))));
@@ -206,7 +206,7 @@ public sealed class StructuredOccurrenceBaselineTransportTests
         if (isPdf)
         {
             authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-                path, classifier, CancellationToken.None, replayCapture: capture,
+                path, classifier, CancellationToken.None, HistoricalRequest.Baseline, replayCapture: capture,
                 profile: PdfSemanticAuthorityProfile.StructuredSourceParts);
         }
         else
@@ -217,7 +217,7 @@ public sealed class StructuredOccurrenceBaselineTransportTests
                 document, features, new DocumentFeatureDeriver().Derive(document), new ExtractionOptions());
             var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
             authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(
-                state, mode, classifier, CancellationToken.None, replayCapture: capture);
+                state, mode, classifier, CancellationToken.None, HistoricalRequest.Baseline, replayCapture: capture);
         }
 
         var bundle = authority.ReplayBundle;

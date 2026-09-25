@@ -96,13 +96,13 @@ public sealed class SemanticMembershipV1PreflightTests
         Assert.Contains("verbatimText", schemaJson, StringComparison.Ordinal);
 
         // ---- §8/§9 the prompt, and what was removed from the baseline ------------------------------
-        var prompt = CanonicalSemanticEngine.MembershipPromptFor(stage1);
+        var prompt = CanonicalSemanticEngine.MembershipPromptFor(stage1, HistoricalRequest.Version);
         var promptHash = CanonicalArtifactHash.OfText(prompt);
-        var baselinePrompt = CanonicalSemanticEngine.SystemPromptFor(v2, CanonicalSemanticExperiment.Baseline);
+        var baselinePrompt = CanonicalSemanticEngine.SystemPromptFor(v2, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         Assert.Equal(BaselinePromptSha256, CanonicalArtifactHash.OfText(baselinePrompt));
         Assert.NotEqual(BaselinePromptSha256, promptHash);
 
-        Assert.Equal(CanonicalSemanticEngine.Stage1MembershipPrompt + stage1.PromptClause, prompt);
+        Assert.Equal(HistoricalRequest.Stage1MembershipPrompt + stage1.PromptClause, prompt);
 
         // No experiment wording of any kind reached it.
         Assert.DoesNotContain(CanonicalSemanticEngine.NonStructuralMetadataClause, prompt, StringComparison.Ordinal);
@@ -562,7 +562,7 @@ public sealed class SemanticMembershipV1PreflightTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             contract,
-            CanonicalSemanticExperiment.Baseline,
+            HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
             TargetPacks.ToHashSet(StringComparer.Ordinal));
         return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))

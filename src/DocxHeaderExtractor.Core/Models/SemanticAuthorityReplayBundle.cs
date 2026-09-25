@@ -30,7 +30,14 @@ public sealed record SemanticAuthorityCaptureMetadata(
     DateTimeOffset? CreatedAt = null,
     string? Profile = null,
     string? PackingPolicy = null,
-    string? RepeatIdentity = null);
+    string? RepeatIdentity = null)
+{
+    /// <summary>
+    /// The model-visible request version the run sent (V2_ATTENTION_FREE onward). Absent on runs
+    /// captured before request versions existed, which their prompt hash identifies as V1.
+    /// </summary>
+    public string? RequestVersion { get; init; }
+}
 
 /// <summary>
 /// Immutable authority captured after model JSON has become semantic proposals and before any
@@ -69,6 +76,14 @@ public sealed record SemanticAuthorityReplayBundle(
 
     [JsonPropertyName("createdAt")]
     public DateTimeOffset? CreatedAt { get; init; }
+
+    /// <summary>
+    /// The model-visible request version the run sent. Run metadata, outside <see cref="BundleHash"/>;
+    /// absent on bundles captured before request versions existed.
+    /// </summary>
+    [JsonPropertyName("requestVersion")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? RequestVersion { get; init; }
 }
 
 public static class SemanticAuthorityReplayBundleFactory

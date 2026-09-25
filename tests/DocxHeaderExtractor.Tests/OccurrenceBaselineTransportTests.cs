@@ -148,7 +148,7 @@ public sealed class OccurrenceBaselineTransportTests
         }
 
         lines.Add(Check("promptHash", ExpectedPrompt,
-            CanonicalArtifactHash.OfText(CanonicalSemanticEngine.SystemPrompt)));
+            CanonicalArtifactHash.OfText(HistoricalRequest.SystemPrompt)));
         lines.Add(Check("semanticContractSha256", ExpectedContract,
             CanonicalArtifactHash.OfText(JsonSerializer.Serialize(
                 CanonicalSemanticContract.Schema(), FreezeArtifact.Json))));
@@ -202,7 +202,7 @@ public sealed class OccurrenceBaselineTransportTests
         if (string.Equals(media, "PDF", StringComparison.OrdinalIgnoreCase))
         {
             authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-                path, classifier, CancellationToken.None, replayCapture: capture);
+                path, classifier, CancellationToken.None, HistoricalRequest.Baseline, replayCapture: capture);
         }
         else
         {
@@ -212,7 +212,7 @@ public sealed class OccurrenceBaselineTransportTests
                 document, features, new DocumentFeatureDeriver().Derive(document), new ExtractionOptions());
             var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
             authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(
-                state, mode, classifier, CancellationToken.None, replayCapture: capture);
+                state, mode, classifier, CancellationToken.None, HistoricalRequest.Baseline, replayCapture: capture);
         }
 
         var bundle = authority.ReplayBundle;

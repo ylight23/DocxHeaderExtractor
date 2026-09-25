@@ -330,7 +330,7 @@ public sealed class CanonicalGoldConsolidationTests
             providerCalls = 0,
             modelCalls = 0,
             goldRegistry = CanonicalGoldRegistry.RegistryRelativePath,
-            promptSha256 = CanonicalArtifactHash.OfText(CanonicalSemanticEngine.SystemPrompt),
+            promptSha256 = CanonicalArtifactHash.OfText(HistoricalRequest.SystemPrompt),
             semanticContractProtocol = CanonicalSemanticContract.ProtocolVersion,
             // The schema itself, not its name. A protocol string survives a field being added or
             // renamed, and a run whose contract drifted mid-flight produced provider responses that
@@ -385,7 +385,7 @@ public sealed class CanonicalGoldConsolidationTests
             SemanticContractSha256(),
             manifest.RootElement.GetProperty("semanticContractSha256").GetString());
         Assert.Equal(
-            CanonicalArtifactHash.OfText(CanonicalSemanticEngine.SystemPrompt),
+            CanonicalArtifactHash.OfText(HistoricalRequest.SystemPrompt),
             manifest.RootElement.GetProperty("promptSha256").GetString());
     }
 
@@ -445,7 +445,7 @@ public sealed class CanonicalGoldConsolidationTests
         using var capture = new RequestCapturingClassifier();
         if (string.Equals(mediaType, "PDF", StringComparison.Ordinal))
         {
-            await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None);
+            await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None, HistoricalRequest.Baseline);
         }
         else
         {
@@ -454,7 +454,7 @@ public sealed class CanonicalGoldConsolidationTests
             var derived = new DocumentFeatureDeriver().Derive(source);
             var state = DocxPolicyStateBuilder.Build(source, features, derived, new ExtractionOptions());
             var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-            await DocxAuthorityPipeline.RunAsync(state, mode, capture);
+            await CanonicalSemanticDocxAuthorityAdapter.RunAsync(state, mode, capture, CancellationToken.None, HistoricalRequest.Baseline);
         }
 
         return capture.Requests.Count;

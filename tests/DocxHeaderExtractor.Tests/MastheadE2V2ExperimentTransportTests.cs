@@ -147,7 +147,7 @@ public sealed class MastheadE2V2ExperimentTransportTests
         var plan = PdfStructuredSourceAuthorityBuilder.Build(path);
         var contract = SemanticCoordinateContract.PdfStructuredSourcePartsV2;
         var experimentPrompt = CanonicalSemanticEngine.SystemPromptFor(
-            contract, CanonicalSemanticExperiment.MembershipBeforePlacement);
+            contract, HistoricalRequest.Of(CanonicalSemanticExperiment.MembershipBeforePlacement));
 
         lines.Add(Check("experiment", ExperimentId, ExperimentId));
         lines.Add(Check("authorizedCommit", AuthorizedCommit, AuthorizedCommit));
@@ -178,7 +178,7 @@ public sealed class MastheadE2V2ExperimentTransportTests
             CanonicalArtifactHash.OfText(experimentPrompt)));
 
         var baselinePrompt = CanonicalSemanticEngine.SystemPromptFor(
-            contract, CanonicalSemanticExperiment.Baseline);
+            contract, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         lines.Add(Check("e2BeforeV2Contract", "true",
             experimentPrompt.IndexOf(CanonicalSemanticEngine.MembershipBeforePlacementClause,
                 StringComparison.Ordinal) < experimentPrompt.IndexOf(contract.PromptClause!, StringComparison.Ordinal)
@@ -231,7 +231,7 @@ public sealed class MastheadE2V2ExperimentTransportTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             SemanticCoordinateContract.PdfStructuredSourcePartsV2,
-            CanonicalSemanticExperiment.MembershipBeforePlacement,
+            HistoricalRequest.Of(CanonicalSemanticExperiment.MembershipBeforePlacement),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
             TargetPacks.ToHashSet(StringComparer.Ordinal));
         return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))
@@ -255,7 +255,7 @@ public sealed class MastheadE2V2ExperimentTransportTests
 
         var authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
             path, classifier, CancellationToken.None,
-            experiment: CanonicalSemanticExperiment.MembershipBeforePlacement,
+            experiment: HistoricalRequest.Of(CanonicalSemanticExperiment.MembershipBeforePlacement),
             replayCapture: capture,
             profile: V2Profile,
             packingPolicy: SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,

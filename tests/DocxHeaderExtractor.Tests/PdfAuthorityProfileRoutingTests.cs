@@ -60,9 +60,10 @@ public sealed class PdfAuthorityProfileRoutingTests
         var plan = PdfStructuredSourceAuthorityBuilder.Build(path);
         Assert.Equal(StructuredSourceAliasUniverseHash, plan.SourceUniverseSha256);
 
+        // The frozen plan hash was produced under V1_ATTENTION_LEGACY, so it replays under V1.
         using var recording = new RequestCapturingClassifier();
         await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-            path, recording, CancellationToken.None,
+            path, recording, CancellationToken.None, HistoricalRequest.Baseline,
             profile: PdfSemanticAuthorityProfile.StructuredSourceParts);
 
         Assert.NotEmpty(recording.Requests);
@@ -127,7 +128,7 @@ public sealed class PdfAuthorityProfileRoutingTests
         var path = Path(Pdf);
         using var recording = new RequestCapturingClassifier();
         await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-            path, recording, CancellationToken.None,
+            path, recording, CancellationToken.None, HistoricalRequest.Baseline,
             profile: PdfSemanticAuthorityProfile.StructuredSourceParts);
         return recording.Requests;
     }
@@ -231,7 +232,7 @@ public sealed class PdfAuthorityProfileRoutingTests
 
         using var recording = new RequestCapturingClassifier();
         await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-            Path(Pdf), recording, CancellationToken.None,
+            Path(Pdf), recording, CancellationToken.None, HistoricalRequest.Baseline,
             profile: PdfSemanticAuthorityProfile.StructuredSourceParts,
             packingPolicy: policy,
             selectedPackIds: targetPackIds,

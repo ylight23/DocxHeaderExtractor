@@ -46,6 +46,13 @@ internal sealed record CanonicalSemanticExperiment(
     public static readonly CanonicalSemanticExperiment MembershipBeforePlacement =
         new(false, false) { RequireMembershipBeforePlacement = true };
 
+    /// <summary>
+    /// The model-visible request this run sends. Production default; a historical experiment selects
+    /// V1 only through <see cref="HistoricalContracts.AttentionLegacyV1.Select"/>. Not part of
+    /// <see cref="Name"/>: an arm names an intervention, the request version names the contract.
+    /// </summary>
+    public SemanticRequestVersion RequestVersion { get; init; } = SemanticRequestVersions.ProductionDefault;
+
     public string Name => RequireMembershipBeforePlacement
         ? "E2-membership-before-placement"
         : ConstrainNonStructuralMetadata

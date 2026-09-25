@@ -45,6 +45,12 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                     Profile = replayCapture.Metadata.Profile ?? "DOCX_ALIAS_SPAN",
                     PackingPolicy = replayCapture.Metadata.PackingPolicy ?? "FIXED_OWNED_COUNT_120",
                     RepeatIdentity = replayCapture.Metadata.RepeatIdentity ?? replayCapture.Metadata.RunId,
+                    // Named from V2 onward; a V1 replay stays exactly as it was captured.
+                    RequestVersion = SemanticRequestVersions.Require(
+                        (experiment ?? CanonicalSemanticExperiment.Baseline).RequestVersion) is var version &&
+                        version != SemanticRequestVersion.V1_ATTENTION_LEGACY
+                            ? version.ToString()
+                            : replayCapture.Metadata.RequestVersion,
                 },
             };
 

@@ -659,7 +659,7 @@ public sealed class DirectSemanticProbePreflightTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             SemanticCoordinateContract.PdfSemanticMembershipV1,
-            CanonicalSemanticExperiment.Baseline,
+            HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1);
         return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))
             .ToDictionary(segment => segment.PackId, segment => segment.RequestBytes, StringComparer.Ordinal);

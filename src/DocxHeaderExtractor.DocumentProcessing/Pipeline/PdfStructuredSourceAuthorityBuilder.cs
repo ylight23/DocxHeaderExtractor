@@ -52,6 +52,12 @@ internal sealed record PdfStructuredSourceAuthority(
     public string SourceUniverseSha256 => SourceAliasUniverseHash;
 
     /// <summary>
+    /// <see cref="ModelVisibleEvidenceHash"/> is the V1_ATTENTION_LEGACY evidence shape, the one every
+    /// artifact frozen before REMOVE_MODEL_VISIBLE_ATTENTION_V1 recorded. This is the production V2 shape.
+    /// </summary>
+    public string ModelVisibleEvidenceHashV2 { get; init; } = string.Empty;
+
+    /// <summary>
     /// What a live call would actually build and send: the same input shape the production
     /// adapter would construct, with the atoms' layout labels attached as context rather than as
     /// coordinates.
@@ -192,7 +198,7 @@ internal static class PdfStructuredSourceAuthorityBuilder
             ModelVisibleEvidenceHash: Hash(new
             {
                 schemaVersion = "a99-pdf-model-visible-evidence-v1",
-                rows = evidence.Select(item => Visible(item, layoutBlockByAtom)).ToArray(),
+                rows = evidence.Select(item => VisibleV1(item, layoutBlockByAtom)).ToArray(),
             }),
             CallPlanHash: Hash(new
             {
@@ -210,7 +216,14 @@ internal static class PdfStructuredSourceAuthorityBuilder
             Catalog: catalog,
             Aliases: aliases,
             OrdinalBySourceId: ordinalByAtomSourceId,
-            ParserLineCount: segments.Count);
+            ParserLineCount: segments.Count)
+        {
+            ModelVisibleEvidenceHashV2 = Hash(new
+            {
+                schemaVersion = "a99-pdf-model-visible-evidence-v2",
+                rows = evidence.Select(item => VisibleV2(item, layoutBlockByAtom)).ToArray(),
+            }),
+        };
     }
 
     /// <summary>
@@ -250,7 +263,7 @@ internal static class PdfStructuredSourceAuthorityBuilder
     /// shape matches <c>HeaderClassifierCanonicalTextModel.OwnedEvidence</c>'s block-bearing branch
     /// exactly, so the hash means what its name says.
     /// </summary>
-    private static object Visible(
+    private static object VisibleV1(
         CanonicalSemanticSourceEvidence item, IReadOnlyDictionary<string, string> layoutBlockByAtom) => new
         {
             alias = item.SourceAlias,
@@ -263,6 +276,21 @@ internal static class PdfStructuredSourceAuthorityBuilder
             numbering = item.NumberingFacts,
             markers = item.MarkerFacts,
             attention = item.CandidateAttention.HeuristicMatch,
+        };
+
+    /// <summary>The same measurement for V2_ATTENTION_FREE: no harness judgement attached.</summary>
+    private static object VisibleV2(
+        CanonicalSemanticSourceEvidence item, IReadOnlyDictionary<string, string> layoutBlockByAtom) => new
+        {
+            alias = item.SourceAlias,
+            block = layoutBlockByAtom.GetValueOrDefault(item.SourceId),
+            text = item.ExactSourceText,
+            owned = true,
+            scope = item.StructuralScope,
+            inTableOfContents = item.InTableOfContents,
+            style = item.StyleFacts,
+            numbering = item.NumberingFacts,
+            markers = item.MarkerFacts,
         };
 
     private static PdfSemanticBlock SingleLineBlock(PdfLine line) => new(

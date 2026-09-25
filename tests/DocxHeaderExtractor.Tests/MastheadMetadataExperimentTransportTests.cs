@@ -136,9 +136,9 @@ public sealed class MastheadMetadataExperimentTransportTests
         // the baseline's must still be the baseline's.
         var experimentPrompt = CanonicalSemanticEngine.SystemPromptFor(
             SemanticCoordinateContract.PdfStructuredSourceParts,
-            CanonicalSemanticExperiment.NonStructuralMetadataConstrained);
+            HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained));
         var predecessorPrompt = CanonicalSemanticEngine.SystemPromptFor(
-            SemanticCoordinateContract.PdfStructuredSourceParts, CanonicalSemanticExperiment.Baseline);
+            SemanticCoordinateContract.PdfStructuredSourceParts, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         lines.Add(Check("experimentPrompt", ExperimentPromptSha256, CanonicalArtifactHash.OfText(experimentPrompt)));
         lines.Add(Check("predecessorPrompt", PredecessorPromptSha256, CanonicalArtifactHash.OfText(predecessorPrompt)));
 
@@ -168,7 +168,7 @@ public sealed class MastheadMetadataExperimentTransportTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             SemanticCoordinateContract.PdfStructuredSourceParts,
-            CanonicalSemanticExperiment.NonStructuralMetadataConstrained,
+            HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
             TargetPacks.ToHashSet(StringComparer.Ordinal));
         return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))
@@ -195,7 +195,7 @@ public sealed class MastheadMetadataExperimentTransportTests
 
         var authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
             path, classifier, CancellationToken.None,
-            experiment: CanonicalSemanticExperiment.NonStructuralMetadataConstrained,
+            experiment: HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained),
             replayCapture: capture,
             profile: PdfSemanticAuthorityProfile.StructuredSourceParts,
             packingPolicy: SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,

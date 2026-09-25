@@ -392,7 +392,7 @@ public static class CanonicalSemanticProductionEntryPoint
             capture.ManifestHash,
             capture.RunId,
             capture.Commit,
-            capture.CreatedAt);
+            capture.CreatedAt) with { RequestVersion = capture.RequestVersion };
     }
 
     private static CanonicalSemanticProductionResult RunPostInference(

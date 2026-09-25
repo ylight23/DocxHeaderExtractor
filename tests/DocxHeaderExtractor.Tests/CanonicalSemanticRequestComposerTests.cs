@@ -118,7 +118,7 @@ public sealed class CanonicalSemanticRequestComposerTests
         var request = await SingleRequest(SemanticCoordinateContract.PdfAliasSelection);
         Assert.Equal(LegacyPdfPromptHash, CanonicalSemanticRequestComposer.Hash(
             CanonicalSemanticEngine.SystemPromptFor(
-                SemanticCoordinateContract.PdfAliasSelection, CanonicalSemanticExperiment.Baseline)));
+                SemanticCoordinateContract.PdfAliasSelection, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline))));
         Assert.DoesNotContain("\"block\":", request, StringComparison.Ordinal);
     }
 

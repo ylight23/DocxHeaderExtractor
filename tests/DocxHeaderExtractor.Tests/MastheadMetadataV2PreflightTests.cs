@@ -37,9 +37,9 @@ public sealed class MastheadMetadataV2PreflightTests
     {
         var contract = SemanticCoordinateContract.PdfStructuredSourcePartsV2;
         var baselinePrompt = CanonicalSemanticEngine.SystemPromptFor(
-            contract, CanonicalSemanticExperiment.Baseline);
+            contract, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         var e1Prompt = CanonicalSemanticEngine.SystemPromptFor(
-            contract, CanonicalSemanticExperiment.NonStructuralMetadataConstrained);
+            contract, HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained));
 
         Assert.Equal(V2PromptSha256, CanonicalArtifactHash.OfText(baselinePrompt));
         Assert.Equal(E1ClauseSha256,
@@ -56,7 +56,7 @@ public sealed class MastheadMetadataV2PreflightTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             contract,
-            CanonicalSemanticExperiment.NonStructuralMetadataConstrained,
+            HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
             TargetPacks.ToHashSet(StringComparer.Ordinal));
         var segments = model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))

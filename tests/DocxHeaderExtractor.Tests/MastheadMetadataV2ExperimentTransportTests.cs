@@ -123,7 +123,7 @@ public sealed class MastheadMetadataV2ExperimentTransportTests
         var plan = PdfStructuredSourceAuthorityBuilder.Build(path);
         var contract = SemanticCoordinateContract.PdfStructuredSourcePartsV2;
         var experimentPrompt = CanonicalSemanticEngine.SystemPromptFor(
-            contract, CanonicalSemanticExperiment.NonStructuralMetadataConstrained);
+            contract, HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained));
 
         lines.Add(Check("experiment", ExperimentId, ExperimentId));
         lines.Add(Check("authorizedCommit", AuthorizedCommit, AuthorizedCommit));
@@ -150,7 +150,7 @@ public sealed class MastheadMetadataV2ExperimentTransportTests
             CanonicalArtifactHash.OfText(experimentPrompt)));
 
         var baselinePrompt = CanonicalSemanticEngine.SystemPromptFor(
-            contract, CanonicalSemanticExperiment.Baseline);
+            contract, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         lines.Add(Check("e1BeforeV2Contract", "true",
             experimentPrompt.IndexOf(CanonicalSemanticEngine.NonStructuralMetadataClause,
                 StringComparison.Ordinal) < experimentPrompt.IndexOf(contract.PromptClause!, StringComparison.Ordinal)
@@ -194,7 +194,7 @@ public sealed class MastheadMetadataV2ExperimentTransportTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             SemanticCoordinateContract.PdfStructuredSourcePartsV2,
-            CanonicalSemanticExperiment.NonStructuralMetadataConstrained,
+            HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
             TargetPacks.ToHashSet(StringComparer.Ordinal));
         return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))
@@ -218,7 +218,7 @@ public sealed class MastheadMetadataV2ExperimentTransportTests
 
         var authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
             path, classifier, CancellationToken.None,
-            experiment: CanonicalSemanticExperiment.NonStructuralMetadataConstrained,
+            experiment: HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained),
             replayCapture: capture,
             profile: V2Profile,
             packingPolicy: SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,

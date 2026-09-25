@@ -172,6 +172,15 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
                             System.Text.Encoding.UTF8.GetByteCount(requestPayload));
                     })
                     .ToArray();
+                // Every run from V2 onward names the request version it sent; a V1 replay stays exactly
+                // as it was captured, identified by its prompt hash.
+                var requestVersion = SemanticRequestVersions.Require(
+                    (experiment ?? CanonicalSemanticExperiment.Baseline).RequestVersion);
+                if (requestVersion != SemanticRequestVersion.V1_ATTENTION_LEGACY)
+                    replayCapture = replayCapture with
+                    {
+                        Metadata = replayCapture.Metadata with { RequestVersion = requestVersion.ToString() },
+                    };
                 replayCapture = replayCapture.Reserve(
                     input.DocumentId ?? throw new InvalidOperationException("REPLAY_CAPTURE_DOCUMENT_ID_MISSING"),
                     input.SourceSha256,

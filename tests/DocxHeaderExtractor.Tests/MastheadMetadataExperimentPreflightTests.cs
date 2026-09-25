@@ -49,10 +49,10 @@ public sealed class MastheadMetadataExperimentPreflightTests
 
         // ---- prompt authority: the predecessor keeps its hash, the arm gets a new one ------------
         var predecessor = CanonicalSemanticEngine.SystemPromptFor(
-            SemanticCoordinateContract.PdfStructuredSourceParts, CanonicalSemanticExperiment.Baseline);
+            SemanticCoordinateContract.PdfStructuredSourceParts, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         var experiment = CanonicalSemanticEngine.SystemPromptFor(
             SemanticCoordinateContract.PdfStructuredSourceParts,
-            CanonicalSemanticExperiment.NonStructuralMetadataConstrained);
+            HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained));
 
         Assert.Equal(PredecessorPromptSha256, CanonicalArtifactHash.OfText(predecessor));
         var experimentPromptSha256 = CanonicalArtifactHash.OfText(experiment);
@@ -60,10 +60,10 @@ public sealed class MastheadMetadataExperimentPreflightTests
 
         // The change is an addition, not a rewrite: the baseline prompt is a prefix of this one.
         Assert.StartsWith(
-            CanonicalSemanticEngine.SystemPrompt, experiment, StringComparison.Ordinal);
+            HistoricalRequest.SystemPrompt, experiment, StringComparison.Ordinal);
         var delta = experiment[..experiment.IndexOf(
             SemanticCoordinateContract.PdfStructuredSourceParts.PromptClause!, StringComparison.Ordinal)]
-            [CanonicalSemanticEngine.SystemPrompt.Length..];
+            [HistoricalRequest.SystemPrompt.Length..];
         Assert.Equal(CanonicalSemanticEngine.NonStructuralMetadataClause, delta);
 
         // No document-specific wording reached production text.
@@ -92,7 +92,7 @@ public sealed class MastheadMetadataExperimentPreflightTests
 
         // The clause is on the wire, and the packets themselves are untouched by it.
         Assert.All(requests.Values, request => Assert.Contains("sourceParts", request, StringComparison.Ordinal));
-        var baselineRequests = ComposeTargetRequests(plan, CanonicalSemanticExperiment.Baseline);
+        var baselineRequests = ComposeTargetRequests(plan, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         Assert.Equal(baselineRequests.Values, requests.Values);
 
         // ---- Gold sanity check over every materialized claim in the corpus -----------------------
@@ -139,7 +139,7 @@ public sealed class MastheadMetadataExperimentPreflightTests
                 predecessorPromptSha256 = PredecessorPromptSha256,
                 predecessorStatus = "BASELINE_PROMPT_AUTHORITY - unchanged and still what every other arm sends",
                 experimentPromptSha256,
-                experimentArm = CanonicalSemanticExperiment.NonStructuralMetadataConstrained.Name,
+                experimentArm = HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained).Name,
                 changeShape = "APPEND_ONLY - the baseline prompt is a prefix of the experiment prompt",
                 delta,
                 deltaCharacters = delta.Length,
@@ -228,7 +228,7 @@ public sealed class MastheadMetadataExperimentPreflightTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             SemanticCoordinateContract.PdfStructuredSourceParts,
-            experiment ?? CanonicalSemanticExperiment.NonStructuralMetadataConstrained,
+            experiment ?? HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
             TargetPacks.ToHashSet(StringComparer.Ordinal));
 

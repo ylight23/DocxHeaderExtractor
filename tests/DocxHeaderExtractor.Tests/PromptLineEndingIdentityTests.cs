@@ -27,17 +27,17 @@ public sealed class PromptLineEndingIdentityTests
     [Fact]
     public void No_prompt_carries_a_carriage_return()
     {
-        Assert.DoesNotContain('\r', CanonicalSemanticEngine.SystemPrompt);
+        Assert.DoesNotContain('\r', HistoricalRequest.SystemPrompt);
         Assert.DoesNotContain('\r', CanonicalSemanticEngine.PlacementPrompt);
         Assert.DoesNotContain('\r', CanonicalSemanticEngine.PartialSpanClause);
         Assert.DoesNotContain('\r',
-            CanonicalSemanticEngine.SystemPromptFor(CanonicalSemanticExperiment.PartialSpanOnly));
+            CanonicalSemanticEngine.SystemPromptFor(HistoricalRequest.Of(CanonicalSemanticExperiment.PartialSpanOnly)));
     }
 
     [Fact]
     public void The_discovery_prompt_is_the_length_every_freeze_was_taken_at()
     {
-        Assert.Equal(2301, CanonicalSemanticEngine.SystemPrompt.Length);
+        Assert.Equal(2301, HistoricalRequest.SystemPrompt.Length);
     }
 
     [Fact]
@@ -46,7 +46,7 @@ public sealed class PromptLineEndingIdentityTests
         // Not "whatever this machine produces". The frozen arm comparisons name this value, and a
         // CRLF checkout used to produce dd858892... instead. The fix had to make every platform
         // converge on the baseline rather than accept a second one.
-        Assert.Equal(HistoricalSystemPromptSha256, Sha256(CanonicalSemanticEngine.SystemPrompt));
+        Assert.Equal(HistoricalSystemPromptSha256, Sha256(HistoricalRequest.SystemPrompt));
     }
 
     [Theory]
@@ -63,9 +63,9 @@ public sealed class PromptLineEndingIdentityTests
     [Fact]
     public void Normalization_is_idempotent()
     {
-        var once = CanonicalSemanticEngine.NormalizePromptLineEndings(CanonicalSemanticEngine.SystemPrompt);
+        var once = CanonicalSemanticEngine.NormalizePromptLineEndings(HistoricalRequest.SystemPrompt);
 
-        Assert.Equal(CanonicalSemanticEngine.SystemPrompt, once);
+        Assert.Equal(HistoricalRequest.SystemPrompt, once);
         Assert.Equal(once, CanonicalSemanticEngine.NormalizePromptLineEndings(once));
     }
 
@@ -74,11 +74,11 @@ public sealed class PromptLineEndingIdentityTests
     {
         // I8 appends a second raw literal, which carried the same defect and would otherwise have
         // made only the B2 arm platform-dependent - the hardest kind of drift to notice.
-        var withClause = CanonicalSemanticEngine.SystemPromptFor(CanonicalSemanticExperiment.PartialSpanOnly);
+        var withClause = CanonicalSemanticEngine.SystemPromptFor(HistoricalRequest.Of(CanonicalSemanticExperiment.PartialSpanOnly));
 
-        Assert.StartsWith(CanonicalSemanticEngine.SystemPrompt, withClause, StringComparison.Ordinal);
+        Assert.StartsWith(HistoricalRequest.SystemPrompt, withClause, StringComparison.Ordinal);
         Assert.Equal(
-            CanonicalSemanticEngine.SystemPrompt.Length + CanonicalSemanticEngine.PartialSpanClause.Length,
+            HistoricalRequest.SystemPrompt.Length + CanonicalSemanticEngine.PartialSpanClause.Length,
             withClause.Length);
     }
 

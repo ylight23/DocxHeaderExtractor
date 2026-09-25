@@ -96,7 +96,7 @@ public sealed class PdfCanaryPreflightTests
             request = new
             {
                 systemPromptSha256 = Sha256(capture.Requests[0].SystemPrompt),
-                systemPromptIsTheSharedOne = capture.Requests[0].SystemPrompt == CanonicalSemanticEngine.SystemPrompt,
+                systemPromptIsTheSharedOne = capture.Requests[0].SystemPrompt == HistoricalRequest.SystemPrompt,
                 userPayloadSha256 = capture.Requests.Select(request => Sha256(request.UserMessage)).ToArray(),
                 chars = capture.Requests.Select(request => request.UserMessage.Length).ToArray(),
                 bytes = capture.Requests.Select(request => Encoding.UTF8.GetByteCount(request.UserMessage)).ToArray(),
@@ -161,7 +161,7 @@ public sealed class PdfCanaryPreflightTests
         var (capture, _) = await CaptureAsync(Path.Combine(TestRepository.Root(), Pdf));
 
         Assert.All(capture.Requests, request =>
-            Assert.Equal(CanonicalSemanticEngine.SystemPrompt, request.SystemPrompt));
+            Assert.Equal(HistoricalRequest.SystemPrompt, request.SystemPrompt));
     }
 
     [Fact]
@@ -184,7 +184,7 @@ public sealed class PdfCanaryPreflightTests
     private static async Task<(RequestCapturingClassifier Capture, object? Unused)> CaptureAsync(string path)
     {
         using var capture = new RequestCapturingClassifier();
-        await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None);
+        await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None, HistoricalRequest.Baseline);
         return (capture, null);
     }
 

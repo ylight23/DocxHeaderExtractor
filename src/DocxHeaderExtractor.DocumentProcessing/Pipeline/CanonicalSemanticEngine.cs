@@ -27,8 +27,8 @@ internal static class CanonicalSemanticEngine
         sourceEvidence is in document order. Evaluate every alias in ownedSourceAliases and return
         one entry for each heading you find among them. Entries marked "owned": false are shown
         only so you can read the surrounding document; never return one of them as a heading.
-        The "attention" flag is a hint, not the set of allowed headings: any owned occurrence may
-        be a heading. Neighbouring entries are the local context; no context is repeated per item.
+        Any owned occurrence may be a heading. Neighbouring entries are the local context; no
+        context is repeated per item.
 
         REQUIRED for every heading: exactly one relationHints entry saying where it sits.
           "parent-node:<sourceAlias>" - it belongs under that earlier heading.
@@ -199,9 +199,8 @@ internal static class CanonicalSemanticEngine
         sourceEvidence is in document order. Evaluate every alias in ownedSourceAliases and return
         one claim for each accepted structural label you find among them. Entries marked
         "owned": false are shown only so you can read the surrounding document; never return one of
-        them as a claim. The "attention" flag is a hint, not the set of allowed claims: any owned
-        occurrence may be one. Neighbouring entries are the local context; no context is repeated
-        per item.
+        them as a claim. Any owned occurrence may be one. Neighbouring entries are the local
+        context; no context is repeated per item.
 
         REQUIRED for every claim: "membership", saying which kind of accepted label it is.
           "STRUCTURAL_UNIT" - it opens and names a unit of the document whose content follows it.
@@ -262,18 +261,29 @@ internal static class CanonicalSemanticEngine
     /// carried a wording intervention would move two variables at once, which is the mistake this
     /// whole stage exists to stop making.
     /// </summary>
-    internal static string MembershipPromptFor(SemanticCoordinateContract contract)
+    internal static string MembershipPromptFor(SemanticCoordinateContract contract) =>
+        MembershipPromptFor(contract, SemanticRequestVersions.ProductionDefault);
+
+    internal static string MembershipPromptFor(SemanticCoordinateContract contract, SemanticRequestVersion version)
     {
         ArgumentNullException.ThrowIfNull(contract);
-        return contract.PromptClause is null
-            ? Stage1MembershipPrompt
-            : Stage1MembershipPrompt + contract.PromptClause;
+        var core = SemanticRequestVersions.Require(version) == SemanticRequestVersion.V1_ATTENTION_LEGACY
+            ? HistoricalContracts.AttentionLegacyV1.Stage1MembershipPrompt
+            : Stage1MembershipPrompt;
+        return contract.PromptClause is null ? core : core + contract.PromptClause;
     }
+
+    /// <summary>The discovery prompt of a request version; an unknown version is refused.</summary>
+    internal static string SystemPromptOf(SemanticRequestVersion version) =>
+        SemanticRequestVersions.Require(version) == SemanticRequestVersion.V1_ATTENTION_LEGACY
+            ? HistoricalContracts.AttentionLegacyV1.SystemPrompt
+            : SystemPrompt;
 
     /// <summary>The prompt this run sends. One clause per intervention, appended, never rewritten.</summary>
     internal static string SystemPromptFor(CanonicalSemanticExperiment experiment)
     {
-        var prompt = experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
+        var core = SystemPromptOf(experiment.RequestVersion);
+        var prompt = experiment.CommunicatePartialSpan ? core + PartialSpanClause : core;
         if (experiment.ConstrainNonStructuralMetadata) prompt += NonStructuralMetadataClause;
         return experiment.RequireMembershipBeforePlacement ? prompt + MembershipBeforePlacementClause : prompt;
     }
@@ -294,7 +304,8 @@ internal static class CanonicalSemanticEngine
         // after it. This preserves the original E1 insertion point when the arm is paired with a
         // structured coordinate contract; putting E1 after coordinate serialization instructions
         // would make prompt order an unintended experimental variable.
-        var prompt = experiment.CommunicatePartialSpan ? SystemPrompt + PartialSpanClause : SystemPrompt;
+        var core = SystemPromptOf(experiment.RequestVersion);
+        var prompt = experiment.CommunicatePartialSpan ? core + PartialSpanClause : core;
         if (experiment.ConstrainNonStructuralMetadata)
             prompt += NonStructuralMetadataClause;
         if (experiment.RequireMembershipBeforePlacement)
@@ -373,7 +384,6 @@ internal static class CanonicalSemanticEngine
                     style = item.StyleFacts,
                     numbering = item.NumberingFacts,
                     markers = item.MarkerFacts,
-                    attention = item.CandidateAttention.HeuristicMatch,
                 };
             if (block is not null)
                 return new
@@ -387,7 +397,6 @@ internal static class CanonicalSemanticEngine
                     style = item.StyleFacts,
                     numbering = item.NumberingFacts,
                     markers = item.MarkerFacts,
-                    attention = item.CandidateAttention.HeuristicMatch,
                 };
             return new
             {
@@ -399,7 +408,6 @@ internal static class CanonicalSemanticEngine
                 style = item.StyleFacts,
                 numbering = item.NumberingFacts,
                 markers = item.MarkerFacts,
-                attention = item.CandidateAttention.HeuristicMatch,
             };
         }
 
@@ -458,8 +466,11 @@ internal static class CanonicalSemanticEngine
                 var ownedAliases = owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);
                 // Evidence is already in document order, so a neighbour IS the local context.
                 // Owned entries carry the decision facts; margin entries carry text only.
+                var version = SemanticRequestVersions.Require(_experiment.RequestVersion);
                 var sourceEvidence = visible.Select(item => ownedAliases.Contains(item.SourceAlias)
-                    ? OwnedEvidence(item, input.LayoutBlockBySourceId)
+                    ? version == SemanticRequestVersion.V1_ATTENTION_LEGACY
+                        ? HistoricalContracts.AttentionLegacyV1.OwnedEvidence(item, input.LayoutBlockBySourceId)
+                        : OwnedEvidence(item, input.LayoutBlockBySourceId)
                     : (object)MarginEvidence(item, input.LayoutBlockBySourceId))
                     .ToArray();
 

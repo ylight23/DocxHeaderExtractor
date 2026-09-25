@@ -149,13 +149,13 @@ public sealed class StructuredV2TargetBaselineTransportTests
         lines.Add(Check("evaluator", EvaluatorId, V2Profile.EvaluatorId));
 
         // The prompt is the unmodified v2 baseline: no intervention clause of any kind.
-        var prompt = CanonicalSemanticEngine.SystemPromptFor(v2, CanonicalSemanticExperiment.Baseline);
+        var prompt = CanonicalSemanticEngine.SystemPromptFor(v2, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         lines.Add(Check("v2Prompt", V2PromptSha256, CanonicalArtifactHash.OfText(prompt)));
         lines.Add(Check("mastheadClause", "absent",
             prompt.Contains(CanonicalSemanticEngine.NonStructuralMetadataClause, StringComparison.Ordinal)
                 ? "present" : "absent"));
         lines.Add(Check("interventionClause", "absent",
-            string.Equals(prompt, CanonicalSemanticEngine.SystemPrompt + v2.PromptClause, StringComparison.Ordinal)
+            string.Equals(prompt, HistoricalRequest.SystemPrompt + v2.PromptClause, StringComparison.Ordinal)
                 ? "absent" : "present"));
 
         // selectionMode: not offered to the model anywhere, and owned by the harness.
@@ -198,7 +198,7 @@ public sealed class StructuredV2TargetBaselineTransportTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             SemanticCoordinateContract.PdfStructuredSourcePartsV2,
-            CanonicalSemanticExperiment.Baseline,
+            HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
             TargetPacks.ToHashSet(StringComparer.Ordinal));
         return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))
@@ -236,7 +236,7 @@ public sealed class StructuredV2TargetBaselineTransportTests
 
         var authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
             path, classifier, CancellationToken.None,
-            experiment: CanonicalSemanticExperiment.Baseline,
+            experiment: HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline),
             replayCapture: capture,
             profile: V2Profile,
             packingPolicy: SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,

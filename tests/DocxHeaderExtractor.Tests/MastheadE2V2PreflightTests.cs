@@ -87,11 +87,11 @@ public sealed class MastheadE2V2PreflightTests
         Assert.Equal(V2ContractSha256, v2.SchemaHash());
 
         // ---- §3/§4 the clause, its bytes, and where it sits ---------------------------------------
-        var baseline = CanonicalSemanticEngine.SystemPromptFor(v2, CanonicalSemanticExperiment.Baseline);
+        var baseline = CanonicalSemanticEngine.SystemPromptFor(v2, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         var e1 = CanonicalSemanticEngine.SystemPromptFor(
-            v2, CanonicalSemanticExperiment.NonStructuralMetadataConstrained);
+            v2, HistoricalRequest.Of(CanonicalSemanticExperiment.NonStructuralMetadataConstrained));
         var e2 = CanonicalSemanticEngine.SystemPromptFor(
-            v2, CanonicalSemanticExperiment.MembershipBeforePlacement);
+            v2, HistoricalRequest.Of(CanonicalSemanticExperiment.MembershipBeforePlacement));
 
         Assert.Equal(BaselinePromptSha256, CanonicalArtifactHash.OfText(baseline));
         Assert.Equal(E1PromptSha256, CanonicalArtifactHash.OfText(e1));   // E1 unmoved by E2 existing
@@ -101,7 +101,7 @@ public sealed class MastheadE2V2PreflightTests
 
         // E2 is an addition to the semantic core, and it precedes the coordinate clause.
         var clause = CanonicalSemanticEngine.MembershipBeforePlacementClause;
-        Assert.Equal(CanonicalSemanticEngine.SystemPrompt + clause + v2.PromptClause, e2);
+        Assert.Equal(HistoricalRequest.SystemPrompt + clause + v2.PromptClause, e2);
         Assert.True(
             e2.IndexOf(clause, StringComparison.Ordinal) < e2.IndexOf(v2.PromptClause!, StringComparison.Ordinal),
             "the eligibility clause must precede coordinate serialization instructions");
@@ -125,12 +125,12 @@ public sealed class MastheadE2V2PreflightTests
         Assert.Contains("must never be used to admit text", clause, StringComparison.Ordinal);
 
         // ---- §12 exact request authority through the real routed path ------------------------------
-        var requests = Compose(plan, CanonicalSemanticExperiment.MembershipBeforePlacement);
+        var requests = Compose(plan, HistoricalRequest.Of(CanonicalSemanticExperiment.MembershipBeforePlacement));
         Assert.Equal(TargetPacks, requests.Keys);
-        Assert.Equal(requests.Values, Compose(plan, CanonicalSemanticExperiment.MembershipBeforePlacement).Values);
+        Assert.Equal(requests.Values, Compose(plan, HistoricalRequest.Of(CanonicalSemanticExperiment.MembershipBeforePlacement)).Values);
 
         // The evidence packets are untouched by the clause: only the system prompt differs.
-        var baselineRequests = Compose(plan, CanonicalSemanticExperiment.Baseline);
+        var baselineRequests = Compose(plan, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         Assert.Equal(baselineRequests.Values, requests.Values);
 
         // Authority 1: the evidence packet, i.e. the user message alone. Identical across all arms.

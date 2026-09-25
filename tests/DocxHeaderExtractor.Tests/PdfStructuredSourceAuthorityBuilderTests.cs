@@ -244,7 +244,7 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
         var composed = ComposedRequests(plan);
         using var recording = new RecordingClassifier();
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
-            recording, SemanticCoordinateContract.PdfStructuredSourceParts);
+            recording, SemanticCoordinateContract.PdfStructuredSourceParts, HistoricalRequest.Baseline);
         model.InferAsync(plan.CreateProductionInput("DOC-0252"), new SemanticContextPacket([], [], []), "successor-authority-proof")
             .GetAwaiter().GetResult();
 
@@ -419,7 +419,7 @@ public sealed class PdfStructuredSourceAuthorityBuilderTests
     private static IReadOnlyList<string> ComposedRequests(PdfStructuredSourceAuthority plan)
     {
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
-            new UnreachableClassifier(), SemanticCoordinateContract.PdfStructuredSourceParts);
+            new UnreachableClassifier(), SemanticCoordinateContract.PdfStructuredSourceParts, HistoricalRequest.Baseline);
         return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))
             .Select(segment => segment.RequestBytes)
             .ToArray();

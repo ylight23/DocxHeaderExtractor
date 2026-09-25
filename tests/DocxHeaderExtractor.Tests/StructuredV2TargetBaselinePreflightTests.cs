@@ -50,7 +50,7 @@ public sealed class StructuredV2TargetBaselinePreflightTests
         Assert.Equal(V2ContractSha256, v2.SchemaHash());
         Assert.Equal(V1ContractSha256, v1.SchemaHash());   // v1 still intact beside it
 
-        var prompt = CanonicalSemanticEngine.SystemPromptFor(v2, CanonicalSemanticExperiment.Baseline);
+        var prompt = CanonicalSemanticEngine.SystemPromptFor(v2, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         Assert.Equal(V2PromptSha256, CanonicalArtifactHash.OfText(prompt));
 
         // selectionMode is not model-visible: not in the schema, not in the words.
@@ -90,7 +90,7 @@ public sealed class StructuredV2TargetBaselinePreflightTests
         Assert.NotEqual(V2FullPlanPredecessorSha256, targetPlanHash);  // two packs, not six
 
         // ---- §3 no semantic intervention ----------------------------------------------------------
-        Assert.Equal(CanonicalSemanticEngine.SystemPrompt + v2.PromptClause, prompt);
+        Assert.Equal(HistoricalRequest.SystemPrompt + v2.PromptClause, prompt);
         Assert.DoesNotContain(CanonicalSemanticEngine.NonStructuralMetadataClause, prompt, StringComparison.Ordinal);
 
         // ---- packing is unmoved: the same packs own the same atoms as under v1 ---------------------
@@ -261,7 +261,7 @@ public sealed class StructuredV2TargetBaselinePreflightTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             contract ?? SemanticCoordinateContract.PdfStructuredSourcePartsV2,
-            CanonicalSemanticExperiment.Baseline,
+            HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
             TargetPacks.ToHashSet(StringComparer.Ordinal));
 

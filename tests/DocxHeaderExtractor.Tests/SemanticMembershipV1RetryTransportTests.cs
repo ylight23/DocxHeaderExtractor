@@ -130,7 +130,7 @@ public sealed class SemanticMembershipV1RetryTransportTests
 
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         var contract = SemanticCoordinateContract.PdfSemanticMembershipV1;
-        var prompt = CanonicalSemanticEngine.MembershipPromptFor(contract);
+        var prompt = CanonicalSemanticEngine.MembershipPromptFor(contract, HistoricalRequest.Version);
         var requests = Compose(plan);
 
         using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
@@ -172,7 +172,7 @@ public sealed class SemanticMembershipV1RetryTransportTests
         var path = TestRepository.Path(Doc0252Pdf);
         var plan = PdfStructuredSourceAuthorityBuilder.Build(path);
         var contract = SemanticCoordinateContract.PdfSemanticMembershipV1;
-        var prompt = CanonicalSemanticEngine.MembershipPromptFor(contract);
+        var prompt = CanonicalSemanticEngine.MembershipPromptFor(contract, HistoricalRequest.Version);
 
         lines.Add(Check("experiment", ExperimentId, ExperimentId));
         lines.Add(Check("protocol", "a99-semantic-membership-v1", contract.ProtocolVersion));
@@ -517,7 +517,7 @@ public sealed class SemanticMembershipV1RetryTransportTests
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             new UnreachableClassifier(),
             SemanticCoordinateContract.PdfSemanticMembershipV1,
-            CanonicalSemanticExperiment.Baseline,
+            HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline),
             SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
             TargetPacks.ToHashSet(StringComparer.Ordinal));
         return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))

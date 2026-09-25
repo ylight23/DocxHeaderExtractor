@@ -302,7 +302,7 @@ public sealed class DocxExperimentArmPacketTests
         var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
 
         using var capture = new RequestCapturingClassifier();
-        await CanonicalSemanticDocxAuthorityAdapter.RunAsync(state, mode, capture, CancellationToken.None, experiment);
+        await CanonicalSemanticDocxAuthorityAdapter.RunAsync(state, mode, capture, CancellationToken.None, HistoricalRequest.Of(experiment));
         return capture.Requests;
     }
 

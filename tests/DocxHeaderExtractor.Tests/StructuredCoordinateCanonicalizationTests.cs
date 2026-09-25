@@ -39,8 +39,8 @@ public sealed class StructuredCoordinateCanonicalizationTests
         Assert.NotEqual(v1.SchemaHash(), v2.SchemaHash());
         Assert.Equal("a99-semantic-source-parts-v2", v2.ProtocolVersion);
 
-        var v1Prompt = CanonicalSemanticEngine.SystemPromptFor(v1, CanonicalSemanticExperiment.Baseline);
-        var v2Prompt = CanonicalSemanticEngine.SystemPromptFor(v2, CanonicalSemanticExperiment.Baseline);
+        var v1Prompt = CanonicalSemanticEngine.SystemPromptFor(v1, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
+        var v2Prompt = CanonicalSemanticEngine.SystemPromptFor(v2, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
         Assert.NotEqual(CanonicalArtifactHash.OfText(v1Prompt), CanonicalArtifactHash.OfText(v2Prompt));
 
         // The model is no longer asked for a mode, in the schema or in the words.
@@ -216,7 +216,7 @@ public sealed class StructuredCoordinateCanonicalizationTests
         PdfStructuredSourceAuthority plan, SemanticCoordinateContract contract)
     {
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
-            new UnreachableClassifier(), contract, CanonicalSemanticExperiment.Baseline);
+            new UnreachableClassifier(), contract, HistoricalRequest.Of(CanonicalSemanticExperiment.Baseline));
 
         return model.ComposeRequests(plan.CreateProductionInput("DOC-0252"))
             .ToDictionary(segment => segment.PackId, segment => segment.RequestBytes, StringComparer.Ordinal);
