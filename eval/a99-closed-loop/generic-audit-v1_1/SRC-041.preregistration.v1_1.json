@@ -1,0 +1,157 @@
+{
+  "artifactKind": "a99_generic_audit_preregistration",
+  "study": "SRC041_BLIND_GENERALIZATION_AUDIT_V1",
+  "engineIdentity": {
+    "engine": "GENERIC_AUDIT_ENGINE_V1.1",
+    "files": [
+      {
+        "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_1/SourceEvidence.cs",
+        "sha256": "3dfb10a40e07eba37258ff4eac7905858f0ae6a2d65e7910d94bcc2560495321"
+      },
+      {
+        "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_1/SemanticAuditEngine.cs",
+        "sha256": "5d5fc177983b2aea31ffc2012bae784504c74498264851039507ad91339745d7"
+      }
+    ],
+    "constants": {
+      "largerThanBodyRatio": 1.08,
+      "bodySizeToleranceRatio": 0.97,
+      "shortLabelMaxWords": 20,
+      "compositeMaxParts": 6,
+      "furnitureMinPages": 3,
+      "furnitureMinBandShare": 0.8,
+      "navigationRunMin": 3,
+      "lineGapMaxFontRatio": 1.8,
+      "sameSizeRatioTolerance": 0.02,
+      "bracketSpanMaxLines": 15,
+      "formMinFillInFields": 2,
+      "averageCharWidthFontRatio": 0.5,
+      "centredMarginToleranceRatio": 0.05,
+      "columnGutterFontRatio": 1
+    },
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3"
+  },
+  "ontology": {
+    "id": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "path": "eval/a99-closed-loop/policy/occurrence-semantic-axes.v3.json",
+    "sha256": "23c916df45a1deb7d985c34dff1efc6de2ccc1a6d512b7500d92d59c963b81f6"
+  },
+  "scorer": {
+    "id": "GENERIC_EXACT_SCORER_V1",
+    "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_1/ExactScorer.cs",
+    "sha256": "4790a2bf1b9ab57924005633e38f2cabe1f477e38b726ed09205907451e65d71",
+    "validatedBy": "reproduces the committed V1 SRC-029 raw score (adf11f4): TP, FP, every Gold bucket, review noise",
+    "matching": [
+      "claim-level and exact: equal ordered source-part tuples (alias:start-end), bound by the production binder (GENERIC_MULTIPART_BINDER_V2) over the PDF's structured atom universe",
+      "a hypothesis part is a whole atom or its exact leading text; nothing is reordered or repaired, and an unbindable hypothesis matches nothing",
+      "overlap without identity is a claim-level miss (PARTIAL_*), never a true positive",
+      "NEEDS_REVIEW never counts as a heading; it has its own capture rate"
+    ],
+    "reports": [
+      "TRUE precision / recall / F1",
+      "NEEDS_REVIEW capture of Gold headings",
+      "FALSE-on-Gold count",
+      "review noise outside Gold",
+      "axis disagreements on exact TRUE matches (OCCURRENCE_SEMANTIC_AXES_V3; no repeatStatus)",
+      "then: known gaps recurring, new B gaps, C ontology gaps, D document-specific exceptions"
+    ]
+  },
+  "productionRequest": {
+    "requestVersion": "V2_ATTENTION_FREE",
+    "contractFreeze": {
+      "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.freeze.json",
+      "sha256": "ee7c776988e35968915d5e5448223dfc3d64cec997d643d56ac9cb41f1690ac3"
+    },
+    "packingPolicy": "FIXED_OWNED_COUNT_120 (the default)",
+    "coherentRegionSegmentation": "NOT SELECTED - it splits packs on the appendix label (A99_GENERIC_PIPELINE_HARDCODE_AUDIT_V1 open item)",
+    "modelCallsAuthorized": 0
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+    "sha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+    "media": "PDF"
+  },
+  "sourceNote": "SRC-041's Gold file holds only a count-only total recorded on a retired pdf2docx DOCX; it is not opened, and that total is neither engine input nor target. Occurrence Gold is authored on the original PDF after the blind proposals are committed.",
+  "developmentEvidence": {
+    "calibration": [
+      "DOC-0123",
+      "DOC-0133"
+    ],
+    "development": "SRC-029 (V1's blind test; its V1.1 numbers are not a generalization result)",
+    "scores": [
+      {
+        "path": "eval/a99-closed-loop/generic-audit-v1_1/DOC-0123.score.v1_1.json",
+        "sha256": "11f8114116d4d4e519cf8173092a7eb4140746020373a584b2f10ecb5e190dee"
+      },
+      {
+        "path": "eval/a99-closed-loop/generic-audit-v1_1/DOC-0133.score.v1_1.json",
+        "sha256": "f2019f32e4bc30ecbbcf8ae389ca45f5cddd7ac0ecdf14660420cb93d66fd810"
+      },
+      {
+        "path": "eval/a99-closed-loop/generic-audit-v1_1/SRC-029.score.v1_1.json",
+        "sha256": "10528b73022df6286a15a1915468c7df65cd5e08a0fe06d28edcc7cabe7cc755"
+      }
+    ]
+  },
+  "fixedInV1_1": [
+    "1 wrapped / multipart claim assembly (column-following chain; wrap judged by fit where the column bound is observable)",
+    "2 run-in heading span + trailing body (bold lead or label before a bracketed instruction as its own part)",
+    "3 parent opener immediately followed by child heading (numbered structural label; first item of a different enumeration)",
+    "4 multi-line instruction blocks (open bracket spans; italic prose runs; strongly set lines excepted)",
+    "5 table / two-column topology (each segment of a two-segment row stands alone; bare enumerator joins the segment beside it; colon-ended cell beside a value is a field label)",
+    "6 embedded-artifact boundary evidence (page-initial title; FORM only with fill-in fields in its region)"
+  ],
+  "knownBeforeSrc041": [
+    {
+      "id": "B1",
+      "gap": "TOC opener with repeated text"
+    },
+    {
+      "id": "B2",
+      "gap": "TOC sequence continuity evidence"
+    },
+    {
+      "id": "B4",
+      "gap": "outline level on list item"
+    },
+    {
+      "id": "K1",
+      "gap": "a title continued across a page break is not assembled (the binder accepts it; the engine does not propose it)"
+    },
+    {
+      "id": "K2",
+      "gap": "stacked title lines of different sizes (cover title blocks) are not assembled"
+    },
+    {
+      "id": "K3",
+      "gap": "connective lines between alternatives (OR / AND) have no lexical shape"
+    },
+    {
+      "id": "K4",
+      "gap": "DOCX page-break boundary evidence is not read (only paragraph pageBreakBefore)"
+    },
+    {
+      "id": "K5",
+      "gap": "FORM scope needs fill-in fields: schedules and tables without placeholders stay SECTION"
+    },
+    {
+      "id": "A",
+      "gap": "scope CLAUSE / SECTION / NOTE / FINANCIAL_STATEMENT and IDENTITY vs STRUCTURE are meaning decisions the engine has no evidence for"
+    }
+  ],
+  "forbidden": [
+    "model/provider/VLM calls",
+    "opening SRC-041's Gold file or any occurrence decision before the proposals are committed",
+    "the count-only total as engine input or target",
+    "engine code, constant, ontology or scorer changes after this pre-registration"
+  ],
+  "protocol": [
+    "1 freeze V1.1, its development evidence and this pre-registration",
+    "2 run V1.1 blind on SRC-041; commit the evidence profile and proposals before any Gold",
+    "3 independent source-only review of the original PDF; human decisions (proposals are not an authority)",
+    "4 freeze SRC-041 occurrence Gold",
+    "5 score with the pinned scorer; commit the raw score unchanged",
+    "6 classify residuals: known recurring / new B / C / D"
+  ],
+  "modelCalls": 0
+}
