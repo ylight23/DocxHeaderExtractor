@@ -1,0 +1,70 @@
+{
+  "artifactKind": "a99_generic_audit_preregistration",
+  "study": "SRC029_BLIND_GENERALIZATION_AUDIT_V1",
+  "engineCommit": "73eff5a",
+  "engineIdentity": {
+    "engine": "GENERIC_AUDIT_ENGINE_V1",
+    "files": [
+      {
+        "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/SourceEvidence.cs",
+        "sha256": "7226e84e59c4fd26bc0cae41ccefe8763c4ea41be4503b203334037ad90406fe"
+      },
+      {
+        "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/SemanticAuditEngine.cs",
+        "sha256": "e0239661f20615dd0c99f265ad19270de0ac9807e91566a94e781d131a3b1553"
+      }
+    ],
+    "constants": {
+      "largerThanBodyRatio": 1.08,
+      "bodySizeToleranceRatio": 0.97,
+      "shortLabelMaxWords": 20,
+      "compositeMaxParts": 6,
+      "furnitureMinPages": 3,
+      "furnitureMinBandShare": 0.8,
+      "navigationRunMin": 3
+    }
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+    "sha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+    "media": "PDF"
+  },
+  "sourceNote": "The Gold source of SRC-029 is the original PDF since 187aee9; the retired pdf2docx DOCX (475f76...0fe9e) is not this study's source. The approved total 356 was counted on that DOCX and is provenance only.",
+  "knownBeforeSrc029": [
+    {
+      "id": "B1",
+      "gap": "TOC opener with repeated text"
+    },
+    {
+      "id": "B2",
+      "gap": "TOC sequence continuity evidence"
+    },
+    {
+      "id": "B3",
+      "gap": "DOCX bold run-in lead"
+    },
+    {
+      "id": "B4",
+      "gap": "outline level on list item"
+    }
+  ],
+  "forbidden": [
+    "model/provider/VLM calls",
+    "Gold loading before the proposals are committed",
+    "the semantic total 356 as engine input or target",
+    "engine code, threshold or configuration changes"
+  ],
+  "protocol": [
+    "1 freeze engine 73eff5a and the known gaps (this artifact)",
+    "2 run the engine blind on SRC-029",
+    "3 commit the source evidence profile and proposals before any Gold is read",
+    "4 independent source-only review and human decisions (engine proposals are not an authority)",
+    "5 freeze SRC-029 occurrence Gold (any total; 356 is provenance)",
+    "6 join and score: TP/FP/FN, NEEDS_REVIEW recall, axis disagreements",
+    "7 classify residuals A/B/C/D; known gaps recurred vs new gaps",
+    "8 fix generic B gaps only",
+    "9 freeze engine V1.1 (SRC-029 becomes development evidence)",
+    "10 test V1.1 blind on SRC-041"
+  ],
+  "modelCalls": 0
+}

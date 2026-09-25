@@ -144,6 +144,63 @@ public sealed partial class GenericAuditEngineTests
         });
     }
 
+    // ---- SRC029_BLIND_GENERALIZATION_AUDIT_V1 ------------------------------------------------------
+
+    private const string Src029 = "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf";
+
+    private static object EngineIdentity() => new
+    {
+        engine = SemanticAuditEngine.EngineId,
+        files = EngineFiles.Select(f => new { path = f, sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path(f)) }).ToArray(),
+        constants = SemanticAuditEngine.Constants,
+    };
+
+    /// <summary>
+    /// Pre-registration, committed before the blind run: the engine as it is at 73eff5a (its files'
+    /// hashes and constants), the pinned source, the four gaps known before SRC-029 and the protocol.
+    /// </summary>
+    [Fact]
+    public void Preregister_src029()
+    {
+        FreezeArtifact.AssertJson(Root, "SRC-029.preregistration.v1.json", new
+        {
+            artifactKind = "a99_generic_audit_preregistration",
+            study = "SRC029_BLIND_GENERALIZATION_AUDIT_V1",
+            engineCommit = "73eff5a",
+            engineIdentity = EngineIdentity(),
+            source = new { path = Src029, sha256 = CanonicalArtifactHash.OfBytes(TestRepository.Path(Src029)), media = "PDF" },
+            sourceNote = "The Gold source of SRC-029 is the original PDF since 187aee9; the retired pdf2docx DOCX (475f76...0fe9e) is not this study's source. The approved total 356 was counted on that DOCX and is provenance only.",
+            knownBeforeSrc029 = new[]
+            {
+                new { id = "B1", gap = "TOC opener with repeated text" },
+                new { id = "B2", gap = "TOC sequence continuity evidence" },
+                new { id = "B3", gap = "DOCX bold run-in lead" },
+                new { id = "B4", gap = "outline level on list item" },
+            },
+            forbidden = new[]
+            {
+                "model/provider/VLM calls",
+                "Gold loading before the proposals are committed",
+                "the semantic total 356 as engine input or target",
+                "engine code, threshold or configuration changes",
+            },
+            protocol = new[]
+            {
+                "1 freeze engine 73eff5a and the known gaps (this artifact)",
+                "2 run the engine blind on SRC-029",
+                "3 commit the source evidence profile and proposals before any Gold is read",
+                "4 independent source-only review and human decisions (engine proposals are not an authority)",
+                "5 freeze SRC-029 occurrence Gold (any total; 356 is provenance)",
+                "6 join and score: TP/FP/FN, NEEDS_REVIEW recall, axis disagreements",
+                "7 classify residuals A/B/C/D; known gaps recurred vs new gaps",
+                "8 fix generic B gaps only",
+                "9 freeze engine V1.1 (SRC-029 becomes development evidence)",
+                "10 test V1.1 blind on SRC-041",
+            },
+            modelCalls = 0,
+        });
+    }
+
     // ---- generic in fact -------------------------------------------------------------------------
 
     private static readonly string[] EngineFiles =
