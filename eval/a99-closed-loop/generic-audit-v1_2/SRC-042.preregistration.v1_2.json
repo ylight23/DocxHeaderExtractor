@@ -1,0 +1,143 @@
+{
+  "artifactKind": "a99_generic_audit_preregistration",
+  "study": "SRC042_BLIND_GENERALIZATION_AUDIT_V1",
+  "engineCommit": "ad44d78",
+  "engineIdentity": {
+    "engine": "GENERIC_AUDIT_ENGINE_V1.2",
+    "files": [
+      {
+        "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_2/SourceEvidence.cs",
+        "sha256": "1945b0766345a86b298b5ccdca3f2b24adbb8e4099f3d5fcc443dabf26ea6074"
+      },
+      {
+        "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_2/SemanticAuditEngine.cs",
+        "sha256": "acc6c21438846a7363733fb78100151eb49d5fe711b999b995924878984f744d"
+      }
+    ],
+    "constants": {
+      "largerThanBodyRatio": 1.08,
+      "bodySizeToleranceRatio": 0.97,
+      "shortLabelMaxWords": 20,
+      "compositeMaxParts": 6,
+      "furnitureMinPages": 3,
+      "furnitureMinBandShare": 0.8,
+      "navigationRunMin": 3,
+      "lineGapMaxFontRatio": 1.8,
+      "sameSizeRatioTolerance": 0.02,
+      "bracketSpanMaxLines": 15,
+      "formMinFillInFields": 2,
+      "averageCharWidthFontRatio": 0.5,
+      "centredMarginToleranceRatio": 0.05,
+      "columnGutterFontRatio": 1,
+      "figureRegionMaxLines": 60
+    },
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3"
+  },
+  "ontology": {
+    "id": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "path": "eval/a99-closed-loop/policy/occurrence-semantic-axes.v3.json",
+    "sha256": "23c916df45a1deb7d985c34dff1efc6de2ccc1a6d512b7500d92d59c963b81f6"
+  },
+  "scorer": {
+    "id": "GENERIC_EXACT_SCORER_V1",
+    "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_1/ExactScorer.cs",
+    "sha256": "4790a2bf1b9ab57924005633e38f2cabe1f477e38b726ed09205907451e65d71",
+    "validatedBy": "reproduces the committed V1 SRC-029 raw score (adf11f4); scored SRC-041 held out (ba93900)",
+    "matching": "claim-level and exact: equal ordered source-part tuples (alias:start-end) bound by the production binder; overlap without identity is a miss; NEEDS_REVIEW never counts as a heading"
+  },
+  "productionRequest": {
+    "requestVersion": "V2_ATTENTION_FREE",
+    "contractFreeze": {
+      "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.freeze.json",
+      "sha256": "ee7c776988e35968915d5e5448223dfc3d64cec997d643d56ac9cb41f1690ac3"
+    },
+    "packingPolicy": "FIXED_OWNED_COUNT_120 (the default)",
+    "coherentRegionSegmentation": "NOT SELECTED",
+    "modelCallsAuthorized": 0
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+    "sha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+    "media": "PDF"
+  },
+  "sourceNote": "SRC-042's Gold file is not opened; any count-only total it holds is neither engine input nor target. Occurrence Gold is authored on the original PDF after the blind proposals are committed.",
+  "developmentEvidence": [
+    {
+      "documentId": "DOC-0123",
+      "path": "eval/a99-closed-loop/generic-audit-v1_2/DOC-0123.score.v1_2.json",
+      "sha256": "bcb37a63b5c6e83a5ce659a04ac537632c673eba02bae2eb4d09fa6a895b3511"
+    },
+    {
+      "documentId": "DOC-0133",
+      "path": "eval/a99-closed-loop/generic-audit-v1_2/DOC-0133.score.v1_2.json",
+      "sha256": "8827027393e6b36c614ef34359ee993bec9d0ce45c08e466cdeff6daaff03754"
+    },
+    {
+      "documentId": "SRC-029",
+      "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-029.score.v1_2.json",
+      "sha256": "74657de21a392469c25cf5287c81743959caf7614e361a92f2137e8d883ae01e"
+    },
+    {
+      "documentId": "SRC-041",
+      "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-041.score.v1_2.json",
+      "sha256": "13f2b1ece3fa3efcbd276ba584dfba2661682a2cd303cdfaecc8066400a67fcd"
+    }
+  ],
+  "knownBefore": [
+    {
+      "Id": "B2",
+      "Gap": "TOC sequence continuity evidence"
+    },
+    {
+      "Id": "B4",
+      "Gap": "outline level on list item"
+    },
+    {
+      "Id": "K1",
+      "Gap": "a title continued across a page break is not assembled"
+    },
+    {
+      "Id": "K2",
+      "Gap": "stacked title lines of different sizes are not assembled"
+    },
+    {
+      "Id": "K3",
+      "Gap": "standalone connective lines between alternatives have no FALSE shape (V1.2 only keeps them inside titles)"
+    },
+    {
+      "Id": "K4",
+      "Gap": "DOCX page-break boundary evidence is not read"
+    },
+    {
+      "Id": "K5",
+      "Gap": "FORM scope needs fill-in fields"
+    },
+    {
+      "Id": "K6",
+      "Gap": "a chart with no numbered caption has no figure region (its labels can read as headings)"
+    },
+    {
+      "Id": "K7",
+      "Gap": "an unprefixed table-part label (\"K8.1\") has no caption shape"
+    },
+    {
+      "Id": "A",
+      "Gap": "colon-ended labels over prose go to review; scope NOTE / FINANCIAL_STATEMENT / DOCUMENT_PART / SECTION and IDENTITY vs STRUCTURE are meaning decisions; one occurrence of a running-header text that opens a part is a meaning decision"
+    }
+  ],
+  "forbidden": [
+    "model/provider/VLM calls",
+    "opening this document's Gold file or any occurrence decision before the proposals are committed",
+    "any existing count-only total as engine input or target",
+    "engine code, constant, ontology or scorer changes after this pre-registration"
+  ],
+  "protocol": [
+    "1 pre-register (this artifact)",
+    "2 blind run; commit evidence profile and proposals before any Gold",
+    "3 source-only review of the original PDF; user decisions on ambiguous patterns",
+    "4 freeze occurrence Gold",
+    "5 pin and reveal once; commit the raw score as written",
+    "6 classify residuals: known recurring / new B / C / D"
+  ],
+  "modelCalls": 0
+}
