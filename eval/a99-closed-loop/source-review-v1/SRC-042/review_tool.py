@@ -130,9 +130,9 @@ for r in R:
     if not (re.match(r'(Table|Figure|Box)\s+[A-Z]?\d+(?:\.\d+)*', t)):
         continue
     if t.startswith("Box 2:"):
-        add(section_of(page(a)), [a], H, "S042_A1_BOX_OF_PROSE",
-            "user decision 2026-09-25: the five principles under it are semantic units that belong to it - the title establishes a region (an embedded artifact), it does not only name an object. The other box titles name the table or diagram below them and stay captions. Classify occurrences, not strings: no rule on the 'Box N:' prefix",
-            ax(["IDENTITY", "STRUCTURE"], "IDENTITY", "EMBEDDED_ARTIFACT"))
+        add(section_of(page(a)), [a], N, "S042_A1_BOX_OF_PROSE",
+            "user decision 2026-09-25, revised before the reveal: the region is opened by the section heading 'Financing Principles' just above, whose body says 'These financing principles are described in Box 2'; the box title names the boxed object that section refers to - an object title, not a second opener of the same region. Its prose content does not make the title a heading. Decided on structural ownership, not on the 'Box N:' prefix",
+            ax(["IDENTITY"], "IDENTITY", "EMBEDDED_ARTIFACT", ("CAPTION",)))
     else:
         add(section_of(page(a)), [a], N, "NUMBERED_CAPTION",
             "numbered table/figure/box title naming the table, chart or list-table below it: " + POL + " caption rule; " + P41, CAPTION)

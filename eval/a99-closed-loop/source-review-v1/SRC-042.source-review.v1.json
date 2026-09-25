@@ -17,7 +17,7 @@
   "inputs": {
     "reviewTool": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-042/review_tool.py",
-      "sha256": "145ce814a35488879c7b4a2d105d7ff2576cc380e6a24672f37a456f381fd978"
+      "sha256": "ae35ef9c2824dade83eca4175d2ffb138e845a3b331f4d3a95665f78a46392ef"
     },
     "atomLayoutFacts": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-042/atom-layout-facts.tsv",
@@ -25,17 +25,17 @@
     },
     "reviewItems": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-042/review-items.json",
-      "sha256": "775f5120d9262166ef9b9961f500c4faada29a854913f35ef15cdd32d9a7b61b"
+      "sha256": "447ded538f5d6fbca119a8f3cdd0248e910d5a34ebde70483801519b78df04da"
     }
   },
   "summary": {
     "SOURCE_OCCURRENCES": 7888,
-    "CLEAR_HEADING": 254,
-    "CLEAR_NON_HEADING_SET_APART": 161,
+    "CLEAR_HEADING": 253,
+    "CLEAR_NON_HEADING_SET_APART": 162,
     "AMBIGUOUS": 0,
     "PROPOSED_RANGE": {
-      "min": 254,
-      "max": 254
+      "min": 253,
+      "max": 253
     },
     "BINDING_FAILURES": 0,
     "USER_APPROVAL_REQUIRED": true,
@@ -50,8 +50,8 @@
     },
     {
       "section": "MDA",
-      "headings": 146,
-      "nonHeadings": 75,
+      "headings": 145,
+      "nonHeadings": 76,
       "ambiguous": 0
     },
     {
@@ -87,7 +87,6 @@
     "NOTE_SUBHEADING": 65,
     "NOTE_TITLE": 14,
     "PART_TITLE_BLOCK": 2,
-    "S042_A1_BOX_OF_PROSE": 1,
     "STATEMENT_TITLE": 7,
     "TOC_OPENER": 5
   },
@@ -100,21 +99,32 @@
     "NUMBERED_CAPTION": 95,
     "PART_TITLE_BLOCK": 4,
     "RUNNING_HEADER": 2,
+    "S042_A1_BOX_OF_PROSE": 1,
     "STATEMENT_SUBTITLE": 20,
     "TABLE_PART_TITLE": 1
   },
   "ambiguous": [],
   "userDecisions": {
     "decidedAt": "2026-09-25",
-    "membershipTotal": 254,
-    "arithmetic": "253 clear + 1 S042_A1 = 254",
+    "membershipTotal": 253,
+    "arithmetic": "253 clear + 0 S042_A1 = 253",
     "principle": "CLASSIFY OCCURRENCES, NOT STRINGS",
     "patterns": [
       {
         "pattern": "S042_A1_BOX_OF_PROSE",
-        "decision": "TRUE x1: Box 2 establishes a region whose five principles belong to it (IDENTITY+STRUCTURE, primary IDENTITY, scope EMBEDDED_ARTIFACT, REGION_OPENER, TITLE). The other box titles only name the table or diagram below them: ORDINARY_CAPTION, false. No rule on the 'Box N:' prefix, as no rule on '(CONTINUED)'"
+        "decision": "FALSE x1: the region is opened by the section heading 'Financing Principles' (already a heading), whose body refers to the box ('described in Box 2'); 'Box 2: Financing Principles' names that boxed object - object title / caption, scope EMBEDDED_ARTIFACT. Title that opens a document/section region -> heading; title that only names an embedded object (table / figure / box / callout) -> non-heading. Decided on structural ownership, not on the 'Box N:' prefix"
       }
-    ]
+    ],
+    "revision": {
+      "previous": {
+        "commit": "1b4f7bd",
+        "decision": "TRUE",
+        "membershipTotal": 254
+      },
+      "revisedAt": "2026-09-25, before the Gold freeze and before any reveal",
+      "reason": "the first adjudication rested on a description of the box's content alone; the full page shows the section heading above it and the body's reference to the box. The description omitted that context",
+      "engineProposalsOpened": false
+    }
   },
   "bindingFailures": []
 }

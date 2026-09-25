@@ -117,12 +117,19 @@ public sealed class Src042SourceReviewTests
             userDecisions = new
             {
                 decidedAt = "2026-09-25",
-                membershipTotal = 254,
-                arithmetic = "253 clear + 1 S042_A1 = 254",
+                membershipTotal = 253,
+                arithmetic = "253 clear + 0 S042_A1 = 253",
                 principle = "CLASSIFY OCCURRENCES, NOT STRINGS",
                 patterns = new[]
                 {
-                    new { pattern = "S042_A1_BOX_OF_PROSE", decision = "TRUE x1: Box 2 establishes a region whose five principles belong to it (IDENTITY+STRUCTURE, primary IDENTITY, scope EMBEDDED_ARTIFACT, REGION_OPENER, TITLE). The other box titles only name the table or diagram below them: ORDINARY_CAPTION, false. No rule on the 'Box N:' prefix, as no rule on '(CONTINUED)'" },
+                    new { pattern = "S042_A1_BOX_OF_PROSE", decision = "FALSE x1: the region is opened by the section heading 'Financing Principles' (already a heading), whose body refers to the box ('described in Box 2'); 'Box 2: Financing Principles' names that boxed object - object title / caption, scope EMBEDDED_ARTIFACT. Title that opens a document/section region -> heading; title that only names an embedded object (table / figure / box / callout) -> non-heading. Decided on structural ownership, not on the 'Box N:' prefix" },
+                },
+                revision = new
+                {
+                    previous = new { commit = "1b4f7bd", decision = "TRUE", membershipTotal = 254 },
+                    revisedAt = "2026-09-25, before the Gold freeze and before any reveal",
+                    reason = "the first adjudication rested on a description of the box's content alone; the full page shows the section heading above it and the body's reference to the box. The description omitted that context",
+                    engineProposalsOpened = false,
                 },
             },
             bindingFailures = failures,
