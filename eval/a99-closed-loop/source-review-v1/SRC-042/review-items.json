@@ -7399,17 +7399,17 @@
     }
    ],
    "text": "Box 2: Financing Principles",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S042_A1_BOX_OF_PROSE",
-   "reason": "numbered box title over a box of enumerated prose principles ((i) IDA may provide financing ..., (ii) ...), not a table or diagram. SRC-041's box titles were captions because each box held a table or diagram it names; does a box of prose open a region of its own?",
+   "reason": "user decision 2026-09-25: the five principles under it are semantic units that belong to it - the title establishes a region (an embedded artifact), it does not only name an object. The other box titles name the table or diagram below them and stay captions. Classify occurrences, not strings: no rule on the 'Box N:' prefix",
    "axes": {
     "semanticFunctions": [
-     "IDENTITY"
+     "IDENTITY",
+     "STRUCTURE"
     ],
     "primaryFunction": "IDENTITY",
-    "scope": "TABLE",
+    "scope": "EMBEDDED_ARTIFACT",
     "occurrenceRoles": [
-     "CAPTION",
      "REGION_OPENER"
     ],
     "titleRelation": "TITLE",

@@ -17,7 +17,7 @@
   "inputs": {
     "reviewTool": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-042/review_tool.py",
-      "sha256": "54992c407c7a85cd90abe94409f4c472ae01889b56da294c8c36556923e1a6c7"
+      "sha256": "145ce814a35488879c7b4a2d105d7ff2576cc380e6a24672f37a456f381fd978"
     },
     "atomLayoutFacts": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-042/atom-layout-facts.tsv",
@@ -25,16 +25,16 @@
     },
     "reviewItems": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-042/review-items.json",
-      "sha256": "707aba4f51d26845c19c5e74abb2ea3521cce43bce026def9d7318fc9d0f6924"
+      "sha256": "775f5120d9262166ef9b9961f500c4faada29a854913f35ef15cdd32d9a7b61b"
     }
   },
   "summary": {
     "SOURCE_OCCURRENCES": 7888,
-    "CLEAR_HEADING": 253,
+    "CLEAR_HEADING": 254,
     "CLEAR_NON_HEADING_SET_APART": 161,
-    "AMBIGUOUS": 1,
+    "AMBIGUOUS": 0,
     "PROPOSED_RANGE": {
-      "min": 253,
+      "min": 254,
       "max": 254
     },
     "BINDING_FAILURES": 0,
@@ -50,9 +50,9 @@
     },
     {
       "section": "MDA",
-      "headings": 145,
+      "headings": 146,
       "nonHeadings": 75,
-      "ambiguous": 1
+      "ambiguous": 0
     },
     {
       "section": "NOTES",
@@ -87,6 +87,7 @@
     "NOTE_SUBHEADING": 65,
     "NOTE_TITLE": 14,
     "PART_TITLE_BLOCK": 2,
+    "S042_A1_BOX_OF_PROSE": 1,
     "STATEMENT_TITLE": 7,
     "TOC_OPENER": 5
   },
@@ -102,29 +103,18 @@
     "STATEMENT_SUBTITLE": 20,
     "TABLE_PART_TITLE": 1
   },
-  "ambiguous": [
-    {
-      "Pattern": "S042_A1_BOX_OF_PROSE",
-      "Page": 30,
-      "aliases": [
-        "L1100:S0"
-      ],
-      "Text": "Box 2: Financing Principles",
-      "Reason": "numbered box title over a box of enumerated prose principles ((i) IDA may provide financing ..., (ii) ...), not a table or diagram. SRC-041's box titles were captions because each box held a table or diagram it names; does a box of prose open a region of its own?",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "TABLE",
-        "occurrenceRoles": [
-          "CAPTION",
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-25",
+    "membershipTotal": 254,
+    "arithmetic": "253 clear + 1 S042_A1 = 254",
+    "principle": "CLASSIFY OCCURRENCES, NOT STRINGS",
+    "patterns": [
+      {
+        "pattern": "S042_A1_BOX_OF_PROSE",
+        "decision": "TRUE x1: Box 2 establishes a region whose five principles belong to it (IDENTITY+STRUCTURE, primary IDENTITY, scope EMBEDDED_ARTIFACT, REGION_OPENER, TITLE). The other box titles only name the table or diagram below them: ORDINARY_CAPTION, false. No rule on the 'Box N:' prefix, as no rule on '(CONTINUED)'"
       }
-    }
-  ],
+    ]
+  },
   "bindingFailures": []
 }

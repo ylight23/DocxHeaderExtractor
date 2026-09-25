@@ -114,6 +114,17 @@ public sealed class Src042SourceReviewTests
             nonHeadingsByPattern = items.Where(i => i.Verdict == "NON_HEADING").GroupBy(i => i.Pattern)
                 .OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
             ambiguous = items.Where(i => i.Verdict == "AMBIGUOUS").Select(i => new { i.Pattern, i.Page, aliases = i.Parts.Select(p => p.SourceAlias).ToArray(), i.Text, i.Reason, axes = i.Axes }).ToArray(),
+            userDecisions = new
+            {
+                decidedAt = "2026-09-25",
+                membershipTotal = 254,
+                arithmetic = "253 clear + 1 S042_A1 = 254",
+                principle = "CLASSIFY OCCURRENCES, NOT STRINGS",
+                patterns = new[]
+                {
+                    new { pattern = "S042_A1_BOX_OF_PROSE", decision = "TRUE x1: Box 2 establishes a region whose five principles belong to it (IDENTITY+STRUCTURE, primary IDENTITY, scope EMBEDDED_ARTIFACT, REGION_OPENER, TITLE). The other box titles only name the table or diagram below them: ORDINARY_CAPTION, false. No rule on the 'Box N:' prefix, as no rule on '(CONTINUED)'" },
+                },
+            },
             bindingFailures = failures,
         });
     }
