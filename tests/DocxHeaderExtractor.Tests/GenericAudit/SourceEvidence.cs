@@ -51,7 +51,8 @@ internal static partial class LexicalShape
 {
     [GeneratedRegex(@"^[\s$€£¥(),.%\d—–\-+*/#]+$")] private static partial Regex FiguresOnly();
     [GeneratedRegex(@"^(?:\(?[A-Z][a-z]+\.?\s+\d{1,2},?\s+\d{4}\)?|\d{1,2}\s+[A-Z][a-z]+\s+\d{4}|[A-Z][a-z]+\s+\d{4}|\d{4}-\d{2}-\d{2}|\d{1,2}/\d{1,2}/\d{2,4})$")] private static partial Regex DateOnly();
-    [GeneratedRegex(@"^(?:Table|Figure|Chart|Exhibit|Graph|Box|Bảng|Hình|Biểu đồ)\s*[A-Z]?\d+(?:\.\d+)*\s*[:.\-–—]?")] private static partial Regex NumberedCaption();
+    [GeneratedRegex(@"^(?:Table|Figure|Chart|Exhibit|Graph|Box|Bảng|Hình|Biểu đồ)\s*(?:[A-Z]?\d+(?:\.\d+)*\s*[:.\-–—]?|[A-Z][.:]\s|:)")] private static partial Regex NumberedCaption();
+    [GeneratedRegex(@"^(?:\[[^\]]*\]?|\([^)]{12,}\))$")] private static partial Regex BracketedNote();
     [GeneratedRegex(@"^(?:Part|Chapter|Section|Sub-?Clause|Clause|Article|Annex|Appendix|Schedule|Note|Attachment|Exhibit|Title|Book|Phần|Chương|Mục|Điều|Phụ lục|Tiểu mục)\s+(?:[IVXLCDM]+|[A-Z]|\d+(?:[.\s]\d+)*)(?:\b|$)", RegexOptions.IgnoreCase)] private static partial Regex StructuralLabelPrefix();
     [GeneratedRegex(@"^(?:\d+(?:\.\d+)*\.?|[A-Z]\.|[IVXLC]+\.|\(\w{1,3}\))\s+\S")] private static partial Regex EnumeratorPrefix();
     [GeneratedRegex(@"\[\s*(?:insert|enter|name|date|specify)|_{4,}|\.{6,}", RegexOptions.IgnoreCase)] private static partial Regex FillInPlaceholder();
@@ -77,6 +78,9 @@ internal static partial class LexicalShape
     }
 
     public static bool IsFillInField(string text) => FillInPlaceholder().IsMatch(text);
+
+    /// <summary>A whole occurrence in brackets or a long parenthesis: an editorial note to the template's user.</summary>
+    public static bool IsBracketedNote(string text) => BracketedNote().IsMatch(text.Trim());
     public static bool IsFootnoteLead(string text) => FootnoteLead().IsMatch(text);
     public static bool IsParentheticalStatus(string text) => ParentheticalStatus().IsMatch(text.Trim());
     public static bool HasTrailingPageNumber(string text) => TrailingPageNumber().IsMatch(text.Trim());

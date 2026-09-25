@@ -56,8 +56,8 @@ internal static class SemanticAuditEngine
         var n = occ.Count;
         var prominence = occ.Select(o => Prominence(o, profile)).ToArray();
         var furniture = occ.Select(o => IsFurniture(o, profile)).ToArray();
-        var navigation = NavigationRuns(occ, profile, furniture);
         var tabular = occ.Select(o => o.TableDepth > 0 || o.RowHasFigures || (o.RowSegmentCount >= 3 && o.Media == "PDF")).ToArray();
+        var navigation = NavigationRuns(occ, prominence, furniture, tabular);
         var seen = new HashSet<string>(StringComparer.Ordinal);
         var result = new List<SemanticHypothesis>();
 
@@ -122,6 +122,11 @@ internal static class SemanticAuditEngine
                 evidence.Add("fill-in placeholder");
                 Emit(False, ["INFORMATION"], "INFORMATION", "FORM_FIELD", ["FIELD_LABEL"], "NONE");
             }
+            else if (LexicalShape.IsBracketedNote(text))
+            {
+                evidence.Add("whole occurrence in brackets: an editorial note");
+                Emit(False, ["INFORMATION"], "INFORMATION", "NOTE", ["BODY_CONTENT"], "NONE");
+            }
             else if (LexicalShape.IsParentheticalStatus(text))
             {
                 evidence.Add("parenthetical status shape");
@@ -152,7 +157,7 @@ internal static class SemanticAuditEngine
             else if (tabular[i] && o.DeclaredHeadingLevel is null && !LexicalShape.IsStructuralLabel(text))
             {
                 evidence.Add("inside a table or a row of figures");
-                if (region.Body > 0 && region.Tabular == 0 && strength == 2)
+                if (region.Body > 0 && region.Body >= region.Tabular && strength == 2)
                 {
                     evidence.Add("yet opens prose, not table rows");
                     Emit(Review, ["STRUCTURE"], "STRUCTURE", "SECTION", ["REGION_OPENER", "LOCAL_LABEL"], "TITLE");
@@ -220,14 +225,27 @@ internal static class SemanticAuditEngine
     /// Contents lists: runs of consecutive occurrences that each point at another occurrence (a trailing
     /// page number, or text that reappears elsewhere). The occurrence just before a run opens it.
     /// </summary>
-    private static Nav[] NavigationRuns(IReadOnlyList<SourceOccurrence> occ, SourceEvidenceProfile p, bool[] furniture)
+    private static Nav[] NavigationRuns(IReadOnlyList<SourceOccurrence> occ, (int Strength, int Rank)[] prominence, bool[] furniture, bool[] tabular)
     {
         var n = occ.Count;
-        var byText = occ.GroupBy(o => LexicalShape.WithoutTrailingPageNumber(o.Text)).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal);
-        bool Points(SourceOccurrence o) =>
-            o.InTableOfContents
-            || (LexicalShape.HasTrailingPageNumber(o.Text) && !LexicalShape.IsFiguresOnly(o.Text) && o.WordCount >= 2)
-            || (byText.GetValueOrDefault(LexicalShape.WithoutTrailingPageNumber(o.Text)) > 1 && o.WordCount >= 2 && !LexicalShape.IsFiguresOnly(o.Text));
+        // The latest occurrence of each text that stands outside a table, with its prominence: what an
+        // earlier, weaker copy of the same text can point to. The target itself points nowhere.
+        var target = new Dictionary<string, (int Index, int Rank)>(StringComparer.Ordinal);
+        for (var k = n - 1; k >= 0; k--)
+        {
+            var key = LexicalShape.WithoutTrailingPageNumber(occ[k].Text);
+            if (!tabular[k] && !furniture[k] && !target.ContainsKey(key)) target[key] = (k, prominence[k].Rank);
+        }
+        var index = 0;
+        var indexOf = occ.ToDictionary(o => o, _ => index++);
+        bool Points(SourceOccurrence o)
+        {
+            if (o.InTableOfContents) return true;
+            if (LexicalShape.IsFiguresOnly(o.Text) || o.WordCount < 2) return false;
+            if (LexicalShape.HasTrailingPageNumber(o.Text)) return true;
+            var i = indexOf[o];
+            return target.TryGetValue(LexicalShape.WithoutTrailingPageNumber(o.Text), out var t) && t.Index > i && t.Rank >= prominence[i].Rank;
+        }
         var result = new Nav[n];
         var i = 0;
         while (i < n)
@@ -280,7 +298,8 @@ internal static class SemanticAuditEngine
             var o = occ[j];
             var labelLike = prominence[j].Strength > 0 && o.WordCount <= Constants["shortLabelMaxWords"] && !LexicalShape.EndsSentence(o.Text);
             if (labelLike && prominence[j].Rank >= rank && !tabular[j] && navigation[j] != Nav.Entry) break;
-            var isTable = tabular[j] || LexicalShape.IsFiguresOnly(o.Text) || LexicalShape.IsNumberedCaption(o.Text);
+            // A table used for layout holds prose: a sentence-length cell counts as body, not as a table row.
+            var isTable = (tabular[j] && o.WordCount < 8) || LexicalShape.IsFiguresOnly(o.Text) || LexicalShape.IsNumberedCaption(o.Text);
             firstTabular ??= isTable;
             if (isTable) table++;
             else if (labelLike) headings++;
