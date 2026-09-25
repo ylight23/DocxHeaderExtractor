@@ -82,8 +82,8 @@ add("FRONT", ["L0002:S0", "L0003:S0", "L0004:S0"], H, "COVER_BLOCK", "the cover 
 add("FRONT", ["L0005:S0"], N, "COVER_BLOCK", "reporting date under the cover title: " + P33 + " (P1)", META("TEMPORAL_METADATA"))
 
 # ---------------- MD&A contents pages (p3-5) ----------------
-add("FRONT", ["L0006:S0"], Q, "S041_A3_PART_LABEL_ON_CONTENTS_PAGE",
-    "9pt bold 'Management’s Discussion and Analysis' at the top of the MD&A contents page. DOC-0133 P4 made the part title on the contents page a heading; here the same text in the same type and place also tops p4 and p5 - a running header or the part's title?",
+add("FRONT", ["L0006:S0"], H, "S041_A3_PART_LABEL_ON_CONTENTS_PAGE",
+    "user decision 2026-09-25: this occurrence opens the MD&A part and its contents region; the same text atop p4-p5 is a separate occurrence (running header, false). Classify occurrences, not strings",
     PART)
 for a in ["L0057:S0", "L0105:S0"]:
     add("FRONT", [a], N, "RUNNING_HEADER", "the same line on the following contents pages: running header", FURN)
@@ -121,9 +121,9 @@ for r in R:
     elif bold(a) and s == 14.0 and t == "PURPOSE AND AFFILIATED ORGANIZATIONS":
         add(sec, heading_aliases(a), H, "NOTE_TITLE", "the unlettered opening note, set as the lettered notes are", NOTE)
     elif bold(a) and s == 14.0 and t.startswith("Eligible Borrowing Member Countries"):
-        add(sec, [a], Q, "S041_A4_APPENDIX_TABLE_TITLE",
-            "14pt bold, the type of an MD&A subsection, as the only title of its appendix page - but what follows is one list/table of countries it names (DOC-0133 P5 made an unnumbered title naming the table below it a caption)",
-            SEC)
+        add(sec, [a], N, "S041_A4_APPENDIX_TABLE_TITLE",
+            "user decision 2026-09-25: names only the list/object directly below it and opens no independent region: an ordinary local object title, equivalent to a caption (a decision on this occurrence's scope, not a rule about titles over lists)",
+            CAPTION)
     elif bold(a) and s in (14.0, 12.0, 11.0):
         add(sec, heading_aliases(a), H, "NOTE_SUBHEADING" if sec == "NOTES" else "MDA_SUBHEADING",
             f"{s:g}pt bold standalone label over its own prose or data: " + P33, SEC)
@@ -152,14 +152,14 @@ add("FS_PART", ["L3159:S0"], H, "PART_TITLE_BLOCK", "title of the financial stat
 add("FS_PART", ["L3160:S0"], N, "PART_TITLE_BLOCK", "period date under the part title: " + P33 + " (P2)", META("TEMPORAL_METADATA", "DOCUMENT_PART"))
 for a in ["L3161:S0", "L3162:S0", "L3163:S0", "L3164:S0", "L3165:S0", "L3166:S0", "L3167:S0", "L3168:S0", "L3170:S0", "L3171:S0", "L3172:S0"]:
     add("FS_PART", [a], N, "CONTENTS_ENTRY", "contents entry with its page number: " + P33, NAV)
-add("FS_PART", ["L3169:S0"], Q, "S041_A5_CONTENTS_GROUP_LABEL",
-    "'Supplementary Information' inside the part's contents list, no page number, grouping the two indented entries under it: a contents sub-list opener (DOC-0133 made 'Tables'/'Figures' sub-list openers headings) or a contents entry?",
+add("FS_PART", ["L3169:S0"], H, "S041_A5_CONTENTS_GROUP_LABEL",
+    "user decision 2026-09-25: not a navigation entry pointing elsewhere: it opens a sub-group of two indented entries, like the Tables / Figures / Boxes openers",
     TOC)
 add("FS_PART", ["L3174:S0", "L3175:S0"], H, "EMBEDDED_REPORT", "the management report's title, one claim of two lines: " + P33 + " (embedded report)", EMB)
 add("FS_PART", ["L3178:S0", "L3179:S0"], H, "EMBEDDED_REPORT", "the ICFR audit report's title, one claim of two lines: " + P33, EMB)
 add("FS_PART", ["L3182:S0"], H, "EMBEDDED_REPORT", "the auditor's report title: " + P33, EMB)
-add("FS_PART", ["L3185:S0"], Q, "S041_A2_CONTINUED_TITLE",
-    "'Independent Auditor’s Report' again at the top of a later page of the same report (the report text is an image; only the title and the footer are text): a heading occurrence continuing the report, or page furniture?",
+add("FS_PART", ["L3185:S0"], H, "S041_A2_CONTINUED_TITLE",
+    "user decision 2026-09-25: a real display-title occurrence of the continuing report; whether it is a REPEAT or a CONTINUATION is derived by identity resolution later and does not affect isHeading",
     EMB)
 add("FS_PART", ["L3187:S0"], N, "PART_TITLE_BLOCK", "issuer above the statements' title page: " + P33 + " (P2)", META("ISSUER_METADATA", "DOCUMENT_PART"))
 add("FS_PART", ["L3188:S0"], H, "PART_TITLE_BLOCK", "title page of the financial statements themselves: " + P33 + " (P2)", PART)
@@ -170,8 +170,8 @@ STATEMENTS = [["L3191:S0"], ["L3259:S0"], ["L3296:S0"], ["L3311:S0"], ["L3355:S0
 for aliases in STATEMENTS:
     add("STATEMENTS", aliases, H, "STATEMENT_TITLE", "title of a financial statement: " + P33 + "; " + POL, STATEMENT)
 for aliases in [["L3476:S0"], ["L3585:S0", "L3586:S0"], ["L3644:S0", "L3645:S0"], ["L3703:S0", "L3704:S0"]]:
-    add("STATEMENTS", aliases, Q, "S041_A2_CONTINUED_TITLE",
-        "a statement's title repeated with '(CONTINUED)' at the top of its next page: a heading occurrence continuing the statement (repetition is no reason by itself - SRC-029 A3a), or page furniture?",
+    add("STATEMENTS", aliases, H, "S041_A2_CONTINUED_TITLE",
+        "user decision 2026-09-25: a real display-title occurrence of the continuing statement; REPEAT / CONTINUATION is derived by identity resolution later and does not affect isHeading",
         STATEMENT)
 add("NOTES", ["L3760:S0"], H, "NOTES_PART", "opens the notes: " + P33, NOTES_PART)
 

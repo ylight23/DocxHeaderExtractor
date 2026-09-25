@@ -17,7 +17,7 @@
   "inputs": {
     "reviewTool": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-041/review_tool.py",
-      "sha256": "40d7473ae9def1e70ff0527378e180751eeb1f13807ae6b8446c122658d2a5cd"
+      "sha256": "72afc23afe8435aa609b8d4c1403979c9976e183961066e01f8a93e180aac743"
     },
     "atomLayoutFacts": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-041/atom-layout-facts.tsv",
@@ -25,17 +25,17 @@
     },
     "reviewItems": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-041/review-items.json",
-      "sha256": "7561c8cb4130b4832cf8eb8c915a7c2b61d041aff5e06ee562ad264d250d57ea"
+      "sha256": "aab34d18cf39ca210a6fae939c1b9bd7ae987d82281466703c1577f4637f5295"
     }
   },
   "summary": {
     "SOURCE_OCCURRENCES": 10443,
-    "CLEAR_HEADING": 273,
-    "CLEAR_NON_HEADING_SET_APART": 198,
-    "AMBIGUOUS": 8,
+    "CLEAR_HEADING": 280,
+    "CLEAR_NON_HEADING_SET_APART": 199,
+    "AMBIGUOUS": 0,
     "PROPOSED_RANGE": {
-      "min": 273,
-      "max": 281
+      "min": 280,
+      "max": 280
     },
     "BINDING_FAILURES": 0,
     "USER_APPROVAL_REQUIRED": true,
@@ -44,15 +44,15 @@
   "bySection": [
     {
       "section": "FRONT",
-      "headings": 6,
+      "headings": 7,
       "nonHeadings": 4,
-      "ambiguous": 1
+      "ambiguous": 0
     },
     {
       "section": "MDA",
       "headings": 155,
-      "nonHeadings": 98,
-      "ambiguous": 1
+      "nonHeadings": 99,
+      "ambiguous": 0
     },
     {
       "section": "NOTES",
@@ -62,15 +62,15 @@
     },
     {
       "section": "FS_PART",
-      "headings": 5,
+      "headings": 7,
       "nonHeadings": 15,
-      "ambiguous": 2
+      "ambiguous": 0
     },
     {
       "section": "STATEMENTS",
-      "headings": 7,
+      "headings": 11,
       "nonHeadings": 12,
-      "ambiguous": 4
+      "ambiguous": 0
     }
   ],
   "headingsByPattern": {
@@ -84,6 +84,9 @@
     "NOTE_SUBHEADING": 81,
     "NOTE_TITLE": 15,
     "PART_TITLE_BLOCK": 2,
+    "S041_A2_CONTINUED_TITLE": 5,
+    "S041_A3_PART_LABEL_ON_CONTENTS_PAGE": 1,
+    "S041_A5_CONTENTS_GROUP_LABEL": 1,
     "STATEMENT_TITLE": 7,
     "TOC_OPENER": 5
   },
@@ -95,182 +98,33 @@
     "NUMBERED_CAPTION": 132,
     "PART_TITLE_BLOCK": 4,
     "RUNNING_HEADER": 2,
+    "S041_A4_APPENDIX_TABLE_TITLE": 1,
     "STATEMENT_SUBTITLE": 12
   },
-  "ambiguous": [
-    {
-      "Pattern": "S041_A3_PART_LABEL_ON_CONTENTS_PAGE",
-      "Page": 3,
-      "aliases": [
-        "L0006:S0"
-      ],
-      "Text": "Management’s Discussion and Analysis",
-      "Reason": "9pt bold 'Management’s Discussion and Analysis' at the top of the MD&A contents page. DOC-0133 P4 made the part title on the contents page a heading; here the same text in the same type and place also tops p4 and p5 - a running header or the part's title?",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY",
-          "STRUCTURE"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "DOCUMENT_PART",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-25",
+    "membershipTotal": 280,
+    "arithmetic": "273 clear + 5 A2 + 1 A3 + 0 A4 + 1 A5 = 280",
+    "principle": "CLASSIFY OCCURRENCES, NOT STRINGS",
+    "patterns": [
+      {
+        "pattern": "S041_A2_CONTINUED_TITLE",
+        "decision": "TRUE x5: real display-title occurrences of a continuing statement or report; REPEAT / CONTINUATION is derived later by identity resolution (semantic claims -> identity resolution -> semanticNodeId -> PRIMARY / REPEAT / CONTINUATION) and does not affect isHeading; no repeatStatus is written"
+      },
+      {
+        "pattern": "S041_A3_PART_LABEL_ON_CONTENTS_PAGE",
+        "decision": "TRUE x1: this occurrence opens the MD&A part and its contents region; the same text atop p4-p5 is a different occurrence (running header, FALSE). Repetition elsewhere does not make this one page furniture"
+      },
+      {
+        "pattern": "S041_A4_APPENDIX_TABLE_TITLE",
+        "decision": "FALSE x1: its scope covers only the list/object directly below it and opens no independent region - an ordinary local object title, equivalent to a caption. A decision on this occurrence's scope, not a rule that titles over lists are false"
+      },
+      {
+        "pattern": "S041_A5_CONTENTS_GROUP_LABEL",
+        "decision": "TRUE x1: not a navigation entry pointing elsewhere; it opens a sub-group of two indented contents entries, like the Tables / Figures / Boxes openers"
       }
-    },
-    {
-      "Pattern": "S041_A4_APPENDIX_TABLE_TITLE",
-      "Page": 74,
-      "aliases": [
-        "L3139:S0"
-      ],
-      "Text": "Eligible Borrowing Member Countries by Region as ofJune 30, 2025",
-      "Reason": "14pt bold, the type of an MD&A subsection, as the only title of its appendix page - but what follows is one list/table of countries it names (DOC-0133 P5 made an unnumbered title naming the table below it a caption)",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S041_A5_CONTENTS_GROUP_LABEL",
-      "Page": 75,
-      "aliases": [
-        "L3169:S0"
-      ],
-      "Text": "Supplementary Information",
-      "Reason": "'Supplementary Information' inside the part's contents list, no page number, grouping the two indented entries under it: a contents sub-list opener (DOC-0133 made 'Tables'/'Figures' sub-list openers headings) or a contents entry?",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY",
-          "STRUCTURE"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "TOC",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S041_A2_CONTINUED_TITLE",
-      "Page": 82,
-      "aliases": [
-        "L3185:S0"
-      ],
-      "Text": "IndependentAuditor's Report",
-      "Reason": "'Independent Auditor’s Report' again at the top of a later page of the same report (the report text is an image; only the title and the footer are text): a heading occurrence continuing the report, or page furniture?",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "EMBEDDED_ARTIFACT",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S041_A2_CONTINUED_TITLE",
-      "Page": 92,
-      "aliases": [
-        "L3476:S0"
-      ],
-      "Text": "SUMMARY STATEMENT OF LOANS (CONTINUED)",
-      "Reason": "a statement's title repeated with '(CONTINUED)' at the top of its next page: a heading occurrence continuing the statement (repetition is no reason by itself - SRC-029 A3a), or page furniture?",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "FINANCIAL_STATEMENT",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S041_A2_CONTINUED_TITLE",
-      "Page": 94,
-      "aliases": [
-        "L3585:S0",
-        "L3586:S0"
-      ],
-      "Text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
-      "Reason": "a statement's title repeated with '(CONTINUED)' at the top of its next page: a heading occurrence continuing the statement (repetition is no reason by itself - SRC-029 A3a), or page furniture?",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "FINANCIAL_STATEMENT",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S041_A2_CONTINUED_TITLE",
-      "Page": 95,
-      "aliases": [
-        "L3644:S0",
-        "L3645:S0"
-      ],
-      "Text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
-      "Reason": "a statement's title repeated with '(CONTINUED)' at the top of its next page: a heading occurrence continuing the statement (repetition is no reason by itself - SRC-029 A3a), or page furniture?",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "FINANCIAL_STATEMENT",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S041_A2_CONTINUED_TITLE",
-      "Page": 96,
-      "aliases": [
-        "L3703:S0",
-        "L3704:S0"
-      ],
-      "Text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
-      "Reason": "a statement's title repeated with '(CONTINUED)' at the top of its next page: a heading occurrence continuing the statement (repetition is no reason by itself - SRC-029 A3a), or page furniture?",
-      "axes": {
-        "semanticFunctions": [
-          "IDENTITY"
-        ],
-        "primaryFunction": "IDENTITY",
-        "scope": "FINANCIAL_STATEMENT",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    }
-  ],
+    ]
+  },
   "bindingFailures": []
 }

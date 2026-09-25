@@ -114,6 +114,20 @@ public sealed class Src041SourceReviewTests
             nonHeadingsByPattern = items.Where(i => i.Verdict == "NON_HEADING").GroupBy(i => i.Pattern)
                 .OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
             ambiguous = items.Where(i => i.Verdict == "AMBIGUOUS").Select(i => new { i.Pattern, i.Page, aliases = i.Parts.Select(p => p.SourceAlias).ToArray(), i.Text, i.Reason, axes = i.Axes }).ToArray(),
+            userDecisions = new
+            {
+                decidedAt = "2026-09-25",
+                membershipTotal = 280,
+                arithmetic = "273 clear + 5 A2 + 1 A3 + 0 A4 + 1 A5 = 280",
+                principle = "CLASSIFY OCCURRENCES, NOT STRINGS",
+                patterns = new[]
+                {
+                    new { pattern = "S041_A2_CONTINUED_TITLE", decision = "TRUE x5: real display-title occurrences of a continuing statement or report; REPEAT / CONTINUATION is derived later by identity resolution (semantic claims -> identity resolution -> semanticNodeId -> PRIMARY / REPEAT / CONTINUATION) and does not affect isHeading; no repeatStatus is written" },
+                    new { pattern = "S041_A3_PART_LABEL_ON_CONTENTS_PAGE", decision = "TRUE x1: this occurrence opens the MD&A part and its contents region; the same text atop p4-p5 is a different occurrence (running header, FALSE). Repetition elsewhere does not make this one page furniture" },
+                    new { pattern = "S041_A4_APPENDIX_TABLE_TITLE", decision = "FALSE x1: its scope covers only the list/object directly below it and opens no independent region - an ordinary local object title, equivalent to a caption. A decision on this occurrence's scope, not a rule that titles over lists are false" },
+                    new { pattern = "S041_A5_CONTENTS_GROUP_LABEL", decision = "TRUE x1: not a navigation entry pointing elsewhere; it opens a sub-group of two indented contents entries, like the Tables / Figures / Boxes openers" },
+                },
+            },
             bindingFailures = failures,
         });
     }

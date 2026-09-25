@@ -113,9 +113,9 @@
     }
    ],
    "text": "Management’s Discussion and Analysis",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S041_A3_PART_LABEL_ON_CONTENTS_PAGE",
-   "reason": "9pt bold 'Management’s Discussion and Analysis' at the top of the MD&A contents page. DOC-0133 P4 made the part title on the contents page a heading; here the same text in the same type and place also tops p4 and p5 - a running header or the part's title?",
+   "reason": "user decision 2026-09-25: this occurrence opens the MD&A part and its contents region; the same text atop p4-p5 is a separate occurrence (running header, false). Classify occurrences, not strings",
    "axes": {
     "semanticFunctions": [
      "IDENTITY",
@@ -4710,17 +4710,17 @@
     }
    ],
    "text": "Eligible Borrowing Member Countries by Region as ofJune 30, 2025",
-   "verdict": "AMBIGUOUS",
+   "verdict": "NON_HEADING",
    "pattern": "S041_A4_APPENDIX_TABLE_TITLE",
-   "reason": "14pt bold, the type of an MD&A subsection, as the only title of its appendix page - but what follows is one list/table of countries it names (DOC-0133 P5 made an unnumbered title naming the table below it a caption)",
+   "reason": "user decision 2026-09-25: names only the list/object directly below it and opens no independent region: an ordinary local object title, equivalent to a caption (a decision on this occurrence's scope, not a rule about titles over lists)",
    "axes": {
     "semanticFunctions": [
-     "STRUCTURE"
+     "IDENTITY"
     ],
-    "primaryFunction": "STRUCTURE",
-    "scope": "SECTION",
+    "primaryFunction": "IDENTITY",
+    "scope": "TABLE",
     "occurrenceRoles": [
-     "REGION_OPENER"
+     "CAPTION"
     ],
     "titleRelation": "TITLE",
     "informationType": null
@@ -11656,9 +11656,9 @@
     }
    ],
    "text": "Supplementary Information",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S041_A5_CONTENTS_GROUP_LABEL",
-   "reason": "'Supplementary Information' inside the part's contents list, no page number, grouping the two indented entries under it: a contents sub-list opener (DOC-0133 made 'Tables'/'Figures' sub-list openers headings) or a contents entry?",
+   "reason": "user decision 2026-09-25: not a navigation entry pointing elsewhere: it opens a sub-group of two indented entries, like the Tables / Figures / Boxes openers",
    "axes": {
     "semanticFunctions": [
      "IDENTITY",
@@ -11781,9 +11781,9 @@
     }
    ],
    "text": "IndependentAuditor's Report",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S041_A2_CONTINUED_TITLE",
-   "reason": "'Independent Auditor’s Report' again at the top of a later page of the same report (the report text is an image; only the title and the footer are text): a heading occurrence continuing the report, or page furniture?",
+   "reason": "user decision 2026-09-25: a real display-title occurrence of the continuing report; whether it is a REPEAT or a CONTINUATION is derived by identity resolution later and does not affect isHeading",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"
@@ -12096,9 +12096,9 @@
     }
    ],
    "text": "SUMMARY STATEMENT OF LOANS (CONTINUED)",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S041_A2_CONTINUED_TITLE",
-   "reason": "a statement's title repeated with '(CONTINUED)' at the top of its next page: a heading occurrence continuing the statement (repetition is no reason by itself - SRC-029 A3a), or page furniture?",
+   "reason": "user decision 2026-09-25: a real display-title occurrence of the continuing statement; REPEAT / CONTINUATION is derived by identity resolution later and does not affect isHeading",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"
@@ -12130,9 +12130,9 @@
     }
    ],
    "text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S041_A2_CONTINUED_TITLE",
-   "reason": "a statement's title repeated with '(CONTINUED)' at the top of its next page: a heading occurrence continuing the statement (repetition is no reason by itself - SRC-029 A3a), or page furniture?",
+   "reason": "user decision 2026-09-25: a real display-title occurrence of the continuing statement; REPEAT / CONTINUATION is derived by identity resolution later and does not affect isHeading",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"
@@ -12164,9 +12164,9 @@
     }
    ],
    "text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S041_A2_CONTINUED_TITLE",
-   "reason": "a statement's title repeated with '(CONTINUED)' at the top of its next page: a heading occurrence continuing the statement (repetition is no reason by itself - SRC-029 A3a), or page furniture?",
+   "reason": "user decision 2026-09-25: a real display-title occurrence of the continuing statement; REPEAT / CONTINUATION is derived by identity resolution later and does not affect isHeading",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"
@@ -12198,9 +12198,9 @@
     }
    ],
    "text": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCKAND VOTING POWER (CONTINUED)",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S041_A2_CONTINUED_TITLE",
-   "reason": "a statement's title repeated with '(CONTINUED)' at the top of its next page: a heading occurrence continuing the statement (repetition is no reason by itself - SRC-029 A3a), or page furniture?",
+   "reason": "user decision 2026-09-25: a real display-title occurrence of the continuing statement; REPEAT / CONTINUATION is derived by identity resolution later and does not affect isHeading",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"
