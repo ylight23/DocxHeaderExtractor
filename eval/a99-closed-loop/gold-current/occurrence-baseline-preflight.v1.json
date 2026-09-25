@@ -196,6 +196,20 @@
       "placementAllowancePerRepetition": 1
     },
     {
+      "authorityId": "SRC-053",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-053.gold.v1.json",
+      "goldSha256": "bdedf492bb996e37528bdf0dbeb8cd091085adf174c285484ec521f1a408d63d",
+      "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+      "sourceSha256": "6d3cd46d6297031fd3fd4c2afd066f8d947f18d55ef1418a185e5ef9e0a344da",
+      "sourceUniverseSha256": "881fe85e6e2c570a77581a68c6a0fc1e28303709934e55ccf99f49b4de34cffd",
+      "semanticHeadingTotal": 271,
+      "materializedSemanticClaims": 271,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 77,
+      "placementAllowancePerRepetition": 1
+    },
+    {
       "authorityId": "SRC-055",
       "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-055.gold.v1.json",
       "goldSha256": "c8b45bdc8016095e85bfcb9d6cce4de74ae9ac329f193c633905fd5029a81250",
@@ -211,9 +225,9 @@
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 921,
-    "placementAllowance": 42,
-    "maxProviderCalls": 963
+    "totalPrimaryCalls": 1152,
+    "placementAllowance": 45,
+    "maxProviderCalls": 1197
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",
