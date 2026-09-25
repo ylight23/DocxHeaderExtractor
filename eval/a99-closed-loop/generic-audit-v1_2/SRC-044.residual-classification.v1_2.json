@@ -1,0 +1,201 @@
+{
+  "artifactKind": "a99_generic_audit_residual_classification",
+  "study": "SRC044_BLIND_GENERALIZATION_AUDIT_V1",
+  "rawScore": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-044.blind-score.v1_2.json",
+    "sha256": "1ea0f993bc1d504f577224dd1ac4defa542574f659c857a854a7c9c8bcee842f",
+    "commit": "382c58c"
+  },
+  "modelProviderVlmCalls": 0,
+  "status": "reviewer proposals for the user to confirm or overrule, cause by cause; the raw score is not edited and V1.2 is not changed",
+  "residuals": {
+    "goldNotEngineTrue": 5,
+    "nonGoldTrue": 2
+  },
+  "byBucket": {
+    "A": {
+      "goldNotEngineTrue": 4,
+      "nonGoldTrue": 0
+    },
+    "B_KNOWN": {
+      "goldNotEngineTrue": 1,
+      "nonGoldTrue": 2
+    },
+    "B_NEW": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "C": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "D": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    }
+  },
+  "byCause": [
+    {
+      "cause": "COLON_ENDED_LABEL_OVER_PROSE",
+      "bucket": "A",
+      "Reason": "a colon-ended standalone label over its prose is a heading or a field label by meaning; the engine sends it to review by design, and the fail-safe held for both (as on SRC-044)",
+      "goldNotEngineTrue": 2,
+      "goldBuckets": {
+        "EXACT_NEEDS_REVIEW": 2
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L1527:S0:0-26",
+        "L1551:S0:0-28"
+      ]
+    },
+    {
+      "cause": "CONTINUED_TITLE_OVER_IMAGE_PAGE",
+      "bucket": "A",
+      "Reason": "the auditor's report title repeated on a later page whose body is an image: no text region is visible below it; a heading by the A2 precedent. Sent to review (as on SRC-044)",
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_NEEDS_REVIEW": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L2258:S0:0-27"
+      ]
+    },
+    {
+      "cause": "OCCURRENCE_VS_RUNNING_HEADER",
+      "bucket": "A",
+      "Reason": "the same text, type and position tops pages 3 and 4; only the first occurrence opens the part (A3 precedent). Source evidence is identical across the two; the engine read both as furniture (as on SRC-044)",
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_FALSE": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L0005:S0:0-36"
+      ]
+    },
+    {
+      "cause": "METADATA_LINE_COUNTED_AS_PEER",
+      "bucket": "B_KNOWN",
+      "Reason": "N1 (pre-registered from SRC-044): the three-line cover title, assembled exactly, is followed by the reporting date set at the same size; the region test counts the date as a peer and sends the title to review as 'opens nothing'",
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_NEEDS_REVIEW": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L0001:S0:0-34|L0002:S0:0-3|L0003:S0:0-20"
+      ]
+    },
+    {
+      "cause": "BARE_BULLET_GLYPH",
+      "bucket": "B_KNOWN",
+      "Reason": "N2 (pre-registered from SRC-044): a bullet glyph set bold in its own segment beside the item's text stands alone as a label",
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L0624:S0:0-1"
+      ]
+    },
+    {
+      "cause": "CHART_WITHOUT_NUMBERED_CAPTION",
+      "bucket": "B_KNOWN",
+      "Reason": "K6 (pre-registered): a chart set in the right column beside prose, under an unnumbered unit line; its bold series label has no figure region to fall in and reads as a region opener",
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L0172:S0:0-16"
+      ]
+    }
+  ],
+  "knownGapsRecurring": [
+    "N1 METADATA_LINE_COUNTED_AS_PEER",
+    "N2 BARE_BULLET_GLYPH",
+    "K6 CHART_WITHOUT_NUMBERED_CAPTION"
+  ],
+  "knownGapsNotObserved": [
+    "B2",
+    "B4",
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K5",
+    "K7",
+    "N3",
+    "N4"
+  ],
+  "ontologyGaps": 0,
+  "documentSpecificExceptions": [],
+  "boxTitleCheck": {
+    "occurrence": "Box 1: Financing Principles (L0950:S0), Gold FALSE by the S042_A1 precedent (revised 336c6b6)",
+    "engineProposal": "NEEDS_REVIEW",
+    "engineEvidence": [
+      "set apart weakly from the body text",
+      "followed by 22 body line(s) before a peer",
+      "numbered caption shape",
+      "but prose, not a table or figure, follows it"
+    ],
+    "outcome": "NEEDS_REVIEW - not a heading in the score (no false positive): the engine saw the caption shape over prose and deferred to review",
+    "scopeNote": "this measures the offline audit engine V1.2; the production LLM request's context packing is not exercised here"
+  },
+  "axisFindings": [
+    {
+      "axis": "scope / primaryFunction / semanticFunctions",
+      "bucket": "A (pre-registered)",
+      "finding": "on exact matches the engine says SECTION / STRUCTURE where Gold says FINANCIAL_STATEMENT (14), NOTE (13), DOCUMENT_PART (4), EMBEDDED_ARTIFACT (3), TOC (3), and IDENTITY on 23 primary functions; occurrenceRoles, titleRelation and informationType agree on every exact match"
+    }
+  ],
+  "gate": {
+    "heldOutF1": 0.9824,
+    "ontologyGaps": 0,
+    "documentSpecificExceptions": 0,
+    "passed": true,
+    "basis": "the gate the user set on 2026-09-25 for SRC-042, applied unchanged: D ~ 0, C ~ 0 and high F1 on the held-out source"
+  },
+  "reviewNoiseProfile": {
+    "note": "NEEDS_REVIEW outside Gold that touches no Gold claim; it never counts as a heading",
+    "total": 167,
+    "byEvidence": [
+      {
+        "evidence": "(set apart only)",
+        "count": 77
+      },
+      {
+        "evidence": "numbered caption shape + but prose, not a table or figure, follows it",
+        "count": 58
+      },
+      {
+        "evidence": "a peer or stronger label follows directly: opens nothing",
+        "count": 16
+      },
+      {
+        "evidence": "colon-ended label",
+        "count": 4
+      },
+      {
+        "evidence": "date shape + stands alone over its own prose",
+        "count": 4
+      },
+      {
+        "evidence": "one label over 2 source occurrences",
+        "count": 4
+      },
+      {
+        "evidence": "one label over 3 source occurrences",
+        "count": 2
+      },
+      {
+        "evidence": "one label over 2 source occurrences + colon-ended label",
+        "count": 1
+      },
+      {
+        "evidence": "one label over 4 source occurrences",
+        "count": 1
+      }
+    ]
+  }
+}
