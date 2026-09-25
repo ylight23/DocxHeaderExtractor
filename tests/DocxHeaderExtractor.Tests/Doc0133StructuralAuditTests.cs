@@ -82,40 +82,50 @@ public sealed partial class Doc0133StructuralAuditTests
             Add(new(aliases, text, verdict, pattern, reason, functions, primary, scope, roles, titleRelation, info));
         }
 
-        // Title blocks: their composition is the user's call.
-        Named(["L0000:S0", "L0001:S0", "L0002:S0", "L0003:S0", "L0004:S0", "L0005:S0", "L0006:S0"],
-            "International Bank forReconstruction and Development Management’s Discussion & Analysis and Condensed Quarterly Financial Statements March 31, 2025 (Unaudited)",
-            "AMBIGUOUS", "P1_COVER_TITLE_BLOCK", "24pt cover: institution, document title, period date and status - one claim, or institution / title / date",
-            ["IDENTITY", "INFORMATION"], "IDENTITY", "DOCUMENT", ["REGION_OPENER"], "TITLE", "TEMPORAL_METADATA");
-        Named(["L0007:S0"], "Management’s Discussion and Analysis", "AMBIGUOUS", "P4_PART_TITLE_ONLY_AS_PAGE_LABEL",
-            "9pt bold label on the contents page, in the running-header position; the MD&A part has no other title of its own",
-            ["IDENTITY"], "IDENTITY", "DOCUMENT_PART", ["PAGE_FURNITURE", "REGION_OPENER"], "TITLE");
-        Named(["L1048:S0", "L1049:S0"], "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT (IBRD)", "AMBIGUOUS", "P2_PART_TITLE_BLOCK",
-            "14pt institution name opening the financial-statements part, above its contents list", ["IDENTITY"], "IDENTITY", "DOCUMENT_PART", ["REGION_OPENER"], "TITLE");
-        Named(["L1051:S0", "L1052:S0"], "March 31, 2025 CONDENSED QUARTERLY FINANCIAL STATEMENTS (UNAUDITED)", "AMBIGUOUS", "P2_PART_TITLE_BLOCK",
-            "10pt period date over the 14pt part title, inside the contents page: the part's title (a heading) or the contents list's first entry",
-            ["IDENTITY", "INFORMATION"], "IDENTITY", "DOCUMENT_PART", ["REGION_OPENER", "NAVIGATION"], "TITLE", "TEMPORAL_METADATA");
-        // Heading-sized or unnumbered table titles.
-        Named(["L0051:S0"], "Table 1: Selected Financial Data", "AMBIGUOUS", "P3_HEADING_SIZED_CAPTION",
-            "numbered table caption set at 12pt bold, the size of a subsection heading; the policy's caption rule says false by default",
-            ["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE");
-        Named(["L0655:S0"], "Changes in Surplus", "AMBIGUOUS", "P5_UNNUMBERED_TABLE_TITLE",
-            "9pt bold unnumbered title directly over a small table", ["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE");
-        Named(["L1978:S0"], "Pension and Other Postretirement Benefits", "AMBIGUOUS", "P6_MINOR_LOCAL_HEADING",
-            "10pt bold standalone line inside Note H opening a paragraph; one size below the note's sub-headings",
-            ["STRUCTURE"], "STRUCTURE", "SECTION", ["REGION_OPENER"], "TITLE");
+        // The seven patterns the user decided on 2026-09-25, occurrence by occurrence.
+        const string U = "user decision 2026-09-25: ";
+        // P1 - the cover decomposes: the title lines are one heading claim; issuer, date and audit status are metadata.
+        Named(["L0000:S0", "L0001:S0"], "International Bank forReconstruction and Development", "NON_HEADING", "P1_COVER_TITLE_BLOCK",
+            U + "issuer above the cover title", ["INFORMATION"], "INFORMATION", "DOCUMENT", ["METADATA"], "NONE", "ISSUER_METADATA");
+        Named(["L0002:S0", "L0003:S0", "L0004:S0"], "Management’s Discussion & Analysis and Condensed Quarterly Financial Statements", "HEADING", "P1_COVER_TITLE_BLOCK",
+            U + "the cover title, one claim of three lines", ["IDENTITY"], "IDENTITY", "DOCUMENT", ["REGION_OPENER"], "TITLE");
+        Named(["L0005:S0"], "March 31, 2025", "NON_HEADING", "P1_COVER_TITLE_BLOCK",
+            U + "reporting date under the cover title", ["INFORMATION"], "INFORMATION", "DOCUMENT", ["METADATA"], "NONE", "TEMPORAL_METADATA");
+        Named(["L0006:S0"], "(Unaudited)", "NON_HEADING", "P1_COVER_TITLE_BLOCK",
+            U + "audit status under the cover title", ["INFORMATION"], "INFORMATION", "DOCUMENT", ["METADATA"], "NONE", "STATUS_METADATA");
+        // P4 - the MD&A part's title on its contents page; the running headers of later pages are other occurrences.
+        Named(["L0007:S0"], "Management’s Discussion and Analysis", "HEADING", "P4_PART_TITLE_ON_CONTENTS_PAGE",
+            U + "part title opening the MD&A contents page, not a running header", ["IDENTITY"], "IDENTITY", "DOCUMENT_PART", ["REGION_OPENER"], "TITLE");
+        // P2 - page 31: issuer and date are metadata; the statements title opens its own navigation group.
+        Named(["L1048:S0", "L1049:S0"], "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT (IBRD)", "NON_HEADING", "P2_PART_TITLE_BLOCK",
+            U + "issuer/context label above the contents", ["INFORMATION"], "INFORMATION", "DOCUMENT_PART", ["METADATA"], "NONE", "ISSUER_METADATA");
+        Named(["L1051:S0"], "March 31, 2025", "NON_HEADING", "P2_PART_TITLE_BLOCK",
+            U + "period date on the contents page", ["INFORMATION"], "INFORMATION", "DOCUMENT_PART", ["METADATA"], "NONE", "TEMPORAL_METADATA");
+        Named(["L1052:S0"], "CONDENSED QUARTERLY FINANCIAL STATEMENTS (UNAUDITED)", "HEADING", "P2_PART_TITLE_BLOCK",
+            U + "opens the navigation group of the statements, notes and report; not an ordinary contents entry",
+            ["IDENTITY", "STRUCTURE"], "IDENTITY", "DOCUMENT_PART", ["REGION_OPENER"], "TITLE");
+        // P3, P5 - the title of a table object is a caption, whatever its size.
+        Named(["L0051:S0"], "Table 1: Selected Financial Data", "NON_HEADING", "P3_HEADING_SIZED_CAPTION",
+            U + "12pt caption; a unit line and table data follow", ["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE");
+        Named(["L0655:S0"], "Changes in Surplus", "NON_HEADING", "P5_UNNUMBERED_TABLE_TITLE",
+            U + "names the small table directly below it", ["IDENTITY"], "IDENTITY", "TABLE", ["CAPTION"], "TITLE");
+        // P6 - a standalone label opening its own paragraph.
+        Named(["L1978:S0"], "Pension and Other Postretirement Benefits", "HEADING", "P6_MINOR_LOCAL_HEADING",
+            U + "10pt bold standalone label opening a narrative paragraph inside Note H", ["STRUCTURE"], "STRUCTURE", "SECTION", ["REGION_OPENER"], "TITLE");
 
-        // The notes' lowest level: 10pt italic lines standing alone at the margin over body text. Long
-        // italic lines are standard names set inline in a paragraph ("In November 2024, the FASB ..."),
-        // not headings; the one heading that wraps is named with both its lines.
+        // P7 - standalone labels inside the notes, each opening coherent prose or data below it. Here
+        // they share one visual grammar (10pt italic at the margin); the grammar is evidence, the
+        // decision is standalone + opens a region. Long italic lines set inside a paragraph (standard
+        // names: "In November 2024, the FASB ...") do not stand alone and are not candidates; the one
+        // label that wraps is named with both its lines.
         Named(["L2045:S0", "L2046:S0"], "Securities purchased under resale agreements, Securities sold under repurchase agreements, and Securities lent undersecurities lendingagreements",
-            "AMBIGUOUS", "P7_ITALIC_10PT_NOTE_HEADING", "10pt italic heading of two lines inside Note J",
+            "HEADING", "P7_NOTE_LOCAL_LABEL", U + "standalone label of two lines opening its paragraph inside Note J",
             ["STRUCTURE"], "STRUCTURE", "SECTION", ["REGION_OPENER"], "TITLE");
         foreach (var atom in atoms.Where(a => !claimed.Contains(a.Alias) && a.Italic && a.FontSize is >= 9.9 and <= 10.1 && a.Left <= 74
             && a.Text.Length <= 70 && !a.Text.StartsWith("In ", StringComparison.Ordinal) && !a.Text.StartsWith("Expressed", StringComparison.Ordinal)
             && !char.IsDigit(a.Text[0]) && a.Page >= 37).ToArray())
-            Add(new([atom.Alias], atom.Text, "AMBIGUOUS", "P7_ITALIC_10PT_NOTE_HEADING",
-                "10pt italic line standing alone at the margin over body text, one level below the notes' 11pt sub-headings",
+            Add(new([atom.Alias], atom.Text, "HEADING", "P7_NOTE_LOCAL_LABEL",
+                U + "standalone label at the margin opening the prose or data below it",
                 ["STRUCTURE"], "STRUCTURE", "SECTION", ["REGION_OPENER"], "TITLE"));
 
         foreach (var atom in atoms)
@@ -161,7 +171,12 @@ public sealed partial class Doc0133StructuralAuditTests
         var result = new Dictionary<string, (string, string)>(StringComparer.Ordinal);
         foreach (var c in candidates)
             foreach (var a in c.Aliases)
-                result[a] = (c.Verdict == "HEADING" ? "HEADING_CANDIDATE" : "AMBIGUOUS", c.Pattern);
+                result[a] = (c.Verdict switch
+                {
+                    "HEADING" => "HEADING_CANDIDATE",
+                    "AMBIGUOUS" => "AMBIGUOUS",
+                    _ => c.OccurrenceRoles.Contains("CAPTION") ? "TABLE_CAPTION" : "METADATA",
+                }, c.Pattern);
 
         var rows = atoms.GroupBy(a => (a.Page, a.Source.Row)).ToDictionary(g => g.Key, g => g.ToArray());
         var tocPages = candidates.Where(c => c.Pattern == "TOC_OPENER").Select(c => atoms.First(a => a.Alias == c.Aliases[0]).Page).ToHashSet();
@@ -231,8 +246,10 @@ public sealed partial class Doc0133StructuralAuditTests
         var byProposalCategory = proposals.Values.GroupBy(a => categories[a[0]].Category)
             .OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count());
 
+        var repeats = RepeatStatuses(candidates);
         var headings = candidates.Where(c => c.Verdict == "HEADING").ToArray();
         var ambiguous = candidates.Where(c => c.Verdict == "AMBIGUOUS").ToArray();
+        var decidedNonHeadings = candidates.Where(c => c.Verdict == "NON_HEADING").ToArray();
         int Count(string category) => atoms.Count(a => categories[a.Alias].Category == category);
 
         FreezeArtifact.AssertJson("eval/a99-closed-loop/policy-audit", "DOC-0133.structural-audit.v1.json", new
@@ -257,24 +274,24 @@ public sealed partial class Doc0133StructuralAuditTests
                 TABLE_COLUMN_HEADERS = Count("TABLE_COLUMN_HEADER"),
                 REPEATED_HEADERS = Count("REPEATED_HEADER"),
                 FOOTNOTES = Count("FOOTNOTE"),
-                OTHER_NON_HEADINGS = Count("BODY_TEXT") + Count("TABLE_VALUE") + Count("NAVIGATION") + Count("OTHER_NON_HEADING"),
-                otherBreakdown = new { bodyText = Count("BODY_TEXT"), tableValues = Count("TABLE_VALUE"), navigation = Count("NAVIGATION"), other = Count("OTHER_NON_HEADING") },
+                OTHER_NON_HEADINGS = Count("BODY_TEXT") + Count("TABLE_VALUE") + Count("NAVIGATION") + Count("METADATA") + Count("OTHER_NON_HEADING"),
+                otherBreakdown = new { bodyText = Count("BODY_TEXT"), tableValues = Count("TABLE_VALUE"), navigation = Count("NAVIGATION"), metadata = Count("METADATA"), other = Count("OTHER_NON_HEADING") },
                 OLD_GOLD_TOTAL = OldGold,
                 MODEL_PROPOSALS = proposals.Count,
                 CLEAR_HEADING = headings.Length,
-                CLEAR_NON_HEADING = atoms.Count - candidates.Sum(c => c.Aliases.Length),
+                CLEAR_NON_HEADING = atoms.Count - candidates.Where(c => c.Verdict != "NON_HEADING").Sum(c => c.Aliases.Length),
                 AMBIGUOUS = ambiguous.Length,
                 PROPOSED_FINAL_TOTAL = headings.Length,
                 PROPOSED_FINAL_RANGE = new { min = headings.Length, max = headings.Length + ambiguous.Length },
                 GOLD_WRITE = false,
                 USER_APPROVAL_REQUIRED = true,
-                note = "Non-heading categories are descriptive (font, margin, row and segment evidence); only heading membership is proposed, and the user decides the ambiguous patterns. Old Gold 123 is a count with no items, so no item-level KEEP/REMOVE against it exists.",
+                note = "Non-heading categories are descriptive (font, margin, row and segment evidence). Heading membership: 92 clear by the document's type hierarchy plus the seven patterns the user decided occurrence by occurrence on 2026-09-25. Old Gold 123 is a count with no items, so no item-level KEEP/REMOVE against it exists.",
             },
             headingsByPattern = headings.GroupBy(c => c.Pattern).OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
-            ambiguousPatterns = ambiguous.GroupBy(c => c.Pattern).OrderBy(g => g.Key, StringComparer.Ordinal).Select(g => new
+            userDecidedPatterns = candidates.Where(c => c.Pattern.StartsWith('P')).GroupBy(c => c.Pattern).OrderBy(g => g.Key, StringComparer.Ordinal).Select(g => new
             {
                 pattern = g.Key,
-                items = g.Select(c => new { c.Aliases, c.Text, c.Reason, axes = Axes(c), proposedByModel = c.Aliases.Any(proposedAliases.Contains) }).ToArray(),
+                items = g.Select(c => new { c.Aliases, c.Text, c.Verdict, c.Reason, axes = Axes(c, repeats), proposedByModel = c.Aliases.Any(proposedAliases.Contains) }).ToArray(),
             }).ToArray(),
             modelCrossCheck = new
             {
@@ -283,21 +300,28 @@ public sealed partial class Doc0133StructuralAuditTests
                 clearHeadingsProposed = headings.Count(c => c.Aliases.Any(proposedAliases.Contains)),
                 clearHeadingsMissed = headings.Where(c => !c.Aliases.Any(proposedAliases.Contains)).Select(c => new { alias = c.Aliases[0], c.Text, c.Pattern }).ToArray(),
             },
-            headings = headings.Select(c => new { c.Aliases, c.Text, c.Pattern, c.Reason, axes = Axes(c) }).ToArray(),
+            headings = headings.Select(c => new { c.Aliases, c.Text, c.Pattern, c.Reason, axes = Axes(c, repeats) }).ToArray(),
             nonHeadingSamples = categories.Values.Select(v => v.Category).Distinct().Order(StringComparer.Ordinal)
                 .Where(k => k is not "HEADING_CANDIDATE" and not "AMBIGUOUS")
                 .ToDictionary(k => k, k => atoms.Where(a => categories[a.Alias].Category == k).Take(8).Select(a => new { alias = a.Alias, page = a.Page, text = a.Text }).ToArray()),
         });
     }
 
-    private static object Axes(Candidate c) => new
+    /// <summary>REPEATED when an earlier candidate carries the same text (whitespace and case aside).</summary>
+    internal static Dictionary<Candidate, string> RepeatStatuses(IReadOnlyList<Candidate> candidates)
+    {
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        return candidates.ToDictionary(c => c, c => seen.Add(Squash(c.Text)) ? "FIRST" : "REPEATED");
+    }
+
+    private static object Axes(Candidate c, IReadOnlyDictionary<Candidate, string> repeats) => new
     {
         semanticFunctions = c.SemanticFunctions,
         primaryFunction = c.PrimaryFunction,
         scope = c.Scope,
         occurrenceRoles = c.OccurrenceRoles,
         titleRelation = c.TitleRelation,
-        repeatStatus = "FIRST",
+        repeatStatus = repeats[c],
         informationType = c.InformationType,
     };
 
