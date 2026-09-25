@@ -20,6 +20,7 @@ public sealed class Src041BlindScoreTests
     internal const string Pin = Root + "/SRC-041.reveal-pin.v1_1.json";
     internal const string GoldPath = "eval/a99-closed-loop/gold/SRC-041.gold.json";
     internal const string HarnessFile = "tests/DocxHeaderExtractor.Tests/Src041BlindScoreTests.cs";
+    internal const string Amendment = Root + "/SRC-041.reveal-pin-amendment.v1_1.json";
 
     [Fact]
     public void Score_the_blind_proposals_against_gold()
@@ -42,7 +43,16 @@ public sealed class Src041BlindScoreTests
     {
         using var pin = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Pin)));
         var p = pin.RootElement;
-        Assert.Equal(p.GetProperty("harness").GetProperty("sha256").GetString(), CanonicalArtifactHash.OfTextFile(TestRepository.Path(HarnessFile)));
+        // The harness is the pinned one, or the one an append-only amendment names (the score computation is
+        // re-checked by regenerating the committed score byte for byte, below).
+        var harness = CanonicalArtifactHash.OfTextFile(TestRepository.Path(HarnessFile));
+        var pinnedHarness = p.GetProperty("harness").GetProperty("sha256").GetString();
+        if (harness != pinnedHarness)
+        {
+            using var amendment = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Amendment)));
+            Assert.Equal(pinnedHarness, amendment.RootElement.GetProperty("harnessBefore").GetProperty("sha256").GetString());
+            Assert.Equal(harness, amendment.RootElement.GetProperty("harnessAfter").GetProperty("sha256").GetString());
+        }
         Assert.Equal(p.GetProperty("scorer").GetProperty("sha256").GetString(), CanonicalArtifactHash.OfTextFile(TestRepository.Path(Src041BlindGeneralizationTests.ScorerFile)));
         Assert.Equal(p.GetProperty("gold").GetProperty("authoredGoldSha256").GetString(), CanonicalArtifactHash.OfTextFile(TestRepository.Path(GoldPath)));
         Assert.Equal(p.GetProperty("gold").GetProperty("registryGoldSha256").GetString(), CanonicalGoldRegistry.Entry("SRC-041").GoldSha256);
@@ -93,7 +103,7 @@ public sealed class Src041RevealPinTests
         var shared = spans.GroupBy(s => s.Alias).Sum(g => g.SelectMany((a, i) => g.Skip(i + 1).Where(b => a.Start < b.End && b.Start < a.End)).Count());
         using var prereg = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{Src041BlindGeneralizationTests.Root}/SRC-041.preregistration.v1_1.json")));
 
-        FreezeArtifact.AssertJson(Src041BlindScoreTests.Root, "SRC-041.reveal-pin.v1_1.json", new
+        var pin = new
         {
             artifactKind = "a99_generic_audit_reveal_pin",
             study = "SRC041_BLIND_GENERALIZATION_AUDIT_V1",
@@ -154,6 +164,10 @@ public sealed class Src041RevealPinTests
                 "a Gold error found later becomes a new Gold revision; this score stays against the Gold pinned here",
                 "only then: SRC041_HISTORICAL_297_DELTA_AUDIT_V1",
             },
-        });
+        };
+        // The registry file as a whole and the suite count record the corpus at the reveal; the harness hash is
+        // superseded by the append-only amendment, whose exact before/after pair AssertPinned enforces.
+        RevealPin.Verify(Src041BlindScoreTests.Root, "SRC-041.reveal-pin.v1_1.json", pin,
+            "gold.registry.sha256", "checkpoint.fullSuite", "harness.sha256");
     }
 }
