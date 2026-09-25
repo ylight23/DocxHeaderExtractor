@@ -1,0 +1,116 @@
+{
+  "artifactKind": "a99_gold_historical_delta_audit",
+  "study": "SRC041_HISTORICAL_297_DELTA_AUDIT_V1",
+  "kind": "provenance / source-evidence audit; not a tuning step",
+  "modelProviderVlmCalls": 0,
+  "inputAuthority": {
+    "source": {
+      "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+      "sha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38"
+    },
+    "previousTotal": 297,
+    "currentOccurrenceGold": 280,
+    "currentGold": {
+      "path": "eval/a99-closed-loop/gold/SRC-041.gold.json",
+      "sha256": "2eb920d2490c94c955f177aab3b40c3ca9c19c4b316cb6c43369633cafd5f34a",
+      "commit": "3dca86f"
+    }
+  },
+  "prohibited": [
+    "V1.1 predictions",
+    "the held-out score ba93900 as a candidate search list",
+    "any other model output (e.g. scaleup-real-harness-v1/SRC-041)",
+    "targeting the delta",
+    "inferring missing occurrences from count arithmetic",
+    "altering the current Gold silently"
+  ],
+  "evidenceAdmitted": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-041.semantic-freeze.v1.json",
+      "sha256": "b438f4dcdc20bda88f2f74f2ab66ebb49980d9ededf8b23b4725f61edf7f640d",
+      "what": "the historical authority's own record (approvedAt 2026-09-12)"
+    },
+    {
+      "path": "keys/occurrence-bridge/041_IBRD_Financial_Statements_June_2025.occurrence-bridge.json",
+      "sha256": "bdf592a7a04050e4b5994a258aec6ce0600f1c238ab06b97b90e93deb421ce81",
+      "what": "a reviewed structural reference with PDF line identities, 2026-08-26, usesModel false, usesPipelineOutput false; partial (not the 297 review)"
+    }
+  ],
+  "evidenceSearchedAndAbsent": [
+    "no occurrence list, span or per-heading note for the historical 292 proposal: the freeze says 'no occurrence list or span was synthesized from the total'",
+    "research-r2 annotation: DOC-0126 (this PDF) has a source packet but no annotator-a, annotator-b or adjudication file",
+    "review/holdout-manifest DOC-0221: a DOCX packet READY_FOR_HUMAN_REVIEW, never reviewed",
+    "todo10_8/outline_json: a single placeholder entry, no headings"
+  ],
+  "A_recoverableHistoricalHeadingOccurrences": {
+    "reauditAdditions": {
+      "historical": "292 -> 297 (+5)",
+      "coverage": [
+        {
+          "historicalText": "Independent Auditor's Report",
+          "historicalCount": 1,
+          "currentGoldOccurrences": 2
+        },
+        {
+          "historicalText": "SUMMARY STATEMENT OF LOANS (CONTINUED)",
+          "historicalCount": 1,
+          "currentGoldOccurrences": 1
+        },
+        {
+          "historicalText": "STATEMENT OF SUBSCRIPTIONS TO CAPITAL STOCK AND VOTING POWER (CONTINUED)",
+          "historicalCount": 3,
+          "currentGoldOccurrences": 3
+        }
+      ],
+      "note": "Repeated/continuation display titles are distinct true heading occurrences; later note-level uses such as 'Statements of Cash Flows' are separate note subheadings and were already adjudicated in their own semantic context."
+    },
+    "reviewedStructuralReference": {
+      "occurrences": 62,
+      "byReviewMethod": {
+        "ambiguous-source-review": 13,
+        "section": 2,
+        "single-line": 47
+      },
+      "inCurrentGold": 62,
+      "absentFromCurrentGold": [],
+      "note": "a title the reference records by its first line only is the same occurrence as the current multi-line claim"
+    },
+    "historicalHeadingOccurrencesAbsentFromCurrentGold": 0
+  },
+  "B_historicalOverCountPatterns": {
+    "established": 0,
+    "reason": "the 292 base carries no occurrence identities, so no historical occurrence can be shown to have been counted and later excluded"
+  },
+  "C_policyDefinitionDifferences": {
+    "note": "decisions fixed after the 2026-09-12 review; an inventory of what changed in the definition, NOT a decomposition of the delta",
+    "later": [
+      {
+        "what": "FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (caption rule, row/column labels, field labels, running headers)",
+        "decidedAt": "2026-09-24"
+      },
+      {
+        "what": "financial-occurrence-distinctions addendum (statement / note / caption / column / row)",
+        "decidedAt": "2026-09-25"
+      },
+      {
+        "what": "OCCURRENCE_CLASSIFICATION_PRINCIPLES_V1 (classify occurrences, not strings; chart-internal labels; contents openers vs entries)",
+        "decidedAt": "2026-09-25"
+      },
+      {
+        "what": "SRC-041 A3 / A4 / A5 occurrence decisions",
+        "decidedAt": "2026-09-25"
+      }
+    ],
+    "unchanged": "the historical re-audit already treated repeated/continuation display titles as distinct heading occurrences - the current A2 decision agrees"
+  },
+  "D_unrecoverableCountOnlyDifference": {
+    "HISTORICAL_AUTHORITY_DELTA": -17,
+    "EXACT_CAUSE": "NOT_RECOVERABLE",
+    "reason": "the historical total has no occurrence list; every historical occurrence that can be identified is in the current Gold"
+  },
+  "conclusion": {
+    "CURRENT_GOLD_280": "UNCHANGED",
+    "goldRevision": "none: no source-level evidence of an occurrence the current Gold misses",
+    "heldOutScore": "ba93900 stays the held-out score against the Gold frozen at the reveal"
+  }
+}
