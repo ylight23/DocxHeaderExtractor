@@ -118,6 +118,20 @@ public sealed class Src053SourceReviewTests
             nonHeadingsByPattern = items.Where(i => i.Verdict == "NON_HEADING").GroupBy(i => i.Pattern)
                 .OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
             ambiguous = items.Where(i => i.Verdict == "AMBIGUOUS").Select(i => new { i.Pattern, i.Page, aliases = i.Parts.Select(p => p.SourceAlias).ToArray(), i.Text, i.Reason, axes = i.Axes }).ToArray(),
+            userDecisions = new
+            {
+                decidedAt = "2026-09-26",
+                membershipTotal = 271,
+                arithmetic = "266 clear + 1 S053_Q1 + 3 S053_Q2 + 1 S053_Q3 + 0 S053_Q4 = 271",
+                principle = "CLASSIFY OCCURRENCES, NOT STRINGS",
+                patterns = new[]
+                {
+                    new { pattern = "S053_Q1_BACK_COVER_TITLE_BLOCK", decision = "TRUE x1: 'Information Statement' atop the back cover is a display-title occurrence of the document; repetition does not decide heading status (the reviewer had recommended FALSE)" },
+                    new { pattern = "S053_Q2_ITALIC_STANDALONE_LABEL", decision = "TRUE x3: italic, not bold, standalone labels at the margin over their own prose are headings one level below their parent; function decides, not weight" },
+                    new { pattern = "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER", decision = "title only: 'Information Statement' is the cover's one-line title claim; the larger issuer name below it is ISSUER_METADATA, as in the SRC-042 precedent" },
+                    new { pattern = "S053_Q4_BULLETED_LABEL_OVER_SUBLIST", decision = "FALSE x1: '• Other Adjustments:' is a list item among list items; its enumerated sub-list is the item's own content" },
+                },
+            },
             bindingFailures = failures,
         });
     }

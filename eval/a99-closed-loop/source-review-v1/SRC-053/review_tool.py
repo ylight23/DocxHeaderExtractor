@@ -90,6 +90,7 @@ P41 = "precedent SRC-041 (user-decided 2026-09-25)"
 P42 = "precedent SRC-042 (user-decided 2026-09-25)"
 POL = "FINANCIAL_PROCUREMENT_HEADING_POLICY_V1"
 H, N, Q = "HEADING", "NON_HEADING", "AMBIGUOUS"
+U = "user decision 2026-09-26"
 
 
 def section_of(p):
@@ -115,13 +116,11 @@ def opens_list(a):
 
 
 # ---------------- cover (p1) ----------------
-add("FRONT", ["L0000:S0"], Q, "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER",
-    "14pt bold 'Information Statement' above the 24pt bold issuer name: the document-type title with the issuer set larger below it. "
-    "The SRC-042 / SRC-044 precedent (issuer above the title is metadata) had the title and issuer at one size, the title below",
-    DOC)
-add("FRONT", ["L0001:S0"], Q, "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER",
-    "24pt bold issuer name under the 14pt document-type label: issuer metadata by the SRC-042 precedent, or the second part of the cover title",
-    META("ISSUER_METADATA"))
+add("FRONT", ["L0000:S0"], H, "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER",
+    U + " (S053_Q3, title only): 14pt bold 'Information Statement' is the cover title, one claim of one line; the 24pt issuer "
+    "below it is metadata, as in the SRC-042 precedent, whatever its size", DOC)
+add("FRONT", ["L0001:S0"], N, "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER",
+    U + " (S053_Q3): the 24pt issuer name under the cover title is issuer metadata, not a title part", META("ISSUER_METADATA"))
 add("FRONT", ["L0040:S0"], H, "FRONT_SECTION_TITLE",
     "centered bold caps title of the cover page's own section over its paragraph; the back-cover contents list names it (p1)", SECT)
 add("FRONT", ["L0049:S0"], N, "COVER_BLOCK", "date of the information statement: " + P42, META("TEMPORAL_METADATA"))
@@ -138,13 +137,14 @@ add("MDA", ["L1080:S0"], N, "S042_A1_PRECEDENT_BOX_TITLE",
 for a, why in [("L0572:S0", "the WHR sub-window under GROW (its sibling windows are 10pt bold)"),
                ("L2128:S0", "'Interest Rate Risk' under the 10.5pt 'Market Risk'"),
                ("L2188:S0", "'Exchange Rate Risk' under the 10.5pt 'Market Risk'")]:
-    add("MDA", [a], Q, "S053_Q2_ITALIC_STANDALONE_LABEL",
-        "10pt italic (not bold) standalone label at the margin over its own prose: " + why + ". Function reads as a heading; "
-        "the typographic weight differs from every heading the user has decided (bold)", SEC)
+    add("MDA", [a], H, "S053_Q2_ITALIC_STANDALONE_LABEL",
+        U + " (S053_Q2, TRUE): a 10pt italic standalone label at the margin over its own prose - " + why + ". Function decides, "
+        "not weight", SEC)
 add("NOTES", ["L4804:S0"], H, "NOTE_SUBHEADING", "10pt bold-italic standalone label over its own prose (Note H): " + P33 + " (P6)", SEC)
-add("MDA", ["L0828:S0"], Q, "S053_Q4_BULLETED_LABEL_OVER_SUBLIST",
+add("MDA", ["L0828:S0"], N, "S053_Q4_BULLETED_LABEL_OVER_SUBLIST",
     "the third bullet of a list whose other bullets are run-in items ('Activities directly funded ...: These are ...'); this one is only "
-    "'Other Adjustments:' and its content is an enumerated sub-list (i., ii.). A list item label, or a bulleted sub-heading (" + P29 + " S029_A4: the bullet is not a gate)",
+    "'Other Adjustments:' and its content is an enumerated sub-list (i., ii.). " + U + " (S053_Q4, FALSE): a list item among list items; "
+    "its sub-list is the item's own content",
     LIST_ITEM)
 add("MDA", ["L1718:S0"], N, "RUN_IN_LEAD", "bold committee name that runs on into its sentence across the line: body prose with a bold lead", BODY)
 add("FS_PART", ["L2694:S0"], N, "PAGE_NOTICE", "'This Page intentionally left blank': " + P42, FURN)
@@ -202,9 +202,9 @@ for aliases in [["L2985:S0"], ["L3224:S0"], ["L3277:S0"], ["L3366:S0", "L3367:S0
         "a statement's title repeated at the top of its next page: a display-title occurrence of the continuing statement: " + P41 + " (A2); " + P42, STATEMENT)
 
 # ---------------- back cover (p132) ----------------
-add("BACK", ["L5185:S0"], Q, "S053_Q1_BACK_COVER_TITLE_BLOCK",
-    "10pt bold centered 'Information Statement' atop the back cover, over the issuer name and logo, the disclaimers and the contents list",
-    DOC)
+add("BACK", ["L5185:S0"], H, "S053_Q1_BACK_COVER_TITLE_BLOCK",
+    U + " (S053_Q1, TRUE): 10pt bold centered 'Information Statement' atop the back cover is a display-title occurrence of the document; "
+    "repetition does not decide heading status", DOC)
 add("BACK", ["L5186:S0"], N, "COVER_BLOCK", "issuer under the back-cover title: " + P42, META("ISSUER_METADATA"))
 add("BACK", ["L5220:S0"], H, "TOC_OPENER", "opens the contents list: " + P42, TOC)
 

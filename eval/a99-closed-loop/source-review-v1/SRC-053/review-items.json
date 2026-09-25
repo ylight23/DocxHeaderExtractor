@@ -11,9 +11,9 @@
     }
    ],
    "text": "Information Statement",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER",
-   "reason": "14pt bold 'Information Statement' above the 24pt bold issuer name: the document-type title with the issuer set larger below it. The SRC-042 / SRC-044 precedent (issuer above the title is metadata) had the title and issuer at one size, the title below",
+   "reason": "user decision 2026-09-26 (S053_Q3, title only): 14pt bold 'Information Statement' is the cover title, one claim of one line; the 24pt issuer below it is metadata, as in the SRC-042 precedent, whatever its size",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"
@@ -39,9 +39,9 @@
     }
    ],
    "text": "International Development Association",
-   "verdict": "AMBIGUOUS",
+   "verdict": "NON_HEADING",
    "pattern": "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER",
-   "reason": "24pt bold issuer name under the 14pt document-type label: issuer metadata by the SRC-042 precedent, or the second part of the cover title",
+   "reason": "user decision 2026-09-26 (S053_Q3): the 24pt issuer name under the cover title is issuer metadata, not a title part",
    "axes": {
     "semanticFunctions": [
      "INFORMATION"
@@ -265,9 +265,9 @@
     }
    ],
    "text": "Windowfor Host Communities and Refugees (WHR)",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S053_Q2_ITALIC_STANDALONE_LABEL",
-   "reason": "10pt italic (not bold) standalone label at the margin over its own prose: the WHR sub-window under GROW (its sibling windows are 10pt bold). Function reads as a heading; the typographic weight differs from every heading the user has decided (bold)",
+   "reason": "user decision 2026-09-26 (S053_Q2, TRUE): a 10pt italic standalone label at the margin over its own prose - the WHR sub-window under GROW (its sibling windows are 10pt bold). Function decides, not weight",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -293,9 +293,9 @@
     }
    ],
    "text": "Interest Rate Risk",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S053_Q2_ITALIC_STANDALONE_LABEL",
-   "reason": "10pt italic (not bold) standalone label at the margin over its own prose: 'Interest Rate Risk' under the 10.5pt 'Market Risk'. Function reads as a heading; the typographic weight differs from every heading the user has decided (bold)",
+   "reason": "user decision 2026-09-26 (S053_Q2, TRUE): a 10pt italic standalone label at the margin over its own prose - 'Interest Rate Risk' under the 10.5pt 'Market Risk'. Function decides, not weight",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -321,9 +321,9 @@
     }
    ],
    "text": "Exchange Rate Risk",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S053_Q2_ITALIC_STANDALONE_LABEL",
-   "reason": "10pt italic (not bold) standalone label at the margin over its own prose: 'Exchange Rate Risk' under the 10.5pt 'Market Risk'. Function reads as a heading; the typographic weight differs from every heading the user has decided (bold)",
+   "reason": "user decision 2026-09-26 (S053_Q2, TRUE): a 10pt italic standalone label at the margin over its own prose - 'Exchange Rate Risk' under the 10.5pt 'Market Risk'. Function decides, not weight",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -377,9 +377,9 @@
     }
    ],
    "text": "• OtherAdjustments:",
-   "verdict": "AMBIGUOUS",
+   "verdict": "NON_HEADING",
    "pattern": "S053_Q4_BULLETED_LABEL_OVER_SUBLIST",
-   "reason": "the third bullet of a list whose other bullets are run-in items ('Activities directly funded ...: These are ...'); this one is only 'Other Adjustments:' and its content is an enumerated sub-list (i., ii.). A list item label, or a bulleted sub-heading (precedent SRC-029 (user-decided 2026-09-25) S029_A4: the bullet is not a gate)",
+   "reason": "the third bullet of a list whose other bullets are run-in items ('Activities directly funded ...: These are ...'); this one is only 'Other Adjustments:' and its content is an enumerated sub-list (i., ii.). user decision 2026-09-26 (S053_Q4, FALSE): a list item among list items; its sub-list is the item's own content",
    "axes": {
     "semanticFunctions": [
      "INFORMATION"
@@ -8010,9 +8010,9 @@
     }
    ],
    "text": "Information Statement",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S053_Q1_BACK_COVER_TITLE_BLOCK",
-   "reason": "10pt bold centered 'Information Statement' atop the back cover, over the issuer name and logo, the disclaimers and the contents list",
+   "reason": "user decision 2026-09-26 (S053_Q1, TRUE): 10pt bold centered 'Information Statement' atop the back cover is a display-title occurrence of the document; repetition does not decide heading status",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"
