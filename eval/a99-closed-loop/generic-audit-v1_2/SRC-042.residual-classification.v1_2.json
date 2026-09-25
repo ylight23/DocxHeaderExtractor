@@ -1,0 +1,214 @@
+{
+  "artifactKind": "a99_generic_audit_residual_classification",
+  "study": "SRC042_BLIND_GENERALIZATION_AUDIT_V1",
+  "rawScore": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-042.blind-score.v1_2.json",
+    "sha256": "133236bcfa940c792127be32c969cd79b87901278bd94cc230408f3ee88d6255",
+    "commit": "1f28301"
+  },
+  "modelProviderVlmCalls": 0,
+  "status": "reviewer proposals for the user to confirm or overrule, cause by cause; the raw score is not edited and V1.2 is not changed",
+  "residuals": {
+    "goldNotEngineTrue": 6,
+    "nonGoldTrue": 5
+  },
+  "byBucket": {
+    "A": {
+      "goldNotEngineTrue": 5,
+      "nonGoldTrue": 0
+    },
+    "B_KNOWN": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "B_NEW": {
+      "goldNotEngineTrue": 1,
+      "nonGoldTrue": 5
+    },
+    "C": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "D": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    }
+  },
+  "byCause": [
+    {
+      "cause": "COLON_ENDED_LABEL_OVER_PROSE",
+      "bucket": "A",
+      "Reason": "a colon-ended standalone label over its list or prose is a heading or a field label by meaning; the engine sends it to review by design, and the fail-safe held for all three",
+      "goldNotEngineTrue": 3,
+      "goldBuckets": {
+        "EXACT_NEEDS_REVIEW": 3
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L0803:S0:0-66",
+        "L1737:S0:0-26",
+        "L1762:S0:0-28"
+      ]
+    },
+    {
+      "cause": "CONTINUED_TITLE_OVER_IMAGE_PAGE",
+      "bucket": "A",
+      "Reason": "the auditor's report title repeated on a later page whose body is an image: no text region is visible below it; a heading by the A2 precedent. Sent to review",
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_NEEDS_REVIEW": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L2591:S0:0-27"
+      ]
+    },
+    {
+      "cause": "OCCURRENCE_VS_RUNNING_HEADER",
+      "bucket": "A",
+      "Reason": "the same text, type and position tops pages 3, 4 and 5; only the first occurrence opens the part (A3 precedent). Source evidence is identical across the three",
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_FALSE": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L0005:S0:0-36"
+      ]
+    },
+    {
+      "cause": "METADATA_LINE_COUNTED_AS_PEER",
+      "bucket": "B_NEW",
+      "Reason": "the cover title (three lines, assembled exactly) is followed by the reporting date set at the same size; the region test counts that date-shaped metadata line as a peer label and sends the title to review as 'opens nothing'",
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_NEEDS_REVIEW": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L0001:S0:0-34|L0002:S0:0-3|L0003:S0:0-20"
+      ]
+    },
+    {
+      "cause": "BARE_BULLET_GLYPH",
+      "bucket": "B_NEW",
+      "Reason": "a bullet glyph set bold in its own segment beside the item's text: the first segment of a two-segment row stands alone, and a lone symbol has no shape that says it is a list marker",
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 3,
+      "items": [
+        "L0767:S0:0-1",
+        "L0776:S0:0-1",
+        "L0778:S0:0-1"
+      ]
+    },
+    {
+      "cause": "FIGURE_REGION_STOPPED_BY_SUBTITLE",
+      "bucket": "B_NEW",
+      "Reason": "V1.2's figure region (gap 10) ends at the first line of 8+ words; the figure's small descriptive subtitle under its caption is such a line, so the chart's panel title below it fell outside the region",
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L2239:S0:0-17|L2240:S0:0-12"
+      ]
+    },
+    {
+      "cause": "PAGE_NOTICE",
+      "bucket": "B_NEW",
+      "Reason": "'This page left intentionally blank', set large at the top of an otherwise empty page, reads as a page-initial title; a notice about the page has no shape of its own",
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L2562:S0:0-34"
+      ]
+    }
+  ],
+  "knownGapsRecurring": [],
+  "knownGapsNotObserved": [
+    "B2",
+    "B4",
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K5",
+    "K6 (the one chart label that escaped had a numbered caption: FIGURE_REGION_STOPPED_BY_SUBTITLE)",
+    "K7"
+  ],
+  "ontologyGaps": 0,
+  "documentSpecificExceptions": [],
+  "box2Check": {
+    "occurrence": "Box 2: Financing Principles (L1100:S0), Gold FALSE (user decision revised before the reveal, 336c6b6)",
+    "engineProposal": "NEEDS_REVIEW",
+    "engineEvidence": [
+      "set apart strongly from the body text",
+      "followed by 22 body line(s) before a peer",
+      "numbered caption shape",
+      "but prose, not a table or figure, follows it"
+    ],
+    "outcome": "NEEDS_REVIEW - not a heading in the score (no false positive): the engine saw the caption shape over prose and deferred to review",
+    "scopeNote": "this measures the offline audit engine V1.2; the production LLM request's context packing is not exercised here"
+  },
+  "axisFindings": [
+    {
+      "axis": "scope / primaryFunction / semanticFunctions",
+      "bucket": "A (pre-registered)",
+      "finding": "on exact matches the engine says SECTION / STRUCTURE where Gold says FINANCIAL_STATEMENT (14), NOTE (14), DOCUMENT_PART (4), EMBEDDED_ARTIFACT (3); occurrenceRoles, titleRelation and informationType agree on every exact match"
+    }
+  ],
+  "gate": {
+    "heldOutF1": 0.9782,
+    "ontologyGaps": 0,
+    "documentSpecificExceptions": 0,
+    "passed": true,
+    "basis": "user, 2026-09-25: D ~ 0, C ~ 0 and high F1 on the held-out source"
+  },
+  "reviewNoiseProfile": {
+    "note": "NEEDS_REVIEW outside Gold that touches no Gold claim; it never counts as a heading",
+    "total": 147,
+    "byEvidence": [
+      {
+        "evidence": "numbered caption shape + but prose, not a table or figure, follows it",
+        "count": 68
+      },
+      {
+        "evidence": "(set apart only)",
+        "count": 38
+      },
+      {
+        "evidence": "a peer or stronger label follows directly: opens nothing",
+        "count": 20
+      },
+      {
+        "evidence": "colon-ended label",
+        "count": 7
+      },
+      {
+        "evidence": "one label over 2 source occurrences",
+        "count": 5
+      },
+      {
+        "evidence": "date shape + stands alone over its own prose",
+        "count": 4
+      },
+      {
+        "evidence": "one label over 3 source occurrences",
+        "count": 2
+      },
+      {
+        "evidence": "one label over 2 source occurrences + colon-ended label",
+        "count": 1
+      },
+      {
+        "evidence": "one label over 2 source occurrences + numbered caption shape + but prose, not a table or figure, follows it",
+        "count": 1
+      },
+      {
+        "evidence": "one label over 4 source occurrences",
+        "count": 1
+      }
+    ]
+  }
+}
