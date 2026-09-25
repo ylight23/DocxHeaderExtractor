@@ -430,14 +430,15 @@ public sealed class StructuredOccurrenceBaselineOfflineScoringTests
     [Fact]
     public void A_structured_claim_that_cannot_bind_is_refused_by_name_not_dropped()
     {
-        // Decodes cleanly, names real atoms, and still cannot be bound: the two atoms are far apart
-        // in the document. The refusal keeps the binder's own reason rather than becoming an absence.
+        // Decodes cleanly, names real atoms, and still cannot be bound: the parts are named against
+        // source order (distance alone is no longer a refusal - GENERIC_MULTIPART_BINDER_V2). The
+        // refusal keeps the binder's own reason rather than becoming an absence.
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         var proposal = new CanonicalSemanticProposal(
-            "L0000:S0", true, null, SourceParts:
+            "L0300:S0", true, null, SourceParts:
             [
-                new SemanticSourcePart("L0000:S0", CanonicalSemanticSelectionMode.WholeAlias),
                 new SemanticSourcePart("L0300:S0", CanonicalSemanticSelectionMode.WholeAlias),
+                new SemanticSourcePart("L0000:S0", CanonicalSemanticSelectionMode.WholeAlias),
             ]);
 
         var outcome = SemanticCoordinateContract.PdfStructuredSourceParts.BindProposals(
@@ -445,7 +446,7 @@ public sealed class StructuredOccurrenceBaselineOfflineScoringTests
 
         var refusal = SemanticSourcePartBinder.Bind(
             plan.Atoms, new SemanticSourcePartsProposal(proposal.SourceParts!));
-        Assert.False(refusal.IsBound);
+        Assert.Equal(SemanticSourcePartsStatus.OutOfSourceOrder, refusal.Status);
 
         Assert.Empty(outcome.Bound);
         var observation = Assert.Single(outcome.Observations);

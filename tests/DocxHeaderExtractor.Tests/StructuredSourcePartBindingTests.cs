@@ -118,18 +118,81 @@ public sealed class StructuredSourcePartBindingTests
         Assert.NotEqual(first.Identity, second.Identity);
     }
 
-    // ---- what is refused ------------------------------------------------------------------------
+    // ---- GENERIC_MULTIPART_BINDER_V2: explicit parts are validated, never discovered ------------
 
     [Fact]
-    public void Parts_from_unrelated_places_are_refused()
+    public void Explicit_non_adjacent_parts_on_one_page_bind_exactly()
     {
-        var atoms = Page(("Session I", 0, 0), ("body", 1, 0), ("body", 2, 0), ("Annex 2", 3, 0));
+        // Two-column layout: the title's second line resumes after a row of the other column.
+        var atoms = Page(("Part One Title", 0, 0), ("other column text", 1, 0), ("continued here", 2, 0));
 
-        var bound = Bind(atoms, Whole("L0000:S0"), Whole("L0003:S0"));
+        var bound = Bind(atoms, Whole("L0000:S0"), Whole("L0002:S0"));
 
-        Assert.Equal(SemanticSourcePartsStatus.NonLocalChain, bound.Status);
-        Assert.Empty(bound.Parts);
+        Assert.True(bound.IsBound);
+        Assert.Equal("L0000:S0:0-14|L0002:S0:0-14", bound.Identity);
+        Assert.Equal(SemanticSourceLocality.SamePageNonAdjacent, bound.Parts[1].LocalityFromPrevious);
     }
+
+    [Fact]
+    public void Explicit_cross_page_parts_bind_exactly()
+    {
+        var atoms = new[]
+        {
+            Atom("L0000:S0", 0, page: 1, row: 7, segment: 0, "Clause 9.9"),
+            Atom("L0001:S0", 1, page: 1, row: 8, segment: 0, "body before the break"),
+            Atom("L0002:S0", 2, page: 2, row: 0, segment: 0, "Title After The Break"),
+        };
+
+        var bound = Bind(atoms, Whole("L0000:S0"), Whole("L0002:S0"));
+
+        Assert.True(bound.IsBound);
+        Assert.Equal("L0000:S0:0-10|L0002:S0:0-21", bound.Identity);
+        Assert.Equal(SemanticSourceLocality.CrossPage, bound.Parts[1].LocalityFromPrevious);
+    }
+
+    [Fact]
+    public void An_intervening_atom_is_not_pulled_into_the_claim()
+    {
+        // The binder is not a nearest-neighbour completer: the claim is exactly the parts named.
+        var atoms = Page(("Alpha", 0, 0), ("unrelated middle", 1, 0), ("Omega", 2, 0));
+
+        var bound = Bind(atoms, Whole("L0000:S0"), Whole("L0002:S0"));
+
+        Assert.Equal(["L0000:S0", "L0002:S0"], bound.Parts.Select(part => part.Alias));
+        Assert.DoesNotContain("unrelated", SemanticSourceProjection.Render(bound.Parts));
+    }
+
+    [Fact]
+    public void Explicit_distant_parts_still_fail_every_exactness_rule()
+    {
+        var atoms = new[]
+        {
+            Atom("L0000:S0", 0, page: 1, row: 0, segment: 0, "First Line Of A Title"),
+            Atom("L0001:S0", 1, page: 1, row: 1, segment: 0, "body"),
+            Atom("L0002:S0", 2, page: 2, row: 0, segment: 0, "Second Line"),
+        };
+
+        Assert.Equal(SemanticSourcePartsStatus.UnknownAlias,
+            Bind(atoms, Whole("L0000:S0"), Whole("L0009:S0")).Status);
+        Assert.Equal(SemanticSourcePartsStatus.TextNotInAtom,
+            Bind(atoms, Whole("L0000:S0"), Verbatim("L0002:S0", "Second  Line")).Status);
+        Assert.Equal(SemanticSourcePartsStatus.OutOfSourceOrder,
+            Bind(atoms, Whole("L0002:S0"), Whole("L0000:S0")).Status);
+        Assert.Equal(SemanticSourcePartsStatus.OverlappingParts,
+            Bind(atoms, Verbatim("L0000:S0", "First Line Of"), Verbatim("L0000:S0", "Of A Title"), Whole("L0002:S0")).Status);
+    }
+
+    [Fact]
+    public void A_source_whose_hash_does_not_match_is_refused_before_binding()
+    {
+        // The binder takes no hash; the pipeline that feeds it does, and refuses the whole source.
+        var error = Assert.Throws<InvalidOperationException>(() => CanonicalSemanticPipeline.RunAliases(
+            [], [], new string('a', 64), new string('b', 64), binding: SemanticCoordinateBinding.SourceParts,
+            atoms: Page(("Title", 0, 0))));
+        Assert.Equal("source-hash-mismatch", error.Message);
+    }
+
+    // ---- what is refused ------------------------------------------------------------------------
 
     [Fact]
     public void Parts_in_the_wrong_order_are_refused_rather_than_sorted()
@@ -193,20 +256,6 @@ public sealed class StructuredSourcePartBindingTests
         Assert.Equal(
             SemanticSourcePartsStatus.UnknownAlias,
             Bind(atoms, Whole("L9999:S0")).Status);
-    }
-
-    [Fact]
-    public void A_claim_that_crosses_a_page_is_refused_explicitly()
-    {
-        var atoms = new[]
-        {
-            Atom("L0000:S0", 0, page: 1, row: 0, segment: 0, "a heading continuing"),
-            Atom("L0001:S0", 1, page: 2, row: 1, segment: 0, "onto the next page"),
-        };
-
-        Assert.Equal(
-            SemanticSourcePartsStatus.PageTransitionNotSupported,
-            Bind(atoms, Whole("L0000:S0"), Whole("L0001:S0")).Status);
     }
 
     [Fact]

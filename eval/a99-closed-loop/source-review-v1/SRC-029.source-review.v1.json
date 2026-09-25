@@ -36,7 +36,7 @@
       "min": 374,
       "max": 374
     },
-    "BINDING_FAILURES": 5,
+    "BINDING_FAILURES": 0,
     "USER_APPROVAL_REQUIRED": true,
     "note": "every other atom is a non-heading by the reviewer's reading (body, table cells, fields, notes, contents entries, page furniture); only set-apart non-headings are listed"
   },
@@ -201,31 +201,5 @@
       "pages": "196 -> 197"
     }
   ],
-  "bindingFailures": [
-    {
-      "Text": "Sub-Clause 4.22 Contractor’s Operations on Site",
-      "Pattern": "PC_SUBCLAUSE_TITLE",
-      "reason": "'L4787:S0' and 'L4789:S0' are not adjacent in the source"
-    },
-    {
-      "Text": "Sub-Clause 14.3 Application for Interim Payment",
-      "Pattern": "PC_SUBCLAUSE_TITLE",
-      "reason": "'L5519:S0' and 'L5523:S0' are on different pages"
-    },
-    {
-      "Text": "Sub-Clause 21.1 Constitution ofthe DAAB",
-      "Pattern": "PC_SUBCLAUSE_TITLE",
-      "reason": "'L5782:S0' and 'L5784:S0' are not adjacent in the source"
-    },
-    {
-      "Text": "Sub-Clause 21.6 Arbitration",
-      "Pattern": "PC_SUBCLAUSE_TITLE",
-      "reason": "'L5802:S0' and 'L5804:S0' are not adjacent in the source"
-    },
-    {
-      "Text": "Sub-Clause 21.10 Dissatisfaction with DAAB’s decision on SEA/SH Referrals",
-      "Pattern": "PC_SUBCLAUSE_TITLE",
-      "reason": "'L5847:S0' and 'L5850:S0' are on different pages"
-    }
-  ]
+  "bindingFailures": []
 }

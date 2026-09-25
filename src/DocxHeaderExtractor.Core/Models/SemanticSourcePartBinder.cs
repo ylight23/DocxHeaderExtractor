@@ -11,9 +11,17 @@ namespace DocxHeaderExtractor.Core.Models;
 /// </para>
 /// <para>
 /// Refusals are explicit and nothing is repaired on the way through. Text that does not occur is
-/// not corrected, parts that arrive out of order are not sorted, and a chain that wanders across
-/// the document is not trimmed to its local prefix - each is reported for what it is, because a
-/// binder that quietly fixes a proposal makes the model look more accurate than it was.
+/// not corrected and parts that arrive out of order are not sorted - each is reported for what it
+/// is, because a binder that quietly fixes a proposal makes the model look more accurate than it was.
+/// </para>
+/// <para>
+/// GENERIC_MULTIPART_BINDER_V2: a claim's identity is the ordered tuple of the parts it names, not a
+/// run of adjacent rows. A title whose lines are interleaved with another column's rows, or that
+/// continues on the next page, binds when each part is named explicitly; the locality is recorded,
+/// not used to refuse. The binder validates the coordinates it is given - known atoms, exact text,
+/// source order, no overlap - and never discovers a continuation by proximity: a claim is exactly
+/// the parts it names. Whether distant parts form one heading is a semantic question, answered by
+/// the model or the Gold, and scored against Gold, not refused here.
 /// </para>
 /// </summary>
 public static class SemanticSourcePartBinder
@@ -71,13 +79,6 @@ public static class SemanticSourcePartBinder
                     return Refuse(SemanticSourcePartsStatus.OutOfSourceOrder,
                         $"'{atom.Alias}' does not come after '{previousAtom.Alias}' in the source");
                 }
-
-                if (locality == SemanticSourceLocality.PageTransitionNotSupported)
-                    return Refuse(SemanticSourcePartsStatus.PageTransitionNotSupported,
-                        $"'{previousAtom.Alias}' and '{atom.Alias}' are on different pages");
-                if (locality == SemanticSourceLocality.NonLocal)
-                    return Refuse(SemanticSourcePartsStatus.NonLocalChain,
-                        $"'{previousAtom.Alias}' and '{atom.Alias}' are not adjacent in the source");
             }
 
             bound.Add(new BoundSourcePart(
@@ -90,12 +91,12 @@ public static class SemanticSourcePartBinder
     }
 
     /// <summary>
-    /// Whether two atoms are close enough for one claim to run from the first into the second.
+    /// How the second of two consecutive parts sits relative to the first - recorded on the binding,
+    /// never a reason to refuse it.
     /// <para>
-    /// Adjacency in the source, not membership of a parser block: a claim may cross a block
-    /// boundary, and sitting inside one block does not by itself license a pair. Nothing about what
-    /// the text means is consulted - a bullet and its item are adjacent whether or not they turn out
-    /// to be one heading, and that question belongs to the model.
+    /// Adjacency in the source, not membership of a parser block. Nothing about what the text means is
+    /// consulted - a bullet and its item are adjacent whether or not they turn out to be one heading,
+    /// and that question belongs to the model.
     /// </para>
     /// </summary>
     public static SemanticSourceLocality Locality(SemanticSourceAtom previous, SemanticSourceAtom next)
@@ -104,11 +105,11 @@ public static class SemanticSourcePartBinder
         ArgumentNullException.ThrowIfNull(next);
 
         if (previous.Alias == next.Alias) return SemanticSourceLocality.SameSegment;
-        if (previous.Page != next.Page) return SemanticSourceLocality.PageTransitionNotSupported;
+        if (previous.Page != next.Page) return SemanticSourceLocality.CrossPage;
         if (previous.Row == next.Row && next.Segment == previous.Segment + 1)
             return SemanticSourceLocality.SameRowNextSegment;
         if (next.Row == previous.Row + 1) return SemanticSourceLocality.NextRowCompatible;
-        return SemanticSourceLocality.NonLocal;
+        return SemanticSourceLocality.SamePageNonAdjacent;
     }
 
     private static (SemanticSourcePartsStatus Status, int Start, int End, string? Reason) Resolve(

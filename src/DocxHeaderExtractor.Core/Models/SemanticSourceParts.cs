@@ -58,11 +58,20 @@ public enum SemanticSourceLocality
     /// <summary>The next row of the same page - a heading or sentence continuing over a line break.</summary>
     NextRowCompatible,
 
-    /// <summary>Across a page boundary. Real, but not something this contract claims to resolve.</summary>
+    /// <summary>Retired with GENERIC_MULTIPART_BINDER_V2: the binder no longer produces it. Kept so recorded bindings still read.</summary>
     PageTransitionNotSupported,
 
-    /// <summary>Anywhere else in the document. Refused.</summary>
+    /// <summary>Retired with GENERIC_MULTIPART_BINDER_V2: the binder no longer produces it. Kept so recorded bindings still read.</summary>
     NonLocal,
+
+    /// <summary>
+    /// A later row of the same page that is not the next one - a title line in one column resuming
+    /// after a row of the other column. Valid when the part is named explicitly.
+    /// </summary>
+    SamePageNonAdjacent,
+
+    /// <summary>A later page - a title continued over a page break. Valid when the part is named explicitly.</summary>
+    CrossPage,
 }
 
 public enum SemanticSourcePartsStatus
@@ -78,7 +87,10 @@ public enum SemanticSourcePartsStatus
     DuplicatePart,
     OutOfSourceOrder,
     OverlappingParts,
+    /// <summary>Retired with GENERIC_MULTIPART_BINDER_V2; kept so recorded refusals still read.</summary>
     NonLocalChain,
+
+    /// <summary>Retired with GENERIC_MULTIPART_BINDER_V2; kept so recorded refusals still read.</summary>
     PageTransitionNotSupported,
 }
 
