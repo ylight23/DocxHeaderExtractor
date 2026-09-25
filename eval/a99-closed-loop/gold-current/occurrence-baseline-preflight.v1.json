@@ -140,6 +140,20 @@
       "placementAllowancePerRepetition": 1
     },
     {
+      "authorityId": "SRC-029",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-029.gold.v1.json",
+      "goldSha256": "45e91446ef881a8df124e83889e0b0d9659c8307737cc79ee00fe35c4e017135",
+      "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+      "sourceSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+      "sourceUniverseSha256": "9ad37ded3ae464ea299101463a59268be06537b71ee20cf0adbd883c7a5e78cd",
+      "semanticHeadingTotal": 374,
+      "materializedSemanticClaims": 374,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 41,
+      "placementAllowancePerRepetition": 1
+    },
+    {
       "authorityId": "SRC-055",
       "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-055.gold.v1.json",
       "goldSha256": "c8b45bdc8016095e85bfcb9d6cce4de74ae9ac329f193c633905fd5029a81250",
@@ -155,9 +169,9 @@
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 351,
-    "placementAllowance": 30,
-    "maxProviderCalls": 381
+    "totalPrimaryCalls": 474,
+    "placementAllowance": 33,
+    "maxProviderCalls": 507
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",

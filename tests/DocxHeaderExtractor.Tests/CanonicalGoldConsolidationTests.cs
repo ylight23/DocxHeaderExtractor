@@ -35,7 +35,7 @@ public sealed class CanonicalGoldConsolidationTests
         ("DOC-0001", 7), ("DOC-0092", 145), ("DOC-0123", 359), ("DOC-0133", 112),
         ("DOC-0202", 111), ("DOC-0205", 72), ("DOC-0252", 42), ("DOC-0255", 20),
         ("DOC-0256", 34), ("DOC-0258", 37), ("DOC-0259", 20), ("DOC-0264", 159),
-        ("SRC-003", 231), ("SRC-029", 356), ("SRC-041", 297), ("SRC-042", 262),
+        ("SRC-003", 231), ("SRC-029", 374), ("SRC-041", 297), ("SRC-042", 262),
         ("SRC-044", 254), ("SRC-053", 277), ("SRC-054", 316), ("SRC-055", 4),
         ("SRC-057", 831),
     ];
@@ -153,7 +153,7 @@ public sealed class CanonicalGoldConsolidationTests
         Assert.True(byId["DOC-0258"].CharacterSpanEvaluable);
 
         // Everything else carries semantic truth and says plainly that it has no bindings.
-        foreach (var authority in Authorities().Where(item => item.Id is not ("DOC-0001" or "DOC-0123" or "DOC-0133" or "DOC-0252" or "DOC-0205" or "DOC-0255" or "DOC-0256" or "DOC-0258" or "DOC-0259" or "SRC-055")))
+        foreach (var authority in Authorities().Where(item => item.Id is not ("DOC-0001" or "DOC-0123" or "DOC-0133" or "DOC-0252" or "DOC-0205" or "DOC-0255" or "DOC-0256" or "DOC-0258" or "DOC-0259" or "SRC-029" or "SRC-055")))
         {
             Assert.False(authority.OccurrenceEvaluable, $"{authority.Id} claims occurrence truth");
             Assert.Empty(authority.Claims);
@@ -265,7 +265,7 @@ public sealed class CanonicalGoldConsolidationTests
     // ---- provider baseline preflight ----------------------------------------------------------
 
     /// <summary>The two authorities whose Gold can score an occurrence-level run today.</summary>
-    private static readonly string[] OccurrenceCohort = ["DOC-0001", "DOC-0123", "DOC-0133", "DOC-0205", "DOC-0252", "DOC-0255", "DOC-0256", "DOC-0258", "DOC-0259", "SRC-055"];
+    private static readonly string[] OccurrenceCohort = ["DOC-0001", "DOC-0123", "DOC-0133", "DOC-0205", "DOC-0252", "DOC-0255", "DOC-0256", "DOC-0258", "DOC-0259", "SRC-029", "SRC-055"];
 
     [Fact]
     public void The_occurrence_cohort_is_exactly_what_the_registry_can_score()
@@ -608,6 +608,11 @@ public sealed class CanonicalGoldConsolidationTests
                         semanticRole = Text(item, "semanticRole"),
                     }));
                     structuredSourcePartsEvaluable = true;
+                    // Character spans are evaluable only where every claim records each part's
+                    // resolved UTF-16 span; the binder identity alone is not promoted to one.
+                    characterSpanEvaluable = bound.GetArrayLength() > 0 && bound.EnumerateArray().All(item =>
+                        item.TryGetProperty("boundParts", out var parts)
+                        && parts.EnumerateArray().All(part => part.TryGetProperty("utf16Span", out _)));
                     coordinateSystem = "STRUCTURED_SOURCE_PART_TUPLE";
                     sourceUniverseSha = PdfStructuredSourceAuthorityBuilder
                         .Build(TestRepository.Path(sourcePath)).SourceAliasUniverseHash;

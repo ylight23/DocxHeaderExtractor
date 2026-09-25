@@ -1,0 +1,45 @@
+{
+  "artifactKind": "a99_gold_authority_lineage",
+  "authorityId": "SRC-029",
+  "modelProviderVlmCalls": 0,
+  "previousSemanticAuthority": {
+    "source": "retired pdf2docx DOCX",
+    "sourcePath": "todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.docx",
+    "sourceSha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+    "total": 356,
+    "exactOccurrenceFreeze": false,
+    "role": "provenance_only",
+    "artifact": {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-029.semantic-freeze.v1.json",
+      "sha256": "c6e790ab5e8f2f34d06820971578bd4bc4031eaeb497d3c1613717339251f81c"
+    },
+    "retiredBy": {
+      "path": "eval/a99-closed-loop/generated-docx-v2/SRC-029.conversion-manifest.v1.json",
+      "sha256": "f02835f870478db81d86f3d3293466a568798003fd45055dbb40978fff2b111b"
+    }
+  },
+  "currentCanonicalAuthority": {
+    "source": "original PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+    "sourceSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+    "total": 374,
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "hierarchyEvaluable": false,
+    "membershipDecision": {
+      "decidedBy": "USER",
+      "decidedAt": "2026-09-25",
+      "review": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-029.source-review.v1.json",
+        "sha256": "df2fe426426aadf657cd3f402926600c824df52e7a6d322b80ce90fb4ade4d64"
+      },
+      "reviewItems": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-029/review-items.json",
+        "sha256": "dfb33039c8689168ce89400173e8290f55bd79e63ee55ddc9bba84fe35d56e47"
+      }
+    },
+    "engineProposalsRead": false
+  }
+}

@@ -122,6 +122,15 @@ public sealed class GoldAuthoredSourceTests
                 var binding = SemanticSourcePartBinder.Bind(atoms, new SemanticSourcePartsProposal(parts));
                 Assert.True(binding.IsBound, $"{id}: {claim.GetProperty("identity").GetString()} does not bind ({binding.Reason})");
                 Assert.Equal(claim.GetProperty("identity").GetString(), binding.Identity);
+                // Where a claim records its resolved parts, they are the binder's, part for part.
+                if (claim.TryGetProperty("boundParts", out var recorded))
+                    Assert.Equal(
+                        binding.Parts.Select((part, index) => (part.Alias, part.Start, part.End, part.Text,
+                            index == 0 ? null : part.LocalityFromPrevious.ToString())),
+                        recorded.EnumerateArray().Select(part => (part.GetProperty("sourceAlias").GetString()!,
+                            part.GetProperty("utf16Span").GetProperty("start").GetInt32(),
+                            part.GetProperty("utf16Span").GetProperty("end").GetInt32(),
+                            part.GetProperty("text").GetString()!, Text(part, "localityFromPrevious"))));
             }
         }
     }

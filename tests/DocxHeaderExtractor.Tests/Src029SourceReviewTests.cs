@@ -21,8 +21,8 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class Src029SourceReviewTests
 {
-    private const string Pdf = "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf";
-    private const string Dir = "eval/a99-closed-loop/source-review-v1/SRC-029";
+    internal const string Pdf = "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf";
+    internal const string Dir = "eval/a99-closed-loop/source-review-v1/SRC-029";
 
     internal sealed record Part(string SourceAlias, string SelectionMode, string? VerbatimText, int? Occurrence);
 
