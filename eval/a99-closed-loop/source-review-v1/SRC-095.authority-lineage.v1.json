@@ -1,0 +1,33 @@
+{
+  "artifactKind": "a99_gold_authority_lineage",
+  "authorityId": "SRC-095",
+  "modelProviderVlmCalls": 0,
+  "previousSemanticAuthority": null,
+  "previousAuthorityNote": "none: no Gold, count or occurrence list of this source existed before this review",
+  "currentCanonicalAuthority": {
+    "source": "original PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+    "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+    "total": 103,
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "hierarchyEvaluable": false,
+    "membershipDecision": {
+      "decidedBy": "USER",
+      "decidedAt": "2026-09-26",
+      "review": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-095.source-review.v1.json",
+        "sha256": "f81367050ddd2e1beef4c64c2982b638a459afe6b441bbd92c27b66df70d55b8"
+      },
+      "reviewItems": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json",
+        "sha256": "1c9b660edbdde08596dc767e6ca9de5657d5b77c229336be1d69141d074a60ac"
+      }
+    },
+    "engineProposalsRead": false,
+    "status": "CURRENT_OCCURRENCE_LEVEL_AUTHORITY"
+  }
+}

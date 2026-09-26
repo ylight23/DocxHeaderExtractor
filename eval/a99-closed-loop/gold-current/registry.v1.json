@@ -319,6 +319,21 @@
       "goldSha256": "d29c8a742d39442f3e4a9c7e3e1f9a7aa7c2bff8de2369420be1533889871d59",
       "approvalAuthority": "USER",
       "userFinalApproval": true
+    },
+    {
+      "authorityId": "SRC-095",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "semanticHeadingTotal": 103,
+      "materializedSemanticClaims": 103,
+      "semanticCountAuthoritative": true,
+      "semanticClaimsEvaluable": true,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "visualBindingEvaluable": false,
+      "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+      "approvalAuthority": "USER",
+      "userFinalApproval": true
     }
   ]
 }

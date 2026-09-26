@@ -236,12 +236,26 @@
       "characterSpanEvaluable": false,
       "semanticRequestsPerRepetition": 44,
       "placementAllowancePerRepetition": 1
+    },
+    {
+      "authorityId": "SRC-095",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+      "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+      "sourcePath": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "sourceUniverseSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+      "semanticHeadingTotal": 103,
+      "materializedSemanticClaims": 103,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 31,
+      "placementAllowancePerRepetition": 1
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 1431,
-    "placementAllowance": 48,
-    "maxProviderCalls": 1479
+    "totalPrimaryCalls": 1524,
+    "placementAllowance": 51,
+    "maxProviderCalls": 1575
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",
