@@ -1,0 +1,140 @@
+{
+  "artifactKind": "a99_generic_audit_preregistration",
+  "study": "SRC089_BLIND_GENERALIZATION_AUDIT_V1",
+  "engineIdentity": {
+    "engine": {
+      "engine": "GENERIC_AUDIT_ENGINE_V1.4",
+      "sourceFacts": "PDF_SOURCE_FACTS_V3",
+      "files": [
+        {
+          "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_4/SourceEvidence.cs",
+          "sha256": "39e7c0dfc8466e69ca1b0282b39540d9a75f51419cf9a5477324aea790b30b6b"
+        },
+        {
+          "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_4/SemanticAuditEngine.cs",
+          "sha256": "86072621f88205d7a034c7e579fae6411837f56ecc8969341bf34e3531cc8935"
+        }
+      ],
+      "constants": {
+        "largerThanBodyRatio": 1.08,
+        "bodySizeToleranceRatio": 0.97,
+        "shortLabelMaxWords": 20,
+        "compositeMaxParts": 6,
+        "furnitureMinPages": 3,
+        "furnitureMinBandShare": 0.8,
+        "navigationRunMin": 3,
+        "lineGapMaxFontRatio": 1.8,
+        "sameSizeRatioTolerance": 0.02,
+        "bracketSpanMaxLines": 15,
+        "formMinFillInFields": 2,
+        "averageCharWidthFontRatio": 0.5,
+        "centredMarginToleranceRatio": 0.05,
+        "columnGutterFontRatio": 1,
+        "figureRegionMaxLines": 60,
+        "layoutLabelMaxWords": 8,
+        "proseMinWords": 8,
+        "leadColumnGapFontRatio": 3,
+        "centredWrapMinFillRatio": 0.75,
+        "addressLineMaxWords": 8
+      },
+      "ontology": "OCCURRENCE_SEMANTIC_AXES_V3"
+    },
+    "engineFreeze": {
+      "path": "eval/a99-closed-loop/generic-audit-v1_4/GENERIC_AUDIT_ENGINE_V1.4.freeze.json",
+      "sha256": "40261d2ce686400b3103bd94ccc7fcc8a6ec8dec8bcd287196e2cbeaa53f4c4b"
+    },
+    "factsFreeze": {
+      "path": "eval/a99-closed-loop/pdf-source-facts-v3/PDF_SOURCE_FACTS_V3.freeze.json",
+      "sha256": "19fd455302e3631d9f11f0c3485e9eb5bae0530f6cd7e19f1e5597278d0450e4"
+    }
+  },
+  "ontology": {
+    "id": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "path": "eval/a99-closed-loop/policy/occurrence-semantic-axes.v3.json",
+    "sha256": "23c916df45a1deb7d985c34dff1efc6de2ccc1a6d512b7500d92d59c963b81f6"
+  },
+  "scorer": {
+    "id": "GENERIC_EXACT_SCORER_V1",
+    "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_1/ExactScorer.cs",
+    "sha256": "4790a2bf1b9ab57924005633e38f2cabe1f477e38b726ed09205907451e65d71",
+    "matching": "claim-level and exact: equal ordered source-part tuples (alias:start-end) bound by the production binder; overlap without identity is a miss; NEEDS_REVIEW never counts as a heading"
+  },
+  "productionRequest": {
+    "requestVersion": "V2_ATTENTION_FREE",
+    "pdfSourceFacts": "PDF_SOURCE_FACTS_V3",
+    "contractFreeze": {
+      "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V3.freeze.json",
+      "sha256": "875f44a7371991c6823b24ad4012f95f8d098e1347f92d79e2b4d49b4a568dc6"
+    },
+    "packingPolicy": "FIXED_OWNED_COUNT_120 (the default)",
+    "modelCallsAuthorized": 0
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+    "sha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+    "media": "PDF",
+    "genre": "legal: a decree, translated from Vietnamese into English"
+  },
+  "sourceNote": "no Gold, count or occurrence list exists for this source; never used in engine development; its recorded exposure (the V3 facts audit, earlier LLM campaigns on converted DOCX copies, a count in handoff.md, an unopened outline) is in the V1.4 freeze. Occurrence Gold is authored on the original PDF after the blind proposals are committed.",
+  "developmentEvidence": "the V1.4 freeze's development table (DOC-0123, DOC-0133, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-095) - financial, procurement and one technical standard; none legal",
+  "knownBefore": [
+    {
+      "Id": "B2",
+      "Gap": "TOC sequence continuity evidence"
+    },
+    {
+      "Id": "B4",
+      "Gap": "outline level on list item"
+    },
+    {
+      "Id": "K1",
+      "Gap": "a title continued across a page break is not assembled"
+    },
+    {
+      "Id": "K2",
+      "Gap": "stacked title lines of different sizes are not assembled"
+    },
+    {
+      "Id": "K3",
+      "Gap": "standalone connective lines between alternatives have no FALSE shape"
+    },
+    {
+      "Id": "K5",
+      "Gap": "FORM scope needs fill-in fields"
+    },
+    {
+      "Id": "K7",
+      "Gap": "an unprefixed table-part label has no caption shape"
+    },
+    {
+      "Id": "N1",
+      "Gap": "a metadata line set like the title below it counts as a peer"
+    },
+    {
+      "Id": "N2",
+      "Gap": "a bold bullet glyph alone in its segment"
+    },
+    {
+      "Id": "F3",
+      "Gap": "PDF_SOURCE_FACTS_V3: a line merging two texts of different sizes reports the dominant one"
+    },
+    {
+      "Id": "A",
+      "Gap": "colon-ended labels and italic labels go to review; an identically set label directly under another keeps the review fail-safe; a label no glyph fact sets apart whose status is a meaning decision (SRC-095 index group letters) goes to review; scope and IDENTITY vs STRUCTURE are meaning decisions"
+    }
+  ],
+  "forbidden": [
+    "model/provider/VLM calls",
+    "any Gold or occurrence decision before the proposals are committed",
+    "engine logic, source facts, constant, ontology or scorer changes after this pre-registration"
+  ],
+  "protocol": [
+    "1 pre-register (this artifact)",
+    "2 blind run; commit evidence profile and proposals before any Gold",
+    "3 source-only review of the original PDF; user decisions on ambiguous patterns",
+    "4 freeze occurrence Gold",
+    "5 pin and reveal once; commit the raw score as written",
+    "6 classify residuals: known recurring / new B / C / D"
+  ],
+  "modelCalls": 0
+}
