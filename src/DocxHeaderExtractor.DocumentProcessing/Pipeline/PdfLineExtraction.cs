@@ -74,7 +74,7 @@ internal enum PdfSourceFactsVersion
 internal static class PdfSourceFactsVersions
 {
     /// <summary>The version production builds with.</summary>
-    public const PdfSourceFactsVersion Current = PdfSourceFactsVersion.V2_EffectivePointSize;
+    public const PdfSourceFactsVersion Current = PdfSourceFactsVersion.V3_RobustGlyphStatistics;
 
     public static string Id(PdfSourceFactsVersion version) => version switch
     {

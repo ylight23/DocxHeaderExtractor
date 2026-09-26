@@ -45,7 +45,10 @@ public sealed class Src054BlindGeneralizationTests
         using var contract = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(ContractFreeze)));
         Assert.Equal("V2_ATTENTION_FREE", contract.RootElement.GetProperty("contract").GetProperty("requestVersion").GetString());
         Assert.Equal("FIXED_OWNED_COUNT_120", SemanticEvidencePackingPolicies.Default.PolicyId);
-        Assert.Equal(PdfSourceFactsVersion.V2_EffectivePointSize, PdfSourceFactsVersions.Current);
+        // A registration-time precondition: V2 was production when SRC-054 was registered (6182a81). PDF_SOURCE_FACTS_V3
+        // took over later; the artifact below is re-verified as it was written.
+        if (!File.Exists(TestRepository.Path($"{Root}/{Id}.preregistration.json")))
+            Assert.Equal(PdfSourceFactsVersion.V2_EffectivePointSize, PdfSourceFactsVersions.Current);
 
         string[] developmentScores = ["DOC-0123", "DOC-0133", "SRC-029", "SRC-041"];
         FreezeArtifact.AssertJson(Root, $"{Id}.preregistration.json", new

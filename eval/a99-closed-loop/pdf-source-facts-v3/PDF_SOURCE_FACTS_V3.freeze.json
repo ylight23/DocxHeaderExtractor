@@ -1,0 +1,61 @@
+{
+  "artifactKind": "a99_pdf_source_facts_version_freeze",
+  "version": "PDF_SOURCE_FACTS_V3",
+  "previous": "PDF_SOURCE_FACTS_V2",
+  "decidedBy": "user, 2026-09-26: robust raw glyph facts (dominant / median / min / max size, dominant font, bold and italic glyph ratios); a line's size is its dominant size, never its mean; typography stays evidence",
+  "definition": {
+    "size": "the dominant effective point size - the size carrying most of the line's characters (spaces excluded; the smaller on a tie), read from Letter.PointSize as in V2",
+    "statistics": "median, minimum and maximum effective size; the font carrying most characters; the share of characters in a bold weight (declared or named, as V2) and in italic",
+    "modelVisible": "style facts keep Bold / Italic / RelativeFontSize / LineCount (from the dominant size) and carry Typography { sourceFacts, dominantPointSize, medianPointSize, minPointSize, maxPointSize, dominantFontName, fontBoldFlag, derivedBold, boldEvidenceSource, boldGlyphRatio, italicGlyphRatio }",
+    "unchanged": "glyph geometry and text (every atom universe equal to V2's in the audit); V1 and V2 byte-identical",
+    "routing": "production reads PdfSourceFactsVersions.Current = V3 from this freeze on; replays name their version"
+  },
+  "knownLimitation": "a line that merges two texts set at different sizes (a 12pt column header beside a 16pt section title on one row) reports the size of whichever carries more characters; its minimum and maximum still show both. Seen on SRC-029 (development); no heuristic was added for it",
+  "parser": {
+    "package": "PdfPig",
+    "version": "0.1.15.0"
+  },
+  "definitionFiles": [
+    {
+      "path": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfLineExtraction.cs",
+      "sha256": "d4d55f40593b04cab3c6289e072f76291199bcfc99f89794acc3295a1c94ffd0"
+    },
+    {
+      "path": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfCanonicalSourceUniverse.cs",
+      "sha256": "3001ac249d5760305ee2a116e5324e7609f0bb401ff6f4c22cb794d5aacdb1b9"
+    },
+    {
+      "path": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfCandidateContracts.cs",
+      "sha256": "a84f09b14fe27b4713696eb38a405b3a50228209c5451ff17d8a4b27f3f8469c"
+    }
+  ],
+  "testFiles": [
+    {
+      "path": "tests/DocxHeaderExtractor.Tests/PdfSourceFactsV3Tests.cs",
+      "sha256": "71aad5fefbdd48ceef17bd72795806cf3b1e40077f07a82342ed067fd1fbcf92"
+    },
+    {
+      "path": "tests/DocxHeaderExtractor.Tests/PdfSourceFactsV3AuditTests.cs",
+      "sha256": "e3dd0bca5f57dadc9c1cd2ba4219976bb7d657a48f173fe0e02ee1a60ca91e82"
+    }
+  ],
+  "contract": {
+    "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V3.freeze.json",
+    "sha256": "875f44a7371991c6823b24ad4012f95f8d098e1347f92d79e2b4d49b4a568dc6"
+  },
+  "audit": {
+    "path": "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+    "sha256": "e68c6b2cf80ff7421ddefe7958f3efce66c1b05e8178c7dd625b7af8d038dfcb",
+    "summary": {
+      "pdfs": 98,
+      "atomUniverseUnchanged": 98,
+      "typographyEquivalent": 25,
+      "boldByFontNameOnly": 0,
+      "sizeRead": 73,
+      "legacyUniverseChanged": 24,
+      "unreadable": 0
+    }
+  },
+  "heldOutExcluded": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "modelProviderVlmCalls": 0
+}
