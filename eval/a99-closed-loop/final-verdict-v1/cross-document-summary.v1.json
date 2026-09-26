@@ -1,0 +1,389 @@
+{
+  "artifactKind": "a99_generic_audit_cross_document_summary",
+  "modelProviderVlmCalls": 0,
+  "scorer": "GENERIC_EXACT_SCORER_V1",
+  "rule": "each held-out is scored once, blind, against the Gold frozen before its reveal, by the engine version frozen before its pre-registration; the next version is developed on it afterwards. The chain below is those raw scores - one engine version each, never re-scored",
+  "heldOutChain": [
+    {
+      "documentId": "SRC-029",
+      "study": "SRC029_BLIND_GENERALIZATION_AUDIT_V1",
+      "engine": "GENERIC_AUDIT_ENGINE_V1",
+      "sourceFacts": "PDF_SOURCE_FACTS_V1",
+      "genre": "procurement (standard bidding document)",
+      "goldClaims": 374,
+      "truePositives": 151,
+      "falsePositives": 479,
+      "falseNegatives": 223,
+      "f1": 0.3008,
+      "buckets": {
+        "A": 31,
+        "B_KNOWN": 73,
+        "B_NEW": 598
+      },
+      "measurementValid": true,
+      "score": {
+        "path": "eval/a99-closed-loop/generic-audit-v1/SRC-029.blind-score.v1.json",
+        "sha256": "0ba1971bc675d89fb3f446595cc4cde7fcec6d06ad683f0c5f891d4b4446d84c"
+      }
+    },
+    {
+      "documentId": "SRC-041",
+      "study": "SRC041_BLIND_GENERALIZATION_AUDIT_V1",
+      "engine": "GENERIC_AUDIT_ENGINE_V1.1",
+      "sourceFacts": "PDF_SOURCE_FACTS_V1",
+      "genre": "financial (statements)",
+      "goldClaims": 280,
+      "truePositives": 264,
+      "falsePositives": 15,
+      "falseNegatives": 16,
+      "f1": 0.9445,
+      "buckets": {
+        "A": 10,
+        "B_KNOWN": 1,
+        "B_NEW": 19,
+        "C": 0,
+        "D": 1
+      },
+      "measurementValid": true,
+      "score": {
+        "path": "eval/a99-closed-loop/generic-audit-v1_1/SRC-041.blind-score.v1_1.json",
+        "sha256": "a20fb7d2e4cdbe02e17ad7ec271b8b0933f5e5945a9301274439192c9d9910ae"
+      }
+    },
+    {
+      "documentId": "SRC-042",
+      "study": "SRC042_BLIND_GENERALIZATION_AUDIT_V1",
+      "engine": "GENERIC_AUDIT_ENGINE_V1.2",
+      "sourceFacts": "PDF_SOURCE_FACTS_V1",
+      "genre": "financial (statements)",
+      "goldClaims": 253,
+      "truePositives": 247,
+      "falsePositives": 5,
+      "falseNegatives": 6,
+      "f1": 0.9782,
+      "buckets": {
+        "A": 5,
+        "B_KNOWN": 0,
+        "B_NEW": 6,
+        "C": 0,
+        "D": 0
+      },
+      "measurementValid": true,
+      "score": {
+        "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-042.blind-score.v1_2.json",
+        "sha256": "133236bcfa940c792127be32c969cd79b87901278bd94cc230408f3ee88d6255"
+      }
+    },
+    {
+      "documentId": "SRC-044",
+      "study": "SRC044_BLIND_GENERALIZATION_AUDIT_V1",
+      "engine": "GENERIC_AUDIT_ENGINE_V1.2",
+      "sourceFacts": "PDF_SOURCE_FACTS_V1",
+      "genre": "financial (statements)",
+      "goldClaims": 201,
+      "truePositives": 196,
+      "falsePositives": 2,
+      "falseNegatives": 5,
+      "f1": 0.9824,
+      "buckets": {
+        "A": 4,
+        "B_KNOWN": 3,
+        "B_NEW": 0,
+        "C": 0,
+        "D": 0
+      },
+      "measurementValid": true,
+      "score": {
+        "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-044.blind-score.v1_2.json",
+        "sha256": "1ea0f993bc1d504f577224dd1ac4defa542574f659c857a854a7c9c8bcee842f"
+      }
+    },
+    {
+      "documentId": "SRC-053",
+      "study": "SRC053_BLIND_GENERALIZATION_AUDIT_V1",
+      "engine": "GENERIC_AUDIT_ENGINE_V1.2",
+      "sourceFacts": "PDF_SOURCE_FACTS_V1",
+      "genre": "financial (information statement)",
+      "goldClaims": 271,
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 271,
+      "f1": 0,
+      "buckets": {
+        "A": 0,
+        "B_KNOWN": 0,
+        "B_NEW": 271,
+        "C": 0,
+        "D": 0
+      },
+      "measurementValid": false,
+      "score": {
+        "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-053.blind-score.v1_2.json",
+        "sha256": "8fea09d884fc444b976543304dcab64b6e692bae5a9a9166d1b7a46f39fd2cb5"
+      }
+    },
+    {
+      "documentId": "SRC-054",
+      "study": "SRC054_BLIND_GENERALIZATION_AUDIT_V1",
+      "engine": "GENERIC_AUDIT_ENGINE_V1.2",
+      "sourceFacts": "PDF_SOURCE_FACTS_V2",
+      "genre": "financial (information statement)",
+      "goldClaims": 296,
+      "truePositives": 243,
+      "falsePositives": 69,
+      "falseNegatives": 53,
+      "f1": 0.7993,
+      "buckets": {
+        "A": 19,
+        "B_KNOWN": 3,
+        "B_NEW": 97,
+        "C": 0,
+        "D": 0,
+        "GOLD_REVISION_CANDIDATE": 3
+      },
+      "measurementValid": true,
+      "score": {
+        "path": "eval/a99-closed-loop/generic-audit-v1_2-pdf-facts-v2/SRC-054.blind-score.json",
+        "sha256": "326b6c4c5d96b04132a36da3706fcf61b713a6cf32857539e9df3e2a2ffeb833"
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "study": "SRC095_BLIND_GENERALIZATION_AUDIT_V1",
+      "engine": "GENERIC_AUDIT_ENGINE_V1.3",
+      "sourceFacts": "PDF_SOURCE_FACTS_V3",
+      "genre": "technical standard (RFC)",
+      "goldClaims": 103,
+      "truePositives": 89,
+      "falsePositives": 3,
+      "falseNegatives": 14,
+      "f1": 0.9128,
+      "buckets": {
+        "A": 7,
+        "B_KNOWN": 0,
+        "B_NEW": 10,
+        "C": 0,
+        "D": 0,
+        "GOLD_REVISION_CANDIDATE": 0
+      },
+      "measurementValid": true,
+      "score": {
+        "path": "eval/a99-closed-loop/generic-audit-v1_3-held-out/SRC-095.blind-score.json",
+        "sha256": "65937d1a22f93dc174a2da55168dd1733c87af9401186671903f65a206a3f320"
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "study": "SRC089_BLIND_GENERALIZATION_AUDIT_V1",
+      "engine": "GENERIC_AUDIT_ENGINE_V1.4",
+      "sourceFacts": "PDF_SOURCE_FACTS_V3",
+      "genre": "legal (decree, translated)",
+      "goldClaims": 36,
+      "truePositives": 0,
+      "falsePositives": 13,
+      "falseNegatives": 36,
+      "f1": 0,
+      "buckets": {
+        "A": 21,
+        "B_KNOWN": 0,
+        "B_NEW": 28,
+        "C": 0,
+        "D": 0,
+        "GOLD_REVISION_CANDIDATE": 0
+      },
+      "measurementValid": true,
+      "score": {
+        "path": "eval/a99-closed-loop/generic-audit-v1_4-held-out/SRC-089.blind-score.json",
+        "sha256": "d5febdc6700c283c1b2ca82503d784bfe524fba7d974c56a024ff6b35d1f5037"
+      }
+    }
+  ],
+  "micro": {
+    "allRaw": {
+      "documents": 8,
+      "goldClaims": 1814,
+      "truePositives": 1190,
+      "falsePositives": 586,
+      "falseNegatives": 624,
+      "precision": 0.67,
+      "recall": 0.656,
+      "f1": 0.663
+    },
+    "excludingTheInvalidMeasurement": {
+      "documents": 7,
+      "goldClaims": 1543,
+      "truePositives": 1190,
+      "falsePositives": 586,
+      "falseNegatives": 353,
+      "precision": 0.67,
+      "recall": 0.7712,
+      "f1": 0.7171
+    },
+    "note": "micro totals mix engine versions V1 to V1.4 - a summary of the study, not the accuracy of any one version"
+  },
+  "byGenre": [
+    {
+      "genre": "procurement",
+      "documents": [
+        "SRC-029"
+      ],
+      "micro": {
+        "documents": 1,
+        "goldClaims": 374,
+        "truePositives": 151,
+        "falsePositives": 479,
+        "falseNegatives": 223,
+        "precision": 0.2397,
+        "recall": 0.4037,
+        "f1": 0.3008
+      }
+    },
+    {
+      "genre": "financial",
+      "documents": [
+        "SRC-041",
+        "SRC-042",
+        "SRC-044",
+        "SRC-053",
+        "SRC-054"
+      ],
+      "micro": {
+        "documents": 5,
+        "goldClaims": 1301,
+        "truePositives": 950,
+        "falsePositives": 91,
+        "falseNegatives": 351,
+        "precision": 0.9126,
+        "recall": 0.7302,
+        "f1": 0.8113
+      }
+    },
+    {
+      "genre": "technical",
+      "documents": [
+        "SRC-095"
+      ],
+      "micro": {
+        "documents": 1,
+        "goldClaims": 103,
+        "truePositives": 89,
+        "falsePositives": 3,
+        "falseNegatives": 14,
+        "precision": 0.9674,
+        "recall": 0.8641,
+        "f1": 0.9128
+      }
+    },
+    {
+      "genre": "legal",
+      "documents": [
+        "SRC-089"
+      ],
+      "micro": {
+        "documents": 1,
+        "goldClaims": 36,
+        "truePositives": 0,
+        "falsePositives": 13,
+        "falseNegatives": 36,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      }
+    }
+  ],
+  "bucketsTotal": {
+    "A": 97,
+    "B_KNOWN": 80,
+    "B_NEW": 1029,
+    "C": 0,
+    "D": 1,
+    "GOLD_REVISION_CANDIDATE": 3
+  },
+  "latestEngineDevelopmentFit": {
+    "engine": "GENERIC_AUDIT_ENGINE_V1.4",
+    "role": "DEVELOPMENT - every row was developed on or revealed before V1.4 froze; not a generalization result",
+    "rows": [
+      {
+        "documentId": "DOC-0123",
+        "v1_3_overFactsV3": 0.9032,
+        "v1_4_overFactsV3": 0.9032,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/DOC-0123.dev-score.v1_4.json",
+          "sha256": "9028609e31224208cca6159209166cb0a267f3072d19e48bca97d27745060040"
+        }
+      },
+      {
+        "documentId": "DOC-0133",
+        "v1_3_overFactsV3": 0.9082,
+        "v1_4_overFactsV3": 0.9082,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/DOC-0133.dev-score.v1_4.json",
+          "sha256": "dfb7f8fd2459498566444e2800464cd1955d9086bb5239e5a0dea139668ae6fc"
+        }
+      },
+      {
+        "documentId": "SRC-029",
+        "v1_3_overFactsV3": 0.7829,
+        "v1_4_overFactsV3": 0.7829,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-029.dev-score.v1_4.json",
+          "sha256": "e3b264d79394d051c49204afbeceba18c819cdbb012d692f03b9474d123a57eb"
+        }
+      },
+      {
+        "documentId": "SRC-041",
+        "v1_3_overFactsV3": 0.9782,
+        "v1_4_overFactsV3": 0.9782,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-041.dev-score.v1_4.json",
+          "sha256": "11b32e87346ff22ae43d8fb0a0095f130411ebd9a1dc3b0f84ac626db3ad6e45"
+        }
+      },
+      {
+        "documentId": "SRC-042",
+        "v1_3_overFactsV3": 0.9782,
+        "v1_4_overFactsV3": 0.9782,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-042.dev-score.v1_4.json",
+          "sha256": "82e239665658c31d79ad76ba3ca4f1283d2009862fc8af40cd7b9cc889e448d6"
+        }
+      },
+      {
+        "documentId": "SRC-044",
+        "v1_3_overFactsV3": 0.9825,
+        "v1_4_overFactsV3": 0.9825,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-044.dev-score.v1_4.json",
+          "sha256": "5e8d7482b4ab1828ee94b56f258b0dfa8ba53cda21d809e5034ca335d5bdf9f1"
+        }
+      },
+      {
+        "documentId": "SRC-053",
+        "v1_3_overFactsV3": 0.9248,
+        "v1_4_overFactsV3": 0.9248,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-053.dev-score.v1_4.json",
+          "sha256": "57eec2c4aab3b1f2a358ce12ba243299f273948f8598b8d2f80a899d8777646d"
+        }
+      },
+      {
+        "documentId": "SRC-054",
+        "v1_3_overFactsV3": 0.9187,
+        "v1_4_overFactsV3": 0.9187,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-054.dev-score.v1_4.json",
+          "sha256": "f0f45ab310fbeaf8ad86506cb2eefeca2acaef49a5529dea542149a737978402"
+        }
+      },
+      {
+        "documentId": "SRC-095",
+        "v1_3_overFactsV3": 0.9128,
+        "v1_4_overFactsV3": 0.9596,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-095.dev-score.v1_4.json",
+          "sha256": "bbd500d9c1260dbe549468611574ec15ed8b35e7aa8fea575d69d54d783e2c7e"
+        }
+      }
+    ]
+  }
+}

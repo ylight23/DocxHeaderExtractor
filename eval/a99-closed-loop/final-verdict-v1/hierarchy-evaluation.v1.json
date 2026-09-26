@@ -1,0 +1,57 @@
+{
+  "artifactKind": "a99_generic_audit_hierarchy_evaluation",
+  "modelProviderVlmCalls": 0,
+  "question": "does the pipeline place each heading at the right level under the right parent?",
+  "gold": {
+    "authorities": 23,
+    "declaringHierarchy": [
+      "DOC-0202"
+    ],
+    "declaringHierarchyWithOccurrences": [],
+    "heldOutGoldDeclaringHierarchy": []
+  },
+  "engine": {
+    "hypothesisFields": [
+      "Parts",
+      "Text",
+      "SemanticFunctions",
+      "PrimaryFunction",
+      "Scope",
+      "OccurrenceRoles",
+      "TitleRelation",
+      "InformationType",
+      "Evidence",
+      "ProposedIsHeading",
+      "Prominence"
+    ],
+    "emitsLevel": false,
+    "emitsParent": false
+  },
+  "metrics": [
+    {
+      "metric": "LEVEL_ACCURACY",
+      "result": "NOT_EVALUABLE",
+      "correct": 0,
+      "denominator": 0
+    },
+    {
+      "metric": "PARENT_ACCURACY",
+      "result": "NOT_EVALUABLE",
+      "correct": 0,
+      "denominator": 0
+    },
+    {
+      "metric": "FULL_PATH_ACCURACY",
+      "result": "NOT_EVALUABLE",
+      "correct": 0,
+      "denominator": 0
+    }
+  ],
+  "result": "NOT_EVALUABLE: the generic engine emits no level and no parent, and no Gold with occurrences declares a hierarchy (the one authority that declares it holds a count, not occurrences). Only occurrence membership and its semantic axes were ever measured",
+  "nearestMeasuredEvidence": "the scope and primary-function axes on exact matches, reported per held-out score (axesOnTruePositives); they classify a heading's kind, not its place in a tree",
+  "needed": [
+    "a Gold hierarchy per occurrence (level and parent claim), authored on the source and approved like membership",
+    "an engine output for level and parent, frozen before a held-out",
+    "a scorer for level, parent and full path over exact-matched claims"
+  ]
+}
