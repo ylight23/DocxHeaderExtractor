@@ -1,0 +1,53 @@
+{
+  "artifactKind": "a99_source_evidence_profile",
+  "study": "SRC089_BLIND_GENERALIZATION_AUDIT_V1",
+  "pdfSourceFacts": "PDF_SOURCE_FACTS_V3",
+  "source": {
+    "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+    "sha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
+  },
+  "occurrences": 582,
+  "pages": 18,
+  "body": {
+    "fontSize": 12,
+    "bold": false,
+    "italic": false
+  },
+  "typographyClusters": [
+    {
+      "fontSize": 12,
+      "bold": false,
+      "italic": false,
+      "occurrences": 553,
+      "meanWords": 10.5
+    },
+    {
+      "fontSize": 12,
+      "bold": true,
+      "italic": false,
+      "occurrences": 19,
+      "meanWords": 2.6
+    },
+    {
+      "fontSize": 12,
+      "bold": false,
+      "italic": true,
+      "occurrences": 7,
+      "meanWords": 7.6
+    },
+    {
+      "fontSize": 14,
+      "bold": true,
+      "italic": true,
+      "occurrences": 2,
+      "meanWords": 3.5
+    },
+    {
+      "fontSize": 8,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 1
+    }
+  ]
+}
