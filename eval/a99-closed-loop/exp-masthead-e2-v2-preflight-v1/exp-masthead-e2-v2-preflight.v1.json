@@ -71,7 +71,7 @@
   },
   "goldSafety": {
     "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
-    "materializedClaims": 2381,
+    "materializedClaims": 2382,
     "knownGoldTpsAtRisk": 0,
     "targetGoldClaims": 14,
     "targetGoldTpsAtRisk": 0,
@@ -163,7 +163,7 @@
     ],
     "admissionTest": "Each claim must satisfy A (the document's canonical title) or B (opens and names a structural unit at that location) - the clause's own two admissions.",
     "crossGenreNoneSafety": "NOT_ESTABLISHED",
-    "crossGenreNote": "2381 of 3859 approved headings are materialized corpus-wide. This checks the claims that exist; it is not a corpus-wide safety proof."
+    "crossGenreNote": "2382 of 3860 approved headings are materialized corpus-wide. This checks the claims that exist; it is not a corpus-wide safety proof."
   },
   "targetFamilies": [
     {

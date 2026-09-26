@@ -8,10 +8,10 @@
   "corpusCoverage": {
     "authorities": 21,
     "authoritiesCarryingClaimLevelData": 16,
-    "approvedHeadingsInCorpus": 3858,
-    "materializedClaimsInCorpus": 2381,
-    "coverageOfApprovedHeadings": 0.6172,
-    "finding": "5 of 21 approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 2381 of 3858 approved headings, about 61.7%, exist as claims at all.",
+    "approvedHeadingsInCorpus": 3859,
+    "materializedClaimsInCorpus": 2382,
+    "coverageOfApprovedHeadings": 0.6173,
+    "finding": "5 of 21 approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 2382 of 3859 approved headings, about 61.7%, exist as claims at all.",
     "consequence": "Everything below is evidence from 16 documents (all but DOC-0001 and DOC-0252 itemised later) DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
     "byAuthority": [
       {
@@ -124,8 +124,8 @@
       },
       {
         "AuthorityId": "SRC-054",
-        "approvedHeadings": 296,
-        "materializedClaims": 296,
+        "approvedHeadings": 297,
+        "materializedClaims": 297,
         "carriesClaimLevelData": true
       },
       {
@@ -321,9 +321,9 @@
           },
           {
             "AuthorityId": "SRC-054",
-            "approvedHeadings": 296,
+            "approvedHeadings": 297,
             "roles": {
-              "(none)": 296
+              "(none)": 297
             }
           },
           {
