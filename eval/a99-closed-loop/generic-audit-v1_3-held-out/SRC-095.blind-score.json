@@ -1,0 +1,1078 @@
+{
+  "artifactKind": "a99_generic_audit_blind_score",
+  "study": "SRC095_BLIND_GENERALIZATION_AUDIT_V1",
+  "engine": "GENERIC_AUDIT_ENGINE_V1.3",
+  "role": "HELD_OUT - the first measurement of GENERIC_AUDIT_ENGINE_V1.3 over PDF_SOURCE_FACTS_V3",
+  "scorer": "GENERIC_EXACT_SCORER_V1",
+  "pin": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_3-held-out/SRC-095.reveal-pin.json",
+    "sha256": "d816e8262590229319807cc962202eca1a215776b9941a657528fcdc1403ae87"
+  },
+  "proposals": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_3-held-out/SRC-095.proposals.json",
+    "sha256": "a4da1fd81ec232408694040ac07713351bbfc9f49819853960560ae34698d78a",
+    "gitBlob": "94dc0dbb731cde4cdda1e801f8ad6b18435d5bcf"
+  },
+  "gold": {
+    "path": "eval/a99-closed-loop/gold/SRC-095.gold.json",
+    "sha256": "d8a6eafb63716f531463b74d25543e4d27b25965aac0d5d0e5fb25734027df18",
+    "claims": 103
+  },
+  "modelProviderVlmCalls": 0,
+  "headline": {
+    "goldClaims": 103,
+    "hypothesesListed": 280,
+    "TRUE": 92,
+    "NEEDS_REVIEW": 41,
+    "unbindable": 0,
+    "truePositives": 89,
+    "falsePositives": 3,
+    "falseNegatives": 14,
+    "truePrecision": 0.9674,
+    "trueRecall": 0.8641,
+    "f1": 0.9128,
+    "needsReviewCaptureOfGold": 0.5,
+    "needsReviewCaptureIncludingPartial": 0.5,
+    "falseOnGold": 7,
+    "partialOnly": 0,
+    "reviewNoiseOutsideGold": 34,
+    "nonGoldReviewTouchingGold": 0,
+    "falsePositivesTouchingGold": 0,
+    "goldMultipartClaims": 6,
+    "exactMultipartMatches": 6,
+    "goldClaimsWithPartialPart": 0,
+    "exactMatchesWithPartialPart": 0,
+    "goldBuckets": {
+      "EXACT_TRUE": 89,
+      "EXACT_NEEDS_REVIEW": 7,
+      "EXACT_FALSE": 7,
+      "PARTIAL_TRUE": 0,
+      "PARTIAL_NEEDS_REVIEW": 0,
+      "PARTIAL_FALSE": 0,
+      "UNPROPOSED": 0
+    }
+  },
+  "axesOnTruePositives": {
+    "compared": 89,
+    "semanticFunctions": {
+      "disagreements": 64,
+      "pairs": {
+        "gold STRUCTURE <- engine IDENTITY+STRUCTURE": 58,
+        "gold IDENTITY+STRUCTURE <- engine STRUCTURE": 6
+      }
+    },
+    "primaryFunction": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "scope": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "occurrenceRoles": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "titleRelation": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "informationType": {
+      "disagreements": 0,
+      "pairs": {}
+    }
+  },
+  "residuals": {
+    "goldNotEngineTrue": [
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "L0608:S0:0-4|L0608:S1:0-11",
+        "goldText": "4.6. Server Push",
+        "engine": [
+          {
+            "Index": 49,
+            "Text": "4.6. Server Push",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0608:S0:0-4|L0608:S1:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "L0944:S0:0-4|L0944:S1:0-16",
+        "goldText": "7.2. Frame Deﬁnitions",
+        "engine": [
+          {
+            "Index": 88,
+            "Text": "7.2. Frame Deﬁnitions",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 35 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "followed by 2 table/figure item(s) before a peer"
+            ],
+            "identity": "L0944:S0:0-4|L0944:S1:0-16",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "L1320:S0:0-5|L1320:S1:0-32",
+        "goldText": "10.4. Cacheability of Pushed Responses",
+        "engine": [
+          {
+            "Index": 125,
+            "Text": "10.4. Cacheability of Pushed Responses",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 12 body line(s) before a peer"
+            ],
+            "identity": "L1320:S0:0-5|L1320:S1:0-32",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "L1431:S0:0-5|L1431:S1:0-10",
+        "goldText": "10.9. Early Data",
+        "engine": [
+          {
+            "Index": 133,
+            "Text": "10.9. Early Data",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 4 body line(s) before a peer"
+            ],
+            "identity": "L1431:S0:0-5|L1431:S1:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "L1465:S0:0-5|L1465:S1:0-14",
+        "goldText": "11.2. New Registries",
+        "engine": [
+          {
+            "Index": 139,
+            "Text": "11.2. New Registries",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 22 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer",
+              "followed by 17 table/figure item(s) before a peer"
+            ],
+            "identity": "L1465:S0:0-5|L1465:S1:0-14",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "L1613:S0:0-5|L1613:S1:0-20",
+        "goldText": "12.1. Normative References",
+        "engine": [
+          {
+            "Index": 211,
+            "Text": "12.1. Normative References",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 34 body line(s) before a peer",
+              "followed by 6 lesser label(s) before a peer"
+            ],
+            "identity": "L1613:S0:0-5|L1613:S1:0-20",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1914:S0:0-1",
+        "goldText": "C",
+        "engine": [
+          {
+            "Index": 251,
+            "Text": "C",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 24 body line(s) before a peer",
+              "followed by 1 table/figure item(s) before a peer"
+            ],
+            "identity": "L1914:S0:0-1",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1940:S0:0-1",
+        "goldText": "D",
+        "engine": [
+          {
+            "Index": 253,
+            "Text": "D",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "L1940:S0:0-1",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "L1947:S0:0-1",
+        "goldText": "G",
+        "engine": [
+          {
+            "Index": 255,
+            "Text": "G",
+            "state": "FALSE",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "under a numbered caption, inside its figure or table: prose has not resumed"
+            ],
+            "identity": "L1947:S0:0-1",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1961:S0:0-1",
+        "goldText": "H",
+        "engine": [
+          {
+            "Index": 257,
+            "Text": "H",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 2 body line(s) before a peer"
+            ],
+            "identity": "L1961:S0:0-1",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2012:S0:0-1",
+        "goldText": "M",
+        "engine": [
+          {
+            "Index": 268,
+            "Text": "M",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 6 body line(s) before a peer"
+            ],
+            "identity": "L2012:S0:0-1",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2023:S0:0-1",
+        "goldText": "P",
+        "engine": [
+          {
+            "Index": 271,
+            "Text": "P",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 20 body line(s) before a peer"
+            ],
+            "identity": "L2023:S0:0-1",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2056:S0:0-1",
+        "goldText": "R",
+        "engine": [
+          {
+            "Index": 274,
+            "Text": "R",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 6 body line(s) before a peer"
+            ],
+            "identity": "L2056:S0:0-1",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2063:S0:0-1",
+        "goldText": "S",
+        "engine": [
+          {
+            "Index": 275,
+            "Text": "S",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "L2063:S0:0-1",
+            "UnboundReason": null
+          }
+        ]
+      }
+    ],
+    "nonGoldTrue": [
+      {
+        "hypothesis": {
+          "Index": 264,
+          "Text": "H3_REQUEST_INCOMPLETE",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "opens a run of contents entries"
+          ],
+          "identity": "L1994:S0:0-21",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 272,
+          "Text": "Section 4.6",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 35 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer",
+            "numbered structural label shape"
+          ],
+          "identity": "L2025:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 279,
+          "Text": "Mike Bishop (editor)",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer"
+          ],
+          "identity": "L2077:S0:0-20",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      }
+    ],
+    "nonGoldNeedsReview": [
+      {
+        "hypothesis": {
+          "Index": 1,
+          "Text": "June 2022",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 3 body line(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer",
+            "date shape",
+            "stands alone over its own prose"
+          ],
+          "identity": "L0003:S1:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 3,
+          "Text": "RFC 9114",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0007:S0:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 22,
+          "Text": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\",",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L0206:S0:0-91",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 61,
+          "Text": "Figure 1: Unidirectional Stream Header",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 33 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0815:S0:0-38",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 64,
+          "Text": "Figure 2: Push Stream Header",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 6 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0886:S0:0-28",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 84,
+          "Text": "Table 1: HTTP/3 Frames and Stream Type Overview",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 2 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0920:S0:0-47",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 85,
+          "Text": "Table 1 with a (1). Speciﬁc guidance is provided in the relevant section.",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0922:S0:0-73",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 87,
+          "Text": "Figure 3: HTTP/3 Frame Format",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 12 body line(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0931:S0:0-29",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 92,
+          "Text": "Figure 5: HEADERSFrame",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 3 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0967:S0:0-22",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 97,
+          "Text": "Figure 6: CANCEL_PUSHFrame",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 8 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1002:S0:0-26",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 102,
+          "Text": "Figure 7: SETTINGSFrame",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1048:S0:0-23",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 109,
+          "Text": "Figure 8: PUSH_PROMISEFrame",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 26 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1114:S0:0-27",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 112,
+          "Text": "Figure 9: GOAWAYFrame",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 10 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1153:S0:0-21",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 115,
+          "Text": "Figure 10: MAX_PUSH_ID Frame",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 4 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1184:S0:0-28",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 155,
+          "Text": "Table 2: InitialHTTP/3 Frame Types",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 3 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1504:S0:0-34",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 163,
+          "Text": "RFC 9114",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 25 table/figure item(s) before a peer"
+          ],
+          "identity": "L1528:S0:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 173,
+          "Text": "Table 3: InitialHTTP/3 Settings",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 4 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1535:S0:0-31",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 202,
+          "Text": "Table 4: InitialHTTP/3 Error Codes",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 3 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1585:S0:0-34",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 209,
+          "Text": "Table 5: Initial Stream Types",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 3 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1608:S0:0-29",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 250,
+          "Text": "C D G H M P R S",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L1913:S0:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 252,
+          "Text": "Table 2; Appendix A.2.5, Paragraph 1.8.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 22 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1917:S0:0-40",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 254,
+          "Text": "DATA",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L1941:S0:0-4",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 258,
+          "Text": "H3_CONNECT_ERROR",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer"
+          ],
+          "identity": "L1964:S0:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 259,
+          "Text": "H3_EXCESSIVE_LOAD",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer"
+          ],
+          "identity": "L1966:S0:0-17",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 260,
+          "Text": "H3_FRAME_UNEXPECTED",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L1970:S0:0-19",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 261,
+          "Text": "H3_ID_ERROR",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer"
+          ],
+          "identity": "L1979:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 262,
+          "Text": "H3_INTERNAL_ERROR H3_MESSAGE_ERROR",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 6 body line(s) before a peer"
+          ],
+          "identity": "L1983:S0:0-17|L1984:S0:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 263,
+          "Text": "H3_REQUEST_CANCELLED",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer"
+          ],
+          "identity": "L1990:S0:0-20",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 265,
+          "Text": "H3_REQUEST_REJECTED",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 8 body line(s) before a peer"
+          ],
+          "identity": "L1997:S0:0-19",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 266,
+          "Text": "HEADERS",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer"
+          ],
+          "identity": "L2006:S0:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 269,
+          "Text": "MAX_PUSH_ID",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer"
+          ],
+          "identity": "L2019:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 273,
+          "Text": "PUSH_PROMISE",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L2046:S0:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 276,
+          "Text": "SETTINGS",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L2064:S0:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 277,
+          "Text": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 7 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2068:S0:0-85",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      }
+    ]
+  }
+}
