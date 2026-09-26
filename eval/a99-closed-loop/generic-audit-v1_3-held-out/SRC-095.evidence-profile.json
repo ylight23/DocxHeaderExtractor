@@ -1,0 +1,74 @@
+{
+  "artifactKind": "a99_source_evidence_profile",
+  "study": "SRC095_BLIND_GENERALIZATION_AUDIT_V1",
+  "pdfSourceFacts": "PDF_SOURCE_FACTS_V3",
+  "source": {
+    "path": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+    "sha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84"
+  },
+  "occurrences": 2302,
+  "pages": 57,
+  "body": {
+    "fontSize": 10,
+    "bold": false,
+    "italic": false
+  },
+  "typographyClusters": [
+    {
+      "fontSize": 10,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1960,
+      "meanWords": 10.2
+    },
+    {
+      "fontSize": 9,
+      "bold": false,
+      "italic": false,
+      "occurrences": 135,
+      "meanWords": 4.5
+    },
+    {
+      "fontSize": 10,
+      "bold": true,
+      "italic": false,
+      "occurrences": 84,
+      "meanWords": 2.2
+    },
+    {
+      "fontSize": 9.5,
+      "bold": false,
+      "italic": false,
+      "occurrences": 53,
+      "meanWords": 5.9
+    },
+    {
+      "fontSize": 12,
+      "bold": true,
+      "italic": false,
+      "occurrences": 47,
+      "meanWords": 3
+    },
+    {
+      "fontSize": 14.4,
+      "bold": true,
+      "italic": false,
+      "occurrences": 20,
+      "meanWords": 3.2
+    },
+    {
+      "fontSize": 17.2,
+      "bold": true,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 1.5
+    },
+    {
+      "fontSize": 9,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 13
+    }
+  ]
+}
