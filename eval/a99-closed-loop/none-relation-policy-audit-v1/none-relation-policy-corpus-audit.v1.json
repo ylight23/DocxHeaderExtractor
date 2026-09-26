@@ -8,10 +8,10 @@
   "corpusCoverage": {
     "authorities": 22,
     "authoritiesCarryingClaimLevelData": 17,
-    "approvedHeadingsInCorpus": 3962,
-    "materializedClaimsInCorpus": 2485,
-    "coverageOfApprovedHeadings": 0.6272,
-    "finding": "5 of 22 approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 2485 of 3962 approved headings, about 62.7%, exist as claims at all.",
+    "approvedHeadingsInCorpus": 3965,
+    "materializedClaimsInCorpus": 2488,
+    "coverageOfApprovedHeadings": 0.6275,
+    "finding": "5 of 22 approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 2488 of 3965 approved headings, about 62.7%, exist as claims at all.",
     "consequence": "Everything below is evidence from 17 documents (all but DOC-0001 and DOC-0252 itemised later) DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
     "byAuthority": [
       {
@@ -112,8 +112,8 @@
       },
       {
         "AuthorityId": "SRC-044",
-        "approvedHeadings": 201,
-        "materializedClaims": 201,
+        "approvedHeadings": 203,
+        "materializedClaims": 203,
         "carriesClaimLevelData": true
       },
       {
@@ -124,8 +124,8 @@
       },
       {
         "AuthorityId": "SRC-054",
-        "approvedHeadings": 297,
-        "materializedClaims": 297,
+        "approvedHeadings": 298,
+        "materializedClaims": 298,
         "carriesClaimLevelData": true
       },
       {
@@ -313,9 +313,9 @@
           },
           {
             "AuthorityId": "SRC-044",
-            "approvedHeadings": 201,
+            "approvedHeadings": 203,
             "roles": {
-              "(none)": 201
+              "(none)": 203
             }
           },
           {
@@ -327,9 +327,9 @@
           },
           {
             "AuthorityId": "SRC-054",
-            "approvedHeadings": 297,
+            "approvedHeadings": 298,
             "roles": {
-              "(none)": 297
+              "(none)": 298
             }
           },
           {

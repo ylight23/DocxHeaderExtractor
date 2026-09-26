@@ -8,10 +8,10 @@
   "vlmCalls": 0,
   "semanticAuthority": {
     "sources": 22,
-    "approvedHeadings": 3963
+    "approvedHeadings": 3966
   },
   "materializedClaimCarriers": {
-    "count": 2486,
+    "count": 2489,
     "authorities": [
       "DOC-0001",
       "DOC-0123",
@@ -35,7 +35,7 @@
   },
   "ontologyReviewableClaims": {
     "count": 42,
-    "ofApprovedHeadings": 3963,
+    "ofApprovedHeadings": 3966,
     "fraction": 0.0106,
     "authorities": [
       "DOC-0252"
@@ -65,7 +65,7 @@
       "SRC-095"
     ],
     "heuristicScannableAuthorities": 1,
-    "approvedHeadingsInCorpus": 3963,
+    "approvedHeadingsInCorpus": 3966,
     "reviewableClaimsInCorpus": 42,
     "coverageOfApprovedHeadings": 0.0106,
     "caveat": "This review can only examine canonical claims from DOC-0252 - of the other 21 authorities, 5 record only an approved heading total and DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-095 carry claims this heuristic cannot review, so 'no dual-function candidate found there' cannot be claimed; it can only be said that no such candidate is visible with the data this heuristic can actually read.",
@@ -281,7 +281,7 @@
     },
     {
       "authorityId": "SRC-044",
-      "claimsScanned": 201,
+      "claimsScanned": 203,
       "roleBearingClaims": 0,
       "candidates": 0,
       "note": "structured claims itemised without roles: rows parse, nothing to test"
@@ -295,7 +295,7 @@
     },
     {
       "authorityId": "SRC-054",
-      "claimsScanned": 297,
+      "claimsScanned": 298,
       "roleBearingClaims": 0,
       "candidates": 0,
       "note": "structured claims itemised without roles: rows parse, nothing to test"
@@ -330,7 +330,7 @@
     "agendaBoundaryCase": "SUPPORTED_BY_REVIEWABLE_DATA",
     "heuristicRecallEstablished": false,
     "corpusGeneralization": "NOT_ESTABLISHED",
-    "reasoning": "Among the 42 semantic claims with enough data to review (all DOC-0252 - DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-095 carry claims this heuristic cannot review), this pre-registered heuristic detected exactly one dual-function candidate: Agenda. It did not detect evidence that the single-label ontology is a systemic problem. Coverage is only 42/3963, and the heuristic's sensitivity/recall has not been established - a claim can be a genuine dual-function occurrence and still be missed if its label is longer than 2 words, its children carry several different semanticRoles instead of one homogeneous run, its nested content does not sit immediately after it, its artifact boundary is expressed through layout rather than a run of consecutive claims, its wording is not 'generic' even though it is both identity- and structure-bearing, or its authority's claims simply lack the identity/role fields this heuristic reads. So the remaining corpus cannot be inferred to be free of other boundary cases from this result.",
+    "reasoning": "Among the 42 semantic claims with enough data to review (all DOC-0252 - DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-095 carry claims this heuristic cannot review), this pre-registered heuristic detected exactly one dual-function candidate: Agenda. It did not detect evidence that the single-label ontology is a systemic problem. Coverage is only 42/3966, and the heuristic's sensitivity/recall has not been established - a claim can be a genuine dual-function occurrence and still be missed if its label is longer than 2 words, its children carry several different semanticRoles instead of one homogeneous run, its nested content does not sit immediately after it, its artifact boundary is expressed through layout rather than a run of consecutive claims, its wording is not 'generic' even though it is both identity- and structure-bearing, or its authority's claims simply lack the identity/role fields this heuristic reads. So the remaining corpus cannot be inferred to be free of other boundary cases from this result.",
     "annexContrastCaveat": "Annex 2: List of Participants is a useful contrast - it shows topology (a heading opening several nested children) is not by itself sufficient to imply ambiguity. But its exclusion (by the 'generic text' condition) only demonstrates this heuristic's current behavior, not a proven fact that Annex 2 is single-function - a different, more sensitive heuristic or a human review could still find it ambiguous."
   },
   "productionOrSchemaChanged": false,
