@@ -19,7 +19,7 @@
     ],
     "reReviewedDuringConsolidation": false
   },
-  "semanticHeadingTotal": 298,
+  "semanticHeadingTotal": 297,
   "declaredCapabilities": {
     "visualBindingEvaluable": false,
     "hierarchyEvaluable": false
@@ -1263,50 +1263,6 @@
         },
         "pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
         "evidence": "user decision 2026-09-26 (S054_Q1, TRUE): a short standalone line in plain Times-Roman at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Function decides, as in S053_Q2, even with no typographic mark"
-      },
-      {
-        "approvedWording": "Provision for losses on loans and other exposures",
-        "sourceParts": [
-          {
-            "sourceAlias": "L0548:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
-            "occurrence": null,
-            "leftExactContext": null,
-            "rightExactContext": null
-          }
-        ],
-        "semanticRole": null,
-        "identity": "L0548:S0:0-49",
-        "projectedText": "Provision for losses on loans and other exposures",
-        "boundParts": [
-          {
-            "sourceAlias": "L0548:S0",
-            "page": 15,
-            "row": 548,
-            "utf16Span": {
-              "start": 0,
-              "end": 49
-            },
-            "text": "Provision for losses on loans and other exposures",
-            "localityFromPrevious": null
-          }
-        ],
-        "semanticAxes": {
-          "semanticFunctions": [
-            "STRUCTURE"
-          ],
-          "primaryFunction": "STRUCTURE",
-          "scope": "SECTION",
-          "occurrenceRoles": [
-            "REGION_OPENER"
-          ],
-          "titleRelation": "TITLE",
-          "titlePartAliases": [],
-          "informationType": null
-        },
-        "pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-        "evidence": "Gold R3 (user-approved 2026-09-26), under S054_Q1: a short standalone line in plain Times-Roman at the margin at a page top, over its own prose; left off the review's hand list in R1 and R2"
       },
       {
         "approvedWording": "Results from Investing activities",
@@ -13490,16 +13446,6 @@
     {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-054.gold-revision-r2.v1.json",
       "sha256": "f42d5fba9eb9b3a9d096e6841504efeafeb1e6e9d1379a72f3be506cfc0caed2",
-      "role": "GOLD_REVISION_RECORD"
-    },
-    {
-      "path": "gold-revision:SRC-054:r2-297-to-r3-298:2026-09-26",
-      "sha256": "04b22b3f4bce2619dcdf5e44df6a7efd5667b9c3c86ee9d5ee5b2ee7472c6025",
-      "role": "GOLD_REVISION_PREDECESSOR"
-    },
-    {
-      "path": "eval/a99-closed-loop/source-review-v1/SRC-054.gold-revision-r3.v1.json",
-      "sha256": "4e9695fb748bc41ee40c9dcc29286e61a7f51aea7336d61cea862e341ff9e0d0",
       "role": "GOLD_REVISION_RECORD"
     }
   ]

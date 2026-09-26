@@ -27,6 +27,9 @@ public sealed class Src054GoldRevisionR2Tests
     private static readonly string[] Added = ["L0508:S0", "L0582:S0"];
     private const string Template = "L0610:S0"; // 'Results from Borrowing activities', the Gold sibling of both additions
 
+    /// <summary>Gold R2 byte for byte; the authored Gold became R3 after it (<see cref="Src054GoldRevisionR3Tests"/>).</summary>
+    internal const string GoldR2 = "eval/a99-closed-loop/gold-history/SRC-054.gold.r2.json";
+
     private static readonly object[] Corrections =
     [
         new
@@ -113,7 +116,7 @@ public sealed class Src054GoldRevisionR2Tests
     {
         if (!File.Exists(TestRepository.Path(Record))) return; // not revised yet
         using var r1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Src054BlindScoreTests.GoldR1)));
-        using var live = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Src054BlindScoreTests.GoldPath)));
+        using var live = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(GoldR2)));
         static string[] Claims(JsonDocument d) => d.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(c => c.GetRawText()).ToArray();
         static string First(string claim) => JsonDocument.Parse(claim).RootElement.GetProperty("sourceParts")[0].GetProperty("sourceAlias").GetString()!;

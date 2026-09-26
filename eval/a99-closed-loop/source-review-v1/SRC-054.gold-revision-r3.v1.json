@@ -1,0 +1,48 @@
+{
+  "artifactKind": "a99_gold_revision",
+  "authorityId": "SRC-054",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-26",
+  "modelProviderVlmCalls": 0,
+  "r1": {
+    "path": "eval/a99-closed-loop/gold-history/SRC-054.gold.r1.json",
+    "sha256": "82a904eefafa687537c08236ac70a177523b864d0829507524ffeccd6f8e5c56",
+    "total": 296,
+    "role": "the Gold frozen at the reveal: the held-out authority of the raw score (912dcc7, F1 0.799), unchanged"
+  },
+  "r2": {
+    "path": "eval/a99-closed-loop/gold-history/SRC-054.gold.r2.json",
+    "sha256": "04b22b3f4bce2619dcdf5e44df6a7efd5667b9c3c86ee9d5ee5b2ee7472c6025",
+    "commit": "ca6e16d",
+    "total": 297,
+    "role": "the previous corrected authority, kept byte for byte"
+  },
+  "r3": {
+    "path": "eval/a99-closed-loop/gold/SRC-054.gold.json",
+    "total": 298,
+    "role": "the corrected source authority from this revision on"
+  },
+  "foundBy": "adjudicating the V1.3 development Gold candidate SRC-054 L0548 from source context",
+  "corrections": [
+    {
+      "alias": "L0548:S0",
+      "text": "Provision for losses on loans and other exposures",
+      "r2": "NON_HEADING",
+      "r3": "HEADING",
+      "error": "the S054_Q1 occurrences were listed by hand in the review tool; this page-top one was left off the list",
+      "sourceEvidence": "plain Times-Roman, alone on its line at the margin atop p15 (the page number of p14 before it), over its own prose - the S054_Q1 shape"
+    }
+  ],
+  "correctedGoldDiagnostic": {
+    "status": "DIAGNOSTIC - the committed blind V1.2 proposals (44b88f4) against Gold R3; not a held-out score",
+    "scorer": "GENERIC_EXACT_SCORER_V1",
+    "goldClaims": 298,
+    "truePositives": 245,
+    "falsePositives": 67,
+    "falseNegatives": 53,
+    "precision": 0.7853,
+    "recall": 0.8221,
+    "f1": 0.8033
+  },
+  "rule": "the pipeline does not benefit backwards in time from a Gold correction: the held-out score stays F1 0.799 against R1"
+}

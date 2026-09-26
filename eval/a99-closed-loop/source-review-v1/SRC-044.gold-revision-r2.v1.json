@@ -1,0 +1,52 @@
+{
+  "artifactKind": "a99_gold_revision",
+  "authorityId": "SRC-044",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-26",
+  "modelProviderVlmCalls": 0,
+  "r1": {
+    "path": "eval/a99-closed-loop/gold-history/SRC-044.gold.r1.json",
+    "sha256": "c4a83cd6e3e9cb444fcd7afb11bef779f2c5ff7ffbed41729a23581cd29255e4",
+    "commit": "c2dfee5",
+    "total": 201,
+    "role": "the Gold frozen at the reveal: the held-out authority of the raw score (382c58c, F1 0.9824), kept byte for byte, never overwritten"
+  },
+  "r2": {
+    "path": "eval/a99-closed-loop/gold/SRC-044.gold.json",
+    "total": 203,
+    "role": "the corrected source authority from this revision on"
+  },
+  "foundBy": "adjudicating the V1.3 development Gold candidate SRC-044 L0236 from source context; its sibling L0220 has the same shape on the same page",
+  "corrections": [
+    {
+      "alias": "L0220:S0",
+      "text": "Borrowing Portfolio",
+      "r1": "NON_HEADING",
+      "r2": "HEADING",
+      "selection": "VERBATIM_TEXT: the title only; the chart's unit line in the same atom is no part of it",
+      "error": "extraction joined the label to the chart's unit line in one atom, and the review's whole-line rule for 11pt bold labels did not see it",
+      "sourceEvidence": "p8: an 11pt bold label at the margin over its own left-column prose with its chart to the right - the block shape of 'Net Investment Portfolio' (L0208, in R1)"
+    },
+    {
+      "alias": "L0236:S0",
+      "text": "Equity and CapitalAdequacy",
+      "r1": "NON_HEADING",
+      "r2": "HEADING",
+      "selection": "VERBATIM_TEXT: the title only; the chart's unit line in the same atom is no part of it",
+      "error": "extraction joined the label to the chart's unit line in one atom, and the review's whole-line rule for 11pt bold labels did not see it",
+      "sourceEvidence": "p8: an 11pt bold label at the margin over its own left-column prose with its chart to the right - the block shape of 'Net Investment Portfolio' (L0208, in R1)"
+    }
+  ],
+  "correctedGoldDiagnostic": {
+    "status": "DIAGNOSTIC - the committed blind V1.2 proposals (6d59c9d) against Gold R2; not a held-out score",
+    "scorer": "GENERIC_EXACT_SCORER_V1",
+    "goldClaims": 203,
+    "truePositives": 196,
+    "falsePositives": 2,
+    "falseNegatives": 7,
+    "precision": 0.9899,
+    "recall": 0.9655,
+    "f1": 0.9775
+  },
+  "rule": "the pipeline does not benefit backwards in time from a Gold correction: the held-out score stays F1 0.9824 against R1; the figure above is a diagnostic"
+}

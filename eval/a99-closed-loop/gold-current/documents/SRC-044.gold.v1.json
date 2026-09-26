@@ -14,8 +14,8 @@
   "approval": {
     "authority": "USER",
     "userFinalApproval": true,
-    "approvalBasis": "USER_PRECEDENT_APPLIED_SOURCE_REVIEW",
-    "approvedAt": "2026-09-25",
+    "approvalBasis": "USER_APPROVED_GOLD_REVISION",
+    "approvedAt": "2026-09-26",
     "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
     "semanticTruthReusedFrom": [
       "eval/a99-closed-loop/source-review-v1/SRC-044.source-review.v1.json"
@@ -24,9 +24,9 @@
   },
   "semantic": {
     "headingSetExhaustive": true,
-    "approvedSemanticTotal": 201,
-    "semanticHeadingTotal": 201,
-    "materializedSemanticClaims": 201,
+    "approvedSemanticTotal": 203,
+    "semanticHeadingTotal": 203,
+    "materializedSemanticClaims": 203,
     "claims": [
       {
         "sourceParts": [
@@ -193,6 +193,32 @@
             "sourceAlias": "L0208:S0",
             "selectionMode": "WHOLE_ALIAS",
             "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null
+      },
+      {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0220:S0",
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "Borrowing Portfolio",
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null
+      },
+      {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0236:S0",
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "Equity and CapitalAdequacy",
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
@@ -3305,6 +3331,94 @@
         },
         "pattern": "MDA_SUBHEADING",
         "evidence": "11pt bold standalone label at the margin over its own prose or list: precedent DOC-0133 (user-decided 2026-09-25) (P6); precedent SRC-041 (user-decided 2026-09-25); precedent SRC-042 (user-decided 2026-09-25)"
+      },
+      {
+        "approvedWording": "Borrowing Portfolio",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0220:S0",
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "Borrowing Portfolio",
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0220:S0:0-19",
+        "projectedText": "Borrowing Portfolio",
+        "boundParts": [
+          {
+            "sourceAlias": "L0220:S0",
+            "page": 8,
+            "row": 220,
+            "utf16Span": {
+              "start": 0,
+              "end": 19
+            },
+            "text": "Borrowing Portfolio",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "GOLD_REVISION_R2_SECTION_LABEL",
+        "evidence": "Gold R2 (user-approved 2026-09-26): an 11pt bold label at the margin over its own left-column prose with its chart to the right, like its Gold sibling 'Net Investment Portfolio'; the atom runs on into the chart's unit line, which is no part of the title"
+      },
+      {
+        "approvedWording": "Equity and CapitalAdequacy",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0236:S0",
+            "selectionMode": "VERBATIM_TEXT",
+            "verbatimText": "Equity and CapitalAdequacy",
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0236:S0:0-26",
+        "projectedText": "Equity and CapitalAdequacy",
+        "boundParts": [
+          {
+            "sourceAlias": "L0236:S0",
+            "page": 8,
+            "row": 236,
+            "utf16Span": {
+              "start": 0,
+              "end": 26
+            },
+            "text": "Equity and CapitalAdequacy",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "GOLD_REVISION_R2_SECTION_LABEL",
+        "evidence": "Gold R2 (user-approved 2026-09-26): an 11pt bold label at the margin over its own left-column prose with its chart to the right, like its Gold sibling 'Net Investment Portfolio'; the atom runs on into the chart's unit line, which is no part of the title"
       },
       {
         "approvedWording": "Section II: Overview",
@@ -11875,6 +11989,16 @@
       "path": "eval/a99-closed-loop/policy/occurrence-classification-principles.v1.json",
       "sha256": "6c3d2b2c94b5da13c1d3f499c522b52d4ffeec76660ad8c5558b05e7b095719a",
       "role": "CLASSIFICATION_PRINCIPLES"
+    },
+    {
+      "path": "gold-revision:SRC-044:r1-201-to-r2-203:2026-09-26",
+      "sha256": "c4a83cd6e3e9cb444fcd7afb11bef779f2c5ff7ffbed41729a23581cd29255e4",
+      "role": "GOLD_REVISION_PREDECESSOR"
+    },
+    {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-044.gold-revision-r2.v1.json",
+      "sha256": "f17008f55e28888d1a4a1a5ab3bfa0c7071724d362845909a2fc4b454151e5ff",
+      "role": "GOLD_REVISION_RECORD"
     }
   ],
   "providerCalls": 0,
