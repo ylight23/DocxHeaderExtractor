@@ -6,13 +6,13 @@
   "promptChanged": false,
   "question": "Before narrowing a shared instruction, what does the approved corpus evidence about headings that hold no position in the section tree?",
   "corpusCoverage": {
-    "authorities": 22,
-    "authoritiesCarryingClaimLevelData": 17,
-    "approvedHeadingsInCorpus": 3965,
-    "materializedClaimsInCorpus": 2488,
-    "coverageOfApprovedHeadings": 0.6275,
-    "finding": "5 of 22 approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 2488 of 3965 approved headings, about 62.7%, exist as claims at all.",
-    "consequence": "Everything below is evidence from 17 documents (all but DOC-0001 and DOC-0252 itemised later) DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
+    "authorities": 23,
+    "authoritiesCarryingClaimLevelData": 18,
+    "approvedHeadingsInCorpus": 4001,
+    "materializedClaimsInCorpus": 2524,
+    "coverageOfApprovedHeadings": 0.6308,
+    "finding": "5 of 23 approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 2524 of 4001 approved headings, about 63.1%, exist as claims at all.",
+    "consequence": "Everything below is evidence from 18 documents (all but DOC-0001 and DOC-0252 itemised later) DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
     "byAuthority": [
       {
         "AuthorityId": "DOC-0001",
@@ -139,6 +139,12 @@
         "approvedHeadings": 831,
         "materializedClaims": 0,
         "carriesClaimLevelData": false
+      },
+      {
+        "AuthorityId": "SRC-089",
+        "approvedHeadings": 36,
+        "materializedClaims": 36,
+        "carriesClaimLevelData": true
       },
       {
         "AuthorityId": "SRC-095",
@@ -340,6 +346,13 @@
             }
           },
           {
+            "AuthorityId": "SRC-089",
+            "approvedHeadings": 36,
+            "roles": {
+              "(none)": 36
+            }
+          },
+          {
             "AuthorityId": "SRC-095",
             "approvedHeadings": 103,
             "roles": {
@@ -372,7 +385,7 @@
       "any rule keyed to a document genre",
       "any wording drawn from DOC-0252"
     ],
-    "evidenceStrength": "Supported where the corpus can speak, and the corpus speaks for 62.7% of its own approved headings. The narrowing is safe for the one document that never uses the category and corrects four of five errors in the one that does; beyond those two (DOC-0205 has no captured model reply to measure against, and DOC-0258's replies carry no relation hints) it is a judgement, not a measurement. The organisation wording in particular is not safe as written: DOC-0256 and DOC-0258 each have nine approved structural headings whose text is an organisation name, and the clause would have to be reworded to exempt a label that opens its own unit before it is carried beyond DOC-0252."
+    "evidenceStrength": "Supported where the corpus can speak, and the corpus speaks for 63.1% of its own approved headings. The narrowing is safe for the one document that never uses the category and corrects four of five errors in the one that does; beyond those two (DOC-0205 has no captured model reply to measure against, and DOC-0258's replies carry no relation hints) it is a judgement, not a measurement. The organisation wording in particular is not safe as written: DOC-0256 and DOC-0258 each have nine approved structural headings whose text is an organisation name, and the clause would have to be reworded to exempt a label that opens its own unit before it is carried beyond DOC-0252."
   },
   "recommendation": {
     "proceedToExperiment": "EXP_MASTHEAD_METADATA",

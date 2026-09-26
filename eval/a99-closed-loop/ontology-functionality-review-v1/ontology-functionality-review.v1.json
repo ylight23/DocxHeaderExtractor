@@ -7,11 +7,11 @@
   "providerCalls": 0,
   "vlmCalls": 0,
   "semanticAuthority": {
-    "sources": 22,
-    "approvedHeadings": 3966
+    "sources": 23,
+    "approvedHeadings": 4002
   },
   "materializedClaimCarriers": {
-    "count": 2489,
+    "count": 2525,
     "authorities": [
       "DOC-0001",
       "DOC-0123",
@@ -29,22 +29,23 @@
       "SRC-053",
       "SRC-054",
       "SRC-055",
+      "SRC-089",
       "SRC-095"
     ],
-    "note": "Registry-level fact: these 17 authorities carry a non-empty semantic.claims list. This is NOT the same as 'reviewable by this heuristic' - see ontologyReviewableClaims below, which is strictly narrower."
+    "note": "Registry-level fact: these 18 authorities carry a non-empty semantic.claims list. This is NOT the same as 'reviewable by this heuristic' - see ontologyReviewableClaims below, which is strictly narrower."
   },
   "ontologyReviewableClaims": {
     "count": 42,
-    "ofApprovedHeadings": 3966,
-    "fraction": 0.0106,
+    "ofApprovedHeadings": 4002,
+    "fraction": 0.0105,
     "authorities": [
       "DOC-0252"
     ],
-    "note": "'Reviewable claims' means: claims this review's Row extraction can actually parse an identity, text, and role from. Every other authority carrying claims (DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-095) contributes none: legacy-schema claims (sourceAlias/exactText, no identity) scan as zero rows, and structured claims itemised without roles parse but give the heuristic nothing to test. Only DOC-0252's role-bearing claims are reviewable today."
+    "note": "'Reviewable claims' means: claims this review's Row extraction can actually parse an identity, text, and role from. Every other authority carrying claims (DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-089, SRC-095) contributes none: legacy-schema claims (sourceAlias/exactText, no identity) scan as zero rows, and structured claims itemised without roles parse but give the heuristic nothing to test. Only DOC-0252's role-bearing claims are reviewable today."
   },
   "corpusCoverage": {
-    "authorities": 22,
-    "authoritiesCarryingCanonicalClaimLevelData": 17,
+    "authorities": 23,
+    "authoritiesCarryingCanonicalClaimLevelData": 18,
     "claimCarryingAuthorities": [
       "DOC-0001",
       "DOC-0123",
@@ -62,15 +63,16 @@
       "SRC-053",
       "SRC-054",
       "SRC-055",
+      "SRC-089",
       "SRC-095"
     ],
     "heuristicScannableAuthorities": 1,
-    "approvedHeadingsInCorpus": 3966,
+    "approvedHeadingsInCorpus": 4002,
     "reviewableClaimsInCorpus": 42,
-    "coverageOfApprovedHeadings": 0.0106,
-    "caveat": "This review can only examine canonical claims from DOC-0252 - of the other 21 authorities, 5 record only an approved heading total and DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-095 carry claims this heuristic cannot review, so 'no dual-function candidate found there' cannot be claimed; it can only be said that no such candidate is visible with the data this heuristic can actually read.",
+    "coverageOfApprovedHeadings": 0.0105,
+    "caveat": "This review can only examine canonical claims from DOC-0252 - of the other 22 authorities, 5 record only an approved heading total and DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-089, SRC-095 carry claims this heuristic cannot review, so 'no dual-function candidate found there' cannot be claimed; it can only be said that no such candidate is visible with the data this heuristic can actually read.",
     "distinctFromOccurrenceLevelGoldEverMaterialized": {
-      "claim": "1/22 authority (DOC-0252) is claim-reviewable by THIS heuristic; 17/22 carry a materialized claims list at the registry level. Neither of those is the same fact as '5 authorities ever had occurrence-level Gold materialized' in strict-gold-v3 (see strictGoldV3ProvenanceOnlyData below).",
+      "claim": "1/23 authority (DOC-0252) is claim-reviewable by THIS heuristic; 18/23 carry a materialized claims list at the registry level. Neither of those is the same fact as '5 authorities ever had occurrence-level Gold materialized' in strict-gold-v3 (see strictGoldV3ProvenanceOnlyData below).",
       "strictGoldV3ProvenanceOnlyData": [
         {
           "authorityId": "DOC-0001",
@@ -308,6 +310,13 @@
       "note": "structured claims itemised without roles: rows parse, nothing to test"
     },
     {
+      "authorityId": "SRC-089",
+      "claimsScanned": 36,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
       "authorityId": "SRC-095",
       "claimsScanned": 103,
       "roleBearingClaims": 0,
@@ -330,12 +339,12 @@
     "agendaBoundaryCase": "SUPPORTED_BY_REVIEWABLE_DATA",
     "heuristicRecallEstablished": false,
     "corpusGeneralization": "NOT_ESTABLISHED",
-    "reasoning": "Among the 42 semantic claims with enough data to review (all DOC-0252 - DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-095 carry claims this heuristic cannot review), this pre-registered heuristic detected exactly one dual-function candidate: Agenda. It did not detect evidence that the single-label ontology is a systemic problem. Coverage is only 42/3966, and the heuristic's sensitivity/recall has not been established - a claim can be a genuine dual-function occurrence and still be missed if its label is longer than 2 words, its children carry several different semanticRoles instead of one homogeneous run, its nested content does not sit immediately after it, its artifact boundary is expressed through layout rather than a run of consecutive claims, its wording is not 'generic' even though it is both identity- and structure-bearing, or its authority's claims simply lack the identity/role fields this heuristic reads. So the remaining corpus cannot be inferred to be free of other boundary cases from this result.",
+    "reasoning": "Among the 42 semantic claims with enough data to review (all DOC-0252 - DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-089, SRC-095 carry claims this heuristic cannot review), this pre-registered heuristic detected exactly one dual-function candidate: Agenda. It did not detect evidence that the single-label ontology is a systemic problem. Coverage is only 42/4002, and the heuristic's sensitivity/recall has not been established - a claim can be a genuine dual-function occurrence and still be missed if its label is longer than 2 words, its children carry several different semanticRoles instead of one homogeneous run, its nested content does not sit immediately after it, its artifact boundary is expressed through layout rather than a run of consecutive claims, its wording is not 'generic' even though it is both identity- and structure-bearing, or its authority's claims simply lack the identity/role fields this heuristic reads. So the remaining corpus cannot be inferred to be free of other boundary cases from this result.",
     "annexContrastCaveat": "Annex 2: List of Participants is a useful contrast - it shows topology (a heading opening several nested children) is not by itself sufficient to imply ambiguity. But its exclusion (by the 'generic text' condition) only demonstrates this heuristic's current behavior, not a proven fact that Annex 2 is single-function - a different, more sensitive heuristic or a human review could still find it ambiguous."
   },
   "productionOrSchemaChanged": false,
   "goldChanged": false,
   "crossDocumentGeneralization": false,
   "generalizationEstablished": false,
-  "scope": "DOC-0252 only, the one authority whose claims this heuristic can review. DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-095 carry claims it cannot review. Not evidence about the remaining 5 authorities' unmaterialized headings, and not evidence about this heuristic's sensitivity on any data it has not been tested against."
+  "scope": "DOC-0252 only, the one authority whose claims this heuristic can review. DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-089, SRC-095 carry claims it cannot review. Not evidence about the remaining 5 authorities' unmaterialized headings, and not evidence about this heuristic's sensitivity on any data it has not been tested against."
 }
