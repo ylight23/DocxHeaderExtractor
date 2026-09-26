@@ -118,6 +118,18 @@ public sealed class Src095SourceReviewTests
             nonHeadingsByPattern = items.Where(i => i.Verdict == "NON_HEADING").GroupBy(i => i.Pattern)
                 .OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
             ambiguous = items.Where(i => i.Verdict == "AMBIGUOUS").Select(i => new { i.Pattern, i.Page, aliases = i.Parts.Select(p => p.SourceAlias).ToArray(), i.Text, i.Reason, axes = i.Axes }).ToArray(),
+            userDecisions = new
+            {
+                decidedAt = "2026-09-26",
+                membershipTotal = 103,
+                arithmetic = "94 clear + 1 S095_Q1 (HTTP/3) + 8 S095_Q2 = 103",
+                principle = "CLASSIFY OCCURRENCES, NOT STRINGS",
+                patterns = new[]
+                {
+                    new { pattern = "S095_Q1_RFC_TITLE_BLOCK", decision = "'RFC 9114': isHeading false, METADATA / DOCUMENT_IDENTIFIER. 'HTTP/3': isHeading true, IDENTITY / DOCUMENT / TITLE. (DOCUMENT_IDENTIFIER is the user's term; the V3 informationType list does not contain it - the open vocabulary item the ontology already records)" },
+                    new { pattern = "S095_Q2_INDEX_GROUP_LETTER", decision = "TRUE x8: each index group letter opens its own group of indented entries, like the SRC-041 A5 contents group label" },
+                },
+            },
             bindingFailures = failures,
         });
     }

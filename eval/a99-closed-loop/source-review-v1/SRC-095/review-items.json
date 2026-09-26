@@ -8,7 +8,29 @@
      "selectionMode": "WHOLE_ALIAS",
      "verbatimText": null,
      "occurrence": null
-    },
+    }
+   ],
+   "text": "RFC 9114",
+   "verdict": "NON_HEADING",
+   "pattern": "S095_Q1_RFC_TITLE_BLOCK",
+   "reason": "user decision 2026-09-26 (S095_Q1): 'RFC 9114' is the document identifier, not a heading: METADATA / DOCUMENT_IDENTIFIER",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "DOCUMENT",
+    "occurrenceRoles": [
+     "METADATA"
+    ],
+    "titleRelation": "NONE",
+    "informationType": "DOCUMENT_IDENTIFIER"
+   },
+   "page": 1
+  },
+  {
+   "section": "FRONT",
+   "parts": [
     {
      "sourceAlias": "L0008:S0",
      "selectionMode": "WHOLE_ALIAS",
@@ -16,10 +38,10 @@
      "occurrence": null
     }
    ],
-   "text": "RFC 9114 HTTP/3",
-   "verdict": "AMBIGUOUS",
+   "text": "HTTP/3",
+   "verdict": "HEADING",
    "pattern": "S095_Q1_RFC_TITLE_BLOCK",
-   "reason": "the title block: 'RFC 9114' over 'HTTP/3', both 17.2pt bold at the margin, under the header fields. Is the title 'HTTP/3' alone (the RFC number an identifier, metadata), or one title of two lines?",
+   "reason": "user decision 2026-09-26 (S095_Q1): 'HTTP/3' is the document title: IDENTITY / DOCUMENT / TITLE",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"
@@ -2761,9 +2783,9 @@
     }
    ],
    "text": "C",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S095_Q2_INDEX_GROUP_LETTER",
-   "reason": "a single regular-weight letter opening a group of index entries (the entries indented below it). SRC-041 A5 made a contents group label that opens a sub-group of indented entries a heading; this is an index divider with no typographic mark",
+   "reason": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -2771,9 +2793,9 @@
     "primaryFunction": "STRUCTURE",
     "scope": "TOC",
     "occurrenceRoles": [
-     "NAVIGATION"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 54
@@ -2789,9 +2811,9 @@
     }
    ],
    "text": "D",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S095_Q2_INDEX_GROUP_LETTER",
-   "reason": "a single regular-weight letter opening a group of index entries (the entries indented below it). SRC-041 A5 made a contents group label that opens a sub-group of indented entries a heading; this is an index divider with no typographic mark",
+   "reason": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -2799,9 +2821,9 @@
     "primaryFunction": "STRUCTURE",
     "scope": "TOC",
     "occurrenceRoles": [
-     "NAVIGATION"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 54
@@ -2817,9 +2839,9 @@
     }
    ],
    "text": "G",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S095_Q2_INDEX_GROUP_LETTER",
-   "reason": "a single regular-weight letter opening a group of index entries (the entries indented below it). SRC-041 A5 made a contents group label that opens a sub-group of indented entries a heading; this is an index divider with no typographic mark",
+   "reason": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -2827,9 +2849,9 @@
     "primaryFunction": "STRUCTURE",
     "scope": "TOC",
     "occurrenceRoles": [
-     "NAVIGATION"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 54
@@ -2845,9 +2867,9 @@
     }
    ],
    "text": "H",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S095_Q2_INDEX_GROUP_LETTER",
-   "reason": "a single regular-weight letter opening a group of index entries (the entries indented below it). SRC-041 A5 made a contents group label that opens a sub-group of indented entries a heading; this is an index divider with no typographic mark",
+   "reason": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -2855,9 +2877,9 @@
     "primaryFunction": "STRUCTURE",
     "scope": "TOC",
     "occurrenceRoles": [
-     "NAVIGATION"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 55
@@ -2873,9 +2895,9 @@
     }
    ],
    "text": "M",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S095_Q2_INDEX_GROUP_LETTER",
-   "reason": "a single regular-weight letter opening a group of index entries (the entries indented below it). SRC-041 A5 made a contents group label that opens a sub-group of indented entries a heading; this is an index divider with no typographic mark",
+   "reason": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -2883,9 +2905,9 @@
     "primaryFunction": "STRUCTURE",
     "scope": "TOC",
     "occurrenceRoles": [
-     "NAVIGATION"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 56
@@ -2901,9 +2923,9 @@
     }
    ],
    "text": "P",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S095_Q2_INDEX_GROUP_LETTER",
-   "reason": "a single regular-weight letter opening a group of index entries (the entries indented below it). SRC-041 A5 made a contents group label that opens a sub-group of indented entries a heading; this is an index divider with no typographic mark",
+   "reason": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -2911,9 +2933,9 @@
     "primaryFunction": "STRUCTURE",
     "scope": "TOC",
     "occurrenceRoles": [
-     "NAVIGATION"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 56
@@ -2929,9 +2951,9 @@
     }
    ],
    "text": "R",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S095_Q2_INDEX_GROUP_LETTER",
-   "reason": "a single regular-weight letter opening a group of index entries (the entries indented below it). SRC-041 A5 made a contents group label that opens a sub-group of indented entries a heading; this is an index divider with no typographic mark",
+   "reason": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -2939,9 +2961,9 @@
     "primaryFunction": "STRUCTURE",
     "scope": "TOC",
     "occurrenceRoles": [
-     "NAVIGATION"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 57
@@ -2957,9 +2979,9 @@
     }
    ],
    "text": "S",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S095_Q2_INDEX_GROUP_LETTER",
-   "reason": "a single regular-weight letter opening a group of index entries (the entries indented below it). SRC-041 A5 made a contents group label that opens a sub-group of indented entries a heading; this is an index divider with no typographic mark",
+   "reason": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label",
    "axes": {
     "semanticFunctions": [
      "STRUCTURE"
@@ -2967,9 +2989,9 @@
     "primaryFunction": "STRUCTURE",
     "scope": "TOC",
     "occurrenceRoles": [
-     "NAVIGATION"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 57

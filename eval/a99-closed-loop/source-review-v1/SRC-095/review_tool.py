@@ -81,9 +81,11 @@ def section_of(p):
 
 
 # ---------------- title block (p1): no precedent ----------------
-add("FRONT", ["L0007:S0", "L0008:S0"], Q, "S095_Q1_RFC_TITLE_BLOCK",
-    "the title block: 'RFC 9114' over 'HTTP/3', both 17.2pt bold at the margin, under the header fields. Is the title 'HTTP/3' alone "
-    "(the RFC number an identifier, metadata), or one title of two lines?", DOC)
+add("FRONT", ["L0007:S0"], N, "S095_Q1_RFC_TITLE_BLOCK",
+    "user decision 2026-09-26 (S095_Q1): 'RFC 9114' is the document identifier, not a heading: METADATA / DOCUMENT_IDENTIFIER",
+    META("DOCUMENT_IDENTIFIER"))
+add("FRONT", ["L0008:S0"], H, "S095_Q1_RFC_TITLE_BLOCK",
+    "user decision 2026-09-26 (S095_Q1): 'HTTP/3' is the document title: IDENTITY / DOCUMENT / TITLE", DOC)
 
 # ---------------- front and back matter sections ----------------
 for a in ["L0009:S0", "L0015:S0", "L0023:S0", "L1878:S0", "L1912:S0", "L2076:S0"]:
@@ -115,9 +117,9 @@ for r in G:
     if a in claimed or page(a) < 54:
         continue
     if single(a) and re.fullmatch(r'[A-Z]', text(a)) and not bold(a):
-        add("BACK", [a], Q, "S095_Q2_INDEX_GROUP_LETTER",
-            "a single regular-weight letter opening a group of index entries (the entries indented below it). SRC-041 A5 made a "
-            "contents group label that opens a sub-group of indented entries a heading; this is an index divider with no typographic mark", NAV)
+        add("BACK", [a], H, "S095_Q2_INDEX_GROUP_LETTER",
+            "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the "
+            "SRC-041 A5 contents group label", ax(["STRUCTURE"], "STRUCTURE", "TOC"))
 
 # ---------------- set-apart non-headings ----------------
 for r in G:
