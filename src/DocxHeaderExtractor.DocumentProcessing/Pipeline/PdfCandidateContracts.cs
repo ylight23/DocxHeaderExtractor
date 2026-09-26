@@ -307,7 +307,35 @@ internal static class PdfCandidateContextBuilder
             typed.Average(t => t.FontNameBoldRatio),
             typed.Average(t => t.DerivedBoldRatio),
             bold?.BoldEvidenceSource ?? PdfLineTypography.None,
-            typed.Select(t => t.FontName).FirstOrDefault(n => n.Length > 0) ?? "");
+            typed.Select(t => t.FontName).FirstOrDefault(n => n.Length > 0) ?? "")
+        {
+            Glyphs = GlyphsOf(lines),
+        };
+    }
+
+    /// <summary>
+    /// A block's glyph statistics from its lines': the dominant size is the one whose lines carry most characters,
+    /// the median the median of the lines' medians, the extremes the extremes, the ratios weighted by characters.
+    /// </summary>
+    private static PdfGlyphStatistics? GlyphsOf(IReadOnlyList<PdfLine> lines)
+    {
+        var typed = lines.Where(l => l.Typography?.Glyphs is not null).Select(l => (Line: l, Glyphs: l.Typography!.Glyphs!)).ToArray();
+        if (typed.Length == 0) return null;
+        if (typed.Length == 1) return typed[0].Glyphs;
+        var weight = typed.Select(t => (double)Math.Max(1, t.Line.Text.Length)).ToArray();
+        var total = weight.Sum();
+        var medians = typed.Select(t => t.Glyphs.MedianPointSize).Order().ToArray();
+        return new PdfGlyphStatistics(
+            typed.Select((t, i) => (t.Glyphs.DominantPointSize, weight[i])).GroupBy(x => x.DominantPointSize)
+                .OrderByDescending(g => g.Sum(x => x.Item2)).ThenBy(g => g.Key).First().Key,
+            medians[medians.Length / 2],
+            typed.Min(t => t.Glyphs.MinPointSize),
+            typed.Max(t => t.Glyphs.MaxPointSize),
+            typed.Select((t, i) => (t.Glyphs.DominantFontName, weight[i])).Where(x => x.DominantFontName.Length > 0)
+                .GroupBy(x => x.DominantFontName).OrderByDescending(g => g.Sum(x => x.Item2)).ThenBy(g => g.Key, StringComparer.Ordinal)
+                .Select(g => g.Key).FirstOrDefault() ?? "",
+            typed.Select((t, i) => t.Glyphs.BoldGlyphRatio * weight[i]).Sum() / total,
+            typed.Select((t, i) => t.Glyphs.ItalicGlyphRatio * weight[i]).Sum() / total);
     }
 
     private static PdfLineBlockAnnotation? LeastRecurring(IReadOnlyList<PdfLineBlockAnnotation> annotations) =>

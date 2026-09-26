@@ -37,14 +37,16 @@ public sealed class PdfSourceFactsV2FreezeTests
     [Fact]
     public void Freeze_pdf_source_facts_v2()
     {
-        Assert.Equal(PdfSourceFactsVersion.V2_EffectivePointSize, PdfSourceFactsVersions.Current);
+        // When V2 was frozen it was production's version (the artifact says so); PDF_SOURCE_FACTS_V3 took over later.
         using var audit = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Audit)));
         using var diagnostic = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Diagnostic)));
         var summary = audit.RootElement.GetProperty("summary");
         Assert.Equal(summary.GetProperty("pdfs").GetInt32(), summary.GetProperty("atomUniverseUnchanged").GetInt32());
         var src053 = diagnostic.RootElement.GetProperty("rows").EnumerateArray().Single(r => r.GetProperty("documentId").GetString() == "SRC-053");
 
-        FreezeArtifact.AssertJson(Dir, "PDF_SOURCE_FACTS_V2.freeze.json", new
+        // Written once; re-verified field by field. The definition files' hashes are the state at the freeze: V3 edited
+        // those files, and V2's behaviour - not their bytes - is what must hold (PdfSourceFactsV2FreezeAmendmentTests).
+        RevealPin.Verify(Dir, "PDF_SOURCE_FACTS_V2.freeze.json", new
         {
             artifactKind = "a99_pdf_source_facts_version_freeze",
             version = PdfSourceFactsVersions.Id(PdfSourceFactsVersion.V2_EffectivePointSize),
@@ -81,6 +83,6 @@ public sealed class PdfSourceFactsV2FreezeTests
                 new { gate = 8, name = "frozen before SRC-054", passed = true, evidence = "this artifact, committed before SRC-054's preregistration" },
             },
             modelProviderVlmCalls = 0,
-        });
+        }, "definitionFiles");
     }
 }

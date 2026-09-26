@@ -60,6 +60,15 @@ internal enum PdfSourceFactsVersion
     /// size 1 under V1; V2 reads the size it is drawn at.
     /// </summary>
     V2_EffectivePointSize,
+
+    /// <summary>
+    /// PDF_SOURCE_FACTS_V3: V2's per-glyph readings, summarized robustly. A line's size is its dominant effective
+    /// size - the size carrying most of its characters - not their mean: a title set in simulated small caps
+    /// (initials 18pt, the rest 13.5pt) is 13.5 on every line, where V2's mean made two lines of one title read
+    /// as different sizes. The line also reports the median, minimum and maximum size, its dominant font and its
+    /// bold and italic glyph ratios, so nothing the mean used to blur is lost. Weight is V2's.
+    /// </summary>
+    V3_RobustGlyphStatistics,
 }
 
 internal static class PdfSourceFactsVersions
@@ -71,6 +80,7 @@ internal static class PdfSourceFactsVersions
     {
         PdfSourceFactsVersion.V1_NominalFontSize => "PDF_SOURCE_FACTS_V1",
         PdfSourceFactsVersion.V2_EffectivePointSize => "PDF_SOURCE_FACTS_V2",
+        PdfSourceFactsVersion.V3_RobustGlyphStatistics => "PDF_SOURCE_FACTS_V3",
         _ => throw new ArgumentOutOfRangeException(nameof(version)),
     };
 }
@@ -90,6 +100,11 @@ internal sealed record PdfLineTypography(
     string BoldEvidenceSource,
     string FontName)
 {
+    /// <summary>
+    /// The glyph-level statistics PDF_SOURCE_FACTS_V3 reports (computed under every version, reported only by V3).
+    /// </summary>
+    public PdfGlyphStatistics? Glyphs { get; init; }
+
     public const string FromFontDetails = "FONT_DETAILS";
     public const string FromFontName = "FONT_NAME";
     public const string FromBoth = "FONT_DETAILS+FONT_NAME";
@@ -114,6 +129,43 @@ internal sealed record PdfLineTypography(
         return style.Contains("black", StringComparison.Ordinal) ||
                style.Contains("heavy", StringComparison.Ordinal) ||
                style.Contains("demi", StringComparison.Ordinal);
+    }
+}
+
+/// <summary>
+/// A line's glyphs summarized over their characters (spaces excluded): the dominant effective size (the size
+/// carrying most characters, the smaller on a tie), the median, the smallest and the largest, the font carrying
+/// most characters, and the share of characters in a bold weight (declared or named, as V2) and in italic.
+/// Source observations only: nothing here says what a size means.
+/// </summary>
+internal sealed record PdfGlyphStatistics(
+    double DominantPointSize,
+    double MedianPointSize,
+    double MinPointSize,
+    double MaxPointSize,
+    string DominantFontName,
+    double BoldGlyphRatio,
+    double ItalicGlyphRatio)
+{
+    /// <summary>Glyph sizes are compared at a tenth of a point: finer differences are rendering noise.</summary>
+    public static double Round(double size) => Math.Round(size, 1);
+
+    public static PdfGlyphStatistics Of(IReadOnlyList<(double Size, string Font, bool Bold, bool Italic)> characters)
+    {
+        if (characters.Count == 0) return new PdfGlyphStatistics(0, 0, 0, 0, "", 0, 0);
+        var sizes = characters.Select(c => Round(c.Size)).ToArray();
+        var dominant = sizes.GroupBy(s => s).OrderByDescending(g => g.Count()).ThenBy(g => g.Key).First().Key;
+        var ordered = sizes.Order().ToArray();
+        var font = characters.Where(c => c.Font.Length > 0).GroupBy(c => c.Font)
+            .OrderByDescending(g => g.Count()).ThenBy(g => g.Key, StringComparer.Ordinal).Select(g => g.Key).FirstOrDefault() ?? "";
+        return new PdfGlyphStatistics(
+            dominant,
+            ordered[ordered.Length / 2],
+            ordered[0],
+            ordered[^1],
+            font,
+            characters.Count(c => c.Bold) / (double)characters.Count,
+            characters.Count(c => c.Italic) / (double)characters.Count);
     }
 }
 
@@ -353,6 +405,7 @@ internal static class PdfLineExtraction
                 var italicFlags = new List<bool>();
                 var fontNames = new List<string>();
                 var fillColors = new List<string>();
+                var glyphCharacters = new List<(double Size, string Font, bool Bold, bool Italic)>();
                 Letter? previous = null;
                 foreach (var letter in ordered)
                 {
@@ -393,6 +446,7 @@ internal static class PdfLineExtraction
                     var namedBold = PdfLineTypography.NameStatesBold(letter.FontName ?? letter.FontDetails?.Name);
                     foreach (var _ in letter.Value)
                     {
+                        glyphCharacters.Add((letter.PointSize, fontName, declaredBold || namedBold, letter.FontDetails?.IsItalic ?? false));
                         boldFlags.Add(declaredBold);
                         fontBoldFlags.Add(declaredBold);
                         nameBoldFlags.Add(namedBold);
@@ -418,9 +472,18 @@ internal static class PdfLineExtraction
                     Ratio(nameBoldFlags),
                     Ratio(derivedFlags),
                     BoldEvidenceSource(fontBoldFlags, nameBoldFlags),
-                    Dominant(fontNames));
-                var effective = facts == PdfSourceFactsVersion.V2_EffectivePointSize;
+                    Dominant(fontNames))
+                {
+                    Glyphs = PdfGlyphStatistics.Of(glyphCharacters),
+                };
+                var effective = facts is PdfSourceFactsVersion.V2_EffectivePointSize or PdfSourceFactsVersion.V3_RobustGlyphStatistics;
                 if (effective) boldFlags = derivedFlags;
+                var size = facts switch
+                {
+                    PdfSourceFactsVersion.V3_RobustGlyphStatistics => typography.Glyphs!.DominantPointSize,
+                    PdfSourceFactsVersion.V2_EffectivePointSize => typography.EffectivePointSize,
+                    _ => typography.NominalFontSize,
+                };
 
                 var boldRatio = Ratio(boldFlags);
                 var italicRatio = italicFlags.Count == 0 ? 0.0 : italicFlags.Count(b => b) / (double)italicFlags.Count;
@@ -433,7 +496,7 @@ internal static class PdfLineExtraction
                 lines.Add(new PdfLine(
                     page.Number,
                     ordered.Average(MidY),
-                    effective ? typography.EffectivePointSize : typography.NominalFontSize,
+                    size,
                     text,
                     boldRatio,
                     leadingBoldPrefix,

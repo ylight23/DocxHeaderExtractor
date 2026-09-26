@@ -204,6 +204,19 @@ public sealed partial class GenericPipelineHardcodeAuditTests
                 change = "PDF style facts add Typography { sourceFacts, effectivePointSize, fontName, fontBoldFlag, derivedBold, boldEvidenceSource }; Bold and RelativeFontSize are computed from the effective point size and the derived weight. DOCX requests are unchanged",
             });
 
+    /// <summary>
+    /// The same request version over PDF_SOURCE_FACTS_V3: the PDF typography facts become robust glyph statistics
+    /// (dominant / median / min / max size, dominant font, bold and italic glyph ratios). A freeze of its own.
+    /// </summary>
+    [Fact]
+    public Task Freeze_the_v2_model_visible_contract_over_pdf_source_facts_v3() =>
+        FreezeContract("MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V3.freeze.json", PdfSourceFactsVersion.V3_RobustGlyphStatistics,
+            extra: new
+            {
+                pdfSourceFacts = PdfSourceFactsVersions.Id(PdfSourceFactsVersion.V3_RobustGlyphStatistics),
+                change = "PDF style facts carry Typography { sourceFacts, dominantPointSize, medianPointSize, minPointSize, maxPointSize, dominantFontName, fontBoldFlag, derivedBold, boldEvidenceSource, boldGlyphRatio, italicGlyphRatio }; RelativeFontSize is computed from the dominant size. DOCX requests are unchanged",
+            });
+
     private static async Task FreezeContract(string name, PdfSourceFactsVersion facts, object? extra)
     {
         const string pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";

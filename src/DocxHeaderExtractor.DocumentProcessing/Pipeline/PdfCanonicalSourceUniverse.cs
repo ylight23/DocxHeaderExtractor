@@ -167,6 +167,29 @@ internal static class PdfCanonicalSourceUniverseBuilder
         if (typography is null || typography.Version == PdfSourceFactsVersion.V1_NominalFontSize)
             return new { Bold = bold, Italic = italic, RelativeFontSize = relativeFontSize, LineCount = source.LineCount };
 
+        if (typography.Version == PdfSourceFactsVersion.V3_RobustGlyphStatistics && typography.Glyphs is { } glyphs)
+            return new
+            {
+                Bold = bold,
+                Italic = italic,
+                RelativeFontSize = relativeFontSize,
+                LineCount = source.LineCount,
+                Typography = new
+                {
+                    sourceFacts = PdfSourceFactsVersions.Id(typography.Version),
+                    dominantPointSize = glyphs.DominantPointSize,
+                    medianPointSize = glyphs.MedianPointSize,
+                    minPointSize = glyphs.MinPointSize,
+                    maxPointSize = glyphs.MaxPointSize,
+                    dominantFontName = glyphs.DominantFontName,
+                    fontBoldFlag = typography.FontBoldFlagRatio >= 0.5,
+                    derivedBold = typography.DerivedBoldRatio >= 0.5,
+                    boldEvidenceSource = typography.BoldEvidenceSource,
+                    boldGlyphRatio = Math.Round(glyphs.BoldGlyphRatio, 2),
+                    italicGlyphRatio = Math.Round(glyphs.ItalicGlyphRatio, 2),
+                },
+            };
+
         return new
         {
             Bold = bold,

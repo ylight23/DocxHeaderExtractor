@@ -40,7 +40,9 @@ public sealed partial class ModelVisibleSourceFactsTests
     /// points, a font name, two weights with their origin. None of it names a heading or a level.
     /// </summary>
     private static readonly string[] PdfTypographyKeys =
-        ["sourceFacts", "effectivePointSize", "fontName", "fontBoldFlag", "derivedBold", "boldEvidenceSource"];
+        ["sourceFacts", "effectivePointSize", "fontName", "fontBoldFlag", "derivedBold", "boldEvidenceSource",
+         // PDF_SOURCE_FACTS_V3: robust glyph statistics in place of the mean size.
+         "dominantPointSize", "medianPointSize", "minPointSize", "maxPointSize", "dominantFontName", "boldGlyphRatio", "italicGlyphRatio"];
     private static readonly string[] MarginKeys = ["alias", "block", "text", "owned"];
 
     [Fact]
@@ -87,7 +89,8 @@ public sealed partial class ModelVisibleSourceFactsTests
                 if (item.GetProperty("style").TryGetProperty("Typography", out var typography))
                 {
                     Assert.All(typography.EnumerateObject(), p => Assert.Contains(p.Name, PdfTypographyKeys));
-                    Assert.Equal(JsonValueKind.Number, typography.GetProperty("effectivePointSize").ValueKind);
+                    Assert.Equal(JsonValueKind.Number, typography.GetProperty(
+                        typography.TryGetProperty("dominantPointSize", out _) ? "dominantPointSize" : "effectivePointSize").ValueKind);
                     Assert.Contains(typography.GetProperty("boldEvidenceSource").GetString(),
                         new[] { "FONT_DETAILS", "FONT_NAME", "FONT_DETAILS+FONT_NAME", "NONE" });
                 }
