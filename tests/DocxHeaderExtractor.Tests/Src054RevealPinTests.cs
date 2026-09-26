@@ -14,7 +14,7 @@ public sealed class Src054RevealPinTests
     public void Freeze_the_reveal_pin()
     {
         var pdf = TestRepository.Path(Src054BlindGeneralizationTests.Pdf);
-        var gold = TestRepository.Path(Src054BlindScoreTests.GoldPath);
+        var gold = TestRepository.Path(Src054BlindScoreTests.GoldR1);
         var universe = ExactScorer.Universe.For("PDF", pdf);
         var claims = ExactScorer.ReadGold(gold, universe); // binds every claim; throws on any that does not
         using var goldDoc = JsonDocument.Parse(File.ReadAllText(gold));
@@ -88,6 +88,8 @@ public sealed class Src054RevealPinTests
         // Written once before the reveal; afterwards every pinned SRC-054 fact is re-verified, and the registry
         // file as a whole and the suite count are the corpus state at the reveal (RevealPin).
         RevealPin.Verify(Src054BlindScoreTests.Root, "SRC-054.reveal-pin.json", pin,
-            "gold.registry.sha256", "checkpoint.fullSuite");
+            "gold.registry.sha256", "checkpoint.fullSuite",
+            // Gold R2 (after the reveal) changed the registry entry and the harness; the amendment records both.
+            "gold.registryGoldSha256", "harness.sha256");
     }
 }

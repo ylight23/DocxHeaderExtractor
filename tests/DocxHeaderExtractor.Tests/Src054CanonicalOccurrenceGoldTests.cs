@@ -22,6 +22,9 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class Src054CanonicalOccurrenceGoldTests
 {
     private const string GoldPath = "eval/a99-closed-loop/gold/SRC-054.gold.json";
+
+    /// <summary>The checks below describe Gold R1, the materialized review; the authored Gold is R2 since the revision.</summary>
+    private const string GoldR1 = Src054BlindScoreTests.GoldR1;
     private const string Review = "eval/a99-closed-loop/source-review-v1/SRC-054.source-review.v1.json";
     private const string ReviewItems = "eval/a99-closed-loop/source-review-v1/SRC-054/review-items.json";
     private const string LineageDir = "eval/a99-closed-loop/source-review-v1";
@@ -152,7 +155,7 @@ public sealed class Src054CanonicalOccurrenceGoldTests
     [Fact]
     public void The_gold_is_the_decided_review_and_every_claim_is_exact()
     {
-        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(GoldPath)));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(GoldR1)));
         var root = gold.RootElement;
         var occurrence = root.GetProperty("occurrence");
         if (occurrence.ValueKind == JsonValueKind.Null) return; // not materialized yet
@@ -201,7 +204,7 @@ public sealed class Src054CanonicalOccurrenceGoldTests
     [Fact]
     public void The_user_decisions_are_in_the_gold_as_decided()
     {
-        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(GoldPath)));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(GoldR1)));
         var occurrence = gold.RootElement.GetProperty("occurrence");
         if (occurrence.ValueKind == JsonValueKind.Null) return;
         var claims = occurrence.GetProperty("claims").EnumerateArray()

@@ -11,7 +11,7 @@
   "approval": {
     "authority": "USER",
     "userFinalApproval": true,
-    "approvalBasis": "USER_APPROVED_GOLD_REVISION",
+    "approvalBasis": "USER_ADJUDICATED_STRUCTURAL_AUDIT",
     "approvedAt": "2026-09-26",
     "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
     "semanticTruthReusedFrom": [
@@ -19,7 +19,7 @@
     ],
     "reReviewedDuringConsolidation": false
   },
-  "semanticHeadingTotal": 297,
+  "semanticHeadingTotal": 296,
   "declaredCapabilities": {
     "visualBindingEvaluable": false,
     "hierarchyEvaluable": false
@@ -1177,50 +1177,6 @@
         "evidence": "11pt bold standalone label at the margin over its own prose or list: precedent DOC-0133 (user-decided 2026-09-25) (P6); precedent SRC-041 (user-decided 2026-09-25); precedent SRC-053 (user-decided 2026-09-26)"
       },
       {
-        "approvedWording": "Results from Lending Activities",
-        "sourceParts": [
-          {
-            "sourceAlias": "L0508:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
-            "occurrence": null,
-            "leftExactContext": null,
-            "rightExactContext": null
-          }
-        ],
-        "semanticRole": null,
-        "identity": "L0508:S0:0-31",
-        "projectedText": "Results from Lending Activities",
-        "boundParts": [
-          {
-            "sourceAlias": "L0508:S0",
-            "page": 14,
-            "row": 508,
-            "utf16Span": {
-              "start": 0,
-              "end": 31
-            },
-            "text": "Results from Lending Activities",
-            "localityFromPrevious": null
-          }
-        ],
-        "semanticAxes": {
-          "semanticFunctions": [
-            "STRUCTURE"
-          ],
-          "primaryFunction": "STRUCTURE",
-          "scope": "SECTION",
-          "occurrenceRoles": [
-            "REGION_OPENER"
-          ],
-          "titleRelation": "TITLE",
-          "titlePartAliases": [],
-          "informationType": null
-        },
-        "pattern": "GOLD_REVISION_R2_SECTION_LABEL",
-        "evidence": "Gold R2 (user-approved 2026-09-26): a page-initial 10pt bold standalone label at the margin over its own region, like its Gold sibling 'Results from Borrowing activities'; rejected in R1 by a review-tool error"
-      },
-      {
         "approvedWording": "Loan Interest Revenue",
         "sourceParts": [
           {
@@ -1263,50 +1219,6 @@
         },
         "pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
         "evidence": "user decision 2026-09-26 (S054_Q1, TRUE): a short standalone line in plain Times-Roman at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Function decides, as in S053_Q2, even with no typographic mark"
-      },
-      {
-        "approvedWording": "Results from Investing activities",
-        "sourceParts": [
-          {
-            "sourceAlias": "L0582:S0",
-            "selectionMode": "WHOLE_ALIAS",
-            "verbatimText": null,
-            "occurrence": null,
-            "leftExactContext": null,
-            "rightExactContext": null
-          }
-        ],
-        "semanticRole": null,
-        "identity": "L0582:S0:0-33",
-        "projectedText": "Results from Investing activities",
-        "boundParts": [
-          {
-            "sourceAlias": "L0582:S0",
-            "page": 16,
-            "row": 582,
-            "utf16Span": {
-              "start": 0,
-              "end": 33
-            },
-            "text": "Results from Investing activities",
-            "localityFromPrevious": null
-          }
-        ],
-        "semanticAxes": {
-          "semanticFunctions": [
-            "STRUCTURE"
-          ],
-          "primaryFunction": "STRUCTURE",
-          "scope": "SECTION",
-          "occurrenceRoles": [
-            "REGION_OPENER"
-          ],
-          "titleRelation": "TITLE",
-          "titlePartAliases": [],
-          "informationType": null
-        },
-        "pattern": "GOLD_REVISION_R2_SECTION_LABEL",
-        "evidence": "Gold R2 (user-approved 2026-09-26): a page-initial 10pt bold standalone label at the margin over its own region, like its Gold sibling 'Results from Borrowing activities'; rejected in R1 by a review-tool error"
       },
       {
         "approvedWording": "Net Investment Revenue",
@@ -2893,6 +2805,50 @@
         },
         "pattern": "MDA_SUBHEADING",
         "evidence": "10pt bold standalone label at the margin over its own prose or list (bold italic: slant does not decide - precedent SRC-053 (user-decided 2026-09-26) S053_Q2): precedent DOC-0133 (user-decided 2026-09-25) (P6); precedent SRC-041 (user-decided 2026-09-25); precedent SRC-053 (user-decided 2026-09-26)"
+      },
+      {
+        "approvedWording": "Total Guarantees and Credit Enhancements Received . . . . . . . . . . . . . . . . . . . . . . . . . . . . $14,908 $10,866",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1312:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1312:S0:0-121",
+        "projectedText": "Total Guarantees and Credit Enhancements Received . . . . . . . . . . . . . . . . . . . . . . . . . . . . $14,908 $10,866",
+        "boundParts": [
+          {
+            "sourceAlias": "L1312:S0",
+            "page": 35,
+            "row": 1312,
+            "utf16Span": {
+              "start": 0,
+              "end": 121
+            },
+            "text": "Total Guarantees and Credit Enhancements Received . . . . . . . . . . . . . . . . . . . . . . . . . . . . $14,908 $10,866",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "MDA_SUBHEADING",
+        "evidence": "10pt bold standalone label at the margin over its own prose or list: precedent DOC-0133 (user-decided 2026-09-25) (P6); precedent SRC-041 (user-decided 2026-09-25); precedent SRC-053 (user-decided 2026-09-26)"
       },
       {
         "approvedWording": "Grant Making Facilities",
@@ -13437,16 +13393,6 @@
       "path": "eval/a99-closed-loop/policy/occurrence-classification-principles.v1.json",
       "sha256": "6c3d2b2c94b5da13c1d3f499c522b52d4ffeec76660ad8c5558b05e7b095719a",
       "role": "CLASSIFICATION_PRINCIPLES"
-    },
-    {
-      "path": "gold-revision:SRC-054:r1-296-to-r2-297:2026-09-26",
-      "sha256": "82a904eefafa687537c08236ac70a177523b864d0829507524ffeccd6f8e5c56",
-      "role": "GOLD_REVISION_PREDECESSOR"
-    },
-    {
-      "path": "eval/a99-closed-loop/source-review-v1/SRC-054.gold-revision-r2.v1.json",
-      "sha256": "f42d5fba9eb9b3a9d096e6841504efeafeb1e6e9d1379a72f3be506cfc0caed2",
-      "role": "GOLD_REVISION_RECORD"
     }
   ]
 }

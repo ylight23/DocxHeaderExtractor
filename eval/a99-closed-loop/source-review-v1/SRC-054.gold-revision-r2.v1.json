@@ -1,0 +1,58 @@
+{
+  "artifactKind": "a99_gold_revision",
+  "authorityId": "SRC-054",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-26",
+  "modelProviderVlmCalls": 0,
+  "r1": {
+    "path": "eval/a99-closed-loop/gold-history/SRC-054.gold.r1.json",
+    "sha256": "82a904eefafa687537c08236ac70a177523b864d0829507524ffeccd6f8e5c56",
+    "commit": "3d52729",
+    "total": 296,
+    "role": "the Gold frozen at the reveal: the held-out authority of the raw score (912dcc7, F1 0.799), kept byte for byte, never overwritten"
+  },
+  "r2": {
+    "path": "eval/a99-closed-loop/gold/SRC-054.gold.json",
+    "total": 297,
+    "role": "the corrected source authority from this revision on"
+  },
+  "foundBy": "classifying the held-out residuals (96e9e5e): the engine was right on all three, and each correction rests on source evidence alone",
+  "corrections": [
+    {
+      "alias": "L1312:S0",
+      "text": "Total Guarantees and Credit Enhancements Received . . . . .",
+      "r1": "HEADING",
+      "r2": "NON_HEADING",
+      "error": "a table's total row - bold, with dot leaders to its figures - admitted because the review tool's prose test skipped the heading below it",
+      "sourceEvidence": "Table 21's last row, dot leaders, the next line is the 11pt heading 'Grant Making Facilities'"
+    },
+    {
+      "alias": "L0508:S0",
+      "text": "Results from Lending Activities",
+      "r1": "NON_HEADING",
+      "r2": "HEADING",
+      "error": "a page-initial 10pt bold section label rejected because the plain label under it ('Loan Interest Revenue', S054_Q1) was not skipped by the review tool's prose test",
+      "sourceEvidence": "10pt Times-Bold at the margin atop p14, over the S054_Q1 label and its prose; its sibling 'Results from Borrowing activities' (p16) is a heading in R1"
+    },
+    {
+      "alias": "L0582:S0",
+      "text": "Results from Investing activities",
+      "r1": "NON_HEADING",
+      "r2": "HEADING",
+      "error": "the same as the line above ('Net Investment Revenue' under it)",
+      "sourceEvidence": "10pt Times-Bold at the margin atop p16, over the S054_Q1 label and its prose; the same sibling"
+    }
+  ],
+  "correctedGoldDiagnostic": {
+    "status": "DIAGNOSTIC - the committed blind proposals (44b88f4) against Gold R2; not a held-out score",
+    "scorer": "GENERIC_EXACT_SCORER_V1",
+    "goldClaims": 297,
+    "truePositives": 245,
+    "falsePositives": 67,
+    "falseNegatives": 52,
+    "precision": 0.7853,
+    "recall": 0.8249,
+    "f1": 0.8046
+  },
+  "rule": "the pipeline does not benefit backwards in time from a Gold correction: the held-out score stays F1 0.799 against R1; the figure above is a diagnostic of the same committed proposals against R2"
+}
