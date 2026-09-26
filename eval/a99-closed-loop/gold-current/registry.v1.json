@@ -321,6 +321,21 @@
       "userFinalApproval": true
     },
     {
+      "authorityId": "SRC-089",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+      "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+      "semanticHeadingTotal": 36,
+      "materializedSemanticClaims": 36,
+      "semanticCountAuthoritative": true,
+      "semanticClaimsEvaluable": true,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "visualBindingEvaluable": false,
+      "goldSha256": "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7",
+      "approvalAuthority": "USER",
+      "userFinalApproval": true
+    },
+    {
       "authorityId": "SRC-095",
       "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
       "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",

@@ -51,8 +51,9 @@ public sealed class OntologyFunctionalityReviewV1Tests
     public void Corpus_coverage_matches_the_already_established_finding()
     {
         var registry = ReadRegistry();
-        // 21 authorities when this finding was established; SRC-095 (a held-out RFC, 2026-09-26) made 22.
-        Assert.Equal(22, registry.Length);
+        // 21 authorities when this finding was established; SRC-095 (a held-out RFC, 2026-09-26) made 22,
+        // SRC-089 (a held-out decree, 2026-09-27) 23.
+        Assert.Equal(23, registry.Length);
         var carriers = registry.Where(a => a.MaterializedSemanticClaims > 0).ToArray();
         // Every authority that carries a materialized claims list, derived from the registry rather
         // than listed here - the set grows as Gold is itemised. Carrying claims is not the same as

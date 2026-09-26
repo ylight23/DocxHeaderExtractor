@@ -1,0 +1,33 @@
+{
+  "artifactKind": "a99_gold_authority_lineage",
+  "authorityId": "SRC-089",
+  "modelProviderVlmCalls": 0,
+  "previousSemanticAuthority": null,
+  "previousAuthorityNote": "none: no Gold, count or occurrence list of this source existed before this review",
+  "currentCanonicalAuthority": {
+    "source": "original PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+    "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+    "total": 36,
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "hierarchyEvaluable": false,
+    "membershipDecision": {
+      "decidedBy": "USER",
+      "decidedAt": "2026-09-27",
+      "review": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-089.source-review.v1.json",
+        "sha256": "4fe910a97123bc4d9e85563a9527891ad732e96bf596a99c18a6af947caf8b76"
+      },
+      "reviewItems": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-089/review-items.json",
+        "sha256": "85deee1dfebc0010addb317e9e323b85c4468aae0e7c1278629a1a86a0f8a9fc"
+      }
+    },
+    "engineProposalsRead": false,
+    "status": "CURRENT_OCCURRENCE_LEVEL_AUTHORITY"
+  }
+}

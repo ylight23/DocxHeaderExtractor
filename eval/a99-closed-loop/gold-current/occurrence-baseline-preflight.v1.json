@@ -238,6 +238,20 @@
       "placementAllowancePerRepetition": 1
     },
     {
+      "authorityId": "SRC-089",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+      "goldSha256": "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7",
+      "sourcePath": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+      "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+      "sourceUniverseSha256": "949dedfe976c1baeebf60bcad4bee75a5d5eafef7886bb2e9385f0708c7fb494",
+      "semanticHeadingTotal": 36,
+      "materializedSemanticClaims": 36,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 8,
+      "placementAllowancePerRepetition": 1
+    },
+    {
       "authorityId": "SRC-095",
       "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
       "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
@@ -253,9 +267,9 @@
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 1524,
-    "placementAllowance": 51,
-    "maxProviderCalls": 1575
+    "totalPrimaryCalls": 1548,
+    "placementAllowance": 54,
+    "maxProviderCalls": 1602
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",
