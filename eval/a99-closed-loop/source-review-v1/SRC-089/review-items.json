@@ -1,0 +1,1417 @@
+{
+ "items": [
+  {
+   "section": "FRONT",
+   "parts": [
+    {
+     "sourceAlias": "L0006:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0007:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0008:S0",
+     "selectionMode": "VERBATIM_TEXT",
+     "verbatimText": "THE PUBLICATION LAW",
+     "occurrence": null
+    }
+   ],
+   "text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q1_DECREE_TITLE_BLOCK",
+   "reason": "the title block: 'DECREE' (bold, centred) over 'DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,' and 'THE PUBLICATION LAW (*)' (regular capitals, centred; '(*)' a footnote mark). Proposed: one title of three lines, the document's name being 'Decree detailing ... the Publication Law', without the footnote mark. Alternatives: 'DECREE' alone a document-type label (metadata, like 'RFC 9114' in S095_Q1) and the two lines below the title; or 'DECREE' the title and the two lines a subtitle",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY"
+    ],
+    "primaryFunction": "IDENTITY",
+    "scope": "DOCUMENT",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 1
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0014:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0015:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Chapter I GENERAL PROVISIONS",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+   "reason": "'Chapter I' bold at the margin, its title 'GENERAL PROVISIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "IDENTITY",
+    "scope": "DOCUMENT_PART",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 1
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0160:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0161:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Chapter II PUBLISHING",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+   "reason": "'Chapter II' bold at the margin, its title 'PUBLISHING' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "IDENTITY",
+    "scope": "DOCUMENT_PART",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 5
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0284:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0285:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+   "reason": "'Chapter III' bold at the margin, its title 'PRINTING AND DISTRIBUTION OF PUBLICATIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "IDENTITY",
+    "scope": "DOCUMENT_PART",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 9
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0382:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0383:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+   "reason": "'Chapter IV' bold at the margin, its title 'PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "IDENTITY",
+    "scope": "DOCUMENT_PART",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 12
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0535:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0536:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Chapter V IMPLEMENTATION PROVISIONS",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+   "reason": "'Chapter V' bold at the margin, its title 'IMPLEMENTATION PROVISIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "IDENTITY",
+    "scope": "DOCUMENT_PART",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 17
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0016:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 1. Scope ofregulation and subjects ofapplication",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 1
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0024:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0025:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 1
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0051:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0052:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 2
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0080:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0081:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state management ofpublication activities",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 3
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0094:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 5. Information and reporting regimes in publication activities",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 3
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0106:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0107:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0108:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based representative offices of foreign publishing houses and foreign publication distribution organizations",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 2 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 4
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0126:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0127:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0128:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based representative offices of foreign publishing houses and foreign publication distribution organizations",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 2 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 4
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0162:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 5
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0174:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0175:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors (directors) and editors-in-chiefofpublishing houses",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 6
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0195:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 10. Publication registration and certification ofpublication registration",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 6
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0243:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 11. Joint publication activities",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 8
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0260:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 12. Licensing ofpublication ofnon-commercial documents",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 8
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0286:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0287:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of revocation ofpublication printing permits",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 9
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0317:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 14. Grant, re-grant and revocation ofpublication import business licenses",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 10
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0350:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 15. Refusal to certify the registration ofimport ofpublications for commercial purposes",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 11
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0359:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 16. Responsibility ofpublication importers to appraise contents ofimported publications",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 11
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0384:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 17. Conditions for publishing and distribution ofe-publications",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 12
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0426:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0427:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe publishing and distribution ofe-publications",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 14
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0455:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0456:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 19. Classification ofe-publications and requirements on the contents and technical conditions ofe-publications",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 14
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0478:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 20. Import ofe-publications for commercial purposes",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 15
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0490:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 21. Deposit ofe-publications",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 15
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0499:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0500:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals engaged in the publishing or distribution ofe-publications",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 16
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0522:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0523:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe- publications",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 16
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0537:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 24. Effect",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 17
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0555:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0556:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 25. Renewal oflicenses for publication activities and registration of distribution of publications",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, wrapped onto 1 line(s) that begin in lower case, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 18
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0572:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Article 26. Implementation responsibility",
+   "verdict": "HEADING",
+   "pattern": "ARTICLE_HEADING",
+   "reason": "article heading: 'Article N.' in bold and the article's title in regular weight, over its clauses: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings); a numbered section heading with its title is one claim (SRC-095 NUMBERED_SECTION)",
+   "axes": {
+    "semanticFunctions": [
+     "IDENTITY",
+     "STRUCTURE"
+    ],
+    "primaryFunction": "STRUCTURE",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "REGION_OPENER"
+    ],
+    "titleRelation": "TITLE",
+    "informationType": null
+   },
+   "page": 18
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0109:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "1 . Conditions for establishment:",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q3_COLON_CLAUSE_LABEL",
+   "reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('1 . Conditions for establishment:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "BODY"
+    ],
+    "titleRelation": "NONE",
+    "informationType": null
+   },
+   "page": 4
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0117:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "2. Operation contents:",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q3_COLON_CLAUSE_LABEL",
+   "reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('2. Operation contents:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "BODY"
+    ],
+    "titleRelation": "NONE",
+    "informationType": null
+   },
+   "page": 4
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0246:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "1 . For publishing houses:",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q3_COLON_CLAUSE_LABEL",
+   "reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('1 . For publishing houses:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "BODY"
+    ],
+    "titleRelation": "NONE",
+    "informationType": null
+   },
+   "page": 8
+  },
+  {
+   "section": "BODY",
+   "parts": [
+    {
+     "sourceAlias": "L0249:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "2. For partners:",
+   "verdict": "AMBIGUOUS",
+   "pattern": "S089_Q3_COLON_CLAUSE_LABEL",
+   "reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('2. For partners:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "SECTION",
+    "occurrenceRoles": [
+     "BODY"
+    ],
+    "titleRelation": "NONE",
+    "informationType": null
+   },
+   "page": 8
+  },
+  {
+   "section": "FRONT",
+   "parts": [
+    {
+     "sourceAlias": "L0000:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0001:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "Unofficial Translation – For Reference Purposes Only",
+   "verdict": "NON_HEADING",
+   "pattern": "TRANSLATION_NOTICE",
+   "reason": "'Unofficial Translation - For Reference Purposes Only', bold italic 14pt at the top right: a status notice about the document, not a heading",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "DOCUMENT",
+    "occurrenceRoles": [
+     "METADATA"
+    ],
+    "titleRelation": "NONE",
+    "informationType": "STATUS_METADATA"
+   },
+   "page": 1
+  },
+  {
+   "section": "FRONT",
+   "parts": [
+    {
+     "sourceAlias": "L0002:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "THE GOVERNMENT",
+   "verdict": "NON_HEADING",
+   "pattern": "ISSUER_HEADER",
+   "reason": "'THE GOVERNMENT', the issuing body, top left: issuer metadata, as the issuer lines of SRC-041/042/053 (P2)",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "DOCUMENT",
+    "occurrenceRoles": [
+     "METADATA"
+    ],
+    "titleRelation": "NONE",
+    "informationType": "ISSUER_METADATA"
+   },
+   "page": 1
+  },
+  {
+   "section": "FRONT",
+   "parts": [
+    {
+     "sourceAlias": "L0002:S1",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0003:S1",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "THE SOCIALIST REPUBLIC OF VIETNAM Independence – Freedom – Happiness",
+   "verdict": "NON_HEADING",
+   "pattern": "NATIONAL_HEADER",
+   "reason": "'THE SOCIALIST REPUBLIC OF VIETNAM' over 'Independence - Freedom - Happiness': the national heading and motto every Vietnamese legal document carries - metadata",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "DOCUMENT",
+    "occurrenceRoles": [
+     "METADATA"
+    ],
+    "titleRelation": "NONE",
+    "informationType": "ISSUER_METADATA"
+   },
+   "page": 1
+  },
+  {
+   "section": "FRONT",
+   "parts": [
+    {
+     "sourceAlias": "L0003:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "-------",
+   "verdict": "NON_HEADING",
+   "pattern": "RULE_LINE",
+   "reason": "a bold row of dashes under the header: a rule, not text",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "DOCUMENT",
+    "occurrenceRoles": [
+     "PAGE_FURNITURE"
+    ],
+    "titleRelation": "NONE",
+    "informationType": null
+   },
+   "page": 1
+  },
+  {
+   "section": "FRONT",
+   "parts": [
+    {
+     "sourceAlias": "L0004:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "---------------",
+   "verdict": "NON_HEADING",
+   "pattern": "RULE_LINE",
+   "reason": "a bold row of dashes under the header: a rule, not text",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "DOCUMENT",
+    "occurrenceRoles": [
+     "PAGE_FURNITURE"
+    ],
+    "titleRelation": "NONE",
+    "informationType": null
+   },
+   "page": 1
+  },
+  {
+   "section": "FRONT",
+   "parts": [
+    {
+     "sourceAlias": "L0005:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "No. 195/2013/ND-CP Hanoi, November 21, 2013",
+   "verdict": "NON_HEADING",
+   "pattern": "NUMBER_AND_DATE",
+   "reason": "'No. 195/2013/ND-CP Hanoi, November 21, 2013': the document's number, place and date - metadata (S095_Q1: an identifier is not a heading)",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "DOCUMENT",
+    "occurrenceRoles": [
+     "METADATA"
+    ],
+    "titleRelation": "NONE",
+    "informationType": "DOCUMENT_IDENTIFIER"
+   },
+   "page": 1
+  },
+  {
+   "section": "BACK",
+   "parts": [
+    {
+     "sourceAlias": "L0576:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0577:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    },
+    {
+     "sourceAlias": "L0578:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "ON BEHALF OF THE GOVERNMENT PRIME MINISTER Nguyen Tan Dung",
+   "verdict": "NON_HEADING",
+   "pattern": "SIGNATURE_BLOCK",
+   "reason": "'ON BEHALF OF THE GOVERNMENT / PRIME MINISTER / Nguyen Tan Dung', bold at the right after the last article: the signature block - authorship metadata, as the SRC-095 author line",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "DOCUMENT",
+    "occurrenceRoles": [
+     "METADATA"
+    ],
+    "titleRelation": "NONE",
+    "informationType": "AUTHORSHIP_METADATA"
+   },
+   "page": 18
+  },
+  {
+   "section": "BACK",
+   "parts": [
+    {
+     "sourceAlias": "L0579:S0",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
+     "occurrence": null
+    }
+   ],
+   "text": "(*) Công Báo Nos 225-226 (25/02/2014)",
+   "verdict": "NON_HEADING",
+   "pattern": "FOOTNOTE",
+   "reason": "the footnote '(*)' naming the Official Gazette issue: a note",
+   "axes": {
+    "semanticFunctions": [
+     "INFORMATION"
+    ],
+    "primaryFunction": "INFORMATION",
+    "scope": "NOTE",
+    "occurrenceRoles": [
+     "BODY"
+    ],
+    "titleRelation": "NONE",
+    "informationType": null
+   },
+   "page": 18
+  }
+ ]
+}

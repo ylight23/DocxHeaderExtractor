@@ -1,0 +1,306 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC089_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+      "sha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "goldFileRead": false,
+    "countOnlyTotalUsed": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; its blind proposals were committed before the review and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-089/review_tool.py",
+      "sha256": "5eaf5f65b0541b5d2e92dab75d165fe3aaf5289275e92651b6752c2f8be63804"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-089/atom-layout-facts.tsv",
+      "sha256": "ae3dc7a83742eb29164b7906757062c7fe25b6226775c610d13b5cf59ccfebd1"
+    },
+    "atomGlyphFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-089/atom-glyph-facts.tsv",
+      "sha256": "3c7b4f6b08efecd5de8dfc0b3bc18715d876c087a6eaa5feeeada0e076960a0c",
+      "writer": "ScaleUpSurveyDiagnosticTests.Dump_pdf_atom_glyph_facts"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-089/review-items.json",
+      "sha256": "e559ed87a260c6be67c01ecc906a1817791e8cecce5777755d58a0b9ceda098a"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 582,
+    "CLEAR_HEADING": 26,
+    "CLEAR_NON_HEADING_SET_APART": 8,
+    "AMBIGUOUS": 10,
+    "PROPOSED_RANGE": {
+      "min": 26,
+      "max": 36
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells and rows, chart values, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 0,
+      "nonHeadings": 6,
+      "ambiguous": 1
+    },
+    {
+      "section": "BODY",
+      "headings": 26,
+      "nonHeadings": 0,
+      "ambiguous": 9
+    },
+    {
+      "section": "BACK",
+      "headings": 0,
+      "nonHeadings": 2,
+      "ambiguous": 0
+    }
+  ],
+  "headingsByPattern": {
+    "ARTICLE_HEADING": 26
+  },
+  "nonHeadingsByPattern": {
+    "FOOTNOTE": 1,
+    "ISSUER_HEADER": 1,
+    "NATIONAL_HEADER": 1,
+    "NUMBER_AND_DATE": 1,
+    "RULE_LINE": 2,
+    "SIGNATURE_BLOCK": 1,
+    "TRANSLATION_NOTICE": 1
+  },
+  "ambiguous": [
+    {
+      "Pattern": "S089_Q1_DECREE_TITLE_BLOCK",
+      "Page": 1,
+      "aliases": [
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0"
+      ],
+      "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+      "Reason": "the title block: 'DECREE' (bold, centred) over 'DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,' and 'THE PUBLICATION LAW (*)' (regular capitals, centred; '(*)' a footnote mark). Proposed: one title of three lines, the document's name being 'Decree detailing ... the Publication Law', without the footnote mark. Alternatives: 'DECREE' alone a document-type label (metadata, like 'RFC 9114' in S095_Q1) and the two lines below the title; or 'DECREE' the title and the two lines a subtitle",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+      "Page": 1,
+      "aliases": [
+        "L0014:S0",
+        "L0015:S0"
+      ],
+      "Text": "Chapter I GENERAL PROVISIONS",
+      "Reason": "'Chapter I' bold at the margin, its title 'GENERAL PROVISIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT_PART",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+      "Page": 5,
+      "aliases": [
+        "L0160:S0",
+        "L0161:S0"
+      ],
+      "Text": "Chapter II PUBLISHING",
+      "Reason": "'Chapter II' bold at the margin, its title 'PUBLISHING' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT_PART",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+      "Page": 9,
+      "aliases": [
+        "L0284:S0",
+        "L0285:S0"
+      ],
+      "Text": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+      "Reason": "'Chapter III' bold at the margin, its title 'PRINTING AND DISTRIBUTION OF PUBLICATIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT_PART",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+      "Page": 12,
+      "aliases": [
+        "L0382:S0",
+        "L0383:S0"
+      ],
+      "Text": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+      "Reason": "'Chapter IV' bold at the margin, its title 'PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT_PART",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+      "Page": 17,
+      "aliases": [
+        "L0535:S0",
+        "L0536:S0"
+      ],
+      "Text": "Chapter V IMPLEMENTATION PROVISIONS",
+      "Reason": "'Chapter V' bold at the margin, its title 'IMPLEMENTATION PROVISIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT_PART",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S089_Q3_COLON_CLAUSE_LABEL",
+      "Page": 4,
+      "aliases": [
+        "L0109:S0"
+      ],
+      "Text": "1 . Conditions for establishment:",
+      "Reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('1 . Conditions for establishment:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+      "axes": {
+        "semanticFunctions": [
+          "INFORMATION"
+        ],
+        "primaryFunction": "INFORMATION",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "BODY"
+        ],
+        "titleRelation": "NONE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S089_Q3_COLON_CLAUSE_LABEL",
+      "Page": 4,
+      "aliases": [
+        "L0117:S0"
+      ],
+      "Text": "2. Operation contents:",
+      "Reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('2. Operation contents:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+      "axes": {
+        "semanticFunctions": [
+          "INFORMATION"
+        ],
+        "primaryFunction": "INFORMATION",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "BODY"
+        ],
+        "titleRelation": "NONE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S089_Q3_COLON_CLAUSE_LABEL",
+      "Page": 8,
+      "aliases": [
+        "L0246:S0"
+      ],
+      "Text": "1 . For publishing houses:",
+      "Reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('1 . For publishing houses:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+      "axes": {
+        "semanticFunctions": [
+          "INFORMATION"
+        ],
+        "primaryFunction": "INFORMATION",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "BODY"
+        ],
+        "titleRelation": "NONE",
+        "informationType": null
+      }
+    },
+    {
+      "Pattern": "S089_Q3_COLON_CLAUSE_LABEL",
+      "Page": 8,
+      "aliases": [
+        "L0249:S0"
+      ],
+      "Text": "2. For partners:",
+      "Reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('2. For partners:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+      "axes": {
+        "semanticFunctions": [
+          "INFORMATION"
+        ],
+        "primaryFunction": "INFORMATION",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "BODY"
+        ],
+        "titleRelation": "NONE",
+        "informationType": null
+      }
+    }
+  ],
+  "bindingFailures": []
+}
