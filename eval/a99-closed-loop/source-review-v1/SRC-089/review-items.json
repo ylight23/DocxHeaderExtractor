@@ -23,9 +23,9 @@
     }
    ],
    "text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q1_DECREE_TITLE_BLOCK",
-   "reason": "the title block: 'DECREE' (bold, centred) over 'DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,' and 'THE PUBLICATION LAW (*)' (regular capitals, centred; '(*)' a footnote mark). Proposed: one title of three lines, the document's name being 'Decree detailing ... the Publication Law', without the footnote mark. Alternatives: 'DECREE' alone a document-type label (metadata, like 'RFC 9114' in S095_Q1) and the two lines below the title; or 'DECREE' the title and the two lines a subtitle",
+   "reason": "user decision 2026-09-27 (S089_Q1): one title of three lines - 'DECREE' over 'DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,' and 'THE PUBLICATION LAW' - without the footnote mark '(*)': IDENTITY / DOCUMENT / TITLE",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"
@@ -57,9 +57,9 @@
     }
    ],
    "text": "Chapter I GENERAL PROVISIONS",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
-   "reason": "'Chapter I' bold at the margin, its title 'GENERAL PROVISIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "reason": "user decision 2026-09-27 (S089_Q2): 'Chapter I' bold at the margin and its title 'GENERAL PROVISIONS' bold capitals centred on the next line are one chapter heading of two parts",
    "axes": {
     "semanticFunctions": [
      "IDENTITY",
@@ -92,9 +92,9 @@
     }
    ],
    "text": "Chapter II PUBLISHING",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
-   "reason": "'Chapter II' bold at the margin, its title 'PUBLISHING' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "reason": "user decision 2026-09-27 (S089_Q2): 'Chapter II' bold at the margin and its title 'PUBLISHING' bold capitals centred on the next line are one chapter heading of two parts",
    "axes": {
     "semanticFunctions": [
      "IDENTITY",
@@ -127,9 +127,9 @@
     }
    ],
    "text": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
-   "reason": "'Chapter III' bold at the margin, its title 'PRINTING AND DISTRIBUTION OF PUBLICATIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "reason": "user decision 2026-09-27 (S089_Q2): 'Chapter III' bold at the margin and its title 'PRINTING AND DISTRIBUTION OF PUBLICATIONS' bold capitals centred on the next line are one chapter heading of two parts",
    "axes": {
     "semanticFunctions": [
      "IDENTITY",
@@ -162,9 +162,9 @@
     }
    ],
    "text": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
-   "reason": "'Chapter IV' bold at the margin, its title 'PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "reason": "user decision 2026-09-27 (S089_Q2): 'Chapter IV' bold at the margin and its title 'PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS' bold capitals centred on the next line are one chapter heading of two parts",
    "axes": {
     "semanticFunctions": [
      "IDENTITY",
@@ -197,9 +197,9 @@
     }
    ],
    "text": "Chapter V IMPLEMENTATION PROVISIONS",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
-   "reason": "'Chapter V' bold at the margin, its title 'IMPLEMENTATION PROVISIONS' bold capitals centred on the next line. Proposed: one chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and its title). Alternative: two claims, the chapter label and the chapter title",
+   "reason": "user decision 2026-09-27 (S089_Q2): 'Chapter V' bold at the margin and its title 'IMPLEMENTATION PROVISIONS' bold capitals centred on the next line are one chapter heading of two parts",
    "axes": {
     "semanticFunctions": [
      "IDENTITY",
@@ -1064,19 +1064,19 @@
     }
    ],
    "text": "1 . Conditions for establishment:",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q3_COLON_CLAUSE_LABEL",
-   "reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('1 . Conditions for establishment:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+   "reason": "user decision 2026-09-27 (S089_Q3, TRUE): a numbered clause whose whole text is a short noun phrase ending in a colon ('1 . Conditions for establishment:'), over the points or text of that clause, is a sub-heading of its article - function decides, with no typographic mark (as S054_Q1)",
    "axes": {
     "semanticFunctions": [
-     "INFORMATION"
+     "STRUCTURE"
     ],
-    "primaryFunction": "INFORMATION",
+    "primaryFunction": "STRUCTURE",
     "scope": "SECTION",
     "occurrenceRoles": [
-     "BODY"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 4
@@ -1092,19 +1092,19 @@
     }
    ],
    "text": "2. Operation contents:",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q3_COLON_CLAUSE_LABEL",
-   "reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('2. Operation contents:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+   "reason": "user decision 2026-09-27 (S089_Q3, TRUE): a numbered clause whose whole text is a short noun phrase ending in a colon ('2. Operation contents:'), over the points or text of that clause, is a sub-heading of its article - function decides, with no typographic mark (as S054_Q1)",
    "axes": {
     "semanticFunctions": [
-     "INFORMATION"
+     "STRUCTURE"
     ],
-    "primaryFunction": "INFORMATION",
+    "primaryFunction": "STRUCTURE",
     "scope": "SECTION",
     "occurrenceRoles": [
-     "BODY"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 4
@@ -1120,19 +1120,19 @@
     }
    ],
    "text": "1 . For publishing houses:",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q3_COLON_CLAUSE_LABEL",
-   "reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('1 . For publishing houses:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+   "reason": "user decision 2026-09-27 (S089_Q3, TRUE): a numbered clause whose whole text is a short noun phrase ending in a colon ('1 . For publishing houses:'), over the points or text of that clause, is a sub-heading of its article - function decides, with no typographic mark (as S054_Q1)",
    "axes": {
     "semanticFunctions": [
-     "INFORMATION"
+     "STRUCTURE"
     ],
-    "primaryFunction": "INFORMATION",
+    "primaryFunction": "STRUCTURE",
     "scope": "SECTION",
     "occurrenceRoles": [
-     "BODY"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 8
@@ -1148,19 +1148,19 @@
     }
    ],
    "text": "2. For partners:",
-   "verdict": "AMBIGUOUS",
+   "verdict": "HEADING",
    "pattern": "S089_Q3_COLON_CLAUSE_LABEL",
-   "reason": "a numbered clause whose whole text is a short noun phrase ending in a colon ('2. For partners:'), over the points or text of that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article",
+   "reason": "user decision 2026-09-27 (S089_Q3, TRUE): a numbered clause whose whole text is a short noun phrase ending in a colon ('2. For partners:'), over the points or text of that clause, is a sub-heading of its article - function decides, with no typographic mark (as S054_Q1)",
    "axes": {
     "semanticFunctions": [
-     "INFORMATION"
+     "STRUCTURE"
     ],
-    "primaryFunction": "INFORMATION",
+    "primaryFunction": "STRUCTURE",
     "scope": "SECTION",
     "occurrenceRoles": [
-     "BODY"
+     "REGION_OPENER"
     ],
-    "titleRelation": "NONE",
+    "titleRelation": "TITLE",
     "informationType": null
    },
    "page": 8

@@ -66,12 +66,9 @@ H, N, Q = "HEADING", "NON_HEADING", "AMBIGUOUS"
 CLAUSE = re.compile(r'^(?:\d+ ?\.|[a-zđ]/)\s')
 
 # ---------------- title block (p1): no precedent ----------------
-add("FRONT", ["L0006:S0", "L0007:S0", "L0008:S0"], Q, "S089_Q1_DECREE_TITLE_BLOCK",
-    "the title block: 'DECREE' (bold, centred) over 'DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,' and "
-    "'THE PUBLICATION LAW (*)' (regular capitals, centred; '(*)' a footnote mark). Proposed: one title of three lines, the "
-    "document's name being 'Decree detailing ... the Publication Law', without the footnote mark. Alternatives: 'DECREE' alone "
-    "a document-type label (metadata, like 'RFC 9114' in S095_Q1) and the two lines below the title; or 'DECREE' the title and "
-    "the two lines a subtitle", DOC,
+add("FRONT", ["L0006:S0", "L0007:S0", "L0008:S0"], H, "S089_Q1_DECREE_TITLE_BLOCK",
+    "user decision 2026-09-27 (S089_Q1): one title of three lines - 'DECREE' over 'DETAILING A NUMBER OF ARTICLES OF, AND MEASURES "
+    "FOR IMPLEMENTING,' and 'THE PUBLICATION LAW' - without the footnote mark '(*)': IDENTITY / DOCUMENT / TITLE", DOC,
     parts=[whole("L0006:S0"), whole("L0007:S0"), verbatim("L0008:S0", "THE PUBLICATION LAW")])
 
 # ---------------- chapters: no precedent ----------------
@@ -80,10 +77,9 @@ for r in L:
     if text(a).startswith("Chapter ") and bold_glyphs(a) > 0:
         nxt = ORDER[ORDER.index(a) + 1]
         assert bold_glyphs(nxt) > 0 and text(nxt).isupper(), nxt
-        add("BODY", [a, nxt], Q, "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
-            "'" + text(a) + "' bold at the margin, its title '" + text(nxt) + "' bold capitals centred on the next line. Proposed: one "
-            "chapter heading of two parts (a wrapped two-line title is one claim, SRC-029 PART_3; here the lines are a label and "
-            "its title). Alternative: two claims, the chapter label and the chapter title", PART)
+        add("BODY", [a, nxt], H, "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+            "user decision 2026-09-27 (S089_Q2): '" + text(a) + "' bold at the margin and its title '" + text(nxt) + "' bold capitals "
+            "centred on the next line are one chapter heading of two parts", PART)
 
 # ---------------- articles: 'Article N.' bold lead + title, wrapped onto lower-case lines ----------------
 for i, a in enumerate(ORDER):
@@ -103,10 +99,10 @@ for i, a in enumerate(ORDER):
 for a in ORDER:
     t = text(a)
     if a not in claimed and CLAUSE.match(t) and t.endswith(':') and len(t.split()) <= 5:
-        add("BODY", [a], Q, "S089_Q3_COLON_CLAUSE_LABEL",
-            "a numbered clause whose whole text is a short noun phrase ending in a colon ('" + t + "'), over the points or text of "
-            "that clause; plain 12pt like the body. Proposed: not a heading - a clause, the legal unit below the article, whose "
-            "text introduces its points (colon-ended labels are meaning decisions, bucket A). Alternative: a sub-heading of its article", BODY)
+        add("BODY", [a], H, "S089_Q3_COLON_CLAUSE_LABEL",
+            "user decision 2026-09-27 (S089_Q3, TRUE): a numbered clause whose whole text is a short noun phrase ending in a colon ('"
+            + t + "'), over the points or text of that clause, is a sub-heading of its article - function decides, with no "
+            "typographic mark (as S054_Q1)", ax(["STRUCTURE"], "STRUCTURE", "SECTION"))
 
 # ---------------- set-apart non-headings ----------------
 add("FRONT", ["L0000:S0", "L0001:S0"], N, "TRANSLATION_NOTICE",

@@ -117,6 +117,19 @@ public sealed class Src089SourceReviewTests
             nonHeadingsByPattern = items.Where(i => i.Verdict == "NON_HEADING").GroupBy(i => i.Pattern)
                 .OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
             ambiguous = items.Where(i => i.Verdict == "AMBIGUOUS").Select(i => new { i.Pattern, i.Page, aliases = i.Parts.Select(p => p.SourceAlias).ToArray(), i.Text, i.Reason, axes = i.Axes }).ToArray(),
+            userDecisions = new
+            {
+                decidedAt = "2026-09-27",
+                membershipTotal = 36,
+                arithmetic = "26 articles + 1 S089_Q1 title + 5 S089_Q2 chapters + 4 S089_Q3 clause labels = 36",
+                principle = "CLASSIFY OCCURRENCES, NOT STRINGS",
+                patterns = new[]
+                {
+                    new { pattern = "S089_Q1_DECREE_TITLE_BLOCK", decision = "one title of three lines ('DECREE' + 'DETAILING ... IMPLEMENTING,' + 'THE PUBLICATION LAW'), the footnote mark '(*)' excluded: IDENTITY / DOCUMENT / TITLE" },
+                    new { pattern = "S089_Q2_CHAPTER_LABEL_OVER_TITLE", decision = "one claim of two parts per chapter: the label 'Chapter N' and its title line (5 claims)" },
+                    new { pattern = "S089_Q3_COLON_CLAUSE_LABEL", decision = "TRUE x4: a numbered clause that is only a short noun phrase ending in a colon is a sub-heading of its article (not the reviewer's proposal)" },
+                },
+            },
             bindingFailures = failures,
         });
     }
