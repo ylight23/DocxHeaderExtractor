@@ -17,7 +17,7 @@
   "inputs": {
     "reviewTool": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-054/review_tool.py",
-      "sha256": "8b459818f1ad92b671204346f2fef88a3cb909291a26c798076964399e484d18"
+      "sha256": "b8834baedc0ca32afc5136aa2492f357bceda8bfb51ec6ebacce7196b707993a"
     },
     "atomLayoutFacts": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-054/atom-layout-facts.tsv",
@@ -30,16 +30,16 @@
     },
     "reviewItems": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-054/review-items.json",
-      "sha256": "6f298bb693cdc21022933483c56ced372387b3ea6a94b816f64f9e18d84d3a87"
+      "sha256": "f94760afea51a9ee7e02dba12a09deabb4d6031ce873114cb3ece1cf01f9acc0"
     }
   },
   "summary": {
     "SOURCE_OCCURRENCES": 11955,
-    "CLEAR_HEADING": 281,
+    "CLEAR_HEADING": 296,
     "CLEAR_NON_HEADING_SET_APART": 331,
-    "AMBIGUOUS": 15,
+    "AMBIGUOUS": 0,
     "PROPOSED_RANGE": {
-      "min": 281,
+      "min": 296,
       "max": 296
     },
     "BINDING_FAILURES": 0,
@@ -61,9 +61,9 @@
     },
     {
       "section": "MDA",
-      "headings": 141,
+      "headings": 156,
       "nonHeadings": 164,
-      "ambiguous": 15
+      "ambiguous": 0
     },
     {
       "section": "FS_PART",
@@ -99,6 +99,7 @@
     "S053_Q1_PRECEDENT_BACK_COVER_TITLE": 1,
     "S053_Q2_PRECEDENT_ITALIC_LABEL": 13,
     "S053_Q3_PRECEDENT_COVER_TITLE": 1,
+    "S054_Q1_PLAIN_STANDALONE_LABEL": 15,
     "STATEMENT_TITLE": 7,
     "TOC_OPENER": 1
   },
@@ -120,322 +121,18 @@
     "STATEMENT_FOOTER": 6,
     "STATEMENT_SUBTITLE": 18
   },
-  "ambiguous": [
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 7,
-      "aliases": [
-        "L0234:S0"
-      ],
-      "Text": "Allocable Income",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-26",
+    "membershipTotal": 296,
+    "arithmetic": "281 clear + 15 S054_Q1 = 296",
+    "principle": "CLASSIFY OCCURRENCES, NOT STRINGS",
+    "patterns": [
+      {
+        "pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
+        "decision": "TRUE x15: plain standalone labels at the margin over their own prose are headings one level below their parent; function decides, as in S053_Q2, even where no glyph fact marks them"
       }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 7,
-      "aliases": [
-        "L0248:S0"
-      ],
-      "Text": "Equity-to-Loans Ratio",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 7,
-      "aliases": [
-        "L0253:S0"
-      ],
-      "Text": "Budget Anchor Ratio",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 14,
-      "aliases": [
-        "L0509:S0"
-      ],
-      "Text": "Loan Interest Revenue",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 16,
-      "aliases": [
-        "L0583:S0"
-      ],
-      "Text": "Net Investment Revenue",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 16,
-      "aliases": [
-        "L0588:S0"
-      ],
-      "Text": "Investments—Trading",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 19,
-      "aliases": [
-        "L0728:S0"
-      ],
-      "Text": "Other ALM Portfolio",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 20,
-      "aliases": [
-        "L0736:S0"
-      ],
-      "Text": "Borrowing Portfolio",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 54,
-      "aliases": [
-        "L1973:S0"
-      ],
-      "Text": "Portfolio Concentration Risk",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 54,
-      "aliases": [
-        "L1994:S0"
-      ],
-      "Text": "Single Borrower Limit (SBL)",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 55,
-      "aliases": [
-        "L2009:S0"
-      ],
-      "Text": "Sustainable Annual Lending Level (SALL)",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 55,
-      "aliases": [
-        "L2038:S0"
-      ],
-      "Text": "Credit-Risk-Bearing Capacity",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 56,
-      "aliases": [
-        "L2049:S0"
-      ],
-      "Text": "Expected Losses, Overdue Payments, and Non-Performing Loans",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 65,
-      "aliases": [
-        "L2430:S0"
-      ],
-      "Text": "Fixed Spread Loan Refinancing Risk",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    },
-    {
-      "Pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
-      "Page": 65,
-      "aliases": [
-        "L2437:S0"
-      ],
-      "Text": "Other Interest Rate Risks",
-      "Reason": "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers labels with no typographic mark at all",
-      "axes": {
-        "semanticFunctions": [
-          "STRUCTURE"
-        ],
-        "primaryFunction": "STRUCTURE",
-        "scope": "SECTION",
-        "occurrenceRoles": [
-          "REGION_OPENER"
-        ],
-        "titleRelation": "TITLE",
-        "informationType": null
-      }
-    }
-  ],
+    ]
+  },
   "bindingFailures": []
 }

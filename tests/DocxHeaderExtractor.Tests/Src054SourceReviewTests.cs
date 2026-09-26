@@ -118,6 +118,17 @@ public sealed class Src054SourceReviewTests
             nonHeadingsByPattern = items.Where(i => i.Verdict == "NON_HEADING").GroupBy(i => i.Pattern)
                 .OrderBy(g => g.Key, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count()),
             ambiguous = items.Where(i => i.Verdict == "AMBIGUOUS").Select(i => new { i.Pattern, i.Page, aliases = i.Parts.Select(p => p.SourceAlias).ToArray(), i.Text, i.Reason, axes = i.Axes }).ToArray(),
+            userDecisions = new
+            {
+                decidedAt = "2026-09-26",
+                membershipTotal = 296,
+                arithmetic = "281 clear + 15 S054_Q1 = 296",
+                principle = "CLASSIFY OCCURRENCES, NOT STRINGS",
+                patterns = new[]
+                {
+                    new { pattern = "S054_Q1_PLAIN_STANDALONE_LABEL", decision = "TRUE x15: plain standalone labels at the margin over their own prose are headings one level below their parent; function decides, as in S053_Q2, even where no glyph fact marks them" },
+                },
+            },
             bindingFailures = failures,
         });
     }

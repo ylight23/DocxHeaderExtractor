@@ -184,11 +184,10 @@ add("MDA", ["L3129:S0"], H, "MDA_SECTION_TITLE", "12pt bold section title of the
 PLAIN_LABELS = ["L0234:S0", "L0248:S0", "L0253:S0", "L0509:S0", "L0583:S0", "L0588:S0", "L0728:S0", "L0736:S0",
                 "L1973:S0", "L1994:S0", "L2009:S0", "L2038:S0", "L2049:S0", "L2430:S0", "L2437:S0"]
 for a in PLAIN_LABELS:
-    add("MDA", [a], Q, "S054_Q1_PLAIN_STANDALONE_LABEL",
-        "a short standalone line in plain Times-Roman (not bold, not italic) at the margin, after a finished paragraph or at a page top, "
-        "over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). Nothing in the "
-        "glyphs sets it apart (an underline, if any, is not a glyph). S053_Q2 decided italic labels by function; no decision covers "
-        "labels with no typographic mark at all", SEC)
+    add("MDA", [a], H, "S054_Q1_PLAIN_STANDALONE_LABEL",
+        "user decision 2026-09-26 (S054_Q1, TRUE): a short standalone line in plain Times-Roman at the margin, after a finished paragraph "
+        "or at a page top, over its own prose - the lowest label level of this MD&A (its IDA sibling SRC-053 set the same labels 9pt bold). "
+        "Function decides, as in S053_Q2, even with no typographic mark", SEC)
 add("MDA", ["L1744:S0"], H, "MDA_SUBHEADING",
     "10pt bold standalone label opening its region - the committee figure below it, then its prose: " + P33 + " (P6); " + P53, SEC)
 for a in ["L3130:S0", "L3184:S0"]:
