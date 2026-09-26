@@ -1,0 +1,56 @@
+{
+  "artifactKind": "a99_gold_authority_lineage",
+  "authorityId": "SRC-054",
+  "modelProviderVlmCalls": 0,
+  "previousSemanticAuthority": {
+    "source": "original PDF (the same bytes as the current authority)",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/054_IBRD_Information_Statement_FY25.pdf",
+    "sourceSha256": "02c949f22700a2ba84c0f9719c8c2e9d1ffff407cc5d21c89d34bc660cd480ac",
+    "total": 316,
+    "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "exactOccurrenceFreeze": false,
+    "occurrenceList": false,
+    "occurrenceIdentities": "UNAVAILABLE",
+    "exactSpans": "UNAVAILABLE",
+    "status": "SUPERSEDED",
+    "role": "provenance_only",
+    "artifact": {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-054.semantic-freeze.v1.json",
+      "sha256": "c181c02e5cb557df98e438673d6c6b9cdc37e49ea2b42180d3faae54cac24aee"
+    }
+  },
+  "supersededBecause": "the current authority names every occurrence and binds each one exactly to the source, independently of the engine and of the previous count; the previous authority is a total without occurrence identities",
+  "historicalAuthorityDelta": {
+    "HISTORICAL_AUTHORITY_DELTA": -20,
+    "CAUSE": "UNRESOLVED",
+    "meaning": "a difference between two authorities over the same PDF; not evidence that the current Gold misses any occurrence",
+    "followUp": "a historical delta audit only after the Gold and the raw blind score are committed: source-level evidence only, never engine predictions; the previous review's own record names the 8 occurrences its re-audit added: 6 repeated '(Continued)' statement titles, which the current Gold contains, and 2 'Independent Auditor's Report' lines, which the current Gold leaves out as running headers (A3) - confirmed by the user on 2026-09-26 against that earlier count",
+    "goldRevisionRule": "a Gold error found later becomes a new Gold revision with its own provenance; the blind score stays scored against the Gold frozen at the reveal"
+  },
+  "currentCanonicalAuthority": {
+    "source": "original PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/054_IBRD_Information_Statement_FY25.pdf",
+    "sourceSha256": "02c949f22700a2ba84c0f9719c8c2e9d1ffff407cc5d21c89d34bc660cd480ac",
+    "total": 296,
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "hierarchyEvaluable": false,
+    "membershipDecision": {
+      "decidedBy": "USER",
+      "decidedAt": "2026-09-26",
+      "review": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-054.source-review.v1.json",
+        "sha256": "d6edf7084028628eb7e29abb7ca59fcafc14be8f0c1c5ae95da992e5929acc29"
+      },
+      "reviewItems": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-054/review-items.json",
+        "sha256": "f94760afea51a9ee7e02dba12a09deabb4d6031ce873114cb3ece1cf01f9acc0"
+      }
+    },
+    "engineProposalsRead": false,
+    "status": "CURRENT_OCCURRENCE_LEVEL_AUTHORITY"
+  }
+}

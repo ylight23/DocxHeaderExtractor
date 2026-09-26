@@ -210,6 +210,20 @@
       "placementAllowancePerRepetition": 1
     },
     {
+      "authorityId": "SRC-054",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-054.gold.v1.json",
+      "goldSha256": "36c3f7d96a1f5e3f70ca94bb118d08b421a1244e94e626739662e3c03f021e79",
+      "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/054_IBRD_Information_Statement_FY25.pdf",
+      "sourceSha256": "02c949f22700a2ba84c0f9719c8c2e9d1ffff407cc5d21c89d34bc660cd480ac",
+      "sourceUniverseSha256": "dada43c23c53fc18028f6d359248cc23865de5fa53213e30beb13da3c8bd5869",
+      "semanticHeadingTotal": 296,
+      "materializedSemanticClaims": 296,
+      "occurrenceEvaluable": true,
+      "characterSpanEvaluable": true,
+      "semanticRequestsPerRepetition": 93,
+      "placementAllowancePerRepetition": 1
+    },
+    {
       "authorityId": "SRC-055",
       "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-055.gold.v1.json",
       "goldSha256": "c8b45bdc8016095e85bfcb9d6cce4de74ae9ac329f193c633905fd5029a81250",
@@ -225,9 +239,9 @@
     }
   ],
   "callBudget": {
-    "totalPrimaryCalls": 1152,
-    "placementAllowance": 45,
-    "maxProviderCalls": 1197
+    "totalPrimaryCalls": 1431,
+    "placementAllowance": 48,
+    "maxProviderCalls": 1479
   },
   "failClosedGates": [
     "canonical goldSha256 per authority",
