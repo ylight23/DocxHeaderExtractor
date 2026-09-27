@@ -1,0 +1,357 @@
+{
+  "artifactKind": "a99_semantic_authority_consistency_audit",
+  "study": "A99_SEMANTIC_AUTHORITY_CONSISTENCY_AUDIT_V1",
+  "phase": "B - what the contract lets a semantic decision be",
+  "follows": {
+    "audit": "docs/architecture/current-semantic-reachability-audit-2026-09-27.md",
+    "commit": "16f5273",
+    "item": "the isHeading/semanticRole debt recorded in its authority graph"
+  },
+  "modelProviderVlmCalls": 0,
+  "decisionFields": [
+    {
+      "field": "isHeading",
+      "type": "boolean",
+      "required": true,
+      "constrainedBy": "nothing but its type",
+      "contracts": [
+        "a99-semantic-source-parts-v1",
+        "a99-semantic-source-parts-v2",
+        "a99-canonical-semantic-vnext-v1"
+      ]
+    },
+    {
+      "field": "semanticRole",
+      "type": "string",
+      "required": false,
+      "constrainedBy": "nothing: no enum, no vocabulary, no relation to isHeading",
+      "contracts": [
+        "a99-semantic-source-parts-v1",
+        "a99-semantic-source-parts-v2",
+        "a99-canonical-semantic-vnext-v1"
+      ]
+    },
+    {
+      "field": "structuralType",
+      "type": "string",
+      "required": false,
+      "constrainedBy": "nothing",
+      "contracts": [
+        "a99-canonical-semantic-vnext-v1"
+      ]
+    },
+    {
+      "field": "scope",
+      "type": "string",
+      "required": false,
+      "constrainedBy": "nothing",
+      "contracts": [
+        "a99-canonical-semantic-vnext-v1"
+      ]
+    },
+    {
+      "field": "relationHints",
+      "type": "string[]",
+      "required": false,
+      "constrainedBy": "parsed for parent-node and same-node keys; not checked against isHeading",
+      "contracts": [
+        "a99-semantic-source-parts-v1",
+        "a99-semantic-source-parts-v2",
+        "a99-canonical-semantic-vnext-v1"
+      ]
+    }
+  ],
+  "contradictionsAccepted": {
+    "accepted": 16,
+    "total": 16,
+    "everyConstructedContradictionAccepted": true
+  },
+  "byContract": [
+    {
+      "contract": "STRUCTURED_SOURCE_PART_TUPLE / a99-semantic-source-parts-v1",
+      "cases": [
+        {
+          "CaseId": "EXCLUDED_ROLE_IS_HEADING",
+          "Reason": "the role names page furniture while isHeading says it is a heading - the state the pilot and the V3 arm both produced",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "FOOTNOTE_ROLE_IS_HEADING",
+          "Reason": "the role names a footnote while isHeading says heading (SRC-089, both arms)",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "HEADING_ROLE_IS_NOT_HEADING",
+          "Reason": "the mirror image: the role names a section heading while isHeading says it is not one",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "NOT_HEADING_WITH_PARENT_RELATION",
+          "Reason": "isHeading is false yet the reply places the occurrence in the heading tree",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "EMPTY_ROLE_IS_HEADING",
+          "Reason": "a heading with no role at all: semanticRole is optional, so the meaning axis can simply be absent",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "UNDECLARED_FIELD",
+          "Reason": "a field the schema does not declare (additionalProperties is false), which the arm's model actually sent once as semanticRoleNote",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "INVENTED_ROLE_VOCABULARY",
+          "Reason": "a role no vocabulary defines: the field is an unconstrained string, so a new name is as valid as any other",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        }
+      ]
+    },
+    {
+      "contract": "STRUCTURED_SOURCE_PART_TUPLE / a99-semantic-source-parts-v2",
+      "cases": [
+        {
+          "CaseId": "EXCLUDED_ROLE_IS_HEADING",
+          "Reason": "the role names page furniture while isHeading says it is a heading - the state the pilot and the V3 arm both produced",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "FOOTNOTE_ROLE_IS_HEADING",
+          "Reason": "the role names a footnote while isHeading says heading (SRC-089, both arms)",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "HEADING_ROLE_IS_NOT_HEADING",
+          "Reason": "the mirror image: the role names a section heading while isHeading says it is not one",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "NOT_HEADING_WITH_PARENT_RELATION",
+          "Reason": "isHeading is false yet the reply places the occurrence in the heading tree",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "EMPTY_ROLE_IS_HEADING",
+          "Reason": "a heading with no role at all: semanticRole is optional, so the meaning axis can simply be absent",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "UNDECLARED_FIELD",
+          "Reason": "a field the schema does not declare (additionalProperties is false), which the arm's model actually sent once as semanticRoleNote",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "INVENTED_ROLE_VOCABULARY",
+          "Reason": "a role no vocabulary defines: the field is an unconstrained string, so a new name is as valid as any other",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        }
+      ]
+    },
+    {
+      "contract": "SOURCE_ALIAS_PLUS_UTF16_SPAN / a99-canonical-semantic-vnext-v1",
+      "cases": [
+        {
+          "CaseId": "ROLE_AGAINST_STRUCTURAL_TYPE",
+          "Reason": "semanticRole says running header, structuralType says section, scope says document, isHeading says true: four axes, no stated relation between them",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        },
+        {
+          "CaseId": "NOT_HEADING_WITH_STRUCTURAL_TYPE",
+          "Reason": "isHeading is false while structuralType still declares a structural unit",
+          "SchemaValid": true,
+          "ValidatorIssues": [],
+          "DecodedProposals": 1,
+          "DecodeFailures": [],
+          "AcceptedAsValid": true
+        }
+      ]
+    }
+  ],
+  "existingConflictDetection": {
+    "component": "CanonicalSemanticGlobalConflictDetector",
+    "kinds": [
+      "PARENT_RELATION_CONTRADICTION",
+      "STRUCTURAL_TYPE_CONTRADICTION",
+      "SEMANTIC_ROLE_CONTRADICTION",
+      "SCOPE_CONTRADICTION",
+      "RELATION_HINT_CONTRADICTION"
+    ],
+    "scope": "two or more proposals that describe the same physical occurrence and disagree with each other",
+    "selfContradictionOfOneProposal": {
+      "probe": "one proposal, isHeading true with semanticRole running-header, structuralType section and scope document",
+      "conflictsDetected": 0,
+      "reading": "none: an occurrence claimed once is never compared with itself, so a reply that contradicts itself across its own fields passes every layer"
+    }
+  },
+  "observedInCommittedRuns": {
+    "baselineV2": {
+      "run": {
+        "path": "eval/a99-closed-loop/llm-semantic-pilot-v1/run.v1.json",
+        "sha256": "f27db57657ca42658c0a23dfe28cd6e33f822073e642e96e037b34fc45791468",
+        "commit": "4ab732d"
+      },
+      "entries": 300,
+      "isHeading": {
+        "true": 300,
+        "false": 0,
+        "absent": 0
+      },
+      "fieldsUsed": {
+        "isHeading": 300,
+        "relationHints": 300,
+        "semanticRole": 300,
+        "sourceParts": 300
+      },
+      "semanticRoleAbsent": 0,
+      "distinctSemanticRoles": 18,
+      "undeclaredFieldsSent": {},
+      "selfContradictingEntries": {
+        "excludedRoleEntries": 56,
+        "excludedRoleClaimedAsHeading": 56,
+        "reading": "every occurrence the model itself named page furniture, a note, an index entry, a caption, a table header or a signature line was also claimed as a heading"
+      },
+      "semanticRoleVocabularyObserved": {
+        "section-heading": 91,
+        "section": 69,
+        "heading": 65,
+        "index-entry": 24,
+        "running-header": 11,
+        "table-header": 9,
+        "article": 7,
+        "article-heading": 6,
+        "page-footer": 4,
+        "table-caption": 4,
+        "definition-term": 2,
+        "document-title": 2,
+        "chapter": 1,
+        "figure-label": 1,
+        "footnote": 1,
+        "signature-label": 1,
+        "signature-value": 1,
+        "subtitle": 1
+      }
+    },
+    "armV3": {
+      "run": {
+        "path": "eval/a99-closed-loop/llm-semantic-arm-v3-exclusion-v1/run.v1.json",
+        "sha256": "62d0c5a87211ff2e917d289fe5d7308716d14e60d0c6c3733f81e23fe229e321",
+        "commit": "ce560c0"
+      },
+      "entries": 301,
+      "isHeading": {
+        "true": 301,
+        "false": 0,
+        "absent": 0
+      },
+      "fieldsUsed": {
+        "semanticRole": 302,
+        "isHeading": 301,
+        "relationHints": 301,
+        "sourceParts": 301,
+        "semanticRoleNote": 1
+      },
+      "semanticRoleAbsent": 0,
+      "distinctSemanticRoles": 16,
+      "undeclaredFieldsSent": {
+        "semanticRoleNote": 1
+      },
+      "selfContradictingEntries": {
+        "excludedRoleEntries": 53,
+        "excludedRoleClaimedAsHeading": 53,
+        "reading": "every occurrence the model itself named page furniture, a note, an index entry, a caption, a table header or a signature line was also claimed as a heading"
+      },
+      "semanticRoleVocabularyObserved": {
+        "section-heading": 88,
+        "section": 83,
+        "heading": 61,
+        "index-entry": 24,
+        "table-header": 9,
+        "running-header": 7,
+        "article-heading": 6,
+        "figure-label": 5,
+        "table-caption": 4,
+        "document-title": 3,
+        "running-footer": 3,
+        "subsection": 3,
+        "subsubsection": 2,
+        "document-subtitle": 1,
+        "page_furniture": 1,
+        "table-label": 1
+      }
+    },
+    "note": "semanticRole is a free string, and the two runs show it behaving like one: the arm invented names the baseline never used (document-subtitle, running-footer, table-label) while claiming the same occurrences"
+  },
+  "findings": [
+    "isHeading carried no information in either run: it was true on every entry of both (300 of 300 and 301 of 301). Membership was decided in practice by whether the model put an entry in the array at all, not by the field the contract requires for it",
+    "in the V3 arm the model wrote semanticRole \"page_furniture\" - the clause's own excluded category - with isHeading true. The role it chose and the membership it claimed contradict each other in the same object, and nothing in the pipeline reads the pair",
+    "membership and meaning are two independent truths in every current contract. isHeading is required and unconstrained; semanticRole is optional, free-form, and carries no stated relation to it",
+    "every contradictory state constructed here is accepted as valid by the production validator and decoder, including a heading whose role is page furniture, a non-heading whose role is a section heading, a non-heading placed in the tree by a parent relation, and a heading with no role at all",
+    "the existing global conflict detector is about disagreement between proposals for one occurrence. It has no kind for a single proposal contradicting itself, and detects nothing for the probe above",
+    "so the pipeline has no layer that can refuse the reply the pilot measured: the binder validates coordinates, the identity resolver merges, the hierarchy resolver reads relations - none of them reads semanticRole at all",
+    "because semanticRole is unconstrained, a consistency rule stated over role names could be satisfied by inventing a name outside the rule - which is what the V3 arm did (SRC-089's contradictions fell to 0 while its false claims rose from 10 to 28)"
+  ],
+  "whatThisDoesNotShow": [
+    "that a coherent representation would have scored better: no arm was run for it, and this audit changes nothing",
+    "that semanticRole is unused downstream by intent - it is carried into artifacts and read by reviewers and by the scorer's axis comparison, so removing it is not the only option"
+  ]
+}
