@@ -161,8 +161,23 @@ public sealed class LlmSemanticPilotV1Tests
         var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
         Assert.False(string.IsNullOrWhiteSpace(apiKey), "OPENROUTER_API_KEY is not set.");
 
+        // Earlier attempts that stopped fail-closed (attempt-N/run.v1.json) spent part of the one budget: the caps are for
+        // the pilot, not for an attempt, so their charges are carried in before anything is sent.
+        var prior = Directory.Exists(TestRepository.Path(Root))
+            ? Directory.GetDirectories(TestRepository.Path(Root), "attempt-*").Select(d => Path.Combine(d, "run.v1.json")).Where(File.Exists).ToArray()
+            : [];
+        long priorCalls = 0, priorIn = 0, priorOut = 0;
+        foreach (var file in prior)
+        {
+            using var earlier = JsonDocument.Parse(File.ReadAllText(file));
+            var t = earlier.RootElement.GetProperty("totals");
+            priorCalls += t.GetProperty("calls").GetInt32();
+            priorIn += t.GetProperty("inputTokensCharged").GetInt64();
+            priorOut += t.GetProperty("outputTokensCharged").GetInt64();
+        }
+
         using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
-        var gate = new PilotGate(MaxCalls, MaxInputTokens, MaxOutputTokens);
+        var gate = new PilotGate((int)(MaxCalls - priorCalls), MaxInputTokens - priorIn, MaxOutputTokens - priorOut);
         var documents = new List<object>();
         string? stopped = null;
         foreach (var (id, pdf) in Documents)
@@ -202,6 +217,8 @@ public sealed class LlmSemanticPilotV1Tests
             goldRead = false,
             stopped,
             totals = new { calls = gate.Ledger.Count, inputTokensCharged = gate.InputUsed, outputTokensCharged = gate.OutputUsed, caps = new { calls = MaxCalls, input = MaxInputTokens, output = MaxOutputTokens } },
+            priorAttempts = new { files = prior.Select(f => Path.GetRelativePath(TestRepository.Root(), f).Replace('\\', '/')).ToArray(), calls = priorCalls, inputTokensCharged = priorIn, outputTokensCharged = priorOut },
+            pilotTotals = new { calls = priorCalls + gate.Ledger.Count, inputTokensCharged = priorIn + gate.InputUsed, outputTokensCharged = priorOut + gate.OutputUsed },
             documents,
             ledger = gate.Ledger,
         }, FreezeArtifact.Json);

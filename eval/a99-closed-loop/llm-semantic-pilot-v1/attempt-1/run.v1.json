@@ -1,0 +1,42 @@
+{
+  "artifactKind": "a99_llm_semantic_pilot_run",
+  "study": "LLM_SEMANTIC_PILOT_V1",
+  "preflightSha256": "986e001351529620baff2accb7aa4f39b84b4f4c8762c9db7c2b6d23b159678c",
+  "model": "qwen/qwen3.7-flash",
+  "goldRead": false,
+  "stopped": "SRC-089: HttpRequestException: An error occurred while sending the request.",
+  "totals": {
+    "calls": 1,
+    "inputTokensCharged": 90351,
+    "outputTokensCharged": 15456,
+    "caps": {
+      "calls": 30,
+      "input": 2000000,
+      "output": 250000
+    }
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "completed": false,
+      "calls": 1,
+      "elements": 0
+    }
+  ],
+  "ledger": [
+    {
+      "Ordinal": 1,
+      "DocumentId": "SRC-089",
+      "SystemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+      "RequestSha256": "d49efa9f8be6885937640a3cc1ceb58e977941001fa3f4b4ec515e58fa27dbc7",
+      "ExpectedItemCount": 120,
+      "InputBytes": 90351,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ElapsedMs": 25271,
+      "Error": "HttpRequestException: An error occurred while sending the request.",
+      "Response": null
+    }
+  ]
+}
