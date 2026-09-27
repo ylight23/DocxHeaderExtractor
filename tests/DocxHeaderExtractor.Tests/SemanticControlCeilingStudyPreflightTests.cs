@@ -34,6 +34,7 @@ public sealed class SemanticControlCeilingStudyPreflightTests
         var documents = new List<object>();
         var allSameSemanticRequestHashes = true;
         var allCalls = 0;
+        var maxOutputCeiling = 0;
 
         foreach (var (id, pdf) in Documents)
         {
@@ -73,6 +74,7 @@ public sealed class SemanticControlCeilingStudyPreflightTests
                 };
             }).ToArray();
             allSameSemanticRequestHashes &= rows.All(row => row.semanticRequestUnchanged) && baselineSemanticHashes.SequenceEqual(treatmentSemanticHashes);
+            maxOutputCeiling += rows.Sum(row => row.maxTokens);
             documents.Add(new { documentId = id, calls = rows.Length, requests = rows });
         }
 
@@ -107,6 +109,14 @@ public sealed class SemanticControlCeilingStudyPreflightTests
             },
             documents,
             calls = new { total = allCalls, SRC089 = 5, SRC095 = 20 },
+            budget = new
+            {
+                inputTokensReferenceFromFrozenV4 = 712286,
+                outputTokensObservedFromFrozenV4 = 46095,
+                outputTokensPerRequestCeilingSum = maxOutputCeiling,
+                hardCaps = new { calls = 30, input = 2000000, output = 250000 },
+                treatmentOutputEstimate = "UNKNOWN_UNTIL_PROVIDER",
+            },
             gates = new
             {
                 goldOpened = false,

@@ -265,6 +265,17 @@
     "SRC089": 5,
     "SRC095": 20
   },
+  "budget": {
+    "inputTokensReferenceFromFrozenV4": 712286,
+    "outputTokensObservedFromFrozenV4": 46095,
+    "outputTokensPerRequestCeilingSum": 371552,
+    "hardCaps": {
+      "calls": 30,
+      "input": 2000000,
+      "output": 250000
+    },
+    "treatmentOutputEstimate": "UNKNOWN_UNTIL_PROVIDER"
+  },
   "gates": {
     "goldOpened": false,
     "hierarchyRun": false,
