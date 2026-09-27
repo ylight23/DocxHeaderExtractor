@@ -1,6 +1,6 @@
 # A99 semantic control ceiling study
 
-Status: provider-free phases 1–8 complete; provider gate intentionally pending. No R1 provider call was made.
+Status: R1 provider execution attempted under the authorized caps, but stopped incomplete before Gold/scoring. No R1 accuracy or promotion claim is made.
 
 ## 1. V4 frozen baseline
 
@@ -46,7 +46,9 @@ Yes for the current membership decision. Index entries are `NAVIGATION`; an inde
 
 ## 7. Is explicit reasoning a causal bottleneck?
 
-Not yet known. The frozen V4 run had reasoning explicitly disabled, so the question is causally testable. The provider-free R1 arm changes only the OpenRouter reasoning envelope from `none` to `medium`.
+The authorized R1 run changed only the OpenRouter reasoning envelope from `none` to `medium`, but did not reach 25/25 successful predictions. The raw artifact records 19 attempts, 7 successful predictions (SRC-089: 5/5; SRC-095: 2/20), 18 pending, and output usage `239017/250000`; therefore the causal question remains unscored.
+
+Evidence: [r1-run.v1.json](r1-run.v1.json). Gold remained closed and no score artifact was produced.
 
 ## 8. Is context/extent now the dominant limitation?
 
@@ -54,7 +56,7 @@ The current evidence points to semantic classification plus claim extent. The si
 
 ## 9. Held-out generalization result
 
-Not run. It is correctly blocked until an authorized R1 causal result is frozen. No promotion claim is made.
+Not run. It remains blocked until a complete authorized R1 causal result is frozen. No promotion claim is made.
 
 ## 10. Recommended production architecture
 
@@ -66,6 +68,6 @@ Do not alter frozen V4 raw/score artifacts, production default, model, facts, pa
 
 ## 12. Promotion decision evidence
 
-No promotion. R1 preflight is frozen at 25 planned requests (SRC-089: 5, SRC-095: 20), identical semantic request hashes, and a reasoning-only fingerprint delta. Provider authorization is required before any transport call.
+No promotion. R1 preflight is frozen at 25 planned requests (SRC-089: 5, SRC-095: 20), identical semantic request hashes, and a reasoning-only fingerprint delta. The authorized attempt stopped at the output cap before completion; Gold remained unopened and no score was generated.
 
-Evidence: [r1-reasoning-preflight.v1.json](r1-reasoning-preflight.v1.json).
+Evidence: [r1-reasoning-preflight.v1.json](r1-reasoning-preflight.v1.json), [r1-run.v1.json](r1-run.v1.json).
