@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "LOGICAL_CALL_STARTED",
+  "timestamp": "2026-09-27T05:49:50.6339298\u002B00:00",
+  "campaignId": "LLM_SEMANTIC_EXCLUSION_ARM_V1",
+  "documentId": "SRC-095",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-b8f36db302054e20b512f22e0b67eca4",
+  "callOrdinal": 2,
+  "requestHash": "2275dd8503596a32165b571ecc9c4039d3fbe2f69b1108dda6a0f66f77f8e3f0",
+  "requestBytes": 140294,
+  "estimatedInputTokens": 22435,
+  "maxOutputTokens": 15456,
+  "candidateCount": 1,
+  "currentNodeCount": 0,
+  "contextItemCount": 1,
+  "contextCharacterCount": 85866,
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash"
+}
