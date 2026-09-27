@@ -1,0 +1,345 @@
+{
+  "artifactKind": "a99_model_visible_provenance_audit",
+  "study": "A99_V2_MODEL_VISIBLE_PROVENANCE_AUDIT_V1",
+  "phase": "A - what reaches the model",
+  "follows": {
+    "audit": "docs/architecture/current-semantic-reachability-audit-2026-09-27.md",
+    "commit": "16f5273",
+    "item": "critical answer 5"
+  },
+  "modelProviderVlmCalls": 0,
+  "requestVersion": "V2_ATTENTION_FREE",
+  "method": [
+    "compose the real production request offline for each document (no provider), split the evidence packet from the response schema, and walk every string the packet carries",
+    "classify each string by provenance: a parser-owned alias, the source's own text (exact or a fragment of it), an author's OOXML style declaration, a value from the closed vocabulary enumerated in this test, or punctuation and digits",
+    "run the three LIVE_SUSPICIOUS producers for real on the same document and search the whole request - system prompt included - for their own conclusions and for every derived-verdict name the harness can reach"
+  ],
+  "closedVocabularies": {
+    "ProtocolIds": [
+      "a99-semantic-source-parts-v1",
+      "a99-semantic-source-parts-v2",
+      "a99-canonical-semantic-vnext-v1"
+    ],
+    "PageBands": [
+      "TOP",
+      "BODY",
+      "BOTTOM",
+      "MIDDLE",
+      "UPPER",
+      "LOWER",
+      "CENTER",
+      "CENTRE"
+    ],
+    "RelativeFontSizes": [
+      "larger-than-body",
+      "much-larger-than-body",
+      "smaller-than-body",
+      "body",
+      "body-size"
+    ],
+    "BoldEvidenceSources": [
+      "FONT_DETAILS",
+      "FONT_NAME",
+      "FONT_DETAILS+FONT_NAME",
+      "NONE"
+    ],
+    "SourceFactsIds": [
+      "PDF_SOURCE_FACTS_V1",
+      "PDF_SOURCE_FACTS_V2",
+      "PDF_SOURCE_FACTS_V3"
+    ],
+    "markerFactPrefixes": [
+      "marker-family:",
+      "marker-signature:",
+      "marker-depth:",
+      "marker-is-path:",
+      "marker-components:"
+    ]
+  },
+  "searchScope": "the harness's own surface: the system prompt, the response schema, every key it chose, and every value that is not the document's own text or a parser alias. The document's text is deliberately out of scope - it legitimately contains words like candidate, salience and unknown, and a naive byte grep reports those as leaks",
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "media": "PDF",
+      "source": {
+        "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+        "sha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
+      },
+      "requests": 5,
+      "modelVisibleStrings": 6328,
+      "byProvenance": {
+        "PARSER_ALIAS": 1324,
+        "LAYOUT_BLOCK_ID": 742,
+        "SOURCE_TEXT_EXACT": 742,
+        "MARKER_PREFIX_PARSE": 605,
+        "BOLD_EVIDENCE_SOURCE": 582,
+        "FONT_RESOURCE_NAME": 582,
+        "PAGE_BAND": 582,
+        "RELATIVE_FONT_SIZE_BUCKET": 582,
+        "SOURCE_FACTS_VERSION": 582,
+        "PROTOCOL_ID": 5
+      },
+      "unclassified": [],
+      "evidenceKeyPaths": [
+        "ownedSourceAliases[]",
+        "protocol",
+        "sourceEvidence[].alias",
+        "sourceEvidence[].block",
+        "sourceEvidence[].location.pageBand",
+        "sourceEvidence[].markers[]",
+        "sourceEvidence[].style.RelativeFontSize",
+        "sourceEvidence[].style.Typography.boldEvidenceSource",
+        "sourceEvidence[].style.Typography.dominantFontName",
+        "sourceEvidence[].style.Typography.sourceFacts",
+        "sourceEvidence[].text"
+      ],
+      "harnessAuthoredValues": 363,
+      "harnessAuthoredValueSample": [
+        "BODY",
+        "BOTTOM",
+        "FONT_DETAILS",
+        "NONE",
+        "PDF_SOURCE_FACTS_V3",
+        "TOP",
+        "a99-semantic-source-parts-v1",
+        "b1",
+        "b10",
+        "b100",
+        "b101",
+        "b102",
+        "b103",
+        "b104",
+        "b105",
+        "b106",
+        "b107",
+        "b108",
+        "b109",
+        "b11",
+        "b110",
+        "b111",
+        "b112",
+        "b113"
+      ],
+      "derivedObservationsComputed": {
+        "DocumentDomainPolicy.InferRegime": "document_body"
+      },
+      "derivedTermsSearched": 55,
+      "derivedTermsFoundInRequest": [],
+      "derivedObservationValuesFoundInRequest": []
+    },
+    {
+      "documentId": "SRC-095",
+      "media": "PDF",
+      "source": {
+        "path": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+        "sha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84"
+      },
+      "requests": 20,
+      "modelVisibleStrings": 24930,
+      "byProvenance": {
+        "PARSER_ALIAS": 5364,
+        "LAYOUT_BLOCK_ID": 3062,
+        "SOURCE_TEXT_EXACT": 3062,
+        "BOLD_EVIDENCE_SOURCE": 2302,
+        "FONT_RESOURCE_NAME": 2302,
+        "PAGE_BAND": 2302,
+        "RELATIVE_FONT_SIZE_BUCKET": 2302,
+        "SOURCE_FACTS_VERSION": 2302,
+        "MARKER_PREFIX_PARSE": 1912,
+        "PROTOCOL_ID": 20
+      },
+      "unclassified": [],
+      "evidenceKeyPaths": [
+        "ownedSourceAliases[]",
+        "protocol",
+        "sourceEvidence[].alias",
+        "sourceEvidence[].block",
+        "sourceEvidence[].location.pageBand",
+        "sourceEvidence[].markers[]",
+        "sourceEvidence[].style.RelativeFontSize",
+        "sourceEvidence[].style.Typography.boldEvidenceSource",
+        "sourceEvidence[].style.Typography.dominantFontName",
+        "sourceEvidence[].style.Typography.sourceFacts",
+        "sourceEvidence[].text"
+      ],
+      "harnessAuthoredValues": 1569,
+      "harnessAuthoredValueSample": [
+        "BODY",
+        "BOTTOM",
+        "FONT_DETAILS+FONT_NAME",
+        "FONT_NAME",
+        "NONE",
+        "PDF_SOURCE_FACTS_V3",
+        "TOP",
+        "a99-semantic-source-parts-v1",
+        "b1",
+        "b10",
+        "b100",
+        "b1000",
+        "b1001",
+        "b1002",
+        "b1003",
+        "b1004",
+        "b1005",
+        "b1006",
+        "b1007",
+        "b1008",
+        "b1009",
+        "b101",
+        "b1010",
+        "b1011"
+      ],
+      "derivedObservationsComputed": {
+        "DocumentDomainPolicy.InferRegime": "document_body"
+      },
+      "derivedTermsSearched": 55,
+      "derivedTermsFoundInRequest": [],
+      "derivedObservationValuesFoundInRequest": []
+    },
+    {
+      "documentId": "DOC-0252",
+      "media": "PDF",
+      "source": {
+        "path": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+        "sha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61"
+      },
+      "requests": 6,
+      "modelVisibleStrings": 6653,
+      "byProvenance": {
+        "PARSER_ALIAS": 1500,
+        "LAYOUT_BLOCK_ID": 850,
+        "SOURCE_TEXT_EXACT": 850,
+        "BOLD_EVIDENCE_SOURCE": 650,
+        "FONT_RESOURCE_NAME": 650,
+        "PAGE_BAND": 650,
+        "RELATIVE_FONT_SIZE_BUCKET": 650,
+        "SOURCE_FACTS_VERSION": 650,
+        "MARKER_PREFIX_PARSE": 197,
+        "PROTOCOL_ID": 6
+      },
+      "unclassified": [],
+      "evidenceKeyPaths": [
+        "ownedSourceAliases[]",
+        "protocol",
+        "sourceEvidence[].alias",
+        "sourceEvidence[].block",
+        "sourceEvidence[].location.pageBand",
+        "sourceEvidence[].markers[]",
+        "sourceEvidence[].style.RelativeFontSize",
+        "sourceEvidence[].style.Typography.boldEvidenceSource",
+        "sourceEvidence[].style.Typography.dominantFontName",
+        "sourceEvidence[].style.Typography.sourceFacts",
+        "sourceEvidence[].text"
+      ],
+      "harnessAuthoredValues": 514,
+      "harnessAuthoredValueSample": [
+        "BODY",
+        "BOTTOM",
+        "FONT_DETAILS",
+        "NONE",
+        "PDF_SOURCE_FACTS_V3",
+        "TOP",
+        "a99-semantic-source-parts-v1",
+        "aptos",
+        "b1",
+        "b10",
+        "b100",
+        "b101",
+        "b102",
+        "b103",
+        "b104",
+        "b105",
+        "b106",
+        "b107",
+        "b108",
+        "b109",
+        "b11",
+        "b110",
+        "b111",
+        "b112"
+      ],
+      "derivedObservationsComputed": {
+        "DocumentDomainPolicy.InferRegime": "meeting"
+      },
+      "derivedTermsSearched": 56,
+      "derivedTermsFoundInRequest": [],
+      "derivedObservationValuesFoundInRequest": []
+    },
+    {
+      "documentId": "DOCX-STYLE",
+      "media": "DOCX",
+      "source": {
+        "path": "bench/01-style-chuan.docx",
+        "sha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14"
+      },
+      "requests": 1,
+      "modelVisibleStrings": 104,
+      "byProvenance": {
+        "MARKER_PREFIX_PARSE": 33,
+        "AUTHOR_DECLARED_STYLE": 28,
+        "PARSER_ALIAS": 28,
+        "SOURCE_TEXT_EXACT": 14,
+        "PROTOCOL_ID": 1
+      },
+      "unclassified": [],
+      "evidenceKeyPaths": [
+        "ownedSourceAliases[]",
+        "protocol",
+        "sourceEvidence[].alias",
+        "sourceEvidence[].markers[]",
+        "sourceEvidence[].style.StyleId",
+        "sourceEvidence[].style.StyleName",
+        "sourceEvidence[].text"
+      ],
+      "harnessAuthoredValues": 23,
+      "harnessAuthoredValueSample": [
+        "Heading1",
+        "Heading2",
+        "Heading3",
+        "Normal",
+        "a99-canonical-semantic-vnext-v1",
+        "heading 1",
+        "heading 2",
+        "heading 3",
+        "marker-components:1.1",
+        "marker-components:1.2",
+        "marker-components:1.2.1",
+        "marker-components:1.2.2",
+        "marker-components:2.1",
+        "marker-depth:1",
+        "marker-depth:2",
+        "marker-depth:3",
+        "marker-family:arabic",
+        "marker-family:labelled",
+        "marker-is-path:false",
+        "marker-is-path:true",
+        "marker-signature:Arabic:2",
+        "marker-signature:Arabic:3",
+        "marker-signature:Labelled(chương):1"
+      ],
+      "derivedObservationsComputed": {
+        "StyleTrustAudit.Measure": "StyleTrust { StyledCount = 7, SuspectCount = 0, DistinctLevels = 3, SkipsLevels = False, Density = 0.5, NumberedSample = 5, NumberedDisagree = 0, SuspectRatio = 0, SelectionTrusted = True, NumberedDisagreeRatio = 0, LevelTrusted = True, NestingTrusted = False }",
+        "StyleTrustAudit.SelectionTrusted": "True",
+        "StyleTrustAudit.LevelTrusted": "True",
+        "HeadingHeuristics.IsObjectCaption": "0",
+        "HeadingHeuristics.LooksLikeListItem": "0",
+        "HeadingHeuristics.BuiltInLevel": "7",
+        "DocumentModeClassifier": "DocumentModeReport { Mode = OutlineLevelDriven, Paragraphs = 14, StyledHeadings = 7, OutlineLevelRatio = 0.5, VietnameseAdminRatio = 0.21428571428571427, TypedNumberRatio = 0.35714285714285715, NumberingRatio = 0, FormatDiffers = False, LegalMarkerRatio = 0.14285714285714285, Status = Normal }"
+      },
+      "derivedTermsSearched": 55,
+      "derivedTermsFoundInRequest": [],
+      "derivedObservationValuesFoundInRequest": []
+    }
+  ],
+  "result": {
+    "unclassifiedModelVisibleStrings": 0,
+    "derivedPriorTermsFound": 0,
+    "passed": true
+  },
+  "provenClaims": [
+    "no CandidateAttention, candidate score or rank, style-trust verdict, heading-heuristic decision, document-genre conclusion or pre-classified TOC/running-header/caption label is serialized to the model under any key",
+    "every string the model can read is the document's own text, a parser-owned alias, the author's own style declaration, or a named measurement from a closed vocabulary",
+    "the Gold is not read while a request is composed: no string in any packet comes from anywhere but the source, and the audit fails on the first that does"
+  ],
+  "limitation": "this proves no derived label or verdict reaches the model as text. A derived prior encoded purely as a number under a source-fact key would not be caught by a string audit; the numeric fields are enumerated per document in evidenceKeyPaths and each is a parser measurement in the hard-code audit's field table (hardcode-audit-v1)"
+}
