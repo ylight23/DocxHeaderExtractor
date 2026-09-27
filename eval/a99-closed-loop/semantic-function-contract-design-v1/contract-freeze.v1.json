@@ -1,0 +1,125 @@
+{
+  "artifactKind": "a99_semantic_function_contract_design_freeze",
+  "study": "SEMANTIC_FUNCTION_CONTRACT_DESIGN_FREEZE_V1",
+  "status": "offline_design_only_not_a_production_protocol",
+  "modelProviderCalls": 0,
+  "follows": {
+    "replay": "docs/accuracy/semantic-function-membership-replay-v1.md",
+    "conclusion": "single authority removes contradictions, but legacy semanticRole projection cannot distinguish navigation from region structure"
+  },
+  "primarySemanticFunction": {
+    "soleMembershipAuthority": true,
+    "closedVocabulary": [
+      "DOCUMENT_IDENTITY",
+      "REGION_STRUCTURE",
+      "NAVIGATION",
+      "PAGE_FURNITURE",
+      "OBJECT_CAPTION",
+      "TABLE_STRUCTURE",
+      "FOOTNOTE_OR_SOURCE",
+      "BODY_INFORMATION",
+      "METADATA"
+    ],
+    "membership": {
+      "members": [
+        "DOCUMENT_IDENTITY",
+        "REGION_STRUCTURE"
+      ],
+      "nonMembers": [
+        "NAVIGATION",
+        "PAGE_FURNITURE",
+        "OBJECT_CAPTION",
+        "TABLE_STRUCTURE",
+        "FOOTNOTE_OR_SOURCE",
+        "BODY_INFORMATION",
+        "METADATA"
+      ],
+      "unknownFailsClosed": true
+    },
+    "definitions": {
+      "regionStructure": "an occurrence that names or opens a semantic region whose subsequent content belongs beneath it",
+      "navigation": "an occurrence that points to, lists, or leads to content elsewhere",
+      "occurrenceNotString": "identical or overlapping text may have different functions at different source occurrences and contexts"
+    }
+  },
+  "descriptiveAxes": {
+    "allowed": [
+      "occurrenceRole",
+      "scope",
+      "titleRelation"
+    ],
+    "membershipAuthority": false,
+    "cannotOverrideSemanticFunction": true
+  },
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "sourceParts": {
+        "type": "array",
+        "minItems": 1,
+        "description": "The existing source-coordinate tuple; its binder and canonicalization are unchanged by this design."
+      },
+      "semanticFunction": {
+        "type": "string",
+        "enum": [
+          "DOCUMENT_IDENTITY",
+          "REGION_STRUCTURE",
+          "NAVIGATION",
+          "PAGE_FURNITURE",
+          "OBJECT_CAPTION",
+          "TABLE_STRUCTURE",
+          "FOOTNOTE_OR_SOURCE",
+          "BODY_INFORMATION",
+          "METADATA"
+        ],
+        "description": "The sole authority from which membership is derived."
+      },
+      "occurrenceRole": {
+        "type": "string",
+        "description": "Optional descriptive axis; never a membership authority."
+      },
+      "scope": {
+        "type": "string",
+        "description": "Optional descriptive axis; never a membership authority."
+      },
+      "titleRelation": {
+        "type": "string",
+        "description": "Optional descriptive axis; never a membership authority."
+      }
+    },
+    "required": [
+      "sourceParts",
+      "semanticFunction"
+    ]
+  },
+  "deterministicProofs": [
+    "isHeading is absent and rejected as a field not in the contract",
+    "generic heading is not an enum value and fails closed",
+    "unknown semanticFunction fails closed",
+    "membership is derived only from semanticFunction",
+    "NAVIGATION, PAGE_FURNITURE, OBJECT_CAPTION, TABLE_STRUCTURE, FOOTNOTE_OR_SOURCE, BODY_INFORMATION and METADATA are nonmembers",
+    "the same words can be NAVIGATION in contents and REGION_STRUCTURE in body",
+    "sourceParts are preserved verbatim and the existing binder identity is unchanged",
+    "V2 remains production default and its committed raw run remains a historical input"
+  ],
+  "v2Immutability": {
+    "productionDefault": "V2_ATTENTION_FREE",
+    "requestVersions": [
+      "Unspecified",
+      "V1_ATTENTION_LEGACY",
+      "V2_ATTENTION_FREE",
+      "V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY"
+    ],
+    "structuredV1SchemaHash": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "rawRun": {
+      "path": "eval/a99-closed-loop/llm-semantic-pilot-v1/run.v1.json",
+      "sha256": "f27db57657ca42658c0a23dfe28cd6e33f822073e642e96e037b34fc45791468"
+    },
+    "v2CoordinatePreservedThroughDesign": {
+      "SourcePartsSha256": "f7732ddc8d818349fd8c418d9597e67ecfc3d3e8d97349bce6f547f41d6a696f",
+      "BoundIdentity": "L0002:S1:0-33"
+    }
+  },
+  "nextGate": "Do not create or send V4 until this frozen decision shape is reviewed; a future arm must use this closed vocabulary rather than project legacy semanticRole."
+}
