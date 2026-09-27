@@ -291,6 +291,380 @@ public sealed class SemanticControlCeilingStudyPreflightTests
         Assert.True(usedOutput <= 250_000);
     }
 
+    [Fact]
+    public async Task Continue_the_authorized_r1_arm_only_for_pending_src095_hashes()
+    {
+        if (Environment.GetEnvironmentVariable("A99_LLM_V4R1_CONTINUATION_RUN") != "1") return;
+
+        var priorPath = TestRepository.Path($"{Root}/r1-run.v1.json");
+        var continuationPath = TestRepository.Path($"{Root}/r1-continuation.v1.json");
+        var combinedPath = TestRepository.Path($"{Root}/r1-combined-manifest.v1.json");
+        Assert.True(File.Exists(priorPath), "The immutable partial R1 run must exist before continuation.");
+        Assert.False(File.Exists(continuationPath), "R1 continuation already exists; refusing a second continuation provider run.");
+        Assert.False(File.Exists(combinedPath), "R1 combined manifest already exists; refusing a second continuation provider run.");
+
+        using var prior = JsonDocument.Parse(File.ReadAllText(priorPath));
+        var priorRoot = prior.RootElement;
+        Assert.Equal("V4R1_SEMANTIC_FUNCTION_EXPLICIT_REASONING", priorRoot.GetProperty("requestVersion").GetString());
+        Assert.Equal(Model, priorRoot.GetProperty("pins").GetProperty("model").GetString());
+        Assert.Equal("medium", priorRoot.GetProperty("pins").GetProperty("reasoningEffort").GetString());
+        Assert.Equal(PromptSha256, priorRoot.GetProperty("pins").GetProperty("promptSha256").GetString());
+        Assert.Equal(SchemaSha256, priorRoot.GetProperty("pins").GetProperty("schemaSha256").GetString());
+        Assert.Equal("V3_RobustGlyphStatistics", priorRoot.GetProperty("pins").GetProperty("factsVersion").GetString());
+        Assert.Equal("FIXED_OWNED_COUNT_120", priorRoot.GetProperty("pins").GetProperty("packing").GetString());
+        Assert.False(priorRoot.GetProperty("goldRead").GetBoolean());
+        Assert.False(priorRoot.GetProperty("hierarchyRun").GetBoolean());
+        Assert.False(priorRoot.GetProperty("postFilterApplied").GetBoolean());
+
+        var priorSuccessful = priorRoot.GetProperty("ledger").EnumerateArray()
+            .Where(entry => entry.GetProperty("Error").ValueKind == JsonValueKind.Null && entry.GetProperty("Response").ValueKind != JsonValueKind.Null)
+            .Select(entry => new
+            {
+                DocumentId = entry.GetProperty("DocumentId").GetString()!,
+                RequestSha256 = entry.GetProperty("RequestSha256").GetString()!,
+            })
+            .ToArray();
+        var priorSuccessfulHashes = priorSuccessful.Select(entry => entry.RequestSha256).ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(7, priorSuccessfulHashes.Count);
+        Assert.Equal(5, priorSuccessful.Count(entry => entry.DocumentId == "SRC-089"));
+        Assert.Equal(2, priorSuccessful.Count(entry => entry.DocumentId == "SRC-095"));
+
+        var planned = new Dictionary<string, CapturedRequest[]>(StringComparer.Ordinal);
+        foreach (var (id, pdf) in Documents)
+        {
+            using var capture = new RequestCapturingClassifier();
+            await CanonicalSemanticPdfAuthorityAdapter.RunAsync(TestRepository.Path(pdf), capture, CancellationToken.None,
+                experiment: V4, profile: PdfSemanticAuthorityProfile.StructuredSourceParts,
+                packingPolicy: SemanticEvidencePackingPolicies.FixedOwnedCount120,
+                sourceFacts: PdfSourceFactsVersion.V3_RobustGlyphStatistics, runPlacement: false);
+            planned[id] = capture.Requests.ToArray();
+        }
+        var plannedByHash = planned.SelectMany(pair => pair.Value.Select(request => (DocumentId: pair.Key, Request: request, Hash: Sha(request.UserMessage))))
+            .ToDictionary(item => item.Hash, item => item, StringComparer.Ordinal);
+        Assert.Equal(25, plannedByHash.Count);
+        Assert.All(priorSuccessfulHashes, hash => Assert.True(plannedByHash.ContainsKey(hash), $"Successful prior hash is not in the frozen plan: {hash}"));
+        var pending = planned["SRC-095"].Where(request => !priorSuccessfulHashes.Contains(Sha(request.UserMessage))).ToArray();
+        Assert.Equal(18, pending.Length);
+        Assert.All(pending, request => Assert.DoesNotContain(Sha(request.UserMessage), priorSuccessfulHashes));
+        Assert.Equal(0, planned["SRC-089"].Count(request => !priorSuccessfulHashes.Contains(Sha(request.UserMessage))));
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        Assert.False(string.IsNullOrWhiteSpace(apiKey), "OPENROUTER_API_KEY is not set.");
+        using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
+        var telemetryRoot = TestRepository.Path($"{Root}/r1-continuation-telemetry");
+        var documentTelemetry = Path.Combine(telemetryRoot, "SRC-095");
+        Directory.CreateDirectory(documentTelemetry);
+        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = apiKey,
+            Model = Model,
+            RequestTimeoutSeconds = 300,
+            OpenRouterReasoningEffort = "medium",
+            Observability = new ProviderObservabilityOptions
+            {
+                RootDirectory = documentTelemetry,
+                CampaignId = "A99_SEMANTIC_CONTROL_CEILING_R1_CONTINUATION",
+                DocumentId = "SRC-095",
+                Provider = "OpenRouter",
+                Model = Model,
+            },
+        });
+
+        var ledger = new List<R1LedgerEntry>();
+        var successful = new HashSet<string>(priorSuccessfulHashes, StringComparer.Ordinal);
+        var usedInput = 0L;
+        var usedOutput = 0L;
+        var attemptOrdinal = 0;
+        string? stopped = null;
+        foreach (var request in pending)
+        {
+            var requestHash = Sha(request.UserMessage);
+            var systemHash = Sha(request.SystemPrompt);
+            var maxTokens = OpenRouterHeaderExtractor.BoundaryOutputBudgetFor(request.UserMessage, request.ExpectedItemCount, ProductionMaxOutputTokens);
+            var inputEstimate = Encoding.UTF8.GetByteCount(request.SystemPrompt) + Encoding.UTF8.GetByteCount(request.UserMessage);
+            while (!successful.Contains(requestHash))
+            {
+                if (attemptOrdinal >= 30 || usedInput + inputEstimate > 2_000_000 || usedOutput + maxTokens > 500_000)
+                {
+                    stopped = $"R1 continuation cap before SRC-095:{requestHash}";
+                    break;
+                }
+
+                attemptOrdinal++;
+                var started = DateTimeOffset.UtcNow;
+                string? response = null;
+                string? error = null;
+                var usage = (Prompt: (int?)null, Completion: (int?)null);
+                var rawBefore = Directory.GetFiles(documentTelemetry, "response.raw.*.txt", SearchOption.AllDirectories)
+                    .ToHashSet(StringComparer.OrdinalIgnoreCase);
+                try
+                {
+                    response = await provider.BoundaryCutAsync(request.SystemPrompt, request.UserMessage, CancellationToken.None, request.ExpectedItemCount);
+                    usage = LatestUsage(documentTelemetry, rawBefore);
+                    successful.Add(requestHash);
+                }
+                catch (Exception exception)
+                {
+                    error = $"{exception.GetType().Name}: {exception.Message}";
+                    usage = LatestUsage(documentTelemetry, rawBefore);
+                }
+
+                var chargedInput = usage.Prompt ?? inputEstimate;
+                var chargedOutput = usage.Completion ?? maxTokens;
+                usedInput += chargedInput;
+                usedOutput += chargedOutput;
+                ledger.Add(new R1LedgerEntry(
+                    attemptOrdinal, "SRC-095", requestHash, systemHash, request.ExpectedItemCount, maxTokens,
+                    usage.Prompt, usage.Completion, chargedInput, chargedOutput,
+                    (long)(DateTimeOffset.UtcNow - started).TotalMilliseconds, error, response));
+            }
+            if (stopped is not null) break;
+        }
+
+        var successfulContinuation = ledger.Where(entry => entry.Error is null && entry.Response is not null).ToArray();
+        var continuationSuccessfulHashes = successfulContinuation.Select(entry => entry.RequestSha256).ToHashSet(StringComparer.Ordinal);
+        var allSuccessful = new HashSet<string>(priorSuccessfulHashes, StringComparer.Ordinal);
+        allSuccessful.UnionWith(continuationSuccessfulHashes);
+        var expectedHashes = plannedByHash.Keys.ToHashSet(StringComparer.Ordinal);
+        var unexpected = continuationSuccessfulHashes.Count(hash => !expectedHashes.Contains(hash));
+        var duplicateSuccessful = successfulContinuation.GroupBy(entry => entry.RequestSha256, StringComparer.Ordinal).Count(group => group.Count() > 1);
+        var pendingCount = expectedHashes.Count(hash => !allSuccessful.Contains(hash));
+        var complete = pendingCount == 0 && duplicateSuccessful == 0 && unexpected == 0;
+        var priorAttempts = priorRoot.GetProperty("totals").GetProperty("attempts").GetInt32();
+        var priorInput = priorRoot.GetProperty("totals").GetProperty("inputTokens").GetInt64();
+        var priorOutput = priorRoot.GetProperty("totals").GetProperty("outputTokens").GetInt64();
+        var continuationArtifact = new
+        {
+            artifactKind = "a99_semantic_control_ceiling_r1_continuation",
+            study = "A99_SEMANTIC_CONTROL_CEILING_STUDY",
+            requestVersion = "V4R1_SEMANTIC_FUNCTION_EXPLICIT_REASONING",
+            priorRunSha256 = CanonicalArtifactHash.OfTextFile(priorPath),
+            pins = new { model = Model, reasoningEffort = "medium", promptSha256 = PromptSha256, schemaSha256 = SchemaSha256, factsVersion = "V3_RobustGlyphStatistics", packing = "FIXED_OWNED_COUNT_120", binder = "existing SemanticSourcePart binder", providerRoute = "OpenRouter automatic route" },
+            executionChange = new { kind = "execution-reliability-only", priorClientTimeoutSeconds = 90, clientTimeoutSeconds = 300, semanticTreatmentUnchanged = true, requestBytesUnchanged = true },
+            carriedForward = new { successfulExisting = priorSuccessfulHashes.Count, pendingInitial = pending.Length, attempts = priorAttempts, inputTokens = priorInput, outputTokens = priorOutput },
+            goldRead = false,
+            hierarchyRun = false,
+            postFilterApplied = false,
+            ontologyChanged = false,
+            stopped,
+            completion = new
+            {
+                status = complete ? "COMPLETE_25_OF_25" : "INCOMPLETE",
+                planned = expectedHashes.Count,
+                successful = allSuccessful.Count,
+                successfulExisting = priorSuccessfulHashes.Count,
+                successfulContinuation = continuationSuccessfulHashes.Count,
+                pending = pendingCount,
+                duplicateSuccessful,
+                unexpected,
+                successfulByDocument = plannedByHash.Values.GroupBy(item => item.DocumentId, StringComparer.Ordinal).ToDictionary(group => group.Key, group => group.Count(item => allSuccessful.Contains(item.Hash)), StringComparer.Ordinal),
+            },
+            incrementalTotals = new { attempts = ledger.Count, inputTokens = usedInput, outputTokens = usedOutput, caps = new { attempts = 30, input = 2_000_000, output = 500_000 } },
+            cumulativeTotals = new { attempts = priorAttempts + ledger.Count, inputTokens = priorInput + usedInput, outputTokens = priorOutput + usedOutput },
+            ledger,
+        };
+        File.WriteAllText(continuationPath, JsonSerializer.Serialize(continuationArtifact, FreezeArtifact.Json).ReplaceLineEndings("\n"));
+
+        if (complete)
+        {
+            var combinedArtifact = new
+            {
+                artifactKind = "a99_semantic_control_ceiling_r1_combined_manifest",
+                study = "A99_SEMANTIC_CONTROL_CEILING_STUDY",
+                requestVersion = "V4R1_SEMANTIC_FUNCTION_EXPLICIT_REASONING",
+                lineage = new
+                {
+                    preflightSha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path($"{Root}/r1-reasoning-preflight.v1.json")),
+                    attempt1Sha256 = CanonicalArtifactHash.OfTextFile(priorPath),
+                    continuationSha256 = CanonicalArtifactHash.OfTextFile(continuationPath),
+                },
+                pins = new { model = Model, reasoningEffort = "medium", promptSha256 = PromptSha256, schemaSha256 = SchemaSha256, factsVersion = "V3_RobustGlyphStatistics", packing = "FIXED_OWNED_COUNT_120", binder = "existing SemanticSourcePart binder" },
+                completion = new { status = "COMPLETE_25_OF_25", successfulPlannedHashes = allSuccessful.Count, pending = 0, duplicateSuccessful = 0, unexpected = 0, SRC089 = 5, SRC095 = 20 },
+                totals = new { attempts = priorAttempts + ledger.Count, inputTokens = priorInput + usedInput, outputTokens = priorOutput + usedOutput, cumulativeCaps = new { attempts = 49, input = 3_187_381, output = 739_017 } },
+                goldRead = false,
+                hierarchyRun = false,
+                postFilterApplied = false,
+            };
+            File.WriteAllText(combinedPath, JsonSerializer.Serialize(combinedArtifact, FreezeArtifact.Json).ReplaceLineEndings("\n"));
+        }
+
+        Assert.Null(stopped);
+        Assert.True(complete);
+        Assert.Equal(25, allSuccessful.Count);
+        Assert.Equal(0, pendingCount);
+        Assert.True(ledger.Count <= 30);
+        Assert.True(usedInput <= 2_000_000);
+        Assert.True(usedOutput <= 500_000);
+    }
+
+    [Fact]
+    public async Task Finish_the_authorized_r1_arm_for_the_last_pending_hash()
+    {
+        if (Environment.GetEnvironmentVariable("A99_LLM_V4R1_FINAL_RUN") != "1") return;
+
+        var priorPath = TestRepository.Path($"{Root}/r1-continuation.v1.json");
+        var attempt1Path = TestRepository.Path($"{Root}/r1-run.v1.json");
+        var finalPath = TestRepository.Path($"{Root}/r1-final-continuation.v1.json");
+        var combinedPath = TestRepository.Path($"{Root}/r1-combined-manifest.v1.json");
+        Assert.True(File.Exists(attempt1Path));
+        Assert.True(File.Exists(priorPath));
+        Assert.False(File.Exists(finalPath), "R1 final continuation already exists; refusing a second final provider run.");
+        Assert.False(File.Exists(combinedPath), "R1 combined manifest already exists; refusing a second final provider run.");
+
+        using var attempt1 = JsonDocument.Parse(File.ReadAllText(attempt1Path));
+        using var prior = JsonDocument.Parse(File.ReadAllText(priorPath));
+        Assert.Equal("V4R1_SEMANTIC_FUNCTION_EXPLICIT_REASONING", prior.RootElement.GetProperty("requestVersion").GetString());
+        Assert.Equal("medium", prior.RootElement.GetProperty("pins").GetProperty("reasoningEffort").GetString());
+        Assert.Equal(PromptSha256, prior.RootElement.GetProperty("pins").GetProperty("promptSha256").GetString());
+        Assert.Equal(SchemaSha256, prior.RootElement.GetProperty("pins").GetProperty("schemaSha256").GetString());
+        Assert.False(prior.RootElement.GetProperty("goldRead").GetBoolean());
+
+        var successful = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var path in new[] { attempt1Path, priorPath })
+        {
+            using var artifact = JsonDocument.Parse(File.ReadAllText(path));
+            foreach (var entry in artifact.RootElement.GetProperty("ledger").EnumerateArray())
+            {
+                if (entry.GetProperty("Error").ValueKind == JsonValueKind.Null && entry.GetProperty("Response").ValueKind != JsonValueKind.Null)
+                    successful.Add(entry.GetProperty("RequestSha256").GetString()!);
+            }
+        }
+        Assert.Equal(24, successful.Count);
+
+        var planned = new Dictionary<string, CapturedRequest[]>(StringComparer.Ordinal);
+        foreach (var (id, pdf) in Documents)
+        {
+            using var capture = new RequestCapturingClassifier();
+            await CanonicalSemanticPdfAuthorityAdapter.RunAsync(TestRepository.Path(pdf), capture, CancellationToken.None,
+                experiment: V4, profile: PdfSemanticAuthorityProfile.StructuredSourceParts,
+                packingPolicy: SemanticEvidencePackingPolicies.FixedOwnedCount120,
+                sourceFacts: PdfSourceFactsVersion.V3_RobustGlyphStatistics, runPlacement: false);
+            planned[id] = capture.Requests.ToArray();
+        }
+        var plannedByHash = planned.SelectMany(pair => pair.Value.Select(request => (DocumentId: pair.Key, Request: request, Hash: Sha(request.UserMessage))))
+            .ToDictionary(item => item.Hash, item => item, StringComparer.Ordinal);
+        var pending = plannedByHash.Values.Where(item => !successful.Contains(item.Hash)).ToArray();
+        Assert.Single(pending);
+        Assert.Equal("SRC-095", pending[0].DocumentId);
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        Assert.False(string.IsNullOrWhiteSpace(apiKey), "OPENROUTER_API_KEY is not set.");
+        using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
+        var telemetryRoot = TestRepository.Path($"{Root}/r1-final-telemetry");
+        var documentTelemetry = Path.Combine(telemetryRoot, "SRC-095");
+        Directory.CreateDirectory(documentTelemetry);
+        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = apiKey,
+            Model = Model,
+            RequestTimeoutSeconds = 300,
+            OpenRouterReasoningEffort = "medium",
+            Observability = new ProviderObservabilityOptions
+            {
+                RootDirectory = documentTelemetry,
+                CampaignId = "A99_SEMANTIC_CONTROL_CEILING_R1_FINAL",
+                DocumentId = "SRC-095",
+                Provider = "OpenRouter",
+                Model = Model,
+            },
+        });
+
+        var request = pending[0].Request;
+        var requestHash = pending[0].Hash;
+        var systemHash = Sha(request.SystemPrompt);
+        var maxTokens = OpenRouterHeaderExtractor.BoundaryOutputBudgetFor(request.UserMessage, request.ExpectedItemCount, ProductionMaxOutputTokens);
+        var inputEstimate = Encoding.UTF8.GetByteCount(request.SystemPrompt) + Encoding.UTF8.GetByteCount(request.UserMessage);
+        var ledger = new List<R1LedgerEntry>();
+        var usedInput = 0L;
+        var usedOutput = 0L;
+        string? stopped = null;
+        for (var attemptOrdinal = 1; attemptOrdinal <= 10 && !successful.Contains(requestHash); attemptOrdinal++)
+        {
+            if (usedInput + inputEstimate > 2_000_000 || usedOutput + maxTokens > 500_000)
+            {
+                stopped = $"R1 final continuation cap before SRC-095:{requestHash}";
+                break;
+            }
+            var started = DateTimeOffset.UtcNow;
+            string? response = null;
+            string? error = null;
+            var usage = (Prompt: (int?)null, Completion: (int?)null);
+            var rawBefore = Directory.GetFiles(documentTelemetry, "response.raw.*.txt", SearchOption.AllDirectories).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            try
+            {
+                response = await provider.BoundaryCutAsync(request.SystemPrompt, request.UserMessage, CancellationToken.None, request.ExpectedItemCount);
+                usage = LatestUsage(documentTelemetry, rawBefore);
+                successful.Add(requestHash);
+            }
+            catch (Exception exception)
+            {
+                error = $"{exception.GetType().Name}: {exception.Message}";
+                usage = LatestUsage(documentTelemetry, rawBefore);
+            }
+            var chargedInput = usage.Prompt ?? inputEstimate;
+            var chargedOutput = usage.Completion ?? maxTokens;
+            usedInput += chargedInput;
+            usedOutput += chargedOutput;
+            ledger.Add(new R1LedgerEntry(
+                attemptOrdinal, "SRC-095", requestHash, systemHash, request.ExpectedItemCount, maxTokens,
+                usage.Prompt, usage.Completion, chargedInput, chargedOutput,
+                (long)(DateTimeOffset.UtcNow - started).TotalMilliseconds, error, response));
+        }
+
+        var complete = successful.Count == 25;
+        var priorAttempts = prior.RootElement.GetProperty("cumulativeTotals").GetProperty("attempts").GetInt32();
+        var priorInput = prior.RootElement.GetProperty("cumulativeTotals").GetProperty("inputTokens").GetInt64();
+        var priorOutput = prior.RootElement.GetProperty("cumulativeTotals").GetProperty("outputTokens").GetInt64();
+        var finalArtifact = new
+        {
+            artifactKind = "a99_semantic_control_ceiling_r1_final_continuation",
+            study = "A99_SEMANTIC_CONTROL_CEILING_STUDY",
+            requestVersion = "V4R1_SEMANTIC_FUNCTION_EXPLICIT_REASONING",
+            priorContinuationSha256 = CanonicalArtifactHash.OfTextFile(priorPath),
+            pins = new { model = Model, reasoningEffort = "medium", promptSha256 = PromptSha256, schemaSha256 = SchemaSha256, factsVersion = "V3_RobustGlyphStatistics", packing = "FIXED_OWNED_COUNT_120", binder = "existing SemanticSourcePart binder", providerRoute = "OpenRouter automatic route" },
+            executionChange = new { kind = "execution-reliability-only", clientTimeoutSeconds = 300, semanticTreatmentUnchanged = true, requestBytesUnchanged = true },
+            carriedForward = new { successfulExisting = 24, pendingInitial = 1, attempts = priorAttempts, inputTokens = priorInput, outputTokens = priorOutput },
+            goldRead = false,
+            hierarchyRun = false,
+            postFilterApplied = false,
+            ontologyChanged = false,
+            stopped,
+            completion = new { status = complete ? "COMPLETE_25_OF_25" : "INCOMPLETE", planned = 25, successful = successful.Count, pending = complete ? 0 : 1, duplicateSuccessful = 0, unexpected = 0, SRC089 = 5, SRC095 = successful.Count - 5 },
+            incrementalTotals = new { attempts = ledger.Count, inputTokens = usedInput, outputTokens = usedOutput, caps = new { attempts = 10, input = 2_000_000, output = 500_000 } },
+            cumulativeTotals = new { attempts = priorAttempts + ledger.Count, inputTokens = priorInput + usedInput, outputTokens = priorOutput + usedOutput },
+            ledger,
+        };
+        File.WriteAllText(finalPath, JsonSerializer.Serialize(finalArtifact, FreezeArtifact.Json).ReplaceLineEndings("\n"));
+
+        if (complete)
+        {
+            var combinedArtifact = new
+            {
+                artifactKind = "a99_semantic_control_ceiling_r1_combined_manifest",
+                study = "A99_SEMANTIC_CONTROL_CEILING_STUDY",
+                requestVersion = "V4R1_SEMANTIC_FUNCTION_EXPLICIT_REASONING",
+                lineage = new
+                {
+                    preflightSha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path($"{Root}/r1-reasoning-preflight.v1.json")),
+                    attempt1Sha256 = CanonicalArtifactHash.OfTextFile(attempt1Path),
+                    continuationSha256 = CanonicalArtifactHash.OfTextFile(priorPath),
+                    finalContinuationSha256 = CanonicalArtifactHash.OfTextFile(finalPath),
+                },
+                pins = new { model = Model, reasoningEffort = "medium", promptSha256 = PromptSha256, schemaSha256 = SchemaSha256, factsVersion = "V3_RobustGlyphStatistics", packing = "FIXED_OWNED_COUNT_120", binder = "existing SemanticSourcePart binder" },
+                completion = new { status = "COMPLETE_25_OF_25", successfulPlannedHashes = 25, pending = 0, duplicateSuccessful = 0, unexpected = 0, SRC089 = 5, SRC095 = 20 },
+                totals = new { attempts = priorAttempts + ledger.Count, inputTokens = priorInput + usedInput, outputTokens = priorOutput + usedOutput },
+                goldRead = false,
+                hierarchyRun = false,
+                postFilterApplied = false,
+            };
+            File.WriteAllText(combinedPath, JsonSerializer.Serialize(combinedArtifact, FreezeArtifact.Json).ReplaceLineEndings("\n"));
+        }
+
+        Assert.Null(stopped);
+        Assert.True(complete);
+        Assert.Equal(25, successful.Count);
+    }
+
     private sealed record R1LedgerEntry(
         int OrdinalOverall,
         string DocumentId,

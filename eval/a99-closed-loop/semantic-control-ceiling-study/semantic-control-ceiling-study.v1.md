@@ -1,6 +1,6 @@
 # A99 semantic control ceiling study
 
-Status: R1 provider execution attempted under the authorized caps, but stopped incomplete before Gold/scoring. No R1 accuracy or promotion claim is made.
+Status: R1 provider execution, 30-attempt continuation, and 10-attempt final retry stopped incomplete before Gold/scoring. No R1 accuracy or promotion claim is made.
 
 ## 1. V4 frozen baseline
 
@@ -46,9 +46,9 @@ Yes for the current membership decision. Index entries are `NAVIGATION`; an inde
 
 ## 7. Is explicit reasoning a causal bottleneck?
 
-The authorized R1 run changed only the OpenRouter reasoning envelope from `none` to `medium`, but did not reach 25/25 successful predictions. The raw artifact records 19 attempts, 7 successful predictions (SRC-089: 5/5; SRC-095: 2/20), 18 pending, and output usage `239017/250000`; therefore the causal question remains unscored.
+The authorized R1 run changed only the OpenRouter reasoning envelope from `none` to `medium`, but did not reach 25/25 successful predictions. The immutable attempt-1 artifact records 19 attempts and 7 successful predictions (SRC-089: 5/5; SRC-095: 2/20). A separately authorized execution-reliability continuation increased only the client timeout from 90s to 300s, preserved the semantic request bytes, and consumed its full incremental 30-attempt budget; it added 17/18 pending SRC-095 predictions, leaving 24/25 cumulative successful hashes. A final authorization allowed 10 more attempts for the last hash; all 10 responses lacked `choices[0].message.content`, so the hash remained pending. Therefore the causal question remains unscored and the medium-reasoning route is not operationally complete under these budgets.
 
-Evidence: [r1-run.v1.json](r1-run.v1.json). Gold remained closed and no score artifact was produced.
+Evidence: [r1-run.v1.json](r1-run.v1.json), [r1-continuation.v1.json](r1-continuation.v1.json), [r1-final-continuation.v1.json](r1-final-continuation.v1.json). Gold remained closed and no score or combined manifest was produced.
 
 ## 8. Is context/extent now the dominant limitation?
 
@@ -68,6 +68,6 @@ Do not alter frozen V4 raw/score artifacts, production default, model, facts, pa
 
 ## 12. Promotion decision evidence
 
-No promotion. R1 preflight is frozen at 25 planned requests (SRC-089: 5, SRC-095: 20), identical semantic request hashes, and a reasoning-only fingerprint delta. The authorized attempt stopped at the output cap before completion; Gold remained unopened and no score was generated.
+No promotion. R1 preflight is frozen at 25 planned requests (SRC-089: 5, SRC-095: 20), identical semantic request hashes, and a reasoning-only fingerprint delta. The first attempt stopped at its output cap; the authorized 300-second execution-reliability continuation stopped at its 30-attempt cap with one SRC-095 hash still pending; the final 10-attempt retry also failed the response contract. Gold remained unopened and no score was generated. Under this route and budget, medium-reasoning R1 is not operationally viable.
 
-Evidence: [r1-reasoning-preflight.v1.json](r1-reasoning-preflight.v1.json), [r1-run.v1.json](r1-run.v1.json).
+Evidence: [r1-reasoning-preflight.v1.json](r1-reasoning-preflight.v1.json), [r1-run.v1.json](r1-run.v1.json), [r1-continuation.v1.json](r1-continuation.v1.json), [r1-final-continuation.v1.json](r1-final-continuation.v1.json).
