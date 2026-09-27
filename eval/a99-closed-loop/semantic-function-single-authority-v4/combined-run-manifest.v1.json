@@ -1,0 +1,38 @@
+{
+  "artifactKind": "a99_semantic_function_v4_combined_raw_manifest",
+  "status": "COMPLETE_25_OF_25",
+  "modelProviderCalls": 0,
+  "lineage": {
+    "preflightSha256": "6041ef4f4f5ab7d22d8c4af915b07118e0c127959a1d4788f24d97d5a165e0b3",
+    "attempt1Sha256": "0d88b25e6d38dc5a4e219d14dc815ad8940a58484d59ddf74fb6818cba17a2c1",
+    "continuationSha256": "5610b677040c64bb2c6652fdb8cf034e6c3d1e4818f05f3f824a8c8c0db5df3c"
+  },
+  "attempts": {
+    "total": 26,
+    "successful": 25,
+    "failed": 1,
+    "successfulByDocument": {
+      "SRC-089": 5,
+      "SRC-095": 20
+    },
+    "pending": 0,
+    "duplicateSuccessful": 0,
+    "unexpected": 0
+  },
+  "totals": {
+    "calls": 26,
+    "input": 712286,
+    "output": 46095,
+    "caps": {
+      "calls": 30,
+      "input": 2000000,
+      "output": 250000
+    }
+  },
+  "invariants": {
+    "goldRead": false,
+    "hierarchyRun": false,
+    "postFilterApplied": false,
+    "rawResponsesNotCopiedOrInterpreted": true
+  }
+}
