@@ -130,6 +130,12 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         PdfStageCheckpoint checkpoint,
         CancellationToken cancellationToken)
     {
+        var activeExperiment = experiment ?? CanonicalSemanticExperiment.Baseline;
+        var activeContract = activeExperiment.RequestVersion == SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY
+            ? profile.SourceAuthorityId == PdfSemanticAuthorityProfile.StructuredAtomSourceAuthority
+                ? SemanticCoordinateContract.PdfSemanticFunctionMembershipV1
+                : throw new InvalidOperationException("V4_SEMANTIC_FUNCTION_REQUIRES_STRUCTURED_SOURCE_PARTS")
+            : profile.Contract;
         var input = universe.CreateProductionInput(Path.GetFileNameWithoutExtension(pdfPath)) with
         {
             ReplayCapture = replayCapture?.Metadata,
@@ -153,14 +159,14 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         {
             canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
                 new LeaseBoundHeaderClassifier(transport, lease),
-                profile.Contract,
-                experiment ?? CanonicalSemanticExperiment.Baseline,
+                activeContract,
+                activeExperiment,
                 packingPolicy,
                 selectedPackIds);
             if (replayCapture is not null)
             {
                 var systemPrompt = CanonicalSemanticEngine.SystemPromptFor(
-                    profile.Contract, experiment ?? CanonicalSemanticExperiment.Baseline);
+                    activeContract, activeExperiment);
                 var plannedCalls = canonicalModel.ComposeRequests(input)
                     .Select((segment, index) =>
                     {
@@ -180,7 +186,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
                 // Every run from V2 onward names the request version it sent; a V1 replay stays exactly
                 // as it was captured, identified by its prompt hash.
                 var requestVersion = SemanticRequestVersions.Require(
-                    (experiment ?? CanonicalSemanticExperiment.Baseline).RequestVersion);
+                    activeExperiment.RequestVersion);
                 if (requestVersion != SemanticRequestVersion.V1_ATTENTION_LEGACY)
                     replayCapture = replayCapture with
                     {
@@ -189,7 +195,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
                 replayCapture = replayCapture.Reserve(
                     input.DocumentId ?? throw new InvalidOperationException("REPLAY_CAPTURE_DOCUMENT_ID_MISSING"),
                     input.SourceSha256,
-                    profile.Contract.SchemaHash(),
+                    activeContract.SchemaHash(),
                     plannedCalls);
             }
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(

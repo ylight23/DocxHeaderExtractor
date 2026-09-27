@@ -1,6 +1,6 @@
 # Semantic-function contract design freeze v1
 
-Status: offline design freeze only. This does not create a V4 request, change production code, or make a provider call.
+Status: V4 experimental transport and its provider-free preflight are implemented. This does not change the V2 production default or make a provider call.
 
 The replay study showed that a single membership authority is necessary to eliminate contradictory valid states, but that projecting legacy `semanticRole` values is insufficient. In particular, 87 contents false positives were already classified as `section` or `section-heading`; a projection cannot recover information the raw classification omitted.
 
@@ -49,6 +49,6 @@ Thus the same words can be navigation in a table of contents and a structural re
 
 The executable freeze is [SemanticFunctionContractDesignFreezeTests.cs](../../tests/DocxHeaderExtractor.Tests/SemanticFunctionContractDesignFreezeTests.cs). It proves the closed vocabulary, fail-closed behavior, non-member functions, occurrence sensitivity, coordinate/binder invariance, and V2 immutability. Its committed artifact is `eval/a99-closed-loop/semantic-function-contract-design-v1/contract-freeze.v1.json`.
 
-After review and explicit provider authorization, the frozen prospective arm is `V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY`: `qwen/qwen3.7-flash`, V3 facts, packing 120, existing `sourceParts` binder, SRC-089 + SRC-095 only, and Gold unopened until raw predictions persist. No such arm is implemented or authorized by this freeze.
+The explicit-only V4 experimental arm is `V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY`: `qwen/qwen3.7-flash`, V3 facts, packing 120, existing `sourceParts` binder, SRC-089 + SRC-095 only, and Gold unopened until raw predictions persist. Its provider-free preflight pins the request version, prompt SHA, schema SHA, facts version, packing, and model identity at `eval/a99-closed-loop/semantic-function-single-authority-v4/preflight.v1.json`.
 
 The gate remains: review this artifact and obtain explicit provider authorization before creating any V4 experimental transport or making a provider call.

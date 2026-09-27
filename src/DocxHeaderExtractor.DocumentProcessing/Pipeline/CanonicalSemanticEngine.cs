@@ -194,6 +194,25 @@ internal static class CanonicalSemanticEngine
         heading inside an index/contents region.
         """;
 
+    private const string RawSemanticFunctionMembershipPrompt = """
+        You are the semantic-function membership stage of the A99 canonical document pipeline.
+        Return strict JSON matching the supplied schema. Classify occurrences, not strings. An
+        identical string in a table of contents and in body text can have different functions.
+
+        semanticFunction is the only membership authority. DOCUMENT_IDENTITY identifies the
+        artifact's own semantic title identity. REGION_STRUCTURE names or opens a semantic region
+        whose following content belongs beneath it. NAVIGATION points to or lists content elsewhere.
+        PAGE_FURNITURE serves repeated page presentation. OBJECT_CAPTION describes an embedded
+        object. TABLE_STRUCTURE is internal to a table. FOOTNOTE_OR_SOURCE supports other content.
+        BODY_INFORMATION is ordinary content without a region-opening function. METADATA describes
+        the artifact without being its title identity.
+
+        Return sourceParts and exactly one closed semanticFunction for each occurrence you report.
+        Do not return membership, isHeading, semanticRole, hierarchy, relation, scope, titleRelation,
+        offsets, or any other field. The harness derives membership: only DOCUMENT_IDENTITY and
+        REGION_STRUCTURE are members; every other function is not.
+        """;
+
     /// <summary>
     /// The Stage-1 semantic core: membership, and no other task.
     /// <para>
@@ -300,6 +319,9 @@ internal static class CanonicalSemanticEngine
     internal static string HeadingExclusionConsistencyClause { get; } =
         NormalizePromptLineEndings(RawHeadingExclusionConsistencyClause);
 
+    internal static string SemanticFunctionMembershipPrompt { get; } =
+        NormalizePromptLineEndings(RawSemanticFunctionMembershipPrompt);
+
     /// <summary>The discovery prompt of a request version; an unknown version is refused.</summary>
     internal static string SystemPromptOf(SemanticRequestVersion version) =>
         SemanticRequestVersions.Require(version) switch
@@ -307,6 +329,7 @@ internal static class CanonicalSemanticEngine
             SemanticRequestVersion.V1_ATTENTION_LEGACY => HistoricalContracts.AttentionLegacyV1.SystemPrompt,
             // V3 is V2's prompt plus one clause: the evidence and every other instruction are the same bytes.
             SemanticRequestVersion.V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY => SystemPrompt + HeadingExclusionConsistencyClause,
+            SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY => SemanticFunctionMembershipPrompt,
             _ => SystemPrompt,
         };
 

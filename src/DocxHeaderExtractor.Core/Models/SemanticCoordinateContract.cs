@@ -159,4 +159,16 @@ public sealed record SemanticCoordinateContract(
     {
         PromptClause = SemanticMembershipV1PromptClause.Text,
     };
+
+    /// <summary>Experimental V4: closed semantic function with membership derived by the harness.</summary>
+    public static readonly SemanticCoordinateContract PdfSemanticFunctionMembershipV1 = new(
+        "STRUCTURED_SOURCE_PART_TUPLE",
+        SemanticFunctionMembershipContractV1.ProtocolVersion,
+        SemanticFunctionMembershipContractV1.Schema,
+        SemanticFunctionMembershipContractV1.ValidateJson,
+        SemanticFunctionMembershipContractV1.Decode,
+        SemanticFunctionMembershipContractV1.Binding)
+    {
+        PromptClause = PdfSemanticFunctionMembershipPromptClause.Text,
+    };
 }

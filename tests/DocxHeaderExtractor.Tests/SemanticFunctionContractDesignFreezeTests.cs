@@ -202,9 +202,10 @@ public sealed class SemanticFunctionContractDesignFreezeTests
         Assert.Equal(raw.BoundIdentity, originalBinding.Identity);
         Assert.Equal(raw.SourcePartsSha256, Sha(sourcePartsJson));
 
-        // This study deliberately adds no enum value, request builder, production schema, or V2 edit.
+        // V2 remains immutable even once a later, explicit-only V4 transport exists.
         Assert.Equal(SemanticRequestVersion.V2_ATTENTION_FREE, SemanticRequestVersions.ProductionDefault);
-        Assert.DoesNotContain(Enum.GetNames<SemanticRequestVersion>(), value => value.StartsWith("V4", StringComparison.Ordinal));
+        Assert.Contains(SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY,
+            Enum.GetValues<SemanticRequestVersion>());
         Assert.Contains("isHeading", JsonSerializer.Serialize(SemanticSourcePartsContract.Schema()), StringComparison.Ordinal);
         Assert.True(File.Exists(TestRepository.Path(V2Run)));
     }
@@ -219,7 +220,7 @@ public sealed class SemanticFunctionContractDesignFreezeTests
         {
             artifactKind = "a99_semantic_function_contract_design_freeze",
             study = "SEMANTIC_FUNCTION_CONTRACT_DESIGN_FREEZE_V1",
-            status = "offline_design_only_not_a_production_protocol",
+            status = "design_freeze_with_explicit_only_v4_transport_preflighted_not_provider_authorized",
             modelProviderCalls = 0,
             follows = new
             {
@@ -290,7 +291,7 @@ public sealed class SemanticFunctionContractDesignFreezeTests
                 rawRun = new { path = V2Run, sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path(V2Run)) },
                 v2CoordinatePreservedThroughDesign = RawV2Binding.Value,
             },
-            nextGate = "Do not create or send V4 until this frozen membership-first shape is reviewed and provider authorization is explicit; a future arm must use this closed vocabulary rather than project legacy semanticRole.",
+            nextGate = "Do not send the explicit-only V4 transport until its frozen preflight is reviewed and provider authorization is explicit; the arm must use this closed vocabulary rather than project legacy semanticRole.",
         });
     }
 

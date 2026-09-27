@@ -1,7 +1,7 @@
 {
   "artifactKind": "a99_semantic_function_contract_design_freeze",
   "study": "SEMANTIC_FUNCTION_CONTRACT_DESIGN_FREEZE_V1",
-  "status": "offline_design_only_not_a_production_protocol",
+  "status": "design_freeze_with_explicit_only_v4_transport_preflighted_not_provider_authorized",
   "modelProviderCalls": 0,
   "follows": {
     "replay": "docs/accuracy/semantic-function-membership-replay-v1.md",
@@ -176,7 +176,8 @@
       "Unspecified",
       "V1_ATTENTION_LEGACY",
       "V2_ATTENTION_FREE",
-      "V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY"
+      "V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY",
+      "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY"
     ],
     "structuredV1SchemaHash": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
     "rawRun": {
@@ -188,5 +189,5 @@
       "BoundIdentity": "L0002:S1:0-33"
     }
   },
-  "nextGate": "Do not create or send V4 until this frozen membership-first shape is reviewed and provider authorization is explicit; a future arm must use this closed vocabulary rather than project legacy semanticRole."
+  "nextGate": "Do not send the explicit-only V4 transport until its frozen preflight is reviewed and provider authorization is explicit; the arm must use this closed vocabulary rather than project legacy semanticRole."
 }

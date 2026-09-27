@@ -36,6 +36,9 @@ internal enum SemanticRequestVersion
     /// evidence.
     /// </summary>
     V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY = 3,
+
+    /// <summary>Experimental only: V4 returns closed semanticFunction, not isHeading or semanticRole.</summary>
+    V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY = 4,
 }
 
 internal static class SemanticRequestVersions
@@ -47,7 +50,8 @@ internal static class SemanticRequestVersions
     public static SemanticRequestVersion Require(SemanticRequestVersion version) => version switch
     {
         SemanticRequestVersion.V1_ATTENTION_LEGACY or SemanticRequestVersion.V2_ATTENTION_FREE
-            or SemanticRequestVersion.V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY => version,
+            or SemanticRequestVersion.V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY
+            or SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY => version,
         _ => throw new InvalidOperationException($"SEMANTIC_REQUEST_VERSION_UNKNOWN:{version}"),
     };
 }
