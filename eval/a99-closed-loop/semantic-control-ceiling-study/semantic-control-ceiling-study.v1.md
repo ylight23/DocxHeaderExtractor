@@ -71,3 +71,9 @@ Do not alter frozen V4 raw/score artifacts, production default, model, facts, pa
 No promotion. R1 preflight is frozen at 25 planned requests (SRC-089: 5, SRC-095: 20), identical semantic request hashes, and a reasoning-only fingerprint delta. The first attempt stopped at its output cap; the authorized 300-second execution-reliability continuation stopped at its 30-attempt cap with one SRC-095 hash still pending; the final 10-attempt retry also failed the response contract. Gold remained unopened and no score was generated. Under this route and budget, medium-reasoning R1 is not operationally viable.
 
 Evidence: [r1-reasoning-preflight.v1.json](r1-reasoning-preflight.v1.json), [r1-run.v1.json](r1-run.v1.json), [r1-continuation.v1.json](r1-continuation.v1.json), [r1-final-continuation.v1.json](r1-final-continuation.v1.json).
+
+## 13. Frozen R1 wording and next work
+
+The R1 freeze is explicit: semantic completion `24/25`; accuracy evaluation `BLOCKED`; reasoning execution `CONFIRMED`; the 300-second client timeout materially improved completion reliability; the final unresolved request consumed 10 additional attempts and produced 10 provider responses but zero contract-valid predictions. No further R1 calls are authorized.
+
+The next work is provider-free `A99_REQUEST_ARCHITECTURE_V2`: request census and decomposition, resource-aware packing, exact-once ownership with halo, deterministic adaptive split, content-addressed resume, and response-shape handling. Its preflight and simulator artifacts are frozen under `../request-architecture-v2/`; they preserve the V4 semantic contract and production defaults, make zero provider calls, and read no Gold.

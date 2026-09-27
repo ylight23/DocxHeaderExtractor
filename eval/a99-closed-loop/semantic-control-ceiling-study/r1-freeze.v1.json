@@ -1,0 +1,32 @@
+{
+  "artifactKind": "a99_semantic_control_ceiling_r1_freeze",
+  "requestVersion": "V4R1_SEMANTIC_FUNCTION_EXPLICIT_REASONING",
+  "semanticCompletion": "24/25",
+  "accuracyEvaluation": "BLOCKED",
+  "reasoningExecution": "CONFIRMED",
+  "executionReliability": {
+    "priorClientTimeoutSeconds": 90,
+    "continuationClientTimeoutSeconds": 300,
+    "materiallyImprovedCompletionReliability": true,
+    "semanticRequestBytesChanged": false,
+    "semanticTreatmentChanged": false
+  },
+  "finalUnresolvedSemanticRequest": {
+    "additionalAttempts": 10,
+    "providerResponses": 10,
+    "contractValidPredictions": 0,
+    "remainingPending": 1,
+    "failure": "choices[0].message.content missing"
+  },
+  "conclusion": "The current FIXED_OWNED_COUNT_120 request/execution architecture is not operationally reliable enough to complete the frozen reasoning-medium cohort within bounded retries.",
+  "prohibitedInference": "No conclusion about semantic accuracy is permitted.",
+  "goldRead": false,
+  "scoreProduced": false,
+  "combinedManifestProduced": false,
+  "lineage": {
+    "preflightSha256": "647a05ccbd5951f3cbf2f79dfd28f0dc600a630942bcb06e0e0fcb822f9c8889",
+    "attempt1Sha256": "06eee901fac7f9b9113632cd9a342660adcfc1f011d88a800cf7a37d94621faf",
+    "continuationSha256": "344fa4aa4e83a3d23b2ba3803b3a0f7478e42740e1f6d075d0256a67d205e1ba",
+    "finalContinuationSha256": "e14579a4395b5d65e3e7541fa95eae3348a64119f1510f0a4dfb0276b1526901"
+  }
+}
