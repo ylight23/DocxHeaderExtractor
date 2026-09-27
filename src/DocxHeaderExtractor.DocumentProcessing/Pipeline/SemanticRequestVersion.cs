@@ -25,6 +25,17 @@ internal enum SemanticRequestVersion
     /// place of the scope label and the contents flag (A99_GENERIC_PIPELINE_HARDCODE_AUDIT_V1).
     /// </summary>
     V2_ATTENTION_FREE = 2,
+
+    /// <summary>
+    /// V2's evidence, byte for byte, plus one model-visible clause: an occurrence whose primary function is
+    /// ordinary navigation, page furniture, a note, an ordinary object caption or a table header row is not a
+    /// heading, and prominence alone does not make it one - while a genuine region opener stays a heading
+    /// wherever it sits. Authorized as a single-clause arm (LLM_SEMANTIC_EXCLUSION_ARM_V1, user 2026-09-27)
+    /// after the pilot found the model naming page furniture correctly in semanticRole and still returning it
+    /// as a heading. Not the production default: promoting it is a separate decision that needs this arm's
+    /// evidence.
+    /// </summary>
+    V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY = 3,
 }
 
 internal static class SemanticRequestVersions
@@ -35,7 +46,8 @@ internal static class SemanticRequestVersions
     /// <summary>The version, or a refusal: an unknown version is never mapped to a known one.</summary>
     public static SemanticRequestVersion Require(SemanticRequestVersion version) => version switch
     {
-        SemanticRequestVersion.V1_ATTENTION_LEGACY or SemanticRequestVersion.V2_ATTENTION_FREE => version,
+        SemanticRequestVersion.V1_ATTENTION_LEGACY or SemanticRequestVersion.V2_ATTENTION_FREE
+            or SemanticRequestVersion.V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY => version,
         _ => throw new InvalidOperationException($"SEMANTIC_REQUEST_VERSION_UNKNOWN:{version}"),
     };
 }

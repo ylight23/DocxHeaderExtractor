@@ -84,6 +84,32 @@ public sealed partial class SemanticRequestVersionGateTests
             Words(CanonicalSemanticEngine.Stage1MembershipPrompt));
     }
 
+    /// <summary>
+    /// V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY is V2 plus exactly one appended clause, and is not production.
+    /// A single-clause arm is only interpretable if the clause is the whole difference.
+    /// </summary>
+    [Fact]
+    public void V3_is_v2_plus_exactly_one_appended_clause_and_is_not_the_production_default()
+    {
+        Assert.NotEqual(SemanticRequestVersion.V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY, SemanticRequestVersions.ProductionDefault);
+        var v2 = CanonicalSemanticEngine.SystemPromptOf(SemanticRequestVersion.V2_ATTENTION_FREE);
+        var v3 = CanonicalSemanticEngine.SystemPromptOf(SemanticRequestVersion.V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY);
+        Assert.Equal(v2 + CanonicalSemanticEngine.HeadingExclusionConsistencyClause, v3);
+        Assert.StartsWith(v2, v3, StringComparison.Ordinal);
+        Assert.DoesNotContain('\r', v3);
+
+        // The clause is worded by function: no document, page number, alias or corpus text decides anything in it.
+        var clause = CanonicalSemanticEngine.HeadingExclusionConsistencyClause;
+        Assert.DoesNotContain("attention", clause, StringComparison.OrdinalIgnoreCase);
+        foreach (var literal in new[] { "RFC", "Bishop", "Decree", "Article", "Chapter", "SRC-", "DOC-", "page 1", "L0" })
+            Assert.DoesNotContain(literal, clause, StringComparison.Ordinal);
+
+        // The evidence a V3 request carries is V2's, byte for byte: the arm moves the prompt only.
+        var experiment = CanonicalSemanticExperiment.Baseline with { RequestVersion = SemanticRequestVersion.V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY };
+        Assert.Equal(v3 + SemanticCoordinateContract.PdfStructuredSourceParts.PromptClause,
+            CanonicalSemanticEngine.SystemPromptFor(SemanticCoordinateContract.PdfStructuredSourceParts, experiment));
+    }
+
     [Fact]
     public void A_versioned_run_records_its_request_version_and_an_unversioned_one_hashes_as_before()
     {

@@ -172,6 +172,29 @@ internal static class CanonicalSemanticEngine
         """;
 
     /// <summary>
+    /// V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY. One clause, worded by function rather than by typography or by a
+    /// literal list, as authorized (user, 2026-09-27) after LLM_SEMANTIC_PILOT_V1: the model named page furniture,
+    /// contents entries and index entries correctly in semanticRole and returned them as headings anyway, so 116 of
+    /// SRC-095's 160 false claims were navigation the contract never told it to exclude.
+    /// <para>
+    /// "ordinary" carries the weight in both directions: an ordinary contents line or object caption is excluded, and
+    /// the third paragraph keeps a genuine region opener - the index group letters of S095_Q2, a heading inside a
+    /// contents region - a heading. Nothing here names a document, a page or a text.
+    /// </para>
+    /// </summary>
+    private const string RawHeadingExclusionConsistencyClause = """
+
+        An occurrence is not a heading when its primary function is ordinary navigation, page furniture, a
+        footnote/source note, an ordinary object caption, or a table row/column header.
+
+        Do not mark such occurrences as headings merely because they are standalone, bold, numbered, repeated,
+        or visually prominent.
+
+        This exclusion does not apply to a genuine region opener that organizes content beneath it, including a
+        heading inside an index/contents region.
+        """;
+
+    /// <summary>
     /// The Stage-1 semantic core: membership, and no other task.
     /// <para>
     /// Derived from <see cref="RawSystemPrompt"/> by removing the instructions whose only purpose is
@@ -273,11 +296,19 @@ internal static class CanonicalSemanticEngine
         return contract.PromptClause is null ? core : core + contract.PromptClause;
     }
 
+    /// <summary>The V3 clause, line endings settled before it is appended.</summary>
+    internal static string HeadingExclusionConsistencyClause { get; } =
+        NormalizePromptLineEndings(RawHeadingExclusionConsistencyClause);
+
     /// <summary>The discovery prompt of a request version; an unknown version is refused.</summary>
     internal static string SystemPromptOf(SemanticRequestVersion version) =>
-        SemanticRequestVersions.Require(version) == SemanticRequestVersion.V1_ATTENTION_LEGACY
-            ? HistoricalContracts.AttentionLegacyV1.SystemPrompt
-            : SystemPrompt;
+        SemanticRequestVersions.Require(version) switch
+        {
+            SemanticRequestVersion.V1_ATTENTION_LEGACY => HistoricalContracts.AttentionLegacyV1.SystemPrompt,
+            // V3 is V2's prompt plus one clause: the evidence and every other instruction are the same bytes.
+            SemanticRequestVersion.V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY => SystemPrompt + HeadingExclusionConsistencyClause,
+            _ => SystemPrompt,
+        };
 
     /// <summary>The prompt this run sends. One clause per intervention, appended, never rewritten.</summary>
     internal static string SystemPromptFor(CanonicalSemanticExperiment experiment)
