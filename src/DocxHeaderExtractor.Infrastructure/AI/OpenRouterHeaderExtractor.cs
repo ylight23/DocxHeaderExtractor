@@ -125,7 +125,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 // Qwen3.5 otherwise consumes the compact structured-output budget with hidden
                 // reasoning and can terminate with content=null. We require a bounded JSON
                 // contract whose evidence is grounded locally, not a chain of thought.
-                reasoning = new { effort = "none" },
+                reasoning = new { effort = _options.OpenRouterReasoningEffort },
                 messages = new[]
                 {
                     new { role = "system", content = system },
@@ -270,7 +270,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             // cap truncates otherwise valid multi-block responses and turns them into invisible
             // missing decisions. Keep the result bounded by the configured model profile.
             max_tokens = BoundaryOutputBudget(userMessage, expectedItemCount),
-            reasoning = new { effort = "none" },
+            reasoning = new { effort = _options.OpenRouterReasoningEffort },
             messages = new[]
             {
                 new { role = "system", content = systemPrompt },

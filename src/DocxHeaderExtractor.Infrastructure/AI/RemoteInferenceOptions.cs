@@ -49,6 +49,12 @@ public sealed class RemoteInferenceOptions
     /// <summary>Optional A/B control override. Null uses the provider-reported reasoning
     /// ceiling; false sends the explicit reasoning.enabled=false control.</summary>
     public bool? OpenRouterReasoningEnabledOverride { get; set; }
+    /// <summary>
+    /// Exact OpenRouter reasoning envelope value. The production default is <c>none</c> and is
+    /// intentionally unchanged. A causal reasoning arm must opt in explicitly and pin the
+    /// resulting execution fingerprint before transport.
+    /// </summary>
+    public string OpenRouterReasoningEffort { get; set; } = "none";
     /// <summary>Optional execution-only telemetry. Null preserves the normal production path.</summary>
     public ProviderObservabilityOptions? Observability { get; set; }
     public Action<string>? DebugLog { get; set; }
@@ -66,6 +72,8 @@ public sealed class RemoteInferenceOptions
         if (RequestTimeoutSeconds is < 10 or > 600) throw new InvalidOperationException("RequestTimeoutSeconds phải nằm trong khoảng 10..600.");
         if (TransientRequestRetries is < 0 or > 4) throw new InvalidOperationException("TransientRequestRetries phải nằm trong khoảng 0..4.");
         if (MaxParallelRequests is < 1 or > 16) throw new InvalidOperationException("MaxParallelRequests phải nằm trong khoảng 1..16.");
+        if (OpenRouterReasoningEffort is not ("none" or "low" or "medium" or "high"))
+            throw new InvalidOperationException("OpenRouterReasoningEffort phải là none, low, medium hoặc high.");
     }
 
     public static RemoteInferenceOptions FromEnvironment(string profile = "openrouter")

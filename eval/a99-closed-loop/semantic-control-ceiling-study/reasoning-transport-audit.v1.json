@@ -1,0 +1,42 @@
+{
+  "artifactKind": "a99_semantic_control_ceiling_reasoning_transport_audit",
+  "study": "A99_SEMANTIC_CONTROL_CEILING_STUDY",
+  "model": "qwen/qwen3.7-flash",
+  "transport": "OpenRouterHeaderExtractor.BoundaryCutAsync",
+  "sourceEvidence": {
+    "implementation": "src/DocxHeaderExtractor.Infrastructure/AI/OpenRouterHeaderExtractor.cs",
+    "wireBodyFields": ["model", "temperature", "max_tokens", "reasoning", "messages", "response_format", "provider"],
+    "reasoningField": "reasoning.effort",
+    "reasoningValue": "none",
+    "reasoningIsUnconditional": false,
+    "baselineDefaultReasoningEffort": "none",
+    "experimentalOverride": "RemoteInferenceOptions.OpenRouterReasoningEffort; default preserves V4 none",
+    "remoteInferenceOverridePresentButNotConsumedByOpenRouterBody": true
+  },
+  "modelSupportsReasoning": "UNKNOWN_BY_PROVIDER_FREE_AUDIT",
+  "configuredReasoning": "explicitly disabled in the OpenRouter payload",
+  "explicitReasoningConfigured": true,
+  "actualProviderField": "reasoning.effort",
+  "actualProviderValue": "none",
+  "requestEnvelopeObserved": true,
+  "requestEnvelopeEvidence": "Production serializer inspected; no new provider call was made.",
+  "providerObservedReasoning": {
+    "successfulV4Responses": 25,
+    "providers": ["Alibaba"],
+    "responsesWithMessageReasoning": 0,
+    "responsesWithReasoningTokens": 0,
+    "telemetrySource": "frozen V4 transport observations; raw response content not copied here"
+  },
+  "providerEnvelopeHashExcludingSecrets": "f366bb33bb940c3fdd0f17ed2a5c673af898177000f63bbfa70cf44d4dbabcd1",
+  "providerEnvelopeProjection": {
+    "model": "qwen/qwen3.7-flash",
+    "provider": "Alibaba",
+    "requestReasoningEffort": "none",
+    "responseFormat": "json_object",
+    "reasoningPresent": false,
+    "reasoningTokens": 0,
+    "providerRoute": "Alibaba"
+  },
+  "conclusion": "V4_BASELINE_REASONING_MODE = EXPLICITLY_DISABLED; frozen execution used an explicit OpenRouter reasoning.effort=none payload and no observed reasoning channel. The current transport now exposes a pinned effort option for R1 while preserving the V4 default none.",
+  "providerCallsForAudit": 0
+}

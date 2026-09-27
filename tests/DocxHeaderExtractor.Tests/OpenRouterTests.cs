@@ -60,6 +60,23 @@ public sealed class OpenRouterTests
     }
 
     [Fact]
+    public async Task Reasoning_effort_is_explicitly_selectable_for_an_authorized_experiment()
+    {
+        var handler = new CaptureHandler(
+            """{"choices":[{"message":{"content":"{}"}}]}""");
+        using var http = new HttpClient(handler);
+        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = "test-key",
+            OpenRouterReasoningEffort = "medium",
+        });
+
+        await model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}");
+
+        Assert.Contains("\"reasoning\":{\"effort\":\"medium\"}", handler.Body);
+    }
+
+    [Fact]
     public void Missing_api_key_fails_before_any_request()
     {
         using var http = new HttpClient(new CaptureHandler("{}"));

@@ -1,0 +1,278 @@
+{
+  "artifactKind": "a99_semantic_control_ceiling_reasoning_only_preflight",
+  "study": "A99_SEMANTIC_CONTROL_CEILING_STUDY",
+  "requestVersion": "V4R1_SEMANTIC_FUNCTION_EXPLICIT_REASONING",
+  "treatment": {
+    "onlyChangedField": "OpenRouter reasoning.effort",
+    "baselineValue": "none",
+    "treatmentValue": "medium",
+    "semanticContract": "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY"
+  },
+  "pins": {
+    "model": "qwen/qwen3.7-flash",
+    "promptSha256": "e996bef4346efff9b0544f34777192d5b59c7e7f75a749dbf91cbe9f0d5df93b",
+    "schemaSha256": "7d8ae805c0373dad3795d819cd5b0229b9421c28600d5d6b001e818f839225db",
+    "factsVersion": "V3_RobustGlyphStatistics",
+    "packing": "FIXED_OWNED_COUNT_120",
+    "binder": "SemanticSourcePartCanonicalizer + SemanticSourcePartBinder"
+  },
+  "providerExecution": {
+    "baselineReasoningFingerprint": "derived per request; effort=none",
+    "treatmentReasoningFingerprint": "derived per request; effort=medium",
+    "requestSemanticHashesIdentical": true
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "calls": 5,
+      "requests": [
+        {
+          "requestSha256": "dc08fac8f167d86030daf7f9701910d022c2dc7bb3dad57e4116068d42331b23",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "9d6004f963ba2bbdfeb75227632785593ac903e61cbf50b9f039a337e9a91512",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "4a3d340629f0397e16c01234f242bdc97f9da5a608ce7fc4228aed4eaa08913a",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "232b750e9c0095b4236dea7f364cba9c5177b502be03484900ed21567ee0edc4",
+          "expectedItemCount": 102,
+          "maxTokens": 13152,
+          "baselineFingerprint": "d1ccfeb7daa1fb36b7860ea5ce26729065e04d76416d96805d1f78fd6647ac17",
+          "r1Fingerprint": "c4075a8ea89ed10d6e1027dc4a8fe3abac399d4543708aa0f14029693ac264c7",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "calls": 20,
+      "requests": [
+        {
+          "requestSha256": "a2fd70685b3adbfb347ba344edf3214fe595c4ec83d7de2965d6e03bc0c87580",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "a1c143960c962e640881aa5a7297b52dc1b1b8378fae276763f541391f580b31",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "16725f313cbf7e8676f4c7ba1cfd975cb8e16dbc585b99e0653ac934c58b0cce",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "8d7578abf404f00280599e325bab9b6ca26beb13895c1eb8f0fe4b2685fba746",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "1975479b41896d4782bf820eda9e391d4e78bba57d4eb68a186f8bc7386fe217",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "0d0898ddf306a8288ebab238145e4d62cb0469fe0a95bd2c88d0e3e2e7e0a547",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "21a4cc7145e2f60124bf8f80a62c6eccf8f7ac9b07cc32d9c460e6e5a50dadde",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "0b2d0e75c07ce57949271addba5087cc534f8f3059634a0e36a2afbbb3bc9ed9",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "adc90f4db88b2641ff93a293cb15883360f85e057527af40b07278832585c6e4",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "0efed8f5a4f4bfc9c5af9157d580199ca361d0f7c26f790fbcb4e14a4168459c",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "80a541d68f5145d122890607d2e33a8d725029e5918c1e15c12e7dc09425aba7",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "12bd96f3d1033eee18c2b72ae12f1eb6b06c09ff89bbd8310a4941f2bef6f2b5",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "a8cdeb6aad93e15f519061a7832aa1c39fa4b0742a6e7425ce71ccd662f2b879",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "a16083a660fa62cf9b470c0cda0bf691934ab0e6b13d36090176c24217b7a2fe",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "010bbfb2c81018a85a4f108e04aaba3d73f849f8720c87bfe76fa5ce5124a695",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "5c3b2f7600eaf8c20019ac2317f5fdfbc4445b4063af91789a1aea0da201997b",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "102ba0f95c6cb43f252d3678cc65b0b5b0b2e95aa5cb606385ba2837a023529c",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "579465a113918ea79764f782aa00e12fa965ec35428a021eca7a76380693dd78",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "cddb9024a8afa30c0eabdaeaaaecddcc625ecbd28d511c89fbf72dc0fda84e7a",
+          "expectedItemCount": 120,
+          "maxTokens": 15456,
+          "baselineFingerprint": "7991507c800cbd743b8d0e2bbc4b48b59018309c70b79251a6148c57781d711e",
+          "r1Fingerprint": "fab7190d965d32d47af5910b31feacdc161686553613a19ebf17a53df6c848b1",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        },
+        {
+          "requestSha256": "bf49484b1dcf12c846ce11668aa52efd928ac37fffd4ec4a56223cbb6ed0b888",
+          "expectedItemCount": 22,
+          "maxTokens": 2912,
+          "baselineFingerprint": "9d42270754f2a1032000fe42267b975f023d7f3cd19cd4ddffca6f59157b8caa",
+          "r1Fingerprint": "daaaad84665a960fd3351576ec844e163029c2a3326a75368801b496da5abe15",
+          "semanticRequestUnchanged": true,
+          "reasoningOnlyDelta": true
+        }
+      ]
+    }
+  ],
+  "calls": {
+    "total": 25,
+    "SRC089": 5,
+    "SRC095": 20
+  },
+  "gates": {
+    "goldOpened": false,
+    "hierarchyRun": false,
+    "postFilterApplied": false,
+    "cohortExpanded": false,
+    "providerCalls": 0,
+    "providerAuthorizationRequired": true,
+    "frozenV4ArtifactsUntouched": true
+  },
+  "nextGate": "Explicit authorization required before any V4R1 provider transport or raw prediction persistence."
+}
