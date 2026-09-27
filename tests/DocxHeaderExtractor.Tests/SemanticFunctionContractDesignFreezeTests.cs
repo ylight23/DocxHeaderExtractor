@@ -30,16 +30,46 @@ public sealed class SemanticFunctionContractDesignFreezeTests
     ];
 
     private static readonly HashSet<string> FunctionSet = new(Functions, StringComparer.Ordinal);
-    private static readonly HashSet<string> AllowedFields = new(
-        ["sourceParts", "semanticFunction", "occurrenceRole", "scope", "titleRelation"], StringComparer.Ordinal);
+    private static readonly HashSet<string> MembershipArmFields = new(
+        ["sourceParts", "semanticFunction"], StringComparer.Ordinal);
+
+    private sealed record FunctionDefinition(string Function, bool Member, string Definition, string Boundary);
+
+    private static readonly FunctionDefinition[] Definitions =
+    [
+        new("DOCUMENT_IDENTITY", true,
+            "Identifies the document, report, or artifact itself as its semantic title identity.",
+            "Unlike METADATA, it is the title identity rather than a description of the artifact."),
+        new("REGION_STRUCTURE", true,
+            "Names or opens a semantic region whose subsequent content belongs beneath it.",
+            "Unlike NAVIGATION, OBJECT_CAPTION, and TABLE_STRUCTURE, it opens a region rather than pointing elsewhere or describing an internal object/table part."),
+        new("NAVIGATION", false,
+            "Points to, lists, or leads to content elsewhere in the document.",
+            "Unlike REGION_STRUCTURE, it does not open a region whose following content belongs beneath it."),
+        new("PAGE_FURNITURE", false,
+            "Serves repeated or page-positioned presentation, such as a running header, footer, or page number.",
+            "Unlike REGION_STRUCTURE, its function is page presentation, not opening a content region."),
+        new("OBJECT_CAPTION", false,
+            "Names or describes an embedded visual, figure, listing, or other object whose scope is that object itself.",
+            "Unlike REGION_STRUCTURE, it does not open a broader following content region."),
+        new("TABLE_STRUCTURE", false,
+            "Is a row, column, label, or header structure internal to a table.",
+            "Unlike REGION_STRUCTURE, it is internal to the table rather than a heading outside or around it that opens a broader region."),
+        new("FOOTNOTE_OR_SOURCE", false,
+            "Is a footnote, citation, attribution, or source note that supports or qualifies other content.",
+            "Unlike REGION_STRUCTURE, it does not establish a region for subsequent body content."),
+        new("BODY_INFORMATION", false,
+            "Is ordinary body information, such as prose, a statement, or a run-in fact, without a region-opening function.",
+            "Unlike REGION_STRUCTURE, it conveys content but does not name or open the region containing it."),
+        new("METADATA", false,
+            "Describes the document, its provenance, status, date, audience, or other attributes without constituting its title identity.",
+            "Unlike DOCUMENT_IDENTITY, it describes the artifact but is not the artifact's semantic title identity."),
+    ];
 
     private sealed record Decision(
         string SemanticFunction,
         bool IsMember,
-        string SourcePartsJson,
-        string? OccurrenceRole,
-        string? Scope,
-        string? TitleRelation);
+        string SourcePartsJson);
 
     private sealed record V2BindingInvariant(string SourcePartsSha256, string BoundIdentity);
 
@@ -48,10 +78,13 @@ public sealed class SemanticFunctionContractDesignFreezeTests
     [Fact]
     public void The_design_schema_has_one_closed_membership_authority()
     {
-        var schema = JsonSerializer.Serialize(ProposedSchema());
+        var schema = JsonSerializer.Serialize(MembershipArmSchema());
 
         Assert.DoesNotContain("isHeading", schema, StringComparison.Ordinal);
         Assert.DoesNotContain("semanticRole", schema, StringComparison.Ordinal);
+        Assert.DoesNotContain("occurrenceRole", schema, StringComparison.Ordinal);
+        Assert.DoesNotContain("scope", schema, StringComparison.Ordinal);
+        Assert.DoesNotContain("titleRelation", schema, StringComparison.Ordinal);
         Assert.DoesNotContain("\"heading\"", schema, StringComparison.Ordinal);
         foreach (var function in Functions) Assert.Contains(function, schema, StringComparison.Ordinal);
         Assert.Equal(9, Functions.Length);
@@ -73,10 +106,7 @@ public sealed class SemanticFunctionContractDesignFreezeTests
     {
         foreach (var function in Functions)
         {
-            using var entry = JsonDocument.Parse($$"""
-                {"sourceParts":[{"sourceAlias":"L0001:S0"}],"semanticFunction":"{{function}}",
-                 "occurrenceRole":"section-heading","scope":"document","titleRelation":"root"}
-                """);
+            using var entry = JsonDocument.Parse($$"""{"sourceParts":[{"sourceAlias":"L0001:S0"}],"semanticFunction":"{{function}}"}""");
             Assert.True(TryDecode(entry.RootElement, out var decision, out var reason), reason);
             Assert.Equal(function is "DOCUMENT_IDENTITY" or "REGION_STRUCTURE", decision!.IsMember);
         }
@@ -86,6 +116,39 @@ public sealed class SemanticFunctionContractDesignFreezeTests
             """);
         Assert.False(TryDecode(forbiddenOverride.RootElement, out _, out var issue));
         Assert.Equal("FIELD_NOT_IN_CONTRACT:isHeading", issue);
+    }
+
+    [Fact]
+    public void First_membership_arm_rejects_descriptive_axes_to_keep_the_treatment_attributable()
+    {
+        foreach (var field in new[] { "occurrenceRole", "scope", "titleRelation" })
+        {
+            using var entry = JsonDocument.Parse($$"""
+                {"sourceParts":[{"sourceAlias":"L0001:S0"}],"semanticFunction":"REGION_STRUCTURE","{{field}}":"anything"}
+                """);
+            Assert.False(TryDecode(entry.RootElement, out _, out var issue));
+            Assert.Equal($"FIELD_NOT_IN_CONTRACT:{field}", issue);
+        }
+    }
+
+    [Fact]
+    public void All_nine_functions_have_normative_definitions_and_fixed_boundary_cases()
+    {
+        Assert.Equal(Functions, Definitions.Select(definition => definition.Function));
+        Assert.All(Definitions, definition =>
+        {
+            Assert.NotEmpty(definition.Definition);
+            Assert.NotEmpty(definition.Boundary);
+            using var entry = JsonDocument.Parse($$"""{"sourceParts":[{"sourceAlias":"L0001:S0"}],"semanticFunction":"{{definition.Function}}"}""");
+            Assert.True(TryDecode(entry.RootElement, out var decoded, out var issue), issue);
+            Assert.Equal(definition.Member, decoded!.IsMember);
+        });
+
+        Assert.Contains("title identity", Definition("DOCUMENT_IDENTITY").Definition, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("describes the artifact", Definition("METADATA").Boundary, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("embedded visual", Definition("OBJECT_CAPTION").Definition, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("internal to a table", Definition("TABLE_STRUCTURE").Definition, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("opens a semantic region", Definition("REGION_STRUCTURE").Definition, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
@@ -108,11 +171,11 @@ public sealed class SemanticFunctionContractDesignFreezeTests
         const string text = "3.2 Server Push";
         using var contents = JsonDocument.Parse("""
             {"sourceParts":[{"sourceAlias":"L0012:S0","verbatimText":"3.2 Server Push ........ 17"}],
-             "semanticFunction":"NAVIGATION","occurrenceRole":"toc-entry","scope":"contents"}
+             "semanticFunction":"NAVIGATION"}
             """);
         using var body = JsonDocument.Parse("""
             {"sourceParts":[{"sourceAlias":"L0517:S0","verbatimText":"3.2 Server Push"}],
-             "semanticFunction":"REGION_STRUCTURE","occurrenceRole":"section","scope":"body"}
+             "semanticFunction":"REGION_STRUCTURE"}
             """);
 
         Assert.True(TryDecode(contents.RootElement, out var navigation, out var navigationReason), navigationReason);
@@ -173,26 +236,47 @@ public sealed class SemanticFunctionContractDesignFreezeTests
                     nonMembers = Functions.Except(["DOCUMENT_IDENTITY", "REGION_STRUCTURE"], StringComparer.Ordinal).ToArray(),
                     unknownFailsClosed = true,
                 },
-                definitions = new
+                normativeDefinitions = Definitions.Select(definition => new
                 {
-                    regionStructure = "an occurrence that names or opens a semantic region whose subsequent content belongs beneath it",
-                    navigation = "an occurrence that points to, lists, or leads to content elsewhere",
-                    occurrenceNotString = "identical or overlapping text may have different functions at different source occurrences and contexts",
+                    semanticFunction = definition.Function,
+                    member = definition.Member,
+                    definition = definition.Definition,
+                    boundary = definition.Boundary,
+                }).ToArray(),
+                occurrenceNotString = "identical or overlapping text may have different functions at different source occurrences and contexts",
+            },
+            membershipFirstArm = new
+            {
+                modelVisibleOutput = new[] { "sourceParts", "semanticFunction" },
+                schema = MembershipArmSchema(),
+                descriptiveAxesExcluded = new[] { "occurrenceRole", "scope", "titleRelation" },
+                purpose = "isolate whether the model distinguishes REGION_STRUCTURE from NAVIGATION before hierarchy/descriptive axes add task complexity",
+                executionAfterAuthorizationOnly = new
+                {
+                    requestVersion = "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY",
+                    model = "qwen/qwen3.7-flash",
+                    sourceFacts = "V3",
+                    packing = 120,
+                    sourceParts = "existing binder contract",
+                    cohort = new[] { "SRC-089", "SRC-095" },
+                    gold = "unopened until raw predictions are persisted",
                 },
             },
-            descriptiveAxes = new
+            targetArchitectureOnly = new
             {
-                allowed = new[] { "occurrenceRole", "scope", "titleRelation" },
+                possibleDescriptiveAxes = new[] { "occurrenceRole", "scope", "titleRelation" },
                 membershipAuthority = false,
                 cannotOverrideSemanticFunction = true,
+                deferredUntil = "a later hierarchy-focused arm after membership is measured",
             },
-            schema = ProposedSchema(),
             deterministicProofs = new[]
             {
                 "isHeading is absent and rejected as a field not in the contract",
                 "generic heading is not an enum value and fails closed",
                 "unknown semanticFunction fails closed",
                 "membership is derived only from semanticFunction",
+                "the first model-visible membership arm permits only sourceParts and semanticFunction; descriptive axes are rejected",
+                "all nine functions have normative definitions, including DOCUMENT_IDENTITY/METADATA, REGION_STRUCTURE/OBJECT_CAPTION, and REGION_STRUCTURE/TABLE_STRUCTURE boundaries",
                 "NAVIGATION, PAGE_FURNITURE, OBJECT_CAPTION, TABLE_STRUCTURE, FOOTNOTE_OR_SOURCE, BODY_INFORMATION and METADATA are nonmembers",
                 "the same words can be NAVIGATION in contents and REGION_STRUCTURE in body",
                 "sourceParts are preserved verbatim and the existing binder identity is unchanged",
@@ -206,11 +290,11 @@ public sealed class SemanticFunctionContractDesignFreezeTests
                 rawRun = new { path = V2Run, sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path(V2Run)) },
                 v2CoordinatePreservedThroughDesign = RawV2Binding.Value,
             },
-            nextGate = "Do not create or send V4 until this frozen decision shape is reviewed; a future arm must use this closed vocabulary rather than project legacy semanticRole.",
+            nextGate = "Do not create or send V4 until this frozen membership-first shape is reviewed and provider authorization is explicit; a future arm must use this closed vocabulary rather than project legacy semanticRole.",
         });
     }
 
-    private static object ProposedSchema() => new
+    private static object MembershipArmSchema() => new
     {
         type = "object",
         additionalProperties = false,
@@ -228,9 +312,6 @@ public sealed class SemanticFunctionContractDesignFreezeTests
                 @enum = Functions,
                 description = "The sole authority from which membership is derived.",
             },
-            occurrenceRole = new { type = "string", description = "Optional descriptive axis; never a membership authority." },
-            scope = new { type = "string", description = "Optional descriptive axis; never a membership authority." },
-            titleRelation = new { type = "string", description = "Optional descriptive axis; never a membership authority." },
         },
         required = new[] { "sourceParts", "semanticFunction" },
     };
@@ -246,7 +327,7 @@ public sealed class SemanticFunctionContractDesignFreezeTests
         }
         foreach (var property in entry.EnumerateObject())
         {
-            if (!AllowedFields.Contains(property.Name))
+            if (!MembershipArmFields.Contains(property.Name))
             {
                 reason = $"FIELD_NOT_IN_CONTRACT:{property.Name}";
                 return false;
@@ -266,13 +347,12 @@ public sealed class SemanticFunctionContractDesignFreezeTests
         }
 
         var value = function.GetString()!;
-        decision = new Decision(value, value is "DOCUMENT_IDENTITY" or "REGION_STRUCTURE", sourceParts.GetRawText(),
-            OptionalString(entry, "occurrenceRole"), OptionalString(entry, "scope"), OptionalString(entry, "titleRelation"));
+        decision = new Decision(value, value is "DOCUMENT_IDENTITY" or "REGION_STRUCTURE", sourceParts.GetRawText());
         return true;
     }
 
-    private static string? OptionalString(JsonElement entry, string name) =>
-        entry.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String ? value.GetString() : null;
+    private static FunctionDefinition Definition(string semanticFunction) =>
+        Definitions.Single(definition => definition.Function == semanticFunction);
 
     private static V2BindingInvariant ReadOneBoundV2Coordinate()
     {

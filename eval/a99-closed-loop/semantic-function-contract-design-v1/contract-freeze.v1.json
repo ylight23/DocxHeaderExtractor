@@ -36,68 +36,135 @@
       ],
       "unknownFailsClosed": true
     },
-    "definitions": {
-      "regionStructure": "an occurrence that names or opens a semantic region whose subsequent content belongs beneath it",
-      "navigation": "an occurrence that points to, lists, or leads to content elsewhere",
-      "occurrenceNotString": "identical or overlapping text may have different functions at different source occurrences and contexts"
+    "normativeDefinitions": [
+      {
+        "semanticFunction": "DOCUMENT_IDENTITY",
+        "member": true,
+        "definition": "Identifies the document, report, or artifact itself as its semantic title identity.",
+        "boundary": "Unlike METADATA, it is the title identity rather than a description of the artifact."
+      },
+      {
+        "semanticFunction": "REGION_STRUCTURE",
+        "member": true,
+        "definition": "Names or opens a semantic region whose subsequent content belongs beneath it.",
+        "boundary": "Unlike NAVIGATION, OBJECT_CAPTION, and TABLE_STRUCTURE, it opens a region rather than pointing elsewhere or describing an internal object/table part."
+      },
+      {
+        "semanticFunction": "NAVIGATION",
+        "member": false,
+        "definition": "Points to, lists, or leads to content elsewhere in the document.",
+        "boundary": "Unlike REGION_STRUCTURE, it does not open a region whose following content belongs beneath it."
+      },
+      {
+        "semanticFunction": "PAGE_FURNITURE",
+        "member": false,
+        "definition": "Serves repeated or page-positioned presentation, such as a running header, footer, or page number.",
+        "boundary": "Unlike REGION_STRUCTURE, its function is page presentation, not opening a content region."
+      },
+      {
+        "semanticFunction": "OBJECT_CAPTION",
+        "member": false,
+        "definition": "Names or describes an embedded visual, figure, listing, or other object whose scope is that object itself.",
+        "boundary": "Unlike REGION_STRUCTURE, it does not open a broader following content region."
+      },
+      {
+        "semanticFunction": "TABLE_STRUCTURE",
+        "member": false,
+        "definition": "Is a row, column, label, or header structure internal to a table.",
+        "boundary": "Unlike REGION_STRUCTURE, it is internal to the table rather than a heading outside or around it that opens a broader region."
+      },
+      {
+        "semanticFunction": "FOOTNOTE_OR_SOURCE",
+        "member": false,
+        "definition": "Is a footnote, citation, attribution, or source note that supports or qualifies other content.",
+        "boundary": "Unlike REGION_STRUCTURE, it does not establish a region for subsequent body content."
+      },
+      {
+        "semanticFunction": "BODY_INFORMATION",
+        "member": false,
+        "definition": "Is ordinary body information, such as prose, a statement, or a run-in fact, without a region-opening function.",
+        "boundary": "Unlike REGION_STRUCTURE, it conveys content but does not name or open the region containing it."
+      },
+      {
+        "semanticFunction": "METADATA",
+        "member": false,
+        "definition": "Describes the document, its provenance, status, date, audience, or other attributes without constituting its title identity.",
+        "boundary": "Unlike DOCUMENT_IDENTITY, it describes the artifact but is not the artifact's semantic title identity."
+      }
+    ],
+    "occurrenceNotString": "identical or overlapping text may have different functions at different source occurrences and contexts"
+  },
+  "membershipFirstArm": {
+    "modelVisibleOutput": [
+      "sourceParts",
+      "semanticFunction"
+    ],
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceParts": {
+          "type": "array",
+          "minItems": 1,
+          "description": "The existing source-coordinate tuple; its binder and canonicalization are unchanged by this design."
+        },
+        "semanticFunction": {
+          "type": "string",
+          "enum": [
+            "DOCUMENT_IDENTITY",
+            "REGION_STRUCTURE",
+            "NAVIGATION",
+            "PAGE_FURNITURE",
+            "OBJECT_CAPTION",
+            "TABLE_STRUCTURE",
+            "FOOTNOTE_OR_SOURCE",
+            "BODY_INFORMATION",
+            "METADATA"
+          ],
+          "description": "The sole authority from which membership is derived."
+        }
+      },
+      "required": [
+        "sourceParts",
+        "semanticFunction"
+      ]
+    },
+    "descriptiveAxesExcluded": [
+      "occurrenceRole",
+      "scope",
+      "titleRelation"
+    ],
+    "purpose": "isolate whether the model distinguishes REGION_STRUCTURE from NAVIGATION before hierarchy/descriptive axes add task complexity",
+    "executionAfterAuthorizationOnly": {
+      "requestVersion": "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY",
+      "model": "qwen/qwen3.7-flash",
+      "sourceFacts": "V3",
+      "packing": 120,
+      "sourceParts": "existing binder contract",
+      "cohort": [
+        "SRC-089",
+        "SRC-095"
+      ],
+      "gold": "unopened until raw predictions are persisted"
     }
   },
-  "descriptiveAxes": {
-    "allowed": [
+  "targetArchitectureOnly": {
+    "possibleDescriptiveAxes": [
       "occurrenceRole",
       "scope",
       "titleRelation"
     ],
     "membershipAuthority": false,
-    "cannotOverrideSemanticFunction": true
-  },
-  "schema": {
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-      "sourceParts": {
-        "type": "array",
-        "minItems": 1,
-        "description": "The existing source-coordinate tuple; its binder and canonicalization are unchanged by this design."
-      },
-      "semanticFunction": {
-        "type": "string",
-        "enum": [
-          "DOCUMENT_IDENTITY",
-          "REGION_STRUCTURE",
-          "NAVIGATION",
-          "PAGE_FURNITURE",
-          "OBJECT_CAPTION",
-          "TABLE_STRUCTURE",
-          "FOOTNOTE_OR_SOURCE",
-          "BODY_INFORMATION",
-          "METADATA"
-        ],
-        "description": "The sole authority from which membership is derived."
-      },
-      "occurrenceRole": {
-        "type": "string",
-        "description": "Optional descriptive axis; never a membership authority."
-      },
-      "scope": {
-        "type": "string",
-        "description": "Optional descriptive axis; never a membership authority."
-      },
-      "titleRelation": {
-        "type": "string",
-        "description": "Optional descriptive axis; never a membership authority."
-      }
-    },
-    "required": [
-      "sourceParts",
-      "semanticFunction"
-    ]
+    "cannotOverrideSemanticFunction": true,
+    "deferredUntil": "a later hierarchy-focused arm after membership is measured"
   },
   "deterministicProofs": [
     "isHeading is absent and rejected as a field not in the contract",
     "generic heading is not an enum value and fails closed",
     "unknown semanticFunction fails closed",
     "membership is derived only from semanticFunction",
+    "the first model-visible membership arm permits only sourceParts and semanticFunction; descriptive axes are rejected",
+    "all nine functions have normative definitions, including DOCUMENT_IDENTITY/METADATA, REGION_STRUCTURE/OBJECT_CAPTION, and REGION_STRUCTURE/TABLE_STRUCTURE boundaries",
     "NAVIGATION, PAGE_FURNITURE, OBJECT_CAPTION, TABLE_STRUCTURE, FOOTNOTE_OR_SOURCE, BODY_INFORMATION and METADATA are nonmembers",
     "the same words can be NAVIGATION in contents and REGION_STRUCTURE in body",
     "sourceParts are preserved verbatim and the existing binder identity is unchanged",
@@ -121,5 +188,5 @@
       "BoundIdentity": "L0002:S1:0-33"
     }
   },
-  "nextGate": "Do not create or send V4 until this frozen decision shape is reviewed; a future arm must use this closed vocabulary rather than project legacy semanticRole."
+  "nextGate": "Do not create or send V4 until this frozen membership-first shape is reviewed and provider authorization is explicit; a future arm must use this closed vocabulary rather than project legacy semanticRole."
 }
