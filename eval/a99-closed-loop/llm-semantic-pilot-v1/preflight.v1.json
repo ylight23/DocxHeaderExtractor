@@ -1,0 +1,277 @@
+{
+  "artifactKind": "a99_llm_semantic_pilot_preflight",
+  "study": "LLM_SEMANTIC_PILOT_V1",
+  "authorization": "user, 2026-09-27: SRC-089 and SRC-095 only; qwen/qwen3.7-flash; at most 30 provider calls, 2.0M input tokens, 250k output tokens; retries count; a cap reached stops the run, fail-closed",
+  "frozen": {
+    "sourceFacts": "PDF_SOURCE_FACTS_V3",
+    "requestVersion": "V2_ATTENTION_FREE",
+    "contractFreeze": {
+      "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V3.freeze.json",
+      "sha256": "875f44a7371991c6823b24ad4012f95f8d098e1347f92d79e2b4d49b4a568dc6"
+    },
+    "systemPromptSha256": "ccf33f39404aa70ae54bd5448cc4ab5572a89fa34aa3dfcda6f0c9ab3fc665d3",
+    "sentSystemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+    "routeReproducesFrozenDoc0252Plan": true,
+    "profile": "STRUCTURED_SOURCE_PARTS",
+    "packing": "FIXED_OWNED_COUNT_120",
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "OpenRouter",
+    "maxTokensFormula": "OpenRouterHeaderExtractor.BoundaryOutputBudgetFor(user, expectedItems, 32768), production, unchanged",
+    "binder": "SemanticSourcePartCanonicalizer + SemanticSourcePartBinder (production), exact identities only",
+    "placement": "not run (hierarchy is not scored; it would spend calls)",
+    "lane": {
+      "requestTimeoutSeconds": 90,
+      "batchTimeoutSeconds": 120,
+      "laneDeadlineMinutes": 60
+    }
+  },
+  "caps": {
+    "calls": 30,
+    "inputTokens": 2000000,
+    "outputTokens": 250000,
+    "retriesCount": true,
+    "onCap": "stop, fail-closed; never raised"
+  },
+  "enforcement": {
+    "calls": "counted before each request is sent; the call that would exceed the cap is refused",
+    "input": "before each request: tokens used (provider usage, else UTF-8 bytes) + this request's UTF-8 bytes must stay within the cap - a byte is an upper bound for a token",
+    "output": "before each request: tokens used (provider usage, else the request's max_tokens) + this request's max_tokens must stay within the cap"
+  },
+  "plan": {
+    "requests": 25,
+    "inputBytesBound": 2174899,
+    "retryReserveBytes": 478325,
+    "maxTokensSumIfEveryReplyHitItsCeiling": 371552,
+    "requestsWithinCallCap": true,
+    "plannedInputWithinCapByBytes": false,
+    "note": "bytes over-count tokens (English JSON runs several bytes a token), so the byte bound alone may exceed the input cap while the tokens do not; the gate charges the provider's reported usage and, where a response reports none, the worst-case bound - so a missing usage report stops the run early, never past a cap"
+  },
+  "goldRead": "no Gold is opened before the predictions are persisted; the Gold files are pinned by byte hash only",
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "source": {
+        "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+        "sha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
+      },
+      "goldFileSha256": "c66cefb224bdd47a08e2374fdb0328dd97b1e520a48f4cdbaffed244ac833534",
+      "requests": 5,
+      "providerModelInputPlanSha256": "6f468f60d5aad120c46514b311ec2175d0dca5a1de9c32666276e5e3cb581495",
+      "perRequest": [
+        {
+          "ordinal": 1,
+          "requestSha256": "d49efa9f8be6885937640a3cc1ceb58e977941001fa3f4b4ec515e58fa27dbc7",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 90351,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 2,
+          "requestSha256": "70acecc995e29616bf5f55210ff9169d418c775fae24b7d6fa9f0ead9d80bcf7",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 91738,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 3,
+          "requestSha256": "03b4e24c2b79ae1189817f762ff6db00608df2a9df1a369cb10da7a877c9a487",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 92285,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 4,
+          "requestSha256": "b14bd2a2b17a000f951a6f31eb0d7bed07fd61e0cf4b33e2514fa2f1f9a93fbc",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 92717,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 5,
+          "requestSha256": "5d17d0147182e077948b5b2803a911dd0e8c003b7a1e5bd649e0fedf4f2ce3e0",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 102,
+          "inputBytes": 77444,
+          "maxTokens": 13152
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "source": {
+        "path": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+        "sha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84"
+      },
+      "goldFileSha256": "d8a6eafb63716f531463b74d25543e4d27b25965aac0d5d0e5fb25734027df18",
+      "requests": 20,
+      "providerModelInputPlanSha256": "987d8ec86dae905589cecf225d4cbd8175d746394229ff2f1f9d126765bff4b8",
+      "perRequest": [
+        {
+          "ordinal": 1,
+          "requestSha256": "cc807903730362d2878585ee0251a259f3ac83aa1fcc9934ca978771e6b0999d",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 89672,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 2,
+          "requestSha256": "0895aac284bdb9987fdc3df8ba9ba56e1de5863d77d53f25cb2e191dd5f79815",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 89288,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 3,
+          "requestSha256": "a47e6bc7ae94784f530802ed175233e1d9f31183e0ad95d7cadbf76d3aeecce8",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 91089,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 4,
+          "requestSha256": "bbaa968248437c33cb4a3b375c3d5b1f586f7dbc0ec2275178624d27134d333b",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 91537,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 5,
+          "requestSha256": "a0c1867e99fef7a9431264549faacb05bc1d668d068ec967c77e78ebddef7bd0",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 91779,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 6,
+          "requestSha256": "c17a6ed3215886c53fd0c13e22979fb831027474293897ddbe8a3770c9df8bc9",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 91316,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 7,
+          "requestSha256": "2c319c2895bfd9238fd333989fe7d0f80db20aefc269849c022ce755f5e76afc",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 91115,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 8,
+          "requestSha256": "9312371f5289b62930b10b817ae3e68d3f3efcde58489b6a9a5350006cb8e239",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 88103,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 9,
+          "requestSha256": "34ff7c61aa606b21e600ee9ae0763ab2501f0c212ade57f5df8a91e58a878297",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 87446,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 10,
+          "requestSha256": "fac80f9f1b97c50ca35c7191e4d245604d71e0bdc71136abcf446f8d1d641ccc",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 90168,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 11,
+          "requestSha256": "8c221c821ac9796cb95ea5384f2537f7ec945164a7fb8cb8e995052954123b14",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 89443,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 12,
+          "requestSha256": "b9e55fa6135e8476f95d9f0e9b48e8565acb66205f730e406341ef7721672d67",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 90807,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 13,
+          "requestSha256": "4137455e97c0c48f4c8d9d33e6509a4a86f0bfe1db6322ded3a9038594884271",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 89661,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 14,
+          "requestSha256": "b94967ff6d4cb866f1fd55ecb33886f02319982a078a0f0cb115084176c72444",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 85589,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 15,
+          "requestSha256": "ec495ba4fb2f5a6c63791244df6db8089557c2f96682d53b4c8e919213a4332f",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 86092,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 16,
+          "requestSha256": "5bece18aa360e23a81cb98619010fda5fdafeabb39f8e27d734a2863e8e78504",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 89224,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 17,
+          "requestSha256": "aae13b615f5e1e62fe1cafcda65de4ada1f910b874f31152af1a736eed2cb225",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 90319,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 18,
+          "requestSha256": "46364e3f004e52bb8a24d18d7193b67c5ec2974fc11c5b25a11b36120bf7d374",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 89877,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 19,
+          "requestSha256": "fb9c84b7cd9ef0716f80c1ad04fea1487ea9fff00895f59f136a0e48790fde02",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 120,
+          "inputBytes": 95665,
+          "maxTokens": 15456
+        },
+        {
+          "ordinal": 20,
+          "requestSha256": "7381ba47b786b260df914f0e35803cc4332b439ecb6cce52d3a6bda0d8837830",
+          "systemPromptSha256": "4ab63e0f63c59dd936dacc4bbc9360e4190d5cb821896f0ce844bf178491e50c",
+          "expectedItemCount": 22,
+          "inputBytes": 22174,
+          "maxTokens": 2912
+        }
+      ]
+    }
+  ],
+  "modelCallsInPreflight": 0
+}
