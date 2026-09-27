@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.Tests;
 /// atom sits in, what its text is shaped like) and from the Gold's own review pattern - not by a hand-written list of
 /// identities. Nothing here re-scores or changes a prompt, a model, the facts or the binder.
 /// </summary>
-public sealed partial class LlmSemanticPilotV1AnalysisTests
+public partial class LlmSemanticPilotV1AnalysisTests
 {
     private const string Root = LlmSemanticPilotV1Tests.Root;
 
@@ -26,20 +26,20 @@ public sealed partial class LlmSemanticPilotV1AnalysisTests
     [GeneratedRegex(@"^(Bishop Standards Track Page|RFC 9114 HTTP/3 June)")] private static partial Regex Rfc9114Furniture();
     [GeneratedRegex(@"^(Table|Figure|Chart|Exhibit) [A-Z]?\d")] private static partial Regex Caption();
 
-    private static Dictionary<string, int> PageOfAlias(string id)
+    internal static Dictionary<string, int> PageOfAlias(string id)
     {
         var rows = File.ReadAllLines(TestRepository.Path($"eval/a99-closed-loop/source-review-v1/{id}/atom-glyph-facts.tsv"))
             .Select(l => l.Split('\t'));
         return rows.ToDictionary(r => r[0], r => int.Parse(r[1]), StringComparer.Ordinal);
     }
 
-    private static int PageOf(IReadOnlyDictionary<string, int> pages, string identity)
+    internal static int PageOf(IReadOnlyDictionary<string, int> pages, string identity)
     {
         var first = identity.Split('|')[0];
         return pages.GetValueOrDefault(first[..first.LastIndexOf(':')], -1);
     }
 
-    private static IEnumerable<string> AliasesOf(string identity) =>
+    internal static IEnumerable<string> AliasesOf(string identity) =>
         identity.Split('|').Select(part => part[..part.LastIndexOf(':')]);
 
     /// <summary>
@@ -47,7 +47,7 @@ public sealed partial class LlmSemanticPilotV1AnalysisTests
     /// first - a Gold claim's occurrence, or a non-heading the review named and why - then the page band, then the shape of
     /// the text. The model's semanticRole is the last resort, and says so in the name.
     /// </summary>
-    private static string FalsePositiveFamily(string identity, string text, string role, int page, (int From, int To) contents, int indexFrom,
+    internal static string FalsePositiveFamily(string identity, string text, string role, int page, (int From, int To) contents, int indexFrom,
         IReadOnlySet<string> goldAliases, IReadOnlyDictionary<string, string> reviewedNonHeadings)
     {
         // The same occurrence as a Gold heading, claimed with a different extent - not another heading.
@@ -62,7 +62,7 @@ public sealed partial class LlmSemanticPilotV1AnalysisTests
     }
 
     /// <summary>What the source-only review named as a set-apart non-heading, by alias: its verdict and pattern.</summary>
-    private static Dictionary<string, string> ReviewedNonHeadings(string id)
+    internal static Dictionary<string, string> ReviewedNonHeadings(string id)
     {
         using var items = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"eval/a99-closed-loop/source-review-v1/{id}/review-items.json")));
         var map = new Dictionary<string, string>(StringComparer.Ordinal);

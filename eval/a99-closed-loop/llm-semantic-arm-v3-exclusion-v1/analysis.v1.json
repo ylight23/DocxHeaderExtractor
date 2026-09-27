@@ -1,0 +1,381 @@
+{
+  "artifactKind": "a99_llm_semantic_arm_analysis",
+  "study": "LLM_SEMANTIC_EXCLUSION_ARM_V1",
+  "modelProviderVlmCallsInThisAnalysis": 0,
+  "comparison": {
+    "variable": "one model-visible clause: V2_ATTENTION_FREE -> V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY",
+    "baseline": {
+      "study": "LLM_SEMANTIC_PILOT_V1",
+      "score": {
+        "path": "eval/a99-closed-loop/llm-semantic-pilot-v1/score.v1.json",
+        "sha256": "86291847e4eaf3602434d383eca5d4e0a6972d26e9f8ecaddc64650c36ae30ae",
+        "commit": "58854f7"
+      }
+    },
+    "arm": {
+      "score": {
+        "path": "eval/a99-closed-loop/llm-semantic-arm-v3-exclusion-v1/score.v1.json",
+        "sha256": "d1176a39ae6641f693c4b093a4ce1509ffa8d60ade6b0c0d4c4949bca78a1ec2",
+        "commit": "8ada89f"
+      }
+    },
+    "everythingElse": "the same cohort, model, source facts, coordinate contract, profile, packing, binder, scorer and Gold; the evidence bytes of all 25 requests are identical (the arm's preflight asserts it)"
+  },
+  "contradictionRule": {
+    "definition": "a proposal whose semanticRole is one the clause excludes and whose isHeading is not false",
+    "excludedRoles": [
+      "running-header",
+      "running-footer",
+      "page-header",
+      "page-footer",
+      "page-number",
+      "footnote",
+      "source-note",
+      "table-header",
+      "table-caption",
+      "figure-caption",
+      "figure-label",
+      "caption",
+      "index-entry",
+      "toc-entry",
+      "table-of-contents-entry",
+      "signature-label",
+      "signature-value"
+    ],
+    "note": "the clause names the exclusion by function and says nothing about this pairing, so this count measures an outcome"
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "goldClaims": 36,
+      "baseline": {
+        "requestVersion": "V2_ATTENTION_FREE",
+        "truePositives": 28,
+        "falsePositives": 10,
+        "falseNegatives": 8,
+        "precision": 0.7368,
+        "recall": 0.7778,
+        "f1": 0.7567,
+        "boundProposals": 38,
+        "exactByGoldPattern": {
+          "ARTICLE_HEADING": {
+            "gold": 26,
+            "exact": 23
+          },
+          "S089_Q1_DECREE_TITLE_BLOCK": {
+            "gold": 1,
+            "exact": 0
+          },
+          "S089_Q2_CHAPTER_LABEL_OVER_TITLE": {
+            "gold": 5,
+            "exact": 5
+          },
+          "S089_Q3_COLON_CLAUSE_LABEL": {
+            "gold": 4,
+            "exact": 0
+          }
+        },
+        "contradictions": {
+          "entries": 38,
+          "declinedIsHeadingFalse": 0,
+          "excludedRoleWithIsHeadingTrue": 4,
+          "byRole": {
+            "footnote": 1,
+            "running-header": 1,
+            "signature-label": 1,
+            "signature-value": 1
+          }
+        }
+      },
+      "arm": {
+        "requestVersion": "V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY",
+        "truePositives": 25,
+        "falsePositives": 28,
+        "falseNegatives": 11,
+        "precision": 0.4717,
+        "recall": 0.6944,
+        "f1": 0.5618,
+        "boundProposals": 53,
+        "exactByGoldPattern": {
+          "ARTICLE_HEADING": {
+            "gold": 26,
+            "exact": 21
+          },
+          "S089_Q1_DECREE_TITLE_BLOCK": {
+            "gold": 1,
+            "exact": 0
+          },
+          "S089_Q2_CHAPTER_LABEL_OVER_TITLE": {
+            "gold": 5,
+            "exact": 4
+          },
+          "S089_Q3_COLON_CLAUSE_LABEL": {
+            "gold": 4,
+            "exact": 0
+          }
+        },
+        "contradictions": {
+          "entries": 53,
+          "declinedIsHeadingFalse": 0,
+          "excludedRoleWithIsHeadingTrue": 0,
+          "byRole": {}
+        }
+      },
+      "delta": {
+        "f1": -0.1949,
+        "precision": -0.2651,
+        "recall": -0.0834,
+        "falsePositivesRemoved": -18,
+        "truePositivesLost": 3
+      },
+      "falsePositiveFamilies": [
+        {
+          "family": "GOLD_HEADING_WRONG_EXTENT",
+          "baseline": 4,
+          "arm": 8,
+          "removed": -4
+        },
+        {
+          "family": "REVIEWED_NON_HEADING:SIGNATURE_BLOCK",
+          "baseline": 3,
+          "arm": 3,
+          "removed": 0
+        },
+        {
+          "family": "MODEL_ROLE_HEADING",
+          "baseline": 1,
+          "arm": 15,
+          "removed": -14
+        },
+        {
+          "family": "REVIEWED_NON_HEADING:FOOTNOTE",
+          "baseline": 1,
+          "arm": 1,
+          "removed": 0
+        },
+        {
+          "family": "REVIEWED_NON_HEADING:NATIONAL_HEADER",
+          "baseline": 1,
+          "arm": 1,
+          "removed": 0
+        }
+      ],
+      "falsePositiveMovement": {
+        "dropped": 0,
+        "added": 18,
+        "keptWithTheSameRole": 2,
+        "keptButRenamed": 8,
+        "renamings": {
+          "article -> heading": 3,
+          "footnote -> heading": 1,
+          "running-header -> heading": 1,
+          "signature-label -> heading": 1,
+          "signature-value -> heading": 1,
+          "subtitle -> document-subtitle": 1
+        },
+        "addedByRole": {
+          "heading": 18
+        }
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "goldClaims": 103,
+      "baseline": {
+        "requestVersion": "V2_ATTENTION_FREE",
+        "truePositives": 94,
+        "falsePositives": 160,
+        "falseNegatives": 9,
+        "precision": 0.3701,
+        "recall": 0.9126,
+        "f1": 0.5266,
+        "boundProposals": 254,
+        "exactByGoldPattern": {
+          "MATTER_SECTION": {
+            "gold": 6,
+            "exact": 6
+          },
+          "NUMBERED_SECTION": {
+            "gold": 81,
+            "exact": 81
+          },
+          "NUMBERED_SECTION_SPLIT": {
+            "gold": 6,
+            "exact": 6
+          },
+          "S095_Q1_RFC_TITLE_BLOCK": {
+            "gold": 1,
+            "exact": 0
+          },
+          "S095_Q2_INDEX_GROUP_LETTER": {
+            "gold": 8,
+            "exact": 0
+          },
+          "TOC_OPENER": {
+            "gold": 1,
+            "exact": 1
+          }
+        },
+        "contradictions": {
+          "entries": 262,
+          "declinedIsHeadingFalse": 0,
+          "excludedRoleWithIsHeadingTrue": 52,
+          "byRole": {
+            "index-entry": 24,
+            "running-header": 10,
+            "table-header": 9,
+            "page-footer": 4,
+            "table-caption": 4,
+            "figure-label": 1
+          }
+        }
+      },
+      "arm": {
+        "requestVersion": "V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY",
+        "truePositives": 94,
+        "falsePositives": 143,
+        "falseNegatives": 9,
+        "precision": 0.3966,
+        "recall": 0.9126,
+        "f1": 0.5529,
+        "boundProposals": 237,
+        "exactByGoldPattern": {
+          "MATTER_SECTION": {
+            "gold": 6,
+            "exact": 6
+          },
+          "NUMBERED_SECTION": {
+            "gold": 81,
+            "exact": 81
+          },
+          "NUMBERED_SECTION_SPLIT": {
+            "gold": 6,
+            "exact": 6
+          },
+          "S095_Q1_RFC_TITLE_BLOCK": {
+            "gold": 1,
+            "exact": 0
+          },
+          "S095_Q2_INDEX_GROUP_LETTER": {
+            "gold": 8,
+            "exact": 0
+          },
+          "TOC_OPENER": {
+            "gold": 1,
+            "exact": 1
+          }
+        },
+        "contradictions": {
+          "entries": 248,
+          "declinedIsHeadingFalse": 0,
+          "excludedRoleWithIsHeadingTrue": 52,
+          "byRole": {
+            "index-entry": 24,
+            "table-header": 9,
+            "running-header": 7,
+            "figure-label": 5,
+            "table-caption": 4,
+            "running-footer": 3
+          }
+        }
+      },
+      "delta": {
+        "f1": 0.0263,
+        "precision": 0.0265,
+        "recall": 0,
+        "falsePositivesRemoved": 17,
+        "truePositivesLost": 0
+      },
+      "falsePositiveFamilies": [
+        {
+          "family": "REVIEWED_NON_HEADING:CONTENTS_ENTRY",
+          "baseline": 87,
+          "arm": 87,
+          "removed": 0
+        },
+        {
+          "family": "PAGE_FURNITURE",
+          "baseline": 29,
+          "arm": 8,
+          "removed": 21
+        },
+        {
+          "family": "INDEX_ENTRY",
+          "baseline": 26,
+          "arm": 26,
+          "removed": 0
+        },
+        {
+          "family": "CAPTION",
+          "baseline": 7,
+          "arm": 10,
+          "removed": -3
+        },
+        {
+          "family": "REVIEWED_NON_HEADING:TABLE_OR_REFERENCE_LABEL",
+          "baseline": 7,
+          "arm": 11,
+          "removed": -4
+        },
+        {
+          "family": "MODEL_ROLE_DEFINITION_TERM",
+          "baseline": 2,
+          "arm": 0,
+          "removed": 2
+        },
+        {
+          "family": "GOLD_HEADING_WRONG_EXTENT",
+          "baseline": 1,
+          "arm": 1,
+          "removed": 0
+        },
+        {
+          "family": "MODEL_ROLE_SECTION",
+          "baseline": 1,
+          "arm": 0,
+          "removed": 1
+        }
+      ],
+      "falsePositiveMovement": {
+        "dropped": 27,
+        "added": 10,
+        "keptWithTheSameRole": 128,
+        "keptButRenamed": 5,
+        "renamings": {
+          "running-header -> running-footer": 3,
+          "heading -> section": 1,
+          "heading -> table-label": 1
+        },
+        "addedByRole": {
+          "figure-label": 4,
+          "running-header": 3,
+          "table-header": 2,
+          "document-title": 1
+        }
+      }
+    }
+  ],
+  "criteria": {
+    "stated": "precision up strongly, recall about unchanged, SRC-089 assembly not regressed, contradictory role/isHeading outputs down strongly",
+    "result": "NOT MET",
+    "precisionUpStrongly": "no: SRC-095 precision 0.370 -> 0.397 (17 of 160 false claims removed); SRC-089 precision 0.737 -> 0.472",
+    "recallHeld": "SRC-095 yes (0.9126 unchanged); SRC-089 no (0.778 -> 0.694)",
+    "assemblyNotRegressed": "no: SRC-089 article headings 23 -> 21 exact, chapter headings 5 -> 4, and bound proposals 38 -> 53",
+    "contradictionsDownStrongly": "SRC-089 4 -> 0 but by renaming the role of claims it kept, not by dropping them; SRC-095 52 -> 52. See documents[].contradictions and documents[].falsePositiveMovement"
+  },
+  "reading": [
+    "the clause did not act as an exclusion. On SRC-089 it dropped no false claim at all (0 dropped, 18 added), and on SRC-095 it removed page furniture (29 -> 8 claims) while leaving the two largest families it names untouched: contents entries 87 -> 87 and index entries 26 -> 26",
+    "where the contradiction count fell, it fell by renaming rather than by excluding: SRC-089's 4 contradictions became 0 while the same four occurrences stayed proposed as headings with semanticRole 'heading' - the footnote, the two signature lines and the block the model had called a running header. A contract check on the role/isHeading pairing would have read that as a fix",
+    "SRC-095's contradiction count did not move at all (52 -> 52); its composition shifted (running-header 10 -> 7, figure-label 1 -> 5, running-footer 0 -> 3)",
+    "on SRC-089 the added claims are clause and sub-clause bodies ('1 . The conditions on equipment ...') and two articles proposed as their first line only, and Chapter IV's label and title were claimed separately where the baseline claimed them as one - which is how 5/5 chapter headings became 4/5 and 23/26 articles became 21/26",
+    "so the pilot's diagnosis - that the model recognises these families and the contract lets it return them anyway - is not answered by telling the model the rule in prose. Asking it to apply the exclusion moved which label it writes, not which occurrences it claims"
+  ],
+  "doNotConclude": [
+    "that the contract-level fix is refuted: one clause wording, one model, one run per arm, no repeats - the direction of the SRC-089 change could be sampling",
+    "that the pilot's diagnosis was wrong: the contradictory outputs it found are a fact of the committed responses, whatever this clause did about them"
+  ],
+  "nextStepNotRun": [
+    "a deterministic post-filter over the committed responses of either arm: it tests the exclusion without asking the model to apply it, and needs no provider call at all",
+    "a contract-level invariant would have to refuse the claim, not the label: this arm shows a model can satisfy a role/isHeading consistency check by writing a different role"
+  ]
+}

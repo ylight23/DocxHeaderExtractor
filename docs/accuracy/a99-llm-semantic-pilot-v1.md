@@ -90,3 +90,53 @@ The deterministic engine has explicit rules for all three of the leading familie
 - Does an explicit exclusion clause (navigation, furniture, captions) recover precision without costing the assembly gain? That is one prompt clause, and the baseline to beat is this pilot.
 - Does the deterministic engine's furniture and pointer evidence, given to the model as facts rather than as rules, do the same job?
 - Which errors survive repeats, and which are sampling noise?
+
+---
+
+# Arm V1: the single exclusion clause (V3)
+
+**Result: the criteria were not met.** One clause was added to the model-visible request, worded by function, changing nothing else. It did not act as an exclusion.
+
+Artifacts: `eval/a99-closed-loop/llm-semantic-arm-v3-exclusion-v1/`. The clause is `V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY`; V2 remains the production default.
+
+The arm's preflight proves the single variable: all 25 request user messages hash to the pilot's committed per-request hashes, so only the system prompt differed. Budget: 25 calls, 637,373 input tokens, 28,055 output tokens, no retries.
+
+## Deltas
+
+| | SRC-089 | SRC-095 |
+|---|---|---|
+| F1 | 0.757 → **0.562** | 0.527 → **0.553** |
+| Precision | 0.737 → 0.472 | 0.370 → 0.397 |
+| Recall | 0.778 → 0.694 | 0.913 → **0.913** |
+| TP / FP / FN | 28/10/8 → 25/28/11 | 94/160/9 → 94/143/9 |
+| Bound proposals | 38 → 53 | 254 → 237 |
+
+**SRC-095 false-positive families** (the ones the clause names):
+
+| Family | Baseline | Arm | Removed |
+|---|---:|---:|---:|
+| Contents entries | 87 | 87 | **0** |
+| Page furniture | 29 | 8 | **21** |
+| Index entries | 26 | 26 | **0** |
+| Captions | 7 | 10 | −3 |
+| Table header / reference rows | 7 | 11 | −4 |
+
+**SRC-089 assembly regressed:** article headings 23 → 21 exact, chapter headings 5 → 4. The four colon clause labels stayed unproposed by both arms, so the clause did not disturb them.
+
+## The mechanism: it renamed rather than excluded
+
+- **SRC-089: 0 false claims dropped, 18 added.** The additions are clause bodies ("1 . The conditions on equipment and technologies…"), two articles claimed as their first line only, and Chapter IV's label and title claimed separately — which is how 5/5 chapters became 4/5.
+- **The contradiction count fell without a single claim being withdrawn.** SRC-089 went from 4 contradictions to 0, but all four occurrences stayed proposed as headings with `semanticRole` rewritten to the generic `heading`: the footnote, both signature lines, and the block previously labelled a running header.
+- **SRC-095's contradiction count did not move at all** (52 → 52). Its composition shifted: `running-header` 10 → 7, `figure-label` 1 → 5, `running-footer` 0 → 3.
+
+That is the finding worth keeping: **a consistency check on the `semanticRole` / `isHeading` pairing can be satisfied by writing a different role.** Any contract invariant has to refuse the claim, not the label.
+
+## What this does and does not settle
+
+- It does not refute the pilot's diagnosis. The contradictory outputs are a fact of the committed responses whatever this clause did about them.
+- It does refute the cheap fix: telling the model the exclusion in prose did not make it stop claiming navigation. It removed page furniture on one document and nothing else it names.
+- One clause wording, one model, one run per arm, no repeats. The direction of the SRC-089 change could be sampling.
+
+## Next, needing no provider call
+
+A deterministic post-filter over the already committed responses of either arm would test the exclusion without asking the model to apply it — using the pointer and furniture evidence the deterministic engine already computes. That is measurable offline, on data in the repo, and it keeps the two strengths in their own layers.
