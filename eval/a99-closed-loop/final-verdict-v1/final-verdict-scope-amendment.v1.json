@@ -1,0 +1,21 @@
+{
+  "artifactKind": "a99_final_verdict_scope_amendment",
+  "amends": "eval/a99-closed-loop/final-verdict-v1/final-verdict.v1.json",
+  "amendedAt": "2026-09-27",
+  "reason": "state what the verdict covers; the verdict and its numbers are unchanged",
+  "scope": {
+    "GENERIC_AUDIT_ENGINE_V1_TO_V1_4": "NOT_GENERALIZED (this study)",
+    "SOURCE_FACTS_AND_BINDER_ARCHITECTURE": "held: every Gold and every proposal bound through the production binder; PDF_SOURCE_FACTS_V3 read SRC-089 validly",
+    "ONTOLOGY": "no gap observed (C = 0 since V1.1)",
+    "DOCUMENT_SPECIFIC_RULE_DEPENDENCE": "one residual (D) under V1.1, none after",
+    "HIERARCHY": "NOT_EVALUABLE",
+    "PRODUCTION_LLM_SEMANTIC_PIPELINE": "NOT_MEASURED by this study: 0 model/provider calls throughout"
+  },
+  "doNotRead": [
+    "the micro F1 0.663 is not the accuracy of the LLM pipeline: it mixes deterministic engine versions V1 to V1.4 and includes the SRC-053 source-facts defect",
+    "SRC-089's F1 0 is strict exact-claim: 32 of 36 Gold headings were found at their place with the wrong extent (the number without its title, a heading's lines apart) - an assembly/boundary failure, not a failure to see the legal structure"
+  ],
+  "roleOfV1_4Hereafter": "diagnostic, review prioritizer and fallback evidence; not a semantic authority",
+  "nextStudy": "a production semantic acceptance benchmark: frozen source facts -> the V2 attention-free contract -> a real model -> the exact binder -> canonical claims -> scored against the occurrence Gold of the multi-genre cohort; it needs explicit authorization for provider calls",
+  "modelProviderVlmCalls": 0
+}

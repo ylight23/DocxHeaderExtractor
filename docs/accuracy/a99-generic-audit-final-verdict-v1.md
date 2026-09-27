@@ -4,6 +4,25 @@
 
 Test-generated artifacts back every number below: `eval/a99-closed-loop/final-verdict-v1/` (`cross-document-summary.v1.json`, `hierarchy-evaluation.v1.json`, `final-verdict.v1.json`, from `GenericAuditFinalVerdictTests`). They read the committed held-out scores and classifications and recompute nothing. The study made no model or provider calls.
 
+## Scope of the verdict
+
+The verdict covers the **deterministic generic audit engine, V1 to V1.4**, and nothing else. The study made no model or provider calls, so it says nothing about the accuracy of the production LLM semantic pipeline. That pipeline is **not measured** here. Recorded in `final-verdict-scope-amendment.v1.json`:
+
+| Component | Status |
+|---|---|
+| Generic audit engine V1–V1.4 | `NOT_GENERALIZED` |
+| Source facts and binder architecture | held (V3 read SRC-089 validly; every claim bound) |
+| Ontology | no gap (C = 0) |
+| Document-specific rules | one D residual (V1.1), none after |
+| Hierarchy | `NOT_EVALUABLE` |
+| Production LLM pipeline | **not measured by this study** |
+
+Two readings to avoid:
+- The micro F1 of 0.663 is not "the LLM pipeline's accuracy". It mixes deterministic engine versions and includes the SRC-053 source-facts defect.
+- SRC-089's F1 of 0 does not mean the engine missed the legal structure. It found 32 of 36 headings in the right place but got their extent wrong, so under exact-claim scoring none counted. The failure is in claim assembly and boundaries.
+
+From here on, V1.4 serves as diagnostic evidence, a review prioritizer and a fallback. It is not a semantic authority.
+
 ## How it was measured
 
 Each held-out document went through the same eight steps:
