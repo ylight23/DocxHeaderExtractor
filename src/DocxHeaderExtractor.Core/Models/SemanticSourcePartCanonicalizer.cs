@@ -77,6 +77,23 @@ public static class SemanticSourcePartCanonicalizer
                 continue;
             }
 
+            // CASE B2: the quote is the whole atom plus whitespace at its edges. With reasoning off,
+            // the model quotes continuation lines of a multipart claim as " PUBLISHING" - the join
+            // space it would type when reading the lines as one sentence. Byte-exact comparison
+            // refused every such claim (A99 T5B: 4 of 7 claims in one SRC-089 leaf). Only boundary
+            // whitespace, and only when what remains IS the atom: any other difference stays refused.
+            if (part.VerbatimText.Length != part.VerbatimText.Trim().Length &&
+                atom.Text.Length > 0 &&
+                string.Equals(part.VerbatimText.Trim(), atom.Text, StringComparison.Ordinal))
+            {
+                canonical.Add(part with
+                {
+                    SelectionMode = CanonicalSemanticSelectionMode.WholeAlias,
+                    VerbatimText = null,
+                });
+                continue;
+            }
+
             var occurrences = Occurrences(atom.Text, part.VerbatimText);
 
             // CASE D: the quote is not in the atom it names. Refused, never widened to the atom.

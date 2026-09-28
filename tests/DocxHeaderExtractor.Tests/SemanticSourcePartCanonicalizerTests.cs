@@ -362,6 +362,68 @@ public sealed class SemanticSourcePartCanonicalizerTests
         Assert.True(seen >= 5, $"only {seen} shapes exercised");
     }
 
+    // ---- boundary whitespace (A99 T5B) -------------------------------------------------------------
+
+    [Fact]
+    public void A_multipart_claim_whose_continuation_quotes_carry_a_join_space_binds_as_whole_atoms()
+    {
+        // The field shape under reasoning=none (SRC-089): each continuation line quoted with the
+        // space the model would type joining the lines into one title.
+        var atoms = Atoms("Chapter II", "PUBLISHING");
+
+        var canonical = Canonicalize(atoms, Part("L0000:S0", "Chapter II"), Part("L0001:S0", " PUBLISHING"));
+
+        Assert.All(canonical.Parts, part =>
+        {
+            Assert.Equal(CanonicalSemanticSelectionMode.WholeAlias, part.SelectionMode);
+            Assert.Null(part.VerbatimText);
+        });
+        var bound = SemanticSourcePartBinder.Bind(atoms, new SemanticSourcePartsProposal(canonical.Parts));
+        Assert.True(bound.IsBound, bound.Status.ToString());
+    }
+
+    [Theory]
+    [InlineData(" PUBLISHING")]
+    [InlineData("PUBLISHING ")]
+    [InlineData("\tPUBLISHING\n")]
+    [InlineData("  PUBLISHING  ")]
+    public void Whitespace_only_at_the_edges_of_a_whole_atom_quote_is_the_whole_atom(string quote)
+    {
+        var canonical = Canonicalize(Atoms("PUBLISHING"), Part("L0000:S0", quote));
+
+        var part = Assert.Single(canonical.Parts);
+        Assert.Equal(CanonicalSemanticSelectionMode.WholeAlias, part.SelectionMode);
+    }
+
+    [Theory]
+    [InlineData(" PUBLISHING HOUSE", "PUBLISHING  HOUSE")] // inner whitespace differs
+    [InlineData(" PUBLISHING", "PUBLISHING HOUSE")]        // trimmed quote is only part of the atom
+    [InlineData(" publishing", "PUBLISHING")]              // case differs
+    [InlineData("   ", "PUBLISHING")]                      // nothing but whitespace
+    public void Anything_beyond_edge_whitespace_on_a_whole_atom_is_still_refused(string quote, string atomText)
+    {
+        var canonical = SemanticSourcePartCanonicalizer.Canonicalize(Atoms(atomText), [Part("L0000:S0", quote)]);
+
+        Assert.False(canonical.IsCanonical);
+        Assert.Equal(SemanticSourcePartsStatus.TextNotInAtom, canonical.Status);
+    }
+
+    [Fact]
+    public void Trimming_never_lets_a_halo_atom_into_the_owned_segment()
+    {
+        // The repair only changes how a named atom is selected, never which atom: a continuation
+        // part naming a halo alias is refused as out-of-segment exactly as before.
+        var atoms = Atoms("Chapter II", "PUBLISHING");
+        var claim = new SemanticMembershipClaim(
+            [Part("L0000:S0", "Chapter II"), Part("L0001:S0", " PUBLISHING")], Stage1MembershipDisposition.StructuralUnit);
+        var decoded = new SemanticMembershipDecodeResult([claim], []);
+
+        var acceptance = SemanticMembershipV1.Accept(atoms, "sha", decoded, new HashSet<string> { "L0000:S0" });
+
+        Assert.Empty(acceptance.Accepted);
+        Assert.Equal("OutOfOwnedSegment", Assert.Single(acceptance.Refusals).Reason);
+    }
+
     // ---- helpers -----------------------------------------------------------------------------------
 
     private static SemanticSourcePartCanonicalization Canonicalize(
