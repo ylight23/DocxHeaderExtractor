@@ -210,7 +210,10 @@ internal static class PdfLaneExecution
             }
         }
 
-        var terminal = completed == cancellationTask
+        // Under heavy scheduler load the cancellation continuation can be observed just after
+        // the deadline task, even though the caller token was already cancelled. Caller
+        // cancellation is authoritative once observed; do not misclassify it as a timeout.
+        var terminal = completed == cancellationTask || callerCancellation.IsCancellationRequested
             ? PdfLaneExecutionState.Cancelled
             : PdfLaneExecutionState.TimedOut;
         lease.TryTransition(terminal);

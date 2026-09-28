@@ -121,6 +121,15 @@ public sealed class McpStdioIntegrationTests : IDisposable
         var environment = StdioClientTransportOptions.GetDefaultEnvironmentVariables();
         environment["DHX_MCP_ALLOWED_ROOTS"] = _root;
         environment["DHX_MCP_RULES_ONLY"] = "true";
+        // CoreDeterministic runs tests in parallel. Keep this real MCP process and its
+        // detached worker away from the shared default runtime/job files used by other
+        // processes; production defaults remain unchanged when these variables are absent.
+        var runtimeRoot = Path.Combine(_root, "runtime");
+        var jobRoot = Path.Combine(_root, "jobs");
+        environment["DHX_RUNTIME_STATE_DIR"] = runtimeRoot;
+        environment["DHX_MCP_JOB_DIR"] = jobRoot;
+        Directory.CreateDirectory(runtimeRoot);
+        Directory.CreateDirectory(jobRoot);
 
         var transport = new StdioClientTransport(new StdioClientTransportOptions
         {
@@ -156,7 +165,10 @@ public sealed class McpStdioIntegrationTests : IDisposable
         Assert.False(string.IsNullOrWhiteSpace(jobId));
 
         string? state = null;
-        for (var attempt = 0; attempt < 50 && state != "Completed"; attempt++)
+        // The detached worker may still be starting the local extraction pipeline after the
+        // MCP request returns. Keep polling within the test's 90-second timeout instead of
+        // treating a valid in-flight job as a failure after an arbitrary five seconds.
+        for (var attempt = 0; attempt < 600 && state != "Completed"; attempt++)
         {
             var poll = await client.CallToolAsync(
                 "get_docx_extraction_result",
