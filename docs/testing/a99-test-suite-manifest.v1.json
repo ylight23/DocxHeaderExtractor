@@ -1,0 +1,93 @@
+{
+  "version": "A99_TEST_SUITE_MANIFEST_V1",
+  "basis": "explicit class allow/deny lists reviewed against provider construction, external-process/rendering use, frozen-campaign dependencies, and current canonical route coverage; filename-only matching is not used by the runner",
+  "defaultTier": "CORE_DETERMINISTIC",
+  "defaultCategory": "CANONICAL_REQUIRED",
+  "unlistedClassPolicy": "Every class absent from the quarantine lists is classified as CANONICAL_REQUIRED for this conservative pass; FREEZE_INTEGRITY is a protected invariant and is not implicitly retired by tiering.",
+  "tiers": {
+    "CORE_DETERMINISTIC": {
+      "excludeCategories": ["EXPERIMENT_ONLY", "PROVIDER_BENCHMARK", "LONG_RUNNING", "HISTORICAL_FORENSIC", "DIAGNOSTIC_PROBE"],
+      "intent": "currently reachable production behavior and bounded deterministic contracts"
+    },
+    "HISTORICAL_FORENSIC": {
+      "includeCategories": ["HISTORICAL_FORENSIC"],
+      "intent": "frozen replay, old request versions, and diagnosis artifacts"
+    },
+    "LONG_RUNNING": {
+      "includeCategories": ["LONG_RUNNING"],
+      "intent": "large corpus, rendering, or deliberately slow deterministic checks"
+    },
+    "PROVIDER_BENCHMARK": {
+      "includeCategories": ["PROVIDER_BENCHMARK"],
+      "intent": "provider/network-capable experiments; explicit environment gates remain mandatory"
+    },
+    "ALL": {
+      "includeCategories": ["CANONICAL_REQUIRED", "FREEZE_INTEGRITY", "HISTORICAL_FORENSIC", "LONG_RUNNING", "PROVIDER_BENCHMARK", "DIAGNOSTIC_PROBE", "EXPERIMENT_ONLY"]
+    }
+  },
+  "categories": {
+    "PROVIDER_BENCHMARK": {
+      "classNames": [
+        "OpenRouterTests", "LmStudioTests", "SecondModelMinimalReplayTransportTests",
+        "DirectSemanticProbeTransportTests", "DirectSemanticProbeRetryTransportTests",
+        "DirectSemanticProbeContinuationTransportTests", "StructuredEvidenceContextV2QwenTransportTests",
+        "StructuredOccurrenceBaselineTransportTests", "StructuredV2TargetBaselineTransportTests",
+        "SemanticMembershipV1TransportTests", "SemanticMembershipV1RetryTransportTests",
+        "MastheadE2V2ExperimentTransportTests", "MastheadMetadataExperimentTransportTests",
+        "MastheadMetadataV2ExperimentTransportTests", "MastheadV2ExperimentTransportTests",
+        "SelectiveSemanticEscalationV1TextAdjudicatorTransportTests",
+        "SelectiveSemanticEscalationV1VlmEscalationTests", "PilotRealHarnessRunsTests",
+        "ScaleUpRealHarnessRunsTests"
+      ],
+      "reason": "constructs or can reach an external provider, real harness, or network transport"
+    },
+    "LONG_RUNNING": {
+      "classNames": [
+        "HaikuVlmAgendaIndependentAdjudicationV1RenderTests", "HaikuVlmAgendaIndependentAdjudicationV1ScoringTests",
+        "Doc0256RealHarnessExplorationTests", "Doc0258RealHarnessExplorationTests",
+        "PdfLiveCanaryReplayProbe", "PdfLiveExecutionLifecycleTests"
+      ],
+      "reason": "rendering, live lifecycle, large corpus, or deliberately slow execution"
+    },
+    "HISTORICAL_FORENSIC": {
+      "classNames": [
+        "GenericAuditEngineTests", "GenericAuditEngineV11Tests", "GenericAuditEngineV11MechanismTests",
+        "GenericAuditEngineV12Tests", "GenericAuditEngineV12MechanismTests", "GenericAuditEngineV13Tests",
+        "GenericAuditEngineV13MechanismTests", "GenericAuditEngineV13FreezeTests", "GenericAuditEngineV14Tests",
+        "GenericAuditEngineV14MechanismTests", "GenericAuditEngineV14FreezeTests",
+        "GenericAuditFinalVerdictTests", "FrozenReplayDoc0256Tests", "CrossDocumentReplayTests"
+      ],
+      "reason": "historical audit/replay contracts; not current production route ownership"
+    },
+    "EXPERIMENT_ONLY": {
+      "classNames": [
+        "A99IdentityBenchmark", "A99IdentityPromotionBenchmark", "DirectSemanticContextAblation",
+        "LlmSemanticPilot", "LlmSemanticExclusion", "Masthead", "MastheadMetadata",
+        "Qwen37RequestLadderTests", "RequestArchitectureV2Tests", "SemanticControlCeiling",
+        "SemanticFunctionContractDesignFreezeTests", "SemanticFunctionMembershipReplayTests",
+        "SemanticFunctionSingleAuthorityV4", "SemanticFunctionV4", "SelectiveSemanticEscalation",
+        "TargetedPackingRerun", "SecondModelMinimalReplayPreflightTests",
+        "StructuredV2TargetBaselinePreflightTests", "StructuredContextPackingPreflightTests",
+        "PdfCanaryPreflightTests", "PdfExperimentArmPacketTests", "DocxExperimentArmPacketTests",
+        "PilotGoldFreezeTests", "PilotGoldItemisationTests", "PilotSourceRegenerationTests"
+      ],
+      "reason": "campaign/preflight/scoring/probe artifacts; explicit opt-in even when provider-free"
+    },
+    "DIAGNOSTIC_PROBE": {
+      "classNames": [
+        "DocumentDiagnosticsOptInTests", "PdfN37bMarkerFamilyCausalDiagnosisProbe",
+        "PdfR3AOfflineQualificationProbe", "PdfReleaseSmokeProbe", "PdfValidatedOutputWorksheetProbe",
+        "ScaleUpSurveyDiagnosticTests", "RfcTocResidualSemanticDiagnosisTests",
+        "ResidualErrorAttributionTests", "ResidualSemanticMechanismAuditTests"
+      ],
+      "reason": "manual diagnostics and causal probes; not default regression coverage"
+    }
+  },
+  "canonicalRequiredInvariantFamilies": [
+    "source-faithful extraction", "source alias/hash identity", "semantic request version fail-closed",
+    "semanticFunction contract", "exact sourceParts binding", "ownership validation",
+    "membership derivation", "identity resolution", "hierarchy resolution", "materialization",
+    "projection", "provider-call gate", "budget enforcement", "Gold/frozen authority integrity"
+  ],
+  "deletionPolicy": "No file is deleted by this manifest. A test is retired only after symbol reachability, freeze/public compatibility dependency, and unique invariant coverage are separately proven."
+}

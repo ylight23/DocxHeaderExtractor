@@ -43,8 +43,10 @@ jobs:
           --filter
           "FullyQualifiedName~PdfExperimentManifestTests|FullyQualifiedName~PdfGoldAuthorityTests|FullyQualifiedName~PdfGoldEvaluatorTests|FullyQualifiedName~PdfGoldOccurrenceAuthorityTests|FullyQualifiedName~PdfGoldReviewDecisionAuthorityTests|FullyQualifiedName~PdfGoldReviewPackTests|FullyQualifiedName~P4ReachabilityCleanupTests"
 
-      - name: Full deterministic Release suite
-        run: dotnet test -c Release --no-build
+      - name: Core deterministic Release suite
+        run: >-
+          pwsh -File scripts/Invoke-A99TestTier.ps1
+          -Tier CoreDeterministic -Configuration Release -NoBuild
 
       - name: Generated-artifact cleanliness
         shell: bash

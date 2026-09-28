@@ -1,14 +1,18 @@
 # A99 test-suite tiers
 
-The default validation tier is the production-focused deterministic suite:
+The default validation tier is the production-focused deterministic Release
+suite. Membership comes from the explicit class manifest at
+`docs/testing/a99-test-suite-manifest.v1.json`; it is not inferred from
+filenames or from missing xUnit traits.
 
 ```powershell
-pwsh -File scripts/Invoke-A99TestTier.ps1 -Tier CoreDeterministic -NoBuild
+pwsh -File scripts/Invoke-A99TestTier.ps1 -Tier CoreDeterministic -Configuration Release -NoBuild
 ```
 
-It excludes tests explicitly marked `SuiteTier=HistoricalForensic`,
-`SuiteTier=LongRunning`, and `SuiteTier=ProviderBenchmark`. The exclusions are
-traits, not deletions: the historical probes remain available on demand.
+The exclusions are quarantine filters, not deletions: historical probes,
+experiments, diagnostics, provider harnesses, and slow checks remain available
+on demand. The manifest is deliberately conservative; no test is retired by
+this change.
 
 The wrapper fails closed when a testhost, vstest process, or another test run for
 this project is already active. A UI timeout must therefore be followed by
@@ -19,11 +23,22 @@ targets. They reproduce historical census/forensic/diagnosis artifacts and do
 not define the current production semantic contract. N15 remains unchanged and
 is still run explicitly as a historical diagnostic.
 
-Tier policy:
+Tier commands:
 
-* `UNIT`: pure contracts and deterministic primitives.
-* `FOCUSED_REGRESSION`: targeted production and representative-source tests.
-* `CORE_DETERMINISTIC`: default production regression tier.
-* `LONG_RUNNING`: explicit large-source or expensive deterministic checks.
-* `HISTORICAL_FORENSIC`: historical diagnosis and artifact reproduction.
-* `PROVIDER_BENCHMARK`: explicit external model/provider executions.
+```powershell
+pwsh -File scripts/Invoke-A99TestTier.ps1 -Tier CoreDeterministic -Configuration Release
+pwsh -File scripts/Invoke-A99TestTier.ps1 -Tier HistoricalForensic -Configuration Release
+pwsh -File scripts/Invoke-A99TestTier.ps1 -Tier LongRunning -Configuration Release
+pwsh -File scripts/Invoke-A99TestTier.ps1 -Tier ProviderBenchmark -Configuration Release
+pwsh -File scripts/Invoke-A99TestTier.ps1 -Tier All -Configuration Release
+```
+
+Add `-ListOnly` to measure discovery without executing tests. `All` is the
+full archive and intentionally has no filter. Provider tests still require
+their own explicit environment gates; tier selection never authorizes a
+provider call.
+
+The protected invariant families are listed in the manifest and include
+source-faithful extraction, identity, semantic-function/membership authority,
+exact source-part binding, ownership, hierarchy, materialization, projection,
+provider/budget gates, and frozen Gold integrity.
