@@ -1,0 +1,364 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0090:S0",
+          "verbatimText": "10.3. Intermediary-Encapsulation Attacks"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0091:S0",
+          "verbatimText": "10.4. Cacheability ofPushed Responses"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0092:S0",
+          "verbatimText": "10.5. Denial-of-Service Considerations"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0093:S0",
+          "verbatimText": "10.5.1. Limits on Field Section Size"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0096:S0",
+          "verbatimText": "10.5.2. CONNECT Issues"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0097:S0",
+          "verbatimText": "10.6. Use of Compression"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0098:S0",
+          "verbatimText": "10.7. Padding and Traﬃc Analysis"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0099:S0",
+          "verbatimText": "10.8. Frame Parsing"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0100:S0",
+          "verbatimText": "10.9. Early Data"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0101:S0",
+          "verbatimText": "10.10. Migration"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0102:S0",
+          "verbatimText": "10.11. Privacy Considerations"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0103:S0",
+          "verbatimText": "11. IANA Considerations"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0104:S0",
+          "verbatimText": "11.1. Registration ofHTTP/3 Identification String"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0105:S0",
+          "verbatimText": "11.2. New Registries"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0106:S0",
+          "verbatimText": "11.2.1. Frame Types"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0107:S0",
+          "verbatimText": "11.2.2. Settings Parameters"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0108:S0",
+          "verbatimText": "11.2.3. Error Codes"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0109:S0",
+          "verbatimText": "11.2.4. Stream Types"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0110:S0",
+          "verbatimText": "12. References"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0111:S0",
+          "verbatimText": "12.1. Normative References"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0112:S0",
+          "verbatimText": "12.2. Informative References"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0113:S0",
+          "verbatimText": "Appendix A. Considerations for Transitioning from HTTP/2"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0114:S0",
+          "verbatimText": "A.1. Streams"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0115:S0",
+          "verbatimText": "A.2. HTTP Frame Types"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0116:S0",
+          "verbatimText": "A.2.1. Prioritization Diﬀerences"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0117:S0",
+          "verbatimText": "A.2.2. Field Compression Diﬀerences"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0118:S0",
+          "verbatimText": "A.2.3. Flow-Control Diﬀerences"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0119:S0",
+          "verbatimText": "A.2.4. Guidance for New Frame Type Deﬁnitions"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0120:S0",
+          "verbatimText": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0121:S0",
+          "verbatimText": "A.3. HTTP/2 SETTINGS Parameters"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0122:S0",
+          "verbatimText": "A.4. HTTP/2 Error Codes"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0123:S0",
+          "verbatimText": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0124:S0",
+          "verbatimText": "Acknowledgments"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0125:S0",
+          "verbatimText": "Index"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0128:S0",
+          "verbatimText": "Author’s Address"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0129:S0",
+          "verbatimText": "1. Introduction"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0134:S0",
+          "verbatimText": "1.1. Prior Versions of HTTP"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0146:S0",
+          "verbatimText": "1.2. Delegation to QUIC"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0162:S0",
+          "verbatimText": "2. HTTP/3 Protocol Overview"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0185:S0",
+          "verbatimText": "2.1. Document Organization"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    }
+  ]
+}

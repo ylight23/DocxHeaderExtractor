@@ -1,0 +1,198 @@
+{
+  "artifactKind": "a99_request_v2_provider_free_simulator_comparison",
+  "baseline": {
+    "policy": "FIXED_OWNED_COUNT_120",
+    "aggregate": {
+      "requests": 25,
+      "inputBytes": 2129674,
+      "estimatedInputTokens": 354955,
+      "maxRequestBytes": 93856,
+      "p95RequestBytes": 90908,
+      "maxVisibleAtoms": 160,
+      "p95VisibleAtoms": 160,
+      "totalOwnedAtoms": 2884,
+      "totalContextOnlyAtoms": 920,
+      "contextToOwnedRatio": 0.31900138696255204,
+      "sharedPrefixBytes": 1610,
+      "sharedPrefixTokensEstimate": 269,
+      "uniqueDocumentBytesRepresented": 1919895,
+      "logicalBytesSent": 2129674,
+      "uniqueSourceBytesRepresented": 1919895,
+      "repeatedContextBytes": 112276,
+      "leftHaloBytes": 57210,
+      "rightHaloBytes": 55066,
+      "redundancyFactor": 1.1092658713106707,
+      "repeatedPrefixRatio": 0.018899606230812792,
+      "worstCaseCompletionBudget": 371552,
+      "workloadProxy": {
+        "calls": 25,
+        "totalInputBytes": 2129674,
+        "fixedOverheadBytes": 59650
+      }
+    }
+  },
+  "candidate": {
+    "policy": "RESOURCE_BOUNDED_SOURCE_PACKING_V1",
+    "aggregate": {
+      "requests": 87,
+      "inputBytes": 2423964,
+      "estimatedInputTokens": 404033,
+      "maxRequestBytes": 28862,
+      "p95RequestBytes": 28731,
+      "maxVisibleAtoms": 61,
+      "p95VisibleAtoms": 60,
+      "totalOwnedAtoms": 2884,
+      "totalContextOnlyAtoms": 2040,
+      "contextToOwnedRatio": 0.7073509015256588,
+      "sharedPrefixBytes": 1610,
+      "sharedPrefixTokensEstimate": 269,
+      "uniqueDocumentBytesRepresented": 1919895,
+      "logicalBytesSent": 2423964,
+      "uniqueSourceBytesRepresented": 1919895,
+      "repeatedContextBytes": 251748,
+      "leftHaloBytes": 125352,
+      "rightHaloBytes": 126396,
+      "redundancyFactor": 1.262550295719297,
+      "repeatedPrefixRatio": 0.057785511666014845,
+      "worstCaseCompletionBudget": 377504,
+      "workloadProxy": {
+        "calls": 87,
+        "totalInputBytes": 2423964,
+        "fixedOverheadBytes": 207582
+      }
+    }
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "baseline": {
+        "requests": 5,
+        "inputBytes": 435490,
+        "estimatedInputTokens": 72584,
+        "maxRequestBytes": 90908,
+        "p95RequestBytes": 90908,
+        "maxVisibleAtoms": 160,
+        "p95VisibleAtoms": 160,
+        "totalOwnedAtoms": 582,
+        "totalContextOnlyAtoms": 160,
+        "contextToOwnedRatio": 0.27491408934707906,
+        "sharedPrefixBytes": 1610,
+        "sharedPrefixTokensEstimate": 269,
+        "uniqueDocumentBytesRepresented": 394335,
+        "logicalBytesSent": 435490,
+        "uniqueSourceBytesRepresented": 394335,
+        "repeatedContextBytes": 21616,
+        "leftHaloBytes": 10775,
+        "rightHaloBytes": 10841,
+        "redundancyFactor": 1.1043655774912193,
+        "repeatedPrefixRatio": 0.0184849250269811,
+        "worstCaseCompletionBudget": 74976,
+        "workloadProxy": {
+          "calls": 5,
+          "totalInputBytes": 435490,
+          "fixedOverheadBytes": 11930
+        }
+      },
+      "candidate": {
+        "requests": 18,
+        "inputBytes": 500863,
+        "estimatedInputTokens": 83487,
+        "maxRequestBytes": 28731,
+        "p95RequestBytes": 28731,
+        "maxVisibleAtoms": 58,
+        "p95VisibleAtoms": 58,
+        "totalOwnedAtoms": 582,
+        "totalContextOnlyAtoms": 408,
+        "contextToOwnedRatio": 0.7010309278350515,
+        "sharedPrefixBytes": 1610,
+        "sharedPrefixTokensEstimate": 269,
+        "uniqueDocumentBytesRepresented": 394335,
+        "logicalBytesSent": 500863,
+        "uniqueSourceBytesRepresented": 394335,
+        "repeatedContextBytes": 54514,
+        "leftHaloBytes": 26890,
+        "rightHaloBytes": 27624,
+        "redundancyFactor": 1.2701459419021897,
+        "repeatedPrefixRatio": 0.057860133409734796,
+        "worstCaseCompletionBudget": 76224,
+        "workloadProxy": {
+          "calls": 18,
+          "totalInputBytes": 500863,
+          "fixedOverheadBytes": 42948
+        }
+      },
+      "sourceUniverseHash": "0d65c500c9ccfefae7a1d4bafe210cb65202a0af8fa8787a6717d00ca94edfea",
+      "exactOwnership": true
+    },
+    {
+      "documentId": "SRC-095",
+      "baseline": {
+        "requests": 20,
+        "inputBytes": 1694184,
+        "estimatedInputTokens": 282371,
+        "maxRequestBytes": 93856,
+        "p95RequestBytes": 89970,
+        "maxVisibleAtoms": 160,
+        "p95VisibleAtoms": 160,
+        "totalOwnedAtoms": 2302,
+        "totalContextOnlyAtoms": 760,
+        "contextToOwnedRatio": 0.3301476976542137,
+        "sharedPrefixBytes": 1610,
+        "sharedPrefixTokensEstimate": 269,
+        "uniqueDocumentBytesRepresented": 1525560,
+        "logicalBytesSent": 1694184,
+        "uniqueSourceBytesRepresented": 1525560,
+        "repeatedContextBytes": 90660,
+        "leftHaloBytes": 46435,
+        "rightHaloBytes": 44225,
+        "redundancyFactor": 1.1105325257610321,
+        "repeatedPrefixRatio": 0.019006200034943077,
+        "worstCaseCompletionBudget": 296576,
+        "workloadProxy": {
+          "calls": 20,
+          "totalInputBytes": 1694184,
+          "fixedOverheadBytes": 47720
+        }
+      },
+      "candidate": {
+        "requests": 69,
+        "inputBytes": 1923101,
+        "estimatedInputTokens": 320546,
+        "maxRequestBytes": 28862,
+        "p95RequestBytes": 28749,
+        "maxVisibleAtoms": 61,
+        "p95VisibleAtoms": 60,
+        "totalOwnedAtoms": 2302,
+        "totalContextOnlyAtoms": 1632,
+        "contextToOwnedRatio": 0.7089487402258905,
+        "sharedPrefixBytes": 1610,
+        "sharedPrefixTokensEstimate": 269,
+        "uniqueDocumentBytesRepresented": 1525560,
+        "logicalBytesSent": 1923101,
+        "uniqueSourceBytesRepresented": 1525560,
+        "repeatedContextBytes": 197234,
+        "leftHaloBytes": 98462,
+        "rightHaloBytes": 98772,
+        "redundancyFactor": 1.2605869320118515,
+        "repeatedPrefixRatio": 0.05776607676871886,
+        "worstCaseCompletionBudget": 301280,
+        "workloadProxy": {
+          "calls": 69,
+          "totalInputBytes": 1923101,
+          "fixedOverheadBytes": 164634
+        }
+      },
+      "sourceUniverseHash": "2eb0b1cf31df11a5ccc9be7226123c9445588b68d84c2c3589d42707ea43c672",
+      "exactOwnership": true
+    }
+  ],
+  "hardGates": {
+    "sourceOwnershipPercent": 100,
+    "duplicateOwnership": 0,
+    "missingOwnership": 0,
+    "sourceMutation": false,
+    "semanticPreclassification": false,
+    "goldUse": false
+  },
+  "providerCalls": 0
+}

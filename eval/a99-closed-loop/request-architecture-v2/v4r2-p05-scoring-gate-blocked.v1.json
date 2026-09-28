@@ -1,0 +1,48 @@
+{
+  "artifactKind": "a99_v4r2_p05_offline_scoring_gate_audit",
+  "status": "BLOCKED_LINEAGE_CONTRACT_VALIDATION",
+  "providerCallsDuringScoring": 0,
+  "goldRead": false,
+  "productionPromotion": false,
+  "authority": {
+    "combinedManifest": "eval/a99-closed-loop/request-architecture-v2/combined-run-manifest.v1.json",
+    "combinedManifestSha256": "5A0DCC071AEBCA97F7A7BEA0B56E18F1A031931AE88BA6BC45DE7A5B26F5AEEC",
+    "primaryRun": "p05-provider-experiment-20260928T033919Z",
+    "recoveryRun": "p05-recovery-20260928T042741Z"
+  },
+  "claimedLineage": {
+    "primaryDirectContractValid": 29,
+    "recoveredParents": 2,
+    "adaptiveChildCalls": 0,
+    "totalProviderCalls": 33
+  },
+  "independentValidation": {
+    "primaryResponsesChecked": 31,
+    "primaryContractValid": 27,
+    "recoveryContractValid": 2,
+    "actualAcceptedCoverage": "29/31",
+    "pendingOwnershipSets": [
+      {
+        "primaryOrdinal": 8,
+        "failure": "INVALID_JSON",
+        "finishReason": "length",
+        "completionTokens": 12286,
+        "detail": "truncated JSON at headings[43]"
+      },
+      {
+        "primaryOrdinal": 30,
+        "failure": "INVALID_JSON",
+        "finishReason": "length",
+        "completionTokens": 12286,
+        "detail": "unterminated sourceParts[5].sourceAlias at headings[24]"
+      }
+    ],
+    "recoveredPrimaryOrdinals": [21, 24],
+    "acceptedResponseRule": "first contract-valid response in lineage; no semantic-quality selection"
+  },
+  "frozenPinsUnchanged": true,
+  "rawArtifactsModified": false,
+  "goldModified": false,
+  "requiredScoreArtifacts": "NOT_CREATED_BECAUSE_COVERAGE_GATE_FAILED",
+  "nextAction": "Adjudicate pending primary ordinals 8 and 30; do not call provider or alter frozen lineage in this step."
+}

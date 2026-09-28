@@ -1,0 +1,58 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0472:S0",
+          "verbatimText": "4.2.1. Field Compression"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0483:S0",
+          "verbatimText": "4.2.2. Header Size Constraints"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0497:S0",
+          "verbatimText": "4.3. HTTP Control Data"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0514:S0",
+          "verbatimText": "4.3.1. Request Pseudo-Header Fields"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0551:S0",
+          "verbatimText": "4.3.2. Response Pseudo-Header Fields"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0557:S0",
+          "verbatimText": "4.4. The CONNECT Method"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    }
+  ]
+}

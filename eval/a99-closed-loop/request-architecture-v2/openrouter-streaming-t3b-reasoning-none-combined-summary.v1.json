@@ -1,0 +1,88 @@
+{
+  "artifactKind": "a99_openrouter_streaming_t3b_reasoning_none_combined_summary",
+  "status": "T3B_PRIMARY_COHORT_COMPLETE_AFTER_BOUNDED_TRANSPORT_RETRY",
+  "candidateId": "T3B_P05_STREAMING_REASONING_NONE_FULL_31_PACED",
+  "preflight": {
+    "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3b-p05-reasoning-none-full-cohort-preflight.v1.json",
+    "sha256": "E2D02D20D31EE5E353A2D533FB091E7A13D4E78EFE7F4A5A8DC8A993C6E46776"
+  },
+  "sourceRuns": [
+    {
+      "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3b-reasoning-none-full-cohort-20260928T091634Z",
+      "role": "initial run; ordinals 001-002 accepted, ordinal 003 hit HTTP 429 before harness retry bug",
+      "acceptedOrdinals": [1, 2],
+      "transportFailures": [
+        {
+          "ordinal": 3,
+          "httpStatus": 429,
+          "classification": "HTTP_PROVIDER_ERROR",
+          "countsAsTransportRetryCandidate": true
+        }
+      ]
+    },
+    {
+      "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3b-reasoning-none-full-cohort-continuation-003-031-20260928T091819Z",
+      "manifest": "t3a-pilot-manifest.json",
+      "manifestSha256": "3099D013ECA6098D607DB5B6DE42847370C3BD391097F5555AD31A993A3BE74E",
+      "role": "continuation; ordinals 003-031 accepted",
+      "acceptedOrdinals": "3-31"
+    }
+  ],
+  "pins": {
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "none",
+    "responseFormat": "json_object",
+    "stream": true,
+    "usage": {
+      "include": true
+    },
+    "sessionId": "not sent",
+    "cacheControl": "not sent",
+    "responseCache": "disabled"
+  },
+  "summary": {
+    "primaryOrdinals": 31,
+    "primaryProviderCalls": 31,
+    "transportRetryCalls": 1,
+    "totalProviderCalls": 32,
+    "semanticRecoveryCalls": 0,
+    "mediumFallbackCalls": 0,
+    "firstAttemptContractValid": 30,
+    "usableAfterTransportRetry": 31,
+    "acceptedLeaves": 31,
+    "semanticInvalidCount": 0,
+    "lengthCount": 0,
+    "http429Count": 1,
+    "fiveXxCount": 0,
+    "totalPromptTokens": 608940,
+    "totalCachedTokens": 0,
+    "totalCompletionTokens": 46956,
+    "totalReasoningTokens": 0,
+    "p50WallClockMs": 6631,
+    "p95WallClockMs": 46425
+  },
+  "heavyCompletionOrdinals": [
+    { "ordinal": 31, "completionTokens": 6024, "wallClockMs": 46425 },
+    { "ordinal": 10, "completionTokens": 5797, "wallClockMs": 45748 },
+    { "ordinal": 30, "completionTokens": 5761, "wallClockMs": 47246 },
+    { "ordinal": 11, "completionTokens": 5273, "wallClockMs": 43403 },
+    { "ordinal": 26, "completionTokens": 4803, "wallClockMs": 42432 },
+    { "ordinal": 8, "completionTokens": 4473, "wallClockMs": 35263 }
+  ],
+  "gates": {
+    "goldRead": false,
+    "productionChanged": false,
+    "semanticRecoveryOpened": false,
+    "fullCohortExecutionFrozen": true,
+    "next": "T3C efficiency/heavy-leaf audit, then T4 Gold scoring"
+  },
+  "notes": [
+    "The ordinal 003 retry was transport-only after HTTP 429; the semantic request and provider envelope were unchanged.",
+    "The first run ended early because the harness attempted to read a retry-suffixed source request filename. The bug was fixed before continuation; accepted ordinals 001-002 were not resent.",
+    "No medium fallback or semantic recovery was used."
+  ],
+  "providerCalls": 0,
+  "goldRead": false,
+  "productionChanged": false
+}

@@ -1,0 +1,25 @@
+{
+  "artifactKind": "a99_request_v2_resource_unit_audit",
+  "sourcePolicyEstimator": {
+    "serializedBytes": "UTF-8 bytes of one JsonSerializer source-fact object; pack stop resource",
+    "estimatedInputTokens": "ceil(serializedBytes / 6.0); deterministic conservative proxy, not provider tokenization",
+    "exactInputTokens": "not available provider-free; never conflated with estimatedInputTokens",
+    "ownedAtomCount": "number of source occurrences in OWNED_CORE",
+    "visibleAtomCount": "number of source occurrences in LEFT_HALO + OWNED_CORE + RIGHT_HALO",
+    "completionReserveTokens": "reserved completion allowance included in the estimated-token stop condition"
+  },
+  "contextBudget": {
+    "observedContextLimitTokens": 40000,
+    "policyEstimatedInputTokenCeiling": 20000,
+    "reservedCompletionTokens": 12288,
+    "explanation": "The 40,000-token context limit is a provider-envelope ceiling; the policy uses a 20,000-token estimated input ceiling and reserves 12,288 completion tokens, so the source stop is intentionally below the context maximum."
+  },
+  "composerMeasurement": {
+    "serializedBytes": "UTF-8 bytes of complete system + user request after canonical composer",
+    "estimatedInputTokens": "ceil(complete UTF-8 request bytes / 6.0), reporting proxy only",
+    "exactInputTokens": "not available without provider transport",
+    "explanation": "A 20,000 estimated source-token ceiling can yield a ~28,862-byte complete request because source-fact bytes are divided by six, completion reserve is included, and the complete request adds system/schema/JSON overhead."
+  },
+  "noProviderCalls": true,
+  "goldRead": false
+}

@@ -1,0 +1,54 @@
+{
+  "artifactKind": "a99_v4r3_fixed120_execution_audit",
+  "status": "INCOMPLETE_EXPERIMENT_ONLY",
+  "candidate": "V4R3_FIXED120_MEDIUM_MATCHED_CONTROL",
+  "productionPromotion": false,
+  "goldRead": false,
+  "providerCalls": 48,
+  "primary": {
+    "runDirectory": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z",
+    "manifestSha256": "781918728ECDA6E062BD29D1142438C43A01E4BCF0B775617A800447112AACED",
+    "status": "COMPLETED_EXPERIMENT_ONLY",
+    "calls": 25,
+    "inputBytes": 2129674,
+    "outputTokens": 151785,
+    "contractValidLeaves": 16,
+    "retryableLeaves": 9,
+    "retryableParentOrdinals": [3, 4, 6, 17, 19, 20, 21, 23, 24]
+  },
+  "recovery": {
+    "plan": "eval/a99-closed-loop/request-architecture-v2/v4r3-recovery-20260928T074000Z/recovery-plan.json",
+    "runDirectory": "eval/a99-closed-loop/request-architecture-v2/v4r3-recovery-20260928T074000Z",
+    "manifestSha256": "B6B7D042E6611E0488C3088FA6CE448EA9E6C29FB4D2AA293399384B9F3993B8",
+    "status": "RECOVERY_INCOMPLETE_EXPERIMENT_ONLY",
+    "calls": 23,
+    "identicalRetries": 9,
+    "adaptiveChildCalls": 14,
+    "contractValidLeaves": 8,
+    "failedRetryableLeaves": 15,
+    "completedParentOwnershipSets": [3, 19, 23, 24],
+    "pendingParentOwnershipSets": [4, 6, 17, 20, 21]
+  },
+  "coverage": {
+    "acceptedParentCoverage": "20/25",
+    "pendingParentCount": 5,
+    "combinedLineageCreated": false,
+    "scoringAuthorityOpened": false
+  },
+  "budgetAdjudication": {
+    "preflightMaxRecoveryAttempts": 12,
+    "preflightMaxAdaptiveChildCalls": 12,
+    "observedRecoveryAttempts": 9,
+    "observedAdaptiveChildCalls": 14,
+    "adaptiveChildBudgetExceeded": true,
+    "totalHardCallCap": 55,
+    "hardCallCapExceeded": false,
+    "action": "STOP_AND_ADJUDICATE; no further provider calls authorized under this frozen preflight"
+  },
+  "observedFailureModes": [
+    "HTTP 200 with missing or empty message content",
+    "HTTP 200 with truncated invalid JSON",
+    "provider error envelope without choices during recovery"
+  ],
+  "noProductionChange": true
+}

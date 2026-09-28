@@ -1,0 +1,53 @@
+{
+  "artifactKind": "a99_openrouter_streaming_t3a_c1_transport_retry_preflight",
+  "status": "PROVIDER_FREEZE_ONLY_PROVIDER_CALLS_NOT_AUTHORIZED",
+  "candidateId": "T3A_C1_ORDINAL016_TRANSPORT_RETRY_AFTER_429",
+  "dependsOn": {
+    "t3aPreflight": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3a-p05-reasoning-none-pilot-preflight.v1.json",
+    "t3aPreflightSha256": "C8004B8738AE1260D74A79FF6B52C2C721F32F45D8436472E3A94F3A77CE61CC",
+    "t3aPilotManifest": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3a-reasoning-none-pilot-20260928T090512Z/t3a-pilot-manifest.json",
+    "t3aPilotManifestSha256": "E3496D5098FFEEB4410E4861C5928E64B400265043168E3FBBB4BCF3A124B354"
+  },
+  "retryType": "TRANSPORT_RETRY_AFTER_429",
+  "notSemanticRecovery": true,
+  "maxProviderCalls": 1,
+  "target": {
+    "ordinal": 16,
+    "documentId": "SRC-095",
+    "semanticRequestHash": "84fc81363e923719e3c6e713338de506321d828c272c25206c8223ed1a6f4790",
+    "providerEnvelopeHash": "085056b9939e62628acc5ebf3b1de0ac84f5a3c3690f0a9bfb882eb74af9fbc5",
+    "t3aFailureClass": "HTTP_PROVIDER_ERROR",
+    "t3aHttpStatus": 429,
+    "t3aElapsedMs": 585
+  },
+  "pins": {
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "none",
+    "responseFormat": "json_object",
+    "maxTokens": 12288,
+    "timeoutSeconds": 300,
+    "stream": true,
+    "usage": {
+      "include": true
+    },
+    "explicitCacheControl": null,
+    "openRouterResponseCache": "disabled",
+    "sessionId": "not sent",
+    "cacheControl": "not sent",
+    "streamOptions": "not sent",
+    "gold": "closed"
+  },
+  "hardGates": {
+    "semanticRequestChange": false,
+    "providerEnvelopeChange": false,
+    "reasoningMediumFallback": false,
+    "semanticRecovery": false,
+    "goldRead": false,
+    "productionPromotion": false,
+    "full31CohortGate": "closed until C1 terminal result"
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "productionChanged": false
+}

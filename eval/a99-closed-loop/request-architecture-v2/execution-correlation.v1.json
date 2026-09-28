@@ -1,0 +1,324 @@
+{
+  "artifactKind": "a99_request_v2_execution_correlation",
+  "source": "frozen V4R1 raw execution ledger only",
+  "observations": [
+    {
+      "OrdinalOverall": 1,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "dc08fac8f167d86030daf7f9701910d022c2dc7bb3dad57e4116068d42331b23",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": 24783,
+      "CompletionTokens": 7726,
+      "ChargedInput": 24783,
+      "ChargedOutput": 7726,
+      "ElapsedMs": 0,
+      "Error": null
+    },
+    {
+      "OrdinalOverall": 2,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "9d6004f963ba2bbdfeb75227632785593ac903e61cbf50b9f039a337e9a91512",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 22483,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 0,
+      "Error": "INTERRUPTED_BEFORE_RESPONSE"
+    },
+    {
+      "OrdinalOverall": 3,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "9d6004f963ba2bbdfeb75227632785593ac903e61cbf50b9f039a337e9a91512",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": 25191,
+      "CompletionTokens": 4799,
+      "ChargedInput": 25191,
+      "ChargedOutput": 4799,
+      "ElapsedMs": 45143,
+      "Error": null
+    },
+    {
+      "OrdinalOverall": 4,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "4a3d340629f0397e16c01234f242bdc97f9da5a608ce7fc4228aed4eaa08913a",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": 25544,
+      "CompletionTokens": 4454,
+      "ChargedInput": 25544,
+      "ChargedOutput": 4454,
+      "ElapsedMs": 40406,
+      "Error": null
+    },
+    {
+      "OrdinalOverall": 5,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 90908,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90121,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 6,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 90908,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90229,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 7,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 90908,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90116,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 8,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 90908,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90090,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 9,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 90908,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90111,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 10,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 90908,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90094,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 11,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 90908,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90133,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 12,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 90908,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90100,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 13,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "bda742edabebf22bc66b3b0a0e2503fa080b107e679d11328d1e0d331bbf3f96",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": 25835,
+      "CompletionTokens": 11587,
+      "ChargedInput": 25835,
+      "ChargedOutput": 11587,
+      "ElapsedMs": 88298,
+      "Error": null
+    },
+    {
+      "OrdinalOverall": 14,
+      "DocumentId": "SRC-089",
+      "RequestSha256": "232b750e9c0095b4236dea7f364cba9c5177b502be03484900ed21567ee0edc4",
+      "ExpectedItemCount": 102,
+      "MaxTokens": 13152,
+      "PromptTokens": 21796,
+      "CompletionTokens": 4847,
+      "ChargedInput": 21796,
+      "ChargedOutput": 4847,
+      "ElapsedMs": 43527,
+      "Error": null
+    },
+    {
+      "OrdinalOverall": 15,
+      "DocumentId": "SRC-095",
+      "RequestSha256": "a2fd70685b3adbfb347ba344edf3214fe595c4ec83d7de2965d6e03bc0c87580",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 87863,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90096,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 16,
+      "DocumentId": "SRC-095",
+      "RequestSha256": "a2fd70685b3adbfb347ba344edf3214fe595c4ec83d7de2965d6e03bc0c87580",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 87863,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90095,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 17,
+      "DocumentId": "SRC-095",
+      "RequestSha256": "a2fd70685b3adbfb347ba344edf3214fe595c4ec83d7de2965d6e03bc0c87580",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": 25605,
+      "CompletionTokens": 11982,
+      "ChargedInput": 25605,
+      "ChargedOutput": 11982,
+      "ElapsedMs": 83645,
+      "Error": null
+    },
+    {
+      "OrdinalOverall": 18,
+      "DocumentId": "SRC-095",
+      "RequestSha256": "a1c143960c962e640881aa5a7297b52dc1b1b8378fae276763f541391f580b31",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": null,
+      "CompletionTokens": null,
+      "ChargedInput": 87479,
+      "ChargedOutput": 15456,
+      "ElapsedMs": 90102,
+      "Error": "TaskCanceledException: The operation was canceled."
+    },
+    {
+      "OrdinalOverall": 19,
+      "DocumentId": "SRC-095",
+      "RequestSha256": "a1c143960c962e640881aa5a7297b52dc1b1b8378fae276763f541391f580b31",
+      "ExpectedItemCount": 120,
+      "MaxTokens": 15456,
+      "PromptTokens": 25675,
+      "CompletionTokens": 8150,
+      "ChargedInput": 25675,
+      "ChargedOutput": 8150,
+      "ElapsedMs": 62613,
+      "Error": null
+    }
+  ],
+  "findings": {
+    "inputTokensVsLatency": "INSUFFICIENT_NONZERO_SUCCESS_LATENCY_VARIATION_FOR_CAUSAL_OR_CORRELATION_CLAIM",
+    "ownedItemCountVsLatency": "FIXED_OWNED_COUNT_120 makes this predictor nearly constant",
+    "visibleItemCountVsLatency": "requires V4R2 provider execution",
+    "inputTokensVsReasoningTokens": "reasoning-token telemetry unavailable in frozen records",
+    "maxCompletionBudgetVsChargedFallback": "fallback charged output equals the 15456 ceiling on interrupted attempts",
+    "requestPositionVsErrors": [
+      {
+        "DocumentId": "SRC-089",
+        "OrdinalOverall": 2,
+        "Error": "INTERRUPTED_BEFORE_RESPONSE"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "OrdinalOverall": 5,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-089",
+        "OrdinalOverall": 6,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-089",
+        "OrdinalOverall": 7,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-089",
+        "OrdinalOverall": 8,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-089",
+        "OrdinalOverall": 9,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-089",
+        "OrdinalOverall": 10,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-089",
+        "OrdinalOverall": 11,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-089",
+        "OrdinalOverall": 12,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-095",
+        "OrdinalOverall": 15,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-095",
+        "OrdinalOverall": 16,
+        "Error": "TaskCanceledException: The operation was canceled."
+      },
+      {
+        "DocumentId": "SRC-095",
+        "OrdinalOverall": 18,
+        "Error": "TaskCanceledException: The operation was canceled."
+      }
+    ]
+  },
+  "conclusion": "FIXED_ITEM_COUNT_IS_NOT_COST_STABLE: equal 120-owned requests had distinct input bytes and repeated timeout outcomes; this is observational, not causal.",
+  "providerCalls": 0
+}

@@ -1,0 +1,100 @@
+{
+  "artifactKind": "a99_v4r2_p05_execution_authority_correction",
+  "artifactVersion": "v1",
+  "status": "SUPERSEDES_V1_FOR_SCORING",
+  "experimentOnly": true,
+  "productionPromotion": false,
+  "goldRead": false,
+  "providerCallsDuringScoring": 0,
+  "supersedesForScoring": "combined-run-manifest.v1.json",
+  "combinedV1Immutable": true,
+  "reason": "Lineage revalidation found 2 additional contract-invalid primary leaves; combined-run-manifest.v1.json is not modified.",
+  "sourceArtifacts": {
+    "primaryManifest": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/run-manifest.json",
+      "sha256": "76B87AF00318FDC132F937CF391911C49CA6A75FEA8899B882177E604224DFD5"
+    },
+    "combinedManifestV1": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/combined-run-manifest.v1.json",
+      "sha256": "5A0DCC071AEBCA97F7A7BEA0B56E18F1A031931AE88BA6BC45DE7A5B26F5AEEC"
+    },
+    "providerPreflight": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/v4r2-provider-preflight.v1.json",
+      "sha256": "644D60A0CED9FB361B4D02A62D49B8E62E8604802500566BE47860E75DA6B2F5"
+    }
+  },
+  "executionAuthority": {
+    "primaryAttempted": 31,
+    "primaryContractValid": 27,
+    "primaryInvalid": 4,
+    "priorRecoveryContractValid": 2,
+    "acceptedParentCoverage": "29/31",
+    "pendingParentLeaves": [8, 30],
+    "adaptiveChildCalls": 0,
+    "acceptedLineageRule": "first contract-valid response in lineage; successful leaves are never resent"
+  },
+  "invalidPrimaryLeaves": [
+    {
+      "ordinal": 8,
+      "failure": "HTTP_200 + finish_reason=length + malformed/truncated JSON",
+      "completionTokens": 12286,
+      "semanticRequestHash": "cae6332355c3f265cc97ab5016e302681f5cd45f6cabd29708f50a574f66cb5e",
+      "providerEnvelopeHash": "82e54d4b7739800e9933633cb81582e8bdef9b8bf8ea731f39f1fe42659513b7",
+      "responseFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-008.response.json"
+    },
+    {
+      "ordinal": 21,
+      "failure": "HTTP_200 + completion saturation + null content",
+      "completionTokens": 12288,
+      "semanticRequestHash": "2c5deb37393fd5d9f77cd61fec0e055cdde37d6a124ef417a8ba06f9aa757547",
+      "providerEnvelopeHash": "d17fe28312d0a730119511e80a83671a081bb14d15b66832f0e9fbf07c74e6e2",
+      "responseFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-021.response.json",
+      "recoveryStatus": "RECOVERED_BY_PRIOR_IDENTICAL_RETRY"
+    },
+    {
+      "ordinal": 24,
+      "failure": "HTTP_200 + completion saturation + null content",
+      "completionTokens": 12288,
+      "semanticRequestHash": "3bea63a1ab4acdffcdcfc97b552c70c41b70634d42c6bce5daffe72e2d49bdc2",
+      "providerEnvelopeHash": "b2371892ccb425aa3b75016d8fecd1f761422cb2f3578049eb91587e42e3b6b0",
+      "responseFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-024.response.json",
+      "recoveryStatus": "RECOVERED_BY_PRIOR_IDENTICAL_RETRY"
+    },
+    {
+      "ordinal": 30,
+      "failure": "HTTP_200 + finish_reason=length + malformed/truncated JSON",
+      "completionTokens": 12286,
+      "semanticRequestHash": "c0eab96cfdaf5757688c1d2570bdde2fec61e9f36c7e13e0df4e3c5007297a5e",
+      "providerEnvelopeHash": "e2134e76cceecd74e0de6e5277ec898819f8830051bc710c294b92adbf5478c3",
+      "responseFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-030.response.json"
+    }
+  ],
+  "recoveryAuthorization": {
+    "scope": "ordinals 8 and 30 only",
+    "identicalRetryMaximumPerParent": 1,
+    "onRepeatedSaturation": "deterministic leaf split",
+    "maxAdaptiveChildCalls": 12,
+    "totalHardCallCap": 55,
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "medium",
+    "responseFormat": "json_object",
+    "maxTokens": 12288,
+    "timeoutSeconds": 300,
+    "inputCeilingBytes": 90000,
+    "estimatedInputTokenCeiling": 28000,
+    "ownedCoreCeiling": 96,
+    "visibleSourceAtomsCeiling": 128,
+    "haloAtoms": 8,
+    "lossyTransforms": false,
+    "explicitCacheControl": false,
+    "strictJsonSchema": false,
+    "invalid200Handling": "bounded identical retry, then deterministic leaf split",
+    "successfulLeavesResent": false
+  },
+  "scoringGate": {
+    "goldOpen": false,
+    "scoringAuthority": "combined-run-manifest.v2.json only after 31/31 accepted parent coverage",
+    "productionPromotion": false
+  }
+}

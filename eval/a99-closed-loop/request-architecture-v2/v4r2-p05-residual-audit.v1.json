@@ -1,0 +1,1150 @@
+{
+  "artifactKind": "a99_v4r2_p05_residual_audit",
+  "study": "V4R2_REQUEST_ARCHITECTURE_V2",
+  "scorerVersion": "SEMANTIC_FUNCTION_V4_EXACT_BIND_SCORER_V1",
+  "combinedManifestAuthority": "eval/a99-closed-loop/request-architecture-v2/combined-run-manifest.v2.json",
+  "providerCallsDuringScoring": 0,
+  "policy": {
+    "CLAIM_EXTENT_ERROR": "overlap with Gold but different extent",
+    "MODEL_SEMANTIC_MISCLASSIFICATION": "ontology can express Gold occurrence but model omitted/non-Gold",
+    "ONTOLOGY_GAP": "reserved; not inferred from model failure",
+    "CONTEXT_INSUFFICIENT": "reserved; requires proof packet lacked required context",
+    "SOURCE_REPRESENTATION_ERROR": "reserved; source identity not bindable",
+    "BINDER_ERROR": "reserved; exact binding failed",
+    "GOLD_OR_DEFINITION_AMBIGUITY": "reserved; requires Gold ambiguity evidence"
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "classification": {
+        "CLAIM_EXTENT_ERROR": 5,
+        "MODEL_SEMANTIC_MISCLASSIFICATION": 4,
+        "ONTOLOGY_GAP": 0,
+        "CONTEXT_INSUFFICIENT": 0,
+        "SOURCE_REPRESENTATION_ERROR": 0,
+        "BINDER_ERROR": 0,
+        "GOLD_OR_DEFINITION_AMBIGUITY": 0
+      },
+      "executionEvidence": {
+        "acceptedExecutionLeaves": [
+          "b170e210b9b064448c7348a418d9929838554a07ee2fe9f422ab651dba09ab44",
+          "f1fd0209df84b09ca7560df85a6f66afc32c21a458f264761d0b56599abf5e12",
+          "cf2b5de8f0da9c4900a84ad211621699c84689cee9cc9732ee00fa9aab2007d2",
+          "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+          "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+          "088241b417f50bfe2490b393dc3d980966f7fe66dc3ada760c4be86e9cdebd38",
+          "93cf8aa61b0855c61389451d4e0bdc6dec9a24b9e7a0d0cf4cf8777f6c1d157f"
+        ],
+        "adaptiveSplitParent": null,
+        "boundaryNearSplit": null
+      },
+      "falsePositiveFamilies": {
+        "GOLD_HEADING_WRONG_EXTENT": 3
+      },
+      "residuals": {
+        "goldNotEngineTrue": [
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+            "goldText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+            "engine": [
+              {
+                "Index": 0,
+                "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0109:S0:0-33",
+            "goldText": "1 . Conditions for establishment:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0117:S0:0-22",
+            "goldText": "2. Operation contents:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0246:S0:0-26",
+            "goldText": "1 . For publishing houses:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0249:S0:0-16",
+            "goldText": "2. For partners:",
+            "engine": []
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0382:S0:0-10|L0383:S0:0-45",
+            "goldText": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+            "engine": [
+              {
+                "Index": 20,
+                "Text": "Chapter IV",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L0382:S0:0-10",
+                "UnboundReason": null
+              },
+              {
+                "Index": 21,
+                "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L0383:S0:0-45",
+                "UnboundReason": null
+              }
+            ]
+          }
+        ],
+        "nonGoldTrue": [
+          {
+            "hypothesis": {
+              "Index": 0,
+              "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 20,
+              "Text": "Chapter IV",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0382:S0:0-10",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 21,
+              "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0383:S0:0-45",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          }
+        ],
+        "nonGoldNeedsReview": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "classification": {
+        "CLAIM_EXTENT_ERROR": 61,
+        "MODEL_SEMANTIC_MISCLASSIFICATION": 10,
+        "ONTOLOGY_GAP": 0,
+        "CONTEXT_INSUFFICIENT": 0,
+        "SOURCE_REPRESENTATION_ERROR": 0,
+        "BINDER_ERROR": 0,
+        "GOLD_OR_DEFINITION_AMBIGUITY": 0
+      },
+      "executionEvidence": {
+        "acceptedExecutionLeaves": [
+          "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+          "f0d0c92a73a9f87f48ea9a40bd437cdd96edba0bbc589322158df1cfbceefff6",
+          "e0d24b80e815edc123098f18bc917ea6b2cb07bfd136b0bf0cdacf82c2d711d7",
+          "6d75ad831a97421456ccb9494aa5f73cf78c0a9b159e426ea70ac837837497bc",
+          "2ab21bd3700af812598bc6b6e8bcc4467fcc93cc4e3e31b582e56e5f9ee92843",
+          "9df8370b4c5ea364b7569a3715a94048823c00a5ef75d5cdf0efbcb368718255",
+          "8e4acb083277fcdf37e274e7e761170a8db64206d680b8dc77a277f8ec86600d",
+          "b2540c1c2f876e1f4e2971c02359119740bf4ff5706cca748f682de81e576a1e",
+          "553d3bbbf4a5804cc1aa231a6745d166aa0c3d898114dcae720557cd8593e5da",
+          "b31d4c6c0139eba85e75b1bdc6f4495eded896da6731608eab82810fa219291d",
+          "e9070615cdab9e525218c90e76a8a10109572e2d49769cf7bdf6d0cf45f43359",
+          "1db7df36871ebecabdd2e5712b00966e11bf543594d3ba7ae1a25ce692e0ec1f",
+          "86fc589ddd38d4451ba107856f3a6a2c5da512f87d4e94d7339d4fba10a102cb",
+          "8b5c2b597faa7337b61c85d5e0199b5339651ccdbb8532bc22bdcc8826947b61",
+          "6d3dd81af5fc98f9b1249ea44e73adf9be2c355586bdb4729f6ac9fc4b7c6c47",
+          "8b45c0dbc001dc701504bdd06d7f55a99415553b9be3720e2522d53db5ee5998",
+          "7eed897a7dea748daea81b45fa755b539da9cc104c0c5a58135b6b7b618d7d79",
+          "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+          "2ea2e8a9f573f54c537fc6c131fc66e4fe8c5e10dd5cabc9a0efd7e84fbe0586",
+          "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+          "e6603ccd36047a8f8c5621b18268a367ff53755e01f318beda8819619f5aca4e",
+          "9d654d27a556e0d0cde253f1fb557b86ec1ec6e3c18c386de25e0eea1123524a",
+          "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+          "p05-parent-030-child-A",
+          "p05-parent-030-child-B"
+        ],
+        "adaptiveSplitParent": 30,
+        "boundaryNearSplit": "ordinal-030 split boundary is retained as observed execution evidence; no automatic causal label"
+      },
+      "falsePositiveFamilies": {
+        "REVIEWED_NON_HEADING:CONTENTS_ENTRY": 28,
+        "MODEL_ROLE_UNKNOWN": 2,
+        "REVIEWED_NON_HEADING:TABLE_OR_REFERENCE_LABEL": 1,
+        "INDEX_ENTRY": 24,
+        "GOLD_HEADING_WRONG_EXTENT": 3
+      },
+      "residuals": {
+        "goldNotEngineTrue": [
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0008:S0:0-6",
+            "goldText": "HTTP/3",
+            "engine": [
+              {
+                "Index": 130,
+                "Text": "RFC 9114 HTTP/3",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=DOCUMENT_IDENTITY"
+                ],
+                "identity": "L0007:S0:0-8|L0008:S0:0-6",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1729:S0:0-32",
+            "goldText": "A.2.1. Prioritization Di\uFB00erences",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1736:S0:0-35",
+            "goldText": "A.2.2. Field Compression Di\uFB00erences",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1745:S0:0-30",
+            "goldText": "A.2.3. Flow-Control Di\uFB00erences",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1750:S0:0-45",
+            "goldText": "A.2.4. Guidance for New Frame Type De\uFB01nitions",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1914:S0:0-1",
+            "goldText": "C",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1940:S0:0-1",
+            "goldText": "D",
+            "engine": []
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L1947:S0:0-1",
+            "goldText": "G",
+            "engine": [
+              {
+                "Index": 136,
+                "Text": "G GOAWAY",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L1947:S0:0-1|L1948:S0:0-6",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L1961:S0:0-1",
+            "goldText": "H",
+            "engine": [
+              {
+                "Index": 137,
+                "Text": "H H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L1961:S0:0-1|L1962:S0:0-75|L1963:S0:0-29",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2012:S0:0-1",
+            "goldText": "M",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2023:S0:0-1",
+            "goldText": "P",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2056:S0:0-1",
+            "goldText": "R",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2063:S0:0-1",
+            "goldText": "S",
+            "engine": []
+          }
+        ],
+        "nonGoldTrue": [
+          {
+            "hypothesis": {
+              "Index": 0,
+              "Text": "10.3. Intermediary-Encapsulation Attacks",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0090:S0:0-40",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 1,
+              "Text": "10.4. Cacheability ofPushed Responses",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0091:S0:0-37",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 2,
+              "Text": "10.5. Denial-of-Service Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0092:S0:0-38",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 3,
+              "Text": "10.5.1. Limits on Field Section Size",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0093:S0:0-36",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 4,
+              "Text": "10.5.2. CONNECT Issues",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0096:S0:0-22",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 5,
+              "Text": "10.6. Use of Compression",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0097:S0:0-24",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 6,
+              "Text": "10.8. Frame Parsing",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0099:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 7,
+              "Text": "10.9. Early Data",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0100:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 8,
+              "Text": "10.10. Migration",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0101:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 9,
+              "Text": "10.11. Privacy Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0102:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 10,
+              "Text": "11. IANA Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0103:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 11,
+              "Text": "11.2. New Registries",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0105:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 12,
+              "Text": "11.2.1. Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0106:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 13,
+              "Text": "11.2.2. Settings Parameters",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0107:S0:0-27",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 14,
+              "Text": "11.2.3. Error Codes",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0108:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 15,
+              "Text": "11.2.4. Stream Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0109:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 16,
+              "Text": "12. References",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0110:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 17,
+              "Text": "12.1. Normative References",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0111:S0:0-26",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 18,
+              "Text": "12.2. Informative References",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0112:S0:0-28",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 19,
+              "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0113:S0:0-56",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 20,
+              "Text": "A.1. Streams",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0114:S0:0-12",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 21,
+              "Text": "A.2. HTTP Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0115:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 22,
+              "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0120:S0:0-49",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 23,
+              "Text": "A.3. HTTP/2 SETTINGS Parameters",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0121:S0:0-31",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 24,
+              "Text": "A.4. HTTP/2 Error Codes",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0122:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 25,
+              "Text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0123:S0:0-47",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 26,
+              "Text": "Acknowledgments",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0124:S0:0-15",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 27,
+              "Text": "Index",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0125:S0:0-5",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 28,
+              "Text": "Author\u0027s Address",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0128:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 66,
+              "Text": "Section Section 7.2.7",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0917:S4:0-7|L0918:S4:0-13",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 67,
+              "Text": "Section 7.2.8",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0919:S4:0-13",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 110,
+              "Text": "H3_REQUEST_CANCELLED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1990:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 111,
+              "Text": "H3_REQUEST_INCOMPLETE",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1994:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 112,
+              "Text": "H3_REQUEST_REJECTED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1997:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 113,
+              "Text": "H3_SETTINGS_ERROR Section 7.2.4, Paragraph 6; Section 7.2.4.1, Paragraph 5; Section",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2001:S0:0-83",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 114,
+              "Text": "H3_STREAM_CREATION_ERROR Section 6.1, Paragraph 3; Section 6.2, Paragraph 7;",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2003:S0:0-76",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 115,
+              "Text": "H3_VERSION_FALLBACK Section 8.1; Table 4; Appendix A.4, Paragraph 3.28.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2005:S0:0-72",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 116,
+              "Text": "HEADERS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2006:S0:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 117,
+              "Text": "MAX_PUSH_ID",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2019:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 118,
+              "Text": "push stream",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2035:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 119,
+              "Text": "PUSH_PROMISE",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2046:S0:0-12",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 120,
+              "Text": "request stream",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2057:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 121,
+              "Text": "SETTINGS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2064:S0:0-8",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 122,
+              "Text": "SETTINGS_MAX_FIELD_SECTION_SIZE Section 4.2.2, Paragraph 2; Section 7.2.4.1; Section",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2072:S0:0-84",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 123,
+              "Text": "stream error Section 2.2; Section 4.1.2, Paragraph 4; Section 4.4, Paragraph 10; Section 8;",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2074:S0:0-91",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 130,
+              "Text": "RFC 9114 HTTP/3",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=DOCUMENT_IDENTITY"
+              ],
+              "identity": "L0007:S0:0-8|L0008:S0:0-6",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 136,
+              "Text": "G GOAWAY",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1947:S0:0-1|L1948:S0:0-6",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 137,
+              "Text": "H H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1961:S0:0-1|L1962:S0:0-75|L1963:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 138,
+              "Text": "H3_CONNECT_ERROR Section 4.4, Paragraph 10; Section 8.1; Table 4; Appendix A.4, Paragraph 3.22.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1964:S0:0-16|L1964:S1:0-62|L1965:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 139,
+              "Text": "H3_EXCESSIVE_LOAD Section 8.1; Section 10.5, Paragraph 7; Table 4; Appendix A.4, Paragraph 3.24.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1966:S0:0-17|L1966:S1:0-62|L1967:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 140,
+              "Text": "H3_FRAME_ERROR Section 7.1, Paragraph 5; Section 7.1, Paragraph 6; Section 8.1; Table 4; Appendix A.4, Paragraph 3.14.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1968:S0:0-85|L1969:S0:0-33",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 141,
+              "Text": "H3_FRAME_UNEXPECTED Section 4.1, Paragraph 7; Section 4.1, Paragraph 8; Section 4.4, Paragraph 8; Section 7.2.1, Paragraph 2; Section 7.2.2, Paragraph 3; Section 7.2.3, Paragraph 5; Section 7.2.4, Paragraph 2; Section 7.2.4, Paragraph 3; Section 7.2.5, Paragraph 8; Section 7.2.5, Paragraph 9; Section 7.2.6, Paragraph 5; Section 7.2.7, Paragraph 2; Section 7.2.7, Paragraph 3; Section 7.2.8, Paragraph 3; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1970:S0:0-19|L1971:S0:0-85|L1972:S0:0-90|L1973:S0:0-83|L1974:S0:0-83|L1975:S0:0-86|L1976:S0:0-5",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 142,
+              "Text": "H3_GENERAL_PROTOCOL_ERROR Section 7.2.5, Paragraph 6; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1977:S0:0-75|L1978:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 143,
+              "Text": "H3_ID_ERROR Section 4.6, Paragraph 3; Section 5.2, Paragraph 7; Section 6.2.2, Paragraph 6; Section 7.2.3, Paragraph 7; Section 7.2.3, Paragraph 8; Section 7.2.5, Paragraph 5; Section 7.2.6, Paragraph 3; Section 7.2.7, Paragraph 6; Section 8.1; Table 4",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1979:S0:0-11|L1980:S0:0-87|L1981:S0:0-90|L1982:S0:0-61",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 144,
+              "Text": "H3_INTERNAL_ERROR Section 8.1; Table 4; Appendix A.4, Paragraph 3.6.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1983:S0:0-17|L1983:S1:0-51",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 145,
+              "Text": "H3_MESSAGE_ERROR Section 4.1.2, Paragraph 4; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1984:S0:0-16|L1984:S1:0-63|L1985:S0:0-15",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 146,
+              "Text": "H3_MISSING_SETTINGS Section 6.2.1, Paragraph 2; Section 8.1; Table 4",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1986:S0:0-68",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 147,
+              "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1987:S0:0-80",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          }
+        ],
+        "nonGoldNeedsReview": []
+      }
+    }
+  ],
+  "conclusion": "Residual classes are descriptive frozen-policy classifications. Adaptive split is reported as execution evidence, not a new semantic error class; no ontology or context causal claim is inferred from omission alone."
+}

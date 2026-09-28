@@ -1,0 +1,4284 @@
+{
+  "artifactKind": "a99_v4r2_p05_boundary_attribution",
+  "artifactVersion": "v1",
+  "task": "V4R2 P05 BOUNDARY / OWNERSHIP ATTRIBUTION AUDIT",
+  "combinedManifestAuthority": "eval/a99-closed-loop/request-architecture-v2/combined-run-manifest.v2.json",
+  "combinedManifestSha256": "10AAF33E94E1A514F25DE73AF791A44094CC73CBC74C0AFE27C09560D1C6E406",
+  "scoreArtifact": "eval/a99-closed-loop/request-architecture-v2/v4r2-p05-score.v1.json",
+  "scoreArtifactSha256": "631A6D7EE749C6DC019E4B501936223B960490EBD3696791D9282D8FB9B92823",
+  "acceptedResponseManifest": "eval/a99-closed-loop/request-architecture-v2/v4r2-p05-accepted-response-manifest.v1.json",
+  "acceptedResponseManifestSha256": "1F77529E5921CC517B0D820A9CE64D9D4F0DB31EC23C27CD3284A118402FC633",
+  "providerCalls": 0,
+  "goldModified": false,
+  "productionChange": false,
+  "push": false,
+  "evaluator": "SEMANTIC_FUNCTION_V4_EXACT_BIND_SCORER_V1",
+  "boundaryDefinition": {
+    "haloAtoms": 8,
+    "nearBoundaryWhenDistanceFromOwnedEdgeIsAtMost": 8,
+    "atomPositionSource": "SemanticSourceAtom.Ordinal",
+    "distances": "claim min/max atom ordinal relative to leaf min/max owned ordinal"
+  },
+  "counts": {
+    "FN_OWNER_OMISSION": 13,
+    "FN_PRESENT_ONLY_IN_NEIGHBOR_HALO": 1,
+    "FN_CROSSES_PRIMARY_BOUNDARY": 0,
+    "FN_CROSSES_ADAPTIVE_SPLIT_BOUNDARY": 0,
+    "FP_NEAR_BOUNDARY": 20,
+    "FP_INTERIOR": 41,
+    "PARTIAL_BOUNDARY_RELATED": 1,
+    "PARTIAL_INTERIOR": 4
+  },
+  "oosRejectTotals": {
+    "expectedSRC089": 8,
+    "observedSRC089": 8,
+    "expectedSRC095": 23,
+    "observedSRC095": 23,
+    "observedTotal": 31
+  },
+  "residualAttribution": [
+    {
+      "documentId": "SRC-089",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 1,
+        "ExecutionLeafIdentity": "b170e210b9b064448c7348a418d9929838554a07ee2fe9f422ab651dba09ab44",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+        "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+        "sourceAliases": [
+          "L0006:S0",
+          "L0007:S0",
+          "L0008:S0"
+        ],
+        "sourceAtomOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "distanceFromLeftOwnedBoundary": 8,
+        "distanceFromRightOwnedBoundary": 85,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 5,
+        "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0382:S0:0-10",
+        "Text": "Chapter IV",
+        "sourceAliases": [
+          "L0382:S0"
+        ],
+        "sourceAtomOrdinals": [
+          384
+        ],
+        "distanceFromLeftOwnedBoundary": 0,
+        "distanceFromRightOwnedBoundary": 95,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 5,
+        "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0383:S0:0-45",
+        "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+        "sourceAliases": [
+          "L0383:S0"
+        ],
+        "sourceAtomOrdinals": [
+          385
+        ],
+        "distanceFromLeftOwnedBoundary": 1,
+        "distanceFromRightOwnedBoundary": 94,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "item": {
+        "residualKind": "PARTIAL",
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+        "goldText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+        "ownerParentOrdinals": [
+          1
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 1,
+            "ExecutionLeafIdentity": "b170e210b9b064448c7348a418d9929838554a07ee2fe9f422ab651dba09ab44",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 8,
+            "distanceFromRightOwnedBoundary": 85
+          }
+        ],
+        "goldSourceAtoms": {
+          "L0006:S0": {
+            "Start": 0,
+            "End": 6,
+            "atomOrdinal": 8
+          },
+          "L0007:S0": {
+            "Start": 0,
+            "End": 65,
+            "atomOrdinal": 9
+          },
+          "L0008:S0": {
+            "Start": 0,
+            "End": 19,
+            "atomOrdinal": 10
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "PARTIAL_INTERIOR",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": [
+          {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 1,
+            "ExecutionLeafIdentity": "b170e210b9b064448c7348a418d9929838554a07ee2fe9f422ab651dba09ab44",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+            "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+            "sourceAliases": [
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0"
+            ],
+            "sourceAtomOrdinals": [
+              8,
+              9,
+              10
+            ],
+            "distanceFromLeftOwnedBoundary": 8,
+            "distanceFromRightOwnedBoundary": 85,
+            "IsOos": false,
+            "IsMember": true
+          }
+        ]
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0109:S0:0-33",
+        "goldText": "1 . Conditions for establishment:",
+        "ownerParentOrdinals": [
+          2
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 2,
+            "ExecutionLeafIdentity": "f1fd0209df84b09ca7560df85a6f66afc32c21a458f264761d0b56599abf5e12",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 15,
+            "distanceFromRightOwnedBoundary": 80
+          }
+        ],
+        "goldSourceAtoms": {
+          "L0109:S0": {
+            "Start": 0,
+            "End": 33,
+            "atomOrdinal": 111
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0117:S0:0-22",
+        "goldText": "2. Operation contents:",
+        "ownerParentOrdinals": [
+          2
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 2,
+            "ExecutionLeafIdentity": "f1fd0209df84b09ca7560df85a6f66afc32c21a458f264761d0b56599abf5e12",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 23,
+            "distanceFromRightOwnedBoundary": 72
+          }
+        ],
+        "goldSourceAtoms": {
+          "L0117:S0": {
+            "Start": 0,
+            "End": 22,
+            "atomOrdinal": 119
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0246:S0:0-26",
+        "goldText": "1 . For publishing houses:",
+        "ownerParentOrdinals": [
+          3
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 3,
+            "ExecutionLeafIdentity": "cf2b5de8f0da9c4900a84ad211621699c84689cee9cc9732ee00fa9aab2007d2",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 56,
+            "distanceFromRightOwnedBoundary": 39
+          }
+        ],
+        "goldSourceAtoms": {
+          "L0246:S0": {
+            "Start": 0,
+            "End": 26,
+            "atomOrdinal": 248
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0249:S0:0-16",
+        "goldText": "2. For partners:",
+        "ownerParentOrdinals": [
+          3
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 3,
+            "ExecutionLeafIdentity": "cf2b5de8f0da9c4900a84ad211621699c84689cee9cc9732ee00fa9aab2007d2",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 59,
+            "distanceFromRightOwnedBoundary": 36
+          }
+        ],
+        "goldSourceAtoms": {
+          "L0249:S0": {
+            "Start": 0,
+            "End": 16,
+            "atomOrdinal": 251
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "item": {
+        "residualKind": "PARTIAL",
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L0382:S0:0-10|L0383:S0:0-45",
+        "goldText": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+        "ownerParentOrdinals": [
+          5
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 5,
+            "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 0,
+            "distanceFromRightOwnedBoundary": 94
+          }
+        ],
+        "goldSourceAtoms": {
+          "L0382:S0": {
+            "Start": 0,
+            "End": 10,
+            "atomOrdinal": 384
+          },
+          "L0383:S0": {
+            "Start": 0,
+            "End": 45,
+            "atomOrdinal": 385
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "PARTIAL_BOUNDARY_RELATED",
+        "matchingNeighborHaloOos": [
+          {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 4,
+            "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0382:S0:0-10",
+            "Text": "Chapter IV",
+            "sourceAliases": [
+              "L0382:S0"
+            ],
+            "sourceAtomOrdinals": [
+              384
+            ],
+            "distanceFromLeftOwnedBoundary": 96,
+            "distanceFromRightOwnedBoundary": -1,
+            "IsOos": true,
+            "IsMember": true
+          },
+          {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 4,
+            "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0383:S0:0-45",
+            "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+            "sourceAliases": [
+              "L0383:S0"
+            ],
+            "sourceAtomOrdinals": [
+              385
+            ],
+            "distanceFromLeftOwnedBoundary": 97,
+            "distanceFromRightOwnedBoundary": -2,
+            "IsOos": true,
+            "IsMember": true
+          }
+        ],
+        "emittedOverlappingClaims": [
+          {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 5,
+            "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0382:S0:0-10",
+            "Text": "Chapter IV",
+            "sourceAliases": [
+              "L0382:S0"
+            ],
+            "sourceAtomOrdinals": [
+              384
+            ],
+            "distanceFromLeftOwnedBoundary": 0,
+            "distanceFromRightOwnedBoundary": 95,
+            "IsOos": false,
+            "IsMember": true
+          },
+          {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 5,
+            "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0383:S0:0-45",
+            "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+            "sourceAliases": [
+              "L0383:S0"
+            ],
+            "sourceAtomOrdinals": [
+              385
+            ],
+            "distanceFromLeftOwnedBoundary": 1,
+            "distanceFromRightOwnedBoundary": 94,
+            "IsOos": false,
+            "IsMember": true
+          }
+        ]
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0090:S0:0-40",
+        "Text": "10.3. Intermediary-Encapsulation Attacks",
+        "sourceAliases": [
+          "L0090:S0"
+        ],
+        "sourceAtomOrdinals": [
+          96
+        ],
+        "distanceFromLeftOwnedBoundary": 0,
+        "distanceFromRightOwnedBoundary": 95,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0091:S0:0-37",
+        "Text": "10.4. Cacheability ofPushed Responses",
+        "sourceAliases": [
+          "L0091:S0"
+        ],
+        "sourceAtomOrdinals": [
+          97
+        ],
+        "distanceFromLeftOwnedBoundary": 1,
+        "distanceFromRightOwnedBoundary": 94,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0092:S0:0-38",
+        "Text": "10.5. Denial-of-Service Considerations",
+        "sourceAliases": [
+          "L0092:S0"
+        ],
+        "sourceAtomOrdinals": [
+          98
+        ],
+        "distanceFromLeftOwnedBoundary": 2,
+        "distanceFromRightOwnedBoundary": 93,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0093:S0:0-36",
+        "Text": "10.5.1. Limits on Field Section Size",
+        "sourceAliases": [
+          "L0093:S0"
+        ],
+        "sourceAtomOrdinals": [
+          99
+        ],
+        "distanceFromLeftOwnedBoundary": 3,
+        "distanceFromRightOwnedBoundary": 92,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0096:S0:0-22",
+        "Text": "10.5.2. CONNECT Issues",
+        "sourceAliases": [
+          "L0096:S0"
+        ],
+        "sourceAtomOrdinals": [
+          102
+        ],
+        "distanceFromLeftOwnedBoundary": 6,
+        "distanceFromRightOwnedBoundary": 89,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0097:S0:0-24",
+        "Text": "10.6. Use of Compression",
+        "sourceAliases": [
+          "L0097:S0"
+        ],
+        "sourceAtomOrdinals": [
+          103
+        ],
+        "distanceFromLeftOwnedBoundary": 7,
+        "distanceFromRightOwnedBoundary": 88,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0099:S0:0-19",
+        "Text": "10.8. Frame Parsing",
+        "sourceAliases": [
+          "L0099:S0"
+        ],
+        "sourceAtomOrdinals": [
+          105
+        ],
+        "distanceFromLeftOwnedBoundary": 9,
+        "distanceFromRightOwnedBoundary": 86,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0100:S0:0-16",
+        "Text": "10.9. Early Data",
+        "sourceAliases": [
+          "L0100:S0"
+        ],
+        "sourceAtomOrdinals": [
+          106
+        ],
+        "distanceFromLeftOwnedBoundary": 10,
+        "distanceFromRightOwnedBoundary": 85,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0101:S0:0-16",
+        "Text": "10.10. Migration",
+        "sourceAliases": [
+          "L0101:S0"
+        ],
+        "sourceAtomOrdinals": [
+          107
+        ],
+        "distanceFromLeftOwnedBoundary": 11,
+        "distanceFromRightOwnedBoundary": 84,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0102:S0:0-29",
+        "Text": "10.11. Privacy Considerations",
+        "sourceAliases": [
+          "L0102:S0"
+        ],
+        "sourceAtomOrdinals": [
+          108
+        ],
+        "distanceFromLeftOwnedBoundary": 12,
+        "distanceFromRightOwnedBoundary": 83,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0103:S0:0-23",
+        "Text": "11. IANA Considerations",
+        "sourceAliases": [
+          "L0103:S0"
+        ],
+        "sourceAtomOrdinals": [
+          109
+        ],
+        "distanceFromLeftOwnedBoundary": 13,
+        "distanceFromRightOwnedBoundary": 82,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0105:S0:0-20",
+        "Text": "11.2. New Registries",
+        "sourceAliases": [
+          "L0105:S0"
+        ],
+        "sourceAtomOrdinals": [
+          111
+        ],
+        "distanceFromLeftOwnedBoundary": 15,
+        "distanceFromRightOwnedBoundary": 80,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0106:S0:0-19",
+        "Text": "11.2.1. Frame Types",
+        "sourceAliases": [
+          "L0106:S0"
+        ],
+        "sourceAtomOrdinals": [
+          112
+        ],
+        "distanceFromLeftOwnedBoundary": 16,
+        "distanceFromRightOwnedBoundary": 79,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0107:S0:0-27",
+        "Text": "11.2.2. Settings Parameters",
+        "sourceAliases": [
+          "L0107:S0"
+        ],
+        "sourceAtomOrdinals": [
+          113
+        ],
+        "distanceFromLeftOwnedBoundary": 17,
+        "distanceFromRightOwnedBoundary": 78,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0108:S0:0-19",
+        "Text": "11.2.3. Error Codes",
+        "sourceAliases": [
+          "L0108:S0"
+        ],
+        "sourceAtomOrdinals": [
+          114
+        ],
+        "distanceFromLeftOwnedBoundary": 18,
+        "distanceFromRightOwnedBoundary": 77,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0109:S0:0-20",
+        "Text": "11.2.4. Stream Types",
+        "sourceAliases": [
+          "L0109:S0"
+        ],
+        "sourceAtomOrdinals": [
+          115
+        ],
+        "distanceFromLeftOwnedBoundary": 19,
+        "distanceFromRightOwnedBoundary": 76,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0110:S0:0-14",
+        "Text": "12. References",
+        "sourceAliases": [
+          "L0110:S0"
+        ],
+        "sourceAtomOrdinals": [
+          116
+        ],
+        "distanceFromLeftOwnedBoundary": 20,
+        "distanceFromRightOwnedBoundary": 75,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0111:S0:0-26",
+        "Text": "12.1. Normative References",
+        "sourceAliases": [
+          "L0111:S0"
+        ],
+        "sourceAtomOrdinals": [
+          117
+        ],
+        "distanceFromLeftOwnedBoundary": 21,
+        "distanceFromRightOwnedBoundary": 74,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0112:S0:0-28",
+        "Text": "12.2. Informative References",
+        "sourceAliases": [
+          "L0112:S0"
+        ],
+        "sourceAtomOrdinals": [
+          118
+        ],
+        "distanceFromLeftOwnedBoundary": 22,
+        "distanceFromRightOwnedBoundary": 73,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0113:S0:0-56",
+        "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+        "sourceAliases": [
+          "L0113:S0"
+        ],
+        "sourceAtomOrdinals": [
+          119
+        ],
+        "distanceFromLeftOwnedBoundary": 23,
+        "distanceFromRightOwnedBoundary": 72,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0114:S0:0-12",
+        "Text": "A.1. Streams",
+        "sourceAliases": [
+          "L0114:S0"
+        ],
+        "sourceAtomOrdinals": [
+          120
+        ],
+        "distanceFromLeftOwnedBoundary": 24,
+        "distanceFromRightOwnedBoundary": 71,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0115:S0:0-21",
+        "Text": "A.2. HTTP Frame Types",
+        "sourceAliases": [
+          "L0115:S0"
+        ],
+        "sourceAtomOrdinals": [
+          121
+        ],
+        "distanceFromLeftOwnedBoundary": 25,
+        "distanceFromRightOwnedBoundary": 70,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0120:S0:0-49",
+        "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+        "sourceAliases": [
+          "L0120:S0"
+        ],
+        "sourceAtomOrdinals": [
+          126
+        ],
+        "distanceFromLeftOwnedBoundary": 30,
+        "distanceFromRightOwnedBoundary": 65,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0121:S0:0-31",
+        "Text": "A.3. HTTP/2 SETTINGS Parameters",
+        "sourceAliases": [
+          "L0121:S0"
+        ],
+        "sourceAtomOrdinals": [
+          127
+        ],
+        "distanceFromLeftOwnedBoundary": 31,
+        "distanceFromRightOwnedBoundary": 64,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0122:S0:0-23",
+        "Text": "A.4. HTTP/2 Error Codes",
+        "sourceAliases": [
+          "L0122:S0"
+        ],
+        "sourceAtomOrdinals": [
+          128
+        ],
+        "distanceFromLeftOwnedBoundary": 32,
+        "distanceFromRightOwnedBoundary": 63,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0123:S0:0-47",
+        "Text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+        "sourceAliases": [
+          "L0123:S0"
+        ],
+        "sourceAtomOrdinals": [
+          129
+        ],
+        "distanceFromLeftOwnedBoundary": 33,
+        "distanceFromRightOwnedBoundary": 62,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0124:S0:0-15",
+        "Text": "Acknowledgments",
+        "sourceAliases": [
+          "L0124:S0"
+        ],
+        "sourceAtomOrdinals": [
+          130
+        ],
+        "distanceFromLeftOwnedBoundary": 34,
+        "distanceFromRightOwnedBoundary": 61,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0125:S0:0-5",
+        "Text": "Index",
+        "sourceAliases": [
+          "L0125:S0"
+        ],
+        "sourceAtomOrdinals": [
+          131
+        ],
+        "distanceFromLeftOwnedBoundary": 35,
+        "distanceFromRightOwnedBoundary": 60,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0128:S0:0-16",
+        "Text": "Author\u0027s Address",
+        "sourceAliases": [
+          "L0128:S0"
+        ],
+        "sourceAtomOrdinals": [
+          134
+        ],
+        "distanceFromLeftOwnedBoundary": 38,
+        "distanceFromRightOwnedBoundary": 57,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 18,
+        "ExecutionLeafIdentity": "b31d4c6c0139eba85e75b1bdc6f4495eded896da6731608eab82810fa219291d",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0917:S4:0-7|L0918:S4:0-13",
+        "Text": "Section Section 7.2.7",
+        "sourceAliases": [
+          "L0917:S4",
+          "L0918:S4"
+        ],
+        "sourceAtomOrdinals": [
+          964,
+          969
+        ],
+        "distanceFromLeftOwnedBoundary": 4,
+        "distanceFromRightOwnedBoundary": 86,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 18,
+        "ExecutionLeafIdentity": "b31d4c6c0139eba85e75b1bdc6f4495eded896da6731608eab82810fa219291d",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L0919:S4:0-13",
+        "Text": "Section 7.2.8",
+        "sourceAliases": [
+          "L0919:S4"
+        ],
+        "sourceAtomOrdinals": [
+          974
+        ],
+        "distanceFromLeftOwnedBoundary": 14,
+        "distanceFromRightOwnedBoundary": 81,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1990:S0:0-20",
+        "Text": "H3_REQUEST_CANCELLED",
+        "sourceAliases": [
+          "L1990:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2210
+        ],
+        "distanceFromLeftOwnedBoundary": 2,
+        "distanceFromRightOwnedBoundary": 91,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1994:S0:0-21",
+        "Text": "H3_REQUEST_INCOMPLETE",
+        "sourceAliases": [
+          "L1994:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2214
+        ],
+        "distanceFromLeftOwnedBoundary": 6,
+        "distanceFromRightOwnedBoundary": 87,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1997:S0:0-19",
+        "Text": "H3_REQUEST_REJECTED",
+        "sourceAliases": [
+          "L1997:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2218
+        ],
+        "distanceFromLeftOwnedBoundary": 10,
+        "distanceFromRightOwnedBoundary": 83,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2001:S0:0-83",
+        "Text": "H3_SETTINGS_ERROR Section 7.2.4, Paragraph 6; Section 7.2.4.1, Paragraph 5; Section",
+        "sourceAliases": [
+          "L2001:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2222
+        ],
+        "distanceFromLeftOwnedBoundary": 14,
+        "distanceFromRightOwnedBoundary": 79,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2003:S0:0-76",
+        "Text": "H3_STREAM_CREATION_ERROR Section 6.1, Paragraph 3; Section 6.2, Paragraph 7;",
+        "sourceAliases": [
+          "L2003:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2224
+        ],
+        "distanceFromLeftOwnedBoundary": 16,
+        "distanceFromRightOwnedBoundary": 77,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2005:S0:0-72",
+        "Text": "H3_VERSION_FALLBACK Section 8.1; Table 4; Appendix A.4, Paragraph 3.28.1",
+        "sourceAliases": [
+          "L2005:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2226
+        ],
+        "distanceFromLeftOwnedBoundary": 18,
+        "distanceFromRightOwnedBoundary": 75,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2006:S0:0-7",
+        "Text": "HEADERS",
+        "sourceAliases": [
+          "L2006:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2227
+        ],
+        "distanceFromLeftOwnedBoundary": 19,
+        "distanceFromRightOwnedBoundary": 74,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2019:S0:0-11",
+        "Text": "MAX_PUSH_ID",
+        "sourceAliases": [
+          "L2019:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2240
+        ],
+        "distanceFromLeftOwnedBoundary": 32,
+        "distanceFromRightOwnedBoundary": 61,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2035:S0:0-11",
+        "Text": "push stream",
+        "sourceAliases": [
+          "L2035:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2256
+        ],
+        "distanceFromLeftOwnedBoundary": 48,
+        "distanceFromRightOwnedBoundary": 45,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2046:S0:0-12",
+        "Text": "PUSH_PROMISE",
+        "sourceAliases": [
+          "L2046:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2267
+        ],
+        "distanceFromLeftOwnedBoundary": 59,
+        "distanceFromRightOwnedBoundary": 34,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2057:S0:0-14",
+        "Text": "request stream",
+        "sourceAliases": [
+          "L2057:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2278
+        ],
+        "distanceFromLeftOwnedBoundary": 70,
+        "distanceFromRightOwnedBoundary": 23,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2064:S0:0-8",
+        "Text": "SETTINGS",
+        "sourceAliases": [
+          "L2064:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2285
+        ],
+        "distanceFromLeftOwnedBoundary": 77,
+        "distanceFromRightOwnedBoundary": 16,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2072:S0:0-84",
+        "Text": "SETTINGS_MAX_FIELD_SECTION_SIZE Section 4.2.2, Paragraph 2; Section 7.2.4.1; Section",
+        "sourceAliases": [
+          "L2072:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2293
+        ],
+        "distanceFromLeftOwnedBoundary": 85,
+        "distanceFromRightOwnedBoundary": 8,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 31,
+        "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+        "LineageType": "PRIMARY",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L2074:S0:0-91",
+        "Text": "stream error Section 2.2; Section 4.1.2, Paragraph 4; Section 4.4, Paragraph 10; Section 8;",
+        "sourceAliases": [
+          "L2074:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2295
+        ],
+        "distanceFromLeftOwnedBoundary": 87,
+        "distanceFromRightOwnedBoundary": 6,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 8,
+        "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+        "LineageType": "IDENTICAL_RETRY",
+        "SemanticFunction": "DOCUMENT_IDENTITY",
+        "Identity": "L0007:S0:0-8|L0008:S0:0-6",
+        "Text": "RFC 9114 HTTP/3",
+        "sourceAliases": [
+          "L0007:S0",
+          "L0008:S0"
+        ],
+        "sourceAtomOrdinals": [
+          13,
+          14
+        ],
+        "distanceFromLeftOwnedBoundary": 13,
+        "distanceFromRightOwnedBoundary": 81,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1947:S0:0-1|L1948:S0:0-6",
+        "Text": "G GOAWAY",
+        "sourceAliases": [
+          "L1947:S0",
+          "L1948:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2163,
+          2164
+        ],
+        "distanceFromLeftOwnedBoundary": 3,
+        "distanceFromRightOwnedBoundary": 43,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1961:S0:0-1|L1962:S0:0-75|L1963:S0:0-29",
+        "Text": "H H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+        "sourceAliases": [
+          "L1961:S0",
+          "L1962:S0",
+          "L1963:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2177,
+          2178,
+          2179
+        ],
+        "distanceFromLeftOwnedBoundary": 17,
+        "distanceFromRightOwnedBoundary": 28,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1964:S0:0-16|L1964:S1:0-62|L1965:S0:0-16",
+        "Text": "H3_CONNECT_ERROR Section 4.4, Paragraph 10; Section 8.1; Table 4; Appendix A.4, Paragraph 3.22.1",
+        "sourceAliases": [
+          "L1964:S0",
+          "L1964:S1",
+          "L1965:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2180,
+          2181,
+          2182
+        ],
+        "distanceFromLeftOwnedBoundary": 20,
+        "distanceFromRightOwnedBoundary": 25,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1966:S0:0-17|L1966:S1:0-62|L1967:S0:0-16",
+        "Text": "H3_EXCESSIVE_LOAD Section 8.1; Section 10.5, Paragraph 7; Table 4; Appendix A.4, Paragraph 3.24.1",
+        "sourceAliases": [
+          "L1966:S0",
+          "L1966:S1",
+          "L1967:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2183,
+          2184,
+          2185
+        ],
+        "distanceFromLeftOwnedBoundary": 23,
+        "distanceFromRightOwnedBoundary": 22,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1968:S0:0-85|L1969:S0:0-33",
+        "Text": "H3_FRAME_ERROR Section 7.1, Paragraph 5; Section 7.1, Paragraph 6; Section 8.1; Table 4; Appendix A.4, Paragraph 3.14.1",
+        "sourceAliases": [
+          "L1968:S0",
+          "L1969:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2186,
+          2187
+        ],
+        "distanceFromLeftOwnedBoundary": 26,
+        "distanceFromRightOwnedBoundary": 20,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1970:S0:0-19|L1971:S0:0-85|L1972:S0:0-90|L1973:S0:0-83|L1974:S0:0-83|L1975:S0:0-86|L1976:S0:0-5",
+        "Text": "H3_FRAME_UNEXPECTED Section 4.1, Paragraph 7; Section 4.1, Paragraph 8; Section 4.4, Paragraph 8; Section 7.2.1, Paragraph 2; Section 7.2.2, Paragraph 3; Section 7.2.3, Paragraph 5; Section 7.2.4, Paragraph 2; Section 7.2.4, Paragraph 3; Section 7.2.5, Paragraph 8; Section 7.2.5, Paragraph 9; Section 7.2.6, Paragraph 5; Section 7.2.7, Paragraph 2; Section 7.2.7, Paragraph 3; Section 7.2.8, Paragraph 3; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+        "sourceAliases": [
+          "L1970:S0",
+          "L1971:S0",
+          "L1972:S0",
+          "L1973:S0",
+          "L1974:S0",
+          "L1975:S0",
+          "L1976:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2188,
+          2189,
+          2190,
+          2191,
+          2192,
+          2193,
+          2194
+        ],
+        "distanceFromLeftOwnedBoundary": 28,
+        "distanceFromRightOwnedBoundary": 13,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_INTERIOR",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1977:S0:0-75|L1978:S0:0-29",
+        "Text": "H3_GENERAL_PROTOCOL_ERROR Section 7.2.5, Paragraph 6; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+        "sourceAliases": [
+          "L1977:S0",
+          "L1978:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2195,
+          2196
+        ],
+        "distanceFromLeftOwnedBoundary": 35,
+        "distanceFromRightOwnedBoundary": 11,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1979:S0:0-11|L1980:S0:0-87|L1981:S0:0-90|L1982:S0:0-61",
+        "Text": "H3_ID_ERROR Section 4.6, Paragraph 3; Section 5.2, Paragraph 7; Section 6.2.2, Paragraph 6; Section 7.2.3, Paragraph 7; Section 7.2.3, Paragraph 8; Section 7.2.5, Paragraph 5; Section 7.2.6, Paragraph 3; Section 7.2.7, Paragraph 6; Section 8.1; Table 4",
+        "sourceAliases": [
+          "L1979:S0",
+          "L1980:S0",
+          "L1981:S0",
+          "L1982:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2197,
+          2198,
+          2199,
+          2200
+        ],
+        "distanceFromLeftOwnedBoundary": 37,
+        "distanceFromRightOwnedBoundary": 7,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1983:S0:0-17|L1983:S1:0-51",
+        "Text": "H3_INTERNAL_ERROR Section 8.1; Table 4; Appendix A.4, Paragraph 3.6.1",
+        "sourceAliases": [
+          "L1983:S0",
+          "L1983:S1"
+        ],
+        "sourceAtomOrdinals": [
+          2201,
+          2202
+        ],
+        "distanceFromLeftOwnedBoundary": 41,
+        "distanceFromRightOwnedBoundary": 5,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1984:S0:0-16|L1984:S1:0-63|L1985:S0:0-15",
+        "Text": "H3_MESSAGE_ERROR Section 4.1.2, Paragraph 4; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+        "sourceAliases": [
+          "L1984:S0",
+          "L1984:S1",
+          "L1985:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2203,
+          2204,
+          2205
+        ],
+        "distanceFromLeftOwnedBoundary": 43,
+        "distanceFromRightOwnedBoundary": 2,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1986:S0:0-68",
+        "Text": "H3_MISSING_SETTINGS Section 6.2.1, Paragraph 2; Section 8.1; Table 4",
+        "sourceAliases": [
+          "L1986:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2206
+        ],
+        "distanceFromLeftOwnedBoundary": 46,
+        "distanceFromRightOwnedBoundary": 1,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "residualKind": "FP",
+      "classification": "FP_NEAR_BOUNDARY",
+      "observation": {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 30,
+        "ExecutionLeafIdentity": "p05-parent-030-child-B",
+        "LineageType": "ADAPTIVE_CHILD",
+        "SemanticFunction": "REGION_STRUCTURE",
+        "Identity": "L1987:S0:0-80",
+        "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+        "sourceAliases": [
+          "L1987:S0"
+        ],
+        "sourceAtomOrdinals": [
+          2207
+        ],
+        "distanceFromLeftOwnedBoundary": 47,
+        "distanceFromRightOwnedBoundary": 0,
+        "IsOos": false,
+        "IsMember": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "PARTIAL",
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L0008:S0:0-6",
+        "goldText": "HTTP/3",
+        "ownerParentOrdinals": [
+          1
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "distanceFromLeftOwnedBoundary": 14,
+            "distanceFromRightOwnedBoundary": 81
+          }
+        ],
+        "goldSourceAtoms": {
+          "L0008:S0": {
+            "Start": 0,
+            "End": 6,
+            "atomOrdinal": 14
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "PARTIAL_INTERIOR",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": [
+          {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "DOCUMENT_IDENTITY",
+            "Identity": "L0007:S0:0-8|L0008:S0:0-6",
+            "Text": "RFC 9114 HTTP/3",
+            "sourceAliases": [
+              "L0007:S0",
+              "L0008:S0"
+            ],
+            "sourceAtomOrdinals": [
+              13,
+              14
+            ],
+            "distanceFromLeftOwnedBoundary": 13,
+            "distanceFromRightOwnedBoundary": 81,
+            "IsOos": false,
+            "IsMember": true
+          }
+        ]
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1729:S0:0-32",
+        "goldText": "A.2.1. Prioritization Di\uFB00erences",
+        "ownerParentOrdinals": [
+          28
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 28,
+            "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 14,
+            "distanceFromRightOwnedBoundary": 81
+          }
+        ],
+        "goldSourceAtoms": {
+          "L1729:S0": {
+            "Start": 0,
+            "End": 32,
+            "atomOrdinal": 1934
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1736:S0:0-35",
+        "goldText": "A.2.2. Field Compression Di\uFB00erences",
+        "ownerParentOrdinals": [
+          28
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 28,
+            "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 21,
+            "distanceFromRightOwnedBoundary": 74
+          }
+        ],
+        "goldSourceAtoms": {
+          "L1736:S0": {
+            "Start": 0,
+            "End": 35,
+            "atomOrdinal": 1941
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1745:S0:0-30",
+        "goldText": "A.2.3. Flow-Control Di\uFB00erences",
+        "ownerParentOrdinals": [
+          28
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 28,
+            "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 30,
+            "distanceFromRightOwnedBoundary": 65
+          }
+        ],
+        "goldSourceAtoms": {
+          "L1745:S0": {
+            "Start": 0,
+            "End": 30,
+            "atomOrdinal": 1950
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1750:S0:0-45",
+        "goldText": "A.2.4. Guidance for New Frame Type De\uFB01nitions",
+        "ownerParentOrdinals": [
+          28
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 28,
+            "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 35,
+            "distanceFromRightOwnedBoundary": 60
+          }
+        ],
+        "goldSourceAtoms": {
+          "L1750:S0": {
+            "Start": 0,
+            "End": 45,
+            "atomOrdinal": 1955
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1914:S0:0-1",
+        "goldText": "C",
+        "ownerParentOrdinals": [
+          30
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 30,
+            "ExecutionLeafIdentity": "p05-parent-030-child-A",
+            "LineageType": "ADAPTIVE_CHILD",
+            "distanceFromLeftOwnedBoundary": 18,
+            "distanceFromRightOwnedBoundary": 29
+          }
+        ],
+        "goldSourceAtoms": {
+          "L1914:S0": {
+            "Start": 0,
+            "End": 1,
+            "atomOrdinal": 2130
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1940:S0:0-1",
+        "goldText": "D",
+        "ownerParentOrdinals": [
+          30
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 30,
+            "ExecutionLeafIdentity": "p05-parent-030-child-A",
+            "LineageType": "ADAPTIVE_CHILD",
+            "distanceFromLeftOwnedBoundary": 44,
+            "distanceFromRightOwnedBoundary": 3
+          }
+        ],
+        "goldSourceAtoms": {
+          "L1940:S0": {
+            "Start": 0,
+            "End": 1,
+            "atomOrdinal": 2156
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_PRESENT_ONLY_IN_NEIGHBOR_HALO",
+        "matchingNeighborHaloOos": [
+          {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 30,
+            "ExecutionLeafIdentity": "p05-parent-030-child-B",
+            "LineageType": "ADAPTIVE_CHILD",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1940:S0:0-1|L1941:S0:0-4",
+            "Text": "D DATA",
+            "sourceAliases": [
+              "L1940:S0",
+              "L1941:S0"
+            ],
+            "sourceAtomOrdinals": [
+              2156,
+              2157
+            ],
+            "distanceFromLeftOwnedBoundary": -4,
+            "distanceFromRightOwnedBoundary": 50,
+            "IsOos": true,
+            "IsMember": true
+          }
+        ],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "PARTIAL",
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L1947:S0:0-1",
+        "goldText": "G",
+        "ownerParentOrdinals": [
+          30
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 30,
+            "ExecutionLeafIdentity": "p05-parent-030-child-B",
+            "LineageType": "ADAPTIVE_CHILD",
+            "distanceFromLeftOwnedBoundary": 3,
+            "distanceFromRightOwnedBoundary": 44
+          }
+        ],
+        "goldSourceAtoms": {
+          "L1947:S0": {
+            "Start": 0,
+            "End": 1,
+            "atomOrdinal": 2163
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "PARTIAL_INTERIOR",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": [
+          {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 30,
+            "ExecutionLeafIdentity": "p05-parent-030-child-B",
+            "LineageType": "ADAPTIVE_CHILD",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1947:S0:0-1|L1948:S0:0-6",
+            "Text": "G GOAWAY",
+            "sourceAliases": [
+              "L1947:S0",
+              "L1948:S0"
+            ],
+            "sourceAtomOrdinals": [
+              2163,
+              2164
+            ],
+            "distanceFromLeftOwnedBoundary": 3,
+            "distanceFromRightOwnedBoundary": 43,
+            "IsOos": false,
+            "IsMember": true
+          }
+        ]
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "PARTIAL",
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L1961:S0:0-1",
+        "goldText": "H",
+        "ownerParentOrdinals": [
+          30
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 30,
+            "ExecutionLeafIdentity": "p05-parent-030-child-B",
+            "LineageType": "ADAPTIVE_CHILD",
+            "distanceFromLeftOwnedBoundary": 17,
+            "distanceFromRightOwnedBoundary": 30
+          }
+        ],
+        "goldSourceAtoms": {
+          "L1961:S0": {
+            "Start": 0,
+            "End": 1,
+            "atomOrdinal": 2177
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "PARTIAL_INTERIOR",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": [
+          {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 30,
+            "ExecutionLeafIdentity": "p05-parent-030-child-B",
+            "LineageType": "ADAPTIVE_CHILD",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1961:S0:0-1|L1962:S0:0-75|L1963:S0:0-29",
+            "Text": "H H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+            "sourceAliases": [
+              "L1961:S0",
+              "L1962:S0",
+              "L1963:S0"
+            ],
+            "sourceAtomOrdinals": [
+              2177,
+              2178,
+              2179
+            ],
+            "distanceFromLeftOwnedBoundary": 17,
+            "distanceFromRightOwnedBoundary": 28,
+            "IsOos": false,
+            "IsMember": true
+          }
+        ]
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2012:S0:0-1",
+        "goldText": "M",
+        "ownerParentOrdinals": [
+          31
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 31,
+            "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 25,
+            "distanceFromRightOwnedBoundary": 68
+          }
+        ],
+        "goldSourceAtoms": {
+          "L2012:S0": {
+            "Start": 0,
+            "End": 1,
+            "atomOrdinal": 2233
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2023:S0:0-1",
+        "goldText": "P",
+        "ownerParentOrdinals": [
+          31
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 31,
+            "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 36,
+            "distanceFromRightOwnedBoundary": 57
+          }
+        ],
+        "goldSourceAtoms": {
+          "L2023:S0": {
+            "Start": 0,
+            "End": 1,
+            "atomOrdinal": 2244
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2056:S0:0-1",
+        "goldText": "R",
+        "ownerParentOrdinals": [
+          31
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 31,
+            "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 69,
+            "distanceFromRightOwnedBoundary": 24
+          }
+        ],
+        "goldSourceAtoms": {
+          "L2056:S0": {
+            "Start": 0,
+            "End": 1,
+            "atomOrdinal": 2277
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "item": {
+        "residualKind": "FN",
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2063:S0:0-1",
+        "goldText": "S",
+        "ownerParentOrdinals": [
+          31
+        ],
+        "ownerBoundaryDistances": [
+          {
+            "ParentOrdinal": 31,
+            "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+            "LineageType": "PRIMARY",
+            "distanceFromLeftOwnedBoundary": 76,
+            "distanceFromRightOwnedBoundary": 17
+          }
+        ],
+        "goldSourceAtoms": {
+          "L2063:S0": {
+            "Start": 0,
+            "End": 1,
+            "atomOrdinal": 2284
+          }
+        },
+        "primaryBoundaryCrossing": false,
+        "adaptiveSplitBoundaryCrossing": false,
+        "classification": "FN_OWNER_OMISSION",
+        "matchingNeighborHaloOos": [],
+        "emittedOverlappingClaims": []
+      }
+    }
+  ],
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "oosRejects": [
+        {
+          "Observation": {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 1,
+            "ExecutionLeafIdentity": "b170e210b9b064448c7348a418d9929838554a07ee2fe9f422ab651dba09ab44",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0094:S0:0-70",
+            "Text": "Article 5. Information and reporting regimes in publication activities",
+            "sourceAliases": [
+              "L0094:S0"
+            ],
+            "sourceAtomOrdinals": [
+              96
+            ],
+            "distanceFromLeftOwnedBoundary": 96,
+            "distanceFromRightOwnedBoundary": -1,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 2,
+            "ExecutionLeafIdentity": "f1fd0209df84b09ca7560df85a6f66afc32c21a458f264761d0b56599abf5e12",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0195:S0:0-81",
+            "Text": "Article 10. Publication registration and certification ofpublication registration",
+            "sourceAliases": [
+              "L0195:S0"
+            ],
+            "sourceAtomOrdinals": [
+              197
+            ],
+            "distanceFromLeftOwnedBoundary": 101,
+            "distanceFromRightOwnedBoundary": -6,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 4,
+            "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0284:S0:0-11",
+            "Text": "Chapter III",
+            "sourceAliases": [
+              "L0284:S0"
+            ],
+            "sourceAtomOrdinals": [
+              286
+            ],
+            "distanceFromLeftOwnedBoundary": -2,
+            "distanceFromRightOwnedBoundary": 97,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": false,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 4,
+            "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0285:S0:0-41",
+            "Text": "PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+            "sourceAliases": [
+              "L0285:S0"
+            ],
+            "sourceAtomOrdinals": [
+              287
+            ],
+            "distanceFromLeftOwnedBoundary": -1,
+            "distanceFromRightOwnedBoundary": 96,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": false,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 4,
+            "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0382:S0:0-10",
+            "Text": "Chapter IV",
+            "sourceAliases": [
+              "L0382:S0"
+            ],
+            "sourceAtomOrdinals": [
+              384
+            ],
+            "distanceFromLeftOwnedBoundary": 96,
+            "distanceFromRightOwnedBoundary": -1,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 4,
+            "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0383:S0:0-45",
+            "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+            "sourceAliases": [
+              "L0383:S0"
+            ],
+            "sourceAtomOrdinals": [
+              385
+            ],
+            "distanceFromLeftOwnedBoundary": 97,
+            "distanceFromRightOwnedBoundary": -2,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 4,
+            "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0384:S0:0-71",
+            "Text": "Article 17. Conditions for publishing and distribution ofe-publications",
+            "sourceAliases": [
+              "L0384:S0"
+            ],
+            "sourceAtomOrdinals": [
+              386
+            ],
+            "distanceFromLeftOwnedBoundary": 98,
+            "distanceFromRightOwnedBoundary": -3,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-089",
+            "ParentOrdinal": 5,
+            "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0478:S0:0-59",
+            "Text": "Article 20. Import ofe-publications for commercial purposes",
+            "sourceAliases": [
+              "L0478:S0"
+            ],
+            "sourceAtomOrdinals": [
+              480
+            ],
+            "distanceFromLeftOwnedBoundary": 96,
+            "distanceFromRightOwnedBoundary": -1,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        }
+      ],
+      "oosCounts": {
+        "total": 8,
+        "duplicateValidOwnerDecision": 6,
+        "correspondsToGoldExact": 4,
+        "correspondsToGoldOverlap": 8,
+        "nonGold": 0,
+        "wouldHaveChangedScore": 8
+      },
+      "residuals": [
+        {
+          "residualKind": "PARTIAL",
+          "bucket": "PARTIAL_TRUE",
+          "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+          "goldText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+          "ownerParentOrdinals": [
+            1
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 1,
+              "ExecutionLeafIdentity": "b170e210b9b064448c7348a418d9929838554a07ee2fe9f422ab651dba09ab44",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 8,
+              "distanceFromRightOwnedBoundary": 85
+            }
+          ],
+          "goldSourceAtoms": {
+            "L0006:S0": {
+              "Start": 0,
+              "End": 6,
+              "atomOrdinal": 8
+            },
+            "L0007:S0": {
+              "Start": 0,
+              "End": 65,
+              "atomOrdinal": 9
+            },
+            "L0008:S0": {
+              "Start": 0,
+              "End": 19,
+              "atomOrdinal": 10
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "PARTIAL_INTERIOR",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": [
+            {
+              "DocumentId": "SRC-089",
+              "ParentOrdinal": 1,
+              "ExecutionLeafIdentity": "b170e210b9b064448c7348a418d9929838554a07ee2fe9f422ab651dba09ab44",
+              "LineageType": "PRIMARY",
+              "SemanticFunction": "REGION_STRUCTURE",
+              "Identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+              "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+              "sourceAliases": [
+                "L0006:S0",
+                "L0007:S0",
+                "L0008:S0"
+              ],
+              "sourceAtomOrdinals": [
+                8,
+                9,
+                10
+              ],
+              "distanceFromLeftOwnedBoundary": 8,
+              "distanceFromRightOwnedBoundary": 85,
+              "IsOos": false,
+              "IsMember": true
+            }
+          ]
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L0109:S0:0-33",
+          "goldText": "1 . Conditions for establishment:",
+          "ownerParentOrdinals": [
+            2
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 2,
+              "ExecutionLeafIdentity": "f1fd0209df84b09ca7560df85a6f66afc32c21a458f264761d0b56599abf5e12",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 15,
+              "distanceFromRightOwnedBoundary": 80
+            }
+          ],
+          "goldSourceAtoms": {
+            "L0109:S0": {
+              "Start": 0,
+              "End": 33,
+              "atomOrdinal": 111
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L0117:S0:0-22",
+          "goldText": "2. Operation contents:",
+          "ownerParentOrdinals": [
+            2
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 2,
+              "ExecutionLeafIdentity": "f1fd0209df84b09ca7560df85a6f66afc32c21a458f264761d0b56599abf5e12",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 23,
+              "distanceFromRightOwnedBoundary": 72
+            }
+          ],
+          "goldSourceAtoms": {
+            "L0117:S0": {
+              "Start": 0,
+              "End": 22,
+              "atomOrdinal": 119
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L0246:S0:0-26",
+          "goldText": "1 . For publishing houses:",
+          "ownerParentOrdinals": [
+            3
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 3,
+              "ExecutionLeafIdentity": "cf2b5de8f0da9c4900a84ad211621699c84689cee9cc9732ee00fa9aab2007d2",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 56,
+              "distanceFromRightOwnedBoundary": 39
+            }
+          ],
+          "goldSourceAtoms": {
+            "L0246:S0": {
+              "Start": 0,
+              "End": 26,
+              "atomOrdinal": 248
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L0249:S0:0-16",
+          "goldText": "2. For partners:",
+          "ownerParentOrdinals": [
+            3
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 3,
+              "ExecutionLeafIdentity": "cf2b5de8f0da9c4900a84ad211621699c84689cee9cc9732ee00fa9aab2007d2",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 59,
+              "distanceFromRightOwnedBoundary": 36
+            }
+          ],
+          "goldSourceAtoms": {
+            "L0249:S0": {
+              "Start": 0,
+              "End": 16,
+              "atomOrdinal": 251
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "PARTIAL",
+          "bucket": "PARTIAL_TRUE",
+          "goldIdentity": "L0382:S0:0-10|L0383:S0:0-45",
+          "goldText": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+          "ownerParentOrdinals": [
+            5
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 5,
+              "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 0,
+              "distanceFromRightOwnedBoundary": 94
+            }
+          ],
+          "goldSourceAtoms": {
+            "L0382:S0": {
+              "Start": 0,
+              "End": 10,
+              "atomOrdinal": 384
+            },
+            "L0383:S0": {
+              "Start": 0,
+              "End": 45,
+              "atomOrdinal": 385
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "PARTIAL_BOUNDARY_RELATED",
+          "matchingNeighborHaloOos": [
+            {
+              "DocumentId": "SRC-089",
+              "ParentOrdinal": 4,
+              "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+              "LineageType": "PRIMARY",
+              "SemanticFunction": "REGION_STRUCTURE",
+              "Identity": "L0382:S0:0-10",
+              "Text": "Chapter IV",
+              "sourceAliases": [
+                "L0382:S0"
+              ],
+              "sourceAtomOrdinals": [
+                384
+              ],
+              "distanceFromLeftOwnedBoundary": 96,
+              "distanceFromRightOwnedBoundary": -1,
+              "IsOos": true,
+              "IsMember": true
+            },
+            {
+              "DocumentId": "SRC-089",
+              "ParentOrdinal": 4,
+              "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+              "LineageType": "PRIMARY",
+              "SemanticFunction": "REGION_STRUCTURE",
+              "Identity": "L0383:S0:0-45",
+              "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+              "sourceAliases": [
+                "L0383:S0"
+              ],
+              "sourceAtomOrdinals": [
+                385
+              ],
+              "distanceFromLeftOwnedBoundary": 97,
+              "distanceFromRightOwnedBoundary": -2,
+              "IsOos": true,
+              "IsMember": true
+            }
+          ],
+          "emittedOverlappingClaims": [
+            {
+              "DocumentId": "SRC-089",
+              "ParentOrdinal": 5,
+              "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+              "LineageType": "PRIMARY",
+              "SemanticFunction": "REGION_STRUCTURE",
+              "Identity": "L0382:S0:0-10",
+              "Text": "Chapter IV",
+              "sourceAliases": [
+                "L0382:S0"
+              ],
+              "sourceAtomOrdinals": [
+                384
+              ],
+              "distanceFromLeftOwnedBoundary": 0,
+              "distanceFromRightOwnedBoundary": 95,
+              "IsOos": false,
+              "IsMember": true
+            },
+            {
+              "DocumentId": "SRC-089",
+              "ParentOrdinal": 5,
+              "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+              "LineageType": "PRIMARY",
+              "SemanticFunction": "REGION_STRUCTURE",
+              "Identity": "L0383:S0:0-45",
+              "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+              "sourceAliases": [
+                "L0383:S0"
+              ],
+              "sourceAtomOrdinals": [
+                385
+              ],
+              "distanceFromLeftOwnedBoundary": 1,
+              "distanceFromRightOwnedBoundary": 94,
+              "IsOos": false,
+              "IsMember": true
+            }
+          ]
+        }
+      ],
+      "acceptedLeafCount": 7,
+      "acceptedExecutionLeaves": [
+        {
+          "ParentOrdinal": 1,
+          "ExecutionLeafIdentity": "b170e210b9b064448c7348a418d9929838554a07ee2fe9f422ab651dba09ab44",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 0,
+          "MaxOwnedAtomOrdinal": 95,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 2,
+          "ExecutionLeafIdentity": "f1fd0209df84b09ca7560df85a6f66afc32c21a458f264761d0b56599abf5e12",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 96,
+          "MaxOwnedAtomOrdinal": 191,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 3,
+          "ExecutionLeafIdentity": "cf2b5de8f0da9c4900a84ad211621699c84689cee9cc9732ee00fa9aab2007d2",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 192,
+          "MaxOwnedAtomOrdinal": 287,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 4,
+          "ExecutionLeafIdentity": "dec790219e8e3dbc6801d0de33094b6bfc1fd0fb16f1850db18397fdfcd9c4e9",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 288,
+          "MaxOwnedAtomOrdinal": 383,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 5,
+          "ExecutionLeafIdentity": "75b6c6e1f67e872383cd240bd89b77ed2e890c1f0d3567e52329ee371530e31a",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 384,
+          "MaxOwnedAtomOrdinal": 479,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 6,
+          "ExecutionLeafIdentity": "088241b417f50bfe2490b393dc3d980966f7fe66dc3ada760c4be86e9cdebd38",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 480,
+          "MaxOwnedAtomOrdinal": 575,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 7,
+          "ExecutionLeafIdentity": "93cf8aa61b0855c61389451d4e0bdc6dec9a24b9e7a0d0cf4cf8777f6c1d157f",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 576,
+          "MaxOwnedAtomOrdinal": 581,
+          "ownedAtomCount": 6
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "oosRejects": [
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 10,
+            "ExecutionLeafIdentity": "f0d0c92a73a9f87f48ea9a40bd437cdd96edba0bbc589322158df1cfbceefff6",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0185:S0:0-26",
+            "Text": "2.1. Document Organization",
+            "sourceAliases": [
+              "L0185:S0"
+            ],
+            "sourceAtomOrdinals": [
+              191
+            ],
+            "distanceFromLeftOwnedBoundary": -1,
+            "distanceFromRightOwnedBoundary": 96,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 14,
+            "ExecutionLeafIdentity": "9df8370b4c5ea364b7569a3715a94048823c00a5ef75d5cdf0efbcb368718255",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0557:S0:0-23",
+            "Text": "4.4. The CONNECT Method",
+            "sourceAliases": [
+              "L0557:S0"
+            ],
+            "sourceAtomOrdinals": [
+              571
+            ],
+            "distanceFromLeftOwnedBoundary": -5,
+            "distanceFromRightOwnedBoundary": 100,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 15,
+            "ExecutionLeafIdentity": "8e4acb083277fcdf37e274e7e761170a8db64206d680b8dc77a277f8ec86600d",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0760:S0:0-34",
+            "Text": "5.3. Immediate Application Closure",
+            "sourceAliases": [
+              "L0760:S0"
+            ],
+            "sourceAtomOrdinals": [
+              775
+            ],
+            "distanceFromLeftOwnedBoundary": 103,
+            "distanceFromRightOwnedBoundary": -8,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 16,
+            "ExecutionLeafIdentity": "b2540c1c2f876e1f4e2971c02359119740bf4ff5706cca748f682de81e576a1e",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L0852:S0:0-22",
+            "Text": "6.2.1. Control Streams",
+            "sourceAliases": [
+              "L0852:S0"
+            ],
+            "sourceAtomOrdinals": [
+              867
+            ],
+            "distanceFromLeftOwnedBoundary": 99,
+            "distanceFromRightOwnedBoundary": -4,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 20,
+            "ExecutionLeafIdentity": "1db7df36871ebecabdd2e5712b00966e11bf543594d3ba7ae1a25ce692e0ec1f",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1199:S0:0-17",
+            "Text": "8. Error Handling",
+            "sourceAliases": [
+              "L1199:S0"
+            ],
+            "sourceAtomOrdinals": [
+              1255
+            ],
+            "distanceFromLeftOwnedBoundary": 103,
+            "distanceFromRightOwnedBoundary": -8,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 23,
+            "ExecutionLeafIdentity": "8b5c2b597faa7337b61c85d5e0199b5339651ccdbb8532bc22bdcc8826947b61",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1374:S0:0-22",
+            "Text": "10.5.2. CONNECT Issues",
+            "sourceAliases": [
+              "L1374:S0"
+            ],
+            "sourceAtomOrdinals": [
+              1438
+            ],
+            "distanceFromLeftOwnedBoundary": -2,
+            "distanceFromRightOwnedBoundary": 97,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 25,
+            "ExecutionLeafIdentity": "6d3dd81af5fc98f9b1249ea44e73adf9be2c355586bdb4729f6ac9fc4b7c6c47",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "TABLE_STRUCTURE",
+            "Identity": null,
+            "Text": "Setting Name Value Speci\uFB01cation Default",
+            "sourceAliases": [
+              "L1529:S0",
+              "L1529:S1",
+              "L1529:S2",
+              "L1529:S3"
+            ],
+            "sourceAtomOrdinals": [
+              1631,
+              1632,
+              1633,
+              1634
+            ],
+            "distanceFromLeftOwnedBoundary": -1,
+            "distanceFromRightOwnedBoundary": 93,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": false,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 28,
+            "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1710:S0:0-21",
+            "Text": "A.2. HTTP Frame Types",
+            "sourceAliases": [
+              "L1710:S0"
+            ],
+            "sourceAtomOrdinals": [
+              1915
+            ],
+            "distanceFromLeftOwnedBoundary": -5,
+            "distanceFromRightOwnedBoundary": 100,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 31,
+            "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1983:S0:0-17",
+            "Text": "H3_INTERNAL_ERROR",
+            "sourceAliases": [
+              "L1983:S0"
+            ],
+            "sourceAtomOrdinals": [
+              2201
+            ],
+            "distanceFromLeftOwnedBoundary": -7,
+            "distanceFromRightOwnedBoundary": 100,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": false,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 31,
+            "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1984:S0:0-16",
+            "Text": "H3_MESSAGE_ERROR",
+            "sourceAliases": [
+              "L1984:S0"
+            ],
+            "sourceAtomOrdinals": [
+              2203
+            ],
+            "distanceFromLeftOwnedBoundary": -5,
+            "distanceFromRightOwnedBoundary": 98,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": false,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 31,
+            "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1986:S0:0-68",
+            "Text": "H3_MISSING_SETTINGS Section 6.2.1, Paragraph 2; Section 8.1; Table 4",
+            "sourceAliases": [
+              "L1986:S0"
+            ],
+            "sourceAtomOrdinals": [
+              2206
+            ],
+            "distanceFromLeftOwnedBoundary": -2,
+            "distanceFromRightOwnedBoundary": 95,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 31,
+            "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+            "LineageType": "PRIMARY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1987:S0:0-80",
+            "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+            "sourceAliases": [
+              "L1987:S0"
+            ],
+            "sourceAtomOrdinals": [
+              2207
+            ],
+            "distanceFromLeftOwnedBoundary": -1,
+            "distanceFromRightOwnedBoundary": 94,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 24,
+            "ExecutionLeafIdentity": "9d654d27a556e0d0cde253f1fb557b86ec1ec6e3c18c386de25e0eea1123524a",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1465:S0:0-5|L1465:S1:0-14",
+            "Text": "11.2. New Registries",
+            "sourceAliases": [
+              "L1465:S0",
+              "L1465:S1"
+            ],
+            "sourceAtomOrdinals": [
+              1533,
+              1534
+            ],
+            "distanceFromLeftOwnedBoundary": -3,
+            "distanceFromRightOwnedBoundary": 97,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": true,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "NAVIGATION",
+            "Identity": "L0090:S0:0-40",
+            "Text": "10.3. Intermediary-Encapsulation Attacks",
+            "sourceAliases": [
+              "L0090:S0"
+            ],
+            "sourceAtomOrdinals": [
+              96
+            ],
+            "distanceFromLeftOwnedBoundary": 96,
+            "distanceFromRightOwnedBoundary": -1,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "NAVIGATION",
+            "Identity": "L0091:S0:0-37",
+            "Text": "10.4. Cacheability ofPushed Responses",
+            "sourceAliases": [
+              "L0091:S0"
+            ],
+            "sourceAtomOrdinals": [
+              97
+            ],
+            "distanceFromLeftOwnedBoundary": 97,
+            "distanceFromRightOwnedBoundary": -2,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "NAVIGATION",
+            "Identity": "L0092:S0:0-38",
+            "Text": "10.5. Denial-of-Service Considerations",
+            "sourceAliases": [
+              "L0092:S0"
+            ],
+            "sourceAtomOrdinals": [
+              98
+            ],
+            "distanceFromLeftOwnedBoundary": 98,
+            "distanceFromRightOwnedBoundary": -3,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "NAVIGATION",
+            "Identity": "L0093:S0:0-36",
+            "Text": "10.5.1. Limits on Field Section Size",
+            "sourceAliases": [
+              "L0093:S0"
+            ],
+            "sourceAtomOrdinals": [
+              99
+            ],
+            "distanceFromLeftOwnedBoundary": 99,
+            "distanceFromRightOwnedBoundary": -4,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "PAGE_FURNITURE",
+            "Identity": "L0094:S0:0-29",
+            "Text": "Bishop Standards Track Page 3",
+            "sourceAliases": [
+              "L0094:S0"
+            ],
+            "sourceAtomOrdinals": [
+              100
+            ],
+            "distanceFromLeftOwnedBoundary": 100,
+            "distanceFromRightOwnedBoundary": -5,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": false,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "PAGE_FURNITURE",
+            "Identity": "L0095:S0:0-25",
+            "Text": "RFC 9114 HTTP/3 June 2022",
+            "sourceAliases": [
+              "L0095:S0"
+            ],
+            "sourceAtomOrdinals": [
+              101
+            ],
+            "distanceFromLeftOwnedBoundary": 101,
+            "distanceFromRightOwnedBoundary": -6,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": false,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "NAVIGATION",
+            "Identity": "L0096:S0:0-22",
+            "Text": "10.5.2. CONNECT Issues",
+            "sourceAliases": [
+              "L0096:S0"
+            ],
+            "sourceAtomOrdinals": [
+              102
+            ],
+            "distanceFromLeftOwnedBoundary": 102,
+            "distanceFromRightOwnedBoundary": -7,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 8,
+            "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+            "LineageType": "IDENTICAL_RETRY",
+            "SemanticFunction": "NAVIGATION",
+            "Identity": "L0097:S0:0-24",
+            "Text": "10.6. Use of Compression",
+            "sourceAliases": [
+              "L0097:S0"
+            ],
+            "sourceAtomOrdinals": [
+              103
+            ],
+            "distanceFromLeftOwnedBoundary": 103,
+            "distanceFromRightOwnedBoundary": -8,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": true,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 30,
+            "ExecutionLeafIdentity": "p05-parent-030-child-A",
+            "LineageType": "ADAPTIVE_CHILD",
+            "SemanticFunction": "PAGE_FURNITURE",
+            "Identity": "L1949:S0:0-30|L1950:S0:0-25",
+            "Text": "Bishop Standards Track Page 54 RFC 9114 HTTP/3 June 2022",
+            "sourceAliases": [
+              "L1949:S0",
+              "L1950:S0"
+            ],
+            "sourceAtomOrdinals": [
+              2165,
+              2166
+            ],
+            "distanceFromLeftOwnedBoundary": 53,
+            "distanceFromRightOwnedBoundary": -7,
+            "IsOos": true,
+            "IsMember": false
+          },
+          "duplicateValidOwnerDecision": false,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": false,
+          "nonGold": true,
+          "wouldHaveChangedScore": false
+        },
+        {
+          "Observation": {
+            "DocumentId": "SRC-095",
+            "ParentOrdinal": 30,
+            "ExecutionLeafIdentity": "p05-parent-030-child-B",
+            "LineageType": "ADAPTIVE_CHILD",
+            "SemanticFunction": "REGION_STRUCTURE",
+            "Identity": "L1940:S0:0-1|L1941:S0:0-4",
+            "Text": "D DATA",
+            "sourceAliases": [
+              "L1940:S0",
+              "L1941:S0"
+            ],
+            "sourceAtomOrdinals": [
+              2156,
+              2157
+            ],
+            "distanceFromLeftOwnedBoundary": -4,
+            "distanceFromRightOwnedBoundary": 50,
+            "IsOos": true,
+            "IsMember": true
+          },
+          "duplicateValidOwnerDecision": false,
+          "correspondsToGoldExact": false,
+          "correspondsToGoldOverlap": true,
+          "nonGold": false,
+          "wouldHaveChangedScore": true
+        }
+      ],
+      "oosCounts": {
+        "total": 23,
+        "duplicateValidOwnerDecision": 16,
+        "correspondsToGoldExact": 8,
+        "correspondsToGoldOverlap": 9,
+        "nonGold": 14,
+        "wouldHaveChangedScore": 13
+      },
+      "residuals": [
+        {
+          "residualKind": "PARTIAL",
+          "bucket": "PARTIAL_TRUE",
+          "goldIdentity": "L0008:S0:0-6",
+          "goldText": "HTTP/3",
+          "ownerParentOrdinals": [
+            1
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 8,
+              "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+              "LineageType": "IDENTICAL_RETRY",
+              "distanceFromLeftOwnedBoundary": 14,
+              "distanceFromRightOwnedBoundary": 81
+            }
+          ],
+          "goldSourceAtoms": {
+            "L0008:S0": {
+              "Start": 0,
+              "End": 6,
+              "atomOrdinal": 14
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "PARTIAL_INTERIOR",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": [
+            {
+              "DocumentId": "SRC-095",
+              "ParentOrdinal": 8,
+              "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+              "LineageType": "IDENTICAL_RETRY",
+              "SemanticFunction": "DOCUMENT_IDENTITY",
+              "Identity": "L0007:S0:0-8|L0008:S0:0-6",
+              "Text": "RFC 9114 HTTP/3",
+              "sourceAliases": [
+                "L0007:S0",
+                "L0008:S0"
+              ],
+              "sourceAtomOrdinals": [
+                13,
+                14
+              ],
+              "distanceFromLeftOwnedBoundary": 13,
+              "distanceFromRightOwnedBoundary": 81,
+              "IsOos": false,
+              "IsMember": true
+            }
+          ]
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L1729:S0:0-32",
+          "goldText": "A.2.1. Prioritization Di\uFB00erences",
+          "ownerParentOrdinals": [
+            28
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 28,
+              "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 14,
+              "distanceFromRightOwnedBoundary": 81
+            }
+          ],
+          "goldSourceAtoms": {
+            "L1729:S0": {
+              "Start": 0,
+              "End": 32,
+              "atomOrdinal": 1934
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L1736:S0:0-35",
+          "goldText": "A.2.2. Field Compression Di\uFB00erences",
+          "ownerParentOrdinals": [
+            28
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 28,
+              "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 21,
+              "distanceFromRightOwnedBoundary": 74
+            }
+          ],
+          "goldSourceAtoms": {
+            "L1736:S0": {
+              "Start": 0,
+              "End": 35,
+              "atomOrdinal": 1941
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L1745:S0:0-30",
+          "goldText": "A.2.3. Flow-Control Di\uFB00erences",
+          "ownerParentOrdinals": [
+            28
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 28,
+              "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 30,
+              "distanceFromRightOwnedBoundary": 65
+            }
+          ],
+          "goldSourceAtoms": {
+            "L1745:S0": {
+              "Start": 0,
+              "End": 30,
+              "atomOrdinal": 1950
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L1750:S0:0-45",
+          "goldText": "A.2.4. Guidance for New Frame Type De\uFB01nitions",
+          "ownerParentOrdinals": [
+            28
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 28,
+              "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 35,
+              "distanceFromRightOwnedBoundary": 60
+            }
+          ],
+          "goldSourceAtoms": {
+            "L1750:S0": {
+              "Start": 0,
+              "End": 45,
+              "atomOrdinal": 1955
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L1914:S0:0-1",
+          "goldText": "C",
+          "ownerParentOrdinals": [
+            30
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 30,
+              "ExecutionLeafIdentity": "p05-parent-030-child-A",
+              "LineageType": "ADAPTIVE_CHILD",
+              "distanceFromLeftOwnedBoundary": 18,
+              "distanceFromRightOwnedBoundary": 29
+            }
+          ],
+          "goldSourceAtoms": {
+            "L1914:S0": {
+              "Start": 0,
+              "End": 1,
+              "atomOrdinal": 2130
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L1940:S0:0-1",
+          "goldText": "D",
+          "ownerParentOrdinals": [
+            30
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 30,
+              "ExecutionLeafIdentity": "p05-parent-030-child-A",
+              "LineageType": "ADAPTIVE_CHILD",
+              "distanceFromLeftOwnedBoundary": 44,
+              "distanceFromRightOwnedBoundary": 3
+            }
+          ],
+          "goldSourceAtoms": {
+            "L1940:S0": {
+              "Start": 0,
+              "End": 1,
+              "atomOrdinal": 2156
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_PRESENT_ONLY_IN_NEIGHBOR_HALO",
+          "matchingNeighborHaloOos": [
+            {
+              "DocumentId": "SRC-095",
+              "ParentOrdinal": 30,
+              "ExecutionLeafIdentity": "p05-parent-030-child-B",
+              "LineageType": "ADAPTIVE_CHILD",
+              "SemanticFunction": "REGION_STRUCTURE",
+              "Identity": "L1940:S0:0-1|L1941:S0:0-4",
+              "Text": "D DATA",
+              "sourceAliases": [
+                "L1940:S0",
+                "L1941:S0"
+              ],
+              "sourceAtomOrdinals": [
+                2156,
+                2157
+              ],
+              "distanceFromLeftOwnedBoundary": -4,
+              "distanceFromRightOwnedBoundary": 50,
+              "IsOos": true,
+              "IsMember": true
+            }
+          ],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "PARTIAL",
+          "bucket": "PARTIAL_TRUE",
+          "goldIdentity": "L1947:S0:0-1",
+          "goldText": "G",
+          "ownerParentOrdinals": [
+            30
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 30,
+              "ExecutionLeafIdentity": "p05-parent-030-child-B",
+              "LineageType": "ADAPTIVE_CHILD",
+              "distanceFromLeftOwnedBoundary": 3,
+              "distanceFromRightOwnedBoundary": 44
+            }
+          ],
+          "goldSourceAtoms": {
+            "L1947:S0": {
+              "Start": 0,
+              "End": 1,
+              "atomOrdinal": 2163
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "PARTIAL_INTERIOR",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": [
+            {
+              "DocumentId": "SRC-095",
+              "ParentOrdinal": 30,
+              "ExecutionLeafIdentity": "p05-parent-030-child-B",
+              "LineageType": "ADAPTIVE_CHILD",
+              "SemanticFunction": "REGION_STRUCTURE",
+              "Identity": "L1947:S0:0-1|L1948:S0:0-6",
+              "Text": "G GOAWAY",
+              "sourceAliases": [
+                "L1947:S0",
+                "L1948:S0"
+              ],
+              "sourceAtomOrdinals": [
+                2163,
+                2164
+              ],
+              "distanceFromLeftOwnedBoundary": 3,
+              "distanceFromRightOwnedBoundary": 43,
+              "IsOos": false,
+              "IsMember": true
+            }
+          ]
+        },
+        {
+          "residualKind": "PARTIAL",
+          "bucket": "PARTIAL_TRUE",
+          "goldIdentity": "L1961:S0:0-1",
+          "goldText": "H",
+          "ownerParentOrdinals": [
+            30
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 30,
+              "ExecutionLeafIdentity": "p05-parent-030-child-B",
+              "LineageType": "ADAPTIVE_CHILD",
+              "distanceFromLeftOwnedBoundary": 17,
+              "distanceFromRightOwnedBoundary": 30
+            }
+          ],
+          "goldSourceAtoms": {
+            "L1961:S0": {
+              "Start": 0,
+              "End": 1,
+              "atomOrdinal": 2177
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "PARTIAL_INTERIOR",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": [
+            {
+              "DocumentId": "SRC-095",
+              "ParentOrdinal": 30,
+              "ExecutionLeafIdentity": "p05-parent-030-child-B",
+              "LineageType": "ADAPTIVE_CHILD",
+              "SemanticFunction": "REGION_STRUCTURE",
+              "Identity": "L1961:S0:0-1|L1962:S0:0-75|L1963:S0:0-29",
+              "Text": "H H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1",
+              "sourceAliases": [
+                "L1961:S0",
+                "L1962:S0",
+                "L1963:S0"
+              ],
+              "sourceAtomOrdinals": [
+                2177,
+                2178,
+                2179
+              ],
+              "distanceFromLeftOwnedBoundary": 17,
+              "distanceFromRightOwnedBoundary": 28,
+              "IsOos": false,
+              "IsMember": true
+            }
+          ]
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L2012:S0:0-1",
+          "goldText": "M",
+          "ownerParentOrdinals": [
+            31
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 31,
+              "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 25,
+              "distanceFromRightOwnedBoundary": 68
+            }
+          ],
+          "goldSourceAtoms": {
+            "L2012:S0": {
+              "Start": 0,
+              "End": 1,
+              "atomOrdinal": 2233
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L2023:S0:0-1",
+          "goldText": "P",
+          "ownerParentOrdinals": [
+            31
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 31,
+              "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 36,
+              "distanceFromRightOwnedBoundary": 57
+            }
+          ],
+          "goldSourceAtoms": {
+            "L2023:S0": {
+              "Start": 0,
+              "End": 1,
+              "atomOrdinal": 2244
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L2056:S0:0-1",
+          "goldText": "R",
+          "ownerParentOrdinals": [
+            31
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 31,
+              "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 69,
+              "distanceFromRightOwnedBoundary": 24
+            }
+          ],
+          "goldSourceAtoms": {
+            "L2056:S0": {
+              "Start": 0,
+              "End": 1,
+              "atomOrdinal": 2277
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        },
+        {
+          "residualKind": "FN",
+          "bucket": "UNPROPOSED",
+          "goldIdentity": "L2063:S0:0-1",
+          "goldText": "S",
+          "ownerParentOrdinals": [
+            31
+          ],
+          "ownerBoundaryDistances": [
+            {
+              "ParentOrdinal": 31,
+              "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+              "LineageType": "PRIMARY",
+              "distanceFromLeftOwnedBoundary": 76,
+              "distanceFromRightOwnedBoundary": 17
+            }
+          ],
+          "goldSourceAtoms": {
+            "L2063:S0": {
+              "Start": 0,
+              "End": 1,
+              "atomOrdinal": 2284
+            }
+          },
+          "primaryBoundaryCrossing": false,
+          "adaptiveSplitBoundaryCrossing": false,
+          "classification": "FN_OWNER_OMISSION",
+          "matchingNeighborHaloOos": [],
+          "emittedOverlappingClaims": []
+        }
+      ],
+      "acceptedLeafCount": 25,
+      "acceptedExecutionLeaves": [
+        {
+          "ParentOrdinal": 9,
+          "ExecutionLeafIdentity": "74146bd052247a1518e37798325f8a6767d2b07a1442e0f06c3da8cbea6f1127",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 96,
+          "MaxOwnedAtomOrdinal": 191,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 10,
+          "ExecutionLeafIdentity": "f0d0c92a73a9f87f48ea9a40bd437cdd96edba0bbc589322158df1cfbceefff6",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 192,
+          "MaxOwnedAtomOrdinal": 287,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 11,
+          "ExecutionLeafIdentity": "e0d24b80e815edc123098f18bc917ea6b2cb07bfd136b0bf0cdacf82c2d711d7",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 288,
+          "MaxOwnedAtomOrdinal": 383,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 12,
+          "ExecutionLeafIdentity": "6d75ad831a97421456ccb9494aa5f73cf78c0a9b159e426ea70ac837837497bc",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 384,
+          "MaxOwnedAtomOrdinal": 479,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 13,
+          "ExecutionLeafIdentity": "2ab21bd3700af812598bc6b6e8bcc4467fcc93cc4e3e31b582e56e5f9ee92843",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 480,
+          "MaxOwnedAtomOrdinal": 575,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 14,
+          "ExecutionLeafIdentity": "9df8370b4c5ea364b7569a3715a94048823c00a5ef75d5cdf0efbcb368718255",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 576,
+          "MaxOwnedAtomOrdinal": 671,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 15,
+          "ExecutionLeafIdentity": "8e4acb083277fcdf37e274e7e761170a8db64206d680b8dc77a277f8ec86600d",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 672,
+          "MaxOwnedAtomOrdinal": 767,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 16,
+          "ExecutionLeafIdentity": "b2540c1c2f876e1f4e2971c02359119740bf4ff5706cca748f682de81e576a1e",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 768,
+          "MaxOwnedAtomOrdinal": 863,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 17,
+          "ExecutionLeafIdentity": "553d3bbbf4a5804cc1aa231a6745d166aa0c3d898114dcae720557cd8593e5da",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 864,
+          "MaxOwnedAtomOrdinal": 959,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 18,
+          "ExecutionLeafIdentity": "b31d4c6c0139eba85e75b1bdc6f4495eded896da6731608eab82810fa219291d",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 960,
+          "MaxOwnedAtomOrdinal": 1055,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 19,
+          "ExecutionLeafIdentity": "e9070615cdab9e525218c90e76a8a10109572e2d49769cf7bdf6d0cf45f43359",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 1056,
+          "MaxOwnedAtomOrdinal": 1151,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 20,
+          "ExecutionLeafIdentity": "1db7df36871ebecabdd2e5712b00966e11bf543594d3ba7ae1a25ce692e0ec1f",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 1152,
+          "MaxOwnedAtomOrdinal": 1247,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 22,
+          "ExecutionLeafIdentity": "86fc589ddd38d4451ba107856f3a6a2c5da512f87d4e94d7339d4fba10a102cb",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 1344,
+          "MaxOwnedAtomOrdinal": 1439,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 23,
+          "ExecutionLeafIdentity": "8b5c2b597faa7337b61c85d5e0199b5339651ccdbb8532bc22bdcc8826947b61",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 1440,
+          "MaxOwnedAtomOrdinal": 1535,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 25,
+          "ExecutionLeafIdentity": "6d3dd81af5fc98f9b1249ea44e73adf9be2c355586bdb4729f6ac9fc4b7c6c47",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 1632,
+          "MaxOwnedAtomOrdinal": 1727,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 26,
+          "ExecutionLeafIdentity": "8b45c0dbc001dc701504bdd06d7f55a99415553b9be3720e2522d53db5ee5998",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 1728,
+          "MaxOwnedAtomOrdinal": 1823,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 27,
+          "ExecutionLeafIdentity": "7eed897a7dea748daea81b45fa755b539da9cc104c0c5a58135b6b7b618d7d79",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 1824,
+          "MaxOwnedAtomOrdinal": 1919,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 28,
+          "ExecutionLeafIdentity": "692c08c4215b960f310c254f35da01bccb7a1212b0dbb4772b890cb7e4ad7168",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 1920,
+          "MaxOwnedAtomOrdinal": 2015,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 29,
+          "ExecutionLeafIdentity": "2ea2e8a9f573f54c537fc6c131fc66e4fe8c5e10dd5cabc9a0efd7e84fbe0586",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 2016,
+          "MaxOwnedAtomOrdinal": 2111,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 31,
+          "ExecutionLeafIdentity": "c037380056149257fd6ffad7e1bffd247809d7132668971a7f8a12106f14f832",
+          "LineageType": "PRIMARY",
+          "MinOwnedAtomOrdinal": 2208,
+          "MaxOwnedAtomOrdinal": 2301,
+          "ownedAtomCount": 94
+        },
+        {
+          "ParentOrdinal": 21,
+          "ExecutionLeafIdentity": "e6603ccd36047a8f8c5621b18268a367ff53755e01f318beda8819619f5aca4e",
+          "LineageType": "IDENTICAL_RETRY",
+          "MinOwnedAtomOrdinal": 1248,
+          "MaxOwnedAtomOrdinal": 1343,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 24,
+          "ExecutionLeafIdentity": "9d654d27a556e0d0cde253f1fb557b86ec1ec6e3c18c386de25e0eea1123524a",
+          "LineageType": "IDENTICAL_RETRY",
+          "MinOwnedAtomOrdinal": 1536,
+          "MaxOwnedAtomOrdinal": 1631,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 8,
+          "ExecutionLeafIdentity": "76d35783402dedd0b9a096daabbdbe931bd168c0e7d8ee9d6cde1d0936575e00",
+          "LineageType": "IDENTICAL_RETRY",
+          "MinOwnedAtomOrdinal": 0,
+          "MaxOwnedAtomOrdinal": 95,
+          "ownedAtomCount": 96
+        },
+        {
+          "ParentOrdinal": 30,
+          "ExecutionLeafIdentity": "p05-parent-030-child-A",
+          "LineageType": "ADAPTIVE_CHILD",
+          "MinOwnedAtomOrdinal": 2112,
+          "MaxOwnedAtomOrdinal": 2159,
+          "ownedAtomCount": 48
+        },
+        {
+          "ParentOrdinal": 30,
+          "ExecutionLeafIdentity": "p05-parent-030-child-B",
+          "LineageType": "ADAPTIVE_CHILD",
+          "MinOwnedAtomOrdinal": 2160,
+          "MaxOwnedAtomOrdinal": 2207,
+          "ownedAtomCount": 48
+        }
+      ]
+    }
+  ],
+  "interpretationPolicy": {
+    "contextInsufficientInferred": false,
+    "adaptiveSplitIsExecutionEvidence": true,
+    "noNewSemanticErrorClass": true,
+    "childClaimsKeptIndependent": true
+  }
+}

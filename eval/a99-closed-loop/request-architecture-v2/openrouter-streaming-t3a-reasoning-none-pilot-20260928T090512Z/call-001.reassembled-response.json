@@ -1,0 +1,38 @@
+{
+  "id": "stream-reassembled-t3a-call-001",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "reasoning": "",
+        "content": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0002:S1\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0002:S0\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022DOCUMENT_IDENTITY\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0005:S0\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022METADATA\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0006:S0\u0022,\n          \u0022verbatimText\u0022: \u0022DECREE\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0007:S0\u0022,\n          \u0022verbatimText\u0022: \u0022DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0008:S0\u0022,\n          \u0022verbatimText\u0022: \u0022THE PUBLICATION LAW (*)\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0014:S0\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0015:S0\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0016:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 1. Scope ofregulation and subjects ofapplication\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0024:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0025:S0\u0022,\n          \u0022verbatimText\u0022: \u0022the state management ofpublication activities\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0051:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0052:S0\u0022,\n          \u0022verbatimText\u0022: \u0022management ofpublication activities\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0080:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 4. Tasks and powers ofprovincial-level People\u2019s Committees in performing the state\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0081:S0\u0022,\n          \u0022verbatimText\u0022: \u0022management ofpublication activities\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0094:S0\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    }\n  ]\n}"
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 19653,
+    "completion_tokens": 765,
+    "total_tokens": 20418,
+    "cost": 0.00068904,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00068904,
+      "upstream_inference_prompt_cost": 0.00058959,
+      "upstream_inference_completions_cost": 0.00009945
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

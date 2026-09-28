@@ -1,0 +1,184 @@
+{
+  "artifactKind": "a99_openrouter_streaming_t3a_reasoning_none_pilot_preflight",
+  "status": "PROVIDER_FREEZE_ONLY_PROVIDER_CALLS_NOT_AUTHORIZED",
+  "candidateId": "T3A_P05_STREAMING_REASONING_NONE_6_CALL_PILOT",
+  "dependsOn": {
+    "t1StreamingPreflight": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-transport-v1.preflight.json",
+    "t1StreamingPreflightSha256": "8B425880218B81FAFDE8737C856A6FD0A8CB6EE62A05BE690259637E16635785",
+    "t2SmokeManifest": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t2-smoke-20260928T085121Z/t2-smoke-manifest.json",
+    "t2SmokeManifestSha256": "CCF8960BCDC6F75010B0E7C8989F1D1B0C4C2892AC692C3D8582A3E5BB21B864",
+    "sourceArm": "P05 medium"
+  },
+  "treatmentDelta": "REASONING_ONLY",
+  "onlyAllowedTreatmentChange": "reasoning medium -> none",
+  "experimentQuestion": "Can P05 same semantic requests with streaming and reasoning=none reduce saturation, recovery pressure, tokens, and wall clock without materially degrading local contract validity or later semantic quality?",
+  "semanticIdentity": {
+    "semanticRequestHashUnchanged": true,
+    "sourceUniverseUnchanged": true,
+    "ownedAliasesUnchanged": true,
+    "haloUnchanged": true,
+    "promptUnchanged": true,
+    "schemaUnchanged": true,
+    "packingUnchanged": "P05_RESOURCE_BOUNDED_SOURCE_PACKING_V1"
+  },
+  "pins": {
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "none",
+    "responseFormat": "json_object",
+    "maxTokens": 12288,
+    "timeoutSeconds": 300,
+    "stream": true,
+    "usage": {
+      "include": true
+    },
+    "explicitCacheControl": null,
+    "openRouterResponseCache": "disabled",
+    "sessionId": "not sent",
+    "cacheControl": "not sent",
+    "streamOptions": "not sent",
+    "gold": "closed until execution freeze"
+  },
+  "providerEnvelopeHashFormula": {
+    "canonicalJson": "{\"providerRoute\":\"Alibaba\",\"model\":\"qwen/qwen3.7-flash\",\"reasoningEffort\":\"none\",\"responseFormat\":\"json_object\",\"explicitCacheControl\":null,\"stream\":true,\"usage\":{\"include\":true},\"openRouterResponseCache\":\"disabled\",\"semanticRequestHash\":\"<hash>\"}",
+    "hash": "sha256(lowercase hex) of UTF-8 canonicalJson"
+  },
+  "pilotSelection": {
+    "plannedCalls": 6,
+    "globalOrdinals": [
+      1,
+      8,
+      16,
+      21,
+      24,
+      30
+    ],
+    "selectionRationale": [
+      "001 representative SRC-089 happy path",
+      "008 SRC-095 near-ceiling medium output stress case",
+      "016 SRC-095 normal non-saturation control",
+      "021 previous medium null-content retryable at completion ceiling",
+      "024 previous medium null-content retryable at completion ceiling",
+      "030 repeated near-ceiling / recovery-sensitive leaf"
+    ],
+    "requests": [
+      {
+        "ordinal": 1,
+        "documentId": "SRC-089",
+        "documentOrdinal": 1,
+        "semanticRequestHash": "014da482fbda3ceaab891bf0c29bfc9ccc45521db608d416ecfe36fad3df524f",
+        "providerEnvelopeHash": "1829d9e3f9e7b4e4c17cf4e1c0822cf55f1056f734abe7fc5b00eb0c19c2c637",
+        "inputBytes": 70123,
+        "estimatedInputTokens": 11688,
+        "ownedAtoms": 96,
+        "p05MediumPrimaryState": "SUCCESS",
+        "p05MediumOutputTokens": 7811,
+        "p05MediumElapsedMs": 90145,
+        "p05MediumError": null
+      },
+      {
+        "ordinal": 8,
+        "documentId": "SRC-095",
+        "documentOrdinal": 1,
+        "semanticRequestHash": "cae6332355c3f265cc97ab5016e302681f5cd45f6cabd29708f50a574f66cb5e",
+        "providerEnvelopeHash": "caff85ff124cb739224e3103c604351ed4ebb5792fe2f1f36a2b15acb2d91104",
+        "inputBytes": 69299,
+        "estimatedInputTokens": 11550,
+        "ownedAtoms": 96,
+        "p05MediumPrimaryState": "SUCCESS",
+        "p05MediumOutputTokens": 12286,
+        "p05MediumElapsedMs": 126780,
+        "p05MediumError": null
+      },
+      {
+        "ordinal": 16,
+        "documentId": "SRC-095",
+        "documentOrdinal": 9,
+        "semanticRequestHash": "84fc81363e923719e3c6e713338de506321d828c272c25206c8223ed1a6f4790",
+        "providerEnvelopeHash": "085056b9939e62628acc5ebf3b1de0ac84f5a3c3690f0a9bfb882eb74af9fbc5",
+        "inputBytes": 70048,
+        "estimatedInputTokens": 11675,
+        "ownedAtoms": 96,
+        "p05MediumPrimaryState": "SUCCESS",
+        "p05MediumOutputTokens": 7009,
+        "p05MediumElapsedMs": 77356,
+        "p05MediumError": null
+      },
+      {
+        "ordinal": 21,
+        "documentId": "SRC-095",
+        "documentOrdinal": 14,
+        "semanticRequestHash": "2c5deb37393fd5d9f77cd61fec0e055cdde37d6a124ef417a8ba06f9aa757547",
+        "providerEnvelopeHash": "3c6d902441b3c0905c272c1f6c743bb22b335f114daf5d46f04ce798e91e563c",
+        "inputBytes": 68668,
+        "estimatedInputTokens": 11445,
+        "ownedAtoms": 96,
+        "p05MediumPrimaryState": "FAILED_RETRYABLE",
+        "p05MediumOutputTokens": 12288,
+        "p05MediumElapsedMs": 139204,
+        "p05MediumError": "NO_TEXTUAL_CONTENT"
+      },
+      {
+        "ordinal": 24,
+        "documentId": "SRC-095",
+        "documentOrdinal": 17,
+        "semanticRequestHash": "3bea63a1ab4acdffcdcfc97b552c70c41b70634d42c6bce5daffe72e2d49bdc2",
+        "providerEnvelopeHash": "178facd9881995cffcf38812bce7c385dd3a8d8848436e185a1619358bce470f",
+        "inputBytes": 66272,
+        "estimatedInputTokens": 11046,
+        "ownedAtoms": 96,
+        "p05MediumPrimaryState": "FAILED_RETRYABLE",
+        "p05MediumOutputTokens": 12288,
+        "p05MediumElapsedMs": 120942,
+        "p05MediumError": "NO_TEXTUAL_CONTENT"
+      },
+      {
+        "ordinal": 30,
+        "documentId": "SRC-095",
+        "documentOrdinal": 23,
+        "semanticRequestHash": "c0eab96cfdaf5757688c1d2570bdde2fec61e9f36c7e13e0df4e3c5007297a5e",
+        "providerEnvelopeHash": "cc22b90795a4baa551b5b53bd674320d106872b0ffd98e204d000b4e5dffe31b",
+        "inputBytes": 71592,
+        "estimatedInputTokens": 11932,
+        "ownedAtoms": 96,
+        "p05MediumPrimaryState": "SUCCESS",
+        "p05MediumOutputTokens": 12286,
+        "p05MediumElapsedMs": 124878,
+        "p05MediumError": null
+      }
+    ]
+  },
+  "executionProtocol": {
+    "providerDeadlineSeconds": 300,
+    "providerDeadlineScope": "POST through complete SSE transport only; local parse and contract validation measured separately in totalWallClock",
+    "transportCompleteRequiresTerminalFinishReason": true,
+    "partialSseNeverContractValid": true,
+    "contentBufferParsedOnlyAfterTransportComplete": true,
+    "rawSsePersisted": true,
+    "noRecoveryInPilot": "pilot measures first-attempt behavior only; recovery/adaptive policy is decided after pilot"
+  },
+  "decisionGate": {
+    "compareAgainst": "same ordinals from P05 medium primary/recovery evidence",
+    "promoteToFullCohortIf": [
+      "contract-valid first attempt >= medium on matched ordinals",
+      "saturation rate < medium on matched ordinals",
+      "retry/adaptive need <= medium on matched ordinals",
+      "completion tokens drop materially",
+      "reasoning tokens drop to zero or near zero",
+      "wall clock drops materially",
+      "no new transport failure class appears"
+    ],
+    "ifQualityFailsAfterGold": "do not return to full-medium default; evaluate ADAPTIVE_REASONING_V1 none->medium recovery arm"
+  },
+  "hardGates": {
+    "providerCalls": 0,
+    "goldRead": false,
+    "semanticRequestChange": false,
+    "packingChange": false,
+    "productionPromotion": false,
+    "full31CohortGate": "closed until T3A pilot terminal result"
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "productionChanged": false
+}

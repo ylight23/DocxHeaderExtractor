@@ -1,0 +1,64 @@
+{
+  "artifactKind": "a99_v4r2_provider_experiment_run",
+  "runId": "p05-provider-experiment-20260928T032843Z",
+  "status": "FAILED_EXPERIMENT_ONLY",
+  "productionPromotion": false,
+  "experimentOnly": true,
+  "authorization": {
+    "explicitUserAuthorization": true,
+    "deterministicCoreTerminalPass": false,
+    "providerGateOverride": "EXPERIMENT_ONLY"
+  },
+  "frozenPreflight": {
+    "path": "eval/a99-closed-loop/request-architecture-v2/v4r2-provider-preflight.v1.json",
+    "sha256": "644d60a0ced9fb361b4d02a62d49b8e62e8604802500566be47860e75da6b2f5"
+  },
+  "pins": {
+    "candidateId": "P05",
+    "treatmentDelta": "PACKING_SHAPE_ONLY",
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "medium",
+    "responseFormat": "json_object",
+    "explicitCacheControl": false,
+    "strictJsonSchema": false,
+    "lossyTransforms": false
+  },
+  "budgets": {
+    "inputCeilingBytes": 90000,
+    "estimatedInputTokenCeiling": 28000,
+    "ownedCoreCeiling": 96,
+    "visibleSourceAtomsCeiling": 128,
+    "haloAtoms": 8,
+    "reservedCompletionTokens": 12288,
+    "totalRequestTimeoutSeconds": 300,
+    "primaryPlannedCalls": 31,
+    "totalHardCallCap": 55,
+    "inputHardCapBytes": 4174516,
+    "outputHardCapTokens": 850080
+  },
+  "calls": 1,
+  "totalInputBytes": 70123,
+  "totalOutputTokens": 23933,
+  "durationSeconds": 150.8038293,
+  "documents": [],
+  "callLedger": [
+    {
+      "Ordinal": 1,
+      "SemanticRequestHash": "014da482fbda3ceaab891bf0c29bfc9ccc45521db608d416ecfe36fad3df524f",
+      "ProviderEnvelopeHash": "5c0379198584a1edb638674859a2ebda465be594e0f9b17ed25700e05d427d0b",
+      "RequestFile": "call-001.request.json",
+      "RawResponseFile": "",
+      "InputBytes": 70123,
+      "OutputBytes": 0,
+      "OutputTokens": 0,
+      "HttpStatus": 0,
+      "ElapsedMs": 130219,
+      "State": "FAILED_RETRYABLE",
+      "Error": "Provider response has no textual content."
+    }
+  ],
+  "error": "System.FormatException: Provider response has no textual content.\r\n   at DocxHeaderExtractor.DocumentProcessing.Pipeline.CanonicalSemanticPdfAuthorityAdapter.RunAsync(String pdfPath, IHeaderClassifier transport, CancellationToken cancellationToken, CanonicalSemanticExperiment experiment, SemanticLaneOptions semanticLaneOptions, SemanticAuthorityReplayCaptureRequest replayCapture, PdfExperimentExecutionGate experimentGate, PdfSemanticAuthorityProfile profile, ISemanticEvidencePackingPolicy packingPolicy, IReadOnlySet\u00601 selectedPackIds, Boolean runPlacement, Nullable\u00601 sourceFacts) in C:\\DocxHeaderExtractor-a99-closed-loop\\src\\DocxHeaderExtractor.DocumentProcessing\\Pipeline\\CanonicalSemanticPdfAuthorityAdapter.cs:line 112\r\n   at Program.\u003CMain\u003E$(String[] args) in C:\\DocxHeaderExtractor-a99-closed-loop\\tmp\\v4r2-provider-runner\\Program.cs:line 67",
+  "goldRead": false,
+  "productionChanged": false
+}

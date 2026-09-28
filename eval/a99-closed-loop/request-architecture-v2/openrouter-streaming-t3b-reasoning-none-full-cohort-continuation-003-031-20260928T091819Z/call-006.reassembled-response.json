@@ -1,0 +1,38 @@
+{
+  "id": "stream-reassembled-t3a-call-006",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "reasoning": "",
+        "content": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0478:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 20. Import ofe-publications for commercial purposes\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0490:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 21. Deposit ofe-publications\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0499:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0500:S0\u0022,\n          \u0022verbatimText\u0022: \u0022engaged in the publishing or distribution ofe-publications\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0522:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe-\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0523:S0\u0022,\n          \u0022verbatimText\u0022: \u0022publications\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0535:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Chapter V\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0536:S0\u0022,\n          \u0022verbatimText\u0022: \u0022IMPLEMENTATION PROVISIONS\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0537:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 24. Effect\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0555:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 25. Renewal oflicenses for publication activities and registration of distribution of\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0556:S0\u0022,\n          \u0022verbatimText\u0022: \u0022publications\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0572:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 26. Implementation responsibility\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    }\n  ]\n}"
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 20396,
+    "completion_tokens": 678,
+    "total_tokens": 21074,
+    "cost": 0.00070002,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00070002,
+      "upstream_inference_prompt_cost": 0.00061188,
+      "upstream_inference_completions_cost": 0.00008814
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

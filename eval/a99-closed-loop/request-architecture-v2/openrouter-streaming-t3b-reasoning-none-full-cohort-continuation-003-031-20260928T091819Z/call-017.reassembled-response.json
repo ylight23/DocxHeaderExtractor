@@ -1,0 +1,38 @@
+{
+  "id": "stream-reassembled-t3a-call-017",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "reasoning": "",
+        "content": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0852:S0\u0022,\n          \u0022verbatimText\u0022: \u00226.2.1. Control Streams\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0870:S0\u0022,\n          \u0022verbatimText\u0022: \u00226.2.2. Push Streams\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0893:S0\u0022,\n          \u0022verbatimText\u0022: \u00226.2.3. Reserved Stream Types\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0903:S0\u0022,\n          \u0022verbatimText\u0022: \u00227. HTTP Framing Layer\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0908:S4\u0022,\n          \u0022verbatimText\u0022: \u0022Section\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0908:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Frame\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0908:S3\u0022,\n          \u0022verbatimText\u0022: \u0022Push Stream\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0908:S1\u0022,\n          \u0022verbatimText\u0022: \u0022Control Stream\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0908:S2\u0022,\n          \u0022verbatimText\u0022: \u0022Request Stream\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0909:S4\u0022,\n          \u0022verbatimText\u0022: \u0022Section 7.2.1\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0909:S0\u0022,\n          \u0022verbatimText\u0022: \u0022DATA\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0909:S3\u0022,\n          \u0022verbatimText\u0022: \u0022Yes\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0909:S2\u0022,\n          \u0022verbatimText\u0022: \u0022Yes\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0909:S1\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0910:S4\u0022,\n          \u0022verbatimText\u0022: \u0022Section 7.2.2\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0910:S0\u0022,\n          \u0022verbatimText\u0022: \u0022HEADERS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0910:S3\u0022,\n          \u0022verbatimText\u0022: \u0022Yes\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0910:S2\u0022,\n          \u0022verbatimText\u0022: \u0022Yes\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0910:S1\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0911:S4\u0022,\n          \u0022verbatimText\u0022: \u0022Section 7.2.3\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0911:S0\u0022,\n          \u0022verbatimText\u0022: \u0022CANCEL_PUSH\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0911:S3\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0911:S2\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0911:S1\u0022,\n          \u0022verbatimText\u0022: \u0022Yes\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0912:S4\u0022,\n          \u0022verbatimText\u0022: \u0022Section 7.2.4\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0912:S0\u0022,\n          \u0022verbatimText\u0022: \u0022SETTINGS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0912:S3\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0912:S2\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0912:S1\u0022,\n          \u0022verbatimText\u0022: \u0022Yes (1)\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0913:S4\u0022,\n          \u0022verbatimText\u0022: \u0022Section 7.2.5\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0913:S0\u0022,\n          \u0022verbatimText\u0022: \u0022PUSH_PROMISE\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0913:S3\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0913:S2\u0022,\n          \u0022verbatimText\u0022: \u0022Yes\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0913:S1\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0914:S4\u0022,\n          \u0022verbatimText\u0022: \u0022Section 7.2.6\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0914:S0\u0022,\n          \u0022verbatimText\u0022: \u0022GOAWAY\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0914:S3\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0914:S2\u0022,\n          \u0022verbatimText\u0022: \u0022No\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0914:S1\u0022,\n          \u0022verbatimText\u0022: \u0022Yes\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    }\n  ]\n}"
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 19694,
+    "completion_tokens": 1544,
+    "total_tokens": 21238,
+    "cost": 0.00079154,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00079154,
+      "upstream_inference_prompt_cost": 0.00059082,
+      "upstream_inference_completions_cost": 0.00020072
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,562 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1573:S0",
+          "verbatimText": "H3_ID_ERROR"
+        },
+        {
+          "sourceAlias": "L1573:S1",
+          "verbatimText": "0x0108"
+        },
+        {
+          "sourceAlias": "L1573:S2",
+          "verbatimText": "An identifier was used"
+        },
+        {
+          "sourceAlias": "L1574:S0",
+          "verbatimText": "incorrectly"
+        },
+        {
+          "sourceAlias": "L1573:S3",
+          "verbatimText": "Section 8.1"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1575:S0",
+          "verbatimText": "H3_SETTINGS_ERROR"
+        },
+        {
+          "sourceAlias": "L1575:S1",
+          "verbatimText": "0x0109"
+        },
+        {
+          "sourceAlias": "L1575:S2",
+          "verbatimText": "SETTINGS frame contained"
+        },
+        {
+          "sourceAlias": "L1576:S0",
+          "verbatimText": "invalid values"
+        },
+        {
+          "sourceAlias": "L1575:S3",
+          "verbatimText": "Section 8.1"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1577:S0",
+          "verbatimText": "H3_MISSING_SETTINGS"
+        },
+        {
+          "sourceAlias": "L1577:S1",
+          "verbatimText": "0x010a"
+        },
+        {
+          "sourceAlias": "L1577:S2",
+          "verbatimText": "No SETTINGS frame received"
+        },
+        {
+          "sourceAlias": "L1577:S3",
+          "verbatimText": "Section 8.1"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1578:S0",
+          "verbatimText": "H3_REQUEST_REJECTED"
+        },
+        {
+          "sourceAlias": "L1578:S1",
+          "verbatimText": "0x010b"
+        },
+        {
+          "sourceAlias": "L1578:S2",
+          "verbatimText": "Request not processed"
+        },
+        {
+          "sourceAlias": "L1578:S3",
+          "verbatimText": "Section 8.1"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1579:S0",
+          "verbatimText": "H3_REQUEST_CANCELLED"
+        },
+        {
+          "sourceAlias": "L1579:S1",
+          "verbatimText": "0x010c"
+        },
+        {
+          "sourceAlias": "L1579:S2",
+          "verbatimText": "Data no longer needed"
+        },
+        {
+          "sourceAlias": "L1579:S3",
+          "verbatimText": "Section 8.1"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1580:S0",
+          "verbatimText": "H3_REQUEST_INCOMPLETE"
+        },
+        {
+          "sourceAlias": "L1580:S1",
+          "verbatimText": "0x010d"
+        },
+        {
+          "sourceAlias": "L1580:S2",
+          "verbatimText": "Stream terminated early"
+        },
+        {
+          "sourceAlias": "L1580:S3",
+          "verbatimText": "Section 8.1"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1581:S0",
+          "verbatimText": "H3_MESSAGE_ERROR"
+        },
+        {
+          "sourceAlias": "L1581:S1",
+          "verbatimText": "0x010e"
+        },
+        {
+          "sourceAlias": "L1581:S2",
+          "verbatimText": "Malformed message"
+        },
+        {
+          "sourceAlias": "L1581:S3",
+          "verbatimText": "Section 8.1"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1582:S0",
+          "verbatimText": "H3_CONNECT_ERROR"
+        },
+        {
+          "sourceAlias": "L1582:S1",
+          "verbatimText": "0x010f"
+        },
+        {
+          "sourceAlias": "L1582:S2",
+          "verbatimText": "TCP reset or error on"
+        },
+        {
+          "sourceAlias": "L1583:S0",
+          "verbatimText": "CONNECT request"
+        },
+        {
+          "sourceAlias": "L1582:S3",
+          "verbatimText": "Section 8.1"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1584:S0",
+          "verbatimText": "H3_VERSION_FALLBACK"
+        },
+        {
+          "sourceAlias": "L1584:S1",
+          "verbatimText": "0x0110"
+        },
+        {
+          "sourceAlias": "L1584:S2",
+          "verbatimText": "Retry over HTTP/1.1"
+        },
+        {
+          "sourceAlias": "L1584:S3",
+          "verbatimText": "Section 8.1"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1585:S0",
+          "verbatimText": "Table 4: InitialHTTP/3 Error Codes"
+        }
+      ],
+      "semanticFunction": "OBJECT_CAPTION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1586:S0",
+          "verbatimText": "Each code ofthe format 0x1 f * N + 0x2 1 for non-negative integer values of N (that is, 0x21,"
+        },
+        {
+          "sourceAlias": "L1587:S0",
+          "verbatimText": "0x40, ..., through 0x3\uFB00\uFB00\uFB00\uFB00\uFB00\uFB00\uFB00e) MUST NOT be assigned by IANA and MUST NOT appear in the"
+        },
+        {
+          "sourceAlias": "L1588:S0",
+          "verbatimText": "listing of assigned values."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1589:S0",
+          "verbatimText": "Bishop Standards Track Page 44"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1590:S0",
+          "verbatimText": "RFC 9114 HTTP/3 June 2022"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1591:S0",
+          "verbatimText": "11.2.4. Stream Types"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1592:S0",
+          "verbatimText": "This document establishes a registry for HTTP/3 unidirectional stream types. The \"HTTP/3 Stream"
+        },
+        {
+          "sourceAlias": "L1593:S0",
+          "verbatimText": "Types\" registry governs a 62-bit space. This registry follows the QUIC registry policy; see Section"
+        },
+        {
+          "sourceAlias": "L1594:S0",
+          "verbatimText": "11.2. Permanent registrations in this registry are assigned using the Specification Required policy"
+        },
+        {
+          "sourceAlias": "L1595:S0",
+          "verbatimText": "([RFC8126]), except for values between 0x00 and 0x3f (in hexadecimal; inclusive), which are"
+        },
+        {
+          "sourceAlias": "L1596:S0",
+          "verbatimText": "assigned using Standards Action or IESG Approval as defined in Sections 4.9 and 4.10 of [RFC8126]."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1597:S0",
+          "verbatimText": "In addition to common fields as described in Section 11.2, permanent registrations in this registry"
+        },
+        {
+          "sourceAlias": "L1598:S0",
+          "verbatimText": "MUST include the following fields:"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1599:S0",
+          "verbatimText": "Stream Type: A name or label for the stream type."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1600:S0",
+          "verbatimText": "Sender: Which endpoint on an HTTP/3 connection may initiate a stream ofthis type. Values are"
+        },
+        {
+          "sourceAlias": "L1601:S0",
+          "verbatimText": "\"Client\", \"Server\", or \"Both\"."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1602:S0",
+          "verbatimText": "Specifications for permanent registrations MUST include a description ofthe stream type,"
+        },
+        {
+          "sourceAlias": "L1603:S0",
+          "verbatimText": "including the layout and semantics ofthe stream contents."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1604:S0",
+          "verbatimText": "The entries in Table 5 are registered by this document."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1605:S0",
+          "verbatimText": "Stream Type"
+        },
+        {
+          "sourceAlias": "L1605:S1",
+          "verbatimText": "Value"
+        },
+        {
+          "sourceAlias": "L1605:S2",
+          "verbatimText": "Specification"
+        },
+        {
+          "sourceAlias": "L1605:S3",
+          "verbatimText": "Sender"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1606:S0",
+          "verbatimText": "Control Stream"
+        },
+        {
+          "sourceAlias": "L1606:S1",
+          "verbatimText": "0x00"
+        },
+        {
+          "sourceAlias": "L1606:S2",
+          "verbatimText": "Section 6.2.1"
+        },
+        {
+          "sourceAlias": "L1606:S3",
+          "verbatimText": "Both"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1607:S0",
+          "verbatimText": "Push Stream"
+        },
+        {
+          "sourceAlias": "L1607:S1",
+          "verbatimText": "0x01"
+        },
+        {
+          "sourceAlias": "L1607:S2",
+          "verbatimText": "Section 4.6"
+        },
+        {
+          "sourceAlias": "L1607:S3",
+          "verbatimText": "Server"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1608:S0",
+          "verbatimText": "Table 5: Initial Stream Types"
+        }
+      ],
+      "semanticFunction": "OBJECT_CAPTION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1609:S0",
+          "verbatimText": "Each code ofthe format 0x1 f * N + 0x2 1 for non-negative integer values of N (that is, 0x21,"
+        },
+        {
+          "sourceAlias": "L1610:S0",
+          "verbatimText": "0x40, ..., through 0x3\uFB00\uFB00\uFB00\uFB00\uFB00\uFB00\uFB00e) MUST NOT be assigned by IANA and MUST NOT appear in the"
+        },
+        {
+          "sourceAlias": "L1611:S0",
+          "verbatimText": "listing of assigned values."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1612:S0",
+          "verbatimText": "12. References"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1613:S0",
+          "verbatimText": "12.1."
+        },
+        {
+          "sourceAlias": "L1613:S1",
+          "verbatimText": "Normative References"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1614:S0",
+          "verbatimText": "[ALTSVC]"
+        },
+        {
+          "sourceAlias": "L1614:S1",
+          "verbatimText": "Nottingham, M., McManus, P., and J. Reschke, \"HTTP Alternative Services\", RFC"
+        },
+        {
+          "sourceAlias": "L1615:S0",
+          "verbatimText": "7838, DOI 10.17487/RFC7838, April 2016, <https://www.rfc-editor.org/info/rfc7838>."
+        }
+      ],
+      "semanticFunction": "FOOTNOTE_OR_SOURCE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1616:S0",
+          "verbatimText": "[COOKIES]"
+        },
+        {
+          "sourceAlias": "L1616:S1",
+          "verbatimText": "Barth, A., \"HTTP State Management Mechanism\", RFC 6265, DOI 10.17487/"
+        },
+        {
+          "sourceAlias": "L1617:S0",
+          "verbatimText": "RFC6265, April 2011, <https://www.rfc-editor.org/info/rfc6265>."
+        }
+      ],
+      "semanticFunction": "FOOTNOTE_OR_SOURCE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1618:S0",
+          "verbatimText": "[HTTP]"
+        },
+        {
+          "sourceAlias": "L1618:S1",
+          "verbatimText": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \"HTTP Semantics\", STD"
+        },
+        {
+          "sourceAlias": "L1619:S0",
+          "verbatimText": "97, RFC 9110, DOI 10.17487/RFC9110, June 2022, <https://www.rfc-editor.org/info/"
+        },
+        {
+          "sourceAlias": "L1620:S0",
+          "verbatimText": "rfc9110>."
+        }
+      ],
+      "semanticFunction": "FOOTNOTE_OR_SOURCE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1621:S0",
+          "verbatimText": "Bishop Standards Track Page 45"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1622:S0",
+          "verbatimText": "RFC 9114 HTTP/3 June 2022"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1623:S0",
+          "verbatimText": "[HTTP-CACHING]"
+        },
+        {
+          "sourceAlias": "L1623:S1",
+          "verbatimText": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \"HTTP Caching\", STD"
+        },
+        {
+          "sourceAlias": "L1624:S0",
+          "verbatimText": "98, RFC 9111, DOI 10.17487/RFC9111, June 2022, <https://www.rfc-editor.org/info/"
+        },
+        {
+          "sourceAlias": "L1625:S0",
+          "verbatimText": "rfc9111>."
+        }
+      ],
+      "semanticFunction": "FOOTNOTE_OR_SOURCE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1626:S0",
+          "verbatimText": "[HTTP-REPLAY] Thomson, M., Nottingham, M., and W. Tarreau, \"Using Early Data in HTTP\","
+        },
+        {
+          "sourceAlias": "L1627:S0",
+          "verbatimText": "RFC 8470, DOI 10.17487/RFC8470, September 2018, <https://www.rfc-editor.org/"
+        },
+        {
+          "sourceAlias": "L1628:S0",
+          "verbatimText": "info/rfc8470>."
+        }
+      ],
+      "semanticFunction": "FOOTNOTE_OR_SOURCE"
+    }
+  ]
+}

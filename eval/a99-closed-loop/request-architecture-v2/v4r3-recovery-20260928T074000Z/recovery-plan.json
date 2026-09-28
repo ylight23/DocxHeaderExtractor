@@ -1,0 +1,95 @@
+{
+  "artifactKind": "a99_v4r3_fixed120_recovery_plan",
+  "planVersion": "v1",
+  "status": "FROZEN_PENDING_EXECUTION",
+  "experimentOnly": true,
+  "productionPromotion": false,
+  "providerCallsAtFreeze": 0,
+  "controlCandidate": "V4R3_FIXED120_MEDIUM_MATCHED_CONTROL",
+  "frozenPreflight": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-medium-matched-control-preflight.v1.json",
+  "primaryRun": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z",
+  "policy": {
+    "identicalRetryMaximumPerParent": 1,
+    "splitAfterRetryFailure": true,
+    "splitMethod": "deterministic midpoint",
+    "parentOwnedAtoms": 120,
+    "childOwnedAtoms": [
+      60,
+      60
+    ],
+    "haloAtoms": 20,
+    "maxRecoveryAttempts": 12,
+    "maxAdaptiveChildCalls": 12,
+    "totalHardCallCap": 55,
+    "successfulLeavesNeverResent": true,
+    "ownershipInvariant": "owned(parent) = owned(childA) union owned(childB); child ownership intersection is empty"
+  },
+  "pendingParents": 9,
+  "parents": [
+    {
+      "parentOrdinal": 3,
+      "semanticRequestHash": "aea50f71c1c840daf8e61a42779c7bc6dc91a1d8712b833d42e0544800b9fdde",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-003.request.json",
+      "primaryResponseFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-003.response.json",
+      "reason": "NO_TEXTUAL_CONTENT"
+    },
+    {
+      "parentOrdinal": 4,
+      "semanticRequestHash": "9dd8f6010525c32f02cc4d8793fa9f643e5942082d66d7d24058c75f0c847a45",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-004.request.json",
+      "primaryResponseFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-004.response.json",
+      "reason": "CONTRACT_INVALID_JSON_TRUNCATION"
+    },
+    {
+      "parentOrdinal": 6,
+      "semanticRequestHash": "67aaa6a7687f9fc95b86cdbec5657d50ddb396e98270052f3e684db200d35e52",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-006.request.json",
+      "primaryResponseFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-006.response.json",
+      "reason": "CONTRACT_INVALID_JSON_TRUNCATION"
+    },
+    {
+      "parentOrdinal": 17,
+      "semanticRequestHash": "5064be15002740471e4647c4e435625bb2f3cf2648ad4aaea46f92696fac72b3",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-017.request.json",
+      "primaryResponseFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-017.response.json",
+      "reason": "NO_TEXTUAL_CONTENT"
+    },
+    {
+      "parentOrdinal": 19,
+      "semanticRequestHash": "e57d19b10951f0d81d69251a5f5c9b54835204c133bbbef81a1273b04ec57c6e",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-019.request.json",
+      "primaryResponseFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-019.response.json",
+      "reason": "NO_TEXTUAL_CONTENT"
+    },
+    {
+      "parentOrdinal": 20,
+      "semanticRequestHash": "8461332ee7d34d5f7662c4ff4141a8f68b41b97ca1ca6978b99c759934db6e4b",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-020.request.json",
+      "primaryResponseFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-020.response.json",
+      "reason": "NO_TEXTUAL_CONTENT"
+    },
+    {
+      "parentOrdinal": 21,
+      "semanticRequestHash": "e502a59eca039b7b84f19eb52bbe6227c70126e05759e1d78989325f7a7d6a5a",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-021.request.json",
+      "primaryResponseFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-021.response.json",
+      "reason": "NO_TEXTUAL_CONTENT"
+    },
+    {
+      "parentOrdinal": 23,
+      "semanticRequestHash": "b6dfd9906a61b4b4695d0ae90903e496ebb619862475b4ec0f8c4fb5f3febf58",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-023.request.json",
+      "primaryResponseFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-023.response.json",
+      "reason": "NO_TEXTUAL_CONTENT"
+    },
+    {
+      "parentOrdinal": 24,
+      "semanticRequestHash": "2b0a4126a06c829fb091e765f35a0bfcea535c9712c49a581211efd58fcc6b5b",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-024.request.json",
+      "primaryResponseFile": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/call-024.response.json",
+      "reason": "NO_TEXTUAL_CONTENT"
+    }
+  ],
+  "goldRead": false,
+  "productionChanged": false
+}
