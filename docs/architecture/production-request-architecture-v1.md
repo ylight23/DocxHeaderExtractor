@@ -12,7 +12,16 @@ Status: `FROZEN` · request optimization stops here until production telemetry s
 | boundary-whitespace matching | tolerant but exact: a quote whose only difference from its atom is edge whitespace is the whole atom; anything else is refused as before | `SemanticSourcePartCanonicalizer` CASE B2 |
 | semantic recovery | existing deterministic path | unchanged |
 | selective medium escalation | OFF / not implemented | experimental V2 (P7) |
-| packing | unchanged (`FIXED_OWNED_COUNT_120` default) | `SemanticEvidencePackingPolicies.Default` |
+| packing | **OPEN — see correction below.** Code default is still `FIXED_OWNED_COUNT_120` | `SemanticEvidencePackingPolicies.Default` |
+
+## Correction (2026-09-28): packing of the evidence
+
+Every run scored below used **P05 `RESOURCE_BOUNDED_SOURCE_PACKING_V1`** (96 owned / 8 halo /
+28k estimated-token ceiling, 31 calls), not the production default `FIXED_OWNED_COUNT_120`.
+The only fixed120 run on this cohort (V4R3) is `INCOMPLETE_EXPERIMENT_ONLY` (48 calls, 20/25 parent
+coverage, never scored). So these numbers support reasoning=none + streaming + CASE B2 **with P05
+packing**; they say nothing about fixed120. The P05 policy code is not yet committed. The packing
+decision for production is therefore open, not "unchanged".
 
 ## Evidence (provider calls during scoring: 0)
 
