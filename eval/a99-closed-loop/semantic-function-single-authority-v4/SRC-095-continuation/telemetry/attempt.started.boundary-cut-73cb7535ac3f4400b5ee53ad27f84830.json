@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "ATTEMPT_STARTED",
+  "timestamp": "2026-09-27T10:38:40.0158076\u002B00:00",
+  "campaignId": "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY_CONTINUATION",
+  "documentId": "SRC-095",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-d9f7570f26a843e7af9ec91eb90e0ca7",
+  "callOrdinal": 9,
+  "attemptId": "boundary-cut-73cb7535ac3f4400b5ee53ad27f84830",
+  "requestHash": "b81d4265093812db85d0b6b4d64b2e82691e560b07d9c0b52ae58ad3edd41c79",
+  "requestBytes": 135803,
+  "estimatedInputTokens": 21410,
+  "maxOutputTokens": 15456,
+  "attemptStartedAt": "2026-09-27T10:38:40.0128748+00:00",
+  "attemptDeadlineAt": "2026-09-27T10:40:10.0128748+00:00"
+}

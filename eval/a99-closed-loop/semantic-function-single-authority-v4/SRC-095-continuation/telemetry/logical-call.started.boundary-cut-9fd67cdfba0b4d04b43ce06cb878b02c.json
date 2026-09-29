@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "LOGICAL_CALL_STARTED",
+  "timestamp": "2026-09-27T10:39:43.5196288\u002B00:00",
+  "campaignId": "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY_CONTINUATION",
+  "documentId": "SRC-095",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-9fd67cdfba0b4d04b43ce06cb878b02c",
+  "callOrdinal": 16,
+  "requestHash": "1f56b12476d7ae30f86b684a83a5cbe486881b184650c587e599d8ee7c27d567",
+  "requestBytes": 137522,
+  "estimatedInputTokens": 21854,
+  "maxOutputTokens": 15456,
+  "candidateCount": 1,
+  "currentNodeCount": 0,
+  "contextItemCount": 1,
+  "contextCharacterCount": 85805,
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash"
+}

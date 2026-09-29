@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "ATTEMPT_STARTED",
+  "timestamp": "2026-09-27T15:31:30.7516548\u002B00:00",
+  "campaignId": "A99_SEMANTIC_CONTROL_CEILING_R1",
+  "documentId": "SRC-089",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-711012bd16704745942ffef633c30414",
+  "callOrdinal": 2,
+  "attemptId": "boundary-cut-a21e8854cebd4766ba478d426cf6218a",
+  "requestHash": "598f35184a9bcf4a07789aeeb38c4ceec49f0cc140215f714e3949b029e354ec",
+  "requestBytes": 140907,
+  "estimatedInputTokens": 22620,
+  "maxOutputTokens": 15456,
+  "attemptStartedAt": "2026-09-27T15:31:30.7443761+00:00",
+  "attemptDeadlineAt": "2026-09-27T15:33:00.7443761+00:00"
+}
