@@ -14,7 +14,9 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class V5ProtocolV2_1PreflightTests
 {
-    private const string CanaryRoot = "artifacts/v5-provider-canary-v2_1";
+    // A run-oriented path, not a protocol-version one: artifacts/v5-provider-canary-v2_1/ is the
+    // frozen historical run at commit 72bb954 and must never be overwritten by the current source.
+    private const string CanaryRoot = "artifacts/v5-provider-canary-current";
 
     [Fact]
     public void Recompose_src089_and_src095_under_v2_1_without_provider_or_gold()
@@ -34,6 +36,16 @@ public sealed class V5ProtocolV2_1PreflightTests
             Assert.All(built.Requests, request => Assert.Equal(V5SemanticRequestComposerV2_1.Version, request.Request.ComposerVersion));
             var ownedAliases = built.Requests.SelectMany(item => item.OwnedAliases).ToArray();
             Assert.Equal(ownedAliases.Length, ownedAliases.Distinct(StringComparer.Ordinal).Count());
+
+            // Every pack now freezes its own complete provider request (not only the semantic prompt
+            // bytes), so a max_tokens change can never go unnoticed by a preflight that hashed only
+            // the prompt - the SRC-095 PACK_001 truncation this closes.
+            Assert.All(built.Requests, request =>
+            {
+                Assert.True(request.MaxCompletionTokens >= V5SemanticCompletionBudget.MinCompletionTokens);
+                Assert.False(string.IsNullOrWhiteSpace(request.ProviderRequestHash));
+                Assert.True(request.ProviderRequestBytes > request.Request.Utf8Bytes);
+            });
         }
     }
 
@@ -82,6 +94,13 @@ public sealed class V5ProtocolV2_1PreflightTests
         var sourceUniverseHashes = docs.ToDictionary(doc => doc.Item1, doc => doc.Built.Preflight.SourceUniverseSha, StringComparer.Ordinal);
         var head = GitHead();
 
+        // The legacy boundary-cut formula this closes, purely for the before/after record - never
+        // used to build the actual request. expectedItemCount mirrors how the historical canary
+        // runner actually invoked it (one per owned alias), so the comparison is honest.
+        var legacyMaxTokens = selection.Select(item =>
+            DocxHeaderExtractor.Infrastructure.AI.OpenRouterHeaderExtractor.BoundaryOutputBudgetFor(
+                item.Pack.Request.Prompt, item.Pack.OwnedAliases.Count, 32768)).ToArray();
+
         var canarySelection = new
         {
             schemaVersion = "v5-provider-canary-selection-v1",
@@ -89,7 +108,7 @@ public sealed class V5ProtocolV2_1PreflightTests
             goldRead = false,
             selectionUsedGold = false,
             canaryRequestCount = V5CanaryGate.CanaryRequestCount,
-            packs = selection.Select(item => new
+            packs = selection.Select((item, index) => new
             {
                 documentId = item.DocumentId,
                 packId = item.Pack.PackId,
@@ -101,6 +120,10 @@ public sealed class V5ProtocolV2_1PreflightTests
                 protocolVersion = V5Protocol.ClaimSchemaVersionV2_1,
                 schemaHash = item.Pack.Request.SchemaHash,
                 promptHash = item.Pack.Request.PromptHash,
+                legacyMaxCompletionTokens = legacyMaxTokens[index],
+                maxCompletionTokens = item.Pack.MaxCompletionTokens,
+                providerRequestHash = item.Pack.ProviderRequestHash,
+                providerRequestBytes = item.Pack.ProviderRequestBytes,
             }),
         };
         WriteJson(Path.Combine(CanaryRoot, "canary-selection.v1.json"), canarySelection);
@@ -117,6 +140,10 @@ public sealed class V5ProtocolV2_1PreflightTests
             canaryRequestCount = V5CanaryGate.CanaryRequestCount,
             requestHashes = selection.Select(item => item.Pack.Request.RequestHash).ToArray(),
             requestBytes = selection.Select(item => item.Pack.Request.Utf8Bytes).ToArray(),
+            maxCompletionTokens = selection.Select(item => item.Pack.MaxCompletionTokens).ToArray(),
+            providerRequestHashes = selection.Select(item => item.Pack.ProviderRequestHash).ToArray(),
+            providerRequestBytes = selection.Select(item => item.Pack.ProviderRequestBytes).ToArray(),
+            legacyMaxCompletionTokens = legacyMaxTokens,
             selectionRationale = new
             {
                 a = "first SRC-089 pack, deterministic pack-list order",
