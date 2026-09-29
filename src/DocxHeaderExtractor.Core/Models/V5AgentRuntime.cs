@@ -92,9 +92,10 @@ public sealed class DocumentAgentRuntime
         Mark(AgentStage.INGEST, "task-contract-validated");
         Mark(AgentStage.OBSERVE, $"evidence-nodes={evidenceGraph.Nodes.Count}");
 
-        var allClaims = new List<BoundSemanticClaim>();
+        var allClaims = new Dictionary<string, BoundSemanticClaim>(StringComparer.Ordinal);
         var allConflicts = new List<KnowledgeValidationIssue>();
         var retrieved = new List<EvidenceCandidate>();
+        var workingGraph = evidenceGraph;
         var semanticCalls = 0;
         var retrievalRounds = 0;
         var visualCalls = 0;
@@ -103,13 +104,13 @@ public sealed class DocumentAgentRuntime
         {
             cancellationToken.ThrowIfCancellationRequested();
             if (ElapsedSeconds(started) > budget.MaxWallClockSeconds)
-                return Finish(allClaims, evidenceGraph, allConflicts, trace, true, semanticCalls, retrievalRounds, visualCalls);
+                return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace, true, semanticCalls, retrievalRounds, visualCalls);
 
             if (semanticCalls >= budget.MaxSemanticModelCalls)
                 break;
             Mark(semanticCalls == 0 ? AgentStage.INITIAL_REASONING : AgentStage.REVALIDATE, $"semantic-call={semanticCalls + 1}");
             var response = await _reasoner.ReasonAsync(
-                new SemanticReasoningContext(contract, evidenceGraph, retrieved, semanticCalls), cancellationToken);
+                new SemanticReasoningContext(contract, workingGraph, retrieved, semanticCalls), cancellationToken);
             var contractIssues = SemanticClaimContract.Validate(response, contract);
             if (contractIssues.Count > 0)
             {
@@ -117,11 +118,11 @@ public sealed class DocumentAgentRuntime
                 break;
             }
             var binding = ExactClaimBinder.Bind(response.Claims, atoms);
-            allClaims.AddRange(binding.Bound);
+            foreach (var claim in binding.Bound) allClaims[claim.ClaimId] = claim;
             allConflicts.AddRange(binding.Refusals.Select(item => new KnowledgeValidationIssue("CLAIM_BINDING", item.Key, item.Value)));
             semanticCalls++;
 
-            var state = new DocumentKnowledgeState(evidenceGraph, allClaims, allConflicts);
+            var state = new DocumentKnowledgeState(workingGraph, allClaims.Values, allConflicts);
             Mark(AgentStage.VALIDATE, $"claims={state.Claims.Count};open={state.OpenClaims.Count}");
             var graphIssues = KnowledgeGraphValidator.Validate(state, contract);
             allConflicts.AddRange(graphIssues);
@@ -133,23 +134,47 @@ public sealed class DocumentAgentRuntime
             Mark(AgentStage.RETRIEVE, $"actions={plan.Actions.Count}");
             foreach (var action in plan.Actions)
             {
-                var source = state.Claims.FirstOrDefault(item => item.ClaimId == action.ClaimId)?.Subject.Identity;
+                var claim = state.Claims.FirstOrDefault(item => item.ClaimId == action.ClaimId);
+                if (claim is null) continue;
+                var sourceAlias = claim.Subject.Parts.FirstOrDefault()?.Alias;
+                var sourceEvidenceId = workingGraph.Nodes.FirstOrDefault(node => node.SourceAlias == sourceAlias)?.EvidenceId;
+                if (action.Modality == EvidenceModality.VISUAL && _visual is not null && visualCalls < budget.MaxVisualCalls)
+                {
+                    Mark(AgentStage.VISUAL_ESCALATE, $"claim={action.ClaimId}");
+                    var aliases = claim.Subject.Parts.Select(part => part.Alias).ToHashSet(StringComparer.Ordinal);
+                    var visualRequest = new VisualEvidenceRequest(
+                        claim.ClaimId,
+                        $"Resolve evidence need {action.Need} for predicate {claim.Predicate}.",
+                        workingGraph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).Select(node => node.EvidenceId).ToArray(),
+                        workingGraph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).Select(node => node.Anchor.Geometry?.Page).FirstOrDefault(value => value is not null),
+                        workingGraph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).Select(node => node.Anchor.Geometry).FirstOrDefault(value => value is not null),
+                        budget.MaxVisualCalls - visualCalls);
+                    var visualObservations = await _visual.InspectAsync(visualRequest, cancellationToken);
+                    if (visualObservations.Count > 0)
+                    {
+                        var visualGraph = EvidenceGraphBuilder.Build(visualObservations);
+                        workingGraph = new UniversalEvidenceGraph(
+                            workingGraph.Nodes.Concat(visualGraph.Nodes),
+                            workingGraph.Relations.Concat(visualGraph.Relations));
+                    }
+                    visualCalls++;
+                    continue;
+                }
                 var candidate = _retriever.Retrieve(
-                    new EvidenceRetrievalRequest(action.ClaimId, state.Claims.First(item => item.ClaimId == action.ClaimId).Predicate,
-                        action.Need, evidenceGraph.Nodes.FirstOrDefault(node => node.SourceAlias == source)?.EvidenceId,
-                        "task-contract", action.MaxResults), evidenceGraph);
+                    new EvidenceRetrievalRequest(action.ClaimId, claim.Predicate, action.Need, sourceEvidenceId,
+                        "task-contract", action.MaxResults), workingGraph);
                 retrieved.AddRange(candidate.Take(Math.Max(0, budget.MaxRetrievedEvidenceNodes - retrieved.Count)));
             }
             retrievalRounds++;
-            if (retrievalRounds >= budget.MaxRetrievalRounds || semanticCalls >= budget.MaxSemanticModelCalls) break;
+            if (semanticCalls >= budget.MaxSemanticModelCalls) break;
         }
 
-        var finalState = new DocumentKnowledgeState(evidenceGraph, allClaims, allConflicts);
+        var finalState = new DocumentKnowledgeState(workingGraph, allClaims.Values, allConflicts);
         var finalIssues = KnowledgeGraphValidator.Validate(finalState, contract);
         allConflicts.AddRange(finalIssues);
         Mark(AgentStage.PROJECT, "projection-input-frozen");
         Mark(AgentStage.COMPLETE, allConflicts.Count == 0 ? "resolved" : "completed-with-open-or-conflicted-claims");
-        return Finish(allClaims, evidenceGraph, allConflicts, trace, semanticCalls >= budget.MaxSemanticModelCalls && finalState.OpenClaims.Count > 0,
+        return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace, semanticCalls >= budget.MaxSemanticModelCalls && finalState.OpenClaims.Count > 0,
             semanticCalls, retrievalRounds, visualCalls);
     }
 

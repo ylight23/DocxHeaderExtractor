@@ -160,6 +160,25 @@ public sealed class V5ArchitectureTests
         Assert.Equal(1, result.Trace.Count(item => item.Stage == AgentStage.OBSERVE));
     }
 
+    [Fact]
+    public async Task Runtime_replaces_open_claim_after_bounded_evidence_round()
+    {
+        var graph = EvidenceGraphBuilder.Build([
+            Observation("E1", "A1", "Alpha"),
+            Observation("E2", "A2", "Alpha target"),
+        ]);
+        var reasoner = new SequenceReasoner();
+        var contract = Contract() with
+        {
+            ExecutionBudget = new ExecutionBudget(MaxSemanticModelCalls: 2, MaxRetrievalRounds: 1),
+        };
+        var result = await new DocumentAgentRuntime(reasoner, new InMemoryEvidenceRetriever())
+            .RunAsync(contract, graph, Atoms());
+        var claim = Assert.Single(result.State.Claims);
+        Assert.Equal(ClaimResolutionState.RESOLVED, claim.State);
+        Assert.Equal(2, result.SemanticModelCalls);
+    }
+
     private static DocumentTaskContract Contract() => new(
         V5Protocol.TaskContractVersion,
         "generic-document-task",
@@ -198,5 +217,22 @@ public sealed class V5ArchitectureTests
 
         public ValueTask<SemanticClaimResponse> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken) =>
             ValueTask.FromResult(new SemanticClaimResponse([]));
+    }
+
+    private sealed class SequenceReasoner : ISemanticReasoner
+    {
+        public string Identity => "test-sequence";
+
+        public ValueTask<SemanticClaimResponse> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken)
+        {
+            var state = context.CallOrdinal == 0 ? ClaimResolutionState.OPEN : ClaimResolutionState.RESOLVED;
+            return ValueTask.FromResult(new SemanticClaimResponse([
+                new("c1", new ClaimSourceEndpoint([
+                    new("A1", CanonicalSemanticSelectionMode.WholeAlias)]),
+                    "DESCRIBES", State: state,
+                    Value: state == ClaimResolutionState.RESOLVED ? "target" : null,
+                    EvidenceNeeds: state == ClaimResolutionState.OPEN ? [EvidenceNeed.GLOBAL_TARGET] : []),
+            ]));
+        }
     }
 }
