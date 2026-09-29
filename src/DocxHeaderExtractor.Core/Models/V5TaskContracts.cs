@@ -12,6 +12,13 @@ public static class V5Protocol
     public const string TaskContractVersion = "v5-task-contract-1";
     public const string ClaimSchemaVersion = "v5-source-backed-claim-1";
     public const string ClaimSchemaVersionV2 = "v5-source-backed-claim-2";
+
+    /// <summary>
+    /// v2 plus: durable claim identity independent of resolution state, an OPEN relation representable
+    /// without an object, owned/visible binding-scope enforcement, a closed selectionMode vocabulary,
+    /// and a harness-only EXHAUSTED state. v2 itself is kept as an immutable historical checkpoint.
+    /// </summary>
+    public const string ClaimSchemaVersionV2_1 = "v5-source-backed-claim-2.1";
 }
 
 public enum ClaimResolutionState

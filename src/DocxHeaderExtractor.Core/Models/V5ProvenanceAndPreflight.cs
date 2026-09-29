@@ -112,6 +112,26 @@ public static class V5ProviderPreflightBuilder
         return preflight with { ClaimSchemaHash = SemanticClaimContractV2.SchemaHash() };
     }
 
+    /// <summary>Builds the v2.1 provider-free preflight while leaving all v1/v2 hashes/artifacts intact.</summary>
+    public static V5ProviderPreflight BuildV2_1(
+        string productionSourceSha,
+        UniversalEvidenceGraph sourceUniverse,
+        DocumentTaskContract contract,
+        IReadOnlyList<V5ComposedSemanticRequest> requests,
+        string packingPolicy,
+        V5ProviderEnvelope providerEnvelope)
+    {
+        ArgumentNullException.ThrowIfNull(requests);
+        var preflight = Build(
+            productionSourceSha,
+            sourceUniverse,
+            contract,
+            requests,
+            packingPolicy,
+            providerEnvelope);
+        return preflight with { ClaimSchemaHash = SemanticClaimContractV2_1.SchemaHash() };
+    }
+
     public static V5ProviderPreflight Build(
         string productionSourceSha,
         UniversalEvidenceGraph sourceUniverse,

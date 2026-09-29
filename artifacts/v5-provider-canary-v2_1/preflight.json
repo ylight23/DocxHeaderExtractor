@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "v5-provider-canary-preflight-v1",
+  "head": "b3b879a9a7f2fc94b710a3a7577d8dc8888f940c",
+  "protocolVersion": "v5-source-backed-claim-2.1",
+  "composerVersion": "v5-semantic-request-composer-2.1",
+  "schemaHash": "d34011ba753892c49df54fbabac02593bc43bac12412fcc8b6f6015b8889223a",
+  "taskContractHash": "0f25bd25af2a0906cef41ddd8f8c57024cc4056104b6e0aed06d233e5a0b060c",
+  "sourceUniverseHashes": {
+    "SRC-089": "1e3452c468403c1b90348fdbbb7445fe7c93c45e09fa5bd2ce2c8d7b9a01c601",
+    "SRC-095": "7c27a48f3399cfb97ba93b1f488623bfc71b13d0a0e13b2a1b75fef37939476e"
+  },
+  "canaryRequestCount": 3,
+  "requestHashes": [
+    "6255263d225291b6797bca35f77f286e08821e104aba703d02d9a3ff86b786a9",
+    "e72b2108470b472a4fdd3cdbe43389ccbf3809c52fe5868808ee17f21a4db52e",
+    "b06168ecb6999999750674819f5546a6c1f2108d260e08741c884209ff2d32d2"
+  ],
+  "requestBytes": [
+    142099,
+    112987,
+    158121
+  ],
+  "selectionRationale": {
+    "a": "first SRC-089 pack, deterministic pack-list order",
+    "b": "first SRC-095 pack, deterministic pack-list order",
+    "c": "largest request by UTF-8 byte size across both documents; ties broken by (documentId, packId); re-selected to the next-largest distinct pack if it duplicated A or B"
+  },
+  "providerEnvelope": {
+    "Model": "qwen/qwen3.7-flash",
+    "Provider": "Alibaba",
+    "Reasoning": "none",
+    "Streaming": true,
+    "ResponseFormat": "json_object",
+    "TimeoutSeconds": 300,
+    "usageInclude": true,
+    "openRouterResponseCacheDisabled": true,
+    "explicitCacheControl": null
+  },
+  "acceptanceCriteria": [
+    "TRANSPORT_VALID: HTTP/provider success, complete SSE, terminal finish_reason, clean EOF",
+    "JSON_VALID",
+    "SCHEMA_VALID",
+    "GROUNDING_PRESENT: subject/sourceParts present",
+    "BINDING_VALID: exact source binding succeeds",
+    "OWNERSHIP_VALID: subject belongs to owned aliases",
+    "VOCABULARY_VALID: predicate/relation belongs to the task contract",
+    "no Gold read; no heading F1 threshold at canary stage"
+  ],
+  "providerCalls": 0,
+  "goldRead": false,
+  "providerExecutionAuthorized": false
+}
