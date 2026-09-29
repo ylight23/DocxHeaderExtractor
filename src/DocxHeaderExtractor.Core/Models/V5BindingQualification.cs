@@ -49,7 +49,7 @@ public sealed record V5PackBindingQualification
     /// <summary>Harness refusal key to the binder's exact reason, in proposal order.</summary>
     public required IReadOnlyList<KeyValuePair<string, string>> Refusals { get; init; }
 
-    /// <summary>Refusal category (the reason up to its first <c>:</c>) to count.</summary>
+    /// <summary>Refusal family (<see cref="V5BindingQualifier.RefusalFamily"/>) to count.</summary>
     public required IReadOnlyDictionary<string, int> RefusalTaxonomy { get; init; }
 
     /// <summary>A bound claim whose subject, object or predicate differs from its proposal. Must be zero.</summary>
@@ -212,7 +212,7 @@ public static class V5BindingQualifier
             OtherRefusalCount = binding.Refusals.Count - ownership,
             Refusals = refusals,
             RefusalTaxonomy = refusals
-                .GroupBy(item => RefusalCategory(item.Value), StringComparer.Ordinal)
+                .GroupBy(item => RefusalFamily(item.Value), StringComparer.Ordinal)
                 .OrderBy(group => group.Key, StringComparer.Ordinal)
                 .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
             UnsafeRepairCount = unsafeRepairs,
@@ -224,10 +224,55 @@ public static class V5BindingQualifier
         reason.StartsWith("subject-alias-not-owned", StringComparison.Ordinal) ||
         reason.StartsWith("object-alias-not-visible", StringComparison.Ordinal);
 
-    public static string RefusalCategory(string reason)
+    public const string FamilySubjectAliasNotOwned = "subject-alias-not-owned";
+    public const string FamilyObjectAliasNotVisible = "object-alias-not-visible";
+    public const string FamilyUnknownAlias = "unknown-alias";
+    public const string FamilyExactTextBinding = "exact-text-binding";
+    public const string FamilySourceOrderOrOverlap = "source-order-or-overlap";
+    public const string FamilyRefinementId = "refinement-id";
+    public const string FamilyDuplicateDurableClaimId = "duplicate-durable-claim-id";
+    public const string FamilyOtherExactBinderRefusal = "other-exact-binder-refusal";
+
+    /// <summary>Every family a refusal can land in, fixed before any cohort data is seen.</summary>
+    public static IReadOnlyList<string> RefusalFamilies { get; } =
+    [
+        FamilySubjectAliasNotOwned,
+        FamilyObjectAliasNotVisible,
+        FamilyUnknownAlias,
+        FamilyExactTextBinding,
+        FamilySourceOrderOrOverlap,
+        FamilyRefinementId,
+        FamilyDuplicateDurableClaimId,
+        FamilyOtherExactBinderRefusal,
+    ];
+
+    /// <summary>
+    /// Maps an exact binder refusal to a stable family. Keyed on the fixed wording of
+    /// <see cref="ExactClaimBinderV2_1"/> and <see cref="SemanticSourcePartBinder"/>, never on the
+    /// alias or text a reason happens to quote. Anything unrecognised is kept as its own family
+    /// rather than guessed into one; the exact reason is always preserved alongside.
+    /// </summary>
+    public static string RefusalFamily(string reason)
     {
-        var colon = reason.IndexOf(':', StringComparison.Ordinal);
-        return colon < 0 ? reason : reason[..colon];
+        ArgumentNullException.ThrowIfNull(reason);
+        if (reason.StartsWith("subject-alias-not-owned", StringComparison.Ordinal)) return FamilySubjectAliasNotOwned;
+        if (reason.StartsWith("object-alias-not-visible", StringComparison.Ordinal)) return FamilyObjectAliasNotVisible;
+        if (reason.EndsWith(" is not an atom in this source", StringComparison.Ordinal)) return FamilyUnknownAlias;
+        if (reason is "unknown-existing-claim-id" or "existing-claim-id-mismatch") return FamilyRefinementId;
+        if (reason == "duplicate-harness-claim-id") return FamilyDuplicateDurableClaimId;
+        if (reason.EndsWith(" does not contain that text", StringComparison.Ordinal) ||
+            reason.Contains(" occurrences of that text, not ", StringComparison.Ordinal) ||
+            reason.Contains(" contains that text ", StringComparison.Ordinal) ||
+            reason.EndsWith(" must not also quote text", StringComparison.Ordinal) ||
+            reason.EndsWith(" selects part of an atom without saying which", StringComparison.Ordinal) ||
+            reason.EndsWith(" is not a selection mode", StringComparison.Ordinal))
+            return FamilyExactTextBinding;
+        if (reason.EndsWith(" is selected twice at the same place", StringComparison.Ordinal) ||
+            reason.EndsWith(" selects text that comes before the part above it", StringComparison.Ordinal) ||
+            reason.EndsWith(" selects text the part above it already covers", StringComparison.Ordinal) ||
+            reason.Contains(" does not come after ", StringComparison.Ordinal))
+            return FamilySourceOrderOrOverlap;
+        return FamilyOtherExactBinderRefusal;
     }
 
     private static V5PackBindingQualification Fatal(string reason) => new()
@@ -280,6 +325,11 @@ public sealed record V5QualificationAggregate(
     int UnsafeRepairs,
     int OutOfScopeClaimsAccepted)
 {
+    public int PacksResponseFatal => ProviderCalls - UsableResponses;
+
+    /// <summary>Every family in <see cref="V5BindingQualifier.RefusalFamilies"/>, zero included, plus any unexpected one.</summary>
+    public IReadOnlyDictionary<string, int> RefusalTaxonomy { get; init; } = new Dictionary<string, int>(StringComparer.Ordinal);
+
     public static V5QualificationAggregate From(IReadOnlyList<V5PackBindingQualification> packs)
     {
         ArgumentNullException.ThrowIfNull(packs);
@@ -305,6 +355,15 @@ public sealed record V5QualificationAggregate(
             PacksBindingEmpty: packs.Count(pack => pack.Outcome == V5PackBindingOutcome.BINDING_EMPTY),
             PacksRuntimeProcessedSafely: packs.Count(pack => pack.RuntimeProcessedSafely),
             UnsafeRepairs: packs.Sum(pack => pack.UnsafeRepairCount),
-            OutOfScopeClaimsAccepted: packs.Sum(pack => pack.OutOfScopeAcceptedCount));
+            OutOfScopeClaimsAccepted: packs.Sum(pack => pack.OutOfScopeAcceptedCount))
+        {
+            RefusalTaxonomy = V5BindingQualifier.RefusalFamilies
+                .Concat(packs.SelectMany(pack => pack.RefusalTaxonomy.Keys))
+                .Distinct(StringComparer.Ordinal)
+                .ToDictionary(
+                    family => family,
+                    family => packs.Sum(pack => pack.RefusalTaxonomy.GetValueOrDefault(family)),
+                    StringComparer.Ordinal),
+        };
     }
 }

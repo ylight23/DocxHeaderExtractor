@@ -244,7 +244,12 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             {
                 var errorText = await response.Content.ReadAsStringAsync(transportDeadline.Token);
                 telemetryAttempt?.PersistRawResponse(errorText);
-                telemetryAttempt?.Fail("HTTP_ERROR", new { status });
+                telemetryAttempt?.Fail("HTTP_ERROR", new
+                {
+                    status,
+                    retryable = IsRetryableStatus(status),
+                    retryAfterSeconds = RetryAfterOf(response)?.TotalSeconds,
+                });
                 _options.DebugLog?.Invoke($"[OpenRouter] LLM RESPONSE status={status} payload={SafeDebug(errorText)}");
                 var error = new HttpRequestException(
                     $"OpenRouter trả {status} {response.ReasonPhrase}: {SafeError(errorText)}",
@@ -327,6 +332,8 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         telemetryAttempt?.Event("TRANSPORT_COMPLETE", new
         {
             finishReason = stream.FinishReason,
+            doneObserved = stream.DoneObserved,
+            cleanEof = stream.StreamEnded,
             usage = stream.Usage,
         });
         telemetryAttempt?.PersistParsed(new { content, finishReason = stream.FinishReason, usage = stream.Usage });

@@ -23,7 +23,18 @@
     "PacksBindingEmpty": 0,
     "PacksRuntimeProcessedSafely": 3,
     "UnsafeRepairs": 0,
-    "OutOfScopeClaimsAccepted": 0
+    "OutOfScopeClaimsAccepted": 0,
+    "PacksResponseFatal": 0,
+    "RefusalTaxonomy": {
+      "subject-alias-not-owned": 3,
+      "object-alias-not-visible": 0,
+      "unknown-alias": 0,
+      "exact-text-binding": 0,
+      "source-order-or-overlap": 0,
+      "refinement-id": 0,
+      "duplicate-durable-claim-id": 0,
+      "other-exact-binder-refusal": 0
+    }
   },
   "packs": [
     {

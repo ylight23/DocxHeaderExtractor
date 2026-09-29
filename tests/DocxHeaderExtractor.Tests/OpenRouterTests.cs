@@ -277,6 +277,45 @@ public sealed class OpenRouterTests
         Assert.Single(waits);
     }
 
+    [Fact]
+    public async Task ExecuteAsync_telemetry_records_retry_after_done_and_clean_eof_per_attempt()
+    {
+        var root = Path.Combine(Path.GetTempPath(), $"dhx-telemetry-{Guid.NewGuid():N}");
+        try
+        {
+            var handler = new CaptureHandler(
+                Reply.Status(HttpStatusCode.TooManyRequests, retryAfterSeconds: 3),
+                Reply.Sse("{\"claims\":[]}"));
+            var options = new RemoteInferenceOptions
+            {
+                ApiKey = "test-key",
+                Observability = new ProviderObservabilityOptions { RootDirectory = root, CampaignId = "t", DocumentId = "d" },
+            };
+            using var model = Model(handler, options);
+
+            await model.ExecuteAsync(Encoding.UTF8.GetBytes("{}"), 10, "Return JSON.", "user");
+
+            var events = File.ReadAllLines(Path.Combine(root, "telemetry", "events.jsonl"))
+                .Select(line => JsonDocument.Parse(line).RootElement).ToArray();
+            var failed = events.Single(e => e.GetProperty("eventType").GetString() == "ATTEMPT_FAILED");
+            Assert.Equal("HTTP_ERROR", failed.GetProperty("reason").GetString());
+            Assert.Equal(429, failed.GetProperty("data").GetProperty("status").GetInt32());
+            Assert.True(failed.GetProperty("data").GetProperty("retryable").GetBoolean());
+            Assert.Equal(3, failed.GetProperty("data").GetProperty("retryAfterSeconds").GetDouble());
+            var complete = events.Single(e => e.GetProperty("eventType").GetString() == "TRANSPORT_COMPLETE");
+            Assert.True(complete.GetProperty("doneObserved").GetBoolean());
+            Assert.True(complete.GetProperty("cleanEof").GetBoolean());
+            Assert.Equal("stop", complete.GetProperty("finishReason").GetString());
+            // The bearer key is a request header only; it never reaches persisted telemetry.
+            Assert.DoesNotContain(Directory.EnumerateFiles(root, "*", SearchOption.AllDirectories),
+                path => File.ReadAllText(path).Contains("test-key", StringComparison.Ordinal));
+        }
+        finally
+        {
+            if (Directory.Exists(root)) Directory.Delete(root, recursive: true);
+        }
+    }
+
     private static OpenRouterHeaderExtractor Model(
         CaptureHandler handler, RemoteInferenceOptions options, List<TimeSpan>? waits = null)
     {

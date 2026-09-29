@@ -24,6 +24,10 @@ internal static class Program
 
     private static async Task<int> Main(string[] args)
     {
+        // The 31-pack measurement cohort has its own modes, gate and sentinel; see Cohort31.
+        if (args.Any(a => a.StartsWith("--cohort31-", StringComparison.Ordinal)))
+            return await Cohort31.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 
