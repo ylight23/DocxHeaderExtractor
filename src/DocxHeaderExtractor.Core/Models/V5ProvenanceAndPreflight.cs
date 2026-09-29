@@ -92,6 +92,26 @@ public sealed record V5ProviderPreflight(
 
 public static class V5ProviderPreflightBuilder
 {
+    /// <summary>Builds the v2 provider-free preflight while leaving all v1 hashes/artifacts intact.</summary>
+    public static V5ProviderPreflight BuildV2(
+        string productionSourceSha,
+        UniversalEvidenceGraph sourceUniverse,
+        DocumentTaskContract contract,
+        IReadOnlyList<V5ComposedSemanticRequest> requests,
+        string packingPolicy,
+        V5ProviderEnvelope providerEnvelope)
+    {
+        ArgumentNullException.ThrowIfNull(requests);
+        var preflight = Build(
+            productionSourceSha,
+            sourceUniverse,
+            contract,
+            requests,
+            packingPolicy,
+            providerEnvelope);
+        return preflight with { ClaimSchemaHash = SemanticClaimContractV2.SchemaHash() };
+    }
+
     public static V5ProviderPreflight Build(
         string productionSourceSha,
         UniversalEvidenceGraph sourceUniverse,

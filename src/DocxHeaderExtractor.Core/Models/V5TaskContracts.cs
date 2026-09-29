@@ -11,6 +11,7 @@ public static class V5Protocol
 {
     public const string TaskContractVersion = "v5-task-contract-1";
     public const string ClaimSchemaVersion = "v5-source-backed-claim-1";
+    public const string ClaimSchemaVersionV2 = "v5-source-backed-claim-2";
 }
 
 public enum ClaimResolutionState
