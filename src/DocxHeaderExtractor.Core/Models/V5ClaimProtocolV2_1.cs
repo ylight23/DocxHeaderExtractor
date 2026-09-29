@@ -7,28 +7,78 @@ using DocxHeaderExtractor.Core.Models;
 namespace DocxHeaderExtractor.Core.V5;
 
 /// <summary>
-/// Source-backed V5 claim protocol v2.1. v2 (<see cref="SemanticClaimContractV2"/> and its neighbors in
-/// V5ClaimProtocolV2.cs) is kept byte-for-byte as a frozen historical checkpoint; nothing here mutates
-/// it, and nothing in v2 depends on this file. v2.1 closes four gaps a pre-canary audit of v2 found:
+/// Source-backed V5 claim protocol v2.1. This is the single, currently-evolving implementation of
+/// the <c>v5-source-backed-claim-2.1</c> label: historical reproducibility is owned by the Git
+/// commit, the schema/prompt/request hashes and the frozen artifacts under
+/// <c>artifacts/v5-provider-canary-*</c>, not by a parallel source file per hardening pass. v2 (the
+/// file this superseded, since deleted - see git history at or before commit 72bb954) is gone; its
+/// hashes remain reproducible from history alone.
+/// <para>
+/// A real 3-pack canary against qwen/qwen3.7-flash at commit 72bb954 found three wire-contract gaps,
+/// closed here in place:
+/// </para>
 /// <list type="bullet">
-/// <item>claim identity was not durable across OPEN to RESOLVED refinement (C1);</item>
-/// <item>an OPEN relation with an unknown target had no valid representation (C2);</item>
-/// <item>owned vs. visible-only (halo) evidence was not enforced at binding time (C3);</item>
-/// <item><c>selectionMode</c> was an open string instead of the binder's closed vocabulary (C4).</item>
+/// <item>the model paired <c>selectionMode: WHOLE_ALIAS</c> with a <c>verbatimText</c> quote, which
+/// the exact binder correctly refused on every claim of one pack - <c>selectionMode</c> is removed
+/// from the provider wire entirely; the harness derives it deterministically from whether
+/// <c>verbatimText</c> is present (<see cref="ProviderSourcePartNormalization"/>);</item>
+/// <item>the model emitted OPEN claims with no <c>evidenceNeeds</c>, which the v2 schema allowed to
+/// omit - <c>evidenceNeeds</c> is now mandatory on every claim: <c>[]</c> for RESOLVED, non-empty for
+/// OPEN/CONFLICTED;</item>
+/// <item>a response was truncated mid-JSON under the legacy boundary-cut completion budget - v2.1 now
+/// computes its own budget (<see cref="V5SemanticCompletionBudget"/>) instead of borrowing that
+/// formula.</item>
 /// </list>
-/// It also makes EXHAUSTED harness-only: the model may never originate it (C5).
 /// </summary>
 public sealed record SemanticClaimProposalV2_1(
-    [property: JsonPropertyName("subject")] ClaimSourceEndpoint Subject,
+    [property: JsonPropertyName("subject")] ClaimSourceEndpointV2_1 Subject,
     [property: JsonPropertyName("predicate")] string Predicate,
     [property: JsonPropertyName("value")] string? Value = null,
-    [property: JsonPropertyName("object")] ClaimSourceEndpoint? Object = null,
+    [property: JsonPropertyName("object")] ClaimSourceEndpointV2_1? Object = null,
     [property: JsonPropertyName("state")] ClaimResolutionState State = ClaimResolutionState.RESOLVED,
     [property: JsonPropertyName("evidenceNeeds")] IReadOnlyList<EvidenceNeed>? EvidenceNeeds = null,
     [property: JsonPropertyName("existingClaimId")] string? ExistingClaimId = null);
 
 public sealed record SemanticClaimResponseV2_1(
     [property: JsonPropertyName("claims")] IReadOnlyList<SemanticClaimProposalV2_1> Claims);
+
+/// <summary>
+/// One provider-facing source reference. Deliberately has no <c>selectionMode</c>: a bare
+/// <c>sourceAlias</c> means the whole occurrence, and a <c>verbatimText</c> quote means an exact
+/// substring of it. There is exactly one way to say each thing, so the model cannot express the
+/// contradictory pair (whole alias, but also a quoted substring) the v2.1 canary found it emitting.
+/// </summary>
+public sealed record ProviderSourcePartV2_1(
+    [property: JsonPropertyName("sourceAlias")] string SourceAlias,
+    [property: JsonPropertyName("verbatimText")] string? VerbatimText = null,
+    [property: JsonPropertyName("occurrence")] int? Occurrence = null,
+    [property: JsonPropertyName("leftExactContext")] string? LeftExactContext = null,
+    [property: JsonPropertyName("rightExactContext")] string? RightExactContext = null);
+
+public sealed record ClaimSourceEndpointV2_1(
+    [property: JsonPropertyName("sourceParts")] IReadOnlyList<ProviderSourcePartV2_1> SourceParts);
+
+/// <summary>
+/// Deterministic, harness-owned translation from the provider's wire shape to the exact binder's
+/// canonical shape. This is syntax interpretation, not semantic repair: it never fuzzy-matches text,
+/// corrects text, trims arbitrary text, infers a different alias, or widens a span. Given the same
+/// provider part it always produces the same canonical part.
+/// </summary>
+public static class ProviderSourcePartNormalization
+{
+    public static SemanticSourcePart ToCanonical(ProviderSourcePartV2_1 part)
+    {
+        ArgumentNullException.ThrowIfNull(part);
+        return part.VerbatimText is null
+            ? new SemanticSourcePart(part.SourceAlias, CanonicalSemanticSelectionMode.WholeAlias,
+                null, part.Occurrence, part.LeftExactContext, part.RightExactContext)
+            : new SemanticSourcePart(part.SourceAlias, CanonicalSemanticSelectionMode.VerbatimText,
+                part.VerbatimText, part.Occurrence, part.LeftExactContext, part.RightExactContext);
+    }
+
+    public static IReadOnlyList<SemanticSourcePart> ToCanonical(IReadOnlyList<ProviderSourcePartV2_1>? parts) =>
+        (parts ?? []).Select(ToCanonical).ToArray();
+}
 
 public sealed record BoundSemanticClaimV2_1(
     BoundSemanticClaim Claim,
@@ -45,11 +95,11 @@ public sealed record ClaimBindingResultV2_1(
 public sealed record KnownClaimReference(string SubjectIdentity, string Predicate);
 
 /// <summary>
-/// Ownership/visibility enforced at binding time (C3). <see cref="OwnedAliases"/> is the only allowed
+/// Ownership/visibility enforced at binding time. <see cref="OwnedAliases"/> is the only allowed
 /// source for a claim subject, whether the claim is initial or a refinement - a refinement never
-/// widens its subject onto evidence discovered later. <see cref="VisibleAliases"/> (owned plus halo) is
-/// the allowed source for a relation object. <see cref="KnownClaims"/> carries the durable identity and
-/// original subject/predicate of every claim a refinement proposal may reference.
+/// widens its subject onto evidence discovered later. <see cref="VisibleAliases"/> (owned plus halo)
+/// is the allowed source for a relation object. <see cref="KnownClaims"/> carries the durable identity
+/// and original subject/predicate of every claim a refinement proposal may reference.
 /// </summary>
 public sealed record ClaimBindingScope(
     IReadOnlySet<string> OwnedAliases,
@@ -68,10 +118,10 @@ public sealed record ClaimBindingScope(
 }
 
 /// <summary>
-/// Durable harness identity (C1). Deliberately excludes state, evidenceNeeds, value and relation
-/// target - none of those may change which claim this is, only what is currently known about it. The
-/// proposal's ordinal within its response is included so two distinct initial proposals that happen to
-/// share a subject and predicate never collide.
+/// Durable harness identity. Deliberately excludes state, evidenceNeeds, value and relation target -
+/// none of those may change which claim this is, only what is currently known about it. The
+/// proposal's ordinal within its response is included so two distinct initial proposals that happen
+/// to share a subject and predicate never collide.
 /// </summary>
 public static class HarnessClaimIdentityV2_1
 {
@@ -94,8 +144,10 @@ public static class HarnessClaimIdentityV2_1
 }
 
 /// <summary>
-/// Exact binder for v2.1. Shares the v2 exact-coordinate rules (never repairs, never widens a span) and
-/// adds durable-identity/refinement handling (C1) and ownership enforcement (C3).
+/// Exact binder. Normalizes the provider's wire shape to the canonical shape before ever calling
+/// <see cref="SemanticSourcePartBinder"/> - it shares that binder's exact-coordinate rules unchanged
+/// (never repairs, never widens a span) - and adds durable-identity/refinement handling and ownership
+/// enforcement on top.
 /// </summary>
 public static class ExactClaimBinderV2_1
 {
@@ -137,7 +189,8 @@ public static class ExactClaimBinderV2_1
                 continue;
             }
 
-            var subject = SemanticSourcePartBinder.Bind(atoms, proposal.Subject?.SourceParts ?? []);
+            var subjectParts = ProviderSourcePartNormalization.ToCanonical(proposal.Subject?.SourceParts);
+            var subject = SemanticSourcePartBinder.Bind(atoms, subjectParts);
             if (!subject.IsBound)
             {
                 refusals[key] = subject.Reason ?? subject.Status.ToString();
@@ -162,7 +215,8 @@ public static class ExactClaimBinderV2_1
             BoundClaimEndpoint? target = null;
             if (proposal.Object is not null)
             {
-                var objectBinding = SemanticSourcePartBinder.Bind(atoms, proposal.Object.SourceParts);
+                var objectParts = ProviderSourcePartNormalization.ToCanonical(proposal.Object.SourceParts);
+                var objectBinding = SemanticSourcePartBinder.Bind(atoms, objectParts);
                 if (!objectBinding.IsBound)
                 {
                     refusals[key] = objectBinding.Reason ?? objectBinding.Status.ToString();
@@ -202,31 +256,32 @@ public static class ExactClaimBinderV2_1
 }
 
 /// <summary>
-/// Recursive source-backed schema and semantic validation for v2.1. The codec below uses the same
-/// field sets and schema construction, so schema and decoder cannot silently drift apart.
+/// Recursive source-backed schema and semantic validation. The codec below uses the same field sets
+/// and schema construction, so schema and decoder cannot silently drift apart.
 /// </summary>
 public static class SemanticClaimContractV2_1
 {
     public const string SchemaVersion = "v5-source-backed-claim-2.1";
 
     /// <summary>
-    /// The provider-facing subset of <see cref="ClaimResolutionState"/> (C5). EXHAUSTED is a runtime
+    /// The provider-facing subset of <see cref="ClaimResolutionState"/>. EXHAUSTED is a runtime
     /// terminal state the harness assigns when a budget is spent; the model is never asked to reason
-    /// about budget exhaustion and may not originate it.
+    /// about budget exhaustion and may not originate it (harness-owned, never provider-owned).
     /// </summary>
     internal static IReadOnlyList<string> ProviderFacingStates { get; } =
         Enum.GetNames<ClaimResolutionState>().Where(name => name != nameof(ClaimResolutionState.EXHAUSTED)).ToArray();
-
-    /// <summary>The binder's closed selection-mode vocabulary (C4) - never an open string.</summary>
-    internal static IReadOnlyList<string> SelectionModes { get; } =
-        [CanonicalSemanticSelectionMode.WholeAlias, CanonicalSemanticSelectionMode.VerbatimText];
 
     internal static IReadOnlySet<string> ResponseFields { get; } = new HashSet<string>(["claims"], StringComparer.Ordinal);
     internal static IReadOnlySet<string> ClaimFields { get; } = new HashSet<string>(
         ["subject", "predicate", "value", "object", "state", "evidenceNeeds", "existingClaimId"], StringComparer.Ordinal);
     internal static IReadOnlySet<string> EndpointFields { get; } = new HashSet<string>(["sourceParts"], StringComparer.Ordinal);
+
+    /// <summary>
+    /// No <c>selectionMode</c>: removed from the provider wire after the canary showed the model
+    /// pairing WHOLE_ALIAS with a verbatimText quote, a state the exact binder correctly refuses.
+    /// </summary>
     internal static IReadOnlySet<string> PartFields { get; } = new HashSet<string>(
-        ["sourceAlias", "selectionMode", "verbatimText", "occurrence", "leftExactContext", "rightExactContext"], StringComparer.Ordinal);
+        ["sourceAlias", "verbatimText", "occurrence", "leftExactContext", "rightExactContext"], StringComparer.Ordinal);
 
     public static object Schema() => new
     {
@@ -257,7 +312,8 @@ public static class SemanticClaimContractV2_1
             evidenceNeeds = new { type = "array", items = new { type = "string", @enum = Enum.GetNames<EvidenceNeed>() } },
             existingClaimId = new { type = "string", minLength = 1 },
         },
-        required = new[] { "subject", "predicate", "state" },
+        // evidenceNeeds is required on every claim - RESOLVED sends [], OPEN/CONFLICTED send at least one need.
+        required = new[] { "subject", "predicate", "state", "evidenceNeeds" },
     };
 
     private static object EndpointSchema() => new
@@ -277,13 +333,12 @@ public static class SemanticClaimContractV2_1
                     properties = new
                     {
                         sourceAlias = new { type = "string", minLength = 1 },
-                        selectionMode = new { type = "string", @enum = SelectionModes },
                         verbatimText = new { type = "string", minLength = 1 },
                         occurrence = new { type = "integer", minimum = 1 },
                         leftExactContext = new { type = "string" },
                         rightExactContext = new { type = "string" },
                     },
-                    required = new[] { "sourceAlias", "selectionMode" },
+                    required = new[] { "sourceAlias" },
                 },
             },
         },
@@ -312,14 +367,19 @@ public static class SemanticClaimContractV2_1
             if (claim.Subject is null || claim.Subject.SourceParts is null || claim.Subject.SourceParts.Count == 0)
                 issues.Add("claim-subject-missing");
 
-            var isRelation = relations.ContainsKey(claim.Predicate);
-            var isUnresolved = claim.State is ClaimResolutionState.OPEN or ClaimResolutionState.CONFLICTED;
-            if (isUnresolved && (claim.EvidenceNeeds is null || claim.EvidenceNeeds.Count == 0))
+            // evidenceNeeds is mandatory on every claim, not only OPEN/CONFLICTED: RESOLVED must send
+            // an explicit empty array. A missing field is never treated as an implicit [].
+            if (claim.EvidenceNeeds is null)
+                issues.Add("evidence-needs-missing");
+            else if (claim.State == ClaimResolutionState.RESOLVED && claim.EvidenceNeeds.Count > 0)
+                issues.Add("resolved-claim-must-not-carry-evidence-needs");
+            else if (claim.State is ClaimResolutionState.OPEN or ClaimResolutionState.CONFLICTED && claim.EvidenceNeeds.Count == 0)
                 issues.Add($"{claim.State.ToString().ToLowerInvariant()}-claim-without-evidence-need");
 
+            var isRelation = relations.ContainsKey(claim.Predicate);
             if (isRelation && claim.Object is null)
             {
-                // C2: a RESOLVED relation must name its object. An OPEN relation may omit it only when
+                // A RESOLVED relation must name its object. An OPEN relation may omit it only when
                 // GLOBAL_TARGET says why - the target is unknown, not forgotten. A CONFLICTED relation
                 // may omit it as long as it carries some actionable evidence need.
                 var explainsMissingObject =
@@ -338,8 +398,8 @@ public static class SemanticClaimContractV2_1
 }
 
 /// <summary>
-/// Strict JSON decoder for v2.1. Unknown fields, model claim ids, empty parts, an open selectionMode
-/// and a model-originated EXHAUSTED all fail closed.
+/// Strict JSON decoder. Unknown fields (including a provider-supplied <c>selectionMode</c>), model
+/// claim ids, empty parts, an empty verbatimText and a model-originated EXHAUSTED all fail closed.
 /// </summary>
 public static class SemanticClaimResponseCodecV2_1
 {
@@ -385,14 +445,12 @@ public static class SemanticClaimResponseCodecV2_1
             throw new InvalidOperationException($"{property}-parts-missing");
         foreach (var part in parts.EnumerateArray())
         {
+            // A "selectionMode" field is not in PartFields any more, so it fails here as an unknown field.
             EnsureFields(part, SemanticClaimContractV2_1.PartFields, "source-part");
             if (!part.TryGetProperty("sourceAlias", out var alias) || alias.ValueKind != JsonValueKind.String || string.IsNullOrWhiteSpace(alias.GetString()))
                 throw new InvalidOperationException("source-part-alias-missing");
-            if (!part.TryGetProperty("selectionMode", out var mode) || mode.ValueKind != JsonValueKind.String)
-                throw new InvalidOperationException("source-part-selection-mode-missing");
-            var modeValue = mode.GetString();
-            if (!SemanticClaimContractV2_1.SelectionModes.Contains(modeValue, StringComparer.Ordinal))
-                throw new InvalidOperationException($"source-part-selection-mode-not-in-contract:{modeValue}");
+            if (part.TryGetProperty("verbatimText", out var verbatim) && verbatim.ValueKind == JsonValueKind.String && verbatim.GetString()!.Length == 0)
+                throw new InvalidOperationException("source-part-verbatim-text-empty");
         }
     }
 
@@ -413,9 +471,10 @@ public static class SemanticClaimResponseCodecV2_1
 }
 
 /// <summary>
-/// Hard-pins the provider-free canary to exactly three requests and requires an explicit
-/// authorization flag before anything may be allowed to call a provider. It never performs a network
-/// call itself and never falls back to the full cohort.
+/// Hard-pins a future canary to exactly three requests and requires an explicit authorization flag
+/// before anything may be allowed to call a provider. It never performs a network call itself and
+/// never falls back to the full cohort. The 3-call authorization behind commit 72bb954 is historical
+/// and not reusable: a caller must authorize again for any future call.
 /// </summary>
 public static class V5CanaryGate
 {
