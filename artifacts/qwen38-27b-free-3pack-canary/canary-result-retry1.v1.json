@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "v5-qwen38-27b-free-canary-result-v1",
+  "purpose": "MEASUREMENT_NOT_PROMOTION",
+  "retryAttempt": 1,
+  "sameFrozenBodiesAsAttempt0": true,
+  "model": "qwen/qwen3.8-27b:free",
+  "actualProviderRoute": "modelrun",
+  "responseFormatType": "json_schema",
+  "strict": true,
+  "reasoningEffort": "none",
+  "providerCalls": 3,
+  "goldRead": false,
+  "semanticRetries": 0,
+  "responseRepairApplied": false,
+  "providerExecutionAuthorized": true,
+  "aggregate": {
+    "ProviderCalls": 3,
+    "UsableResponses": 1,
+    "TransportFailures": 2,
+    "FinishReasonLength": 0,
+    "JsonInvalidResponses": 0,
+    "SchemaInvalidResponses": 0,
+    "TotalProposals": 12,
+    "TotalBound": 4,
+    "TotalRefused": 8,
+    "BoundFraction": 0.3333333333333333333333333333,
+    "OwnershipRefusals": 0,
+    "OtherBindingRefusals": 8,
+    "PacksBindingComplete": 0,
+    "PacksPartialBinding": 1,
+    "PacksBindingEmpty": 0,
+    "PacksRuntimeProcessedSafely": 1,
+    "UnsafeRepairs": 0,
+    "OutOfScopeClaimsAccepted": 0,
+    "PacksResponseFatal": 2,
+    "RefusalTaxonomy": {
+      "subject-alias-not-owned": 0,
+      "object-alias-not-visible": 0,
+      "unknown-alias": 0,
+      "exact-text-binding": 8,
+      "source-order-or-overlap": 0,
+      "refinement-id": 0,
+      "duplicate-durable-claim-id": 0,
+      "other-exact-binder-refusal": 0
+    }
+  },
+  "results": [
+    {
+      "role": "same-atom-normalization-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "providerRequestHash": "f7eaa135085558334234c7a1176498c3bc0a86c3fd615b1f82d0b807a5851ec2",
+      "transportError": "OpenRouter tr\u1EA3 429 Too Many Requests: {\u0022error\u0022:{\u0022message\u0022:\u0022Provider returned error\u0022,\u0022code\u0022:429,\u0022metadata\u0022:{\u0022raw\u0022:\u0022qwen/qwen3.8-27b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\u0022,\u0022provider_name\u0022:\u0022ModelRun\u0022,\u0022is_byok\u0022:false,\u0022provider_error_code\u0022:\u0022429\u0022,\u0022limit_source\u0022:\u0022upstream_provider_shared_pool\u0022,\u0022remedy_hint\u0022:\u0022Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another prov\u2026",
+      "finishReason": null,
+      "rawResponseSha256": null,
+      "rawResponseChars": null,
+      "rawResponse": null,
+      "qualification": {
+        "wireStatus": "RESPONSE_FATAL",
+        "outcome": "RESPONSE_FATAL",
+        "responseUsable": false,
+        "responseFatalReason": "transport:OpenRouter tr\u1EA3 429 Too Many Requests: {\u0022error\u0022:{\u0022message\u0022:\u0022Provider returned error\u0022,\u0022code\u0022:429,\u0022metadata\u0022:{\u0022raw\u0022:\u0022qwen/qwen3.8-27b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\u0022,\u0022provider_name\u0022:\u0022ModelRun\u0022,\u0022is_byok\u0022:false,\u0022provider_error_code\u0022:\u0022429\u0022,\u0022limit_source\u0022:\u0022upstream_provider_shared_pool\u0022,\u0022remedy_hint\u0022:\u0022Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another prov\u2026",
+        "proposalCount": 0,
+        "boundCount": 0,
+        "refusalCount": 0,
+        "boundFraction": 0,
+        "ownershipRefusalCount": 0,
+        "otherRefusalCount": 0,
+        "refusalTaxonomy": {},
+        "refusalReasons": [],
+        "bindingComplete": false,
+        "hasAcceptedClaims": false,
+        "runtimeProcessedSafely": false,
+        "unsafeRepairCount": 0,
+        "outOfScopeAcceptedCount": 0
+      }
+    },
+    {
+      "role": "true-multipart-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "providerRequestHash": "cb8012693274280f5514f5ebb8a27642fb1e5c3d36e697ffbf0f1cbdb4ba2dd4",
+      "transportError": null,
+      "finishReason": "stop",
+      "rawResponseSha256": "4d5e3ea3076d107f783e9ec9105add7f806669ad1528d8e8682d8fd8a56fe1a2",
+      "rawResponseChars": 4437,
+      "rawResponse": "{\u0022claims\u0022:[{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0005:S0\u0022,\u0022verbatimText\u0022:\u0022No. 195/2013/ND-CP Hanoi, November 21, 2013\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022DOCUMENT_IDENTITY\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022value\u0022:\u0022No. 195/2013/ND-CP Hanoi, November 21, 2013\u0022},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0014:S0\u0022,\u0022verbatimText\u0022:\u0022Chapter I\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022STRUCTURAL_REGION\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022value\u0022:\u0022Chapter I\u0022},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0015:S0\u0022,\u0022verbatimText\u0022:\u0022GENERAL PROVISIONS\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022STRUCTURAL_REGION\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022value\u0022:\u0022GENERAL PROVISIONS\u0022},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0016:S0\u0022,\u0022verbatimText\u0022:\u0022Article 1. Scope of regulation and subjects of application\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022STRUCTURAL_REGION\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022value\u0022:\u0022Article 1. Scope of regulation and subjects of application\u0022},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0024:S0\u0022,\u0022verbatimText\u0022:\u0022Article 2. Tasks and powers of the Ministry of Information and Communications in performing\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022STRUCTURAL_REGION\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022value\u0022:\u0022Article 2. Tasks and powers of the Ministry of Information and Communications in performing\u0022},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0051:S0\u0022,\u0022verbatimText\u0022:\u0022Article 3. Responsibilities of ministries and ministerial-level agencies in performing the state\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022STRUCTURAL_REGION\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022value\u0022:\u0022Article 3. Responsibilities of ministries and ministerial-level agencies in performing the state\u0022},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0080:S0\u0022,\u0022verbatimText\u0022:\u0022Article 4. Tasks and powers of provincial-level People \\u2019 s Committees in performing the state\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022STRUCTURAL_REGION\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022value\u0022:\u0022Article 4. Tasks and powers of provincial-level People \\u2019 s Committees in performing the state\u0022},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0014:S0\u0022,\u0022verbatimText\u0022:\u0022Chapter I\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022PARENT_OF\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022object\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0015:S0\u0022,\u0022verbatimText\u0022:\u0022GENERAL PROVISIONS\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]}},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0015:S0\u0022,\u0022verbatimText\u0022:\u0022GENERAL PROVISIONS\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022PARENT_OF\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022object\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0016:S0\u0022,\u0022verbatimText\u0022:\u0022Article 1. Scope of regulation and subjects of application\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]}},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0015:S0\u0022,\u0022verbatimText\u0022:\u0022GENERAL PROVISIONS\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022PARENT_OF\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022object\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0024:S0\u0022,\u0022verbatimText\u0022:\u0022Article 2. Tasks and powers of the Ministry of Information and Communications in performing\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]}},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0015:S0\u0022,\u0022verbatimText\u0022:\u0022GENERAL PROVISIONS\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022PARENT_OF\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022object\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0051:S0\u0022,\u0022verbatimText\u0022:\u0022Article 3. Responsibilities of ministries and ministerial-level agencies in performing the state\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]}},{\u0022subject\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0015:S0\u0022,\u0022verbatimText\u0022:\u0022GENERAL PROVISIONS\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]},\u0022predicate\u0022:\u0022PARENT_OF\u0022,\u0022state\u0022:\u0022RESOLVED\u0022,\u0022evidenceNeeds\u0022:[],\u0022object\u0022:{\u0022sourceParts\u0022:[{\u0022sourceAlias\u0022:\u0022L0080:S0\u0022,\u0022verbatimText\u0022:\u0022Article 4. Tasks and powers of provincial-level People \\u2019 s Committees in performing the state\u0022,\u0022occurrence\u0022:1,\u0022leftExactContext\u0022:\u0022\u0022,\u0022rightExactContext\u0022:\u0022\u0022}]}}]}",
+      "qualification": {
+        "wireStatus": "WIRE_PASS",
+        "outcome": "PARTIAL_BINDING",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "proposalCount": 12,
+        "boundCount": 4,
+        "refusalCount": 8,
+        "boundFraction": 0.3333333333333333333333333333,
+        "ownershipRefusalCount": 0,
+        "otherRefusalCount": 8,
+        "refusalTaxonomy": {
+          "exact-text-binding": 8
+        },
+        "refusalReasons": [
+          {
+            "key": "proposal-4",
+            "reason": "\u0027L0016:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-5",
+            "reason": "\u0027L0024:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-6",
+            "reason": "\u0027L0051:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L0080:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-9",
+            "reason": "\u0027L0016:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-10",
+            "reason": "\u0027L0024:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-11",
+            "reason": "\u0027L0051:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-12",
+            "reason": "\u0027L0080:S0\u0027 does not contain that text"
+          }
+        ],
+        "bindingComplete": false,
+        "hasAcceptedClaims": true,
+        "runtimeProcessedSafely": true,
+        "unsafeRepairCount": 0,
+        "outOfScopeAcceptedCount": 0
+      }
+    },
+    {
+      "role": "mixed",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "providerRequestHash": "4178a46ec8af27726f640e8b076e9db50f92083b116b23e44c305635f976dc55",
+      "transportError": "OpenRouter tr\u1EA3 429 Too Many Requests: {\u0022error\u0022:{\u0022message\u0022:\u0022Provider returned error\u0022,\u0022code\u0022:429,\u0022metadata\u0022:{\u0022raw\u0022:\u0022qwen/qwen3.8-27b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\u0022,\u0022provider_name\u0022:\u0022ModelRun\u0022,\u0022is_byok\u0022:false,\u0022provider_error_code\u0022:\u0022429\u0022,\u0022limit_source\u0022:\u0022upstream_provider_shared_pool\u0022,\u0022remedy_hint\u0022:\u0022Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another prov\u2026",
+      "finishReason": null,
+      "rawResponseSha256": null,
+      "rawResponseChars": null,
+      "rawResponse": null,
+      "qualification": {
+        "wireStatus": "RESPONSE_FATAL",
+        "outcome": "RESPONSE_FATAL",
+        "responseUsable": false,
+        "responseFatalReason": "transport:OpenRouter tr\u1EA3 429 Too Many Requests: {\u0022error\u0022:{\u0022message\u0022:\u0022Provider returned error\u0022,\u0022code\u0022:429,\u0022metadata\u0022:{\u0022raw\u0022:\u0022qwen/qwen3.8-27b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\u0022,\u0022provider_name\u0022:\u0022ModelRun\u0022,\u0022is_byok\u0022:false,\u0022provider_error_code\u0022:\u0022429\u0022,\u0022limit_source\u0022:\u0022upstream_provider_shared_pool\u0022,\u0022remedy_hint\u0022:\u0022Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another prov\u2026",
+        "proposalCount": 0,
+        "boundCount": 0,
+        "refusalCount": 0,
+        "boundFraction": 0,
+        "ownershipRefusalCount": 0,
+        "otherRefusalCount": 0,
+        "refusalTaxonomy": {},
+        "refusalReasons": [],
+        "bindingComplete": false,
+        "hasAcceptedClaims": false,
+        "runtimeProcessedSafely": false,
+        "unsafeRepairCount": 0,
+        "outOfScopeAcceptedCount": 0
+      }
+    }
+  ]
+}

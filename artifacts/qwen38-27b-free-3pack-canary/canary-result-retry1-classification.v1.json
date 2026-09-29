@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "v5-qwen38-27b-free-canary-classification-v1",
+  "classifies": "canary-result-retry1.v1.json - transport-retry attempt 1 of the frozen 3-pack strict-schema canary, same requests as canary-result.v1.json (all-503)",
+  "outcome": "MIXED - 1 real completion, 2 further transport failures",
+  "decisiveFinding": "STRICT_JSON_SCHEMA_SUPPORTED = YES, empirically confirmed",
+  "decisiveFindingReason": "SRC-089 PACK_001 completed successfully (finish_reason=stop, WIRE_PASS) through exactly the same require_parameters=true + response_format.type=json_schema/strict=true routing gate that PACK_006 and PACK_022 failed on. This resolves the question capability-preflight.v2.json left open: the gate is not a parameter-support rejection at all - if it were, PACK_001 could not have gotten a completion either. All three requests are structurally identical except for pack-specific content (owned/visible aliases, prompt bytes); only ModelRun's shared free-tier capacity differed between them at the moment each was sent.",
+  "packOutcomes": {
+    "SRC-089_PACK_006": { "outcome": "RESPONSE_FATAL", "cause": "upstream 429 Too Many Requests (limit_source=upstream_provider_shared_pool) - rate limit, not schema" },
+    "SRC-089_PACK_001": { "outcome": "WIRE_PASS / PARTIAL_BINDING", "proposals": 12, "bound": 4, "refused": 8, "refusalFamily": "exact-text-binding only (0 relation-has-value, 0 unary-has-object, 0 unknown-alias, 0 ownership refusals)" },
+    "SRC-095_PACK_022": { "outcome": "RESPONSE_FATAL", "cause": "upstream 429 Too Many Requests (limit_source=upstream_provider_shared_pool) - rate limit, not schema" }
+  },
+  "pack001Observations": {
+    "schemaContractCompliance": "CLEAN - every claim has the correct shape for its predicate (DOCUMENT_IDENTITY/STRUCTURAL_REGION carry value and no object; PARENT_OF carries object and no value); no arity violation of any kind occurred, unlike Qwen3.7's PACK_006 draw (6x relation-has-value). This is exactly what the strict oneOf/additionalProperties:false schema was built to structurally prevent, and on this draw it held.",
+    "sourceSelectionPolicyCompliance": "REGRESSION vs Qwen3.7 - 12/12 source parts used verbatimText; 0 used alias-only, despite the same composer instructions (unchanged, embedded in the frozen prompt) explicitly saying to default to sourceAlias only. Qwen3.7's remediation canary on this exact pack got 121/121 alias-only.",
+    "multipartUsage": "NOT exercised - 0 multi-part endpoints, despite this pack being selected specifically for true-multipart-heavy content; 'Chapter I' and 'GENERAL PROVISIONS' were proposed as two separate single-atom STRUCTURAL_REGION claims rather than Gold's combined heading or the wire's multi-sourceParts shape.",
+    "exactTextRefusalCause": "all 8 refusals are the model's own re-typed verbatimText failing to match the source atom exactly (spacing/typography drift, e.g. a curly apostrophe with added spaces in 'People ’ s Committees') - the same same-atom copy-quality failure mode the source-selection policy was built to eliminate, now reappearing under a different model.",
+    "proposalDensity": "12 proposals vs Qwen3.7's 65 proposals on the same pack - a large reduction, not yet attributable to any single cause from one draw."
+  },
+  "stillOpen": {
+    "PACK_006_referencesHasValueQuestion": "still UNKNOWN for this specific pack's content - PACK_006 has not yet completed in either attempt. The general mechanism (strict schema preventing relation+value) is now demonstrated on PACK_001's PARENT_OF claims having no value field at all, but not yet observed against a REFERENCES claim specifically."
+  },
+  "nextStepPerUserInstruction": "STOP - do not auto-open a further retry. Per the given authorization: 'nếu một logical call vẫn hết transport retry thì freeze kết quả và STOP, không tự mở thêm fresh retry.' PACK_006 and PACK_022 remain CANARY_INCONCLUSIVE_TRANSPORT_UNAVAILABLE (root cause TRANSPORT_429_RATE_LIMITED this round); a further attempt against the same frozen bodies needs its own fresh explicit authorization.",
+  "providerCalls": 0,
+  "goldRead": false,
+  "note": "This classification file makes no provider call; it only reinterprets canary-result-retry1.v1.json's own recorded outcomes."
+}
