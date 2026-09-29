@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "v5-model-capability-preflight-v1",
+  "purpose": "MEASUREMENT_NOT_PROMOTION",
+  "experiment": "qwen38-27b-free-3pack-canary",
+  "requestedModel": "qwen/qwen3.8-27b:free",
+  "capturedAt": "2026-09-29T17:10:47Z",
+  "queryMethod": "unauthenticated GET against OpenRouter's public /api/v1/models and /api/v1/models/{author}/{slug}:free/endpoints - metadata only, no chat completion, no API key used, no cost incurred",
+  "providerCalls": 0,
+  "goldRead": false,
+  "verdict": "CAPABILITY_BLOCKED",
+  "reason": "The only endpoint OpenRouter routes qwen/qwen3.8-27b:free through (ModelRun, tag modelrun/fp4) does not list 'response_format' in its supported_parameters. It lists the vaguer 'structured_outputs' capability flag alone, which OpenRouter's own schema does not treat as sufficient to accept a response_format payload - the parameter that actually carries json_schema/strict. The experiment design mandates require_parameters=true and allow_fallbacks=false; with exactly one provider serving this free slug and no fallback permitted, a request naming response_format would either be silently dropped (defeating the strict-schema requirement without saying so) or rejected by routing (require_parameters=true refusing a provider that does not support every named parameter) - both are exactly the 'faked support' outcomes the experiment explicitly forbids. No inference call was made to verify this by trial: the metadata is unambiguous enough on its own that sending a real request to find out would itself be treated as silently downgrading the experiment's own gate.",
+  "actualEndpoint": {
+    "providerName": "ModelRun",
+    "tag": "modelrun/fp4",
+    "quantization": "fp4",
+    "modelIdAsRouted": "qwen/qwen3.8-27b:free",
+    "contextLength": 262144,
+    "maxCompletionTokens": 235929,
+    "pricingPromptUsdPerToken": "0",
+    "pricingCompletionUsdPerToken": "0",
+    "supportedParameters": [
+      "reasoning",
+      "include_reasoning",
+      "max_tokens",
+      "temperature",
+      "presence_penalty",
+      "repetition_penalty",
+      "frequency_penalty",
+      "stop",
+      "top_p",
+      "structured_outputs",
+      "tools",
+      "tool_choice",
+      "reasoning_effort"
+    ],
+    "responseFormatInSupportedParameters": false,
+    "structuredOutputsInSupportedParameters": true,
+    "supportsToolChoiceNone": false,
+    "onlyOneEndpointForThisSlug": true
+  },
+  "requiredForExperiment": {
+    "responseFormatJsonSchema": "NOT_CONFIRMED",
+    "strictStructuredOutput": "NOT_CONFIRMED",
+    "stream": "supported_parameters list does not distinguish streaming support; not evaluated further because the schema gate above already blocks",
+    "usageInclude": "not evaluated further, same reason",
+    "reasoningNoneEquivalent": "reasoning/reasoning_effort/include_reasoning are all listed as supported; this alone is not sufficient to proceed",
+    "requireParametersTrueAllowFallbacksFalse": "would have exactly one candidate provider (ModelRun) and no fallback; compatible with the routing requirement itself, but moot given the schema block above"
+  },
+  "comparisonAggregateVsActualEndpoint": {
+    "note": "The top-level /api/v1/models aggregate entry for qwen/qwen3.8-27b:free lists supported_parameters as the union across all endpoints OpenRouter could ever route this slug to, not what the one endpoint that actually serves the :free tag supports. The /endpoints call above is the authoritative, single source of truth for what will actually be used, and is what this verdict is based on.",
+    "aggregateModelListSupportedParameters": [
+      "frequency_penalty", "include_reasoning", "max_tokens", "presence_penalty", "reasoning",
+      "reasoning_effort", "repetition_penalty", "stop", "structured_outputs", "temperature",
+      "tool_choice", "tools", "top_p"
+    ],
+    "aggregateAlsoOmitsResponseFormat": true
+  },
+  "decisionsNotTaken": [
+    "did not downgrade response_format to json_object",
+    "did not switch to the paid qwen/qwen3.8-27b endpoint",
+    "did not remove or weaken the strict schema requirement",
+    "did not substitute a different model",
+    "did not attempt a live completion call to empirically test response_format support",
+    "did not compile the generic TaskContract-to-JSON-Schema compiler (Section D/E of the request) since the experiment cannot proceed past this gate",
+    "did not freeze the 3-pack provider request bodies (Section J) since there is no confirmed schema to compile them with"
+  ],
+  "rawCapture": {
+    "modelsListEntry": "raw-models-list-entry.json (this directory) - GET https://openrouter.ai/api/v1/models filtered to id == qwen/qwen3.8-27b:free",
+    "endpointsListEntry": "raw-endpoints-response.json (this directory) - GET https://openrouter.ai/api/v1/models/qwen/qwen3.8-27b:free/endpoints"
+  }
+}
