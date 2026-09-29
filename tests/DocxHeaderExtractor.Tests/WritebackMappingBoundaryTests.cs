@@ -32,7 +32,7 @@ public sealed class WritebackMappingBoundaryTests
         var properties = typeof(WritebackMapping).GetProperties().Select(property => property.Name).ToArray();
 
         Assert.Equal(["Identity", "Locator"], properties);
-        Assert.DoesNotContain(properties, property => property is "Role" or "Score" or "IsCandidate" or "GuessedLevel");
+        Assert.DoesNotContain(properties, property => property is "Role" or "GuessedLevel");
     }
 
     [Fact]

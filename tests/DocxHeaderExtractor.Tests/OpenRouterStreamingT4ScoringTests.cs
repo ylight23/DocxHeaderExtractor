@@ -19,8 +19,8 @@ public sealed class OpenRouterStreamingT4ScoringTests
     private const string ScorerVersion = "SEMANTIC_FUNCTION_V4_EXACT_BIND_SCORER_V1";
     private static readonly (string Id, string Pdf)[] Documents =
     [
-        ("SRC-089", Src089BlindGeneralizationTests.Pdf),
-        ("SRC-095", Src095BlindGeneralizationTests.Pdf),
+        ("SRC-089", SourcePdfCorpus.Src089),
+        ("SRC-095", SourcePdfCorpus.Src095),
     ];
 
     private sealed record Candidate(
@@ -71,7 +71,7 @@ public sealed class OpenRouterStreamingT4ScoringTests
         foreach (var (id, pdf) in Documents)
         {
             var documentRows = auditRows.Where(row => row.DocumentId == id).ToArray();
-            var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf), PdfSourceFactsVersion.V3_RobustGlyphStatistics).Atoms;
+            var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf)).Atoms;
             var decisions = Bind(documentRows, atoms, out var refusals, out var invalidResponses, out var ordinalOwnership);
 
             var goldPath = TestRepository.Path($"eval/a99-closed-loop/gold/{id}.gold.json");
@@ -348,7 +348,7 @@ public sealed class OpenRouterStreamingT4ScoringTests
     private static void Count(Dictionary<string, int> map, string key) => map[key] = map.GetValueOrDefault(key) + 1;
     private static object Exact(Dictionary<string, string> patterns, ExactScorer.Score score, string pattern) => new { gold = patterns.Count(x => x.Value == pattern), exact = patterns.Count(x => x.Value == pattern && score.Rows.Any(r => r.Claim.Identity == x.Key && r.Bucket == "EXACT_TRUE")) };
     private static object PatternRecall(Dictionary<string, string> patterns, ExactScorer.Score score, string[] wanted) { var ids = patterns.Where(x => wanted.Contains(x.Value, StringComparer.Ordinal)).Select(x => x.Key).ToArray(); var exact = ids.Count(id => score.Rows.Any(r => r.Claim.Identity == id && r.Bucket == "EXACT_TRUE")); return new { gold = ids.Length, exact, recall = Math.Round((double)exact / ids.Length, 4) }; }
-    private static Dictionary<string, int> FalsePositiveFamilies(string id, ExactScorer.Score score, JsonElement gold) { var pages = LlmSemanticPilotV1AnalysisTests.PageOfAlias(id); var goldAliases = gold.GetProperty("occurrence").GetProperty("claims").EnumerateArray().SelectMany(c => c.GetProperty("sourceParts").EnumerateArray().Select(p => p.GetProperty("sourceAlias").GetString()!)).ToHashSet(StringComparer.Ordinal); var reviewed = LlmSemanticPilotV1AnalysisTests.ReviewedNonHeadings(id); return score.FalsePositives.Select(h => LlmSemanticPilotV1AnalysisTests.FalsePositiveFamily(h.Identity!, h.Text, h.Evidence[0]["semanticFunction=".Length..], LlmSemanticPilotV1AnalysisTests.PageOf(pages, h.Identity!), (2, 4), 54, goldAliases, reviewed)).GroupBy(x => x).OrderByDescending(g => g.Count()).ToDictionary(g => g.Key, g => g.Count()); }
+    private static Dictionary<string, int> FalsePositiveFamilies(string id, ExactScorer.Score score, JsonElement gold) { var pages = ResidualFamilies.PageOfAlias(id); var goldAliases = gold.GetProperty("occurrence").GetProperty("claims").EnumerateArray().SelectMany(c => c.GetProperty("sourceParts").EnumerateArray().Select(p => p.GetProperty("sourceAlias").GetString()!)).ToHashSet(StringComparer.Ordinal); var reviewed = ResidualFamilies.ReviewedNonHeadings(id); return score.FalsePositives.Select(h => ResidualFamilies.FalsePositiveFamily(h.Identity!, h.Text, h.Evidence[0]["semanticFunction=".Length..], ResidualFamilies.PageOf(pages, h.Identity!), (2, 4), 54, goldAliases, reviewed)).GroupBy(x => x).OrderByDescending(g => g.Count()).ToDictionary(g => g.Key, g => g.Count()); }
     private static object FalsePositiveBreakdown(string id, ExactScorer.Score score, JsonElement gold)
     {
         var families = FalsePositiveFamilies(id, score, gold);

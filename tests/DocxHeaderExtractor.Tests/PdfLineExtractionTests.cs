@@ -14,18 +14,10 @@ namespace DocxHeaderExtractor.Tests;
 /// the rule claims about typography, and a real PDF is then measured against the claim rather than
 /// being the claim.
 /// </para>
-/// <para>
-/// <see cref="PdfLineGrouping.MidpointV1"/> stays the default while this work is evidence. Every
-/// frozen source universe, Gold binding and provider preflight hash in the repository was taken
-/// over V1's output, so changing it here would move the authority a separate migration has to
-/// decide on.
-/// </para>
 /// </summary>
 public sealed class PdfLineExtractionTests
 {
     private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
-    private const string ActiveUniverseSha =
-        "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66";
     private const int AuthoritativeTotal = 41;
     private const string Artifacts = "eval/a99-closed-loop/representation";
 
@@ -234,384 +226,6 @@ public sealed class PdfLineExtractionTests
     // ---- the rule, measured on a real document ------------------------------------------------
 
     [Fact]
-    public void The_candidate_reconstruction_conserves_every_glyph_the_parser_extracted()
-    {
-        foreach (var candidate in Candidates) ConservesEveryGlyph(candidate);
-    }
-
-    private static void ConservesEveryGlyph(PdfLineGrouping candidate)
-    {
-        // Grouping identity may change; extracted content may not. Checked against the letters
-        // PdfPig produced as well as against V1, so a candidate cannot pass by losing the same
-        // glyph the incumbent loses.
-        var letters = Letters()
-            .Select(letter => Atom(letter))
-            .OrderBy(atom => atom, AtomOrder)
-            .ToArray();
-        var before = Atoms(Lines(PdfLineGrouping.MidpointV1));
-        var after = Atoms(Lines(candidate));
-
-        Assert.Equal(letters.Length, after.Length);
-        Assert.Equal(letters, after);
-        Assert.Equal(before, after);
-
-        // Duplication is measured against the source, not against uniqueness. This document draws
-        // ten glyphs twice at identical coordinates, and both reconstructions carry both copies; a
-        // bare distinctness check would read that as the candidate inventing text.
-        Assert.Equal(
-            letters.Length - letters.Distinct().Count(),
-            after.Length - after.Distinct().Count());
-    }
-
-    [Fact]
-    public void The_candidate_reconstruction_reads_in_source_order()
-    {
-        foreach (var candidate in Candidates) ReadsInSourceOrder(candidate);
-    }
-
-    private static void ReadsInSourceOrder(PdfLineGrouping candidate)
-    {
-        // The property the repair depends on: a period returns to its own line and a divided row
-        // becomes several, both of which move where text sits in the document stream, and that
-        // stream must still be the page's reading order. Successive entries either go down the
-        // page, or share a row and then run left to right without overlapping.
-        var lines = Lines(candidate);
-
-        foreach (var page in lines.GroupBy(line => line.Page))
-        {
-            var ordered = page.ToArray();
-            for (var index = 1; index < ordered.Length; index++)
-            {
-                var previous = ordered[index - 1];
-                var line = ordered[index];
-                // Reading order, stated as the disjunction it actually is: an entry is either
-                // lower on the page than the one before it, or beside it on an overlapping band
-                // and further right. The second case exists only once rows can be divided, and it
-                // is what carries a bullet's dash and its text in the order a reader takes them.
-                var lower = line.Y < previous.Y;
-                var beside =
-                    line.Left > previous.Right &&
-                    line.Top > previous.Bottom && line.Bottom < previous.Top;
-                Assert.True(lower || beside,
-                    $"page {page.Key} entry {index} is neither below nor beside the one before it");
-            }
-        }
-
-        foreach (var line in lines)
-        {
-            var spans = line.Projection.SpanMap;
-            for (var index = 1; index < spans.Count; index++)
-                Assert.True(spans[index].Left >= spans[index - 1].Left,
-                    $"glyphs out of left-to-right order on '{line.Text}'");
-        }
-    }
-
-    [Fact]
-    public void The_candidate_reconstruction_is_deterministic()
-    {
-        foreach (var candidate in Candidates) IsDeterministic(candidate);
-    }
-
-    private static void IsDeterministic(PdfLineGrouping candidate)
-    {
-        Assert.Equal(
-            Lines(candidate).Select(line => $"{line.Page}|{line.Y:F4}|{line.Left:F4}|{line.Text}"),
-            Lines(candidate).Select(line => $"{line.Page}|{line.Y:F4}|{line.Left:F4}|{line.Text}"));
-        Assert.Equal(Universe(candidate, PdfBlockGrouping.LegacyV1), Universe(candidate, PdfBlockGrouping.LegacyV1));
-    }
-
-    [Fact]
-    public void The_active_runtime_universe_does_not_move()
-    {
-        // The whole point of the seam. V1 is still what production builds, and its identity is the
-        // one every frozen Gold, preflight and baseline artifact names.
-        Assert.Equal(ActiveUniverseSha, Universe(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1));
-        Assert.NotEqual(ActiveUniverseSha, Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.LegacyV1));
-    }
-
-    // ---- what the candidate would change ------------------------------------------------------
-
-    [Fact]
-    public void The_shadow_universe_repairs_the_boundaries_the_audit_found()
-    {
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
-        Assert.Equal(AuthoritativeTotal, gold.Headings.Count);
-
-        var before = Occurrences(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1);
-        var after = Occurrences(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.LegacyV1);
-
-        // BEFORE resolves by alias, which is authoritative there. AFTER cannot: a candidate
-        // reconstruction renumbers every occurrence, so resolving by alias would compare a heading
-        // against whatever inherited its number. The text locator is used for both, and on the
-        // BEFORE side it is checked against the alias before being trusted on the other.
-        var aliases = PdfSourceOccurrenceBoundary.Aliases(before.Count);
-        var byAlias = gold.Headings.Select(heading => Array.IndexOf(aliases, heading.SourceAlias)).ToArray();
-        Assert.DoesNotContain(-1, byAlias);
-        var goldTexts = gold.Headings
-            .Select((heading, ordinal) => heading.VerbatimText ?? before[byAlias[ordinal]].VerbatimText)
-            .ToArray();
-
-        Assert.Equal(byAlias, PdfSourceOccurrenceBoundary.Locate(
-            before, gold.Headings, goldTexts, out var beforeMissing));
-        Assert.Empty(beforeMissing);
-
-        var afterIndexes = PdfSourceOccurrenceBoundary.Locate(
-            after, gold.Headings, goldTexts, out var afterMissing);
-
-        var beforeRows = PdfSourceOccurrenceBoundary.Classify(before, gold.Headings, byAlias);
-        var afterRows = PdfSourceOccurrenceBoundary.Classify(after, gold.Headings, afterIndexes);
-
-        var transitions = beforeRows
-            .Select((row, ordinal) => new
-            {
-                claim = row.Claim,
-                from = row.Boundary,
-                to = afterRows[ordinal].Boundary,
-                representableBefore = row.FullyRepresentable,
-                representableAfter = afterRows[ordinal].FullyRepresentable,
-                goldText = row.GoldText,
-                occurrenceBefore = row.OccurrenceText,
-                occurrenceAfter = afterRows[ordinal].OccurrenceText,
-            })
-            .ToArray();
-
-        var census = (IReadOnlyList<PdfBoundaryRow> rows) => rows
-            .GroupBy(row => row.Boundary)
-            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
-
-        // ---- residual over-grouping, and which stage owns it ----------------------------------
-        // Line reconstruction decides what is on a line; the block grouper decides how many lines
-        // an occurrence spans. In this pipeline a block is an occurrence one-for-one, so an
-        // occurrence covering more visual lines than its heading is the block rule's doing, and the
-        // predicate values that let it merge are reported rather than inferred.
-        var afterLines = PdfSourceOccurrenceBoundary.VisualLines(after);
-        var residual = afterRows
-            .Where(row => row.Boundary == "OVER_GROUPED")
-            .Select(row =>
-            {
-                var occurrence = after[row.OccurrenceIndex];
-                var spans = occurrence.LineCount > 1;
-                return new
-                {
-                    claim = row.Claim,
-                    root = spans ? "BLOCK_GROUPING_CAUSED" : "LINE_RECONSTRUCTION_CAUSED",
-                    occurrenceParserLines = occurrence.LineCount,
-                    headingVisualLines = row.HeadingVisualLines.Count,
-                    extraVisualLines = row.ExtraVisualLinesInOccurrence,
-                    mergeEvidence = occurrence.Lines.Skip(1).Select((line, index) => new
-                    {
-                        yGap = Math.Round(occurrence.Lines[index].Y - line.Y, 2),
-                        leftDelta = Math.Round(Math.Abs(occurrence.Lines[index].Left - line.Left), 2),
-                        fontSizeDelta = Math.Round(Math.Abs(occurrence.Lines[index].FontSize - line.FontSize), 3),
-                        previousEndsWithPeriod = occurrence.Lines[index].Text.TrimEnd().EndsWith('.'),
-                    }).ToArray(),
-                };
-            })
-            .ToArray();
-
-        // ---- counterfactual: representation only, never a score -------------------------------
-        var forensic = System.Text.Json.JsonDocument.Parse(File.ReadAllText(
-            Path.Combine(TestRepository.Root(),
-                "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json"
-                    .Replace('/', Path.DirectorySeparatorChar))));
-        var byClaim = transitions.ToDictionary(item => item.claim, StringComparer.Ordinal);
-        var counterfactual = forensic.RootElement.GetProperty("lostOccurrences").EnumerateArray()
-            .Where(loss => loss.GetProperty("persistent").GetBoolean())
-            .Select(loss => loss.GetProperty("claim").GetString()!)
-            .Where(byClaim.ContainsKey)
-            .Select(claim => new
-            {
-                claim,
-                representableBefore = byClaim[claim].representableBefore,
-                representableAfter = byClaim[claim].representableAfter,
-            })
-            .OrderBy(item => item.claim, StringComparer.Ordinal)
-            .ToArray();
-
-        // ---- is the tolerance fitted to this document? ----------------------------------------
-        // If the baseline spread inside a reconstructed line is far below the gap to the next line,
-        // the threshold has room on both sides and is not balanced on this document's numbers.
-        var separation = Separation();
-
-        FreezeArtifact.AssertJson(Artifacts, "doc-0252-visual-line-shadow.v1.json", new
-        {
-            artifactKind = "a99_pdf_visual_line_shadow",
-            schemaVersion = "a99-pdf-visual-line-shadow-v1",
-            finding = "PDF_SOURCE_OCCURRENCE_BOUNDARY_MISMATCH",
-            intervention = "PDF_VISUAL_LINE_RECONSTRUCTION",
-            authorityId = "DOC-0252",
-            providerCalls = 0,
-            modelCalls = 0,
-
-            activeGrouping = nameof(PdfLineGrouping.MidpointV1),
-            candidateGrouping = nameof(PdfLineGrouping.VisualLineV2),
-            activeAuthorityMoved = false,
-            currentRuntimeUniverseSha256 = Universe(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1),
-            shadowRuntimeUniverseSha256 = Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.LegacyV1),
-
-            rule = new
-            {
-                statement = "A glyph joins a line when its baseline is within half the line's scale of the line's baseline, and its vertical box overlaps the line's band by at least half of the smaller of the two heights.",
-                baselineToleranceFactor = PdfVisualLineBucket.BaselineTolerance,
-                overlapRatio = PdfVisualLineBucket.OverlapRatio,
-                overlapDenominator = "min(glyph height, line band height) - symmetric, so a small mark is judged against its own size rather than against the line's",
-                whyNotMidpoint = "A glyph's midpoint is a property of its shape. A period and a capital on one baseline differ by about a third of the cap height, which is why the incumbent rule separates them.",
-                notFittedTo = "DOC-0252. Half an em sits between a super/subscript shift (about a third of an em) and a line's leading (at least one em); the separation measured below shows the margin on this document rather than defining the rule from it.",
-                separation,
-            },
-
-            occurrences = new { before = before.Count, after = after.Count },
-            visualLines = new
-            {
-                before = PdfSourceOccurrenceBoundary.VisualLines(before).Count,
-                after = afterLines.Count,
-                splitAcrossOccurrencesBefore =
-                    PdfSourceOccurrenceBoundary.VisualLines(before).Count(line => line.SplitAcrossOccurrences),
-                splitAcrossOccurrencesAfter = afterLines.Count(line => line.SplitAcrossOccurrences),
-                corroboration = "The audit reconstructs visual lines independently, by overlapping parser lines. Over the candidate it finds the same count the candidate itself produced, which is the agreement of two different methods rather than one method agreeing with itself; over the incumbent it finds a few more, being unable to recover at line level what only glyph-level grouping can.",
-            },
-
-            punctuation = new
-            {
-                before = Serialize(PdfSourceOccurrenceBoundary.PunctuationCensus(
-                    before, beforeRows.Select(row => row.OccurrenceIndex).Distinct().ToArray())),
-                after = Serialize(PdfSourceOccurrenceBoundary.PunctuationCensus(
-                    after, afterRows.Select(row => row.OccurrenceIndex).Distinct().ToArray())),
-            },
-
-            boundary = new
-            {
-                total = AuthoritativeTotal,
-                before = census(beforeRows),
-                after = census(afterRows),
-                transitionCensus = transitions
-                    .GroupBy(item => $"{item.from} -> {item.to}")
-                    .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
-                regressionsFromExact = transitions
-                    .Where(item => item.from == "EXACT_SOURCE_BOUNDARY" && item.to != "EXACT_SOURCE_BOUNDARY")
-                    .ToArray(),
-                transitions,
-            },
-
-            representability = new
-            {
-                note = "Whether the complete approved heading exists inside one occurrence. This is the question the binder has to answer, and it is reported apart from the boundary label because an over-grouped occurrence still contains its heading.",
-                fullyRepresentableBefore = beforeRows.Count(row => row.FullyRepresentable),
-                fullyRepresentableAfter = afterRows.Count(row => row.FullyRepresentable),
-                notRepresentableAfter = afterRows.Where(row => !row.FullyRepresentable)
-                    .Select(PdfSourceOccurrenceBoundary.Serialize).ToArray(),
-                headingsNotFoundInShadow = afterMissing,
-            },
-
-            residualOverGrouping = new
-            {
-                note = "A block is an occurrence one-for-one in this pipeline, so BLOCK_GROUPING_CAUSED and OCCURRENCE_GROUPING_CAUSED are one stage, not two. Nothing downstream of line reconstruction was changed by this task.",
-                roots = residual.GroupBy(item => item.root)
-                    .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
-                rows = residual,
-            },
-
-            counterfactual = new
-            {
-                note = "Representation only. No provider response was replayed against this universe: those requests carry the old aliases, and scoring them here would invent a baseline that was never run.",
-                source = "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json",
-                persistentLossesConsidered = counterfactual.Length,
-                previouslyUnrepresentableNowRepresentable = counterfactual
-                    .Count(item => !item.representableBefore && item.representableAfter),
-                stillUnrepresentable = counterfactual.Count(item => !item.representableAfter),
-                rows = counterfactual,
-            },
-
-            glyphConservation = "PASS",
-            status = "SHADOW_ONLY_ACTIVE_AUTHORITY_UNCHANGED",
-        });
-
-        // Acceptance, asserted rather than described.
-        Assert.Empty(afterMissing);
-        Assert.True(census(afterRows).GetValueOrDefault("FRAGMENTED")
-            < census(beforeRows).GetValueOrDefault("FRAGMENTED"));
-        Assert.True(census(afterRows).GetValueOrDefault("EXACT_SOURCE_BOUNDARY")
-            > census(beforeRows).GetValueOrDefault("EXACT_SOURCE_BOUNDARY"));
-        Assert.True(afterRows.Count(row => row.FullyRepresentable)
-            > beforeRows.Count(row => row.FullyRepresentable));
-    }
-
-    // ---- what the segment candidate does to a real document and to the corpus -------------------
-
-    [Fact]
-    public void The_segment_universe_keeps_every_approved_heading_representable()
-    {
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
-        var reference = Occurrences(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1);
-        var aliases = PdfSourceOccurrenceBoundary.Aliases(reference.Count);
-        var goldTexts = gold.Headings
-            .Select(heading => heading.VerbatimText ?? reference[Array.IndexOf(aliases, heading.SourceAlias)].VerbatimText)
-            .ToArray();
-
-        // Blocks still form the occurrence, as they do on the other side of this comparison. The
-        // line-atom catalog below is built and measured, but binding a heading that wraps needs a
-        // contract for naming several atoms, and that is a later decision.
-        var after = Occurrences(PdfLineGrouping.VisualLineSegmentV3, PdfBlockGrouping.ContinuationV2);
-        var indexes = PdfSourceOccurrenceBoundary.Locate(after, gold.Headings, goldTexts, out var missing);
-        var rows = PdfSourceOccurrenceBoundary.Classify(after, gold.Headings, indexes);
-        var census = rows.GroupBy(row => row.Boundary)
-            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
-
-        var segments = Lines(PdfLineGrouping.VisualLineSegmentV3);
-
-        FreezeArtifact.AssertJson(Artifacts, "doc-0252-visual-line-segment-shadow.v1.json", new
-        {
-            artifactKind = "a99_pdf_visual_line_segment_shadow",
-            schemaVersion = "a99-pdf-visual-line-segment-shadow-v1",
-            intervention = "PDF_VISUAL_LINE_SEGMENT_AUTHORITY",
-            providerCalls = 0,
-            modelCalls = 0,
-
-            rule = new
-            {
-                statement = "A row is divided where a gap much wider than the page's own word space sits in a corridor that a neighbouring row also leaves open while carrying text on both sides of it.",
-                candidateGapFactor = PdfVisualRegion.CandidateGapFactor,
-                neighbourWindow = PdfVisualRegion.NeighbourWindow,
-                corridorSupportRatio = PdfVisualRegion.CorridorSupportRatio,
-                supportingRowsRequired = PdfVisualRegion.SupportingRowsRequired,
-                whyNotGapAlone = "A wide gap is not evidence of a second region. Tab-aligned metadata, a folio beside a running header, a justified last line and a signature line all leave one. What separates two regions is whitespace that persists across rows with text on both sides of it.",
-                riskCensusIsNotASplitRule = "The corpus count of rows with a jump over three line-heights is a risk census. It is reported beside the number actually divided, and the two are not the same measurement.",
-            },
-
-            lineage = new
-            {
-                activeAuthorityMoved = false,
-                activeRuntimeUniverseSha256 = Universe(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1),
-                lineFixedShadowSha256 = Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.LegacyV1),
-                blockFixedShadowSha256 = Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.ContinuationV2),
-                lineSegmentShadowSha256 = Universe(PdfLineGrouping.VisualLineSegmentV3, PdfBlockGrouping.ContinuationV2),
-            },
-
-            doc0252 = new
-            {
-                visualRows = Lines(PdfLineGrouping.VisualLineV2).Count,
-                visualLineSegments = segments.Count,
-                occurrences = after.Count,
-                // The future coordinate system, counted through the builder that owns it. Nothing
-                // routes through it yet; it is here so the atom count is a fact rather than a plan.
-                lineAtomCatalogUnits = PdfSegmentAtomCatalog.FromSegments(segments).Count,
-                boundary = census,
-                fullyRepresentable = rows.Count(row => row.FullyRepresentable),
-                notRepresentable = rows.Where(row => !row.FullyRepresentable)
-                    .Select(PdfSourceOccurrenceBoundary.Serialize).ToArray(),
-                headingsNotFound = missing,
-                claims = rows.Select(PdfSourceOccurrenceBoundary.Serialize).ToArray(),
-            },
-
-            corpus = CorpusCensus(),
-        });
-
-        Assert.Empty(missing);
-        Assert.Equal(AuthoritativeTotal, rows.Count(row => row.FullyRepresentable));
-        Assert.Equal(0, census.GetValueOrDefault("FRAGMENTED"));
-    }
-
-    [Fact]
     public void The_adjudicated_layout_cases_come_out_as_a_reader_would_read_them()
     {
         // The rule is judged against rows a person looked at, held in their own artifact so the
@@ -654,9 +268,6 @@ public sealed class PdfLineExtractionTests
     // ---- helpers ------------------------------------------------------------------------------
 
     /// <summary>Both candidate reconstructions. Neither is active; both must hold the invariants.</summary>
-    private static readonly PdfLineGrouping[] Candidates =
-        [PdfLineGrouping.VisualLineV2, PdfLineGrouping.VisualLineSegmentV3];
-
     private static PdfVisualLineBucket Line(Glyph first)
     {
         var bucket = new PdfVisualLineBucket();
@@ -678,10 +289,10 @@ public sealed class PdfLineExtractionTests
             .ToArray();
     }
 
-    private static IReadOnlyList<PdfLine> Lines(PdfLineGrouping grouping)
+    private static IReadOnlyList<PdfLine> Lines()
     {
         using var document = PdfDocument.Open(Path_);
-        return PdfLineExtraction.ExtractLines(document, grouping);
+        return PdfLineExtraction.ExtractLines(document);
     }
 
     /// <summary>One extracted glyph, identified by what it is and where it was drawn.</summary>
@@ -762,14 +373,6 @@ public sealed class PdfLineExtractionTests
         return sorted.Length == 0 ? 0 : sorted[sorted.Length / 2];
     }
 
-    private static IReadOnlyList<PdfSemanticBlock> Occurrences(
-        PdfLineGrouping lines, PdfBlockGrouping blocks) =>
-        PdfSemanticBlockGrouper.Build(
-            PdfLineBlockFilter.Analyze(Lines(lines)), includeRiskLines: true, grouping: blocks);
-
-    private static string Universe(PdfLineGrouping lines, PdfBlockGrouping blocks) =>
-        PdfCanonicalSourceUniverseBuilder.Build(Path_, Lines(lines), blocks).SourceUniverseSha256;
-
     /// <summary>
     /// One reconstructed row, recovered from the segments it was divided into. Segments are emitted
     /// row by row and left to right, so a segment beginning to the right of the one before it on an
@@ -833,7 +436,7 @@ public sealed class PdfLineExtractionTests
             try
             {
                 using var document = PdfDocument.Open(path);
-                segments = PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3);
+                segments = PdfLineExtraction.ExtractLines(document);
             }
             catch (Exception)
             {
@@ -917,7 +520,7 @@ public sealed class PdfLineExtractionTests
         if (path is null) return null;
 
         using var pdf = PdfDocument.Open(path);
-        var rows = Rows(PdfLineExtraction.ExtractLines(pdf, PdfLineGrouping.VisualLineSegmentV3));
+        var rows = Rows(PdfLineExtraction.ExtractLines(pdf));
         return rows.FirstOrDefault(row =>
             row[0].Page == page && Math.Abs(row[0].Y - y) < 0.05);
     }

@@ -8,7 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class GenericDocumentExtractionOutputTests
 {
     [Fact]
-    public async Task Authority_pipeline_exposes_generic_result_before_heading_projection()
+    public async Task Authority_pipeline_without_a_model_exposes_the_source_catalog_and_claims_no_structure()
     {
         var path = Path.Combine(Path.GetTempPath(), $"dhx-generic-output-{Guid.NewGuid():N}.docx");
         try
@@ -19,9 +19,8 @@ public sealed class GenericDocumentExtractionOutputTests
             var legacy = await pipeline.RunAsync(path);
 
             Assert.NotEmpty(generic.SourceCatalog.Units);
-            Assert.NotEmpty(generic.Structure.Elements);
-            Assert.NotEmpty(generic.Sections);
-            Assert.NotEmpty(generic.Chunks);
+            // No model, no semantic claims: the harness does not declare headings on its own.
+            Assert.Empty(generic.Structure.Elements);
             Assert.Equal(
                 legacy.Headings.Select(heading => (heading.Index, heading.Text, heading.Level)),
                 HeadingOutlineProjection.Project(generic.Structure)
@@ -30,7 +29,7 @@ public sealed class GenericDocumentExtractionOutputTests
         }
         finally
         {
-            LegacyDocConverter.TryDelete(path);
+            OfficeDocumentConverter.TryDelete(path);
         }
     }
 
@@ -116,9 +115,9 @@ public sealed class GenericDocumentExtractionOutputTests
         Assert.Equal(raw, unit.Text);
         Assert.Equal(new StructuralSpan(0, raw.Length), unit.SourceSpan);
 
-        var candidate = new StructuralCandidate
+        var sourceOccurrence = new StructuralSourceOccurrence
         {
-            CandidateId = "caption-1",
+            SourceOccurrenceId = "caption-1",
             ObservedSourceFacts =
             [
                 new SourceFacts
@@ -131,10 +130,10 @@ public sealed class GenericDocumentExtractionOutputTests
             ],
         };
         var element = StructuralProposalValidator.Materialize(
-            candidate,
+            sourceOccurrence,
             new StructuralProposal
             {
-                CandidateId = "caption-1",
+                SourceOccurrenceId = "caption-1",
                 Type = StructuralElementType.Caption,
                 Role = ProposedRole.Caption,
                 ProposedSources = [new ProposedSourceReference("pdf-block-1", new StructuralSpan(7, 23))],
@@ -163,12 +162,12 @@ public sealed class GenericDocumentExtractionOutputTests
                 Source = new SourceAnchor { SourceType = "pdf", ParagraphIndex = 2 },
             },
         };
-        var candidate = new StructuralCandidate { CandidateId = "multi", ObservedSourceFacts = facts };
+        var sourceOccurrence = new StructuralSourceOccurrence { SourceOccurrenceId = "multi", ObservedSourceFacts = facts };
         var element = StructuralProposalValidator.Materialize(
-            candidate,
+            sourceOccurrence,
             new StructuralProposal
             {
-                CandidateId = "multi",
+                SourceOccurrenceId = "multi",
                 Type = StructuralElementType.Caption,
                 Role = ProposedRole.Caption,
                 ProposedSources =
@@ -231,16 +230,16 @@ public sealed class GenericDocumentExtractionOutputTests
             },
             RawSpan = new SourceTextSpan(0, text.Length),
         };
-        var candidate = new StructuralCandidate
+        var sourceOccurrence = new StructuralSourceOccurrence
         {
-            CandidateId = id,
+            SourceOccurrenceId = id,
             ObservedSourceFacts = [facts],
         };
         return StructuralProposalValidator.Materialize(
-            candidate,
+            sourceOccurrence,
             new StructuralProposal
             {
-                CandidateId = id,
+                SourceOccurrenceId = id,
                 Type = type,
                 Role = role,
                 ProposedSources = [new ProposedSourceReference(facts.SourceId, new StructuralSpan(0, text.Length))],

@@ -147,7 +147,7 @@ public sealed partial class LawGoldItemisationTests
     private static Dictionary<string, bool> BoldBySourceId(string pdf)
     {
         using var document = UglyToad.PdfPig.PdfDocument.Open(pdf);
-        return PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3)
+        return PdfLineExtraction.ExtractLines(document)
             .GroupBy(PdfLineIdentity.Of, StringComparer.Ordinal)
             .ToDictionary(g => g.Key, g => g.First().BoldRatio >= 0.5, StringComparer.Ordinal);
     }

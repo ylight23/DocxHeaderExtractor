@@ -7,10 +7,10 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class LmStudioTests
 {
     [Fact]
-    public async Task Uses_loopback_openai_api_with_structured_schema()
+    public async Task Uses_loopback_openai_api_and_returns_trimmed_content()
     {
         var handler = new CaptureHandler(
-            """{"choices":[{"message":{"content":"{\"items\":[{\"i\":42,\"r\":\"h\",\"l\":2}]}"}}]}""");
+            """{"choices":[{"message":{"content":"  {\"ok\":true}\n"}}]}""");
         using var http = new HttpClient(handler);
         using var model = new LmStudioHeaderExtractor(http, new RemoteInferenceOptions
         {
@@ -18,14 +18,13 @@ public sealed class LmStudioTests
             Endpoint = new Uri("http://127.0.0.1:1234/v1/chat/completions"),
         });
 
-        var result = await model.ClassifyAsync("DOCUMENT_VIEW", [42]);
+        var result = await model.BoundaryCutAsync("SYSTEM", "USER");
 
-        Assert.Single(result.Headings);
-        Assert.Equal(2, result.Headings[0].Level);
+        Assert.Equal("{\"ok\":true}", result);
         Assert.Equal("http://127.0.0.1:1234/v1/chat/completions", handler.Uri?.ToString());
         Assert.Contains("\"model\":\"local/qwen\"", handler.Body);
-        Assert.Contains("\"type\":\"json_schema\"", handler.Body);
-        Assert.Contains("\"minItems\":1", handler.Body);
+        Assert.Contains("\"content\":\"SYSTEM\"", handler.Body);
+        Assert.Contains("\"content\":\"USER\"", handler.Body);
         Assert.DoesNotContain("\"provider\"", handler.Body);
         Assert.Null(handler.AuthorizationScheme);
     }
@@ -46,28 +45,6 @@ public sealed class LmStudioTests
     }
 
     [Fact]
-    public async Task Retries_only_missing_ids_and_keeps_explicit_rejection()
-    {
-        var handler = new CaptureHandler(
-            """{"choices":[{"message":{"content":"{\"items\":[{\"i\":10,\"r\":\"h\",\"l\":1}]}"}}]}""",
-            """{"choices":[{"message":{"content":"{\"items\":[{\"i\":20,\"r\":\"n\",\"l\":0}]}"}}]}""");
-        using var http = new HttpClient(handler);
-        using var model = new LmStudioHeaderExtractor(http, new RemoteInferenceOptions
-        {
-            Model = "local/model",
-            Endpoint = new Uri("http://127.0.0.1:1234/v1/chat/completions"),
-            MissingIdRetries = 2,
-        });
-
-        var result = await model.ClassifyAsync("DOCUMENT_VIEW", [10, 20]);
-
-        Assert.Single(result.Headings);
-        Assert.Contains(20, result.ExplicitNonHeadings);
-        Assert.Equal(2, handler.Bodies.Count);
-        Assert.Contains("[20]", handler.Bodies[1]);
-    }
-
-    [Fact]
     public async Task Api_key_is_optional_but_is_sent_when_configured()
     {
         var handler = new CaptureHandler(
@@ -80,7 +57,7 @@ public sealed class LmStudioTests
             ApiKey = "local-test-token",
         });
 
-        await model.ClassifyAsync("DOCUMENT_VIEW", [1]);
+        await model.BoundaryCutAsync("SYSTEM", "USER");
 
         Assert.Equal("Bearer", handler.AuthorizationScheme);
         Assert.Equal("local-test-token", handler.AuthorizationParameter);

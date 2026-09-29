@@ -6,21 +6,6 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class CanonicalSemanticVnextRuntimeTests
 {
     [Fact]
-    public void Prompt_cannot_change_canonical_heading_membership_but_can_change_projection()
-    {
-        var graph = Graph(
-            new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION", RelationHints: ["same-node:heading"]),
-            new CanonicalSemanticProposal("S0002", true, "Heading", SemanticRole: "SECTION", Scope: "continuation", RelationHints: ["same-node:heading"]));
-
-        var all = CanonicalSemanticProjection.Project(graph, new SemanticIntent("all-true-headings", false));
-        var outline = CanonicalSemanticProjection.Project(graph, new SemanticIntent("main-document-outline", true));
-
-        Assert.Equal(2, all.Count);
-        Assert.Single(outline);
-        Assert.Equal(2, graph.Occurrences.Count);
-    }
-
-    [Fact]
     public void Repeat_and_continuation_survive_even_when_semantic_node_already_exists()
     {
         var graph = Graph(
@@ -29,15 +14,6 @@ public sealed class CanonicalSemanticVnextRuntimeTests
 
         Assert.Equal(2, graph.Occurrences.Count);
         Assert.Equal("CONTINUATION", graph.Occurrences[1].OccurrenceKind);
-        Assert.Single(CanonicalSemanticProjection.Project(graph, new SemanticIntent("outline", true)));
-    }
-
-    [Fact]
-    public void Candidate_miss_does_not_cap_owned_semantic_discovery()
-    {
-        Assert.True(SemanticCandidatePolicy.CanAcceptOwnedOccurrence("S0001", [
-            new SemanticCandidateAttentionHint("S0001", false, "heuristic-miss")
-        ]));
     }
 
     [Fact]
@@ -62,7 +38,7 @@ public sealed class CanonicalSemanticVnextRuntimeTests
         var result = await CanonicalSemanticProductionEntryPoint.RunAsync(new(
             Catalog(("p1", "Heading")), null, "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
-            [], [], [], []), new InvalidProposalTextModel());
+            [], [], []), new InvalidProposalTextModel());
 
         Assert.Equal(2, result.ContractInvalidProposalCount);
         Assert.Contains(result.ContractIssues, item => item.Code == "UNKNOWN_ALIAS");
@@ -282,28 +258,13 @@ public sealed class CanonicalSemanticVnextRuntimeTests
     }
 
     [Fact]
-    public void Semantic_cache_key_is_prompt_independent_and_projection_does_not_mutate_graph()
-    {
-        var first = CanonicalSemanticGraphCacheKey.Create("ABC", "schema", "model", "extractor");
-        var second = CanonicalSemanticGraphCacheKey.Create("abc", "schema", "model", "extractor");
-        var graph = Graph(new CanonicalSemanticProposal("S0001", true, "Heading"));
-        var before = graph.Occurrences.Count;
-
-        _ = CanonicalSemanticProjection.Project(graph, new SemanticIntent("collapse", true));
-
-        Assert.Equal(first, second);
-        Assert.Equal(before, graph.Occurrences.Count);
-    }
-
-    [Fact]
-    public void Three_layer_context_and_optional_visual_route_are_explicit()
+    public void Three_layer_context_is_explicit()
     {
         var packet = SemanticContextPacker.Pack(["target"], ["local"], ["global"]);
 
         Assert.Equal(["target"], packet.TargetEvidence);
         Assert.Equal(["local"], packet.LocalContext);
         Assert.Equal(["global"], packet.GlobalContext);
-        Assert.True(SemanticVisualEscalation.IsOptional);
     }
 
     [Fact]
@@ -315,7 +276,6 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             [new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION")],
             "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
-            [new SemanticCandidateAttentionHint("S0001", false, "heuristic-miss")],
             ["Heading"], ["local"], ["global"]));
 
         Assert.Equal(CanonicalSemanticModality.Text, result.ModalityProfile.DocumentModality);
@@ -335,11 +295,11 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             [],
             "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", false, 1, "docx-image")],
-            [], [], [], [],
-            [new CanonicalSemanticVisualBlock(
+            [], [], [],
+            VisualBlocks: [new CanonicalSemanticVisualBlock(
                 "P0001", 1, "image-hash",
                 new CanonicalSemanticVisualBoundingBox(0, 0, 10, 10), "Visual heading")],
-            [new CanonicalSemanticVisualProposal("V0001", true, "Visual heading", "SECTION")]));
+            VisualProposals: [new CanonicalSemanticVisualProposal("V0001", true, "Visual heading", "SECTION")]));
 
         Assert.Equal(CanonicalSemanticModality.VisualOnly, result.ModalityProfile.DocumentModality);
         Assert.Single(result.VisualOccurrences);
@@ -356,7 +316,7 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             null,
             "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
-            [], ["Heading"], [], ["source-context"],
+            ["Heading"], [], ["source-context"],
             DocumentId: "DOC-TEST"),
             new FakeTextModel());
 
@@ -376,7 +336,7 @@ public sealed class CanonicalSemanticVnextRuntimeTests
         var result = await CanonicalSemanticProductionEntryPoint.RunAsync(new(
             Catalog(("p1", "Heading")), null, "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
-            [], ["Heading"], [], [], DocumentId: "DOC-GLOBAL-CONFLICT"),
+            ["Heading"], [], [], DocumentId: "DOC-GLOBAL-CONFLICT"),
             new ParentContradictionTextModel(),
             requestId: "global-conflict",
             globalReopenModel: new SelectParentAlternativeModel());
@@ -399,7 +359,7 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             null,
             "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", false, 1, "docx-image")],
-            [], [], [], [],
+            [], [], [],
             VisualPages: [new CanonicalSemanticVisualPageEvidence("P0001", "image-hash", [1, 2, 3], 10, 10)],
             DocumentId: "DOC-VISUAL-TEST"),
             new FakeTextModel(), new FakeVisualModel());

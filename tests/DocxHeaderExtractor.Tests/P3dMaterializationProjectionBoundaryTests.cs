@@ -126,7 +126,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
             "test-route", 1, 1, 1, 1, blocks, blocks, [], decisions, ["B1"], [], ["B1"]);
 
         Assert.Equal("test-route", audit.Route);
-        Assert.Same(blocks, audit.CandidateBlocks);
+        Assert.Same(blocks, audit.SourceBlocks);
         Assert.Same(decisions, audit.BlockDecisions);
         Assert.Empty(audit.RawAnalystResponses);
         Assert.Empty(audit.ModelRequests);

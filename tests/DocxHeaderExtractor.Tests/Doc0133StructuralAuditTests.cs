@@ -56,7 +56,7 @@ public sealed partial class Doc0133StructuralAuditTests
         var atoms = PdfStructuredSourceAuthorityBuilder.Build(pdf).Atoms;
         Dictionary<string, PdfLine> lines;
         using (var document = UglyToad.PdfPig.PdfDocument.Open(pdf))
-            lines = PdfLineExtraction.ExtractLines(document, PdfLineGrouping.VisualLineSegmentV3)
+            lines = PdfLineExtraction.ExtractLines(document)
                 .GroupBy(PdfLineIdentity.Of, StringComparer.Ordinal)
                 .ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
         return atoms.Select(a => new Atom(a, Math.Round(lines[a.SourceId].FontSize, 1), lines[a.SourceId].BoldRatio >= 0.5, lines[a.SourceId].ItalicRatio >= 0.5, lines[a.SourceId].Left)).ToArray();

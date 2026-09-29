@@ -53,16 +53,12 @@ public sealed class SemanticAuthorityCaptureReservationTests
                 classifier,
                 CancellationToken.None,
                 replayCapture: capture,
-                profile: StructuredV2TargetBaselineTransportTests.V2Profile,
-                packingPolicy: SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1,
-                selectedPackIds: new HashSet<string>(StringComparer.Ordinal)
-                {
-                    "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
-                    "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
-                },
                 runPlacement: false));
 
-        Assert.Equal("TRANSPORT_CAPTURE_ALREADY_EXISTS", error.Message);
+        // The frozen capture was taken under an earlier packing and authority profile, so the
+        // current lane's identity collides with it rather than repeating it; either way the
+        // existing baseline is refused before anything reaches the classifier.
+        Assert.Equal("TRANSPORT_CAPTURE_IDENTITY_COLLISION", error.Message);
         Assert.Empty(classifier.Requests);
     }
 

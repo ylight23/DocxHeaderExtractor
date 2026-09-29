@@ -146,6 +146,6 @@ public sealed class PdfSourceTextProjectionTests
             lines = PdfLineExtraction.ExtractLines(document);
         }
 
-        return PdfSemanticBlockGrouper.Build(PdfLineBlockFilter.Analyze(lines), includeRiskLines: true);
+        return PdfSemanticBlockGrouper.Build(PdfLineObservationAnalyzer.Analyze(lines));
     }
 }

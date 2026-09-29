@@ -25,7 +25,7 @@ public sealed class Src044CanonicalOccurrenceGoldTests
     private const string GoldPath = "eval/a99-closed-loop/gold/SRC-044.gold.json";
 
     /// <summary>The checks below describe Gold R1, the materialized review; the authored Gold is R2 since the revision.</summary>
-    private const string GoldR1 = Src044BlindScoreTests.GoldR1;
+    private const string GoldR1 = SourcePdfCorpus.Src044GoldR1;
     private const string Review = "eval/a99-closed-loop/source-review-v1/SRC-044.source-review.v1.json";
     private const string ReviewItems = "eval/a99-closed-loop/source-review-v1/SRC-044/review-items.json";
     private const string LineageDir = "eval/a99-closed-loop/source-review-v1";

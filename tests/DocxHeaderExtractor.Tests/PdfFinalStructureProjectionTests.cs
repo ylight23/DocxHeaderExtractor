@@ -144,17 +144,17 @@ public sealed class PdfFinalStructureProjectionTests
         Assert.Equal(1, final.Counters.DroppedWithoutSourceFact);
     }
 
-    /// <summary>Scope and role are carried verbatim; the projection is not the place to normalise them.</summary>
+    /// <summary>Scope is carried verbatim; role is no longer inferred from parser-side domain policy.</summary>
     [Fact]
-    public void ScopeAndRoleAreCarriedWithoutNormalisation()
+    public void ScopeIsCarriedWithoutParserSideRoleNormalisation()
     {
-        var structure = Structure("b1") with { StructuralScope = "appendix_table", DomainRole = PdfDomainRole.TableTitle };
+        var structure = Structure("b1") with { StructuralScope = "appendix_table" };
 
         var final = PdfFinalStructureProjection.Project("sha", [structure], [Fact("b1", 0, "4 3 Validation", 1)], []);
 
         var heading = Assert.Single(final.Headings);
         Assert.Equal("appendix_table", heading.Scope);
-        Assert.Equal("TableTitle", heading.Role);
+        Assert.Equal("Heading", heading.Role);
         Assert.Equal("validated", heading.Authority);
     }
 
@@ -172,71 +172,16 @@ public sealed class PdfFinalStructureProjectionTests
     /// The projection must be reproducible from a frozen artifact, so a product result can be
     /// re-derived later without re-running extraction, reconciliation or a model.
     /// </summary>
-    [Fact]
-    public void ProjectsIdenticallyFromASerialisedArtifact()
-    {
-        var facts = new[] { Fact("b1", 0, "1 Introduction", 1), Fact("b2", 1, "1 1 Scope", 2) };
-        var structures = new[] { Structure("b1"), Structure("b2", parentId: "b1", resolution: "marker-resolved") };
-        var groundings = new[]
-        {
-            new PdfCanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
-            new PdfCanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
-        };
-        var live = PdfFinalStructureProjection.Project("sha", structures, facts, groundings);
-
-        var row = PdfHierarchyFactsArtifact.BuildRow("doc.pdf", "sha", facts, structures, groundings);
-        var replayed = System.Text.Json.JsonSerializer.Deserialize<PdfHierarchyFactsRow>(
-            System.Text.Json.JsonSerializer.Serialize(row))!;
-        var offline = PdfFinalStructureProjection.Project(
-            replayed.SourceDocumentSha256, replayed.ValidatedStructures, facts, replayed.CanonicalGroundings);
-
-        Assert.Equal(live.FinalStructureFingerprint, offline.FinalStructureFingerprint);
-        Assert.Equal(live.Headings.Select(h => h.Text), offline.Headings.Select(h => h.Text));
-        Assert.Equal(live.Headings.Select(h => h.ParentId), offline.Headings.Select(h => h.ParentId));
-    }
-
     /// <summary>
-    /// M9.4 needs a TRUE offline replay - facts reconstructed from the row's own items, not the
-    /// original in-memory array a live run would still have. <see cref="PdfHierarchyFactItem.ToFactAudit"/>
-    /// is the bridge; this locks that it reproduces the identical structure the live facts would.
-    /// </summary>
-    [Fact]
-    public void ProjectsIdenticallyFromFactsReconstructedOffTheRowItemsAlone()
-    {
-        var facts = new[] { Fact("b1", 0, "1 Introduction", 1), Fact("b2", 1, "1 1 Scope", 2) };
-        var structures = new[] { Structure("b1"), Structure("b2", parentId: "b1", resolution: "marker-resolved") };
-        var groundings = new[]
-        {
-            new PdfCanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
-            new PdfCanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
-        };
-        var live = PdfFinalStructureProjection.Project("sha", structures, facts, groundings);
-
-        var row = PdfHierarchyFactsArtifact.BuildRow("doc.pdf", "sha", facts, structures, groundings);
-        var replayed = System.Text.Json.JsonSerializer.Deserialize<PdfHierarchyFactsRow>(
-            System.Text.Json.JsonSerializer.Serialize(row))!;
-        var reconstructedFacts = replayed.Items.Select(item => item.ToFactAudit()).ToArray();
-        var offline = PdfFinalStructureProjection.Project(
-            replayed.SourceDocumentSha256, replayed.ValidatedStructures, reconstructedFacts, replayed.CanonicalGroundings);
-
-        Assert.Equal(live.FinalStructureFingerprint, offline.FinalStructureFingerprint);
-        Assert.Equal(live.Headings.Select(h => h.Level), offline.Headings.Select(h => h.Level));
-        Assert.Equal(live.Headings.Select(h => h.ParentId), offline.Headings.Select(h => h.ParentId));
-    }
-
-    /// <summary>
-    /// The CLI writes the frozen artifact under a camelCase naming policy
-    /// (<c>pdf-hierarchy-facts</c> in Program.cs). <see cref="PdfValidatedStructure"/> has to declare
-    /// its own <c>[JsonPropertyName]</c>s to survive that round-trip: without them a case-sensitive
-    /// reader (M9.4's shadow comparator, notably) silently leaves <c>SourceId</c> null instead of
-    /// throwing, which then throws much later and further away, inside <c>Project</c> itself.
+    /// <see cref="PdfValidatedStructure"/> declares its own <c>[JsonPropertyName]</c>s so it survives a
+    /// camelCase round-trip: without them a case-sensitive reader silently leaves <c>SourceId</c> null
+    /// instead of throwing, which then throws much later and further away, inside <c>Project</c>.
     /// </summary>
     [Fact]
     public void ValidatedStructureRoundTripsUnderTheCamelCaseNamingPolicyTheCliWrites()
     {
         var structure = Structure("b1", parentId: "b2", resolution: "marker-resolved") with
         {
-            DomainRole = PdfDomainRole.TableTitle,
             StructuralScope = "appendix_table",
         };
         var camelCase = new System.Text.Json.JsonSerializerOptions

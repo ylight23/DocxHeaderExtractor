@@ -20,19 +20,15 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class SemanticCoordinateContractTests
 {
-    /// <summary>The schema both lanes send today, named by every frozen preflight artifact.</summary>
+    /// <summary>The DOCX lane's schema, named by every frozen DOCX preflight artifact.</summary>
     private const string ActiveSchemaHash =
         "91005fabc2e978d5ab4d900bc66ebeb27e563628056b3073cef22896687ac72e";
 
     [Fact]
-    public void Both_lanes_still_send_the_schema_they_have_always_sent()
+    public void The_docx_lane_still_sends_the_schema_it_has_always_sent()
     {
         // The whole point of doing this as a separate step: the seam moves, the bytes do not.
         Assert.Equal(ActiveSchemaHash, SemanticCoordinateContract.DocxAliasSpan.SchemaHash());
-        Assert.Equal(ActiveSchemaHash, SemanticCoordinateContract.PdfAliasSelection.SchemaHash());
-        Assert.Equal(
-            JsonSerializer.Serialize(SemanticCoordinateContract.DocxAliasSpan.Schema()),
-            JsonSerializer.Serialize(SemanticCoordinateContract.PdfAliasSelection.Schema()));
         Assert.Equal(
             JsonSerializer.Serialize(CanonicalSemanticContract.Schema()),
             JsonSerializer.Serialize(SemanticCoordinateContract.DocxAliasSpan.Schema()));
@@ -43,17 +39,10 @@ public sealed class SemanticCoordinateContractTests
     {
         // The difference that already existed in Gold and had nowhere to live in the code.
         Assert.Equal("SOURCE_ALIAS_PLUS_UTF16_SPAN", SemanticCoordinateContract.DocxAliasSpan.CoordinateSystem);
-        Assert.Equal("SOURCE_ALIAS_PLUS_SELECTION_MODE", SemanticCoordinateContract.PdfAliasSelection.CoordinateSystem);
+        Assert.Equal("STRUCTURED_SOURCE_PART_TUPLE", SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.CoordinateSystem);
         Assert.NotEqual(
-            SemanticCoordinateContract.DocxAliasSpan.CoordinateSystem,
-            SemanticCoordinateContract.PdfAliasSelection.CoordinateSystem);
-
-        // One concrete contract is still active. The architecture allows divergence; nothing has
-        // diverged yet, and claiming two active contract hashes here would be claiming a migration
-        // that has not happened.
-        Assert.Equal(
             SemanticCoordinateContract.DocxAliasSpan.ProtocolVersion,
-            SemanticCoordinateContract.PdfAliasSelection.ProtocolVersion);
+            SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.ProtocolVersion);
     }
 
     [Fact]
@@ -69,7 +58,7 @@ public sealed class SemanticCoordinateContractTests
             SemanticProposalDecoder.DecodeAliasScalar,
             SemanticCoordinateBinding.AliasSpan);
 
-        var active = await RequestFor(SemanticCoordinateContract.PdfAliasSelection);
+        var active = await RequestFor(SemanticCoordinateContract.DocxAliasSpan);
         var probed = await RequestFor(probe);
 
         Assert.Contains(JsonSerializer.Serialize(CanonicalSemanticContract.Schema()), active, StringComparison.Ordinal);
@@ -94,11 +83,11 @@ public sealed class SemanticCoordinateContractTests
             SemanticProposalDecoder.DecodeAliasScalar,
             SemanticCoordinateBinding.AliasSpan);
 
-        var activePrompt = await PromptFor(SemanticCoordinateContract.PdfAliasSelection);
+        var activePrompt = await PromptFor(SemanticCoordinateContract.DocxAliasSpan);
         var probedPrompt = await PromptFor(probe);
         Assert.Equal(activePrompt, probedPrompt);
 
-        var active = await RequestFor(SemanticCoordinateContract.PdfAliasSelection);
+        var active = await RequestFor(SemanticCoordinateContract.DocxAliasSpan);
         var probed = await RequestFor(probe);
         Assert.Equal(Evidence(active), Evidence(probed));
     }
@@ -119,15 +108,15 @@ public sealed class SemanticCoordinateContractTests
 
         Assert.Contains(result.ContractIssues, issue => issue.Code == "PROBE_REFUSED");
         Assert.DoesNotContain(
-            (await RunWith(SemanticCoordinateContract.PdfAliasSelection)).ContractIssues,
+            (await RunWith(SemanticCoordinateContract.DocxAliasSpan)).ContractIssues,
             issue => issue.Code == "PROBE_REFUSED");
     }
 
     [Fact]
     public void Neither_lane_can_reach_the_other_contract()
     {
-        Assert.NotSame(SemanticCoordinateContract.DocxAliasSpan, SemanticCoordinateContract.PdfAliasSelection);
-        Assert.NotEqual(SemanticCoordinateContract.DocxAliasSpan, SemanticCoordinateContract.PdfAliasSelection);
+        Assert.NotSame(SemanticCoordinateContract.DocxAliasSpan, SemanticCoordinateContract.PdfSemanticFunctionMembershipV1);
+        Assert.NotEqual(SemanticCoordinateContract.DocxAliasSpan, SemanticCoordinateContract.PdfSemanticFunctionMembershipV1);
     }
 
     // ---- helpers ------------------------------------------------------------------------------
@@ -141,14 +130,16 @@ public sealed class SemanticCoordinateContractTests
     private static async Task<CanonicalSemanticTextInferenceResult> RunWith(SemanticCoordinateContract contract)
     {
         using var classifier = new RecordingClassifier();
-        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(classifier, contract);
+        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+            classifier, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
         return await model.InferAsync(Input(), new SemanticContextPacket([], [], []), "contract-seam");
     }
 
     private static async Task<(string Prompt, string Request)> Capture(SemanticCoordinateContract contract)
     {
         using var classifier = new RecordingClassifier();
-        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(classifier, contract);
+        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+            classifier, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
         await CanonicalSemanticProductionEntryPoint.RunAsync(Input(), model);
         return (classifier.Prompt!, classifier.Request!);
     }
@@ -166,11 +157,10 @@ public sealed class SemanticCoordinateContractTests
             new DocumentSourceUnit("p1", 1, "Heading", new SourceAnchor { SourceType = "DOCX", ParagraphId = "p1" }, new(0, 7))]);
         return new CanonicalSemanticProductionInput(
             catalog, null, "source-hash", [new CanonicalSemanticPageEvidence("P0001", true, 0, "test")],
-            [], [], [], [], DocumentId: "DOC-CONTRACT-SEAM",
+            [], [], [], DocumentId: "DOC-CONTRACT-SEAM",
             SourceEvidence: [new CanonicalSemanticSourceEvidence(
-                "S0001", "p1", 1, "Heading", "document_body", null, 1, false, false,
-                ["test"], new { }, new { }, [], [], [], [], [],
-                new SemanticCandidateAttentionHint("S0001", true, "test"))]);
+                "S0001", "p1", 1, "Heading", "document_body",
+                ["test"], new { }, new { }, [], [], [], [])]);
     }
 
     private sealed class RecordingClassifier : IHeaderClassifier
@@ -190,16 +180,6 @@ public sealed class SemanticCoordinateContractTests
             Request = userMessage;
             return Task.FromResult("{\"headings\":[]}");
         }
-
-        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-            throw new NotSupportedException();
-
-        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-            throw new NotSupportedException();
-
-        public Task<ChunkResult> ClassifyHierarchyAsync(
-            IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) =>
-            throw new NotSupportedException();
 
         public void Dispose() { }
     }

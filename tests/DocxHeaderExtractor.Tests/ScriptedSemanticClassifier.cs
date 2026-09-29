@@ -42,32 +42,31 @@ internal sealed class ScriptedSemanticClassifier(int perSegment = 3) : IHeaderCl
         if (!document.RootElement.TryGetProperty("sourceEvidence", out var evidence))
             return Task.FromResult("{\"placements\":[]}");
 
-        var claimed = evidence.EnumerateArray()
-            .Where(item => item.TryGetProperty("owned", out var owned) && owned.GetBoolean())
+        var owned = evidence.EnumerateArray()
+            .Where(item => item.TryGetProperty("owned", out var isOwned) && isOwned.GetBoolean())
             .Where(item => (item.GetProperty("text").GetString() ?? string.Empty).Trim().Length >= 8)
             .Take(perSegment)
-            .Select(item => new
+            .Select(item => item.GetProperty("alias").GetString()!)
+            .ToArray();
+
+        // Answer in the shape of the contract that issued the request.
+        var protocol = document.RootElement.TryGetProperty("protocol", out var p) ? p.GetString() : null;
+        object[] claimed = protocol == SemanticFunctionMembershipContractV1.ProtocolVersion
+            ? owned.Select(alias => (object)new
             {
-                sourceAlias = item.GetProperty("alias").GetString(),
+                sourceParts = new[] { new { sourceAlias = alias } },
+                semanticFunction = "REGION_STRUCTURE",
+            }).ToArray()
+            : owned.Select(alias => (object)new
+            {
+                sourceAlias = alias,
                 isHeading = true,
-                verbatimText = item.GetProperty("text").GetString(),
                 semanticRole = "SECTION",
                 selectionMode = CanonicalSemanticSelectionMode.WholeAlias,
-            })
-            .ToArray();
+            }).ToArray();
 
         return Task.FromResult(JsonSerializer.Serialize(new { headings = claimed }));
     }
-
-    public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-        throw new NotSupportedException("The canonical route does not use ClassifyAsync.");
-
-    public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-        throw new NotSupportedException("The canonical route does not use CritiqueAsync.");
-
-    public Task<ChunkResult> ClassifyHierarchyAsync(
-        IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) =>
-        throw new NotSupportedException("The canonical route does not use ClassifyHierarchyAsync.");
 
     public void Dispose() { }
 }

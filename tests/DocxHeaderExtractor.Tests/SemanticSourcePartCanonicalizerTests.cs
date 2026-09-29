@@ -251,51 +251,38 @@ public sealed class SemanticSourcePartCanonicalizerTests
     // ---- the other lanes, and v1 ------------------------------------------------------------------
 
     [Fact]
-    public void The_v1_contract_is_untouched()
-    {
-        Assert.Equal("a99-semantic-source-parts-v1", SemanticCoordinateContract.PdfStructuredSourceParts.ProtocolVersion);
-        Assert.Equal("69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
-            SemanticCoordinateContract.PdfStructuredSourceParts.SchemaHash());
-        Assert.Equal("STRUCTURED_SOURCE_PARTS", SemanticCoordinateContract.PdfStructuredSourceParts.Binding.BindingId);
-    }
-
-    [Fact]
     public void The_other_lanes_are_untouched()
     {
         Assert.Equal("91005fabc2e978d5ab4d900bc66ebeb27e563628056b3073cef22896687ac72e",
             SemanticCoordinateContract.DocxAliasSpan.SchemaHash());
         Assert.Equal("ALIAS_SPAN", SemanticCoordinateContract.DocxAliasSpan.Binding.BindingId);
-        Assert.Equal("ALIAS_SPAN", SemanticCoordinateContract.PdfAliasSelection.Binding.BindingId);
     }
 
     [Fact]
-    public void The_v2_schema_does_not_offer_the_model_a_selection_mode()
+    public void The_pdf_schema_does_not_offer_the_model_a_selection_mode()
     {
-        var schema = JsonSerializer.Serialize(SemanticSourcePartsContractV2.Schema());
-        var v1 = JsonSerializer.Serialize(SemanticSourcePartsContract.Schema());
+        var schema = JsonSerializer.Serialize(SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.Schema());
 
-        Assert.Contains("selectionMode", v1, StringComparison.Ordinal);
         Assert.DoesNotContain("selectionMode", schema, StringComparison.Ordinal);
         Assert.Contains("verbatimText", schema, StringComparison.Ordinal);
-        Assert.DoesNotContain("selection", SemanticCoordinateContract.PdfStructuredSourcePartsV2.PromptClause!,
-            StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("selectionMode", SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.PromptClause!,
+            StringComparison.Ordinal);
     }
 
     [Fact]
-    public void A_v2_reply_decodes_binds_and_never_shows_the_binder_a_pending_mode()
+    public void A_pdf_reply_decodes_binds_and_never_shows_the_binder_a_pending_mode()
     {
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         using var reply = JsonDocument.Parse("""
-            {"headings":[{"isHeading":true,"semanticRole":"section-heading","relationHints":["parent-node:ROOT"],
-              "sourceParts":[{"sourceAlias":"L0400:S0"}]}]}
+            {"headings":[{"semanticFunction":"REGION_STRUCTURE","sourceParts":[{"sourceAlias":"L0400:S0"}]}]}
             """);
         var entry = reply.RootElement.GetProperty("headings")[0];
 
-        var decoded = SemanticCoordinateContract.PdfStructuredSourcePartsV2.Decode(entry);
+        var decoded = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.Decode(entry);
         var proposal = Assert.Single(decoded.Proposals);
         Assert.Equal(SemanticSourcePartCanonicalizer.PendingSelectionMode, proposal.SourceParts![0].SelectionMode);
 
-        var outcome = SemanticCoordinateContract.PdfStructuredSourcePartsV2.BindProposals(
+        var outcome = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.BindProposals(
             new SemanticCoordinateBindingRequest([proposal], plan.Aliases, null, plan.Atoms));
 
         var bound = Assert.Single(outcome.Bound);
@@ -303,17 +290,17 @@ public sealed class SemanticSourcePartCanonicalizerTests
     }
 
     [Fact]
-    public void A_v2_claim_whose_quote_is_absent_is_refused_by_name()
+    public void A_pdf_claim_whose_quote_is_absent_is_refused_by_name()
     {
         var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
         using var reply = JsonDocument.Parse("""
-            {"headings":[{"isHeading":true,"sourceParts":[
+            {"headings":[{"semanticFunction":"REGION_STRUCTURE","sourceParts":[
               {"sourceAlias":"L0400:S0","verbatimText":"text that is not in this atom"}]}]}
             """);
 
-        var decoded = SemanticCoordinateContract.PdfStructuredSourcePartsV2.Decode(
+        var decoded = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.Decode(
             reply.RootElement.GetProperty("headings")[0]);
-        var outcome = SemanticCoordinateContract.PdfStructuredSourcePartsV2.BindProposals(
+        var outcome = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.BindProposals(
             new SemanticCoordinateBindingRequest(decoded.Proposals, plan.Aliases, null, plan.Atoms));
 
         Assert.Empty(outcome.Bound);
@@ -406,22 +393,6 @@ public sealed class SemanticSourcePartCanonicalizerTests
 
         Assert.False(canonical.IsCanonical);
         Assert.Equal(SemanticSourcePartsStatus.TextNotInAtom, canonical.Status);
-    }
-
-    [Fact]
-    public void Trimming_never_lets_a_halo_atom_into_the_owned_segment()
-    {
-        // The repair only changes how a named atom is selected, never which atom: a continuation
-        // part naming a halo alias is refused as out-of-segment exactly as before.
-        var atoms = Atoms("Chapter II", "PUBLISHING");
-        var claim = new SemanticMembershipClaim(
-            [Part("L0000:S0", "Chapter II"), Part("L0001:S0", " PUBLISHING")], Stage1MembershipDisposition.StructuralUnit);
-        var decoded = new SemanticMembershipDecodeResult([claim], []);
-
-        var acceptance = SemanticMembershipV1.Accept(atoms, "sha", decoded, new HashSet<string> { "L0000:S0" });
-
-        Assert.Empty(acceptance.Accepted);
-        Assert.Equal("OutOfOwnedSegment", Assert.Single(acceptance.Refusals).Reason);
     }
 
     // ---- helpers -----------------------------------------------------------------------------------

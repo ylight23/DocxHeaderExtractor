@@ -77,7 +77,11 @@ public sealed class PdfS2jStrictOmissionCausalAuditTests
             Assert.False(row.SerializationLoss);
         });
         Assert.Equal(11, targetRows.Length);
-        Assert.Equal(0, targetRows.Count(row => row.CandidateHintPresent == false && row.AttentionVisible));
+        Assert.All(targetRows, row =>
+        {
+            Assert.False(row.CandidateBoostPresent);
+            Assert.False(row.AttentionVisible);
+        });
         Assert.Equal(2, targetRows.Count(row => row.MultiHeadingAlias));
         Assert.Equal(9, targetRows.Count(row => !row.MultiHeadingAlias));
         // The census is claim-level: S0573 contributes two claims at the same
@@ -125,7 +129,7 @@ public sealed class PdfS2jStrictOmissionCausalAuditTests
         var serializationLoss = !string.Equals(requestText, source.Text, StringComparison.Ordinal);
         var exactStart = goldItem.Bound.Parts[0].Start - source.SourceStart;
         var exactEnd = goldItem.Bound.Parts[^1].End - source.SourceStart;
-        var candidateHints = EvidenceHints(evidence);
+        var candidateBoost = EvidenceBoosts(evidence);
         var dropped = new[]
         {
             "page_position",
@@ -181,9 +185,9 @@ public sealed class PdfS2jStrictOmissionCausalAuditTests
             goldItem.Heading.SelectionMode != "WHOLE_ALIAS",
             goldItem.Heading.SourceAlias is "S0573",
             goldItem.Heading.SourceAlias is "S0573" ? "heading_plus_heading" : "heading_plus_body",
-            candidateHints.Present,
-            candidateHints.Type,
-            evidence.GetProperty("attention").GetBoolean(),
+            candidateBoost.Present,
+            candidateBoost.Type,
+            false,
             evidence.GetProperty("markers").EnumerateArray().Select(item => item.GetString()!).ToArray(),
             evidence.GetProperty("style").Clone(),
             evidence.GetProperty("scope").GetString()!,
@@ -264,16 +268,9 @@ public sealed class PdfS2jStrictOmissionCausalAuditTests
             : new(repeat, "NEARBY_DIFFERENT_HEADING", nearby);
     }
 
-    private static (bool Present, string Type) EvidenceHints(JsonElement evidence)
+    private static (bool Present, string Type) EvidenceBoosts(JsonElement evidence)
     {
-        var attention = evidence.TryGetProperty("attention", out var attentionProperty) &&
-                        attentionProperty.ValueKind == JsonValueKind.True;
-        var markers = evidence.TryGetProperty("markers", out var markerProperty) &&
-                      markerProperty.ValueKind == JsonValueKind.Array && markerProperty.GetArrayLength() > 0;
-        var numbering = evidence.TryGetProperty("numbering", out var numberingProperty) &&
-                        numberingProperty.ValueKind == JsonValueKind.Object && numberingProperty.EnumerateObject().Any();
-        return (attention || markers || numbering,
-            markers ? "attention+marker" : numbering ? "attention+numbering" : attention ? "attention" : "none");
+        return (false, "none");
     }
 
     private static int CharPosition(string body, string alias) =>
@@ -405,16 +402,16 @@ public sealed class PdfS2jStrictOmissionCausalAuditTests
                 multiHeadingAliases = targets.Count(row => row.MultiHeadingAlias),
                 singleHeadingAliases = targets.Count(row => !row.MultiHeadingAlias),
                 veryShortSpans = targets.Count(row => row.HeadingLength <= ShortSpanThreshold),
-                noCandidateHint = targets.Count(row => !row.CandidateHintPresent),
+                candidateBoostRemoved = targets.Count(row => !row.CandidateBoostPresent && !row.AttentionVisible),
                 nearSegmentEdge = targets.Count(row => row.NearVisibleMargin),
                 representationInformationLoss = targets.Count(row => row.DroppedRepresentationFields.Count > 0),
                 nearbyModelProposal = targets.Count(row => row.Neighborhood.Any(item => item.Kind != "NO_NEARBY_PROPOSAL")),
                 completelySilentNeighborhood = targets.Count(row => row.Neighborhood.All(item => item.Kind == "NO_NEARBY_PROPOSAL")),
             },
-            candidateHintAudit = new
+            candidateBoostAudit = new
             {
-                allUnhinted = targets.All(row => !row.CandidateHintPresent),
-                descriptive = "All 11 targets carry attention=true; marker hints are present only on a subset. This is correlation evidence, not causality.",
+                removedFromSourceFacts = targets.All(row => !row.CandidateBoostPresent && !row.AttentionVisible),
+                descriptive = "Candidate attention is no longer a source fact. Marker and numbering facts stay separate observations, not hint/boost fields.",
             },
             multiHeadingAudit = new
             {
@@ -433,7 +430,7 @@ public sealed class PdfS2jStrictOmissionCausalAuditTests
                 headingDefinitionDiscoveryCriteria = "UNRESOLVED",
                 multiHeadingDecomposition = "UNRESOLVED",
                 segmentContextAttentionCompetition = "UNRESOLVED",
-                candidateHintAttention = "UNRESOLVED",
+                candidateBoostAttention = "REMOVED_FROM_SOURCE_FACTS",
                 sourceRepresentationLoss = "UNRESOLVED",
                 other = "NOT_SUPPORTED",
             },
@@ -539,8 +536,8 @@ public sealed class PdfS2jStrictOmissionCausalAuditTests
         bool SubstringHeading,
         bool MultiHeadingAlias,
         string LocalStructure,
-        bool CandidateHintPresent,
-        string CandidateHintType,
+        bool CandidateBoostPresent,
+        string CandidateBoostType,
         bool AttentionVisible,
         IReadOnlyList<string> CandidateMarkers,
         JsonElement CandidateStyle,

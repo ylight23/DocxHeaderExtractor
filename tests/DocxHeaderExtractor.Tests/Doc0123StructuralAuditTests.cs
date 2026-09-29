@@ -251,7 +251,7 @@ public sealed partial class Doc0123StructuralAuditTests
         {
             if (claimed.Contains(i)) continue;
             var p = ParagraphOf(i);
-            if (p.InTableOfContents || !HeadingStyles.Contains(p.Style.StyleId ?? "")) continue;
+            if (!HeadingStyles.Contains(p.Style.StyleId ?? "")) continue;
             var section = SectionOf(i);
             var (verdict, category, reason) = StyledOverrides.TryGetValue(aliases[i].Alias, out var o)
                 ? o
@@ -515,7 +515,6 @@ public sealed partial class Doc0123StructuralAuditTests
     private static (string Category, string Reason) Classify(SourceParagraph p, string text)
     {
         var style = p.Style.StyleId ?? "";
-        if (p.InTableOfContents || style.StartsWith("TOC", StringComparison.OrdinalIgnoreCase)) return ("NAVIGATION", "table-of-contents entry");
         if (style is "Header" or "Footer" && !p.Style.Bold) return ("RUNNING_HEADER_FOOTER", "page header/footer");
         if (style.Contains("footnote", StringComparison.OrdinalIgnoreCase) || text.StartsWith('*') || text.StartsWith('['))
             return ("FOOTNOTE_NOTE", "footnote or bracketed editorial note");
@@ -526,7 +525,6 @@ public sealed partial class Doc0123StructuralAuditTests
             || Regex.IsMatch(text, @"^[^:\[]{1,120}(:\s*)?\*?\[insert", RegexOptions.IgnoreCase))
             return ("FIELD_LABEL", "a field to fill in");
         if (Regex.IsMatch(text, @"^Form\s+[A-Z]{2,4}\b")) return ("OTHER_NON_HEADING", "form code line above the styled form title, which is the heading");
-        if (p.Layout.TableDepth > 0) return ("TABLE_LABEL", "table cell label");
         return ("OTHER_NON_HEADING", "body text, date or qualifier line");
     }
 

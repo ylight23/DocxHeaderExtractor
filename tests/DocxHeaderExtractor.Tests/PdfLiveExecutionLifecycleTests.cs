@@ -127,20 +127,6 @@ public sealed class PdfLiveExecutionLifecycleTests
         public string RuntimeDescription => "P5c live-path fake; no provider";
         public int SharedPrefixTokens => 0;
 
-        public Task<ChunkResult> ClassifyAsync(
-            string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-            Task.FromException<ChunkResult>(new NotSupportedException());
-
-        public Task<ChunkResult> CritiqueAsync(
-            string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-            Task.FromException<ChunkResult>(new NotSupportedException());
-
-        public Task<ChunkResult> ClassifyHierarchyAsync(
-            IReadOnlyList<HierarchyItem> context,
-            IReadOnlyList<HierarchyItem> headings,
-            CancellationToken ct = default) =>
-            Task.FromException<ChunkResult>(new NotSupportedException());
-
         public Task<string> BoundaryCutAsync(
             string systemPrompt,
             string userMessage,

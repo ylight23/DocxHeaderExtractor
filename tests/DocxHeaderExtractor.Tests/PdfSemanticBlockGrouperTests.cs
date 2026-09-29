@@ -7,8 +7,7 @@ namespace DocxHeaderExtractor.Tests;
 /// occurrence.
 /// <para>
 /// The cases below are written as coordinates because the rule is a claim about typography, not
-/// about a document. <see cref="PdfBlockGrouping.LegacyV1"/> stays the default while the candidate
-/// is evidence - every frozen universe, Gold binding and preflight hash was taken over its output.
+/// about a document: the gap between lines is measured against the document's own line pitch.
 /// </para>
 /// </summary>
 public sealed class PdfSemanticBlockGrouperTests
@@ -31,27 +30,6 @@ public sealed class PdfSemanticBlockGrouperTests
         Assert.Contains("Expected Funding", blocks[0].Text);
         Assert.Equal("Recipients should retain this statement.", blocks[1].Text);
         Assert.Equal("This next sentence must not merge.", blocks[2].Text);
-    }
-
-    [Fact]
-    public void IgnoresLinesExcludedByDeterministicFilter()
-    {
-        var annotations = new[]
-        {
-            Ann(Line("Heading Topic", page: 1, y: 700)),
-            new PdfLineBlockAnnotation(
-                Line("TOTAL $42 80%", page: 1, y: 680),
-                Repeated: false,
-                HeaderFooterZone: false,
-                TableLike: true,
-                PageNumber: false,
-                Reason: "table-like"),
-        };
-
-        var blocks = PdfSemanticBlockGrouper.Build(annotations);
-
-        Assert.Single(blocks);
-        Assert.Equal("Heading Topic", blocks[0].Text);
     }
 
     // ---- what the document's own leading is ----------------------------------------------------
@@ -116,26 +94,6 @@ public sealed class PdfSemanticBlockGrouperTests
         Assert.Equal(2, blocks.Count);
         Assert.Equal(2, blocks[0].LineCount);
         Assert.Contains("Comparisons", blocks[0].Text);
-    }
-
-    [Fact]
-    public void A_heading_does_not_absorb_the_paragraph_beneath_it()
-    {
-        // The residual defect. Both lines are the same face, the same colour and the same left
-        // edge; the only thing that distinguishes them is that the gap is a paragraph break rather
-        // than a leading, and an absolute ceiling wide enough for the leading clears the break too.
-        var lines = Page(
-            ("Africa", 0),
-            ("Gregoire Mboya de Loubassou, African Development Bank, presented the", 20),
-            ("status of implementation in the Africa region", 14));
-
-        var legacy = Group(lines, PdfBlockGrouping.LegacyV1);
-        var candidate = Group(lines);
-
-        Assert.Single(legacy);
-        Assert.Equal(2, candidate.Count);
-        Assert.Equal("Africa", candidate[0].Text);
-        Assert.Equal(2, candidate[1].LineCount);
     }
 
     [Fact]
@@ -224,261 +182,6 @@ public sealed class PdfSemanticBlockGrouperTests
 
     // ---- what the candidate would change on a real document ------------------------------------
 
-    [Fact]
-    public void The_shadow_block_grouping_separates_headings_from_what_follows_them()
-    {
-        var gold = CanonicalGoldRegistry.ResolveOccurrenceGoldAt("eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json", "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65", "DOC-0252");
-        Assert.Equal(GoldHeadings, gold.Headings.Count);
-
-        // Both sides read the repaired visual lines from f314255. This task changes one stage, and
-        // measuring it against the unrepaired lines would credit it with the line fix as well.
-        var lines = Doc0252Lines();
-        var before = Doc0252Occurrences(PdfBlockGrouping.LegacyV1);
-        var after = Doc0252Occurrences(PdfBlockGrouping.ContinuationV2);
-
-        // Gold addresses occurrences by alias, and an alias is a position in the universe it was
-        // written against - the one built with midpoint lines and the legacy ceiling. Its texts are
-        // read from there once, then located by text on both candidate sides.
-        var goldTexts = LocateTexts(gold, Doc0252Occurrences(PdfBlockGrouping.LegacyV1, PdfLineGrouping.MidpointV1));
-        var beforeIndexes = PdfSourceOccurrenceBoundary.Locate(
-            before, gold.Headings, goldTexts, out var beforeMissing);
-        var afterIndexes = PdfSourceOccurrenceBoundary.Locate(
-            after, gold.Headings, goldTexts, out var afterMissing);
-        Assert.Empty(beforeMissing);
-
-        var beforeRows = PdfSourceOccurrenceBoundary.Classify(before, gold.Headings, beforeIndexes);
-        var afterRows = PdfSourceOccurrenceBoundary.Classify(after, gold.Headings, afterIndexes);
-        var census = (IReadOnlyList<PdfBoundaryRow> rows) => rows
-            .GroupBy(row => row.Boundary)
-            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
-
-        var transitions = beforeRows
-            .Select((row, ordinal) => new
-            {
-                claim = row.Claim,
-                from = row.Boundary,
-                to = afterRows[ordinal].Boundary,
-                representableBefore = row.FullyRepresentable,
-                representableAfter = afterRows[ordinal].FullyRepresentable,
-                goldText = row.GoldText,
-                occurrenceBefore = row.OccurrenceText,
-                occurrenceAfter = afterRows[ordinal].OccurrenceText,
-            })
-            .ToArray();
-
-        // ---- every residual case, measured at each junction the grouper crossed ---------------
-        var ceiling = PdfLinePitch.ContinuationCeiling(lines);
-        var explained = beforeRows
-            .Where(row => row.Boundary == "OVER_GROUPED")
-            .Select(row =>
-            {
-                var occurrence = before[row.OccurrenceIndex];
-                return new
-                {
-                    claim = row.Claim,
-                    goldText = row.GoldText,
-                    occurrenceText = row.OccurrenceText,
-                    extraVisualLines = row.ExtraVisualLinesInOccurrence,
-                    junctions = occurrence.Lines.Skip(1).Select((next, index) =>
-                    {
-                        var previous = occurrence.Lines[index];
-                        var normalized = PdfLinePitch.NormalizedGap(previous, next);
-                        return new
-                        {
-                            above = previous.Text,
-                            below = next.Text,
-                            yGap = Math.Round(previous.Y - next.Y, 2),
-                            normalizedYGap = normalized is null ? (double?)null : Math.Round(normalized.Value, 3),
-                            leftDelta = Math.Round(Math.Abs(previous.Left - next.Left), 2),
-                            fontSizeDelta = Math.Round(Math.Abs(previous.FontSize - next.FontSize), 3),
-                            legacyMerged = previous.Y - next.Y is > 0 and <= 22,
-                            legacyReason = "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
-                            candidateMerges = normalized is not null && normalized.Value <= ceiling,
-                        };
-                    }).ToArray(),
-                    boundaryAfter = afterRows[Array.IndexOf(beforeRows.ToArray(), row)].Boundary,
-                };
-            })
-            .ToArray();
-
-        // ---- over-splitting, detected without labels ------------------------------------------
-        // A sentence that runs across a block boundary is a paragraph the grouper took apart. The
-        // line fix restored the punctuation that makes this readable, so it can be counted rather
-        // than eyeballed.
-        var splitBefore = SentencesBrokenAcrossBlocks(before);
-        var splitAfter = SentencesBrokenAcrossBlocks(after);
-
-        var forensic = System.Text.Json.JsonDocument.Parse(File.ReadAllText(
-            Path.Combine(TestRepository.Root(),
-                "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json"
-                    .Replace('/', Path.DirectorySeparatorChar))));
-        var byClaim = transitions.ToDictionary(item => item.claim, StringComparer.Ordinal);
-
-        // The boundary each claim had in the universe the provider run was actually shown. A loss
-        // is only the model's if what it was given was sound: an omission on an occurrence that
-        // fused a heading into a paragraph has a confounded cause, and calling it a model miss
-        // would charge the model for the harness.
-        var asRun = System.Text.Json.JsonDocument.Parse(File.ReadAllText(
-            Path.Combine(TestRepository.Root(),
-                "eval/a99-closed-loop/representation/doc-0252-source-occurrence-boundary.v1.json"
-                    .Replace('/', Path.DirectorySeparatorChar))))
-            .RootElement.GetProperty("boundaryAudit").GetProperty("rows").EnumerateArray()
-            .ToDictionary(
-                row => row.GetProperty("claim").GetString()!,
-                row => row.GetProperty("boundary").GetString()!,
-                StringComparer.Ordinal);
-
-        var historical = forensic.RootElement.GetProperty("lostOccurrences").EnumerateArray()
-            .Where(loss => loss.GetProperty("persistent").GetBoolean())
-            .Select(loss => new
-            {
-                claim = loss.GetProperty("claim").GetString()!,
-                firstLoss = loss.GetProperty("firstLoss").GetString()!,
-            })
-            .Where(loss => byClaim.ContainsKey(loss.claim))
-            .Select(loss => new
-            {
-                loss.claim,
-                loss.firstLoss,
-                boundaryAsRun = asRun.GetValueOrDefault(loss.claim, "UNKNOWN"),
-                boundaryAfter = byClaim[loss.claim].to,
-                representableAfter = byClaim[loss.claim].representableAfter,
-                verdict = Verdict(
-                    loss.firstLoss,
-                    asRun.GetValueOrDefault(loss.claim, "UNKNOWN"),
-                    byClaim[loss.claim].to,
-                    byClaim[loss.claim].representableAfter),
-            })
-            .OrderBy(item => item.claim, StringComparer.Ordinal)
-            .ToArray();
-
-        FreezeArtifact.AssertJson(Artifacts, "doc-0252-block-grouping-shadow.v1.json", new
-        {
-            artifactKind = "a99_pdf_block_grouping_shadow",
-            schemaVersion = "a99-pdf-block-grouping-shadow-v1",
-            finding = "PDF_SOURCE_OCCURRENCE_BOUNDARY_MISMATCH",
-            intervention = "PDF_BLOCK_GROUPING_CONTINUATION",
-            authorityId = "DOC-0252",
-            providerCalls = 0,
-            modelCalls = 0,
-
-            lineage = new
-            {
-                note = "Both sides read the repaired visual lines. Only block grouping differs, so the numbers below belong to this stage alone.",
-                lineGrouping = nameof(PdfLineGrouping.VisualLineV2),
-                activeAuthorityMoved = false,
-                activeRuntimeUniverseSha256 = Universe(PdfLineGrouping.MidpointV1, PdfBlockGrouping.LegacyV1),
-                lineFixedShadowSha256 = Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.LegacyV1),
-                blockFixedShadowSha256 = Universe(PdfLineGrouping.VisualLineV2, PdfBlockGrouping.ContinuationV2),
-            },
-
-            rule = new
-            {
-                statement = "Two lines continue each other when the gap between them is no more than the document's own leading, plus a tolerance.",
-                leadingDefinition = "The smallest gap, in line-heights, that recurs in at least 5% of the document's line pairs.",
-                continuationTolerance = PdfLinePitch.ContinuationTolerance,
-                measuredLeading = Math.Round(PdfLinePitch.Estimate(lines), 3),
-                continuationCeiling = Math.Round(ceiling, 3),
-                whyNotAbsolute = "Measured across this repository's PDF corpus the leading and the paragraph break are always separate populations but never in the same place twice - one document wraps at 1.05 line-heights and breaks at 1.45, another wraps at 1.40 and breaks at 2.25. No fixed ceiling sits between both pairs.",
-                degenerateCase = "A document with too few line pairs to measure has no leading to read. The estimate is clamped to a plausible range and falls back to its lower bound, which merges nothing that a single measured gap would not already justify.",
-                normalizedBy = "max(declared font size, drawn line height). DOC-0252 reports a font size of 1.0 for every glyph, so height is what carries the scale there.",
-            },
-
-            counts = new
-            {
-                visualLines = lines.Count,
-                blocksBefore = before.Count,
-                blocksAfter = after.Count,
-                occurrencesBefore = before.Count,
-                occurrencesAfter = after.Count,
-                occurrenceIsBlock = "one for one in this pipeline",
-                linesPerBlockBefore = Histogram(before),
-                linesPerBlockAfter = Histogram(after),
-            },
-
-            boundary = new
-            {
-                total = GoldHeadings,
-                before = census(beforeRows),
-                after = census(afterRows),
-                transitionCensus = transitions
-                    .GroupBy(item => $"{item.from} -> {item.to}")
-                    .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
-                regressionsFromExact = transitions
-                    .Where(item => item.from == "EXACT_SOURCE_BOUNDARY" && item.to != "EXACT_SOURCE_BOUNDARY")
-                    .ToArray(),
-                transitions,
-            },
-
-            representability = new
-            {
-                fullyRepresentableBefore = beforeRows.Count(row => row.FullyRepresentable),
-                fullyRepresentableAfter = afterRows.Count(row => row.FullyRepresentable),
-                notRepresentableAfter = afterRows.Where(row => !row.FullyRepresentable)
-                    .Select(PdfSourceOccurrenceBoundary.Serialize).ToArray(),
-                headingsNotFoundInShadow = afterMissing,
-            },
-
-            residualCasesExplained = new
-            {
-                note = "Every over-grouped case before this change, with the measurement at each junction its occurrence crossed.",
-                count = explained.Length,
-                rows = explained,
-            },
-
-            overSplitting = new
-            {
-                note = "A sentence continuing across a block boundary: the earlier block ends without sentence-final punctuation and the next begins in lower case. Label-free, and only readable because the line fix put the punctuation back.",
-                legitimateMultilineBlocksBefore = before.Count(block => block.LineCount > 1),
-                legitimateMultilineBlocksAfter = after.Count(block => block.LineCount > 1),
-                sentencesBrokenBefore = splitBefore.Length,
-                sentencesBrokenAfter = splitAfter.Length,
-                // Accounted for rather than left as a number. Almost none of them are the gap
-                // rule's doing: a block may hold at most four lines and may not continue a line
-                // longer than 130 characters, so a long paragraph is cut wherever those limits
-                // fall. Both predate this task, are untouched by it, and are the same on each
-                // side - which is what makes them the next thing to look at, not this one.
-                whyBrokenAfter = BreakReasons(after, ceiling),
-                whyBrokenBefore = BreakReasons(before, ceiling),
-                incorrectlySplitIntroduced = splitAfter.Except(splitBefore, StringComparer.Ordinal).ToArray(),
-                repairedByThisChange = splitBefore.Except(splitAfter, StringComparer.Ordinal).Count(),
-            },
-
-            historicalPersistentLosses = new
-            {
-                note = "Representation only. No provider response was replayed: those requests carry the old aliases, and scoring them against a different universe would invent a baseline that was never run.",
-                source = "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json",
-                census = historical.GroupBy(item => item.verdict)
-                    .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
-                rows = historical,
-            },
-
-            status = "SHADOW_ONLY_ACTIVE_AUTHORITY_UNCHANGED",
-        });
-
-        // Acceptance, asserted rather than described.
-        Assert.Empty(afterMissing);
-        Assert.Equal(0, census(afterRows).GetValueOrDefault("FRAGMENTED"));
-        Assert.Equal(GoldHeadings, afterRows.Count(row => row.FullyRepresentable));
-        Assert.True(census(afterRows).GetValueOrDefault("OVER_GROUPED")
-            < census(beforeRows).GetValueOrDefault("OVER_GROUPED"));
-        Assert.Empty(splitAfter.Except(splitBefore, StringComparer.Ordinal));
-    }
-
-    [Fact]
-    public void Regrouping_changes_no_extracted_text()
-    {
-        // Blocks are a view over lines, so this should be trivially true - and it is asserted
-        // because "should be" is how a projection quietly loses a separator.
-        var before = Doc0252Occurrences(PdfBlockGrouping.LegacyV1);
-        var after = Doc0252Occurrences(PdfBlockGrouping.ContinuationV2);
-
-        Assert.Equal(Glyphs(before), Glyphs(after));
-        Assert.Equal(
-            before.SelectMany(block => block.Lines).Select(line => line.Text),
-            after.SelectMany(block => block.Lines).Select(line => line.Text));
-    }
-
     // ---- helpers -------------------------------------------------------------------------------
 
     private const int GoldHeadings = 41;
@@ -488,23 +191,15 @@ public sealed class PdfSemanticBlockGrouperTests
     private static string Doc0252Path => System.IO.Path.Combine(
         TestRepository.Root(), Doc0252.Replace('/', System.IO.Path.DirectorySeparatorChar));
 
-    private static IReadOnlyList<PdfLine> Doc0252Lines(
-        PdfLineGrouping grouping = PdfLineGrouping.VisualLineV2)
+    private static IReadOnlyList<PdfLine> Doc0252Lines()
     {
         using var document = UglyToad.PdfPig.PdfDocument.Open(Doc0252Path);
-        return PdfLineExtraction.ExtractLines(document, grouping);
+        return PdfLineExtraction.ExtractLines(document);
     }
 
-    private static IReadOnlyList<PdfSemanticBlock> Doc0252Occurrences(
-        PdfBlockGrouping grouping, PdfLineGrouping lineGrouping = PdfLineGrouping.VisualLineV2) =>
+    private static IReadOnlyList<PdfSemanticBlock> Doc0252Occurrences() =>
         PdfSemanticBlockGrouper.Build(
-            PdfLineBlockFilter.Analyze(Doc0252Lines(lineGrouping)),
-            includeRiskLines: true, grouping: grouping);
-
-    private static string Universe(PdfLineGrouping lines, PdfBlockGrouping blocks) =>
-        PdfCanonicalSourceUniverseBuilder
-            .Build(Doc0252Path, Doc0252Lines(lines), blocks)
-            .SourceUniverseSha256;
+            PdfLineObservationAnalyzer.Analyze(Doc0252Lines()));
 
     private static string[] LocateTexts(PdfGoldDocument gold, IReadOnlyList<PdfSemanticBlock> reference)
     {
@@ -613,9 +308,8 @@ public sealed class PdfSemanticBlockGrouperTests
         return [.. broken];
     }
 
-    private static IReadOnlyList<PdfSemanticBlock> Group(
-        IReadOnlyList<PdfLine> lines, PdfBlockGrouping grouping = PdfBlockGrouping.ContinuationV2) =>
-        PdfSemanticBlockGrouper.Build(lines.Select(Ann).ToArray(), grouping: grouping);
+    private static IReadOnlyList<PdfSemanticBlock> Group(IReadOnlyList<PdfLine> lines) =>
+        PdfSemanticBlockGrouper.Build(lines.Select(Ann).ToArray());
 
     /// <summary>A page of lines, each placed a stated number of points below the one before.</summary>
     private static PdfLine[] Page(params (string Text, double Below)[] entries)
@@ -631,8 +325,7 @@ public sealed class PdfSemanticBlockGrouperTests
         return [.. lines];
     }
 
-    private static PdfLineBlockAnnotation Ann(PdfLine line) =>
-        new(line, Repeated: false, HeaderFooterZone: false, TableLike: false, PageNumber: false, Reason: "semantic-candidate");
+    private static PdfLineBlockAnnotation Ann(PdfLine line) => new(line);
 
     private static PdfLine Line(
         string text, int page, double y,

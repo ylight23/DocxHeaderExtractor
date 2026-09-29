@@ -14,10 +14,10 @@ namespace DocxHeaderExtractor.Tests;
 /// recall ceiling would quietly become the filter rather than the source universe.
 /// </para>
 /// <para>
-/// No view carries a likelihood, a score, a recommendation, a predicted role, or
-/// CandidateAttention. That last one is the subtle case - it is real parser-owned routing evidence,
-/// and it is exactly the heuristic the evaluation is meant to test. A reviewer who sees it is
-/// anchored by it, and the Gold stops being independent of the thing it measures.
+/// No view carries a likelihood, a score, a recommendation, a predicted role, or candidate
+/// attention. Candidate attention used to be the subtle case: it was parser-owned routing evidence
+/// and exactly the heuristic the evaluation is meant to test. The contract no longer exposes that
+/// slot, so a reviewer cannot be anchored by it.
 /// </para>
 /// <para>
 /// SHORT_TEXT is a reading aid and nothing more. Those rows stay in the partition and still need a
@@ -65,159 +65,6 @@ public sealed class PdfGoldReviewPackTests
         new(alias, page, ordinal, text) { HeadingClaims = [new PdfReviewHeadingClaim()] };
 
     [Fact]
-    public async Task View_A_groups_every_occurrence_by_page()
-    {
-        var rows = await RowsAsync();
-
-        FreezeArtifact.AssertJson(Pack, "review-by-page.v1.json", new
-        {
-            artifactKind = "a99_pdf_gold_review_view",
-            schemaVersion = "a99-pdf-gold-review-view-v1",
-            view = "BY_PAGE",
-            documentId = "DOC-0252",
-            allowedDecisions = AllowedDecisions,
-            decisionScope = "PER_OCCURRENCE",
-            claimContract = ClaimContract,
-            sourceSha256 = SourceSha,
-            providerCalls = 0,
-            derivedFrom = "PDF parser occurrences only",
-            exhaustive = true,
-            occurrences = rows.Count,
-            pages = rows.GroupBy(row => row.Page).OrderBy(group => group.Key).Select(group => new
-            {
-                page = group.Key,
-                occurrences = group.Count(),
-                rows = group.OrderBy(row => row.Ordinal)
-                    .Select(row => ReviewRow(row.Alias, row.Page, row.Ordinal, row.Text)).ToArray(),
-            }).ToArray(),
-        });
-
-        AssertExhaustive("review-by-page.v1.json", rows);
-    }
-
-    [Fact]
-    public async Task View_B_adds_the_parser_evidence_that_is_not_a_judgement()
-    {
-        var rows = await RowsAsync();
-        var facts = FactsAsync();
-        var bodyFontSize = Median(facts.Values.Select(fact => fact.FontSize));
-
-        FreezeArtifact.AssertJson(Pack, "review-by-parser-context.v1.json", new
-        {
-            artifactKind = "a99_pdf_gold_review_view",
-            schemaVersion = "a99-pdf-gold-review-view-v1",
-            view = "BY_PARSER_CONTEXT",
-            documentId = "DOC-0252",
-            allowedDecisions = AllowedDecisions,
-            decisionScope = "PER_OCCURRENCE",
-            claimContract = ClaimContract,
-            sourceSha256 = SourceSha,
-            providerCalls = 0,
-            derivedFrom = "PDF parser occurrences only",
-            excludedOnPurpose = new[]
-            {
-                "candidateAttention/heuristicMatch - the routing heuristic this evaluation tests",
-                "domainRole - a classification, not an observation",
-                "likelihood, score, recommendation, predictedRole - none exist here",
-            },
-            exhaustive = true,
-            occurrences = rows.Count,
-            pages = rows.GroupBy(row => row.Page).OrderBy(group => group.Key).Select(group => new
-            {
-                page = group.Key,
-                scopes = group
-                    .GroupBy(row => facts.TryGetValue(row.SourceId, out var fact) ? fact.StructuralScope : "unknown")
-                    .OrderBy(scope => scope.Key, StringComparer.Ordinal)
-                    .Select(scope => new
-                    {
-                        structuralScope = scope.Key,
-                        occurrences = scope.Count(),
-                        rows = scope.OrderBy(row => row.Ordinal).Select(row =>
-                        {
-                            var fact = facts.GetValueOrDefault(row.SourceId);
-                            return new
-                            {
-                                sourceAlias = row.Alias,
-                                page = row.Page,
-                                sourceOrdinal = row.Ordinal,
-                                sourceText = row.Text,
-                                readingGroup = row.Text.Trim().Length <= 3 ? "SHORT_TEXT" : "TEXT",
-                                style = fact is null ? null : new
-                                {
-                                    bold = fact.BoldRatio >= 0.5,
-                                    italic = fact.ItalicRatio >= 0.5,
-                                    relativeFontSize = RelativeSize(fact.FontSize, bodyFontSize),
-                                    lineCount = fact.LineCount,
-                                },
-                                markers = fact is null ? [] : CanonicalSemanticEngine.MarkerFactsOf(fact),
-                                observedEvidence = fact?.ObservedEvidence ?? [],
-                                humanDecision = (string?)null,
-                                headingClaims = new[] { new PdfReviewHeadingClaim() },
-                            };
-                        }).ToArray(),
-                    }).ToArray(),
-            }).ToArray(),
-        });
-
-        AssertExhaustive("review-by-parser-context.v1.json", rows);
-    }
-
-    [Fact]
-    public async Task View_C_puts_occurrences_that_read_alike_next_to_each_other()
-    {
-        // A minutes document repeats agenda labels and running headers. Reviewing those apart, on
-        // different pages, is how a reviewer ends up treating the same thing two ways; seeing them
-        // together is how an inconsistency becomes visible.
-        //
-        // Comparison, not decision. The same string can be a table-of-contents entry, a body
-        // heading, a running header and a passing mention in prose, so same text is neither the
-        // same occurrence nor the same node. The grouping key is a reading convenience; the text a
-        // reviewer judges stays the exact VerbatimText, and every occurrence keeps its own answer.
-        var rows = await RowsAsync();
-
-        var groups = rows
-            .GroupBy(row => Key(row.Text), StringComparer.Ordinal)
-            .OrderByDescending(group => group.Count())
-            .ThenBy(group => group.Key, StringComparer.Ordinal)
-            .Select(group => new
-            {
-                groupKey = group.Key,
-                occurrences = group.Count(),
-                repeated = group.Count() > 1,
-                rows = group.OrderBy(row => row.Ordinal)
-                    .Select(row => ReviewRow(row.Alias, row.Page, row.Ordinal, row.Text)).ToArray(),
-            }).ToArray();
-
-        FreezeArtifact.AssertJson(Pack, "review-duplicate-text-index.v1.json", new
-        {
-            artifactKind = "a99_pdf_gold_review_view",
-            schemaVersion = "a99-pdf-gold-review-view-v1",
-            view = "DUPLICATE_TEXT_INDEX",
-            documentId = "DOC-0252",
-            allowedDecisions = AllowedDecisions,
-            decisionScope = "PER_OCCURRENCE",
-            claimContract = ClaimContract,
-            sourceSha256 = SourceSha,
-            providerCalls = 0,
-            derivedFrom = "PDF parser occurrences only",
-            groupKeyNote = "Normalised for grouping only. Judge the exact verbatimText on each row.",
-            groupingContract =
-                "Grouped so the same wording can be compared in one place, never so it can be " +
-                "decided in one place. Identical text is not identical semantics: the same string " +
-                "can be a table-of-contents entry, a true section heading in the body, a running " +
-                "header artefact and an ordinary mention in prose. Every occurrence keeps its own " +
-                "decision. Applying one answer across a group is only ever a reviewer's explicit " +
-                "act after confirming the occurrences really are treated alike.",
-            exhaustive = true,
-            occurrences = rows.Count,
-            repeatedGroups = groups.Count(group => group.repeated),
-            groups,
-        });
-
-        AssertExhaustive("review-duplicate-text-index.v1.json", rows);
-    }
-
-    [Fact]
     public async Task A_duplicate_text_group_offers_no_way_to_answer_for_the_whole_group()
     {
         // The correction that matters here. Grouping identical wording makes an inconsistency
@@ -253,49 +100,6 @@ public sealed class PdfGoldReviewPackTests
             var aliases = rows.Select(row => row.GetProperty("sourceAlias").GetString()!).ToArray();
             Assert.Equal(aliases.Length, aliases.Distinct(StringComparer.Ordinal).Count());
         }
-    }
-
-    [Fact]
-    public async Task An_occurrence_holding_two_headings_can_say_so()
-    {
-        // The shape defect this replaces. Line grouping fuses neighbouring lines that share
-        // geometry and font, so S0043, S0460 and S0573 each carry a session heading and a numbered
-        // sub-heading in one two-line block. One answer per occurrence could not say which heading,
-        // with which boundary, in which role - and those are exactly the partial-span cases I8
-        // exists to address, so a Gold that cannot express them cannot measure I8 either.
-        var rows = await RowsAsync();
-        var fused = rows.Single(row => row.Alias == "S0573");
-        Assert.Contains("Session V: Current Research", fused.Text, StringComparison.Ordinal);
-        Assert.Contains("The Treatment of Import and Export Prices", fused.Text, StringComparison.Ordinal);
-
-        var reviewed = new PdfReviewOccurrence("S0573", 8, fused.Ordinal, fused.Text)
-        {
-            HumanDecision = PdfGoldReview.Heading,
-            HeadingClaims =
-            [
-                new PdfReviewHeadingClaim
-                {
-                    SelectionMode = CanonicalSemanticSelectionMode.VerbatimText,
-                    VerbatimText = "Session V: Current Research",
-                    SemanticRole = "SECTION",
-                },
-                new PdfReviewHeadingClaim
-                {
-                    SelectionMode = CanonicalSemanticSelectionMode.VerbatimText,
-                    VerbatimText = "The Treatment of Import and Export Prices in International Comparisons",
-                    SemanticRole = "SUBSECTION",
-                    ParentSourceAlias = "S0573",
-                },
-            ],
-        };
-
-        Assert.Empty(PdfGoldReview.Check([reviewed]));
-        var gold = PdfGoldReview.ToGoldHeadings([reviewed]);
-        Assert.Equal(2, gold.Count);
-        Assert.Equal(["Session V: Current Research",
-                "The Treatment of Import and Export Prices in International Comparisons"],
-            gold.Select(heading => heading.VerbatimText));
-        Assert.All(gold, heading => Assert.Equal("S0573", heading.SourceAlias));
     }
 
     [Fact]
@@ -488,29 +292,6 @@ public sealed class PdfGoldReviewPackTests
     }
 
     [Fact]
-    public async Task Every_view_is_a_partition_of_the_same_universe()
-    {
-        // The property that makes the pack safe to review: three readings, one set of occurrences.
-        // If any view could drop a row, the recall ceiling would become that view.
-        var rows = await RowsAsync();
-        var universe = rows.Select(row => row.Alias).ToHashSet(StringComparer.Ordinal);
-
-        foreach (var view in new[]
-        {
-            "review-by-page.v1.json",
-            "review-by-parser-context.v1.json",
-            "review-duplicate-text-index.v1.json",
-        })
-        {
-            var aliases = AliasesOf(view);
-            Assert.Equal(rows.Count, aliases.Count);
-            Assert.Equal(universe.Count, aliases.Distinct(StringComparer.Ordinal).Count());
-            Assert.Empty(universe.Except(aliases, StringComparer.Ordinal));
-            Assert.Empty(aliases.Except(universe, StringComparer.Ordinal));
-        }
-    }
-
-    [Fact]
     public async Task No_view_carries_a_judgement_a_reviewer_could_anchor_on()
     {
         await RowsAsync();
@@ -550,24 +331,6 @@ public sealed class PdfGoldReviewPackTests
             Assert.False(document.RootElement.TryGetProperty("authoritativeSemanticHeadingTotal", out _),
                 $"{view} shows the reviewer the answer");
             Assert.False(document.RootElement.TryGetProperty("semanticHeadingTotal", out _));
-        }
-    }
-
-    [Fact]
-    public async Task The_text_a_reviewer_judges_is_the_text_the_binder_binds()
-    {
-        // No trimming, no punctuation repair, no readable rendering. Gold written against anything
-        // else would not bind, and that failure would look like a model error.
-        var rows = await RowsAsync();
-        var byAlias = rows.ToDictionary(row => row.Alias, row => row.Text, StringComparer.Ordinal);
-
-        using var document = JsonDocument.Parse(
-            File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, "review-by-page.v1.json")));
-        foreach (var page in document.RootElement.GetProperty("pages").EnumerateArray())
-        foreach (var row in page.GetProperty("rows").EnumerateArray())
-        {
-            var alias = row.GetProperty("sourceAlias").GetString()!;
-            Assert.Equal(byAlias[alias], row.GetProperty("sourceText").GetString());
         }
     }
 
@@ -648,9 +411,9 @@ public sealed class PdfGoldReviewPackTests
             lines = PdfLineExtraction.ExtractLines(document);
         }
 
-        var annotations = PdfLineBlockFilter.Analyze(lines);
-        var blocks = PdfSemanticBlockGrouper.Build(annotations, includeRiskLines: true);
-        return PdfCandidateContextBuilder.Build(blocks, annotations)
+        var annotations = PdfLineObservationAnalyzer.Analyze(lines);
+        var blocks = PdfSemanticBlockGrouper.Build(annotations);
+        return PdfSemanticSourceContextBuilder.Build(blocks, annotations)
             .ToDictionary(pair => pair.Key, pair => pair.Value.Source, StringComparer.Ordinal);
     }
 

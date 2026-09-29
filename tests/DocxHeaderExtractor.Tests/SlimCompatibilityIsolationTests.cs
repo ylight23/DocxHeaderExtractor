@@ -16,7 +16,7 @@ public sealed class SlimCompatibilityIsolationTests
             parameter.ParameterType.Name.Contains("Slim", StringComparison.Ordinal) ||
             parameter.ParameterType.Name.Contains("Compatibility", StringComparison.Ordinal)));
         Assert.Contains(methods, method => method.Name == "RunAsync" &&
-            method.GetParameters().FirstOrDefault()?.ParameterType.Name == "DocxPolicyState");
+            method.GetParameters().FirstOrDefault()?.ParameterType.Name == "SourceDocument");
     }
 
     [Fact]

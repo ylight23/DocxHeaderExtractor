@@ -1,10 +1,9 @@
+using DocxHeaderExtractor.Core.Models;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Features;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Policy;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -90,9 +89,8 @@ public sealed class MalformedReplyContainmentTests
     private static async Task<StructuralAuthorityResult> RunAsync(IReadOnlyList<string> replies)
     {
         var state = State();
-        var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
         using var replay = new FrozenReplyClassifier(replies);
-        return await DocxAuthorityPipeline.RunAsync(state, mode, replay);
+        return await DocxAuthorityPipeline.RunAsync(state, replay);
     }
 
     private static string[] Frozen()
@@ -103,15 +101,11 @@ public sealed class MalformedReplyContainmentTests
             .EnumerateArray().Select(item => item.GetString()!).ToArray();
     }
 
-    private static DocxPolicyState State()
+    private static SourceDocument State()
     {
         var docx = Path.Combine(TestRepository.Root(), "todo10_8", "heading_corpus_95_word",
             "05_bien_ban_hop", "076_ICP_IACG08_Minutes_2023.docx");
-        var source = new OpenXmlDocumentSource().Read(docx);
-        var features = NumberingStyleFeatures.FromSourceDocument(source);
-        var derived = new DocumentFeatureDeriver().Derive(source);
-        var policy = DocxPolicyStateBuilder.Build(source, features, derived, new ExtractionOptions());
-        return new DocxPolicyState(source, features, derived, policy.Paragraphs, policy.StyleTrust);
+        return new OpenXmlDocumentSource().Read(docx);
     }
 
 }

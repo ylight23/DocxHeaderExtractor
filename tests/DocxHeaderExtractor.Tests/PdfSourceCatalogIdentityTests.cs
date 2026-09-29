@@ -95,16 +95,9 @@ public sealed class PdfSourceCatalogIdentityTests
             Assert.NotEqual(divergent[unit.SourceId].DisplayText, unit.Text));
     }
 
-    private static IReadOnlyList<PdfSemanticBlock> Blocks()
-    {
-        var path = Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar));
-        IReadOnlyList<PdfLine> lines;
-        using (var document = UglyToad.PdfPig.PdfDocument.Open(path))
-        {
-            lines = PdfLineExtraction.ExtractLines(document);
-        }
-
-        return PdfSemanticBlockGrouper.Build(PdfLineBlockFilter.Analyze(lines), includeRiskLines: true);
-    }
+    /// <summary>The source units the PDF lane reasons over: one block per segment atom.</summary>
+    private static IReadOnlyList<PdfSemanticBlock> Blocks() =>
+        PdfStructuredSourceAuthorityBuilder.Build(
+            Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))).Blocks;
 
 }

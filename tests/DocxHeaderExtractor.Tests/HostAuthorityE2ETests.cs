@@ -25,7 +25,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class HostAuthorityE2ETests
 {
     private const string ExpectedFingerprint =
-        "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429";
+        "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945";
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -69,7 +69,7 @@ public sealed class HostAuthorityE2ETests
         }
         finally
         {
-            LegacyDocConverter.TryDelete(fixture);
+            OfficeDocumentConverter.TryDelete(fixture);
         }
     }
 

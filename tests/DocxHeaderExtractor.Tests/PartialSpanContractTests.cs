@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -104,23 +103,6 @@ public sealed class PartialSpanContractTests
             """{"headings":[{"sourceAlias":"S0001","isHeading":true,"verbatimText":"Africa","start":0,"end":6}]}""");
 
         Assert.NotEmpty(CanonicalSemanticContractValidator.ValidateJson(document.RootElement));
-    }
-
-    [Fact]
-    public void The_partial_span_clause_changes_the_prompt_and_nothing_else()
-    {
-        var baseline = CanonicalSemanticEngine.SystemPromptFor(CanonicalSemanticExperiment.Baseline);
-        var withClause = CanonicalSemanticEngine.SystemPromptFor(CanonicalSemanticExperiment.PartialSpanOnly);
-
-        Assert.Equal(CanonicalSemanticEngine.SystemPrompt, baseline);
-        Assert.StartsWith(baseline, withClause, StringComparison.Ordinal);
-        Assert.Contains("exact contiguous substring", withClause, StringComparison.Ordinal);
-        // The fence travels with the permission.
-        Assert.Contains("do not normalize, rewrite, repair", withClause, StringComparison.Ordinal);
-        Assert.Contains("do not return offsets or coordinates", withClause, StringComparison.Ordinal);
-        Assert.Contains("Two separated pieces of one occurrence are NOT a partial span",
-            withClause, StringComparison.Ordinal);
-        Assert.Contains("appears more than once", withClause, StringComparison.Ordinal);
     }
 
     [Fact]

@@ -107,9 +107,7 @@ public sealed class FinancialProcurementHeadingPolicyTests
             captionRule = "A numbered table/figure title (\"Table D1: ...\") is not accepted by default. It is a heading only when that occurrence opens an independent structural region rather than naming the table or figure immediately below it.",
             consistentWith = new[]
             {
-                "src/DocxHeaderExtractor.Infrastructure/AI/HeaderPrompt.cs (captions of figures/tables are not headings)",
-                "src/DocxHeaderExtractor.DocumentProcessing/OpenXmlLayer/HeadingHeuristics.cs (IsObjectCaption)",
-                "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/StyleDeclaredOutline.cs (caption exclusion X2)",
+                "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/CanonicalSemanticDocxAuthorityAdapter.cs (semantic source facts, no candidate boost)",
             },
             auditCategories = AuditCategories,
             method = new

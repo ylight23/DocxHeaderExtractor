@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Tests;
 /// The PDF lane, reached the way a user reaches it.
 /// <para>
 /// The lane and the dispatcher were built and tested, and the product could not call either: every
-/// upload went through <c>LegacyDocConverter.EnsureDocx</c> first, which refuses anything that is
+/// upload went through <c>OfficeDocumentConverter.EnsureDocx</c> first, which refuses anything that is
 /// not OOXML on its extension, and the DOCX pipeline behind it refuses a PDF by its bytes. So a PDF
 /// upload failed in the Web, CLI and MCP hosts while the library tests all passed. A lane no host
 /// can call is not a supported format, and no local suite could have said so - every one of them
@@ -132,7 +132,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
 
         Assert.Equal("pdf-canonical-vnext", execution.Result.Provenance.Route);
         // The hash travelled with the routing decision: what is recorded is what was read.
-        Assert.NotEqual(stale.Sha256, execution.CompatibilityOutline.ProductOutput!.SourceDocumentSha256);
+        Assert.NotEqual(stale.Sha256, execution.Outline.ProductOutput!.SourceDocumentSha256);
     }
 
     private static async Task<DocumentOutline> RunAsync(

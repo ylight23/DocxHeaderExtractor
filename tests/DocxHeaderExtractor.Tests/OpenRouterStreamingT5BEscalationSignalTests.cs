@@ -27,7 +27,7 @@ public sealed class OpenRouterStreamingT5BEscalationSignalTests
     private const string NoneInitial = "openrouter-streaming-t3b-reasoning-none-full-cohort-20260928T091634Z";
     private const string NoneContinuation = "openrouter-streaming-t3b-reasoning-none-full-cohort-continuation-003-031-20260928T091819Z";
     private static readonly (string Id, string Pdf)[] Documents =
-        [("SRC-089", Src089BlindGeneralizationTests.Pdf), ("SRC-095", Src095BlindGeneralizationTests.Pdf)];
+        [("SRC-089", SourcePdfCorpus.Src089), ("SRC-095", SourcePdfCorpus.Src095)];
 
     /// <summary>How the harness turns quoted parts into coordinates before binding.</summary>
     private enum Repair
@@ -84,7 +84,7 @@ public sealed class OpenRouterStreamingT5BEscalationSignalTests
 
         foreach (var (id, pdf) in Documents)
         {
-            var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf), PdfSourceFactsVersion.V3_RobustGlyphStatistics).Atoms;
+            var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf)).Atoms;
             var gold = ExactScorer.ReadGold(TestRepository.Path($"eval/a99-closed-loop/gold/{id}.gold.json"),
                 ExactScorer.Universe.For("PDF", TestRepository.Path(pdf))).Select(x => x.Identity).ToHashSet(StringComparer.Ordinal);
             var noneLeaves = none.Where(x => x.DocumentId == id).ToArray();

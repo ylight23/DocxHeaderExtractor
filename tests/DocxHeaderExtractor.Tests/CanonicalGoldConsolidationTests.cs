@@ -1,9 +1,7 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Features;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Policy;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -284,87 +282,6 @@ public sealed class CanonicalGoldConsolidationTests
             CanonicalGoldRegistry.Entry(id).MaterializedSemanticClaims));
     }
 
-    [Fact]
-    public async Task The_baseline_preflight_freezes_what_a_provider_run_would_send()
-    {
-        // Everything a later run must match before it is allowed to spend a call. The request plan
-        // is captured through the real lanes with a classifier that answers nothing, so the counts
-        // are measured rather than estimated - and no provider is contacted to measure them.
-        var documents = new List<object>();
-        var primaryCalls = 0;
-
-        foreach (var id in OccurrenceCohort)
-        {
-            var entry = CanonicalGoldRegistry.Entry(id);
-            using var gold = CanonicalGoldRegistry.Resolve(id);
-            var source = gold.RootElement.GetProperty("source");
-            var sourcePath = source.GetProperty("sourcePath").GetString()!;
-            var segments = await PlannedSegmentsAsync(sourcePath, source.GetProperty("mediaType").GetString()!);
-            primaryCalls += segments * Repetitions;
-
-            documents.Add(new
-            {
-                authorityId = id,
-                canonicalGoldPath = entry.CanonicalGoldPath,
-                goldSha256 = entry.GoldSha256,
-                sourcePath,
-                sourceSha256 = entry.SourceSha256,
-                sourceUniverseSha256 = gold.RootElement.GetProperty("occurrence")
-                    .GetProperty("sourceUniverseSha256").GetString(),
-                semanticHeadingTotal = entry.SemanticHeadingTotal,
-                materializedSemanticClaims = entry.MaterializedSemanticClaims,
-                occurrenceEvaluable = entry.OccurrenceEvaluable,
-                characterSpanEvaluable = entry.CharacterSpanEvaluable,
-                semanticRequestsPerRepetition = segments,
-                placementAllowancePerRepetition = PlacementAllowance,
-            });
-        }
-
-        var placement = OccurrenceCohort.Length * Repetitions * PlacementAllowance;
-        FreezeArtifact.AssertJson(CanonicalGoldRegistry.Root, "occurrence-baseline-preflight.v1.json", new
-        {
-            artifactKind = "a99_occurrence_baseline_preflight",
-            schemaVersion = "a99-occurrence-baseline-preflight-v1",
-            experimentId = "A99-S2P-OCCURRENCE-BASELINE-V1",
-            status = "PREFLIGHT_ONLY_NO_TRANSPORT",
-            providerCalls = 0,
-            modelCalls = 0,
-            goldRegistry = CanonicalGoldRegistry.RegistryRelativePath,
-            promptSha256 = CanonicalArtifactHash.OfText(HistoricalRequest.SystemPrompt),
-            semanticContractProtocol = CanonicalSemanticContract.ProtocolVersion,
-            // The schema itself, not its name. A protocol string survives a field being added or
-            // renamed, and a run whose contract drifted mid-flight produced provider responses that
-            // could not be scored - responses paid for and unusable. Recomputed at execution and
-            // compared byte for byte against this.
-            semanticContractSha256 = SemanticContractSha256(),
-            evaluatorId = "a99-pdf-gold-evaluator-v3-bound-occurrence-semantic-role",
-            model = "qwen/qwen3.7-flash",
-            repetitions = Repetitions,
-            documents,
-            callBudget = new
-            {
-                totalPrimaryCalls = primaryCalls,
-                placementAllowance = placement,
-                maxProviderCalls = primaryCalls + placement,
-            },
-            failClosedGates = new[]
-            {
-                "canonical goldSha256 per authority",
-                "sourceSha256 per authority",
-                "sourceUniverseSha256 per authority",
-                "promptSha256",
-                "semantic contract protocol",
-                "model identity",
-                "evaluator identity",
-                "call budget not exceeded",
-            },
-            note = "Any mismatch at execution time means zero provider calls and a stop, not a " +
-                   "run against whatever is on disk.",
-        });
-
-        Assert.True(primaryCalls > 0);
-    }
-
     /// <summary>
     /// The request schema as the engine will send it, hashed canonically. Computed here rather than
     /// pinned as a literal so it cannot be copied forward from an older contract.
@@ -372,22 +289,6 @@ public sealed class CanonicalGoldConsolidationTests
     internal static string SemanticContractSha256() =>
         CanonicalArtifactHash.OfText(JsonSerializer.Serialize(
             CanonicalSemanticContract.Schema(), FreezeArtifact.Json));
-
-    [Fact]
-    public void The_frozen_contract_hash_is_the_schema_the_engine_would_send()
-    {
-        // Recomputing must reproduce what the manifest froze; if it does not, the contract drifted
-        // and a run would spend calls it cannot score.
-        using var manifest = JsonDocument.Parse(File.ReadAllText(
-            TestRepository.Path(CanonicalGoldRegistry.Root + "/occurrence-baseline-preflight.v1.json")));
-
-        Assert.Equal(
-            SemanticContractSha256(),
-            manifest.RootElement.GetProperty("semanticContractSha256").GetString());
-        Assert.Equal(
-            CanonicalArtifactHash.OfText(HistoricalRequest.SystemPrompt),
-            manifest.RootElement.GetProperty("promptSha256").GetString());
-    }
 
     [Fact]
     public void Occurrence_identity_decides_membership_and_a_role_never_does()
@@ -434,31 +335,6 @@ public sealed class CanonicalGoldConsolidationTests
 
     /// <summary>One placement round per document per repetition, allowed but not assumed.</summary>
     private const int PlacementAllowance = 1;
-
-    /// <summary>
-    /// The number of semantic requests a run would send, measured by driving the real lane with a
-    /// classifier that records and answers nothing.
-    /// </summary>
-    private static async Task<int> PlannedSegmentsAsync(string sourcePath, string mediaType)
-    {
-        var path = TestRepository.Path(sourcePath);
-        using var capture = new RequestCapturingClassifier();
-        if (string.Equals(mediaType, "PDF", StringComparison.Ordinal))
-        {
-            await CanonicalSemanticPdfAuthorityAdapter.RunAsync(path, capture, CancellationToken.None, HistoricalRequest.Baseline);
-        }
-        else
-        {
-            var source = new OpenXmlDocumentSource().Read(path);
-            var features = NumberingStyleFeatures.FromSourceDocument(source);
-            var derived = new DocumentFeatureDeriver().Derive(source);
-            var state = DocxPolicyStateBuilder.Build(source, features, derived, new ExtractionOptions());
-            var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-            await CanonicalSemanticDocxAuthorityAdapter.RunAsync(state, mode, capture, CancellationToken.None, HistoricalRequest.Baseline);
-        }
-
-        return capture.Requests.Count;
-    }
 
     [Fact]
     public void Every_active_source_universe_is_one_the_runtime_reproduces()
@@ -717,7 +593,7 @@ public sealed class CanonicalGoldConsolidationTests
     private static string RuntimeSourceUniverse(string path, string mediaType, string sourceSha)
     {
         if (string.Equals(mediaType, "PDF", StringComparison.OrdinalIgnoreCase))
-            return PdfCanonicalSourceUniverseBuilder.Build(path).SourceUniverseSha256;
+            return PdfStructuredSourceAuthorityBuilder.Build(path).SourceAliasUniverseHash;
 
         var source = new OpenXmlDocumentSource().Read(path);
         var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(source);

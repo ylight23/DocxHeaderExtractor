@@ -120,87 +120,14 @@ public sealed class PdfExperimentManifestTests
     // ---- §18: manifest-declared authority profile vs. runtime-selected profile ------------------
 
     [Fact]
-    public void Historical_manifest_without_a_declaration_resolves_legacy_and_accepts_legacy_runtime()
-    {
-        // BuildManifest() uses schema v1, the version every manifest before this declaration
-        // existed was written under. It carries no Authority - and must not need one.
-        var manifest = BuildManifest();
-        Assert.Null(manifest.Authority);
-        Assert.NotEqual(PdfExperimentExecutionGate.ProfileAwareSchemaVersion, manifest.SchemaVersion);
-
-        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
-
-        gate.EnsureLiveAuthorityProfile("LEGACY_OCCURRENCE");
-    }
-
-    [Fact]
-    public void Historical_manifest_without_a_declaration_rejects_a_structured_runtime()
+    public void A_manifest_without_a_packing_declaration_is_refused_not_defaulted()
     {
         var manifest = BuildManifest();
         var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
 
-        var error = Assert.Throws<InvalidOperationException>(
-            () => gate.EnsureLiveAuthorityProfile("STRUCTURED_SOURCE_PARTS"));
-
-        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_MISMATCH", error.Message);
-    }
-
-    [Fact]
-    public void Profile_aware_manifest_matching_runtime_passes()
-    {
-        var manifest = ProfileAwareManifest("STRUCTURED_SOURCE_PARTS");
-        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
-
-        gate.EnsureLiveAuthorityProfile("STRUCTURED_SOURCE_PARTS");
-    }
-
-    [Fact]
-    public void Profile_aware_manifest_declaring_structured_rejects_a_legacy_runtime()
-    {
-        var manifest = ProfileAwareManifest("STRUCTURED_SOURCE_PARTS");
-        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
-
-        var error = Assert.Throws<InvalidOperationException>(
-            () => gate.EnsureLiveAuthorityProfile("LEGACY_OCCURRENCE"));
-
-        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_MISMATCH", error.Message);
-    }
-
-    [Fact]
-    public void Profile_aware_manifest_declaring_legacy_rejects_a_structured_runtime()
-    {
-        var manifest = ProfileAwareManifest("LEGACY_OCCURRENCE");
-        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
-
-        var error = Assert.Throws<InvalidOperationException>(
-            () => gate.EnsureLiveAuthorityProfile("STRUCTURED_SOURCE_PARTS"));
-
-        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_MISMATCH", error.Message);
-    }
-
-    [Fact]
-    public void Profile_aware_manifest_missing_its_declaration_fails_closed_regardless_of_runtime()
-    {
-        var manifest = BuildManifest() with
-        {
-            SchemaVersion = PdfExperimentExecutionGate.ProfileAwareSchemaVersion,
-            Authority = null,
-        };
-        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
-
-        var error = Assert.Throws<InvalidOperationException>(
-            () => gate.EnsureLiveAuthorityProfile("LEGACY_OCCURRENCE"));
-
-        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_DECLARATION_MISSING", error.Message);
-    }
-
-    [Fact]
-    public void Historical_manifest_without_packing_declaration_retains_fixed_policy()
-    {
-        var manifest = BuildManifest();
-        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
-
-        gate.EnsureLivePackingPolicy(SemanticEvidencePackingPolicies.FixedOwnedCount120Id);
+        var error = Assert.Throws<InvalidOperationException>(() =>
+            gate.EnsureLivePackingPolicy(SemanticEvidencePackingPolicies.ResourceBoundedSourcePackingV1Id));
+        Assert.Equal("PDF_EXPERIMENT_PACKING_POLICY_DECLARATION_MISSING", error.Message);
     }
 
     [Fact]
@@ -208,7 +135,7 @@ public sealed class PdfExperimentManifestTests
     {
         var manifest = BuildManifest() with
         {
-            PackingPolicyId = SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1Id,
+            PackingPolicyId = SemanticEvidencePackingPolicies.ResourceBoundedSourcePackingV1Id,
         };
         var approval = Approval(manifest);
 
@@ -217,9 +144,9 @@ public sealed class PdfExperimentManifestTests
             approval,
             Runtime(manifest) with
             {
-                PackingPolicyId = SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1Id,
+                PackingPolicyId = SemanticEvidencePackingPolicies.ResourceBoundedSourcePackingV1Id,
             });
-        matching.EnsureLivePackingPolicy(SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1Id);
+        matching.EnsureLivePackingPolicy(SemanticEvidencePackingPolicies.ResourceBoundedSourcePackingV1Id);
 
         var mismatching = new PdfExperimentExecutionGate(
             manifest,
@@ -229,22 +156,22 @@ public sealed class PdfExperimentManifestTests
                 PackingPolicyId = SemanticEvidencePackingPolicies.FixedOwnedCount120Id,
             });
         var error = Assert.Throws<InvalidOperationException>(() =>
-            mismatching.EnsureLivePackingPolicy(SemanticEvidencePackingPolicies.CoherentRegionSegmentationV1Id));
+            mismatching.EnsureLivePackingPolicy(SemanticEvidencePackingPolicies.ResourceBoundedSourcePackingV1Id));
         Assert.Equal("PDF_EXPERIMENT_PACKING_POLICY_MISMATCH", error.Message);
     }
 
     [Fact]
-    public async Task Adapter_rejects_a_structured_run_under_a_manifest_declaring_legacy_before_any_transport()
+    public async Task Adapter_rejects_a_run_whose_manifest_declares_another_packing_policy_before_any_transport()
     {
-        // The source-universe hash must match the runtime the adapter actually builds too, or
-        // EnsureLiveSourceUniverse would reject the run first and this test would not be isolating
-        // the authority-profile check it exists to prove.
+        // The source universe and contract match the runtime the adapter builds, so the packing
+        // check is the one this isolates.
         const string StructuredSourceAliasUniverseHash =
             "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f";
-        var manifest = ProfileAwareManifest("LEGACY_OCCURRENCE") with
+        var manifest = BuildManifest() with
         {
             SourceUniverseSha256 = StructuredSourceAliasUniverseHash,
-            SemanticContractHash = SemanticAuthorityReplayHashing.SemanticContractHash(),
+            SemanticContractHash = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.SchemaHash(),
+            PackingPolicyId = SemanticEvidencePackingPolicies.FixedOwnedCount120Id,
         };
         var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest),
             Runtime(manifest) with { SourceUniverseSha256 = StructuredSourceAliasUniverseHash });
@@ -252,26 +179,12 @@ public sealed class PdfExperimentManifestTests
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
             CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-                Path(Pdf), fake, CancellationToken.None,
-                experimentGate: gate,
-                profile: PdfSemanticAuthorityProfile.StructuredSourceParts));
+                Path(Pdf), fake, CancellationToken.None, experimentGate: gate));
 
-        Assert.Equal("PDF_EXPERIMENT_AUTHORITY_PROFILE_MISMATCH", error.Message);
+        Assert.Equal("PDF_EXPERIMENT_PACKING_POLICY_MISMATCH", error.Message);
         Assert.Equal(0, gate.ProviderCalls);
         Assert.Empty(fake.Requests);
     }
-
-    private static PdfExperimentManifest ProfileAwareManifest(string authorityProfile) =>
-        BuildManifest() with
-        {
-            SchemaVersion = PdfExperimentExecutionGate.ProfileAwareSchemaVersion,
-            Authority = new PdfExperimentAuthorityIdentity(
-                "PDF",
-                authorityProfile == "STRUCTURED_SOURCE_PARTS"
-                    ? "STRUCTURED_SOURCE_PART_TUPLE"
-                    : "SOURCE_ALIAS_PLUS_SELECTION_MODE",
-                authorityProfile),
-        };
 
     [Fact]
     public async Task Missing_approval_blocks_the_fake_transport()
@@ -353,17 +266,15 @@ public sealed class PdfExperimentManifestTests
     }
 
     [Fact]
-    public async Task Every_classifier_method_uses_the_same_budget_and_exhaustion_precedes_transport()
+    public async Task Budget_exhaustion_precedes_transport()
     {
         var manifest = BuildManifest() with { Budget = new PdfExperimentBudgetIdentity(4) };
         var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest), Runtime(manifest));
         using var fake = new BudgetProbeClassifier();
         using var guarded = new PdfExperimentGatedHeaderClassifier(fake, gate, disposeInner: false);
 
-        await guarded.BoundaryCutAsync("system", "initial");
-        await IgnoreTransportFailure(() => guarded.ClassifyAsync("chunk", []));
-        await IgnoreTransportFailure(() => guarded.CritiqueAsync("chunk", []));
-        await IgnoreTransportFailure(() => guarded.ClassifyHierarchyAsync([], []));
+        for (var call = 0; call < 4; call++)
+            await guarded.BoundaryCutAsync("system", $"call-{call}");
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
             guarded.BoundaryCutAsync("system", "after-budget"));
@@ -477,11 +388,6 @@ public sealed class PdfExperimentManifestTests
     private static string Path(string relativePath) =>
         System.IO.Path.Combine(TestRepository.Root(), relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
 
-    private static async Task IgnoreTransportFailure<T>(Func<Task<T>> operation)
-    {
-        await Assert.ThrowsAsync<InvalidOperationException>(operation);
-    }
-
     private sealed class BudgetProbeClassifier : IHeaderClassifier
     {
         public int TransportCalls { get; private set; }
@@ -490,26 +396,11 @@ public sealed class PdfExperimentManifestTests
         public string RuntimeDescription => "budget probe; no provider";
         public int SharedPrefixTokens => 0;
 
-        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes,
-            CancellationToken ct = default) => Transport<ChunkResult>();
-
-        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes,
-            CancellationToken ct = default) => Transport<ChunkResult>();
-
-        public Task<ChunkResult> ClassifyHierarchyAsync(IReadOnlyList<HierarchyItem> context,
-            IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) => Transport<ChunkResult>();
-
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage,
             CancellationToken ct = default, int expectedItemCount = 0)
         {
             TransportCalls++;
             return Task.FromResult("{}");
-        }
-
-        private Task<T> Transport<T>()
-        {
-            TransportCalls++;
-            return Task.FromException<T>(new InvalidOperationException("fake transport"));
         }
 
         public void Dispose() { }

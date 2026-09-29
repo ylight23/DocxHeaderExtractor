@@ -17,7 +17,7 @@ namespace DocxHeaderExtractor.Tests;
 /// </para>
 /// <para>
 /// Two layers of authority stay apart, as for SRC-054: R1 is the Gold at the reveal (5cf6431), kept byte for byte at
-/// <see cref="Src044BlindScoreTests.GoldR1"/>; the raw held-out score (382c58c, F1 0.9824) is and stays scored against
+/// <see cref="SourcePdfCorpus.Src044GoldR1"/>; the raw held-out score (382c58c, F1 0.9824) is and stays scored against
 /// it. The score of the same proposals against R2 is a diagnostic. Written once with A99_SRC044_R2=1; the checks run
 /// every time.
 /// </para>
@@ -34,8 +34,8 @@ public sealed class Src044GoldRevisionR2Tests
     public void Revise()
     {
         if (Environment.GetEnvironmentVariable("A99_SRC044_R2") != "1") return;
-        var live = TestRepository.Path(Src044BlindScoreTests.GoldPath);
-        Assert.Equal(CanonicalArtifactHash.OfTextFile(TestRepository.Path(Src044BlindScoreTests.GoldR1)), CanonicalArtifactHash.OfTextFile(live)); // one-shot
+        var live = TestRepository.Path(SourcePdfCorpus.Src044Gold);
+        Assert.Equal(CanonicalArtifactHash.OfTextFile(TestRepository.Path(SourcePdfCorpus.Src044GoldR1)), CanonicalArtifactHash.OfTextFile(live)); // one-shot
 
         var r2 = BuildR2();
         FreezeArtifact.AssertJson(Dir, "SRC-044.gold-revision-r2.v1.json", new
@@ -47,13 +47,13 @@ public sealed class Src044GoldRevisionR2Tests
             modelProviderVlmCalls = 0,
             r1 = new
             {
-                path = Src044BlindScoreTests.GoldR1,
-                sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path(Src044BlindScoreTests.GoldR1)),
+                path = SourcePdfCorpus.Src044GoldR1,
+                sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path(SourcePdfCorpus.Src044GoldR1)),
                 commit = "c2dfee5",
                 total = 201,
                 role = "the Gold frozen at the reveal: the held-out authority of the raw score (382c58c, F1 0.9824), kept byte for byte, never overwritten",
             },
-            r2 = new { path = Src044BlindScoreTests.GoldPath, total = 203, role = "the corrected source authority from this revision on" },
+            r2 = new { path = SourcePdfCorpus.Src044Gold, total = 203, role = "the corrected source authority from this revision on" },
             foundBy = "adjudicating the V1.3 development Gold candidate SRC-044 L0236 from source context; its sibling L0220 has the same shape on the same page",
             corrections = Added.Select(alias => new
             {
@@ -65,7 +65,7 @@ public sealed class Src044GoldRevisionR2Tests
                 error = "extraction joined the label to the chart's unit line in one atom, and the review's whole-line rule for 11pt bold labels did not see it",
                 sourceEvidence = "p8: an 11pt bold label at the margin over its own left-column prose with its chart to the right - the block shape of 'Net Investment Portfolio' (L0208, in R1)",
             }).ToArray(),
-            correctedGoldDiagnostic = GoldRevision.Diagnostic(r2, Src044BlindGeneralizationTests.Pdf, Src044BlindScoreTests.Proposals,
+            correctedGoldDiagnostic = GoldRevision.Diagnostic(r2, SourcePdfCorpus.Src044, SourcePdfCorpus.Src044Proposals,
                 "DIAGNOSTIC - the committed blind V1.2 proposals (6d59c9d) against Gold R2; not a held-out score"),
             rule = "the pipeline does not benefit backwards in time from a Gold correction: the held-out score stays F1 0.9824 against R1; the figure above is a diagnostic",
         });
@@ -77,7 +77,7 @@ public sealed class Src044GoldRevisionR2Tests
         provenance.Add(new JsonObject
         {
             ["path"] = "gold-revision:SRC-044:r1-201-to-r2-203:2026-09-26",
-            ["sha256"] = CanonicalArtifactHash.OfTextFile(TestRepository.Path(Src044BlindScoreTests.GoldR1)),
+            ["sha256"] = CanonicalArtifactHash.OfTextFile(TestRepository.Path(SourcePdfCorpus.Src044GoldR1)),
             ["role"] = "GOLD_REVISION_PREDECESSOR",
         });
         provenance.Add(new JsonObject { ["path"] = Record, ["sha256"] = record, ["role"] = "GOLD_REVISION_RECORD" });
@@ -88,8 +88,8 @@ public sealed class Src044GoldRevisionR2Tests
     public void The_authored_gold_is_r1_with_exactly_the_approved_additions()
     {
         if (!File.Exists(TestRepository.Path(Record))) return; // not revised yet
-        using var r1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Src044BlindScoreTests.GoldR1)));
-        using var live = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Src044BlindScoreTests.GoldPath)));
+        using var r1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(SourcePdfCorpus.Src044GoldR1)));
+        using var live = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(SourcePdfCorpus.Src044Gold)));
         static string[] Claims(JsonDocument d) => d.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(c => c.GetRawText()).ToArray();
         static string First(string claim) => JsonDocument.Parse(claim).RootElement.GetProperty("sourceParts")[0].GetProperty("sourceAlias").GetString()!;
@@ -106,15 +106,15 @@ public sealed class Src044GoldRevisionR2Tests
     /// <summary>The label's own text: the atom up to where it runs on into the chart's unit line.</summary>
     private static string Title(string alias)
     {
-        var text = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Src044BlindGeneralizationTests.Pdf)).Atoms.Single(a => a.Alias == alias).Text;
+        var text = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(SourcePdfCorpus.Src044)).Atoms.Single(a => a.Alias == alias).Text;
         var cut = text.IndexOf(UnitLine, StringComparison.Ordinal);
         Assert.True(cut > 0, text);
         return text[..cut];
     }
 
     private static JsonNode BuildR2() => GoldRevision.Add(
-        JsonNode.Parse(File.ReadAllText(TestRepository.Path(Src044BlindScoreTests.GoldR1)))!,
-        Src044BlindGeneralizationTests.Pdf, Template,
+        JsonNode.Parse(File.ReadAllText(TestRepository.Path(SourcePdfCorpus.Src044GoldR1)))!,
+        SourcePdfCorpus.Src044, Template,
         Added.Select(alias => new GoldRevision.Addition(alias, Title(alias), "GOLD_REVISION_R2_SECTION_LABEL",
             "Gold R2 (user-approved 2026-09-26): an 11pt bold label at the margin over its own left-column prose with its chart to the right, like its Gold sibling 'Net Investment Portfolio'; the atom runs on into the chart's unit line, which is no part of the title")).ToArray());
 }

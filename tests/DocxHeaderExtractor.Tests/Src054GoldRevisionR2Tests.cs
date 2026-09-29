@@ -13,7 +13,7 @@ namespace DocxHeaderExtractor.Tests;
 /// residuals (96e9e5e).
 /// <para>
 /// Two layers of authority stay apart. R1 is the Gold frozen at the reveal: the raw held-out score (912dcc7, F1 0.799)
-/// is and stays scored against it, and it is kept byte for byte at <see cref="Src054BlindScoreTests.GoldR1"/>. R2 is
+/// is and stays scored against it, and it is kept byte for byte at <see cref="SourcePdfCorpus.Src054GoldR1"/>. R2 is
 /// the corrected source authority from here on; the score of the same committed proposals against it is a diagnostic,
 /// never a new held-out score - the pipeline does not benefit backwards in time from a Gold correction.
 /// Written once with A99_SRC054_R2=1; the checks run every time.
@@ -65,8 +65,8 @@ public sealed class Src054GoldRevisionR2Tests
     public void Revise()
     {
         if (Environment.GetEnvironmentVariable("A99_SRC054_R2") != "1") return;
-        var live = TestRepository.Path(Src054BlindScoreTests.GoldPath);
-        Assert.Equal(CanonicalArtifactHash.OfTextFile(TestRepository.Path(Src054BlindScoreTests.GoldR1)), CanonicalArtifactHash.OfTextFile(live)); // one-shot
+        var live = TestRepository.Path(SourcePdfCorpus.Src054Gold);
+        Assert.Equal(CanonicalArtifactHash.OfTextFile(TestRepository.Path(SourcePdfCorpus.Src054GoldR1)), CanonicalArtifactHash.OfTextFile(live)); // one-shot
 
         var r2 = BuildR2();
         var diagnostic = Diagnostic(r2);
@@ -79,15 +79,15 @@ public sealed class Src054GoldRevisionR2Tests
             modelProviderVlmCalls = 0,
             r1 = new
             {
-                path = Src054BlindScoreTests.GoldR1,
-                sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path(Src054BlindScoreTests.GoldR1)),
+                path = SourcePdfCorpus.Src054GoldR1,
+                sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path(SourcePdfCorpus.Src054GoldR1)),
                 commit = "3d52729",
                 total = 296,
                 role = "the Gold frozen at the reveal: the held-out authority of the raw score (912dcc7, F1 0.799), kept byte for byte, never overwritten",
             },
             r2 = new
             {
-                path = Src054BlindScoreTests.GoldPath,
+                path = SourcePdfCorpus.Src054Gold,
                 total = 297,
                 role = "the corrected source authority from this revision on",
             },
@@ -104,7 +104,7 @@ public sealed class Src054GoldRevisionR2Tests
         provenance.Add(new JsonObject
         {
             ["path"] = "gold-revision:SRC-054:r1-296-to-r2-297:2026-09-26",
-            ["sha256"] = CanonicalArtifactHash.OfTextFile(TestRepository.Path(Src054BlindScoreTests.GoldR1)),
+            ["sha256"] = CanonicalArtifactHash.OfTextFile(TestRepository.Path(SourcePdfCorpus.Src054GoldR1)),
             ["role"] = "GOLD_REVISION_PREDECESSOR",
         });
         provenance.Add(new JsonObject { ["path"] = Record, ["sha256"] = record, ["role"] = "GOLD_REVISION_RECORD" });
@@ -115,7 +115,7 @@ public sealed class Src054GoldRevisionR2Tests
     public void The_authored_gold_is_r1_with_exactly_the_approved_corrections()
     {
         if (!File.Exists(TestRepository.Path(Record))) return; // not revised yet
-        using var r1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Src054BlindScoreTests.GoldR1)));
+        using var r1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(SourcePdfCorpus.Src054GoldR1)));
         using var live = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(GoldR2)));
         static string[] Claims(JsonDocument d) => d.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(c => c.GetRawText()).ToArray();
@@ -135,8 +135,8 @@ public sealed class Src054GoldRevisionR2Tests
     /// <summary>R1's claims less the total row, plus the two section labels shaped like their sibling, in source order.</summary>
     private static JsonNode BuildR2()
     {
-        var gold = JsonNode.Parse(File.ReadAllText(TestRepository.Path(Src054BlindScoreTests.GoldR1)))!;
-        var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Src054BlindGeneralizationTests.Pdf)).Atoms;
+        var gold = JsonNode.Parse(File.ReadAllText(TestRepository.Path(SourcePdfCorpus.Src054GoldR1)))!;
+        var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(SourcePdfCorpus.Src054)).Atoms;
         var byAlias = atoms.ToDictionary(a => a.Alias, StringComparer.Ordinal);
         var claims = gold["occurrence"]!["claims"]!.AsArray().Select(c => c!.DeepClone()).ToList();
         Assert.Single(claims, c => c["sourceParts"]![0]!["sourceAlias"]!.GetValue<string>() == Removed);
@@ -178,9 +178,9 @@ public sealed class Src054GoldRevisionR2Tests
         try
         {
             File.WriteAllText(path, r2.ToJsonString(FreezeArtifact.Json));
-            var universe = ExactScorer.Universe.For("PDF", TestRepository.Path(Src054BlindGeneralizationTests.Pdf));
+            var universe = ExactScorer.Universe.For("PDF", TestRepository.Path(SourcePdfCorpus.Src054));
             var score = ExactScorer.Compute(ExactScorer.ReadGold(path, universe),
-                ExactScorer.ReadProposals(TestRepository.Path(Src054BlindScoreTests.Proposals), universe));
+                ExactScorer.ReadProposals(TestRepository.Path(SourcePdfCorpus.Src054Proposals), universe));
             using var headline = JsonDocument.Parse(JsonSerializer.Serialize(score.Headline(), FreezeArtifact.Json));
             var h = headline.RootElement;
             return new

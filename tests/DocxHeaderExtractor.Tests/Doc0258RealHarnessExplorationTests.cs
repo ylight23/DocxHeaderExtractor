@@ -1,9 +1,7 @@
 using System.Text.Json;
-using DocxHeaderExtractor.DocumentProcessing.Features;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Tests;
@@ -36,10 +34,6 @@ public sealed class Doc0258RealHarnessExplorationTests
 
         var path = TestRepository.Path(DocPath);
         var document = new OpenXmlDocumentSource().Read(path);
-        var features = NumberingStyleFeatures.FromSourceDocument(document);
-        var state = DocxPolicyStateBuilder.Build(
-            document, features, new DocumentFeatureDeriver().Derive(document), new ExtractionOptions());
-        var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
 
         using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
         using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
@@ -49,7 +43,7 @@ public sealed class Doc0258RealHarnessExplorationTests
         });
 
         var authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(
-            state, mode, provider, CancellationToken.None);
+            document, provider, CancellationToken.None);
 
         var elements = authority.Structure.Elements
             .OrderBy(e => e.Sources.FirstOrDefault()?.SourceId, StringComparer.Ordinal)

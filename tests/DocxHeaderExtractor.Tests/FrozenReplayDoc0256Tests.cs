@@ -1,10 +1,8 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Features;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Policy;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -63,7 +61,7 @@ public sealed class FrozenReplayDoc0256Tests
         // makes that failure loud.
         var (authority, _) = await ReplayAsync();
         var aliases = SemanticSourceAliasCatalog
-            .FromCatalog(DocumentSourceCatalogBuilder.FromSourceDocument(State().Source))
+            .FromCatalog(DocumentSourceCatalogBuilder.FromSourceDocument(State()))
             .ToDictionary(item => item.Alias, item => item.SourceId, StringComparer.Ordinal);
 
         Assert.Equal(DaySourceIds, DayAliases.Select(alias => aliases[alias]).ToArray());
@@ -90,9 +88,8 @@ public sealed class FrozenReplayDoc0256Tests
     private static async Task<(StructuralAuthorityResult Authority, FrozenReplyClassifier Replay)> ReplayAsync()
     {
         var state = State();
-        var mode = DocumentModeClassifier.Measure(state.Paragraphs.Cast<IPolicyParagraph>().ToArray());
         using var replay = new FrozenReplyClassifier(FrozenReplies());
-        var authority = await DocxAuthorityPipeline.RunAsync(state, mode, replay);
+        var authority = await DocxAuthorityPipeline.RunAsync(state, replay);
         return (authority, replay);
     }
 
@@ -106,17 +103,13 @@ public sealed class FrozenReplayDoc0256Tests
             .EnumerateArray().Select(item => item.GetString()!).ToArray();
     }
 
-    private static DocxPolicyState State()
+    private static SourceDocument State()
     {
         var docx = Path.Combine(TestRepository.Root(), "todo10_8", "heading_corpus_95_word",
             "05_bien_ban_hop", "076_ICP_IACG08_Minutes_2023.docx");
         Assert.True(File.Exists(docx), $"Missing fixture: {docx}");
 
-        var source = new OpenXmlDocumentSource().Read(docx);
-        var features = NumberingStyleFeatures.FromSourceDocument(source);
-        var derived = new DocumentFeatureDeriver().Derive(source);
-        var policy = DocxPolicyStateBuilder.Build(source, features, derived, new ExtractionOptions());
-        return new DocxPolicyState(source, features, derived, policy.Paragraphs, policy.StyleTrust);
+        return new OpenXmlDocumentSource().Read(docx);
     }
 
 }

@@ -17,7 +17,7 @@ public sealed class OpenRouterStreamingT5ARegressionLocalizationTests
     private const string P05Manifest = Root + "/v4r2-p05-accepted-response-manifest.v1.json";
     private const string OutputJson = Root + "/openrouter-streaming-t5a-selective-medium-regression-localization.v1.json";
     private const string OutputMd = Root + "/openrouter-streaming-t5a-selective-medium-regression-localization.v1.md";
-    private static readonly (string Id, string Pdf)[] Documents = [("SRC-089", Src089BlindGeneralizationTests.Pdf), ("SRC-095", Src095BlindGeneralizationTests.Pdf)];
+    private static readonly (string Id, string Pdf)[] Documents = [("SRC-089", SourcePdfCorpus.Src089), ("SRC-095", SourcePdfCorpus.Src095)];
 
     private sealed record ArmRow(int Ordinal, string DocumentId, string RequestFile, string ResponseFile, string? ContentFile, int PromptTokens, int CompletionTokens, int ReasoningTokens, int WallClockMs, int FirstContentMs, string SemanticRequestHash, string ProviderEnvelopeHash, int OwnedAliasCount = 0, int VisibleAtomCount = 0, int PrimaryInputBytes = 0, int ClaimCount = 0, int MemberClaimCount = 0);
     private sealed record Candidate(int Ordinal, string Identity, string Function, bool Member);
@@ -43,7 +43,7 @@ public sealed class OpenRouterStreamingT5ARegressionLocalizationTests
         var allRows = new List<(string DocumentId, object Row)>();
         foreach (var (id, pdf) in Documents)
         {
-            var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf), PdfSourceFactsVersion.V3_RobustGlyphStatistics).Atoms;
+            var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf)).Atoms;
             var goldPath = TestRepository.Path($"eval/a99-closed-loop/gold/{id}.gold.json");
             var gold = ExactScorer.ReadGold(goldPath, ExactScorer.Universe.For("PDF", TestRepository.Path(pdf)));
             var goldIds = gold.Select(x => x.Identity).ToHashSet(StringComparer.Ordinal);

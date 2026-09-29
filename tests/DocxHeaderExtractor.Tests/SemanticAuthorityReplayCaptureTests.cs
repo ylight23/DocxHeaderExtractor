@@ -16,7 +16,7 @@ public sealed class SemanticAuthorityReplayCaptureTests
         var raw = "{\"headings\":[{\"sourceAlias\":\"S0001\",\"isHeading\":true,\"verbatimText\":\"Heading\",\"semanticRole\":\"SECTION\"},{\"sourceAlias\":\"S9999\",\"isHeading\":true,\"verbatimText\":\"Invented\",\"semanticRole\":\"SECTION\"}]}";
         var input = new CanonicalSemanticProductionInput(
             catalog, null, "source-hash", [new CanonicalSemanticPageEvidence("P0001", true, 0, "test")],
-            [], [], [], [], DocumentId: "DOC-LIVE-CAPTURE", SourceEvidence: Evidence("S0001", "Heading"))
+            [], [], [], DocumentId: "DOC-LIVE-CAPTURE", SourceEvidence: Evidence("S0001", "Heading"))
         {
             ReplayCapture = new SemanticAuthorityCaptureMetadata(
                 "DOCX", "source-universe-hash", "synthetic-model", "boundary-cut", "prompt-hash"),
@@ -24,7 +24,7 @@ public sealed class SemanticAuthorityReplayCaptureTests
 
         using var classifier = new RawJsonClassifier(raw);
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
-            classifier, SemanticCoordinateContract.PdfAliasSelection);
+            classifier, SemanticCoordinateContract.DocxAliasSpan, SemanticEvidencePackingPolicies.FixedOwnedCount120);
         var result = await CanonicalSemanticProductionEntryPoint.RunAsync(input, model);
 
         var bundle = result.ReplayBundle;
@@ -53,7 +53,7 @@ public sealed class SemanticAuthorityReplayCaptureTests
         var rawHash = SemanticAuthorityReplayHashing.RawModelResponseHash([JsonSerializer.Serialize(new { headings = parsed })]);
         var input = new CanonicalSemanticProductionInput(
             catalog, null, "source-hash", [new CanonicalSemanticPageEvidence("P0001", true, 0, "test")],
-            [], [], [], [], DocumentId: "DOC-CAPTURE", SourceEvidence: Evidence("S0001", "Heading"))
+            [], [], [], DocumentId: "DOC-CAPTURE", SourceEvidence: Evidence("S0001", "Heading"))
         {
             ReplayCapture = new SemanticAuthorityCaptureMetadata(
                 "DOCX", "source-universe-hash", "synthetic-model", "offline-test-route", "prompt-hash"),
@@ -217,8 +217,7 @@ public sealed class SemanticAuthorityReplayCaptureTests
 
     private static IReadOnlyList<CanonicalSemanticSourceEvidence> Evidence(string alias, string text) =>
         [new(
-            alias, "p1", 1, text, "body", null, 0, false, false, [], new { }, new { }, [], [], [], [], [],
-            new SemanticCandidateAttentionHint(alias, false, "test"))];
+            alias, "p1", 1, text, "body", [], new { }, new { }, [], [], [], [])];
 
     private sealed class ParsedProposalModel(
         IReadOnlyList<CanonicalSemanticProposal> proposals,
@@ -247,16 +246,6 @@ public sealed class SemanticAuthorityReplayCaptureTests
         public Task<string> BoundaryCutAsync(
             string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult(raw);
-
-        public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-            throw new NotSupportedException();
-
-        public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-            throw new NotSupportedException();
-
-        public Task<ChunkResult> ClassifyHierarchyAsync(
-            IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) =>
-            throw new NotSupportedException();
 
         public void Dispose() { }
     }

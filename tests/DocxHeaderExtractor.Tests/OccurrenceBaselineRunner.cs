@@ -50,16 +50,6 @@ internal sealed class BudgetedClassifier(IHeaderClassifier inner, int ceiling) :
         return response;
     }
 
-    public Task<ChunkResult> ClassifyAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-        throw new NotSupportedException("The canonical route does not use ClassifyAsync.");
-
-    public Task<ChunkResult> CritiqueAsync(string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default) =>
-        throw new NotSupportedException("The canonical route does not use CritiqueAsync.");
-
-    public Task<ChunkResult> ClassifyHierarchyAsync(
-        IReadOnlyList<HierarchyItem> context, IReadOnlyList<HierarchyItem> headings, CancellationToken ct = default) =>
-        throw new NotSupportedException("The canonical route does not use ClassifyHierarchyAsync.");
-
     public void Dispose() => inner.Dispose();
 
     private static string Sha256(string value) =>

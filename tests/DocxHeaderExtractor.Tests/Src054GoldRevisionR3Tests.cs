@@ -26,7 +26,7 @@ public sealed class Src054GoldRevisionR3Tests
     public void Revise()
     {
         if (Environment.GetEnvironmentVariable("A99_SRC054_R3") != "1") return;
-        var live = TestRepository.Path(Src054BlindScoreTests.GoldPath);
+        var live = TestRepository.Path(SourcePdfCorpus.Src054Gold);
         var r2Path = TestRepository.Path(Src054GoldRevisionR2Tests.GoldR2);
         Assert.Equal(CanonicalArtifactHash.OfTextFile(r2Path), CanonicalArtifactHash.OfTextFile(live)); // one-shot
 
@@ -40,8 +40,8 @@ public sealed class Src054GoldRevisionR3Tests
             modelProviderVlmCalls = 0,
             r1 = new
             {
-                path = Src054BlindScoreTests.GoldR1,
-                sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path(Src054BlindScoreTests.GoldR1)),
+                path = SourcePdfCorpus.Src054GoldR1,
+                sha256 = CanonicalArtifactHash.OfTextFile(TestRepository.Path(SourcePdfCorpus.Src054GoldR1)),
                 total = 296,
                 role = "the Gold frozen at the reveal: the held-out authority of the raw score (912dcc7, F1 0.799), unchanged",
             },
@@ -53,7 +53,7 @@ public sealed class Src054GoldRevisionR3Tests
                 total = 297,
                 role = "the previous corrected authority, kept byte for byte",
             },
-            r3 = new { path = Src054BlindScoreTests.GoldPath, total = 298, role = "the corrected source authority from this revision on" },
+            r3 = new { path = SourcePdfCorpus.Src054Gold, total = 298, role = "the corrected source authority from this revision on" },
             foundBy = "adjudicating the V1.3 development Gold candidate SRC-054 L0548 from source context",
             corrections = new[]
             {
@@ -67,7 +67,7 @@ public sealed class Src054GoldRevisionR3Tests
                     sourceEvidence = "plain Times-Roman, alone on its line at the margin atop p15 (the page number of p14 before it), over its own prose - the S054_Q1 shape",
                 },
             },
-            correctedGoldDiagnostic = GoldRevision.Diagnostic(r3, Src054BlindGeneralizationTests.Pdf, Src054BlindScoreTests.Proposals,
+            correctedGoldDiagnostic = GoldRevision.Diagnostic(r3, SourcePdfCorpus.Src054, SourcePdfCorpus.Src054Proposals,
                 "DIAGNOSTIC - the committed blind V1.2 proposals (44b88f4) against Gold R3; not a held-out score"),
             rule = "the pipeline does not benefit backwards in time from a Gold correction: the held-out score stays F1 0.799 against R1",
         });
@@ -90,7 +90,7 @@ public sealed class Src054GoldRevisionR3Tests
     {
         if (!File.Exists(TestRepository.Path(Record))) return; // not revised yet
         using var r2 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Src054GoldRevisionR2Tests.GoldR2)));
-        using var live = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Src054BlindScoreTests.GoldPath)));
+        using var live = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(SourcePdfCorpus.Src054Gold)));
         static string[] Claims(JsonDocument d) => d.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(c => c.GetRawText()).ToArray();
         static string First(string claim) => JsonDocument.Parse(claim).RootElement.GetProperty("sourceParts")[0].GetProperty("sourceAlias").GetString()!;
@@ -105,7 +105,7 @@ public sealed class Src054GoldRevisionR3Tests
 
     private static JsonNode BuildR3() => GoldRevision.Add(
         JsonNode.Parse(File.ReadAllText(TestRepository.Path(Src054GoldRevisionR2Tests.GoldR2)))!,
-        Src054BlindGeneralizationTests.Pdf, Template,
+        SourcePdfCorpus.Src054, Template,
         [new GoldRevision.Addition(Added, null, "S054_Q1_PLAIN_STANDALONE_LABEL",
             "Gold R3 (user-approved 2026-09-26), under S054_Q1: a short standalone line in plain Times-Roman at the margin at a page top, over its own prose; left off the review's hand list in R1 and R2")]);
 }

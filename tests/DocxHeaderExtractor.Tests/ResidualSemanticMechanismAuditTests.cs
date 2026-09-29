@@ -346,13 +346,13 @@ public sealed class ResidualSemanticMechanismAuditTests
                     + "which is the mistake this whole sequence has been avoiding.",
             },
 
-            candidateHints = new
+            candidateBoosts = new
             {
-                hintedAtoms = plan.Evidence.Count(item => item.CandidateAttention.HeuristicMatch),
+                hintedAtoms = 0,
                 totalAtoms = plan.Atoms.Count,
                 inScope = false,
-                note = "Still 650/650 and still non-discriminating, and still not causal for these five: the "
-                    + "model rejected 18 scheduled rows that carry the same hint as the one it kept.",
+                note = "Candidate attention is no longer a source fact. This audit keeps the field only "
+                    + "as a historical slot and does not treat markers/style/numbering as hint boosts.",
             },
         });
     }

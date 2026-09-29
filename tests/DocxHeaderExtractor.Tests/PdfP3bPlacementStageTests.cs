@@ -118,29 +118,6 @@ public sealed class PdfP3bPlacementStageTests
             return Task.FromResult(response);
         }
 
-        public Task<ChunkResult> ClassifyAsync(
-            string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default)
-        {
-            ClassifyCalls++;
-            throw new NotSupportedException();
-        }
-
-        public Task<ChunkResult> CritiqueAsync(
-            string chunkXml, IReadOnlyList<int> allowedIndexes, CancellationToken ct = default)
-        {
-            CritiqueCalls++;
-            throw new NotSupportedException();
-        }
-
-        public Task<ChunkResult> ClassifyHierarchyAsync(
-            IReadOnlyList<HierarchyItem> context,
-            IReadOnlyList<HierarchyItem> headings,
-            CancellationToken ct = default)
-        {
-            HierarchyCalls++;
-            throw new NotSupportedException();
-        }
-
         public void Dispose() { }
     }
 

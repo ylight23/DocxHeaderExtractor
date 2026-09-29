@@ -22,7 +22,7 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class Src041SourceReviewTests
 {
-    internal const string Pdf = Src041BlindGeneralizationTests.Pdf;
+    internal const string Pdf = SourcePdfCorpus.Src041;
     private const string Dir = "eval/a99-closed-loop/source-review-v1/SRC-041";
 
     internal sealed record Part(string SourceAlias, string SelectionMode, string? VerbatimText, int? Occurrence);
