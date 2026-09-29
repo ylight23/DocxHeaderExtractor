@@ -101,8 +101,20 @@ internal static class Qwen38FreeCanary
         var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
         if (string.IsNullOrWhiteSpace(apiKey)) return Fail("OPENROUTER_API_KEY is not set. Refusing to run.");
 
-        var outPath = Path.Combine(root, ArtifactRoot.Replace('/', Path.DirectorySeparatorChar), "canary-result.v1.json");
-        if (File.Exists(outPath)) return Fail($"qwen38-free-canary: {ArtifactRoot}/canary-result.v1.json already exists; this canary is executed exactly once");
+        // The first attempt (canary-result.v1.json) is a frozen historical record and never
+        // overwritten, even when it recorded nothing but transport failures - see
+        // canary-result-classification.v1.json. A retry against the exact same frozen bodies (never
+        // a new pack selection, never an edited request) writes to the next canary-result-retryN.v1.json.
+        var artifactDir = Path.Combine(root, ArtifactRoot.Replace('/', Path.DirectorySeparatorChar));
+        var outPath = Path.Combine(artifactDir, "canary-result.v1.json");
+        var retryNumber = 0;
+        while (File.Exists(outPath))
+        {
+            retryNumber++;
+            outPath = Path.Combine(artifactDir, $"canary-result-retry{retryNumber}.v1.json");
+        }
+        if (retryNumber > 0)
+            Console.WriteLine($"qwen38-free-canary: canary-result.v1.json already exists (prior attempt); this is transport-retry attempt {retryNumber}, same frozen bodies, writing to canary-result-retry{retryNumber}.v1.json");
 
         var results = new List<object>();
         var qualifications = new List<V5PackBindingQualification>();
@@ -153,6 +165,8 @@ internal static class Qwen38FreeCanary
         {
             schemaVersion = "v5-qwen38-27b-free-canary-result-v1",
             purpose = "MEASUREMENT_NOT_PROMOTION",
+            retryAttempt = retryNumber,
+            sameFrozenBodiesAsAttempt0 = true,
             model = Model,
             actualProviderRoute = ProviderRoutingSlug,
             responseFormatType = "json_schema",

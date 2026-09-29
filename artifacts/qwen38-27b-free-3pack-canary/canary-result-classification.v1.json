@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "v5-qwen38-27b-free-canary-classification-v1",
+  "classifies": "canary-result.v1.json (commit 458cc6a) - attempt 1 of the frozen 3-pack strict-schema canary",
+  "verdict": "CANARY_INCONCLUSIVE_TRANSPORT_UNAVAILABLE",
+  "rootCauseAuthority": "TRANSPORT_503_PROVIDER_UNAVAILABLE",
+  "reclassificationReason": "The prior report described this run as an empirical confirmation of CAPABILITY_BLOCKED. That overclaimed: OpenRouter's error metadata names provider_name=ModelRun for all three failures, meaning routing accepted the request's parameters (require_parameters=true did not filter it out) and reached ModelRun's own infrastructure, which returned its own upstream 503 ('no endpoints available', provider_error_code=503, is_byok=false). Had require_parameters=true actually rejected response_format as unsupported, the failure would be a routing/capability error surfaced by OpenRouter itself, before naming a specific provider - not an upstream 503 attributed to ModelRun. This is a transport/capacity outage, not a parameter-support rejection, and not a model or schema failure. Whether ModelRun actually honors strict json_schema remains genuinely UNKNOWN, not FAIL.",
+  "counts": {
+    "logicalCallsSelected": 3,
+    "transportAttemptsPerCall": "up to 3 (1 initial + RemoteInferenceOptions.TransientRequestRetries=2 default), already exhausted internally by OpenRouterHeaderExtractor before the exception surfaced - see IsRetryableStatus(503)=true in OpenRouterHeaderExtractor.cs",
+    "retryableTransportFailures": 3,
+    "providerCompletions": 0,
+    "semanticResponses": 0,
+    "schemaObservations": 0,
+    "modelQualityObservations": 0,
+    "goldReads": 0
+  },
+  "doNotRecord": [
+    "Qwen3.8 = 0/3 (implies a model-quality result; none exists)",
+    "RESPONSE_FATAL = model failure (RESPONSE_FATAL is the runtime's representation of 'no response at all', not a judgement on model or schema quality)"
+  ],
+  "whyNoKeyOrRequestChange": {
+    "apiKey": "not the cause - 401/402/429 are the key/quota failure modes; this is upstream 503 from the named provider (ModelRun), which a different OpenRouter key cannot give more GPU/endpoint capacity",
+    "requestOrSchema": "not changed - the frozen, byte-identical bodies from a9c97ee are the comparison anchor; any edit forfeits comparability with a future successful draw"
+  },
+  "nextStep": {
+    "action": "TRANSPORT_RETRY_ONLY",
+    "usingSameFrozenBodies": true,
+    "sameProviderRequestHashes": true,
+    "notASemanticRetry": "no completion has ever been received for these 3 requests, so there is no model draw yet to regenerate or repair - a transport retry is not a second draw, it is the first attempt to actually reach the model",
+    "observationOrderOnceHttp200": [
+      "HTTP/SSE transport valid", "finish_reason", "JSON parses",
+      "strict schema result", "TaskContract validation", "ExactClaimBinderV2_1", "runtime qualification"
+    ],
+    "openQuestionRemainingUnknown": "does strict json_schema structurally prevent REFERENCES+value on PACK_006? Answer: UNKNOWN, not FAIL.",
+    "authorizationStatus": "the previous authorization (a9c97ee's 3 calls) is consumed by this attempt's 3 transport-failed calls; a fresh explicit authorization is required before any further HTTP request is sent, even a transport-only retry of the same frozen bodies",
+    "pavedAlternativeNotTaken": "the paid qwen/qwen3.8-27b endpoints have materially higher uptime than ModelRun's free tier, but switching to one would be a different experiment/model-route, not a continuation of this free-tier canary, and is not being done"
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "note": "This classification file makes no provider call; it only reinterprets canary-result.v1.json's own recorded transport error text."
+}
