@@ -1,6 +1,6 @@
 {
   "schemaVersion": "v5-provider-canary-preflight-v1",
-  "head": "3a4f69a194f1e0a4598bda8c5eeed06b7c57bb40",
+  "head": "2d7ae8c14789fc3b43fb911190f2244324003b72",
   "protocolVersion": "v5-source-backed-claim-2.1",
   "composerVersion": "v5-semantic-request-composer-2.1",
   "schemaHash": "1e15deffb7aa8af6b6bab490017f5cc524093c9e7229dc5f9d4e7b0737765d2f",
@@ -11,14 +11,14 @@
   },
   "canaryRequestCount": 3,
   "requestHashes": [
-    "43cfac15e85d27d3ede65ac52fa3a494042047b94fe136055f243d9347edd0dc",
-    "7bcd9dadf72cd8028668bdeacc94305be3303e8e2f596988a78f6c2eb3653385",
-    "face2fc326b0eb9ff04e8ead0e572f6b33f8916df6d50057fe7bf86c889dea7b"
+    "94e0ea2acd80472ec75c6835af71d145d22c338950656f95096c45a44924494e",
+    "723ccae472e26a97a65b8257e0d3439a096c071a2b641999eeb8d960241966b9",
+    "7d54837b132f279e73994b8afc8922ef7305deb20c6c2b5a48c4347f3d63c2c6"
   ],
   "requestBytes": [
-    77251,
-    61990,
-    88368
+    79027,
+    63766,
+    90144
   ],
   "maxCompletionTokens": [
     25088,
@@ -26,14 +26,14 @@
     25088
   ],
   "providerRequestHashes": [
-    "70d08d91e19c7602cff2ab8fa801c9c73ab036bdd7ff720fb7cca3a8b29a6623",
-    "fa7f708efbe8e8ca50c45a50ed230298eba32301c76dc24a3ec8fd1badc88baa",
-    "411f762a40e6169555a8c0176a32cece650e925550de5555cb484805699af3df"
+    "ffd290a28cc0c6c77647a72dd4bd792f16a1c884bae05f515466e7564ab399db",
+    "63a41aae7cc0116b6ffac7e13f34027808b76c6c6045064fbe36e28246a48932",
+    "abeac01347630380e899463cb214a648685bb2d17963e07790ce578b044fd1c4"
   ],
   "providerRequestBytes": [
-    105411,
-    90150,
-    118616
+    107551,
+    92290,
+    120756
   ],
   "legacyMaxCompletionTokens": [
     12384,
