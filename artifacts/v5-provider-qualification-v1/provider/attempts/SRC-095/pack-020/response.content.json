@@ -1,0 +1,96 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "12.2. Informative References"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Appendix A. Considerations for Transitioning from HTTP/2"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A. 1. Streams"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A. 2. HTTP Frame Types"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[QPACK] Krasic, C., Bishop, M., and A. Frindell, Ed., \"QPACK: Field Compression for HTTP/3\", RFC 9204"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[QUIC-TRANSPORT] Iyengar, J., Ed. and M. Thomson, Ed., \"QUIC: A UDP-Based Multiplexed and Secure Transport\", RFC 9000"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC0793] Postel, J., \"Transmission Control Protocol\", STD 7, RFC 793"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC2119] Bradner, S., \"Key words for use in RFCs to Indicate Requirement Levels\", BCP 14, RFC 2119"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC6066] Eastlake 3rd, D., \"Transport Layer Security (TLS) Extensions: Extension Definitions\", RFC 6066"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC7301] Friedl, S., Popov, A., Langley, A., and E. Stephan, \"Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension\", RFC 7301"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC8126] Cotton, M., Leiba, B., and T. Narten, \"Guidelines for Writing an IANA Considerations Section in RFCs\", BCP 26, RFC 8126"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC8174] Leiba, B., \"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words\", BCP 14, RFC 8174"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[URI] Berners-Lee, T., Fielding, R., and L. Masinter, \"Uniform Resource Identifier (URI): Generic Syntax\", STD 66, RFC 3986"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[BREACH] Gluck, Y., Harris, N., and A. Prado, \"BREACH: Reviving the CRIME Attack\""
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[DNS-TERMS] Hoffman, P., Sullivan, A., and K. Fujiwara, \"DNS Terminology\", BCP 219, RFC 8499"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[HPACK] Peon, R. and H. Ruellan, \"HPACK: Header Compression for HTTP/2\", RFC 7541"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[HTTP/1.1] Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \"HTTP/1.1\", STD 99, RFC 9112"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[HTTP/2] Thomson, M., Ed. and C. Benfield, Ed., \"HTTP/2\", RFC 9113"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC6585] Nottingham, M. and R. Fielding, \"Additional HTTP Status Codes\", RFC 6585"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC8164] Nottingham, M. and M. Thomson, \"Opportunistic Security for HTTP/2\", RFC 8164"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[TFO] Cheng, Y., Chu, J., Radhakrishnan, S., and A. Jain, \"TCP Fast Open\", RFC 7413"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[TLS] Rescorla, E., \"The Transport Layer Security (TLS) Protocol Version 1.3\", RFC 8446"
+    }
+  ]
+}

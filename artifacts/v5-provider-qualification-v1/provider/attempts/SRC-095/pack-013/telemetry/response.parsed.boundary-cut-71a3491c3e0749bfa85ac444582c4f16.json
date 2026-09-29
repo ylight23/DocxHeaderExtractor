@@ -1,0 +1,27 @@
+{
+  "content": "{\n  \u0022claims\u0022: [\n    {\n      \u0022predicate\u0022: \u0022DOCUMENT_IDENTITY\u0022,\n      \u0022value\u0022: \u0022SRC-095\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u0022Section 7.2.5. PUSH_PROMISE\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u0022Section 7.2.6. GOAWAY\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u0022Section 7.2.7. MAX_PUSH_ID\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u0022Section 7.2.8. Reserved Frame Types\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Figure 8: PUSH_PROMISE Frame\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Figure 9: GOAWAY Frame\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Figure 10: MAX_PUSH_ID Frame\u0022\n    },\n    {\n      \u0022subject\u0022: \u0022Section 7.2.5. PUSH_PROMISE\u0022,\n      \u0022predicate\u0022: \u0022PARENT_OF\u0022,\n      \u0022object\u0022: \u0022Figure 8: PUSH_PROMISE Frame\u0022\n    },\n    {\n      \u0022subject\u0022: \u0022Section 7.2.6. GOAWAY\u0022,\n      \u0022predicate\u0022: \u0022PARENT_OF\u0022,\n      \u0022object\u0022: \u0022Figure 9: GOAWAY Frame\u0022\n    },\n    {\n      \u0022subject\u0022: \u0022Section 7.2.7. MAX_PUSH_ID\u0022,\n      \u0022predicate\u0022: \u0022PARENT_OF\u0022,\n      \u0022object\u0022: \u0022Figure 10: MAX_PUSH_ID Frame\u0022\n    }\n  ]\n}",
+  "finishReason": "stop",
+  "usage": {
+    "prompt_tokens": 68608,
+    "completion_tokens": 424,
+    "total_tokens": 69032,
+    "cost": 0.0070304,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0070304,
+      "upstream_inference_prompt_cost": 0.0068608,
+      "upstream_inference_completions_cost": 0.0001696
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

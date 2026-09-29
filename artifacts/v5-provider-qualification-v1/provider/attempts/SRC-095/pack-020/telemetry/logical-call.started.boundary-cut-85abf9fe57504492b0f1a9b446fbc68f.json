@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "LOGICAL_CALL_STARTED",
+  "timestamp": "2026-09-29T08:11:54.6074828\u002B00:00",
+  "campaignId": "v5-qwen-flash-qualification-v1",
+  "documentId": "SRC-095",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-85abf9fe57504492b0f1a9b446fbc68f",
+  "callOrdinal": 1,
+  "requestHash": "135265a4de18d6c63bb39db3e5b1ee56acdb05b6c10df6305ffc74ffdbfadce6",
+  "requestBytes": 198122,
+  "estimatedInputTokens": 36535,
+  "maxOutputTokens": 12288,
+  "sourceItemCount": 1,
+  "currentNodeCount": 0,
+  "contextItemCount": 1,
+  "contextCharacterCount": 145954,
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash"
+}

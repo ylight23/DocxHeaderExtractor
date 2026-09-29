@@ -1,0 +1,23 @@
+{
+  "documentId": "SRC-095",
+  "packId": "SRC-095-pack-006",
+  "status": "SEMANTIC_INVALID",
+  "semanticRequestHash": "993027f43aadd7907be5bbd623e60c4a0533f2208a665557ffdd53356e7afe9c",
+  "wireRequestHash": "5d2d86af0022ac2d5f074993c77c69fc95cc651528d8c46b2dd3b7ce9d107417",
+  "responseHash": "405df996cb8084447f65897f51afb2697c43288c1c517230a61ddffae5e21b1a",
+  "rawResponseHashes": [
+    {
+      "path": "provider/attempts/SRC-095/pack-006/telemetry/response.raw.boundary-cut-836faa732ac54aa48d427ae60875fca4.txt",
+      "sha256": "794e00a99e994845e25a4630b2f4fe2463970937d44d9a869bf1bfa5c3fe084e"
+    }
+  ],
+  "providerAttempts": 1,
+  "transportRetryCount": 0,
+  "finishReason": "stop",
+  "promptTokens": 73166,
+  "completionTokens": 458,
+  "reasoningTokens": 0,
+  "transportElapsedMs": 9885.6815,
+  "totalWallClockMs": 9954.7042,
+  "firstResponseByteObserved": true
+}

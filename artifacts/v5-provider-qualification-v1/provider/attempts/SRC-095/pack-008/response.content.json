@@ -1,0 +1,32 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "5. Connection Closure"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "5.1. Idle Connections"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "5.2. Connection Shutdown"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "5.3. Immediate Application Closure"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "5.1. Idle Connections PARENT_OF 5.2. Connection Shutdown"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "5.2. Connection Shutdown PARENT_OF 5.3. Immediate Application Closure"
+    }
+  ]
+}

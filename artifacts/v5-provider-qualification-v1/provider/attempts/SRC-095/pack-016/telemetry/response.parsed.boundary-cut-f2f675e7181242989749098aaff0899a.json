@@ -1,0 +1,27 @@
+{
+  "content": "{\n  \u0022claims\u0022: [\n    {\n      \u0022predicate\u0022: \u0022DOCUMENT_IDENTITY\u0022,\n      \u0022value\u0022: \u0022SRC-095\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002210.5.2. CONNECT Issues\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002210.6. Use of Compression\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002210.7. Padding and Traffic Analysis\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002210.8. Frame Parsing\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002210.9. Early Data\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002210.10. Migration\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002210.11. Privacy Considerations\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002211. IANA Considerations\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002211.1. Registration of HTTP/3 Identification String\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002211.2. New Registries\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u002211.2.1. Frame Types\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Section 4.2\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Section 6.2.3\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Section 7.2.8\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Section 8.4.1\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Section 11.1\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Section 11.2\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Section 22.1\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Section 22.1.1\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022[HTTP]\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022[BREACH]\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022[QPACK]\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022[HTTP-REPLAY]\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022[RFC6585]\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022[RFC7301]\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022[QUIC-TRANSPORT]\u0022\n    }\n  ]\n}",
+  "finishReason": "stop",
+  "usage": {
+    "prompt_tokens": 68370,
+    "completion_tokens": 836,
+    "total_tokens": 69206,
+    "cost": 0.0071714,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0071714,
+      "upstream_inference_prompt_cost": 0.006837,
+      "upstream_inference_completions_cost": 0.0003344
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

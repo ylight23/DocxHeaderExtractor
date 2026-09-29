@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "v5-provider-qualification-preflight-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "providerFallback": false,
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "reasoning": "none",
+  "stream": true,
+  "usageInclude": true,
+  "responseFormat": "json_object",
+  "timeoutSeconds": 300,
+  "packingPolicy": "RESOURCE_BOUNDED_SOURCE_PACKING_V1",
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "firstSha256": "2a950dbd59cb20ff123d15cc45d9e564dba3e3459fbf8898a1857f42c36741f0",
+      "secondSha256": "2a950dbd59cb20ff123d15cc45d9e564dba3e3459fbf8898a1857f42c36741f0",
+      "byteForByteStable": true,
+      "packCount": 7,
+      "sourceUniverseSha256": "1e3452c468403c1b90348fdbbb7445fe7c93c45e09fa5bd2ce2c8d7b9a01c601",
+      "taskContractHash": "0f25bd25af2a0906cef41ddd8f8c57024cc4056104b6e0aed06d233e5a0b060c",
+      "claimSchemaHash": "0fbc6ec65402e19394f20cd7875a5bbacab13434051877b1ddddb048ad8b7890",
+      "promptHash": "e835a001998029a4bff1add1f7ce4da18a8b0b535f4919ce04e7f48e727721b4",
+      "requestHashes": [
+        "e835a001998029a4bff1add1f7ce4da18a8b0b535f4919ce04e7f48e727721b4",
+        "501b6082a9d14d734f3941b6116638e52bac96054d3db01f204aff1605424c79",
+        "df1109aa562c9dcce73a1b7676a48867f24fc653a7b42745bfb75d0143d8dea3",
+        "ec4725988d77de72e440df05f1a0be1ad8609d1fbb4a1d989ffb908606480a37",
+        "96291d78bad52bb377daf7aa772be36d0be65412b5dd56c4a300ce4d214369f4",
+        "ee06d2a39960811aec059f7540287fc387290bb1fb348fd3a7e3cdc275fcb07d",
+        "f07e9ff655ccde83cabaa28befbc67de7de7e74571124c0174b7d4b285d0b6fe"
+      ],
+      "providerEnvelope": {
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "reasoning": "none",
+        "streaming": true,
+        "responseFormat": "json_object",
+        "timeoutSeconds": 300,
+        "usageInclude": true,
+        "openRouterResponseCacheDisabled": true
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "firstSha256": "0c51196348609d16f5dc7f55df8d6f39c30cf2beae6dbbd8c5dd63435a5073e5",
+      "secondSha256": "0c51196348609d16f5dc7f55df8d6f39c30cf2beae6dbbd8c5dd63435a5073e5",
+      "byteForByteStable": true,
+      "packCount": 24,
+      "sourceUniverseSha256": "7c27a48f3399cfb97ba93b1f488623bfc71b13d0a0e13b2a1b75fef37939476e",
+      "taskContractHash": "0f25bd25af2a0906cef41ddd8f8c57024cc4056104b6e0aed06d233e5a0b060c",
+      "claimSchemaHash": "0fbc6ec65402e19394f20cd7875a5bbacab13434051877b1ddddb048ad8b7890",
+      "promptHash": "a6619d919a86675ee7d7d3aba110195d604c4eca9177febcb9a572f067b5642b",
+      "requestHashes": [
+        "a6619d919a86675ee7d7d3aba110195d604c4eca9177febcb9a572f067b5642b",
+        "b0843831b2d8e2c4310462247b89c804e8faaf21fe79ae1d93143e64d596af9f",
+        "ea3156f293ec45a1e99011657f0811311433a60e92888391127a19eff1469659",
+        "c935b6a310d51b8bc8750173494c5f4d54cf4743f3753aa507814f99bcb51118",
+        "1e64d290159433b78e3e8f897cc2da8f341bddbe669c867d0bb2ccb9f6a7ba1a",
+        "993027f43aadd7907be5bbd623e60c4a0533f2208a665557ffdd53356e7afe9c",
+        "1f90bba09b99c95cf832f75dab2fa8294e5629e1caada9bf0469e8f82243c91d",
+        "a5a250e4c636ab5c582ed3f9cae617e85f14aeb1c5a485e49a4016da8738d04e",
+        "5174ee104de640b15811875d7ca4fb2a03e7f463d2e1da6f7447da38ab664333",
+        "5badada650747d045decf1ba4724eaba960acd68969530a72bf45b615b26d744",
+        "8705b5fdca04792569dd1b5038e439950564f8bf47b4c6e7fbb3447fc14023c8",
+        "25989d669bb4b7f207b86dd51c668187026deb496730f91dc8350598ba5cfb61",
+        "132dc2c80effcce56ef0ea8182229825546bbb442838df9a739dab110ae2b545",
+        "4534b1088f026580aa090e5e59453b957e492a60bea26b858bb50dd26394b737",
+        "d7eee6637a5510f410d6cb8af3085140e4971b5db49cadf124abef098aba8c1f",
+        "835973b39251e92744460441e7b42006c2facc1c29e869f669246974e8a678bf",
+        "876a8065159f93d2b82f764e68cdc0b083dab7bfb23a765a110433a917598bc1",
+        "a91ee08a66d15b0739cdbf6e81f7e8a86abaf796331f9a3bdc44bd28f30e0bf0",
+        "31bfe84ad4fd3e25055d9d3cd544771acf206c6cf2b4e974c5435464a37940e2",
+        "99b76131d69be1caed5ec2d789bb16b7577b98561e52d0a228e45f8b843794f8",
+        "d296bee5d868cd1ef5968958e82304970bef5ff12f103cc10b55867707b17dee",
+        "5ce62f1b97a1d0a651848e311c383feb74694d93ab6ae254add4627035ad9ec1",
+        "100af8adba6454b2db7592195f5f37360d29b4bb8e94a8e88496c1245465fcd0",
+        "ae25f2cacee3bcefafface961f313fdcef5932b800942822b6b1efbff6ab55f3"
+      ],
+      "providerEnvelope": {
+        "model": "qwen/qwen3.7-flash",
+        "provider": "Alibaba",
+        "reasoning": "none",
+        "streaming": true,
+        "responseFormat": "json_object",
+        "timeoutSeconds": 300,
+        "usageInclude": true,
+        "openRouterResponseCacheDisabled": true
+      }
+    }
+  ]
+}

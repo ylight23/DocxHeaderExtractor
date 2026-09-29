@@ -1,0 +1,144 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10. Security Considerations"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.1. Server Authority"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.2. Cross-Protocol Attacks"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.3. Intermediary-Encapsulation Attacks"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.4. Cacheability of Pushed Responses"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.5. Denial-of-Service Considerations"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.5.1. Limits on Field Section Size"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.5.2. CONNECT Issues"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.6. Use of Compression"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.4.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 11.2.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 11.2.2"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 11.2.3"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 11.2.4"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.2.2"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 5.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 5.5"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 6.2.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 10"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 17.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 21.5"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "10. Security Considerations",
+      "object": "10.1. Server Authority"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "10. Security Considerations",
+      "object": "10.2. Cross-Protocol Attacks"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "10. Security Considerations",
+      "object": "10.3. Intermediary-Encapsulation Attacks"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "10. Security Considerations",
+      "object": "10.4. Cacheability of Pushed Responses"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "10. Security Considerations",
+      "object": "10.5. Denial-of-Service Considerations"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "10. Security Considerations",
+      "object": "10.6. Use of Compression"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "10.5. Denial-of-Service Considerations",
+      "object": "10.5.1. Limits on Field Section Size"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "10.5. Denial-of-Service Considerations",
+      "object": "10.5.2. CONNECT Issues"
+    }
+  ]
+}

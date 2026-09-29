@@ -1,0 +1,78 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "4.4. The CONNECT Method"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "4.5. HTTP Upgrade"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "4.6. Server Push"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.1 of [HTTP]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 9.3.6 of [HTTP]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 15.3 of [HTTP]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.2 of [HTTP/2]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.3"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 9.2.3 of [HTTP]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 9.2.1 of [HTTP]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 3.3"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.8 of [HTTP]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 15.2.2 of [HTTP]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1 of [QUIC-TRANSPORT]"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "4.4. The CONNECT Method",
+      "object": "4.5. HTTP Upgrade"
+    },
+    {
+      "relation": "PARENT_OF",
+      "subject": "4.5. HTTP Upgrade",
+      "object": "4.6. Server Push"
+    }
+  ]
+}

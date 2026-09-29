@@ -1,0 +1,112 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.5.2. CONNECT Issues"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.6. Use of Compression"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.7. Padding and Traffic Analysis"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.8. Frame Parsing"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.9. Early Data"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.10. Migration"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.11. Privacy Considerations"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11. IANA Considerations"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.1. Registration of HTTP/3 Identification String"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2. New Registries"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2.1. Frame Types"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.2"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 6.2.3"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.8"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.4.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 11.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 11.2"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 22.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 22.1.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[HTTP]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[BREACH]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[QPACK]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[HTTP-REPLAY]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC6585]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[RFC7301]"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "[QUIC-TRANSPORT]"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "v5-provider-run-summary-v2",
+  "supersedes": "provider-run-summary.v1.json",
+  "providerCalls": 31,
+  "initialSemanticCalls": 31,
+  "refinementSemanticCalls": 0,
+  "semanticRecoveryCalls": 0,
+  "transportRetryCalls": 0,
+  "firstAttemptContractValid": 0,
+  "semanticInvalidCount": 31,
+  "finishReasonCounts": {
+    "stop": 30,
+    "length": 1
+  },
+  "totalPromptTokens": 2025269,
+  "totalCompletionTokens": 30996,
+  "totalReasoningTokens": 0,
+  "latencyMs": {
+    "wallClockP50": 8943.5465,
+    "wallClockP95": 17352.2966,
+    "wallClockMax": 54343.1994,
+    "transportP50": 8780.664,
+    "transportP95": 17256.2598,
+    "transportMax": 54286.4784
+  },
+  "goldRead": false,
+  "providerFallback": false,
+  "model": "qwen/qwen3.7-flash",
+  "provider": "Alibaba",
+  "reasoning": "none",
+  "stream": true,
+  "usageInclude": true,
+  "responseFormat": "json_object",
+  "timeoutSeconds": 300,
+  "rawResponseCount": 31,
+  "parsedResponseCount": 31
+}

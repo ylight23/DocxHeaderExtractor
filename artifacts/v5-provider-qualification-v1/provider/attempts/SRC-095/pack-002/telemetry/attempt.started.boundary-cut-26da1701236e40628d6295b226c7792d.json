@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "ATTEMPT_STARTED",
+  "timestamp": "2026-09-29T08:09:01.0203522\u002B00:00",
+  "campaignId": "v5-qwen-flash-qualification-v1",
+  "documentId": "SRC-095",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-9a5e95b5f65d43ac824fd799b07db73e",
+  "callOrdinal": 1,
+  "attemptId": "boundary-cut-26da1701236e40628d6295b226c7792d",
+  "requestHash": "8c93f12063e5a4ae335b1509b17b2e9962503ebf14d5422f888e1a73fd48abc0",
+  "requestBytes": 188292,
+  "estimatedInputTokens": 34209,
+  "maxOutputTokens": 12288,
+  "attemptStartedAt": "2026-09-29T08:09:01.0108683+00:00",
+  "attemptDeadlineAt": "2026-09-29T08:14:01.0108683+00:00"
+}

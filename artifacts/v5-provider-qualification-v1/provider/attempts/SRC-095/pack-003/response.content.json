@@ -1,0 +1,68 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "2.1. Document Organization"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "The following sections provide a detailed overview of the lifecycle of an HTTP/3 connection:"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Connection Setup and Management (Section 3)"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Expressing HTTP Semantics in HTTP/3 (Section 4)"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Connection Closure (Section 5)"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Stream Mapping and Usage (Section 6)"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP Framing Layer (Section 7)"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Handling (Section 8)"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Extensions to HTTP/3 (Section 9)"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "2.2. Conventions and Terminology"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "3. Connection Setup and Management"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "3.1. Discovering an HTTP/3 Endpoint"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "3.1.1. HTTP Alternative Services"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "3.1.2. Other Schemes"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "A more detailed comparison between HTTP/2 and HTTP/3 can be found in Appendix A."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "content": "{\n  \u0022claims\u0022: [\n    {\n      \u0022predicate\u0022: \u0022DOCUMENT_IDENTITY\u0022,\n      \u0022value\u0022: \u0022SRC-095\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u0022Section 7.1. Frame Layout\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u0022Section 7.2. Frame Definitions\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u0022Section 7.2.1. DATA\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u0022Section 7.2.2. HEADERS\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022STRUCTURAL_REGION\u0022,\n      \u0022value\u0022: \u0022Section 7.2.3. CANCEL_PUSH\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Table 1: HTTP/3 Frames and Stream Type Overview\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Figure 3: HTTP/3 Frame Format\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Figure 4: DATA Frame\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Figure 5: HEADERS Frame\u0022\n    },\n    {\n      \u0022predicate\u0022: \u0022NAVIGATION_REPRESENTATION\u0022,\n      \u0022value\u0022: \u0022Figure 6: CANCEL_PUSH Frame\u0022\n    }\n  ]\n}",
+  "finishReason": "stop",
+  "usage": {
+    "prompt_tokens": 64603,
+    "completion_tokens": 368,
+    "total_tokens": 64971,
+    "cost": 0.0066075,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0066075,
+      "upstream_inference_prompt_cost": 0.0064603,
+      "upstream_inference_completions_cost": 0.0001472
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

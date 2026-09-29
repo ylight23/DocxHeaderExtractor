@@ -1,0 +1,51 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.5. PUSH_PROMISE"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.6. GOAWAY"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.7. MAX_PUSH_ID"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.8. Reserved Frame Types"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Figure 8: PUSH_PROMISE Frame"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Figure 9: GOAWAY Frame"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Figure 10: MAX_PUSH_ID Frame"
+    },
+    {
+      "subject": "Section 7.2.5. PUSH_PROMISE",
+      "predicate": "PARENT_OF",
+      "object": "Figure 8: PUSH_PROMISE Frame"
+    },
+    {
+      "subject": "Section 7.2.6. GOAWAY",
+      "predicate": "PARENT_OF",
+      "object": "Figure 9: GOAWAY Frame"
+    },
+    {
+      "subject": "Section 7.2.7. MAX_PUSH_ID",
+      "predicate": "PARENT_OF",
+      "object": "Figure 10: MAX_PUSH_ID Frame"
+    }
+  ]
+}

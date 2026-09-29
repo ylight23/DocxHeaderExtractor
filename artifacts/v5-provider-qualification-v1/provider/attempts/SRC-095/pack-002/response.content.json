@@ -1,0 +1,220 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "RFC 9114 HTTP/3 June 2022"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "1. Introduction"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "1.1. Prior Versions of HTTP"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "1.2. Delegation to QUIC"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "2. HTTP/3 Protocol Overview"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "2.1. Document Organization"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "7.2.7. MAX_PUSH_ID"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "7.2.8. Reserved Frame Types"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "8. Error Handling"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "8.1. HTTP/3 Error Codes"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "9. Extensions to HTTP/3"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10. Security Considerations"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.1. Server Authority"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.2. Cross-Protocol Attacks"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.3. Intermediary-Encapsulation Attacks"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.4. Cacheability of Pushed Responses"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.5. Denial-of-Service Considerations"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.5.1. Limits on Field Section Size"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.5.2. CONNECT Issues"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.6. Use of Compression"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.7. Padding and Traffic Analysis"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.8. Frame Parsing"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.9. Early Data"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.10. Migration"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "10.11. Privacy Considerations"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11. IANA Considerations"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.1. Registration of HTTP/3 Identification String"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2. New Registries"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2.1. Frame Types"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2.2. Settings Parameters"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2.3. Error Codes"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2.4. Stream Types"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "12. References"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "12.1. Normative References"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "12.2. Informative References"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Appendix A. Considerations for Transitioning from HTTP/2"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.1. Streams"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2. HTTP Frame Types"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.1. Prioritization Differences"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.2. Field Compression Differences"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.3. Flow-Control Differences"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.4. Guidance for New Frame Type Definitions"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.5. Comparison of HTTP/2 and HTTP/3 Frame Types"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.3. HTTP/2 SETTINGS Parameters"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.4. HTTP/2 Error Codes"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Acknowledgments"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Index"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 3.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 3"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 5"
+    }
+  ]
+}

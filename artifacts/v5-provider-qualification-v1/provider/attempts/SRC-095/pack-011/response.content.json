@@ -1,0 +1,48 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.1. Frame Layout"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2. Frame Definitions"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.1. DATA"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.2. HEADERS"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.3. CANCEL_PUSH"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Table 1: HTTP/3 Frames and Stream Type Overview"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Figure 3: HTTP/3 Frame Format"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Figure 4: DATA Frame"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Figure 5: HEADERS Frame"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Figure 6: CANCEL_PUSH Frame"
+    }
+  ]
+}

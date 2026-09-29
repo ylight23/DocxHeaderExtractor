@@ -1,0 +1,64 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Table 3: Initial HTTP/3 Settings"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2.3. Error Codes"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.4.1"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 8.1"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_NO_ERROR"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_GENERAL_PROTOCOL_ERROR"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_INTERNAL_ERROR"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_STREAM_CREATION_ERROR"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_CLOSED_CRITICAL_STREAM"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_FRAME_UNEXPECTED"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_FRAME_ERROR"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_EXCESSIVE_LOAD"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_ID_ERROR"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_SETTINGS_ERROR"
+    }
+  ]
+}

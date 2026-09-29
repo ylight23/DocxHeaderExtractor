@@ -1,0 +1,113 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-089"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 20. Import of e-publications for commercial purposes"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 21. Deposit of e-publications"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 22. Responsibilities of publishing houses and agencies, organizations and individuals engaged in the publishing or distribution of e-publications"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 23. Cases subject to suspension or termination of the publishing or distribution of e-publications"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Chapter V IMPLEMENTATION PROVISIONS"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 24. Effect"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 25. Renewal of licenses for publication activities and registration of distribution of publications"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 26. Implementation responsibility"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Article 20. Import of e-publications for commercial purposes"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Article 21. Deposit of e-publications"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Article 22. Responsibilities of publishing houses and agencies, organizations and individuals engaged in the publishing or distribution of e-publications"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Article 23. Cases subject to suspension or termination of the publishing or distribution of e-publications"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Article 24. Effect"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Article 25. Renewal of licenses for publication activities and registration of distribution of publications"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Article 26. Implementation responsibility"
+    },
+    {
+      "relation": "PARENT_OF",
+      "source": "Chapter V IMPLEMENTATION PROVISIONS",
+      "target": "Article 24. Effect"
+    },
+    {
+      "relation": "PARENT_OF",
+      "source": "Chapter V IMPLEMENTATION PROVISIONS",
+      "target": "Article 25. Renewal of licenses for publication activities and registration of distribution of publications"
+    },
+    {
+      "relation": "PARENT_OF",
+      "source": "Chapter V IMPLEMENTATION PROVISIONS",
+      "target": "Article 26. Implementation responsibility"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "Article 20. Import of e-publications for commercial purposes",
+      "target": "Article 39 of the Publication Law"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "Article 20. Import of e-publications for commercial purposes",
+      "target": "Article 16 of this Decree"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "Article 21. Deposit of e-publications",
+      "target": "Article 48 of the Publication Law"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "Article 22. Responsibilities of publishing houses and agencies, organizations and individuals engaged in the publishing or distribution of e-publications",
+      "target": "Article 50 of the Publication Law"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "Article 23. Cases subject to suspension or termination of the publishing or distribution of e-publications",
+      "target": "Article 17 of this Decree"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "Article 23. Cases subject to suspension or termination of the publishing or distribution of e-publications",
+      "target": "Article 22 of this Decree"
+    }
+  ]
+}

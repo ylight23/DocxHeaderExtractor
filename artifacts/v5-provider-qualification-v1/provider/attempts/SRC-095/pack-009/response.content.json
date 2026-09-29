@@ -1,0 +1,87 @@
+{
+  "claims": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "5.3. Immediate Application Closure"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "5.4. Transport Closure"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "6. Stream Mapping and Usage"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "6.1. Bidirectional Streams"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "6.2. Unidirectional Streams"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "value": "6.2.1. Control Streams"
+    },
+    {
+      "relation": "PARENT_OF",
+      "source": "6. Stream Mapping and Usage",
+      "target": "6.1. Bidirectional Streams"
+    },
+    {
+      "relation": "PARENT_OF",
+      "source": "6. Stream Mapping and Usage",
+      "target": "6.2. Unidirectional Streams"
+    },
+    {
+      "relation": "PARENT_OF",
+      "source": "6.2. Unidirectional Streams",
+      "target": "6.2.1. Control Streams"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "5.3. Immediate Application Closure",
+      "target": "Section 8"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "5.4. Transport Closure",
+      "target": "Section 10.2 of [QUIC-TRANSPORT]"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "6.1. Bidirectional Streams",
+      "target": "Section 2 of [QUIC-TRANSPORT]"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "6.2. Unidirectional Streams",
+      "target": "Section 6.2.1"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "6.2. Unidirectional Streams",
+      "target": "Section 6.2.2"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "6.2. Unidirectional Streams",
+      "target": "Section 9"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "6.2. Unidirectional Streams",
+      "target": "Section 6.2.3"
+    },
+    {
+      "relation": "REFERENCES",
+      "source": "6.2.1. Control Streams",
+      "target": "Section 7.2"
+    }
+  ]
+}
