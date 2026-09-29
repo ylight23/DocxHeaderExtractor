@@ -205,7 +205,7 @@ public sealed class PdfR5SourceIdentityReplayHarnessTests
             "test", 1, 1, 1, 1,
             [new RouteBlockAudit("route-block-1", 2, "1 Scope")],
             [new RouteBlockAudit("route-block-1", 2, "1 Scope")], [],
-            [new RouteBlockDecisionAudit("route-block-1", "HeadingTopic", .91, "role")],
+            [new RouteBlockDecisionAudit("route-block-1", "REGION_STRUCTURE", .91, "role")],
             ["route-block-1"], [], ["route-block-1"])
         {
             SelectedSourceIdentities = [new PdfSelectedSourceIdentity(
@@ -440,7 +440,7 @@ internal static class PdfR5ReplayHarness
             }
             semantic.Add(new PdfReplaySemanticProposal(
                 source.Key,
-                decision.Role,
+                decision.SemanticFunction ?? "",
                 decision.Confidence,
                 decision.Reason));
         }

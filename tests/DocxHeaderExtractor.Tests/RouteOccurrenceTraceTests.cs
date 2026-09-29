@@ -133,7 +133,7 @@ public sealed class RouteOccurrenceTraceTests
             [routeBlock],
             [routeBlock],
             [],
-            [new RouteBlockDecisionAudit(routeBlockId, "HeadingTopic", 1, "test")],
+            [new RouteBlockDecisionAudit(routeBlockId, "REGION_STRUCTURE", 1, "test")],
             [routeBlockId],
             [],
             [routeBlockId])

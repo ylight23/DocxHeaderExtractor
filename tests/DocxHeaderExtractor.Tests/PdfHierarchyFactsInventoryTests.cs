@@ -36,7 +36,7 @@ public sealed class PdfHierarchyFactsInventoryTests
         Assert.Contains("relationship_unresolved", unmarked.Evidence);
     }
 
-    private static PdfValidatedHeading Heading(string id) => new(id, new TextOffsetSpan(0, 1), PdfBlockRole.HeadingTopic,
+    private static PdfValidatedHeading Heading(string id) => new(id, new TextOffsetSpan(0, 1), "REGION_STRUCTURE",
         "document_body", "test");
 
     private static PdfSemanticSourceContext Context(string id, int page, double topY, string text, PdfMarkerFact? marker,

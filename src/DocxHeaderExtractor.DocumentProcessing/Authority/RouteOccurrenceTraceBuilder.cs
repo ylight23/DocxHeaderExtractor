@@ -101,7 +101,7 @@ public static class RouteOccurrenceTraceBuilder
                     ModelRequestMembership = representation is null ? "UNKNOWN" :
                         requestIds.Length > 0 ? "EXACT_ROUTE_BLOCK_ID" : "NOT_REQUESTED",
                     ModelProposalPresent = requestIds.Length == 0 ? null : decision is not null,
-                    ModelRole = requestIds.Length == 0 ? null : decision?.SemanticRole,
+                    ModelSemanticFunction = requestIds.Length == 0 ? null : decision?.SemanticFunction,
                     ModelParent = requestIds.Length == 0 ? null : decision?.ProposedParentId,
                     ModelSpan = requestIds.Length == 0 ? null : decision?.ProposedSourceSpan,
                     ValidationStatus = validation?.ValidationStatus,

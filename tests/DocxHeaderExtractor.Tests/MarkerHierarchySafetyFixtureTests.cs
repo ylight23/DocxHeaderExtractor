@@ -120,7 +120,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
     }
 
     private static PdfValidatedHeading Heading(string id, string text) =>
-        new(id, new TextOffsetSpan(0, text.Length), PdfBlockRole.HeadingTopic, "document_body", "test");
+        new(id, new TextOffsetSpan(0, text.Length), "REGION_STRUCTURE", "document_body", "test");
 
     private static PdfSemanticSourceContext Context(string id, int page, double topY, string text,
         string scope = "document_body")

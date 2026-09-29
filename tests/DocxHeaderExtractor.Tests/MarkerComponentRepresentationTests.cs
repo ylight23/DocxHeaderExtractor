@@ -76,7 +76,7 @@ public sealed class MarkerComponentRepresentationTests
             var id = $"b{index}";
             contexts[id] = Context(id, 1, 700 - index * 20, texts[index]);
             headings.Add(new PdfValidatedHeading(id, new TextOffsetSpan(0, texts[index].Length),
-                PdfBlockRole.HeadingTopic, "document_body", "test"));
+                "REGION_STRUCTURE", "document_body", "test"));
         }
 
         var facts = PdfHierarchyFactsInventory.Inspect(headings, contexts);
@@ -96,7 +96,7 @@ public sealed class MarkerComponentRepresentationTests
         };
 
         var fact = Assert.Single(PdfHierarchyFactsInventory.Inspect(
-            [new PdfValidatedHeading("only", new TextOffsetSpan(0, text.Length), PdfBlockRole.HeadingTopic,
+            [new PdfValidatedHeading("only", new TextOffsetSpan(0, text.Length), "REGION_STRUCTURE",
                 "document_body", "test")],
             contexts));
 

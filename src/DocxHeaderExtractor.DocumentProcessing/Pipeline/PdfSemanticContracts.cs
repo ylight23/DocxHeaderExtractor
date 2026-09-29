@@ -3,36 +3,18 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-/// <summary>Canonical PDF block-role vocabulary shared by source validation and route audit.</summary>
-internal enum PdfBlockRole
-{
-    DocumentTitle,
-    HeadingTopic,
-    ListItem,
-    BodySentence,
-    TableOrChartLabel,
-    DecorativeNoise,
-    Uncertain,
-}
-
-/// <summary>Closed semantic role vocabulary carried through the canonical PDF decision contract.</summary>
-internal enum PdfSemanticRole
-{
-    DocumentTitle, SectionHeading, TopicHeading, LocalSubheading,
-    LegalChapter, LegalSection, LegalArticle, LegalClause, LegalPoint, AppendixHeading,
-    MeetingSection, AgendaItem, NoteHeading,
-    TableTitle, TableHeader, FigureTitle, FigureCaption, ListItemTopic, RunningHeader, RunningFooter, FormLabel,
-    SignatureLabel, TranslationNotice, BodyText, Unknown,
-}
-
+/// <summary>
+/// One model heading claim that bound to the source. Every decision is a heading claim; the only
+/// semantic label it carries is the coordinate contract's own, verbatim (<c>semanticFunction</c>
+/// for the V4 PDF lane). No harness role vocabulary is imposed on it.
+/// </summary>
 internal sealed record PdfBlockDecision(
     string Id,
-    PdfBlockRole Role,
     double Confidence,
     string Reason,
     TextOffsetSpan? HeadingSpan = null,
     string? ProposedParentId = null,
-    PdfSemanticRole SemanticRole = PdfSemanticRole.Unknown,
+    string? SemanticFunction = null,
     TextOffsetSpan? ProposedSourceSpan = null,
     // The bound claim's ordered parts, for a coordinate system whose claims can span several
     // source occurrences. Null everywhere else, which is every lane that had one span per claim.

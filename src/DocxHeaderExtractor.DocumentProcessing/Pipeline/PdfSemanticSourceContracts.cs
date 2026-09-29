@@ -132,7 +132,7 @@ internal static class PdfSpanBoundaryMap
 public sealed record PdfSemanticSourceStageTrace(
     string Id,
     string Scope,
-    string SemanticRole,
+    string? SemanticFunction,
     string SpanStatus,
     string ValidationStatus,
     string? Reason);
@@ -144,7 +144,7 @@ public sealed record PdfSemanticSourceStageTrace(
 internal sealed record PdfValidatedHeading(
     string SourceId,
     DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan HeadingSpan,
-    PdfBlockRole Role,
+    string? SemanticFunction,
     string StructuralScope,
     string ValidationBasis)
 {
@@ -322,7 +322,7 @@ internal static class PdfProposalValidator
         {
             var context = contexts[decision.Id];
             return new PdfValidatedHeading(
-                decision.Id, decision.HeadingSpan!, decision.Role, context.Source.StructuralScope,
+                decision.Id, decision.HeadingSpan!, decision.SemanticFunction, context.Source.StructuralScope,
                 "source-grounded-pointer-span")
             {
                 Parts = decision.Parts,
@@ -340,15 +340,10 @@ internal static class PdfProposalValidator
             if (!byId.TryGetValue(context.Source.SourceId, out var decision))
                 return new PdfSemanticSourceStageTrace(context.Source.SourceId, context.Source.StructuralScope, "unknown", "not-proposed", "unresolved", "missing-model-proposal");
 
-            string? spanReason = null;
-            var spanStatus = decision.Role == PdfBlockRole.HeadingTopic
-                ? ValidateSpan(decision, context.Source.RawText, out spanReason)
-                : "not-applicable";
-            var validation = decision.Role != PdfBlockRole.HeadingTopic
-                ? "not-heading"
-                : spanStatus == "valid" ? "eligible" : "unresolved";
+            var spanStatus = ValidateSpan(decision, context.Source.RawText, out var spanReason);
+            var validation = spanStatus == "valid" ? "eligible" : "unresolved";
             return new PdfSemanticSourceStageTrace(
-                context.Source.SourceId, context.Source.StructuralScope, decision.SemanticRole.ToString(), spanStatus,
+                context.Source.SourceId, context.Source.StructuralScope, decision.SemanticFunction, spanStatus,
                 validation, spanReason);
         }).ToArray();
     }
@@ -358,7 +353,6 @@ internal static class PdfProposalValidator
     /// whether the harness can point at it — not whether it agrees.
     /// </summary>
     public static bool IsEligibleHeading(PdfBlockDecision decision, PdfSemanticSourceContext context) =>
-        decision.Role == PdfBlockRole.HeadingTopic &&
         HasTrustedEvidenceOrigins(context.Source) &&
         ValidateSpan(decision, context.Source.RawText, out _) == "valid";
 

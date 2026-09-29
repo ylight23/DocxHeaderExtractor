@@ -120,7 +120,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     public void Audit_boundary_only_records_supplied_observations()
     {
         var blocks = new[] { new RouteBlockAudit("B1", 1, "Alpha") };
-        var decisions = new[] { new RouteBlockDecisionAudit("B1", "HeadingTopic", 1) };
+        var decisions = new[] { new RouteBlockDecisionAudit("B1", "REGION_STRUCTURE", 1) };
 
         var audit = CanonicalRouteAuditBoundary.Create(
             "test-route", 1, 1, 1, 1, blocks, blocks, [], decisions, ["B1"], [], ["B1"]);
@@ -147,5 +147,5 @@ public sealed class P3dMaterializationProjectionBoundaryTests
             new HashSet<string>(["S0001"], StringComparer.Ordinal));
 
     private static PdfValidatedHeading Heading(string sourceId, int start, int end) =>
-        new(sourceId, new TextOffsetSpan(start, end), PdfBlockRole.HeadingTopic, "document_body", "test");
+        new(sourceId, new TextOffsetSpan(start, end), "REGION_STRUCTURE", "document_body", "test");
 }

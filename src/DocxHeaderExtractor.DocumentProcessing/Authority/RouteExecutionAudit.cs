@@ -135,7 +135,7 @@ public sealed record RouteOccurrenceTrace
     [JsonPropertyName("modelRequestIds")] public IReadOnlyList<string> ModelRequestIds { get; init; } = [];
     [JsonPropertyName("modelRequestMembership")] public required string ModelRequestMembership { get; init; }
     [JsonPropertyName("modelProposalPresent")] public bool? ModelProposalPresent { get; init; }
-    [JsonPropertyName("modelRole")] public string? ModelRole { get; init; }
+    [JsonPropertyName("modelSemanticFunction")] public string? ModelSemanticFunction { get; init; }
     [JsonPropertyName("modelLevel")] public int? ModelLevel { get; init; }
     [JsonPropertyName("modelParent")] public string? ModelParent { get; init; }
     [JsonPropertyName("modelSpan")] public TextOffsetSpan? ModelSpan { get; init; }
@@ -202,11 +202,10 @@ public sealed record RouteBlockAudit(
 
 public sealed record RouteBlockDecisionAudit(
     [property: JsonPropertyName("id")] string Id,
-    [property: JsonPropertyName("role")] string Role,
+    [property: JsonPropertyName("semanticFunction")] string? SemanticFunction,
     [property: JsonPropertyName("confidence")] double Confidence,
     [property: JsonPropertyName("reason")] string? Reason = null)
 {
-    [JsonIgnore] public string? SemanticRole { get; init; }
     [JsonIgnore] public string? ProposedParentId { get; init; }
     [JsonIgnore] public TextOffsetSpan? ProposedSourceSpan { get; init; }
 }

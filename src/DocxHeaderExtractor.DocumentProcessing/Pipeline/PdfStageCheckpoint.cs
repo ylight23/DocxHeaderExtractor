@@ -46,8 +46,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
                     // exact source line, since a reviewed heading may span more than one line.
                     lineId = lineIds.FirstOrDefault(),
                     lineIds,
-                    role = d.Role.ToString(),
-                    semanticRole = d.SemanticRole.ToString(),
+                    semanticFunction = d.SemanticFunction,
                     sourceSpan = d.ProposedSourceSpan,
                     d.Confidence,
                     d.Reason,

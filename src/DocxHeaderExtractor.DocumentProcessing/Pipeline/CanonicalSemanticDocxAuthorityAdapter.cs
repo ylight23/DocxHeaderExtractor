@@ -89,11 +89,10 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
 
         var decisions = result.TextPipeline.BoundHeadings.Select(item => new PdfBlockDecision(
             item.SourceId,
-            PdfBlockRole.HeadingTopic,
             1,
             "canonical-vnext-semantic-contract",
             new TextOffsetSpan(item.Start, item.End),
-            SemanticRole: CanonicalSemanticEngine.ParseSemanticRole(item.SemanticRole))).ToArray();
+            SemanticFunction: item.SemanticRole)).ToArray();
         var validated = PdfProposalValidator.Validate(source.ModelContexts, decisions);
         // The alias catalog spans the whole document while Contexts holds only the paragraphs this
         // route carries, so a bound heading can name a source this route has no context for. Such
@@ -155,9 +154,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
             [],
             decisions.Select(decision => new RouteBlockDecisionAudit(
-                decision.Id, decision.Role.ToString(), decision.Confidence)
+                decision.Id, decision.SemanticFunction, decision.Confidence)
             {
-                SemanticRole = decision.SemanticRole.ToString(),
                 ProposedSourceSpan = decision.ProposedSourceSpan,
             }).ToArray(),
             validated.Select(item => item.SourceId).ToArray(),

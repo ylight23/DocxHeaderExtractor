@@ -191,11 +191,10 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
 
         var decisions = result.TextPipeline.BoundHeadings.Select(item => new PdfBlockDecision(
             item.SourceId,
-            PdfBlockRole.HeadingTopic,
             1,
             "canonical-vnext-semantic-contract",
             new TextOffsetSpan(item.Start, item.End),
-            SemanticRole: CanonicalSemanticEngine.ParseSemanticRole(item.SemanticRole),
+            SemanticFunction: item.SemanticRole,
             // Carried only when the claim occupies more than one source occurrence. A single-part
             // claim is already fully described by the span above, and passing a one-element tuple
             // would make two identical things look like two different ones downstream.
@@ -250,9 +249,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             universe.Blocks.Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText)).ToArray(),
             [],
             decisions.Select(decision => new RouteBlockDecisionAudit(
-                decision.Id, decision.Role.ToString(), decision.Confidence)
+                decision.Id, decision.SemanticFunction, decision.Confidence)
             {
-                SemanticRole = decision.SemanticRole.ToString(),
                 ProposedSourceSpan = decision.ProposedSourceSpan,
             }).ToArray(),
             validated.Select(item => item.SourceId).ToArray(),

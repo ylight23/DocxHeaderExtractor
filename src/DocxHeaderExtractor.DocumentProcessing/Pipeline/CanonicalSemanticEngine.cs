@@ -65,11 +65,6 @@ internal static class CanonicalSemanticEngine
         the harness derives depth from the relations you give.
         """;
 
-    internal static PdfSemanticRole ParseSemanticRole(string? role) =>
-        Enum.TryParse<PdfSemanticRole>(role, ignoreCase: true, out var parsed)
-            ? parsed
-            : PdfSemanticRole.SectionHeading;
-
     private const string RawSemanticFunctionMembershipPrompt = """
         You are the semantic-function membership stage of the A99 canonical document pipeline.
         Return strict JSON matching the supplied schema. Classify occurrences, not strings. An
