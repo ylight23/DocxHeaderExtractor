@@ -28,6 +28,10 @@ internal static class Program
         if (args.Any(a => a.StartsWith("--cohort31-", StringComparison.Ordinal)))
             return await Cohort31.RunAsync(LocateRepoRoot(), args);
 
+        // The frozen 3-pack source-selection remediation canary has its own gate and sentinel; see RemediationCanary.
+        if (args.Contains("--remediation-canary"))
+            return await RemediationCanary.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 
