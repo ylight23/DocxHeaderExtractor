@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "v5-qwen37-forced-tool-canary-preflight-v1",
+  "purpose": "MEASUREMENT_NOT_PROMOTION - provider-free prototype only",
+  "protocolVersion": "v5-source-backed-claim-2.1",
+  "composerVersion": "v5-semantic-request-composer-2.1",
+  "strictSchemaCompilerVersion": "v5-strict-claim-schema-compiler-1",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "alibaba",
+  "tool": {
+    "name": "submit_semantic_claims",
+    "description": "Submit the complete source-backed semantic claim response for the current task."
+  },
+  "capabilities": {
+    "jsonSchemaStrictSupported": false,
+    "jsonObjectSupported": true,
+    "toolsSupported": true,
+    "specificToolChoiceSupported": true,
+    "toolArgumentSchemaCarrierSupported": true,
+    "functionStrictFlagSupported": "Unverified",
+    "toolArgumentStrictEnforcement": "Unverified",
+    "evidenceSource": "OpenRouter /models/qwen/qwen3.7-flash/endpoints (tools, tool_choice present; structured_outputs absent) \u002B OpenRouter tool-calling docs (no function.strict field documented; arguments require application-side validation)"
+  },
+  "claimsWording": "relation-has-value is structurally excluded by the advertised tool parameter schema, but enforcement by Qwen3.7/Alibaba remains empirically unverified until a real call is made. Schema-present != decoder-enforced.",
+  "schemaAliasEnumSampleProvenance": "SRC-089 RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006 - alias enums are per-pack (owned/visible differ), so schema-alias-enum.json is a representative sample, not a canonical file",
+  "sourceSelectionPolicy": "unchanged - reused pack.Request.Prompt verbatim, verified byte-identical to the json_object baseline\u0027s frozen semantic request hash for all 3 packs",
+  "claimsOntology": "unchanged - claims[] wrapper, no unaryClaims[]/relationClaims[] split; the tool is an output carrier, not a second ontology",
+  "noSecondProviderTurn": true,
+  "noLocalFunctionExecution": true,
+  "packs": [
+    {
+      "role": "same-atom-normalization-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "sourceUniverseHash": "1e3452c468403c1b90348fdbbb7445fe7c93c45e09fa5bd2ce2c8d7b9a01c601",
+      "semanticRequestHash": "1aee77de2662e24b2eee5ba880ecb683e21ceb827a325df7590a997d859fa204",
+      "semanticRequestBytes": 84894,
+      "maxCompletionTokens": 25088,
+      "ownedAliasCount": 96,
+      "visibleAliasCount": 110,
+      "variantA_structuralOnly": {
+        "toolSchemaBytes": 7603,
+        "providerBodyHash": "0811e18ac7359cd23d3616e60310380eaf3e66fd4afcc08f3cdf55391554822f",
+        "providerBodyBytes": 122720
+      },
+      "variantB_aliasEnum": {
+        "toolSchemaBytes": 19934,
+        "providerBodyHash": "4e5be9729e3142b7bf4afa32afafa59b5c6444ff0f0645f9529f697ec95f409e",
+        "providerBodyBytes": 135051,
+        "aliasEnumOverheadBytes": 12331
+      },
+      "jsonObjectBaseline": {
+        "providerRequestBytes": 114894
+      },
+      "forcedToolBodyOverheadVsJsonObject": {
+        "variantA": 7826,
+        "variantB": 20157
+      }
+    },
+    {
+      "role": "true-multipart-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "sourceUniverseHash": "1e3452c468403c1b90348fdbbb7445fe7c93c45e09fa5bd2ce2c8d7b9a01c601",
+      "semanticRequestHash": "94e0ea2acd80472ec75c6835af71d145d22c338950656f95096c45a44924494e",
+      "semanticRequestBytes": 79027,
+      "maxCompletionTokens": 25088,
+      "ownedAliasCount": 96,
+      "visibleAliasCount": 104,
+      "variantA_structuralOnly": {
+        "toolSchemaBytes": 7603,
+        "providerBodyHash": "d3f66555627c0b9100b7710eb2f3eb066099c99c9439f0511f611e9cd3eab4c7",
+        "providerBodyBytes": 115377
+      },
+      "variantB_aliasEnum": {
+        "toolSchemaBytes": 19670,
+        "providerBodyHash": "aa8def9855729bbf8d03bf8289e9cd81159a13c954b05fa9f18c8aa17594e19b",
+        "providerBodyBytes": 127444,
+        "aliasEnumOverheadBytes": 12067
+      },
+      "jsonObjectBaseline": {
+        "providerRequestBytes": 107551
+      },
+      "forcedToolBodyOverheadVsJsonObject": {
+        "variantA": 7826,
+        "variantB": 19893
+      }
+    },
+    {
+      "role": "mixed",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "sourceUniverseHash": "7c27a48f3399cfb97ba93b1f488623bfc71b13d0a0e13b2a1b75fef37939476e",
+      "semanticRequestHash": "5c70d3bb648fa118fb7dd7da66bd88c4fb9607466c57d1d8baad6f5ec634a7e6",
+      "semanticRequestBytes": 79716,
+      "maxCompletionTokens": 25088,
+      "ownedAliasCount": 96,
+      "visibleAliasCount": 112,
+      "variantA_structuralOnly": {
+        "toolSchemaBytes": 7603,
+        "providerBodyHash": "4a0766b0a86cd956d7dc62e6a644f016912147868381764fc91a91d9f5794090",
+        "providerBodyBytes": 118194
+      },
+      "variantB_aliasEnum": {
+        "toolSchemaBytes": 20022,
+        "providerBodyHash": "55b04977325af920b4ee9eee9585c07e203692537ed9f08ff5c58dadba6b2d8a",
+        "providerBodyBytes": 130613,
+        "aliasEnumOverheadBytes": 12419
+      },
+      "jsonObjectBaseline": {
+        "providerRequestBytes": 110368
+      },
+      "forcedToolBodyOverheadVsJsonObject": {
+        "variantA": 7826,
+        "variantB": 20245
+      }
+    }
+  ],
+  "providerCalls": 0,
+  "goldRead": false,
+  "providerExecutionAuthorized": false
+}

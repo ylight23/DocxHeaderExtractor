@@ -28,6 +28,22 @@ namespace DocxHeaderExtractor.Core.V5;
 /// authority regardless of what the schema layer manages to reject early.
 /// </para>
 /// </summary>
+/// <summary>
+/// Where a compiled schema is destined. Same predicate vocabulary, arity and authority either way -
+/// only how a genuinely-optional field is represented differs, because the two destinations enforce
+/// that differently. Native strict JSON Schema (OpenAI/OpenRouter <c>response_format.json_schema</c>)
+/// requires every declared property to appear in <c>required</c>, so an optional field is represented
+/// as nullable-but-required. An ordinary (non-<c>strict</c>) function-calling <c>parameters</c> schema
+/// carries no such rule, so the same field is simply omitted from <c>required</c> and left absent when
+/// not used - preserving the native v2.1 wire's own optionality (<c>{"sourceAlias":"L0016:S0"}</c> with
+/// nothing else) rather than forcing null boilerplate a model never had to emit before.
+/// </summary>
+public enum V5ClaimSchemaCarrier
+{
+    NativeStrictJsonSchema,
+    ToolParameters,
+}
+
 public static class V5StrictClaimSchemaCompilerV1
 {
     public const string Version = "v5-strict-claim-schema-compiler-1";
@@ -36,12 +52,18 @@ public static class V5StrictClaimSchemaCompilerV1
     /// set (a pack's owned aliases). Null leaves it an unconstrained string - dynamic alias enums are a
     /// per-pack, per-request refinement, not a property of the contract alone.</param>
     /// <param name="visibleAliasEnum">Same, for every claim object's sourceAlias (a pack's visible aliases).</param>
-    public static object Compile(DocumentTaskContract contract, IReadOnlyList<string>? ownedAliasEnum = null, IReadOnlyList<string>? visibleAliasEnum = null)
+    public static object Compile(DocumentTaskContract contract, IReadOnlyList<string>? ownedAliasEnum = null, IReadOnlyList<string>? visibleAliasEnum = null) =>
+        Compile(contract, V5ClaimSchemaCarrier.NativeStrictJsonSchema, ownedAliasEnum, visibleAliasEnum);
+
+    /// <param name="carrier">See <see cref="V5ClaimSchemaCarrier"/>. Only optionality representation changes.</param>
+    public static object Compile(
+        DocumentTaskContract contract, V5ClaimSchemaCarrier carrier,
+        IReadOnlyList<string>? ownedAliasEnum = null, IReadOnlyList<string>? visibleAliasEnum = null)
     {
         ArgumentNullException.ThrowIfNull(contract);
         contract.Validate();
         var branches = V5ClaimShapesV2_1.Generate(contract)
-            .Select(shape => ClaimBranch(shape, ownedAliasEnum, visibleAliasEnum))
+            .Select(shape => ClaimBranch(shape, carrier, ownedAliasEnum, visibleAliasEnum))
             .ToArray();
         return new
         {
@@ -52,50 +74,61 @@ public static class V5StrictClaimSchemaCompilerV1
         };
     }
 
-    private static object ClaimBranch(V5ClaimShapeV2_1 shape, IReadOnlyList<string>? ownedAliasEnum, IReadOnlyList<string>? visibleAliasEnum)
+    private static object ClaimBranch(
+        V5ClaimShapeV2_1 shape, V5ClaimSchemaCarrier carrier, IReadOnlyList<string>? ownedAliasEnum, IReadOnlyList<string>? visibleAliasEnum)
     {
+        var strict = carrier == V5ClaimSchemaCarrier.NativeStrictJsonSchema;
         var properties = new Dictionary<string, object>
         {
-            ["subject"] = EndpointSchema(ownedAliasEnum),
+            ["subject"] = EndpointSchema(carrier, ownedAliasEnum),
             ["predicate"] = new { type = "string", @enum = new[] { shape.Name } },
             ["state"] = new { type = "string", @enum = ProviderFacingStates() },
             ["evidenceNeeds"] = new { type = "array", items = new { type = "string", @enum = Enum.GetNames<EvidenceNeed>() } },
         };
-        // Strict mode requires every declared property to be listed in "required"; a field that is
+        // Under native strict mode every declared property must be required; a field that is
         // genuinely optional on the wire (an OPEN unary claim may have no value yet) is represented by
-        // allowing null rather than by omitting it from required.
-        if (shape.ValueAllowed) properties["value"] = new { type = new[] { "string", "null" } };
-        if (shape.ObjectAllowed) properties["object"] = EndpointSchema(visibleAliasEnum);
+        // allowing null rather than by omitting it. An ordinary tool-parameters schema has no such
+        // rule, so the field is simply left out of "required" and omitted from arguments when unused.
+        var optionalKeys = new List<string>();
+        if (shape.ValueAllowed)
+        {
+            properties["value"] = strict ? new { type = new[] { "string", "null" } } : new { type = "string" };
+            if (!strict) optionalKeys.Add("value");
+        }
+        if (shape.ObjectAllowed) properties["object"] = EndpointSchema(carrier, visibleAliasEnum);
 
         return new
         {
             type = "object",
             additionalProperties = false,
             properties,
-            required = properties.Keys.ToArray(),
+            required = properties.Keys.Except(optionalKeys).ToArray(),
         };
     }
 
     private static string[] ProviderFacingStates() =>
         Enum.GetNames<ClaimResolutionState>().Where(name => name != nameof(ClaimResolutionState.EXHAUSTED)).ToArray();
 
-    private static object EndpointSchema(IReadOnlyList<string>? aliasEnum)
+    private static object EndpointSchema(V5ClaimSchemaCarrier carrier, IReadOnlyList<string>? aliasEnum)
     {
+        var strict = carrier == V5ClaimSchemaCarrier.NativeStrictJsonSchema;
         object aliasProperty = aliasEnum is { Count: > 0 }
             ? new { type = "string", @enum = aliasEnum }
             : new { type = "string" };
         // Only sourceAlias is mandatory on a real part: a whole-alias selection - the policy's default -
-        // has none of the other four fields at all. Each is nullable-but-required rather than omitted,
-        // per strict mode's "every declared property is required" rule; the model signals "not this
-        // field" with null, not with leaving the field out (which strict mode would reject anyway).
+        // has none of the other four fields at all. Under native strict mode each is nullable-but-
+        // required (strict mode's "every declared property is required" rule leaves no other way to
+        // say "absent"); for a tool-parameters schema they are ordinary optional properties, so the
+        // native wire's own shorthand ({"sourceAlias":"..."} alone) is representable without change.
         var partProperties = new Dictionary<string, object>
         {
             ["sourceAlias"] = aliasProperty,
-            ["verbatimText"] = new { type = new[] { "string", "null" } },
-            ["occurrence"] = new { type = new[] { "integer", "null" } },
-            ["leftExactContext"] = new { type = new[] { "string", "null" } },
-            ["rightExactContext"] = new { type = new[] { "string", "null" } },
+            ["verbatimText"] = strict ? new { type = new[] { "string", "null" } } : new { type = "string" },
+            ["occurrence"] = strict ? new { type = new[] { "integer", "null" } } : new { type = "integer" },
+            ["leftExactContext"] = strict ? new { type = new[] { "string", "null" } } : new { type = "string" },
+            ["rightExactContext"] = strict ? new { type = new[] { "string", "null" } } : new { type = "string" },
         };
+        var optionalPartKeys = strict ? Array.Empty<string>() : new[] { "verbatimText", "occurrence", "leftExactContext", "rightExactContext" };
         return new
         {
             type = "object",
@@ -110,7 +143,7 @@ public static class V5StrictClaimSchemaCompilerV1
                         type = "object",
                         additionalProperties = false,
                         properties = partProperties,
-                        required = partProperties.Keys.ToArray(),
+                        required = partProperties.Keys.Except(optionalPartKeys).ToArray(),
                     },
                 },
             },

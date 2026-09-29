@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "v5-model-capability-preflight-v1",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "alibaba",
+  "capabilities": {
+    "Provider": "alibaba",
+    "Model": "qwen/qwen3.7-flash",
+    "ToolsSupported": true,
+    "SpecificToolChoiceSupported": true,
+    "ToolArgumentSchemaSupported": true,
+    "FunctionStrictFlagSupported": 2,
+    "ToolArgumentStrictEnforcement": 2,
+    "EvidenceSource": "OpenRouter /models/qwen/qwen3.7-flash/endpoints (tools, tool_choice present; structured_outputs absent) \u002B OpenRouter tool-calling docs (no function.strict field documented; arguments require application-side validation)"
+  },
+  "existingNativeStrictSchemaCapability": "JsonSchemaStrictSupported=false (ProviderStructuredOutputRegistry.QwenFlashAlibaba, unchanged)",
+  "providerCalls": 0,
+  "goldRead": false
+}
