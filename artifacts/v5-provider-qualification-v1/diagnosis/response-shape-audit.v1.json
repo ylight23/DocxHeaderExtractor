@@ -1,0 +1,2974 @@
+{
+  "schemaVersion": "v5-provider-wire-contract-audit-v1",
+  "status": "TRANSPORT_PASS_SEMANTIC_WIRE_CONTRACT_FAIL",
+  "providerCalls": 0,
+  "source": "frozen provider response.content.json \u002B result.v1.json only",
+  "goldRead": false,
+  "responseCount": 31,
+  "classifications": {
+    "GROUNDING_MISSING": 30,
+    "TRUNCATED": 1
+  },
+  "responseLevel": {
+    "validJson": 30,
+    "invalidJson": 1,
+    "claimsLikeArray": 30,
+    "missingClaimId": 30,
+    "missingSubject": 30,
+    "hasSourceAliasElsewhere": 0,
+    "hasSourcePartsElsewhere": 0,
+    "validSemanticPredicate": 25,
+    "recoverableByMechanicalRenaming": 0,
+    "truncated": 1
+  },
+  "itemLevel": {
+    "totalItems": 496,
+    "missingClaimId": 496,
+    "missingSubject": 483,
+    "withPredicate": 461,
+    "validPredicate": 461,
+    "withSourceAlias": 0,
+    "withSourceParts": 0
+  },
+  "frequency": {
+    "topLevelFields": {
+      "claims": 30
+    },
+    "itemFields": {
+      "predicate": 461,
+      "value": 453,
+      "relation": 40,
+      "source": 23,
+      "target": 23,
+      "child": 7,
+      "parent": 7,
+      "object": 13,
+      "subject": 13
+    },
+    "alternativeFields": [
+      "child",
+      "parent",
+      "relation",
+      "source",
+      "target"
+    ],
+    "errorReasons": {
+      "none": 30,
+      "\u00270x0D\u0027 is invalid within a JSON string. The string should be correctly escaped. LineNumber: 1336 | BytePositionInLine: 20.": 1
+    },
+    "finishReasons": {
+      "stop": 30,
+      "length": 1
+    }
+  },
+  "rows": [
+    {
+      "Path": "provider/attempts/SRC-089/pack-001/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 10,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 10,
+      "MissingSubjectItems": 10,
+      "PredicateItems": 10,
+      "ValidPredicateItems": 10,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 396,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-089/pack-002/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 48,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 48,
+      "MissingSubjectItems": 48,
+      "PredicateItems": 48,
+      "ValidPredicateItems": 48,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 2731,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-089/pack-003/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 11,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 11,
+      "MissingSubjectItems": 11,
+      "PredicateItems": 11,
+      "ValidPredicateItems": 11,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 397,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-089/pack-004/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 12,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 12,
+      "MissingSubjectItems": 12,
+      "PredicateItems": 12,
+      "ValidPredicateItems": 12,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 455,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-089/pack-005/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 13,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 13,
+      "MissingSubjectItems": 13,
+      "PredicateItems": 13,
+      "ValidPredicateItems": 13,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 495,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-089/pack-006/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 25,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": false,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 25,
+      "MissingSubjectItems": 25,
+      "PredicateItems": 16,
+      "ValidPredicateItems": 16,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 1063,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-089/pack-007/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 15,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": false,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 15,
+      "MissingSubjectItems": 15,
+      "PredicateItems": 10,
+      "ValidPredicateItems": 10,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 570,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "child",
+          "parent",
+          "relation"
+        ],
+        [
+          "child",
+          "parent",
+          "relation"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-001/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 12,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 12,
+      "MissingSubjectItems": 12,
+      "PredicateItems": 12,
+      "ValidPredicateItems": 12,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 369,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-002/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 54,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 54,
+      "MissingSubjectItems": 54,
+      "PredicateItems": 54,
+      "ValidPredicateItems": 54,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 1703,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-003/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 16,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 16,
+      "MissingSubjectItems": 16,
+      "PredicateItems": 16,
+      "ValidPredicateItems": 16,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 529,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-004/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 12,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 12,
+      "MissingSubjectItems": 12,
+      "PredicateItems": 12,
+      "ValidPredicateItems": 12,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 521,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "child",
+          "parent",
+          "predicate",
+          "relation"
+        ],
+        [
+          "child",
+          "parent",
+          "predicate",
+          "relation"
+        ],
+        [
+          "child",
+          "parent",
+          "predicate",
+          "relation"
+        ],
+        [
+          "child",
+          "parent",
+          "predicate",
+          "relation"
+        ],
+        [
+          "child",
+          "parent",
+          "predicate",
+          "relation"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-005/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 6,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 6,
+      "MissingSubjectItems": 6,
+      "PredicateItems": 6,
+      "ValidPredicateItems": 6,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 204,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-006/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 12,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 12,
+      "MissingSubjectItems": 12,
+      "PredicateItems": 12,
+      "ValidPredicateItems": 12,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 458,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-007/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 18,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": false,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 18,
+      "MissingSubjectItems": 16,
+      "PredicateItems": 16,
+      "ValidPredicateItems": 16,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 618,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-008/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 7,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 7,
+      "MissingSubjectItems": 7,
+      "PredicateItems": 7,
+      "ValidPredicateItems": 7,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 238,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-009/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 18,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": false,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 18,
+      "MissingSubjectItems": 18,
+      "PredicateItems": 7,
+      "ValidPredicateItems": 7,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 692,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ],
+        [
+          "relation",
+          "source",
+          "target"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-010/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 9,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 9,
+      "MissingSubjectItems": 9,
+      "PredicateItems": 9,
+      "ValidPredicateItems": 9,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 281,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-011/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 11,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 11,
+      "MissingSubjectItems": 11,
+      "PredicateItems": 11,
+      "ValidPredicateItems": 11,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 368,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-012/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 8,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 8,
+      "MissingSubjectItems": 8,
+      "PredicateItems": 8,
+      "ValidPredicateItems": 8,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 259,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-013/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 11,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 11,
+      "MissingSubjectItems": 8,
+      "PredicateItems": 11,
+      "ValidPredicateItems": 11,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 424,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "object",
+          "predicate",
+          "subject"
+        ],
+        [
+          "object",
+          "predicate",
+          "subject"
+        ],
+        [
+          "object",
+          "predicate",
+          "subject"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-014/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 18,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 18,
+      "MissingSubjectItems": 18,
+      "PredicateItems": 18,
+      "ValidPredicateItems": 18,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 567,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-015/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 33,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": false,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 33,
+      "MissingSubjectItems": 25,
+      "PredicateItems": 25,
+      "ValidPredicateItems": 25,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 1182,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ],
+        [
+          "object",
+          "relation",
+          "subject"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-016/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 27,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 27,
+      "MissingSubjectItems": 27,
+      "PredicateItems": 27,
+      "ValidPredicateItems": 27,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 836,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-017/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 15,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 15,
+      "MissingSubjectItems": 15,
+      "PredicateItems": 15,
+      "ValidPredicateItems": 15,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 479,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-018/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 15,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 15,
+      "MissingSubjectItems": 15,
+      "PredicateItems": 15,
+      "ValidPredicateItems": 15,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 461,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-019/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 7,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 7,
+      "MissingSubjectItems": 7,
+      "PredicateItems": 7,
+      "ValidPredicateItems": 7,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 226,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-020/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 23,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 23,
+      "MissingSubjectItems": 23,
+      "PredicateItems": 23,
+      "ValidPredicateItems": 23,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 1264,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-021/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 18,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 18,
+      "MissingSubjectItems": 18,
+      "PredicateItems": 18,
+      "ValidPredicateItems": 18,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 588,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-022/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 9,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 9,
+      "MissingSubjectItems": 9,
+      "PredicateItems": 9,
+      "ValidPredicateItems": 9,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 306,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-023/response.content.json",
+      "TopLevelShape": "object",
+      "TopLevelFields": [
+        "claims"
+      ],
+      "ValidJson": true,
+      "ClaimsArray": true,
+      "ItemCount": 3,
+      "MissingClaimId": true,
+      "MissingSubject": true,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": true,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 3,
+      "MissingSubjectItems": 3,
+      "PredicateItems": 3,
+      "ValidPredicateItems": 3,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "stop",
+      "CompletionTokens": 188,
+      "Classification": "GROUNDING_MISSING",
+      "ErrorReason": null,
+      "ItemFieldSets": [
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ],
+        [
+          "predicate",
+          "value"
+        ]
+      ]
+    },
+    {
+      "Path": "provider/attempts/SRC-095/pack-024/response.content.json",
+      "TopLevelShape": "unknown",
+      "TopLevelFields": [],
+      "ValidJson": false,
+      "ClaimsArray": false,
+      "ItemCount": 0,
+      "MissingClaimId": false,
+      "MissingSubject": false,
+      "HasSourceAlias": false,
+      "HasSourceParts": false,
+      "AllPredicatesValid": false,
+      "MechanicallyRecoverable": false,
+      "MissingClaimIdItems": 0,
+      "MissingSubjectItems": 0,
+      "PredicateItems": 0,
+      "ValidPredicateItems": 0,
+      "SourceAliasItems": 0,
+      "SourcePartsItems": 0,
+      "FinishReason": "length",
+      "CompletionTokens": 12128,
+      "Classification": "TRUNCATED",
+      "ErrorReason": "\u00270x0D\u0027 is invalid within a JSON string. The string should be correctly escaped. LineNumber: 1336 | BytePositionInLine: 20.",
+      "ItemFieldSets": []
+    }
+  ],
+  "conclusion": {
+    "primaryFailure": "WIRE_CONTRACT",
+    "categories": [
+      "SCHEMA_NAMING_MISMATCH",
+      "GROUNDING_MISSING",
+      "TRUNCATED"
+    ],
+    "claimIdOwnership": "HARNESS",
+    "mechanicalRepairApplied": false,
+    "semanticQualityScored": false
+  }
+}
