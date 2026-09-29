@@ -153,9 +153,15 @@ internal static class Program
                 }
             }
 
-            var passed = transportValid && finishReasonOk && jsonValid && schemaValid &&
-                groundingPresent && bindingValid && ownershipValid && vocabularyValid;
-            if (passed) passCount++;
+            // Three separate layers, never collapsed into one "pack failed": a response-fatal problem
+            // (bad transport, bad JSON, a contract/arity violation) discards everything; a claim-local
+            // binding refusal discards only that proposal and must not discard its valid siblings; a
+            // response can be structurally usable and still carry some claim-local refusals, which is
+            // exactly what runtimeAcceptable below is designed to still call acceptable.
+            var responseUsable = transportValid && finishReasonOk && jsonValid && schemaValid;
+            var claimBindingComplete = refusals.Count == 0;
+            var runtimeAcceptable = responseUsable && bindingValid && ownershipValid && vocabularyValid;
+            if (runtimeAcceptable) passCount++;
 
             results.Add(new
             {
@@ -172,20 +178,28 @@ internal static class Program
                 bindingValid,
                 ownershipValid,
                 vocabularyValid,
+                proposalCount = claimCount,
                 claimCount,
                 boundCount,
+                boundFraction = claimCount == 0 ? 1.0 : (double)boundCount / claimCount,
                 refusalCount = refusals.Count,
                 refusalReasons = refusals.Values.Distinct().Take(10).ToArray(),
+                ownershipRefusalCount = refusals.Values.Count(reason =>
+                    reason.StartsWith("subject-alias-not-owned", StringComparison.Ordinal) ||
+                    reason.StartsWith("object-alias-not-visible", StringComparison.Ordinal)),
                 validationError,
                 rawResponseSha256 = raw is null ? null : Sha256(raw),
                 rawResponseChars = raw?.Length,
                 rawResponse = raw,
                 diagnosticClaimTable,
-                pass = passed,
+                responseUsable,
+                claimBindingComplete,
+                runtimeAcceptable,
+                pass = runtimeAcceptable,
             });
 
             Console.WriteLine(
-                $"  -> {item.DocumentId} {item.Pack.PackId}: pass={passed} transport={transportValid} " +
+                $"  -> {item.DocumentId} {item.Pack.PackId}: runtimeAcceptable={runtimeAcceptable} responseUsable={responseUsable} " +
                 $"finishReason={finishReason} json={jsonValid} schema={schemaValid} binding={boundCount}/{claimCount} ownership={ownershipValid}");
         }
 

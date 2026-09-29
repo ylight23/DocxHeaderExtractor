@@ -14,7 +14,8 @@ public sealed record SemanticReasoningContext(
     DocumentTaskContract TaskContract,
     UniversalEvidenceGraph EvidenceGraph,
     IReadOnlyList<EvidenceCandidate> RetrievedEvidence,
-    int CallOrdinal);
+    int CallOrdinal,
+    IReadOnlyList<BoundSemanticClaim> OpenOrConflictedClaims);
 
 public sealed record SemanticReasoningUsage(
     int PromptTokens = 0,
@@ -24,7 +25,7 @@ public sealed record SemanticReasoningUsage(
     public int TotalTokens => checked(PromptTokens + CompletionTokens);
 }
 
-public sealed record SemanticReasoningResult(SemanticClaimResponse Response, SemanticReasoningUsage Usage);
+public sealed record SemanticReasoningResult(SemanticClaimResponseV2_1 Response, SemanticReasoningUsage Usage);
 
 public interface ISemanticReasoner
 {
@@ -95,6 +96,8 @@ public sealed class DocumentAgentRuntime
         DocumentTaskContract contract,
         UniversalEvidenceGraph evidenceGraph,
         IReadOnlyList<SemanticSourceAtom> atoms,
+        IReadOnlySet<string>? ownedAliases = null,
+        IReadOnlySet<string>? visibleAliases = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(contract);
@@ -102,6 +105,13 @@ public sealed class DocumentAgentRuntime
         ArgumentNullException.ThrowIfNull(atoms);
         contract.Validate();
         var budget = contract.ExecutionBudget;
+        // Ownership is an explicit runtime input, never inferred from semantic content. A caller
+        // that has not packed its evidence (the whole-document callers this runtime has always
+        // supported) gets every atom owned and visible, which reproduces the exact behavior the
+        // binder had before it enforced ownership at all. A caller that packs (a real PDF pack) is
+        // expected to pass its own owned/visible alias sets.
+        var owned = ownedAliases ?? atoms.Select(atom => atom.Alias).ToHashSet(StringComparer.Ordinal);
+        var visible = visibleAliases ?? owned;
         var started = Stopwatch.GetTimestamp();
         var trace = new List<AgentExecutionTrace>();
         void Mark(AgentStage stage, string detail) => trace.Add(new(stage, DateTimeOffset.UtcNow, detail));
@@ -137,7 +147,10 @@ public sealed class DocumentAgentRuntime
                 ExhaustOpenClaims(allClaims); exhausted = true; break;
             }
             Mark(semanticCalls == 0 ? AgentStage.INITIAL_REASONING : AgentStage.REVALIDATE, $"semantic-call={semanticCalls + 1}");
-            var context = new SemanticReasoningContext(contract, workingGraph, retrieved.ToArray(), semanticCalls);
+            var openOrConflicted = allClaims.Values
+                .Where(claim => claim.State is ClaimResolutionState.OPEN or ClaimResolutionState.CONFLICTED)
+                .ToArray();
+            var context = new SemanticReasoningContext(contract, workingGraph, retrieved.ToArray(), semanticCalls, openOrConflicted);
             var requestHash = Hashing.Sha256(JsonSerializer.Serialize(new
             {
                 contract = contract.Hash(), graph = workingGraph.Hash(), call = semanticCalls, retrieved,
@@ -157,15 +170,24 @@ public sealed class DocumentAgentRuntime
             var response = reasoning.Response;
             totalTokens = checked(totalTokens + reasoning.Usage.TotalTokens);
             var responseHash = Hashing.Sha256(JsonSerializer.Serialize(response, CanonicalJson.Options));
-            var contractIssues = SemanticClaimContract.Validate(response, contract);
+            var contractIssues = SemanticClaimContractV2_1.Validate(response, contract);
             if (contractIssues.Count > 0)
             {
                 allConflicts.AddRange(contractIssues.Select(issue => new KnowledgeValidationIssue("CLAIM_CONTRACT", null, issue)));
                 break;
             }
-            var binding = ExactClaimBinder.Bind(response.Claims, atoms);
-            foreach (var claim in binding.Bound)
+            // KnownClaims reflects the durable state as of THIS turn, so a refinement proposal's
+            // existingClaimId is checked against what the runtime actually holds right now, not a
+            // stale snapshot from an earlier turn.
+            var knownClaims = allClaims.ToDictionary(
+                item => item.Key,
+                item => new KnownClaimReference(item.Value.Subject.Identity, item.Value.Predicate),
+                StringComparer.Ordinal);
+            var scope = ClaimBindingScope.Create(owned, visible, knownClaims);
+            var binding = ExactClaimBinderV2_1.Bind(requestHash, response.Claims, atoms, scope);
+            foreach (var boundClaim in binding.Bound)
             {
+                var claim = boundClaim.Claim;
                 if (allClaims.TryGetValue(claim.ClaimId, out var previous) && !ClaimTransitionPolicy.IsAllowed(previous, claim))
                 {
                     allConflicts.Add(new KnowledgeValidationIssue("ILLEGAL_CLAIM_TRANSITION", claim.ClaimId,
@@ -175,6 +197,8 @@ public sealed class DocumentAgentRuntime
                 allClaims[claim.ClaimId] = claim;
                 hashesByClaim[claim.ClaimId] = (requestHash, responseHash);
             }
+            // A refused proposal is claim-local: it never discards its valid siblings, and it is
+            // always recorded as an explicit, auditable issue rather than silently dropped.
             allConflicts.AddRange(binding.Refusals.Select(item => new KnowledgeValidationIssue("CLAIM_BINDING", item.Key, item.Value)));
             semanticCalls++;
 

@@ -34,42 +34,6 @@ public static class V5PdfPreflightBuilder
     public static IReadOnlyList<SemanticSourceAtom> LoadAtoms(string pdfPath) =>
         PdfStructuredSourceAuthorityBuilder.Build(pdfPath).Atoms;
 
-    public static (V5ProviderPreflight Preflight, IReadOnlyList<V5PackedSourceRequest> Requests) Build(
-        string pdfPath,
-        string documentId,
-        DocumentTaskContract contract,
-        string packingPolicy,
-        V5ProviderEnvelope providerEnvelope)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
-        ArgumentException.ThrowIfNullOrWhiteSpace(documentId);
-        ArgumentNullException.ThrowIfNull(contract);
-        ArgumentException.ThrowIfNullOrWhiteSpace(packingPolicy);
-        ArgumentNullException.ThrowIfNull(providerEnvelope);
-        contract.Validate();
-        providerEnvelope = providerEnvelope with { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
-        var policy = ResolvePolicy(packingPolicy);
-        var authority = PdfStructuredSourceAuthorityBuilder.Build(pdfPath);
-        var graph = BuildGraph(authority, documentId);
-        var byAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
-        var packs = policy.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
-        var requests = packs.Select(pack =>
-        {
-            var (ownedAliases, visibleAliases, owned, visible) = ResolvePack(pack, byAlias);
-            var composed = V5SemanticRequestComposer.Compose(contract,
-                new V5EvidencePacket(owned, visible, [], [], [], []));
-            return new V5PackedSourceRequest(pack.PackId, ownedAliases, visibleAliases, composed);
-        }).ToArray();
-        var preflight = V5ProviderPreflightBuilder.Build(
-            authority.SourceSha256,
-            graph,
-            contract,
-            requests.Select(item => item.Request).ToArray(),
-            policy.PolicyId,
-            providerEnvelope);
-        return (preflight, requests);
-    }
-
     /// <summary>
     /// Builds a real PDF source-universe preflight under the currently-evolving protocol v2.1
     /// (durable claim identity, ownership-scoped binding, mandatory evidenceNeeds, harness-only

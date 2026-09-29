@@ -48,6 +48,6 @@ public sealed class V5DocumentAgentEntryPoint
             0,
             unit.Text)).ToArray();
         return new DocumentAgentRuntime(reasoner, _retriever, _planner, _visual, _layout, _projectionEngine)
-            .RunAsync(contract, evidence, atoms, cancellationToken);
+            .RunAsync(contract, evidence, atoms, cancellationToken: cancellationToken);
     }
 }

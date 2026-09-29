@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "v5-runtime-convergence-replay-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "qualificationRuntimeParity": true,
+  "replay": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "proposalCount": 72,
+      "boundCount": 67,
+      "refusalCount": 5,
+      "refusalReasons": [
+        "subject-alias-not-owned:L0094:S0",
+        "subject-alias-not-owned:L0095:S0",
+        "subject-alias-not-owned:L0096:S0",
+        "subject-alias-not-owned:L0098:S0",
+        "subject-alias-not-owned:L0099:S0"
+      ],
+      "responseUsable": true,
+      "claimBindingComplete": false,
+      "runtimeAcceptable": true
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "proposalCount": 70,
+      "boundCount": 64,
+      "refusalCount": 6,
+      "refusalReasons": [
+        "subject-alias-not-owned:L0090:S0",
+        "subject-alias-not-owned:L0091:S0",
+        "subject-alias-not-owned:L0092:S0",
+        "subject-alias-not-owned:L0093:S0",
+        "subject-alias-not-owned:L0096:S0",
+        "subject-alias-not-owned:L0097:S0"
+      ],
+      "responseUsable": true,
+      "claimBindingComplete": false,
+      "runtimeAcceptable": true
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "proposalCount": 16,
+      "boundCount": 16,
+      "refusalCount": 0,
+      "refusalReasons": [],
+      "responseUsable": true,
+      "claimBindingComplete": true,
+      "runtimeAcceptable": true
+    }
+  ]
+}

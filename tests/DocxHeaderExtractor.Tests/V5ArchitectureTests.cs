@@ -30,14 +30,16 @@ public sealed class V5ArchitectureTests
     public void Exact_claim_binding_refuses_unquoted_or_unknown_source()
     {
         var atoms = Atoms();
-        var response = new SemanticClaimResponse([
-            new("c1", new ClaimSourceEndpoint([
-                new("A1", CanonicalSemanticSelectionMode.VerbatimText, "not present")]), "RELATES_TO"),
-            new("c2", new ClaimSourceEndpoint([
-                new("UNKNOWN", CanonicalSemanticSelectionMode.WholeAlias)]), "RELATES_TO"),
-        ]);
+        var scope = AllOwnedScope(atoms);
+        var proposals = new SemanticClaimProposalV2_1[]
+        {
+            new(new ClaimSourceEndpointV2_1([
+                new ProviderSourcePartV2_1("A1", "not present")]), "RELATES_TO"),
+            new(new ClaimSourceEndpointV2_1([
+                new ProviderSourcePartV2_1("UNKNOWN")]), "RELATES_TO"),
+        };
 
-        var result = ExactClaimBinder.Bind(response.Claims, atoms);
+        var result = ExactClaimBinderV2_1.Bind("test-request", proposals, atoms, scope);
         Assert.Empty(result.Bound);
         Assert.Equal(2, result.Refusals.Count);
     }
@@ -50,12 +52,12 @@ public sealed class V5ArchitectureTests
             Observation("E2", "A2", "Beta"),
         ]);
         var atoms = Atoms();
-        var whole = (string alias) => new ClaimSourceEndpoint([
-            new(alias, CanonicalSemanticSelectionMode.WholeAlias)]);
-        var claims = ExactClaimBinder.Bind([
-            new("c1", whole("A1"), "RELATES_TO", Object: whole("A2")),
-            new("c2", whole("A2"), "RELATES_TO", Object: whole("A1")),
-        ], atoms).Bound;
+        var scope = AllOwnedScope(atoms);
+        var whole = (string alias) => new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1(alias)]);
+        var claims = ExactClaimBinderV2_1.Bind("test-request", [
+            new SemanticClaimProposalV2_1(whole("A1"), "RELATES_TO", Object: whole("A2")),
+            new SemanticClaimProposalV2_1(whole("A2"), "RELATES_TO", Object: whole("A1")),
+        ], atoms, scope).Bound.Select(item => item.Claim).ToArray();
         var issues = KnowledgeGraphValidator.Validate(new DocumentKnowledgeState(graph, claims), Contract());
         Assert.Contains(issues, issue => issue.Code == "STRUCTURAL_CYCLE");
     }
@@ -65,13 +67,15 @@ public sealed class V5ArchitectureTests
     {
         var graph = EvidenceGraphBuilder.Build([
             Observation("E1", "A1", "Alpha"), Observation("E2", "A2", "Beta")]);
-        var whole = (string alias) => new ClaimSourceEndpoint([new(alias, CanonicalSemanticSelectionMode.WholeAlias)]);
-        var claims = ExactClaimBinder.Bind([
-            new("c1", whole("A1"), "RELATES_TO", Object: whole("A2"), State: ClaimResolutionState.OPEN,
+        var atoms = Atoms();
+        var scope = AllOwnedScope(atoms);
+        var whole = (string alias) => new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1(alias)]);
+        var claims = ExactClaimBinderV2_1.Bind("test-request", [
+            new SemanticClaimProposalV2_1(whole("A1"), "RELATES_TO", Object: whole("A2"), State: ClaimResolutionState.OPEN,
                 EvidenceNeeds: [EvidenceNeed.GLOBAL_TARGET]),
-            new("c2", whole("A2"), "RELATES_TO", Object: whole("A1"), State: ClaimResolutionState.CONFLICTED,
+            new SemanticClaimProposalV2_1(whole("A2"), "RELATES_TO", Object: whole("A1"), State: ClaimResolutionState.CONFLICTED,
                 EvidenceNeeds: [EvidenceNeed.GLOBAL_TARGET]),
-        ], Atoms()).Bound;
+        ], atoms, scope).Bound.Select(item => item.Claim).ToArray();
         var issues = KnowledgeGraphValidator.Validate(new DocumentKnowledgeState(graph, claims), Contract());
         Assert.DoesNotContain(issues, issue => issue.Code == "STRUCTURAL_CYCLE");
     }
@@ -79,10 +83,12 @@ public sealed class V5ArchitectureTests
     [Fact]
     public void Claim_transition_policy_is_fail_closed()
     {
-        var bound = ExactClaimBinder.Bind([
-            new("c1", new ClaimSourceEndpoint([new("A1", CanonicalSemanticSelectionMode.WholeAlias)]),
-                "DESCRIBES", State: ClaimResolutionState.RESOLVED, Value: "one"),
-        ], Atoms()).Bound.Single();
+        var atoms = Atoms();
+        var scope = AllOwnedScope(atoms);
+        var bound = ExactClaimBinderV2_1.Bind("test-request", [
+            new SemanticClaimProposalV2_1(new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1("A1")]),
+                "DESCRIBES", "one", State: ClaimResolutionState.RESOLVED, EvidenceNeeds: []),
+        ], atoms, scope).Bound.Single().Claim;
         var changed = bound with { Value = "two" };
         var exhausted = bound with { State = ClaimResolutionState.EXHAUSTED };
         Assert.False(ClaimTransitionPolicy.IsAllowed(bound, changed));
@@ -94,12 +100,14 @@ public sealed class V5ArchitectureTests
     public void Planner_uses_open_claim_need_not_model_confidence()
     {
         var graph = EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha")]);
-        var claims = ExactClaimBinder.Bind([
-            new("c1", new ClaimSourceEndpoint([
-                new("A1", CanonicalSemanticSelectionMode.WholeAlias)]),
+        var atoms = Atoms();
+        var scope = AllOwnedScope(atoms);
+        var claims = ExactClaimBinderV2_1.Bind("test-request", [
+            new SemanticClaimProposalV2_1(new ClaimSourceEndpointV2_1([
+                new ProviderSourcePartV2_1("A1")]),
                 "RELATES_TO", State: ClaimResolutionState.OPEN,
                 EvidenceNeeds: [EvidenceNeed.GLOBAL_TARGET]),
-        ], Atoms()).Bound;
+        ], atoms, scope).Bound.Select(item => item.Claim).ToArray();
         var plan = new EvidencePlanner().Plan(new DocumentKnowledgeState(graph, claims), Contract(), 0);
         var action = Assert.Single(plan.Actions);
         Assert.Equal(EvidenceNeed.GLOBAL_TARGET, action.Need);
@@ -111,7 +119,7 @@ public sealed class V5ArchitectureTests
     {
         var contract = Contract();
         var preflight = new V5ProviderPreflight(
-            "source", "universe", contract.Hash(), SemanticClaimContract.SchemaHash(), "prompt",
+            "source", "universe", contract.Hash(), SemanticClaimContractV2_1.SchemaHash(), "prompt",
             "RESOURCE_BOUNDED", 0, [], [], new("model", "provider", "none", true, "json_object", 300),
             PlannedProviderCalls: 0, GoldRead: false, ProviderCalls: 0);
         preflight.Validate();
@@ -161,7 +169,7 @@ public sealed class V5ArchitectureTests
         using var document = JsonDocument.Parse("""
             {"claims":[{"claimId":"c1","subject":{"sourceParts":[{"sourceAlias":"A1","start":0}]},"predicate":"DESCRIBES","state":"RESOLVED"}]}
             """);
-        Assert.Throws<InvalidOperationException>(() => SemanticClaimResponseCodec.Parse(document.RootElement, Contract()));
+        Assert.Throws<InvalidOperationException>(() => SemanticClaimResponseCodecV2_1.Parse(document.RootElement, Contract()));
     }
 
     [Fact]
@@ -274,9 +282,9 @@ public sealed class V5ArchitectureTests
     public void Request_composer_is_deterministic_and_contract_driven()
     {
         var graph = EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha")]);
-        var packet = new V5EvidencePacket(graph.Nodes, graph.Nodes, [], [], [], []);
-        var first = V5SemanticRequestComposer.Compose(Contract(), packet);
-        var second = V5SemanticRequestComposer.Compose(Contract(), packet);
+        var packet = new V5EvidencePacketV2_1(graph.Nodes, [], [], [], [], []);
+        var first = V5SemanticRequestComposerV2_1.Compose(Contract(), packet);
+        var second = V5SemanticRequestComposerV2_1.Compose(Contract(), packet);
         Assert.Equal(first.RequestHash, second.RequestHash);
         Assert.Equal(first.PromptHash, second.PromptHash);
         Assert.DoesNotContain("heading", first.Prompt, StringComparison.OrdinalIgnoreCase);
@@ -304,12 +312,12 @@ public sealed class V5ArchitectureTests
             ("SRC-095", SourcePdfCorpus.Src095),
         })
         {
-            var built = DocxHeaderExtractor.DocumentProcessing.Pipeline.V5PdfPreflightBuilder.Build(
+            var built = DocxHeaderExtractor.DocumentProcessing.Pipeline.V5PdfPreflightBuilder.BuildV2_1(
                 TestRepository.Path(relativePath),
                 id,
                 DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create(),
                 "RESOURCE_BOUNDED_SOURCE_PACKING_V1",
-                new V5ProviderEnvelope("qwen/qwen3.7-flash", "Alibaba", "none", true, "json_object", 300));
+                new V5ProviderEnvelope("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300));
             built.Preflight.Validate();
             Assert.NotEmpty(built.Requests);
             Assert.Equal(built.Requests.Count, built.Preflight.PlannedProviderCalls);
@@ -335,6 +343,13 @@ public sealed class V5ArchitectureTests
         new("A2", "S2", 2, 1, 2, 0, "Beta"),
     ];
 
+    /// <summary>Everything owned, nothing halo - the scope a whole-document (unpacked) caller gets by default.</summary>
+    private static ClaimBindingScope AllOwnedScope(IReadOnlyList<SemanticSourceAtom> atoms)
+    {
+        var aliases = atoms.Select(atom => atom.Alias).ToArray();
+        return ClaimBindingScope.Create(aliases, aliases);
+    }
+
     private static SourceObservation Observation(
         string id,
         string alias,
@@ -356,7 +371,7 @@ public sealed class V5ArchitectureTests
         public string Identity => "test-noop";
 
         public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken) =>
-            ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponse([]), new SemanticReasoningUsage()));
+            ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponseV2_1([]), new SemanticReasoningUsage()));
     }
 
     private sealed class SequenceReasoner : ISemanticReasoner
@@ -365,13 +380,18 @@ public sealed class V5ArchitectureTests
 
         public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken)
         {
+            // Turn 0 proposes A1 as a new OPEN claim. Turn 1 refines it: the runtime told this turn
+            // about its own open claim via context.OpenOrConflictedClaims, so it echoes that durable
+            // id back as existingClaimId rather than letting the runtime mint a second, unrelated one.
+            var existingClaimId = context.OpenOrConflictedClaims.SingleOrDefault()?.ClaimId;
             var state = context.CallOrdinal == 0 ? ClaimResolutionState.OPEN : ClaimResolutionState.RESOLVED;
-            return ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponse([
-                new("c1", new ClaimSourceEndpoint([
-                    new("A1", CanonicalSemanticSelectionMode.WholeAlias)]),
+            return ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponseV2_1([
+                new(new ClaimSourceEndpointV2_1([
+                    new ProviderSourcePartV2_1("A1")]),
                     "DESCRIBES", State: state,
                     Value: state == ClaimResolutionState.RESOLVED ? "target" : null,
-                    EvidenceNeeds: state == ClaimResolutionState.OPEN ? [EvidenceNeed.GLOBAL_TARGET] : []),
+                    EvidenceNeeds: state == ClaimResolutionState.OPEN ? [EvidenceNeed.GLOBAL_TARGET] : [],
+                    ExistingClaimId: existingClaimId),
             ]), new SemanticReasoningUsage()));
         }
     }
@@ -384,11 +404,13 @@ public sealed class V5ArchitectureTests
         public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken)
         {
             Contexts.Add(context);
+            var existingClaimId = context.OpenOrConflictedClaims.SingleOrDefault()?.ClaimId;
             var state = context.CallOrdinal == 0 ? ClaimResolutionState.OPEN : ClaimResolutionState.RESOLVED;
-            var response = new SemanticClaimResponse([
-                new("c1", new ClaimSourceEndpoint([new("A1", CanonicalSemanticSelectionMode.WholeAlias)]),
+            var response = new SemanticClaimResponseV2_1([
+                new(new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1("A1")]),
                     "DESCRIBES", State: state, Value: state == ClaimResolutionState.RESOLVED ? "target" : null,
-                    EvidenceNeeds: state == ClaimResolutionState.OPEN ? [need] : []),
+                    EvidenceNeeds: state == ClaimResolutionState.OPEN ? [need] : [],
+                    ExistingClaimId: existingClaimId),
             ]);
             return ValueTask.FromResult(new SemanticReasoningResult(response, new SemanticReasoningUsage()));
         }

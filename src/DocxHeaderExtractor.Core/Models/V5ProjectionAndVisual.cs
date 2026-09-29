@@ -43,28 +43,3 @@ public sealed class ProjectionEngine
         return results;
     }
 }
-
-/// <summary>Creates a typed visual evidence request from an unresolved claim; it does not call a provider.</summary>
-public static class TargetedVisualEscalation
-{
-    public static VisualEvidenceRequest CreateRequest(
-        SemanticClaimProposal claim,
-        UniversalEvidenceGraph graph,
-        string question,
-        int budget)
-    {
-        ArgumentNullException.ThrowIfNull(claim);
-        ArgumentNullException.ThrowIfNull(graph);
-        var aliases = claim.Subject.SourceParts.Select(part => part.SourceAlias).ToHashSet(StringComparer.Ordinal);
-        var nodes = graph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).ToArray();
-        var page = nodes.Select(node => node.Anchor.Geometry?.Page).FirstOrDefault(value => value is not null);
-        var geometry = nodes.Select(node => node.Anchor.Geometry).FirstOrDefault(value => value is not null);
-        return new VisualEvidenceRequest(
-            claim.ClaimId,
-            question,
-            nodes.Select(node => node.EvidenceId).ToArray(),
-            page,
-            geometry,
-            Math.Max(0, budget));
-    }
-}

@@ -124,25 +124,19 @@ public sealed record V5ProviderPreflight(
 
 public static class V5ProviderPreflightBuilder
 {
-    /// <summary>Builds the v2.1 provider-free preflight while leaving all v1 hashes/artifacts intact.</summary>
+    /// <summary>
+    /// Named alias for <see cref="Build(string,UniversalEvidenceGraph,DocumentTaskContract,IReadOnlyList{V5ComposedSemanticRequest},string,V5ProviderEnvelope)"/>.
+    /// v2.1 is the only active V5 claim protocol, so the base builder already returns
+    /// <see cref="SemanticClaimContractV2_1"/>'s schema hash; this name exists only for call-site clarity.
+    /// </summary>
     public static V5ProviderPreflight BuildV2_1(
         string productionSourceSha,
         UniversalEvidenceGraph sourceUniverse,
         DocumentTaskContract contract,
         IReadOnlyList<V5ComposedSemanticRequest> requests,
         string packingPolicy,
-        V5ProviderEnvelope providerEnvelope)
-    {
-        ArgumentNullException.ThrowIfNull(requests);
-        var preflight = Build(
-            productionSourceSha,
-            sourceUniverse,
-            contract,
-            requests,
-            packingPolicy,
-            providerEnvelope);
-        return preflight with { ClaimSchemaHash = SemanticClaimContractV2_1.SchemaHash() };
-    }
+        V5ProviderEnvelope providerEnvelope) =>
+        Build(productionSourceSha, sourceUniverse, contract, requests, packingPolicy, providerEnvelope);
 
     public static V5ProviderPreflight Build(
         string productionSourceSha,
@@ -179,7 +173,7 @@ public static class V5ProviderPreflightBuilder
             productionSourceSha,
             sourceUniverse.Hash(),
             contract.Hash(),
-            SemanticClaimContract.SchemaHash(),
+            SemanticClaimContractV2_1.SchemaHash(),
             promptHash,
             packingPolicy,
             requestPayloads.Count,
