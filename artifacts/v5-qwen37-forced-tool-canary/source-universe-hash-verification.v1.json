@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "v5-source-universe-hash-verification-v1",
+  "question": "Is preflight.json's SRC-089 sourceUniverseHash (1e3452c4...) stale provenance copied from an old file, or a freshly-derived value from a superseded environment?",
+  "verdict": "NOT_STALE - 1e3452c4... is the current authoritative value; no fix needed; no re-freeze performed",
+  "howVerified": "sourceUniverseHash in the frozen preflight.json is never copied from any historical file at test-authoring time - it comes directly from built.Preflight.SourceUniverseSha, itself V5PdfPreflightBuilder.BuildV2_1's own fresh PdfStructuredSourceAuthorityBuilder.Build() call over the real PDF on disk, at test-run time, on this machine. To resolve the discrepancy the two candidate hashes were traced to their source rather than assumed:",
+  "evidence": {
+    "1e3452c4...": {
+      "foundIn": "artifacts/v5-provider-cohort-31-windows/preflight/environment.v1.json",
+      "role": "the ADOPTED, currently-authoritative Windows-native cohort - the one every real provider execution in this project has used since (the 31-pack cohort itself, both source-selection-remediation canary rounds, the qwen3.8-27b:free canary)",
+      "selfCheck": "documents[0] (SRC-089): referenceSourceUniverseHash == sourceUniverseHash == 1e3452c4..., equal:true - this environment reproduces itself exactly"
+    },
+    "7c3b1090...": {
+      "foundIn": "artifacts/v5-provider-cohort-31/preflight/environment.v1.json (no \"-windows\" suffix)",
+      "role": "the ABANDONED Linux/WSL cohort attempt from earlier in this project - explicitly dropped by the user's own direction not to use WSL any further",
+      "selfCheck": "documents[0] (SRC-089): referenceSourceUniverseHash 1e3452c4... != sourceUniverseHash 7c3b1090..., equal:false - this is the environment that COULD NOT reproduce the reference (SRC-089's hash is font-dependent per PdfStructuredSourceAuthorityBuilder's known non-embedded-TimesNewRomanPSMT sensitivity), which is exactly why it was abandoned rather than adopted"
+    }
+  },
+  "conclusion": "7c3b1090... belongs to the superseded, never-adopted Linux/WSL attempt, not to any 'current authoritative rebaseline'. 1e3452c4... is correct, current, and reproduces on this machine exactly as it has for every other artifact frozen since the pivot to the Windows-native cohort. The forced-tool preflight (31ce706) needs no correction.",
+  "assertionsReconfirmed": {
+    "SRC-089_sourceUniverseHash": "1e3452c468403c1b90348fdbbb7445fe7c93c45e09fa5bd2ce2c8d7b9a01c601 (unchanged, correct)",
+    "SRC-095_sourceUniverseHash": "7c27a48f3399cfb97ba93b1f488623bfc71b13d0a0e13b2a1b75fef37939476e (unchanged, correct, matched already)",
+    "PACK_006_semanticRequestHash": "1aee77de2662e24b2eee5ba880ecb683e21ceb827a325df7590a997d859fa204 (unchanged - already asserted equal to the json_object baseline in V5Qwen37ForcedToolCanaryPreflightTests, still passing)",
+    "PACK_001_semanticRequestHash": "94e0ea2acd80472ec75c6835af71d145d22c338950656f95096c45a44924494e (unchanged, still passing)",
+    "PACK_022_semanticRequestHash": "5c70d3bb648fa118fb7dd7da66bd88c4fb9607466c57d1d8baad6f5ec634a7e6 (unchanged, still passing)",
+    "providerBodyBytes": "unchanged for all 3 packs, both variants - no byte differs, so no re-freeze of bodies/ was needed or performed"
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "note": "This verification file makes no provider call; it only traces two existing hashes to their existing source files."
+}
