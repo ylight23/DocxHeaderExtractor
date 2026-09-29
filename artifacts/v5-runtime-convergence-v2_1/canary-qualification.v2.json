@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "v5-canary-qualification-v2",
+  "sourceArtifact": "artifacts/v5-provider-canary-current/canary-result.v1.json",
+  "sourceArtifactSha256": "ecd34f314a17979c682c4891eeac5b755dda5bf3cb30f6185220e4462a9bc9ad",
+  "providerCalls": 0,
+  "goldRead": false,
+  "supersedes": "runtimeAcceptable/passCount in the v1 result, which wrongly required zero claim-local refusals",
+  "aggregate": {
+    "ProviderCalls": 3,
+    "UsableResponses": 3,
+    "TransportFailures": 0,
+    "FinishReasonLength": 0,
+    "JsonInvalidResponses": 0,
+    "SchemaInvalidResponses": 0,
+    "TotalProposals": 174,
+    "TotalBound": 171,
+    "TotalRefused": 3,
+    "BoundFraction": 0.9827586206896551724137931034,
+    "OwnershipRefusals": 3,
+    "OtherBindingRefusals": 0,
+    "PacksBindingComplete": 1,
+    "PacksPartialBinding": 2,
+    "PacksBindingEmpty": 0,
+    "PacksRuntimeProcessedSafely": 3,
+    "UnsafeRepairs": 0,
+    "OutOfScopeClaimsAccepted": 0
+  },
+  "packs": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "qualification": {
+        "wireStatus": "WIRE_PASS",
+        "outcome": "PARTIAL_BINDING",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "proposalCount": 22,
+        "boundCount": 21,
+        "refusalCount": 1,
+        "boundFraction": 0.9545454545454545454545454545,
+        "ownershipRefusalCount": 1,
+        "otherRefusalCount": 0,
+        "refusalTaxonomy": {
+          "subject-alias-not-owned": 1
+        },
+        "refusalReasons": [
+          {
+            "key": "proposal-16",
+            "reason": "subject-alias-not-owned:L0094:S0"
+          }
+        ],
+        "bindingComplete": false,
+        "hasAcceptedClaims": true,
+        "runtimeProcessedSafely": true,
+        "unsafeRepairCount": 0,
+        "outOfScopeAcceptedCount": 0
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "qualification": {
+        "wireStatus": "WIRE_PASS",
+        "outcome": "BINDING_COMPLETE",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "proposalCount": 43,
+        "boundCount": 43,
+        "refusalCount": 0,
+        "boundFraction": 1,
+        "ownershipRefusalCount": 0,
+        "otherRefusalCount": 0,
+        "refusalTaxonomy": {},
+        "refusalReasons": [],
+        "bindingComplete": true,
+        "hasAcceptedClaims": true,
+        "runtimeProcessedSafely": true,
+        "unsafeRepairCount": 0,
+        "outOfScopeAcceptedCount": 0
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "qualification": {
+        "wireStatus": "WIRE_PASS",
+        "outcome": "PARTIAL_BINDING",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "proposalCount": 109,
+        "boundCount": 107,
+        "refusalCount": 2,
+        "boundFraction": 0.9816513761467889908256880734,
+        "ownershipRefusalCount": 2,
+        "otherRefusalCount": 0,
+        "refusalTaxonomy": {
+          "subject-alias-not-owned": 2
+        },
+        "refusalReasons": [
+          {
+            "key": "proposal-21",
+            "reason": "subject-alias-not-owned:L0373:S0"
+          },
+          {
+            "key": "proposal-22",
+            "reason": "subject-alias-not-owned:L0377:S0"
+          }
+        ],
+        "bindingComplete": false,
+        "hasAcceptedClaims": true,
+        "runtimeProcessedSafely": true,
+        "unsafeRepairCount": 0,
+        "outOfScopeAcceptedCount": 0
+      }
+    }
+  ]
+}

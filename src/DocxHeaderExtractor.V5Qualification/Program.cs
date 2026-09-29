@@ -82,7 +82,7 @@ internal static class Program
 
         var options = RemoteInferenceOptions.FromEnvironment();
         var results = new List<object>();
-        var passCount = 0;
+        var qualifications = new List<V5PackBindingQualification>();
 
         foreach (var item in selection)
         {
@@ -112,100 +112,50 @@ internal static class Program
                 transportError = ex.Message;
             }
 
-            var transportValid = raw is not null;
-            var finishReasonOk = finishReason != "length";
-            var jsonValid = false;
-            var schemaValid = false;
-            var groundingPresent = false;
-            var bindingValid = false;
-            var ownershipValid = false;
-            var vocabularyValid = false;
-            var claimCount = 0;
-            var boundCount = 0;
-            IReadOnlyDictionary<string, string> refusals = new Dictionary<string, string>();
-            string? validationError = null;
+            // The same codec and binder DocumentAgentRuntime uses, classified with the runtime's own
+            // partial fail-closed semantics: only a response-fatal problem discards the response; a
+            // claim-local refusal discards that one proposal, is preserved explicitly, and keeps its
+            // valid siblings. See V5PackBindingQualification.
+            var (qualification, _, _) = V5BindingQualifier.Qualify(
+                raw, finishReason, transportError, contract, item.Pack.PackId, atoms, scope);
+            qualifications.Add(qualification);
             object[]? diagnosticClaimTable = null;
-
-            if (transportValid && finishReasonOk)
+            if (raw is not null)
             {
                 try
                 {
-                    using var document = JsonDocument.Parse(raw!);
-                    jsonValid = true;
+                    using var document = JsonDocument.Parse(raw);
                     diagnosticClaimTable = BuildDiagnosticClaimTable(document.RootElement, contract);
-                    var response = SemanticClaimResponseCodecV2_1.Parse(document.RootElement, contract);
-                    schemaValid = true;
-                    vocabularyValid = true; // enforced inside Parse -> Validate
-                    claimCount = response.Claims.Count;
-                    groundingPresent = claimCount == 0 || response.Claims.All(claim => claim.Subject.SourceParts.Count > 0);
-
-                    var binding = ExactClaimBinderV2_1.Bind(item.Pack.PackId, response.Claims, atoms, scope);
-                    refusals = binding.Refusals;
-                    boundCount = binding.Bound.Count;
-                    bindingValid = claimCount == 0 || boundCount == claimCount;
-                    ownershipValid = refusals.Values.All(reason =>
-                        !reason.StartsWith("subject-alias-not-owned", StringComparison.Ordinal) &&
-                        !reason.StartsWith("object-alias-not-visible", StringComparison.Ordinal));
                 }
-                catch (Exception ex)
+                catch (JsonException)
                 {
-                    validationError = ex.Message;
                 }
             }
-
-            // Three separate layers, never collapsed into one "pack failed": a response-fatal problem
-            // (bad transport, bad JSON, a contract/arity violation) discards everything; a claim-local
-            // binding refusal discards only that proposal and must not discard its valid siblings; a
-            // response can be structurally usable and still carry some claim-local refusals, which is
-            // exactly what runtimeAcceptable below is designed to still call acceptable.
-            var responseUsable = transportValid && finishReasonOk && jsonValid && schemaValid;
-            var claimBindingComplete = refusals.Count == 0;
-            var runtimeAcceptable = responseUsable && bindingValid && ownershipValid && vocabularyValid;
-            if (runtimeAcceptable) passCount++;
 
             results.Add(new
             {
                 documentId = item.DocumentId,
                 packId = item.Pack.PackId,
                 providerRequestHash = item.Pack.ProviderRequestHash,
-                transportValid,
                 transportError,
                 finishReason,
-                finishReasonOk,
-                jsonValid,
-                schemaValid,
-                groundingPresent,
-                bindingValid,
-                ownershipValid,
-                vocabularyValid,
-                proposalCount = claimCount,
-                claimCount,
-                boundCount,
-                boundFraction = claimCount == 0 ? 1.0 : (double)boundCount / claimCount,
-                refusalCount = refusals.Count,
-                refusalReasons = refusals.Values.Distinct().Take(10).ToArray(),
-                ownershipRefusalCount = refusals.Values.Count(reason =>
-                    reason.StartsWith("subject-alias-not-owned", StringComparison.Ordinal) ||
-                    reason.StartsWith("object-alias-not-visible", StringComparison.Ordinal)),
-                validationError,
                 rawResponseSha256 = raw is null ? null : Sha256(raw),
                 rawResponseChars = raw?.Length,
                 rawResponse = raw,
                 diagnosticClaimTable,
-                responseUsable,
-                claimBindingComplete,
-                runtimeAcceptable,
-                pass = runtimeAcceptable,
+                qualification = qualification.ToReport(),
             });
 
             Console.WriteLine(
-                $"  -> {item.DocumentId} {item.Pack.PackId}: runtimeAcceptable={runtimeAcceptable} responseUsable={responseUsable} " +
-                $"finishReason={finishReason} json={jsonValid} schema={schemaValid} binding={boundCount}/{claimCount} ownership={ownershipValid}");
+                $"  -> {item.DocumentId} {item.Pack.PackId}: {qualification.WireStatus} {qualification.Outcome} " +
+                $"bound={qualification.BoundCount}/{qualification.ProposalCount} refused={qualification.RefusalCount} " +
+                $"runtimeProcessedSafely={qualification.RuntimeProcessedSafely}");
         }
 
+        var aggregate = V5QualificationAggregate.From(qualifications);
         var artifact = new
         {
-            schemaVersion = "v5-provider-canary-result-v1",
+            schemaVersion = "v5-provider-canary-result-v2",
             head = GitHead(root),
             providerCalls = selection.Length,
             goldRead = false,
@@ -213,19 +163,22 @@ internal static class Program
             providerExecutionAuthorized = true,
             model = envelope.Model,
             provider = envelope.Provider,
-            passCount,
-            total = selection.Length,
-            overallPass = passCount == selection.Length,
+            aggregate,
             results,
         };
-        var outPath = Path.Combine(root, "artifacts", "v5-provider-canary-current", "canary-result.v1.json");
+        // v2 of the result file: never overwrites the frozen v1 raw-response artifact.
+        var outPath = Path.Combine(root, "artifacts", "v5-provider-canary-current", "canary-result.v2.json");
         Directory.CreateDirectory(Path.GetDirectoryName(outPath)!);
         File.WriteAllText(outPath,
             JsonSerializer.Serialize(artifact, new JsonSerializerOptions { WriteIndented = true }) + Environment.NewLine,
             new UTF8Encoding(false));
         Console.WriteLine();
-        Console.WriteLine($"passCount={passCount}/{selection.Length}; wrote {outPath}");
-        return passCount == selection.Length ? 0 : 1;
+        Console.WriteLine(
+            $"usable={aggregate.UsableResponses}/{aggregate.ProviderCalls} bound={aggregate.TotalBound}/{aggregate.TotalProposals} " +
+            $"complete={aggregate.PacksBindingComplete} partial={aggregate.PacksPartialBinding} empty={aggregate.PacksBindingEmpty}; wrote {outPath}");
+        // Measurement, not promotion: the exit code reflects only whether every response was usable
+        // and safely processed, never a refusal threshold.
+        return aggregate.UsableResponses == selection.Length && aggregate.PacksRuntimeProcessedSafely == selection.Length ? 0 : 1;
     }
 
     private static string LocateRepoRoot()

@@ -3,6 +3,7 @@ using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using SemanticSourceAtom = DocxHeaderExtractor.Core.Models.SemanticSourceAtom;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -25,124 +26,246 @@ public sealed class V5RuntimeConvergenceV2_1Tests
         ("SRC-095", SourcePdfCorpus.Src095),
     ];
 
-    [Fact]
-    public void Frozen_responses_replay_through_the_shared_codec_and_binder_to_the_same_counts()
+    // The latest real canary (recorded at 36702da, captured at 966c16a). Per pack:
+    // proposals, bound, refused, outcome - exactly what qualification must now report.
+    private static readonly (string DocumentId, string PackId, int Proposals, int Bound, int Refused, V5PackBindingOutcome Outcome)[] ExpectedCanary =
+    [
+        ("SRC-089", "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001", 22, 21, 1, V5PackBindingOutcome.PARTIAL_BINDING),
+        ("SRC-095", "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001", 43, 43, 0, V5PackBindingOutcome.BINDING_COMPLETE),
+        ("SRC-095", "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004", 109, 107, 2, V5PackBindingOutcome.PARTIAL_BINDING),
+    ];
+
+    private static readonly (string DocumentId, string PackId, string Alias)[] ExpectedHaloRefusals =
+    [
+        ("SRC-089", "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001", "L0094:S0"),
+        ("SRC-095", "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004", "L0373:S0"),
+        ("SRC-095", "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004", "L0377:S0"),
+    ];
+
+    private sealed record ReplayedPack(
+        string DocumentId,
+        V5PackedSourceRequest Pack,
+        IReadOnlyList<SemanticSourceAtom> Atoms,
+        SemanticClaimResponseV2_1 Response,
+        ClaimBindingResultV2_1 Binding,
+        V5PackBindingQualification Qualification,
+        IReadOnlyList<V5PackedSourceRequest> AllPacks);
+
+    /// <summary>Replays every frozen raw response through the shared qualifier. Never mutates the frozen artifact.</summary>
+    private static IReadOnlyList<ReplayedPack> ReplayFrozenCanary()
     {
         var contract = DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
         var envelope = new V5ProviderEnvelope("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300);
         var built = Docs.ToDictionary(
             doc => doc.Id,
             doc => V5PdfPreflightBuilder.BuildV2_1(TestRepository.Path(doc.Pdf), doc.Id, contract,
-                V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, envelope),
+                V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, envelope).Requests,
             StringComparer.Ordinal);
+        var atomsByDoc = Docs.ToDictionary(doc => doc.Id, doc => V5PdfPreflightBuilder.LoadAtoms(TestRepository.Path(doc.Pdf)), StringComparer.Ordinal);
 
         var frozen = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(ResultPath))).RootElement;
-        var replay = new List<object>();
-
-        foreach (var result in frozen.GetProperty("results").EnumerateArray())
+        return frozen.GetProperty("results").EnumerateArray().Select(result =>
         {
             var documentId = result.GetProperty("documentId").GetString()!;
             var packId = result.GetProperty("packId").GetString()!;
-            var rawResponse = result.GetProperty("rawResponse").GetString()!;
-            var expectedClaimCount = result.GetProperty("claimCount").GetInt32();
-            var expectedBoundCount = result.GetProperty("boundCount").GetInt32();
-            var expectedRefusalCount = result.GetProperty("refusalCount").GetInt32();
-
-            var pack = built[documentId].Requests.Single(item => item.PackId == packId);
-            var atoms = V5PdfPreflightBuilder.LoadAtoms(TestRepository.Path(Docs.Single(doc => doc.Id == documentId).Pdf));
+            var pack = built[documentId].Single(item => item.PackId == packId);
             var scope = ClaimBindingScope.Create(pack.OwnedAliases, pack.VisibleAliases);
+            var (qualification, response, binding) = V5BindingQualifier.Qualify(
+                result.GetProperty("rawResponse").GetString(),
+                result.GetProperty("finishReason").GetString(),
+                null, contract, packId, atomsByDoc[documentId], scope);
+            Assert.True(qualification.ResponseUsable, $"{documentId}:{packId}:{qualification.ResponseFatalReason}");
+            return new ReplayedPack(documentId, pack, atomsByDoc[documentId], response!, binding!, qualification, built[documentId]);
+        }).ToArray();
+    }
 
-            using var document = JsonDocument.Parse(rawResponse);
-            var response = SemanticClaimResponseCodecV2_1.Parse(document.RootElement, contract);
-            var binding = ExactClaimBinderV2_1.Bind(packId, response.Claims, atoms, scope);
+    [Fact]
+    public void Frozen_canary_is_reclassified_with_partial_fail_closed_semantics()
+    {
+        var rawBefore = File.ReadAllBytes(TestRepository.Path(ResultPath));
+        var replayed = ReplayFrozenCanary();
 
-            // Byte-identical replay through the exact path DocumentAgentRuntime now uses: if
-            // qualification and runtime had diverged, these would not match.
-            Assert.Equal(expectedClaimCount, response.Claims.Count);
-            Assert.Equal(expectedBoundCount, binding.Bound.Count);
-            Assert.Equal(expectedRefusalCount, binding.Refusals.Count);
-
-            var responseUsable = true; // transport/JSON/schema already held at capture time; codec re-parsed cleanly here too
-            var claimBindingComplete = binding.Refusals.Count == 0;
-            var runtimeAcceptable = responseUsable && (response.Claims.Count == 0 || binding.Bound.Count > 0) &&
-                binding.Refusals.Values.All(reason =>
-                    !reason.StartsWith("subject-alias-not-owned", StringComparison.Ordinal) &&
-                    !reason.StartsWith("object-alias-not-visible", StringComparison.Ordinal) ||
-                    binding.Bound.Count == response.Claims.Count - binding.Refusals.Count);
-
-            replay.Add(new
-            {
-                documentId,
-                packId,
-                proposalCount = response.Claims.Count,
-                boundCount = binding.Bound.Count,
-                refusalCount = binding.Refusals.Count,
-                refusalReasons = binding.Refusals.Values.Distinct().ToArray(),
-                responseUsable,
-                claimBindingComplete,
-                runtimeAcceptable,
-            });
+        Assert.Equal(ExpectedCanary.Length, replayed.Count);
+        foreach (var (expected, actual) in ExpectedCanary.Zip(replayed))
+        {
+            var q = actual.Qualification;
+            Assert.Equal(expected.DocumentId, actual.DocumentId);
+            Assert.Equal(expected.PackId, actual.Pack.PackId);
+            Assert.Equal(expected.Proposals, q.ProposalCount);
+            Assert.Equal(expected.Bound, q.BoundCount);
+            Assert.Equal(expected.Refused, q.RefusalCount);
+            Assert.Equal(expected.Outcome, q.Outcome);
+            Assert.Equal(expected.Refused == 0, q.BindingComplete);
+            Assert.True(q.ResponseUsable);
+            Assert.True(q.RuntimeProcessedSafely);
+            Assert.Equal(0, q.UnsafeRepairCount);
+            Assert.Equal(0, q.OutOfScopeAcceptedCount);
         }
 
-        WriteJson($"{ConvergenceRoot}/replay.v1.json", new
+        var aggregate = V5QualificationAggregate.From(replayed.Select(item => item.Qualification).ToArray());
+        Assert.Equal(3, aggregate.ProviderCalls);
+        Assert.Equal(3, aggregate.UsableResponses);
+        Assert.Equal(0, aggregate.SchemaInvalidResponses);
+        Assert.Equal(0, aggregate.FinishReasonLength);
+        Assert.Equal(174, aggregate.TotalProposals);
+        Assert.Equal(171, aggregate.TotalBound);
+        Assert.Equal(3, aggregate.TotalRefused);
+        Assert.Equal(171m / 174m, aggregate.BoundFraction);
+        Assert.Equal(3, aggregate.OwnershipRefusals);
+        Assert.Equal(0, aggregate.OtherBindingRefusals);
+        Assert.Equal(1, aggregate.PacksBindingComplete);
+        Assert.Equal(2, aggregate.PacksPartialBinding);
+        Assert.Equal(0, aggregate.PacksBindingEmpty);
+        Assert.Equal(3, aggregate.PacksRuntimeProcessedSafely);
+        Assert.Equal(0, aggregate.UnsafeRepairs);
+        Assert.Equal(0, aggregate.OutOfScopeClaimsAccepted);
+
+        // The raw response artifact is evidence, not output: replay must never touch it.
+        Assert.Equal(rawBefore, File.ReadAllBytes(TestRepository.Path(ResultPath)));
+
+        WriteJson($"{ConvergenceRoot}/canary-qualification.v2.json", new
         {
-            schemaVersion = "v5-runtime-convergence-replay-v1",
+            schemaVersion = "v5-canary-qualification-v2",
+            sourceArtifact = ResultPath,
+            sourceArtifactSha256 = Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(rawBefore)),
             providerCalls = 0,
             goldRead = false,
-            qualificationRuntimeParity = true,
-            replay,
+            supersedes = "runtimeAcceptable/passCount in the v1 result, which wrongly required zero claim-local refusals",
+            aggregate,
+            packs = replayed.Select(item => new
+            {
+                documentId = item.DocumentId,
+                packId = item.Pack.PackId,
+                qualification = item.Qualification.ToReport(),
+            }).ToArray(),
         });
     }
 
     [Fact]
-    public void Every_halo_as_subject_refusal_from_the_latest_canary_is_owned_by_exactly_one_pack()
+    public void Runtime_and_qualification_agree_byte_for_byte_on_the_frozen_canary()
     {
-        var contract = DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
-        var envelope = new V5ProviderEnvelope("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300);
-
-        // The exact refused aliases the real canary at commit 2f37b3c reported for these two packs.
-        var refusedHaloAliases = new Dictionary<string, string[]>(StringComparer.Ordinal)
+        foreach (var item in ReplayFrozenCanary())
         {
-            ["SRC-089"] = ["L0094:S0", "L0095:S0", "L0096:S0", "L0098:S0", "L0099:S0"],
-            ["SRC-095"] = ["L0090:S0", "L0091:S0", "L0092:S0", "L0093:S0", "L0096:S0", "L0097:S0"],
-        };
+            var runtime = RunRuntime(item);
+
+            var runtimeRefusals = runtime.State.Conflicts
+                .Where(issue => issue.Code == "CLAIM_BINDING")
+                .Select(issue => new KeyValuePair<string, string>(issue.ClaimId!, issue.Message))
+                .ToArray();
+            Assert.Equal(
+                JsonSerializer.Serialize(item.Qualification.Refusals),
+                JsonSerializer.Serialize(runtimeRefusals));
+            Assert.DoesNotContain(runtime.State.Conflicts, issue => issue.Code == "CLAIM_CONTRACT");
+
+            // Harness claim ids embed the request id, which differs between the two callers by
+            // design; the claim content (subject coordinates, predicate, value/object) must not.
+            Assert.Equal(
+                JsonSerializer.Serialize(item.Binding.Bound.Select(bound => bound.Claim.Identity).Order(StringComparer.Ordinal)),
+                JsonSerializer.Serialize(runtime.State.Claims.Select(claim => claim.Identity).Order(StringComparer.Ordinal)));
+            Assert.Equal(item.Qualification.BoundCount, runtime.State.Claims.Count);
+        }
+    }
+
+    [Fact]
+    public void Every_halo_refusal_in_the_latest_canary_is_owned_exactly_once_elsewhere_and_loses_no_coverage()
+    {
+        var replayed = ReplayFrozenCanary();
+        var refusals = replayed
+            .SelectMany(item => item.Qualification.Refusals.Select(refusal => (Item: item, Reason: refusal.Value)))
+            .ToArray();
+        Assert.All(refusals, entry => Assert.StartsWith("subject-alias-not-owned:", entry.Reason));
+        Assert.Equal(
+            ExpectedHaloRefusals,
+            refusals.Select(entry => (entry.Item.DocumentId, entry.Item.Pack.PackId, entry.Reason["subject-alias-not-owned:".Length..])).ToArray());
 
         var audit = new List<object>();
+        var ownedElsewhere = 0;
         var lostCoverage = false;
-
-        foreach (var doc in Docs)
+        foreach (var (item, reason) in refusals)
         {
-            var built = V5PdfPreflightBuilder.BuildV2_1(TestRepository.Path(doc.Pdf), doc.Id, contract,
-                V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, envelope);
+            var alias = reason["subject-alias-not-owned:".Length..];
 
-            // Global exact-once ownership across every pack of this document - already enforced by
-            // the packing policy's own conservation check, reconfirmed here as the audit's premise.
-            var allOwned = built.Requests.SelectMany(pack => pack.OwnedAliases).ToArray();
+            // Global exact-once ownership over this document's full source universe.
+            var allOwned = item.AllPacks.SelectMany(pack => pack.OwnedAliases).ToArray();
             Assert.Equal(allOwned.Length, allOwned.Distinct(StringComparer.Ordinal).Count());
+            lostCoverage |= !item.Atoms.Select(atom => atom.Alias).ToHashSet(StringComparer.Ordinal).SetEquals(allOwned);
 
-            var ownerByAlias = new Dictionary<string, string>(StringComparer.Ordinal);
-            foreach (var pack in built.Requests)
-                foreach (var owned in pack.OwnedAliases)
-                    ownerByAlias[owned] = pack.PackId;
+            var owners = item.AllPacks.Where(pack => pack.OwnedAliases.Contains(alias, StringComparer.Ordinal)).ToArray();
+            // No owner at all would be a packing bug, not a claim-local refusal.
+            Assert.True(owners.Length == 1, $"{item.DocumentId}:{alias} owned by {owners.Length} packs - packing bug");
+            var owner = owners[0];
+            Assert.NotEqual(item.Pack.PackId, owner.PackId);
+            // It reached the refusing pack only as halo context.
+            Assert.Contains(alias, item.Pack.VisibleAliases);
+            Assert.DoesNotContain(alias, item.Pack.OwnedAliases);
+            ownedElsewhere++;
 
-            foreach (var alias in refusedHaloAliases[doc.Id])
+            // The refused claim did not enter the graph from the wrong pack.
+            var runtime = RunRuntime(item);
+            Assert.DoesNotContain(runtime.State.Claims, claim => claim.Subject.Parts.Any(part => part.Alias == alias));
+            Assert.Contains(runtime.State.Conflicts, issue => issue.Code == "CLAIM_BINDING" && issue.Message == reason);
+
+            // The same alias is still a legal subject in its owner pack.
+            var probe = new SemanticClaimProposalV2_1(
+                new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1(alias)]), "STRUCTURAL_REGION", "probe", EvidenceNeeds: []);
+            var ownerBinding = ExactClaimBinderV2_1.Bind(owner.PackId, [probe], item.Atoms,
+                ClaimBindingScope.Create(owner.OwnedAliases, owner.VisibleAliases));
+            Assert.Single(ownerBinding.Bound);
+            Assert.Empty(ownerBinding.Refusals);
+
+            audit.Add(new
             {
-                var owned = ownerByAlias.TryGetValue(alias, out var owningPack);
-                if (!owned) lostCoverage = true;
-                Assert.True(owned, $"{doc.Id}:{alias} is never owned by any pack in this document - packing bug, not a refusal");
-                audit.Add(new { documentId = doc.Id, alias, ownedByPack = owningPack, classification = "OWNED_BY_ANOTHER_PACK" });
-            }
+                documentId = item.DocumentId,
+                alias,
+                refusedInPack = item.Pack.PackId,
+                refusalReason = reason,
+                ownedByPack = owner.PackId,
+                ownerCount = owners.Length,
+                availableAsSubjectInOwnerPack = true,
+                enteredGraphFromRefusingPack = false,
+                classification = "OWNED_BY_ANOTHER_PACK",
+            });
         }
 
+        Assert.Equal(3, ownedElsewhere);
         Assert.False(lostCoverage);
-        WriteJson($"{ConvergenceRoot}/halo-ownership-audit.v1.json", new
+        WriteJson($"{ConvergenceRoot}/halo-ownership-audit.v2.json", new
         {
-            schemaVersion = "v5-halo-ownership-audit-v1",
+            schemaVersion = "v5-halo-ownership-audit-v2",
+            sourceArtifact = ResultPath,
             providerCalls = 0,
             goldRead = false,
+            haloRefusalsOwnedElsewhere = $"{ownedElsewhere}/{refusals.Length}",
             lostSourceCoverage = lostCoverage,
             audit,
         });
+    }
+
+    private static DocumentAgentExecutionResult RunRuntime(ReplayedPack item)
+    {
+        // Same contract and one semantic call; projection is downstream of binding and not under test.
+        var baseContract = DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
+        var contract = baseContract with
+        {
+            ExecutionBudget = new ExecutionBudget(MaxSemanticModelCalls: 1),
+            Projections = baseContract.Projections.Select(projection => projection with { Required = false }).ToArray(),
+        };
+        var graph = EvidenceGraphBuilder.Build(item.Atoms.Select(atom => new SourceObservation(
+            $"V5:{atom.SourceId}", atom.SourceId, atom.Alias, atom.Ordinal, EvidenceModality.TEXT, atom.Text,
+            new StructuralSpan(0, atom.Text.Length))));
+        return new DocumentAgentRuntime(new FixedResponseReasoner(item.Response), new InMemoryEvidenceRetriever())
+            .RunAsync(contract, graph, item.Atoms,
+                item.Pack.OwnedAliases.ToHashSet(StringComparer.Ordinal),
+                item.Pack.VisibleAliases.ToHashSet(StringComparer.Ordinal))
+            .GetAwaiter().GetResult();
+    }
+
+    private sealed class FixedResponseReasoner(SemanticClaimResponseV2_1 response) : ISemanticReasoner
+    {
+        public string Identity => "test-frozen-canary-response";
+
+        public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken) =>
+            ValueTask.FromResult(new SemanticReasoningResult(response, new SemanticReasoningUsage()));
     }
 
     [Fact]

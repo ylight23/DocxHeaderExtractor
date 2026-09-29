@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "v5-halo-ownership-audit-v2",
+  "sourceArtifact": "artifacts/v5-provider-canary-current/canary-result.v1.json",
+  "providerCalls": 0,
+  "goldRead": false,
+  "haloRefusalsOwnedElsewhere": "3/3",
+  "lostSourceCoverage": false,
+  "audit": [
+    {
+      "documentId": "SRC-089",
+      "alias": "L0094:S0",
+      "refusedInPack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "refusalReason": "subject-alias-not-owned:L0094:S0",
+      "ownedByPack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "ownerCount": 1,
+      "availableAsSubjectInOwnerPack": true,
+      "enteredGraphFromRefusingPack": false,
+      "classification": "OWNED_BY_ANOTHER_PACK"
+    },
+    {
+      "documentId": "SRC-095",
+      "alias": "L0373:S0",
+      "refusedInPack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "refusalReason": "subject-alias-not-owned:L0373:S0",
+      "ownedByPack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "ownerCount": 1,
+      "availableAsSubjectInOwnerPack": true,
+      "enteredGraphFromRefusingPack": false,
+      "classification": "OWNED_BY_ANOTHER_PACK"
+    },
+    {
+      "documentId": "SRC-095",
+      "alias": "L0377:S0",
+      "refusedInPack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "refusalReason": "subject-alias-not-owned:L0377:S0",
+      "ownedByPack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "ownerCount": 1,
+      "availableAsSubjectInOwnerPack": true,
+      "enteredGraphFromRefusingPack": false,
+      "classification": "OWNED_BY_ANOTHER_PACK"
+    }
+  ]
+}
