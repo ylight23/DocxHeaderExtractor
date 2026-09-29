@@ -295,6 +295,24 @@ public sealed class V5ArchitectureTests
             DocxHeaderExtractor.DocumentProcessing.Pipeline.V5SourceEvidenceAdapter.Build(catalog));
     }
 
+    [Fact]
+    public void Real_pdf_preflight_composes_requests_without_provider_or_gold()
+    {
+        var pdf = TestRepository.Path(SourcePdfCorpus.Src095);
+        var built = DocxHeaderExtractor.DocumentProcessing.Pipeline.V5PdfPreflightBuilder.Build(
+            pdf,
+            "SRC-095",
+            DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create(),
+            "RESOURCE_BOUNDED_SOURCE_PACKING_V1",
+            new V5ProviderEnvelope("qwen/qwen3.7-flash", "Alibaba", "none", true, "json_object", 300));
+        built.Preflight.Validate();
+        Assert.NotEmpty(built.Requests);
+        Assert.Equal(built.Requests.Count, built.Preflight.PlannedProviderCalls);
+        Assert.Equal(0, built.Preflight.ProviderCalls);
+        Assert.False(built.Preflight.GoldRead);
+        Assert.All(built.Requests, item => Assert.NotEmpty(item.Request.RequestHash));
+    }
+
     private static DocumentTaskContract Contract() => new(
         V5Protocol.TaskContractVersion,
         "generic-document-task",
