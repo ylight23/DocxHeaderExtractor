@@ -151,7 +151,10 @@ public sealed record DocumentTaskContract(
             Predicates = Predicates.OrderBy(item => item.Name, StringComparer.Ordinal),
             Relations = Relations.OrderBy(item => item.Name, StringComparer.Ordinal),
             Projections = Projections.OrderBy(item => item.Name, StringComparer.Ordinal),
-            EvidencePolicy,
+            EvidencePolicy = new EvidencePolicy(
+                EvidencePolicy.Modalities.OrderBy(item => item).ToArray(),
+                EvidencePolicy.Needs.OrderBy(item => item).ToArray(),
+                EvidencePolicy.AllowHumanReview),
             UnresolvedPolicy,
             ExecutionBudget,
         };
