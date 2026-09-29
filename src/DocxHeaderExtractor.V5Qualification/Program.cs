@@ -124,6 +124,7 @@ internal static class Program
             var boundCount = 0;
             IReadOnlyDictionary<string, string> refusals = new Dictionary<string, string>();
             string? validationError = null;
+            object[]? diagnosticClaimTable = null;
 
             if (transportValid && finishReasonOk)
             {
@@ -131,6 +132,7 @@ internal static class Program
                 {
                     using var document = JsonDocument.Parse(raw!);
                     jsonValid = true;
+                    diagnosticClaimTable = BuildDiagnosticClaimTable(document.RootElement, contract);
                     var response = SemanticClaimResponseCodecV2_1.Parse(document.RootElement, contract);
                     schemaValid = true;
                     vocabularyValid = true; // enforced inside Parse -> Validate
@@ -177,6 +179,8 @@ internal static class Program
                 validationError,
                 rawResponseSha256 = raw is null ? null : Sha256(raw),
                 rawResponseChars = raw?.Length,
+                rawResponse = raw,
+                diagnosticClaimTable,
                 pass = passed,
             });
 
@@ -240,4 +244,51 @@ internal static class Program
     }
 
     private static string Sha256(string text) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(text)));
+
+    /// <summary>
+    /// Diagnostic only - never governs pass/fail. Groups whatever the provider actually sent by
+    /// predicate so a rejected response's arity pattern is still inspectable afterward, without a
+    /// second provider call. Deliberately more lenient than <see cref="SemanticClaimResponseCodecV2_1"/>:
+    /// it must still produce a table for a response the strict codec refuses.
+    /// </summary>
+    private static object[]? BuildDiagnosticClaimTable(JsonElement payload, DocumentTaskContract contract)
+    {
+        try
+        {
+            if (!payload.TryGetProperty("claims", out var claimsElement) || claimsElement.ValueKind != JsonValueKind.Array)
+                return null;
+            var raw = JsonSerializer.Deserialize<List<Dictionary<string, JsonElement>>>(claimsElement.GetRawText());
+            if (raw is null) return null;
+
+            var relationNames = contract.Relations.Select(item => item.Name).ToHashSet(StringComparer.Ordinal);
+            var predicateNames = contract.Predicates.Select(item => item.Name).ToHashSet(StringComparer.Ordinal);
+
+            var flattened = raw.Select(claim => new
+            {
+                predicate = claim.TryGetValue("predicate", out var p) && p.ValueKind == JsonValueKind.String ? p.GetString() : null,
+                state = claim.TryGetValue("state", out var s) && s.ValueKind == JsonValueKind.String ? s.GetString() : null,
+                hasValue = claim.ContainsKey("value"),
+                hasObject = claim.ContainsKey("object"),
+            }).ToArray();
+
+            return flattened
+                .GroupBy(claim => claim.predicate ?? "(missing)")
+                .Select(group => (object)new
+                {
+                    predicate = group.Key,
+                    declaredKind = relationNames.Contains(group.Key) ? "RELATION" : predicateNames.Contains(group.Key) ? "UNARY" : "UNKNOWN",
+                    claimCount = group.Count(),
+                    withValue = group.Count(claim => claim.hasValue),
+                    withObject = group.Count(claim => claim.hasObject),
+                    withoutObject = group.Count(claim => !claim.hasObject),
+                    stateDistribution = group.GroupBy(claim => claim.state ?? "(missing)")
+                        .ToDictionary(stateGroup => stateGroup.Key, stateGroup => stateGroup.Count()),
+                })
+                .ToArray();
+        }
+        catch
+        {
+            return null;
+        }
+    }
 }
