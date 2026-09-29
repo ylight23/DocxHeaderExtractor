@@ -1,7 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Inference;
-using System.Diagnostics;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 
@@ -25,6 +23,9 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
     private readonly RemoteInferenceOptions _options;
     private readonly bool _ownsHttp;
 
+    /// <summary>Waits between transport retries. Replaceable only so tests need not sleep.</summary>
+    internal Func<TimeSpan, CancellationToken, Task> RetryWait { get; set; } = Task.Delay;
+
     public OpenRouterHeaderExtractor(HttpClient http, RemoteInferenceOptions options)
     {
         _http = http;
@@ -35,14 +36,32 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         : this(http, options) => _ownsHttp = ownsHttp;
 
     public static OpenRouterHeaderExtractor CreateOwned(RemoteInferenceOptions options) =>
-        new(new HttpClient { Timeout = TimeSpan.FromMinutes(5) }, options, ownsHttp: true);
+        // The per-attempt transport deadline owns timing; HttpClient must not cut a stream first.
+        new(new HttpClient { Timeout = Timeout.InfiniteTimeSpan }, options, ownsHttp: true);
 
     public string ModelName => _options.Model;
     public int ContextSize => _options.ContextSize;
-    public string RuntimeDescription => "OpenRouter RPC · data_collection=deny";
+    public string RuntimeDescription => "OpenRouter streaming RPC · data_collection=deny";
     public int SharedPrefixTokens => 0;
 
-    /// <summary>Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.</summary>
+    /// <summary>
+    /// Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.
+    /// <para>
+    /// OpenRouter streaming transport V1: the configuration the production re-baseline qualified.
+    /// The request streams (<c>stream=true</c>, <c>usage.include=true</c>); the reply is read as raw
+    /// SSE bytes after the response headers and counts as transport-complete only when a terminal
+    /// <c>finish_reason</c>, the <c>[DONE]</c> sentinel and a clean end of stream have all been seen.
+    /// The provider deadline covers transport only; the reassembled content is handed back outside it
+    /// and validated by the caller's contract, never here.
+    /// </para>
+    /// <para>
+    /// Transport failures (HTTP 429, 502/503/504, network errors, timeouts, incomplete streams) are
+    /// retried at most <see cref="RemoteInferenceOptions.TransientRequestRetries"/> times with bounded
+    /// backoff, honouring <c>Retry-After</c>. A completed stream is never resent, and nothing about
+    /// the content - <c>finish_reason=length</c>, invalid JSON, a contract failure - is ever retried
+    /// as transport.
+    /// </para>
+    /// </summary>
     public async Task<string> BoundaryCutAsync(
         string systemPrompt,
         string userMessage,
@@ -56,29 +75,8 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         TransportCompatibility.EnsureCompatible(
             systemPrompt, userMessage, TransportCompatibility.JsonObjectResponseFormat);
 
-        var body = new
-        {
-            model = _options.Model,
-            temperature = 0,
-            // Role/pointer passes return one JSON item per supplied source id. A fixed 120-token
-            // cap truncates otherwise valid multi-block responses and turns them into invisible
-            // missing decisions. Keep the result bounded by the configured model profile.
-            max_tokens = BoundaryOutputBudget(userMessage, expectedItemCount),
-            reasoning = new { effort = _options.OpenRouterReasoningEffort },
-            messages = new[]
-            {
-                new { role = "system", content = systemPrompt },
-                new { role = "user", content = userMessage },
-            },
-            response_format = new { type = "json_object" },
-            provider = new
-            {
-                zdr = _options.RequireZeroDataRetention,
-                data_collection = "deny",
-                require_parameters = true,
-                allow_fallbacks = true,
-            },
-        };
+        var maxTokens = BoundaryOutputBudget(userMessage, expectedItemCount);
+        var body = RequestBody(systemPrompt, userMessage, maxTokens);
         var payloadBytes = JsonSerializer.SerializeToUtf8Bytes(body);
         using var logical = ProviderCallTelemetry.Start(_options.Observability, new ProviderLogicalCallMetadata
         {
@@ -87,70 +85,319 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             RequestHash = ProviderObservabilityHashing.Sha256Bytes(payloadBytes),
             RequestBytes = payloadBytes.Length,
             EstimatedInputTokens = ProviderObservabilityHashing.EstimateTokens(systemPrompt + "\n" + userMessage),
-            MaxOutputTokens = body.max_tokens,
+            MaxOutputTokens = maxTokens,
             SourceItemCount = 1,
             ContextItemCount = 1,
             ContextCharacterCount = userMessage.Length,
             Provider = "OpenRouter",
             Model = _options.Model,
         });
+        _options.DebugLog?.Invoke($"[OpenRouter] LLM REQUEST model={_options.Model} payload={Encoding.UTF8.GetString(payloadBytes)}");
+
+        for (var attempt = 1; ; attempt++)
+        {
+            var result = await StreamOnceAsync(payloadBytes, maxTokens, systemPrompt, userMessage, logical, ct);
+            if (result.Content is { } content)
+            {
+                logical?.Complete(new { resultCharacters = content.Length, attempts = attempt });
+                return content;
+            }
+
+            ct.ThrowIfCancellationRequested();
+            if (!result.Retryable || attempt > _options.TransientRequestRetries)
+                throw result.Error!;
+
+            var delay = RetryDelay(attempt, result.StatusCode, result.RetryAfter);
+            _options.DebugLog?.Invoke($"[OpenRouter] transport retry {attempt} after {delay.TotalMilliseconds:0} ms: {result.Error!.Message}");
+            await RetryWait(delay, ct);
+        }
+    }
+
+    private object RequestBody(string systemPrompt, string userMessage, int maxTokens)
+    {
+        // A pinned route disables fallbacks, so the request is served by exactly the route the
+        // configuration names. Without one, OpenRouter's automatic routing policy is kept.
+        object provider = string.IsNullOrWhiteSpace(_options.OpenRouterProviderRoute)
+            ? new
+            {
+                zdr = _options.RequireZeroDataRetention,
+                data_collection = "deny",
+                require_parameters = true,
+                allow_fallbacks = true,
+            }
+            : new
+            {
+                order = new[] { _options.OpenRouterProviderRoute },
+                allow_fallbacks = false,
+                require_parameters = true,
+                data_collection = "deny",
+                zdr = _options.RequireZeroDataRetention,
+            };
+        return new
+        {
+            model = _options.Model,
+            temperature = 0,
+            // Role/pointer passes return one JSON item per supplied source id. A fixed 120-token
+            // cap truncates otherwise valid multi-block responses and turns them into invisible
+            // missing decisions. Keep the result bounded by the configured model profile.
+            max_tokens = maxTokens,
+            reasoning = new { effort = _options.OpenRouterReasoningEffort },
+            messages = new[]
+            {
+                new { role = "system", content = systemPrompt },
+                new { role = "user", content = userMessage },
+            },
+            response_format = new { type = "json_object" },
+            provider,
+            stream = true,
+            usage = new { include = true },
+        };
+    }
+
+    private sealed record StreamAttempt(
+        string? Content,
+        bool Retryable,
+        Exception? Error,
+        int? StatusCode,
+        TimeSpan? RetryAfter);
+
+    private async Task<StreamAttempt> StreamOnceAsync(
+        byte[] payloadBytes,
+        int maxTokens,
+        string systemPrompt,
+        string userMessage,
+        ProviderCallTelemetry? logical,
+        CancellationToken ct)
+    {
+        var deadlineSeconds = _options.ProviderTransportTimeoutSeconds;
         using var telemetryAttempt = logical?.StartAttempt(
             $"boundary-cut-{Guid.NewGuid():N}",
             ProviderObservabilityHashing.Sha256Bytes(payloadBytes),
             payloadBytes.Length,
             ProviderObservabilityHashing.EstimateTokens(systemPrompt + "\n" + userMessage),
-            body.max_tokens,
-            TimeSpan.FromSeconds(_options.RequestTimeoutSeconds));
+            maxTokens,
+            TimeSpan.FromSeconds(deadlineSeconds));
 
         using var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
         {
-            Content = JsonContent.Create(body),
+            Content = new ByteArrayContent(payloadBytes)
+            {
+                Headers = { ContentType = new MediaTypeHeaderValue("application/json") { CharSet = "utf-8" } },
+            },
         };
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
         request.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor");
-        _options.DebugLog?.Invoke($"[OpenRouter] LLM REQUEST model={_options.Model} payload={JsonSerializer.Serialize(body)}");
 
-        using var attemptDeadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
-        attemptDeadline.CancelAfter(TimeSpan.FromSeconds(_options.RequestTimeoutSeconds));
-        using var timeoutTelemetry = attemptDeadline.Token.Register(() =>
-        {
-            if (!ct.IsCancellationRequested)
-                telemetryAttempt?.Fail("ATTEMPT_TIMEOUT", new { timeoutSeconds = _options.RequestTimeoutSeconds });
-        });
+        // Transport-only deadline: from sending the request to the end of the stream.
+        using var transportDeadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        transportDeadline.CancelAfter(TimeSpan.FromSeconds(deadlineSeconds));
 
-        using var response = await _http.SendAsync(request, attemptDeadline.Token);
-        telemetryAttempt?.Event("RESPONSE_HEADERS_RECEIVED", new { status = (int)response.StatusCode });
-        telemetryAttempt?.Event("FIRST_RESPONSE_BYTE", new { observable = false, note = "ReadAsStringAsync is the current transport boundary." });
-        var responseText = await response.Content.ReadAsStringAsync(attemptDeadline.Token);
-        telemetryAttempt?.PersistRawResponse(responseText);
-        telemetryAttempt?.Event("RESPONSE_BODY_COMPLETE", new { responseBytes = Encoding.UTF8.GetByteCount(responseText), responseHash = ProviderObservabilityHashing.Sha256Utf8(responseText) });
-        _options.DebugLog?.Invoke(
-            $"[OpenRouter] LLM RESPONSE status={(int)response.StatusCode} payload={SafeDebug(responseText)}");
-        if (!response.IsSuccessStatusCode)
+        var stream = new SseReassembly();
+        var raw = new StringBuilder();
+        try
         {
-            telemetryAttempt?.Fail("HTTP_ERROR", new { status = (int)response.StatusCode });
-            throw new HttpRequestException(
-                $"OpenRouter trả {(int)response.StatusCode} {response.ReasonPhrase}: {SafeError(responseText)}",
-                null,
-                response.StatusCode);
+            using var response = await _http.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead, transportDeadline.Token);
+            var status = (int)response.StatusCode;
+            telemetryAttempt?.Event("RESPONSE_HEADERS_RECEIVED", new { status });
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorText = await response.Content.ReadAsStringAsync(transportDeadline.Token);
+                telemetryAttempt?.PersistRawResponse(errorText);
+                telemetryAttempt?.Fail("HTTP_ERROR", new { status });
+                _options.DebugLog?.Invoke($"[OpenRouter] LLM RESPONSE status={status} payload={SafeDebug(errorText)}");
+                var error = new HttpRequestException(
+                    $"OpenRouter trả {status} {response.ReasonPhrase}: {SafeError(errorText)}",
+                    null,
+                    response.StatusCode);
+                return new StreamAttempt(null, IsRetryableStatus(status), error, status, RetryAfterOf(response));
+            }
+
+            await using var body = await response.Content.ReadAsStreamAsync(transportDeadline.Token);
+            var decoder = Encoding.UTF8.GetDecoder();
+            var bytes = new byte[8192];
+            var chars = new char[Encoding.UTF8.GetMaxCharCount(bytes.Length)];
+            var pending = new StringBuilder();
+            var firstByte = true;
+            while (true)
+            {
+                var read = await body.ReadAsync(bytes, transportDeadline.Token);
+                if (read == 0) break;
+                if (firstByte)
+                {
+                    telemetryAttempt?.Event("FIRST_RESPONSE_BYTE", new { observable = true });
+                    firstByte = false;
+                }
+                var count = decoder.GetChars(bytes, 0, read, chars, 0, flush: false);
+                pending.Append(chars, 0, count);
+                raw.Append(chars, 0, count);
+                stream.Feed(pending, final: false);
+            }
+            var tail = decoder.GetChars([], 0, 0, chars, 0, flush: true);
+            pending.Append(chars, 0, tail);
+            raw.Append(chars, 0, tail);
+            stream.Feed(pending, final: true);
         }
-        telemetryAttempt?.Event("PARSE_STARTED", new { responseBytes = Encoding.UTF8.GetByteCount(responseText) });
-        var content = ExtractContent(responseText).Trim();
-        telemetryAttempt?.PersistParsed(new { content });
-        telemetryAttempt?.Event("PARSE_COMPLETED", new { resultCharacters = content.Length });
+        catch (OperationCanceledException) when (!ct.IsCancellationRequested)
+        {
+            telemetryAttempt?.Fail("ATTEMPT_TIMEOUT", new { timeoutSeconds = deadlineSeconds });
+            return new StreamAttempt(null, true,
+                new TimeoutException($"OpenRouter transport did not complete within {deadlineSeconds} s."), null, null);
+        }
+        catch (HttpRequestException ex) when (ex.StatusCode is null)
+        {
+            telemetryAttempt?.Fail("NETWORK_ERROR", new { error = ex.Message });
+            return new StreamAttempt(null, true, ex, null, null);
+        }
+        catch (IOException ex)
+        {
+            telemetryAttempt?.Fail("INTERRUPTED_STREAM", new { error = ex.Message });
+            return new StreamAttempt(null, true, ex, null, null);
+        }
+        catch (JsonException ex)
+        {
+            telemetryAttempt?.Fail("MALFORMED_STREAM", new { error = ex.Message });
+            return new StreamAttempt(null, true,
+                new HttpRequestException($"OpenRouter stream carried a malformed event: {ex.Message}"), null, null);
+        }
+
+        telemetryAttempt?.PersistRawResponse(raw.ToString());
+        _options.DebugLog?.Invoke($"[OpenRouter] LLM RESPONSE stream={SafeDebug(raw.ToString())}");
+
+        // Everything below runs after the transport deadline: reassembly is already done, and the
+        // content is judged by the caller's contract, not by this transport.
+        if (stream.ProviderError is { } providerError)
+        {
+            telemetryAttempt?.Fail("STREAM_PROVIDER_ERROR", new { error = providerError });
+            return new StreamAttempt(null, true,
+                new HttpRequestException($"OpenRouter stream error: {SafeError(providerError)}"), null, null);
+        }
+        if (!stream.TransportComplete)
+        {
+            telemetryAttempt?.Fail("INCOMPLETE_STREAM", new
+            {
+                terminalFinishReason = stream.FinishReason,
+                doneObserved = stream.DoneObserved,
+            });
+            return new StreamAttempt(null, true,
+                new HttpRequestException("OpenRouter stream ended before a terminal finish_reason and [DONE]."), null, null);
+        }
+
+        var content = stream.Content.Trim();
+        telemetryAttempt?.Event("TRANSPORT_COMPLETE", new
+        {
+            finishReason = stream.FinishReason,
+            usage = stream.Usage,
+        });
+        telemetryAttempt?.PersistParsed(new { content, finishReason = stream.FinishReason, usage = stream.Usage });
         telemetryAttempt?.Complete();
-        logical?.Complete(new { resultCharacters = content.Length });
-        return content;
+        return new StreamAttempt(content, false, null, 200, null);
     }
 
-    private static string ExtractContent(string response)
+    private static bool IsRetryableStatus(int status) => status is 429 or 502 or 503 or 504;
+
+    private static TimeSpan? RetryAfterOf(HttpResponseMessage response)
     {
-        using var doc = JsonDocument.Parse(response);
-        if (doc.RootElement.TryGetProperty("choices", out var choices) && choices.GetArrayLength() > 0 &&
-            choices[0].TryGetProperty("message", out var message) &&
-            message.TryGetProperty("content", out var content) && content.ValueKind == JsonValueKind.String)
-            return content.GetString() ?? "";
-        throw new FormatException("OpenRouter response không có choices[0].message.content.");
+        var header = response.Headers.RetryAfter;
+        if (header?.Delta is { } delta) return delta;
+        if (header?.Date is { } date) return date - DateTimeOffset.UtcNow;
+        return null;
+    }
+
+    /// <summary>
+    /// Bounded backoff: the provider's Retry-After when it sends one, otherwise exponential from
+    /// 10 s (429) or 5 s (5xx/network), with a small deterministic jitter, capped at 60 s.
+    /// </summary>
+    internal static TimeSpan RetryDelay(int attempt, int? status, TimeSpan? retryAfter)
+    {
+        if (retryAfter is { } fromProvider && fromProvider > TimeSpan.Zero)
+            return fromProvider < TimeSpan.FromSeconds(60) ? fromProvider : TimeSpan.FromSeconds(60);
+        var baseMs = status == 429 ? 10_000 : 5_000;
+        var jitter = attempt * 101 % 750;
+        return TimeSpan.FromMilliseconds(Math.Min(60_000, baseMs * (1 << (attempt - 1)) + jitter));
+    }
+
+    /// <summary>
+    /// Server-sent-events reassembly for one chat-completions stream: content deltas, the terminal
+    /// finish_reason, usage, a provider error event, and the [DONE] sentinel.
+    /// </summary>
+    internal sealed class SseReassembly
+    {
+        private readonly StringBuilder _content = new();
+        private readonly List<string> _eventLines = [];
+
+        public string Content => _content.ToString();
+        public string? FinishReason { get; private set; }
+        public bool DoneObserved { get; private set; }
+        public bool StreamEnded { get; private set; }
+        public string? ProviderError { get; private set; }
+        public JsonElement? Usage { get; private set; }
+
+        /// <summary>Complete only with a terminal finish_reason, [DONE] and a clean end of stream.</summary>
+        public bool TransportComplete => FinishReason is not null && DoneObserved && StreamEnded && ProviderError is null;
+
+        public void Feed(StringBuilder pending, bool final)
+        {
+            while (true)
+            {
+                var text = pending.ToString();
+                var newline = text.IndexOf('\n');
+                if (newline < 0)
+                {
+                    if (final)
+                    {
+                        pending.Clear();
+                        if (text.Length > 0) Line(text.TrimEnd('\r'));
+                        if (_eventLines.Count > 0) Dispatch();
+                        StreamEnded = true;
+                    }
+                    return;
+                }
+                pending.Remove(0, newline + 1);
+                Line(text[..newline].TrimEnd('\r'));
+            }
+        }
+
+        private void Line(string line)
+        {
+            if (line.Length == 0)
+            {
+                if (_eventLines.Count > 0) Dispatch();
+                return;
+            }
+            if (line.StartsWith(':')) return; // SSE comment / keep-alive
+            _eventLines.Add(line);
+        }
+
+        private void Dispatch()
+        {
+            var data = string.Join("\n", _eventLines
+                .Where(line => line.StartsWith("data:", StringComparison.Ordinal))
+                .Select(line => line[5..].TrimStart()));
+            _eventLines.Clear();
+            if (data.Length == 0) return;
+            if (data == "[DONE]")
+            {
+                DoneObserved = true;
+                return;
+            }
+
+            using var document = JsonDocument.Parse(data);
+            var root = document.RootElement;
+            if (root.TryGetProperty("error", out var error))
+                ProviderError = error.ToString();
+            if (root.TryGetProperty("usage", out var usage) && usage.ValueKind == JsonValueKind.Object)
+                Usage = usage.Clone();
+            if (!root.TryGetProperty("choices", out var choices) || choices.ValueKind != JsonValueKind.Array ||
+                choices.GetArrayLength() == 0)
+                return;
+            var choice = choices[0];
+            if (choice.TryGetProperty("delta", out var delta) &&
+                delta.TryGetProperty("content", out var piece) && piece.ValueKind == JsonValueKind.String)
+                _content.Append(piece.GetString());
+            if (choice.TryGetProperty("finish_reason", out var finish) && finish.ValueKind == JsonValueKind.String)
+                FinishReason = finish.GetString();
+        }
     }
 
     private int BoundaryOutputBudget(string userMessage, int expectedItemCount) =>

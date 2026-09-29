@@ -8,7 +8,13 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// </summary>
 public sealed class RemoteInferenceOptions
 {
-    public const string DefaultModel = "qwen/qwen3.5-9b";
+    /// <summary>
+    /// The model the production re-baseline qualified (streaming, reasoning none, P05, V4 PDF lane).
+    /// </summary>
+    public const string DefaultModel = "qwen/qwen3.7-flash";
+
+    /// <summary>The serving route <see cref="DefaultModel"/> was qualified on; it has no other endpoint.</summary>
+    public const string DefaultProviderRoute = "Alibaba";
     public Uri Endpoint { get; set; } = new("https://openrouter.ai/api/v1/chat/completions");
     public string ApiKey { get; set; } = "";
     public string Model { get; set; } = DefaultModel;
@@ -34,6 +40,12 @@ public sealed class RemoteInferenceOptions
     /// </summary>
     public bool RequireZeroDataRetention { get; set; }
     public int RequestTimeoutSeconds { get; set; } = 90;
+    /// <summary>
+    /// Transport-only deadline of one streamed OpenRouter attempt, from sending the request to the end
+    /// of the stream. 300 s is the value the production re-baseline qualified; parsing and contract
+    /// validation happen after it and are not covered by it.
+    /// </summary>
+    public int ProviderTransportTimeoutSeconds { get; set; } = 300;
     public int TransientRequestRetries { get; set; } = 2;
     public int MaxParallelRequests { get; set; } = 1;
     public bool SendChatTemplateKwargs { get; set; } = true;
@@ -62,6 +74,7 @@ public sealed class RemoteInferenceOptions
             throw new InvalidOperationException("Inference endpoint phải kết thúc bằng /v1/chat/completions.");
         if (ContextSize is < 1024 or > 1_048_576) throw new InvalidOperationException("ContextSize phải nằm trong khoảng 1024..1048576.");
         if (RequestTimeoutSeconds is < 10 or > 600) throw new InvalidOperationException("RequestTimeoutSeconds phải nằm trong khoảng 10..600.");
+        if (ProviderTransportTimeoutSeconds is < 10 or > 900) throw new InvalidOperationException("ProviderTransportTimeoutSeconds phải nằm trong khoảng 10..900.");
         if (TransientRequestRetries is < 0 or > 4) throw new InvalidOperationException("TransientRequestRetries phải nằm trong khoảng 0..4.");
         if (MaxParallelRequests is < 1 or > 16) throw new InvalidOperationException("MaxParallelRequests phải nằm trong khoảng 1..16.");
         if (OpenRouterReasoningEffort is not ("none" or "low" or "medium" or "high"))
@@ -86,9 +99,25 @@ public sealed class RemoteInferenceOptions
             _ => FromEnvironment(
                 "https://openrouter.ai/api/v1/chat/completions",
                 Environment.GetEnvironmentVariable("OPENROUTER_API_KEY") ?? "",
-                Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? DefaultModel,
-                32768),
+                DefaultModel,
+                32768).UseOpenRouterModel(Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? DefaultModel),
         };
+    }
+
+    /// <summary>
+    /// Selects the OpenRouter model and its serving route together. <c>OPENROUTER_PROVIDER_ROUTE</c>
+    /// wins when set. Otherwise the qualified default model is pinned to the route it was qualified on,
+    /// and any other model keeps OpenRouter's automatic routing: pinning a route that does not serve
+    /// the model would fail every request.
+    /// </summary>
+    public RemoteInferenceOptions UseOpenRouterModel(string model)
+    {
+        Model = model;
+        var route = Environment.GetEnvironmentVariable("OPENROUTER_PROVIDER_ROUTE");
+        OpenRouterProviderRoute = !string.IsNullOrWhiteSpace(route)
+            ? route.Trim()
+            : string.Equals(model, DefaultModel, StringComparison.Ordinal) ? DefaultProviderRoute : null;
+        return this;
     }
 
     public Uri ModelsEndpoint

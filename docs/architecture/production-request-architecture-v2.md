@@ -79,12 +79,31 @@ global-reopen model hooks in the production entry point are kept as reserved con
 - The PDF experiment gate compared manifests against the legacy DOCX-shaped schema hash.
 - A manifest without a packing declaration was read as fixed-120; it is now refused.
 
+## Production transport (OpenRouter streaming transport V1)
+
+Production now sends what the re-baseline qualified, and the audit gaps are closed:
+- **Streaming:** `stream=true` and `usage.include=true`. The reply is read with `ResponseHeadersRead`
+  and parsed from raw SSE bytes. Transport counts as complete only with a terminal `finish_reason`,
+  `[DONE]` and a clean EOF.
+- **Deadlines:** a 300 s transport-only deadline per attempt (`ProviderTransportTimeoutSeconds`). The
+  content is handed to the contract after the deadline, and `HttpClient.Timeout` no longer cuts streams.
+- **Retries:** `TransientRequestRetries` (default 2) now applies to 429, 502/503/504, network errors,
+  timeouts, incomplete streams and mid-stream provider errors, honouring `Retry-After`. A completed
+  stream is never resent, and content failures are never retried as transport.
+- **Route:** `OpenRouterProviderRoute` is consumed, pinning `order=[route]` with `allow_fallbacks=false`.
+  The default model is the qualified `qwen/qwen3.7-flash`, pinned to `Alibaba`. `OPENROUTER_PROVIDER_ROUTE`
+  overrides the route, and a custom model gets no implicit pin.
+- **Lane deadline:** the PDF lane deadline was 5 min for a whole document, which would have failed
+  SRC-095 (about 327 s of provider time). It is now a 60 min runaway guard, and the unused per-request
+  and batch lane timeouts are gone.
+- **Verification:** all 31 recorded re-baseline streams, replayed byte for byte through the production
+  transport, reassemble to exactly the accepted content (`OpenRouterStreamingReplayTests`).
+
 ## Open
 
-- **Re-baseline required.** Style facts changed shape after T3B, so production requests are no longer
-  the T3B bytes and the T3B score (F1 0.7451) does not carry over.
-  `pdf-v4-production-rebaseline-preflight.v1.json` freezes the plan; a provider run under it is needed
-  before any claim about production quality or any sliding-window comparison.
+- **Re-baseline done (2026-09-29).** `eval/a99-closed-loop/production-rebaseline-v1`: 31/31 leaves
+  contract-valid on first attempt; production output F1 0.754 (P 0.678, R 0.849) on SRC-089 + SRC-095.
+  A new baseline, not comparable causally with T3B.
 - Placement is on in production but was off in every V4 measurement.
 - Ownership is by a claim's first part (`InferAsync`): a claim that continues into the right halo
   belongs to the leaf owning its start, and the neighbour sees that start in its left halo and is

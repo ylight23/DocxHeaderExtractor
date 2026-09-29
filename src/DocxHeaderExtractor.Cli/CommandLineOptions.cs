@@ -63,7 +63,7 @@ public sealed class CommandLineOptions
                 case "--openrouter-model":
                     o.Provider.Backend = InferenceBackend.OpenRouter;
                     o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
-                    o.Provider.Remote.Model = Next(a);
+                    o.Provider.Remote.UseOpenRouterModel(Next(a));
                     break;
                 case "--lmstudio":
                     o.Provider.Backend = InferenceBackend.LmStudio;

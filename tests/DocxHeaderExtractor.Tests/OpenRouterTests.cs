@@ -5,40 +5,177 @@ using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.Tests;
 
+/// <summary>
+/// OpenRouter streaming transport V1: the request streams, the reply is reassembled from SSE and
+/// accepted only when the stream really completed, and transport failures are retried within a bound.
+/// </summary>
 public sealed class OpenRouterTests
 {
     [Fact]
-    public async Task Request_enforces_privacy_and_json_output()
+    public async Task Request_streams_and_enforces_privacy_and_json_output()
     {
-        var handler = new CaptureHandler(
-            """{"choices":[{"message":{"content":" {\"ok\":true} "}}]}""");
-        using var http = new HttpClient(handler);
-        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions { ApiKey = "test-key" });
+        var handler = new CaptureHandler(Reply.Sse(" {\"ok\":true} "));
+        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key" });
 
         var result = await model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}");
 
         Assert.Equal("{\"ok\":true}", result);
+        using var body = JsonDocument.Parse(handler.Body);
+        var root = body.RootElement;
+        Assert.True(root.GetProperty("stream").GetBoolean());
+        Assert.True(root.GetProperty("usage").GetProperty("include").GetBoolean());
+        Assert.Equal("none", root.GetProperty("reasoning").GetProperty("effort").GetString());
+        Assert.Equal("json_object", root.GetProperty("response_format").GetProperty("type").GetString());
+        Assert.Equal("qwen/qwen3.7-flash", root.GetProperty("model").GetString());
         // The ZDR flag must always be written, never omitted: an omitted field inherits the
-        // account's privacy default, which silently rejects every endpoint of the controlled
-        // models. Its value follows RemoteInferenceOptions.RequireZeroDataRetention (false here).
-        Assert.Contains("\"zdr\":false", handler.Body);
-        Assert.Contains("\"data_collection\":\"deny\"", handler.Body);
-        Assert.Contains("\"require_parameters\":true", handler.Body);
-        Assert.Contains("\"response_format\":{\"type\":\"json_object\"}", handler.Body);
-        Assert.DoesNotContain("json_schema", handler.Body);
-        Assert.Contains("\"model\":\"qwen/qwen3.5-9b\"", handler.Body);
-        Assert.Contains("\"reasoning\":{\"effort\":\"none\"}", handler.Body);
+        // account's privacy default, which silently rejects every endpoint of the controlled models.
+        var provider = root.GetProperty("provider");
+        Assert.False(provider.GetProperty("zdr").GetBoolean());
+        Assert.Equal("deny", provider.GetProperty("data_collection").GetString());
+        Assert.True(provider.GetProperty("require_parameters").GetBoolean());
+        // No route configured: OpenRouter's automatic routing is kept.
+        Assert.True(provider.GetProperty("allow_fallbacks").GetBoolean());
+        Assert.False(provider.TryGetProperty("order", out _));
         Assert.Equal("Bearer", handler.AuthorizationScheme);
         Assert.Equal("test-key", handler.AuthorizationParameter);
     }
 
     [Fact]
-    public async Task Boundary_cut_keeps_configured_output_budget_cap_for_32_role_ids()
+    public async Task A_configured_route_is_pinned_with_fallbacks_disabled()
+    {
+        var handler = new CaptureHandler(Reply.Sse("{}"));
+        using var model = Model(handler, new RemoteInferenceOptions
+        {
+            ApiKey = "test-key",
+            Model = "qwen/qwen3.7-flash",
+            OpenRouterProviderRoute = "Alibaba",
+        });
+
+        await model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}");
+
+        using var body = JsonDocument.Parse(handler.Body);
+        var provider = body.RootElement.GetProperty("provider");
+        Assert.Equal(["Alibaba"], provider.GetProperty("order").EnumerateArray().Select(x => x.GetString()).ToArray());
+        Assert.False(provider.GetProperty("allow_fallbacks").GetBoolean());
+        Assert.Equal("deny", provider.GetProperty("data_collection").GetString());
+    }
+
+    [Fact]
+    public void The_qualified_default_model_is_pinned_to_its_route_and_other_models_are_not()
+    {
+        Assert.Null(Environment.GetEnvironmentVariable("OPENROUTER_PROVIDER_ROUTE"));
+        var options = new RemoteInferenceOptions { ApiKey = "k" };
+
+        options.UseOpenRouterModel(RemoteInferenceOptions.DefaultModel);
+        Assert.Equal("qwen/qwen3.7-flash", options.Model);
+        Assert.Equal("Alibaba", options.OpenRouterProviderRoute);
+
+        // A route that does not serve a custom model would fail every request, so none is implied.
+        options.UseOpenRouterModel("another/model");
+        Assert.Equal("another/model", options.Model);
+        Assert.Null(options.OpenRouterProviderRoute);
+    }
+
+    [Fact]
+    public async Task Content_is_reassembled_from_deltas_split_across_network_chunks()
+    {
+        var sse = Reply.Sse("{\"headings\":[{\"a\":1}", ",{\"b\":2}]}");
+        // Deliver the stream in tiny slices so events and even UTF-8 characters straddle reads.
+        var handler = new CaptureHandler(Reply.Chunked(sse, 7));
+        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key" });
+
+        var result = await model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}");
+
+        Assert.Equal("{\"headings\":[{\"a\":1},{\"b\":2}]}", result);
+    }
+
+    [Fact]
+    public async Task Finish_reason_length_is_returned_to_the_contract_not_retried_as_transport()
+    {
+        var handler = new CaptureHandler(Reply.Sse("{\"headings\":[", finishReason: "length"));
+        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key" });
+
+        var result = await model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}");
+
+        Assert.Equal("{\"headings\":[", result);
+        Assert.Equal(1, handler.RequestCount);
+    }
+
+    [Fact]
+    public async Task A_stream_without_done_is_incomplete_and_retried_within_the_bound()
+    {
+        var incomplete = Reply.Sse("{}", done: false);
+        var handler = new CaptureHandler(incomplete, incomplete, Reply.Sse("{\"ok\":1}"));
+        var waits = new List<TimeSpan>();
+        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key", TransientRequestRetries = 2 }, waits);
+
+        var result = await model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}");
+
+        Assert.Equal("{\"ok\":1}", result);
+        Assert.Equal(3, handler.RequestCount);
+        Assert.Equal(2, waits.Count);
+    }
+
+    [Fact]
+    public async Task Transport_failures_stop_after_the_configured_retries()
+    {
+        var incomplete = Reply.Sse("{}", done: false);
+        var handler = new CaptureHandler(incomplete);
+        var waits = new List<TimeSpan>();
+        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key", TransientRequestRetries = 2 }, waits);
+
+        await Assert.ThrowsAsync<HttpRequestException>(() => model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}"));
+
+        Assert.Equal(3, handler.RequestCount);
+    }
+
+    [Fact]
+    public async Task Http_429_is_retried_honouring_retry_after()
     {
         var handler = new CaptureHandler(
-            """{"choices":[{"message":{"content":"{}"}}]}""");
-        using var http = new HttpClient(handler);
-        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+            Reply.Status(HttpStatusCode.TooManyRequests, retryAfterSeconds: 3),
+            Reply.Sse("{\"ok\":2}"));
+        var waits = new List<TimeSpan>();
+        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key" }, waits);
+
+        var result = await model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}");
+
+        Assert.Equal("{\"ok\":2}", result);
+        Assert.Equal([TimeSpan.FromSeconds(3)], waits);
+    }
+
+    [Fact]
+    public async Task A_client_error_is_not_retried()
+    {
+        var handler = new CaptureHandler(Reply.Status(HttpStatusCode.BadRequest));
+        var waits = new List<TimeSpan>();
+        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key" }, waits);
+
+        var error = await Assert.ThrowsAsync<HttpRequestException>(() => model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}"));
+
+        Assert.Equal(HttpStatusCode.BadRequest, error.StatusCode);
+        Assert.Equal(1, handler.RequestCount);
+        Assert.Empty(waits);
+    }
+
+    [Fact]
+    public async Task A_provider_error_event_mid_stream_is_a_transport_failure()
+    {
+        var handler = new CaptureHandler(Reply.ProviderErrorEvent(), Reply.Sse("{\"ok\":3}"));
+        var waits = new List<TimeSpan>();
+        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key" }, waits);
+
+        var result = await model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}");
+
+        Assert.Equal("{\"ok\":3}", result);
+        Assert.Equal(2, handler.RequestCount);
+    }
+
+    [Fact]
+    public async Task Boundary_cut_keeps_configured_output_budget_cap_for_32_role_ids()
+    {
+        var handler = new CaptureHandler(Reply.Sse("{}"));
+        using var model = Model(handler, new RemoteInferenceOptions
         {
             ApiKey = "test-key",
             MaxOutputTokens = 768,
@@ -59,10 +196,8 @@ public sealed class OpenRouterTests
     [Fact]
     public async Task Reasoning_effort_is_explicitly_selectable_for_an_authorized_experiment()
     {
-        var handler = new CaptureHandler(
-            """{"choices":[{"message":{"content":"{}"}}]}""");
-        using var http = new HttpClient(handler);
-        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        var handler = new CaptureHandler(Reply.Sse("{}"));
+        using var model = Model(handler, new RemoteInferenceOptions
         {
             ApiKey = "test-key",
             OpenRouterReasoningEffort = "medium",
@@ -76,7 +211,7 @@ public sealed class OpenRouterTests
     [Fact]
     public void Missing_api_key_fails_before_any_request()
     {
-        using var http = new HttpClient(new CaptureHandler("{}"));
+        using var http = new HttpClient(new CaptureHandler(Reply.Sse("{}")));
         var ex = Assert.Throws<InvalidOperationException>(() =>
             new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions()));
 
@@ -86,11 +221,9 @@ public sealed class OpenRouterTests
     [Fact]
     public async Task Explicit_debug_log_exposes_provider_exchange_without_authorization_header()
     {
-        var handler = new CaptureHandler(
-            """{"choices":[{"message":{"content":"{\"items\":[{\"i\":42,\"r\":\"h\",\"l\":2}]}"}}]}""");
+        var handler = new CaptureHandler(Reply.Sse("{\"items\":[]}"));
         var logs = new List<string>();
-        using var http = new HttpClient(handler);
-        using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        using var model = Model(handler, new RemoteInferenceOptions
         {
             ApiKey = "test-key",
             DebugLog = logs.Add,
@@ -98,16 +231,90 @@ public sealed class OpenRouterTests
 
         await model.BoundaryCutAsync("Return JSON.", "{\"sourceParts\":[]}");
 
-        Assert.Contains(logs, log => log.Contains("LLM REQUEST") && log.Contains("qwen/qwen3.5-9b"));
-        Assert.Contains(logs, log => log.Contains("LLM RESPONSE") && log.Contains("choices"));
+        Assert.Contains(logs, log => log.Contains("LLM REQUEST") && log.Contains("qwen/qwen3.7-flash"));
+        Assert.Contains(logs, log => log.Contains("LLM RESPONSE") && log.Contains("finish_reason"));
         Assert.DoesNotContain(logs, log => log.Contains("test-key"));
         Assert.DoesNotContain(logs, log => log.Contains("Authorization", StringComparison.OrdinalIgnoreCase));
     }
 
-    private sealed class CaptureHandler(params string[] responses) : HttpMessageHandler
+    private static OpenRouterHeaderExtractor Model(
+        CaptureHandler handler, RemoteInferenceOptions options, List<TimeSpan>? waits = null)
     {
-        private readonly string[] _responses = responses;
+        var model = new OpenRouterHeaderExtractor(new HttpClient(handler), options);
+        model.RetryWait = (delay, _) =>
+        {
+            waits?.Add(delay);
+            return Task.CompletedTask;
+        };
+        return model;
+    }
 
+    internal static class Reply
+    {
+        public static Func<HttpResponseMessage> Sse(string content, string finishReason = "stop", bool done = true) =>
+            Sse([content], finishReason, done);
+
+        public static Func<HttpResponseMessage> Sse(string first, string second) => Sse([first, second], "stop", true);
+
+        private static Func<HttpResponseMessage> Sse(string[] deltas, string finishReason, bool done)
+        {
+            var text = new StringBuilder();
+            text.Append(": OPENROUTER PROCESSING\n\n");
+            foreach (var delta in deltas)
+                text.Append("data: ").Append(JsonSerializer.Serialize(new
+                {
+                    choices = new[] { new { delta = new { content = delta }, finish_reason = (string?)null } },
+                })).Append("\n\n");
+            text.Append("data: ").Append(JsonSerializer.Serialize(new
+            {
+                choices = new[] { new { delta = new { content = "" }, finish_reason = finishReason } },
+                usage = new { prompt_tokens = 10, completion_tokens = 5 },
+            })).Append("\n\n");
+            if (done) text.Append("data: [DONE]\n\n");
+            var bytes = Encoding.UTF8.GetBytes(text.ToString());
+            return () => Stream(bytes, int.MaxValue);
+        }
+
+        public static Func<HttpResponseMessage> Chunked(Func<HttpResponseMessage> sse, int chunkSize) => () =>
+        {
+            var bytes = sse().Content.ReadAsByteArrayAsync().GetAwaiter().GetResult();
+            return Stream(bytes, chunkSize);
+        };
+
+        public static Func<HttpResponseMessage> ProviderErrorEvent() => () =>
+            Stream(Encoding.UTF8.GetBytes("data: {\"error\":{\"code\":502,\"message\":\"upstream reset\"}}\n\n"), int.MaxValue);
+
+        public static Func<HttpResponseMessage> Status(HttpStatusCode status, int? retryAfterSeconds = null) => () =>
+        {
+            var response = new HttpResponseMessage(status)
+            {
+                Content = new StringContent("{\"error\":{\"message\":\"test\"}}", Encoding.UTF8, "application/json"),
+            };
+            if (retryAfterSeconds is { } seconds)
+                response.Headers.RetryAfter = new System.Net.Http.Headers.RetryConditionHeaderValue(TimeSpan.FromSeconds(seconds));
+            return response;
+        };
+
+        private static HttpResponseMessage Stream(byte[] bytes, int chunkSize) => new(HttpStatusCode.OK)
+        {
+            Content = new StreamContent(new SlicedStream(bytes, chunkSize))
+            {
+                Headers = { ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/event-stream") },
+            },
+        };
+    }
+
+    /// <summary>Returns at most <c>chunkSize</c> bytes per read, like a network stream.</summary>
+    private sealed class SlicedStream(byte[] bytes, int chunkSize) : MemoryStream(bytes)
+    {
+        public override int Read(byte[] buffer, int offset, int count) => base.Read(buffer, offset, Math.Min(count, chunkSize));
+
+        public override ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default) =>
+            base.ReadAsync(buffer[..Math.Min(buffer.Length, chunkSize)], cancellationToken);
+    }
+
+    private sealed class CaptureHandler(params Func<HttpResponseMessage>[] responses) : HttpMessageHandler
+    {
         public List<string> Bodies { get; } = [];
         public string Body => Bodies.LastOrDefault() ?? "";
         public int RequestCount => Bodies.Count;
@@ -121,13 +328,7 @@ public sealed class OpenRouterTests
             Bodies.Add(await request.Content!.ReadAsStringAsync(cancellationToken));
             AuthorizationScheme = request.Headers.Authorization?.Scheme;
             AuthorizationParameter = request.Headers.Authorization?.Parameter;
-            return new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new StringContent(
-                    _responses[Math.Min(RequestCount - 1, _responses.Length - 1)],
-                    Encoding.UTF8,
-                    "application/json"),
-            };
+            return responses[Math.Min(RequestCount - 1, responses.Length - 1)]();
         }
     }
 }

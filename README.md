@@ -66,9 +66,15 @@ $env:OPENROUTER_API_KEY = "sk-or-v1-..."
 dhx extract tai-lieu.docx --openrouter -f json
 ```
 
-Đổi model bằng `--openrouter-model` hoặc `OPENROUTER_MODEL`. Request gửi provider preferences
-`zdr=true`, `data_collection=deny`, `require_parameters=true`; không có endpoint đáp ứng thì
-pipeline báo lỗi thay vì hạ mức riêng tư. Nội dung tài liệu vẫn được gửi ra dịch vụ bên ngoài;
+Mặc định là cấu hình đã re-baseline: `qwen/qwen3.7-flash` ghim route `Alibaba`
+(`allow_fallbacks=false`), `reasoning=none`, streaming (`stream=true`, `usage.include=true`).
+Đổi model bằng `--openrouter-model` hoặc `OPENROUTER_MODEL` (model khác không bị ghim route ngầm);
+ghim route bằng `OPENROUTER_PROVIDER_ROUTE`. Request luôn gửi `data_collection=deny`,
+`require_parameters=true` và ghi rõ `zdr` (mặc định `false`, vì endpoint Alibaba chưa có chứng nhận ZDR).
+Mỗi lần gọi có deadline transport 300 s (chỉ tính truyền tải; parse và kiểm contract nằm ngoài) và
+tối đa 2 lần retry cho 429/5xx/lỗi mạng/stream không hoàn tất, tôn trọng `Retry-After`; một stream đã
+hoàn tất không bao giờ được gửi lại, và lỗi nội dung (JSON/contract/`finish_reason=length`) không bị
+retry như lỗi mạng. Nội dung tài liệu vẫn được gửi ra dịch vụ bên ngoài;
 không dùng cho tài liệu mật khi chưa được phép.
 
 ### LM Studio

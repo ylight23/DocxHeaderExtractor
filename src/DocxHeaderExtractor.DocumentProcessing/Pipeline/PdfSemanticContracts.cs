@@ -38,16 +38,14 @@ internal sealed record PdfBlockDecision(
     // source occurrences. Null everywhere else, which is every lane that had one span per claim.
     IReadOnlyList<CanonicalSemanticBoundPart>? Parts = null);
 
-/// <summary>Independent execution budget for the semantic lane.</summary>
-public sealed record SemanticLaneOptions(
-    TimeSpan RequestTimeout,
-    TimeSpan BatchTimeout,
-    TimeSpan LaneDeadline,
-    int MaxConcurrency = 1,
-    DateTimeOffset? DeadlineUtc = null,
-    int MaxBatchSize = 0)
+/// <summary>
+/// Runaway guard for one document's semantic lane. It is not a work budget: every provider call is
+/// already bounded by its own transport deadline and bounded retries. The former 5-minute default
+/// cut real documents short - SRC-095's 24 leaves took about 327 s of provider time in the production
+/// re-baseline, so the default lane would have thrown before finishing - and the per-request/batch
+/// timeouts that sat beside it were never read.
+/// </summary>
+public sealed record SemanticLaneOptions(TimeSpan LaneDeadline)
 {
-    public static readonly SemanticLaneOptions Default = new(
-        TimeSpan.FromSeconds(90), TimeSpan.FromSeconds(120), TimeSpan.FromMinutes(5));
-
+    public static readonly SemanticLaneOptions Default = new(TimeSpan.FromMinutes(60));
 }

@@ -15,8 +15,7 @@ public sealed class PdfLiveExecutionLifecycleTests
     {
         using var classifier = new GateClassifier();
 
-        var executionTask = RunAsync(classifier, new SemanticLaneOptions(
-            TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30)));
+        var executionTask = RunAsync(classifier, new SemanticLaneOptions(TimeSpan.FromSeconds(30)));
         await classifier.Started.Task;
         classifier.Complete("{\"headings\":[]}");
         var execution = await executionTask;
@@ -35,7 +34,7 @@ public sealed class PdfLiveExecutionLifecycleTests
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() => RunAsync(
             classifier,
-            new SemanticLaneOptions(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30))));
+            new SemanticLaneOptions(TimeSpan.FromSeconds(30))));
 
         Assert.Equal("live-provider-failure", error.Message);
         Assert.Equal(1, classifier.Calls);
@@ -47,7 +46,7 @@ public sealed class PdfLiveExecutionLifecycleTests
         using var classifier = new GateClassifier();
         var execution = RunAsync(
             classifier,
-            new SemanticLaneOptions(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2)));
+            new SemanticLaneOptions(TimeSpan.FromSeconds(2)));
 
         await classifier.Started.Task;
         await Assert.ThrowsAsync<TimeoutException>(() => execution);
@@ -65,7 +64,7 @@ public sealed class PdfLiveExecutionLifecycleTests
         using var classifier = new GateClassifier();
         var execution = RunAsync(
             classifier,
-            new SemanticLaneOptions(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30)),
+            new SemanticLaneOptions(TimeSpan.FromSeconds(30)),
             cancellation.Token);
 
         await classifier.Started.Task;
@@ -84,7 +83,7 @@ public sealed class PdfLiveExecutionLifecycleTests
         using var classifier = new GateClassifier();
         var execution = RunAsync(
             classifier,
-            new SemanticLaneOptions(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2)));
+            new SemanticLaneOptions(TimeSpan.FromSeconds(2)));
 
         await classifier.Started.Task;
         await Assert.ThrowsAsync<TimeoutException>(() => execution);
