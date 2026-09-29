@@ -1,7 +1,7 @@
 {
   "schemaVersion": "v5-canary-qualification-v2",
   "sourceArtifact": "artifacts/v5-provider-canary-current/canary-result.v1.json",
-  "sourceArtifactSha256": "ecd34f314a17979c682c4891eeac5b755dda5bf3cb30f6185220e4462a9bc9ad",
+  "sourceArtifactSha256": "5fdf1a83135cf886c0b247ce5384f9db7116e1705516480e46b6b56e7729d70a",
   "providerCalls": 0,
   "goldRead": false,
   "supersedes": "runtimeAcceptable/passCount in the v1 result, which wrongly required zero claim-local refusals",
