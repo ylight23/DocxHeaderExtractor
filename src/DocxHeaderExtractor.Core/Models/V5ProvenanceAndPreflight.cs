@@ -3,6 +3,38 @@ using System.Text.Json.Serialization;
 
 namespace DocxHeaderExtractor.Core.V5;
 
+/// <summary>
+/// V5's own completion-token budget for a source-backed claim response - independent of the legacy
+/// boundary-cut formula (<c>96 + expectedItemCount * 128</c>), which the v2.1 canary at commit
+/// 72bb954 showed truncates a claim-shaped reply mid-JSON: SRC-095 PACK_001's 90 owned items produced
+/// an 11,616-token budget under that formula, and the response was cut off before valid JSON closed.
+/// <para>
+/// A claim is not one row per owned item: it can carry two multi-part endpoints (subject and object),
+/// each with left/right exact-context strings, so the per-item allowance here is deliberately
+/// generous rather than tight, and a byte-based floor guards a pack whose owned count is small but
+/// whose surrounding text is large.
+/// </para>
+/// </summary>
+public static class V5SemanticCompletionBudget
+{
+    public const int BaseTokens = 512;
+    public const int PerOwnedItemTokens = 256;
+    public const int MinCompletionTokens = 1024;
+
+    public static int Compute(int ownedCount, int visibleCount, int requestBytes, int providerMaxTokens)
+    {
+        if (ownedCount < 0) throw new ArgumentOutOfRangeException(nameof(ownedCount));
+        if (visibleCount < ownedCount) throw new ArgumentOutOfRangeException(nameof(visibleCount));
+        if (requestBytes < 0) throw new ArgumentOutOfRangeException(nameof(requestBytes));
+        if (providerMaxTokens < MinCompletionTokens) throw new ArgumentOutOfRangeException(nameof(providerMaxTokens));
+
+        var byOwnedItems = BaseTokens + ownedCount * PerOwnedItemTokens;
+        var byRequestBytes = requestBytes / 6;
+        var budget = Math.Max(byOwnedItems, byRequestBytes);
+        return Math.Clamp(Math.Max(budget, MinCompletionTokens), MinCompletionTokens, providerMaxTokens);
+    }
+}
+
 public sealed record ClaimProvenance(
     [property: JsonPropertyName("claimId")] string ClaimId,
     [property: JsonPropertyName("taskContractHash")] string TaskContractHash,
@@ -92,27 +124,7 @@ public sealed record V5ProviderPreflight(
 
 public static class V5ProviderPreflightBuilder
 {
-    /// <summary>Builds the v2 provider-free preflight while leaving all v1 hashes/artifacts intact.</summary>
-    public static V5ProviderPreflight BuildV2(
-        string productionSourceSha,
-        UniversalEvidenceGraph sourceUniverse,
-        DocumentTaskContract contract,
-        IReadOnlyList<V5ComposedSemanticRequest> requests,
-        string packingPolicy,
-        V5ProviderEnvelope providerEnvelope)
-    {
-        ArgumentNullException.ThrowIfNull(requests);
-        var preflight = Build(
-            productionSourceSha,
-            sourceUniverse,
-            contract,
-            requests,
-            packingPolicy,
-            providerEnvelope);
-        return preflight with { ClaimSchemaHash = SemanticClaimContractV2.SchemaHash() };
-    }
-
-    /// <summary>Builds the v2.1 provider-free preflight while leaving all v1/v2 hashes/artifacts intact.</summary>
+    /// <summary>Builds the v2.1 provider-free preflight while leaving all v1 hashes/artifacts intact.</summary>
     public static V5ProviderPreflight BuildV2_1(
         string productionSourceSha,
         UniversalEvidenceGraph sourceUniverse,
