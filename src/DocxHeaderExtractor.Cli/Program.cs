@@ -6,13 +6,10 @@ using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Features;
-using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Repair;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 Console.OutputEncoding = Encoding.UTF8;
@@ -33,9 +30,7 @@ if (options.ShowHelp)
     Console.WriteLine(CommandLineOptions.HelpText);
     return 0;
 }
-// The source-only correctness preflight has a fixed document target and intentionally takes
-// no positional input. Keep the generic CLI input guard from treating it as a missing-file call.
-// `sample`/`bench`/`eval` có đích mặc định, `info` tự dò mô hình – không cần đầu vào.
+// `info` tự dò mô hình – không cần đầu vào.
 if (options.Inputs.Count == 0 && options.Command is not "info")
 {
     Console.Error.WriteLine("Chưa chỉ định file đầu vào.");
@@ -51,7 +46,6 @@ try
     return options.Command switch
     {
         "info" => RunModelInfo(options),
-        "score" => RunScore(options),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -100,8 +94,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
     }
 
     using var tool = new PipelineDocumentExtractionTool(o.Pipeline, new HeaderClassifierFactory(o.Provider));
-    // Normal extraction always writes through the canonical ProductOutput authority. Legacy
-    // OutlineWriteback remains available only from explicit replay/evaluation commands.
+    // Extraction writes through the canonical ProductOutput authority.
     using IDocumentActionTool? actionTool = o.WritebackPath is null
         ? null
         : new PdfProductWritebackTool(o.Pipeline.Extraction);
@@ -169,12 +162,8 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 }
 
 /// <summary>
-/// Ghi ĐÚNG các khối pipeline sẽ gửi cho mô hình, kèm system prompt. Dùng để đo một mô hình khác
-/// trên cùng đầu vào: nếu tự dựng lại prompt thì phép so biến thành so hai cách dựng prompt.
-/// <para>
-/// Truyền <c>--model</c> thì chia khối bằng ĐÚNG tokenizer của mô hình đó và in tỉ lệ ký tự/token
-/// đo được; bản dump ghi rõ khi dùng ước lượng thay thế.
-/// </para>
+/// Yêu cầu gửi harness cho một tài liệu. Chỉ đồng ý gửi dữ liệu ra ngoài khi backend là dịch vụ
+/// từ xa và người dùng không chạy <c>--no-llm</c>.
 /// </summary>
 static DocumentAgentRequest AgentRequest(string file, CommandLineOptions o) =>
     new(file, AllowExternalDataTransfer:
@@ -184,48 +173,6 @@ static DocumentAgentRequest AgentRequest(string file, CommandLineOptions o) =>
         AllowWritebackOverwrite = o.WritebackOverwrite,
         ApplyHeadingStyles = o.WritebackHeadingStyles,
     };
-
-static int RunScore(CommandLineOptions o)
-{
-    if (o.Inputs.Count != 2)
-    {
-        Console.Error.WriteLine("dhx score <reference.json> <prediction.json>");
-        return 2;
-    }
-
-    static IReadOnlyList<ScoredHeading> Read(string path, params string[] textFields)
-    {
-        using var document = JsonDocument.Parse(File.ReadAllText(path));
-        var rows = document.RootElement.ValueKind == JsonValueKind.Array
-            ? document.RootElement
-            : document.RootElement.EnumerateObject()
-                .Where(property => property.Value.ValueKind == JsonValueKind.Array)
-                .Select(property => property.Value)
-                .FirstOrDefault(array => array.GetArrayLength() > 0 &&
-                    array[0].ValueKind == JsonValueKind.Object);
-        var result = new List<ScoredHeading>();
-        if (rows.ValueKind != JsonValueKind.Array) return result;
-        foreach (var row in rows.EnumerateArray())
-        {
-            var text = textFields
-                .Select(field => row.TryGetProperty(field, out var value) ? value.GetString() : null)
-                .FirstOrDefault(value => !string.IsNullOrWhiteSpace(value));
-            if (text is null) continue;
-            int? level = row.TryGetProperty("level", out var levelValue) &&
-                levelValue.ValueKind == JsonValueKind.Number ? levelValue.GetInt32() : null;
-            result.Add(new ScoredHeading(text, level));
-        }
-        return result;
-    }
-
-    var gold = Read(o.Inputs[0], "exactText", "text");
-    var predicted = Read(o.Inputs[1], "originalText", "text");
-    var score = HeadingLevelScorer.Score(gold, predicted);
-    Console.WriteLine(score.Describe(Path.GetFileNameWithoutExtension(o.Inputs[0])));
-    foreach (var (text, goldLevel, predictedLevel) in score.StructuralMismatches.Take(10))
-        Console.WriteLine($"    reference L{goldLevel} -> predicted L{predictedLevel}  {text}");
-    return 0;
-}
 
 static int RunModelInfo(CommandLineOptions o)
 {

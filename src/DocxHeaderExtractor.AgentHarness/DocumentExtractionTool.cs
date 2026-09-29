@@ -21,7 +21,7 @@ public interface IDocumentExtractionTool : IDisposable
 
 /// <summary>
 /// Adapter của canonical authority pipeline thành một tool của harness. Web/CLI/MCP dùng cùng
-/// orchestrator; compatibility/evaluation callers are migrated separately from normal authority.
+/// orchestrator; evaluation callers are kept separate from normal authority.
 /// </summary>
 public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 {
@@ -93,7 +93,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     /// <summary>
     /// Routes the uploaded file to the lane that owns its format, and nowhere else.
     /// <para>
-    /// The format is read from the bytes, not the extension, and the legacy conversion step runs
+    /// The format is read from the bytes, not the extension, and the Office conversion step runs
     /// only for a format that needs it. Before this, every upload was pushed through
     /// <c>EnsureDocx</c> first, which refuses a PDF on its extension - so the PDF lane existed,
     /// was tested, and could not be reached by the Web, CLI or MCP host at all. A lane no host can
@@ -113,14 +113,14 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 
         // Nothing a lane owns: .doc, .rtf and .odt become OOXML first, and the converted file is
         // what gets routed - so the lane still decides on bytes it can actually parse.
-        var conversion = LegacyDocConverter.EnsureDocx(inputPath);
+        var conversion = OfficeDocumentConverter.EnsureDocx(inputPath);
         try
         {
             return await ExtractAsync(conversion.Path, quarantine, ct).ConfigureAwait(false);
         }
         finally
         {
-            LegacyDocConverter.Cleanup(conversion);
+            OfficeDocumentConverter.Cleanup(conversion);
         }
     }
 
@@ -130,7 +130,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         var execution = await _dispatcher.ExtractAsync(
                 new AuthorityExtractionRequest(UploadedFile.FromLocalPath(path)), quarantine, ct)
             .ConfigureAwait(false);
-        return execution.CompatibilityOutline;
+        return execution.Outline;
     }
 
     private static CapabilityDescriptor Describe(PipelineOptions options, bool sendsDataExternally)

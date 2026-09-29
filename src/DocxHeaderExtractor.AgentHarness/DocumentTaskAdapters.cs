@@ -4,7 +4,7 @@ namespace DocxHeaderExtractor.AgentHarness;
 
 /// <summary>
 /// DOCX capability adapter. DocumentAgentRequest is deliberately kept outside Application; this
-/// adapter translates the legacy host request into generic task contracts.
+/// adapter translates the host request into generic task contracts.
 /// </summary>
 internal static class DocumentTaskAdapters
 {

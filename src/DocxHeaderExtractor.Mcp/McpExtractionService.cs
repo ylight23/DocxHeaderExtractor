@@ -95,7 +95,7 @@ public sealed class McpExtractionService : IDisposable
             Path.GetFileName(resolved),
             _options.RulesOnly ? "rules-only" : "lmstudio",
             outline.ParagraphCount,
-            outline.CandidateCount,
+            outline.SourceCount,
             outline.Headings.Count,
             run.RequiresReview,
             run.RepairAttempts,
@@ -103,7 +103,7 @@ public sealed class McpExtractionService : IDisposable
             outline.Model,
             outline.Headings.Select(h => new McpHeadingResult(
                 h.Index, h.StableId, h.Level, h.Text, h.Source.ToString(), h.Confidence,
-                h.DecisionStatus.ToString(), h.Disputed, h.ModelConfirmed, h.CriticConfirmed, h.Evidence,
+                h.DecisionStatus.ToString(), h.Disputed,
                 h.HeadingSpan)).ToArray(),
             run.Trace.Select(e => new McpTraceResult(
                 e.Sequence, e.Stage, e.Kind.ToString(), e.Message)).ToArray());
@@ -116,32 +116,15 @@ public sealed class McpExtractionService : IDisposable
         if (!RemoteInferenceOptions.IsLoopback(lm.Endpoint))
             throw new InvalidOperationException("LMSTUDIO_ENDPOINT phải là địa chỉ loopback.");
 
-        var maxOutput = Math.Min(768, lm.MaxOutputTokens);
-        var maxChunk = Math.Max(400, lm.ContextSize - maxOutput - LocalModelOptions.FixedPromptTokens);
-        var chunk = Math.Min(5_000, maxChunk);
-
         provider = new InferenceProviderSelection
         {
             Backend = InferenceBackend.LmStudio,
             Remote = lm,
-            LocalModel = new LocalModelOptions
-            {
-                ContextSize = checked((uint)lm.ContextSize),
-                MaxOutputTokens = maxOutput,
-            },
         };
 
         return new PipelineOptions
         {
             DisableLlm = _options.RulesOnly,
-            // Giữ batch vừa đủ lớn để giảm số request nhưng không làm Qwen nhầm ID/cấp khi mỗi
-            // ứng viên mang theo lân cận. Với context 4096, 5–6 ứng viên ổn định hơn 12.
-            Chunking = BuildChunking(chunk),
-            ReviewAllParagraphs = false,
-            TrustStyles = true,
-            // Heading built-in đã có bằng chứng OOXML chắc chắn; giữ trong context
-            // làm mốc nhưng không gửi lại cho LLM như ứng viên cần quyết định.
-            SkipStyledCandidates = true,
         };
     }
 
@@ -216,12 +199,4 @@ public sealed class McpExtractionService : IDisposable
     }
 
     public void Dispose() => _http.Dispose();
-
-    /// <summary>Tham số MCP là yêu cầu tường minh, nên khoá lại để pipeline không suy lại từ context.</summary>
-    private static ChunkingOptions BuildChunking(int chunkTokens)
-    {
-        var chunking = new ChunkingOptions { MaxCandidatesPerChunk = 6 };
-        chunking.SetExplicitTokenBudget(chunkTokens);
-        return chunking;
-    }
 }
