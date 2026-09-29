@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "v5-source-selection-remediation-raw-observation-v1",
+  "note": "Provider-free structural observation of an already-frozen raw response whose SemanticClaimContract validation failed (relation-has-value on 6 REFERENCES claims - an arity rule this fix never touched) and which the runtime therefore correctly discarded in full. Observation only: no claim from this response is or will be bound, scored, or fed to any runtime path.",
+  "sourceResultCommit": "c287f19",
+  "documentId": "SRC-089",
+  "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+  "role": "same-atom-normalization-heavy",
+  "rawResponseSha256": "7e04be99b2540ccfc0910ec8cf7d212bdff986ea2995694481c249cf3fe8a22f",
+  "runtimeAcceptance": "RESPONSE_FATAL",
+  "rawSourceSelectionUsage": "MEASURABLE",
+  "claimCount": 35,
+  "totalSourceParts": 57,
+  "aliasOnlyParts": 57,
+  "verbatimTextParts": 0,
+  "multipartEndpointCount": 2,
+  "multipartEndpoints": [
+    [
+      "L0522:S0",
+      "L0523:S0"
+    ],
+    [
+      "L0555:S0",
+      "L0556:S0"
+    ]
+  ],
+  "relationClaimsWithValue": 6,
+  "sourceSelectionRemediationCanarySummary": {
+    "SOURCE_SELECTION_SIGNAL_OBSERVED": "3/3",
+    "RUNTIME_USABLE": "2/3",
+    "packs": [
+      {
+        "pack": "SRC-089 PACK_006",
+        "aliasOnlySignal": "57/57",
+        "multipartSignal": 2,
+        "exactTextRefusals": "not counted - response fatal",
+        "runtime": "RESPONSE_FATAL"
+      },
+      {
+        "pack": "SRC-089 PACK_001",
+        "aliasOnlySignal": "121/121",
+        "multipartSignal": 0,
+        "exactTextRefusals": 0,
+        "runtime": "BINDING_COMPLETE"
+      },
+      {
+        "pack": "SRC-095 PACK_022",
+        "aliasOnlySignal": "51/51",
+        "multipartSignal": 0,
+        "exactTextRefusals": 0,
+        "runtime": "PARTIAL_BINDING"
+      }
+    ]
+  },
+  "providerCalls": 0,
+  "goldRead": false
+}
