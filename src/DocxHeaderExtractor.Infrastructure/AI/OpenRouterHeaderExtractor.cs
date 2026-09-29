@@ -93,14 +93,53 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             Model = _options.Model,
         });
         _options.DebugLog?.Invoke($"[OpenRouter] LLM REQUEST model={_options.Model} payload={Encoding.UTF8.GetString(payloadBytes)}");
+        var (content, _) = await ExecuteLoopAsync(payloadBytes, maxTokens, systemPrompt, userMessage, "BOUNDARY_CUT", logical, ct);
+        return content;
+    }
 
+    /// <summary>
+    /// Generic execution surface for a caller that has already frozen its own complete provider
+    /// request body (V5's semantic-claim execution, for one). Reuses the exact same HTTP/SSE
+    /// transport, retry and telemetry machinery as <see cref="BoundaryCutAsync"/> without recomputing
+    /// a request body or a completion budget here - the caller's frozen bytes are sent exactly as
+    /// given, never rebuilt. <paramref name="maxTokens"/>, <paramref name="systemPrompt"/> and
+    /// <paramref name="userMessage"/> are metadata for telemetry/compatibility only; they play no
+    /// part in what is actually sent over the wire.
+    /// </summary>
+    public async Task<(string Content, string? FinishReason)> ExecuteAsync(
+        byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(payloadBytes);
+        TransportCompatibility.EnsureCompatible(systemPrompt, userMessage, TransportCompatibility.JsonObjectResponseFormat);
+        using var logical = ProviderCallTelemetry.Start(_options.Observability, new ProviderLogicalCallMetadata
+        {
+            Stage = "V5_SEMANTIC_CLAIM",
+            LogicalCallId = $"v5-claim-{Guid.NewGuid():N}",
+            RequestHash = ProviderObservabilityHashing.Sha256Bytes(payloadBytes),
+            RequestBytes = payloadBytes.Length,
+            EstimatedInputTokens = ProviderObservabilityHashing.EstimateTokens(systemPrompt + "\n" + userMessage),
+            MaxOutputTokens = maxTokens,
+            SourceItemCount = 1,
+            ContextItemCount = 1,
+            ContextCharacterCount = userMessage.Length,
+            Provider = "OpenRouter",
+            Model = _options.Model,
+        });
+        _options.DebugLog?.Invoke($"[OpenRouter] V5 REQUEST model={_options.Model} payload={Encoding.UTF8.GetString(payloadBytes)}");
+        return await ExecuteLoopAsync(payloadBytes, maxTokens, systemPrompt, userMessage, "V5_SEMANTIC_CLAIM", logical, ct);
+    }
+
+    private async Task<(string Content, string? FinishReason)> ExecuteLoopAsync(
+        byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, string stage,
+        ProviderCallTelemetry? logical, CancellationToken ct)
+    {
         for (var attempt = 1; ; attempt++)
         {
             var result = await StreamOnceAsync(payloadBytes, maxTokens, systemPrompt, userMessage, logical, ct);
             if (result.Content is { } content)
             {
                 logical?.Complete(new { resultCharacters = content.Length, attempts = attempt });
-                return content;
+                return (content, result.FinishReason);
             }
 
             ct.ThrowIfCancellationRequested();
@@ -108,7 +147,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 throw result.Error!;
 
             var delay = RetryDelay(attempt, result.StatusCode, result.RetryAfter);
-            _options.DebugLog?.Invoke($"[OpenRouter] transport retry {attempt} after {delay.TotalMilliseconds:0} ms: {result.Error!.Message}");
+            _options.DebugLog?.Invoke($"[OpenRouter] {stage} transport retry {attempt} after {delay.TotalMilliseconds:0} ms: {result.Error!.Message}");
             await RetryWait(delay, ct);
         }
     }
@@ -159,7 +198,8 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         bool Retryable,
         Exception? Error,
         int? StatusCode,
-        TimeSpan? RetryAfter);
+        TimeSpan? RetryAfter,
+        string? FinishReason = null);
 
     private async Task<StreamAttempt> StreamOnceAsync(
         byte[] payloadBytes,
@@ -291,7 +331,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         });
         telemetryAttempt?.PersistParsed(new { content, finishReason = stream.FinishReason, usage = stream.Usage });
         telemetryAttempt?.Complete();
-        return new StreamAttempt(content, false, null, 200, null);
+        return new StreamAttempt(content, false, null, 200, null, stream.FinishReason);
     }
 
     private static bool IsRetryableStatus(int status) => status is 429 or 502 or 503 or 504;
