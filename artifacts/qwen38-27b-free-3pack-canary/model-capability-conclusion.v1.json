@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "v5-model-capability-conclusion-v1",
+  "experiment": "qwen38-27b-free-3pack-canary",
+  "status": "CLOSED",
+  "purpose": "MEASUREMENT_NOT_PROMOTION",
+  "basedOn": [
+    "capability-preflight.v1.json / v2.json",
+    "preflight.json (a9c97ee)",
+    "canary-result.v1.json (458cc6a) - attempt 0, 3/3 transport 503",
+    "canary-result-classification.v1.json (e594da3)",
+    "canary-result-retry1.v1.json / canary-result-retry1-classification.v1.json (3b9a61e) - attempt 1, 1 real completion (PACK_001), 2 transport 429"
+  ],
+  "conclusion": {
+    "model": "qwen/qwen3.8-27b:free",
+    "provider": "ModelRun (fp4)",
+    "structuredSchemaEnforcement": "CONFIRMED",
+    "structuredSchemaEnforcementEvidence": "PACK_001 completed through the exact require_parameters=true + response_format.type=json_schema/strict=true gate; every one of its 12 claims had the structurally-correct shape for its predicate (0 relation-has-value, 0 unary-has-object).",
+    "sourceSelectionPolicyCompliance": "REGRESSED",
+    "sourceSelectionPolicyComplianceEvidence": "0/12 source parts alias-only on PACK_001, versus Qwen3.7's 121/121 alias-only on the identical pack under identical composer instructions.",
+    "exactGroundingQuality": "REGRESSED",
+    "exactGroundingQualityEvidence": "8/12 proposals on PACK_001 refused on exact-text-binding - the model's own re-typed verbatimText did not match the source atom exactly (spacing/typography drift). This is the same same-atom copy-quality failure the source-selection policy was built to eliminate.",
+    "proposalCoverage": "REGRESSED",
+    "proposalCoverageEvidence": "12 proposals on PACK_001 versus Qwen3.7's 65 proposals on the same pack - a large reduction in claim density from a single available draw.",
+    "transportAvailability": "POOR_UNSTABLE",
+    "transportAvailabilityEvidence": "2 of 3 attempts across both rounds never completed at all: round 1 = 3/3 upstream 503 (\"no endpoints available\"); round 2 = PACK_006 and PACK_022 upstream 429 (shared free-pool rate limit), PACK_001 succeeded. ModelRun is the only provider for this free slug (no fallback route exists for this SKU).",
+    "promotionDecision": "NOT_EVALUATED / NOT_PROMOTED",
+    "promotionDecisionReason": "This was a model-capability measurement, never a promotion candidate. Every axis measured (schema enforcement aside) is worse than or not exercised relative to Qwen3.7's existing baseline, and transport availability alone would disqualify this free slug from any production role regardless of the other findings."
+  },
+  "experimentClosed": true,
+  "noFurtherQwen38Action": "no further retry of PACK_006/PACK_022 is planned; no promotion of this model; no ontology/schema/binder change resulted from this experiment",
+  "providerCalls": 0,
+  "goldRead": false,
+  "note": "This conclusion file makes no provider call; it summarizes prior frozen results."
+}

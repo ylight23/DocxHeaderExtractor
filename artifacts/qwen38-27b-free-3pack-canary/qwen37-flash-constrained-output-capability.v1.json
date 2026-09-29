@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "v5-model-capability-preflight-v1",
+  "purpose": "investigate a constrained-output surface on Qwen3.7 Flash/Alibaba (production's actual model) as a follow-on to the closed qwen3.8-27b:free experiment - not a new canary, no provider call",
+  "requestedModel": "qwen/qwen3.7-flash",
+  "queryMethod": "unauthenticated GET against OpenRouter's public /api/v1/models/qwen/qwen3.7-flash/endpoints - metadata only, no chat completion, no cost",
+  "providerCalls": 0,
+  "goldRead": false,
+  "actualEndpoint": {
+    "providerName": "Alibaba",
+    "tag": "alibaba",
+    "onlyOneEndpointForThisSlug": true,
+    "supportedParameters": [
+      "reasoning", "reasoning_effort", "include_reasoning", "temperature", "top_p", "top_k",
+      "frequency_penalty", "presence_penalty", "repetition_penalty", "stop", "seed", "max_tokens",
+      "response_format", "tools", "tool_choice", "logprobs", "top_logprobs"
+    ],
+    "responseFormatInSupportedParameters": true,
+    "structuredOutputsInSupportedParameters": false,
+    "toolsInSupportedParameters": true,
+    "toolChoiceInSupportedParameters": true
+  },
+  "correctedCapabilityReading": {
+    "responseFormatJsonObject": "SUPPORTED - matches production's existing, already-correct use of response_format.type=json_object",
+    "responseFormatJsonSchemaStrict": "NOT SUPPORTED - 'structured_outputs' absent means this endpoint's strict-schema capability is not registered, consistent with the pre-existing Core registry entry ProviderStructuredOutputRegistry.QwenFlashAlibaba (JsonSchemaStrictSupported: false, JsonObjectSupported: true), written before this canary and now independently confirmed against live metadata",
+    "toolFunctionCalling": "SUPPORTED - 'tools' and 'tool_choice' are both present. This is the one constrained-output surface this endpoint actually offers beyond json_object: a function's 'parameters' is itself a JSON Schema, and forcing tool_choice to that one function is a structural way to require a specific argument shape - the same additionalProperties:false/oneOf-of-predicate-shapes technique V5StrictClaimSchemaCompilerV1 already builds, just carried as a function's parameters schema instead of response_format.json_schema.schema"
+  },
+  "relevanceToOpenQuestion": "The question this answers: 'does Qwen3.7's own route support tool/function schema or another constrained-output surface, or is the current fail-closed validator still the best trade-off?' Answer: YES, tool/function calling is available and unused today. This is worth prototyping as a provider-free schema-compile-and-freeze exercise (same discipline as V5StrictClaimSchemaCompilerV1/qwen38-27b canary) before any real call, but has NOT been built yet - this file only records the capability finding.",
+  "notDoneYet": [
+    "did not compile a tool/function schema variant of the claim contract",
+    "did not change the v2.1 composer, binder, or ontology",
+    "did not enable reasoning",
+    "did not make any provider call against qwen3.7-flash for this investigation",
+    "did not touch production's existing json_object request shape"
+  ]
+}
