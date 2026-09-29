@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "v5-provider-qualification-gold-score-v1",
+  "status": "V5_SCORE_COMPLETE_ZERO_CONTRACT_VALID_RESPONSES",
+  "goldRead": true,
+  "providerCallsAfterFreeze": 0,
+  "scorer": "GENERIC_EXACT_SCORER_V1",
+  "semanticInterpretation": "No V5 response passed the frozen claim codec; TP/FP/FN are the exact empty-prediction score and are not a semantic-quality estimate of a valid V5 hypothesis cohort.",
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "goldRead": true,
+      "goldClaims": 36,
+      "tp": 0,
+      "fp": 0,
+      "fn": 36,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exactScorerHeadline": {
+        "goldClaims": 36,
+        "hypothesesListed": 0,
+        "TRUE": 0,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 0,
+        "falsePositives": 0,
+        "falseNegatives": 36,
+        "truePrecision": 0,
+        "trueRecall": 0,
+        "f1": 0,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 36,
+        "partialOnly": 0,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 0,
+        "goldMultipartClaims": 18,
+        "exactMultipartMatches": 0,
+        "goldClaimsWithPartialPart": 1,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 0,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 0,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 36
+        }
+      },
+      "v4Frozen": {
+        "tp": 28,
+        "fp": 7,
+        "fn": 8,
+        "f1": 0.7887
+      },
+      "deltaVsV4": {
+        "tp": -28,
+        "fp": -7,
+        "fn": 28,
+        "f1": -0.7887
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "goldRead": true,
+      "goldClaims": 103,
+      "tp": 0,
+      "fp": 0,
+      "fn": 103,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exactScorerHeadline": {
+        "goldClaims": 103,
+        "hypothesesListed": 0,
+        "TRUE": 0,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 0,
+        "falsePositives": 0,
+        "falseNegatives": 103,
+        "truePrecision": 0,
+        "trueRecall": 0,
+        "f1": 0,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 103,
+        "partialOnly": 0,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 0,
+        "goldMultipartClaims": 6,
+        "exactMultipartMatches": 0,
+        "goldClaimsWithPartialPart": 0,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 0,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 0,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 103
+        }
+      },
+      "v4Frozen": {
+        "tp": 90,
+        "fp": 49,
+        "fn": 13,
+        "f1": 0.7438
+      },
+      "deltaVsV4": {
+        "tp": -90,
+        "fp": -49,
+        "fn": 90,
+        "f1": -0.7438
+      }
+    }
+  ],
+  "aggregate": {
+    "goldClaims": 139,
+    "tp": 0,
+    "fp": 0,
+    "fn": 139,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "v4Frozen": {
+      "tp": 118,
+      "fp": 56,
+      "fn": 21,
+      "precision": 0.6782,
+      "recall": 0.8489,
+      "f1": 0.754
+    }
+  },
+  "operational": {
+    "resolved": 0,
+    "open": 0,
+    "conflicted": 0,
+    "exhausted": 0,
+    "falseResolved": 0,
+    "falseResolvedRate": 0,
+    "bindingRefusals": 31,
+    "graphConflicts": 0,
+    "retrievalRounds": 0,
+    "layoutCalls": 0,
+    "visualCalls": 0,
+    "providerAttempts": 31,
+    "initialSemanticCalls": 31,
+    "refinementSemanticCalls": 0,
+    "promptTokens": 2025269,
+    "completionTokens": 30996,
+    "reasoningTokens": 0,
+    "latencyP50Ms": 8943.5465,
+    "latencyP95Ms": 17352.2966,
+    "totalElapsedSeconds": 393.7378777,
+    "finishReasonCounts": {
+      "stop": 30,
+      "length": 1
+    },
+    "semanticInvalid": 31
+  }
+}
