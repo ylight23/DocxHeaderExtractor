@@ -12,15 +12,21 @@ public sealed class V5DocumentAgentEntryPoint
     private readonly IEvidenceRetriever _retriever;
     private readonly EvidencePlanner _planner;
     private readonly IVisualEvidenceReasoner? _visual;
+    private readonly ILayoutEvidenceProvider? _layout;
+    private readonly ProjectionEngine? _projectionEngine;
 
     public V5DocumentAgentEntryPoint(
         IEvidenceRetriever? retriever = null,
         EvidencePlanner? planner = null,
-        IVisualEvidenceReasoner? visual = null)
+        IVisualEvidenceReasoner? visual = null,
+        ILayoutEvidenceProvider? layout = null,
+        ProjectionEngine? projectionEngine = null)
     {
         _retriever = retriever ?? new InMemoryEvidenceRetriever();
         _planner = planner ?? new EvidencePlanner();
         _visual = visual;
+        _layout = layout;
+        _projectionEngine = projectionEngine;
     }
 
     public Task<DocumentAgentExecutionResult> RunAsync(
@@ -41,7 +47,7 @@ public sealed class V5DocumentAgentEntryPoint
             unit.SourceOrdinal,
             0,
             unit.Text)).ToArray();
-        return new DocumentAgentRuntime(reasoner, _retriever, _planner, _visual)
+        return new DocumentAgentRuntime(reasoner, _retriever, _planner, _visual, _layout, _projectionEngine)
             .RunAsync(contract, evidence, atoms, cancellationToken);
     }
 }

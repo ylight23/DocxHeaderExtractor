@@ -6,17 +6,8 @@ namespace DocxHeaderExtractor.Core.V5;
 
 public enum AgentStage
 {
-    INGEST,
-    OBSERVE,
-    INITIAL_REASONING,
-    VALIDATE,
-    PLAN_EVIDENCE,
-    RETRIEVE,
-    LAYOUT_ESCALATE,
-    VISUAL_ESCALATE,
-    REVALIDATE,
-    PROJECT,
-    COMPLETE,
+    INGEST, OBSERVE, INITIAL_REASONING, VALIDATE, PLAN_EVIDENCE, RETRIEVE,
+    LAYOUT_ESCALATE, VISUAL_ESCALATE, REVALIDATE, PROJECT, COMPLETE,
 }
 
 public sealed record SemanticReasoningContext(
@@ -25,19 +16,32 @@ public sealed record SemanticReasoningContext(
     IReadOnlyList<EvidenceCandidate> RetrievedEvidence,
     int CallOrdinal);
 
+public sealed record SemanticReasoningUsage(
+    int PromptTokens = 0,
+    int CompletionTokens = 0,
+    int ReasoningTokens = 0)
+{
+    public int TotalTokens => checked(PromptTokens + CompletionTokens);
+}
+
+public sealed record SemanticReasoningResult(SemanticClaimResponse Response, SemanticReasoningUsage Usage);
+
 public interface ISemanticReasoner
 {
-    ValueTask<SemanticClaimResponse> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken);
+    ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken);
+    string Identity { get; }
+}
+
+public sealed record LayoutEvidenceRequest(string ClaimId, string Question, IReadOnlyList<string> EvidenceIds, int Budget);
+
+public interface ILayoutEvidenceProvider
+{
+    ValueTask<IReadOnlyList<SourceObservation>> ObserveAsync(LayoutEvidenceRequest request, CancellationToken cancellationToken);
     string Identity { get; }
 }
 
 public sealed record VisualEvidenceRequest(
-    string ClaimId,
-    string Question,
-    IReadOnlyList<string> EvidenceIds,
-    int? Page,
-    EvidenceGeometry? Region,
-    int Budget);
+    string ClaimId, string Question, IReadOnlyList<string> EvidenceIds, int? Page, EvidenceGeometry? Region, int Budget);
 
 public interface IVisualEvidenceReasoner
 {
@@ -54,7 +58,9 @@ public sealed record DocumentAgentExecutionResult(
     bool BudgetExhausted,
     int SemanticModelCalls,
     int RetrievalRounds,
-    int VisualCalls)
+    int VisualCalls,
+    int LayoutCalls = 0,
+    int TotalTokens = 0)
 {
     public IReadOnlyList<ClaimProvenance> Provenance { get; init; } = [];
 }
@@ -66,17 +72,23 @@ public sealed class DocumentAgentRuntime
     private readonly IEvidenceRetriever _retriever;
     private readonly EvidencePlanner _planner;
     private readonly IVisualEvidenceReasoner? _visual;
+    private readonly ILayoutEvidenceProvider? _layout;
+    private readonly ProjectionEngine? _projectionEngine;
 
     public DocumentAgentRuntime(
         ISemanticReasoner reasoner,
         IEvidenceRetriever retriever,
         EvidencePlanner? planner = null,
-        IVisualEvidenceReasoner? visual = null)
+        IVisualEvidenceReasoner? visual = null,
+        ILayoutEvidenceProvider? layout = null,
+        ProjectionEngine? projectionEngine = null)
     {
         _reasoner = reasoner ?? throw new ArgumentNullException(nameof(reasoner));
         _retriever = retriever ?? throw new ArgumentNullException(nameof(retriever));
         _planner = planner ?? new EvidencePlanner();
         _visual = visual;
+        _layout = layout;
+        _projectionEngine = projectionEngine;
     }
 
     public async Task<DocumentAgentExecutionResult> RunAsync(
@@ -99,31 +111,51 @@ public sealed class DocumentAgentRuntime
         var allClaims = new Dictionary<string, BoundSemanticClaim>(StringComparer.Ordinal);
         var allConflicts = new List<KnowledgeValidationIssue>();
         var retrieved = new List<EvidenceCandidate>();
+        var retrievalByClaim = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+        var layoutByClaim = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+        var visualByClaim = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+        var refinementCounts = new Dictionary<string, int>(StringComparer.Ordinal);
         var workingGraph = evidenceGraph;
         var hashesByClaim = new Dictionary<string, (string Request, string Response)>(StringComparer.Ordinal);
         var semanticCalls = 0;
         var retrievalRounds = 0;
         var visualCalls = 0;
+        var layoutCalls = 0;
+        var totalTokens = 0;
+        var exhausted = false;
 
         while (true)
         {
             cancellationToken.ThrowIfCancellationRequested();
             if (ElapsedSeconds(started) > budget.MaxWallClockSeconds)
-                return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace, true, semanticCalls, retrievalRounds,
-                    visualCalls, contract, retrieved, hashesByClaim, _reasoner.Identity);
-
-            if (semanticCalls >= budget.MaxSemanticModelCalls)
-                break;
+            {
+                ExhaustOpenClaims(allClaims); exhausted = true; break;
+            }
+            if (semanticCalls >= budget.MaxSemanticModelCalls) break;
+            if (budget.MaxTokens > 0 && totalTokens >= budget.MaxTokens)
+            {
+                ExhaustOpenClaims(allClaims); exhausted = true; break;
+            }
             Mark(semanticCalls == 0 ? AgentStage.INITIAL_REASONING : AgentStage.REVALIDATE, $"semantic-call={semanticCalls + 1}");
-            var context = new SemanticReasoningContext(contract, workingGraph, retrieved, semanticCalls);
+            var context = new SemanticReasoningContext(contract, workingGraph, retrieved.ToArray(), semanticCalls);
             var requestHash = Hashing.Sha256(JsonSerializer.Serialize(new
             {
-                contract = contract.Hash(),
-                graph = workingGraph.Hash(),
-                call = semanticCalls,
-                retrieved,
+                contract = contract.Hash(), graph = workingGraph.Hash(), call = semanticCalls, retrieved,
             }, CanonicalJson.Options));
-            var response = await _reasoner.ReasonAsync(context, cancellationToken);
+            using var turnDeadline = CreateDeadlineToken(started, budget.MaxWallClockSeconds, cancellationToken);
+            SemanticReasoningResult reasoning;
+            try
+            {
+                reasoning = await _reasoner.ReasonAsync(context, turnDeadline.Token);
+            }
+            catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+            {
+                ExhaustOpenClaims(allClaims);
+                exhausted = true;
+                break;
+            }
+            var response = reasoning.Response;
+            totalTokens = checked(totalTokens + reasoning.Usage.TotalTokens);
             var responseHash = Hashing.Sha256(JsonSerializer.Serialize(response, CanonicalJson.Options));
             var contractIssues = SemanticClaimContract.Validate(response, contract);
             if (contractIssues.Count > 0)
@@ -134,116 +166,179 @@ public sealed class DocumentAgentRuntime
             var binding = ExactClaimBinder.Bind(response.Claims, atoms);
             foreach (var claim in binding.Bound)
             {
+                if (allClaims.TryGetValue(claim.ClaimId, out var previous) && !ClaimTransitionPolicy.IsAllowed(previous, claim))
+                {
+                    allConflicts.Add(new KnowledgeValidationIssue("ILLEGAL_CLAIM_TRANSITION", claim.ClaimId,
+                        $"transition {previous.State}->{claim.State} or identity change is not allowed"));
+                    continue;
+                }
                 allClaims[claim.ClaimId] = claim;
                 hashesByClaim[claim.ClaimId] = (requestHash, responseHash);
             }
             allConflicts.AddRange(binding.Refusals.Select(item => new KnowledgeValidationIssue("CLAIM_BINDING", item.Key, item.Value)));
             semanticCalls++;
 
+            if (budget.MaxTokens > 0 && totalTokens >= budget.MaxTokens)
+            {
+                ExhaustOpenClaims(allClaims); exhausted = true;
+            }
             var state = new DocumentKnowledgeState(workingGraph, allClaims.Values, allConflicts);
             Mark(AgentStage.VALIDATE, $"claims={state.Claims.Count};open={state.OpenClaims.Count}");
             var graphIssues = KnowledgeGraphValidator.Validate(state, contract);
             allConflicts.AddRange(graphIssues);
             if (state.OpenClaims.Count == 0 && graphIssues.Count == 0) break;
+            if (exhausted) break;
 
             Mark(AgentStage.PLAN_EVIDENCE, $"round={retrievalRounds + 1}");
             var plan = _planner.Plan(state, contract, retrievalRounds);
-            if (plan.BudgetExhausted || plan.Actions.Count == 0) break;
-            Mark(AgentStage.RETRIEVE, $"actions={plan.Actions.Count}");
+            if (plan.BudgetExhausted || plan.Actions.Count == 0)
+            {
+                ExhaustOpenClaims(allClaims);
+                exhausted = true;
+                break;
+            }
             foreach (var action in plan.Actions)
             {
                 var claim = state.Claims.FirstOrDefault(item => item.ClaimId == action.ClaimId);
                 if (claim is null) continue;
-                var sourceAlias = claim.Subject.Parts.FirstOrDefault()?.Alias;
-                var sourceEvidenceId = workingGraph.Nodes.FirstOrDefault(node => node.SourceAlias == sourceAlias)?.EvidenceId;
+                refinementCounts[action.ClaimId] = refinementCounts.GetValueOrDefault(action.ClaimId) + 1;
+                if (refinementCounts[action.ClaimId] > budget.MaxUnresolvedRefinements)
+                {
+                    allClaims[action.ClaimId] = claim with { State = ClaimResolutionState.EXHAUSTED };
+                    continue;
+                }
+                var aliases = claim.Subject.Parts.Select(part => part.Alias).ToHashSet(StringComparer.Ordinal);
+                var sourceIds = workingGraph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).Select(node => node.EvidenceId).ToArray();
+                var sourceEvidenceId = sourceIds.FirstOrDefault();
+                if (action.Modality == EvidenceModality.LAYOUT && _layout is null)
+                {
+                    allConflicts.Add(new KnowledgeValidationIssue("LAYOUT_PROVIDER_MISSING", claim.ClaimId,
+                        "layout evidence was requested but no typed layout provider was registered"));
+                    continue;
+                }
+                if (action.Modality == EvidenceModality.LAYOUT && layoutCalls >= budget.MaxLayoutCalls)
+                {
+                    allClaims[action.ClaimId] = claim with { State = ClaimResolutionState.EXHAUSTED };
+                    continue;
+                }
+                if (action.Modality == EvidenceModality.LAYOUT && _layout is not null && layoutCalls < budget.MaxLayoutCalls)
+                {
+                    Mark(AgentStage.LAYOUT_ESCALATE, $"claim={action.ClaimId}");
+                    var observations = await _layout.ObserveAsync(new LayoutEvidenceRequest(action.ClaimId,
+                        $"Resolve evidence need {action.Need} for predicate {claim.Predicate}.", sourceIds,
+                        budget.MaxLayoutCalls - layoutCalls), cancellationToken);
+                    MergeObservations(ref workingGraph, observations, layoutByClaim, action.ClaimId);
+                    layoutCalls++;
+                    continue;
+                }
+                if (action.Modality == EvidenceModality.VISUAL && _visual is null)
+                {
+                    allConflicts.Add(new KnowledgeValidationIssue("VISUAL_PROVIDER_MISSING", claim.ClaimId,
+                        "visual evidence was requested but no visual provider was registered"));
+                    continue;
+                }
+                if (action.Modality == EvidenceModality.VISUAL && visualCalls >= budget.MaxVisualCalls)
+                {
+                    allClaims[action.ClaimId] = claim with { State = ClaimResolutionState.EXHAUSTED };
+                    continue;
+                }
                 if (action.Modality == EvidenceModality.VISUAL && _visual is not null && visualCalls < budget.MaxVisualCalls)
                 {
                     Mark(AgentStage.VISUAL_ESCALATE, $"claim={action.ClaimId}");
-                    var aliases = claim.Subject.Parts.Select(part => part.Alias).ToHashSet(StringComparer.Ordinal);
-                    var visualRequest = new VisualEvidenceRequest(
-                        claim.ClaimId,
-                        $"Resolve evidence need {action.Need} for predicate {claim.Predicate}.",
-                        workingGraph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).Select(node => node.EvidenceId).ToArray(),
-                        workingGraph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).Select(node => node.Anchor.Geometry?.Page).FirstOrDefault(value => value is not null),
-                        workingGraph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).Select(node => node.Anchor.Geometry).FirstOrDefault(value => value is not null),
-                        budget.MaxVisualCalls - visualCalls);
-                    var visualObservations = await _visual.InspectAsync(visualRequest, cancellationToken);
-                    if (visualObservations.Count > 0)
-                    {
-                        var visualGraph = EvidenceGraphBuilder.Build(visualObservations);
-                        workingGraph = new UniversalEvidenceGraph(
-                            workingGraph.Nodes.Concat(visualGraph.Nodes),
-                            workingGraph.Relations.Concat(visualGraph.Relations));
-                    }
+                    var region = workingGraph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).Select(node => node.Anchor.Geometry).FirstOrDefault(value => value is not null);
+                    var page = workingGraph.Nodes.Where(node => aliases.Contains(node.SourceAlias)).Select(node => node.Anchor.Geometry?.Page).FirstOrDefault(value => value is not null);
+                    var observations = await _visual.InspectAsync(new VisualEvidenceRequest(action.ClaimId,
+                        $"Resolve evidence need {action.Need} for predicate {claim.Predicate}.", sourceIds, page, region,
+                        budget.MaxVisualCalls - visualCalls), cancellationToken);
+                    MergeObservations(ref workingGraph, observations, visualByClaim, action.ClaimId);
                     visualCalls++;
                     continue;
                 }
-                var candidate = _retriever.Retrieve(
-                    new EvidenceRetrievalRequest(action.ClaimId, claim.Predicate, action.Need, sourceEvidenceId,
-                        "task-contract", action.MaxResults), workingGraph);
-                retrieved.AddRange(candidate.Take(Math.Max(0, budget.MaxRetrievedEvidenceNodes - retrieved.Count)));
+                var candidates = _retriever.Retrieve(new EvidenceRetrievalRequest(action.ClaimId, claim.Predicate,
+                    action.Need, sourceEvidenceId, "task-contract", action.MaxResults), workingGraph);
+                var remaining = Math.Max(0, budget.MaxRetrievedEvidenceNodes - retrieved.Count);
+                var accepted = candidates.Take(remaining).ToArray();
+                retrieved.AddRange(accepted);
+                if (!retrievalByClaim.TryGetValue(action.ClaimId, out var ids)) retrievalByClaim[action.ClaimId] = ids = new();
+                foreach (var item in accepted) ids.Add(item.EvidenceId);
             }
             retrievalRounds++;
-            if (semanticCalls >= budget.MaxSemanticModelCalls) break;
+            if (semanticCalls >= budget.MaxSemanticModelCalls)
+            {
+                ExhaustOpenClaims(allClaims);
+                exhausted = true;
+                break;
+            }
         }
 
         var finalState = new DocumentKnowledgeState(workingGraph, allClaims.Values, allConflicts);
         var finalIssues = KnowledgeGraphValidator.Validate(finalState, contract);
         allConflicts.AddRange(finalIssues);
-        Mark(AgentStage.PROJECT, "projection-input-frozen");
+        IReadOnlyDictionary<string, ProjectionResult> projections = new Dictionary<string, ProjectionResult>(StringComparer.Ordinal);
+        if (_projectionEngine is null && contract.Projections.Any(item => item.Required))
+            throw new InvalidOperationException("projection-engine-missing");
+        if (_projectionEngine is not null)
+            projections = _projectionEngine.Project(finalState, contract).ToDictionary(item => item.ProjectionName, StringComparer.Ordinal);
+        Mark(AgentStage.PROJECT, $"projections={projections.Count}");
         Mark(AgentStage.COMPLETE, allConflicts.Count == 0 ? "resolved" : "completed-with-open-or-conflicted-claims");
-        return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace,
-            semanticCalls >= budget.MaxSemanticModelCalls && finalState.OpenClaims.Count > 0,
-            semanticCalls, retrievalRounds, visualCalls, contract, retrieved, hashesByClaim, _reasoner.Identity);
+        return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace, exhausted,
+            semanticCalls, retrievalRounds, visualCalls, layoutCalls, totalTokens, contract, retrieved,
+            hashesByClaim, retrievalByClaim, layoutByClaim, visualByClaim, _reasoner.Identity, projections);
+    }
+
+    private static void MergeObservations(ref UniversalEvidenceGraph graph, IReadOnlyList<SourceObservation> observations,
+        IDictionary<string, HashSet<string>> byClaim, string claimId)
+    {
+        if (observations.Count == 0) return;
+        var added = EvidenceGraphBuilder.Build(observations);
+        graph = new UniversalEvidenceGraph(graph.Nodes.Concat(added.Nodes), graph.Relations.Concat(added.Relations));
+        if (!byClaim.TryGetValue(claimId, out var ids)) byClaim[claimId] = ids = new();
+        foreach (var item in added.Nodes) ids.Add(item.EvidenceId);
+    }
+
+    private static void ExhaustOpenClaims(IDictionary<string, BoundSemanticClaim> claims)
+    {
+        foreach (var item in claims.Where(item => item.Value.State is ClaimResolutionState.OPEN or ClaimResolutionState.CONFLICTED).ToArray())
+            claims[item.Key] = item.Value with { State = ClaimResolutionState.EXHAUSTED };
     }
 
     private static DocumentAgentExecutionResult Finish(
-        IReadOnlyList<BoundSemanticClaim> claims,
-        UniversalEvidenceGraph graph,
-        IReadOnlyList<KnowledgeValidationIssue> conflicts,
-        IReadOnlyList<AgentExecutionTrace> trace,
-        bool exhausted,
-        int semanticCalls,
-        int retrievalRounds,
-        int visualCalls,
-        DocumentTaskContract contract,
-        IReadOnlyList<EvidenceCandidate> retrieved,
+        IReadOnlyList<BoundSemanticClaim> claims, UniversalEvidenceGraph graph, IReadOnlyList<KnowledgeValidationIssue> conflicts,
+        IReadOnlyList<AgentExecutionTrace> trace, bool exhausted, int semanticCalls, int retrievalRounds, int visualCalls,
+        int layoutCalls, int totalTokens, DocumentTaskContract contract, IReadOnlyList<EvidenceCandidate> retrieved,
         IReadOnlyDictionary<string, (string Request, string Response)> hashesByClaim,
-        string modelIdentity)
+        IReadOnlyDictionary<string, HashSet<string>> retrievalByClaim, IReadOnlyDictionary<string, HashSet<string>> layoutByClaim,
+        IReadOnlyDictionary<string, HashSet<string>> visualByClaim, string modelIdentity,
+        IReadOnlyDictionary<string, ProjectionResult> projections)
     {
         var contractHash = contract.Hash();
         var graphHash = graph.Hash();
         var provenance = claims.Select(claim =>
         {
-            var evidenceIds = graph.Nodes
-                .Where(node => claim.Subject.Parts.Any(part => part.Alias == node.SourceAlias))
-                .Select(node => node.EvidenceId)
-                .Distinct(StringComparer.Ordinal)
-                .ToArray();
+            var evidenceIds = graph.Nodes.Where(node => claim.Subject.Parts.Any(part => part.Alias == node.SourceAlias))
+                .Select(node => node.EvidenceId).Distinct(StringComparer.Ordinal).ToArray();
             var hashes = hashesByClaim.GetValueOrDefault(claim.ClaimId);
-            return new ClaimProvenance(
-                claim.ClaimId,
-                contractHash,
-                graphHash,
-                evidenceIds,
-                hashes.Request,
-                hashes.Response,
-                null,
-                modelIdentity,
-                "v5-exact-source-parts-1",
-                "v5-knowledge-validator-1",
-                retrieved.Select(item => item.EvidenceId).Distinct(StringComparer.Ordinal).ToArray(),
-                [],
-                claim.State,
-                contract.Projections.Select(item => item.Name).ToArray());
+            return new ClaimProvenance(claim.ClaimId, contractHash, graphHash, evidenceIds, hashes.Request, hashes.Response,
+                null, modelIdentity, "v5-exact-source-parts-1", "v5-knowledge-validator-1",
+                retrievalByClaim.GetValueOrDefault(claim.ClaimId)?.OrderBy(item => item, StringComparer.Ordinal).ToArray() ?? [],
+                visualByClaim.GetValueOrDefault(claim.ClaimId)?.OrderBy(item => item, StringComparer.Ordinal).ToArray() ?? [],
+                claim.State, projections.Keys.OrderBy(item => item, StringComparer.Ordinal).ToArray()) with
+            {
+                LayoutEvidenceIds = layoutByClaim.GetValueOrDefault(claim.ClaimId)?.OrderBy(item => item, StringComparer.Ordinal).ToArray() ?? [],
+            };
         }).ToArray();
-        var state = new DocumentKnowledgeState(graph, claims, conflicts, provenance);
+        var state = new DocumentKnowledgeState(graph, claims, conflicts, provenance, projections);
         return new DocumentAgentExecutionResult(state, AgentStage.COMPLETE, trace, exhausted,
-            semanticCalls, retrievalRounds, visualCalls)
-        {
-            Provenance = provenance,
-        };
+            semanticCalls, retrievalRounds, visualCalls, layoutCalls, totalTokens) { Provenance = provenance };
     }
 
     private static double ElapsedSeconds(long started) => (Stopwatch.GetTimestamp() - started) / (double)Stopwatch.Frequency;
+
+    private static CancellationTokenSource CreateDeadlineToken(long started, int maxSeconds, CancellationToken caller)
+    {
+        var source = CancellationTokenSource.CreateLinkedTokenSource(caller);
+        var remaining = Math.Max(1, (int)Math.Ceiling(maxSeconds - ElapsedSeconds(started)));
+        source.CancelAfter(TimeSpan.FromSeconds(remaining));
+        return source;
+    }
 }

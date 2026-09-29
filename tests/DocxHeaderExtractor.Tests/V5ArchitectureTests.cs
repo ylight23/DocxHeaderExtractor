@@ -61,6 +61,36 @@ public sealed class V5ArchitectureTests
     }
 
     [Fact]
+    public void Unresolved_structural_cycle_is_not_authoritative()
+    {
+        var graph = EvidenceGraphBuilder.Build([
+            Observation("E1", "A1", "Alpha"), Observation("E2", "A2", "Beta")]);
+        var whole = (string alias) => new ClaimSourceEndpoint([new(alias, CanonicalSemanticSelectionMode.WholeAlias)]);
+        var claims = ExactClaimBinder.Bind([
+            new("c1", whole("A1"), "RELATES_TO", Object: whole("A2"), State: ClaimResolutionState.OPEN,
+                EvidenceNeeds: [EvidenceNeed.GLOBAL_TARGET]),
+            new("c2", whole("A2"), "RELATES_TO", Object: whole("A1"), State: ClaimResolutionState.CONFLICTED,
+                EvidenceNeeds: [EvidenceNeed.GLOBAL_TARGET]),
+        ], Atoms()).Bound;
+        var issues = KnowledgeGraphValidator.Validate(new DocumentKnowledgeState(graph, claims), Contract());
+        Assert.DoesNotContain(issues, issue => issue.Code == "STRUCTURAL_CYCLE");
+    }
+
+    [Fact]
+    public void Claim_transition_policy_is_fail_closed()
+    {
+        var bound = ExactClaimBinder.Bind([
+            new("c1", new ClaimSourceEndpoint([new("A1", CanonicalSemanticSelectionMode.WholeAlias)]),
+                "DESCRIBES", State: ClaimResolutionState.RESOLVED, Value: "one"),
+        ], Atoms()).Bound.Single();
+        var changed = bound with { Value = "two" };
+        var exhausted = bound with { State = ClaimResolutionState.EXHAUSTED };
+        Assert.False(ClaimTransitionPolicy.IsAllowed(bound, changed));
+        Assert.False(ClaimTransitionPolicy.IsAllowed(exhausted, bound));
+        Assert.True(ClaimTransitionPolicy.IsAllowed(bound, bound));
+    }
+
+    [Fact]
     public void Planner_uses_open_claim_need_not_model_confidence()
     {
         var graph = EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha")]);
@@ -184,6 +214,87 @@ public sealed class V5ArchitectureTests
         Assert.Equal("v5-exact-source-parts-1", provenance.BinderVersion);
     }
 
+    [Fact]
+    public async Task Runtime_executes_required_projection_and_records_layout_budget()
+    {
+        var contract = Contract() with
+        {
+            Projections = [new ProjectionRequest("knowledge-state", "required", Required: true)],
+            ExecutionBudget = new ExecutionBudget(MaxSemanticModelCalls: 1, MaxLayoutCalls: 1),
+        };
+        var graph = EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha")]);
+        var projection = new ProjectionEngine([new TestProjection("knowledge-state", state => state.Claims.Count)]);
+        var result = await new DocumentAgentRuntime(new NoopReasoner(), new InMemoryEvidenceRetriever(),
+            projectionEngine: projection).RunAsync(contract, graph, Atoms());
+        Assert.True(result.State.ProjectionState.ContainsKey("knowledge-state"));
+        Assert.Equal(0, Assert.IsType<int>(result.State.ProjectionState["knowledge-state"].Payload));
+    }
+
+    [Fact]
+    public async Task Retrieval_evidence_is_passed_to_next_reasoner_and_claim_scoped()
+    {
+        var recorder = new RecordingReasoner();
+        var result = await new DocumentAgentRuntime(recorder, new FixedRetriever("E2"))
+            .RunAsync(Contract() with { ExecutionBudget = new ExecutionBudget(MaxSemanticModelCalls: 2, MaxRetrievalRounds: 1) },
+                EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha"), Observation("E2", "A2", "Beta")]), Atoms());
+        Assert.Equal(2, recorder.Contexts.Count);
+        Assert.Contains(recorder.Contexts[1].RetrievedEvidence, item => item.EvidenceId == "E2");
+        Assert.Contains("E2", Assert.Single(result.Provenance).RetrievalEvidenceIds);
+    }
+
+    [Fact]
+    public async Task Visual_evidence_is_merged_before_subsequent_reasoning()
+    {
+        var recorder = new RecordingReasoner(EvidenceNeed.VISUAL_EVIDENCE);
+        var visual = new FixedVisualProvider();
+        var contract = Contract() with
+        {
+            EvidencePolicy = new EvidencePolicy([EvidenceModality.VISUAL], [EvidenceNeed.VISUAL_EVIDENCE]),
+            ExecutionBudget = new ExecutionBudget(MaxSemanticModelCalls: 2, MaxVisualCalls: 1),
+        };
+        var result = await new DocumentAgentRuntime(recorder, new InMemoryEvidenceRetriever(), visual: visual)
+            .RunAsync(contract, EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha")]), Atoms());
+        Assert.Contains(recorder.Contexts[1].EvidenceGraph.Nodes, item => item.EvidenceId == "VISUAL-1");
+        Assert.Contains("VISUAL-1", Assert.Single(result.Provenance).VisualEvidenceIds);
+    }
+
+    [Fact]
+    public void Streaming_reassembly_requires_terminal_finish_event()
+    {
+        var events = DocxHeaderExtractor.Core.V5.V5StreamingTransportAdapter.FrameSse(
+            "data: {\"choices\":[{\"delta\":{\"content\":\"chunk\"}}]}\n\n" +
+            "data: {\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":2}}\n\n" +
+            "data: [DONE]\n\n");
+        var result = V5StreamingTransportAdapter.Reassemble(events);
+        Assert.Equal(V5StreamFailure.EOF_BEFORE_TERMINAL, result.Telemetry.Failure);
+        Assert.Equal("chunk", result.Content);
+    }
+
+    [Fact]
+    public void Request_composer_is_deterministic_and_contract_driven()
+    {
+        var graph = EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha")]);
+        var packet = new V5EvidencePacket(graph.Nodes, graph.Nodes, [], [], [], []);
+        var first = V5SemanticRequestComposer.Compose(Contract(), packet);
+        var second = V5SemanticRequestComposer.Compose(Contract(), packet);
+        Assert.Equal(first.RequestHash, second.RequestHash);
+        Assert.Equal(first.PromptHash, second.PromptHash);
+        Assert.DoesNotContain("heading", first.Prompt, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Source_adapter_rejects_inverted_geometry()
+    {
+        var catalog = new DocumentSourceCatalog([
+            new DocumentSourceUnit("S1", 1, "Alpha", new SourceAnchor
+            {
+                SourceType = "PDF", Page = 1, BoundingBox = new PdfBoundingBox(10, 20, 5, 30),
+            }, new StructuralSpan(0, 5)),
+        ]);
+        Assert.Throws<InvalidOperationException>(() =>
+            DocxHeaderExtractor.DocumentProcessing.Pipeline.V5SourceEvidenceAdapter.Build(catalog));
+    }
+
     private static DocumentTaskContract Contract() => new(
         V5Protocol.TaskContractVersion,
         "generic-document-task",
@@ -220,24 +331,58 @@ public sealed class V5ArchitectureTests
     {
         public string Identity => "test-noop";
 
-        public ValueTask<SemanticClaimResponse> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken) =>
-            ValueTask.FromResult(new SemanticClaimResponse([]));
+        public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken) =>
+            ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponse([]), new SemanticReasoningUsage()));
     }
 
     private sealed class SequenceReasoner : ISemanticReasoner
     {
         public string Identity => "test-sequence";
 
-        public ValueTask<SemanticClaimResponse> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken)
+        public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken)
         {
             var state = context.CallOrdinal == 0 ? ClaimResolutionState.OPEN : ClaimResolutionState.RESOLVED;
-            return ValueTask.FromResult(new SemanticClaimResponse([
+            return ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponse([
                 new("c1", new ClaimSourceEndpoint([
                     new("A1", CanonicalSemanticSelectionMode.WholeAlias)]),
                     "DESCRIBES", State: state,
                     Value: state == ClaimResolutionState.RESOLVED ? "target" : null,
                     EvidenceNeeds: state == ClaimResolutionState.OPEN ? [EvidenceNeed.GLOBAL_TARGET] : []),
-            ]));
+            ]), new SemanticReasoningUsage()));
         }
+    }
+
+    private sealed class RecordingReasoner(EvidenceNeed need = EvidenceNeed.GLOBAL_TARGET) : ISemanticReasoner
+    {
+        public string Identity => "test-recording";
+        public List<SemanticReasoningContext> Contexts { get; } = [];
+
+        public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken)
+        {
+            Contexts.Add(context);
+            var state = context.CallOrdinal == 0 ? ClaimResolutionState.OPEN : ClaimResolutionState.RESOLVED;
+            var response = new SemanticClaimResponse([
+                new("c1", new ClaimSourceEndpoint([new("A1", CanonicalSemanticSelectionMode.WholeAlias)]),
+                    "DESCRIBES", State: state, Value: state == ClaimResolutionState.RESOLVED ? "target" : null,
+                    EvidenceNeeds: state == ClaimResolutionState.OPEN ? [need] : []),
+            ]);
+            return ValueTask.FromResult(new SemanticReasoningResult(response, new SemanticReasoningUsage()));
+        }
+    }
+
+    private sealed class FixedRetriever(string evidenceId) : IEvidenceRetriever
+    {
+        public IReadOnlyList<EvidenceCandidate> Retrieve(EvidenceRetrievalRequest request, UniversalEvidenceGraph graph) =>
+            [new EvidenceCandidate(evidenceId, 1, "TEST", "fixed")];
+    }
+
+    private sealed class FixedVisualProvider : IVisualEvidenceReasoner
+    {
+        public string Identity => "test-visual";
+        public ValueTask<IReadOnlyList<SourceObservation>> InspectAsync(VisualEvidenceRequest request, CancellationToken cancellationToken) =>
+            ValueTask.FromResult<IReadOnlyList<SourceObservation>>([
+                new SourceObservation("VISUAL-1", "visual-source", "A1", 3, EvidenceModality.VISUAL, "visual observation",
+                    new StructuralSpan(0, 18)),
+            ]);
     }
 }

@@ -43,6 +43,7 @@ public sealed record ExecutionBudget(
     int MaxSemanticModelCalls = 1,
     int MaxRetrievalRounds = 2,
     int MaxRetrievedEvidenceNodes = 64,
+    int MaxLayoutCalls = 1,
     int MaxVisualCalls = 1,
     int MaxTokens = 0,
     int MaxWallClockSeconds = 300,
@@ -51,7 +52,7 @@ public sealed record ExecutionBudget(
     public void Validate()
     {
         if (MaxSemanticModelCalls < 0 || MaxRetrievalRounds < 0 || MaxRetrievedEvidenceNodes < 0 ||
-            MaxVisualCalls < 0 || MaxTokens < 0 || MaxWallClockSeconds <= 0 || MaxUnresolvedRefinements < 0)
+            MaxLayoutCalls < 0 || MaxVisualCalls < 0 || MaxTokens < 0 || MaxWallClockSeconds <= 0 || MaxUnresolvedRefinements < 0)
             throw new InvalidOperationException("execution-budget-invalid");
     }
 }

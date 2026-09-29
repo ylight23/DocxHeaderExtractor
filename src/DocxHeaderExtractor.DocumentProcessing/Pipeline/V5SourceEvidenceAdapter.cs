@@ -15,14 +15,16 @@ public static class V5SourceEvidenceAdapter
         var observations = catalog.Units.Select(unit =>
         {
             var anchor = unit.SourceAnchor;
+            if (anchor.BoundingBox is { } box && (box.Right < box.Left || box.Top < box.Bottom))
+                throw new InvalidOperationException($"source-geometry-inverted:{unit.SourceId}");
             EvidenceGeometry? geometry = anchor.Page is null && anchor.BoundingBox is null
                 ? null
                 : new EvidenceGeometry(
                     anchor.Page,
                     anchor.BoundingBox?.Left,
                     anchor.BoundingBox?.Top,
-                    anchor.BoundingBox is { } box ? box.Right - box.Left : null,
-                    anchor.BoundingBox is { } box2 ? box2.Top - box2.Bottom : null);
+                    anchor.BoundingBox is { } widthBox ? widthBox.Right - widthBox.Left : null,
+                    anchor.BoundingBox is { } heightBox ? heightBox.Top - heightBox.Bottom : null);
             var facts = new Dictionary<string, string?>(StringComparer.Ordinal)
             {
                 ["sourceType"] = anchor.SourceType,

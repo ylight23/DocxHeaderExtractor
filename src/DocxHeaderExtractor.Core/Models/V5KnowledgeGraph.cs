@@ -29,6 +29,30 @@ public sealed class DocumentKnowledgeState
     public IReadOnlyList<BoundSemanticClaim> ResolvedClaims => Claims.Where(item => item.State == ClaimResolutionState.RESOLVED).ToArray();
 }
 
+public static class ClaimTransitionPolicy
+{
+    public static bool IsAllowed(BoundSemanticClaim previous, BoundSemanticClaim next)
+    {
+        ArgumentNullException.ThrowIfNull(previous);
+        ArgumentNullException.ThrowIfNull(next);
+        if (!string.Equals(previous.ClaimId, next.ClaimId, StringComparison.Ordinal)) return false;
+        if (!string.Equals(previous.Identity, next.Identity, StringComparison.Ordinal) &&
+            previous.State is ClaimResolutionState.RESOLVED or ClaimResolutionState.EXHAUSTED)
+            return false;
+        if (previous.State == ClaimResolutionState.EXHAUSTED) return false;
+        return previous.State switch
+        {
+            ClaimResolutionState.OPEN => next.State is ClaimResolutionState.OPEN or ClaimResolutionState.RESOLVED
+                or ClaimResolutionState.CONFLICTED or ClaimResolutionState.EXHAUSTED,
+            ClaimResolutionState.CONFLICTED => next.State is ClaimResolutionState.CONFLICTED or ClaimResolutionState.RESOLVED
+                or ClaimResolutionState.EXHAUSTED,
+            ClaimResolutionState.RESOLVED => next.State == ClaimResolutionState.RESOLVED &&
+                string.Equals(previous.Identity, next.Identity, StringComparison.Ordinal),
+            _ => false,
+        };
+    }
+}
+
 public static class KnowledgeGraphValidator
 {
     public static IReadOnlyList<KnowledgeValidationIssue> Validate(
@@ -56,7 +80,8 @@ public static class KnowledgeGraphValidator
         }
         foreach (var relation in contract.Relations.Where(item => item.StructuralParent))
         {
-            var edges = state.Claims.Where(item => item.Predicate == relation.Name && item.Object is not null)
+            var edges = state.Claims.Where(item => item.State == ClaimResolutionState.RESOLVED &&
+                    item.Predicate == relation.Name && item.Object is not null)
                 .Select(item => (From: item.Subject.Identity, To: item.Object!.Identity)).ToArray();
             if (HasCycle(edges)) issues.Add(new("STRUCTURAL_CYCLE", null, $"relation '{relation.Name}' contains a cycle"));
         }
