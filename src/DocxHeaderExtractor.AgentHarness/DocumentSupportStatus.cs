@@ -1,11 +1,10 @@
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
 /// <summary>
-/// Support is a separate runtime fact from extraction completion. Unknown mode is not an error,
-/// but it must not be presented as a supported high-confidence empty result.
+/// Support is a separate runtime fact from extraction completion. A run without an authority
+/// route is not an error, but it must not be presented as a supported high-confidence empty result.
 /// </summary>
 public sealed record DocumentSupportStatus(
     string ExtractionStatus,
@@ -22,7 +21,7 @@ public sealed record DocumentSupportStatus(
         var supportedRoute = !string.IsNullOrWhiteSpace(outline.DeterministicRoute) ||
                              outline.RouteAudit is not null ||
                              outline.Outcome?.EvidenceRoute is not null;
-        var supportNotProven = outline.DocumentMode?.Mode == DocumentMode.Unknown || !supportedRoute;
+        var supportNotProven = !supportedRoute;
         var emptyWithoutRoute = outline.ParagraphCount > 0 && outline.Headings.Count == 0 && !supportedRoute;
         return new(
             emptyWithoutRoute ? CompletedWithoutSupportedRoute : Completed,

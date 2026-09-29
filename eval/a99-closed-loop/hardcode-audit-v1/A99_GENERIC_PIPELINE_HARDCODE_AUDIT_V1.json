@@ -1,0 +1,512 @@
+{
+  "artifactKind": "a99_generic_pipeline_hardcode_audit",
+  "study": "A99_GENERIC_PIPELINE_HARDCODE_AUDIT_V1",
+  "principle": "HARNESS MAY REPORT OBSERVABLE SOURCE FACTS. HARNESS MUST NOT PRE-INTERPRET THEIR SEMANTIC MEANING.",
+  "decidingColumn": "wouldTheModelBeAskedToInferThisSameFact: if yes, the harness does not send its conclusion",
+  "modelProviderCalls": 0,
+  "reviewer": "rows are the reviewer's reading of the code; measurements below are computed",
+  "rows": [
+    {
+      "Symbol": "scope",
+      "Value": "running_page_artifact (PDF)",
+      "Producer": "PdfCandidateContextBuilder.BuildFacts: every line page-number-shaped, or repeated on >= max(3, pages/3) pages AND in the top/bottom 8% of the extent",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision (plus a non-suppressive review observation)",
+      "DataTriggered": "measured below",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "location.page, location.pageBand, location.sameNormalizedTextPageCount/FirstPage/LastPage, text",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES - PAGE_FURNITURE is an occurrence role the model decides",
+      "Classification": "PRE_INTERPRETED_SEMANTIC_PRIOR",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE; replaced by raw position and recurrence counts"
+    },
+    {
+      "Symbol": "scope",
+      "Value": "table_of_contents (PDF)",
+      "Producer": "PdfStructuralScopeDetector.DetectTocBlockIds: dot-leader + page-number lines, >= 3 on one page, only in the first min(5, pages/4) pages",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision",
+      "DataTriggered": "measured below",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "text (the leader and page number are in it), location.page, neighbouring entries",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES - NAVIGATION vs REGION_OPENER is exactly the TOC-opener question (known gap B1)",
+      "Classification": "PRE_INTERPRETED_SEMANTIC_PRIOR",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE"
+    },
+    {
+      "Symbol": "inTableOfContents",
+      "Value": "true (PDF)",
+      "Producer": "PdfCanonicalSourceUniverseBuilder.EvidenceOf: StructuralScope == table_of_contents",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision",
+      "DataTriggered": "same as scope=table_of_contents",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "as above",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES",
+      "Classification": "PRE_INTERPRETED_SEMANTIC_PRIOR (derived only from the scope label)",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE"
+    },
+    {
+      "Symbol": "scope",
+      "Value": "table / appendix_table (PDF)",
+      "Producer": "PdfLineBlockFilter.ClassifyTableLine: numeric density >= 0.35 or a short numbered line - a text-shape rule, not table geometry",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision",
+      "DataTriggered": "measured below",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "text, style, neighbouring rows",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES - BODY_CONTENT / FIELD_LABEL / CAPTION distinctions",
+      "Classification": "PRE_INTERPRETED_SEMANTIC_PRIOR",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE"
+    },
+    {
+      "Symbol": "scope",
+      "Value": "code_or_grammar (PDF, DOCX)",
+      "Producer": "PdfStructuralScopeDetector.IsFormalSyntax: identifier followed by '=' or '::='",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision",
+      "DataTriggered": "measured below",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "text",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES - body content vs label",
+      "Classification": "PRE_INTERPRETED_SEMANTIC_PRIOR",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE"
+    },
+    {
+      "Symbol": "scope",
+      "Value": "appendix (PDF)",
+      "Producer": "StructuralScopeTracker: latched from the first line starting with 'appendix|annex|phu luc' for the rest of the document",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision; still keys pack boundaries under COHERENT_REGION_SEGMENTATION_V1 (opt-in, not the default FIXED_OWNED_COUNT_120)",
+      "DataTriggered": "measured below",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "text of the annex heading and the occurrences after it",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES - region membership",
+      "Classification": "PRE_INTERPRETED_SEMANTIC_PRIOR; literal label words",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE; the opt-in packing key is an open item (SUSPICIOUS, not model-visible)"
+    },
+    {
+      "Symbol": "scope",
+      "Value": "reference_list / index_terms (PDF)",
+      "Producer": "StructuralScopeTracker: latched after a line reading exactly 'References' or 'Index' (optionally numbered)",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision",
+      "DataTriggered": "measured below",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "text",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES - region membership",
+      "Classification": "PRE_INTERPRETED_SEMANTIC_PRIOR; literal heading words",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE"
+    },
+    {
+      "Symbol": "scope",
+      "Value": "quoted_replacement / embedded_amendment (PDF)",
+      "Producer": "StructuralScopeTracker: open-quote latch, amendment phrases in English and Vietnamese ('amended as follows', 'sua doi ... nhu sau')",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision",
+      "DataTriggered": "measured below",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "text",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES - whether a quoted clause is structure of this document",
+      "Classification": "PRE_INTERPRETED_SEMANTIC_PRIOR; literal phrases",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE"
+    },
+    {
+      "Symbol": "scope",
+      "Value": "table_of_contents (DOCX)",
+      "Producer": "DocxAuthorityPipeline.ScopeOf <- SourceParagraph.InTableOfContents",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision",
+      "DataTriggered": "measured on DOCX only by the existing corpus tests",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "style.StyleName (TOC n), location.hyperlinkAnchors (_Toc...), text",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES - NAVIGATION",
+      "Classification": "PRE_INTERPRETED_SEMANTIC_PRIOR",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE; raw hyperlink anchors added"
+    },
+    {
+      "Symbol": "inTableOfContents",
+      "Value": "true (DOCX)",
+      "Producer": "OpenXmlDocumentSource: TOC style, OR a hyperlink to a _Toc/_heading bookmark, OR a monotonic run of lines ending in page numbers (typed contents)",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "prior to the model's decision",
+      "DataTriggered": "measured on DOCX only by the existing corpus tests",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "style.StyleName, location.hyperlinkAnchors, text",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES - the typed-run branch is the harness reading a contents list",
+      "Classification": "MIXED: two raw OOXML facts + one inference",
+      "Action": "REMOVED_FROM_MODEL_VISIBLE; the raw facts are sent, the inference is not"
+    },
+    {
+      "Symbol": "scope",
+      "Value": "table (DOCX)",
+      "Producer": "DocxAuthorityPipeline.ScopeOf: TableDepth > 0",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "none beyond tableDepth",
+      "DataTriggered": "every table paragraph",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "tableDepth",
+      "WouldTheModelBeAskedToInferThisSameFact": "NO - physical containment",
+      "Classification": "JUSTIFIED_INVARIANT (mechanical), redundant with tableDepth",
+      "Action": "REMOVED_AS_DUPLICATE; tableDepth kept"
+    },
+    {
+      "Symbol": "tableDepth",
+      "Value": "int (DOCX)",
+      "Producer": "OOXML table nesting",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": true,
+      "SemanticTruthAffecting": "none",
+      "DataTriggered": "n/a",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "is the raw fact",
+      "WouldTheModelBeAskedToInferThisSameFact": "NO",
+      "Classification": "JUSTIFIED_INVARIANT (mechanical containment)",
+      "Action": "KEEP"
+    },
+    {
+      "Symbol": "style",
+      "Value": "StyleId, StyleName, OutlineLevel, Bold (DOCX)",
+      "Producer": "OOXML, as the author declared it",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": true,
+      "SemanticTruthAffecting": "none",
+      "DataTriggered": "n/a",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "is the raw fact",
+      "WouldTheModelBeAskedToInferThisSameFact": "NO - an author's declaration, not the harness's reading",
+      "Classification": "ACCEPTABLE (source declaration)",
+      "Action": "KEEP"
+    },
+    {
+      "Symbol": "style",
+      "Value": "Bold, Italic (PDF)",
+      "Producer": "glyph ratio >= 0.5",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": true,
+      "SemanticTruthAffecting": "none",
+      "DataTriggered": "n/a",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "BoldRatio / ItalicRatio",
+      "WouldTheModelBeAskedToInferThisSameFact": "NO",
+      "Classification": "SUSPICIOUS (global threshold quantizing a measurement)",
+      "Action": "KEEP as evidence"
+    },
+    {
+      "Symbol": "style",
+      "Value": "RelativeFontSize (PDF)",
+      "Producer": "size / median body size: >= 1.25, >= 1.08, <= 0.85 buckets",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": true,
+      "SemanticTruthAffecting": "none",
+      "DataTriggered": "n/a",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "the ratio",
+      "WouldTheModelBeAskedToInferThisSameFact": "NO",
+      "Classification": "SUSPICIOUS (global thresholds quantizing a measurement)",
+      "Action": "KEEP as evidence"
+    },
+    {
+      "Symbol": "markers",
+      "Value": "marker-family/signature/depth/is-path/components",
+      "Producer": "PdfMarkerFactsParser: shape of a leading numbering or label+number prefix, open vocabulary",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": true,
+      "SemanticTruthAffecting": "none",
+      "DataTriggered": "n/a",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "is a parse of the text",
+      "WouldTheModelBeAskedToInferThisSameFact": "NO - a reading of the prefix, not of what the line is",
+      "Classification": "ACCEPTABLE (deterministic lexical parse)",
+      "Action": "KEEP"
+    },
+    {
+      "Symbol": "block",
+      "Value": "layout block id (structured PDF)",
+      "Producer": "PdfSemanticBlockGrouper continuation grouping",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": true,
+      "SemanticTruthAffecting": "none",
+      "DataTriggered": "n/a",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "atom geometry",
+      "WouldTheModelBeAskedToInferThisSameFact": "NO - which lines the layout groups, not what they mean",
+      "Classification": "SUSPICIOUS (layout heuristic)",
+      "Action": "KEEP as evidence"
+    },
+    {
+      "Symbol": "attention",
+      "Value": "policy-(non-)candidate / pdf-layout-(non-)candidate",
+      "Producer": "candidate heuristics (8c117d4)",
+      "ProductionReachable": false,
+      "ModelVisibleBefore": true,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "none after 8c117d4",
+      "DataTriggered": "every request before 8c117d4",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "n/a",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES",
+      "Classification": "HISTORICAL_ONLY (V1_ATTENTION_LEGACY replay)",
+      "Action": "REMOVED in 8c117d4"
+    },
+    {
+      "Symbol": "openStructuralContext",
+      "Value": "active marker-bearing ancestors",
+      "Producer": "experiment arm CarryStructuralAncestors",
+      "ProductionReachable": false,
+      "ModelVisibleBefore": false,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "none unless the arm is selected",
+      "DataTriggered": "only in I7 experiment runs",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "text of earlier occurrences",
+      "WouldTheModelBeAskedToInferThisSameFact": "PARTLY - it is a marker-based guess at open sections",
+      "Classification": "EXPERIMENT_ONLY",
+      "Action": "KEEP OFF by default"
+    },
+    {
+      "Symbol": "DocumentDomainPolicy",
+      "Value": "regime legal/procurement/financial/meeting; roles by literal words",
+      "Producer": "InferRegime/ClassifyRole: genre branches over literal words (PHAN/CHUONG/DIEU, PART/SECTION+BIDDING, NOTES TO FINANCIAL, MINUTES)",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": false,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "none: recorded as a review observation, never suppressive (PdfOutputDecisionPolicy)",
+      "DataTriggered": "on every run",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "n/a",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES",
+      "Classification": "SUSPICIOUS (genre-specific branch, literal words) - not model-visible, not truth-affecting",
+      "Action": "RECORD; candidate for retirement"
+    },
+    {
+      "Symbol": "PdfHierarchyResolver",
+      "Value": "domain-tier levels",
+      "Producer": "PdfCandidateContracts.PdfHierarchyResolver",
+      "ProductionReachable": false,
+      "ModelVisibleBefore": false,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "none",
+      "DataTriggered": "no production caller",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "n/a",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES",
+      "Classification": "TEST_ONLY",
+      "Action": "RECORD; candidate for deletion"
+    },
+    {
+      "Symbol": "DOCX candidate heuristics",
+      "Value": "CaptionRx, ObjectLabelPrefixRx, data tables, content controls",
+      "Producer": "HeadingHeuristics / DocxPolicyStateBuilder",
+      "ProductionReachable": true,
+      "ModelVisibleBefore": false,
+      "ModelVisibleAfter": false,
+      "SemanticTruthAffecting": "none: requests are byte-identical with the heuristics on or off (ModelVisibleAttentionBoundaryTests)",
+      "DataTriggered": "on every DOCX run",
+      "DocumentSpecific": false,
+      "RawFactAvailable": "n/a",
+      "WouldTheModelBeAskedToInferThisSameFact": "YES",
+      "Classification": "DIAGNOSTIC_ONLY",
+      "Action": "KEEP for diagnostics"
+    }
+  ],
+  "codeScan": {
+    "scope": "src/**/*.cs, excluding bin/obj",
+    "sourceFileNamePattern": "corpus folders (todo10_8, heading_corpus, generated-docx, bench/) or numbered corpus file names; generic I/O names are not hits",
+    "documentIds": [],
+    "sourceFileNames": [],
+    "sha256Constants": [],
+    "pageNumberConditions": []
+  },
+  "scopeLabelsOnStructuredGoldPdfs": [
+    {
+      "documentId": "SRC-029",
+      "atoms": 7794,
+      "goldHeadings": 374,
+      "byScope": [
+        {
+          "scope": "appendix",
+          "atoms": 1072,
+          "goldHeadingsTouching": 42
+        },
+        {
+          "scope": "appendix_table",
+          "atoms": 581,
+          "goldHeadingsTouching": 107
+        },
+        {
+          "scope": "code_or_grammar",
+          "atoms": 1,
+          "goldHeadingsTouching": 0
+        },
+        {
+          "scope": "document_body",
+          "atoms": 2164,
+          "goldHeadingsTouching": 120
+        },
+        {
+          "scope": "index_terms",
+          "atoms": 2399,
+          "goldHeadingsTouching": 160
+        },
+        {
+          "scope": "quoted_replacement",
+          "atoms": 1386,
+          "goldHeadingsTouching": 50
+        },
+        {
+          "scope": "table",
+          "atoms": 191,
+          "goldHeadingsTouching": 58
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0133",
+      "atoms": 5174,
+      "goldHeadings": 112,
+      "byScope": [
+        {
+          "scope": "document_body",
+          "atoms": 2483,
+          "goldHeadingsTouching": 112
+        },
+        {
+          "scope": "running_page_artifact",
+          "atoms": 64,
+          "goldHeadingsTouching": 0
+        },
+        {
+          "scope": "table",
+          "atoms": 2627,
+          "goldHeadingsTouching": 0
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0252",
+      "atoms": 650,
+      "goldHeadings": 42,
+      "byScope": [
+        {
+          "scope": "appendix",
+          "atoms": 41,
+          "goldHeadingsTouching": 5
+        },
+        {
+          "scope": "appendix_table",
+          "atoms": 35,
+          "goldHeadingsTouching": 0
+        },
+        {
+          "scope": "document_body",
+          "atoms": 529,
+          "goldHeadingsTouching": 36
+        },
+        {
+          "scope": "quoted_replacement",
+          "atoms": 8,
+          "goldHeadingsTouching": 0
+        },
+        {
+          "scope": "table",
+          "atoms": 37,
+          "goldHeadingsTouching": 1
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "atoms": 546,
+      "goldHeadings": 34,
+      "byScope": [
+        {
+          "scope": "appendix",
+          "atoms": 99,
+          "goldHeadingsTouching": 13
+        },
+        {
+          "scope": "appendix_table",
+          "atoms": 84,
+          "goldHeadingsTouching": 2
+        },
+        {
+          "scope": "document_body",
+          "atoms": 344,
+          "goldHeadingsTouching": 19
+        },
+        {
+          "scope": "quoted_replacement",
+          "atoms": 2,
+          "goldHeadingsTouching": 0
+        },
+        {
+          "scope": "table",
+          "atoms": 17,
+          "goldHeadingsTouching": 0
+        }
+      ]
+    }
+  ],
+  "modelVisibleContractV2": {
+    "OwnedKeys": [
+      "alias",
+      "block",
+      "location",
+      "markers",
+      "numbering",
+      "owned",
+      "style",
+      "text"
+    ],
+    "LocationKeys": [
+      "page",
+      "pageBand",
+      "sameNormalizedTextFirstPage",
+      "sameNormalizedTextLastPage",
+      "sameNormalizedTextPageCount"
+    ],
+    "Forbidden": []
+  },
+  "gate": {
+    "documentIds": 0,
+    "literalHeadingDecisionsModelVisible": 0,
+    "semanticCandidateScoreOrGate": 0,
+    "attentionPrior": 0,
+    "preclassifiedTocRunningHeaderCaption": 0,
+    "passed": true
+  },
+  "openItems": [
+    "COHERENT_REGION_SEGMENTATION_V1 (opt-in packing) still splits packs on the appendix latch; not the default and not model-visible",
+    "DocumentDomainPolicy genre branches remain for review observations; retire or keep as diagnostics",
+    "PdfHierarchyResolver has no production caller",
+    "PDF Bold/Italic/RelativeFontSize are thresholded measurements; the raw ratios could replace the buckets"
+  ]
+}

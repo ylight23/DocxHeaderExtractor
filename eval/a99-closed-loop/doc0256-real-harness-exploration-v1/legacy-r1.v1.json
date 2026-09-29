@@ -1,0 +1,190 @@
+{
+  "artifactKind": "a99_doc0256_real_harness_exploration",
+  "documentId": "DOC-0256",
+  "model": "qwen/qwen3.7-flash",
+  "profile": "LEGACY_OCCURRENCE",
+  "placement": false,
+  "repeat": "1",
+  "providerCallsMade": 6,
+  "failure": null,
+  "reason": "pdf-canonical-vnext",
+  "elementCount": 16,
+  "elements": [
+    {
+      "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "sourceIds": [
+        "b1"
+      ]
+    },
+    {
+      "text": "INTER-AGENCY COORDINATION GROUP MEETING",
+      "sourceIds": [
+        "b2"
+      ]
+    },
+    {
+      "text": "Welcome and meeting objectives",
+      "sourceIds": [
+        "b6"
+      ]
+    },
+    {
+      "text": "Regional updates on the ICP 2021 cycle implementation",
+      "sourceIds": [
+        "b35"
+      ]
+    },
+    {
+      "text": "Global updates on the ICP 2021 cycle implementation",
+      "sourceIds": [
+        "b295"
+      ]
+    },
+    {
+      "text": "Data review: Household consumption price and importance data",
+      "sourceIds": [
+        "b359"
+      ]
+    },
+    {
+      "text": "Data review: Housing prices and volumes",
+      "sourceIds": [
+        "b393"
+      ]
+    },
+    {
+      "text": "Data review: Private Education",
+      "sourceIds": [
+        "b423"
+      ]
+    },
+    {
+      "text": "Data review: Government compensation and productivity adjustment",
+      "sourceIds": [
+        "b432"
+      ]
+    },
+    {
+      "text": "Data review: Machinery and equipment and construction",
+      "sourceIds": [
+        "b451"
+      ]
+    },
+    {
+      "text": "Data review: 2017-2021 National Accounts expenditures",
+      "sourceIds": [
+        "b476"
+      ]
+    },
+    {
+      "text": "Data review: 2017-2021 Population and market exchange rates",
+      "sourceIds": [
+        "b511"
+      ]
+    },
+    {
+      "text": "Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels",
+      "sourceIds": [
+        "b526"
+      ]
+    },
+    {
+      "text": "Planning for the ICP 2024 cycle",
+      "sourceIds": [
+        "b558"
+      ]
+    },
+    {
+      "text": "Annex 1: Meeting Agenda",
+      "sourceIds": [
+        "b611"
+      ]
+    },
+    {
+      "text": "Annex 2: List of participants",
+      "sourceIds": [
+        "b674"
+      ]
+    }
+  ],
+  "ledger": [
+    {
+      "Ordinal": 1,
+      "DocumentId": "DOC-0256",
+      "Repeat": 0,
+      "Stage": "semantic-legacy",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "ee08157ada6cdfb7473d32903c8044214ad8f6a9d1c28ffedaa8dabcf76cf8b0",
+      "ResponseSha256": "c610b9cad30993d75b81dcfc04188d96ad9f8aab128f3f0391a11f3e6f7b9ec6",
+      "RequestChars": 35942,
+      "ResponseChars": 1439,
+      "ElapsedMs": 6753,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0001\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0001\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM\u0022,\n      \u0022semanticRole\u0022: \u0022title\u0022,\n      \u0022structuralType\u0022: \u0022document_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0002\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0002\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022INTER-AGENCY COORDINATION GROUP MEETING\u0022,\n      \u0022semanticRole\u0022: \u0022subtitle\u0022,\n      \u0022structuralType\u0022: \u0022document_subtitle\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0006\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0006\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Welcome and meeting objectives\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0035\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0035\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Regional updates on the ICP 2021 cycle implementation\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 2,
+      "DocumentId": "DOC-0256",
+      "Repeat": 0,
+      "Stage": "semantic-legacy",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "757dde5397265f9dc7716350b0628246f3e63bffac67c5f6beddd0c40de01a56",
+      "ResponseSha256": "82ddecc9f1e95f5df7c7614ef6bd4907672919a828ab1f6ceaecd2d33d5a3bd0",
+      "RequestChars": 37720,
+      "ResponseChars": 3199,
+      "ElapsedMs": 12889,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0125\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0125\u0022,\n        \u0022S0126\u0022,\n        \u0022S0127\u0022,\n        \u0022S0128\u0022,\n        \u0022S0129\u0022,\n        \u0022S0130\u0022,\n        \u0022S0131\u0022,\n        \u0022S0132\u0022,\n        \u0022S0133\u0022,\n        \u0022S0134\u0022,\n        \u0022S0135\u0022,\n        \u0022S0136\u0022,\n        \u0022S0137\u0022,\n        \u0022S0138\u0022,\n        \u0022S0139\u0022,\n        \u0022S0140\u0022,\n        \u0022S0141\u0022,\n        \u0022S0142\u0022,\n        \u0022S0143\u0022,\n        \u0022S0144\u0022,\n        \u0022S0145\u0022,\n        \u0022S0146\u0022,\n        \u0022S0147\u0022,\n        \u0022S0148\u0022,\n        \u0022S0149\u0022,\n        \u0022S0150\u0022,\n        \u0022S0151\u0022,\n        \u0022S0152\u0022,\n        \u0022S0153\u0022,\n        \u0022S0154\u0022,\n        \u0022S0155\u0022,\n        \u0022S0156\u0022,\n        \u0022S0157\u0022,\n        \u0022S0158\u0022,\n        \u0022S0159\u0022,\n        \u0022S0160\u0022,\n        \u0022S0161\u0022,\n        \u0022S0162\u0022,\n        \u0022S0163\u0022,\n        \u0022S0164\u0022,\n        \u0022S0165\u0022,\n        \u0022S0166\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Commonwealth of Independent States\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Commonwealth of Independent States\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0167\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0167\u0022,\n        \u0022S0168\u0022,\n        \u0022S0169\u0022,\n        \u0022S0170\u0022,\n        \u0022S0171\u0022,\n        \u0022S0172\u0022,\n        \u0022S0173\u0022,\n        \u0022S0174\u0022,\n        \u0022S0175\u0022,\n        \u0022S0176\u0022,\n        \u0022S0177\u0022,\n        \u0022S0178\u0022,\n        \u0022S0179\u0022,\n        \u0022S0180\u0022,\n        \u0022S0181\u0022,\n        \u0022S0182\u0022,\n        \u0022S0183\u0022,\n        \u0022S0184\u0022,\n        \u0022S0185\u0022,\n        \u0022S0186\u0022,\n        \u0022S0187\u0022,\n        \u0022S0188\u0022,\n        \u0022S0189\u0022,\n        \u0022S0190\u0022,\n        \u0022S0191\u0022,\n        \u0022S0192\u0022,\n        \u0022S0193\u0022,\n        \u0022S0194\u0022,\n        \u0022S0195\u0022,\n        \u0022S0196\u0022,\n        \u0022S0197\u0022,\n        \u0022S0198\u0022,\n        \u0022S0199\u0022,\n        \u0022S0200\u0022,\n        \u0022S0201\u0022,\n        \u0022S0202\u0022,\n        \u0022S0203\u0022,\n        \u0022S0204\u0022,\n        \u0022S0205\u0022,\n        \u0022S0206\u0022,\n        \u0022S0207\u0022,\n        \u0022S0208\u0022,\n        \u0022S0209\u0022,\n        \u0022S0210\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Eurostat\u2013OECD PPP Program\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Eurostat\\u2013OECD PPP Program\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0211\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0211\u0022,\n        \u0022S0212\u0022,\n        \u0022S0213\u0022,\n        \u0022S0214\u0022,\n        \u0022S0215\u0022,\n        \u0022S0216\u0022,\n        \u0022S0217\u0022,\n        \u0022S0218\u0022,\n        \u0022S0219\u0022,\n        \u0022S0220\u0022,\n        \u0022S0221\u0022,\n        \u0022S0222\u0022,\n        \u0022S0223\u0022,\n        \u0022S0224\u0022,\n        \u0022S0225\u0022,\n        \u0022S0226\u0022,\n        \u0022S0227\u0022,\n        \u0022S0228\u0022,\n        \u0022S0229\u0022,\n        \u0022S0230\u0022,\n        \u0022S0231\u0022,\n        \u0022S0232\u0022,\n        \u0022S0233\u0022,\n        \u0022S0234\u0022,\n        \u0022S0235\u0022,\n        \u0022S0236\u0022,\n        \u0022S0237\u0022,\n        \u0022S0238\u0022,\n        \u0022S0239\u0022,\n        \u0022S0240\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Latin America and the Caribbean\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Latin America and the Caribbean\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 3,
+      "DocumentId": "DOC-0256",
+      "Repeat": 0,
+      "Stage": "semantic-legacy",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "b69bec8c4e4ecaa6956cf67f424d31052abbeae2d3f6cc5175c8014688c2919f",
+      "ResponseSha256": "f20dee271df819a7b1b3534892864cddf0fe7c5ae0e066857d8506dbdeb5b24e",
+      "RequestChars": 37021,
+      "ResponseChars": 988,
+      "ElapsedMs": 3603,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0295\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0295\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Global updates on the ICP 2021 cycle implementation\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Global updates on the ICP 2021 cycle implementation\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0359\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0359\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Data review: Household consumption price and importance data\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Data review: Household consumption price and importance data\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 4,
+      "DocumentId": "DOC-0256",
+      "Repeat": 0,
+      "Stage": "semantic-legacy",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "5e3bb7301b1672e69efa29056f02e070bdbbeb1f15aa81188f9e4d8bc93d5e33",
+      "ResponseSha256": "cc696cb4768abc83e151c74f551349e50138fb7e6f01c73efcd3a27305ba6d4f",
+      "RequestChars": 37298,
+      "ResponseChars": 2400,
+      "ElapsedMs": 6983,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0393\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0393\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Data review: Housing prices and volumes\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Data review: Housing prices and volumes\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0423\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0423\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Data review: Private Education\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Data review: Private Education\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0432\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0432\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Data review: Government compensation and productivity adjustment\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Data review: Government compensation and productivity adjustment\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0451\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0451\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Data review: Machinery and equipment and construction\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Data review: Machinery and equipment and construction\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0476\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0476\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Data review: 2017-2021 National Accounts expenditures\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Data review: 2017-2021 National Accounts expenditures\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 5,
+      "DocumentId": "DOC-0256",
+      "Repeat": 0,
+      "Stage": "semantic-legacy",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "eb8bc963d3af5575b35bb51644ece439eef99189431390bfb486741e0821920c",
+      "ResponseSha256": "2aca1001549a1e3f57e3031ccff977ba2c3893da4f5377ba9bebea266310cefe",
+      "RequestChars": 36946,
+      "ResponseChars": 2253,
+      "ElapsedMs": 6741,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0481\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0481\u0022,\n        \u0022S0482\u0022,\n        \u0022S0483\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022validation inter-regional consistency the effects of the pandemic on expenditure patterns and the status of the revision of 2017 expenditures\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022validation inter-regional consistency the effects of the pandemic on expenditure patterns and the status\u0022,\n        \u0022of the revision of 2017 expenditures\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022section heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0511\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0511\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Data review: 2017-2021 Population and market exchange rates\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Data review: 2017-2021 Population and market exchange rates\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022section heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0526\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0526\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Planning for the 2023/4 governance activities and ICP 2021 cycle release at regional and global levels\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022section heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0558\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0558\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Planning for the ICP 2024 cycle\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Planning for the ICP 2024 cycle\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022section heading\u0022,\n      \u0022structuralType\u0022: \u0022heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 6,
+      "DocumentId": "DOC-0256",
+      "Repeat": 0,
+      "Stage": "semantic-legacy",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "bb28feed2d2471a94722e2b383e1672d9aff5adb03a120d35f721c13545473f1",
+      "ResponseSha256": "772af43ba0db8c1bb195118c49f1cb3cddabcf2959f5e088aa962d6edc443aa9",
+      "RequestChars": 32717,
+      "ResponseChars": 2784,
+      "ElapsedMs": 9601,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0611\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0611\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Annex 1: Meeting Agenda\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Annex 1: Meeting Agenda\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022appendix_heading\u0022,\n      \u0022scope\u0022: \u0022appendix\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0612\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0612\u0022,\n        \u0022S0630\u0022,\n        \u0022S0643\u0022,\n        \u0022S0658\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022DAY 1: TUESDAY OCTOBER 31 2023\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022DAY 1: TUESDAY OCTOBER 31 2023\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022appendix\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0611\u0022\n      ],\n      \u0022occurrence\u0022: 1\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0630\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0612\u0022,\n        \u0022S0630\u0022,\n        \u0022S0643\u0022,\n        \u0022S0658\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022DAY 2: WEDNESDAY NOVEMBER 1 2023\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022DAY 2: WEDNESDAY NOVEMBER 1 2023\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022appendix\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0611\u0022\n      ],\n      \u0022occurrence\u0022: 2\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0643\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0612\u0022,\n        \u0022S0630\u0022,\n        \u0022S0643\u0022,\n        \u0022S0658\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022DAY 3: THURSDAY NOVEMBER 2 2023\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022DAY 3: THURSDAY NOVEMBER 2 2023\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022appendix\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0611\u0022\n      ],\n      \u0022occurrence\u0022: 3\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0658\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0612\u0022,\n        \u0022S0630\u0022,\n        \u0022S0643\u0022,\n        \u0022S0658\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022DAY 4: FRIDAY NOVEMBER 3 2023\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022DAY 4: FRIDAY NOVEMBER 3 2023\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022appendix\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0611\u0022\n      ],\n      \u0022occurrence\u0022: 4\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0674\u0022,\n      \u0022sourceAliases\u0022: [\n        \u0022S0674\u0022\n      ],\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Annex 2: List of participants\u0022,\n      \u0022verbatimParts\u0022: [\n        \u0022Annex 2: List of participants\u0022\n      ],\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022structuralType\u0022: \u0022appendix_heading\u0022,\n      \u0022scope\u0022: \u0022appendix\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    }\n  ]\n}"
+    }
+  ]
+}

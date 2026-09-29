@@ -1,0 +1,118 @@
+{
+  "artifactKind": "a99_gold_correction_provenance",
+  "schemaVersion": "a99-gold-correction-provenance-v1",
+  "status": "HUMAN_APPROVED_GOLD_CORRECTION",
+  "correctedAt": "2026-09-23",
+  "document": "DOC-0252",
+  "itemId": "ITEM-505430BB",
+  "identity": "L0513:S0:0-38|L0514:S0:0-30",
+  "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
+  "oldClass": "NON_STRUCTURAL",
+  "newClass": "DOCUMENT_LABEL",
+  "goldRoleAdded": "DocumentTitle",
+  "reason": "Human re-review determined this occurrence functions as a document-level identifying/title-block label for the embedded meeting/agenda artifact, not ordinary organization/date/venue metadata. The decision is semantic-function based, not typography-based.",
+  "unaffectedControl": {
+    "itemId": "ITEM-CCE2C592",
+    "identity": "L0519:S0:0-6",
+    "text": "Agenda",
+    "semanticRole": "SectionHeading",
+    "expectedLabel": "STRUCTURAL_UNIT",
+    "note": "Not touched by this correction. Its context-sensitivity (STRUCTURAL_UNIT missed under FULL_CONTEXT / LOCAL_CONTEXT_RADIUS_3, recovered under MINIMAL_STRUCTURAL_CONTEXT_V1) remains a separate, independently valid finding."
+  },
+  "goldRevision": {
+    "old": {
+      "revision": "R1",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0252.pre-item505430bb-document-label-correction.gold.v1.json",
+      "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+      "semanticHeadingTotal": 41,
+      "materializedSemanticClaims": 41
+    },
+    "new": {
+      "revision": "R2",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+      "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+      "semanticHeadingTotal": 42,
+      "materializedSemanticClaims": 42
+    }
+  },
+  "upstreamAuthorityChanges": [
+    {
+      "kind": "SEMANTIC_FREEZE",
+      "livePath": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0252.semantic-freeze.v1.json",
+      "preservedR1Path": "eval/a99-closed-loop/gold-current/documents/DOC-0252.pre-item505430bb-document-label-correction.semantic-freeze.v1.json",
+      "preservedR1Sha256": "abf7da69b0ddfd1663165798a8c0064229e0c2c623ad1a2cc9c09d7550e77624",
+      "semanticHeadingTotalOld": 41,
+      "semanticHeadingTotalNew": 42
+    },
+    {
+      "kind": "STRUCTURED_OCCURRENCE_AUTHORITY",
+      "livePath": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.occurrence-gold.v1.json",
+      "preservedR1Path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.pre-item505430bb-document-label-correction.occurrence-gold.v1.json",
+      "preservedR1Sha256": "322d431ff7be7af47034b8df711b9b23b247480900fdf5266ed0d0fb08b1b754",
+      "correctionTest": "tests/DocxHeaderExtractor.Tests/Doc0252GoldCorrectionItem505430bbTests.cs",
+      "boundOccurrencesOld": 41,
+      "boundOccurrencesNew": 42,
+      "note": "PdfStructuredGoldMigrationTests.cs (the SOURCE_COORDINATE_AND_VERBATIM_FIDELITY_MIGRATION) was repointed to write/verify the preserved R1 file above under its own name, unaffected in content; it still adds 0 and removes 0, as it always has."
+    }
+  ],
+  "historicalPinningMechanism": {
+    "helper": "tests/DocxHeaderExtractor.Tests/HistoricalGoldVintages.cs",
+    "constants": ["Doc0252R1Path", "Doc0252R1Sha256"],
+    "note": "Every test that reproduces a result frozen before this correction (the masthead negative-control family F1/F2/F3, Stage-1/open-set membership, two-stage semantic contract design, none-relation policy corpus audit, semantic coordinate coupling audit, direct-semantic-probe and context-ablation cohort) now reads DOC-0252 by pinning this path and hash explicitly via CanonicalGoldRegistry.EntryAt/ResolveAt, instead of resolving whatever the live authority currently names. This closes a pre-existing gap: those tests previously read CanonicalGoldRegistry.Entry(\"DOC-0252\")/.Resolve(\"DOC-0252\") live, which is why this correction required touching them at all.",
+    "filesUpdated": [
+      "CanonicalGoldConsolidationTests.cs (AddMigrationLineage walks the migration/correction chain; totals bumped to 42)",
+      "DirectSemanticProbePreflightTests.cs", "DirectSemanticContextAblationScoringTests.cs",
+      "DirectSemanticContextAblationPreflightTests.cs", "DirectSemanticProbeRetryPreflightTests.cs",
+      "DirectSemanticProbeScoringTests.cs", "DirectSemanticProbeTransportTests.cs",
+      "DirectSemanticProbeRetryTransportTests.cs", "DirectSemanticProbeContinuationTransportTests.cs",
+      "MastheadE2V2CausalDiffTests.cs", "MastheadE2V2ExperimentScoringTests.cs",
+      "MastheadE2V2ExperimentTransportTests.cs", "MastheadE2V2PreflightTests.cs (+ corpus-wide AssessGoldRisk loop)",
+      "MastheadMetadataExperimentPreflightTests.cs (+ corpus-wide AssessGoldRisk loop)",
+      "MastheadMetadataExperimentScoringTests.cs", "MastheadMetadataExperimentTransportTests.cs",
+      "MastheadMetadataV2ExperimentScoringTests.cs", "MastheadMetadataV2ExperimentTransportTests.cs",
+      "MastheadV2CausalDiffTests.cs", "NoneRelationPolicyCorpusAuditTests.cs (+ corpus-wide loop)",
+      "SemanticCoordinateCouplingAuditTests.cs", "SemanticMembershipV1PreflightTests.cs",
+      "SemanticMembershipV1RetryTransportTests.cs", "SemanticMembershipV1ScoringTests.cs",
+      "SemanticMembershipV1TransportTests.cs", "SemanticSourcePartCanonicalizerTests.cs",
+      "Stage1MembershipSeamTests.cs", "StructuredCoordinateCanonicalizationTests.cs",
+      "StructuredOccurrenceBaselineTransportTests.cs", "StructuredV2TargetBaselinePreflightTests.cs",
+      "StructuredV2TargetBaselineScoringTests.cs", "StructuredV2TargetBaselineTransportTests.cs",
+      "TargetedPackingRerunV2SuccessorScoringTests.cs", "PdfStructuredSourceAuthorityBuilderTests.cs",
+      "ResidualSemanticMechanismAuditTests.cs"
+    ],
+    "separatelyPinnedNotViaHelper": [
+      {
+        "file": "PdfExperimentManifestTests.cs",
+        "reason": "The pdf-canary-072 manifest names a canary execution already run against 41-claim Gold; its ManifestHash is that execution's frozen identity, not a value that should move. Repointed its content-reading path to the preserved R1 semantic-freeze vintage while keeping the identity-bearing path string in the manifest unchanged (fb62c1c6...29c stays byte-identical)."
+      },
+      {
+        "file": "PdfGoldAuthorityTests.cs",
+        "reason": "AuthoritativeTotal (41) stays as-is: several tests in this file read fixed legacy Gold vintages by hash. Only the one test that reads the live semantic freeze (The_existing_gold_exposes_the_approved_occurrence_freeze) uses a new CurrentAuthoritativeTotal = 42."
+      }
+    ]
+  },
+  "currentStateUpdatedNotPinned": [
+    "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json (regenerated; derives live semanticHeadingTotal/materializedSemanticClaims/goldSha256 for the DOC-0001/DOC-0252 occurrence cohort)",
+    "eval/a99-closed-loop/cross-document-replication-preflight.v1.json (regenerated; DOC-0252.semanticHeadingTotal read live is 42; the separate 'native evaluator v3' goldHeadingClaims=41/goldHeadingAliases=38 fields are pinned to the older, unrelated legacy-occurrence vintage and correctly did not change)"
+  ],
+  "affectedExperimentsRescoredUnderR2": [
+    "eval/a99-closed-loop/direct-semantic-context-ablation-score-v1/DOC-0252 (Qwen, FULL_CONTEXT/LOCAL_CONTEXT_RADIUS_3/MINIMAL_STRUCTURAL_CONTEXT_V1)",
+    "eval/a99-closed-loop/haiku-blind-minimal-semantic-classification-v1/DOC-0252 (blind Haiku, MINIMAL_STRUCTURAL_CONTEXT_V1)"
+  ],
+  "notRescored": [
+    {
+      "scope": "eval/a99-closed-loop/luna-internal-minimal-semantic-replay-v1",
+      "reason": "HISTORICAL_NONBLIND_EVIDENCE: Luna's run was not blind (expected-label knowledge was not withheld the way the Qwen/Haiku MINIMAL cohort was isolated), so rescoring it under R2 would not add independent cross-model evidence. Its artifacts remain immutable and are not used to support the R2 conclusion."
+    },
+    {
+      "scope": "eval/a99-closed-loop/exp-masthead-e2-v2-*, eval/a99-closed-loop/exp-masthead-metadata-*, eval/a99-closed-loop/stage1-membership-experiment-v1, eval/a99-closed-loop/physical-stage1-membership-only-*, eval/a99-closed-loop/structured-context-packing-experiment-v2, eval/a99-closed-loop/structured-v2-target-baseline-*, eval/a99-closed-loop/none-relation-policy-audit-v1, eval/a99-closed-loop/pdf-canary-072",
+      "reason": "These experiments' own conclusions are not about the F1/DOCUMENT_LABEL question this correction touches (the masthead family's F1 is one supporting case among several in a broader research thread about organisation-masthead metadata, not itself the finding). They keep pinning the R1 vintage explicitly so their raw results and historical interpretation stay reproducible and are not silently restated as if R2 had been in effect when they ran. Revisiting their own conclusions in light of R2 is separate work this correction does not do."
+    }
+  ],
+  "qwenArtifactsModified": false,
+  "haikuArtifactsModified": false,
+  "lunaArtifactsModified": false,
+  "rawTransportCapturesModified": false,
+  "modelCalls": 0,
+  "providerCalls": 0
+}

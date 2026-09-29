@@ -25,7 +25,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class HostAuthorityE2ETests
 {
     private const string ExpectedFingerprint =
-        "16284414abee710236b27fe92f710b95efb32928e169ba0e1ede2e63891b8429";
+        "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945";
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -69,14 +69,14 @@ public sealed class HostAuthorityE2ETests
         }
         finally
         {
-            LegacyDocConverter.TryDelete(fixture);
+            OfficeDocumentConverter.TryDelete(fixture);
         }
     }
 
     [Fact]
     public void Normal_host_routes_have_no_legacy_or_direct_pipeline_bypass()
     {
-        var root = FindRepositoryRoot();
+        var root = TestRepository.Root();
         var cli = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.Cli", "Program.cs"));
         var cliComposition = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.Cli", "CliHarnessComposition.cs"));
         var web = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.Web", "Program.cs"));
@@ -170,7 +170,7 @@ public sealed class HostAuthorityE2ETests
 
     private static async Task<DocumentOutline> RunCliAsync(string fixture)
     {
-        var root = FindRepositoryRoot();
+        var root = TestRepository.Root();
         var cliDll = Path.Combine(root, "src", "DocxHeaderExtractor.Cli", "bin", "Release", "net9.0", "dhx.dll");
         Assert.True(File.Exists(cliDll), $"Không tìm thấy CLI Release host: {cliDll}");
 
@@ -258,18 +258,6 @@ public sealed class HostAuthorityE2ETests
         var endIndex = text.IndexOf(end, startIndex, StringComparison.Ordinal);
         Assert.True(endIndex >= 0, $"Không tìm thấy route end marker: {end}");
         return text[startIndex..endIndex];
-    }
-
-    private static string FindRepositoryRoot()
-    {
-        var current = new DirectoryInfo(AppContext.BaseDirectory);
-        while (current is not null)
-        {
-            if (File.Exists(Path.Combine(current.FullName, "DocxHeaderExtractor.sln")))
-                return current.FullName;
-            current = current.Parent;
-        }
-        throw new DirectoryNotFoundException("Không tìm thấy root DocxHeaderExtractor.");
     }
 
     private sealed record HostHeading(

@@ -1,0 +1,2755 @@
+{
+  "artifactKind": "a99_llm_semantic_pilot_score",
+  "study": "LLM_SEMANTIC_PILOT_V1",
+  "scorer": "GENERIC_EXACT_SCORER_V1",
+  "run": {
+    "path": "eval/a99-closed-loop/llm-semantic-pilot-v1/run.v1.json",
+    "sha256": "f27db57657ca42658c0a23dfe28cd6e33f822073e642e96e037b34fc45791468"
+  },
+  "reviewState": "the production contract answers isHeading true or false; it has no NEEDS_REVIEW state, so review capture is not applicable",
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-089.gold.json",
+        "sha256": "c66cefb224bdd47a08e2374fdb0328dd97b1e520a48f4cdbaffed244ac833534",
+        "claims": 36
+      },
+      "calls": 5,
+      "invalidResponses": 0,
+      "declinedIsHeadingFalse": 0,
+      "boundProposals": 38,
+      "uniqueBoundProposals": 38,
+      "refusals": {},
+      "semanticRoles": {
+        "document-title": 1,
+        "subtitle": 1,
+        "section-heading": 1,
+        "article-heading": 6,
+        "heading": 17,
+        "article": 7,
+        "chapter": 1,
+        "running-header": 1,
+        "signature-label": 1,
+        "signature-value": 1,
+        "footnote": 1
+      },
+      "headline": {
+        "goldClaims": 36,
+        "hypothesesListed": 38,
+        "TRUE": 38,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 28,
+        "falsePositives": 10,
+        "falseNegatives": 8,
+        "truePrecision": 0.7368,
+        "trueRecall": 0.7778,
+        "f1": 0.7567,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 4,
+        "partialOnly": 4,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 4,
+        "goldMultipartClaims": 18,
+        "exactMultipartMatches": 14,
+        "goldClaimsWithPartialPart": 1,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 28,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 4,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 4
+        }
+      },
+      "residuals": {
+        "goldNotEngineTrue": [
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+            "goldText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+            "engine": [
+              {
+                "Index": 1,
+                "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticRole=subtitle"
+                ],
+                "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0109:S0:0-33",
+            "goldText": "1 . Conditions for establishment:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0117:S0:0-22",
+            "goldText": "2. Operation contents:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0246:S0:0-26",
+            "goldText": "1 . For publishing houses:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0249:S0:0-16",
+            "goldText": "2. For partners:",
+            "engine": []
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0499:S0:0-92|L0500:S0:0-58",
+            "goldText": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals engaged in the publishing or distribution ofe-publications",
+            "engine": [
+              {
+                "Index": 28,
+                "Text": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticRole=article"
+                ],
+                "identity": "L0499:S0:0-92",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0522:S0:0-92|L0523:S0:0-12",
+            "goldText": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe- publications",
+            "engine": [
+              {
+                "Index": 29,
+                "Text": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe-",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticRole=article"
+                ],
+                "identity": "L0522:S0:0-92",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0555:S0:0-93|L0556:S0:0-12",
+            "goldText": "Article 25. Renewal oflicenses for publication activities and registration of distribution of publications",
+            "engine": [
+              {
+                "Index": 32,
+                "Text": "Article 25. Renewal oflicenses for publication activities and registration of distribution of",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticRole=article"
+                ],
+                "identity": "L0555:S0:0-93",
+                "UnboundReason": null
+              }
+            ]
+          }
+        ],
+        "nonGoldTrue": [
+          {
+            "hypothesis": {
+              "Index": 0,
+              "Text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=document-title"
+              ],
+              "identity": "L0002:S1:0-33",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 1,
+              "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=subtitle"
+              ],
+              "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 20,
+              "Text": "4. Other cases decided by the Ministry ofInformation and Communications.",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L0358:S0:0-72",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 28,
+              "Text": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=article"
+              ],
+              "identity": "L0499:S0:0-92",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 29,
+              "Text": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe-",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=article"
+              ],
+              "identity": "L0522:S0:0-92",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 32,
+              "Text": "Article 25. Renewal oflicenses for publication activities and registration of distribution of",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=article"
+              ],
+              "identity": "L0555:S0:0-93",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 34,
+              "Text": "ON BEHALF OF THE GOVERNMENT",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L0576:S0:0-27",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 35,
+              "Text": "PRIME MINISTER",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=signature-label"
+              ],
+              "identity": "L0577:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 36,
+              "Text": "Nguyen Tan Dung",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=signature-value"
+              ],
+              "identity": "L0578:S0:0-15",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 37,
+              "Text": "(*) Công Báo Nos 225-226 (25/02/2014)",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=footnote"
+              ],
+              "identity": "L0579:S0:0-37",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          }
+        ],
+        "nonGoldNeedsReview": []
+      },
+      "byGoldPattern": {
+        "ARTICLE_HEADING": {
+          "gold": 26,
+          "exact": 23,
+          "missedBy": {
+            "PARTIAL_TRUE": 3
+          }
+        },
+        "S089_Q1_DECREE_TITLE_BLOCK": {
+          "gold": 1,
+          "exact": 0,
+          "missedBy": {
+            "PARTIAL_TRUE": 1
+          }
+        },
+        "S089_Q2_CHAPTER_LABEL_OVER_TITLE": {
+          "gold": 5,
+          "exact": 5,
+          "missedBy": {}
+        },
+        "S089_Q3_COLON_CLAUSE_LABEL": {
+          "gold": 4,
+          "exact": 0,
+          "missedBy": {
+            "UNPROPOSED": 4
+          }
+        }
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-095.gold.json",
+        "sha256": "d8a6eafb63716f531463b74d25543e4d27b25965aac0d5d0e5fb25734027df18",
+        "claims": 103
+      },
+      "calls": 20,
+      "invalidResponses": 0,
+      "declinedIsHeadingFalse": 0,
+      "boundProposals": 254,
+      "uniqueBoundProposals": 254,
+      "refusals": {
+        "OutOfOwnedSegment": 7,
+        "OutOfSourceOrder": 1
+      },
+      "semanticRoles": {
+        "document-title": 1,
+        "section-heading": 90,
+        "section": 64,
+        "page-footer": 4,
+        "running-header": 10,
+        "definition-term": 2,
+        "heading": 47,
+        "figure-label": 1,
+        "table-header": 7,
+        "table-caption": 4,
+        "index-entry": 24
+      },
+      "headline": {
+        "goldClaims": 103,
+        "hypothesesListed": 254,
+        "TRUE": 254,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 94,
+        "falsePositives": 160,
+        "falseNegatives": 9,
+        "truePrecision": 0.3701,
+        "trueRecall": 0.9126,
+        "f1": 0.5266,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 8,
+        "partialOnly": 1,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 1,
+        "goldMultipartClaims": 6,
+        "exactMultipartMatches": 6,
+        "goldClaimsWithPartialPart": 0,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 94,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 1,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 8
+        }
+      },
+      "residuals": {
+        "goldNotEngineTrue": [
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0008:S0:0-6",
+            "goldText": "HTTP/3",
+            "engine": [
+              {
+                "Index": 0,
+                "Text": "RFC 9114 HTTP/3",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticRole=document-title"
+                ],
+                "identity": "L0007:S0:0-8|L0008:S0:0-6",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1914:S0:0-1",
+            "goldText": "C",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1940:S0:0-1",
+            "goldText": "D",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1947:S0:0-1",
+            "goldText": "G",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1961:S0:0-1",
+            "goldText": "H",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2012:S0:0-1",
+            "goldText": "M",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2023:S0:0-1",
+            "goldText": "P",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2056:S0:0-1",
+            "goldText": "R",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2063:S0:0-1",
+            "goldText": "S",
+            "engine": []
+          }
+        ],
+        "nonGoldTrue": [
+          {
+            "hypothesis": {
+              "Index": 0,
+              "Text": "RFC 9114 HTTP/3",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=document-title"
+              ],
+              "identity": "L0007:S0:0-8|L0008:S0:0-6",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 5,
+              "Text": "1. Introduction",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0035:S0:0-15",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 6,
+              "Text": "1.1. Prior Versions ofHTTP",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0036:S0:0-26",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 7,
+              "Text": "1.2. Delegation to QUIC",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0037:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 8,
+              "Text": "2. HTTP/3 Protocol Overview",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0038:S0:0-27",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 9,
+              "Text": "2.1. Document Organization",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0039:S0:0-26",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 10,
+              "Text": "2.2. Conventions and Terminology",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0040:S0:0-32",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 11,
+              "Text": "3. Connection Setup and Management",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0041:S0:0-34",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 12,
+              "Text": "3.1. Discovering an HTTP/3 Endpoint",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0042:S0:0-35",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 13,
+              "Text": "3.1.1. HTTP Alternative Services",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0043:S0:0-32",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 14,
+              "Text": "3.1.2. Other Schemes",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0044:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 15,
+              "Text": "3.2. Connection Establishment",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0045:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 16,
+              "Text": "3.3. Connection Reuse",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0046:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 17,
+              "Text": "4. Expressing HTTP Semantics in HTTP/3",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0047:S0:0-38",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 18,
+              "Text": "4.1. HTTP Message Framing",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0048:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 19,
+              "Text": "4.1.1. Request Cancellation and Rejection",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0049:S0:0-41",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 20,
+              "Text": "4.1.2. Malformed Requests and Responses",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0050:S0:0-39",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 21,
+              "Text": "4.2. HTTP Fields",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0051:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 22,
+              "Text": "4.2.1. Field Compression",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0052:S0:0-24",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 23,
+              "Text": "4.2.2. Header Size Constraints",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0053:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 24,
+              "Text": "4.3. HTTP Control Data",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0054:S0:0-22",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 25,
+              "Text": "4.3.1. Request Pseudo-Header Fields",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0055:S0:0-35",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 26,
+              "Text": "4.3.2. Response Pseudo-Header Fields",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0056:S0:0-36",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 27,
+              "Text": "4.4. The CONNECT Method",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0057:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 28,
+              "Text": "4.5. HTTP Upgrade",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0058:S0:0-17",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 29,
+              "Text": "4.6. Server Push",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0059:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 30,
+              "Text": "5. Connection Closure",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0060:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 31,
+              "Text": "5.1. Idle Connections",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0061:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 32,
+              "Text": "5.2. Connection Shutdown",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0064:S0:0-24",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 33,
+              "Text": "5.3. Immediate Application Closure",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0065:S0:0-34",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 34,
+              "Text": "5.4. Transport Closure",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0066:S0:0-22",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 35,
+              "Text": "6. Stream Mapping and Usage",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0067:S0:0-27",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 36,
+              "Text": "6.1. Bidirectional Streams",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0068:S0:0-26",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 37,
+              "Text": "6.2. Unidirectional Streams",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0069:S0:0-27",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 38,
+              "Text": "6.2.1. Control Streams",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0070:S0:0-22",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 39,
+              "Text": "6.2.2. Push Streams",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0071:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 40,
+              "Text": "6.2.3. Reserved Stream Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0072:S0:0-28",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 41,
+              "Text": "7. HTTP Framing Layer",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0073:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 42,
+              "Text": "7.1. Frame Layout",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0074:S0:0-17",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 43,
+              "Text": "7.2. Frame Deﬁnitions",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0075:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 44,
+              "Text": "7.2.1. DATA",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0076:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 45,
+              "Text": "7.2.2. HEADERS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0077:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 46,
+              "Text": "7.2.3. CANCEL_PUSH",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0078:S0:0-18",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 47,
+              "Text": "7.2.4. SETTINGS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0079:S0:0-15",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 48,
+              "Text": "7.2.5. PUSH_PROMISE",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0080:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 49,
+              "Text": "7.2.6. GOAWAY",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0081:S0:0-13",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 50,
+              "Text": "7.2.7. MAX_PUSH_ID",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0082:S0:0-18",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 51,
+              "Text": "7.2.8. Reserved Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0083:S0:0-27",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 52,
+              "Text": "8. Error Handling",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0084:S0:0-17",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 53,
+              "Text": "8.1. HTTP/3 Error Codes",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0085:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 54,
+              "Text": "9. Extensions to HTTP/3",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0086:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 55,
+              "Text": "10. Security Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0087:S0:0-27",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 56,
+              "Text": "10.1. Server Authority",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0088:S0:0-22",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 57,
+              "Text": "10.2. Cross-Protocol Attacks",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0089:S0:0-28",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 58,
+              "Text": "10.3. Intermediary-Encapsulation Attacks",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0090:S0:0-40",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 59,
+              "Text": "10.4. Cacheability ofPushed Responses",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0091:S0:0-37",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 60,
+              "Text": "10.5. Denial-of-Service Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0092:S0:0-38",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 61,
+              "Text": "10.5.1. Limits on Field Section Size",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0093:S0:0-36",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 62,
+              "Text": "10.5.2. CONNECT Issues",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0096:S0:0-22",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 63,
+              "Text": "10.6. Use of Compression",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0097:S0:0-24",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 64,
+              "Text": "10.7. Padding and Traﬃc Analysis",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0098:S0:0-32",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 65,
+              "Text": "10.8. Frame Parsing",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0099:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 66,
+              "Text": "10.9. Early Data",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0100:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 67,
+              "Text": "10.10. Migration",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0101:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 68,
+              "Text": "10.11. Privacy Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0102:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 69,
+              "Text": "11. IANA Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0103:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 70,
+              "Text": "11.1. Registration ofHTTP/3 Identiﬁcation String",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0104:S0:0-48",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 71,
+              "Text": "11.2. New Registries",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0105:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 72,
+              "Text": "11.2.1. Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0106:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 73,
+              "Text": "11.2.2. Settings Parameters",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0107:S0:0-27",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 74,
+              "Text": "11.2.3. Error Codes",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0108:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 75,
+              "Text": "11.2.4. Stream Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0109:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 76,
+              "Text": "12. References",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0110:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 77,
+              "Text": "12.1. Normative References",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0111:S0:0-26",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 78,
+              "Text": "12.2. Informative References",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0112:S0:0-28",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 79,
+              "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section-heading"
+              ],
+              "identity": "L0113:S0:0-56",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 80,
+              "Text": "Acknowledgments",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0124:S0:0-15",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 81,
+              "Text": "Index",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0125:S0:0-5",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 88,
+              "Text": "A.1. Streams",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0114:S0:0-12",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 89,
+              "Text": "A.2. HTTP Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0115:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 90,
+              "Text": "A.2.1. Prioritization Diﬀerences",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0116:S0:0-32",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 91,
+              "Text": "A.2.2. Field Compression Diﬀerences",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0117:S0:0-35",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 92,
+              "Text": "A.2.3. Flow-Control Diﬀerences",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0118:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 93,
+              "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0119:S0:0-45",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 94,
+              "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0120:S0:0-49",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 95,
+              "Text": "A.3. HTTP/2 SETTINGS Parameters",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0121:S0:0-31",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 96,
+              "Text": "A.4. HTTP/2 Error Codes",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0122:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 97,
+              "Text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0123:S0:0-47",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 98,
+              "Text": "Bishop Standards Track Page 7",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=page-footer"
+              ],
+              "identity": "L0230:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 99,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L0231:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 100,
+              "Text": "server:",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=definition-term"
+              ],
+              "identity": "L0232:S0:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 101,
+              "Text": "stream:",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=definition-term"
+              ],
+              "identity": "L0234:S0:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 104,
+              "Text": "Bishop Standards Track Page 8",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=page-footer"
+              ],
+              "identity": "L0266:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 105,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L0267:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 109,
+              "Text": "Bishop Standards Track Page 9",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=page-footer"
+              ],
+              "identity": "L0303:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 110,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L0304:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 114,
+              "Text": "Bishop Standards Track Page 10",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=page-footer"
+              ],
+              "identity": "L0342:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 115,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L0343:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 116,
+              "Text": "following a ﬁnal HTTP response MUST be treated as malformed.",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=section"
+              ],
+              "identity": "L0348:S0:0-60",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 136,
+              "Text": "Figure 1: Unidirectional Stream Header",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=figure-label"
+              ],
+              "identity": "L0815:S0:0-38",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 141,
+              "Text": "Bishop Standards Track Page 23",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L0842:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 142,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L0843:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 143,
+              "Text": "Bishop Standards Track Page 24",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L0880:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 144,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L0881:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 145,
+              "Text": "Figure 2: Push Stream Header",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L0886:S0:0-28",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 146,
+              "Text": "Bishop Standards Track Page 25",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L0915:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 147,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L0916:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 148,
+              "Text": "Table 1: HTTP/3 Frames and Stream Type Overview",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L0920:S0:0-47",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 155,
+              "Text": "Bishop Standards Track Page 28",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L1024:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 156,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L1025:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 159,
+              "Text": "Bishop Standards Track Page 29",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L1060:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 160,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L1061:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 162,
+              "Text": "Bishop Standards Track Page 30",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L1100:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 163,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L1101:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 164,
+              "Text": "Bishop Standards Track Page 31",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L1138:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 165,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L1139:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 190,
+              "Text": "Frame Type Value",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-header"
+              ],
+              "identity": "L1489:S0:0-10|L1489:S1:0-5",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 191,
+              "Text": "Table 2: InitialHTTP/3 Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-caption"
+              ],
+              "identity": "L1504:S0:0-34",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 193,
+              "Text": "Setting Name Value Speciﬁcation Default",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-header"
+              ],
+              "identity": "L1525:S0:0-12|L1525:S1:0-5|L1525:S2:0-12|L1525:S3:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 194,
+              "Text": "Setting Name Value Speciﬁcation Default",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-header"
+              ],
+              "identity": "L1529:S0:0-12|L1529:S1:0-5|L1529:S2:0-12|L1529:S3:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 195,
+              "Text": "Table 3: InitialHTTP/3 Settings",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-caption"
+              ],
+              "identity": "L1535:S0:0-31",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 197,
+              "Text": "Name Value",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-header"
+              ],
+              "identity": "L1558:S0:0-4|L1558:S1:0-5",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 198,
+              "Text": "Description Speciﬁcation",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-header"
+              ],
+              "identity": "L1558:S2:0-11|L1558:S3:0-12",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 199,
+              "Text": "Name Value Description Speciﬁcation",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-header"
+              ],
+              "identity": "L1562:S0:0-4|L1562:S1:0-5|L1562:S2:0-11|L1562:S3:0-12",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 200,
+              "Text": "Table 4: InitialHTTP/3 Error Codes",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-caption"
+              ],
+              "identity": "L1585:S0:0-34",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 202,
+              "Text": "Stream Type Value Speciﬁcation Sender",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-header"
+              ],
+              "identity": "L1605:S0:0-11|L1605:S1:0-5|L1605:S2:0-12|L1605:S3:0-6",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 203,
+              "Text": "Table 5: Initial Stream Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=table-caption"
+              ],
+              "identity": "L1608:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 220,
+              "Text": "Bishop Standards Track Page 54",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L1949:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 221,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L1950:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 222,
+              "Text": "H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4;",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1962:S0:0-75",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 223,
+              "Text": "H3_CONNECT_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1964:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 224,
+              "Text": "H3_EXCESSIVE_LOAD",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1966:S0:0-17",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 225,
+              "Text": "H3_FRAME_ERROR Section 7.1, Paragraph 5; Section 7.1, Paragraph 6; Section 8.1; Table",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1968:S0:0-85",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 226,
+              "Text": "H3_FRAME_UNEXPECTED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1970:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 227,
+              "Text": "H3_GENERAL_PROTOCOL_ERROR Section 7.2.5, Paragraph 6; Section 8.1; Table 4;",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1977:S0:0-75",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 228,
+              "Text": "H3_ID_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1979:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 229,
+              "Text": "H3_INTERNAL_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1983:S0:0-17",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 230,
+              "Text": "H3_MESSAGE_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1984:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 231,
+              "Text": "H3_MISSING_SETTINGS Section 6.2.1, Paragraph 2; Section 8.1; Table 4",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1986:S0:0-68",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 232,
+              "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1987:S0:0-80",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 233,
+              "Text": "H3_REQUEST_CANCELLED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1990:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 234,
+              "Text": "H3_REQUEST_INCOMPLETE",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1994:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 235,
+              "Text": "Bishop Standards Track Page 55",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L1995:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 236,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L1996:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 237,
+              "Text": "H3_REQUEST_REJECTED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L1997:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 238,
+              "Text": "H3_SETTINGS_ERROR Section 7.2.4, Paragraph 6; Section 7.2.4.1, Paragraph 5; Section",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2001:S0:0-83",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 239,
+              "Text": "H3_STREAM_CREATION_ERROR Section 6.1, Paragraph 3; Section 6.2, Paragraph 7;",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2003:S0:0-76",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 240,
+              "Text": "H3_VERSION_FALLBACK Section 8.1; Table 4; Appendix A.4, Paragraph 3.28.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2005:S0:0-72",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 241,
+              "Text": "HEADERS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2006:S0:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 242,
+              "Text": "malformed",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2013:S0:0-9",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 243,
+              "Text": "MAX_PUSH_ID",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2019:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 244,
+              "Text": "push ID",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2024:S0:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 245,
+              "Text": "push stream",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2035:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 246,
+              "Text": "Bishop Standards Track Page 56",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L2040:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 247,
+              "Text": "RFC 9114 HTTP/3 June 2022",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=running-header"
+              ],
+              "identity": "L2041:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 248,
+              "Text": "PUSH_PROMISE",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2046:S0:0-12",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 249,
+              "Text": "request stream",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=index-entry"
+              ],
+              "identity": "L2057:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 251,
+              "Text": "4.1.1, Paragraph 1; Section 4.1.1, Paragraph 5; Section 4.4, Paragraph 5; Section 4.4,",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L2059:S0:0-86",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 252,
+              "Text": "SETTINGS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L2064:S0:0-8",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 253,
+              "Text": "Bishop Standards Track Page 57",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticRole=heading"
+              ],
+              "identity": "L2080:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          }
+        ],
+        "nonGoldNeedsReview": []
+      },
+      "byGoldPattern": {
+        "MATTER_SECTION": {
+          "gold": 6,
+          "exact": 6,
+          "missedBy": {}
+        },
+        "NUMBERED_SECTION": {
+          "gold": 81,
+          "exact": 81,
+          "missedBy": {}
+        },
+        "NUMBERED_SECTION_SPLIT": {
+          "gold": 6,
+          "exact": 6,
+          "missedBy": {}
+        },
+        "S095_Q1_RFC_TITLE_BLOCK": {
+          "gold": 1,
+          "exact": 0,
+          "missedBy": {
+            "PARTIAL_TRUE": 1
+          }
+        },
+        "S095_Q2_INDEX_GROUP_LETTER": {
+          "gold": 8,
+          "exact": 0,
+          "missedBy": {
+            "UNPROPOSED": 8
+          }
+        },
+        "TOC_OPENER": {
+          "gold": 1,
+          "exact": 1,
+          "missedBy": {}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "artifactKind": "a99_pdf_s2g_evidence_ledger",
+  "schemaVersion": "a99-pdf-s2g-evidence-ledger-v1",
+  "documentId": "DOC-0252",
+  "entries": [
+    {
+      "experimentId": "DOC-0252-PDF-S2C-B0",
+      "status": "ABORTED_AUTHORITY_MISMATCH",
+      "providerCalls": 9,
+      "publishedReplayBundles": 0,
+      "scored": false
+    },
+    {
+      "experimentId": "DOC-0252-PDF-S2E-RUNTIME-B0",
+      "status": "TRANSPORT_COMPLETE_AUTHORITY_MISMATCH",
+      "providerCalls": 29,
+      "publishedReplayBundles": 3,
+      "scored": false,
+      "originalManifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+      "runtimeSemanticContractHash": "21687e5a78d59b8c82124dcc567c7353024145d599b1294c41c888ffe4512365"
+    },
+    {
+      "experimentId": "DOC-0252-PDF-S2E-RUNTIME-B0-ADOPTION-V1",
+      "status": "SUCCESSOR_AUTHORITY_ISSUED_ZERO_PROVIDER_ADOPTION_PENDING_APPROVAL",
+      "providerCalls": 0,
+      "publishedReplayBundles": 0,
+      "scored": false,
+      "adoptsExistingBundles": ["r1", "r2", "r3"]
+    }
+  ]
+}

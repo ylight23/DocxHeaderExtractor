@@ -1,0 +1,311 @@
+{
+  "artifactKind": "a99_direct_semantic_context_ablation_score_gold_r3_rescore",
+  "schemaVersion": "a99-direct-semantic-context-ablation-score-gold-r3-rescore-v1",
+  "documentId": "DOC-0252",
+  "status": "RESCORED_OFFLINE_UNDER_GOLD_R3",
+  "supersedesForCurrentConclusion": "eval/a99-closed-loop/direct-semantic-context-ablation-score-v1/DOC-0252/gold-r2-rescore/direct-semantic-context-ablation-score-gold-r2.v1.json",
+  "note": "That R2 rescore remains a correct, immutable description of what was scored under Gold R2. It is not edited. This is the CURRENT conclusion under Gold R3.",
+  "goldSha256Old": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "goldSha256New": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+  "onlyChangedInput": "ITEM-CCE2C592 (Agenda) expected label: STRUCTURAL_UNIT (R2) -> DOCUMENT_LABEL (R3). Every raw returned value in every cell is unchanged.",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "arms": [
+    {
+      "armId": "FULL_CONTEXT",
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 3,
+        "total": 3,
+        "returnedByRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ]
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 3,
+        "total": 3,
+        "returnedByRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ]
+      },
+      "F2": {
+        "itemId": "ITEM-2D78F82D",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "F3": {
+        "itemId": "ITEM-968E70AF",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "structuralControls": {
+        "correct": 39,
+        "total": 39,
+        "itemCount": 13
+      },
+      "documentLabelControl": {
+        "correct": 9,
+        "total": 9,
+        "itemCount": 3,
+        "items": [
+          "ITEM-505430BB",
+          "ITEM-AB89229E",
+          "ITEM-CCE2C592"
+        ]
+      },
+      "confusionMatrix": {
+        "expectedActual": {
+          "STRUCTURAL_UNIT": {
+            "STRUCTURAL_UNIT": 39,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 0
+          },
+          "DOCUMENT_LABEL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 9,
+            "NON_STRUCTURAL": 0
+          },
+          "NON_STRUCTURAL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 6
+          }
+        },
+        "totalDecisions": 54,
+        "correct": 54,
+        "accuracy": 1
+      }
+    },
+    {
+      "armId": "LOCAL_CONTEXT_RADIUS_3",
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 3,
+        "total": 3,
+        "returnedByRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ]
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 3,
+        "total": 3,
+        "returnedByRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ]
+      },
+      "F2": {
+        "itemId": "ITEM-2D78F82D",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "F3": {
+        "itemId": "ITEM-968E70AF",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "structuralControls": {
+        "correct": 39,
+        "total": 39,
+        "itemCount": 13
+      },
+      "documentLabelControl": {
+        "correct": 9,
+        "total": 9,
+        "itemCount": 3,
+        "items": [
+          "ITEM-505430BB",
+          "ITEM-AB89229E",
+          "ITEM-CCE2C592"
+        ]
+      },
+      "confusionMatrix": {
+        "expectedActual": {
+          "STRUCTURAL_UNIT": {
+            "STRUCTURAL_UNIT": 39,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 0
+          },
+          "DOCUMENT_LABEL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 9,
+            "NON_STRUCTURAL": 0
+          },
+          "NON_STRUCTURAL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 6
+          }
+        },
+        "totalDecisions": 54,
+        "correct": 54,
+        "accuracy": 1
+      }
+    },
+    {
+      "armId": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 3,
+        "total": 3,
+        "returnedByRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ]
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 0,
+        "total": 3,
+        "returnedByRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ]
+      },
+      "F2": {
+        "itemId": "ITEM-2D78F82D",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "F3": {
+        "itemId": "ITEM-968E70AF",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "structuralControls": {
+        "correct": 39,
+        "total": 39,
+        "itemCount": 13
+      },
+      "documentLabelControl": {
+        "correct": 6,
+        "total": 9,
+        "itemCount": 3,
+        "items": [
+          "ITEM-505430BB",
+          "ITEM-AB89229E",
+          "ITEM-CCE2C592"
+        ]
+      },
+      "confusionMatrix": {
+        "expectedActual": {
+          "STRUCTURAL_UNIT": {
+            "STRUCTURAL_UNIT": 39,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 0
+          },
+          "DOCUMENT_LABEL": {
+            "STRUCTURAL_UNIT": 3,
+            "DOCUMENT_LABEL": 6,
+            "NON_STRUCTURAL": 0
+          },
+          "NON_STRUCTURAL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 6
+          }
+        },
+        "totalDecisions": 54,
+        "correct": 51,
+        "accuracy": 0.9444444444444444
+      }
+    },
+    {
+      "armId": "FULL_STRUCTURED_CONTEXT_V2",
+      "F1": {
+        "itemId": "ITEM-505430BB",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 3,
+        "total": 3,
+        "returnedByRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ]
+      },
+      "Agenda": {
+        "itemId": "ITEM-CCE2C592",
+        "expected": "DOCUMENT_LABEL",
+        "correct": 1,
+        "total": 3,
+        "returnedByRepeat": [
+          "DOCUMENT_LABEL",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ]
+      },
+      "F2": {
+        "itemId": "ITEM-2D78F82D",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "F3": {
+        "itemId": "ITEM-968E70AF",
+        "expected": "NON_STRUCTURAL",
+        "correct": 3,
+        "total": 3
+      },
+      "structuralControls": {
+        "correct": 39,
+        "total": 39,
+        "itemCount": 13
+      },
+      "documentLabelControl": {
+        "correct": 7,
+        "total": 9,
+        "itemCount": 3,
+        "items": [
+          "ITEM-505430BB",
+          "ITEM-AB89229E",
+          "ITEM-CCE2C592"
+        ]
+      },
+      "confusionMatrix": {
+        "expectedActual": {
+          "STRUCTURAL_UNIT": {
+            "STRUCTURAL_UNIT": 39,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 0
+          },
+          "DOCUMENT_LABEL": {
+            "STRUCTURAL_UNIT": 2,
+            "DOCUMENT_LABEL": 7,
+            "NON_STRUCTURAL": 0
+          },
+          "NON_STRUCTURAL": {
+            "STRUCTURAL_UNIT": 0,
+            "DOCUMENT_LABEL": 0,
+            "NON_STRUCTURAL": 6
+          }
+        },
+        "totalDecisions": 54,
+        "correct": 52,
+        "accuracy": 0.9629629629629629
+      }
+    }
+  ]
+}

@@ -6,38 +6,14 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class CanonicalSemanticVnextRuntimeTests
 {
     [Fact]
-    public void Prompt_cannot_change_canonical_heading_membership_but_can_change_projection()
-    {
-        var graph = Graph(
-            new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION"),
-            new CanonicalSemanticProposal("S0002", true, "Heading", SemanticRole: "SECTION", Scope: "continuation"));
-
-        var all = CanonicalSemanticProjection.Project(graph, new SemanticIntent("all-true-headings", false));
-        var outline = CanonicalSemanticProjection.Project(graph, new SemanticIntent("main-document-outline", true));
-
-        Assert.Equal(2, all.Count);
-        Assert.Single(outline);
-        Assert.Equal(2, graph.Occurrences.Count);
-    }
-
-    [Fact]
     public void Repeat_and_continuation_survive_even_when_semantic_node_already_exists()
     {
         var graph = Graph(
-            new CanonicalSemanticProposal("S0001", true, "STATEMENTS OF CASH FLOWS", SemanticRole: "SECTION"),
-            new CanonicalSemanticProposal("S0002", true, "STATEMENTS OF CASH FLOWS", SemanticRole: "SECTION", Scope: "continuation"));
+            new CanonicalSemanticProposal("S0001", true, "STATEMENTS OF CASH FLOWS", SemanticRole: "SECTION", RelationHints: ["same-node:cash-flows"]),
+            new CanonicalSemanticProposal("S0002", true, "STATEMENTS OF CASH FLOWS", SemanticRole: "SECTION", Scope: "continuation", RelationHints: ["same-node:cash-flows"]));
 
         Assert.Equal(2, graph.Occurrences.Count);
         Assert.Equal("CONTINUATION", graph.Occurrences[1].OccurrenceKind);
-        Assert.Single(CanonicalSemanticProjection.Project(graph, new SemanticIntent("outline", true)));
-    }
-
-    [Fact]
-    public void Candidate_miss_does_not_cap_owned_semantic_discovery()
-    {
-        Assert.True(SemanticCandidatePolicy.CanAcceptOwnedOccurrence("S0001", [
-            new SemanticCandidateAttentionHint("S0001", false, "heuristic-miss")
-        ]));
     }
 
     [Fact]
@@ -57,6 +33,26 @@ public sealed class CanonicalSemanticVnextRuntimeTests
     }
 
     [Fact]
+    public async Task Production_contract_validation_runs_before_binder()
+    {
+        var result = await CanonicalSemanticProductionEntryPoint.RunAsync(new(
+            Catalog(("p1", "Heading")), null, "source-hash",
+            [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
+            [], [], []), new InvalidProposalTextModel());
+
+        Assert.Equal(2, result.ContractInvalidProposalCount);
+        Assert.Contains(result.ContractIssues, item => item.Code == "UNKNOWN_ALIAS");
+        Assert.Contains(result.ContractIssues, item => item.Code == "NON_VERBATIM_TEXT");
+        Assert.Empty(result.TextPipeline.BoundHeadings);
+        Assert.Empty(result.TextPipeline.BindingObservations);
+        Assert.Equal(1, result.PrimaryTextModelCalls);
+        Assert.Equal(0, result.SemanticAdjudicationCalls);
+        Assert.Equal(0, result.GlobalReopenCalls);
+        Assert.Equal(0, result.VisualModelCalls);
+        Assert.Equal(1, result.TotalModelCalls);
+    }
+
+    [Fact]
     public void Non_verbatim_and_ambiguous_text_fail_closed()
     {
         var catalog = Catalog(("p1", "Heading Heading"));
@@ -69,6 +65,108 @@ public sealed class CanonicalSemanticVnextRuntimeTests
         Assert.Empty(bound);
         Assert.Equal(CanonicalSemanticBindingStatus.AmbiguousBinding, audit[0].Status);
         Assert.Equal(CanonicalSemanticBindingStatus.NonVerbatimText, audit[1].Status);
+    }
+
+    [Fact]
+    public void Duplicate_text_with_unique_occurrence_ordinal_binds_that_occurrence()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "A Results B Results C")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results", Occurrence: 2)
+        ], aliases, out var audit);
+
+        var item = Assert.Single(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+        Assert.Equal(12, item.Start);
+        Assert.Equal(19, item.End);
+    }
+
+    [Fact]
+    public void Duplicate_text_with_unique_exact_context_binds_that_occurrence()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "prefix-A Results; prefix-B Results")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results", LeftExactContext: "prefix-B ")
+        ], aliases, out var audit);
+
+        var item = Assert.Single(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+        Assert.Equal(27, item.Start);
+        Assert.Equal(34, item.End);
+    }
+
+    [Fact]
+    public void Duplicate_text_with_non_unique_exact_context_is_ambiguous()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "A Results shared; B Results shared")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results", RightExactContext: " shared")
+        ], aliases, out var audit);
+
+        Assert.Empty(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.AmbiguousBinding, audit[0].Status);
+        Assert.Equal("AMBIGUOUS_BINDING", audit[0].Reason);
+    }
+
+    [Fact]
+    public void Duplicate_text_with_non_matching_exact_context_is_rejected()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "A Results B Results C")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results", RightExactContext: " missing")
+        ], aliases, out var audit);
+
+        Assert.Empty(bound);
+        Assert.NotEqual(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+    }
+
+    [Fact]
+    public void Single_exact_text_occurrence_binds_unchanged()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "A Results B")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0001", true, "Results")
+        ], aliases, out var audit);
+
+        Assert.Single(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+    }
+
+    [Fact]
+    public void Identical_text_in_two_aliases_binds_only_requested_alias()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(("p1", "Results"), ("p2", "Results")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal("S0002", true, "Results")
+        ], aliases, out var audit);
+
+        var item = Assert.Single(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.Bound, audit[0].Status);
+        Assert.Equal("p2", item.SourceId);
+    }
+
+    [Fact]
+    public void Ambiguous_part_prevents_composite_heading_binding()
+    {
+        var aliases = SemanticSourceAliasCatalog.FromCatalog(Catalog(
+            ("p1", "A Results B Results"),
+            ("p2", "Tail")));
+
+        var bound = CanonicalSemanticExactBinder.Bind([
+            new CanonicalSemanticProposal(
+                "S0001", true, null,
+                VerbatimParts: ["Results", "Tail"],
+                SourceAliases: ["S0001", "S0002"])
+        ], aliases, out var audit);
+
+        Assert.Empty(bound);
+        Assert.Equal(CanonicalSemanticBindingStatus.AmbiguousBinding, audit[0].Status);
     }
 
     [Fact]
@@ -160,28 +258,13 @@ public sealed class CanonicalSemanticVnextRuntimeTests
     }
 
     [Fact]
-    public void Semantic_cache_key_is_prompt_independent_and_projection_does_not_mutate_graph()
-    {
-        var first = CanonicalSemanticGraphCacheKey.Create("ABC", "schema", "model", "extractor");
-        var second = CanonicalSemanticGraphCacheKey.Create("abc", "schema", "model", "extractor");
-        var graph = Graph(new CanonicalSemanticProposal("S0001", true, "Heading"));
-        var before = graph.Occurrences.Count;
-
-        _ = CanonicalSemanticProjection.Project(graph, new SemanticIntent("collapse", true));
-
-        Assert.Equal(first, second);
-        Assert.Equal(before, graph.Occurrences.Count);
-    }
-
-    [Fact]
-    public void Three_layer_context_and_optional_visual_route_are_explicit()
+    public void Three_layer_context_is_explicit()
     {
         var packet = SemanticContextPacker.Pack(["target"], ["local"], ["global"]);
 
         Assert.Equal(["target"], packet.TargetEvidence);
         Assert.Equal(["local"], packet.LocalContext);
         Assert.Equal(["global"], packet.GlobalContext);
-        Assert.True(SemanticVisualEscalation.IsOptional);
     }
 
     [Fact]
@@ -193,7 +276,6 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             [new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION")],
             "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
-            [new SemanticCandidateAttentionHint("S0001", false, "heuristic-miss")],
             ["Heading"], ["local"], ["global"]));
 
         Assert.Equal(CanonicalSemanticModality.Text, result.ModalityProfile.DocumentModality);
@@ -213,11 +295,11 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             [],
             "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", false, 1, "docx-image")],
-            [], [], [], [],
-            [new CanonicalSemanticVisualBlock(
+            [], [], [],
+            VisualBlocks: [new CanonicalSemanticVisualBlock(
                 "P0001", 1, "image-hash",
                 new CanonicalSemanticVisualBoundingBox(0, 0, 10, 10), "Visual heading")],
-            [new CanonicalSemanticVisualProposal("V0001", true, "Visual heading", "SECTION")]));
+            VisualProposals: [new CanonicalSemanticVisualProposal("V0001", true, "Visual heading", "SECTION")]));
 
         Assert.Equal(CanonicalSemanticModality.VisualOnly, result.ModalityProfile.DocumentModality);
         Assert.Single(result.VisualOccurrences);
@@ -234,14 +316,39 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             null,
             "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
-            [], ["Heading"], [], ["source-context"],
+            ["Heading"], [], ["source-context"],
             DocumentId: "DOC-TEST"),
             new FakeTextModel());
 
         Assert.Equal(1, result.TextModelCalls);
+        Assert.Equal(0, result.SemanticAdjudicationCalls);
+        Assert.Equal(0, result.GlobalReopenCalls);
+        Assert.Equal(0, result.VisualModelCalls);
+        Assert.Equal(1, result.TotalModelCalls);
         Assert.Equal("S0001", result.ModelProposals[0].SourceAlias);
         Assert.Single(result.TextPipeline.BoundHeadings);
         Assert.Equal(3, result.TextPipeline.BoundHeadings[0].Start);
+    }
+
+    [Fact]
+    public async Task Production_entry_point_automatically_reopens_parent_contradiction()
+    {
+        var result = await CanonicalSemanticProductionEntryPoint.RunAsync(new(
+            Catalog(("p1", "Heading")), null, "source-hash",
+            [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
+            ["Heading"], [], [], DocumentId: "DOC-GLOBAL-CONFLICT"),
+            new ParentContradictionTextModel(),
+            requestId: "global-conflict",
+            globalReopenModel: new SelectParentAlternativeModel());
+
+        Assert.Equal(1, result.GlobalReopenCalls);
+        Assert.Equal(1, result.PrimaryTextModelCalls);
+        Assert.Equal(0, result.SemanticAdjudicationCalls);
+        Assert.Equal(0, result.VisualModelCalls);
+        Assert.Equal(2, result.TotalModelCalls);
+        var bound = Assert.Single(result.TextPipeline.BoundHeadings);
+        Assert.Contains("parent-node:N2", bound.RelationHints);
+        Assert.Single(result.CanonicalOccurrences);
     }
 
     [Fact]
@@ -252,7 +359,7 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             null,
             "source-hash",
             [new CanonicalSemanticPageEvidence("P0001", false, 1, "docx-image")],
-            [], [], [], [],
+            [], [], [],
             VisualPages: [new CanonicalSemanticVisualPageEvidence("P0001", "image-hash", [1, 2, 3], 10, 10)],
             DocumentId: "DOC-VISUAL-TEST"),
             new FakeTextModel(), new FakeVisualModel());
@@ -290,6 +397,48 @@ public sealed class CanonicalSemanticVnextRuntimeTests
             return Task.FromResult(new CanonicalSemanticVisualInferenceResult(
                 [block], [new CanonicalSemanticVisualProposal("V0001", true, "Visual heading", "SECTION")],
                 new CanonicalSemanticInferenceTelemetry("fake", "stop")));
+        }
+    }
+
+    private sealed class InvalidProposalTextModel : ICanonicalSemanticTextModel
+    {
+        public Task<CanonicalSemanticTextInferenceResult> InferAsync(
+            CanonicalSemanticProductionInput input,
+            SemanticContextPacket packedContext,
+            string requestId,
+            CancellationToken cancellationToken = default) =>
+            Task.FromResult(new CanonicalSemanticTextInferenceResult([
+                new CanonicalSemanticProposal("S9999", true, "Heading"),
+                new CanonicalSemanticProposal("S0001", true, "Not in source")
+            ], new("fake", "stop")));
+    }
+
+    private sealed class ParentContradictionTextModel : ICanonicalSemanticTextModel
+    {
+        public Task<CanonicalSemanticTextInferenceResult> InferAsync(
+            CanonicalSemanticProductionInput input,
+            SemanticContextPacket packedContext,
+            string requestId,
+            CancellationToken cancellationToken = default) =>
+            Task.FromResult(new CanonicalSemanticTextInferenceResult([
+                new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION",
+                    RelationHints: ["parent-node:N1"]),
+                new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION",
+                    RelationHints: ["parent-node:N2"]),
+            ], new("fake", "stop")));
+    }
+
+    private sealed class SelectParentAlternativeModel : ICanonicalSemanticAdjudicationModel
+    {
+        public Task<SemanticAdjudicationResponse> AdjudicateAsync(
+            SemanticAdjudicationCase adjudicationCase,
+            string requestId,
+            CancellationToken cancellationToken = default)
+        {
+            var selected = adjudicationCase.Alternatives.Single(item =>
+                item.OriginalProposal.RelationHints!.Contains("parent-node:N2"));
+            return Task.FromResult(new SemanticAdjudicationResponse(
+                adjudicationCase.CaseId, SemanticAdjudicationDecision.Select, selected.AlternativeId));
         }
     }
 

@@ -1,0 +1,84 @@
+{
+  "artifactKind": "PARTIAL_SPAN_BOUNDARY_DIAGNOSIS",
+  "schemaVersion": "v1",
+  "documentId": "DOC-0256",
+  "subject": "Africa / Asia and the Pacific / Eurostat-OECD PPP Program reported as MODEL_WRONG_TEXT_BOUNDARY",
+  "cases": [
+    {
+      "alias": "S0009",
+      "sourceId": "body[1]/p[11]",
+      "goldText": "Africa",
+      "sourceText": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), the status of the ICP 2021 cycle in the A...",
+      "requiredSelection": "partial prefix of the source occurrence",
+      "proposed": false
+    },
+    {
+      "alias": "S0013",
+      "sourceId": "body[1]/p[17]",
+      "goldText": "Asia and the Pacific",
+      "sourceText": "Asia and the Pacific Criselda De Dios, Asian Development Bank (ADB), the status of the ICP 2021 cycle in the A...",
+      "requiredSelection": "partial prefix of the source occurrence",
+      "proposed": false
+    },
+    {
+      "alias": "S0020",
+      "sourceId": "body[1]/p[26]",
+      "goldText": "Eurostat-OECD PPP Program",
+      "sourceText": "Eurostat-OECD PPP Program Mihai-Iulian Gheorghe, Eurostat, and Sophie Bournot, OECD, the status of the Eurosta...",
+      "requiredSelection": "partial prefix of the source occurrence",
+      "proposed": false
+    }
+  ],
+  "controlGroup": {
+    "claim": "The model does not understand this heading family.",
+    "counterEvidence": [
+      {
+        "alias": "S0016",
+        "text": "Commonwealth of Independent States",
+        "sourceIsExactlyTheHeading": true,
+        "proposed": true
+      },
+      {
+        "alias": "S0024",
+        "text": "Latin America and the Caribbean",
+        "sourceIsExactlyTheHeading": true,
+        "proposed": true
+      },
+      {
+        "alias": "S0027",
+        "text": "Western Asia",
+        "sourceIsExactlyTheHeading": true,
+        "proposed": true
+      },
+      {
+        "alias": "S0008",
+        "text": "Regional updates on the ICP 2021 cycle implementation",
+        "sourceIsExactlyTheHeading": true,
+        "proposed": true
+      }
+    ],
+    "verdict": "REJECTED. Every sibling whose source paragraph IS the heading was proposed. The three misses are exactly the ones requiring a partial span."
+  },
+  "bottleneckIsolated": {
+    "contractSupportsIt": true,
+    "contractMechanism": "verbatimText is bound as an exact substring of the alias text, so a heading occupying part of a source occurrence is expressible and bindable today.",
+    "promptAsksForIt": false,
+    "promptAudit": {
+      "substring": 0,
+      "partial": 0,
+      "prefix": 0,
+      "partOf": 0,
+      "whole": 0,
+      "selectionMode": 0
+    },
+    "conclusion": "The prompt never states that a heading may be a prefix of a longer source occurrence, and never mentions selectionMode. It reads as name the alias and echo its text. The capability exists; the instruction does not ask for it.",
+    "alsoNoted": "The evidence entries for these three carry no marker and Bold=false, so there is no formatting signal separating heading from prose. The separation is semantic only, which makes the unstated instruction the load-bearing gap."
+  },
+  "notTheProblem": [
+    "ontology - no SUBSECTION or CONTENT_HEADING distinction is involved",
+    "binder capability",
+    "alias visibility - all three were owned and attention=true"
+  ],
+  "evaluationConstraint": "A prompt change invalidates the frozen recording, so it cannot be scored offline. It needs a fresh provider run, which is currently gated.",
+  "status": "DIAGNOSED_NOT_FIXED"
+}

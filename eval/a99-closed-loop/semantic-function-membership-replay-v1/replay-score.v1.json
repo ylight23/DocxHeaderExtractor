@@ -1,0 +1,779 @@
+{
+  "artifactKind": "a99_offline_semantic_function_membership_replay",
+  "study": "SEMANTIC_FUNCTION_MEMBERSHIP_REPLAY_V1",
+  "modelProviderCalls": 0,
+  "mapping": {
+    "mappingId": "LEGACY_SEMANTIC_ROLE_TO_FUNCTION_V1",
+    "frozenBeforeScore": true,
+    "membershipRule": "STRUCTURAL_UNIT and DOCUMENT_IDENTITY are members; NON_STRUCTURAL and UNMAPPABLE are not",
+    "unmappableRule": "Any role absent from the closed bridge, including generic free-form 'heading', projects to not-a-heading.",
+    "entries": [
+      {
+        "semanticRole": "article",
+        "semanticFunction": "StructuralUnit",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "article-heading",
+        "semanticFunction": "StructuralUnit",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "caption",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "chapter",
+        "semanticFunction": "StructuralUnit",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "definition-term",
+        "semanticFunction": "StructuralUnit",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "document-subtitle",
+        "semanticFunction": "DocumentIdentity",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "document-title",
+        "semanticFunction": "DocumentIdentity",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "figure-caption",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "figure-label",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "footnote",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "index-entry",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "page-footer",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "page-header",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "page-number",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "page_furniture",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "running-footer",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "running-header",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "section",
+        "semanticFunction": "StructuralUnit",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "section-heading",
+        "semanticFunction": "StructuralUnit",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "signature-label",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "signature-value",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "source-note",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "subsection",
+        "semanticFunction": "StructuralUnit",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "subsubsection",
+        "semanticFunction": "StructuralUnit",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "subtitle",
+        "semanticFunction": "DocumentIdentity",
+        "derivedMembership": true
+      },
+      {
+        "semanticRole": "table-caption",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "table-header",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "table-label",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "table-of-contents-entry",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      },
+      {
+        "semanticRole": "toc-entry",
+        "semanticFunction": "NonStructural",
+        "derivedMembership": false
+      }
+    ]
+  },
+  "invariants": {
+    "rawResponses": "immutable committed run files, hash-pinned below",
+    "sourceParts": "decoded from each raw entry without mutation",
+    "verbatimText": "decoded and bound without mutation",
+    "aliasBinding": "existing SemanticSourcePartCanonicalizer then SemanticSourcePartBinder",
+    "claimBoundaries": "the replay changes no part, span, order, or occurrence selector",
+    "identity": "binder identity is carried through unchanged",
+    "hierarchy": "not run in either original arm and not introduced by replay",
+    "onlyChange": "semanticRole -> mapped semanticFunction -> derived membership",
+    "noMembershipInputs": [
+      "Gold",
+      "document ID",
+      "page number",
+      "source heuristic",
+      "diagnostic",
+      "candidate ranking",
+      "post-model text filter"
+    ]
+  },
+  "lanes": [
+    {
+      "lane": "V2_RAW_REPLAY",
+      "requestVersion": "V2_ATTENTION_FREE",
+      "rawRun": {
+        "path": "eval/a99-closed-loop/llm-semantic-pilot-v1/run.v1.json",
+        "sha256": "f27db57657ca42658c0a23dfe28cd6e33f822073e642e96e037b34fc45791468"
+      },
+      "baselineScore": {
+        "path": "eval/a99-closed-loop/llm-semantic-pilot-v1/score.v1.json",
+        "sha256": "86291847e4eaf3602434d383eca5d4e0a6972d26e9f8ecaddc64650c36ae30ae"
+      },
+      "documents": [
+        {
+          "documentId": "SRC-089",
+          "rawCalls": 5,
+          "rawResponseSha256": [
+            "d0f9536709e3d88b2e7faed519a5b4c4cab8fee837e5c58ee21c34e995be58f6",
+            "600eae906d3f4f26b60bdd45fb127200eaea56658969b3e1088840b0820e3f83",
+            "89df6a4d8d3b65e354b75a602877e5891781b32d1aaa7228f493fabb75cd9630",
+            "05ef3189171ba63ab57fabe6ab97c6562b245eac2e95d702bb6a09369dd1f507",
+            "21de5ac60df0c872c2221a40762437e9ffeca16f680b75ea25a08ab7beb3093f"
+          ],
+          "sourcePartInvariant": {
+            "boundCandidates": 38,
+            "distinctPartFingerprints": 38,
+            "replayDoesNotRewriteParts": true,
+            "replayDoesNotRewriteBinderIdentity": true
+          },
+          "baseline": {
+            "goldClaims": 36,
+            "hypothesesListed": 38,
+            "TRUE": 38,
+            "NEEDS_REVIEW": 0,
+            "unbindable": 0,
+            "truePositives": 28,
+            "falsePositives": 10,
+            "falseNegatives": 8,
+            "truePrecision": 0.7368,
+            "trueRecall": 0.7778,
+            "f1": 0.7567,
+            "needsReviewCaptureOfGold": 0,
+            "needsReviewCaptureIncludingPartial": 0,
+            "falseOnGold": 4,
+            "partialOnly": 4,
+            "reviewNoiseOutsideGold": 0,
+            "nonGoldReviewTouchingGold": 0,
+            "falsePositivesTouchingGold": 4,
+            "goldMultipartClaims": 18,
+            "exactMultipartMatches": 14,
+            "goldClaimsWithPartialPart": 1,
+            "exactMatchesWithPartialPart": 0,
+            "goldBuckets": {
+              "EXACT_TRUE": 28,
+              "EXACT_NEEDS_REVIEW": 0,
+              "EXACT_FALSE": 0,
+              "PARTIAL_TRUE": 4,
+              "PARTIAL_NEEDS_REVIEW": 0,
+              "PARTIAL_FALSE": 0,
+              "UNPROPOSED": 4
+            }
+          },
+          "replay": {
+            "goldClaims": 36,
+            "hypothesesListed": 17,
+            "TRUE": 17,
+            "NEEDS_REVIEW": 0,
+            "unbindable": 0,
+            "truePositives": 12,
+            "falsePositives": 5,
+            "falseNegatives": 24,
+            "truePrecision": 0.7059,
+            "trueRecall": 0.3333,
+            "f1": 0.4528,
+            "needsReviewCaptureOfGold": 0,
+            "needsReviewCaptureIncludingPartial": 0,
+            "falseOnGold": 20,
+            "partialOnly": 4,
+            "reviewNoiseOutsideGold": 0,
+            "nonGoldReviewTouchingGold": 0,
+            "falsePositivesTouchingGold": 4,
+            "goldMultipartClaims": 18,
+            "exactMultipartMatches": 6,
+            "goldClaimsWithPartialPart": 1,
+            "exactMatchesWithPartialPart": 0,
+            "goldBuckets": {
+              "EXACT_TRUE": 12,
+              "EXACT_NEEDS_REVIEW": 0,
+              "EXACT_FALSE": 0,
+              "PARTIAL_TRUE": 4,
+              "PARTIAL_NEEDS_REVIEW": 0,
+              "PARTIAL_FALSE": 0,
+              "UNPROPOSED": 20
+            }
+          },
+          "delta": {
+            "truePositives": -16,
+            "falsePositives": -5,
+            "falseNegatives": 16,
+            "precision": -0.0309,
+            "recall": -0.4445,
+            "f1": -0.3039
+          },
+          "membershipMovement": {
+            "acceptedToRejected": 21,
+            "rejectedToAccepted": 0,
+            "retained": 17
+          },
+          "unmappableSemanticStates": [
+            {
+              "semanticRole": "heading",
+              "entries": 17,
+              "derivedMembership": false
+            }
+          ],
+          "contradictions": {
+            "before": 4,
+            "after": 0,
+            "definition": "a model-proposed member whose mapped primary function is NON_STRUCTURAL"
+          },
+          "src095FalsePositiveBreakdown": null,
+          "src089AssemblyChecks": {
+            "articleExact": {
+              "gold": 26,
+              "baseline": 23,
+              "replay": 10
+            },
+            "chapterExact": {
+              "gold": 5,
+              "baseline": 5,
+              "replay": 2
+            },
+            "titleBlock": {
+              "exact": {
+                "gold": 1,
+                "baseline": 0,
+                "replay": 0
+              },
+              "baselinePartFingerprints": [
+                "f84dd0178cacaed2b16e6727539979e492777f5d99a9f8c277a5409344c49a66"
+              ],
+              "replayPartFingerprints": [
+                "f84dd0178cacaed2b16e6727539979e492777f5d99a9f8c277a5409344c49a66"
+              ]
+            },
+            "clauseLabels": {
+              "exact": {
+                "gold": 4,
+                "baseline": 0,
+                "replay": 0
+              },
+              "replayIsSubsetOfBaseline": true,
+              "note": "Projection only removes membership; it cannot synthesize a new claim or boundary."
+            }
+          }
+        },
+        {
+          "documentId": "SRC-095",
+          "rawCalls": 20,
+          "rawResponseSha256": [
+            "44727336912dd6b3ef0b598dd45ae5917257de8ee944de539ef11be0e868cd6c",
+            "c2221e5d9c8d92eeb7aa9a278f240e9aa7b3b586f8dc092e28c64bfe46b53373",
+            "c939159bde72ef700b7695a89ec909346a2cd53e84122cdb9b34688c843ee4f8",
+            "2e2b2d6bc558ee561ab9870d60546aea3901ed348b02a06d20b36fb7d14222f7",
+            "07cd8979662bb2a8db3036721cf5d9f88c93fd5f8a3dce9b00d26abbef5a3c58",
+            "352bbdb5a7e09d3d86cb7d4330522543c14f8f4490d1fb1b959c8ed7bfc56985",
+            "8ec5728fffb399b292d6dfe3a060f4d27967fac5bd018be934deb1ee73958c72",
+            "eaa8235ce713a8d5cae01bdbe66d0d45e5cd4a873303f38364afe2ca368f6467",
+            "4e5b7c4e5dc09293033445792511a3fc0a93274ba2b3bb4aa7c0c606afc59048",
+            "24078fdcb6ee64d3ff62943189b03c26a599f5574dfd4c115210150d9664f09b",
+            "95e54fb64edf57c98fef4b5b846fd5f4d177c05cbda6b1b082177105bc650e52",
+            "c957fe32e4bb68864e43983f1d1e8f10769b5106a530e3e959d4d4ff34803070",
+            "9c7ceb40cb11ea63d85cb259322ae0a18e2ce5e978c8c3d06435358b32e9f64a",
+            "b46ac0d345e129e50788573c6ed60eb223970cd76b1c056a1e9fdb1cb73f51e7",
+            "3c193335a4b602682f8635fbd5c93bfeaf8f5b616324e002053f79425d3d8603",
+            "402fa88cfeb57028ae3ed9b15f64d5495bf8df2a5a9042d19fa4abb45642ea3d",
+            "473aa91b6fbde69f7f52feeb8c6f5f7b8ae7a2d6c9ee2024189ddd454124a699",
+            "2d45e5cdcc4ca15aea0d282ba3a900119e3f4ec6f4eb62ab644dfb7109ab2720",
+            "b686a9f3da38f3ee14079cdbd6bd4a0b30c27e371e2a13bc486cf9c9e42daa42",
+            "6e2f5b071a286302a909752f8e2601518b2b93097c674f02e84af657957e54cb"
+          ],
+          "sourcePartInvariant": {
+            "boundCandidates": 254,
+            "distinctPartFingerprints": 254,
+            "replayDoesNotRewriteParts": true,
+            "replayDoesNotRewriteBinderIdentity": true
+          },
+          "baseline": {
+            "goldClaims": 103,
+            "hypothesesListed": 254,
+            "TRUE": 254,
+            "NEEDS_REVIEW": 0,
+            "unbindable": 0,
+            "truePositives": 94,
+            "falsePositives": 160,
+            "falseNegatives": 9,
+            "truePrecision": 0.3701,
+            "trueRecall": 0.9126,
+            "f1": 0.5266,
+            "needsReviewCaptureOfGold": 0,
+            "needsReviewCaptureIncludingPartial": 0,
+            "falseOnGold": 8,
+            "partialOnly": 1,
+            "reviewNoiseOutsideGold": 0,
+            "nonGoldReviewTouchingGold": 0,
+            "falsePositivesTouchingGold": 1,
+            "goldMultipartClaims": 6,
+            "exactMultipartMatches": 6,
+            "goldClaimsWithPartialPart": 0,
+            "exactMatchesWithPartialPart": 0,
+            "goldBuckets": {
+              "EXACT_TRUE": 94,
+              "EXACT_NEEDS_REVIEW": 0,
+              "EXACT_FALSE": 0,
+              "PARTIAL_TRUE": 1,
+              "PARTIAL_NEEDS_REVIEW": 0,
+              "PARTIAL_FALSE": 0,
+              "UNPROPOSED": 8
+            }
+          },
+          "replay": {
+            "goldClaims": 103,
+            "hypothesesListed": 157,
+            "TRUE": 157,
+            "NEEDS_REVIEW": 0,
+            "unbindable": 0,
+            "truePositives": 66,
+            "falsePositives": 91,
+            "falseNegatives": 37,
+            "truePrecision": 0.4204,
+            "trueRecall": 0.6408,
+            "f1": 0.5077,
+            "needsReviewCaptureOfGold": 0,
+            "needsReviewCaptureIncludingPartial": 0,
+            "falseOnGold": 36,
+            "partialOnly": 1,
+            "reviewNoiseOutsideGold": 0,
+            "nonGoldReviewTouchingGold": 0,
+            "falsePositivesTouchingGold": 1,
+            "goldMultipartClaims": 6,
+            "exactMultipartMatches": 3,
+            "goldClaimsWithPartialPart": 0,
+            "exactMatchesWithPartialPart": 0,
+            "goldBuckets": {
+              "EXACT_TRUE": 66,
+              "EXACT_NEEDS_REVIEW": 0,
+              "EXACT_FALSE": 0,
+              "PARTIAL_TRUE": 1,
+              "PARTIAL_NEEDS_REVIEW": 0,
+              "PARTIAL_FALSE": 0,
+              "UNPROPOSED": 36
+            }
+          },
+          "delta": {
+            "truePositives": -28,
+            "falsePositives": -69,
+            "falseNegatives": 28,
+            "precision": 0.0503,
+            "recall": -0.2718,
+            "f1": -0.0189
+          },
+          "membershipMovement": {
+            "acceptedToRejected": 97,
+            "rejectedToAccepted": 0,
+            "retained": 157
+          },
+          "unmappableSemanticStates": [
+            {
+              "semanticRole": "heading",
+              "entries": 47,
+              "derivedMembership": false
+            }
+          ],
+          "contradictions": {
+            "before": 50,
+            "after": 0,
+            "definition": "a model-proposed member whose mapped primary function is NON_STRUCTURAL"
+          },
+          "src095FalsePositiveBreakdown": {
+            "baseline": {
+              "REVIEWED_NON_HEADING:CONTENTS_ENTRY": 87,
+              "PAGE_FURNITURE": 29,
+              "INDEX_ENTRY": 26,
+              "CAPTION": 7,
+              "REVIEWED_NON_HEADING:TABLE_OR_REFERENCE_LABEL": 7,
+              "MODEL_ROLE_DEFINITION_TERM": 2,
+              "GOLD_HEADING_WRONG_EXTENT": 1,
+              "MODEL_ROLE_SECTION": 1
+            },
+            "replay": {
+              "REVIEWED_NON_HEADING:CONTENTS_ENTRY": 87,
+              "MODEL_ROLE_DEFINITION_TERM": 2,
+              "GOLD_HEADING_WRONG_EXTENT": 1,
+              "MODEL_ROLE_SECTION": 1
+            }
+          },
+          "src089AssemblyChecks": null
+        }
+      ]
+    },
+    {
+      "lane": "V3_RAW_REPLAY",
+      "requestVersion": "V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY",
+      "rawRun": {
+        "path": "eval/a99-closed-loop/llm-semantic-arm-v3-exclusion-v1/run.v1.json",
+        "sha256": "62d0c5a87211ff2e917d289fe5d7308716d14e60d0c6c3733f81e23fe229e321"
+      },
+      "baselineScore": {
+        "path": "eval/a99-closed-loop/llm-semantic-arm-v3-exclusion-v1/score.v1.json",
+        "sha256": "d1176a39ae6641f693c4b093a4ce1509ffa8d60ade6b0c0d4c4949bca78a1ec2"
+      },
+      "documents": [
+        {
+          "documentId": "SRC-089",
+          "rawCalls": 5,
+          "rawResponseSha256": [
+            "dd2afb8427c0293630890da82087d67c3ffca96462a365911ab1e82c7de6ce47",
+            "792cb215b6dbd11f7b6a050553fdd14404c17e310d328fc2ae37468b3bc64c20",
+            "89df6a4d8d3b65e354b75a602877e5891781b32d1aaa7228f493fabb75cd9630",
+            "69d18d811f8dff5eadb3617fc7d04c15d99f52489ba2abd2c1d1810925e56487",
+            "438c676eafc9befd77b7ebd17e6d01952ba04b782d547f8d38a8a109b967af8a"
+          ],
+          "sourcePartInvariant": {
+            "boundCandidates": 53,
+            "distinctPartFingerprints": 53,
+            "replayDoesNotRewriteParts": true,
+            "replayDoesNotRewriteBinderIdentity": true
+          },
+          "baseline": {
+            "goldClaims": 36,
+            "hypothesesListed": 53,
+            "TRUE": 53,
+            "NEEDS_REVIEW": 0,
+            "unbindable": 0,
+            "truePositives": 25,
+            "falsePositives": 28,
+            "falseNegatives": 11,
+            "truePrecision": 0.4717,
+            "trueRecall": 0.6944,
+            "f1": 0.5618,
+            "needsReviewCaptureOfGold": 0,
+            "needsReviewCaptureIncludingPartial": 0,
+            "falseOnGold": 4,
+            "partialOnly": 7,
+            "reviewNoiseOutsideGold": 0,
+            "nonGoldReviewTouchingGold": 0,
+            "falsePositivesTouchingGold": 8,
+            "goldMultipartClaims": 18,
+            "exactMultipartMatches": 11,
+            "goldClaimsWithPartialPart": 1,
+            "exactMatchesWithPartialPart": 0,
+            "goldBuckets": {
+              "EXACT_TRUE": 25,
+              "EXACT_NEEDS_REVIEW": 0,
+              "EXACT_FALSE": 0,
+              "PARTIAL_TRUE": 7,
+              "PARTIAL_NEEDS_REVIEW": 0,
+              "PARTIAL_FALSE": 0,
+              "UNPROPOSED": 4
+            }
+          },
+          "replay": {
+            "goldClaims": 36,
+            "hypothesesListed": 9,
+            "TRUE": 9,
+            "NEEDS_REVIEW": 0,
+            "unbindable": 0,
+            "truePositives": 7,
+            "falsePositives": 2,
+            "falseNegatives": 29,
+            "truePrecision": 0.7778,
+            "trueRecall": 0.1944,
+            "f1": 0.3111,
+            "needsReviewCaptureOfGold": 0,
+            "needsReviewCaptureIncludingPartial": 0,
+            "falseOnGold": 28,
+            "partialOnly": 1,
+            "reviewNoiseOutsideGold": 0,
+            "nonGoldReviewTouchingGold": 0,
+            "falsePositivesTouchingGold": 1,
+            "goldMultipartClaims": 18,
+            "exactMultipartMatches": 5,
+            "goldClaimsWithPartialPart": 1,
+            "exactMatchesWithPartialPart": 0,
+            "goldBuckets": {
+              "EXACT_TRUE": 7,
+              "EXACT_NEEDS_REVIEW": 0,
+              "EXACT_FALSE": 0,
+              "PARTIAL_TRUE": 1,
+              "PARTIAL_NEEDS_REVIEW": 0,
+              "PARTIAL_FALSE": 0,
+              "UNPROPOSED": 28
+            }
+          },
+          "delta": {
+            "truePositives": -18,
+            "falsePositives": -26,
+            "falseNegatives": 18,
+            "precision": 0.3061,
+            "recall": -0.5,
+            "f1": -0.2507
+          },
+          "membershipMovement": {
+            "acceptedToRejected": 44,
+            "rejectedToAccepted": 0,
+            "retained": 9
+          },
+          "unmappableSemanticStates": [
+            {
+              "semanticRole": "heading",
+              "entries": 44,
+              "derivedMembership": false
+            }
+          ],
+          "contradictions": {
+            "before": 0,
+            "after": 0,
+            "definition": "a model-proposed member whose mapped primary function is NON_STRUCTURAL"
+          },
+          "src095FalsePositiveBreakdown": null,
+          "src089AssemblyChecks": {
+            "articleExact": {
+              "gold": 26,
+              "baseline": 21,
+              "replay": 6
+            },
+            "chapterExact": {
+              "gold": 5,
+              "baseline": 4,
+              "replay": 1
+            },
+            "titleBlock": {
+              "exact": {
+                "gold": 1,
+                "baseline": 0,
+                "replay": 0
+              },
+              "baselinePartFingerprints": [
+                "f84dd0178cacaed2b16e6727539979e492777f5d99a9f8c277a5409344c49a66"
+              ],
+              "replayPartFingerprints": [
+                "f84dd0178cacaed2b16e6727539979e492777f5d99a9f8c277a5409344c49a66"
+              ]
+            },
+            "clauseLabels": {
+              "exact": {
+                "gold": 4,
+                "baseline": 0,
+                "replay": 0
+              },
+              "replayIsSubsetOfBaseline": true,
+              "note": "Projection only removes membership; it cannot synthesize a new claim or boundary."
+            }
+          }
+        },
+        {
+          "documentId": "SRC-095",
+          "rawCalls": 20,
+          "rawResponseSha256": [
+            "44727336912dd6b3ef0b598dd45ae5917257de8ee944de539ef11be0e868cd6c",
+            "2e8de8c67476d0d1def96e3fd8dc34ece2a66f6277ab81fb4c48c4f540619a56",
+            "7f8cc5d0fea886c9040cd7933feb5f8cb92aa0dd82039a81abe10e7a435d1299",
+            "f22e16b09a0cda6a8516036f1ac03318c7e1adc056e3f3aa955287eebb058b48",
+            "ca8f01b031cf89c7c3820ea718427535aa0f12979f0f98731f55fea78ec3e1fa",
+            "64f5dfffdd4978a95fd8e099d25a0a1052e70a6023e953226a3fec31357904e5",
+            "09e20fee6fad7f7d7894cbf3c47436da013706f81e4c639b98bf819926f3141d",
+            "caf2d82fa36e58175a4f63ffecd2bcf596329a3ebc1bcaa5867e796bfac3a7e3",
+            "6b64a1cf1996b226d286e615a8c34e685903475cfb0bf2afbfa7d12a1f44f6f4",
+            "00b4bb84c30045c8c5260567ed7b66a0b20bb81b60055c56a76eb3da10ec1980",
+            "95e54fb64edf57c98fef4b5b846fd5f4d177c05cbda6b1b082177105bc650e52",
+            "6f968ab3c8febc77e36238a304c09c2df1ee017c5b9c75ad1abadba1df1cebfc",
+            "f7650dd6472421a6cc9721e1e6d8d28f2057e478a733ef3587552355aba2a61d",
+            "69ead3703661782308798b2a2880de1c96c6f83aaa020bf92f9a956562868540",
+            "45eaa4820da2a124920e1621e197b00503a839b2f780abdfff0a293531d69f31",
+            "d12c22ce9627813289291f56fc685ea4926c055a6e1952e6a55ccc43e1ccc68d",
+            "412a2d42b71a8c93ec85af46810bcbcaae259143c5e2dd3af5c4ef4c55f9954c",
+            "7a035b86d47509bd06e060095c8b262aac7b1c7dc0b1c9243488351c2be9593e",
+            "db55fd90e57cbf89d63c6c76c08ab7b5a990a3266038a9eb090718e3145970a5",
+            "e05dfefa41c460ef47ea81889aa362bc6251edee0e528c339909601999abcbdb"
+          ],
+          "sourcePartInvariant": {
+            "boundCandidates": 237,
+            "distinctPartFingerprints": 237,
+            "replayDoesNotRewriteParts": true,
+            "replayDoesNotRewriteBinderIdentity": true
+          },
+          "baseline": {
+            "goldClaims": 103,
+            "hypothesesListed": 237,
+            "TRUE": 237,
+            "NEEDS_REVIEW": 0,
+            "unbindable": 0,
+            "truePositives": 94,
+            "falsePositives": 143,
+            "falseNegatives": 9,
+            "truePrecision": 0.3966,
+            "trueRecall": 0.9126,
+            "f1": 0.5529,
+            "needsReviewCaptureOfGold": 0,
+            "needsReviewCaptureIncludingPartial": 0,
+            "falseOnGold": 8,
+            "partialOnly": 1,
+            "reviewNoiseOutsideGold": 0,
+            "nonGoldReviewTouchingGold": 0,
+            "falsePositivesTouchingGold": 1,
+            "goldMultipartClaims": 6,
+            "exactMultipartMatches": 6,
+            "goldClaimsWithPartialPart": 0,
+            "exactMatchesWithPartialPart": 0,
+            "goldBuckets": {
+              "EXACT_TRUE": 94,
+              "EXACT_NEEDS_REVIEW": 0,
+              "EXACT_FALSE": 0,
+              "PARTIAL_TRUE": 1,
+              "PARTIAL_NEEDS_REVIEW": 0,
+              "PARTIAL_FALSE": 0,
+              "UNPROPOSED": 8
+            }
+          },
+          "replay": {
+            "goldClaims": 103,
+            "hypothesesListed": 169,
+            "TRUE": 169,
+            "NEEDS_REVIEW": 0,
+            "unbindable": 0,
+            "truePositives": 79,
+            "falsePositives": 90,
+            "falseNegatives": 24,
+            "truePrecision": 0.4675,
+            "trueRecall": 0.767,
+            "f1": 0.5809,
+            "needsReviewCaptureOfGold": 0,
+            "needsReviewCaptureIncludingPartial": 0,
+            "falseOnGold": 23,
+            "partialOnly": 1,
+            "reviewNoiseOutsideGold": 0,
+            "nonGoldReviewTouchingGold": 0,
+            "falsePositivesTouchingGold": 1,
+            "goldMultipartClaims": 6,
+            "exactMultipartMatches": 4,
+            "goldClaimsWithPartialPart": 0,
+            "exactMatchesWithPartialPart": 0,
+            "goldBuckets": {
+              "EXACT_TRUE": 79,
+              "EXACT_NEEDS_REVIEW": 0,
+              "EXACT_FALSE": 0,
+              "PARTIAL_TRUE": 1,
+              "PARTIAL_NEEDS_REVIEW": 0,
+              "PARTIAL_FALSE": 0,
+              "UNPROPOSED": 23
+            }
+          },
+          "delta": {
+            "truePositives": -15,
+            "falsePositives": -53,
+            "falseNegatives": 15,
+            "precision": 0.0709,
+            "recall": -0.1456,
+            "f1": 0.028
+          },
+          "membershipMovement": {
+            "acceptedToRejected": 68,
+            "rejectedToAccepted": 0,
+            "retained": 169
+          },
+          "unmappableSemanticStates": [
+            {
+              "semanticRole": "heading",
+              "entries": 17,
+              "derivedMembership": false
+            }
+          ],
+          "contradictions": {
+            "before": 51,
+            "after": 0,
+            "definition": "a model-proposed member whose mapped primary function is NON_STRUCTURAL"
+          },
+          "src095FalsePositiveBreakdown": {
+            "baseline": {
+              "REVIEWED_NON_HEADING:CONTENTS_ENTRY": 87,
+              "INDEX_ENTRY": 26,
+              "REVIEWED_NON_HEADING:TABLE_OR_REFERENCE_LABEL": 11,
+              "CAPTION": 10,
+              "PAGE_FURNITURE": 8,
+              "GOLD_HEADING_WRONG_EXTENT": 1
+            },
+            "replay": {
+              "REVIEWED_NON_HEADING:CONTENTS_ENTRY": 87,
+              "INDEX_ENTRY": 2,
+              "GOLD_HEADING_WRONG_EXTENT": 1
+            }
+          },
+          "src089AssemblyChecks": null
+        }
+      ]
+    }
+  ]
+}

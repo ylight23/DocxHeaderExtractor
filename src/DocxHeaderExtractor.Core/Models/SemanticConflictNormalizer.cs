@@ -28,7 +28,7 @@ public sealed record SemanticConflictNormalizationResult(
     int ExactSemanticDuplicatesCollapsed,
     int SemanticConflictProposalCount)
 {
-    /// <summary>Attribute conflicts are non-blocking for physical source binding.</summary>
+    /// <summary>Attribute conflicts are retained for semantic adjudication.</summary>
     public IReadOnlyList<SemanticAttributeConflict> AttributeConflicts { get; init; } = [];
 
     /// <summary>Proposals safe to pass to the deterministic binder.</summary>
@@ -51,7 +51,7 @@ public static class SemanticConflictNormalizer
 
         var byAlias = aliases.ToDictionary(alias => alias.Alias, StringComparer.Ordinal);
         var grouped = proposals
-            .Select((proposal, index) => new Candidate(
+            .Select((proposal, index) => new ProposalEnvelope(
                 proposal,
                 index,
                 PhysicalIdentity(proposal, byAlias),
@@ -70,8 +70,8 @@ public static class SemanticConflictNormalizer
         {
             var alternatives = group
                 .GroupBy(item => item.SemanticFingerprint, StringComparer.Ordinal)
-                .Select(item => item.OrderBy(candidate => JsonSerializer.Serialize(candidate.Proposal), StringComparer.Ordinal)
-                    .ThenBy(candidate => candidate.InputIndex)
+                .Select(item => item.OrderBy(alternative => JsonSerializer.Serialize(alternative.Proposal), StringComparer.Ordinal)
+                    .ThenBy(alternative => alternative.InputIndex)
                     .First())
                 .OrderBy(item => item.SemanticFingerprint, StringComparer.Ordinal)
                 .ThenBy(item => JsonSerializer.Serialize(item.Proposal), StringComparer.Ordinal)
@@ -109,8 +109,10 @@ public static class SemanticConflictNormalizer
             conflictProposalCount)
         {
             AttributeConflicts = attributeConflicts,
+            // A consensus with null contested attributes is not a semantic winner. It is
+            // therefore never passed to the binder by default. The production control plane
+            // may append the original frozen alternative selected by adjudication.
             BindingReadyProposals = normalized
-                .Concat(attributeConflicts.Select(item => item.BindingConsensus))
                 .OrderBy(item => SourceOrder(item, byAlias))
                 .ThenBy(item => PhysicalIdentity(item, byAlias), StringComparer.Ordinal)
                 .ToArray(),
@@ -219,11 +221,9 @@ public static class SemanticConflictNormalizer
     private static bool IsHierarchyHint(string hint) =>
         hint.StartsWith("level:", StringComparison.OrdinalIgnoreCase) ||
         hint.StartsWith("parent-node:", StringComparison.OrdinalIgnoreCase) ||
-        hint.StartsWith("sibling-node:", StringComparison.OrdinalIgnoreCase) ||
-        hint.StartsWith("continuation-node:", StringComparison.OrdinalIgnoreCase) ||
-        hint.StartsWith("same-node:", StringComparison.OrdinalIgnoreCase);
+        hint.StartsWith("sibling-node:", StringComparison.OrdinalIgnoreCase);
 
-    private sealed record Candidate(
+    private sealed record ProposalEnvelope(
         CanonicalSemanticProposal Proposal,
         int InputIndex,
         string PhysicalIdentity,

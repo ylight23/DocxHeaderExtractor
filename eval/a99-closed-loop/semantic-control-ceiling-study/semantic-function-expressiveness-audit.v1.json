@@ -1,0 +1,122 @@
+{
+  "artifactKind": "a99_semantic_function_expressiveness_audit",
+  "study": "A99_SEMANTIC_CONTROL_CEILING_STUDY",
+  "ontologyVersion": "a99-semantic-function-membership-v1",
+  "functions": [
+    {
+      "function": "DOCUMENT_IDENTITY",
+      "member": true,
+      "normativeDefinition": "Identifies the document, report, or artifact itself as its semantic title identity.",
+      "necessaryCondition": "The occurrence identifies the artifact itself, not a region or description of it.",
+      "exclusionCondition": "A descriptive date, status, provenance, or audience label is METADATA unless it is the artifact title identity.",
+      "nearestConfusingConcepts": ["METADATA", "REGION_STRUCTURE"],
+      "positiveExamples": ["RFC 9114 HTTP/3 as the document title identity"],
+      "counterexamples": ["publication date", "document status", "a body section title"],
+      "orthogonalTo": ["occurrenceRole", "scope", "identity relation", "structural kind"]
+    },
+    {
+      "function": "REGION_STRUCTURE",
+      "member": true,
+      "normativeDefinition": "Names or opens a semantic region whose subsequent content belongs beneath it.",
+      "necessaryCondition": "Following content is structurally scoped beneath this occurrence.",
+      "exclusionCondition": "It must not merely point elsewhere, name an embedded object, or provide internal table structure.",
+      "nearestConfusingConcepts": ["NAVIGATION", "OBJECT_CAPTION", "TABLE_STRUCTURE", "BODY_INFORMATION"],
+      "positiveExamples": ["3.2 Server Push in the document body", "Chapter I GENERAL PROVISIONS"],
+      "counterexamples": ["3.2 Server Push ........ 17 in a contents page", "Figure 1 caption", "table header row"],
+      "orthogonalTo": ["occurrenceRole", "scope", "identity relation", "structural kind"]
+    },
+    {
+      "function": "NAVIGATION",
+      "member": false,
+      "normativeDefinition": "Points to, lists, or leads to content elsewhere in the document.",
+      "necessaryCondition": "The occurrence is a pointer/listing rather than the region it points toward.",
+      "exclusionCondition": "It must not open a region containing subsequent body content.",
+      "nearestConfusingConcepts": ["REGION_STRUCTURE", "BODY_INFORMATION"],
+      "positiveExamples": ["contents entry with a page number", "index entry pointing to a page"],
+      "counterexamples": ["body heading with the same words as a contents entry"],
+      "orthogonalTo": ["occurrenceRole", "scope", "identity relation", "structural kind"]
+    },
+    {
+      "function": "PAGE_FURNITURE",
+      "member": false,
+      "normativeDefinition": "Serves repeated or page-positioned presentation, such as a running header, footer, or page number.",
+      "necessaryCondition": "Its purpose is page presentation or repetition, not document content structure.",
+      "exclusionCondition": "It must not open a semantic content region.",
+      "nearestConfusingConcepts": ["METADATA", "REGION_STRUCTURE"],
+      "positiveExamples": ["repeated running header", "page number"],
+      "counterexamples": ["a section title appearing once in body flow"],
+      "orthogonalTo": ["occurrenceRole", "scope", "identity relation", "structural kind"]
+    },
+    {
+      "function": "OBJECT_CAPTION",
+      "member": false,
+      "normativeDefinition": "Names or describes an embedded visual, figure, listing, or other object whose scope is that object itself.",
+      "necessaryCondition": "The occurrence describes an object, and its scope terminates at that object.",
+      "exclusionCondition": "It must not open the broader following document region.",
+      "nearestConfusingConcepts": ["REGION_STRUCTURE", "BODY_INFORMATION"],
+      "positiveExamples": ["Figure 1. Architecture", "table caption"],
+      "counterexamples": ["a section heading surrounding a figure"],
+      "orthogonalTo": ["occurrenceRole", "scope", "identity relation", "structural kind"]
+    },
+    {
+      "function": "TABLE_STRUCTURE",
+      "member": false,
+      "normativeDefinition": "Is a row, column, label, or header structure internal to a table.",
+      "necessaryCondition": "The occurrence is internal to table organization.",
+      "exclusionCondition": "A heading outside or around the table that opens a broader region is REGION_STRUCTURE.",
+      "nearestConfusingConcepts": ["REGION_STRUCTURE", "OBJECT_CAPTION"],
+      "positiveExamples": ["table header row", "column label"],
+      "counterexamples": ["Table 1 Results as a section opener outside the table"],
+      "orthogonalTo": ["occurrenceRole", "scope", "identity relation", "structural kind"]
+    },
+    {
+      "function": "FOOTNOTE_OR_SOURCE",
+      "member": false,
+      "normativeDefinition": "Is a footnote, citation, attribution, or source note that supports or qualifies other content.",
+      "necessaryCondition": "The occurrence provides supporting provenance or qualification.",
+      "exclusionCondition": "It must not establish a region for subsequent body content.",
+      "nearestConfusingConcepts": ["BODY_INFORMATION", "METADATA"],
+      "positiveExamples": ["citation note", "source attribution"],
+      "counterexamples": ["a body heading followed by prose"],
+      "orthogonalTo": ["occurrenceRole", "scope", "identity relation", "structural kind"]
+    },
+    {
+      "function": "BODY_INFORMATION",
+      "member": false,
+      "normativeDefinition": "Is ordinary body information, such as prose, a statement, or a run-in fact, without a region-opening function.",
+      "necessaryCondition": "It conveys content but does not name or open its containing region.",
+      "exclusionCondition": "A region opener is REGION_STRUCTURE even if it contains information-like words.",
+      "nearestConfusingConcepts": ["REGION_STRUCTURE", "NAVIGATION", "FOOTNOTE_OR_SOURCE"],
+      "positiveExamples": ["ordinary explanatory paragraph"],
+      "counterexamples": ["numbered section heading"],
+      "orthogonalTo": ["occurrenceRole", "scope", "identity relation", "structural kind"]
+    },
+    {
+      "function": "METADATA",
+      "member": false,
+      "normativeDefinition": "Describes the document, its provenance, status, date, audience, or other attributes without constituting its title identity.",
+      "necessaryCondition": "The occurrence describes an artifact attribute rather than the artifact title itself.",
+      "exclusionCondition": "The artifact's semantic title identity is DOCUMENT_IDENTITY.",
+      "nearestConfusingConcepts": ["DOCUMENT_IDENTITY", "FOOTNOTE_OR_SOURCE"],
+      "positiveExamples": ["publication date", "status", "audience"],
+      "counterexamples": ["the report's title"],
+      "orthogonalTo": ["occurrenceRole", "scope", "identity relation", "structural kind"]
+    }
+  ],
+  "boundaryMatrix": [
+    { "left": "REGION_STRUCTURE", "right": "NAVIGATION", "decidingQuestion": "Does following content belong beneath this occurrence, or does it point/list content elsewhere?", "bodyExample": "3.2 Server Push", "contentsExample": "3.2 Server Push ........ 17" },
+    { "left": "REGION_STRUCTURE", "right": "OBJECT_CAPTION", "decidingQuestion": "Is the scope the broader following region or only the embedded object?", "regionExample": "Results", "captionExample": "Figure 1. Results" },
+    { "left": "REGION_STRUCTURE", "right": "TABLE_STRUCTURE", "decidingQuestion": "Is the occurrence outside/around the table and opening a region, or internal to table organization?", "regionExample": "Table 1 Results", "tableExample": "Column: Status" },
+    { "left": "DOCUMENT_IDENTITY", "right": "METADATA", "decidingQuestion": "Does it name the artifact itself or describe an attribute of it?", "identityExample": "RFC 9114 HTTP/3", "metadataExample": "Published June 2022" },
+    { "left": "REGION_STRUCTURE", "right": "BODY_INFORMATION", "decidingQuestion": "Does it open a semantic scope for subsequent content?", "regionExample": "4. Security Considerations", "bodyExample": "The protocol requires..." },
+    { "left": "NAVIGATION", "right": "BODY_INFORMATION", "decidingQuestion": "Is it a pointer/listing or ordinary content?", "navigationExample": "Index entry with page", "bodyExample": "The client sends..." }
+  ],
+  "indexAssessment": {
+    "indexGroupLetter": "Can be REGION_STRUCTURE when it opens the group, but structuralKind=INDEX_GROUP is descriptive and not membership authority.",
+    "indexEntry": "NAVIGATION; current ontology can represent it and must not make it a member.",
+    "needForNewSemanticFunction": false,
+    "possibleLaterAxis": "structuralKind=INDEX_GROUP may be added as a descriptive axis in a separate arm.",
+    "currentExpressivePower": "Sufficient for membership truth; insufficient only for richer structural-kind reporting, which is outside this arm."
+  },
+  "conclusion": "The nine-function ontology is expressively sufficient for the current membership decision. Frozen residuals show model classification and extent failures, not a missing membership function."
+}

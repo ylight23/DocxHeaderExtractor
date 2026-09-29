@@ -40,8 +40,9 @@ public sealed class McpExtractionJobQueue
 
         try
         {
-            using var worker = StartDetachedWorker(id, resolved);
+            var worker = StartDetachedWorker(id, resolved);
             _logger.LogInformation("Started detached MCP worker {JobId} as process {ProcessId}.", id, worker.Id);
+            _ = ObserveDetachedWorkerAsync(worker);
         }
         catch (Exception ex)
         {
@@ -76,6 +77,9 @@ public sealed class McpExtractionJobQueue
         if (string.IsNullOrWhiteSpace(entry) || string.IsNullOrWhiteSpace(processPath))
             throw new InvalidOperationException("Không xác định được runtime MCP để khởi động worker.");
 
+        if (!OperatingSystem.IsWindows())
+            return StartUnixWorker(processPath, entry, id, resolvedPath);
+
         // LM Studio may terminate the whole stdio process tree. `start` creates a detached
         // Windows process outside that short-lived launcher tree.
         var quote = (string value) => "\"" + value.Replace("\"", "\\\"") + "\"";
@@ -91,6 +95,48 @@ public sealed class McpExtractionJobQueue
         };
         return Process.Start(start)
                ?? throw new InvalidOperationException("Process.Start trả về null.");
+    }
+
+    private Process StartUnixWorker(
+        string processPath, string entry, string id, string resolvedPath)
+    {
+        // Do not use a shell here. ArgumentList preserves paths and job ids exactly and avoids
+        // shell injection as well as the Windows-only `cmd.exe /c start` dependency.
+        var start = new ProcessStartInfo
+        {
+            FileName = processPath,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            RedirectStandardOutput = true,
+            // stderr is inherited so a detached worker cannot block on an unread stderr pipe.
+            RedirectStandardError = false,
+        };
+        start.ArgumentList.Add(entry);
+        start.ArgumentList.Add("--worker");
+        start.ArgumentList.Add(id);
+        start.ArgumentList.Add(resolvedPath);
+        return Process.Start(start)
+               ?? throw new InvalidOperationException("Process.Start trả về null.");
+    }
+
+    private async Task ObserveDetachedWorkerAsync(Process worker)
+    {
+        try
+        {
+            var stdout = worker.StartInfo.RedirectStandardOutput
+                ? worker.StandardOutput.ReadToEndAsync()
+                : Task.FromResult(string.Empty);
+            await worker.WaitForExitAsync().ConfigureAwait(false);
+            await stdout.ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogDebug(ex, "Detached MCP worker observation ended with an error.");
+        }
+        finally
+        {
+            worker.Dispose();
+        }
     }
 
     private void CleanupExpired() => _store.DeleteExpired(DateTimeOffset.UtcNow - CompletedRetention);

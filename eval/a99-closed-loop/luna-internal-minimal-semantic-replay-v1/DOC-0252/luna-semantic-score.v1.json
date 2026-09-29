@@ -1,0 +1,78 @@
+{
+  "artifactKind": "a99_luna_internal_minimal_semantic_replay_score",
+  "schemaVersion": "a99-luna-internal-minimal-semantic-replay-score-v1",
+  "documentId": "DOC-0252",
+  "model": "GPT-5.6 Luna",
+  "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+  "evidenceCommit": "596571c406fe984f741dae571da0db8967da16d9",
+  "qwenComparatorScoreCommit": "cba024d8d89456344a7627632706b37c2f160ec0",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+  "promptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+  "semanticSchemaSha256": "20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+  "contextPolicyHash": "0e2408334ca81e8db83b2211de0540e2d0d0f27e9cf6e52793c0bb190d814343",
+  "cohortComplete": true,
+  "cells": 9,
+  "independentRepeatIsolation": false,
+  "transportParityWithQwen": false,
+  "externalProviderCalls": 0,
+  "openRouterCalls": 0,
+  "apiKeysUsed": false,
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "metrics": {
+    "F1": { "qwen": "0/3", "luna": "3/3" },
+    "Agenda": { "qwen": "3/3", "luna": "3/3" },
+    "F2": { "qwen": "3/3", "luna": "3/3" },
+    "F3": { "qwen": "3/3", "luna": "3/3" },
+    "structuralControls": { "qwen": "42/42", "luna": "42/42" },
+    "documentLabelControl": { "qwen": "3/3", "luna": "3/3" }
+  },
+  "confusionMatrix": {
+    "expected/actual": {
+      "STRUCTURAL_UNIT": {
+        "STRUCTURAL_UNIT": 42,
+        "DOCUMENT_LABEL": 0,
+        "NON_STRUCTURAL": 0
+      },
+      "DOCUMENT_LABEL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 3,
+        "NON_STRUCTURAL": 0
+      },
+      "NON_STRUCTURAL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 0,
+        "NON_STRUCTURAL": 9
+      }
+    },
+    "totalDecisions": 54,
+    "correct": 54,
+    "accuracy": 1.0
+  },
+  "repeatStability": {
+    "ITEM-AB89229E": { "identity": "L0000:S0:0-47", "expected": "DOCUMENT_LABEL", "luna": ["DOCUMENT_LABEL", "DOCUMENT_LABEL", "DOCUMENT_LABEL"] },
+    "ITEM-BAAD25EE": { "identity": "L0400:S0:0-44", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-1D843A9F": { "identity": "L0420:S0:0-40", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-82675EC0": { "identity": "L0470:S0:0-45", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-024B8661": { "identity": "L0507:S0:0-30", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-505430BB": { "identity": "L0513:S0:0-38|L0514:S0:0-30", "expected": "NON_STRUCTURAL", "luna": ["NON_STRUCTURAL", "NON_STRUCTURAL", "NON_STRUCTURAL"] },
+    "ITEM-2D78F82D": { "identity": "L0515:S0:0-14", "expected": "NON_STRUCTURAL", "luna": ["NON_STRUCTURAL", "NON_STRUCTURAL", "NON_STRUCTURAL"] },
+    "ITEM-968E70AF": { "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32", "expected": "NON_STRUCTURAL", "luna": ["NON_STRUCTURAL", "NON_STRUCTURAL", "NON_STRUCTURAL"] },
+    "ITEM-CCE2C592": { "identity": "L0519:S0:0-6", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-5348EA2B": { "identity": "L0520:S0:0-51", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-5EFE8569": { "identity": "L0521:S0:0-38", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-2F026398": { "identity": "L0523:S0:0-50", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-E96B316E": { "identity": "L0526:S0:0-65", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-13ADC8F7": { "identity": "L0531:S0:0-64", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-811FC894": { "identity": "L0536:S0:0-27", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-4C05B3C2": { "identity": "L0539:S0:0-51", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-959D3FCB": { "identity": "L0540:S0:0-36", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] },
+    "ITEM-E14B4B93": { "identity": "L0553:S0:0-19", "expected": "STRUCTURAL_UNIT", "luna": ["STRUCTURAL_UNIT", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"] }
+  },
+  "finalClassification": "LUNA_FIXES_QWEN_F1_BOUNDARY",
+  "interpretation": "Luna classified the frozen F1 masthead as NON_STRUCTURAL in all three internal executions while preserving all structural, Agenda, F2, F3, and document-label controls. This supports a Luna-versus-Qwen difference on DOC-0252, but transport parity is false and independent repeat isolation is false; it is not a same-transport model-specific causal proof and does not establish cross-genre generalization.",
+  "crossGenreGeneralizationEstablished": false,
+  "status": "LUNA_INTERNAL_REPLAY_SCORED_OFFLINE"
+}

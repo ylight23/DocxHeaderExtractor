@@ -1,0 +1,78 @@
+{
+  "artifactKind": "a99_context_topology_disagreement_rescore_gold_r3",
+  "schemaVersion": "a99-context-topology-disagreement-rescore-gold-r3-v1",
+  "status": "RESCORED_OFFLINE_UNDER_GOLD_R3",
+  "signalConstructionChanged": false,
+  "note": "TOPOLOGY_DISAGREEMENT, REPEAT_INSTABILITY and CONTEXT_SENSITIVITY are Gold-free and identical to the frozen R2-era signal (per-model-item-matrix.v1.json) - only ARM_MODAL_ERROR and ANY_REPEAT_ERROR, which depend on Gold, are recomputed here for the two items Gold R3 could affect (F1 unaffected, Agenda changed).",
+  "goldSha256Old": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "goldSha256New": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "qwen": {
+    "model": "qwen/qwen3.7-flash",
+    "items": [
+      {
+        "itemId": "ITEM-505430BB",
+        "modals": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "topologyDisagreement": false,
+        "repeatInstability": false,
+        "contextSensitivity": false,
+        "goldR3": "DOCUMENT_LABEL",
+        "armModalError": false,
+        "anyRepeatError": false
+      },
+      {
+        "itemId": "ITEM-CCE2C592",
+        "modals": [
+          "DOCUMENT_LABEL",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "topologyDisagreement": true,
+        "repeatInstability": true,
+        "contextSensitivity": true,
+        "goldR3": "DOCUMENT_LABEL",
+        "armModalError": true,
+        "anyRepeatError": true
+      }
+    ]
+  },
+  "haiku": {
+    "model": "Haiku",
+    "items": [
+      {
+        "itemId": "ITEM-505430BB",
+        "modals": [
+          "NON_STRUCTURAL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "topologyDisagreement": true,
+        "repeatInstability": true,
+        "contextSensitivity": true,
+        "goldR3": "DOCUMENT_LABEL",
+        "armModalError": true,
+        "anyRepeatError": true
+      },
+      {
+        "itemId": "ITEM-CCE2C592",
+        "modals": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "topologyDisagreement": false,
+        "repeatInstability": true,
+        "contextSensitivity": true,
+        "goldR3": "DOCUMENT_LABEL",
+        "armModalError": true,
+        "anyRepeatError": true
+      }
+    ]
+  },
+  "headline": "For Qwen, Agenda was already both ARM_MODAL_ERROR and ANY_REPEAT_ERROR under R2 (FULL's modal disagreed with the R2 label) and remains both under R3 (MINIMAL and V2's modals now disagree with the R3 label instead) - CONTEXT_SENSITIVITY still catches it, for a different underlying reason. For Haiku, Agenda's ARM_MODAL_ERROR flips from false (R2: all three arms' modal STRUCTURAL_UNIT matched R2's expectation) to true (R3: the same STRUCTURAL_UNIT modals now mismatch) - the earlier CONTEXT_SENSITIVITY-vs-ARM_MODAL_ERROR false positive for Haiku's Agenda disappears entirely under R3, since it is now a true positive."
+}

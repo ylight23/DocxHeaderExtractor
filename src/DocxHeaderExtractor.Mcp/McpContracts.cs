@@ -22,9 +22,6 @@ public sealed record McpHeadingResult(
     double Confidence,
     string DecisionStatus,
     bool Disputed,
-    bool ModelConfirmed,
-    bool CriticConfirmed,
-    HeadingEvidence? Evidence,
     TextOffsetSpan? HeadingSpan = null);
 
 public sealed record McpTraceResult(
@@ -39,7 +36,7 @@ public sealed record McpExtractionResult(
     string File,
     string Backend,
     int ParagraphCount,
-    int CandidateCount,
+    int SourceCount,
     int HeadingCount,
     int RequiresReview,
     int RepairAttempts,

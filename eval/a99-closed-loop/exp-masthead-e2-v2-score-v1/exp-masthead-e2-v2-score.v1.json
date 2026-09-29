@@ -1,0 +1,849 @@
+{
+  "artifactKind": "a99_exp_masthead_e2_v2_score",
+  "schemaVersion": "a99-exp-masthead-e2-v2-score-v1",
+  "experimentId": "EXP_MASTHEAD_METADATA_E2_V2",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "additionalProviderCallsDuringScoring": 0,
+  "scoredFrom": "the experiment's own replay-complete transport captures",
+  "authority": {
+    "e2ClauseSha256": "1cfbeaf20fd024cf50b446ac911e274c6970c9244cb85ad34fb8eb534b9fc734",
+    "experimentPromptSha256": "93cead4cb4e8d3dee5018b789a1d95a2807b69bfa81ac5f85726de3aba0682ed",
+    "providerModelInputPlanSha256": "349724f59801c696d77ad394e36e2880d2cb5590375c1ef11aa9debbe66626be",
+    "pack005ProviderRequestSha256": "af9edf0563601bd7281a0dfd4c05e31ee2bc46c7c23672a090ffbcf9302b258b",
+    "pack006ProviderRequestSha256": "93292c853c1e65da4820cbde6095adcacf5bc29c8fab6f2b5085a4a72438abb9",
+    "manifestHash": "fb62c1c696b4c30f0b71aed2e39f296ece3934c5870982fdc0e19bc62d64189c",
+    "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "protocolVersion": "a99-semantic-source-parts-v2",
+    "contractSha256": "565bdc87749a1ce1246238cacd1eb7d550a19939dc9e42d23e76ab3a46a8b0ea",
+    "targetPacks": [
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_006"
+    ],
+    "targetGoldCount": 14,
+    "repeats": 3,
+    "primaryProviderCalls": 6,
+    "placementCalls": 0
+  },
+  "outcomeClasses": {
+    "NOT_PROPOSED": "the Gold claim was not named by the model",
+    "REFUSED_ON_SHAPE": "the model named its source alias but binding rejected the shape",
+    "BOUND": "the proposal resolved to exact harness-owned coordinates",
+    "neverSummed": true
+  },
+  "integrity": {
+    "unexpectedVerbatimText": 0,
+    "mustBeZero": true,
+    "note": "v2 derives selection mode in the harness; UnexpectedVerbatimText is a contract/runtime defect."
+  },
+  "semanticFamilies": {
+    "international-program-and-tag": [
+      [
+        "L0513:S0:0-38|L0514:S0:0-30"
+      ],
+      [
+        "L0513:S0:0-38",
+        "L0514:S0:0-30"
+      ]
+    ],
+    "hybrid-meeting": [
+      [
+        "L0515:S0:0-14"
+      ]
+    ],
+    "date-venue-address": [
+      [
+        "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32"
+      ],
+      [
+        "L0516:S0:0-15",
+        "L0517:S0:0-22",
+        "L0518:S0:0-32"
+      ]
+    ]
+  },
+  "relationControls": [
+    "L0400",
+    "L0420",
+    "L0470",
+    "L0507"
+  ],
+  "outcomeCounts": {
+    "BOUND": 42
+  },
+  "refusalReasons": {},
+  "perRepeat": [
+    {
+      "repeat": 1,
+      "truePositive": 14,
+      "falsePositive": 6,
+      "falseNegative": 0,
+      "refusedOnShape": 0,
+      "outcomes": {
+        "BOUND": 14
+      },
+      "mastheadFamilies": {
+        "international-program-and-tag": "BOUND",
+        "hybrid-meeting": "BOUND",
+        "date-venue-address": "BOUND"
+      }
+    },
+    {
+      "repeat": 2,
+      "truePositive": 14,
+      "falsePositive": 3,
+      "falseNegative": 0,
+      "refusedOnShape": 0,
+      "outcomes": {
+        "BOUND": 14
+      },
+      "mastheadFamilies": {
+        "international-program-and-tag": "BOUND",
+        "hybrid-meeting": "BOUND",
+        "date-venue-address": "NOT_BOUND"
+      }
+    },
+    {
+      "repeat": 3,
+      "truePositive": 14,
+      "falsePositive": 6,
+      "falseNegative": 0,
+      "refusedOnShape": 0,
+      "outcomes": {
+        "BOUND": 14
+      },
+      "mastheadFamilies": {
+        "international-program-and-tag": "BOUND",
+        "hybrid-meeting": "BOUND",
+        "date-venue-address": "BOUND"
+      }
+    }
+  ],
+  "cells": [
+    {
+      "repeat": 1,
+      "pack": "PACK_005",
+      "rawEntries": 5,
+      "notHeading": 0,
+      "goldInPack": 4,
+      "bound": 4,
+      "falsePositive": 1,
+      "falseNegative": 0,
+      "refusedOnShape": 0,
+      "refusalReasons": [],
+      "outcomes": [
+        {
+          "identity": "L0400:S0:0-44",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "AgendaItem"
+        },
+        {
+          "identity": "L0420:S0:0-40",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "AgendaItem"
+        },
+        {
+          "identity": "L0470:S0:0-45",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "AgendaItem"
+        },
+        {
+          "identity": "L0507:S0:0-30",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        }
+      ],
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "role": "document-title",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        }
+      ],
+      "responseSha256": "0344fba8b1ef6a9e30f271d2e9801c64bc71e00f7a8d1df26f55002ed5b545d6",
+      "responseBytes": 1588
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "rawEntries": 15,
+      "notHeading": 0,
+      "goldInPack": 10,
+      "bound": 10,
+      "falsePositive": 5,
+      "falseNegative": 0,
+      "refusedOnShape": 0,
+      "refusalReasons": [],
+      "outcomes": [
+        {
+          "identity": "L0519:S0:0-6",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "SectionHeading"
+        },
+        {
+          "identity": "L0520:S0:0-51",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0521:S0:0-38",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0523:S0:0-50",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0526:S0:0-65",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0531:S0:0-64",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0536:S0:0-27",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0539:S0:0-51",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0540:S0:0-36",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0553:S0:0-19",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        }
+      ],
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0515:S0:0-14",
+          "role": "document-title",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        },
+        {
+          "identity": "L0516:S0:0-15",
+          "role": "document-subtitle",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        },
+        {
+          "identity": "L0517:S0:0-22",
+          "role": "metadata",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        },
+        {
+          "identity": "L0518:S0:0-32",
+          "role": "metadata",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        },
+        {
+          "identity": "L0550:S0:0-56",
+          "role": "section-heading",
+          "relationHints": [
+            "parent-node:L0539:S0"
+          ]
+        }
+      ],
+      "responseSha256": "1e34f2cbee6b1f4820abd93c9704c83785380d41ec479726327d6e4e20d4e458",
+      "responseBytes": 3492
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_005",
+      "rawEntries": 5,
+      "notHeading": 0,
+      "goldInPack": 4,
+      "bound": 4,
+      "falsePositive": 1,
+      "falseNegative": 0,
+      "refusedOnShape": 0,
+      "refusalReasons": [],
+      "outcomes": [
+        {
+          "identity": "L0400:S0:0-44",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "AgendaItem"
+        },
+        {
+          "identity": "L0420:S0:0-40",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "AgendaItem"
+        },
+        {
+          "identity": "L0470:S0:0-45",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "AgendaItem"
+        },
+        {
+          "identity": "L0507:S0:0-30",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        }
+      ],
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "role": "document-title",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        }
+      ],
+      "responseSha256": "0344fba8b1ef6a9e30f271d2e9801c64bc71e00f7a8d1df26f55002ed5b545d6",
+      "responseBytes": 1588
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "rawEntries": 12,
+      "notHeading": 0,
+      "goldInPack": 10,
+      "bound": 10,
+      "falsePositive": 2,
+      "falseNegative": 0,
+      "refusedOnShape": 0,
+      "refusalReasons": [],
+      "outcomes": [
+        {
+          "identity": "L0519:S0:0-6",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "SectionHeading"
+        },
+        {
+          "identity": "L0520:S0:0-51",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0521:S0:0-38",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0523:S0:0-50",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0526:S0:0-65",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0531:S0:0-64",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0536:S0:0-27",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0539:S0:0-51",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0540:S0:0-36",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0553:S0:0-19",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        }
+      ],
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0515:S0:0-14",
+          "role": "document-title",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        },
+        {
+          "identity": "L0550:S0:0-56",
+          "role": "section",
+          "relationHints": [
+            "parent-node:L0539:S0"
+          ]
+        }
+      ],
+      "responseSha256": "c507306041284aab80f3c2578b4db2a4b23e3ec78419714c5d44b1f5ad6396fe",
+      "responseBytes": 3585
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_005",
+      "rawEntries": 5,
+      "notHeading": 0,
+      "goldInPack": 4,
+      "bound": 4,
+      "falsePositive": 1,
+      "falseNegative": 0,
+      "refusedOnShape": 0,
+      "refusalReasons": [],
+      "outcomes": [
+        {
+          "identity": "L0400:S0:0-44",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "AgendaItem"
+        },
+        {
+          "identity": "L0420:S0:0-40",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "AgendaItem"
+        },
+        {
+          "identity": "L0470:S0:0-45",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "AgendaItem"
+        },
+        {
+          "identity": "L0507:S0:0-30",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        }
+      ],
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "role": "running-header",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        }
+      ],
+      "responseSha256": "456bfde085b48ede3434e9ecbd7a7703acf56358e55b6cbaa339c5f44553b501",
+      "responseBytes": 1588
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "rawEntries": 15,
+      "notHeading": 0,
+      "goldInPack": 10,
+      "bound": 10,
+      "falsePositive": 5,
+      "falseNegative": 0,
+      "refusedOnShape": 0,
+      "refusalReasons": [],
+      "outcomes": [
+        {
+          "identity": "L0519:S0:0-6",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "SectionHeading"
+        },
+        {
+          "identity": "L0520:S0:0-51",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0521:S0:0-38",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0523:S0:0-50",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0526:S0:0-65",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0531:S0:0-64",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0536:S0:0-27",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0539:S0:0-51",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0540:S0:0-36",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        },
+        {
+          "identity": "L0553:S0:0-19",
+          "outcome": "BOUND",
+          "expectedSemanticRole": "MeetingSection"
+        }
+      ],
+      "falsePositiveIdentities": [
+        {
+          "identity": "L0515:S0:0-14",
+          "role": "document-title",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        },
+        {
+          "identity": "L0516:S0:0-15",
+          "role": "subtitle",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        },
+        {
+          "identity": "L0517:S0:0-22",
+          "role": "location",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        },
+        {
+          "identity": "L0518:S0:0-32",
+          "role": "address",
+          "relationHints": [
+            "parent-node:NONE"
+          ]
+        },
+        {
+          "identity": "L0550:S0:0-56",
+          "role": "session",
+          "relationHints": [
+            "parent-node:L0539:S0"
+          ]
+        }
+      ],
+      "responseSha256": "c8b9f56c83612a78e6d8ab1427db721fb2e1bfe722d79a0de06b79d8c565886e",
+      "responseBytes": 3360
+    }
+  ],
+  "semanticRoleMismatches": [
+    {
+      "repeat": 1,
+      "pack": "PACK_005",
+      "identity": "L0400:S0:0-44",
+      "expected": "AgendaItem",
+      "actual": "section"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_005",
+      "identity": "L0420:S0:0-40",
+      "expected": "AgendaItem",
+      "actual": "section"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_005",
+      "identity": "L0470:S0:0-45",
+      "expected": "AgendaItem",
+      "actual": "section"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_005",
+      "identity": "L0507:S0:0-30",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0519:S0:0-6",
+      "expected": "SectionHeading",
+      "actual": "section-label"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0520:S0:0-51",
+      "expected": "MeetingSection",
+      "actual": "section-heading"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0521:S0:0-38",
+      "expected": "MeetingSection",
+      "actual": "section-heading"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0523:S0:0-50",
+      "expected": "MeetingSection",
+      "actual": "section-heading"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0526:S0:0-65",
+      "expected": "MeetingSection",
+      "actual": "section-heading"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0531:S0:0-64",
+      "expected": "MeetingSection",
+      "actual": "section-heading"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0536:S0:0-27",
+      "expected": "MeetingSection",
+      "actual": "section-heading"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0539:S0:0-51",
+      "expected": "MeetingSection",
+      "actual": "section-heading"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0540:S0:0-36",
+      "expected": "MeetingSection",
+      "actual": "section-heading"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "identity": "L0553:S0:0-19",
+      "expected": "MeetingSection",
+      "actual": "section-heading"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_005",
+      "identity": "L0400:S0:0-44",
+      "expected": "AgendaItem",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_005",
+      "identity": "L0420:S0:0-40",
+      "expected": "AgendaItem",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_005",
+      "identity": "L0470:S0:0-45",
+      "expected": "AgendaItem",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_005",
+      "identity": "L0507:S0:0-30",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0519:S0:0-6",
+      "expected": "SectionHeading",
+      "actual": "document-subtitle"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0520:S0:0-51",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0521:S0:0-38",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0523:S0:0-50",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0526:S0:0-65",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0531:S0:0-64",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0536:S0:0-27",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0539:S0:0-51",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0540:S0:0-36",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "identity": "L0553:S0:0-19",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_005",
+      "identity": "L0400:S0:0-44",
+      "expected": "AgendaItem",
+      "actual": "section"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_005",
+      "identity": "L0420:S0:0-40",
+      "expected": "AgendaItem",
+      "actual": "section"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_005",
+      "identity": "L0470:S0:0-45",
+      "expected": "AgendaItem",
+      "actual": "section"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_005",
+      "identity": "L0507:S0:0-30",
+      "expected": "MeetingSection",
+      "actual": "section"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0519:S0:0-6",
+      "expected": "SectionHeading",
+      "actual": "section-label"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0520:S0:0-51",
+      "expected": "MeetingSection",
+      "actual": "day-header"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0521:S0:0-38",
+      "expected": "MeetingSection",
+      "actual": "session"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0523:S0:0-50",
+      "expected": "MeetingSection",
+      "actual": "session"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0526:S0:0-65",
+      "expected": "MeetingSection",
+      "actual": "session"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0531:S0:0-64",
+      "expected": "MeetingSection",
+      "actual": "session"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0536:S0:0-27",
+      "expected": "MeetingSection",
+      "actual": "session"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0539:S0:0-51",
+      "expected": "MeetingSection",
+      "actual": "day-header"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0540:S0:0-36",
+      "expected": "MeetingSection",
+      "actual": "session"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "identity": "L0553:S0:0-19",
+      "expected": "MeetingSection",
+      "actual": "session"
+    }
+  ],
+  "providerAccounting": {
+    "callsSpent": 6,
+    "hardCap": 9,
+    "unusedCapacity": 3,
+    "authorizedForMore": false
+  }
+}

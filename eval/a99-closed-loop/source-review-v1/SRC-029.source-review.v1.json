@@ -1,0 +1,205 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC029_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+      "sha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "oldGoldTotal356Used": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; proposals committed before review (dc98144) and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-029/review_tool.py",
+      "sha256": "e81d58f946de7978922decf501bd8e24fafd28b646e5443e56f4664483523f8a"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-029/atom-layout-facts.tsv",
+      "sha256": "3ac23db5eddf868e5fac5602de6175110fd10ba002588d91f20fb4d7837596fb"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-029/review-items.json",
+      "sha256": "dfb33039c8689168ce89400173e8290f55bd79e63ee55ddc9bba84fe35d56e47"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 7794,
+    "CLEAR_HEADING": 374,
+    "CLEAR_NON_HEADING_SET_APART": 31,
+    "AMBIGUOUS": 0,
+    "PROPOSED_RANGE": {
+      "min": 374,
+      "max": 374
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells, fields, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 26,
+      "nonHeadings": 4,
+      "ambiguous": 0
+    },
+    {
+      "section": "PART_1",
+      "headings": 1,
+      "nonHeadings": 0,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_I",
+      "headings": 69,
+      "nonHeadings": 0,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_II",
+      "headings": 11,
+      "nonHeadings": 0,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_III",
+      "headings": 20,
+      "nonHeadings": 0,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_IV",
+      "headings": 59,
+      "nonHeadings": 18,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_V",
+      "headings": 2,
+      "nonHeadings": 0,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_VI",
+      "headings": 3,
+      "nonHeadings": 1,
+      "ambiguous": 0
+    },
+    {
+      "section": "PART_2",
+      "headings": 1,
+      "nonHeadings": 0,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_VII",
+      "headings": 18,
+      "nonHeadings": 3,
+      "ambiguous": 0
+    },
+    {
+      "section": "PART_3",
+      "headings": 1,
+      "nonHeadings": 0,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_VIII",
+      "headings": 1,
+      "nonHeadings": 1,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_IX",
+      "headings": 143,
+      "nonHeadings": 3,
+      "ambiguous": 0
+    },
+    {
+      "section": "SECTION_X",
+      "headings": 19,
+      "nonHeadings": 1,
+      "ambiguous": 0
+    }
+  ],
+  "headingsByPattern": {
+    "APPENDIX_HEADING": 1,
+    "COVER_TITLE_BLOCK": 1,
+    "CRITERIA_HEADING": 18,
+    "DAAB_CLAUSE_LABEL": 9,
+    "DOCUMENT_TITLE": 2,
+    "EMBEDDED_TITLE": 2,
+    "EMBEDDED_TITLE_BLOCK": 1,
+    "ER_HEADING": 8,
+    "ES_REQUIREMENT_HEADING": 4,
+    "FORM_LOCAL_HEADING": 11,
+    "FORM_TITLE": 52,
+    "ITP_CLAUSE_TITLE": 55,
+    "ITP_GROUP": 11,
+    "LIST_OPENER": 3,
+    "NOTIFICATION_LOCAL_HEADING": 6,
+    "NUMBERED_HEADING": 4,
+    "NUMBERED_SUBCLAUSE_HEADING": 4,
+    "PART_HEADING": 5,
+    "PART_TITLE": 3,
+    "PC_SUBCLAUSE_TITLE": 114,
+    "PDS_GROUP": 10,
+    "REPEATED_DOCUMENT_TITLE": 4,
+    "REPEATED_FORM_TITLE": 1,
+    "REVISION_DATE_OPENER": 2,
+    "S029_A2_LIST_LEAD_IN_SIBLING": 1,
+    "S029_A3_INNER_FORM_TITLE": 2,
+    "S029_A4_BULLETED_SUBHEADING": 3,
+    "SECTION_OPENER": 4,
+    "SECTION_SUBHEADING": 1,
+    "SECTION_TITLE": 11,
+    "SUMMARY_ENTRY": 2,
+    "SUMMARY_PART_LABEL": 3,
+    "SUMMARY_SECTION_LABEL": 10,
+    "TOC_OPENER": 6
+  },
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-25",
+    "membershipTotal": 374,
+    "patterns": [
+      {
+        "pattern": "S029_A1_COVER_APPLICABILITY_QUALIFIER",
+        "decision": "FALSE: INFORMATION / DOCUMENT / METADATA, informationType APPLICABILITY_METADATA, titleRelation NONE (not a title part of a claim it is not in)"
+      },
+      {
+        "pattern": "S029_A2_LIST_LEAD_IN_SIBLING",
+        "decision": "TRUE: STRUCTURE / LIST / REGION_OPENER + LOCAL_LABEL; sentence-like wording is not body prose automatically"
+      },
+      {
+        "pattern": "S029_A3_INNER_FORM_TITLE",
+        "decision": "both TRUE: the repeated declaration title keeps heading status (repeatStatus is independent of isHeading); the CON-4 title claim is the title line only, its qualification lines are INFORMATION with titleRelation NONE"
+      },
+      {
+        "pattern": "S029_A4_BULLETED_SUBHEADING",
+        "decision": "all three TRUE: STRUCTURE / SECTION / REGION_OPENER + LOCAL_LABEL; the bullet is not a decision gate"
+      },
+      {
+        "pattern": "T1/T2 binder limits",
+        "decision": "not partial binding: fix the binder generically (GENERIC_MULTIPART_BINDER_V2) and bind the five headings in full before freezing Gold"
+      }
+    ]
+  },
+  "pageBreakHeadings": [
+    {
+      "claim": "Sub-Clause 14.3",
+      "titleOnNextPage": "Application for Interim Payment",
+      "pages": "188 -> 189"
+    },
+    {
+      "claim": "Sub-Clause 21.10",
+      "titleOnNextPage": "Dissatisfaction with DAAB's decision on SEA/SH Referrals",
+      "pages": "196 -> 197"
+    }
+  ],
+  "bindingFailures": []
+}

@@ -1,0 +1,5023 @@
+{
+  "artifactKind": "a99_generic_audit_blind_score",
+  "study": "SRC053_BLIND_GENERALIZATION_AUDIT_V1",
+  "engine": "GENERIC_AUDIT_ENGINE_V1.2",
+  "role": "HELD_OUT - the third generalization measurement of V1.2",
+  "scorer": "GENERIC_EXACT_SCORER_V1",
+  "pin": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-053.reveal-pin.v1_2.json",
+    "sha256": "3f3f3be19ae9cffc50e14cd655647745f0fbf3b941490b46d4022adba059787e"
+  },
+  "proposals": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_2/SRC-053.proposals.v1_2.json",
+    "sha256": "2fa659dc97145b07f392b6cdeb3c3ff25a31cb158c5bdc43c79b51cd3d96bebf",
+    "gitBlob": "ed15a4e75be8415006357f13a919208beee4c4d0"
+  },
+  "gold": {
+    "path": "eval/a99-closed-loop/gold/SRC-053.gold.json",
+    "sha256": "34af6c82f78f89b29676490afbba203ec028572b8c9c00e8d7acce0f1da2bb2e",
+    "claims": 271
+  },
+  "modelProviderVlmCalls": 0,
+  "headline": {
+    "goldClaims": 271,
+    "hypothesesListed": 999,
+    "TRUE": 0,
+    "NEEDS_REVIEW": 182,
+    "unbindable": 0,
+    "truePositives": 0,
+    "falsePositives": 0,
+    "falseNegatives": 271,
+    "truePrecision": 0,
+    "trueRecall": 0,
+    "f1": 0,
+    "needsReviewCaptureOfGold": 0.1845,
+    "needsReviewCaptureIncludingPartial": 0.1956,
+    "falseOnGold": 214,
+    "partialOnly": 7,
+    "reviewNoiseOutsideGold": 128,
+    "nonGoldReviewTouchingGold": 4,
+    "falsePositivesTouchingGold": 0,
+    "goldMultipartClaims": 11,
+    "exactMultipartMatches": 0,
+    "goldClaimsWithPartialPart": 0,
+    "exactMatchesWithPartialPart": 0,
+    "goldBuckets": {
+      "EXACT_TRUE": 0,
+      "EXACT_NEEDS_REVIEW": 50,
+      "EXACT_FALSE": 1,
+      "PARTIAL_TRUE": 0,
+      "PARTIAL_NEEDS_REVIEW": 3,
+      "PARTIAL_FALSE": 4,
+      "UNPROPOSED": 213
+    }
+  },
+  "axesOnTruePositives": {
+    "compared": 0,
+    "semanticFunctions": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "primaryFunction": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "scope": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "occurrenceRoles": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "titleRelation": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "informationType": {
+      "disagreements": 0,
+      "pairs": {}
+    }
+  },
+  "residuals": {
+    "goldNotEngineTrue": [
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0000:S0:0-21",
+        "goldText": "Information Statement",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L0040:S0:0-27",
+        "goldText": "AVAILABILITY OF INFORMATION",
+        "engine": [
+          {
+            "Index": 26,
+            "Text": "AVAILABILITY OF INFORMATION",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 9 body line(s) before a peer"
+            ],
+            "identity": "L0040:S0:0-27",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L0050:S0:0-19",
+        "goldText": "SUMMARY INFORMATION",
+        "engine": [
+          {
+            "Index": 27,
+            "Text": "SUMMARY INFORMATION",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 39 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer"
+            ],
+            "identity": "L0050:S0:0-19",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0081:S0:0-21",
+        "goldText": "Results of Operations",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0086:S0:0-19",
+        "goldText": "Adjusted Net Income",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0089:S0:0-6",
+        "goldText": "Equity",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0096:S0:0-6",
+        "goldText": "Assets",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0108:S0:0-10",
+        "goldText": "Borrowings",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L0124:S0:0-19",
+        "goldText": "SECTION I: OVERVIEW",
+        "engine": [
+          {
+            "Index": 29,
+            "Text": "SECTION I: OVERVIEW",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 37 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer",
+              "followed by 2 table/figure item(s) before a peer"
+            ],
+            "identity": "L0124:S0:0-19",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0125:S0:0-12",
+        "goldText": "Introduction",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0148:S0:0-17",
+        "goldText": "IDA Replenishment",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0154:S0:0-44",
+        "goldText": "Twentieth Replenishment of Resources (IDA20)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0172:S0:0-19",
+        "goldText": "IDA Crisis Facility",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0182:S0:0-47",
+        "goldText": "Twenty-First Replenishment of Resources (IDA21)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0197:S0:0-24",
+        "goldText": "Financial Business Model",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0212:S0:0-18",
+        "goldText": "Basis of Reporting",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0213:S0:0-14",
+        "goldText": "Reported Basis",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0226:S0:0-17",
+        "goldText": "Non-GAAP Measures",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0231:S0:0-19",
+        "goldText": "Adjusted Net Income",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0238:S0:0-34",
+        "goldText": "Deployable Strategic Capital Ratio",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0243:S0:0-19",
+        "goldText": "Budget Anchor Ratio",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L0248:S0:0-29",
+        "goldText": "SECTION II: EXECUTIVE SUMMARY",
+        "engine": [
+          {
+            "Index": 41,
+            "Text": "SECTION II: EXECUTIVE SUMMARY",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 16 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "followed by 21 table/figure item(s) before a peer"
+            ],
+            "identity": "L0248:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0289:S0:0-28",
+        "goldText": "Summary of Financial Results",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0304:S0:0-16",
+        "goldText": "Loans and Grants",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0327:S0:0-11",
+        "goldText": "Investments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0338:S0:0-10",
+        "goldText": "Borrowings",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0355:S0:0-33",
+        "goldText": "Total Equity and Capital Adequacy",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L0375:S0:0-38",
+        "goldText": "SECTION III: IDA’S FINANCIAL RESOURCES",
+        "engine": [
+          {
+            "Index": 65,
+            "Text": "SECTION III: IDA’S FINANCIAL RESOURCES",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 36 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer",
+              "followed by 3 table/figure item(s) before a peer"
+            ],
+            "identity": "L0375:S0:0-38",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0407:S0:0-13",
+        "goldText": "IDA20 Funding",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0455:S0:0-13",
+        "goldText": "IDA21 Funding",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0462:S0:0-29",
+        "goldText": "Allocation of IDA21 Resources",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0498:S0:0-54",
+        "goldText": "Allocation — Performance Based Allocation (PBA) System",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0519:S0:0-22",
+        "goldText": "Concessional Financing",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0550:S0:0-27",
+        "goldText": "Country Allocation Envelope",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0554:S0:0-24",
+        "goldText": "IDA Concessional Windows",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0561:S0:0-47",
+        "goldText": "Global and Regional Opportunities Window (GROW)",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L0572:S0:0-45",
+        "goldText": "Windowfor Host Communities and Refugees (WHR)",
+        "engine": [
+          {
+            "Index": 99,
+            "Text": "Windowfor Host Communities and Refugees (WHR)",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0572:S0:0-45",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0580:S0:0-28",
+        "goldText": "Crisis Response Window (CRW)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0586:S0:0-63",
+        "goldText": "Concessional Scale-up Window – Shorter Maturity Loans (SUW-SML)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0590:S0:0-26",
+        "goldText": "Non-Concessional Financing",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0602:S0:0-27",
+        "goldText": "Private Sector Window (PSW)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0613:S0:0-27",
+        "goldText": "Arrears Clearance Framework",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0621:S0:0-38",
+        "goldText": "i. Pre-Arrears Clearance Grants (PACG)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0639:S0:0-31",
+        "goldText": "ii. Arrears Clearance Set-Aside",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L0657:S0:0-29",
+        "goldText": "SECTION IV: FINANCIAL RESULTS",
+        "engine": [
+          {
+            "Index": 100,
+            "Text": "SECTION IV: FINANCIAL RESULTS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 12 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "followed by 25 table/figure item(s) before a peer"
+            ],
+            "identity": "L0657:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0658:S0:0-43",
+        "goldText": "Financial Results and Portfolio Performance",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0686:S0:0-12",
+        "goldText": "Total Equity",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0699:S0:0-10",
+        "goldText": "Net Income",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0734:S0:0-19",
+        "goldText": "Adjusted Net Income",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0794:S0:0-66",
+        "goldText": "Adjustments to Net (Loss) Income to arrive at Adjusted Net Income:",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0842:S0:0-33",
+        "goldText": "Results from Financing Activities",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0843:S0:0-33",
+        "goldText": "Loan Portfolio and Grant Activity",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0873:S0:0-49",
+        "goldText": "Provision for losses on loans and other exposures",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0881:S0:0-33",
+        "goldText": "Results from Investing Activities",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0882:S0:0-47",
+        "goldText": "Investment interest revenue, net of derivatives",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0886:S0:0-11",
+        "goldText": "Investments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0910:S0:0-78",
+        "goldText": "Unrealized mark-to-market gains (losses) on investments-trading portfolio, net",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0915:S0:0-33",
+        "goldText": "Results from Borrowing Activities",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0916:S0:0-18",
+        "goldText": "Borrowing Expenses",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0920:S0:0-10",
+        "goldText": "Borrowings",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0950:S0:0-39",
+        "goldText": "Transfers from Affiliated Organizations",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0956:S0:0-24",
+        "goldText": "Net Non-Interest Expense",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1038:S0:0-71",
+        "goldText": "Unrealized mark-to-market gains (losses) on non-trading portfolios, net",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1057:S0:0-42",
+        "goldText": "Currency remeasurement gains (losses), net",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1071:S0:0-56",
+        "goldText": "SECTION V: DEVELOPMENT ACTIVITIES, PRODUCTS AND PROGRAMS",
+        "engine": [
+          {
+            "Index": 183,
+            "Text": "SECTION V: DEVELOPMENT ACTIVITIES, PRODUCTS AND PROGRAMS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 39 body line(s) before a peer",
+              "followed by 1 table/figure item(s) before a peer"
+            ],
+            "identity": "L1071:S0:0-56",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1072:S0:0-17",
+        "goldText": "Lending Framework",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1076:S0:0-20",
+        "goldText": "Financing Principles",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1106:S0:0-16",
+        "goldText": "Financing Cycles",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1119:S0:0-20",
+        "goldText": "Financing Categories",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1156:S0:0-34",
+        "goldText": "Investment Project Financing (IPF)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1160:S0:0-34",
+        "goldText": "Development Policy Financing (DPF)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1166:S0:0-27",
+        "goldText": "Program-for-Results (PforR)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1172:S0:0-15",
+        "goldText": "Financial Terms",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1173:S0:0-19",
+        "goldText": "Commitment Currency",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1233:S0:0-27",
+        "goldText": "Charges on Loans and Grants",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1247:S0:0-15",
+        "goldText": "Repayment Terms",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1267:S0:0-36",
+        "goldText": "Loans, Grants and Guarantee Activity",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1268:S0:0-11",
+        "goldText": "Commitments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1340:S0:0-36",
+        "goldText": "Climate Resilient Debt Clause (CRDC)",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1354:S0:0-53",
+        "goldText": "SECTION VI: OTHER DEVELOPMENT ACTIVITIES AND PROGRAMS",
+        "engine": [
+          {
+            "Index": 273,
+            "Text": "SECTION VI: OTHER DEVELOPMENT ACTIVITIES AND PROGRAMS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 39 body line(s) before a peer",
+              "followed by 1 table/figure item(s) before a peer"
+            ],
+            "identity": "L1354:S0:0-53",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1358:S0:0-10",
+        "goldText": "Guarantees",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1382:S0:0-18",
+        "goldText": "Guarantee Exposure",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1388:S0:0-37",
+        "goldText": "Other Financial Products and Services",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1400:S0:0-23",
+        "goldText": "Grant Making Facilities",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1405:S0:0-11",
+        "goldText": "Debt Relief",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1432:S0:0-28",
+        "goldText": "Externally-Funded Activities",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1436:S0:0-11",
+        "goldText": "Trust Funds",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1482:S0:0-36",
+        "goldText": "Reimbursable Advisory Services (RAS)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1491:S0:0-34",
+        "goldText": "Externally Financed Outputs (EFOs)",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1499:S0:0-34",
+        "goldText": "SECTION VII: INVESTMENT ACTIVITIES",
+        "engine": [
+          {
+            "Index": 280,
+            "Text": "SECTION VII: INVESTMENT ACTIVITIES",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 27 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer",
+              "followed by 12 table/figure item(s) before a peer"
+            ],
+            "identity": "L1499:S0:0-34",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1515:S0:0-21",
+        "goldText": "Investments – Trading",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1538:S0:0-23",
+        "goldText": "Investments—Non-Trading",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1548:S0:0-34",
+        "goldText": "SECTION VIII: BORROWING ACTIVITIES",
+        "engine": [
+          {
+            "Index": 282,
+            "Text": "SECTION VIII: BORROWING ACTIVITIES",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 6 body line(s) before a peer",
+              "followed by 2 lesser label(s) before a peer",
+              "followed by 32 table/figure item(s) before a peer"
+            ],
+            "identity": "L1548:S0:0-34",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1563:S0:0-11",
+        "goldText": "Market Debt",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1569:S0:0-26",
+        "goldText": "Concessional Partner Loans",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1610:S0:0-27",
+        "goldText": "Other Short-Term Borrowings",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1621:S0:0-23",
+        "goldText": "Contractual Obligations",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L1628:S0:0-27",
+        "goldText": "SECTION IX: RISK MANAGEMENT",
+        "engine": [
+          {
+            "Index": 313,
+            "Text": "SECTION IX: RISK MANAGEMENT",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L1628:S0:0-27",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1629:S0:0-15",
+        "goldText": "Risk Governance",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1647:S0:0-27",
+        "goldText": "Risk Oversight and Coverage",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1648:S0:0-41",
+        "goldText": "Financial and Operational Risk Management",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1656:S0:0-22",
+        "goldText": "Credit Risk Department",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1664:S0:0-39",
+        "goldText": "Market and Counterparty Risk Department",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1677:S0:0-27",
+        "goldText": "Operational Risk Department",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1692:S0:0-15",
+        "goldText": "Risk Committees",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1702:S0:0-26",
+        "goldText": "Financial Risk Committees:",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1725:S0:0-28",
+        "goldText": "Operational Risk Committees:",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1741:S0:0-19",
+        "goldText": "Other Risk Councils",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1750:S0:0-25",
+        "goldText": "Management of IDA’s Risks",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1771:S0:0-16",
+        "goldText": "Capital Adequacy",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1803:S0:0-26",
+        "goldText": "Asset/Liability Management",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1808:S0:0-38",
+        "goldText": "Capital Value Protection Program (CVP)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1818:S0:0-25",
+        "goldText": "Asset Coverage Principles",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1830:S0:0-11",
+        "goldText": "Credit Risk",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1835:S0:0-19",
+        "goldText": "Country Credit Risk",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1851:S0:0-21",
+        "goldText": "Single Borrower Limit",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1877:S0:0-11",
+        "goldText": "Debt Relief",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1885:S0:0-58",
+        "goldText": "Expected Losses, Overdue Payments and Non-Performing Loans",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1959:S0:0-35",
+        "goldText": "Commercial Counterparty Credit Risk",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1977:S0:0-22",
+        "goldText": "Derivative Instruments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L1992:S0:0-21",
+        "goldText": "Investment Securities",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2036:S0:0-44",
+        "goldText": "Commercial Counterparty Credit Risk Exposure",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2064:S0:0-38",
+        "goldText": "Credit and Debit Valuation Adjustments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2076:S0:0-25",
+        "goldText": "Changes in Credit Spreads",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2111:S0:0-11",
+        "goldText": "Market Risk",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2128:S0:0-18",
+        "goldText": "Interest Rate Risk",
+        "engine": [
+          {
+            "Index": 355,
+            "Text": "Interest Rate Risk",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 28 body line(s) before a peer",
+              "followed by 1 table/figure item(s) before a peer"
+            ],
+            "identity": "L2128:S0:0-18",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2188:S0:0-18",
+        "goldText": "Exchange Rate Risk",
+        "engine": [
+          {
+            "Index": 370,
+            "Text": "Exchange Rate Risk",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L2188:S0:0-18",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2218:S0:0-14",
+        "goldText": "Liquidity Risk",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2228:S0:0-16",
+        "goldText": "Operational Risk",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2238:S0:0-29",
+        "goldText": "Cybersecurity Risk Management",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2258:S0:0-64",
+        "goldText": "SECTION X: CRITICAL ACCOUNTING POLICIES AND THE USE OF ESTIMATES",
+        "engine": [
+          {
+            "Index": 371,
+            "Text": "SECTION X: CRITICAL ACCOUNTING POLICIES AND THE USE OF ESTIMATES",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 39 body line(s) before a peer"
+            ],
+            "identity": "L2258:S0:0-64",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2264:S0:0-35",
+        "goldText": "Fair Value of Financial Instruments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2285:S0:0-49",
+        "goldText": "Provision for Losses on Loans and Other Exposures",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2299:S0:0-44",
+        "goldText": "SECTION XI: GOVERNANCE AND INTERNAL CONTROLS",
+        "engine": [
+          {
+            "Index": 372,
+            "Text": "SECTION XI: GOVERNANCE AND INTERNAL CONTROLS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 36 body line(s) before a peer",
+              "followed by 4 table/figure item(s) before a peer"
+            ],
+            "identity": "L2299:S0:0-44",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2300:S0:0-16",
+        "goldText": "Business Conduct",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2311:S0:0-18",
+        "goldText": "General Governance",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2331:S0:0-19",
+        "goldText": "Executive Directors",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2360:S0:0-15",
+        "goldText": "Audit Committee",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2361:S0:0-10",
+        "goldText": "Membership",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2365:S0:0-20",
+        "goldText": "Key Responsibilities",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2381:S0:0-18",
+        "goldText": "Executive Sessions",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2385:S0:0-37",
+        "goldText": "Access to Resources and to Management",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2391:S0:0-20",
+        "goldText": "Auditor Independence",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2409:S0:0-17",
+        "goldText": "External Auditors",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2416:S0:0-25",
+        "goldText": "Senior Management Changes",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2421:S0:0-17",
+        "goldText": "Internal Controls",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2422:S0:0-41",
+        "goldText": "Internal Control over Financial Reporting",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2434:S0:0-34",
+        "goldText": "Disclosure Controls and Procedures",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2440:S0:0-56",
+        "goldText": "SECTION XII: AFFILIATED ORGANIZATIONS—IBRD, IFC AND MIGA",
+        "engine": [
+          {
+            "Index": 374,
+            "Text": "SECTION XII: AFFILIATED ORGANIZATIONS—IBRD, IFC AND MIGA",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 37 body line(s) before a peer"
+            ],
+            "identity": "L2440:S0:0-56",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2479:S0:0-35",
+        "goldText": "SECTION XIII: ADMINISTRATION OF IDA",
+        "engine": [
+          {
+            "Index": 375,
+            "Text": "SECTION XIII: ADMINISTRATION OF IDA",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 39 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer"
+            ],
+            "identity": "L2479:S0:0-35",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2583:S0:0-38",
+        "goldText": "SECTION XIV: THE ARTICLES OF AGREEMENT",
+        "engine": [
+          {
+            "Index": 378,
+            "Text": "SECTION XIV: THE ARTICLES OF AGREEMENT",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 14 body line(s) before a peer"
+            ],
+            "identity": "L2583:S0:0-38",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2598:S0:0-51",
+        "goldText": "SECTION XV: LEGAL STATUS, PRIVILEGES AND IMMUNITIES",
+        "engine": [
+          {
+            "Index": 379,
+            "Text": "SECTION XV: LEGAL STATUS, PRIVILEGES AND IMMUNITIES",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 20 body line(s) before a peer"
+            ],
+            "identity": "L2598:S0:0-51",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2620:S0:0-42",
+        "goldText": "SECTION XVI: FISCAL YEAR AND ANNOUNCEMENTS",
+        "engine": [
+          {
+            "Index": 380,
+            "Text": "SECTION XVI: FISCAL YEAR AND ANNOUNCEMENTS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "L2620:S0:0-42",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2621:S0:0-11",
+        "goldText": "FISCAL YEAR",
+        "engine": [
+          {
+            "Index": 381,
+            "Text": "FISCAL YEAR",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 1 body line(s) before a peer"
+            ],
+            "identity": "L2621:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2623:S0:0-13",
+        "goldText": "ANNOUNCEMENTS",
+        "engine": [
+          {
+            "Index": 382,
+            "Text": "ANNOUNCEMENTS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 2 body line(s) before a peer"
+            ],
+            "identity": "L2623:S0:0-13",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2626:S0:0-39",
+        "goldText": "SECTION XVII: FEES TO EXTERNAL AUDITORS",
+        "engine": [
+          {
+            "Index": 383,
+            "Text": "SECTION XVII: FEES TO EXTERNAL AUDITORS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 16 body line(s) before a peer"
+            ],
+            "identity": "L2626:S0:0-39",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2644:S0:0-23",
+        "goldText": "SECTION XVIII: APPENDIX",
+        "engine": [
+          {
+            "Index": 384,
+            "Text": "SECTION XVIII: APPENDIX",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L2644:S0:0-23",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2645:S0:0-17",
+        "goldText": "Glossary of Terms",
+        "engine": []
+      },
+      {
+        "bucket": "PARTIAL_NEEDS_REVIEW",
+        "goldIdentity": "L2697:S0:0-41|L2698:S0:0-7",
+        "goldText": "FINANCIAL STATEMENTS AND INTERNAL CONTROL REPORTS",
+        "engine": [
+          {
+            "Index": 386,
+            "Text": "FINANCIAL STATEMENTS AND INTERNAL CONTROL",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "L2697:S0:0-41",
+            "UnboundReason": null
+          },
+          {
+            "Index": 387,
+            "Text": "REPORTS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "L2698:S0:0-7",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2709:S0:0-25",
+        "goldText": "Supplementary Information",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2717:S0:0-42",
+        "goldText": "Management’s Financial Reporting Assurance",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2759:S0:0-46|L2760:S0:0-41",
+        "goldText": "Management’s Report Regarding Effectiveness of Internal Control over Financial Reporting",
+        "engine": []
+      },
+      {
+        "bucket": "PARTIAL_NEEDS_REVIEW",
+        "goldIdentity": "L2817:S0:0-70|L2818:S0:0-20",
+        "goldText": "INDEPENDENT AUDITOR’S REPORT ON EFFECTIVENESS OF INTERNAL CONTROL OVER FINANCIAL REPORTING.",
+        "engine": [
+          {
+            "Index": 401,
+            "Text": "INDEPENDENT AUDITOR’S REPORT ON EFFECTIVENESS OF INTERNAL CONTROL OVER",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L2817:S0:0-70",
+            "UnboundReason": null
+          },
+          {
+            "Index": 402,
+            "Text": "FINANCIAL REPORTING.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L2818:S0:0-20",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2821:S0:0-52",
+        "goldText": "Opinion on Internal Control over Financial Reporting",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2830:S0:0-17",
+        "goldText": "Basis for Opinion",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2836:S0:0-76",
+        "goldText": "Responsibilities of Management for Internal Control over Financial Reporting",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2840:S0:0-85",
+        "goldText": "Auditor’s Responsibilities for the Audit of Internal Control over Financial Reporting",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2852:S0:0-80",
+        "goldText": "Definition and Inherent Limitations of Internal Control over Financial Reporting",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2878:S0:0-28",
+        "goldText": "INDEPENDENT AUDITOR’S REPORT",
+        "engine": [
+          {
+            "Index": 405,
+            "Text": "INDEPENDENT AUDITOR’S REPORT",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L2878:S0:0-28",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2881:S0:0-7",
+        "goldText": "Opinion",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2895:S0:0-17",
+        "goldText": "Basis for Opinion",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2901:S0:0-59",
+        "goldText": "Responsibilities of Management for the Financial Statements",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2909:S0:0-68",
+        "goldText": "Auditor’s Responsibilities for the Audit of the Financial Statements",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2933:S0:0-35",
+        "goldText": "Report on Supplementary Information",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L2943:S0:0-89",
+        "goldText": "Other Information Included in Management’s Discussion & Analysis and Financial Statements",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2955:S0:0-14",
+        "goldText": "BALANCE SHEETS",
+        "engine": [
+          {
+            "Index": 406,
+            "Text": "BALANCE SHEETS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 12 body line(s) before a peer",
+              "followed by 5 lesser label(s) before a peer",
+              "followed by 23 table/figure item(s) before a peer"
+            ],
+            "identity": "L2955:S0:0-14",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L2985:S0:0-14",
+        "goldText": "BALANCE SHEETS",
+        "engine": [
+          {
+            "Index": 415,
+            "Text": "BALANCE SHEETS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 12 body line(s) before a peer",
+              "followed by 4 lesser label(s) before a peer",
+              "followed by 24 table/figure item(s) before a peer"
+            ],
+            "identity": "L2985:S0:0-14",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3026:S0:0-20",
+        "goldText": "STATEMENTS OF INCOME",
+        "engine": [
+          {
+            "Index": 425,
+            "Text": "STATEMENTS OF INCOME",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 9 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "followed by 28 table/figure item(s) before a peer"
+            ],
+            "identity": "L3026:S0:0-20",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3059:S0:0-34",
+        "goldText": "STATEMENTS OF COMPREHENSIVE INCOME",
+        "engine": [
+          {
+            "Index": 437,
+            "Text": "STATEMENTS OF COMPREHENSIVE INCOME",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 7 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer",
+              "followed by 12 table/figure item(s) before a peer"
+            ],
+            "identity": "L3059:S0:0-34",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3072:S0:0-31",
+        "goldText": "STATEMENTS OF CHANGES IN EQUITY",
+        "engine": [
+          {
+            "Index": 441,
+            "Text": "STATEMENTS OF CHANGES IN EQUITY",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 2 body line(s) before a peer",
+              "followed by 8 lesser label(s) before a peer",
+              "followed by 30 table/figure item(s) before a peer"
+            ],
+            "identity": "L3072:S0:0-31",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3113:S0:0-24",
+        "goldText": "STATEMENTS OF CASH FLOWS",
+        "engine": [
+          {
+            "Index": 469,
+            "Text": "STATEMENTS OF CASH FLOWS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 15 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer",
+              "followed by 24 table/figure item(s) before a peer"
+            ],
+            "identity": "L3113:S0:0-24",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3171:S0:0-26",
+        "goldText": "SUMMARY STATEMENT OF LOANS",
+        "engine": [
+          {
+            "Index": 473,
+            "Text": "SUMMARY STATEMENT OF LOANS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 5 body line(s) before a peer",
+              "followed by 6 lesser label(s) before a peer",
+              "followed by 29 table/figure item(s) before a peer"
+            ],
+            "identity": "L3171:S0:0-26",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3224:S0:0-38",
+        "goldText": "SUMMARY STATEMENT OF LOANS (Continued)",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3277:S0:0-38",
+        "goldText": "SUMMARY STATEMENT OF LOANS (Continued)",
+        "engine": []
+      },
+      {
+        "bucket": "PARTIAL_NEEDS_REVIEW",
+        "goldIdentity": "L3317:S0:0-29|L3318:S0:0-31",
+        "goldText": "STATEMENT OF VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS",
+        "engine": [
+          {
+            "Index": 512,
+            "Text": "STATEMENT OF VOTING POWER AND",
+            "state": "FALSE",
+            "Roles": [
+              "PAGE_FURNITURE"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "repeats in the page's top/bottom band across pages, or is a page number there"
+            ],
+            "identity": "L3317:S0:0-29",
+            "UnboundReason": null
+          },
+          {
+            "Index": 513,
+            "Text": "SUBSCRIPTIONS AND CONTRIBUTIONS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 9 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "followed by 28 table/figure item(s) before a peer"
+            ],
+            "identity": "L3318:S0:0-31",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L3366:S0:0-29|L3367:S0:0-43",
+        "goldText": "STATEMENT OF VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS (Continued)",
+        "engine": [
+          {
+            "Index": 523,
+            "Text": "STATEMENT OF VOTING POWER AND",
+            "state": "FALSE",
+            "Roles": [
+              "PAGE_FURNITURE"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 9 body line(s) before a peer",
+              "followed by 2 lesser label(s) before a peer",
+              "followed by 29 table/figure item(s) before a peer",
+              "repeats in the page's top/bottom band across pages, or is a page number there"
+            ],
+            "identity": "L3366:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L3414:S0:0-29|L3415:S0:0-43",
+        "goldText": "STATEMENT OF VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS (Continued)",
+        "engine": [
+          {
+            "Index": 532,
+            "Text": "STATEMENT OF VOTING POWER AND",
+            "state": "FALSE",
+            "Roles": [
+              "PAGE_FURNITURE"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 9 body line(s) before a peer",
+              "followed by 2 lesser label(s) before a peer",
+              "followed by 29 table/figure item(s) before a peer",
+              "repeats in the page's top/bottom band across pages, or is a page number there"
+            ],
+            "identity": "L3414:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L3461:S0:0-29|L3462:S0:0-43",
+        "goldText": "STATEMENT OF VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS (Continued)",
+        "engine": [
+          {
+            "Index": 541,
+            "Text": "STATEMENT OF VOTING POWER AND",
+            "state": "FALSE",
+            "Roles": [
+              "PAGE_FURNITURE"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 9 body line(s) before a peer",
+              "followed by 2 lesser label(s) before a peer",
+              "followed by 29 table/figure item(s) before a peer",
+              "repeats in the page's top/bottom band across pages, or is a page number there"
+            ],
+            "identity": "L3461:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L3509:S0:0-29|L3510:S0:0-43",
+        "goldText": "STATEMENT OF VOTING POWER AND SUBSCRIPTIONS AND CONTRIBUTIONS (Continued)",
+        "engine": [
+          {
+            "Index": 550,
+            "Text": "STATEMENT OF VOTING POWER AND",
+            "state": "FALSE",
+            "Roles": [
+              "PAGE_FURNITURE"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 9 body line(s) before a peer",
+              "followed by 2 lesser label(s) before a peer",
+              "followed by 29 table/figure item(s) before a peer",
+              "repeats in the page's top/bottom band across pages, or is a page number there"
+            ],
+            "identity": "L3509:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3552:S0:0-29",
+        "goldText": "NOTES TO FINANCIAL STATEMENTS",
+        "engine": [
+          {
+            "Index": 575,
+            "Text": "NOTES TO FINANCIAL STATEMENTS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "L3552:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3553:S0:0-36",
+        "goldText": "PURPOSE AND AFFILIATED ORGANIZATIONS",
+        "engine": [
+          {
+            "Index": 576,
+            "Text": "PURPOSE AND AFFILIATED ORGANIZATIONS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 11 body line(s) before a peer"
+            ],
+            "identity": "L3553:S0:0-36",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3565:S0:0-61",
+        "goldText": "NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES",
+        "engine": [
+          {
+            "Index": 577,
+            "Text": "NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L3565:S0:0-61",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3579:S0:0-43",
+        "goldText": "Translation and Remeasurement of Currencies",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3591:S0:0-40",
+        "goldText": "Members’ Subscriptions and Contributions",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3592:S0:0-11",
+        "goldText": "Recognition",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3659:S0:0-24",
+        "goldText": "Withdrawal of Membership",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3668:S0:0-44",
+        "goldText": "Valuation of Subscriptions and Contributions",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3690:S0:0-94|L3691:S0:0-13",
+        "goldText": "Nonnegotiable, Noninterest-bearing Demand Obligations on Account of Members’ Subscriptions and Contributions",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3695:S0:0-55",
+        "goldText": "Deferred amounts to maintain value of currency holdings",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3707:S0:0-36",
+        "goldText": "Accumulated other comprehensive loss",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3712:S0:0-25",
+        "goldText": "Loans and Other Exposures",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3713:S0:0-5",
+        "goldText": "Loans",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3754:S0:0-16",
+        "goldText": "Loan commitments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3759:S0:0-17",
+        "goldText": "Buy-down of Loans",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3765:S0:0-18",
+        "goldText": "Development Grants",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3773:S0:0-28",
+        "goldText": "Project Preparation Advances",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3780:S0:0-19",
+        "goldText": "Guarantees Provided",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3795:S0:0-20",
+        "goldText": "HIPC Debt Initiative",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L3815:S0:0-4",
+        "goldText": "MDRI",
+        "engine": [
+          {
+            "Index": 578,
+            "Text": "MDRI",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L3815:S0:0-4",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3826:S0:0-61",
+        "goldText": "Accumulated Provision for Losses on Loans and Other Exposures",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3831:S0:0-29",
+        "goldText": "HIPC Debt Initiative and MDRI",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3844:S0:0-5",
+        "goldText": "Loans",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3886:S0:0-16",
+        "goldText": "Loan Commitments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3891:S0:0-19",
+        "goldText": "Guarantees Provided",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3897:S0:0-24",
+        "goldText": "Statements of Cash Flows",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3900:S0:0-15",
+        "goldText": "Restricted Cash",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3903:S0:0-11",
+        "goldText": "Investments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3930:S0:0-101|L3931:S0:0-81",
+        "goldText": "Securities Purchased Under Resale Agreements, Securities Sold Under Repurchase Agreements, Securities Lent Under Securities Lending Agreements and Payable for Cash Collateral Received",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3946:S0:0-10",
+        "goldText": "Borrowings",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L3970:S0:0-26",
+        "goldText": "Accounting for Derivatives",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4016:S0:0-34",
+        "goldText": "Valuation of Financial Instruments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4027:S0:0-20",
+        "goldText": "Fair Value Hierarchy",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4044:S0:0-48",
+        "goldText": "Accounting for Contributions to Special Programs",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4048:S0:0-9",
+        "goldText": "Transfers",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4056:S0:0-11",
+        "goldText": "Trust Funds",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4072:S0:0-37",
+        "goldText": "Accounting and Reporting Developments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4073:S0:0-30",
+        "goldText": "Evaluated Accounting Standards",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4080:S0:0-37",
+        "goldText": "Accounting Standards Under Evaluation",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4097:S0:0-62",
+        "goldText": "NOTE B—MEMBERS’ SUBSCRIPTIONS AND CONTRIBUTIONS AND MEMBERSHIP",
+        "engine": [
+          {
+            "Index": 586,
+            "Text": "NOTE B—MEMBERS’ SUBSCRIPTIONS AND CONTRIBUTIONS AND MEMBERSHIP",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 11 body line(s) before a peer",
+              "followed by 6 lesser label(s) before a peer",
+              "followed by 23 table/figure item(s) before a peer"
+            ],
+            "identity": "L4097:S0:0-62",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4118:S0:0-10",
+        "goldText": "Membership",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4120:S0:0-18",
+        "goldText": "NOTE C—INVESTMENTS",
+        "engine": [
+          {
+            "Index": 598,
+            "Text": "NOTE C—INVESTMENTS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 18 body line(s) before a peer",
+              "followed by 6 lesser label(s) before a peer",
+              "followed by 16 table/figure item(s) before a peer"
+            ],
+            "identity": "L4120:S0:0-18",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4182:S0:0-22",
+        "goldText": "Commercial Credit Risk",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4188:S0:0-15",
+        "goldText": "Swap Agreements",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4210:S0:0-18",
+        "goldText": "Securities Lending",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4241:S0:0-32",
+        "goldText": "NOTE D—LOANS AND OTHER EXPOSURES",
+        "engine": [
+          {
+            "Index": 629,
+            "Text": "NOTE D—LOANS AND OTHER EXPOSURES",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 24 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "followed by 13 table/figure item(s) before a peer"
+            ],
+            "identity": "L4241:S0:0-32",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4274:S0:0-23",
+        "goldText": "Credit Quality of Loans",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4311:S0:0-15",
+        "goldText": "Overdue Amounts",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4405:S0:0-61",
+        "goldText": "Accumulated Provision for Losses on Loans and Other Exposures",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4476:S0:0-34",
+        "goldText": "Loans to be written off under MDRI",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4481:S0:0-19",
+        "goldText": "Guarantees Provided",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4500:S0:0-18",
+        "goldText": "Concentration Risk",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4523:S0:0-17",
+        "goldText": "NOTE E—BORROWINGS",
+        "engine": [
+          {
+            "Index": 739,
+            "Text": "NOTE E—BORROWINGS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 27 body line(s) before a peer",
+              "followed by 2 lesser label(s) before a peer",
+              "followed by 11 table/figure item(s) before a peer"
+            ],
+            "identity": "L4523:S0:0-17",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4603:S0:0-29",
+        "goldText": "NOTE F—DERIVATIVE INSTRUMENTS",
+        "engine": [
+          {
+            "Index": 763,
+            "Text": "NOTE F—DERIVATIVE INSTRUMENTS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 33 body line(s) before a peer",
+              "followed by 7 table/figure item(s) before a peer"
+            ],
+            "identity": "L4603:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4626:S0:0-33",
+        "goldText": "Offsetting assets and liabilities",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4692:S0:0-10",
+        "goldText": "Collateral",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4729:S0:0-25",
+        "goldText": "NOTE G—DEVELOPMENT GRANTS",
+        "engine": [
+          {
+            "Index": 808,
+            "Text": "NOTE G—DEVELOPMENT GRANTS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 7 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer",
+              "followed by 19 table/figure item(s) before a peer"
+            ],
+            "identity": "L4729:S0:0-25",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4741:S0:0-49",
+        "goldText": "NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS",
+        "engine": [
+          {
+            "Index": 813,
+            "Text": "NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 8 body line(s) before a peer",
+              "followed by 2 lesser label(s) before a peer",
+              "followed by 30 table/figure item(s) before a peer"
+            ],
+            "identity": "L4741:S0:0-49",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4768:S0:0-29",
+        "goldText": "Transfers and Grants Received",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4783:S0:0-23",
+        "goldText": "Administrative Services",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4791:S0:0-13",
+        "goldText": "Other revenue",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "L4804:S0:0-23",
+        "goldText": "Derivative transactions",
+        "engine": [
+          {
+            "Index": 833,
+            "Text": "Derivative transactions",
+            "state": "FALSE",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 39 body line(s) before a peer",
+              "followed by 1 table/figure item(s) before a peer",
+              "under a numbered caption, inside its figure or table: prose has not resumed"
+            ],
+            "identity": "L4804:S0:0-23",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4808:S0:0-21",
+        "goldText": "Private Sector Window",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4822:S0:0-25",
+        "goldText": "Investments – Non-trading",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4830:S0:0-42",
+        "goldText": "Pension and Other Post-Retirement Benefits",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4855:S0:0-43",
+        "goldText": "NOTE I—ACCUMULATED OTHER COMPREHENSIVE LOSS",
+        "engine": [
+          {
+            "Index": 834,
+            "Text": "NOTE I—ACCUMULATED OTHER COMPREHENSIVE LOSS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 10 body line(s) before a peer",
+              "followed by 8 lesser label(s) before a peer",
+              "followed by 22 table/figure item(s) before a peer"
+            ],
+            "identity": "L4855:S0:0-43",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L4889:S0:0-29",
+        "goldText": "NOTE J—FAIR VALUE DISCLOSURES",
+        "engine": [
+          {
+            "Index": 859,
+            "Text": "NOTE J—FAIR VALUE DISCLOSURES",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L4889:S0:0-29",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4890:S0:0-33",
+        "goldText": "Valuation Methods and Assumptions",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4893:S0:0-14",
+        "goldText": "Due from Banks",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4896:S0:0-26",
+        "goldText": "Loans and Loan commitments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4900:S0:0-21",
+        "goldText": "Investment securities",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4908:S0:0-105|L4909:S0:0-40",
+        "goldText": "Securities purchased under resale agreements, securities sold under repurchase agreements, and securities lent under securities lending agreements",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4911:S0:0-10",
+        "goldText": "Borrowings",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4916:S0:0-22",
+        "goldText": "Derivative instruments",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L4925:S0:0-62",
+        "goldText": "Valuation adjustments on fair value option elected liabilities",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L5099:S0:0-33",
+        "goldText": "NOTE K—TRUST FUNDS ADMINISTRATION",
+        "engine": [
+          {
+            "Index": 932,
+            "Text": "NOTE K—TRUST FUNDS ADMINISTRATION",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 29 body line(s) before a peer",
+              "followed by 4 lesser label(s) before a peer",
+              "followed by 7 table/figure item(s) before a peer"
+            ],
+            "identity": "L5099:S0:0-33",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L5135:S0:0-8",
+        "goldText": "Revenues",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L5146:S0:0-18",
+        "goldText": "Transfers Received",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L5153:S0:0-24",
+        "goldText": "NOTE L—SEGMENT REPORTING",
+        "engine": [
+          {
+            "Index": 946,
+            "Text": "NOTE L—SEGMENT REPORTING",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 15 body line(s) before a peer",
+              "followed by 8 lesser label(s) before a peer",
+              "followed by 16 table/figure item(s) before a peer"
+            ],
+            "identity": "L5153:S0:0-24",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L5179:S0:0-20",
+        "goldText": "NOTE M—CONTINGENCIES",
+        "engine": [
+          {
+            "Index": 960,
+            "Text": "NOTE M—CONTINGENCIES",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 6 body line(s) before a peer"
+            ],
+            "identity": "L5179:S0:0-20",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L5185:S0:0-21",
+        "goldText": "Information Statement",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "L5220:S0:0-17",
+        "goldText": "TABLE OF CONTENTS",
+        "engine": [
+          {
+            "Index": 998,
+            "Text": "TABLE OF CONTENTS",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 22 body line(s) before a peer",
+              "followed by 18 table/figure item(s) before a peer"
+            ],
+            "identity": "L5220:S0:0-17",
+            "UnboundReason": null
+          }
+        ]
+      }
+    ],
+    "nonGoldTrue": [],
+    "nonGoldNeedsReview": [
+      {
+        "hypothesis": {
+          "Index": 0,
+          "Text": "DEVEL O P M E",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0002:S0:0-13",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 2,
+          "Text": "L",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0003:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 4,
+          "Text": "A",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0004:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 5,
+          "Text": "A",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0005:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 6,
+          "Text": "N",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0006:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 7,
+          "Text": "S",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0007:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 8,
+          "Text": "O",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0008:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 9,
+          "Text": "S",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0009:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 10,
+          "Text": "I",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0010:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 11,
+          "Text": "O",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0011:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 12,
+          "Text": "T",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0012:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 13,
+          "Text": "C",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0013:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 14,
+          "Text": "A",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0014:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 15,
+          "Text": "I",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0015:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 16,
+          "Text": "N",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0016:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 17,
+          "Text": "A",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0017:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 18,
+          "Text": "R",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0018:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 19,
+          "Text": "T",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0019:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 20,
+          "Text": "E",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0020:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 21,
+          "Text": "I",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0021:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 22,
+          "Text": "T",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0022:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 24,
+          "Text": "NI",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0023:S0:0-2",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 28,
+          "Text": "As ofJune 30, 2025, unless otherwise indicated",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L0051:S0:0-46",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 42,
+          "Text": "In millions ofU.S. dollars, except ratios which are in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0256:S0:0-66",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 43,
+          "Text": "As ofandfor thefiscal year ended",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0257:S0:0-32",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 44,
+          "Text": "June 30,",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0258:S0:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 58,
+          "Text": "Net Loss In millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 20 body line(s) before a peer",
+            "followed by 7 table/figure item(s) before a peer"
+          ],
+          "identity": "L0290:S0:0-35",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 59,
+          "Text": "In billions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 23 table/figure item(s) before a peer"
+          ],
+          "identity": "L0312:S0:0-26",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 64,
+          "Text": "Ratio in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer"
+          ],
+          "identity": "L0364:S0:0-20",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 66,
+          "Text": "Box 1: Countries Eligible to Borrow from IDA on Concessional terms",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 22 body line(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0383:S0:0-66",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 79,
+          "Text": "Figure 1 below shows the allocation of IDA20 sources to fund IDA’s lending activities (excluding PSW",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 8 body line(s) before a peer",
+            "followed by 5 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0426:S0:0-100",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 80,
+          "Text": "Figure 1: Funding Allocation During IDA20 Replenishment Period",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 7 body line(s) before a peer",
+            "followed by 4 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0428:S0:0-62",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 96,
+          "Text": "Figure 2: IDA21 Windows",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 4 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0488:S0:0-23",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 98,
+          "Text": "Figure 3: IDA21 Financing Terms for Country Allocation",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 30 body line(s) before a peer",
+            "followed by 10 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0533:S0:0-54",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 127,
+          "Text": "For thefiscal year ended June 30 , 2025 2024",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 12 body line(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer"
+          ],
+          "identity": "L0775:S0:0-44",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 137,
+          "Text": "• Activities directlyfunded by contributionsfrom members: These are mainly comprised of development grants,",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 12 body line(s) before a peer"
+          ],
+          "identity": "L0795:S0:0-107",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 138,
+          "Text": "• Unrealized mark-to-market gains/losses on non-trading portfolios, net: These are mainly comprised of",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer"
+          ],
+          "identity": "L0808:S0:0-102",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 139,
+          "Text": "• Pension, Post-Employment Benefit Plan (PEBP) and Post-Retirement Contribution Reserve (PCRF)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 8 body line(s) before a peer"
+          ],
+          "identity": "L0813:S0:0-94",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 140,
+          "Text": "• Unrealized mark-to-market gains/losses on certain positions in the investment trading portfolios, net: This",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer"
+          ],
+          "identity": "L0823:S0:0-109",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 141,
+          "Text": "• OtherAdjustments:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 28 body line(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "L0828:S0:0-19",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 144,
+          "Text": "Figure 6: Investment Interest Revenue, Net of Figure 7: Investments",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L0891:S0:0-67",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 184,
+          "Text": "Box 2: Financing Principles",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 40 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1080:S0:0-27",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 186,
+          "Text": "In billions ofU.S. dollars, except rates in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 17 body line(s) before a peer",
+            "followed by 23 table/figure item(s) before a peer"
+          ],
+          "identity": "L1124:S0:0-55",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 204,
+          "Text": "SDR, USD, EUR,",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 7 table/figure item(s) before a peer"
+          ],
+          "identity": "L1207:S0:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 206,
+          "Text": "SDR",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer"
+          ],
+          "identity": "L1216:S0:0-3",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 208,
+          "Text": "IPF DDO",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer"
+          ],
+          "identity": "L1218:S0:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 209,
+          "Text": "GBP, JPY",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 35 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer"
+          ],
+          "identity": "L1219:S0:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 249,
+          "Text": "a. Excludes PSW related disbursements—$93 million (FY24—$137 million) and includes disbursements towards",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L1313:S0:0-104",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 274,
+          "Text": "Box 4: Types of Guarantees",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 40 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1368:S0:0-26",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 296,
+          "Text": "a. Includes interest expenses associated with derivatives and excludes interest expenses associated with repurchase",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 17 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L1561:S0:0-115",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 306,
+          "Text": "Table 22: Medium- and Long-Term Borrowings Issued by Currency During the Year, Excluding",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1601:S0:0-88",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 310,
+          "Text": "In millions ofU.S. dollars, except rates in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L1616:S0:0-55",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 314,
+          "Text": "Figure 13: Management Risk Committee Structure for Financial and Operational Risks",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 2 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1693:S0:0-82",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 319,
+          "Text": "Box 5: Summary of IDA’s Specific Risk Categories",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 40 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1760:S0:0-48",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 320,
+          "Text": "In billions ofU.S. dollars except ratios in percentages",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 22 body line(s) before a peer",
+            "followed by 18 table/figure item(s) before a peer"
+          ],
+          "identity": "L1795:S0:0-55",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 325,
+          "Text": "Box 6: Treatment of Overdue Payments",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 40 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L1895:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 326,
+          "Text": "Accumulated Provisionfor Losses on Loans and other Exposures",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L1945:S0:0-60",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 327,
+          "Text": "Box 7: Eligibility Criteria for IDA’s Investments",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 33 body line(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2003:S0:0-49",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 339,
+          "Text": "As ofJune 30, 2024",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 27 table/figure item(s) before a peer"
+          ],
+          "identity": "L2052:S0:0-18",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 353,
+          "Text": "Figure 15: Use of Derivatives for Market Borrowings at Fair Value",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 5 body line(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2118:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 363,
+          "Text": "Figure 16 depicts how the use of derivatives, or other offsetting positions, affects the overall sensitivity of the",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 5 body line(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2169:S0:0-115",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 369,
+          "Text": "* Sensitivities are marginal",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L2187:S0:0-28",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 373,
+          "Text": "Figure 17: Governance Structure",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 37 body line(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L2312:S0:0-31",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 376,
+          "Text": "Name Countries",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L2495:S0:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 377,
+          "Text": "Name Countries",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L2524:S0:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 385,
+          "Text": "INTERNATIONAL DEVELOPMENT ASSOCIATION",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L2696:S0:0-37",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 386,
+          "Text": "FINANCIAL STATEMENTS AND INTERNAL CONTROL",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L2697:S0:0-41",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 387,
+          "Text": "REPORTS",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L2698:S0:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 388,
+          "Text": "JUNE 30, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 13 body line(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer"
+          ],
+          "identity": "L2699:S0:0-13",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 390,
+          "Text": "INTERNATIONAL DEVELOPMENT ASSOCIATION",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 37 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L2716:S0:0-37",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 391,
+          "Text": "August 7, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 33 body line(s) before a peer",
+            "date shape",
+            "stands alone over its own prose"
+          ],
+          "identity": "L2718:S0:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 392,
+          "Text": "President",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer"
+          ],
+          "identity": "L2752:S0:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 393,
+          "Text": "Managing Director and World Bank Group ChiefFinancial Officer",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 table/figure item(s) before a peer"
+          ],
+          "identity": "L2754:S0:0-61",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 394,
+          "Text": "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer"
+          ],
+          "identity": "L2757:S0:0-53",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 395,
+          "Text": "INTERNATIONAL DEVELOPMENT ASSOCIATION",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L2758:S0:0-37",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 396,
+          "Text": "August 7, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 40 body line(s) before a peer",
+            "date shape",
+            "stands alone over its own prose"
+          ],
+          "identity": "L2761:S0:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 397,
+          "Text": "President",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer"
+          ],
+          "identity": "L2803:S0:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 398,
+          "Text": "Managing Director and World Bank Group ChiefFinancial Officer",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer"
+          ],
+          "identity": "L2805:S0:0-61",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 399,
+          "Text": "Vice President and World Bank Group Controller",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer"
+          ],
+          "identity": "L2807:S0:0-46",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 400,
+          "Text": "USA",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer"
+          ],
+          "identity": "L2813:S0:0-3",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 401,
+          "Text": "INDEPENDENT AUDITOR’S REPORT ON EFFECTIVENESS OF INTERNAL CONTROL OVER",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L2817:S0:0-70",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 403,
+          "Text": "August 7, 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 4 body line(s) before a peer",
+            "date shape",
+            "stands alone over its own prose"
+          ],
+          "identity": "L2868:S0:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 404,
+          "Text": "USA",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer"
+          ],
+          "identity": "L2874:S0:0-3",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 407,
+          "Text": "Expressed in millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L2957:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 409,
+          "Text": "Duefrom banks—Notes C andJ",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 6 table/figure item(s) before a peer"
+          ],
+          "identity": "L2960:S0:0-26",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 413,
+          "Text": "Other Receivables",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 6 table/figure item(s) before a peer"
+          ],
+          "identity": "L2969:S0:0-17",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 414,
+          "Text": "Loans outstanding—Notes D, H andJ",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer"
+          ],
+          "identity": "L2973:S0:0-33",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 416,
+          "Text": "Expressed in millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L2987:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 418,
+          "Text": "Borrowings—Notes E andJ",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 8 table/figure item(s) before a peer"
+          ],
+          "identity": "L2990:S0:0-23",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 419,
+          "Text": "Securities sold under repurchase agreements, securities lent under securities lending agreements,",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 8 table/figure item(s) before a peer"
+          ],
+          "identity": "L2995:S0:0-97",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 420,
+          "Text": "Other liabilities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 8 table/figure item(s) before a peer"
+          ],
+          "identity": "L3000:S0:0-17",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 421,
+          "Text": "Members’ subscriptions and contributions—Note B",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 11 table/figure item(s) before a peer"
+          ],
+          "identity": "L3006:S0:0-47",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 422,
+          "Text": "Nonnegotiable, noninterest-bearing demand obligations on account ofmembers’ subscriptions and",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3014:S0:0-93",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 423,
+          "Text": "contributions—Note B",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer"
+          ],
+          "identity": "L3015:S0:0-20",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 426,
+          "Text": "Expressed in millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 table/figure item(s) before a peer"
+          ],
+          "identity": "L3028:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 430,
+          "Text": "Interest revenue",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 18 table/figure item(s) before a peer"
+          ],
+          "identity": "L3030:S0:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 432,
+          "Text": "Non-interest revenue",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 12 table/figure item(s) before a peer"
+          ],
+          "identity": "L3037:S0:0-20",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 433,
+          "Text": "Non-interest expenses",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 21 table/figure item(s) before a peer"
+          ],
+          "identity": "L3042:S0:0-21",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 434,
+          "Text": "Unrealized mark-to-marketgains (losses) on Investments-Tradingportfolio, net—Notes F",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer"
+          ],
+          "identity": "L3050:S0:0-84",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 435,
+          "Text": "Unrealized mark-to-marketgains (losses) on non-tradingportfolios, net—Notes F andJ",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 10 table/figure item(s) before a peer"
+          ],
+          "identity": "L3052:S0:0-82",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 438,
+          "Text": "Expressed in millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3061:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 470,
+          "Text": "Expressed in millions ofU.S. dollars",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3115:S0:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 472,
+          "Text": "The Notes to Financial Statements are an integralpart ofthese Statements",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L3169:S0:0-72",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 513,
+          "Text": "SUBSCRIPTIONS AND CONTRIBUTIONS",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 28 table/figure item(s) before a peer"
+          ],
+          "identity": "L3318:S0:0-31",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 581,
+          "Text": "Income—Expense Disaggregation Disclosures (Subtopic 220-40), which requires disaggregated disclosure of",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer"
+          ],
+          "identity": "L4082:S0:0-103",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 592,
+          "Text": "Table B2: Nonnegotiable, noninterest-bearing demand obligations on account of members’ subscriptions",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4108:S0:0-100",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 764,
+          "Text": "Table F1: Use of derivatives in various financial portfolios",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 34 body line(s) before a peer",
+            "followed by 6 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L4608:S0:0-60",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 806,
+          "Text": "a. Includes unrealized mark-to-market gains/lossesfrom IDA’s share ofPost-Employment Benefit Plan (PEBP) and Post-",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer"
+          ],
+          "identity": "L4726:S0:0-114",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 809,
+          "Text": "In millions ofU.S dollars Fiscal Year Ended June 30,",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 18 table/figure item(s) before a peer"
+          ],
+          "identity": "L4732:S0:0-52",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 938,
+          "Text": "Table K2: Undisbursed contributions made by third party donors to Bank-executed activities for trust",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "followed by 1 body line(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "L5128:S0:0-100",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 961,
+          "Text": "DEVEL O P M E",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5187:S0:0-13",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 963,
+          "Text": "L",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5188:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 965,
+          "Text": "A",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5189:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 966,
+          "Text": "A",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5190:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 967,
+          "Text": "N",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5191:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 968,
+          "Text": "S",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5192:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 969,
+          "Text": "O",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5193:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 970,
+          "Text": "S",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5194:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 971,
+          "Text": "I",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5195:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 972,
+          "Text": "O",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5196:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 973,
+          "Text": "T",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5197:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 974,
+          "Text": "C",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5198:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 975,
+          "Text": "A",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5199:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 976,
+          "Text": "I",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5200:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 977,
+          "Text": "N",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5201:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 978,
+          "Text": "A",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5202:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 979,
+          "Text": "R",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5203:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 980,
+          "Text": "T",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5204:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 981,
+          "Text": "E",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5205:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 982,
+          "Text": "I",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5206:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 983,
+          "Text": "T",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5207:S0:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 985,
+          "Text": "NI",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L5208:S0:0-2",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      }
+    ]
+  }
+}

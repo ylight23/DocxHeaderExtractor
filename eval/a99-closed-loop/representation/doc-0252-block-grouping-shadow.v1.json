@@ -1,0 +1,934 @@
+{
+  "artifactKind": "a99_pdf_block_grouping_shadow",
+  "schemaVersion": "a99-pdf-block-grouping-shadow-v1",
+  "finding": "PDF_SOURCE_OCCURRENCE_BOUNDARY_MISMATCH",
+  "intervention": "PDF_BLOCK_GROUPING_CONTINUATION",
+  "authorityId": "DOC-0252",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "lineage": {
+    "note": "Both sides read the repaired visual lines. Only block grouping differs, so the numbers below belong to this stage alone.",
+    "lineGrouping": "VisualLineV2",
+    "activeAuthorityMoved": false,
+    "activeRuntimeUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "lineFixedShadowSha256": "911c86211ac121659da81471a223df0126f7eefd2be90d3fe5ca4348f1c40204",
+    "blockFixedShadowSha256": "3113d17f11be3209e3fd97d9aa50ec071aef07e0cb3458f21512c6cd4de6d410"
+  },
+  "rule": {
+    "statement": "Two lines continue each other when the gap between them is no more than the document's own leading, plus a tolerance.",
+    "leadingDefinition": "The smallest gap, in line-heights, that recurs in at least 5% of the document's line pairs.",
+    "continuationTolerance": 1.15,
+    "measuredLeading": 1.4,
+    "continuationCeiling": 1.61,
+    "whyNotAbsolute": "Measured across this repository's PDF corpus the leading and the paragraph break are always separate populations but never in the same place twice - one document wraps at 1.05 line-heights and breaks at 1.45, another wraps at 1.40 and breaks at 2.25. No fixed ceiling sits between both pairs.",
+    "degenerateCase": "A document with too few line pairs to measure has no leading to read. The estimate is clamped to a plausible range and falls back to its lower bound, which merges nothing that a single measured gap would not already justify.",
+    "normalizedBy": "max(declared font size, drawn line height). DOC-0252 reports a font size of 1.0 for every glyph, so height is what carries the scale there."
+  },
+  "counts": {
+    "visualLines": 598,
+    "blocksBefore": 382,
+    "blocksAfter": 390,
+    "occurrencesBefore": 382,
+    "occurrencesAfter": 390,
+    "occurrenceIsBlock": "one for one in this pipeline",
+    "linesPerBlockBefore": {
+      "1": 259,
+      "2": 61,
+      "3+": 62
+    },
+    "linesPerBlockAfter": {
+      "1": 272,
+      "2": 59,
+      "3+": 59
+    }
+  },
+  "boundary": {
+    "total": 41,
+    "before": {
+      "EXACT_SOURCE_BOUNDARY": 30,
+      "OVER_GROUPED": 11
+    },
+    "after": {
+      "EXACT_SOURCE_BOUNDARY": 38,
+      "NORMALIZATION_ONLY": 3
+    },
+    "transitionCensus": {
+      "EXACT_SOURCE_BOUNDARY -> EXACT_SOURCE_BOUNDARY": 30,
+      "OVER_GROUPED -> EXACT_SOURCE_BOUNDARY": 8,
+      "OVER_GROUPED -> NORMALIZATION_ONLY": 3
+    },
+    "regressionsFromExact": [],
+    "transitions": [
+      {
+        "claim": "S0001#0",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "occurrenceBefore": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "occurrenceAfter": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+      },
+      {
+        "claim": "S0006#1",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Session I: Welcome and meeting objectives",
+        "occurrenceBefore": "Session I: Welcome and meeting objectives",
+        "occurrenceAfter": "Session I: Welcome and meeting objectives"
+      },
+      {
+        "claim": "S0043#2",
+        "from": "OVER_GROUPED",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Session II: Update on the ICP 2021 Cycle",
+        "occurrenceBefore": "Session II: Update on the ICP 2021 Cycle 1. Global office update",
+        "occurrenceAfter": "Session II: Update on the ICP 2021 Cycle"
+      },
+      {
+        "claim": "S0043#3",
+        "from": "OVER_GROUPED",
+        "to": "NORMALIZATION_ONLY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "1 Global office update",
+        "occurrenceBefore": "Session II: Update on the ICP 2021 Cycle 1. Global office update",
+        "occurrenceAfter": "1. Global office update"
+      },
+      {
+        "claim": "S0122#4",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "2. Regional updates",
+        "occurrenceBefore": "2. Regional updates",
+        "occurrenceAfter": "2. Regional updates"
+      },
+      {
+        "claim": "S0127#5",
+        "from": "OVER_GROUPED",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Africa",
+        "occurrenceBefore": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), presented the status of ICP 2024 implementation in the Africa region.",
+        "occurrenceAfter": "Africa"
+      },
+      {
+        "claim": "S0141#6",
+        "from": "OVER_GROUPED",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Asia and the Pacific",
+        "occurrenceBefore": "Asia and the Pacific Kaushal Joshi, Asian Development Bank (ADB), presented the dissemination activities of the ICP 2021 results",
+        "occurrenceAfter": "Asia and the Pacific"
+      },
+      {
+        "claim": "S0173#7",
+        "from": "OVER_GROUPED",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Commonwealth of Independent States (CIS)",
+        "occurrenceBefore": "Commonwealth of Independent States (CIS) Andrey Kosarev, Interstate Statistical Committee of the Commonwealth of Independent States (CIS-Stat), presented the status of ICP 2024 implementation and dissemination of the ICP 2021 results in the CIS region.",
+        "occurrenceAfter": "Commonwealth of Independent States (CIS)"
+      },
+      {
+        "claim": "S0199#8",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Eurostat–OECD PPP Program",
+        "occurrenceBefore": "Eurostat–OECD PPP Program",
+        "occurrenceAfter": "Eurostat–OECD PPP Program"
+      },
+      {
+        "claim": "S0223#9",
+        "from": "OVER_GROUPED",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Latin America and the Caribbean",
+        "occurrenceBefore": "Latin America and the Caribbean Lady Infante Ortega, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC),",
+        "occurrenceAfter": "Latin America and the Caribbean"
+      },
+      {
+        "claim": "S0244#10",
+        "from": "OVER_GROUPED",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Western Asia",
+        "occurrenceBefore": "Western Asia Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), presented the dissemination activities for ICP 2021 results and the status of ICP 2024 implementation in the Western Asia",
+        "occurrenceAfter": "Western Asia"
+      },
+      {
+        "claim": "S0268#11",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Session III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceBefore": "Session III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceAfter": "Session III: Short- and Long-Term Research and Development Agenda"
+      },
+      {
+        "claim": "S0269#12",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "1. Research Topics Emerging from the Previous ICP Cycles",
+        "occurrenceBefore": "1. Research Topics Emerging from the Previous ICP Cycles",
+        "occurrenceAfter": "1. Research Topics Emerging from the Previous ICP Cycles"
+      },
+      {
+        "claim": "S0363#13",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "2. Forthcoming Research Topics",
+        "occurrenceBefore": "2. Forthcoming Research Topics",
+        "occurrenceAfter": "2. Forthcoming Research Topics"
+      },
+      {
+        "claim": "S0460#14",
+        "from": "OVER_GROUPED",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "occurrenceBefore": "Session IV: TAG Functioning and Terms of Reference for Task Forces 1. TAG Composition and Terms of Reference",
+        "occurrenceAfter": "Session IV: TAG Functioning and Terms of Reference for Task Forces"
+      },
+      {
+        "claim": "S0460#15",
+        "from": "OVER_GROUPED",
+        "to": "NORMALIZATION_ONLY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "1 TAG Composition and Terms of Reference",
+        "occurrenceBefore": "Session IV: TAG Functioning and Terms of Reference for Task Forces 1. TAG Composition and Terms of Reference",
+        "occurrenceAfter": "1. TAG Composition and Terms of Reference"
+      },
+      {
+        "claim": "S0492#16",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "2. Terms of Reference for a Task Force on Annual PPP Production",
+        "occurrenceBefore": "2. Terms of Reference for a Task Force on Annual PPP Production",
+        "occurrenceAfter": "2. Terms of Reference for a Task Force on Annual PPP Production"
+      },
+      {
+        "claim": "S0541#17",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "3. Terms of Reference for a Task Force on ICP Classification Update",
+        "occurrenceBefore": "3. Terms of Reference for a Task Force on ICP Classification Update",
+        "occurrenceAfter": "3. Terms of Reference for a Task Force on ICP Classification Update"
+      },
+      {
+        "claim": "S0573#18",
+        "from": "OVER_GROUPED",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Session V: Current Research",
+        "occurrenceBefore": "Session V: Current Research 1. The Treatment of Import and Export Prices in International Comparisons",
+        "occurrenceAfter": "Session V: Current Research"
+      },
+      {
+        "claim": "S0573#19",
+        "from": "OVER_GROUPED",
+        "to": "NORMALIZATION_ONLY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "1 The Treatment of Import and Export Prices in International Comparisons",
+        "occurrenceBefore": "Session V: Current Research 1. The Treatment of Import and Export Prices in International Comparisons",
+        "occurrenceAfter": "1. The Treatment of Import and Export Prices in International Comparisons"
+      },
+      {
+        "claim": "S0616#20",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "occurrenceBefore": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "occurrenceAfter": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons"
+      },
+      {
+        "claim": "S0649#21",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "occurrenceBefore": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "occurrenceAfter": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)"
+      },
+      {
+        "claim": "S0693#22",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "4. Treatment of Negative Expenditures in ICP",
+        "occurrenceBefore": "4. Treatment of Negative Expenditures in ICP",
+        "occurrenceAfter": "4. Treatment of Negative Expenditures in ICP"
+      },
+      {
+        "claim": "S0732#23",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "5. Fine Tuning Global Linking Procedures",
+        "occurrenceBefore": "5. Fine Tuning Global Linking Procedures",
+        "occurrenceAfter": "5. Fine Tuning Global Linking Procedures"
+      },
+      {
+        "claim": "S0818#24",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "6. Improving Reliability of Price Comparisons",
+        "occurrenceBefore": "6. Improving Reliability of Price Comparisons",
+        "occurrenceAfter": "6. Improving Reliability of Price Comparisons"
+      },
+      {
+        "claim": "S0893#25",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Session VI: Any Other Business",
+        "occurrenceBefore": "Session VI: Any Other Business",
+        "occurrenceAfter": "Session VI: Any Other Business"
+      },
+      {
+        "claim": "S0911#26",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Agenda",
+        "occurrenceBefore": "Agenda",
+        "occurrenceAfter": "Agenda"
+      },
+      {
+        "claim": "S0912#27",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+        "occurrenceBefore": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+        "occurrenceAfter": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER"
+      },
+      {
+        "claim": "S0914#28",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "SESSION I: Welcome and Opening Remarks",
+        "occurrenceBefore": "SESSION I: Welcome and Opening Remarks",
+        "occurrenceAfter": "SESSION I: Welcome and Opening Remarks"
+      },
+      {
+        "claim": "S0917#29",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "occurrenceBefore": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "occurrenceAfter": "SESSION II: Update on the ICP 2021 and 2024 Cycles"
+      },
+      {
+        "claim": "S0920#30",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceBefore": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceAfter": "SESSION III: Short- and Long-Term Research and Development Agenda"
+      },
+      {
+        "claim": "S0925#31",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+        "occurrenceBefore": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+        "occurrenceAfter": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces"
+      },
+      {
+        "claim": "S0930#32",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "SESSION V: Current Research",
+        "occurrenceBefore": "SESSION V: Current Research",
+        "occurrenceAfter": "SESSION V: Current Research"
+      },
+      {
+        "claim": "S0933#33",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+        "occurrenceBefore": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+        "occurrenceAfter": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO"
+      },
+      {
+        "claim": "S0935#34",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "SESSION V: Current Research (Cont’d)",
+        "occurrenceBefore": "SESSION V: Current Research (Cont’d)",
+        "occurrenceAfter": "SESSION V: Current Research (Cont’d)"
+      },
+      {
+        "claim": "S0946#35",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "SESSION VI: Closing",
+        "occurrenceBefore": "SESSION VI: Closing",
+        "occurrenceAfter": "SESSION VI: Closing"
+      },
+      {
+        "claim": "S0949#36",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "Annex 2: List of Participants",
+        "occurrenceBefore": "Annex 2: List of Participants",
+        "occurrenceAfter": "Annex 2: List of Participants"
+      },
+      {
+        "claim": "S0950#37",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "ICP Technical Advisory Group members",
+        "occurrenceBefore": "ICP Technical Advisory Group members",
+        "occurrenceAfter": "ICP Technical Advisory Group members"
+      },
+      {
+        "claim": "S0968#38",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "ICP experts, guest speakers, and observers",
+        "occurrenceBefore": "ICP experts, guest speakers, and observers",
+        "occurrenceAfter": "ICP experts, guest speakers, and observers"
+      },
+      {
+        "claim": "S0987#39",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "ICP Inter-Agency Coordination Group (IACG)",
+        "occurrenceBefore": "ICP Inter-Agency Coordination Group (IACG)",
+        "occurrenceAfter": "ICP Inter-Agency Coordination Group (IACG)"
+      },
+      {
+        "claim": "S0994#40",
+        "from": "EXACT_SOURCE_BOUNDARY",
+        "to": "EXACT_SOURCE_BOUNDARY",
+        "representableBefore": true,
+        "representableAfter": true,
+        "goldText": "World Bank",
+        "occurrenceBefore": "World Bank",
+        "occurrenceAfter": "World Bank"
+      }
+    ]
+  },
+  "representability": {
+    "fullyRepresentableBefore": 41,
+    "fullyRepresentableAfter": 41,
+    "notRepresentableAfter": [],
+    "headingsNotFoundInShadow": []
+  },
+  "residualCasesExplained": {
+    "note": "Every over-grouped case before this change, with the measurement at each junction its occurrence crossed.",
+    "count": 11,
+    "rows": [
+      {
+        "claim": "S0043#2",
+        "goldText": "Session II: Update on the ICP 2021 Cycle",
+        "occurrenceText": "Session II: Update on the ICP 2021 Cycle 1. Global office update",
+        "extraVisualLines": [
+          "1. G loba l office u pdate"
+        ],
+        "junctions": [
+          {
+            "above": "Session I I : U pdate on the ICP 2021 Cycle",
+            "below": "1. G loba l office u pdate",
+            "yGap": 20.01,
+            "normalizedYGap": 1.946,
+            "leftDelta": 18.43,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          }
+        ],
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY"
+      },
+      {
+        "claim": "S0043#3",
+        "goldText": "1 Global office update",
+        "occurrenceText": "Session II: Update on the ICP 2021 Cycle 1. Global office update",
+        "extraVisualLines": [
+          "Session I I : U pdate on the ICP 2021 Cycle"
+        ],
+        "junctions": [
+          {
+            "above": "Session I I : U pdate on the ICP 2021 Cycle",
+            "below": "1. G loba l office u pdate",
+            "yGap": 20.01,
+            "normalizedYGap": 1.946,
+            "leftDelta": 18.43,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          }
+        ],
+        "boundaryAfter": "NORMALIZATION_ONLY"
+      },
+      {
+        "claim": "S0127#5",
+        "goldText": "Africa",
+        "occurrenceText": "Africa Gregoire Mboya de Loubassou, African Development Bank (AfDB), presented the status of ICP 2024 implementation in the Africa region.",
+        "extraVisualLines": [
+          "G rego i re M boya de Lo u ba sso u, Africa n Deve lo pm e nt Ba n k (AfD B), p rese nted the statu s of I CP 2024",
+          "i m p le m e ntatio n i n the Africa regio n ."
+        ],
+        "junctions": [
+          {
+            "above": "Africa",
+            "below": "G rego i re M boya de Lo u ba sso u, Africa n Deve lo pm e nt Ba n k (AfD B), p rese nted the statu s of I CP 2024",
+            "yGap": 19.68,
+            "normalizedYGap": 2.046,
+            "leftDelta": 0.3,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          },
+          {
+            "above": "G rego i re M boya de Lo u ba sso u, Africa n Deve lo pm e nt Ba n k (AfD B), p rese nted the statu s of I CP 2024",
+            "below": "i m p le m e ntatio n i n the Africa regio n .",
+            "yGap": 13.48,
+            "normalizedYGap": 1.402,
+            "leftDelta": 0.23,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": true
+          }
+        ],
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY"
+      },
+      {
+        "claim": "S0141#6",
+        "goldText": "Asia and the Pacific",
+        "occurrenceText": "Asia and the Pacific Kaushal Joshi, Asian Development Bank (ADB), presented the dissemination activities of the ICP 2021 results",
+        "extraVisualLines": [
+          "Ka u s ha l J os h i, Asia n Deve lo p m e nt Ba n k (AD B), p rese nted the d isse m i n atio n a ctivities of the I CP 202 1 res u lts"
+        ],
+        "junctions": [
+          {
+            "above": "Asia a n d the Pa cific",
+            "below": "Ka u s ha l J os h i, Asia n Deve lo p m e nt Ba n k (AD B), p rese nted the d isse m i n atio n a ctivities of the I CP 202 1 res u lts",
+            "yGap": 19.5,
+            "normalizedYGap": 2.029,
+            "leftDelta": 0.75,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          }
+        ],
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY"
+      },
+      {
+        "claim": "S0173#7",
+        "goldText": "Commonwealth of Independent States (CIS)",
+        "occurrenceText": "Commonwealth of Independent States (CIS) Andrey Kosarev, Interstate Statistical Committee of the Commonwealth of Independent States (CIS-Stat), presented the status of ICP 2024 implementation and dissemination of the ICP 2021 results in the CIS region.",
+        "extraVisualLines": [
+          "An d rey Kosa rev, I nte rstate Statistica l Co m m ittee of the Co m m o nwea lth of I n de pe n de nt States (CI S-Stat),",
+          "p rese nted the statu s of I CP 2024 i m p le m e ntatio n a n d d isse m i n atio n of the I CP 202 1 res u lts i n the CI S regio n ."
+        ],
+        "junctions": [
+          {
+            "above": "Co m m o nwea lth of I n de pe nde nt States (CI S)",
+            "below": "An d rey Kosa rev, I nte rstate Statistica l Co m m ittee of the Co m m o nwea lth of I n de pe n de nt States (CI S-Stat),",
+            "yGap": 19.44,
+            "normalizedYGap": 2.022,
+            "leftDelta": 0.29,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          },
+          {
+            "above": "An d rey Kosa rev, I nte rstate Statistica l Co m m ittee of the Co m m o nwea lth of I n de pe n de nt States (CI S-Stat),",
+            "below": "p rese nted the statu s of I CP 2024 i m p le m e ntatio n a n d d isse m i n atio n of the I CP 202 1 res u lts i n the CI S regio n .",
+            "yGap": 13.34,
+            "normalizedYGap": 1.388,
+            "leftDelta": 0.63,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": true
+          }
+        ],
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY"
+      },
+      {
+        "claim": "S0223#9",
+        "goldText": "Latin America and the Caribbean",
+        "occurrenceText": "Latin America and the Caribbean Lady Infante Ortega, United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC),",
+        "extraVisualLines": [
+          "La dy I nfa nte O rtega, U n ited N atio ns Eco n o m ic Co m m issio n fo r Lati n Am e rica a n d the Ca ri bbea n (U N - ECLAC),"
+        ],
+        "junctions": [
+          {
+            "above": "Lati n Am e rica a n d the Ca ri bbea n",
+            "below": "La dy I nfa nte O rtega, U n ited N atio ns Eco n o m ic Co m m issio n fo r Lati n Am e rica a n d the Ca ri bbea n (U N - ECLAC),",
+            "yGap": 19.57,
+            "normalizedYGap": 2.035,
+            "leftDelta": 0.08,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          }
+        ],
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY"
+      },
+      {
+        "claim": "S0244#10",
+        "goldText": "Western Asia",
+        "occurrenceText": "Western Asia Majed Skaini, United Nations Economic and Social Commission for Western Asia (UN-ESCWA), presented the dissemination activities for ICP 2021 results and the status of ICP 2024 implementation in the Western Asia",
+        "extraVisualLines": [
+          "M ajed Ska i n i, U n ited N atio ns Eco no m ic a n d Socia l Co m m issio n fo r Weste rn Asia (U N - ESCWA), p rese nted the",
+          "d isse m i n atio n a ctivities fo r I CP 202 1 res u lts a n d the statu s of I CP 2024 i m p le m e ntatio n i n the Weste rn Asia"
+        ],
+        "junctions": [
+          {
+            "above": "Weste rn Asia",
+            "below": "M ajed Ska i n i, U n ited N atio ns Eco no m ic a n d Socia l Co m m issio n fo r Weste rn Asia (U N - ESCWA), p rese nted the",
+            "yGap": 19.31,
+            "normalizedYGap": 2.008,
+            "leftDelta": 0.59,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          },
+          {
+            "above": "M ajed Ska i n i, U n ited N atio ns Eco no m ic a n d Socia l Co m m issio n fo r Weste rn Asia (U N - ESCWA), p rese nted the",
+            "below": "d isse m i n atio n a ctivities fo r I CP 202 1 res u lts a n d the statu s of I CP 2024 i m p le m e ntatio n i n the Weste rn Asia",
+            "yGap": 13.34,
+            "normalizedYGap": 1.387,
+            "leftDelta": 0.41,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": true
+          }
+        ],
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY"
+      },
+      {
+        "claim": "S0460#14",
+        "goldText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "occurrenceText": "Session IV: TAG Functioning and Terms of Reference for Task Forces 1. TAG Composition and Terms of Reference",
+        "extraVisualLines": [
+          "1. TAG Com position a nd Terms of Reference"
+        ],
+        "junctions": [
+          {
+            "above": "Session IV: TAG Fu nction ing a nd Terms of Reference for Task Forces",
+            "below": "1. TAG Com position a nd Terms of Reference",
+            "yGap": 19.98,
+            "normalizedYGap": 1.932,
+            "leftDelta": 18.43,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          }
+        ],
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY"
+      },
+      {
+        "claim": "S0460#15",
+        "goldText": "1 TAG Composition and Terms of Reference",
+        "occurrenceText": "Session IV: TAG Functioning and Terms of Reference for Task Forces 1. TAG Composition and Terms of Reference",
+        "extraVisualLines": [
+          "Session IV: TAG Fu nction ing a nd Terms of Reference for Task Forces"
+        ],
+        "junctions": [
+          {
+            "above": "Session IV: TAG Fu nction ing a nd Terms of Reference for Task Forces",
+            "below": "1. TAG Com position a nd Terms of Reference",
+            "yGap": 19.98,
+            "normalizedYGap": 1.932,
+            "leftDelta": 18.43,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          }
+        ],
+        "boundaryAfter": "NORMALIZATION_ONLY"
+      },
+      {
+        "claim": "S0573#18",
+        "goldText": "Session V: Current Research",
+        "occurrenceText": "Session V: Current Research 1. The Treatment of Import and Export Prices in International Comparisons",
+        "extraVisualLines": [
+          "1. The Treatment of I m port and Export Prices in I nternationa l Com pa risons"
+        ],
+        "junctions": [
+          {
+            "above": "Session V: Cu rrent Resea rch",
+            "below": "1. The Treatment of I m port and Export Prices in I nternationa l Com pa risons",
+            "yGap": 19.95,
+            "normalizedYGap": 2.099,
+            "leftDelta": 18.43,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          }
+        ],
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY"
+      },
+      {
+        "claim": "S0573#19",
+        "goldText": "1 The Treatment of Import and Export Prices in International Comparisons",
+        "occurrenceText": "Session V: Current Research 1. The Treatment of Import and Export Prices in International Comparisons",
+        "extraVisualLines": [
+          "Session V: Cu rrent Resea rch"
+        ],
+        "junctions": [
+          {
+            "above": "Session V: Cu rrent Resea rch",
+            "below": "1. The Treatment of I m port and Export Prices in I nternationa l Com pa risons",
+            "yGap": 19.95,
+            "normalizedYGap": 2.099,
+            "leftDelta": 18.43,
+            "fontSizeDelta": 0,
+            "legacyMerged": true,
+            "legacyReason": "The absolute 22pt ceiling clears a paragraph break at this body size, so nothing downstream of it was ever consulted.",
+            "candidateMerges": false
+          }
+        ],
+        "boundaryAfter": "NORMALIZATION_ONLY"
+      }
+    ]
+  },
+  "overSplitting": {
+    "note": "A sentence continuing across a block boundary: the earlier block ends without sentence-final punctuation and the next begins in lower case. Label-free, and only readable because the line fix put the punctuation back.",
+    "legitimateMultilineBlocksBefore": 123,
+    "legitimateMultilineBlocksAfter": 118,
+    "sentencesBrokenBefore": 158,
+    "sentencesBrokenAfter": 158,
+    "whyBrokenAfter": {
+      "FOUR_LINE_CAP": 15,
+      "LINE_LONGER_THAN_130_CHARACTERS": 111,
+      "RISK_LINE_OR_UNATTRIBUTED": 27,
+      "LEFT_EDGE_MOVED": 4,
+      "DIFFERENT_SLANT": 1
+    },
+    "whyBrokenBefore": {
+      "FOUR_LINE_CAP": 15,
+      "LINE_LONGER_THAN_130_CHARACTERS": 111,
+      "RISK_LINE_OR_UNATTRIBUTED": 27,
+      "LEFT_EDGE_MOVED": 4,
+      "DIFFERENT_SLANT": 1
+    },
+    "incorrectlySplitIntroduced": [],
+    "repairedByThisChange": 0
+  },
+  "historicalPersistentLosses": {
+    "note": "Representation only. No provider response was replayed: those requests carry the old aliases, and scoring them against a different universe would invent a baseline that was never run.",
+    "source": "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json",
+    "census": {
+      "REPRESENTATION_RESOLVED": 16,
+      "TRUE_MODEL_OMISSION": 1
+    },
+    "rows": [
+      {
+        "claim": "S0043#2",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "OVER_GROUPED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0043#3",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "FRAGMENTED",
+        "boundaryAfter": "NORMALIZATION_ONLY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0127#5",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "OVER_GROUPED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0141#6",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "OVER_GROUPED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0173#7",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "OVER_GROUPED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0223#9",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "OVER_GROUPED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0244#10",
+        "firstLoss": "MODEL_NOT_EMITTED",
+        "boundaryAsRun": "OVER_GROUPED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0460#14",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "OVER_GROUPED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0460#15",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "FRAGMENTED",
+        "boundaryAfter": "NORMALIZATION_ONLY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0492#16",
+        "firstLoss": "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "boundaryAsRun": "FRAGMENTED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0541#17",
+        "firstLoss": "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "boundaryAsRun": "FRAGMENTED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0573#18",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "OVER_GROUPED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0573#19",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "FRAGMENTED",
+        "boundaryAfter": "NORMALIZATION_ONLY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0616#20",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "FRAGMENTED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0732#23",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "FRAGMENTED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0818#24",
+        "firstLoss": "MODEL_EMITTED_SUPERSET",
+        "boundaryAsRun": "FRAGMENTED",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "REPRESENTATION_RESOLVED"
+      },
+      {
+        "claim": "S0994#40",
+        "firstLoss": "MODEL_NOT_EMITTED",
+        "boundaryAsRun": "EXACT_SOURCE_BOUNDARY",
+        "boundaryAfter": "EXACT_SOURCE_BOUNDARY",
+        "representableAfter": true,
+        "verdict": "TRUE_MODEL_OMISSION"
+      }
+    ]
+  },
+  "status": "SHADOW_ONLY_ACTIVE_AUTHORITY_UNCHANGED"
+}

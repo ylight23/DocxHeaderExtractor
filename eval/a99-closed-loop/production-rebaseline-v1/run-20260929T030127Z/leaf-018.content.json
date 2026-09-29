@@ -1,0 +1,147 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0917:S4",
+          "verbatimText": "Section"
+        },
+        {
+          "sourceAlias": "L0917:S0",
+          "verbatimText": "Frame"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0917:S5",
+          "verbatimText": "Control Stream"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0917:S6",
+          "verbatimText": "Request Stream"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0917:S7",
+          "verbatimText": "Push Stream"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0918:S0",
+          "verbatimText": "MAX_PUSH_ID"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0920:S0",
+          "verbatimText": "Table 1: HTTP/3 Frames and Stream Type Overview"
+        }
+      ],
+      "semanticFunction": "OBJECT_CAPTION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0924:S0",
+          "verbatimText": "7.1. Frame Layout"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0931:S0",
+          "verbatimText": "Figure 3: HTTP/3 Frame Format"
+        }
+      ],
+      "semanticFunction": "OBJECT_CAPTION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0944:S0",
+          "verbatimText": "7.2."
+        },
+        {
+          "sourceAlias": "L0944:S1",
+          "verbatimText": "Frame De\uFB01nitions"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0945:S0",
+          "verbatimText": "7.2.1. DATA"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0958:S0",
+          "verbatimText": "Figure 4: DATA Frame"
+        }
+      ],
+      "semanticFunction": "OBJECT_CAPTION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0959:S0",
+          "verbatimText": "7.2.2. HEADERS"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0967:S0",
+          "verbatimText": "Figure 5: HEADERSFrame"
+        }
+      ],
+      "semanticFunction": "OBJECT_CAPTION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0971:S0",
+          "verbatimText": "7.2.3. CANCEL_PUSH"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1002:S0",
+          "verbatimText": "Figure 6: CANCEL_PUSHFrame"
+        }
+      ],
+      "semanticFunction": "OBJECT_CAPTION"
+    }
+  ]
+}

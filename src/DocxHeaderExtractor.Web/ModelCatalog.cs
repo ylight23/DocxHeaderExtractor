@@ -2,7 +2,7 @@ using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Web;
 
-public sealed record ModelEntry(string Name, string Path, double SizeGb, uint SuggestedCtx, bool Recommended);
+public sealed record ModelEntry(string Name, string Path, double SizeGb, bool Recommended);
 
 /// <summary>Quét các file .gguf để người dùng chọn trong giao diện, thay vì gõ đường dẫn.</summary>
 public static class ModelCatalog
@@ -24,7 +24,6 @@ public static class ModelCatalog
                     Name: fi.Name,
                     Path: full,
                     SizeGb: Math.Round(fi.Length / 1024.0 / 1024 / 1024, 2),
-                    SuggestedCtx: SuggestCtx(fi.Name),
                     Recommended: false));
             }
         }
@@ -44,13 +43,6 @@ public static class ModelCatalog
                 .ThenBy(m => m.Name, StringComparer.OrdinalIgnoreCase)
         ];
     }
-
-    /// <summary>
-    /// Dùng đúng profile trong Core để Web/CLI/model loader không đưa ra ba context khác nhau.
-    /// Qwen2.5 và Llama 3.2 hiện đều cần 8192 với prompt cố định + ngân sách mặc định.
-    /// </summary>
-    private static uint SuggestCtx(string fileName) =>
-        LocalModelOptions.SuggestedContextForModel(fileName);
 
     private static IEnumerable<string> Directories()
     {

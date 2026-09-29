@@ -1,0 +1,439 @@
+{
+  "artifactKind": "a99_pdf_occurrence_gold",
+  "schemaVersion": "a99-pdf-occurrence-gold-v1",
+  "documentId": "DOC-0252",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+  "semanticHeadingTotal": 41,
+  "semanticHeadingTotalAuthority": {
+    "authority": "USER_APPROVED_SEMANTIC_TOTAL",
+    "decidedAt": "2026-09-12",
+    "reviewer": "USER",
+    "sourceUniverseSha256": null
+  },
+  "occurrenceAuthority": {
+    "authority": "USER_APPROVED_OCCURRENCE_REVIEW",
+    "decidedAt": "2026-09-20",
+    "reviewer": "USER",
+    "sourceUniverseSha256": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec"
+  },
+  "finalAuthority": "USER_APPROVED_OCCURRENCE_REVIEW",
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": true,
+    "hierarchyEvaluable": false
+  },
+  "providerCalls": 0,
+  "headings": [
+    {
+      "sourceAlias": "S0001",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "DocumentTitle",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0006",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0043",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "MeetingSection",
+      "verbatimText": "Session II: Update on the ICP 2021 Cycle",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0043",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "AgendaItem",
+      "verbatimText": "1 Global office update",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0122",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0127",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": "Africa",
+      "occurrence": 1,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0141",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": "Asia and the Pacific",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0173",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": "Commonwealth of Independent States (CIS)",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0199",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0223",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": "Latin America and the Caribbean",
+      "occurrence": 1,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0244",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": "Western Asia",
+      "occurrence": 1,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0268",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0269",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0363",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0460",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "MeetingSection",
+      "verbatimText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0460",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "AgendaItem",
+      "verbatimText": "1 TAG Composition and Terms of Reference",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0492",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0541",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0573",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "MeetingSection",
+      "verbatimText": "Session V: Current Research",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0573",
+      "selectionMode": "VERBATIM_TEXT",
+      "semanticRole": "AgendaItem",
+      "verbatimText": "1 The Treatment of Import and Export Prices in International Comparisons",
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0616",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0649",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0693",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0732",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0818",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AgendaItem",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0893",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0911",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "SectionHeading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0912",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0914",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0917",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0920",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0925",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0930",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0933",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0935",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0946",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "MeetingSection",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0949",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "AppendixHeading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0950",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0968",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0987",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0994",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "LocalSubheading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    }
+  ]
+}

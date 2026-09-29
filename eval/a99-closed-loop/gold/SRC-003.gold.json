@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "a99-gold-authored-v1",
+  "authorityId": "SRC-003",
+  "source": {
+    "fileName": "003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+    "mediaType": "DOCX",
+    "sourcePath": "todo10_8/heading_corpus_95_word/01_phap_quy/003_Luat_Doanh_nghiep_59-2020-QH14.docx",
+    "sourceSha256": "74159f9855a0de0534291d1c949e4f8a1088750f44d091c20b67719c0c4d5d1a",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-003.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semanticHeadingTotal": 231,
+  "declaredCapabilities": {
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "occurrence": null,
+  "occurrenceUnavailableReason": "no occurrence artifact describes this source under the current authority",
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-003.semantic-freeze.v1.json",
+      "sha256": "2b953c2299e81c7db0c94895b602bba6a4e050342eb2141f6dfd1899c8bf2e6c",
+      "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "gold-correction:SRC-003:source-fixed-in-place:2026-09-24",
+      "sha256": "1ac2dc28ead07d986a68d7d758cfa1bb0b8079eb93afb53379e561f0b2f15920",
+      "role": "GOLD_CORRECTION_PREDECESSOR"
+    },
+    {
+      "path": "eval/a99-closed-loop/generated-docx-v2/SRC-003.conversion-manifest.v1.json",
+      "sha256": "536a5540879084e85a7d93f2cb0bdbdd92feffe5d14b8471ee0b2afed3420ac8",
+      "role": "SOURCE_REGENERATION"
+    }
+  ]
+}

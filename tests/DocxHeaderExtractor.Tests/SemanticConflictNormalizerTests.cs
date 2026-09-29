@@ -78,8 +78,7 @@ public sealed class SemanticConflictNormalizerTests
             .Select(item => item.SemanticRole).OrderBy(item => item, StringComparer.Ordinal));
         Assert.Null(conflict.BindingConsensus.SemanticRole);
         Assert.Equal(["ARTICLE", "CHAPTER"], conflict.ContestedFields["semanticRole"]);
-        Assert.Single(result.BindingReadyProposals);
-        Assert.Equal("S0001", result.BindingReadyProposals[0].SourceAlias);
+        Assert.Empty(result.BindingReadyProposals);
         Assert.Equal(2, result.SemanticConflictProposalCount);
     }
 
@@ -108,8 +107,7 @@ public sealed class SemanticConflictNormalizerTests
         Assert.Empty(result.NormalizedProposals);
         Assert.Empty(result.Conflicts);
         Assert.Single(result.AttributeConflicts);
-        Assert.Single(result.BindingReadyProposals);
-        Assert.Equal("SECTION", result.BindingReadyProposals[0].SemanticRole);
+        Assert.Empty(result.BindingReadyProposals);
         Assert.Equal(["continuation", "primary"], result.AttributeConflicts[0].ContestedFields["scope"]);
     }
 
@@ -177,7 +175,7 @@ public sealed class SemanticConflictNormalizerTests
     }
 
     [Fact]
-    public void Production_entry_point_binds_attribute_conflicts_but_withholds_identity_conflicts()
+    public void Production_entry_point_withholds_attribute_conflicts_until_adjudication()
     {
         var result = CanonicalSemanticProductionEntryPoint.Run(new(
             Catalog(("p1", "Heading")),
@@ -186,10 +184,8 @@ public sealed class SemanticConflictNormalizerTests
             [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
             [], [], [], []));
 
-        Assert.Single(result.TextPipeline.BoundHeadings);
-        Assert.Single(result.TextPipeline.BindingObservations);
-        Assert.Equal("Heading", result.TextPipeline.BoundHeadings[0].Text);
-        Assert.Equal("OTHER_STRUCTURAL_LABEL", result.TextPipeline.BoundHeadings[0].SemanticRole);
+        Assert.Empty(result.TextPipeline.BoundHeadings);
+        Assert.Empty(result.TextPipeline.BindingObservations);
         Assert.Empty(result.NormalizedModelProposals);
         Assert.Empty(result.SemanticConflicts);
         Assert.Single(result.AttributeConflicts);
@@ -200,8 +196,60 @@ public sealed class SemanticConflictNormalizerTests
         Assert.Equal(2, result.SemanticConflictProposalCount);
         Assert.Contains(result.StageLedger, entry =>
             entry.Stage == "SEMANTIC_CONFLICT_CHECK" &&
-            entry.Status == "ATTRIBUTE_CONFLICTS_BINDABLE" &&
+            entry.Status == "ATTRIBUTE_CONFLICTS_WITHHELD" &&
             entry.FirstLossCode is null);
+    }
+
+    [Fact]
+    public async Task Production_entry_point_adjudicates_only_frozen_alternatives_before_binding()
+    {
+        var model = new ConflictTextModel();
+        var adjudicator = new SelectRoleAdjudicator("CHAPTER");
+        var result = await CanonicalSemanticProductionEntryPoint.RunAsync(new(
+            Catalog(("p1", "Heading")), null, "source-hash",
+            [new CanonicalSemanticPageEvidence("P0001", true, 0, "docx-text")],
+            [], [], [], []), model, adjudicationModel: adjudicator);
+
+        Assert.Equal(1, result.SemanticAdjudicationCalls);
+        Assert.Equal(1, result.ResolvedConflictCount);
+        Assert.Equal(1, result.PrimaryTextModelCalls);
+        Assert.Equal(0, result.GlobalReopenCalls);
+        Assert.Equal(0, result.VisualModelCalls);
+        Assert.Equal(2, result.TotalModelCalls);
+        var bound = Assert.Single(result.TextPipeline.BoundHeadings);
+        Assert.Equal("CHAPTER", bound.SemanticRole);
+        Assert.Equal("Heading", bound.Text);
+        Assert.Equal(2, adjudicator.CasesSeen.Single().Alternatives.Count);
+    }
+
+    private sealed class ConflictTextModel : ICanonicalSemanticTextModel
+    {
+        public Task<CanonicalSemanticTextInferenceResult> InferAsync(
+            CanonicalSemanticProductionInput input,
+            SemanticContextPacket packedContext,
+            string requestId,
+            CancellationToken cancellationToken = default) =>
+            Task.FromResult(new CanonicalSemanticTextInferenceResult(
+                [Whole("S0001", "ARTICLE"), Whole("S0001", "CHAPTER")], new("fake", "stop")));
+    }
+
+    private sealed class SelectRoleAdjudicator : ICanonicalSemanticAdjudicationModel
+    {
+        private readonly string _role;
+        public List<SemanticAdjudicationCase> CasesSeen { get; } = [];
+
+        public SelectRoleAdjudicator(string role) => _role = role;
+
+        public Task<SemanticAdjudicationResponse> AdjudicateAsync(
+            SemanticAdjudicationCase adjudicationCase,
+            string requestId,
+            CancellationToken cancellationToken = default)
+        {
+            CasesSeen.Add(adjudicationCase);
+            var selected = adjudicationCase.Alternatives.Single(item => item.SemanticRole == _role);
+            return Task.FromResult(new SemanticAdjudicationResponse(
+                adjudicationCase.CaseId, SemanticAdjudicationDecision.Select, selected.AlternativeId));
+        }
     }
 
     private static CanonicalSemanticProposal Whole(string alias, string role) =>

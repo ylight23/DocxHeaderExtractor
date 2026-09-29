@@ -1,0 +1,650 @@
+{
+  "artifactKind": "a99_occurrence_baseline_causal_forensic",
+  "schemaVersion": "a99-occurrence-baseline-causal-forensic-v1",
+  "experimentId": "A99-S2P-OCCURRENCE-BASELINE-V1",
+  "authorityId": "DOC-0252",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "goldSha256": "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+  "goldClaims": 41,
+  "roleScoringStatus": "NOT_CURRENTLY_COMPARABLE",
+  "roleNote": "Gold uses a closed ontology (MeetingSection, AgendaItem, LocalSubheading); the model returns open vocabulary (heading, section-title). Not a model error and not comparable until an ontology or mapping is adjudicated.",
+  "firstLossCensus": {
+    "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM": 2,
+    "MODEL_EMITTED_SUPERSET": 13,
+    "MODEL_NOT_EMITTED": 2,
+    "NON_PERSISTENT": 4,
+    "TRUE_POSITIVE": 20
+  },
+  "lostOccurrences": [
+    {
+      "claim": "S0043#2",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0043#3",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0127#5",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0141#6",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0173#7",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0223#9",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0244#10",
+      "signature": [
+        "MODEL_NOT_EMITTED",
+        "MODEL_NOT_EMITTED",
+        "MODEL_NOT_EMITTED"
+      ],
+      "firstLoss": "MODEL_NOT_EMITTED",
+      "persistent": true
+    },
+    {
+      "claim": "S0269#12",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "NON_PERSISTENT",
+      "persistent": false
+    },
+    {
+      "claim": "S0363#13",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "NON_PERSISTENT",
+      "persistent": false
+    },
+    {
+      "claim": "S0460#14",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0460#15",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0492#16",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM"
+      ],
+      "firstLoss": "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+      "persistent": true
+    },
+    {
+      "claim": "S0541#17",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM"
+      ],
+      "firstLoss": "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+      "persistent": true
+    },
+    {
+      "claim": "S0573#18",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0573#19",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0616#20",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0649#21",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM"
+      ],
+      "firstLoss": "NON_PERSISTENT",
+      "persistent": false
+    },
+    {
+      "claim": "S0693#22",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM"
+      ],
+      "firstLoss": "NON_PERSISTENT",
+      "persistent": false
+    },
+    {
+      "claim": "S0732#23",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0818#24",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0994#40",
+      "signature": [
+        "MODEL_NOT_EMITTED",
+        "MODEL_NOT_EMITTED",
+        "MODEL_NOT_EMITTED"
+      ],
+      "firstLoss": "MODEL_NOT_EMITTED",
+      "persistent": true
+    }
+  ],
+  "unpairedFalsePositivesPerRepeat": [
+    3,
+    3,
+    1
+  ],
+  "occurrences": [
+    {
+      "claim": "S0001#0",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0006#1",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0043#2",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0043#3",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0122#4",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0127#5",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0141#6",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0173#7",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0199#8",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0223#9",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0244#10",
+      "signature": [
+        "MODEL_NOT_EMITTED",
+        "MODEL_NOT_EMITTED",
+        "MODEL_NOT_EMITTED"
+      ],
+      "firstLoss": "MODEL_NOT_EMITTED",
+      "persistent": true
+    },
+    {
+      "claim": "S0268#11",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0269#12",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "NON_PERSISTENT",
+      "persistent": false
+    },
+    {
+      "claim": "S0363#13",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "NON_PERSISTENT",
+      "persistent": false
+    },
+    {
+      "claim": "S0460#14",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0460#15",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0492#16",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM"
+      ],
+      "firstLoss": "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+      "persistent": true
+    },
+    {
+      "claim": "S0541#17",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM"
+      ],
+      "firstLoss": "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+      "persistent": true
+    },
+    {
+      "claim": "S0573#18",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0573#19",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0616#20",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0649#21",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM"
+      ],
+      "firstLoss": "NON_PERSISTENT",
+      "persistent": false
+    },
+    {
+      "claim": "S0693#22",
+      "signature": [
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_EXACT_LOST_DOWNSTREAM"
+      ],
+      "firstLoss": "NON_PERSISTENT",
+      "persistent": false
+    },
+    {
+      "claim": "S0732#23",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0818#24",
+      "signature": [
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET",
+        "MODEL_EMITTED_SUPERSET"
+      ],
+      "firstLoss": "MODEL_EMITTED_SUPERSET",
+      "persistent": true
+    },
+    {
+      "claim": "S0893#25",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0911#26",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0912#27",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0914#28",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0917#29",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0920#30",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0925#31",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0930#32",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0933#33",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0935#34",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0946#35",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0949#36",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0950#37",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0968#38",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0987#39",
+      "signature": [
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE",
+        "TRUE_POSITIVE"
+      ],
+      "firstLoss": "TRUE_POSITIVE",
+      "persistent": false
+    },
+    {
+      "claim": "S0994#40",
+      "signature": [
+        "MODEL_NOT_EMITTED",
+        "MODEL_NOT_EMITTED",
+        "MODEL_NOT_EMITTED"
+      ],
+      "firstLoss": "MODEL_NOT_EMITTED",
+      "persistent": true
+    }
+  ]
+}

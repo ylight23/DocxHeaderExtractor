@@ -1,0 +1,88 @@
+{
+  "artifactKind": "a99_direct_semantic_probe_score_gold_r3_rescore",
+  "schemaVersion": "a99-direct-semantic-probe-score-gold-r3-rescore-v1",
+  "documentId": "DOC-0252",
+  "status": "RESCORED_OFFLINE_UNDER_GOLD_R3",
+  "note": "This probe's raw responses are the FULL_CONTEXT arm's origin - identical raw data, so this rescore is that arm's rescore, referenced rather than re-derived independently.",
+  "goldSha256Old": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "goldSha256New": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "fullContextArmScore": {
+    "armId": "FULL_CONTEXT",
+    "F1": {
+      "itemId": "ITEM-505430BB",
+      "expected": "DOCUMENT_LABEL",
+      "correct": 3,
+      "total": 3,
+      "returnedByRepeat": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ]
+    },
+    "Agenda": {
+      "itemId": "ITEM-CCE2C592",
+      "expected": "DOCUMENT_LABEL",
+      "correct": 3,
+      "total": 3,
+      "returnedByRepeat": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ]
+    },
+    "F2": {
+      "itemId": "ITEM-2D78F82D",
+      "expected": "NON_STRUCTURAL",
+      "correct": 3,
+      "total": 3
+    },
+    "F3": {
+      "itemId": "ITEM-968E70AF",
+      "expected": "NON_STRUCTURAL",
+      "correct": 3,
+      "total": 3
+    },
+    "structuralControls": {
+      "correct": 39,
+      "total": 39,
+      "itemCount": 13
+    },
+    "documentLabelControl": {
+      "correct": 9,
+      "total": 9,
+      "itemCount": 3,
+      "items": [
+        "ITEM-505430BB",
+        "ITEM-AB89229E",
+        "ITEM-CCE2C592"
+      ]
+    },
+    "confusionMatrix": {
+      "expectedActual": {
+        "STRUCTURAL_UNIT": {
+          "STRUCTURAL_UNIT": 39,
+          "DOCUMENT_LABEL": 0,
+          "NON_STRUCTURAL": 0
+        },
+        "DOCUMENT_LABEL": {
+          "STRUCTURAL_UNIT": 0,
+          "DOCUMENT_LABEL": 9,
+          "NON_STRUCTURAL": 0
+        },
+        "NON_STRUCTURAL": {
+          "STRUCTURAL_UNIT": 0,
+          "DOCUMENT_LABEL": 0,
+          "NON_STRUCTURAL": 6
+        }
+      },
+      "totalDecisions": 54,
+      "correct": 54,
+      "accuracy": 1
+    }
+  },
+  "classificationDerivation": "F1 (3/3) and Agenda (3/3, now that Agenda's expected label is DOCUMENT_LABEL and this probe's raw answer for it was always DOCUMENT_LABEL) are both fully correct under R3, and F2/F3 remain 3/3 - every named family and every structural control is now correct. No discrimination limit remains in this probe under Gold R3.",
+  "directProbeClassification": "NO_DISCRIMINATION_LIMIT_OBSERVED_UNDER_GOLD_R3",
+  "previousClassification": "DIRECT_SEMANTIC_DISCRIMINATION_LIMIT_OBSERVED (Gold R2) - SUPERSEDED_BY_GOLD_R3: the remaining Agenda 'limit' the R2 rescore reported was itself a Gold R2 defect, not a model limit, exactly as the R1->R2 correction had already established for F1."
+}

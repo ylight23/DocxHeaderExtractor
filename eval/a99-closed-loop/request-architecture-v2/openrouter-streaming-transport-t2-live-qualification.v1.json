@@ -1,0 +1,129 @@
+{
+  "artifactKind": "a99_openrouter_streaming_transport_live_qualification",
+  "status": "QUALIFICATION_PLAN_ONLY_PROVIDER_CALLS_NOT_AUTHORIZED",
+  "candidateId": "OPENROUTER_STREAMING_TRANSPORT_T2_LIVE_QUALIFICATION",
+  "dependsOn": {
+    "t1PreflightArtifact": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-transport-v1.preflight.json",
+    "t1PreflightSha256": "8B425880218B81FAFDE8737C856A6FD0A8CB6EE62A05BE690259637E16635785",
+    "t1FrozenInputContract": true
+  },
+  "purpose": "Qualify the live OpenRouter SSE transport implementation before any 31-request streaming cohort run.",
+  "scope": {
+    "providerCallsAuthorized": false,
+    "goldRead": false,
+    "semanticRequestChange": false,
+    "productionChange": false,
+    "rebaselineP05OrT1": false,
+    "initialSmokeProviderCalls": 1,
+    "fullCohortProviderCalls": 31,
+    "fullCohortGate": "closed until smoke qualification passes"
+  },
+  "smokeSelection": {
+    "sourceArm": "P05",
+    "canonicalOrdinal": 1,
+    "documentId": "SRC-089",
+    "semanticRequestHash": "014da482fbda3ceaab891bf0c29bfc9ccc45521db608d416ecfe36fad3df524f",
+    "inputBytes": 70123,
+    "selectionReason": "first frozen P05 ordinal; no new semantic request identity"
+  },
+  "wirePayloadPins": {
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "medium",
+    "responseFormat": "json_object",
+    "maxTokens": 12288,
+    "timeoutSeconds": 300,
+    "stream": true,
+    "usage": {
+      "include": true
+    },
+    "explicitCacheControl": null,
+    "openRouterResponseCache": "disabled",
+    "sessionId": "not sent",
+    "cacheControl": "not sent",
+    "streamOptions": "not sent"
+  },
+  "runtimeRequirements": {
+    "requestActuallyStreaming": true,
+    "providerDeadlineSeconds": 300,
+    "providerDeadlineScope": "starts immediately before POST and ends only after complete SSE transport: terminal model event plus clean stream termination",
+    "localParseAndContractValidation": "outside providerDeadline but included in totalWallClock",
+    "rawPersistence": "persist raw network bytes and parsed SSE events before reconstruction",
+    "partialSseNeverContractValid": true,
+    "reasoningBufferNeverParsedAsJson": true,
+    "contentBufferParsedOnlyAfterTransportComplete": true
+  },
+  "sseParserQualification": {
+    "mustHandle": [
+      "fragmented data frames",
+      "blank lines",
+      "multi-event stream",
+      "usage event",
+      "terminal event",
+      "clean EOF"
+    ],
+    "layeringInvariant": "networkReadChunk != sseEvent != modelDelta",
+    "pipeline": [
+      "network bytes",
+      "SSE framing",
+      "data event",
+      "JSON event decode",
+      "reasoning delta / content delta / usage / finish_reason"
+    ],
+    "transportCompleteOnlyIf": [
+      "stream terminates cleanly",
+      "terminal model finish_reason was observed",
+      "no stream-level error occurred"
+    ],
+    "eofWithoutTerminalModelEvent": "FAILED_RETRYABLE_INCOMPLETE_STREAM"
+  },
+  "requiredTelemetry": [
+    "t0RequestSent",
+    "tHeadersReceived",
+    "firstByteLatency",
+    "firstModelEventLatency",
+    "timeToFirstSseEvent",
+    "timeToFirstReasoningChunk",
+    "timeToFirstContentChunk",
+    "timeToTerminalEvent",
+    "terminalEventLatency",
+    "transportDuration",
+    "providerTransportWallClock",
+    "postTransportParseDuration",
+    "totalWallClock",
+    "reasoningChunkCount",
+    "contentChunkCount",
+    "promptTokens",
+    "cachedTokens",
+    "completionTokens",
+    "reasoningTokens",
+    "finishReason",
+    "contractValidAfterReassembly"
+  ],
+  "failureClassification": [
+    "HTTP_PROVIDER_ERROR",
+    "FAILED_RETRYABLE_TIMEOUT",
+    "FAILED_RETRYABLE_INTERRUPTED_STREAM",
+    "FAILED_RETRYABLE_INCOMPLETE_STREAM",
+    "FAILED_RETRYABLE_MALFORMED_SSE",
+    "TERMINAL_EVENT_BUT_INVALID_LOCAL_JSON",
+    "CONTRACT_INVALID_AFTER_REASSEMBLY"
+  ],
+  "gates": {
+    "smokePassRequires": [
+      "exact frozen semanticRequestHash used",
+      "wire payload includes stream=true and usage.include=true",
+      "wire payload excludes session_id, cache_control, X-OpenRouter-Cache, and stream_options",
+      "raw SSE persisted",
+      "terminal finish_reason observed before transport complete",
+      "providerDeadline measured only through transport completion",
+      "contentBuffer parsed only after transport complete",
+      "classification emitted for every terminal/failure path",
+      "providerCalls equals 1 for smoke"
+    ],
+    "fullCohortGate": "may open only after smokePassRequires are all satisfied"
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "productionChanged": false
+}

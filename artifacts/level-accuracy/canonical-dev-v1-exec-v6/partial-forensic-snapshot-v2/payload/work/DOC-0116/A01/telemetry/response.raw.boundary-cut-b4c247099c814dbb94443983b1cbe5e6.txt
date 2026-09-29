@@ -1,7 +1,0 @@
-
-         
-
-         
-
-         
-{"id":"gen-1789566422-TXH7ajPiBVIdNkbFWw1o","object":"chat.completion","created":1789566422,"model":"qwen/qwen3.5-9b","provider":"SiliconFlow","system_fingerprint":null,"service_tier":null,"choices":[{"index":0,"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","message":{"role":"assistant","content":"{\"blocks\":[{\"id\":\"body[1]/p[42]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[43]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[44]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[45]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[46]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[47]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[48]\",\"role\":\"body_text\",\"confidence\":1.0},{\"id\":\"body[1]/p[49]\",\"role\":\"body_text\",\"confidence\":1.0}]}","refusal":null,"reasoning":null}}],"usage":{"prompt_tokens":3948,"completion_tokens":189,"total_tokens":4137,"cost":0.00042315,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"cache_write_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":0.00042315,"upstream_inference_prompt_cost":0.0003948,"upstream_inference_completions_cost":0.00002835},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0,"audio_tokens":0}}}

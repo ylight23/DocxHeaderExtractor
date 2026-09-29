@@ -1,0 +1,27 @@
+{
+  "artifactKind": "a99_haiku_context_ablation_confirmation_evidence_freeze",
+  "schemaVersion": "a99-haiku-context-ablation-confirmation-freeze-v1",
+  "documentId": "DOC-0252",
+  "model": "Haiku",
+  "task": "HAIKU_CONTEXT_ABLATION_CONFIRMATION_V1",
+  "armsRun": ["FULL_CONTEXT", "LOCAL_CONTEXT_RADIUS_3"],
+  "armsNotRun": ["MINIMAL_STRUCTURAL_CONTEXT_V1 (existing blind result frozen; not rerun)"],
+  "repeatsPerArm": 3,
+  "itemsPerRepeat": 18,
+  "file": "eval/a99-closed-loop/haiku-context-ablation-confirmation-v1/DOC-0252/haiku-context-ablation-decisions.v1.json",
+  "bytes": 7868,
+  "sha256": "2d097826b746dfc4431fa36e044080450e282918dad9d6f86b39b8ce62ae5af9",
+  "contextSource": {
+    "note": "Each arm's evidence packets (documentEvidence + itemsToClassify + schema) were decoded verbatim from the frozen Qwen transport captures' userMessageUtf8Base64 field, repeat 1 only (request bytes are identical across repeats 1-3 for a given arm/pack, per the context-ablation authority). Haiku never saw Qwen's raw response, Gold, or any prior score.",
+    "fullContextSource": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full-context/r1/{PACK_001,PACK_005,PACK_006}.transport-capture.v1.json",
+    "localContextSource": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/local-context-radius-3/r1/{PACK_001,PACK_005,PACK_006}.transport-capture.v1.json",
+    "systemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387"
+  },
+  "goldRead": false,
+  "priorResultsRead": false,
+  "qwenResultsRead": false,
+  "qwenArtifactsModified": false,
+  "externalProviderCalls": 0,
+  "openRouterCalls": 0,
+  "repositoryChangesBeyondEvidence": 0
+}

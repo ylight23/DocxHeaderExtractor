@@ -1,0 +1,350 @@
+{
+  "artifactKind": "a99_ontology_functionality_review",
+  "schemaVersion": "a99-ontology-functionality-review-v1",
+  "task": "ONTOLOGY_FUNCTIONALITY_REVIEW_V1",
+  "status": "SCANNED_OFFLINE_ZERO_CALLS",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "vlmCalls": 0,
+  "semanticAuthority": {
+    "sources": 23,
+    "approvedHeadings": 4002
+  },
+  "materializedClaimCarriers": {
+    "count": 2525,
+    "authorities": [
+      "DOC-0001",
+      "DOC-0123",
+      "DOC-0133",
+      "DOC-0205",
+      "DOC-0252",
+      "DOC-0255",
+      "DOC-0256",
+      "DOC-0258",
+      "DOC-0259",
+      "SRC-029",
+      "SRC-041",
+      "SRC-042",
+      "SRC-044",
+      "SRC-053",
+      "SRC-054",
+      "SRC-055",
+      "SRC-089",
+      "SRC-095"
+    ],
+    "note": "Registry-level fact: these 18 authorities carry a non-empty semantic.claims list. This is NOT the same as 'reviewable by this heuristic' - see ontologyReviewableClaims below, which is strictly narrower."
+  },
+  "ontologyReviewableClaims": {
+    "count": 42,
+    "ofApprovedHeadings": 4002,
+    "fraction": 0.0105,
+    "authorities": [
+      "DOC-0252"
+    ],
+    "note": "'Reviewable claims' means: claims this review's Row extraction can actually parse an identity, text, and role from. Every other authority carrying claims (DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-089, SRC-095) contributes none: legacy-schema claims (sourceAlias/exactText, no identity) scan as zero rows, and structured claims itemised without roles parse but give the heuristic nothing to test. Only DOC-0252's role-bearing claims are reviewable today."
+  },
+  "corpusCoverage": {
+    "authorities": 23,
+    "authoritiesCarryingCanonicalClaimLevelData": 18,
+    "claimCarryingAuthorities": [
+      "DOC-0001",
+      "DOC-0123",
+      "DOC-0133",
+      "DOC-0205",
+      "DOC-0252",
+      "DOC-0255",
+      "DOC-0256",
+      "DOC-0258",
+      "DOC-0259",
+      "SRC-029",
+      "SRC-041",
+      "SRC-042",
+      "SRC-044",
+      "SRC-053",
+      "SRC-054",
+      "SRC-055",
+      "SRC-089",
+      "SRC-095"
+    ],
+    "heuristicScannableAuthorities": 1,
+    "approvedHeadingsInCorpus": 4002,
+    "reviewableClaimsInCorpus": 42,
+    "coverageOfApprovedHeadings": 0.0105,
+    "caveat": "This review can only examine canonical claims from DOC-0252 - of the other 22 authorities, 5 record only an approved heading total and DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-089, SRC-095 carry claims this heuristic cannot review, so 'no dual-function candidate found there' cannot be claimed; it can only be said that no such candidate is visible with the data this heuristic can actually read.",
+    "distinctFromOccurrenceLevelGoldEverMaterialized": {
+      "claim": "1/23 authority (DOC-0252) is claim-reviewable by THIS heuristic; 18/23 carry a materialized claims list at the registry level. Neither of those is the same fact as '5 authorities ever had occurrence-level Gold materialized' in strict-gold-v3 (see strictGoldV3ProvenanceOnlyData below).",
+      "strictGoldV3ProvenanceOnlyData": [
+        {
+          "authorityId": "DOC-0001",
+          "strictGoldV3HeadingCount": 7,
+          "canonicalApprovedTotal": 7,
+          "matchesCanonicalTotal": true
+        },
+        {
+          "authorityId": "DOC-0205",
+          "strictGoldV3HeadingCount": 71,
+          "canonicalApprovedTotal": 72,
+          "matchesCanonicalTotal": false
+        },
+        {
+          "authorityId": "DOC-0252",
+          "strictGoldV3HeadingCount": 27,
+          "canonicalApprovedTotal": 42,
+          "matchesCanonicalTotal": false
+        },
+        {
+          "authorityId": "DOC-0256",
+          "strictGoldV3HeadingCount": 24,
+          "canonicalApprovedTotal": 34,
+          "matchesCanonicalTotal": false
+        },
+        {
+          "authorityId": "DOC-0258",
+          "strictGoldV3HeadingCount": 24,
+          "canonicalApprovedTotal": 37,
+          "matchesCanonicalTotal": false
+        }
+      ],
+      "strictGoldV3TotalOccurrences": 153,
+      "explanation": "eval/a99-closed-loop/strict-gold-v3/ (marked PROVENANCE_ONLY in the lineage inventory, not the canonical authority) independently materializes exact-text occurrence data for 5 documents totaling 153 occurrences - an older snapshot format whose per-document counts do not always match today's canonical totals. DOC-0205 was migrated into canonical Gold's occurrence path directly from its own approved provenance (71 prior-approved headings plus one human-approved title addition) rather than from strict-gold-v3, which is why its own strict-gold-v3 count (71) still disagrees with the canonical total (72). DOC-0258 was migrated the same way - 24 historical headings plus 13 kept by the user in DOC0258_GOLD37_DELTA_AUDIT_V1, reaching its approved 37, on a source regenerated from its PDF - so its strict-gold-v3 count (24) also still disagrees; DOC-0256 likewise (24 historical plus the title and nine organisations = 34, in structured PDF atoms). CanonicalGoldConsolidationTests never reduces semantic truth to fit an older occurrence artifact. DOC-0252's strict-gold-v3 count also does not match its current canonical total, but DOC-0252 IS canonical - through a separate, current structured-source-parts occurrence pipeline, unrelated to this older strict-gold-v3 snapshot. Only DOC-0001's strict-gold-v3 count still agrees with its canonical total. Either way, none of DOC-0205/DOC-0256/DOC-0258's strict-gold-v3 data was usable directly by this review's heuristic, because that data is not canonically authoritative (and the canonical data they migrated into is not this heuristic's reviewable shape either)."
+    }
+  },
+  "heuristicDefinition": {
+    "candidateCriteria": "A claim is a DUAL_FUNCTION_CANDIDATE iff (a) its approved text is at most 2 words (short and generic, not a self-describing structural heading with its own numbering or descriptive phrase), AND (b) it is immediately followed, in document order, by at least 2 consecutive claims whose semanticRole differs from its own (a run of more-granular content that plausibly nests beneath it).",
+    "topologyOnlyCriteria": "A claim is a TOPOLOGY_ONLY_MATCH iff it satisfies (b) above but not (a) - it precedes a run of nested-looking children but its own text is a normal, self-describing structural heading (e.g. carries its own numbering or a full descriptive phrase), so the topology alone is not read as artifact-naming ambiguity.",
+    "excludedByDesign": "The top-level document title (position 0 in every document) trivially precedes the rest of the document's structure by definition - that is not evidence of dual-function ambiguity, it is what a document title always does. Only an EMBEDDED claim (not the document's own opening title) showing this pattern is reported as a candidate.",
+    "notModelInferred": "This heuristic is a deterministic function of already-approved Gold text and role fields - no model was asked to judge any claim's function."
+  },
+  "doc0252": {
+    "authorityId": "DOC-0252",
+    "claimsScanned": 42,
+    "candidates": [
+      {
+        "Identity": "L0519:S0:0-6",
+        "Role": "DocumentTitle",
+        "Text": "Agenda",
+        "WordCount": 1,
+        "NestedChildCount": 9,
+        "NestedChildRoles": [
+          "MeetingSection"
+        ]
+      }
+    ],
+    "topologyOnlyMatches": [
+      {
+        "Identity": "L0025:S0:0-40",
+        "Role": "MeetingSection",
+        "Text": "Session II: Update on the ICP 2021 Cycle",
+        "WordCount": 8,
+        "NestedChildCount": 2,
+        "NestedChildRoles": [
+          "AgendaItem"
+        ]
+      },
+      {
+        "Identity": "L0078:S0:0-19",
+        "Role": "AgendaItem",
+        "Text": "2 Regional updates",
+        "WordCount": 3,
+        "NestedChildCount": 6,
+        "NestedChildRoles": [
+          "LocalSubheading"
+        ]
+      },
+      {
+        "Identity": "L0165:S0:0-65",
+        "Role": "MeetingSection",
+        "Text": "Session III: Short- and Long-Term Research and Development Agenda",
+        "WordCount": 9,
+        "NestedChildCount": 2,
+        "NestedChildRoles": [
+          "AgendaItem"
+        ]
+      },
+      {
+        "Identity": "L0271:S0:0-66",
+        "Role": "MeetingSection",
+        "Text": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "WordCount": 11,
+        "NestedChildCount": 3,
+        "NestedChildRoles": [
+          "AgendaItem"
+        ]
+      },
+      {
+        "Identity": "L0334:S0:0-27",
+        "Role": "MeetingSection",
+        "Text": "Session V: Current Research",
+        "WordCount": 4,
+        "NestedChildCount": 6,
+        "NestedChildRoles": [
+          "AgendaItem"
+        ]
+      },
+      {
+        "Identity": "L0507:S0:0-30",
+        "Role": "MeetingSection",
+        "Text": "Session VI: Any Other Business",
+        "WordCount": 5,
+        "NestedChildCount": 2,
+        "NestedChildRoles": [
+          "DocumentTitle"
+        ]
+      },
+      {
+        "Identity": "L0556:S0:0-29",
+        "Role": "AppendixHeading",
+        "Text": "Annex 2: List of Participants",
+        "WordCount": 5,
+        "NestedChildCount": 4,
+        "NestedChildRoles": [
+          "LocalSubheading"
+        ]
+      }
+    ]
+  },
+  "otherClaimCarriers": [
+    {
+      "authorityId": "DOC-0001",
+      "claimsScanned": 0,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "legacy alias schema (no identity field): scans as zero rows"
+    },
+    {
+      "authorityId": "DOC-0123",
+      "claimsScanned": 0,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "legacy alias schema (no identity field): scans as zero rows"
+    },
+    {
+      "authorityId": "DOC-0133",
+      "claimsScanned": 112,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "DOC-0205",
+      "claimsScanned": 0,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "legacy alias schema (no identity field): scans as zero rows"
+    },
+    {
+      "authorityId": "DOC-0255",
+      "claimsScanned": 0,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "legacy alias schema (no identity field): scans as zero rows"
+    },
+    {
+      "authorityId": "DOC-0256",
+      "claimsScanned": 34,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "DOC-0258",
+      "claimsScanned": 0,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "legacy alias schema (no identity field): scans as zero rows"
+    },
+    {
+      "authorityId": "DOC-0259",
+      "claimsScanned": 0,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "legacy alias schema (no identity field): scans as zero rows"
+    },
+    {
+      "authorityId": "SRC-029",
+      "claimsScanned": 374,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "SRC-041",
+      "claimsScanned": 280,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "SRC-042",
+      "claimsScanned": 253,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "SRC-044",
+      "claimsScanned": 203,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "SRC-053",
+      "claimsScanned": 271,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "SRC-054",
+      "claimsScanned": 298,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "SRC-055",
+      "claimsScanned": 4,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "SRC-089",
+      "claimsScanned": 36,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    },
+    {
+      "authorityId": "SRC-095",
+      "claimsScanned": 103,
+      "roleBearingClaims": 0,
+      "candidates": 0,
+      "note": "structured claims itemised without roles: rows parse, nothing to test"
+    }
+  ],
+  "findings": {
+    "totalCandidates": 1,
+    "candidateItemIds": [
+      "L0519:S0:0-6"
+    ],
+    "totalTopologyOnlyMatches": 7,
+    "headline": "Across the 42 reviewable claims (about 1.1% of the approved corpus - all from DOC-0252, the only authority whose occurrence schema this heuristic can parse), exactly one DUAL_FUNCTION_CANDIDATE was found: ITEM-CCE2C592 ('Agenda', L0519:S0:0-6) - the same item already independently identified as ambiguous through model disagreement. ITEM-505430BB (the other DocumentTitle claim added by the R1->R2 correction) does NOT match: its immediate successor is another DocumentTitle claim ('Agenda' itself), not a run of nested content, so it reads as pure IDENTITY with no topology signal of its own substructure. One topology-only contrast case was found (L0556, 'Annex 2: List of Participants', an AppendixHeading followed by 4 LocalSubheading children) - its own text is fully self-describing, unlike 'Agenda', so it does not read as artifact-naming-ambiguous despite the matching topology."
+  },
+  "conclusion": {
+    "detectedDualFunctionCandidates": 1,
+    "topologyOnlyContrast": 1,
+    "singleLabelOntologyProblem": "NOT_SUPPORTED_BY_REVIEWABLE_DATA",
+    "agendaBoundaryCase": "SUPPORTED_BY_REVIEWABLE_DATA",
+    "heuristicRecallEstablished": false,
+    "corpusGeneralization": "NOT_ESTABLISHED",
+    "reasoning": "Among the 42 semantic claims with enough data to review (all DOC-0252 - DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-089, SRC-095 carry claims this heuristic cannot review), this pre-registered heuristic detected exactly one dual-function candidate: Agenda. It did not detect evidence that the single-label ontology is a systemic problem. Coverage is only 42/4002, and the heuristic's sensitivity/recall has not been established - a claim can be a genuine dual-function occurrence and still be missed if its label is longer than 2 words, its children carry several different semanticRoles instead of one homogeneous run, its nested content does not sit immediately after it, its artifact boundary is expressed through layout rather than a run of consecutive claims, its wording is not 'generic' even though it is both identity- and structure-bearing, or its authority's claims simply lack the identity/role fields this heuristic reads. So the remaining corpus cannot be inferred to be free of other boundary cases from this result.",
+    "annexContrastCaveat": "Annex 2: List of Participants is a useful contrast - it shows topology (a heading opening several nested children) is not by itself sufficient to imply ambiguity. But its exclusion (by the 'generic text' condition) only demonstrates this heuristic's current behavior, not a proven fact that Annex 2 is single-function - a different, more sensitive heuristic or a human review could still find it ambiguous."
+  },
+  "productionOrSchemaChanged": false,
+  "goldChanged": false,
+  "crossDocumentGeneralization": false,
+  "generalizationEstablished": false,
+  "scope": "DOC-0252 only, the one authority whose claims this heuristic can review. DOC-0001, DOC-0123, DOC-0133, DOC-0205, DOC-0255, DOC-0256, DOC-0258, DOC-0259, SRC-029, SRC-041, SRC-042, SRC-044, SRC-053, SRC-054, SRC-055, SRC-089, SRC-095 carry claims it cannot review. Not evidence about the remaining 5 authorities' unmaterialized headings, and not evidence about this heuristic's sensitivity on any data it has not been tested against."
+}

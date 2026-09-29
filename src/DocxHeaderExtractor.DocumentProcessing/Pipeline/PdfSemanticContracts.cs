@@ -1,0 +1,53 @@
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+
+/// <summary>Canonical PDF block-role vocabulary shared by source validation and route audit.</summary>
+internal enum PdfBlockRole
+{
+    DocumentTitle,
+    HeadingTopic,
+    ListItem,
+    BodySentence,
+    TableOrChartLabel,
+    DecorativeNoise,
+    Uncertain,
+}
+
+/// <summary>Closed semantic role vocabulary carried through the canonical PDF decision contract.</summary>
+internal enum PdfSemanticRole
+{
+    DocumentTitle, SectionHeading, TopicHeading, LocalSubheading,
+    LegalChapter, LegalSection, LegalArticle, LegalClause, LegalPoint, AppendixHeading,
+    MeetingSection, AgendaItem, NoteHeading,
+    TableTitle, TableHeader, FigureTitle, FigureCaption, ListItemTopic, RunningHeader, RunningFooter, FormLabel,
+    SignatureLabel, TranslationNotice, BodyText, Unknown,
+}
+
+internal sealed record PdfBlockDecision(
+    string Id,
+    PdfBlockRole Role,
+    double Confidence,
+    string Reason,
+    TextOffsetSpan? HeadingSpan = null,
+    string? ProposedParentId = null,
+    PdfSemanticRole SemanticRole = PdfSemanticRole.Unknown,
+    TextOffsetSpan? ProposedSourceSpan = null,
+    // The bound claim's ordered parts, for a coordinate system whose claims can span several
+    // source occurrences. Null everywhere else, which is every lane that had one span per claim.
+    IReadOnlyList<CanonicalSemanticBoundPart>? Parts = null);
+
+/// <summary>Independent execution budget for the semantic lane.</summary>
+public sealed record SemanticLaneOptions(
+    TimeSpan RequestTimeout,
+    TimeSpan BatchTimeout,
+    TimeSpan LaneDeadline,
+    int MaxConcurrency = 1,
+    DateTimeOffset? DeadlineUtc = null,
+    int MaxBatchSize = 0)
+{
+    public static readonly SemanticLaneOptions Default = new(
+        TimeSpan.FromSeconds(90), TimeSpan.FromSeconds(120), TimeSpan.FromMinutes(5));
+
+}

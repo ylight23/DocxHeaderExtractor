@@ -1,0 +1,82 @@
+{
+  "artifactKind": "a99_openrouter_streaming_t3a_continuation_result",
+  "runId": "openrouter-streaming-t3a-c1-ordinal016-transport-retry-20260928T091058Z",
+  "status": "T3A_PILOT_ALL_CONTRACT_VALID",
+  "frozenPreflight": {
+    "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3a-p05-reasoning-none-pilot-preflight.v1.json",
+    "sha256": "c8004b8738ae1260d74a79ff6b52c2c721f32f45d8436472e3a94f3a77ce61cc"
+  },
+  "providerCalls": 1,
+  "goldRead": false,
+  "productionChanged": false,
+  "full31CohortOpened": false,
+  "pins": {
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "none",
+    "responseFormat": "json_object",
+    "stream": true,
+    "usage": {
+      "include": true
+    },
+    "cacheControl": null,
+    "sessionId": null,
+    "responseCache": "disabled"
+  },
+  "durationMs": 7816,
+  "summary": {
+    "contractValid": 1,
+    "retryableOrInvalid": 0,
+    "finishLength": 0,
+    "transportFailures": 0,
+    "totalCompletionTokens": 450,
+    "totalReasoningTokens": 0,
+    "totalPromptTokens": 20195,
+    "totalCachedTokens": 0
+  },
+  "rows": [
+    {
+      "Ordinal": 16,
+      "DocumentId": "SRC-095",
+      "SemanticRequestHash": "84fc81363e923719e3c6e713338de506321d828c272c25206c8223ed1a6f4790",
+      "ProviderEnvelopeHash": "085056b9939e62628acc5ebf3b1de0ac84f5a3c3690f0a9bfb882eb74af9fbc5",
+      "InputBytes": 70048,
+      "P05MediumPrimaryState": "SUCCESS",
+      "P05MediumOutputTokens": 7009,
+      "P05MediumElapsedMs": 77356,
+      "HttpStatus": 200,
+      "HttpReason": "OK",
+      "State": "CONTRACT_VALID",
+      "FailureClass": "",
+      "TransportComplete": true,
+      "DoneObserved": true,
+      "TerminalModelEventObserved": true,
+      "FinishReason": "stop",
+      "NativeFinishReason": "stop",
+      "NetworkChunkCount": 46,
+      "SseEventCount": 129,
+      "ReasoningChunkCount": 0,
+      "ContentChunkCount": 126,
+      "THeadersReceivedMs": 4060,
+      "FirstByteLatencyMs": 4071,
+      "FirstModelEventLatencyMs": 4197,
+      "TimeToFirstReasoningChunkMs": null,
+      "TimeToFirstContentChunkMs": 4198,
+      "TimeToTerminalEventMs": 7567,
+      "ProviderTransportWallClockMs": 7578,
+      "PostTransportParseDurationMs": 15,
+      "TotalWallClockMs": 7594,
+      "PromptTokens": 20195,
+      "CachedTokens": 0,
+      "CompletionTokens": 450,
+      "ReasoningTokens": 0,
+      "LocalJsonValid": true,
+      "ContractValidAfterReassembly": true,
+      "Headings": 7,
+      "IssueCodes": [],
+      "RequestFile": "call-016.request.json",
+      "SseEventsFile": "call-016.sse-events.jsonl",
+      "ReassembledResponseFile": "call-016.reassembled-response.json"
+    }
+  ]
+}

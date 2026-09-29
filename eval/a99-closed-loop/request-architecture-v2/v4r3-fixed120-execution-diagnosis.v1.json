@@ -1,0 +1,668 @@
+{
+  "artifactKind": "a99_v4r3_fixed120_execution_failure_diagnosis",
+  "status": "COMPLETE_PROVIDER_FREE_DIAGNOSIS",
+  "task": "V4R3 FIXED120 EXECUTION FAILURE DIAGNOSIS",
+  "providerCallsDuringDiagnosis": 0,
+  "goldRead": false,
+  "productionChanged": false,
+  "primary": {
+    "run": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z",
+    "calls": 25,
+    "failedPrimaryParents": [
+      3,
+      4,
+      6,
+      17,
+      19,
+      20,
+      21,
+      23,
+      24
+    ],
+    "failureCount": 9,
+    "failures": [
+      {
+        "parentOrdinal": 3,
+        "primary": {
+          "Ordinal": 3,
+          "InputBytes": 90476,
+          "OwnedAtoms": 120,
+          "VisibleAtoms": 160,
+          "ContractState": "NULL_CONTENT",
+          "FinishReason": "error",
+          "CompletionTokens": 4232,
+          "ReasoningTokens": 4232,
+          "ContentBytes": 0,
+          "ElapsedMs": 59775,
+          "LedgerState": "FAILED_RETRYABLE"
+        },
+        "identicalRetry": {
+          "Id": "parent-003-retry-001",
+          "Kind": "IDENTICAL_RETRY",
+          "ParentOrdinal": 3,
+          "ChildSequence": null,
+          "ContractValid": true,
+          "Error": "",
+          "InputBytes": 90476,
+          "OutputTokens": 5374,
+          "ElapsedMs": 65433,
+          "ResponseContractState": "CONTRACT_VALID",
+          "FinishReason": "stop",
+          "CompletionTokens": 5374,
+          "ReasoningTokens": 4805
+        },
+        "children": [],
+        "adaptiveChild13Or14Involved": false,
+        "protocolConformantCoverageAtChild12": true,
+        "finalParentCoverage": true
+      },
+      {
+        "parentOrdinal": 4,
+        "primary": {
+          "Ordinal": 4,
+          "InputBytes": 90908,
+          "OwnedAtoms": 120,
+          "VisibleAtoms": 160,
+          "ContractState": "MALFORMED_JSON",
+          "FinishReason": "length",
+          "CompletionTokens": 12286,
+          "ReasoningTokens": 5027,
+          "ContentBytes": 26910,
+          "ElapsedMs": 145078,
+          "LedgerState": "SUCCESS"
+        },
+        "identicalRetry": {
+          "Id": "parent-004-retry-001",
+          "Kind": "IDENTICAL_RETRY",
+          "ParentOrdinal": 4,
+          "ChildSequence": null,
+          "ContractValid": false,
+          "Error": "CONTRACT_INVALID",
+          "InputBytes": 90908,
+          "OutputTokens": 12286,
+          "ElapsedMs": 116273,
+          "ResponseContractState": "MALFORMED_JSON",
+          "FinishReason": "length",
+          "CompletionTokens": 12286,
+          "ReasoningTokens": 9430
+        },
+        "children": [
+          {
+            "Id": "parent-004-child-A",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 4,
+            "ChildSequence": 1,
+            "ContractValid": false,
+            "Error": "The given key was not present in the dictionary.",
+            "InputBytes": 50363,
+            "OutputTokens": 0,
+            "ElapsedMs": 1013,
+            "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+            "FinishReason": "",
+            "CompletionTokens": 0,
+            "ReasoningTokens": 0
+          },
+          {
+            "Id": "parent-004-child-B",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 4,
+            "ChildSequence": 2,
+            "ContractValid": false,
+            "Error": "The given key was not present in the dictionary.",
+            "InputBytes": 50581,
+            "OutputTokens": 0,
+            "ElapsedMs": 532,
+            "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+            "FinishReason": "",
+            "CompletionTokens": 0,
+            "ReasoningTokens": 0
+          }
+        ],
+        "adaptiveChild13Or14Involved": false,
+        "protocolConformantCoverageAtChild12": false,
+        "finalParentCoverage": false
+      },
+      {
+        "parentOrdinal": 6,
+        "primary": {
+          "Ordinal": 6,
+          "InputBytes": 87863,
+          "OwnedAtoms": 120,
+          "VisibleAtoms": 140,
+          "ContractState": "MALFORMED_JSON",
+          "FinishReason": "length",
+          "CompletionTokens": 12286,
+          "ReasoningTokens": 11586,
+          "ContentBytes": 2165,
+          "ElapsedMs": 135017,
+          "LedgerState": "SUCCESS"
+        },
+        "identicalRetry": {
+          "Id": "parent-006-retry-001",
+          "Kind": "IDENTICAL_RETRY",
+          "ParentOrdinal": 6,
+          "ChildSequence": null,
+          "ContractValid": false,
+          "Error": "The given key was not present in the dictionary.",
+          "InputBytes": 87863,
+          "OutputTokens": 0,
+          "ElapsedMs": 605,
+          "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+          "FinishReason": "",
+          "CompletionTokens": 0,
+          "ReasoningTokens": 0
+        },
+        "children": [
+          {
+            "Id": "parent-006-child-A",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 6,
+            "ChildSequence": 3,
+            "ContractValid": false,
+            "Error": "The given key was not present in the dictionary.",
+            "InputBytes": 48373,
+            "OutputTokens": 0,
+            "ElapsedMs": 682,
+            "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+            "FinishReason": "",
+            "CompletionTokens": 0,
+            "ReasoningTokens": 0
+          },
+          {
+            "Id": "parent-006-child-B",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 6,
+            "ChildSequence": 4,
+            "ContractValid": true,
+            "Error": "",
+            "InputBytes": 52210,
+            "OutputTokens": 11281,
+            "ElapsedMs": 111720,
+            "ResponseContractState": "CONTRACT_VALID",
+            "FinishReason": "stop",
+            "CompletionTokens": 11281,
+            "ReasoningTokens": 7458
+          }
+        ],
+        "adaptiveChild13Or14Involved": false,
+        "protocolConformantCoverageAtChild12": false,
+        "finalParentCoverage": false
+      },
+      {
+        "parentOrdinal": 17,
+        "primary": {
+          "Ordinal": 17,
+          "InputBytes": 88998,
+          "OwnedAtoms": 120,
+          "VisibleAtoms": 160,
+          "ContractState": "NULL_CONTENT",
+          "FinishReason": "length",
+          "CompletionTokens": 12288,
+          "ReasoningTokens": 12288,
+          "ContentBytes": 0,
+          "ElapsedMs": 130908,
+          "LedgerState": "FAILED_RETRYABLE"
+        },
+        "identicalRetry": {
+          "Id": "parent-017-retry-001",
+          "Kind": "IDENTICAL_RETRY",
+          "ParentOrdinal": 17,
+          "ChildSequence": null,
+          "ContractValid": false,
+          "Error": "The given key was not present in the dictionary.",
+          "InputBytes": 88998,
+          "OutputTokens": 0,
+          "ElapsedMs": 962,
+          "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+          "FinishReason": "",
+          "CompletionTokens": 0,
+          "ReasoningTokens": 0
+        },
+        "children": [
+          {
+            "Id": "parent-017-child-A",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 17,
+            "ChildSequence": 5,
+            "ContractValid": false,
+            "Error": "The given key was not present in the dictionary.",
+            "InputBytes": 49527,
+            "OutputTokens": 0,
+            "ElapsedMs": 547,
+            "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+            "FinishReason": "",
+            "CompletionTokens": 0,
+            "ReasoningTokens": 0
+          },
+          {
+            "Id": "parent-017-child-B",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 17,
+            "ChildSequence": 6,
+            "ContractValid": false,
+            "Error": "The given key was not present in the dictionary.",
+            "InputBytes": 49885,
+            "OutputTokens": 0,
+            "ElapsedMs": 489,
+            "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+            "FinishReason": "",
+            "CompletionTokens": 0,
+            "ReasoningTokens": 0
+          }
+        ],
+        "adaptiveChild13Or14Involved": false,
+        "protocolConformantCoverageAtChild12": false,
+        "finalParentCoverage": false
+      },
+      {
+        "parentOrdinal": 19,
+        "primary": {
+          "Ordinal": 19,
+          "InputBytes": 83780,
+          "OwnedAtoms": 120,
+          "VisibleAtoms": 160,
+          "ContractState": "HTTP_ERROR_ENVELOPE",
+          "FinishReason": "",
+          "CompletionTokens": 0,
+          "ReasoningTokens": 0,
+          "ContentBytes": 0,
+          "ElapsedMs": 1452,
+          "LedgerState": "FAILED_RETRYABLE"
+        },
+        "identicalRetry": {
+          "Id": "parent-019-retry-001",
+          "Kind": "IDENTICAL_RETRY",
+          "ParentOrdinal": 19,
+          "ChildSequence": null,
+          "ContractValid": false,
+          "Error": "CONTRACT_INVALID",
+          "InputBytes": 83780,
+          "OutputTokens": 12286,
+          "ElapsedMs": 109334,
+          "ResponseContractState": "MALFORMED_JSON",
+          "FinishReason": "length",
+          "CompletionTokens": 12286,
+          "ReasoningTokens": 11451
+        },
+        "children": [
+          {
+            "Id": "parent-019-child-A",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 19,
+            "ChildSequence": 7,
+            "ContractValid": true,
+            "Error": "",
+            "InputBytes": 47021,
+            "OutputTokens": 7615,
+            "ElapsedMs": 77230,
+            "ResponseContractState": "CONTRACT_VALID",
+            "FinishReason": "stop",
+            "CompletionTokens": 7615,
+            "ReasoningTokens": 7088
+          },
+          {
+            "Id": "parent-019-child-B",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 19,
+            "ChildSequence": 8,
+            "ContractValid": true,
+            "Error": "",
+            "InputBytes": 46586,
+            "OutputTokens": 11219,
+            "ElapsedMs": 110909,
+            "ResponseContractState": "CONTRACT_VALID",
+            "FinishReason": "stop",
+            "CompletionTokens": 11219,
+            "ReasoningTokens": 10634
+          }
+        ],
+        "adaptiveChild13Or14Involved": false,
+        "protocolConformantCoverageAtChild12": true,
+        "finalParentCoverage": true
+      },
+      {
+        "parentOrdinal": 20,
+        "primary": {
+          "Ordinal": 20,
+          "InputBytes": 84283,
+          "OwnedAtoms": 120,
+          "VisibleAtoms": 160,
+          "ContractState": "HTTP_ERROR_ENVELOPE",
+          "FinishReason": "",
+          "CompletionTokens": 0,
+          "ReasoningTokens": 0,
+          "ContentBytes": 0,
+          "ElapsedMs": 614,
+          "LedgerState": "FAILED_RETRYABLE"
+        },
+        "identicalRetry": {
+          "Id": "parent-020-retry-001",
+          "Kind": "IDENTICAL_RETRY",
+          "ParentOrdinal": 20,
+          "ChildSequence": null,
+          "ContractValid": false,
+          "Error": "The given key was not present in the dictionary.",
+          "InputBytes": 84283,
+          "OutputTokens": 0,
+          "ElapsedMs": 1051,
+          "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+          "FinishReason": "",
+          "CompletionTokens": 0,
+          "ReasoningTokens": 0
+        },
+        "children": [
+          {
+            "Id": "parent-020-child-A",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 20,
+            "ChildSequence": 9,
+            "ContractValid": false,
+            "Error": "The given key was not present in the dictionary.",
+            "InputBytes": 46111,
+            "OutputTokens": 0,
+            "ElapsedMs": 520,
+            "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+            "FinishReason": "",
+            "CompletionTokens": 0,
+            "ReasoningTokens": 0
+          },
+          {
+            "Id": "parent-020-child-B",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 20,
+            "ChildSequence": 10,
+            "ContractValid": false,
+            "Error": "The given key was not present in the dictionary.",
+            "InputBytes": 47468,
+            "OutputTokens": 0,
+            "ElapsedMs": 504,
+            "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+            "FinishReason": "",
+            "CompletionTokens": 0,
+            "ReasoningTokens": 0
+          }
+        ],
+        "adaptiveChild13Or14Involved": false,
+        "protocolConformantCoverageAtChild12": false,
+        "finalParentCoverage": false
+      },
+      {
+        "parentOrdinal": 21,
+        "primary": {
+          "Ordinal": 21,
+          "InputBytes": 87415,
+          "OwnedAtoms": 120,
+          "VisibleAtoms": 160,
+          "ContractState": "HTTP_ERROR_ENVELOPE",
+          "FinishReason": "",
+          "CompletionTokens": 0,
+          "ReasoningTokens": 0,
+          "ContentBytes": 0,
+          "ElapsedMs": 572,
+          "LedgerState": "FAILED_RETRYABLE"
+        },
+        "identicalRetry": {
+          "Id": "parent-021-retry-001",
+          "Kind": "IDENTICAL_RETRY",
+          "ParentOrdinal": 21,
+          "ChildSequence": null,
+          "ContractValid": false,
+          "Error": "The given key was not present in the dictionary.",
+          "InputBytes": 87415,
+          "OutputTokens": 0,
+          "ElapsedMs": 626,
+          "ResponseContractState": "HTTP_ERROR_ENVELOPE",
+          "FinishReason": "",
+          "CompletionTokens": 0,
+          "ReasoningTokens": 0
+        },
+        "children": [
+          {
+            "Id": "parent-021-child-A",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 21,
+            "ChildSequence": 11,
+            "ContractValid": false,
+            "Error": "NO_TEXTUAL_CONTENT",
+            "InputBytes": 48217,
+            "OutputTokens": 12288,
+            "ElapsedMs": 102192,
+            "ResponseContractState": "NULL_CONTENT",
+            "FinishReason": "length",
+            "CompletionTokens": 12288,
+            "ReasoningTokens": 12288
+          },
+          {
+            "Id": "parent-021-child-B",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 21,
+            "ChildSequence": 12,
+            "ContractValid": true,
+            "Error": "",
+            "InputBytes": 49530,
+            "OutputTokens": 11990,
+            "ElapsedMs": 102329,
+            "ResponseContractState": "CONTRACT_VALID",
+            "FinishReason": "stop",
+            "CompletionTokens": 11990,
+            "ReasoningTokens": 11784
+          }
+        ],
+        "adaptiveChild13Or14Involved": false,
+        "protocolConformantCoverageAtChild12": false,
+        "finalParentCoverage": false
+      },
+      {
+        "parentOrdinal": 23,
+        "primary": {
+          "Ordinal": 23,
+          "InputBytes": 88068,
+          "OwnedAtoms": 120,
+          "VisibleAtoms": 160,
+          "ContractState": "HTTP_ERROR_ENVELOPE",
+          "FinishReason": "",
+          "CompletionTokens": 0,
+          "ReasoningTokens": 0,
+          "ContentBytes": 0,
+          "ElapsedMs": 601,
+          "LedgerState": "FAILED_RETRYABLE"
+        },
+        "identicalRetry": {
+          "Id": "parent-023-retry-001",
+          "Kind": "IDENTICAL_RETRY",
+          "ParentOrdinal": 23,
+          "ChildSequence": null,
+          "ContractValid": true,
+          "Error": "",
+          "InputBytes": 88068,
+          "OutputTokens": 7562,
+          "ElapsedMs": 71788,
+          "ResponseContractState": "CONTRACT_VALID",
+          "FinishReason": "stop",
+          "CompletionTokens": 7562,
+          "ReasoningTokens": 7298
+        },
+        "children": [],
+        "adaptiveChild13Or14Involved": false,
+        "protocolConformantCoverageAtChild12": true,
+        "finalParentCoverage": true
+      },
+      {
+        "parentOrdinal": 24,
+        "primary": {
+          "Ordinal": 24,
+          "InputBytes": 93856,
+          "OwnedAtoms": 120,
+          "VisibleAtoms": 160,
+          "ContractState": "HTTP_ERROR_ENVELOPE",
+          "FinishReason": "",
+          "CompletionTokens": 0,
+          "ReasoningTokens": 0,
+          "ContentBytes": 0,
+          "ElapsedMs": 636,
+          "LedgerState": "FAILED_RETRYABLE"
+        },
+        "identicalRetry": {
+          "Id": "parent-024-retry-001",
+          "Kind": "IDENTICAL_RETRY",
+          "ParentOrdinal": 24,
+          "ChildSequence": null,
+          "ContractValid": false,
+          "Error": "NO_TEXTUAL_CONTENT",
+          "InputBytes": 93856,
+          "OutputTokens": 12288,
+          "ElapsedMs": 99755,
+          "ResponseContractState": "NULL_CONTENT",
+          "FinishReason": "length",
+          "CompletionTokens": 12288,
+          "ReasoningTokens": 12288
+        },
+        "children": [
+          {
+            "Id": "parent-024-child-A",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 24,
+            "ChildSequence": 13,
+            "ContractValid": true,
+            "Error": "",
+            "InputBytes": 51347,
+            "OutputTokens": 8331,
+            "ElapsedMs": 81308,
+            "ResponseContractState": "CONTRACT_VALID",
+            "FinishReason": "stop",
+            "CompletionTokens": 8331,
+            "ReasoningTokens": 5814
+          },
+          {
+            "Id": "parent-024-child-B",
+            "Kind": "ADAPTIVE_CHILD_SPLIT",
+            "ParentOrdinal": 24,
+            "ChildSequence": 14,
+            "ContractValid": true,
+            "Error": "",
+            "InputBytes": 52822,
+            "OutputTokens": 11934,
+            "ElapsedMs": 109001,
+            "ResponseContractState": "CONTRACT_VALID",
+            "FinishReason": "stop",
+            "CompletionTokens": 11934,
+            "ReasoningTokens": 11640
+          }
+        ],
+        "adaptiveChild13Or14Involved": true,
+        "protocolConformantCoverageAtChild12": false,
+        "finalParentCoverage": true
+      }
+    ]
+  },
+  "recovery": {
+    "run": "eval/a99-closed-loop/request-architecture-v2/v4r3-recovery-20260928T074000Z",
+    "calls": 23,
+    "identicalRetries": 9,
+    "adaptiveChildCalls": 14,
+    "protocolMaxAdaptiveChildCalls": 12,
+    "childBudgetExceeded": true,
+    "child13And14": [
+      "parent-024-child-A",
+      "parent-024-child-B"
+    ],
+    "pendingParents": [
+      4,
+      6,
+      17,
+      20,
+      21
+    ]
+  },
+  "distributions": {
+    "fixed120": {
+      "calls": 25,
+      "contractValid": 16,
+      "invalid": 9,
+      "validRate": 0.64,
+      "finishReasons": {
+        "stop": 16,
+        "error": 1,
+        "length": 3,
+        "(none)": 5
+      },
+      "contentStates": {
+        "CONTRACT_VALID": 16,
+        "NULL_CONTENT": 2,
+        "MALFORMED_JSON": 2,
+        "HTTP_ERROR_ENVELOPE": 5
+      },
+      "saturationCount": 3,
+      "saturationRate": 0.12,
+      "inputBytes": {
+        "total": 2129674,
+        "p50": 88359,
+        "p95": 90908,
+        "max": 93856
+      },
+      "completionTokens": {
+        "total": 151785,
+        "mean": 6071.4,
+        "max": 12288
+      },
+      "reasoningTokens": {
+        "total": 132534,
+        "mean": 5301.36,
+        "max": 12288,
+        "atCeiling": 1
+      },
+      "latencyMs": {
+        "p50": 66300,
+        "p95": 135017,
+        "max": 145078
+      }
+    },
+    "p05": {
+      "calls": 31,
+      "contractValid": 27,
+      "invalid": 4,
+      "validRate": 0.8709677419354839,
+      "finishReasons": {
+        "stop": 27,
+        "length": 4
+      },
+      "contentStates": {
+        "CONTRACT_VALID": 27,
+        "MALFORMED_JSON": 2,
+        "NULL_CONTENT": 2
+      },
+      "saturationCount": 4,
+      "saturationRate": 0.12903225806451613,
+      "inputBytes": {
+        "total": 2087258,
+        "p50": 69733,
+        "p95": 71267,
+        "max": 71592
+      },
+      "completionTokens": {
+        "total": 227846,
+        "mean": 7349.870967741936,
+        "max": 12288
+      },
+      "reasoningTokens": {
+        "total": 205151,
+        "mean": 6617.774193548387,
+        "max": 12288,
+        "atCeiling": 2
+      },
+      "latencyMs": {
+        "p50": 74676,
+        "p95": 126780,
+        "max": 139204
+      }
+    },
+      "interpretation": "Fixed120 has a higher primary invalid rate (9/25 vs 4/31), driven by 5 HTTP error envelopes in addition to 4 null/malformed responses. Completion-ceiling saturation is not higher (3/25 vs 4/31), and null/malformed count is equal (4 each); this is execution evidence, not a semantic causal score."
+  },
+  "provenance": {
+    "v4Preflight": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-medium-matched-control-preflight.v1.json",
+    "p05Preflight": "eval/a99-closed-loop/request-architecture-v2/v4r2-provider-preflight.v1.json",
+    "v4PrimaryManifest": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-provider-experiment-20260928T070658Z/run-manifest.json",
+    "v4RecoveryManifest": "eval/a99-closed-loop/request-architecture-v2/v4r3-recovery-20260928T074000Z/recovery-manifest.json",
+    "p05PrimaryManifest": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/run-manifest.json"
+  }
+}

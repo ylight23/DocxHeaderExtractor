@@ -16,13 +16,13 @@ public sealed class SlimCompatibilityIsolationTests
             parameter.ParameterType.Name.Contains("Slim", StringComparison.Ordinal) ||
             parameter.ParameterType.Name.Contains("Compatibility", StringComparison.Ordinal)));
         Assert.Contains(methods, method => method.Name == "RunAsync" &&
-            method.GetParameters().FirstOrDefault()?.ParameterType.Name == "DocxPolicyState");
+            method.GetParameters().FirstOrDefault()?.ParameterType.Name == "SourceDocument");
     }
 
     [Fact]
     public void Removed_boundary_source_files_are_not_referenced_by_normal_pipeline()
     {
-        var root = FindRepositoryRoot();
+        var root = TestRepository.Root();
         var authority = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.DocumentProcessing", "Pipeline",
             "AuthorityExtractionPipeline.cs"));
         var docxAuthority = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.DocumentProcessing", "Pipeline",
@@ -34,11 +34,4 @@ public sealed class SlimCompatibilityIsolationTests
         Assert.DoesNotContain("ExtractForAuthority", docxAuthority, StringComparison.Ordinal);
     }
 
-    private static string FindRepositoryRoot()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
-            directory = directory.Parent;
-        return directory?.FullName ?? throw new InvalidOperationException("Repository root not found.");
-    }
 }

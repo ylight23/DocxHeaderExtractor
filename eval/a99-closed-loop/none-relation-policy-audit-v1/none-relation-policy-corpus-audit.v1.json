@@ -1,0 +1,402 @@
+{
+  "artifactKind": "a99_none_relation_policy_corpus_audit",
+  "schemaVersion": "a99-none-relation-policy-corpus-audit-v1",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "promptChanged": false,
+  "question": "Before narrowing a shared instruction, what does the approved corpus evidence about headings that hold no position in the section tree?",
+  "corpusCoverage": {
+    "authorities": 23,
+    "authoritiesCarryingClaimLevelData": 18,
+    "approvedHeadingsInCorpus": 4001,
+    "materializedClaimsInCorpus": 2524,
+    "coverageOfApprovedHeadings": 0.6308,
+    "finding": "5 of 23 approved authorities record a heading total and no headings. Their own freeze artifacts say so: 'Semantic total is authoritative; no occurrence list or span was synthesized from the total.' A corpus-wide audit of which claims need a tree-less relation is therefore not answerable from Gold - 2524 of 4001 approved headings, about 63.1%, exist as claims at all.",
+    "consequence": "Everything below is evidence from 18 documents (all but DOC-0001 and DOC-0252 itemised later) DOC-0258 materialized after the other two) in three genres and two languages. It is enough to say what the category is used for where it is used, and not enough to say that no genre needs it wider.",
+    "byAuthority": [
+      {
+        "AuthorityId": "DOC-0001",
+        "approvedHeadings": 7,
+        "materializedClaims": 7,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "DOC-0092",
+        "approvedHeadings": 145,
+        "materializedClaims": 0,
+        "carriesClaimLevelData": false
+      },
+      {
+        "AuthorityId": "DOC-0123",
+        "approvedHeadings": 359,
+        "materializedClaims": 359,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "DOC-0133",
+        "approvedHeadings": 112,
+        "materializedClaims": 112,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "DOC-0202",
+        "approvedHeadings": 111,
+        "materializedClaims": 0,
+        "carriesClaimLevelData": false
+      },
+      {
+        "AuthorityId": "DOC-0205",
+        "approvedHeadings": 72,
+        "materializedClaims": 72,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "DOC-0252",
+        "approvedHeadings": 41,
+        "materializedClaims": 41,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "DOC-0255",
+        "approvedHeadings": 20,
+        "materializedClaims": 20,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "DOC-0256",
+        "approvedHeadings": 34,
+        "materializedClaims": 34,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "DOC-0258",
+        "approvedHeadings": 37,
+        "materializedClaims": 37,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "DOC-0259",
+        "approvedHeadings": 20,
+        "materializedClaims": 20,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "DOC-0264",
+        "approvedHeadings": 159,
+        "materializedClaims": 0,
+        "carriesClaimLevelData": false
+      },
+      {
+        "AuthorityId": "SRC-003",
+        "approvedHeadings": 231,
+        "materializedClaims": 0,
+        "carriesClaimLevelData": false
+      },
+      {
+        "AuthorityId": "SRC-029",
+        "approvedHeadings": 374,
+        "materializedClaims": 374,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "SRC-041",
+        "approvedHeadings": 280,
+        "materializedClaims": 280,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "SRC-042",
+        "approvedHeadings": 253,
+        "materializedClaims": 253,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "SRC-044",
+        "approvedHeadings": 203,
+        "materializedClaims": 203,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "SRC-053",
+        "approvedHeadings": 271,
+        "materializedClaims": 271,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "SRC-054",
+        "approvedHeadings": 298,
+        "materializedClaims": 298,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "SRC-055",
+        "approvedHeadings": 4,
+        "materializedClaims": 4,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "SRC-057",
+        "approvedHeadings": 831,
+        "materializedClaims": 0,
+        "carriesClaimLevelData": false
+      },
+      {
+        "AuthorityId": "SRC-089",
+        "approvedHeadings": 36,
+        "materializedClaims": 36,
+        "carriesClaimLevelData": true
+      },
+      {
+        "AuthorityId": "SRC-095",
+        "approvedHeadings": 103,
+        "materializedClaims": 103,
+        "carriesClaimLevelData": true
+      }
+    ]
+  },
+  "treeLessClaimsInGold": {
+    "total": 1,
+    "identities": [
+      "DOC-0252 L0000:S0 'MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM' (DocumentTitle)"
+    ],
+    "shareOfMaterializedClaims": 0.0004,
+    "byPromptCategory": {
+      "documentTitle": {
+        "admittedByPrompt": true,
+        "evidencedInGold": 1,
+        "note": "one instance, DOC-0252"
+      },
+      "documentSubtitle": {
+        "admittedByPrompt": true,
+        "evidencedInGold": 0,
+        "note": "no Gold claim in the corpus is a subtitle"
+      },
+      "runningHeaderOrFooter": {
+        "admittedByPrompt": true,
+        "evidencedInGold": 0,
+        "note": "none"
+      },
+      "tableOrFigureLabel": {
+        "admittedByPrompt": true,
+        "evidencedInGold": 0,
+        "note": "none"
+      },
+      "formOrSignatureLabel": {
+        "admittedByPrompt": true,
+        "evidencedInGold": 0,
+        "note": "none"
+      }
+    },
+    "reading": "The prompt admits five categories. The corpus evidences one of them, once. That is not proof the other four are wrong - no corpus document contains an approved claim of those kinds either way - but it does mean four fifths of the category is asserted by the instruction rather than by anything approved."
+  },
+  "howTheModelUsesIt": {
+    "docxLane": {
+      "document": "DOC-0001",
+      "claims": 21,
+      "treeLessClaims": 0,
+      "note": "Never used. Every claim was placed under ROOT or under another heading, in all three repeats, and precision was 7 of 7."
+    },
+    "pdfLane": {
+      "document": "DOC-0252",
+      "claims": 23,
+      "treeLessClaims": 6,
+      "treeLessThatAreGold": 1,
+      "treeLessThatAreFalsePositives": 4,
+      "precisionOfTheCategory": 0.1667,
+      "note": "One right answer in six. The category is carrying the annex masthead, the meeting mode, the date-venue-address block and a prose fragment, all of which the instruction can be read to invite."
+    },
+    "reading": "Used as a policy on one lane and as a catch-all on the other, from the same instruction. What separates them is not the lane but whether the document contains prominent text that is not structural - and this instruction gives the model no way to say so except by reporting it."
+  },
+  "genreEvidence": {
+    "unevidencedGenres": "16 authorities - textbooks, reports and other minutes among them - record totals only. Whether any of them contains an approved masthead, running header or table label cannot be read from Gold.",
+    "evidenced": [
+      {
+        "authority": "DOC-0001",
+        "genre": "administrative regulation, Vietnamese, DOCX lane",
+        "approvedHeadings": 7,
+        "claims": [
+          "Chương 1. Quy định chung",
+          "1.1. Phạm vi điều chỉnh",
+          "1.2. Đối tượng áp dụng",
+          "1.2.1. Cơ quan quản lý",
+          "1.2.2. Đơn vị trực thuộc",
+          "Chương 2. Tổ chức thực hiện",
+          "2.1. Phân công trách nhiệm"
+        ],
+        "treeLessClaims": 0,
+        "modelTreeLessClaims": 0,
+        "reading": "Every approved heading is a numbered structural unit and every claim the model returned was tree-positioned, in all three repeats. The category is never exercised here, so narrowing it cannot cost this document anything."
+      },
+      {
+        "authority": "DOC-0205",
+        "genre": "legal decree, Vietnamese, DOCX lane",
+        "approvedHeadings": 72,
+        "roles": {
+          "article": 57,
+          "section": 9,
+          "chapter": 5,
+          "DocumentTitle": 1
+        },
+        "treeLessClaims": 1,
+        "reading": "Materialized into canonical Gold after DOC-0001 and DOC-0252 (71 prior-approved chapter/article headings plus one human-approved addition, the document's own title). The corpus's Gold claims were never model-classified for this document, so unlike DOC-0001 and DOC-0252 there is no captured model reply to compare against - this row reports only what Gold itself contains, not how the tree-less category performed here. Its one DocumentTitle-role claim is the document's own opening title (position 0), the same kind of claim the ontology review excludes by design as not evidencing dual-function ambiguity; it is reported here for completeness, not folded into the DOC-0252-scoped recommendation below."
+      },
+      {
+        "authority": "DOC-0252",
+        "genre": "meeting minutes with an agenda annex, English, PDF lane",
+        "approvedHeadings": 41,
+        "roles": {
+          "MeetingSection": 15,
+          "AgendaItem": 13,
+          "LocalSubheading": 10,
+          "DocumentTitle": 1,
+          "SectionHeading": 1,
+          "AppendixHeading": 1
+        },
+        "treeLessClaims": 1,
+        "reading": "The only document in the corpus with a captured model reply that exercises the category, and the only one where it goes wrong. Its annex restates the event at the top of a page, which is exactly the shape the instruction's 'title and subtitle' clause invites."
+      },
+      {
+        "authority": "DOC-0256",
+        "genre": "meeting minutes with an agenda annex and a participant annex, English, PDF lane",
+        "approvedHeadings": 34,
+        "roles": {
+          "(none)": 34
+        },
+        "organisationNamedHeadings": 9,
+        "reading": "The sister document of DOC-0258 (the next meeting of the same group), itemised to its approved 34 in structured PDF atoms; roles were not assigned. The same nine Annex 2 organisation names are approved headings here. Six qwen3.7-flash runs (eval/a99-closed-loop/doc0256-real-harness-exploration-v1, both PDF lanes) did not report its masthead date or meeting-mode lines; their relation hints are in the ledger but are not counted here."
+      },
+      {
+        "authority": "pilot itemisations",
+        "documents": [
+          {
+            "AuthorityId": "DOC-0123",
+            "approvedHeadings": 359,
+            "roles": {
+              "(none)": 359
+            }
+          },
+          {
+            "AuthorityId": "DOC-0133",
+            "approvedHeadings": 112,
+            "roles": {
+              "(none)": 112
+            }
+          },
+          {
+            "AuthorityId": "DOC-0255",
+            "approvedHeadings": 20,
+            "roles": {
+              "(none)": 20
+            }
+          },
+          {
+            "AuthorityId": "DOC-0259",
+            "approvedHeadings": 20,
+            "roles": {
+              "(none)": 20
+            }
+          },
+          {
+            "AuthorityId": "SRC-029",
+            "approvedHeadings": 374,
+            "roles": {
+              "(none)": 374
+            }
+          },
+          {
+            "AuthorityId": "SRC-041",
+            "approvedHeadings": 280,
+            "roles": {
+              "(none)": 280
+            }
+          },
+          {
+            "AuthorityId": "SRC-042",
+            "approvedHeadings": 253,
+            "roles": {
+              "(none)": 253
+            }
+          },
+          {
+            "AuthorityId": "SRC-044",
+            "approvedHeadings": 203,
+            "roles": {
+              "(none)": 203
+            }
+          },
+          {
+            "AuthorityId": "SRC-053",
+            "approvedHeadings": 271,
+            "roles": {
+              "(none)": 271
+            }
+          },
+          {
+            "AuthorityId": "SRC-054",
+            "approvedHeadings": 298,
+            "roles": {
+              "(none)": 298
+            }
+          },
+          {
+            "AuthorityId": "SRC-055",
+            "approvedHeadings": 4,
+            "roles": {
+              "(none)": 4
+            }
+          },
+          {
+            "AuthorityId": "SRC-089",
+            "approvedHeadings": 36,
+            "roles": {
+              "(none)": 36
+            }
+          },
+          {
+            "AuthorityId": "SRC-095",
+            "approvedHeadings": 103,
+            "roles": {
+              "(none)": 103
+            }
+          }
+        ],
+        "reading": "Itemised on 2026-09-24 from a pilot: DOC-0255 and DOC-0259 (minutes, DOCX lane, sources regenerated from their PDFs) and SRC-055 (a financial review, PDF). Roles were not assigned. The pilot's three qwen3.7-flash runs per minutes document (eval/a99-closed-loop/pilot-real-harness-v1) put every masthead date and meeting-mode line in the tree-less relation in all three runs - the same catch-all shape DOC-0252 shows - and the user excluded them from Gold. DOC-0259's Gold does keep 'Tuesday, April 30, 2024', which opens the agenda's day and whose text is a date: a date-text heading the proposed wording would also reach."
+      },
+      {
+        "authority": "DOC-0258",
+        "genre": "meeting minutes with an agenda annex and a participant annex, English, DOCX lane",
+        "approvedHeadings": 37,
+        "roles": {
+          "(none)": 37
+        },
+        "organisationNamedHeadings": 9,
+        "reading": "Materialized after the other three (24 historical headings plus 13 kept by the user, 37, on a source regenerated from its PDF); roles were not assigned, so tree-less claims cannot be counted from Gold. Two facts bear on the proposal below. First, nine approved headings are organisation names - each opens its own attendee list in Annex 2, so they are structural units, but their text is exactly what a clause worded 'text that identifies an organisation is not promoted' names. Second, three exploratory qwen3.7-flash runs on this document (eval/a99-closed-loop/doc0258-real-harness-exploration-v1, on the superseded source) reported the masthead date and meeting-mode lines as headings in all three - the same shape DOC-0252 shows. Their relation hints were not captured, so they are not counted as tree-less claims here."
+      }
+    ]
+  },
+  "proposedAbstraction": {
+    "shape": "three kinds, defined by what the text does to the document's structure rather than by what kind of document it appears in",
+    "structuralHeading": "names or introduces a structural unit; content belongs under it",
+    "acceptedTreeLessLabel": "a document-level label the policy explicitly admits, which names the document as a whole rather than a part of it, and under which nothing is filed",
+    "contentOrMetadataOrItem": "may read as a title, but establishes no structural unit: it identifies an event or organisation, gives a date, venue, address or mode, repeats running furniture, or is one entry inside a structure that already exists",
+    "proposedWordingDirection": "Do not use the tree-less relation as a catch-all for prominent text. A claim in that relation must still name a document-level label the policy admits. Text that identifies an event, organisation, date, venue, address or meeting mode, or that is an entry inside an existing structure, is not promoted because it reads like a title.",
+    "deliberatelyNotProposed": [
+      "any rule mentioning times, dates or address formats",
+      "any rule keyed to a document genre",
+      "any wording drawn from DOC-0252"
+    ],
+    "evidenceStrength": "Supported where the corpus can speak, and the corpus speaks for 63.1% of its own approved headings. The narrowing is safe for the one document that never uses the category and corrects four of five errors in the one that does; beyond those two (DOC-0205 has no captured model reply to measure against, and DOC-0258's replies carry no relation hints) it is a judgement, not a measurement. The organisation wording in particular is not safe as written: DOC-0256 and DOC-0258 each have nine approved structural headings whose text is an organisation name, and the clause would have to be reworded to exempt a label that opens its own unit before it is carried beyond DOC-0252."
+  },
+  "recommendation": {
+    "proceedToExperiment": "EXP_MASTHEAD_METADATA",
+    "scope": "DOC-0252 PACK_005 and PACK_006, three repeats, 6 semantic calls, proposed cap 9",
+    "why": "The cross-corpus question with a captured model reply to check is answerable only for two documents, and both of them point the same way. DOC-0205's, DOC-0256's and DOC-0258's Gold were materialized without a counted relation-hint capture, so they cannot inform this comparison either way. Waiting for corpus-wide claim data would mean materializing 1477 more approved headings that no one has been asked to materialize - a far larger piece of work than the change it would inform.",
+    "doFirst": "State the narrowing by function, and measure it on the one document that exercises the category, before it is carried to lanes whose documents have never been claim-level evaluated.",
+    "residualRisk": "A genre that legitimately wants a masthead kept would regress silently, because no approved claim anywhere in the corpus would catch it. Recorded here rather than resolved.",
+    "experimentNames": [
+      "EXP_MASTHEAD_METADATA",
+      "EXP_BODY_PROPOSITION",
+      "EXP_SCHEDULE_ITEM"
+    ]
+  }
+}

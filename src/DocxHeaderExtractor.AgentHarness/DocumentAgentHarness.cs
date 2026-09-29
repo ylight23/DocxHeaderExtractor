@@ -313,9 +313,9 @@ public sealed class DocumentAgentHarness
             // 030 chặn 12/12, 020 chặn 48/48, còn 019 chặn 0/165. Chạy --no-llm không có mô hình
             // nào tham gia mà vẫn bị chặn — cổng chống ảo giác chặn nhầm đường suy luận cấu trúc.
             //
-            // Mục do luật deterministic hoặc heuristic dựng vẫn GIỮ NGUYÊN DecisionStatus và tự
+            // Mục do luật cục bộ dựng vẫn GIỮ NGUYÊN DecisionStatus và tự
             // tin thấp của chúng — người đọc vẫn thấy "chưa đủ bằng chứng" — nhưng chúng không
-            // còn chặn writeback. Đánh đổi đã được nêu rõ trước khi chọn: mục heuristic đoán sai
+            // còn chặn writeback. Đánh đổi đã được nêu rõ trước khi chọn: mục do luật cục bộ đoán sai
             // (165 mục số thứ tự văn xuôi của 019) giờ đi thẳng ra ngoài.
             var reviewCount = outline.Headings.Count(h =>
                 h.Source == HeadingSource.Model &&
@@ -348,14 +348,10 @@ public sealed class DocumentAgentHarness
                 else
                 {
                     TakeStep(actionStage);
-                    await EmitAsync(actionStage, AgentRunEventKind.Started,
-                        request.WantsKeyPackage ? "Ghi partial key package." : "Ghi outline vào bản sao.");
+                    await EmitAsync(actionStage, AgentRunEventKind.Started, "Ghi outline vào bản sao.");
                     writeback = await actionTool.ExecuteAsync(request, outline, ct);
                     await EmitAsync(actionStage, AgentRunEventKind.Completed,
-                        request.WantsKeyPackage
-                            ? $"Đã ghi package {writeback.Applied} heading, còn {writeback.Skipped} mục ngoài slice: " +
-                              Path.GetFileName(writeback.OutputPath)
-                            : $"Đã ghi {writeback.Applied} heading, bỏ qua {writeback.Skipped} mục: " +
+                        $"Đã ghi {writeback.Applied} heading, bỏ qua {writeback.Skipped} mục: " +
                         Path.GetFileName(writeback.OutputPath));
                 }
             }
@@ -593,7 +589,6 @@ public sealed class DocumentAgentHarness
         yield return new InputDocumentGuardrail();
         yield return new ExternalDataTransferGuardrail();
         yield return new WritebackTargetGuardrail();
-        yield return new KeyPackageTargetGuardrail();
         yield return new ToolSideEffectPathGuardrail();
     }
 

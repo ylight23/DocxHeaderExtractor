@@ -1,0 +1,114 @@
+{
+  "artifactKind": "a99_generic_audit_reveal_pin",
+  "study": "SRC095_BLIND_GENERALIZATION_AUDIT_V1",
+  "checkpoint": {
+    "goldClaims": 103,
+    "bind": "103/103",
+    "duplicateIdentities": 0,
+    "sharedCharacters": 0,
+    "sourceHash": "PASS",
+    "hierarchyEvaluable": false,
+    "engineProposalsOpened": "NO",
+    "modelProviderCalls": 0,
+    "fullSuite": "GREEN (1549/1549 at c7d1f4b)",
+    "releaseBuild": "0 errors",
+    "gitDiffCheck": "PASS"
+  },
+  "gold": {
+    "commit": "c7d1f4b",
+    "path": "eval/a99-closed-loop/gold/SRC-095.gold.json",
+    "authoredGoldSha256": "d8a6eafb63716f531463b74d25543e4d27b25965aac0d5d0e5fb25734027df18",
+    "registryGoldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+    "registry": {
+      "path": "eval/a99-closed-loop/gold-current/registry.v1.json",
+      "sha256": "e6308ba6b39735ef0ced95798ac4c3b50d8deba58776c315d4aa2e789757e284",
+      "commit": "77ff675"
+    }
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+    "sha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84"
+  },
+  "engine": {
+    "commit": "81bcb33 (V1.3 + PDF_SOURCE_FACTS_V3 frozen)",
+    "identity": {
+      "engine": {
+        "engine": "GENERIC_AUDIT_ENGINE_V1.3",
+        "sourceFacts": "PDF_SOURCE_FACTS_V3",
+        "files": [
+          {
+            "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_3/SourceEvidence.cs",
+            "sha256": "68a6c14d8b358a0675038181ac9249aa52795b19ea109cd009e17098d7b132b8"
+          },
+          {
+            "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_3/SemanticAuditEngine.cs",
+            "sha256": "a0b66484f28ca64ae164826f3ab5afc2140aa6f5e74bd0ce6982cb2642e08301"
+          }
+        ],
+        "constants": {
+          "largerThanBodyRatio": 1.08,
+          "bodySizeToleranceRatio": 0.97,
+          "shortLabelMaxWords": 20,
+          "compositeMaxParts": 6,
+          "furnitureMinPages": 3,
+          "furnitureMinBandShare": 0.8,
+          "navigationRunMin": 3,
+          "lineGapMaxFontRatio": 1.8,
+          "sameSizeRatioTolerance": 0.02,
+          "bracketSpanMaxLines": 15,
+          "formMinFillInFields": 2,
+          "averageCharWidthFontRatio": 0.5,
+          "centredMarginToleranceRatio": 0.05,
+          "columnGutterFontRatio": 1,
+          "figureRegionMaxLines": 60,
+          "layoutLabelMaxWords": 8,
+          "proseMinWords": 8,
+          "leadColumnGapFontRatio": 3,
+          "centredWrapMinFillRatio": 0.75
+        },
+        "ontology": "OCCURRENCE_SEMANTIC_AXES_V3"
+      },
+      "engineFreeze": {
+        "path": "eval/a99-closed-loop/generic-audit-v1_3/GENERIC_AUDIT_ENGINE_V1.3.freeze.json",
+        "sha256": "6bc812937021d65f27c9c38b5d33a400640f84876875ebe3c9e5c7fa79f96639"
+      },
+      "factsFreeze": {
+        "path": "eval/a99-closed-loop/pdf-source-facts-v3/PDF_SOURCE_FACTS_V3.freeze.json",
+        "sha256": "19fd455302e3631d9f11f0c3485e9eb5bae0530f6cd7e19f1e5597278d0450e4"
+      }
+    }
+  },
+  "engineMatchesPreregistration": true,
+  "requestContract": {
+    "requestVersion": "V2_ATTENTION_FREE over PDF_SOURCE_FACTS_V3",
+    "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V3.freeze.json",
+    "sha256": "875f44a7371991c6823b24ad4012f95f8d098e1347f92d79e2b4d49b4a568dc6"
+  },
+  "scorer": {
+    "id": "GENERIC_EXACT_SCORER_V1",
+    "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_1/ExactScorer.cs",
+    "sha256": "4790a2bf1b9ab57924005633e38f2cabe1f477e38b726ed09205907451e65d71"
+  },
+  "harness": {
+    "path": "tests/DocxHeaderExtractor.Tests/Src095BlindScoreTests.cs",
+    "sha256": "6e3cf81cefbc4bf5411a356e3fadeb43a6dab956f781312b27a372214fd3ebde"
+  },
+  "preregistration": {
+    "commit": "068c2cf",
+    "sha256": "edec90b57f5cef2771487f53d8a0081b08912b161981c716cf23f946956933aa"
+  },
+  "packingPolicy": "FIXED_OWNED_COUNT_120 (default); COHERENT_REGION_SEGMENTATION_V1 not selected",
+  "proposals": {
+    "commit": "6d1fc0d",
+    "path": "eval/a99-closed-loop/generic-audit-v1_3-held-out/SRC-095.proposals.json",
+    "sha256": "a4da1fd81ec232408694040ac07713351bbfc9f49819853960560ae34698d78a",
+    "gitBlob": "94dc0dbb731cde4cdda1e801f8ad6b18435d5bcf",
+    "contentRead": false
+  },
+  "rules": [
+    "reveal once; the raw score is committed as written, a bad result included",
+    "residuals are classified afterwards; V1.3 and PDF_SOURCE_FACTS_V3 are not changed and this baseline is not rewritten",
+    "a Gold error found later becomes a new Gold revision; this score stays against the Gold pinned here",
+    "only then: the cross-document summary, the hierarchy evaluation and the final pipeline verdict"
+  ]
+}

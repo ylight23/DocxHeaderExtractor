@@ -1,0 +1,1542 @@
+{
+  "artifactKind": "a99_scaleup_real_harness_run",
+  "documentId": "DOC-0092",
+  "sourcePath": "todo10_8/heading_corpus_100/01_phap_quy/007_Luat_Nha_o_27-2023-QH15.pdf",
+  "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+  "model": "qwen/qwen3.7-flash",
+  "lane": "pdf-structured",
+  "placement": false,
+  "repeat": "1",
+  "providerCallsMade": 27,
+  "rateLimitedAttempts": 0,
+  "failure": null,
+  "reason": "pdf-canonical-vnext",
+  "elementCount": 187,
+  "elements": [
+    {
+      "text": "QU\u1ED0C H\u1ED8I C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM",
+      "sourceIds": [
+        "1|746.6658767463233|108.86625|519.355053|QU\u1ED0C H\u1ED8I C\u1ED8NG H\u00D2A X\u00C3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM"
+      ]
+    },
+    {
+      "text": "\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc",
+      "sourceIds": [
+        "1|727.536767328125|304.78292437499994|463.256467875|\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\u00FAc"
+      ]
+    },
+    {
+      "text": "LU\u1EACT NH\u00C0 \u1EDE",
+      "sourceIds": [
+        "1|678.1143382929687|278.54072381250006|316.65658162500006|LU\u1EACT",
+        "1|662.9529591054686|275.11784859375007|320.6254921875001|NH\u00C0 \u1EDE"
+      ]
+    },
+    {
+      "text": "Ch\u01B0\u01A1ng I NH\u1EEENG QUY \u0110\u1ECANH CHUNG",
+      "sourceIds": [
+        "1|572.078666984375|269.23438096875003|326.2600895625|Ch\u01B0\u01A1ng I",
+        "1|553.0089947408087|206.23703259375|389.28659287500005|NH\u1EEENG QUY \u0110\u1ECANH CHUNG"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh",
+      "sourceIds": [
+        "1|515.4867139531251|86.99713340625003|247.52001825000002|\u0110i\u1EC1u 1. Ph\u1EA1m vi \u0111i\u1EC1u ch\u1EC9nh"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 2. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF",
+      "sourceIds": [
+        "1|351.4241464179689|86.99860940625031|235.39039678125033|\u0110i\u1EC1u 2. Gi\u1EA3i th\u00EDch t\u1EEB ng\u1EEF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 3. C\u00E1c h\u00E0nh vi b\u1ECB nghi\u00EAm c\u1EA5m",
+      "sourceIds": [
+        "3|155.56744629687498|87.00156140625013|295.01453784375013|\u0110i\u1EC1u 3. C\u00E1c h\u00E0nh vi b\u1ECB nghi\u00EAm c\u1EA5m"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 4. Ch\u00EDnh s\u00E1ch ph\u00E1t tri\u1EC3n v\u00E0 qu\u1EA3n l\u00FD, s\u1EED d\u1EE5ng nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "5|351.3133916148256|87.00270140625021|420.73953421875024|\u0110i\u1EC1u 4. Ch\u00EDnh s\u00E1ch ph\u00E1t tri\u1EC3n v\u00E0 qu\u1EA3n l\u00FD, s\u1EED d\u1EE5ng nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 5. Y\u00EAu c\u1EA7u chung v\u1EC1 ph\u00E1t tri\u1EC3n v\u00E0 qu\u1EA3n l\u00FD, s\u1EED d\u1EE5ng nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "6|486.010829951463|87.00152540625011|459.0184182187502|\u0110i\u1EC1u 5. Y\u00EAu c\u1EA7u chung v\u1EC1 ph\u00E1t tri\u1EC3n v\u00E0 qu\u1EA3n l\u00FD, s\u1EED d\u1EE5ng nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "Ch\u01B0\u01A1ng II",
+      "sourceIds": [
+        "7|247.23823108789065|266.5954609687502|329.0378015625002|Ch\u01B0\u01A1ng II"
+      ]
+    },
+    {
+      "text": "S\u1EDE H\u1EEEU NH\u00C0 \u1EDE",
+      "sourceIds": [
+        "7|229.752398046875|246.72615168750016|349.5465121875002|S\u1EDE H\u1EEEU NH\u00C0 \u1EDE"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 1",
+      "sourceIds": [
+        "7|200.0978417539062|279.0414822187502|315.4545074062503|M\u1EE5c 1"
+      ]
+    },
+    {
+      "text": "QUY \u0110\u1ECANH CHUNG V\u1EC0 S\u1EDE H\u1EEEU NH\u00C0 \u1EDE",
+      "sourceIds": [
+        "7|182.26350045720108|169.98919350000023|426.2273761875003|QUY \u0110\u1ECANH CHUNG V\u1EC0 S\u1EDE H\u1EEEU NH\u00C0 \u1EDE"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 6. Quy\u1EC1n c\u00F3 ch\u1ED7 \u1EDF v\u00E0 quy\u1EC1n s\u1EDF h\u1EEFu nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "7|147.4200645994318|87.00054140625032|363.97927021875023|\u0110i\u1EC1u 6. Quy\u1EC1n c\u00F3 ch\u1ED7 \u1EDF v\u00E0 quy\u1EC1n s\u1EDF h\u1EEFu nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "10 C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024",
+      "sourceIds": [
+        "8|781.7274681757814|65.72462850000007|418.0520337187503|1 0 C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 7. B\u1EA3o h\u1ED9 quy\u1EC1n s\u1EDF h\u1EEFu nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "8|701.58179675|86.99994140625016|295.9380222187502|\u0110i\u1EC1u 7. B\u1EA3o h\u1ED9 quy\u1EC1n s\u1EDF h\u1EEFu nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 8. \u0110\u1ED1i t\u01B0\u1EE3ng v\u00E0 \u0111i\u1EC1u ki\u1EC7n \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu nh\u00E0 \u1EDF t\u1EA1i Vi\u1EC7t Nam",
+      "sourceIds": [
+        "8|445.6590574581116|86.99998940625007|462.89345784375|\u0110i\u1EC1u 8. \u0110\u1ED1i t\u01B0\u1EE3ng v\u00E0 \u0111i\u1EC1u ki\u1EC7n \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu nh\u00E0 \u1EDF t\u1EA1i Vi\u1EC7t Nam"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 9. C\u00F4ng nh\u1EADn quy\u1EC1n s\u1EDF h\u1EEFu nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "9|746.3484672014511|86.99994140625|320.05874221874996|\u0110i\u1EC1u 9. C\u00F4ng nh\u1EADn quy\u1EC1n s\u1EDF h\u1EEFu nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 10. Quy\u1EC1n c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF v\u00E0 ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "9|217.43379756498578|87.00738140625002|455.17829821875|\u0110i\u1EC1u 10. Quy\u1EC1n c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF v\u00E0 ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 11. Ngh\u0129a v\u1EE5 c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF v\u00E0 ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "10|213.5579216531929|87.00296540625008|469.45898221875007|\u0110i\u1EC1u 1 1. Ngh\u0129a v\u1EE5 c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF v\u00E0 ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 2",
+      "sourceIds": [
+        "12|211.49953375390623|279.04133821875|315.84512512500004|M\u1EE5c 2"
+      ]
+    },
+    {
+      "text": "NH\u00C0 \u1EDE THU\u1ED8C T\u00C0I S\u1EA2N C\u00D4NG",
+      "sourceIds": [
+        "12|193.8441641167763|195.07990059375|400.43480887500016|NH\u00C0 \u1EDE THU\u1ED8C T\u00C0I S\u1EA2N C\u00D4NG"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 13. Nh\u00E0 \u1EDF thu\u1ED9c t\u00E0i s\u1EA3n c\u00F4ng",
+      "sourceIds": [
+        "12|156.14251976562502|87.00039740625009|286.4392116562501|\u0110i\u1EC1u 13. Nh\u00E0 \u1EDF thu\u1ED9c t\u00E0i s\u1EA3n c\u00F4ng"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 14. \u0110\u1EA1i di\u1EC7n ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF thu\u1ED9c t\u00E0i s\u1EA3n c\u00F4ng",
+      "sourceIds": [
+        "13|424.18610084717983|87.00576140625036|407.30383565625004|\u0110i\u1EC1u 14. \u0110\u1EA1i di\u1EC7n ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF thu\u1ED9c t\u00E0i s\u1EA3n c\u00F4ng"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 15. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u0111\u1EA1i di\u1EC7n ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF thu\u1ED9c t\u00E0i s\u1EA3n c\u00F4ng",
+      "sourceIds": [
+        "14|746.4882833984374|86.99994140625|510.40904765625015|\u0110i\u1EC1u 15. Tr\u00E1ch nhi\u1EC7m c\u1EE7a \u0111\u1EA1i di\u1EC7n ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF thu\u1ED9c t\u00E0i s\u1EA3n c\u00F4ng"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 3",
+      "sourceIds": [
+        "15|746.0731466796874|279.04107421875|315.72146268750004|M\u1EE5c 3"
+      ]
+    },
+    {
+      "text": "S\u1EDE H\u1EEEU NH\u00C0 \u1EDE T\u1EA0I VI\u1EC6T NAM C\u1EE6A T\u1ED4 CH\u1EE8C, C\u00C1 NH\u00C2N N\u01AF\u1EDAC NGO\u00C0I",
+      "sourceIds": [
+        "15|728.2735866899671|195.2480836875|400.7336407500002|S\u1EDE H\u1EEEU NH\u00C0 \u1EDE T\u1EA0I VI\u1EC6T NAM",
+        "15|709.3854118906249|163.99775296875012|431.6740055625001|C\u1EE6A T\u1ED4 CH\u1EE8C, C\u00C1 NH\u00C2N N\u01AF\u1EDAC NGO\u00C0I"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 16. Khu v\u1EF1c t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i \u0111\u01B0\u1EE3c s\u1EDFh\u1EEFu nh\u00E0 \u1EDFt\u1EA1i Vi\u1EC7t Nam",
+      "sourceIds": [
+        "15|661.7427551021012|87.00294140625014|523.61379384375|\u0110i\u1EC1u 16. Khu v\u1EF1c t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu nh\u00E0 \u1EDF t\u1EA1i Vi\u1EC7t Nam"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 17. T\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu nh\u00E0 \u1EDF v\u00E0 h\u00ECnh th\u1EE9c \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu nh\u00E0 \u1EDF t\u1EA1i Vi\u1EC7t Nam",
+      "sourceIds": [
+        "15|471.65397778004814|87.00447740625039|531.1559815312501|\u0110i\u1EC1u 17. T\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu nh\u00E0 \u1EDF v\u00E0 h\u00ECnh th\u1EE9c",
+        "15|451.82253616576094|64.62064603125002|255.29303784375|\u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu nh\u00E0 \u1EDF t\u1EA1i Vi\u1EC7t Nam"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 18. \u0110i\u1EC1u ki\u1EC7n t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu nh\u00E0 \u1EDF t\u1EA1i Vi\u1EC7t Nam",
+      "sourceIds": [
+        "16|685.1219281250001|86.99994140625019|530.9068334062503|\u0110i\u1EC1u 1 8. \u0110i\u1EC1u ki\u1EC7n t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc n go \u00E0i \u0111\u01B0\u1EE3c s \u1EDF h\u1EEFu n h\u00E0 \u1EDF t\u1EA1i",
+        "16|665.6588457165179|64.18666350000035|122.20719384375035|Vi\u1EC7t Nam"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 19. S\u1ED1 l\u01B0\u1EE3ng nh\u00E0 \u1EDF m\u00E0 t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu t\u1EA1i Vi\u1EC7t Nam",
+      "sourceIds": [
+        "16|395.95327570312503|86.99785340624994|531.2655734062498|\u0110i\u1EC1u 19. S\u1ED1 l\u01B0\u1EE3ng nh\u00E0 \u1EDF m\u00E0 t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu t\u1EA1i",
+        "16|376.5784257165179|64.18597949999992|121.00889784374988|Vi\u1EC7t Nam"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 20. Quy\u1EC1n c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF l\u00E0 t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i",
+      "sourceIds": [
+        "17|746.4406199678307|86.99994140625|495.87282140625|\u0110i\u1EC1u 20. Quy\u1EC1n c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF l\u00E0 t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 21. Ngh\u0129a v\u1EE5 c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF l\u00E0 t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i",
+      "sourceIds": [
+        "18|567.1272155008847|86.99898140625027|510.1547534062503|\u0110i\u1EC1u 21. Ngh\u0129a v\u1EE5 c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF l\u00E0 t\u1ED5 ch\u1EE9c, c\u00E1 nh\u00E2n n\u01B0\u1EDBc ngo\u00E0i"
+      ]
+    },
+    {
+      "text": "Ch\u01B0\u01A1ng III",
+      "sourceIds": [
+        "20|746.4138253906249|263.83529296874997|331.6732055625|Ch\u01B0\u01A1ng III"
+      ]
+    },
+    {
+      "text": "CHI\u1EBEN L\u01AF\u1EE2C PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE QU\u1ED0C GIA, CH\u01AF\u01A0NG TR\u00CCNH, K\u1EBE HO\u1EA0CH PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE C\u1EA4P T\u1EC8NH",
+      "sourceIds": [
+        "20|728.186895078125|143.71466896874992|451.86085959375004|CHI\u1EBEN L\u01AF\u1EE2C PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE QU\u1ED0C GIA,",
+        "20|709.3134294687499|94.27561696875|501.49338937500005|CH\u01AF\u01A0NG TR\u00CCNH, K\u1EBE HO\u1EA0CH PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE C\u1EA4P T\u1EC8NH"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 1",
+      "sourceIds": [
+        "20|670.0180457539061|279.0415782187501|315.45460340625016|M\u1EE5c 1"
+      ]
+    },
+    {
+      "text": "CHI\u1EBEN L\u01AF\u1EE2C PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE QU\u1ED0C GIA",
+      "sourceIds": [
+        "20|652.3975214665949|145.3966609687501|450.36352650000015|CHI\u1EBEN L\u01AF\u1EE2C PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE QU\u1ED0C GIA"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 23. C\u0103n c\u1EE9 x\u00E2y d\u1EF1ng Chi\u1EBFn l\u01B0\u1EE3c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF qu\u1ED1c gia",
+      "sourceIds": [
+        "20|609.3641707021485|87.00344540625015|464.1320060625001|\u0110i\u1EC1u 23. C\u0103n c\u1EE9 x\u00E2y d\u1EF1ng Chi\u1EBFn l\u01B0\u1EE3c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF qu\u1ED1c gia"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 24. N\u1ED9i dung Chi\u1EBFn l\u01B0\u1EE3c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF qu\u1ED1c gia",
+      "sourceIds": [
+        "20|431.2365423310319|86.99532140625006|416.96492606249996|\u0110i\u1EC1u 24. N\u1ED9i dung Chi\u1EBFn l\u01B0\u1EE3c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF qu\u1ED1c gia"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 25. K\u1EF3 Chi\u1EBFn l\u01B0\u1EE3c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF qu\u1ED1c gia v\u00E0 th\u1EA9m quy\u1EC1n ph\u00EA duy\u1EC7t Chi\u1EBFn l\u01B0\u1EE3c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF qu\u1ED1c gia",
+      "sourceIds": [
+        "21|684.2751465559212|87.00015740625|531.4581523125|\u0110i\u1EC1u 25. K\u1EF3 Chi\u1EBFn l\u01B0\u1EE3c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF qu\u1ED1c gia v\u00E0 th\u1EA9m quy\u1EC1n ph\u00EA duy\u1EC7t",
+        "21|665.1445777165948|64.63529296875004|281.9681420625001|Chi\u1EBFn l\u01B0\u1EE3c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF qu\u1ED1c gia"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 2",
+      "sourceIds": [
+        "21|355.2575177539063|279.03827821875|315.84206512500003|M\u1EE5c 2"
+      ]
+    },
+    {
+      "text": "CH\u01AF\u01A0NG TR\u00CCNH, K\u1EBE HO\u1EA0CH PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE C\u1EA4P T\u1EC8NH",
+      "sourceIds": [
+        "21|337.1925602379809|94.27372096875001|501.493629375|CH\u01AF\u01A0NG TR\u00CCNH, K\u1EBE HO\u1EA0CH PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE C\u1EA4P T\u1EC8NH"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 26. C\u0103n c\u1EE9 x\u00E2y d\u1EF1ng v\u00E0 k\u1EF3 ch\u01B0\u01A1ng tr\u00ECnh, k\u1EBF ho\u1EA1ch ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u1EA5p t\u1EC9nh",
+      "sourceIds": [
+        "21|289.4912877230115|87.00087740625001|531.85729021875|\u0110i\u1EC1u 26. C\u0103n c\u1EE9 x\u00E2y d\u1EF1ng v\u00E0 k\u1EF3 ch\u01B0\u01A1ng tr\u00ECnh, k\u1EBF ho\u1EA1ch ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF",
+        "21|270.5208274754465|64.61263856250008|112.39999425000008|c\u1EA5p t\u1EC9nh"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 27. N\u1ED9i dung ch\u01B0\u01A1ng tr\u00ECnh, k\u1EBF ho\u1EA1ch ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u1EA5p t\u1EC9nh",
+      "sourceIds": [
+        "22|508.0798786382667|86.99875340625003|488.83975425000006|\u0110i\u1EC1u 27. N\u1ED9i dung ch\u01B0\u01A1ng tr\u00ECnh, k\u1EBF ho\u1EA1ch ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u1EA5p t\u1EC9nh"
+      ]
+    },
+    {
+      "text": "ch\u01B0\u01A1ng tr\u00ECnh ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u1EA5p t\u1EC9nh, trong \u0111\u00F3 ph\u00E2n \u0111\u1ECBnh nhu c\u1EA7u v\u1EC1 di\u1EC7n t\u00EDch nh\u00E0 \u1EDF c\u1EE7a t\u1EEBng nh\u00F3m \u0111\u1ED1i t\u01B0\u1EE3ng \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i, t\u1EEBng lo\u1EA1i h\u00ECnh nh\u00E0 \u1EDF ph\u00E1t tri\u1EC3n theo d\u1EF1 \u00E1n;",
+      "sourceIds": [
+        "22|275.04802594105115|64.55988281249999|531.4153632187499|ch\u01B0\u01A1ng tr\u00ECnh ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u1EA5p t\u1EC9nh, trong \u0111\u00F3 ph\u00E2n \u0111\u1ECBnh nhu c\u1EA7u v\u1EC1 di\u1EC7n t\u00EDch nh\u00E0",
+        "22|254.92851289062494|64.55302734375|531.16459565625|\u1EDF c\u1EE7a t\u1EEBng nh\u00F3m \u0111\u1ED1i t\u01B0\u1EE3ng \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i, t\u1EEBng",
+        "22|235.18047089843748|64.49818359375|270.38016224999996|lo\u1EA1i h\u00ECnh nh\u00E0 \u1EDF ph\u00E1t tri\u1EC3n theo d\u1EF1 \u00E1n;"
+      ]
+    },
+    {
+      "text": "C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024 25",
+      "sourceIds": [
+        "23|781.7244689082032|177.9869806875|530.85499171875|C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024 25"
+      ]
+    },
+    {
+      "text": "26 C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024",
+      "sourceIds": [
+        "24|781.7274681757814|64.38095662500007|418.0520337187503|26 C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024"
+      ]
+    },
+    {
+      "text": "C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024 27",
+      "sourceIds": [
+        "25|781.7240404414064|177.9869806875|531.15663234375|C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024 27"
+      ]
+    },
+    {
+      "text": "Ch\u01B0\u01A1ng IV",
+      "sourceIds": [
+        "25|594.3873846171876|264.1978969687501|331.49812143750006|Ch\u01B0\u01A1ng IV"
+      ]
+    },
+    {
+      "text": "PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE",
+      "sourceIds": [
+        "25|576.63579903125|230.15847637500008|365.7505441875001|PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 1",
+      "sourceIds": [
+        "25|546.1791977539062|279.04475821875013|315.4577834062502|M\u1EE5c 1"
+      ]
+    },
+    {
+      "text": "QUY \u0110\u1ECANH CHUNG",
+      "sourceIds": [
+        "25|527.9120677343751|234.79268550000015|360.9675768750002|QUY \u0110\u1ECANH CHUNG"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 30. H\u00ECnh th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "25|490.77597392857166|87.00381740625018|300.9808542187502|\u0110i\u1EC1u 30. H\u00ECnh th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 31. C\u00E1c lo\u1EA1i h\u00ECnh nh\u00E0 \u1EDF ph\u00E1t tri\u1EC3n theo d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF v\u00E0 ti\u00EAu chu\u1EA9n di\u1EC7n t\u00EDch nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "25|194.96643060653406|86.99853740625001|531.85635421875|\u0110i\u1EC1u 31 . C\u00E1c lo\u1EA1i h\u00ECnh nh\u00E0 \u1EDF ph\u00E1t tri\u1EC3n theo d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF",
+        "25|176.5624377866848|64.20722990625006|237.25503421875004|v\u00E0 ti\u00EAu chu\u1EA9n di\u1EC7n t\u00EDch nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "28 C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024",
+      "sourceIds": [
+        "26|781.7274681757814|64.38095662500007|418.0520337187503|28 C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 32. Qu\u1EF9 \u0111\u1EA5t \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "26|498.7452512388394|86.99875340624999|306.25763821874995|\u0110i\u1EC1u 32. Qu\u1EF9 \u0111\u1EA5t \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 33. Y\u00EAu c\u1EA7u \u0111\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "26|174.494800625|86.99734940625|409.57519021875004|\u0110i\u1EC1u 33. Y\u00EAu c\u1EA7u \u0111\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 34. C\u00E1c giai \u0111o\u1EA1n c\u1EE7a d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "29|683.4140931337652|86.99875340625015|422.8977462187501|\u0110i\u1EC1u 34. C\u00E1c giai \u0111o\u1EA1n c\u1EE7a d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 2",
+      "sourceIds": [
+        "30|670.0184057539061|279.03688621875006|315.840673125|M\u1EE5c 2"
+      ]
+    },
+    {
+      "text": "PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE TH\u01AF\u01A0NG M\u1EA0I THEO D\u1EF0\u00C1N",
+      "sourceIds": [
+        "30|652.3563586015625|134.51293237500002|461.01369178125|PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE TH\u01AF\u01A0NG M\u1EA0I THEO D\u1EF0 \u00C1N"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 36. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i",
+      "sourceIds": [
+        "30|609.3341420191764|86.99875340625|457.35008540624995|\u0110i\u1EC1u 36. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 37. Th\u1EF1c hi\u1EC7n d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i",
+      "sourceIds": [
+        "30|308.2570094992896|87.00015740625004|449.91169340625004|\u0110i\u1EC1u 37. Th\u1EF1c hi\u1EC7n d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 38. Quy\u1EC1n c\u1EE7a ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i",
+      "sourceIds": [
+        "31|414.1474189765625|87.00015740625001|521.1899654062498|\u0110i\u1EC1u 38. Quy\u1EC1n c\u1EE7a ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 39. Ngh\u0129a v\u1EE5 c\u1EE7a ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i",
+      "sourceIds": [
+        "32|677.3988347421879|86.99713340625003|514.34665340625|\u0110i\u1EC1u 39. Ngh\u0129a v\u1EE5 c\u1EE7a ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 3 PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE C\u00D4NG V\u1EE4",
+      "sourceIds": [
+        "33|373.2331226796874|279.04109821875|315.7214866875|M\u1EE5c 3",
+        "33|356.5158538708882|195.59816437499995|399.902452875|PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE C\u00D4NG V\u1EE4"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 40. \u0110\u1EA5t \u0111\u1EC3 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF c\u00F4ng v\u1EE5",
+      "sourceIds": [
+        "33|315.2043598162716|87.00436940624998|324.28087396875003|\u0110i\u1EC1u 40. \u0110\u1EA5t \u0111\u1EC3 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF c\u00F4ng v\u1EE5"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 41. H\u00ECnh th\u1EE9c v\u00E0 k\u1EBF ho\u1EA1ch ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u00F4ng v\u1EE5",
+      "sourceIds": [
+        "34|643.5674997728923|87.00015740625004|424.23584596875|\u0110i\u1EC1u 41 . H\u00ECnh th\u1EE9c v\u00E0 k\u1EBF ho\u1EA1ch ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u00F4ng v\u1EE5"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 42. Quy\u1EBFt \u0111\u1ECBnh ch\u1EE7 tr\u01B0\u01A1ng \u0111\u1EA7u t\u01B0, quy\u1EBFt \u0111\u1ECBnh \u0111\u1EA7u t\u01B0 v\u00E0 quy\u1EBFt \u0111\u1ECBnh",
+      "sourceIds": [
+        "35|662.3044635881697|86.99875340625003|531.08049825|\u0110i\u1EC1u 42. Quy\u1EBFt \u0111\u1ECBnh ch\u1EE7 tr\u01B0\u01A1ng \u0111\u1EA7u t\u01B0, quy\u1EBFt \u0111\u1ECBnh \u0111\u1EA7u t\u01B0 v\u00E0 quy\u1EBFt \u0111\u1ECBnh"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 43. Mua, thu\u00EA nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i \u0111\u1EC3 l\u00E0m nh\u00E0 \u1EDF c\u00F4ng v\u1EE5",
+      "sourceIds": [
+        "35|273.283691431686|86.99994140625002|441.39812596875004|\u0110i\u1EC1u 43. Mua, thu\u00EA nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i \u0111\u1EC3 l\u00E0m nh\u00E0 \u1EDF c\u00F4ng v\u1EE5"
+      ]
+    },
+    {
+      "text": "C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024 39",
+      "sourceIds": [
+        "37|781.7244689082032|177.9869806875|531.1771987499999|C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024 3 9"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 44. Lo\u1EA1i nh\u00E0 v\u00E0 ti\u00EAu chu\u1EA9n di\u1EC7n t\u00EDch nh\u00E0 \u1EDF c\u00F4ng v\u1EE5",
+      "sourceIds": [
+        "37|402.55228058684594|86.99994140625002|418.2335299687501|\u0110i\u1EC1u 44. Lo\u1EA1i nh\u00E0 v\u00E0 ti\u00EAu chu\u1EA9n di\u1EC7n t\u00EDch nh\u00E0 \u1EDF c\u00F4ng v\u1EE5"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 45. \u0110\u1ED1i t\u01B0\u1EE3ng v\u00E0 \u0111i\u1EC1u ki\u1EC7n \u0111\u01B0\u1EE3c thu\u00EA nh\u00E0 \u1EDF c\u00F4ng v\u1EE5",
+      "sourceIds": [
+        "37|245.88567677143894|86.99994140625|425.67472996874994|\u0110i\u1EC1u 45. \u0110\u1ED1i t\u01B0\u1EE3ng v\u00E0 \u0111i\u1EC1u ki\u1EC7n \u0111\u01B0\u1EE3c thu\u00EA nh\u00E0 \u1EDF c\u00F4ng v\u1EE5"
+      ]
+    },
+    {
+      "text": "40 C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024",
+      "sourceIds": [
+        "38|781.7274681757814|64.29869100000006|418.0520337187503|40 C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 46. Nguy\u00EAn t\u1EAFc x\u00E1c \u0111\u1ECBnh gi\u00E1 thu\u00EA nh\u00E0 \u1EDF c\u00F4ng v\u1EE5",
+      "sourceIds": [
+        "39|746.3314264648436|86.99994140625|399.15738196875|\u0110i\u1EC1u 46. Nguy\u00EAn t\u1EAFc x\u00E1c \u0111\u1ECBnh gi\u00E1 thu\u00EA nh\u00E0 \u1EDF c\u00F4ng v\u1EE5"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 47. Quy\u1EC1n v\u00E0 ngh\u0129a v\u1EE5 c\u1EE7a ng\u01B0\u1EDDi thu\u00EA nh\u00E0 \u1EDF c\u00F4ng v\u1EE5",
+      "sourceIds": [
+        "39|494.1989155614099|87.00296540624998|431.32042996875|\u0110i\u1EC1u 47. Quy\u1EC1n v\u00E0 ngh\u0129a v\u1EE5 c\u1EE7a ng\u01B0\u1EDDi thu\u00EA nh\u00E0 \u1EDF c\u00F4ng v\u1EE5"
+      ]
+    },
+    {
+      "text": "42 C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024",
+      "sourceIds": [
+        "40|781.7300389765626|64.29869100000006|418.0520337187503|42 C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 4",
+      "sourceIds": [
+        "40|427.0167137539063|279.04250221875014|315.9628320937502|M\u1EE5c 4"
+      ]
+    },
+    {
+      "text": "PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE PH\u1EE4C V\u1EE4 T\u00C1I \u0110\u1ECANH C\u01AF",
+      "sourceIds": [
+        "40|409.26439476841523|150.11839237500016|446.1452659687502|PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE PH\u1EE4C V\u1EE4 T\u00C1I \u0110\u1ECANH C\u01AF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 48. B\u1ED1 tr\u00ED nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0",
+      "sourceIds": [
+        "40|366.41263990473794|87.00296540625023|330.7993607812503|\u0110i\u1EC1u 48. B\u1ED1 tr\u00ED nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 49. Nguy\u00EAn t\u1EAFc ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0",
+      "sourceIds": [
+        "41|746.3620891068894|86.99994140625|426.55334878125|\u0110i\u1EC1u 49. Nguy\u00EAn t\u1EAFc ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 50. Qu\u1EF9 \u0111\u1EA5t \u0111\u1EC3 th\u1EF1c hi\u1EC7n d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0",
+      "sourceIds": [
+        "42|642.428713378906|86.99806940625|531.1773374062499|\u0110i\u1EC1u 50. Qu\u1EF9 \u0111\u1EA5t \u0111\u1EC3 th\u1EF1c hi\u1EC7n d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i",
+        "42|623.2198792578125|64.62089803124995|109.87225678124994|\u0111\u1ECBnh c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 51. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0",
+      "sourceIds": [
+        "42|434.7020558281249|87.00050540625016|504.1951127812501|\u0110i\u1EC1u 51. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 52. \u0110\u1EB7t h\u00E0ng, mua nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i, b\u1ED1 tr\u00ED nh\u00E0 \u1EDF x\u00E3 h\u1ED9i ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0",
+      "sourceIds": [
+        "43|579.5548422585227|86.99994140625|531.1511294062499|\u0110i\u1EC1u 52. \u0110\u1EB7t h\u00E0ng, mua nh\u00E0 \u1EDF th\u01B0\u01A1ng m\u1EA1i, b\u1ED1 tr\u00ED nh\u00E0 \u1EDF x\u00E3 h\u1ED9i ph\u1EE5c v\u1EE5 t\u00E1i",
+        "43|560.3408392578125|64.62417403125004|109.87553278125003|\u0111\u1ECBnh c\u01B0"
+      ]
+    },
+    {
+      "text": "qu\u1EA3n l\u00FD, s\u1EED d\u1EE5ng nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0.",
+      "sourceIds": [
+        "44|707.8494752784093|64.54735987500011|305.87805703125014|qu\u1EA3n l\u00FD, s\u1EED d\u1EE5ng nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0."
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 53. Y\u00EAu c\u1EA7u \u0111\u1ED1i v\u1EDBi nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0",
+      "sourceIds": [
+        "44|685.5496362018913|87.00274940625012|389.23643278125013|\u0110i\u1EC1u 53. Y\u00EAu c\u1EA7u \u0111\u1ED1i v\u1EDBi nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 5",
+      "sourceIds": [
+        "44|291.97000147265624|279.04088221875|316.0023449062501|M\u1EE5c 5"
+      ]
+    },
+    {
+      "text": "PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE C\u1EE6A C\u00C1 NH\u00C2N",
+      "sourceIds": [
+        "44|274.6113711349431|179.03776837500004|416.2371077812501|PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE C\u1EE6A C\u00C1 NH\u00C2N"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 54. Y\u00EAu c\u1EA7u v\u1EC1 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u1EE7a c\u00E1 nh\u00E2n",
+      "sourceIds": [
+        "44|231.62434652027022|87.00274940625|379.59586678125015|\u0110i\u1EC1u 54. Y\u00EAu c\u1EA7u v\u1EC1 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u1EE7a c\u00E1 nh\u00E2n"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 55. Ph\u01B0\u01A1ng th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u1EE7a c\u00E1 nh\u00E2n",
+      "sourceIds": [
+        "45|540.6196544999999|87.00015740625001|392.13239878125|\u0110i\u1EC1u 55. Ph\u01B0\u01A1ng th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF c\u1EE7a c\u00E1 nh\u00E2n"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 56. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1 nh\u00E2n trong ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "45|153.57191178870747|87.00015740625001|428.65835821875004|\u0110i\u1EC1u 56. Tr\u00E1ch nhi\u1EC7m c\u1EE7a c\u00E1 nh\u00E2n trong ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 57. Ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF nhi\u1EC1u t\u1EA7ng nhi\u1EC1u c\u0103n h\u1ED9 c\u1EE7a c\u00E1 nh\u00E2n \u0111\u1EC3 b\u00E1n, cho thu\u00EA mua, cho thu\u00EA",
+      "sourceIds": [
+        "46|620.6369487129934|87.00156140625022|530.8124987812502|\u0110i\u1EC1u 57. Ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF nhi\u1EC1u t\u1EA7ng nhi\u1EC1u c\u0103n h\u1ED9 c\u1EE7a c\u00E1 nh\u00E2n \u0111\u1EC3 b\u00E1n, cho",
+        "46|601.0610585937501|64.34331581250022|178.21130259375022|thu\u00EA mua, cho thu\u00EA"
+      ]
+    },
+    {
+      "text": "Ch\u01B0\u01A1ng V",
+      "sourceIds": [
+        "47|589.1027910178573|266.95428496874996|328.7410014374999|Ch\u01B0\u01A1ng V"
+      ]
+    },
+    {
+      "text": "C\u1EA2I T\u1EA0O, X\u00C2Y D\u1EF0NG L\u1EA0I NH\u00C0 CHUNG C\u01AF",
+      "sourceIds": [
+        "47|571.0204936562501|155.23379296874992|441.2212219687499|C\u1EA2I T\u1EA0O, X\u00C2Y D\u1EF0NG L\u1EA0I NH\u00C0 CHUNG C\u01AF"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 1",
+      "sourceIds": [
+        "47|539.0984897539063|279.03947821874993|315.45250340625|M\u1EE5c 1"
+      ]
+    },
+    {
+      "text": "QUY \u0110\u1ECANH CHUNG",
+      "sourceIds": [
+        "47|520.8313597343752|234.78740549999995|360.962296875|QUY \u0110\u1ECANH CHUNG"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 58. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "47|481.2857500390626|86.99853740624998|329.83319278125003|\u0110i\u1EC1u 58. Th\u1EDDi h\u1EA1n s\u1EED d\u1EE5ng nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 59. Nh\u00E0 chung c\u01B0 thu\u1ED9c tr\u01B0\u1EDDng h\u1EE3p ph\u1EA3i ph\u00E1 d\u1EE1",
+      "sourceIds": [
+        "47|172.41679940234377|87.00724940625018|407.0663142187502|\u0110i\u1EC1u 59. Nh\u00E0 chung c\u01B0 thu\u1ED9c tr\u01B0\u1EDDng h\u1EE3p ph\u1EA3i ph\u00E1 d\u1EE1"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 60. Nguy\u00EAn t\u1EAFc th\u1EF1c hi\u1EC7n c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "48|262.11803891176476|87.00078140625013|474.4319927812501|\u0110i\u1EC1u 60. Nguy\u00EAn t\u1EAFc th\u1EF1c hi\u1EC7n c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0111\u1ECBnh t\u1EA1i \u0110i\u1EC1u 72 c\u1EE7a Lu\u1EADt n\u00E0y.",
+      "sourceIds": [
+        "51|578.3583627441407|64.3405078125|232.93204903125|\u0111\u1ECBnh t\u1EA1i \u0110i\u1EC1u 72 c\u1EE7a Lu\u1EADt n\u00E0y."
+      ]
+    },
+    {
+      "text": "14. Ch\u00EDnh ph\u1EE7 quy \u0111\u1ECBnh chi ti\u1EBFt kho\u1EA3n 1 1 \u0110i\u1EC1u n\u00E0y.",
+      "sourceIds": [
+        "51|555.4292213867188|88.40531250000001|373.57191703125017|1 4. Ch\u00EDnh ph\u1EE7 quy \u0111\u1ECBnh chi ti\u1EBFt kho\u1EA3n 1 1 \u0110i\u1EC1u n\u00E0y."
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 61. Ki\u1EC3m \u0111\u1ECBnh, \u0111\u00E1nh gi\u00E1 ch\u1EA5t l\u01B0\u1EE3ng nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "51|532.3861676897321|86.99853740625004|413.58881278125|\u0110i\u1EC1u 61. Ki\u1EC3m \u0111\u1ECBnh, \u0111\u00E1nh gi\u00E1 ch\u1EA5t l\u01B0\u1EE3ng nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 62. C\u00E1c h\u00ECnh th\u1EE9c c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "52|705.5164877187502|86.99151740625011|432.18619678125015|\u0110i\u1EC1u 62. C\u00E1c h\u00ECnh th\u1EE9c c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 63. C\u01A1 ch\u1EBF \u01B0u \u0111\u00E3i \u0111\u1EC3 th\u1EF1c hi\u1EC7n d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "52|385.76266046261156|87.00337340625028|531.1855700625002|\u0110i\u1EC1u 63. C\u01A1 ch\u1EBF \u01B0u \u0111\u00E3i \u0111\u1EC3 th\u1EF1c hi\u1EC7n d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0",
+        "52|366.532867109375|64.61513456250032|119.23381678125031|chung c\u01B0"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 2",
+      "sourceIds": [
+        "53|319.01769775390625|279.04109821875005|315.8448851250001|M\u1EE5c 2"
+      ]
+    },
+    {
+      "text": "QUY HO\u1EA0CH, K\u1EBE HO\u1EA0CH C\u1EA2I T\u1EA0O, X\u00C2Y D\u1EF0NG L\u1EA0I NH\u00C0 CHUNG C\u01AF",
+      "sourceIds": [
+        "53|300.67336007421875|212.70972150000006|383.0528733750001|QUY HO\u1EA0CH, K\u1EBE HO\u1EA0CH",
+        "53|282.06086565625|155.2354129687501|441.2228419687501|C\u1EA2I T\u1EA0O, X\u00C2Y D\u1EF0NG L\u1EA0I NH\u00C0 CHUNG C\u01AF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 64. Y\u00EAu c\u1EA7u v\u1EC1 quy ho\u1EA1ch \u0111\u1EC3 c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "53|235.17043005078133|87.00015740625007|495.67248478125003|\u0110i\u1EC1u 64. Y\u00EAu c\u1EA7u v\u1EC1 quy ho\u1EA1ch \u0111\u1EC3 c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 65. Y\u00EAu c\u1EA7u v\u1EC1 k\u1EBF ho\u1EA1ch c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "54|349.37495275797176|87.00228140624996|469.63348078125|\u0110i\u1EC1u 65. Y\u00EAu c\u1EA7u v\u1EC1 k\u1EBF ho\u1EA1ch c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "3. Vi\u1EC7c ph\u00EA duy\u1EC7t k\u1EBF ho\u1EA1ch c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0 ch\u1EC9 \u0111\u01B0\u1EE3c th\u1EF1c",
+      "sourceIds": [
+        "54|177.26521641287076|87.32900390625001|531.0141406875|3 . Vi\u1EC7c ph\u00EA duy\u1EC7t k\u1EBF ho\u1EA1ch c\u1EA3i t\u1EA1o , x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0 ch\u1EC9 \u0111\u01B0\u1EE3c th\u1EF1c"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 66. N\u1ED9i dung k\u1EBF ho\u1EA1ch c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "55|564.0690519013675|87.00337340625019|459.07763278125014|\u0110i\u1EC1u 66. N\u1ED9i dung k\u1EBF ho\u1EA1ch c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 3 QUY\u1EBET \u0110\u1ECANH CH\u1EE6 TR\u01AF\u01A0NG \u0110\u1EA6U T\u01AF, CH\u1EA4P THU\u1EACN CH\u1EE6 TR\u01AF\u01A0NG \u0110\u1EA6U T\u01AF, CH\u1EE6 \u0110\u1EA6U T\u01AFD\u1EF0\u00C1N \u0110\u1EA6U T\u01AF C\u1EA2I T\u1EA0O, X\u00C2Y D\u1EF0NG L\u1EA0I NH\u00C0 CHUNG C\u01AF",
+      "sourceIds": [
+        "55|288.03080667968754|279.03862621875004|315.7190146875001|M\u1EE5c 3",
+        "55|270.16069589914775|123.78771750000007|471.80788378125004|QUY\u1EBET \u0110\u1ECANH CH\u1EE6 TR\u01AF\u01A0NG \u0110\u1EA6U T\u01AF, CH\u1EA4P THU\u1EACN",
+        "55|251.15940289062513|86.35260496875009|509.07502359375013|CH\u1EE6 TR\u01AF\u01A0NG \u0110\u1EA6U T\u01AF, CH\u1EE6 \u0110\u1EA6U T\u01AF D\u1EF0 \u00C1N \u0110\u1EA6U T\u01AF C\u1EA2I T\u1EA0O,",
+        "55|232.21351101171877|188.13256856250015|407.98057396875015|X\u00C2Y D\u1EF0NG L\u1EA0I NH\u00C0 CHUNG C\u01AF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 67. Quy\u1EBFt \u0111\u1ECBnh ch\u1EE7 tr\u01B0\u01A1ng \u0111\u1EA7u t\u01B0, ch\u1EA5p thu\u1EADn ch\u1EE7 tr\u01B0\u01A1ng \u0111\u1EA7u t\u01B0",
+      "sourceIds": [
+        "55|195.27086292968758|86.99758940625019|507.6713087812502|\u0110i\u1EC1u 67. Quy\u1EBFt \u0111\u1ECBnh ch\u1EE7 tr\u01B0\u01A1ng \u0111\u1EA7u t\u01B0, ch\u1EA5p thu\u1EADn ch\u1EE7 tr\u01B0\u01A1ng \u0111\u1EA7u t\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 68. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "56|387.5608175330882|86.99902940624985|496.51235278124983|\u0110i\u1EC1u 68. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 c\u1EA3i t\u1EA1o, x\u00E2y d\u1EF1ng l\u1EA1i nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 69. H\u1ED3 s\u01A1, tr\u00ECnh t\u1EF1, th\u1EE7 t\u1EE5c ch\u1EA5p thu\u1EADn ch\u1EE7 tr\u01B0\u01A1ng \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u",
+      "sourceIds": [
+        "57|292.70499899776803|87.00296540625011|531.03999796875|\u0110i\u1EC1u 69. H\u1ED3 s\u01A1, tr\u00ECnh t\u1EF1, th\u1EE7 t\u1EE5c ch\u1EA5p thu\u1EADn ch\u1EE7 tr\u01B0\u01A1ng \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 4",
+      "sourceIds": [
+        "59|260.33749375390624|279.0420222187503|315.96235209375027|M\u1EE5c 4"
+      ]
+    },
+    {
+      "text": "PH\u01AF\u01A0NG \u00C1N B\u1ED2I TH\u01AF\u1EDCNG, T\u00C1I \u0110\u1ECANH C\u01AF",
+      "sourceIds": [
+        "59|242.53832453124994|158.63878837500025|437.74465396875024|PH\u01AF\u01A0NG \u00C1N B\u1ED2I TH\u01AF\u1EDCNG, T\u00C1I \u0110\u1ECANH C\u01AF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 70. Nguy\u00EAn t\u1EAFc l\u1EADp ph\u01B0\u01A1ng \u00E1n b\u1ED3i th\u01B0\u1EDDng, t\u00E1i \u0111\u1ECBnh c\u01B0",
+      "sourceIds": [
+        "59|195.5646969463316|87.00108140625024|437.95356478125024|\u0110i\u1EC1u 70. Nguy\u00EAn t\u1EAFc l\u1EADp ph\u01B0\u01A1ng \u00E1n b\u1ED3i th\u01B0\u1EDDng, t\u00E1i \u0111\u1ECBnh c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 71. N\u1ED9i dung v\u00E0 th\u1EA9m quy\u1EC1n ph\u00EA duy\u1EC7t ph\u01B0\u01A1ng \u00E1n b\u1ED3i th\u01B0\u1EDDng, t\u00E1i \u0111\u1ECBnh c\u01B0",
+      "sourceIds": [
+        "61|621.9514667500002|87.00015740625001|531.30016940625|\u0110i\u1EC1u 71. N\u1ED9i dung v\u00E0 th\u1EA9m quy\u1EC1n ph\u00EA duy\u1EC7t ph\u01B0\u01A1ng \u00E1n b\u1ED3i th\u01B0\u1EDDng, t\u00E1i",
+        "61|602.3394592578126|64.62298603125002|109.87434478125002|\u0111\u1ECBnh c\u01B0"
+      ]
+    },
+    {
+      "text": "64 C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024",
+      "sourceIds": [
+        "62|781.7274681757814|64.68259725000006|418.0520337187503|64 C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 72. B\u1ED1 tr\u00ED nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0 v\u00E0 b\u1ED1 tr\u00ED ch\u1ED7 \u1EDF t\u1EA1m th\u1EDDi",
+      "sourceIds": [
+        "62|511.38625855261466|87.00156140625016|474.5167934062503|\u0110i\u1EC1u 72. B\u1ED1 tr\u00ED nh\u00E0 \u1EDF ph\u1EE5c v\u1EE5 t\u00E1i \u0111\u1ECBnh c\u01B0 v\u00E0 b\u1ED1 tr\u00ED ch\u1ED7 \u1EDF t\u1EA1m th\u1EDDi"
+      ]
+    },
+    {
+      "text": "C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024 65",
+      "sourceIds": [
+        "63|781.721898107422|177.9869806875|530.85499171875|C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024 65"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 5",
+      "sourceIds": [
+        "63|218.2899534726563|279.04443421875004|316.0058969062501|M\u1EE5c 5"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 73. Di d\u1EDDi ch\u1EE7 s\u1EDF h\u1EEFu, ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "63|164.98188716852687|87.0048974062501|423.3178727812502|\u0110i\u1EC1u 73. Di d\u1EDDi ch\u1EE7 s\u1EDF h\u1EEFu, ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "66 C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024",
+      "sourceIds": [
+        "64|781.7248973750002|64.68259725000006|418.0520337187503|66 C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024"
+      ]
+    },
+    {
+      "text": "C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024 67",
+      "sourceIds": [
+        "65|781.7214696406252|177.9869806875|531.15663234375|C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024 67"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 74. C\u01B0\u1EE1ng ch\u1EBF di d\u1EDDi ch\u1EE7 s\u1EDF h\u1EEFu, ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "65|746.8942355468747|86.99994140625|489.19280878125005|\u0110i\u1EC1u 74. C\u01B0\u1EE1ng ch\u1EBF di d\u1EDDi ch\u1EE7 s\u1EDF h\u1EEFu, ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 75. Ph\u00E1 d\u1EE1 nh\u00E0 chung c\u01B0",
+      "sourceIds": [
+        "65|149.12272590696023|86.99970140624994|266.35249678124995|\u0110i\u1EC1u 75. Ph\u00E1 d\u1EE1 nh\u00E0 chung c\u01B0"
+      ]
+    },
+    {
+      "text": "Ch\u01B0\u01A1ng VI CH\u00CDNH S\u00C1CH V\u1EC0 NH\u00C0 \u1EDEX\u00C3 H\u1ED8I",
+      "sourceIds": [
+        "66|324.2664966171874|264.1968649687499|331.31873756249985|Ch\u01B0\u01A1ng VI",
+        "66|307.1845907656249|190.15552096874984|405.4625735624998|CH\u00CDNH S\u00C1CH V\u1EC0 NH\u00C0 \u1EDE X\u00C3 H\u1ED8I"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 1 QUY \u0110\u1ECANH CHUNG",
+      "sourceIds": [
+        "66|269.0986817539061|279.0423222187498|315.45534740624987|M\u1EE5c 1",
+        "66|251.67254773437483|234.79024949999982|360.96514087499986|QUY \u0110\u1ECANH CHUNG"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 76. \u0110\u1ED1i t\u01B0\u1EE3ng \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "66|214.64055161926004|87.00138140624985|476.1887774062498|\u0110i\u1EC1u 76. \u0110\u1ED1i t\u01B0\u1EE3ng \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 77. H\u00ECnh th\u1EE9c th\u1EF1c hi\u1EC7n ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "67|354.349964459961|86.99872940625004|460.94991740625005|\u0110i\u1EC1u 77. H\u00ECnh th\u1EE9c th\u1EF1c hi\u1EC7n ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 78. \u0110i\u1EC1u ki\u1EC7n \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "68|375.41014693399234|86.99978540625017|473.1888734062499|\u0110i\u1EC1u 78. \u0110i\u1EC1u ki\u1EC7n \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 79. Nguy\u00EAn t\u1EAFc th\u1EF1c hi\u1EC7n ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "70|529.8021637844386|87.00136940625002|467.31127340625005|\u0110i\u1EC1u 79. Nguy\u00EAn t\u1EAFc th\u1EF1c hi\u1EC7n ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 2 PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDEX\u00C3 H\u1ED8I \u0110\u1EC2 B\u00C1N, CHO THU\u00CA MUA, CHO THU\u00CA",
+      "sourceIds": [
+        "71|746.6979977539063|279.04107421875|315.844861125|M\u1EE5c 2",
+        "71|729.7884878984376|202.917192375|392.3844695625001|PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE X\u00C3 H\u1ED8I",
+        "71|711.0178726777343|171.12219740625014|423.89106318750015|\u0110\u1EC2 B\u00C1N, CHO THU\u00CA MUA, CHO THU\u00CA"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 80. H\u00ECnh th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "71|666.08270234375|86.99994140625|340.10884940625|\u0110i\u1EC1u 80. H\u00ECnh th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 81. Lo\u1EA1i h\u00ECnh d\u1EF1 \u00E1n v\u00E0 y\u00EAu c\u1EA7u \u0111\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "71|299.4389861022995|86.99797340625001|531.8557902187499|\u0110i\u1EC1u 81. Lo\u1EA1i h\u00ECnh d\u1EF1 \u00E1n v\u00E0 y\u00EAu c\u1EA7u \u0111\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF",
+        "71|281.89109965625|64.39861903125|100.10571740625|x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 82. Lo\u1EA1i nh\u00E0 v\u00E0 ti\u00EAu chu\u1EA9n di\u1EC7n t\u00EDch nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "72|747.2287660993305|86.99994140625|408.3867734062501|\u0110i\u1EC1u 82. Lo\u1EA1i nh\u00E0 v\u00E0 ti\u00EAu chu\u1EA9n di\u1EC7n t\u00EDch nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 83. \u0110\u1EA5t \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "72|423.5835206796876|87.00170540625005|318.51007340625006|\u0110i\u1EC1u 83. \u0110\u1EA5t \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "2. T\u1EA1i c\u00E1c \u0111\u00F4 th\u1ECB lo\u1EA1i \u0111\u1EB7c bi\u1EC7t, lo\u1EA1i I, lo\u1EA1i II v\u00E0 lo\u1EA1i III, c\u0103n c\u1EE9 quy \u0111\u1ECBnh c\u1EE7a",
+      "sourceIds": [
+        "72|259.07491816280236|87.06048862500018|531.44067121875|2. T\u1EA1i c\u00E1c \u0111\u00F4 th\u1ECB lo\u1EA1i \u0111\u1EB7c bi\u1EC7t, lo\u1EA1i I, lo\u1EA1i II v\u00E0 lo\u1EA1i III, c\u0103n c\u1EE9 quy \u0111\u1ECBnh c\u1EE7a"
+      ]
+    },
+    {
+      "text": "3. \u0110\u1ED1i v\u1EDBi c\u00E1c \u0111\u00F4 th\u1ECB kh\u00F4ng thu\u1ED9c tr\u01B0\u1EDDng h\u1EE3p quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 2 \u0110i\u1EC1u n\u00E0y,",
+      "sourceIds": [
+        "72|103.78797254661018|87.32918390624991|530.5760752499999|3 . \u0110\u1ED1i v\u1EDBi c\u00E1c \u0111\u00F4 th\u1ECB kh\u00F4ng thu\u1ED9c tr\u01B0\u1EDDng h\u1EE3p quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 2 \u0110i\u1EC1u n\u00E0y,"
+      ]
+    },
+    {
+      "text": "4. Qu\u1EF9 \u0111\u1EA5t d\u00E0nh \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF x\u00E3 h\u1ED9i quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 1 \u0110i\u1EC1u n\u00E0y ph\u1EA3i",
+      "sourceIds": [
+        "73|614.7954257004767|86.97447899999995|531.0759962812501|4. Qu\u1EF9 \u0111\u1EA5t d\u00E0nh \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF x\u00E3 h\u1ED9i quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 1 \u0110i\u1EC1u n\u00E0y ph\u1EA3i"
+      ]
+    },
+    {
+      "text": "6. \u0110\u1EA5t \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF x\u00E3 h\u1ED9i theo d\u1EF1 \u00E1n bao g\u1ED3m:",
+      "sourceIds": [
+        "73|282.65384836523447|87.36199725000026|384.34511550000025|6. \u0110\u1EA5t \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF x\u00E3 h\u1ED9i theo d\u1EF1 \u00E1n bao g\u1ED3m:"
+      ]
+    },
+    {
+      "text": "7. C\u00E1 nh\u00E2n \u0111\u01B0\u1EE3c s\u1EED d\u1EE5ng quy\u1EC1n s\u1EED d\u1EE5ng \u0111\u1EA5t theo quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 3 \u0110i\u1EC1u 54",
+      "sourceIds": [
+        "73|129.69196605360995|87.28123162500019|530.9315097187502|7. C\u00E1 nh\u00E2n \u0111\u01B0\u1EE3c s\u1EED d\u1EE5ng quy\u1EC1n s\u1EED d\u1EE5ng \u0111\u1EA5t theo quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 3 \u0110i\u1EC1u 54"
+      ]
+    },
+    {
+      "text": "8. Ch\u00EDnh ph\u1EE7 quy \u0111\u1ECBnh chi ti\u1EBFt kho\u1EA3n 2 \u0110i\u1EC1u n\u00E0y.",
+      "sourceIds": [
+        "73|88.70537750246713|87.60748612500028|359.65304503125014|8 . Ch\u00EDnh ph\u1EE7 quy \u0111\u1ECBnh chi ti\u1EBFt kho\u1EA3n 2 \u0110i\u1EC1u n\u00E0y."
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 84. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "74|747.1103541992187|86.99994140625|424.11016940624995|\u0110i\u1EC1u 84. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "2. \u0110\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u01B0\u1EE3c \u0111\u1EA7u t\u01B0 b\u1EB1ng ngu\u1ED3n t\u00E0i",
+      "sourceIds": [
+        "74|583.115990424479|87.06464062500021|531.08484028125|2. \u0110\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u01B0\u1EE3c \u0111\u1EA7u t\u01B0 b\u1EB1ng ngu\u1ED3n t\u00E0i"
+      ]
+    },
+    {
+      "text": "4. \u0110\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u01B0\u1EE3c \u0111\u1EA7u t\u01B0 kh\u00F4ng b\u1EB1ng ngu\u1ED3n",
+      "sourceIds": [
+        "74|404.03736636858275|86.97974700000002|531.3623207812501|4. \u0110\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u01B0\u1EE3c \u0111\u1EA7u t\u01B0 kh\u00F4ng b\u1EB1ng ngu\u1ED3n"
+      ]
+    },
+    {
+      "text": "5. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 3 v\u00E0",
+      "sourceIds": [
+        "75|746.6099044000592|87.43183593750001|531.4474392187501|5 . Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 3 v\u00E0"
+      ]
+    },
+    {
+      "text": "6. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 3 v\u00E0",
+      "sourceIds": [
+        "75|686.492435278597|87.35906924999999|531.4432272187502|6. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i quy \u0111\u1ECBnh t\u1EA1i kho\u1EA3n 3 v\u00E0"
+      ]
+    },
+    {
+      "text": "7. Ch\u00EDnh ph\u1EE7 quy \u0111\u1ECBnh chi ti\u1EBFt \u0110i\u1EC1u n\u00E0y.",
+      "sourceIds": [
+        "75|450.0767001157226|87.281231625|311.4142450312501|7. Ch\u00EDnh ph\u1EE7 quy \u0111\u1ECBnh chi ti\u1EBFt \u0110i\u1EC1u n\u00E0y."
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 85. \u01AFu \u0111\u00E3i ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u1EC3 b\u00E1n, cho thu\u00EA mua, cho thu\u00EA",
+      "sourceIds": [
+        "75|427.5547122830883|87.00015740624998|531.02913159375|\u0110i\u1EC1u 85. \u01AFu \u0111\u00E3i ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u1EC3 b\u00E1n,",
+        "75|408.59221099999996|64.61472656250004|202.81078659374998|cho thu\u00EA mua, cho thu\u00EA"
+      ]
+    },
+    {
+      "text": "2. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i kh\u00F4ng b\u1EB1ng v\u1ED1n quy \u0111\u1ECBnh t\u1EA1i",
+      "sourceIds": [
+        "75|269.8380813766447|87.06807262500031|531.0804002812501|2. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF x\u00E3 h\u1ED9i kh\u00F4ng b\u1EB1ng v\u1ED1n quy \u0111\u1ECBnh t\u1EA1i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 86. X\u00E1c \u0111\u1ECBnh gi\u00E1 thu\u00EA, gi\u00E1 thu\u00EA mua nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u01B0\u1EE3c \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng b\u1EB1ng v\u1ED1n \u0111\u1EA7u t\u01B0 c\u00F4ng, ngu\u1ED3n t\u00E0i ch\u00EDnh c\u00F4ng \u0111o\u00E0n",
+      "sourceIds": [
+        "77|664.7268048199016|86.99853740625024|531.0408276562503|\u0110i\u1EC1u 86. X\u00E1c \u0111\u1ECBnh gi\u00E1 thu\u00EA, gi\u00E1 thu\u00EA mua nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u01B0\u1EE3c \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng",
+        "77|646.1040551007402|64.37035715625025|357.82286278124997|b\u1EB1ng v\u1ED1n \u0111\u1EA7u t\u01B0 c\u00F4ng, ngu\u1ED3n t\u00E0i ch\u00EDnh c\u00F4ng \u0111o\u00E0n"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 87. X\u00E1c \u0111\u1ECBnh gi\u00E1 b\u00E1n, gi\u00E1 thu\u00EA mua, gi\u00E1 thu\u00EA nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u01B0\u1EE3c \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng kh\u00F4ng b\u1EB1ng v\u1ED1n \u0111\u1EA7u t\u01B0 c\u00F4ng, ngu\u1ED3n t\u00E0i ch\u00EDnh c\u00F4ng \u0111o\u00E0n",
+      "sourceIds": [
+        "77|381.6892818667766|86.98809740625002|531.7942487812501|\u0110i\u1EC1u 87. X\u00E1c \u0111\u1ECBnh gi\u00E1 b\u00E1n, gi\u00E1 thu\u00EA mua, gi\u00E1 thu\u00EA nh\u00E0 \u1EDF x\u00E3 h\u1ED9i \u0111\u01B0\u1EE3c \u0111\u1EA7u t\u01B0",
+        "77|363.0443639140625|64.40185903125013|457.48544278125013|x\u00E2y d\u1EF1ng kh\u00F4ng b\u1EB1ng v\u1ED1n \u0111\u1EA7u t\u01B0 c\u00F4ng, ngu\u1ED3n t\u00E0i ch\u00EDnh c\u00F4ng \u0111o\u00E0n"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 88. Nguy\u00EAn t\u1EAFc b\u00E1n, cho thu\u00EA mua, cho thu\u00EA nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "78|498.9827908344414|86.99947340625006|455.4301334062501|\u0110i\u1EC1u 88. Nguy\u00EAn t\u1EAFc b\u00E1n, cho thu\u00EA mua, cho thu\u00EA nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "6. M\u1ED7i \u0111\u1ED1i t\u01B0\u1EE3ng quy \u0111\u1ECBnh t\u1EA1i c\u00E1c kho\u1EA3n 1, 2, 3, 4, 5, 6, 8, 9 v\u00E0 10 \u0110i\u1EC1u 76 c\u1EE7a",
+      "sourceIds": [
+        "79|440.9861170021186|87.36328125|531.4432272187499|6. M\u1ED7i \u0111\u1ED1i t\u01B0\u1EE3ng quy \u0111\u1ECBnh t\u1EA1i c\u00E1c kho\u1EA3n 1 , 2, 3 , 4, 5 , 6, 8, 9 v\u00E0 1 0 \u0110i\u1EC1u 76 c\u1EE7a"
+      ]
+    },
+    {
+      "text": "7. M\u1ED7i \u0111\u1ED1i t\u01B0\u1EE3ng quy \u0111\u1ECBnh t\u1EA1i c\u00E1c kho\u1EA3n 1, 2, 3, 4, 5, 6, 8, 9, 10 v\u00E0 1 1 \u0110i\u1EC1u 76",
+      "sourceIds": [
+        "79|361.03159907521183|87.27961162500002|530.75570596875|7. M\u1ED7i \u0111\u1ED1i t\u01B0\u1EE3ng quy \u0111\u1ECBnh t\u1EA1i c\u00E1c kho\u1EA3n 1 , 2, 3 , 4, 5 , 6, 8, 9, 1 0 v\u00E0 1 1 \u0110i\u1EC1u 76"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 89. B\u00E1n, cho thu\u00EA mua, cho thu\u00EA nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "80|561.2933175657894|86.99950940625008|386.19015740625|\u0110i\u1EC1u 89. B\u00E1n, cho thu\u00EA mua, cho thu\u00EA nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 90. Qu\u1EA3n l\u00FD v\u1EADn h\u00E0nh nh\u00E0 \u1EDF x\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "82|747.146233122306|86.99994140625|323.18924540624994|\u0110i\u1EC1u 90. Qu\u1EA3n l\u00FD v\u1EADn h\u00E0nh nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 3 PH\u00C1T TRI\u1EC2N NH\u00C0 L\u01AFU TR\u00DA C\u00D4NG NH\u00C2N TRONG KHU C\u00D4NG NGHI\u1EC6P",
+      "sourceIds": [
+        "82|230.79368667968748|279.03602221875013|315.7164106875002|M\u1EE5c 3",
+        "82|214.01691057031255|158.75212837500015|436.7011637812501|PH\u00C1T TRI\u1EC2N NH\u00C0 L\u01AFU TR\u00DA C\u00D4NG NH\u00C2N",
+        "82|195.31527425000002|202.70353668750016|392.86738434375013|TRONG KHU C\u00D4NG NGHI\u1EC6P"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 91. \u0110\u1ED1i t\u01B0\u1EE3ng \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p",
+      "sourceIds": [
+        "82|149.9938490106131|86.99648540625019|531.1468836562502|\u0110i\u1EC1u 91. \u0110\u1ED1i t\u01B0\u1EE3ng \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng",
+        "82|131.2712007755682|64.55340281250025|232.43130618750024|nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 92. H\u00ECnh th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p 1 . Doanh nghi\u1EC7p kinh doanh k\u1EBFt c\u1EA5u h\u1EA1 t\u1EA7ng khu c\u00F4ng nghi\u1EC7p \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng",
+      "sourceIds": [
+        "83|684.2081041480399|86.99994140625003|516.5959381875|\u0110i\u1EC1u 92. H\u00ECnh th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p",
+        "83|660.7988815052963|88.40250450000003|531.16297565625|1 . Doanh nghi\u1EC7p kinh doanh k\u1EBFt c\u1EA5u h\u1EA1 t\u1EA7ng khu c\u00F4ng nghi\u1EC7p \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 93. \u0110i\u1EC1u ki\u1EC7n thu\u00EA nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p 1 . Doanh nghi\u1EC7p, h\u1EE3p t\u00E1c x\u00E3, li\u00EAn hi\u1EC7p h\u1EE3p t\u00E1c x\u00E3 s\u1EA3n xu\u1EA5t trong khu c\u00F4ng",
+      "sourceIds": [
+        "83|556.3915315546875|86.99988140625008|501.59413818750005|\u0110i\u1EC1u 93. \u0110i\u1EC1u ki\u1EC7n thu\u00EA nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p",
+        "83|532.7541455800109|88.4010405000001|531.13623965625|1 . Doanh nghi\u1EC7p, h\u1EE3p t\u00E1c x\u00E3, li\u00EAn hi\u1EC7p h\u1EE3p t\u00E1c x\u00E3 s\u1EA3n xu\u1EA5t trong khu c\u00F4ng"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 94. Quy ho\u1EA1ch, b\u1ED1 tr\u00ED qu\u1EF9 \u0111\u1EA5t ph\u00E1t tri\u1EC3n nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p",
+      "sourceIds": [
+        "83|209.90565633189667|87.00156140624999|531.01296365625|\u0110i\u1EC1u 94. Quy ho\u1EA1ch, b\u1ED1 tr\u00ED qu\u1EF9 \u0111\u1EA5t ph\u00E1t tri\u1EC3n nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong",
+        "83|189.91634665625|64.54757587500002|162.4792741875|khu c\u00F4ng nghi\u1EC7p"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 95. Lo\u1EA1i d\u1EF1 \u00E1n v\u00E0 y\u00EAu c\u1EA7u \u0111\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p",
+      "sourceIds": [
+        "84|622.0684755755209|86.99173340624996|531.0259579687498|\u0110i\u1EC1u 95. Lo\u1EA1i d\u1EF1 \u00E1n v\u00E0 y\u00EAu c\u1EA7u \u0111\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 l\u01B0u tr\u00FA",
+        "84|602.953590265625|64.6137905624999|263.9959621874999|c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 96. Lo\u1EA1i nh\u00E0 v\u00E0 ti\u00EAu chu\u1EA9n thi\u1EBFt k\u1EBF, x\u00E2y d\u1EF1ng nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p",
+      "sourceIds": [
+        "84|191.30707596628295|86.99875340624997|531.07083478125|\u0110i\u1EC1u 96. Lo\u1EA1i nh\u00E0 v\u00E0 ti\u00EAu chu\u1EA9n thi\u1EBFt k\u1EBF, x\u00E2y d\u1EF1ng nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n",
+        "84|172.07544846875|64.33629581250004|198.47362218750004|trong khu c\u00F4ng nghi\u1EC7p"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 97. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p",
+      "sourceIds": [
+        "85|746.9411890403891|86.99994140625|531.0927756562498|\u0110i\u1EC1u 97. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong",
+        "85|728.2359146562502|64.54595587499996|162.47765418749995|khu c\u00F4ng nghi\u1EC7p"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 98. \u01AFu \u0111\u00E3i ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p v\u00E0 doanh nghi\u1EC7p, h\u1EE3p t\u00E1c x\u00E3, li\u00EAn hi\u1EC7p h\u1EE3p t\u00E1c x\u00E3 thu\u00EA nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p cho c\u00F4ng nh\u00E2n c\u1EE7a m\u00ECnh thu\u00EA l\u1EA1i",
+      "sourceIds": [
+        "85|541.601696079599|87.00015740625003|531.0581987812502|\u0110i\u1EC1u 98. \u01AFu \u0111\u00E3i ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n",
+        "85|523.3036233770492|64.34191181250013|531.2555265937502|trong khu c\u00F4ng nghi\u1EC7p v\u00E0 doanh nghi\u1EC7p, h\u1EE3p t\u00E1c x\u00E3, li\u00EAn hi\u1EC7p h\u1EE3p t\u00E1c x\u00E3 thu\u00EA",
+        "85|505.7382272304686|64.5654988125003|518.4367214062503|nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p cho c\u00F4ng nh\u00E2n c\u1EE7a m\u00ECnh thu\u00EA l\u1EA1i"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 99. Gi\u00E1 cho thu\u00EA nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p Gi\u00E1 cho thu\u00EA nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p do b\u00EAn cho thu\u00EA",
+      "sourceIds": [
+        "85|241.5959323125|87.00015740625001|490.67831418749995|\u0110i\u1EC1u 99. Gi\u00E1 cho thu\u00EA nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p",
+        "85|220.83362669654602|87.25380974999996|531.0774599062502|Gi\u00E1 cho thu\u00EA nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p do b\u00EAn cho thu\u00EA"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 100. Nguy\u00EAn t\u1EAFc cho thu\u00EA v\u00E0 qu\u1EA3n l\u00FD v\u1EADn h\u00E0nh nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n trong khu c\u00F4ng nghi\u1EC7p",
+      "sourceIds": [
+        "85|182.25233101841516|87.00015740625001|531.0343307812499|\u0110i\u1EC1u 100. Nguy\u00EAn t\u1EAFc cho thu\u00EA v\u00E0 qu\u1EA3n l\u00FD v\u1EADn h\u00E0nh nh\u00E0 l\u01B0u tr\u00FA c\u00F4ng nh\u00E2n",
+        "85|164.03406046874997|64.34050781249998|198.47783418749998|trong khu c\u00F4ng nghi\u1EC7p"
+      ]
+    },
+    {
+      "text": "88 C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024",
+      "sourceIds": [
+        "86|781.7248973750002|64.92939412500006|418.0520337187503|88 C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 4 PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE CHO L\u1EF0C L\u01AF\u1EE2NG V\u0168 TRANG NH\u00C2N D\u00C2N",
+      "sourceIds": [
+        "86|520.3787297539061|279.0352662187501|315.95559609375016|M\u1EE5c 4",
+        "86|503.3360895016446|89.39236837500012|506.10293578125|PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE CHO L\u1EF0C L\u01AF\u1EE2NG V\u0168 TRANG NH\u00C2N D\u00C2N"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 102. Ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n",
+      "sourceIds": [
+        "86|325.70683544802984|87.00015740625001|442.72694278125|\u0110i\u1EC1u 102. Ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 103. H\u00ECnh th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n",
+      "sourceIds": [
+        "86|245.7886514296874|86.99734940625011|506.44467478125017|\u0110i\u1EC1u 103. H\u00ECnh th\u1EE9c ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 104. \u0110\u1EA5t \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n",
+      "sourceIds": [
+        "87|747.0957997702207|86.99994140625|484.84251478125|\u0110i\u1EC1u 104. \u0110\u1EA5t \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n"
+      ]
+    },
+    {
+      "text": "90 C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024",
+      "sourceIds": [
+        "88|781.7244689082032|64.63460896875006|418.0520337187503|90 C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024"
+      ]
+    },
+    {
+      "text": "M\u1EE5c 5 CH\u00CDNH S\u00C1CH H\u1ED6 TR\u1EE2V\u1EC0 NH\u00C0 \u1EDE CHO H\u1ED8 GIA \u0110\u00CCNH, C\u00C1 NH\u00C2N T\u1EF0X\u00C2Y D\u1EF0NG HO\u1EB6C C\u1EA2I T\u1EA0O, S\u1EECA CH\u1EEEA NH\u00C0 \u1EDE",
+      "sourceIds": [
+        "88|241.09000947265625|279.04107421875|316.00253690625004|M\u1EE5c 5",
+        "88|224.09753578693176|120.67592896875001|475.01371959375|CH\u00CDNH S\u00C1CH H\u1ED6 TR\u1EE2 V\u1EC0 NH\u00C0 \u1EDE CHO H\u1ED8 GIA \u0110\u00CCNH,",
+        "88|205.72074670777027|94.27932496874996|501.83236818749987|C\u00C1 NH\u00C2N T\u1EF0 X\u00C2Y D\u1EF0NG HO\u1EB6C C\u1EA2I T\u1EA0O, S\u1EECA CH\u1EEEA NH\u00C0 \u1EDE"
+      ]
+    },
+    {
+      "text": "C\u00D4NG B\u00C1O/S\u1ED1 37 \u002B 38/Ng\u00E0y 08-01-2024 91",
+      "sourceIds": [
+        "89|781.7270397089844|177.9869806875|530.0666128124999|C\u00D4NG B\u00C1O/S\u1ED1 3 7 \u002B 3 8/Ng\u00E0y 08-0 1 -2024 9 1"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 111. H\u00ECnh th\u1EE9c th\u1EF1c hi\u1EC7n ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF cho h\u1ED9 gia \u0111\u00ECnh, c\u00E1 nh\u00E2n t\u1EF1 x\u00E2y d\u1EF1ng ho\u1EB7c c\u1EA3i t\u1EA1o, s\u1EEDa ch\u1EEFa nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "89|377.8761477031249|87.00176540624999|530.92965159375|\u0110i\u1EC1u 1 1 1 . H\u00ECnh th\u1EE9c th\u1EF1c hi\u1EC7n ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF cho h\u1ED9 gia \u0111\u00ECnh,",
+        "89|358.4858723914697|64.61493056250009|359.53823821875005|c\u00E1 nh\u00E2n t\u1EF1 x\u00E2y d\u1EF1ng ho\u1EB7c c\u1EA3i t\u1EA1o, s\u1EEDa ch\u1EEFa nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "Ch\u01B0\u01A1ng VII T\u00C0I CH\u00CDNH \u0110\u1EC2 PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE",
+      "sourceIds": [
+        "89|219.00218675000002|261.55604896874996|334.13246156249994|Ch\u01B0\u01A1ng VII",
+        "89|201.99617787907613|179.18732868749996|416.98579218749995|T\u00C0I CH\u00CDNH \u0110\u1EC2 PH\u00C1T TRI\u1EC2N NH\u00C0 \u1EDE"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 112. C\u00E1c ngu\u1ED3n v\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "89|156.54441127895228|86.99868140624999|354.13537021875|\u0110i\u1EC1u 1 12. C\u00E1c ngu\u1ED3n v\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 113. Ngu\u1ED3n v\u1ED1n c\u1EE7a Nh\u00E0 n\u01B0\u1EDBc \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "90|680.0753792198932|86.99853740625008|416.0558382187501|\u0110i\u1EC1u 1 13. Ngu\u1ED3n v\u1ED1n c\u1EE7a Nh\u00E0 n\u01B0\u1EDBc \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 114. H\u00ECnh th\u1EE9c huy \u0111\u1ED9ng v\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "90|456.5960077286585|87.00373340625008|409.9424022187501|\u0110i\u1EC1u 1 14. H\u00ECnh th\u1EE9c huy \u0111\u1ED9ng v\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 115. V\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n \u0111\u1ED1i v\u1EDBi t\u1EEBng lo\u1EA1i nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "90|135.36411778320314|86.99998940625012|390.4960662187501|\u0110i\u1EC1u 1 15. V\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n \u0111\u1ED1i v\u1EDBi t\u1EEBng lo\u1EA1i nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 116. Nguy\u00EAn t\u1EAFc huy \u0111\u1ED9ng, s\u1EED d\u1EE5ng v\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF",
+      "sourceIds": [
+        "92|397.2434779885204|87.00142940625015|471.14045821875015|\u0110i\u1EC1u 1 16. Nguy\u00EAn t\u1EAFc huy \u0111\u1ED9ng, s\u1EED d\u1EE5ng v\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF"
+      ]
+    },
+    {
+      "text": "ki\u1EC7n \u0111\u1ED1i v\u1EDBi t\u1EEBng lo\u1EA1i nh\u00E0 \u1EDF theo quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt v\u1EC1 nh\u00E0 \u1EDF th\u00EC kh\u00F4ng c\u00F3 gi\u00E1 tr\u1ECB ph\u00E1p l\u00FD.",
+      "sourceIds": [
+        "93|668.9332560565473|64.20075496875009|531.4044672187503|ki\u1EC7n \u0111\u1ED1i v\u1EDBi t\u1EEBng lo\u1EA1i nh\u00E0 \u1EDF theo quy \u0111\u1ECBnh c\u1EE7a ph\u00E1p lu\u1EADt v\u1EC1 nh\u00E0 \u1EDF th\u00EC kh\u00F4ng c\u00F3 gi\u00E1",
+        "93|649.9184771562501|64.21744537500004|124.33298503125005|tr\u1ECB ph\u00E1p l\u00FD."
+      ]
+    },
+    {
+      "text": "3. Vi\u1EC7c s\u1EED d\u1EE5ng v\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF ph\u1EA3i tu\u00E2n th\u1EE7 c\u00E1c nguy\u00EAn t\u1EAFc sau \u0111\u00E2y:",
+      "sourceIds": [
+        "93|628.2572689999998|87.32955590625005|519.6083115000001|3 . Vi\u1EC7c s\u1EED d\u1EE5ng v\u1ED1n \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDF ph\u1EA3i tu\u00E2n th\u1EE7 c\u00E1c nguy\u00EAn t\u1EAFc sau \u0111\u00E2y:"
+      ]
+    },
+    {
+      "text": "\u0110i\u1EC1u 117. Vay v\u1ED1n \u01B0u \u0111\u00E3i th\u00F4ng qua Ng\u00E2n h\u00E0ng ch\u00EDnh s\u00E1ch x\u00E3 h\u1ED9i \u0111\u1EC3 ph\u00E1t tri\u1EC3n nh\u00E0 \u1EDFx\u00E3 h\u1ED9i",
+      "sourceIds": [
+        "93|465.914653859375|86.99838140625006|531.5576507812499|\u0110i\u1EC1u 117. Vay v\u1ED1n \u01B0u \u0111\u00E3i th\u00F4ng qua Ng\u00E2n h\u00E0ng ch\u00EDnh s\u00E1ch x\u00E3 h\u1ED9i \u0111\u1EC3 ph\u00E1t tri\u1EC3n",
+        "93|447.95110821874994|64.56091481249999|132.03027740624998|nh\u00E0 \u1EDF x\u00E3 h\u1ED9i"
+      ]
+    }
+  ],
+  "ledger": [
+    {
+      "Ordinal": 1,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "ee87342f3de32e557275c59f981768c63013a6ae687d9fe22067950e769cf84d",
+      "ResponseSha256": "619942178f9abd9df3a83425837b316485699c8620d82df98398db9a0c99abed",
+      "RequestChars": 54177,
+      "ResponseChars": 2101,
+      "ElapsedMs": 8917,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022document-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0001:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022subtitle\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0002:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0004:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0005:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022chapter-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0004:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0008:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0009:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0008:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0010:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0008:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0018:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0008:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0096:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 2,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "846f0c2ead0a39a5c0d14e370fcd1a00ce0429e104976cd45a925b444c0374e0",
+      "ResponseSha256": "c73e15e095296ae59b55b2f431af0f7c1112225814a6d72912e04b8134a37737",
+      "RequestChars": 58354,
+      "ResponseChars": 1899,
+      "ElapsedMs": 6277,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0155:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0184:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022chapter-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0232:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022chapter-subtitle\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0232:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0233:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0233:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0234:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022subsection-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0234:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0235:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0235:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0236:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 3,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "cb235bf26ff5dbbc7034386ad6d15507e08e585116e734e3f4def66e3eaa2b9a",
+      "ResponseSha256": "1862bd16ad17c95f6ba8224ea6404706c9e8307d26fb7fd7d731288fb125e70b",
+      "RequestChars": 58642,
+      "ResponseChars": 3645,
+      "ElapsedMs": 10431,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022document title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0240:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section header\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0232:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022Ch\u01B0\u01A1ng II\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section header\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0233:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022S\u1EDE H\u1EEEU NH\u00C0 \u1EDE\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section header\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0234:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022M\u1EE5c 1\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section header\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0235:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022QUY \u0110\u1ECANH CHUNG V\u1EC0 S\u1EDE H\u1EEEU NH\u00C0 \u1EDE\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0236:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 6. Quy\u1EC1n c\u00F3 ch\u1ED7 \u1EDF v\u00E0 quy\u1EC1n s\u1EDF h\u1EEFu nh\u00E0 \u1EDF\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0243:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 7. B\u1EA3o h\u1ED9 quy\u1EC1n s\u1EDF h\u1EEFu nh\u00E0 \u1EDF\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0255:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 8. \u0110\u1ED1i t\u01B0\u1EE3ng v\u00E0 \u0111i\u1EC1u ki\u1EC7n \u0111\u01B0\u1EE3c s\u1EDF h\u1EEFu nh\u00E0 \u1EDF t\u1EA1i Vi\u1EC7t Nam\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0273:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 9. C\u00F4ng nh\u1EADn quy\u1EC1n s\u1EDF h\u1EEFu nh\u00E0 \u1EDF\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0300:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 10. Quy\u1EC1n c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF v\u00E0 ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 \u1EDF\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0334:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 11. Ngh\u0129a v\u1EE5 c\u1EE7a ch\u1EE7 s\u1EDF h\u1EEFu nh\u00E0 \u1EDF v\u00E0 ng\u01B0\u1EDDi s\u1EED d\u1EE5ng nh\u00E0 \u1EDF\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 4,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "7fd6c703cbc295eefffcd316db85cb44157e746d23c26d1e86b1517d334c9e7a",
+      "ResponseSha256": "6b2a12711c2f1bd7efd8df2ea3c1b613755a646ac67a40171894a89c5693e3af",
+      "RequestChars": 59572,
+      "ResponseChars": 2233,
+      "ElapsedMs": 6638,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0399:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0399:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0400:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0400:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0401:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0400:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0422:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0400:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0441:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0473:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0473:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0474:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0475:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0474:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0476:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 5,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "c2ccf66cfa013be0e31192ab4934b99260a5d2f3de0752a3e88fbca5b7af5f77",
+      "ResponseSha256": "4272a51aff85d471e92717ed11adb46fc2e2aa5f09783c668ac0f7de92a26d70",
+      "RequestChars": 58864,
+      "ResponseChars": 2569,
+      "ElapsedMs": 7801,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0473:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-subtitle\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0474:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0475:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0476:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0485:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0486:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0508:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0509:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0522:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0523:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0539:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0580:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 6,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "c45b594f1d2361949a40ea6b7e15501ee1a0dcbef9860988ee4cc2169e53d603",
+      "ResponseSha256": "60ea430a6ea118379aacc7dd19495f8a9693b697f6a6127144195151b0cd06a9",
+      "RequestChars": 58951,
+      "ResponseChars": 3222,
+      "ElapsedMs": 9334,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0636:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0636:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0637:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0638:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0639:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0639:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0640:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0640:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0641:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0640:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0649:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0640:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0670:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0671:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0685:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0685:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0686:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0686:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0687:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0688:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0686:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0709:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 7,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "8f90fe23fcf685a546514db3775ef9e43639ba23894f21195f445655396a9c74",
+      "ResponseSha256": "127a3042f1511b7d07bf49b848963913f2ee9e58d921427d9d5eee7a2535f94d",
+      "RequestChars": 59123,
+      "ResponseChars": 3210,
+      "ElapsedMs": 10448,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0720:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0721:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0722:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0730:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0762:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0795:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0827:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0803:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0803:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0804:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0804:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0805:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0805:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0806:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0806:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0807:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0806:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0821:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0822:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 8,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "ab46cd900555fb6751b84344a9981feb5592b82f6f1915cd94ad37e38fdd6463",
+      "ResponseSha256": "9791dfa8f4885b53a39ab2d692d35260b1785dd870476dd6969cab137e2f9d31",
+      "RequestChars": 59031,
+      "ResponseChars": 1318,
+      "ElapsedMs": 5822,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0840:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0840:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0856:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0856:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0934:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0934:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0941:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0942:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022nh\u00E0 \u1EDF\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022x\u00E2y d\u1EF1ng\u0022,\n          \u0022rightExactContext\u0022: \u0022\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 9,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "29abb4513ba6df25e98a9e774ea9988b74e154b501d8da2ae64112196fb77a15",
+      "ResponseSha256": "a4492f6b10b727613603d9fe232389b6fee2636ecad6806cbd140daf739b16e8",
+      "RequestChars": 58895,
+      "ResponseChars": 1600,
+      "ElapsedMs": 5942,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0967:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0968:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0969:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0969:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0984:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0969:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1014:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L0969:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1035:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 10,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "e6a91efc8032c563fabe3e49549ec401d6e1b533e909eb8f4b1701539edf7bbf",
+      "ResponseSha256": "fd59b7efaa8e9374a737b2a644b9de565a23b15ce7788ab5a118c327e53e4613",
+      "RequestChars": 60444,
+      "ResponseChars": 1456,
+      "ElapsedMs": 5153,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1083:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1084:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1085:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1104:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1137:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1156:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 11,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "cba22bbaa7af9a833aa74b92092c029a0c9a9f9864ed8480840fb619abfdb7f7",
+      "ResponseSha256": "093a462a595741d7bd02f6949a43005dcedf56cae8cd3551238ecf3ac44900a6",
+      "RequestChars": 59466,
+      "ResponseChars": 2464,
+      "ElapsedMs": 8858,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022running-header\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1200:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-number-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1217:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-number-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1224:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022running-header\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1232:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-number-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1269:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-number-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1281:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022running-header\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1301:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-level-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1318:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-title\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1319:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 12,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "7580f103afaf438bf27ba822d0f749de09f36ef9cdff281dca7148939efd7fd4",
+      "ResponseSha256": "430cf355308070ace5ef50bd3311f6402969688a4e6c4fff4df8a78ff57e90fa",
+      "RequestChars": 61048,
+      "ResponseChars": 1880,
+      "ElapsedMs": 6665,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1320:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1320:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1335:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1320:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1375:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1376:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0111\u1ECBnh c\u01B0\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1320:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1385:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1320:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1412:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1413:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0111\u1ECBnh c\u01B0\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1441:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 13,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "80a0fb3ea5d3d10a01f6df1c97c1e61b5105cca1d683138da695123a232a180a",
+      "ResponseSha256": "bed1c23a2eaf9dc91baa2da7eebd12447138ab17fbdba5ed55c1070d587709b3",
+      "RequestChars": 59556,
+      "ResponseChars": 3514,
+      "ElapsedMs": 12216,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1440:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1441:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1459:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1460:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1461:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1480:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1498:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1509:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1510:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1544:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1545:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1546:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1547:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1548:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 14,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "623b9120f3e83f19ce826121b3f6a0f233ac57e2d22037013925ddc4801e8da8",
+      "ResponseSha256": "9ac4c45a22a549d1eb274884de593ea5ec78f870e1f84bccd5790010662789b1",
+      "RequestChars": 57997,
+      "ResponseChars": 1873,
+      "ElapsedMs": 8651,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1544:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1544:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1546:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1546:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1547:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1547:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1548:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1547:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1563:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1547:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1592:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1547:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1682:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 15,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "c1463dc63feba7c75b9221bd488bd8f07f1b900f2d9c5e3eb92a46b59767cc7c",
+      "ResponseSha256": "ef0ac0b4a95e64ad68ccda9f278525c004d08e36767e2dca9de89eda4ee7f368",
+      "RequestChars": 58825,
+      "ResponseChars": 2577,
+      "ElapsedMs": 7965,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1680:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1681:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1682:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1682:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1708:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L1708:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1724:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1725:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1761:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1762:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1763:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1764:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1792:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 16,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "c927f67b57148e2f42263bf8d63ff6feaf3cb04449845c46c8adc245c4d551b6",
+      "ResponseSha256": "1f5ca2ce53ad343674abe68fd7467fc2ad4448568b6afc7282e5c6875d033608",
+      "RequestChars": 60007,
+      "ResponseChars": 1892,
+      "ElapsedMs": 6407,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1800:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1815:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-header\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1828:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1829:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1830:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1831:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1832:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1857:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1896:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 17,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "71aeaf8c541920d564abcaec9511d9bd8a284cde1b5c939f816156bd28679a55",
+      "ResponseSha256": "f64f35b40db70c9d02658896f0a636bb558d9a25ff2a4463fd653209c5711ff6",
+      "RequestChars": 59641,
+      "ResponseChars": 1492,
+      "ElapsedMs": 5594,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1965:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1966:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1967:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2015:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2016:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0111\u1ECBnh c\u01B0\u0022,\n          \u0022occurrence\u0022: 1\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2054:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 18,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "0a2ef5e41d77f1944b9ed1b59dc78e9fade3a5597c7a65d4b9a6e4599b0ef633",
+      "ResponseSha256": "0a92923ff876a34fdc937500cbe18a9bf37f97b87131ad45f2c5d8ba260c5b7b",
+      "RequestChars": 58559,
+      "ResponseChars": 3009,
+      "ElapsedMs": 11402,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2054:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2106:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022DI D\\u1edCI, C\\u01af\\u1ee0NG CH\\u1ebe DI D\\u1edCI V\\u00c0 PH\\u00c1 \\u0110\\u1ec6 NH\\u00c0 CHUNG C\\u01af\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2107:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2146:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2175:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022none\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2041:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022none\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2077:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022none\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2105:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022none\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2112:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022none\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2145:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022none\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2179:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 19,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "c0041360d636c257d8bc562cc0f5d6d8e5c96eb501506aab5fbadc75b4b047ba",
+      "ResponseSha256": "87f9a345efdaaa5a88fbabf9a34dd251ceb6f1c07126a4b6d7188980b636cb3c",
+      "RequestChars": 58638,
+      "ResponseChars": 1786,
+      "ElapsedMs": 7525,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2175:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2201:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2202:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2203:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2204:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2205:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2232:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2266:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 20,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "2c88aaac3daded4010ec3e6c83d24627a2d823430425b0db9ff25ef341d9a066",
+      "ResponseSha256": "e0971e65073e4f1677f59cd00e796a4ed919d383ad06977eec20a76d343c3749",
+      "RequestChars": 60794,
+      "ResponseChars": 1694,
+      "ElapsedMs": 6887,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2330:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2330:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2354:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2355:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2356:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2354:S0-L2355:S0-L2356:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2357:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2354:S0-L2355:S0-L2356:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2376:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2377:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2354:S0-L2355:S0-L2356:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2389:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 21,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "aa928dca21d4d4b2804bf7e34b973f1769e9028de34e785d036b89a36d495703",
+      "ResponseSha256": "3c967c27508b623cc8bd4df6fd2864e88379a39dd63ba4817599fd2949a3ae66",
+      "RequestChars": 61237,
+      "ResponseChars": 4084,
+      "ElapsedMs": 13577,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2405:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2405:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2413:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2405:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2421:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2405:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2431:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2405:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2448:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2405:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2455:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2405:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2457:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2459:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2459:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2467:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2459:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2476:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2459:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2494:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2459:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2497:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2459:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2509:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2510:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2511:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:L2510:S0\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2518:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 22,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "61f8777e47dbade89e2ac514c86dc16a8c4270bd6a090f02e58269891cff02bd",
+      "ResponseSha256": "409dbf1349bef5a7ca7ab67a5b96903701aca2146b0a56c8fc02ee64493508b6",
+      "RequestChars": 60310,
+      "ResponseChars": 1363,
+      "ElapsedMs": 6038,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2510:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2511:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2568:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2569:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2582:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2583:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2611:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 23,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "8d69ba3c89098a40bc423bddb9a032dd99e16ef40c9837653d4d4404590c4f0e",
+      "ResponseSha256": "d0b6b8f58488c284ffbb1828012926661d67968972b828fbe6a1a6e45827ee83",
+      "RequestChars": 60888,
+      "ResponseChars": 1066,
+      "ElapsedMs": 6316,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2648:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2652:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2678:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2742:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 24,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "55d7b13342dac422cbea7274e67f92f09a9ac7ad9527ca923a691070404662d2",
+      "ResponseSha256": "e2df6cb3ddb75c9df377b4cb989192c7508b9efc4c580184273db850a3fbf315",
+      "RequestChars": 58388,
+      "ResponseChars": 4900,
+      "ElapsedMs": 15157,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2768:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2769:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2770:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2771:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2772:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2779:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2780:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2785:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2786:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2802:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2803:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2816:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2817:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2837:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2838:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2844:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2845:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2855:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2856:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2857:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2871:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2872:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2874:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2875:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2892:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2893:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2894:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2895:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 25,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "07d0c8de3a2dbd9952c06f505ec54e267a3ce7b967457ed44fa7a747c9d8f385",
+      "ResponseSha256": "0f9b08f15f4fba100c18c06a778e7c765286a71115a95f65f4f0cf904bdd1fd6",
+      "RequestChars": 59356,
+      "ResponseChars": 7945,
+      "ElapsedMs": 22113,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022page-number\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2880:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2892:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2893:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2894:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 101. \u0110\u1ED1i t\u01B0\u1EE3ng \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0022,\n          \u0022rightExactContext\u0022: \u0022v\u0169 trang nh\u00E2n d\u00E2n\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2895:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022v\u0169 trang nh\u00E2n d\u00E2n\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0110i\u1EC1u 101. \u0110\u1ED1i t\u01B0\u1EE3ng \u0111\u01B0\u1EE3c h\u01B0\u1EDFng ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng \u0022,\n          \u0022rightExactContext\u0022: \u0022\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2901:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2905:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2915:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2921:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 105. Lo\u1EA1i d\u1EF1 \u00E1n v\u00E0 y\u00EAu c\u1EA7u \u0111\u1ED1i v\u1EDBi d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n; lo\u1EA1i nh\u00E0 v\u00E0 ti\u00EAu chu\u1EA9n di\u1EC7n t\u00EDch nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0022,\n          \u0022rightExactContext\u0022: \u0022\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2936:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 106. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0022,\n          \u0022rightExactContext\u0022: \u0022nh\u00E2n d\u00E2n\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2937:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022nh\u00E2n d\u00E2n\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0110i\u1EC1u 106. Ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang \u0022,\n          \u0022rightExactContext\u0022: \u0022\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022page-number\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2949:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2950:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 107. \u01AFu \u0111\u00E3i ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0022,\n          \u0022rightExactContext\u0022: \u0022v\u0169 trang nh\u00E2n d\u00E2n\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2951:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022v\u0169 trang nh\u00E2n d\u00E2n\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0110i\u1EC1u 107. \u01AFu \u0111\u00E3i ch\u1EE7 \u0111\u1EA7u t\u01B0 d\u1EF1 \u00E1n \u0111\u1EA7u t\u01B0 x\u00E2y d\u1EF1ng nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng \u0022,\n          \u0022rightExactContext\u0022: \u0022\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2958:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 108. X\u00E1c \u0111\u1ECBnh gi\u00E1 b\u00E1n, gi\u00E1 thu\u00EA mua, gi\u00E1 thu\u00EA nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0022,\n          \u0022rightExactContext\u0022: \u0022trang nh\u00E2n d\u00E2n\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2959:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022trang nh\u00E2n d\u00E2n\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0110i\u1EC1u 108. X\u00E1c \u0111\u1ECBnh gi\u00E1 b\u00E1n, gi\u00E1 thu\u00EA mua, gi\u00E1 thu\u00EA nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 \u0022,\n          \u0022rightExactContext\u0022: \u0022\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2967:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 109. Nguy\u00EAn t\u1EAFc b\u00E1n, cho thu\u00EA mua, cho thu\u00EA nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0022,\n          \u0022rightExactContext\u0022: \u0022trang nh\u00E2n d\u00E2n v\u00E0 qu\u1EA3n l\u00FD v\u1EADn h\u00E0nh nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2968:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022trang nh\u00E2n d\u00E2n v\u00E0 qu\u1EA3n l\u00FD v\u1EADn h\u00E0nh nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 trang nh\u00E2n d\u00E2n\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0110i\u1EC1u 109. Nguy\u00EAn t\u1EAFc b\u00E1n, cho thu\u00EA mua, cho thu\u00EA nh\u00E0 \u1EDF cho l\u1EF1c l\u01B0\u1EE3ng v\u0169 \u0022,\n          \u0022rightExactContext\u0022: \u0022\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022section-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2975:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2976:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2977:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022article-heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2978:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022\u0110i\u1EC1u 110. Ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF cho h\u1ED9 gia \u0111\u00ECnh, c\u00E1 nh\u00E2n t\u1EF1 x\u00E2y d\u1EF1ng\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0022,\n          \u0022rightExactContext\u0022: \u0022ho\u1EB7c c\u1EA3i t\u1EA1o, s\u1EEDa ch\u1EEFa nh\u00E0 \u1EDF\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L2979:S0\u0022,\n          \u0022selectionMode\u0022: \u0022VERBATIM_TEXT\u0022,\n          \u0022verbatimText\u0022: \u0022ho\u1EB7c c\u1EA3i t\u1EA1o, s\u1EEDa ch\u1EEFa nh\u00E0 \u1EDF\u0022,\n          \u0022occurrence\u0022: 1,\n          \u0022leftExactContext\u0022: \u0022\u0110i\u1EC1u 110. Ch\u00EDnh s\u00E1ch h\u1ED7 tr\u1EE3 v\u1EC1 nh\u00E0 \u1EDF cho h\u1ED9 gia \u0111\u00ECnh, c\u00E1 nh\u00E2n t\u1EF1 x\u00E2y d\u1EF1ng \u0022,\n          \u0022rightExactContext\u0022: \u0022\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022page-number\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L2983:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 26,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "6dbc1502d2c9f94da3c26289f55b78a41f48c4ea8544fe690de6ffb181e30d62",
+      "ResponseSha256": "aa7f792bbd67522d1a65a8731ef787513449252a79acd1193e5a90ba7dd9d73e",
+      "RequestChars": 59552,
+      "ResponseChars": 2407,
+      "ElapsedMs": 8695,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3009:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L3010:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3002:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L3003:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3011:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3019:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3030:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3045:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3099:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3130:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L3131:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "Ordinal": 27,
+      "DocumentId": "DOC-0092",
+      "Repeat": 0,
+      "Stage": "semantic-pdf-structured",
+      "SystemPromptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+      "RequestSha256": "7a8e60cd848aa76bcb0e4a19f2eeabdd53eb5df7d6d07249c66bb54368fd7c03",
+      "ResponseSha256": "9510dc2711c764ba77683d8e984653aafb4ea963e4875adbeb10dafedbaa1746",
+      "RequestChars": 15388,
+      "ResponseChars": 1003,
+      "ElapsedMs": 4000,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3120:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L3121:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3122:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    },\n    {\n      \u0022isHeading\u0022: true,\n      \u0022semanticRole\u0022: \u0022heading\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ],\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L3130:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L3131:S0\u0022,\n          \u0022selectionMode\u0022: \u0022WHOLE_ALIAS\u0022\n        }\n      ]\n    }\n  ]\n}"
+    }
+  ]
+}

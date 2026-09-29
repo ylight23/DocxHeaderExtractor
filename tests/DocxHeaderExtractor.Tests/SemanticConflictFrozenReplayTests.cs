@@ -18,12 +18,13 @@ public sealed class SemanticConflictFrozenReplayTests
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
     [Fact]
-    public void Frozen_W2_W3_role_conflict_is_bindable_without_gold_or_provider()
+    public void Frozen_W2_W3_role_conflict_is_withheld_without_adjudication()
     {
-        var root = RepoRoot();
+        var root = TestRepository.Root();
         var sourceFile = Path.Combine(root, SourcePath.Replace('/', Path.DirectorySeparatorChar));
         Assert.True(File.Exists(sourceFile), $"Missing faithful source: {sourceFile}");
-        Assert.Equal(SourceSha256, Sha256(sourceFile));
+        // Byte-exact, deliberately: a DOCX is the source itself, not an artifact about it.
+        Assert.Equal(SourceSha256, CanonicalArtifactHash.OfBytes(sourceFile));
 
         var source = new OpenXmlDocumentSource().Read(sourceFile) with { DocumentId = "DOC-0205" };
         var aliases = source.Paragraphs
@@ -56,9 +57,21 @@ public sealed class SemanticConflictFrozenReplayTests
             var normalized = SemanticConflictNormalizer.Normalize(conflictInput, aliases);
             Assert.Empty(normalized.Conflicts);
             var attributeConflict = Assert.Single(normalized.AttributeConflicts);
-            var bindingReady = Assert.Single(normalized.BindingReadyProposals);
+            Assert.Empty(normalized.BindingReadyProposals);
             Assert.Equal("semanticRole", Assert.Single(attributeConflict.ContestedFields.Keys));
-            Assert.Null(bindingReady.SemanticRole);
+
+            // Names the stage that withholds it, not just the count. Nothing here is rejected by
+            // contract validation: both proposals address S0239 correctly and quote it exactly.
+            // They disagree about what it means, so the normalizer holds the occurrence back for
+            // adjudication - which is what "unresolved is withheld, never silently collapsed"
+            // means in practice. The committed artifact recorded 1 for a while after this became
+            // 0, because the expectation was updated and the artifact was not.
+            Assert.Equal(
+                ["ARTICLE", "CHAPTER"],
+                attributeConflict.ContestedFields["semanticRole"].Order(StringComparer.Ordinal));
+            Assert.All(conflictInput, item => Assert.Empty(
+                CanonicalSemanticContractValidator.Validate(
+                    item, aliases.ToDictionary(alias => alias.Alias, StringComparer.Ordinal))));
 
             var newBound = CanonicalSemanticExactBinder.Bind(normalized.BindingReadyProposals, aliases, out var newObservations);
             var newBindFailure = newObservations.Count(item => item.Status != CanonicalSemanticBindingStatus.Bound);
@@ -67,8 +80,8 @@ public sealed class SemanticConflictFrozenReplayTests
 
             Assert.Single(oldDirectBound);
             Assert.Equal(1, oldDirectFailure);
-            Assert.Single(newBound);
-            Assert.Equal(1, newObservations.Count(item => item.Status == CanonicalSemanticBindingStatus.Bound));
+            Assert.Empty(newBound);
+            Assert.Empty(newObservations);
             Assert.Equal(0, newBindFailure);
             Assert.True(hardValidation.IsValid);
 
@@ -98,7 +111,7 @@ public sealed class SemanticConflictFrozenReplayTests
                     bindingReadyOccurrence = normalized.BindingReadyProposals.Count,
                     attributeConflict = normalized.AttributeConflicts.Count,
                     contestedFields = attributeConflict.ContestedFields.Keys.OrderBy(item => item, StringComparer.Ordinal).ToArray(),
-                    consensusSemanticRole = bindingReady.SemanticRole,
+                    consensusSemanticRole = (string?)null,
                     binderInput = normalized.BindingReadyProposals.Count,
                     binderOutput = newBound.Count,
                     bindFailure = newBindFailure,
@@ -112,15 +125,16 @@ public sealed class SemanticConflictFrozenReplayTests
         Assert.All(all, repeat =>
         {
             Assert.Equal(2, (int)repeat.s0239InputProposals);
-            Assert.Equal(1, (int)repeat.newPath.bindingReadyOccurrence);
+            Assert.Equal(0, (int)repeat.newPath.bindingReadyOccurrence);
             Assert.Equal(1, (int)repeat.newPath.attributeConflict);
             Assert.Equal(0, (int)repeat.newPath.bindFailure);
             Assert.Equal(0, (int)repeat.newPath.systemLoss);
         });
 
-        var artifactPath = Path.Combine(root, OutputPath.Replace('/', Path.DirectorySeparatorChar));
-        Directory.CreateDirectory(Path.GetDirectoryName(artifactPath)!);
-        File.WriteAllText(artifactPath, JsonSerializer.Serialize(new
+        FreezeArtifact.AssertText(
+            Path.GetDirectoryName(OutputPath)!.Replace(Path.DirectorySeparatorChar, '/'),
+            Path.GetFileName(OutputPath),
+            JsonSerializer.Serialize(new
         {
             schemaVersion = "a99-semantic-conflict-frozen-replay-v1",
             status = "COMPLETE",
@@ -137,12 +151,12 @@ public sealed class SemanticConflictFrozenReplayTests
             acceptance = new
             {
                 s0239InputProposals = 2,
-                bindingReadyOccurrence = 1,
+                bindingReadyOccurrence = 0,
                 attributeConflict = 1,
                 contestedField = "semanticRole",
                 consensusSemanticRole = (string?)null,
-                binderInput = 1,
-                binderOutput = 1,
+                binderInput = 0,
+                binderOutput = 0,
                 bindFailure = 0,
                 systemLoss = 0
             },
@@ -157,13 +171,18 @@ public sealed class SemanticConflictFrozenReplayTests
         using var freeze = JsonDocument.Parse(File.ReadAllText(freezePath));
         var freezeRoot = freeze.RootElement;
         Assert.False(freezeRoot.GetProperty("goldReadBeforeFreeze").GetBoolean());
-        Assert.Equal(Sha256(predictionPath), freezeRoot.GetProperty("predictionSha256").GetString());
+        // Canonical text, not raw bytes: the file's line endings are a property of the checkout,
+        // not of the prediction. The freeze declares the rule it was recorded under.
+        Assert.Equal(
+            CanonicalArtifactHash.Contract,
+            freezeRoot.GetProperty(CanonicalArtifactHash.ContractField).GetString());
+        Assert.Equal(
+            freezeRoot.GetProperty("predictionSha256").GetString(),
+            CanonicalArtifactHash.OfTextFile(predictionPath));
         using var prediction = JsonDocument.Parse(File.ReadAllText(predictionPath));
         return JsonSerializer.Deserialize<IReadOnlyList<CanonicalSemanticProposal>>(
             prediction.RootElement.GetProperty("proposals").GetRawText(), JsonOptions) ?? [];
     }
 
-    private static string RepoRoot() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
     private static string Relative(string root, string path) => Path.GetRelativePath(root, path).Replace(Path.DirectorySeparatorChar, '/');
-    private static string Sha256(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
 }

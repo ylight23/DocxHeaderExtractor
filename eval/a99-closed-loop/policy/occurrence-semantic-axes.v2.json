@@ -1,0 +1,255 @@
+{
+  "artifactKind": "a99_occurrence_ontology",
+  "ontologyId": "OCCURRENCE_SEMANTIC_AXES_V2",
+  "supersedes": {
+    "path": "eval/a99-closed-loop/policy/occurrence-semantic-axes.v1.json",
+    "defect": "REPEATED_TITLE and SUBTITLE were occurrence roles beside REGION_OPENER, so a repeated title that opens a region, or a title part, could not be described"
+  },
+  "status": "FROZEN",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-24",
+  "axes": [
+    {
+      "axis": "semanticFunctions",
+      "values": {
+        "IDENTITY": "says what this is: identifies the semantic artifact or unit the reader is entering",
+        "STRUCTURE": "says where the following content sits: organizes hierarchy inside an artifact already identified",
+        "INFORMATION": "says something about the artifact or its context: date, place, version, author, status, figures"
+      },
+      "cardinality": "one or more, with one primaryFunction (\"Agenda\" is IDENTITY of the embedded agenda and STRUCTURE of the meeting document)"
+    },
+    {
+      "axis": "scope",
+      "values": [
+        "DOCUMENT",
+        "DOCUMENT_PART",
+        "EMBEDDED_ARTIFACT",
+        "SECTION",
+        "CLAUSE",
+        "FORM",
+        "FORM_FIELD",
+        "TABLE",
+        "LIST",
+        "TOC",
+        "EVENT",
+        "REVISION_ENTRY",
+        "NOTE"
+      ],
+      "cardinality": "the object the occurrence is about; open-ended"
+    },
+    {
+      "axis": "occurrenceRoles",
+      "values": [
+        "REGION_OPENER",
+        "LOCAL_LABEL",
+        "CAPTION",
+        "FIELD_LABEL",
+        "METADATA",
+        "NAVIGATION",
+        "BODY_CONTENT",
+        "PAGE_FURNITURE"
+      ],
+      "cardinality": "one or more: how the occurrence behaves in the layout (\"Examples of ...\" over its bullets is REGION_OPENER and LOCAL_LABEL)"
+    },
+    {
+      "axis": "titleRelation",
+      "values": [
+        "NONE",
+        "TITLE",
+        "TITLE_PART"
+      ],
+      "cardinality": "TITLE names an artifact or unit; TITLE_PART is one line of a multi-line title and belongs to that title's claim as a source part, never a claim of its own"
+    },
+    {
+      "axis": "repeatStatus",
+      "values": [
+        "FIRST",
+        "REPEATED"
+      ],
+      "cardinality": "REPEATED restates text already used as a title; it says nothing about membership - a repeat can still open a region"
+    },
+    {
+      "axis": "informationType",
+      "values": [
+        "TEMPORAL_METADATA",
+        "LOCATION",
+        "VERSION",
+        "AUTHOR",
+        "STATUS",
+        "QUANTITY"
+      ],
+      "cardinality": "only when INFORMATION is among the functions"
+    },
+    {
+      "axis": "isHeading",
+      "values": [
+        "true",
+        "false"
+      ],
+      "cardinality": "decided last, by policy and the human reviewer - never implied by one axis alone"
+    }
+  ],
+  "order": [
+    "What does it say? (semanticFunctions)",
+    "What object is it about? (scope)",
+    "How does it behave in the layout? (occurrenceRoles, titleRelation, repeatStatus)",
+    "Only then: is this occurrence a heading? (isHeading)"
+  ],
+  "principles": [
+    "Semantic function is not heading status: IDENTITY of a TABLE in a CAPTION role is not a heading.",
+    "METADATA is not an absolute non-heading: INFORMATION in a REGION_OPENER role can open a region (a revision date over its revision note).",
+    "Repetition is not exclusion: a REPEATED title that opens a region is a heading occurrence.",
+    "A title that wraps over lines is one claim: its lines are TITLE_PART source parts of that claim.",
+    "The LLM proposes axes; the harness/policy layer decides or checks isHeading, canonical role, hierarchy and projection."
+  ],
+  "examples": [
+    {
+      "text": "MINUTES OF ...",
+      "semanticFunctions": [
+        "IDENTITY"
+      ],
+      "scope": "DOCUMENT",
+      "occurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "titleRelation": "TITLE",
+      "repeatStatus": "FIRST",
+      "isHeading": true
+    },
+    {
+      "text": "SESSION III",
+      "semanticFunctions": [
+        "STRUCTURE"
+      ],
+      "scope": "SECTION",
+      "occurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "titleRelation": "TITLE",
+      "repeatStatus": "FIRST",
+      "isHeading": true
+    },
+    {
+      "text": "March 7–8, 2025",
+      "semanticFunctions": [
+        "INFORMATION"
+      ],
+      "scope": "EVENT",
+      "occurrenceRoles": [
+        "METADATA"
+      ],
+      "titleRelation": "NONE",
+      "repeatStatus": "FIRST",
+      "isHeading": false
+    },
+    {
+      "text": "July 2023 (over its revision note)",
+      "semanticFunctions": [
+        "INFORMATION",
+        "STRUCTURE"
+      ],
+      "scope": "REVISION_ENTRY",
+      "occurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "titleRelation": "NONE",
+      "repeatStatus": "FIRST",
+      "isHeading": true
+    },
+    {
+      "text": "Agenda",
+      "semanticFunctions": [
+        "IDENTITY",
+        "STRUCTURE"
+      ],
+      "scope": "EMBEDDED_ARTIFACT",
+      "occurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "titleRelation": "TITLE",
+      "repeatStatus": "FIRST",
+      "isHeading": true
+    },
+    {
+      "text": "Date: (day month year)",
+      "semanticFunctions": [
+        "INFORMATION"
+      ],
+      "scope": "FORM_FIELD",
+      "occurrenceRoles": [
+        "FIELD_LABEL"
+      ],
+      "titleRelation": "NONE",
+      "repeatStatus": "FIRST",
+      "isHeading": false
+    },
+    {
+      "text": "Table A. Local Currency",
+      "semanticFunctions": [
+        "IDENTITY"
+      ],
+      "scope": "TABLE",
+      "occurrenceRoles": [
+        "CAPTION"
+      ],
+      "titleRelation": "TITLE",
+      "repeatStatus": "FIRST",
+      "isHeading": false
+    },
+    {
+      "text": "Part C – Fraud and Corruption",
+      "semanticFunctions": [
+        "IDENTITY",
+        "STRUCTURE"
+      ],
+      "scope": "DOCUMENT_PART",
+      "occurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "titleRelation": "TITLE",
+      "repeatStatus": "FIRST",
+      "isHeading": true
+    },
+    {
+      "text": "Particular Conditions (again, above Part C)",
+      "semanticFunctions": [
+        "IDENTITY"
+      ],
+      "scope": "DOCUMENT",
+      "occurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "titleRelation": "TITLE",
+      "repeatStatus": "REPEATED",
+      "isHeading": true
+    },
+    {
+      "text": "ES Demand Guarantee (under its form title)",
+      "semanticFunctions": [
+        "IDENTITY"
+      ],
+      "scope": "FORM",
+      "occurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "titleRelation": "TITLE_PART",
+      "repeatStatus": "FIRST",
+      "isHeading": true
+    }
+  ],
+  "legacyProjection": {
+    "mapping": {
+      "IDENTITY": "DOCUMENT_LABEL",
+      "STRUCTURE": "STRUCTURAL_UNIT",
+      "INFORMATION": "NON_STRUCTURAL"
+    },
+    "lossy": true,
+    "lostDistinctions": [
+      "INFORMATION + REGION_OPENER",
+      "IDENTITY + STRUCTURE",
+      "IDENTITY + CAPTION",
+      "REPEATED + REGION_OPENER"
+    ]
+  },
+  "modelContractChanged": false
+}

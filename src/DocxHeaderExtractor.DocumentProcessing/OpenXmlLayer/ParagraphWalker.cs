@@ -6,9 +6,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 /// <summary>Một đoạn trong document.xml kèm địa chỉ ổn định và ngữ cảnh duyệt.</summary>
 public sealed record WalkedParagraph(
     Paragraph Element,
-    string StableId,
-    int TableDepth,
-    int SectionIndex);
+    string StableId);
 
 /// <summary>
 /// Thứ tự duyệt paragraph của document.xml — nguồn duy nhất sinh ra <c>index</c> và
@@ -23,17 +21,11 @@ public static class ParagraphWalker
     {
         ArgumentNullException.ThrowIfNull(body);
         ArgumentNullException.ThrowIfNull(options);
-        return Walk(body, new WalkState(), tableDepth: 0, path: "body[1]", options);
-    }
-
-    private sealed class WalkState
-    {
-        public int SectionIndex;
+        return Walk(body, tableDepth: 0, path: "body[1]", options);
     }
 
     private static IEnumerable<WalkedParagraph> Walk(
         OpenXmlElement parent,
-        WalkState state,
         int tableDepth,
         string path,
         ExtractionOptions options)
@@ -49,7 +41,7 @@ public static class ParagraphWalker
             switch (child)
             {
                 case Paragraph p:
-                    yield return new WalkedParagraph(p, childPath, tableDepth, state.SectionIndex);
+                    yield return new WalkedParagraph(p, childPath);
 
                     // Textbox (w:txbxContent) nằm lồng trong drawing của paragraph. Nếu chỉ lấy
                     // Paragraph cấp ngoài thì text trong hộp bị nối vào đoạn neo hoặc biến mất.
@@ -59,29 +51,24 @@ public static class ParagraphWalker
                         .ToList();
                     for (var box = 0; box < textBoxes.Count; box++)
                         foreach (var nested in Walk(
-                                     textBoxes[box], state, tableDepth,
+                                     textBoxes[box], tableDepth,
                                      $"{childPath}/txbxContent[{box + 1}]", options))
                             yield return nested;
 
-                    if (p.ParagraphProperties?.SectionProperties is not null) state.SectionIndex++;
                     break;
 
                 case Table when !options.IncludeTables:
                     break;
 
                 case Table:
-                    foreach (var nested in Walk(child, state, tableDepth + 1, childPath, options))
+                    foreach (var nested in Walk(child, tableDepth + 1, childPath, options))
                         yield return nested;
-                    break;
-
-                case SectionProperties:
-                    state.SectionIndex++;
                     break;
 
                 default:
                     // sdt, customXml, TableRow, TableCell, bookmark container… – đệ quy nếu còn đoạn bên trong.
                     if (child.HasChildren && child.Descendants<Paragraph>().Any())
-                        foreach (var nested in Walk(child, state, tableDepth, childPath, options))
+                        foreach (var nested in Walk(child, tableDepth, childPath, options))
                             yield return nested;
                     break;
             }

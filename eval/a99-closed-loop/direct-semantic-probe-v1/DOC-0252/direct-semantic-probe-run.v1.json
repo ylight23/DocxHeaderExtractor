@@ -1,0 +1,101 @@
+{
+  "artifactKind": "a99_direct_semantic_probe_run",
+  "schemaVersion": "a99-direct-semantic-probe-run-v1",
+  "probeId": "DIRECT_SEMANTIC_DISCRIMINATION_PROBE",
+  "head": "2e751816d600cf6632cdb160f353340b502e1bf2",
+  "authorizedBaseCommit": "df1d9bc56b0515805452d2fa9a0f2f18be76fb14",
+  "descendantChangedPaths": [
+    "tests/DocxHeaderExtractor.Tests/DirectSemanticProbePreflightTests.cs",
+    "tests/DocxHeaderExtractor.Tests/DirectSemanticProbeTransportTests.cs"
+  ],
+  "approval": "explicit-user-authorization, DOC-0252, 3 contexts x 3 repeats, exactly 9 calls, no replacement and no safety margin",
+  "documentId": "DOC-0252",
+  "diagnosticOnly": true,
+  "productionRecallGateIntroduced": false,
+  "promptSha256": "57797bdced0e9918607cbf0a55239a746303d2445c103c4e8cb27012cd9b2fd8",
+  "schemaSha256": "20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+  "providerInputPlanSha256": "3e3048d63575c4ac6281c5e95480752e3b1144bf52be004de291899bb084c64d",
+  "pack001ProviderInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+  "pack005ProviderInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+  "pack006ProviderInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+  "authorizedCalls": 9,
+  "callsMade": 0,
+  "replacementCalls": 0,
+  "stage1Calls": 0,
+  "stage2Calls": 0,
+  "placementCalls": 0,
+  "secondModelReplay": false,
+  "model": "qwen/qwen3.7-flash",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+  "scoringPerformed": false,
+  "halted": "r1 PACK_001: transport failed: HttpRequestException: OpenRouter trả 400 Bad Request: {\"error\":{\"message\":\"Provider returned error\",\"code\":400,\"metadata\":{\"raw\":\"data: {\\\"error\\\":{\\\"code\\\":\\\"invalid_parameter_error\\\",\\\"param\\\":null,\\\"message\\\":\\\"'messages' must contain the word 'json' in some form, to use 'response_format' of type 'json_object'.\\\",\\\"type\\\":\\\"invalid_request_error\\\"},\\\"id\\\":\\\"chatcmpl-1c63ef0b-c85e-9f89-874a-a5ae8d2217d0\\\"}\\n\\n\",\"provider_name\":\"Alibaba\",\"is_byok\":false}},\"user_id\":\"user_3HIWseSvek9HMXyFgnKkZuubz1K\"}",
+  "reservations": [
+    {
+      "identity": "PACK_001:r1",
+      "slot": "PACK_001.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_005:r1",
+      "slot": "PACK_005.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_006:r1",
+      "slot": "PACK_006.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_001:r2",
+      "slot": "PACK_001.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_005:r2",
+      "slot": "PACK_005.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_006:r2",
+      "slot": "PACK_006.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_001:r3",
+      "slot": "PACK_001.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_005:r3",
+      "slot": "PACK_005.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_006:r3",
+      "slot": "PACK_006.capture-slot.v1.json"
+    }
+  ],
+  "gates": [
+    "probe: MATCH expected=DIRECT_SEMANTIC_DISCRIMINATION_PROBE actual=DIRECT_SEMANTIC_DISCRIMINATION_PROBE",
+    "sourceHash: MATCH expected=a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61 actual=a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverse: MATCH expected=2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f actual=2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "goldHash: MATCH expected=e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e actual=e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "items: MATCH expected=18 actual=18",
+    "promptHash: MATCH expected=57797bdced0e9918607cbf0a55239a746303d2445c103c4e8cb27012cd9b2fd8 actual=57797bdced0e9918607cbf0a55239a746303d2445c103c4e8cb27012cd9b2fd8",
+    "contexts: MATCH expected=3 actual=3",
+    "schemaHash: MATCH expected=20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9 actual=20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+    "PACK_001:providerInput: MATCH expected=237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4 actual=237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+    "PACK_001:expectedItemCount: MATCH expected=38 actual=38",
+    "PACK_001:maxTokens: MATCH expected=4960 actual=4960",
+    "PACK_005:providerInput: MATCH expected=7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5 actual=7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+    "PACK_005:expectedItemCount: MATCH expected=119 actual=119",
+    "PACK_005:maxTokens: MATCH expected=15328 actual=15328",
+    "PACK_006:providerInput: MATCH expected=e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f actual=e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+    "PACK_006:expectedItemCount: MATCH expected=57 actual=57",
+    "PACK_006:maxTokens: MATCH expected=7392 actual=7392",
+    "providerInputPlan: MATCH expected=3e3048d63575c4ac6281c5e95480752e3b1144bf52be004de291899bb084c64d actual=3e3048d63575c4ac6281c5e95480752e3b1144bf52be004de291899bb084c64d",
+    "noLeak:NON_STRUCTURAL\":: MATCH expected=absent actual=absent",
+    "noLeak:expectedLabel: MATCH expected=absent actual=absent",
+    "noLeak:masthead: MATCH expected=absent actual=absent",
+    "noLeak:DocumentTitle: MATCH expected=absent actual=absent",
+    "repeats: MATCH expected=3 actual=3",
+    "authorizedCalls: MATCH expected=9 actual=9",
+    "replacementCallsPermitted: MATCH expected=0 actual=0",
+    "model: MATCH expected=qwen/qwen3.7-flash actual=qwen/qwen3.7-flash"
+  ],
+  "results": [],
+  "callLedger": []
+}

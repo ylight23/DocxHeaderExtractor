@@ -165,7 +165,7 @@ public sealed class ApprovedWritebackTests
                 }));
             using var client = factory.CreateClient();
 
-            var reviewUrlId = Uri.EscapeDataString(source.DocumentId);
+            var reviewUrlId = ReviewDocumentIdCodec.Encode(source.DocumentId);
             var reviewResponse = await client.GetAsync("/api/review/" + reviewUrlId);
             Assert.True(reviewResponse.IsSuccessStatusCode,
                 $"review lookup {(int)reviewResponse.StatusCode} {reviewResponse.StatusCode} for '{source.DocumentId}'");

@@ -1,0 +1,58 @@
+{
+  "artifactKind": "a99_generic_audit_diagnostics",
+  "engine": "GENERIC_AUDIT_ENGINE_V1",
+  "classifiedBy": "engine author, for the user's review; categories per the user's A/B/C/D scheme of 2026-09-25",
+  "categories": {
+    "A": "existing ontology can express it - needs a semantic decision or better evidence, engine unchanged",
+    "B": "evidence extraction gap - a general feature for every document, Layer A/B may change",
+    "C": "real ontology gap - a new cross-document semantic concept",
+    "D": "document-specific exception - never enters the engine"
+  },
+  "replayHistory": [
+    {
+      "commit": "6bc1258",
+      "state": "first blind replay, recorded as is",
+      "DOC-0123": { "gold": 359, "truePositives": 304, "falsePositives": 47, "missesProposedForReview": 14, "missesProposedFalse": 41 },
+      "DOC-0133": { "gold": 112, "truePositives": 82, "falsePositives": 7, "missesProposedForReview": 18, "missesProposedFalse": 12 }
+    },
+    {
+      "commit": "this commit",
+      "state": "after three category-B fixes, each general",
+      "fixes": [
+        "B1 contents entries point forward: only an earlier, weaker copy of a text that reappears later outside a table (or a line ending in a page number, or a built-in TOC style) is a contents entry; the first version treated the target heading as an entry too (30 of the 53 false-proposed misses, and false 'contents runs' built from column headers repeated across tables)",
+        "B2 two general lexical shapes: a whole occurrence in brackets or a long parenthesis is an editorial note; a caption may be numbered by a letter or follow 'Table:'",
+        "B3 a sentence-length table cell is prose, not a table row (tables used for layout); a strongly set label in a table that opens at least as much prose as rows is NEEDS_REVIEW, not FALSE"
+      ],
+      "DOC-0123": { "gold": 359, "truePositives": 329, "falsePositives": 18, "missesProposedForReview": 24, "missesProposedFalse": 6, "exactCompositeMatches": 319, "nonGoldProposedForReview": 118 },
+      "DOC-0133": { "gold": 112, "truePositives": 92, "falsePositives": 2, "missesProposedForReview": 18, "missesProposedFalse": 2, "exactCompositeMatches": 92, "nonGoldProposedForReview": 219 }
+    }
+  ],
+  "remainingDiscrepancies": [
+    { "category": "A", "document": "DOC-0133", "count": 16, "what": "note-local labels set only weakly (10pt italic) are NEEDS_REVIEW; the user decided them true", "note": "by design: standalone + opens a region is a semantic call, not a typography gate" },
+    { "category": "A", "document": "both", "count": 6, "what": "revision dates over their notes, the MD&A part title on its contents page, the cover title block: NEEDS_REVIEW, decided true" },
+    { "category": "A", "document": "DOC-0133", "count": 1, "what": "cover: the engine cannot separate the issuer line from the title lines (same setting); the decomposition is semantic" },
+    { "category": "A", "document": "DOC-0123", "count": 7, "what": "composite boundaries: two consecutive centered form titles merged into one ('Appendix to Proposal' + 'Schedule of Cost Indexation'), form subtitles ('Demand Guarantee') not merged into their form title, title blocks cut where a line changes setting" },
+    { "category": "A", "document": "DOC-0123", "count": 9, "what": "strongly set lines that are not headings by meaning: 'PART n' list rows inside a table, 'Or'/'OR' connectives, 'Sample ... Table' unnumbered captions, 'FIDIC code' metadata, form codes ('Form PER-1')" },
+    { "category": "A", "document": "both", "count": 2, "what": "chart title inside a figure ('Top Ten Country Exposures'); 'This page left intentionally blank'" },
+    { "category": "A", "document": "DOC-0123", "count": 3, "what": "misses not set apart at all or set weakly in a table: '1. Purpose', 'SEA and/or SH Declaration', DAAB clause labels in a layout table (now NEEDS_REVIEW)" },
+    { "category": "B", "document": "DOC-0123", "count": 3, "what": "contents openers whose own text repeats elsewhere ('Table of Content', 'Table of Forms') are still read as entries", "candidateFix": "an occurrence directly before a contents run whose text is not a trailing-page-number line is the opener even if its text repeats" },
+    { "category": "B", "document": "DOC-0133", "count": 2, "what": "headings whose text legitimately recurs later at a stronger setting ('Net Income', 'Allocable Income') are read as contents entries when chart labels make a short run", "candidateFix": "require a contents run to be dense (entries on consecutive rows without body text or figures between)" },
+    { "category": "B", "document": "DOC-0123", "count": 1, "what": "a bold lead-in before an instruction in the same paragraph ('Other Proposers [INSTRUCTIONS...]') is invisible: paragraph-level bold is false", "candidateFix": "carry the leading bold run as evidence (LeadingBoldPrefix exists for PDF lines; DOCX runs need the same)" },
+    { "category": "B", "document": "DOC-0123", "count": 4, "what": "Word outline levels on list items and instruction sentences styled as headings ('sign the Contract ...; or', 'The Sub-Clause is replaced with the following:') read as strong", "candidateFix": "treat list-continuation endings (';', ' or', ' and') and instruction sentences as body regardless of style" },
+    { "category": "B", "document": "DOC-0133", "count": 146, "what": "review noise: weakly set group labels in PDF tables without figures in their own row ('Lending Highlights (Section III)') and captions followed by charts (read as prose) fill NEEDS_REVIEW", "candidateFix": "PDF table and figure regions as evidence (column alignment across rows; chart label density), not per row" },
+    { "category": "C", "document": "none", "count": 0, "what": "no ontology gap found: every discrepancy is expressible on OCCURRENCE_SEMANTIC_AXES_V2" },
+    { "category": "D", "document": "none", "count": 0, "what": "no document-specific exception was added" }
+  ],
+  "gate": {
+    "1_documentIdsInEngine": 0,
+    "2_sourcePathsInEngine": 0,
+    "3_literalTextDecisionRules": 0,
+    "4_typographyOrTableDepthTruthGates": "0 absolute gates; typography is relative to the document's body, and table context leads to FALSE only together with what follows (table rows), to NEEDS_REVIEW when prose follows",
+    "5_goldTotalsOrReadBeforeFreeze": 0,
+    "6_doc0123Replayed": true,
+    "7_doc0133Replayed": true,
+    "8_discrepanciesReportedNotSpecialCased": true,
+    "9_deterministic": true,
+    "10_modelProviderVlmCalls": 0
+  }
+}

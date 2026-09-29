@@ -1,0 +1,75 @@
+{
+  "artifactKind": "a99_v4r2_p05_combined_run_manifest",
+  "status": "COMPLETE_SOURCE_COVERAGE",
+  "experimentOnly": true,
+  "productionPromotion": false,
+  "goldRead": false,
+  "scored": false,
+  "deterministicCoreTerminalPass": false,
+  "primary": {
+    "runId": "p05-provider-experiment-20260928T033919Z",
+    "manifest": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/run-manifest.json",
+    "manifestSha256": "76B87AF00318FDC132F937CF391911C49CA6A75FEA8899B882177E604224DFD5",
+    "primaryLeaves": 31,
+    "directContractValid": 29,
+    "failedRetryableParents": 2,
+    "primaryInputBytes": 2087258,
+    "primaryCompletionTokens": 227846
+  },
+  "recovery": {
+    "runId": "p05-recovery-20260928T042741Z",
+    "manifest": "eval/a99-closed-loop/request-architecture-v2/p05-recovery-20260928T042741Z/recovery-manifest.json",
+    "manifestSha256": "D3FED886B60D707F47D1DBC013515BD6C092D7F7DB889916B3739DC679A32DEF",
+    "identicalRetryAttempts": 2,
+    "adaptiveChildCalls": 0,
+    "recoveredContractValidParents": 2,
+    "recoveryInputBytes": 134940,
+    "recoveryCompletionTokens": 17882
+  },
+  "coverage": {
+    "primaryParentOwnershipSets": 31,
+    "directPrimarySuccess": 29,
+    "recoveredThroughIdenticalRetry": 2,
+    "recoveredThroughAdaptiveSplit": 0,
+    "finalContractValidCoverage": "31/31 parent ownership sets",
+    "sourceOwnershipCoveragePercent": 100,
+    "ownershipOverlap": 0,
+    "missingOwnership": 0,
+    "haloOverlapAllowed": true
+  },
+  "executionQuality": {
+    "totalProviderCalls": 33,
+    "totalInputBytes": 2222198,
+    "totalCompletionTokens": 245728,
+    "failureBeforeRecovery": "2 completion-budget saturation leaves",
+    "recoveryOutcome": "both parents contract-valid on first identical retry",
+    "goldRead": false,
+    "score": "NONE"
+  },
+  "pinsUnchanged": {
+    "candidateId": "P05",
+    "treatmentDelta": "PACKING_SHAPE_ONLY",
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "medium",
+    "responseFormat": "json_object",
+    "maxTokens": 12288,
+    "timeoutSeconds": 300,
+    "inputCeilingBytes": 90000,
+    "estimatedInputTokenCeiling": 28000,
+    "ownedCoreCeiling": 96,
+    "visibleSourceAtomsCeiling": 128,
+    "haloAtoms": 8,
+    "lossyTransforms": false,
+    "explicitCacheControl": false,
+    "strictJsonSchema": false
+  },
+  "ownershipInvariant": {
+    "successfulParentLeavesResent": false,
+    "parentOwnedEqualsChildUnion": true,
+    "childOwnedIntersectionIsEmpty": true,
+    "haloMayOverlap": true,
+    "ownershipMayNotOverlap": true
+  },
+  "nextGate": "OPEN_GOLD_AND_SCORE_ONLY_AS_SEPARATE_STEP"
+}

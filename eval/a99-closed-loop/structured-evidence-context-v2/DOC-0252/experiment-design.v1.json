@@ -1,0 +1,22 @@
+{
+  "artifactKind": "a99_structured_evidence_context_experiment_design",
+  "schemaVersion": "a99-structured-evidence-context-experiment-design-v1",
+  "documentId": "DOC-0252",
+  "experiment": "STRUCTURED_EVIDENCE_CONTEXT_V1_TOPOLOGY_SANITY",
+  "supersedesExecutionCandidateFrom": "STRUCTURED_EVIDENCE_CONTEXT_V1 (frozen, not rewritten; commit b90f64237a66d518d36d680b1d05a6feea25f58a)",
+  "reasonForV2": "V1's grouping signal (existing layout block id) produced 55%-96% single-atom regions per pack on this document - near-atom-level fragmentation, not meaningful organization. V2 groups by page (a real physical layout boundary, from the production atom builder's own Page field) with V1's block grouping preserved one level down (PAGE > BLOCK > ATOM), so the finer signal is not discarded, only no longer promoted to a top-level context reset for nearly every atom.",
+  "groupingSignal": "top level: page number (deterministic, non-semantic, from the same PdfStructuredSourceAuthorityBuilder atom universe as production reads). second level: existing layout block id, grouped by maximal contiguous run within the page - identical algorithm to V1, scoped to one page at a time.",
+  "hierarchy": "PAGE (REGION Rxxx) -> BLOCK (Bxx) -> ATOM",
+  "forbiddenRegionLabels": [
+    "DOCUMENT_HEADER",
+    "DOCUMENT_LABEL_REGION",
+    "METADATA_REGION",
+    "STRUCTURAL_REGION",
+    "HEADING_REGION"
+  ],
+  "noSpecialCaseRulesForF1OrAgenda": true,
+  "hypothesisStatus": "PRE_REGISTERED_NOT_YET_TESTED",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "providerExecutionAuthorized": false
+}

@@ -1,0 +1,38 @@
+{
+  "id": "stream-reassembled-t3a-call-002",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "reasoning": "",
+        "content": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0094:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 5. Information and reporting regimes in publication activities\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0106:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 6. Conditions for establishment and contents ofoperation ofVietnam-based\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0107:S0\u0022,\n          \u0022verbatimText\u0022: \u0022 representative offices of foreign publishing houses and foreign publication distribution\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0108:S0\u0022,\n          \u0022verbatimText\u0022: \u0022 organizations\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0126:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0127:S0\u0022,\n          \u0022verbatimText\u0022: \u0022 representative offices of foreign publishing houses and foreign publication distribution\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0128:S0\u0022,\n          \u0022verbatimText\u0022: \u0022 organizations\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0160:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Chapter II\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0161:S0\u0022,\n          \u0022verbatimText\u0022: \u0022 PUBLISHING\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0162:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0174:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0175:S0\u0022,\n          \u0022verbatimText\u0022: \u0022 (directors) and editors-in-chiefofpublishing houses\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0195:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 10. Publication registration and certification ofpublication registration\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    }\n  ]\n}"
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 19723,
+    "completion_tokens": 703,
+    "total_tokens": 20426,
+    "cost": 0.00068308,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00068308,
+      "upstream_inference_prompt_cost": 0.00059169,
+      "upstream_inference_completions_cost": 0.00009139
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

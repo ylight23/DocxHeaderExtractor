@@ -1,0 +1,92 @@
+{
+  "artifactKind": "a99_v4r2_provider_experiment_run",
+  "runId": "p05-provider-experiment-20260928T033258Z",
+  "status": "FAILED_EXPERIMENT_ONLY",
+  "productionPromotion": false,
+  "experimentOnly": true,
+  "authorization": {
+    "explicitUserAuthorization": true,
+    "deterministicCoreTerminalPass": false,
+    "providerGateOverride": "EXPERIMENT_ONLY"
+  },
+  "frozenPreflight": {
+    "path": "eval/a99-closed-loop/request-architecture-v2/v4r2-provider-preflight.v1.json",
+    "sha256": "644d60a0ced9fb361b4d02a62d49b8e62e8604802500566be47860e75da6b2f5"
+  },
+  "pins": {
+    "candidateId": "P05",
+    "treatmentDelta": "PACKING_SHAPE_ONLY",
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "medium",
+    "responseFormat": "json_object",
+    "explicitCacheControl": false,
+    "strictJsonSchema": false,
+    "lossyTransforms": false
+  },
+  "budgets": {
+    "inputCeilingBytes": 90000,
+    "estimatedInputTokenCeiling": 28000,
+    "ownedCoreCeiling": 96,
+    "visibleSourceAtomsCeiling": 128,
+    "haloAtoms": 8,
+    "reservedCompletionTokens": 12288,
+    "totalRequestTimeoutSeconds": 300,
+    "primaryPlannedCalls": 31,
+    "totalHardCallCap": 55,
+    "inputHardCapBytes": 4174516,
+    "outputHardCapTokens": 850080
+  },
+  "calls": 3,
+  "totalInputBytes": 140663,
+  "totalOutputTokens": 21687,
+  "durationSeconds": 316.4394006,
+  "documents": [],
+  "callLedger": [
+    {
+      "Ordinal": 1,
+      "SemanticRequestHash": "014da482fbda3ceaab891bf0c29bfc9ccc45521db608d416ecfe36fad3df524f",
+      "ProviderEnvelopeHash": "5c0379198584a1edb638674859a2ebda465be594e0f9b17ed25700e05d427d0b",
+      "RequestFile": "call-001.request.json",
+      "RawResponseFile": "call-001.response.json",
+      "InputBytes": 70123,
+      "OutputBytes": 71514,
+      "OutputTokens": 10208,
+      "HttpStatus": 200,
+      "ElapsedMs": 115611,
+      "State": "SUCCESS",
+      "Error": null
+    },
+    {
+      "Ordinal": 2,
+      "SemanticRequestHash": "482d12e578dc9513e8267f706ae40b979f18d734634c19becd14c40dbc7457af",
+      "ProviderEnvelopeHash": "c8313b5c8e3c9fc1d5aecec9358d0dd9a22da9db5bd067559102093356452f74",
+      "RequestFile": "call-002.request.json",
+      "RawResponseFile": "call-002.response.json",
+      "InputBytes": 70540,
+      "OutputBytes": 88755,
+      "OutputTokens": 11479,
+      "HttpStatus": 200,
+      "ElapsedMs": 102278,
+      "State": "SUCCESS",
+      "Error": null
+    },
+    {
+      "Ordinal": 3,
+      "SemanticRequestHash": "78ad6f0ce8b31cfd5b16e0989ab3cfa299fdab163cfaa3988ca15bcdc8b71c83",
+      "ProviderEnvelopeHash": "4698f5b282005358366ebddd601fb6523bbac79f114dbb1d0202832cdfafd7d2",
+      "RequestFile": "call-003.request.json",
+      "RawResponseFile": "",
+      "InputBytes": 70026,
+      "OutputBytes": 0,
+      "OutputTokens": 0,
+      "HttpStatus": 0,
+      "ElapsedMs": 81807,
+      "State": "FAILED_RETRYABLE",
+      "Error": "The operation was canceled."
+    }
+  ],
+  "error": "System.TimeoutException: PDF semantic execution exceeded its lane deadline.\r\n   at DocxHeaderExtractor.DocumentProcessing.Pipeline.CanonicalSemanticPdfAuthorityAdapter.RunAsync(String pdfPath, IHeaderClassifier transport, CancellationToken cancellationToken, CanonicalSemanticExperiment experiment, SemanticLaneOptions semanticLaneOptions, SemanticAuthorityReplayCaptureRequest replayCapture, PdfExperimentExecutionGate experimentGate, PdfSemanticAuthorityProfile profile, ISemanticEvidencePackingPolicy packingPolicy, IReadOnlySet\u00601 selectedPackIds, Boolean runPlacement, Nullable\u00601 sourceFacts) in C:\\DocxHeaderExtractor-a99-closed-loop\\src\\DocxHeaderExtractor.DocumentProcessing\\Pipeline\\CanonicalSemanticPdfAuthorityAdapter.cs:line 108\r\n   at Program.\u003CMain\u003E$(String[] args) in C:\\DocxHeaderExtractor-a99-closed-loop\\tmp\\v4r2-provider-runner\\Program.cs:line 67",
+  "goldRead": false,
+  "productionChanged": false
+}

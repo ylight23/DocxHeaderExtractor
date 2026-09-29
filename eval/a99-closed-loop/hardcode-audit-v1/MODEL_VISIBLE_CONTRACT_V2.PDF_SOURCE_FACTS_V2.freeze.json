@@ -1,0 +1,25 @@
+{
+  "contract": {
+    "artifactKind": "a99_model_visible_contract_freeze",
+    "requestVersion": "V2_ATTENTION_FREE",
+    "gate": "A99_GENERIC_PIPELINE_HARDCODE_AUDIT_V1 passed",
+    "systemPromptSha256": "ccf33f39404aa70ae54bd5448cc4ab5572a89fa34aa3dfcda6f0c9ab3fc665d3",
+    "stage1MembershipPromptSha256": "e5420ccbec1b8985b5765b0fd340ed0bcc0c285b09f2f4b3db315a823709a9f3",
+    "structuredPdf": {
+      "path": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+      "modelVisibleEvidenceSha256": "18dc4d27c81520a652f93df3a6ede847d4286034774ba28f5095c9ba0b64472d",
+      "requests": 6,
+      "providerModelInputPlanSha256": "c86e82faa241cbc153dec3558198768db6aeb38ff6a9a9ebf7ab5166eb7771da"
+    },
+    "docx": {
+      "path": "bench/01-style-chuan.docx",
+      "requests": 1,
+      "providerModelInputPlanSha256": "b8b13e33fee06f716f0a615ce19b3b45e0038e201b4d2499ff612081c5234c36"
+    }
+  },
+  "sourceFacts": {
+    "pdfSourceFacts": "PDF_SOURCE_FACTS_V2",
+    "supersedesForProduction": "MODEL_VISIBLE_CONTRACT_V2.freeze.json (PDF_SOURCE_FACTS_V1), kept for replay",
+    "change": "PDF style facts add Typography { sourceFacts, effectivePointSize, fontName, fontBoldFlag, derivedBold, boldEvidenceSource }; Bold and RelativeFontSize are computed from the effective point size and the derived weight. DOCX requests are unchanged"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC054_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/054_IBRD_Information_Statement_FY25.pdf",
+      "sha256": "02c949f22700a2ba84c0f9719c8c2e9d1ffff407cc5d21c89d34bc660cd480ac"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "goldFileRead": false,
+    "countOnlyTotalUsed": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; its blind proposals were committed before the review and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-054/review_tool.py",
+      "sha256": "b8834baedc0ca32afc5136aa2492f357bceda8bfb51ec6ebacce7196b707993a"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-054/atom-layout-facts.tsv",
+      "sha256": "69ab537de43bdd3005044ca9973512d056cc9703f4c05b74566f51e231dc1c13"
+    },
+    "atomGlyphFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-054/atom-glyph-facts.tsv",
+      "sha256": "05b53476605a47123f1b28098cd3ab403facc866d0796e04f9b2eca8e23f0e97",
+      "writer": "ScaleUpSurveyDiagnosticTests.Dump_pdf_atom_glyph_facts"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-054/review-items.json",
+      "sha256": "f94760afea51a9ee7e02dba12a09deabb4d6031ce873114cb3ece1cf01f9acc0"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 11955,
+    "CLEAR_HEADING": 296,
+    "CLEAR_NON_HEADING_SET_APART": 331,
+    "AMBIGUOUS": 0,
+    "PROPOSED_RANGE": {
+      "min": 296,
+      "max": 296
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells and rows, chart values, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 7,
+      "nonHeadings": 4,
+      "ambiguous": 0
+    },
+    {
+      "section": "BACK",
+      "headings": 2,
+      "nonHeadings": 1,
+      "ambiguous": 0
+    },
+    {
+      "section": "MDA",
+      "headings": 156,
+      "nonHeadings": 164,
+      "ambiguous": 0
+    },
+    {
+      "section": "FS_PART",
+      "headings": 17,
+      "nonHeadings": 12,
+      "ambiguous": 0
+    },
+    {
+      "section": "STATEMENTS",
+      "headings": 14,
+      "nonHeadings": 55,
+      "ambiguous": 0
+    },
+    {
+      "section": "NOTES",
+      "headings": 100,
+      "nonHeadings": 95,
+      "ambiguous": 0
+    }
+  ],
+  "headingsByPattern": {
+    "A2_PRECEDENT_REPEATED_TITLE": 7,
+    "APPENDIX_SUBHEADING": 2,
+    "EMBEDDED_REPORT": 4,
+    "FRONT_SECTION_TITLE": 2,
+    "FS_SUBHEADING": 11,
+    "MDA_SECTION_TITLE": 21,
+    "MDA_SUBHEADING": 112,
+    "NOTES_PART": 1,
+    "NOTE_SUBHEADING": 81,
+    "NOTE_TITLE": 15,
+    "PART_TITLE_BLOCK": 2,
+    "S053_Q1_PRECEDENT_BACK_COVER_TITLE": 1,
+    "S053_Q2_PRECEDENT_ITALIC_LABEL": 13,
+    "S053_Q3_PRECEDENT_COVER_TITLE": 1,
+    "S054_Q1_PLAIN_STANDALONE_LABEL": 15,
+    "STATEMENT_TITLE": 7,
+    "TOC_OPENER": 1
+  },
+  "nonHeadingsByPattern": {
+    "CAPTION_CONTINUATION": 3,
+    "CHART_OR_TABLE_INTERNAL": 150,
+    "CONTENTS_ENTRY": 3,
+    "COVER_BLOCK": 1,
+    "NUMBERED_CAPTION": 136,
+    "PAGE_NOTICE": 1,
+    "PART_TITLE_BLOCK": 3,
+    "QUALIFICATION_NOTE": 2,
+    "RUNNING_HEADER": 2,
+    "RUN_IN_LEAD": 1,
+    "S041_A4_PRECEDENT_APPENDIX_TABLE_TITLE": 1,
+    "S053_Q3_PRECEDENT_COVER_TITLE": 1,
+    "SECTION_SUBTITLE": 1,
+    "SIGNATURE": 2,
+    "STATEMENT_FOOTER": 6,
+    "STATEMENT_SUBTITLE": 18
+  },
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-26",
+    "membershipTotal": 296,
+    "arithmetic": "281 clear + 15 S054_Q1 = 296",
+    "principle": "CLASSIFY OCCURRENCES, NOT STRINGS",
+    "patterns": [
+      {
+        "pattern": "S054_Q1_PLAIN_STANDALONE_LABEL",
+        "decision": "TRUE x15: plain standalone labels at the margin over their own prose are headings one level below their parent; function decides, as in S053_Q2, even where no glyph fact marks them"
+      }
+    ]
+  },
+  "bindingFailures": []
+}

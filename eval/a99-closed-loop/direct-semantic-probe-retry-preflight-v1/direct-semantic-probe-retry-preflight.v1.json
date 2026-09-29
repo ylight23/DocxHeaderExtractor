@@ -1,0 +1,248 @@
+{
+  "artifactKind": "a99_direct_semantic_probe_retry_preflight",
+  "schemaVersion": "a99-direct-semantic-probe-retry-preflight-v1",
+  "probeId": "DIRECT_SEMANTIC_DISCRIMINATION_PROBE",
+  "lineage": "direct-semantic-discrimination-probe-retry-v1",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "providerAuthorized": false,
+  "rejectedAttempt": {
+    "lineage": "direct-semantic-probe-v1",
+    "oldProbePromptSha256": "57797bdced0e9918607cbf0a55239a746303d2445c103c4e8cb27012cd9b2fd8",
+    "providerHttpAttempts": 1,
+    "modelGenerations": 0,
+    "billedProviderCalls": 0,
+    "semanticResponses": 0,
+    "usableProbeCalls": 0,
+    "httpStatus": 400,
+    "reason": "JSON_OBJECT_REQUIRES_JSON_IN_MESSAGES",
+    "semanticInferencePermitted": false,
+    "reservedSlots": 9,
+    "reservedSlotsReused": false,
+    "reservedSlotsPreserved": true,
+    "note": "A request was sent and refused, so the attempt is recorded rather than reported as nothing having been sent. No model generated anything, nothing was billed, and no inference about the model is available."
+  },
+  "promptFix": {
+    "added": "Return strict JSON matching the supplied schema.",
+    "sentencesAdded": 1,
+    "carriesSemanticPolicy": false,
+    "everythingElseByteIdentical": true,
+    "retryProbePromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+    "why": "response_format json_object requires the messages to ask for JSON. This is the wording the prompts that already work use, so it introduces nothing new."
+  },
+  "layeredCallAuthority": {
+    "layer1": "model input: prompt, messages, schema-visible content",
+    "layer2": "transport parameters: model, temperature, reasoning, max_tokens, response_format",
+    "layer3": "compatibility constraints over layer 1 x layer 2",
+    "lesson": "Same bytes is not the same call, and a valid input with valid transport options is not a valid pair. max_tokens taught the first half and json_object the second.",
+    "implemented": "TransportCompatibility.Validate, which validates and never repairs - appending the sentence in the transport layer would change bytes a preflight had frozen.",
+    "wiredIntoProvider": true,
+    "effect": "An incompatible pair now throws locally before any HTTP attempt."
+  },
+  "gateOrder": {
+    "order": [
+      "experiment authority",
+      "compose exact provider input",
+      "derive transport parameters",
+      "validate input x transport compatibility",
+      "validate budget",
+      "derive capture identities",
+      "reserve capture slots atomically",
+      "provider transport",
+      "persist raw response and hash",
+      "parse, validate, score"
+    ],
+    "previously": "slots were reserved first, so a request that could not be sent still left nine reservations behind",
+    "invalidPairProviderCalls": 0,
+    "invalidPairReservedSlots": 0
+  },
+  "authority": {
+    "probeSchemaSha256": "20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+    "retryProbePromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+    "retryPack001ProviderInputSha256": "22d3bbe551900fd0e47f0144054e66c16ef12b03f030540c34b9856886450d37",
+    "retryPack005ProviderInputSha256": "8ce58a9c478f481f6d021f83b2e849953f1d5b1e378186405d7dd4d5fb555866",
+    "retryPack006ProviderInputSha256": "127573c38acfbcaca27dd713a9054cd627a02ac8e3469c0c538f9e1f6b3e86fd",
+    "retryProviderInputPlanSha256": "a792fb0f03b2c6c16facecba5485ed48dc7742610f7542e0936ca88ecd59243b",
+    "allDifferFromRejected": true,
+    "repeatIdentical": true
+  },
+  "transportCallAuthority": {
+    "model": "qwen/qwen3.7-flash",
+    "temperature": 0,
+    "reasoningEffort": "none",
+    "responseFormat": "json_object",
+    "perCall": [
+      {
+        "pack": "PACK_001",
+        "expectedItemCount": 38,
+        "maxTokens": 4960
+      },
+      {
+        "pack": "PACK_005",
+        "expectedItemCount": 119,
+        "maxTokens": 15328
+      },
+      {
+        "pack": "PACK_006",
+        "expectedItemCount": 57,
+        "maxTokens": 7392
+      }
+    ],
+    "derivedFrom": "OpenRouterHeaderExtractor.BoundaryOutputBudgetFor",
+    "compatibilityValidated": true
+  },
+  "unchanged": {
+    "labels": [
+      "STRUCTURAL_UNIT",
+      "DOCUMENT_LABEL",
+      "NON_STRUCTURAL"
+    ],
+    "labelDefinitions": "byte-identical",
+    "items": 18,
+    "negatives": 3,
+    "positives": 14,
+    "documentLabelControls": 1,
+    "contexts": 3,
+    "packing": "unchanged",
+    "gold": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "expectedLabelsLocation": "offline scorer only"
+  },
+  "captureIdentities": {
+    "lineage": "direct-semantic-discrimination-probe-retry-v1",
+    "required": 9,
+    "fresh": true,
+    "atomicallyReservable": true,
+    "distinctFromRejectedLineage": true,
+    "slots": [
+      {
+        "identity": "PACK_001:r1",
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+        "repeat": 1,
+        "providerInputSha256": "22d3bbe551900fd0e47f0144054e66c16ef12b03f030540c34b9856886450d37",
+        "fresh": true,
+        "atomicallyReservable": true,
+        "observedNow": {
+          "fresh": true,
+          "reservable": true
+        }
+      },
+      {
+        "identity": "PACK_001:r2",
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+        "repeat": 2,
+        "providerInputSha256": "22d3bbe551900fd0e47f0144054e66c16ef12b03f030540c34b9856886450d37",
+        "fresh": true,
+        "atomicallyReservable": true,
+        "observedNow": {
+          "fresh": true,
+          "reservable": true
+        }
+      },
+      {
+        "identity": "PACK_001:r3",
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+        "repeat": 3,
+        "providerInputSha256": "22d3bbe551900fd0e47f0144054e66c16ef12b03f030540c34b9856886450d37",
+        "fresh": true,
+        "atomicallyReservable": true,
+        "observedNow": {
+          "fresh": true,
+          "reservable": true
+        }
+      },
+      {
+        "identity": "PACK_005:r1",
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "repeat": 1,
+        "providerInputSha256": "8ce58a9c478f481f6d021f83b2e849953f1d5b1e378186405d7dd4d5fb555866",
+        "fresh": true,
+        "atomicallyReservable": true,
+        "observedNow": {
+          "fresh": true,
+          "reservable": true
+        }
+      },
+      {
+        "identity": "PACK_005:r2",
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "repeat": 2,
+        "providerInputSha256": "8ce58a9c478f481f6d021f83b2e849953f1d5b1e378186405d7dd4d5fb555866",
+        "fresh": true,
+        "atomicallyReservable": true,
+        "observedNow": {
+          "fresh": true,
+          "reservable": true
+        }
+      },
+      {
+        "identity": "PACK_005:r3",
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "repeat": 3,
+        "providerInputSha256": "8ce58a9c478f481f6d021f83b2e849953f1d5b1e378186405d7dd4d5fb555866",
+        "fresh": true,
+        "atomicallyReservable": true,
+        "observedNow": {
+          "fresh": true,
+          "reservable": true
+        }
+      },
+      {
+        "identity": "PACK_006:r1",
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "repeat": 1,
+        "providerInputSha256": "127573c38acfbcaca27dd713a9054cd627a02ac8e3469c0c538f9e1f6b3e86fd",
+        "fresh": true,
+        "atomicallyReservable": true,
+        "observedNow": {
+          "fresh": true,
+          "reservable": true
+        }
+      },
+      {
+        "identity": "PACK_006:r2",
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "repeat": 2,
+        "providerInputSha256": "127573c38acfbcaca27dd713a9054cd627a02ac8e3469c0c538f9e1f6b3e86fd",
+        "fresh": true,
+        "atomicallyReservable": true,
+        "observedNow": {
+          "fresh": true,
+          "reservable": true
+        }
+      },
+      {
+        "identity": "PACK_006:r3",
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "repeat": 3,
+        "providerInputSha256": "127573c38acfbcaca27dd713a9054cd627a02ac8e3469c0c538f9e1f6b3e86fd",
+        "fresh": true,
+        "atomicallyReservable": true,
+        "observedNow": {
+          "fresh": true,
+          "reservable": true
+        }
+      }
+    ],
+    "rejectedLineageUntouched": true,
+    "cleanupRule": "The reservability check removes only the temporary slot it created. The refused run's nine reservations are another lineage's evidence."
+  },
+  "callPlan": {
+    "contexts": 3,
+    "repeats": 3,
+    "proposedProviderCalls": 9,
+    "replacementCalls": 0,
+    "automaticMargin": 0
+  },
+  "alsoFound": {
+    "defect": "PLACEMENT_PROMPT_LACKS_JSON_TOKEN",
+    "detail": "The placement prompt does not mention JSON either, so the placement path would have been refused by the provider in the same way. It has not surfaced because every recent run disabled placement.",
+    "fixedHere": false,
+    "effectOfTheGuard": "It now fails locally with a named reason instead of as a remote 400, which is how it was found.",
+    "recordedFor": "a separate decision; this task does not change the placement prompt"
+  },
+  "limitations": {
+    "singleDocument": "DOC-0252",
+    "materializedGold": "48 / 3955",
+    "crossGenreSemanticCapabilityEstablished": false
+  }
+}

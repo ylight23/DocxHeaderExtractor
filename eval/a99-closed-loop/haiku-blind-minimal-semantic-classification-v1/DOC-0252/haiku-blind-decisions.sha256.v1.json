@@ -1,0 +1,17 @@
+{
+  "artifactKind": "a99_haiku_blind_minimal_semantic_classification_evidence_freeze",
+  "schemaVersion": "a99-haiku-blind-minimal-semantic-classification-freeze-v1",
+  "documentId": "DOC-0252",
+  "model": "Haiku",
+  "task": "HAIKU_BLIND_MINIMAL_SEMANTIC_CLASSIFICATION_V1",
+  "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+  "file": "eval/a99-closed-loop/haiku-blind-minimal-semantic-classification-v1/DOC-0252/haiku-blind-decisions.v1.json",
+  "bytes": 1462,
+  "sha256": "4249ca1595e0008eaea066b48963f18d80e199ef0d586c9fb3307716e7125cb8",
+  "itemCount": 18,
+  "goldRead": false,
+  "qwenArtifactsTouched": false,
+  "externalProviderCalls": 0,
+  "openRouterCalls": 0,
+  "repositoryChangesBeyondEvidence": 0
+}

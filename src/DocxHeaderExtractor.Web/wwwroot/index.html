@@ -179,7 +179,7 @@
   .tag { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
   .tag.Style { background: var(--okbg); color: var(--ok); }
   .tag.Model { background: var(--accbg); color: var(--accent); }
-  .tag.Heuristic { background: var(--warnbg); color: var(--warn); }
+  .tag.LocalRules { background: var(--warnbg); color: var(--warn); }
   .tag.HumanCorrection { background: var(--okbg); color: var(--ok); }
   .tag.miss { background: var(--badbg); color: var(--bad); }
   .tag.dis { background: var(--warnbg); color: var(--warn); margin-left: 8px; }
@@ -211,12 +211,6 @@
   .review-tools input[type=file] { max-width: 280px; font-size: 12.5px; }
   .review-level { width: 92px; min-width: 92px; }
   .sid { font: 11px/1.25 ui-monospace, Consolas, monospace; color: var(--muted); word-break: break-all; }
-  .modebox { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 10px; }
-  .modehead { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
-  .modehead strong { font-size: 18px; }
-  .modegrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 10px; }
-  .modegrid span { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
-  .modegrid b { display: block; font-variant-numeric: tabular-nums; }
   .audit-grid { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.6fr); gap: 14px; }
   .audit-list { max-height: 620px; overflow-y: auto; border: 1px solid var(--line); border-radius: 7px; }
   .audit-row { display: flex; gap: 9px; align-items: center; width: 100%; padding: 9px 11px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; margin: 0; background: transparent; color: var(--ink); text-align: left; font-size: 12.5px; font-weight: 500; }
@@ -309,9 +303,9 @@
     </h2>
     <div id="drop">
       <strong id="dropName">Kéo thả file vào đây, hoặc bấm để chọn</strong>
-      <span>.docx · .docm · .doc · .rtf · .odt</span>
+      <span>.docx · .docm · .doc · .rtf · .odt · .pdf</span>
     </div>
-    <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt">
+    <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt,.pdf">
 
     <div class="prompt-box">
       <label class="f" for="userPrompt">User prompt</label>
@@ -344,82 +338,34 @@
       </div>
     </div>
     <div class="checks">
-      <label><input type="checkbox" id="noLlm"> Chỉ dùng luật OpenXML (nhanh, không cần mô hình)</label>
-      <label><input type="checkbox" id="twoPass"> Quét hai lượt, đánh dấu chỗ bất đồng (chậm gấp đôi)</label>
+      <label><input type="checkbox" id="noLlm"> Không gọi mô hình (chỉ đọc nguồn, không tự nhận tiêu đề)</label>
       <label><input type="checkbox" id="writeback"> Ghi outline vào bản sao .docx để tải về</label>
     </div>
 
-    <!--
-      Ba bộ dựng TẤT ĐỊNH. Chúng KHÔNG phải tuỳ chọn tinh chỉnh — mỗi cái thay hẳn đường chấm điểm
-      bằng cách đọc một dữ kiện cấu trúc cho cả tài liệu, không qua ngưỡng nào. Hai cái đầu đo được
-      100% (P/R/cấp/cha) trên tài liệu có đáp án người kiểm; cái thứ ba dành cho văn bản hành chính
-      không style, không numPr, không mục lục. Để ở lớp ngoài vì chúng đổi HẲN cách chạy.
-    -->
-    <fieldset class="opts" style="border:1px solid var(--line);border-radius:8px;padding:10px 12px">
-      <legend style="padding:0 6px;font-size:13px">Bộ dựng tất định — không cần mô hình</legend>
-      <div class="checks">
-        <label title="Pipeline tự đo mode tài liệu rồi chọn đường tất định phù hợp khi không có override thủ công."><input type="checkbox" id="autoMode" checked> Tự nhận dạng loại tài liệu</label>
-        <label title="Cấp lấy từ style Heading + độ sâu số gõ tay. Đo được 100% trên khoá luận có đáp án người kiểm."><input type="checkbox" id="styleOutline"> Theo style Word</label>
-        <label title="Cấp lấy từ (numId, ilvl) của danh sách đa cấp. Đo được 100% trên báo cáo thực tập có đáp án người kiểm."><input type="checkbox" id="numberingOutline"> Theo numbering của Word</label>
-        <label title="Hệ ký hiệu hành chính I. / 1. / 1.1. / a). Cấp neo theo cha gần nhất, thân bài tách tại dấu ngắt đầu tiên mở ra số liệu."><input type="checkbox" id="adminOutline"> Theo ký hiệu hành chính (I./1./a)</label>
-      </div>
-      <p class="note">Mỗi ô thay HẲN đường chấm điểm, không phải tinh chỉnh nó. Chọn đúng một ô;
-        tài liệu không hợp với bộ dựng đã chọn thì nó trả rỗng và pipeline chạy đường thường.</p>
-    </fieldset>
 
-    <!--
-      Năm nút dưới đây đang ở giá trị đã đo. Chúng bị gập lại không phải cho gọn: `threshold` và
-      `structuralOnly` nằm trong chữ ký cấu hình của calibration profile, nên chỉnh chúng làm lệch
-      chữ ký → cổng precision không dùng được profile → mọi heading rơi về "cần duyệt" → writeback
-      cũng không chạy. Một ô nhập trông vô hại mà tắt được cả hai tính năng thì không nên nằm ở
-      lớp ngoài cùng.
-    -->
     <details id="advanced">
       <summary>Developer / Model settings</summary>
-      <p class="note">Mặc định là cấu hình đã đo. Đổi giá trị ở đây gần như chỉ làm kết quả xấu đi,
-        và hai ô đầu tiên còn làm mất khả năng tự nhận heading (xem cảnh báo sau khi chạy).</p>
       <div class="opts">
-        <div>
-          <label class="f" for="threshold">Ngưỡng giữ ứng viên</label>
-          <input id="threshold" type="number" min="0" max="1" step="0.05" value="0.45">
-          <p class="note">Nâng lên là loại paragraph TRƯỚC khi model kịp nhìn — mất recall, không báo gì.</p>
-        </div>
-        <div>
-          <label class="f" for="chunkCandidates">Ứng viên mỗi khối</label>
-          <input id="chunkCandidates" type="number" min="2" max="64" step="1" value="6">
-          <p class="note">6 là mức cân bằng cho Qwen 7B; tăng quá cao dễ nhầm ID/cấp.</p>
-        </div>
         <div>
           <label class="f" for="ctx">Cửa sổ ngữ cảnh (token)</label>
           <input id="ctx" type="number" min="4096" step="1024" placeholder="tự đọc từ mô hình">
           <p class="note">Bỏ trống: server đọc <code>{arch}.context_length</code> từ chính file GGUF
             (Qwen3.5-9B khai 262.144, dùng tới trần 32.768). Gõ số thì <b>số của bạn thắng</b> và
-            tự đọc bị tắt — chữ ký cấu hình vẫn ghi đúng con số đã dùng.</p>
+            tự đọc bị tắt.</p>
         </div>
       </div>
       <div class="checks">
-        <label><input type="checkbox" id="structuralOnly" checked> Bỏ luật từ ngữ</label>
-        <label><input type="checkbox" id="noTrustStyles"> Không khôi phục theo style</label>
-        <label title="Tài liệu chuyển từ PDF thường gộp cả trang vào một đoạn; 83/95 file corpus thuộc dạng này và 67% mục có ranh giới heading nằm giữa đoạn."><input type="checkbox" id="splitMerged"> Cắt đoạn bị gộp (tài liệu từ PDF)</label>
         <label><input type="checkbox" id="showRaw"> Hiện JSON LLM trả về (debug)</label>
       </div>
-      <p class="note">"Không khôi phục theo style" là nút để đánh giá riêng chất lượng mô hình:
-        với một lần chạy bình thường nó chỉ có thể làm mất heading mà chính Word đã khẳng định.</p>
     </details>
     </details>
 
 
     <div class="actions">
-      <button id="inspectMode" class="secondary" disabled>Kiểm tra mode</button>
       <button id="run" disabled>Thực hiện</button>
       <button id="cancelRun" class="cancel-button hidden">Hủy</button>
     </div>
   </div>
-
-    <div class="panel hidden" id="modePanel">
-      <h2>Nhận dạng deterministic</h2>
-      <div id="modeBox"></div>
-    </div>
 
     <div class="panel" id="workCard">
       <h2>Automatic Harness execution <span class="chip acc">Intent → Plan → Tool → Validator → Source</span></h2>
@@ -454,7 +400,6 @@
 
   <div class="panel hidden" id="statsPanel">
     <h2>Tổng quan</h2>
-    <p class="err hidden" id="cfgWarn"></p>
     <div class="tiles" id="tiles"></div>
     <p class="note" id="confNote"></p>
     <button id="downloadDocx" class="hidden">Tải bản .docx đã gắn outline</button>
@@ -491,7 +436,7 @@
     <h2>Independent Human Gold <span class="tag Style">source-only</span></h2>
     <div class="gold-banner">
       <strong>Review độc lập, không nhìn pipeline</strong>
-      Packet được hiển thị như nguồn thô. Mọi label, prediction, rank, candidate, validator và output có sẵn trong JSON đều bị bỏ qua. Chỉ sau khi export/freeze mới được join với kết quả hệ thống.
+      Packet được hiển thị như nguồn thô. Mọi label, prediction, rank, route block, validator và output có sẵn trong JSON đều bị bỏ qua. Chỉ sau khi export/freeze mới được join với kết quả hệ thống.
     </div>
     <div class="review-tools">
       <input id="goldFile" type="file" accept=".json,application/json">
@@ -514,23 +459,11 @@
     </div>
   </div>
 
-  <div class="panel hidden" id="evalPanel">
-    <h2>Đối chiếu đáp án — độ chính xác thật</h2>
-    <p class="note" style="margin: 0 0 10px">
-      Dán đáp án: mỗi dòng một chỉ số đoạn, kèm cấp nếu muốn chấm cả cấp — ví dụ <code>95 1</code>.
-      Không có đáp án thì con số duy nhất đọc được là độ tin cậy tự đánh giá ở trên, không phải độ chính xác.
-    </p>
-    <textarea id="key" placeholder="95 1&#10;96 2&#10;99 2"></textarea>
-    <button id="evalBtn">Chấm</button>
-    <div class="tiles" id="evalTiles" style="margin-top: 16px"></div>
-    <div id="evalDetail"></div>
-  </div>
-
   <div class="panel hidden" id="reviewPanel">
     <h2>Model-assisted correction <span class="tag dis">not independent gold</span></h2>
     <p class="note" style="margin: 0 0 12px">
       Mỗi paragraph có stable ID. Chọn <b>0</b> nếu không phải heading, hoặc <b>1–9</b> cho cấp đúng.
-      Prediction được hiển thị và correction có thể ghi vào memory; output ở đây chỉ dùng cho feedback/training model-assisted, không phải human gold độc lập.
+      Prediction được hiển thị và correction có thể ghi vào memory; output ở đây chỉ dùng cho feedback, không phải human gold độc lập.
     </p>
     <div class="review-tools">
       <div>
@@ -544,7 +477,6 @@
         <label class="f" for="correctedFile">Nạp review đã sửa</label>
         <input id="correctedFile" type="file" accept=".json,application/json">
       </div>
-      <button id="makeGold">Xuất model-assisted .key + .training.jsonl</button>
     </div>
     <p class="note" id="reviewStatus"></p>
     <div class="scroll"><table id="reviewTable"></table></div>
@@ -736,7 +668,6 @@ function setWorkspaceMode(mode) {
   document.body.classList.toggle('gold-mode', blind);
   $('developerPanel').open = mode !== 'extract';
   $('goldPanel').classList.toggle('hidden', !blind);
-  $('evalPanel').classList.toggle('hidden', !developer || !outline);
   $('outputTracePanel').classList.toggle('hidden', !developer || !outline);
   if (!blind) {
     $('goldExit').classList.add('hidden');
@@ -1058,7 +989,6 @@ function setFile(f) {
   $('workFile').textContent = f.name;
   $('workState').textContent = 'Sẵn sàng phân tích';
   $('workHint').textContent = 'Pipeline sẽ đọc OpenXML, lọc ứng viên rồi gọi LLM cho phần chưa chắc chắn.';
-  $('inspectMode').disabled = false;
   $('run').disabled = false;
 }
 
@@ -1066,11 +996,7 @@ function setFile(f) {
 // Mặc định lấy từ máy chủ (đọc thẳng Core) để giao diện không lệch khỏi CLI.
 fetch('/api/defaults').then(r => r.json()).then(d => {
   defaults = d;
-  $('chunkCandidates').value = d.chunkCandidates;
-  $('threshold').value = d.threshold;
-  $('structuralOnly').checked = d.structuralOnly;
-  $('autoMode').checked = d.autoDetectMode !== false;
-  $('workConfig').textContent = `${d.lmStudioContextSize || d.chunkTokens} token · ${d.chunkCandidates} ứng viên/khối`;
+  $('workConfig').textContent = d.lmStudioContextSize ? `${d.lmStudioContextSize} token` : 'ngữ cảnh tự đọc';
 
   // Ô GPU chỉ có nghĩa khi bản dựng có backend GPU; bản CPU thì khoá lại thay vì để người
   // dùng gõ số rồi tưởng đang chạy GPU mà thực ra không.
@@ -1122,13 +1048,6 @@ async function loadLmStudioModels(d) {
 
 $('backend').onchange = syncBackend;
 $('noLlm').onchange = syncBackend;
-['styleOutline', 'numberingOutline', 'adminOutline'].forEach(id => {
-  $(id).onchange = () => {
-    if ($(id).checked) ['styleOutline', 'numberingOutline', 'adminOutline']
-      .filter(other => other !== id)
-      .forEach(other => $(other).checked = false);
-  };
-});
 
 function syncBackend() {
   const noLlm = $('noLlm').checked;
@@ -1167,8 +1086,8 @@ let modelNote = '', modelLabel = '', modelTone = '';
 function renderCfgNote() {
   if ($('noLlm').checked) {
     chip('cfgNote', 'không dùng model',
-      'Chỉ chạy luật OpenXML, không gọi mô hình: nhanh và không cần .gguf, nhưng chỉ nhận ra được '
-      + 'tiêu đề mà style/đánh số đã nói rõ. Đây KHÔNG phải cấu hình đã đo.', 'warn');
+      'Không gọi mô hình: chỉ đọc nguồn và dựng catalog. Harness không tự kết luận tiêu đề từ '
+      + 'style/đánh số, nên kết quả không có tiêu đề nào.', 'warn');
     return;
   }
   if ($('backend').value === 'openrouter') {
@@ -1177,8 +1096,8 @@ function renderCfgNote() {
     return;
   }
   if ($('backend').value === 'lmstudio') {
-    chip('cfgNote', 'JSON schema · chưa calibration',
-      'LM Studio local RPC: dùng structured JSON schema và hậu kiểm đủ ID. Confidence vẫn cần calibration riêng cho đúng model identifier này.');
+    chip('cfgNote', 'LM Studio',
+      'LM Studio local RPC: kết quả được hậu kiểm theo contract trước khi dùng.');
     return;
   }
   chip('cfgNote', modelLabel, modelNote, modelTone);
@@ -1189,7 +1108,7 @@ function renderCfgNote() {
 // model" và dev log khoe id của LM Studio, kể cả khi đang chạy Qwen local bằng file .gguf — nhìn
 // vào tưởng nạp nhầm model trong khi server vẫn chạy đúng thứ được chọn.
 function activeModelLabel() {
-  if ($('noLlm').checked) return 'không gọi model — chỉ luật OpenXML';
+  if ($('noLlm').checked) return 'không gọi model';
   const backend = $('backend').value;
   if (backend === 'lmstudio') return $('lmStudioModel').value || 'chưa chọn model LM Studio';
   if (backend === 'openrouter')
@@ -1211,13 +1130,13 @@ fetch('/api/models').then(r => r.json()).then(list => {
     sel.innerHTML = '<option value="">— không tìm thấy .gguf —</option>';
     $('noLlm').checked = true;
     modelLabel = 'không có .gguf'; modelTone = 'warn';
-    modelNote = 'Không tìm thấy .gguf nào trong models/ — chỉ chạy được bằng luật OpenXML.';
+    modelNote = 'Không tìm thấy .gguf nào trong models/ — hãy dùng LM Studio hoặc OpenRouter.';
     syncBackend();
     return;
   }
   // Mô hình khuyên dùng đứng đầu danh sách nên tự được chọn.
   sel.innerHTML = list.map(m =>
-    `<option value="${esc(m.path)}" data-ctx="${m.suggestedCtx}">${esc(m.name)} · ${m.sizeGb} GB${
+    `<option value="${esc(m.path)}">${esc(m.name)} · ${m.sizeGb} GB${
       m.recommended ? ' · khuyên dùng' : ''}</option>`).join('');
   syncCtx();
   sel.onchange = syncCtx;
@@ -1243,29 +1162,6 @@ fetch('/api/models').then(r => r.json()).then(list => {
   }
 });
 
-$('inspectMode').onclick = async () => {
-  if (!picked) return;
-  $('inspectMode').disabled = true;
-  $('modePanel').classList.remove('hidden');
-  $('modeBox').innerHTML = '<p class="note">Đang đọc cấu trúc tài liệu…</p>';
-
-  const fd = new FormData();
-  fd.append('file', picked);
-  fd.append('splitMerged', $('splitMerged').checked ? '1' : '0');
-  fd.append('structuralOnly', $('structuralOnly').checked ? '1' : '0');
-
-  try {
-    const res = await fetch('/api/inspect', { method: 'POST', body: fd });
-    const payload = await res.json();
-    if (!res.ok) throw new Error(payload.message || payload.detail || 'Không kiểm tra được mode.');
-    renderMode(payload.report, payload.suggestedRoute);
-  } catch (e) {
-    $('modeBox').innerHTML = `<div class="err">${esc(e.message)}</div>`;
-  } finally {
-    $('inspectMode').disabled = false;
-  }
-};
-
 // ---------- chạy ----------
 $('run').onclick = async () => {
   if (!picked) return;
@@ -1273,7 +1169,7 @@ $('run').onclick = async () => {
   $('cancelRun').classList.remove('hidden');
   runController = new AbortController();
   outline = null; serverError = false;
-  ['statsPanel', 'treePanel', 'evalPanel', 'reviewPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
+  ['statsPanel', 'treePanel', 'reviewPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
   logEvents = [];
   harnessEvents = [];
   harnessSelectedStage = null;
@@ -1289,7 +1185,7 @@ $('run').onclick = async () => {
   $('devMeta').textContent = `${$('backend').selectedOptions[0]?.textContent || 'Backend'} · ${activeModelLabel()}`;
   $('workState').textContent = 'Đang xử lý';
   $('workModel').textContent = activeModelLabel();
-  $('workConfig').textContent = `${$('ctx').value || 'ngữ cảnh tự đọc'} · ${$('chunkCandidates').value} ứng viên/khối`;
+  $('workConfig').textContent = $('ctx').value ? `${$('ctx').value} token` : 'ngữ cảnh tự đọc';
   $('workHint').textContent = 'Đang theo dõi request, JSON trả về và các bước hậu kiểm trong Dev log LLM.';
 
   const fd = new FormData();
@@ -1299,18 +1195,8 @@ $('run').onclick = async () => {
   fd.append('model', $('model').value);
   fd.append('lmStudioModel', $('lmStudioModel').value);
   fd.append('ctx', $('ctx').value);
-  fd.append('threshold', $('threshold').value);
-  fd.append('chunkCandidates', $('chunkCandidates').value);
   fd.append('gpuLayers', $('gpuLayers').value);
   fd.append('noLlm', $('noLlm').checked ? '1' : '0');
-  fd.append('structuralOnly', $('structuralOnly').checked ? '1' : '0');
-  fd.append('noTrustStyles', $('noTrustStyles').checked ? '1' : '0');
-  fd.append('splitMerged', $('splitMerged').checked ? '1' : '0');
-  fd.append('autoMode', $('autoMode').checked ? '1' : '0');
-  fd.append('styleOutline', $('styleOutline').checked ? '1' : '0');
-  fd.append('numberingOutline', $('numberingOutline').checked ? '1' : '0');
-  fd.append('adminOutline', $('adminOutline').checked ? '1' : '0');
-  fd.append('twoPass', $('twoPass').checked ? '1' : '0');
   fd.append('showRaw', $('showRaw').checked ? '1' : '0');
   fd.append('writeback', $('writeback').checked ? '1' : '0');
 
@@ -1409,8 +1295,7 @@ function renderLiveLog() {
 }
 
 // Cột trái đọc cùng một luồng log với cột phải, chỉ quy nó về năm bước. Chỉ số bước không lùi:
-// log của lượt hai (twoPass) lặp lại các mẫu chuỗi của lượt một, mà lùi thanh tiến trình về giữa
-// chừng thì trông như pipeline chạy lại từ đầu.
+// lùi thanh tiến trình về giữa chừng thì trông như pipeline chạy lại từ đầu.
 const STAGES = [
   ['Intent proposal', /intent\.proposal|Intent extract-document-structure/i, 'Đang dựng intent…'],
   ['Intent validation', /intent\.validation|Intent hợp lệ/i, 'Đang kiểm tra intent…'],
@@ -1438,7 +1323,7 @@ function updateDevState(message) {
   if (hit > stageIndex) { stageIndex = hit; renderStages(); }
 }
 
-// Keep the legacy function names used by the run lifecycle, but route rendering through the
+// Keep the run-lifecycle function names, but route rendering through the
 // contract-aware harness view above.
 function renderStages(allDone = false) { renderHarnessStages(); }
 function updateDevState(message) {
@@ -1456,20 +1341,12 @@ function showError(msg) {
 
 // ---------- hiển thị kết quả ----------
 function render(o, s, review, agent) {
-  if (o.documentMode) {
-    $('modePanel').classList.remove('hidden');
-    renderMode(o.documentMode, o.deterministicRoute);
-  }
-
   const secs = (o.elapsedMs / 1000).toFixed(1);
   const t = [
     [o.paragraphCount, 'đoạn trong file'],
-    [s.candidates, 'ứng viên'],
+    [s.sources, 'nguồn'],
     [s.headings, 'tiêu đề', true],
-    [s.autoAccepted, 'tự động nhận'],
-    [s.autoAcceptedCalibrated, 'đã calibration'],
-    [s.autoAcceptedDeterministic, 'deterministic'],
-    [s.autoAcceptedUncalibratedEvidence, 'evidence chưa đo'],
+    [s.humanVerified, 'người xác nhận'],
     [s.requiresReview, 'cần duyệt'],
     [s.rejected, 'bị loại'],
     [s.maxLevel, 'cấp sâu nhất'],
@@ -1479,32 +1356,17 @@ function render(o, s, review, agent) {
   if (o.disputedCount) t.splice(4, 0, [o.disputedCount, 'cần xem lại']);
   tiles('tiles', t);
 
-  // Cấu hình lệch khỏi profile thì cổng precision bỏ qua profile và mọi mục rơi về "cần duyệt" —
-  // kéo theo cả bước ghi .docx bị bỏ. Trước đây tín hiệu duy nhất là chuỗi confidenceBasis nằm
-  // sâu trong JSON, nên người dùng chỉ thấy "cần duyệt" mà không biết là do chính mình vừa gõ.
-  const mismatch = o.headings.filter(h => h.confidenceBasis === 'calibration_profile_mismatch').length;
-  $('cfgWarn').classList.toggle('hidden', !mismatch);
-  if (mismatch) {
-    $('cfgWarn').textContent =
-      `${mismatch} mục không dùng được profile calibration: cấu hình lần chạy này khác cấu hình đã `
-      + 'hiệu chuẩn, thường là do đổi "Ngưỡng giữ ứng viên" hoặc "Bỏ luật từ ngữ" trong mục nâng cao, '
-      + 'hoặc do đổi mô hình. Khi đó mọi mục bị ép về trạng thái cần duyệt — chặt hơn cả khi KHÔNG '
-      + 'có profile nào, vì lúc đó còn tự nhận được theo evidence — nên bước ghi .docx cũng bị bỏ. '
-      + 'Trả các ô nâng cao về mặc định, hoặc hiệu chuẩn lại bằng dhx eval --calibration-out.';
-    $('advanced').open = true;
-  }
-
   $('confNote').innerHTML =
     // Câu tường thuật do harness dựng từ outline đã qua validator — hiển thị nguyên văn để UI
     // không diễn giải lại các con số theo hướng dễ chịu hơn thực tế.
     (agent ? `${esc(agent.message)}<br>` : '') +
     `Nguồn: <span class="tag Style">Style</span> ${s.byStyle} · ` +
     `<span class="tag Model">Model</span> ${s.byModel} · ` +
-    `<span class="tag Heuristic">Heuristic</span> ${s.byHeuristic}` +
+    `<span class="tag LocalRules">Local rules</span> ${s.byLocalRules}` +
     ` · <span class="tag HumanCorrection">Người sửa</span> ${s.byHumanCorrection}` +
-    (o.model ? ` — mô hình <code>${esc(o.model)}</code>` : ' — chạy bằng luật OpenXML') +
-    `.<br><b>Evidence 93–95% chỉ là mục tiêu nội bộ; holdout_wilson_lower95 mới là cận dưới precision đo được.</b> ` +
-    `Mục chưa đủ chuẩn được giữ ở trạng thái cần duyệt.`;
+    (o.model ? ` — mô hình <code>${esc(o.model)}</code>` : ' — không gọi mô hình') +
+    `.<br>Độ tin cậy do pipeline tự đánh giá, không phải precision đo được. ` +
+    `Mục chưa được xác nhận được giữ ở trạng thái cần duyệt.`;
 
   // Nút tải chỉ hiện khi harness thật sự đã ghi được file. Không dựng link từ runId ở phía
   // trình duyệt: run bị gate chặn thì không có gì để tải, và một link chết còn khó hiểu hơn.
@@ -1513,24 +1375,11 @@ function render(o, s, review, agent) {
   $('downloadNote').classList.toggle('hidden', !download);
   if (download) $('downloadDocx').onclick = () => { window.location.href = download; };
 
-  // Chưa calibration thì KHÔNG được phát biểu như một phán quyết về precision: con số hiển thị
-  // lúc đó chỉ là bậc theo số kiểm tra đã qua. §37 đo được cái giá của việc nói nhầm — người dùng
-  // thấy 111/127 mục "chưa đạt cổng" và không còn phân biệt được đâu là chỗ thật sự cần xem.
-  //
-  // PHẢI khai TRƯỚC câu lệnh dưới. Trước đây nó nằm GIỮA biểu thức nối chuỗi
-  // (`innerHTML = '<thead>…' +` … `const decisionTag`), nên câu lệnh không bao giờ kết thúc và
-  // toàn bộ <script> hỏng cú pháp: "Uncaught SyntaxError: Unexpected token 'const'" — cả giao
-  // diện chết, không riêng bảng này.
+  // PHẢI khai TRƯỚC câu lệnh dưới: đặt giữa biểu thức nối chuỗi thì cả <script> hỏng cú pháp.
   const decisionTag = h => {
-    const raw = h.confidenceBasis === 'evidence_not_calibrated';
-    if (h.decisionStatus === 'AutoAcceptedCalibrated') return '<span class="tag Style">đã calibration</span>';
     if (h.decisionStatus === 'HumanVerified') return '<span class="tag HumanCorrection">người xác nhận</span>';
-    if (h.decisionStatus === 'AutoAcceptedEvidence')
-      return raw ? '<span class="tag Model">bằng chứng đủ</span>'
-                 : '<span class="tag Model">evidence ≥ mục tiêu</span>';
-    if (h.decisionStatus === 'RequiresReview')
-      return raw ? '<span class="tag dis">bằng chứng yếu — nên xem</span>'
-                 : '<span class="tag dis">chưa đạt cổng precision</span>';
+    if (h.decisionStatus === 'AutoAcceptedEvidence') return '<span class="tag Model">bằng chứng đủ</span>';
+    if (h.decisionStatus === 'RequiresReview') return '<span class="tag dis">nên xem</span>';
     return '';
   };
 
@@ -1542,22 +1391,15 @@ function render(o, s, review, agent) {
         <td style="padding-left:${10 + ((h.level ?? 1) - 1) * 22}px">
           <span class="lvl">${h.level == null ? 'H?' : 'H' + h.level}</span>${esc(h.text)}${
             h.inlineBody ? '<span class="tag dis">tách nội dung cùng dòng</span>' : ''}${
-            h.evidence ? `<span class="tag ${h.evidence.status === 'verified_by_multiple_checks' ? 'Style' : 'dis'}">${evidenceCount(h.evidence)}/5 kiểm tra</span>` : ''}${
             decisionTag(h)}${
             h.disputed ? '<span class="tag dis">cần xem lại</span>' : ''}</td>
         <td><span class="tag ${h.source}">${h.source}</span></td>
-        <td class="c" title="${h.confidenceBasis === 'evidence_not_calibrated'
-          ? 'Chưa calibration bằng holdout — đây là bậc theo số kiểm tra đã qua, không phải precision đo được.'
-          : 'Precision đo trên holdout cho chữ ký bằng chứng này.'}">${pct(h.confidence)}${
-          h.confidenceBasis === 'evidence_not_calibrated' ? '<span class="approx">~</span>' : ''}</td>
+        <td class="c" title="Độ tin cậy do pipeline tự đánh giá, không phải precision đo được.">${pct(h.confidence)}<span class="approx">~</span></td>
       </tr>`).join('') + '</tbody>';
 
   $('statsPanel').classList.remove('hidden');
   $('treePanel').classList.remove('hidden');
   renderOutputTrace(o);
-  $('evalPanel').classList.toggle('hidden', workspaceMode !== 'developer');
-  $('evalTiles').innerHTML = '';
-  $('evalDetail').innerHTML = '';
   reviewBundle = review;
   if (workspaceMode === 'correction' || workspaceMode === 'developer') {
     renderReview();
@@ -1565,69 +1407,6 @@ function render(o, s, review, agent) {
   } else {
     $('reviewPanel').classList.add('hidden');
   }
-}
-
-function renderMode(report, route) {
-  if (!report) return;
-  const mode = report.mode || report.Mode || 'Unknown';
-  const status = report.status || report.Status || 'Normal';
-  $('modeBox').innerHTML = `
-    <div class="modebox">
-      <div class="modehead">
-        <strong>${esc(modeLabel(mode))}</strong>
-        <span class="tag ${status === 'Normal' ? 'Style' : 'dis'}">${esc(statusLabel(status))}</span>
-        <span class="tag ${route ? 'Style' : 'dis'}">${route ? esc(routeLabel(route)) : 'chỉ báo cáo'}</span>
-      </div>
-      <p class="note" style="margin-top:6px">${esc(report.description || '')}</p>
-      <div class="modegrid">
-        <div><span>Paragraph</span><b>${report.paragraphs ?? 0}</b></div>
-        <div><span>Style Heading</span><b>${report.styledHeadings ?? 0}</b></div>
-        <div><span>outlineLvl</span><b>${pct(report.outlineLevelRatio || 0)}</b></div>
-        <div><span>Hành chính</span><b>${pct(report.vietnameseAdminRatio || 0)}</b></div>
-        <div><span>Pháp luật</span><b>${pct(report.legalMarkerRatio || 0)}</b></div>
-        <div><span>Số gõ tay</span><b>${pct(report.typedNumberRatio || 0)}</b></div>
-        <div><span>numPr</span><b>${pct(report.numberingRatio || 0)}</b></div>
-        <div><span>Định dạng lệch</span><b>${report.formatDiffers ? 'có' : 'không'}</b></div>
-      </div>
-    </div>`;
-}
-
-function statusLabel(status) {
-  return ({
-    Normal: 'nguồn đọc được',
-    ConversionFailure: 'nghi hỏng convert',
-  })[status] || status;
-}
-
-function modeLabel(mode) {
-  return ({
-    OutlineLevelDriven: 'Outline level của Word',
-    TocAnchored: 'Tài liệu neo theo mục lục',
-    VietnameseAdministrative: 'Văn bản hành chính Việt Nam',
-    VietnameseLegal: 'Văn bản quy phạm pháp luật',
-    TypedNumbering: 'Số gõ tay nhiều cấp',
-    NumberingDriven: 'Danh sách đa cấp của Word',
-    CustomStyle: 'Style tự đặt',
-    FormatDriven: 'Dựa vào định dạng',
-    SemanticOnly: 'Chỉ còn ngữ nghĩa',
-    Unknown: 'Chưa nhận dạng',
-  })[mode] || mode;
-}
-
-function routeLabel(route) {
-  return ({
-    'auto:outline-level': 'auto · style/outlineLvl',
-    'auto:numbering': 'auto · numbering',
-    'auto:custom-style': 'auto · custom style',
-    'auto:vietnamese-administrative': 'auto · hành chính',
-    'auto:vietnamese-legal': 'auto · pháp luật',
-    'auto:typed-numbering': 'auto · số gõ tay',
-  })[route] || route;
-}
-
-function evidenceCount(e) {
-  return ['numberingValid', 'siblingSequenceValid', 'formattingConsistent', 'modelConfirmed', 'treeValid']
-    .filter(k => e[k]).length;
 }
 
 // ---------- review / correction ----------
@@ -1707,19 +1486,6 @@ $('correctedFile').onchange = async e => {
     renderReview();
   } catch (err) { showError('Không đọc được review: ' + err.message); }
 };
-$('makeGold').onclick = async () => {
-  if (!reviewBundle) return;
-  try {
-    const res = await fetch('/api/review/key', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(reviewBundle),
-    });
-    const payload = await res.json();
-    if (!res.ok) throw new Error(payload.message || 'Không tạo được nhãn vàng.');
-    downloadText(payload.key, reviewName('.key'), 'text/plain;charset=utf-8');
-    downloadText(payload.trainingJsonl, reviewName('.training.jsonl'), 'application/x-ndjson;charset=utf-8');
-  } catch (err) { showError(err.message); }
-};
-
 function reviewName(extension) {
   const source = reviewBundle && reviewBundle.sourceFile ? reviewBundle.sourceFile : 'document.docx';
   return source.replace(/\.[^.]+$/, '') + extension;
@@ -1730,67 +1496,6 @@ function downloadText(text, name, type) {
   link.download = name;
   link.click();
   setTimeout(() => URL.revokeObjectURL(link.href), 0);
-}
-
-// ---------- chấm với đáp án ----------
-$('evalBtn').onclick = () => {
-  if (!outline) return;
-
-  const truth = new Map();
-  for (const raw of $('key').value.split(/[\n;]+/)) {
-    const m = raw.trim().match(/^(\d+)(?:[\s,:]+(\d+))?$/);
-    if (m) truth.set(+m[1], m[2] ? +m[2] : null);
-  }
-  if (!truth.size) {
-    $('evalDetail').innerHTML = '<p class="note">Chưa đọc được chỉ số nào từ đáp án.</p>';
-    $('evalTiles').innerHTML = '';
-    return;
-  }
-
-  const got = new Map(outline.headings.map(h => [h.index, h.level]));
-  const tp = [...got.keys()].filter(i => truth.has(i));
-  const fp = [...got.keys()].filter(i => !truth.has(i));
-  const fn = [...truth.keys()].filter(i => !got.has(i));
-
-  // Chỉ chấm cấp trên phần giao, và chỉ với những dòng đáp án có ghi cấp.
-  const levelled = tp.filter(i => truth.get(i) !== null);
-  const levelOk = levelled.filter(i => truth.get(i) === got.get(i));
-
-  const precision = got.size ? tp.length / got.size : 0;
-  const recall = truth.size ? tp.length / truth.size : 0;
-  const f1 = (precision + recall) ? 2 * precision * recall / (precision + recall) : 0;
-
-  tiles('evalTiles', [
-    [pct(precision), 'precision — ' + tp.length + '/' + got.size, true],
-    [pct(recall), 'recall — ' + tp.length + '/' + truth.size],
-    [pct(f1), 'F1'],
-    [levelled.length ? pct(levelOk.length / levelled.length) : '—',
-     'đúng cấp — ' + levelOk.length + '/' + levelled.length],
-    [fp.length, 'thừa (false positive)'],
-    [fn.length, 'thiếu (false negative)'],
-  ]);
-
-  const rows = [];
-  for (const i of fp) rows.push([i, textOf(i), 'thừa']);
-  for (const i of fn) rows.push([i, '(không có trong kết quả)', 'thiếu']);
-  for (const i of levelled) {
-    if (truth.get(i) !== got.get(i))
-      rows.push([i, textOf(i), `cấp ${got.get(i) ?? 'chưa xác định'} ≠ đáp án ${truth.get(i)}`]);
-  }
-
-  $('evalDetail').innerHTML = rows.length
-    ? '<div class="scroll"><table style="margin-top:16px"><thead><tr><th style="width:64px">Đoạn</th>' +
-      '<th>Nội dung</th><th style="width:190px">Sai ở đâu</th></tr></thead><tbody>' +
-      rows.sort((a, b) => a[0] - b[0]).map(r =>
-        `<tr><td class="i">${r[0]}</td><td>${esc(r[1])}</td>
-             <td><span class="tag miss">${esc(r[2])}</span></td></tr>`).join('') +
-      '</tbody></table></div>'
-    : '<p class="note" style="margin-top:16px">Khớp hoàn toàn với đáp án.</p>';
-};
-
-function textOf(i) {
-  const h = outline.headings.find(x => x.index === i);
-  return h ? h.text : '(không có trong kết quả)';
 }
 
 // ---------- tiện ích ----------

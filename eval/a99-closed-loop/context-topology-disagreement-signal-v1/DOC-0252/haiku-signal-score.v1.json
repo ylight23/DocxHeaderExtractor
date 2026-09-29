@@ -1,0 +1,117 @@
+{
+  "artifactKind": "a99_context_topology_disagreement_model_signal_score",
+  "schemaVersion": "a99-context-topology-disagreement-model-signal-score-v1",
+  "model": "Haiku",
+  "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "itemCount": 18,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "topologyDisagreementItems": [
+    "ITEM-505430BB"
+  ],
+  "repeatInstabilityItems": [
+    "ITEM-505430BB",
+    "ITEM-CCE2C592"
+  ],
+  "contextSensitivityItems": [
+    "ITEM-505430BB",
+    "ITEM-CCE2C592"
+  ],
+  "armModalErrorItems": [
+    "ITEM-505430BB"
+  ],
+  "anyRepeatErrorItems": [
+    "ITEM-505430BB",
+    "ITEM-CCE2C592"
+  ],
+  "topologyDisagreementVsArmModalError": {
+    "tp": 1,
+    "fp": 0,
+    "tn": 17,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "specificity": 1,
+    "note": "DESCRIPTIVE_ONLY - N is too small (18 items, at most 2 known positives) to claim validated detector performance."
+  },
+  "contextSensitivityVsArmModalError": {
+    "tp": 1,
+    "fp": 1,
+    "tn": 16,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1,
+    "specificity": 0.9411764705882353,
+    "note": "DESCRIPTIVE_ONLY - N is too small (18 items, at most 2 known positives) to claim validated detector performance."
+  },
+  "contextSensitivityVsAnyRepeatError": {
+    "tp": 2,
+    "fp": 0,
+    "tn": 16,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "specificity": 1,
+    "note": "DESCRIPTIVE_ONLY - N is too small (18 items, at most 2 known positives) to claim validated detector performance."
+  },
+  "specialCaseAudit": {
+    "f1": {
+      "itemId": "ITEM-505430BB",
+      "fullModal": "NON_STRUCTURAL",
+      "fullRepeats": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "DOCUMENT_LABEL",
+      "structuredV2Repeats": [
+        "NON_STRUCTURAL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "minimalModal": "DOCUMENT_LABEL",
+      "minimalRepeats": [
+        "DOCUMENT_LABEL"
+      ],
+      "topologyDisagreement": true,
+      "repeatInstability": true,
+      "contextSensitivity": true,
+      "goldLabel": "DOCUMENT_LABEL",
+      "armModalError": true,
+      "anyRepeatError": true,
+      "reason": "flagged by both topology disagreement across arm modal labels and within-arm repeat instability"
+    },
+    "agenda": {
+      "itemId": "ITEM-CCE2C592",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeats": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2Repeats": [
+        "STRUCTURAL_UNIT",
+        "NON_STRUCTURAL",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeats": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": true,
+      "contextSensitivity": true,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": true,
+      "reason": "flagged by within-arm repeat instability only (modal labels agree across arms)"
+    }
+  },
+  "stableControls": {
+    "total": 16,
+    "allSignalsFalse": 16,
+    "incorrectlyFlagged": []
+  },
+  "generalizationEstablished": false
+}

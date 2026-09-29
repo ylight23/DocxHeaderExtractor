@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "a99-second-model-minimal-replay-reservation-v1",
+  "status": "CAPTURE_SLOT_RESERVED",
+  "cell": "r1/PACK_001",
+  "model": "openai/gpt-4.1",
+  "provider": "OpenRouter",
+  "upstream": "OpenAI",
+  "providerFallbacksAllowed": false,
+  "providerInputHash": "21ae99ebb4a97695cf1223e66d7f8b88ad677b4245703488899191dd8e0f4876"
+}

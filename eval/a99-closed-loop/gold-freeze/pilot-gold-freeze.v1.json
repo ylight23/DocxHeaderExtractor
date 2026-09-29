@@ -1,0 +1,30 @@
+{
+  "artifactKind": "a99_gold_freeze",
+  "decidedBy": "USER",
+  "decidedAt": "2026-09-24",
+  "decision": "final as they stand; freeze, do not re-review",
+  "modelAssistedEvidence": "qwen3.7-flash proposals were among the evidence for these headings; the user accepted that",
+  "documents": [
+    {
+      "documentId": "DOC-0255",
+      "path": "eval/a99-closed-loop/gold/DOC-0255.gold.json",
+      "sha256": "ec53fb8b5b85239457b6b878550b9cfb68861e4e41397e580ddc716e295ddadd",
+      "semanticHeadingTotal": 20,
+      "claims": 20
+    },
+    {
+      "documentId": "DOC-0256",
+      "path": "eval/a99-closed-loop/gold/DOC-0256.gold.json",
+      "sha256": "00db4fe9172ef0c55fbcaa0b90ff9d598ad2a58c505bcae21c002966cdbaa5b7",
+      "semanticHeadingTotal": 34,
+      "claims": 34
+    },
+    {
+      "documentId": "DOC-0259",
+      "path": "eval/a99-closed-loop/gold/DOC-0259.gold.json",
+      "sha256": "d5852f43f9eba7f7c47841a9c4950be000f6414bd683ffad99a2be71642c3fa2",
+      "semanticHeadingTotal": 20,
+      "claims": 20
+    }
+  ]
+}

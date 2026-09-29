@@ -1,0 +1,31 @@
+{
+  "artifactKind": "a99_source_regeneration_manifest",
+  "schemaVersion": "a99-source-regeneration-manifest-v1",
+  "documentId": "DOC-0264",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "originalDocument": {
+    "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.doc",
+    "sha256": "5fc30d8bb1a753e673243a4b08d647b116ddab81d23a697f5b1057e84389d318",
+    "format": "Word 97-2003 (.doc)"
+  },
+  "regeneratedDocx": {
+    "path": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
+    "sha256": "a69e55265f53b556367a82e2c06a29c2eaa7fd2e19784e3200bdfb3355c09c5e",
+    "paragraphs": 1410
+  },
+  "replacesInPlace": {
+    "path": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
+    "sha256": "1e7b4408c4ffb11587f8f453ef6484fe193eeb51844ffa9279018323503e2117",
+    "producedBy": "legacy DOC text extraction",
+    "defect": "the whole law in one paragraph"
+  },
+  "converter": {
+    "tool": "LibreOffice (buildid cd7284b4cbbfeb507e630c1aac019f4157393acb)",
+    "command": "soffice --headless --norestore --convert-to docx <original .doc>",
+    "carries": "the .doc's own paragraphs, runs and styles as LibreOffice reads them; nothing added",
+    "bytesAreNotReproducible": "the package embeds conversion timestamps; the committed file is the authority and its sha256 is pinned here"
+  },
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-24"
+}

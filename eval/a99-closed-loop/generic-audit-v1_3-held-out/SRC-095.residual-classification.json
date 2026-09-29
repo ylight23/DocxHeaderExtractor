@@ -1,0 +1,159 @@
+{
+  "artifactKind": "a99_generic_audit_residual_classification",
+  "study": "SRC095_BLIND_GENERALIZATION_AUDIT_V1",
+  "rawScore": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_3-held-out/SRC-095.blind-score.json",
+    "sha256": "65937d1a22f93dc174a2da55168dd1733c87af9401186671903f65a206a3f320",
+    "commit": "3b87711"
+  },
+  "modelProviderVlmCalls": 0,
+  "status": "reviewer classification; the raw score is not edited; GENERIC_AUDIT_ENGINE_V1.3 and PDF_SOURCE_FACTS_V3 are not changed; no Gold revision is proposed",
+  "residuals": {
+    "goldNotEngineTrue": 14,
+    "nonGoldTrue": 3
+  },
+  "byBucket": {
+    "A": {
+      "goldNotEngineTrue": 7,
+      "nonGoldTrue": 0
+    },
+    "B_KNOWN": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "B_NEW": {
+      "goldNotEngineTrue": 7,
+      "nonGoldTrue": 3
+    },
+    "C": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "D": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "GOLD_REVISION_CANDIDATE": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    }
+  },
+  "byCause": [
+    {
+      "cause": "INDEX_GROUP_LETTER_MEANING",
+      "bucket": "A",
+      "Reason": "S095_Q2 (user-decided after V1.3 froze, no precedent): a single regular-weight letter opening its group of index entries is a heading by function; no glyph fact sets it apart and V1.3 sends it to review - the fail-safe held for 7 of 8 (5 as region openers, D and S as 'opens nothing' because the all-caps index term under each counts as a peer)",
+      "goldNotEngineTrue": 7,
+      "goldBuckets": {
+        "EXACT_NEEDS_REVIEW": 7
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L1914:S0:0-1",
+        "L1940:S0:0-1",
+        "L1961:S0:0-1",
+        "L2012:S0:0-1",
+        "L2023:S0:0-1",
+        "L2056:S0:0-1",
+        "L2063:S0:0-1"
+      ]
+    },
+    {
+      "cause": "SPLIT_SECTION_NUMBER_READ_AS_FIGURES",
+      "bucket": "B_NEW",
+      "Reason": "where xml2rfc sets a section number apart from its title ('4.6.' | 'Server Push', two segments of one row), V1.3 assembles the two parts exactly but tests the figures-only shape on the first part alone: '4.6.' is digits and dots, so the label is emitted FALSE as a figure. The test belongs on the label's whole text. All six split-row sections, each assembled exactly",
+      "goldNotEngineTrue": 6,
+      "goldBuckets": {
+        "EXACT_FALSE": 6
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L0608:S0:0-4|L0608:S1:0-11",
+        "L0944:S0:0-4|L0944:S1:0-16",
+        "L1320:S0:0-5|L1320:S1:0-32",
+        "L1431:S0:0-5|L1431:S1:0-10",
+        "L1465:S0:0-5|L1465:S1:0-14",
+        "L1613:S0:0-5|L1613:S1:0-20"
+      ]
+    },
+    {
+      "cause": "INDEX_LOCATOR_WRAP_READ_AS_CAPTION",
+      "bucket": "B_NEW",
+      "Reason": "an index entry's locator list wraps at 'Table 2; Appendix A.1, ...': the wrapped line begins with the numbered caption shape, so it opens a figure region and the next group letter 'G' reads as a label inside a figure (FALSE, where its siblings went to review). The same shape puts two more locator lines in review as captions",
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_FALSE": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L1947:S0:0-1"
+      ]
+    },
+    {
+      "cause": "INDEX_ENTRY_READ_AS_CONTENTS_OPENER",
+      "bucket": "B_NEW",
+      "Reason": "'H3_REQUEST_INCOMPLETE' is an index term with its locators ('Section 4.1, Paragraph 14; Section 8.1; Table 4') in the second segment of its row; the locators read as a run of contents entries, so the term is proposed as the opener of a contents list",
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L1994:S0:0-21"
+      ]
+    },
+    {
+      "cause": "EMPHASISED_CROSS_REFERENCE_READ_AS_STRUCTURAL_LABEL",
+      "bucket": "B_NEW",
+      "Reason": "the index sets an entry's primary locator in bold italic; where that locator begins a wrapped line ('Section 4.6; Section 5.2, Paragraph 1; ...') it is a bold lead with the numbered structural label shape, and V1.3 proposes it as a run-in section label. A cross-reference is not a label: nothing follows it but more locators",
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L2025:S0:0-11"
+      ]
+    },
+    {
+      "cause": "AUTHOR_NAME_READ_AS_SECTION_LABEL",
+      "bucket": "B_NEW",
+      "Reason": "the author's name, 10pt bold at the margin under 'Author's Address', over the affiliation and email lines, reads as a label over its own two body lines; the gap-20 letterhead test covers an address block set right of the page centre, not one at the text margin",
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L2077:S0:0-20"
+      ]
+    }
+  ],
+  "knownGapsRecurring": [],
+  "knownGapsNotObserved": [
+    "B2",
+    "B4",
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K5",
+    "K6",
+    "K7",
+    "N1",
+    "N2",
+    "N3",
+    "N4"
+  ],
+  "ontologyGaps": 0,
+  "documentSpecificExceptions": [],
+  "axesOnTruePositives": {
+    "compared": 89,
+    "semanticFunctionsDisagreements": 64,
+    "otherAxesDisagreements": 0,
+    "reading": "primaryFunction, scope, roles, titleRelation and informationType agree on all 89; the 64 semanticFunctions pairs are the secondary IDENTITY function: V1.3 adds it to numbered structural labels and not to unnumbered ones, the Gold to top-level and front/back matter sections only (58 numbered sub-sections one way, 6 unnumbered matter sections the other). Not a residual; recorded for the hierarchy evaluation"
+  },
+  "gate": {
+    "heldOutF1": 0.9128,
+    "truePrecision": 0.9674,
+    "ontologyGaps": 0,
+    "documentSpecificExceptions": 0,
+    "passed": false,
+    "basis": "the gate the user set on 2026-09-25 (D ~ 0, C ~ 0 and high F1): C = 0 and D = 0 hold; F1 0.913 is below the V1.2 held-outs (SRC-042 0.978, SRC-044 0.982)",
+    "reading": "precision held (0.967, 3 false positives, all in the index or the author block); recall lost 6 of 14 to one generic defect - the figures-only test on the first part of an assembled label - and 7 to a meaning decision the fail-safe sent to review. Five new B causes, three of them in the index: back matter no development source had"
+  }
+}

@@ -1,0 +1,587 @@
+{
+  "artifactKind": "a99_two_stage_semantic_contract_design",
+  "schemaVersion": "a99-two-stage-semantic-contract-design-v1",
+  "status": "DESIGN_ONLY",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "runtimeMutated": false,
+  "motivatingEvidence": {
+    "e1V2": {
+      "result": "MASTHEAD_POLICY_INSUFFICIENT",
+      "mastheadSuppressions": "0/9"
+    },
+    "e2V2": {
+      "result": "E2_MASTHEAD_POLICY_INSUFFICIENT",
+      "mastheadSuppressions": "1/9"
+    },
+    "bothArms": {
+      "goldTargetMembership": "14/14 bound x 3 repeats",
+      "goldMembershipRegression": 0,
+      "rootToNone": 0,
+      "unexpectedVerbatimText": 0
+    },
+    "closedHypotheses": [
+      "packing defect",
+      "Gold boundary debt",
+      "locator projection defect",
+      "selectionMode/model coupling",
+      "capture idempotency defect",
+      "coordinate-shape confound",
+      "relation regression from E1/E2"
+    ],
+    "remaining": "the semantic membership policy itself",
+    "promptOnlyMastheadRefinementExhaustedForNow": true,
+    "notYetEstablished": "That the two-stage design fixes it. This artifact designs and proves representability; it measures nothing about a real placement model."
+  },
+  "responsibilityBoundaries": {
+    "stage1": {
+      "purpose": "Decide which source spans are accepted structural claims.",
+      "modelDecides": [
+        "whether the source content is an accepted structural claim",
+        "whether it is the document's own accepted label",
+        "whether it opens and names a structural unit",
+        "which exact source content expresses the claim"
+      ],
+      "modelMustNotDecide": [
+        "ROOT",
+        "NONE",
+        "parent claim",
+        "any hierarchy edge",
+        "numeric coordinate offsets",
+        "selectionMode"
+      ],
+      "harnessOwns": [
+        "source grounding validation",
+        "source-part canonicalization",
+        "exact UTF-16 coordinates",
+        "stable claim identity",
+        "refusal"
+      ]
+    },
+    "stage2": {
+      "purpose": "Relate already-accepted claims in the document hierarchy.",
+      "receives": "only accepted, bound Stage-1 claims",
+      "modelDecides": [
+        "structural parent relation",
+        "root placement",
+        "attachment order"
+      ],
+      "modelMustNot": [
+        "add a heading",
+        "remove an accepted heading",
+        "change source parts",
+        "change coordinates",
+        "change Stage-1 membership",
+        "emit source coordinates"
+      ]
+    }
+  },
+  "stage1Contract": {
+    "protocolProposal": "a99-semantic-membership-v1",
+    "providerVisibleSchema": {
+      "claims": [
+        {
+          "sourceParts": "[{ sourceAlias, verbatimText? }]  - unchanged from v2",
+          "membership": "DOCUMENT_LABEL | STRUCTURAL_UNIT"
+        }
+      ]
+    },
+    "roleField": "omitted",
+    "roleRationale": "Both arms mismatched Gold's ontology on all 42 target claims while binding 14/14 correctly. A field that is always wrong where the decision is always right is not on the critical path, and carrying it forward only because v2 has it would import the ontology debt into the successor.",
+    "membershipVsRole": "The disposition above is a membership class - whether the span is a claim at all and of what kind. It is deliberately not a domain role (MeetingSection, AgendaItem); that vocabulary is a separate, unsolved problem.",
+    "sourceGroundingInvariant": "Unchanged from v2: the model chooses source content, the harness canonicalizes coordinates. No model-owned selectionMode or offsets."
+  },
+  "documentLabelVersusTree": {
+    "problem": "NONE currently means three different things at once, and the data shows it: it carries approved Gold claims, the document title, and false positives in the same runs.",
+    "resolution": "Membership carries the disposition; placement never does. A DOCUMENT_LABEL is accepted without being in the section tree, so it needs no parent value at all, and no span can be admitted by choosing a placement value for it.",
+    "invariant": "ACCEPTED_MEMBERSHIP exists independently of STRUCTURAL_PLACEMENT.",
+    "observedNoneUsage": [
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 1,
+        "total": 6,
+        "onApprovedGold": 3,
+        "onFalsePositives": 3
+      },
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 2,
+        "total": 4,
+        "onApprovedGold": 1,
+        "onFalsePositives": 3
+      },
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 3,
+        "total": 6,
+        "onApprovedGold": 1,
+        "onFalsePositives": 5
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 1,
+        "total": 6,
+        "onApprovedGold": 1,
+        "onFalsePositives": 5
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 2,
+        "total": 5,
+        "onApprovedGold": 0,
+        "onFalsePositives": 5
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 3,
+        "total": 4,
+        "onApprovedGold": 1,
+        "onFalsePositives": 3
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 1,
+        "total": 6,
+        "onApprovedGold": 1,
+        "onFalsePositives": 5
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 2,
+        "total": 3,
+        "onApprovedGold": 1,
+        "onFalsePositives": 2
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 3,
+        "total": 6,
+        "onApprovedGold": 1,
+        "onFalsePositives": 5
+      }
+    ]
+  },
+  "stage2Contract": {
+    "protocolProposal": "a99-structural-placement-v1",
+    "input": "harness-created stable claim ids, each with its bound source text and coordinates, plus document and layout context",
+    "providerVisibleSchema": {
+      "relations": [
+        {
+          "childClaimId": "C0007",
+          "parentClaimId": "C0003 | ROOT"
+        }
+      ]
+    },
+    "documentLabels": "not placed at all. They are omitted from the relation set rather than given a sentinel parent, so no fake heading category is needed to say 'no parent'.",
+    "claimIdScheme": "C{ordinal} over the accepted set in document order, assigned by the harness from the bound coordinate identity - a bijection, verified in the projections below."
+  },
+  "membershipImmutability": {
+    "immutableAfterStage1": true,
+    "stage2FailsClosedOn": [
+      "unknown child claim id",
+      "unknown parent claim id",
+      "duplicate incompatible edge",
+      "any source text in the response",
+      "any coordinate in the response"
+    ],
+    "consequence": "Stage 2 cannot change Stage-1 TP/FP/FN. Membership counts are final before placement is requested."
+  },
+  "physicalVersusLogical": {
+    "option1SingleCallTwoSections": {
+      "couplingRemoved": false,
+      "why": "One generation still produces both sections, so placement reasoning remains available while membership is being decided. That is precisely the coupling E1 and E2 failed to break with wording. Separating fields in a response separates the schema, not the decision surface."
+    },
+    "option2TwoPhysicalCalls": {
+      "couplingRemoved": true,
+      "why": "Stage 1 closes and the harness binds before any placement question is asked. The placement generation cannot revise membership because it is never shown the candidates and its response cannot express one."
+    },
+    "conclusion": "True two-stage isolation requires two provider calls."
+  },
+  "costModel": {
+    "targetedCurrentCalls": 6,
+    "targetedTwoStageNaive": 12,
+    "batching": {
+      "proposal": "Stage 2 is asked once per document per repeat rather than once per pack, because placement is a document-scope question and pack boundaries are an evidence-partitioning device, not a structural one.",
+      "targetedTwoStageBatched": 9,
+      "arithmetic": "6 membership calls (2 packs x 3 repeats) + 3 placement calls (1 per repeat)",
+      "caveat": "Batching Stage 2 per document changes what context it sees compared with a per-pack call. That is a semantic change, not only a cost optimization, and it must be declared in the arm rather than treated as an implementation detail."
+    },
+    "doNotOptimizeAgainstClarity": "A cheaper shape that reintroduces shared reasoning is not cheaper, because it cannot answer the question the experiment exists to ask."
+  },
+  "contextRequirements": {
+    "stage1Sees": [
+      "source atoms",
+      "layout and region evidence",
+      "neighbour context"
+    ],
+    "stage2Sees": [
+      "accepted claims with their bound text and coordinates",
+      "document and layout context needed to relate them"
+    ],
+    "stage2DoesNotSee": "the rejected candidate universe",
+    "assumption": "Placement of an accepted claim does not need the text that was rejected. This is an assumption, not a result; a structural case that needs a rejected span to decide a parent would falsify it."
+  },
+  "replayFeasibility": {
+    "projectionsRun": 9,
+    "allBoundClaimsReceivedIds": true,
+    "projections": [
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 1,
+        "boundClaims": 18,
+        "claimIdsAssigned": 18,
+        "documentLabels": 3,
+        "structuralUnits": 15,
+        "multiPartClaims": 1,
+        "relationsResolvableToClaimIds": 18,
+        "relationsNamingUnknownTarget": 0,
+        "malformedRelationTokens": 8
+      },
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 2,
+        "boundClaims": 18,
+        "claimIdsAssigned": 18,
+        "documentLabels": 2,
+        "structuralUnits": 16,
+        "multiPartClaims": 1,
+        "relationsResolvableToClaimIds": 18,
+        "relationsNamingUnknownTarget": 0,
+        "malformedRelationTokens": 0
+      },
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 3,
+        "boundClaims": 20,
+        "claimIdsAssigned": 20,
+        "documentLabels": 2,
+        "structuralUnits": 18,
+        "multiPartClaims": 0,
+        "relationsResolvableToClaimIds": 20,
+        "relationsNamingUnknownTarget": 0,
+        "malformedRelationTokens": 0
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 1,
+        "boundClaims": 20,
+        "claimIdsAssigned": 20,
+        "documentLabels": 2,
+        "structuralUnits": 18,
+        "multiPartClaims": 1,
+        "relationsResolvableToClaimIds": 20,
+        "relationsNamingUnknownTarget": 0,
+        "malformedRelationTokens": 0
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 2,
+        "boundClaims": 20,
+        "claimIdsAssigned": 20,
+        "documentLabels": 2,
+        "structuralUnits": 18,
+        "multiPartClaims": 1,
+        "relationsResolvableToClaimIds": 20,
+        "relationsNamingUnknownTarget": 0,
+        "malformedRelationTokens": 0
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 3,
+        "boundClaims": 18,
+        "claimIdsAssigned": 18,
+        "documentLabels": 2,
+        "structuralUnits": 16,
+        "multiPartClaims": 1,
+        "relationsResolvableToClaimIds": 18,
+        "relationsNamingUnknownTarget": 0,
+        "malformedRelationTokens": 0
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 1,
+        "boundClaims": 20,
+        "claimIdsAssigned": 20,
+        "documentLabels": 3,
+        "structuralUnits": 17,
+        "multiPartClaims": 1,
+        "relationsResolvableToClaimIds": 20,
+        "relationsNamingUnknownTarget": 0,
+        "malformedRelationTokens": 0
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 2,
+        "boundClaims": 17,
+        "claimIdsAssigned": 17,
+        "documentLabels": 3,
+        "structuralUnits": 14,
+        "multiPartClaims": 1,
+        "relationsResolvableToClaimIds": 17,
+        "relationsNamingUnknownTarget": 0,
+        "malformedRelationTokens": 0
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 3,
+        "boundClaims": 20,
+        "claimIdsAssigned": 20,
+        "documentLabels": 2,
+        "structuralUnits": 18,
+        "multiPartClaims": 1,
+        "relationsResolvableToClaimIds": 20,
+        "relationsNamingUnknownTarget": 0,
+        "malformedRelationTokens": 0
+      }
+    ],
+    "caveat": "This shows the proposed contracts can represent everything the captured runs produced. It does not reproduce the behaviour of a real separate placement model, which no capture contains."
+  },
+  "doc0252Projection": {
+    "arm": "STRUCTURED_V2_TARGET_BASELINE r1",
+    "boundClaims": 18,
+    "membershipScoredWithoutAnyRelation": {
+      "truePositive": 14,
+      "falsePositive": 4,
+      "falseNegative": 0
+    },
+    "targetGoldRepresentable": 14,
+    "mastheadFamiliesRepresentable": [
+      {
+        "ClaimId": "C505430BB",
+        "Identity": "L0513:S0:0-38|L0514:S0:0-30",
+        "Disposition": "DOCUMENT_LABEL"
+      },
+      {
+        "ClaimId": "C2D78F82D",
+        "Identity": "L0515:S0:0-14",
+        "Disposition": "DOCUMENT_LABEL"
+      },
+      {
+        "ClaimId": "CE68562A2",
+        "Identity": "L0516:S0:0-15",
+        "Disposition": "DOCUMENT_LABEL"
+      }
+    ],
+    "scheduleControl": {
+      "ClaimId": "CB34DA2A7",
+      "Identity": "L0550:S0:0-56",
+      "Disposition": "STRUCTURAL_UNIT"
+    },
+    "groundingControl": {
+      "note": "not bound in this repeat, which the projection represents as absence"
+    },
+    "allRepresentableWithoutParentNodeOrNone": true
+  },
+  "multiPartProof": {
+    "goldIdentity": "L0359:S0:0-99|L0360:S0:0-11",
+    "claimId": "C5D66E222",
+    "orderedAliases": [
+      "L0359:S0",
+      "L0360:S0"
+    ],
+    "stage2AddressesClaimIdNotParts": true,
+    "invariant": "No hierarchy edge can alter a multi-part identity, because an edge names a claim id and the id resolves to one ordered coordinate tuple the harness owns."
+  },
+  "noneRetirement": {
+    "currentOverload": [
+      "an accepted document-level label that is not in the section tree",
+      "a structural claim whose parent is unresolved",
+      "text that establishes no structural unit at all"
+    ],
+    "noneRequiredInStage1": false,
+    "noneRequiredInStage2": false,
+    "replacement": {
+      "documentLabel": "membership disposition DOCUMENT_LABEL; never placed",
+      "unresolvedParent": "an explicit failure state, STAGE2_UNPLACED_STRUCTURAL_CLAIM",
+      "notAHeading": "not an accepted claim; it never reaches Stage 2"
+    },
+    "note": "Each of the three meanings gets its own representation, so none of them can be reached by choosing a token."
+  },
+  "semanticRoleDebt": {
+    "evidence": {
+      "goldVocabulary": [
+        "AgendaItem",
+        "MeetingSection",
+        "SectionHeading"
+      ],
+      "modelVocabulary": [
+        "document-title",
+        "document_title",
+        "section-heading",
+        "section_heading",
+        "subtitle"
+      ],
+      "goldRoleMismatchesPerArmPerRepeat": 42,
+      "membershipCorrectDespiteMismatch": "14/14 bound in every repeat of both arms"
+    },
+    "requiredForMembership": false,
+    "requiredForPlacement": false,
+    "classification": "projection-only metadata",
+    "recommendedLayer": "Neither Stage-1 nor Stage-2 provider contract. If a domain role is wanted, derive or request it in a separate projection step scored against the Gold ontology on purpose.",
+    "notSolvedHere": "The ontology mismatch is real debt and is deliberately left untouched."
+  },
+  "relationSerializationDebt": {
+    "known": "parent-node:parent-node:L0539:S0",
+    "observedInBaseline": 8,
+    "structurallyEliminated": true,
+    "why": "A closed relation over claim ids has no string prefix to repeat. The malformed token exists because the model serializes a structure into a string; Stage 2 emits an id pair instead, and an unknown id fails closed rather than parsing oddly.",
+    "notPatchedHere": true
+  },
+  "evaluationSeparation": {
+    "stage1Metrics": [
+      "membership TP/FP/FN",
+      "grounding refusal reasons",
+      "bound identity stability"
+    ],
+    "stage2Metrics": [
+      "parent-edge correctness",
+      "root correctness",
+      "hierarchy consistency"
+    ],
+    "invariants": [
+      "A Stage-2 error is never counted as a Stage-1 false negative.",
+      "A Stage-1 false positive is never hidden by Stage 2 declining to place it."
+    ]
+  },
+  "failureStates": [
+    {
+      "state": "STAGE1_INVALID_GROUNDING",
+      "meaning": "quoted text is not in the named atom"
+    },
+    {
+      "state": "STAGE1_AMBIGUOUS_SELECTION",
+      "meaning": "quote occurs more than once and nothing says which"
+    },
+    {
+      "state": "STAGE1_UNKNOWN_ALIAS",
+      "meaning": "the named occurrence does not exist"
+    },
+    {
+      "state": "STAGE2_UNKNOWN_CLAIM_ID",
+      "meaning": "an edge names something outside the accepted set"
+    },
+    {
+      "state": "STAGE2_MULTIPLE_PARENTS",
+      "meaning": "a claim is given more than one incompatible parent"
+    },
+    {
+      "state": "STAGE2_CYCLE",
+      "meaning": "the edges do not form a tree"
+    },
+    {
+      "state": "STAGE2_UNPLACED_STRUCTURAL_CLAIM",
+      "meaning": "an accepted STRUCTURAL_UNIT received no edge - a placement failure, explicitly distinct from a DOCUMENT_LABEL that is correctly never placed"
+    }
+  ],
+  "successorProtocols": {
+    "stage1": "a99-semantic-membership-v1",
+    "stage2": "a99-structural-placement-v1",
+    "preserved": [
+      "a99-semantic-source-parts-v1",
+      "a99-semantic-source-parts-v2"
+    ],
+    "historicalCaptures": "immutable; every recorded run stays readable against the contract it ran under"
+  },
+  "migrationPhases": [
+    {
+      "phase": "A",
+      "work": "internal Stage-1 DTO plus a projection from the current v2 response",
+      "providerCalls": 0
+    },
+    {
+      "phase": "B",
+      "work": "evaluator scores membership independently of relation",
+      "providerCalls": 0
+    },
+    {
+      "phase": "C",
+      "work": "Stage-2 DTO and deterministic validation, including every failure state",
+      "providerCalls": 0
+    },
+    {
+      "phase": "D",
+      "work": "dry-run request authorities for both stages, frozen before any call",
+      "providerCalls": 0
+    },
+    {
+      "phase": "E",
+      "work": "small provider experiment comparing current v2 against the physical two-stage path",
+      "providerCalls": "to be authorized separately"
+    },
+    {
+      "note": "No phase is implemented in this task."
+    }
+  ],
+  "options": [
+    {
+      "option": "A",
+      "name": "single call, dual-section contract",
+      "couplingRemoved": false,
+      "providerCallCost": "6 (unchanged)",
+      "implementationComplexity": "low",
+      "replayCompatibility": "high",
+      "failureIsolation": "weak - one response, one failure surface",
+      "researchInterpretability": "poor: a membership change cannot be attributed, because the same generation still saw the placement question"
+    },
+    {
+      "option": "B",
+      "name": "physical two-call, membership then placement",
+      "couplingRemoved": true,
+      "providerCallCost": "9 batched per document per repeat, 12 naive",
+      "implementationComplexity": "high - two contracts, a harness gate, two evaluators",
+      "replayCompatibility": "Stage 1 replays from existing captures; Stage 2 has no history and starts empty",
+      "failureIsolation": "strong - each stage fails closed on its own terms",
+      "researchInterpretability": "strong: membership is measurable before placement exists"
+    },
+    {
+      "option": "C",
+      "name": "membership model plus deterministic placement resolver",
+      "couplingRemoved": true,
+      "providerCallCost": "6 - no placement calls at all",
+      "implementationComplexity": "medium, but relocates the hard problem into harness rules",
+      "replayCompatibility": "high",
+      "failureIsolation": "strong",
+      "researchInterpretability": "strong for membership, but it answers a different question: it assumes hierarchy is derivable from layout and numbering without semantic judgement, which this corpus has not shown"
+    }
+  ],
+  "recommendation": {
+    "design": "OPTION_B",
+    "why": "It is the only option that actually removes the coupling the last two experiments failed to break. Option A separates the schema while leaving one generation deciding both, which is the exact thing that made E1 and E2 uninterpretable as membership results. Option C is cheaper and removes the coupling, but by assuming placement needs no semantic judgement - an assumption this corpus has not tested.",
+    "sequencing": "Phases A-D cost nothing and are worth doing before any call, because they make membership independently scoreable even if the two-call arm is never run.",
+    "notRecommended": "A third prompt-only arm.",
+    "whatWouldFalsifyThis": "If Phase B shows membership scored independently is already stable and the masthead false positives are a placement artifact after all, Stage 2 is not where the problem lives and this recommendation should be revisited."
+  },
+  "amendedBy": {
+    "audit": "eval/a99-closed-loop/stage1-projection-identity-audit-v1",
+    "corrections": [
+      {
+        "field": "doc0252Projection.membershipScoredWithoutAnyRelation",
+        "was": "14 TP / 4 FP / 0 FN, labelled as baseline r1",
+        "correction": "Correct for that repeat, but it was restated without its scope and read as a claim about all nine. False positives range from 3 to 6. The audit records every repeat, and all nine reproduce their historical scores exactly."
+      },
+      {
+        "field": "stage2Contract.claimIdScheme",
+        "was": "C{ordinal} / C + 8 hex",
+        "correction": "Superseded. Eight hex characters is 32 bits, where birthday collisions matter well below this corpus's size. The authority id is now SHA-256 over a domain separator, the document source hash and the ordered coordinate tuple, with the short form demoted to a display id that is never accepted without lookup."
+      },
+      {
+        "field": "costModel / migrationPhases.E",
+        "was": "first experiment compares v2 against the full two-stage path, 9 or 12 calls",
+        "correction": "Superseded by PHYSICAL_STAGE1_MEMBERSHIP_ONLY: 6 Stage-1 calls, 0 Stage-2 calls, membership scored and frozen before any placement question exists. Not creating the placement request is a cleaner intervention than creating it and ignoring it."
+      },
+      {
+        "field": "costModel.batching",
+        "was": "9 batched per document per repeat",
+        "correction": "DEFERRED. Document-batched placement changes context relative to per-pack execution, and that decision should follow Stage-1 measurement."
+      }
+    ],
+    "unchanged": "RECOMMENDED_SUCCESSOR_DESIGN = OPTION_B. The audit tested the projection and the identity, and falsified neither."
+  },
+  "limitations": {
+    "materializedGold": "48 / 3955",
+    "twoStageArchitectureFeasible": "established technically by the projections here",
+    "twoStageSemanticPolicyGeneralizes": "NOT_ESTABLISHED",
+    "warning": "Architecture separation is not ontology validation. Nothing here shows the membership policy is correct, only that it can be asked and scored on its own.",
+    "singleDocument": "All projections are DOC-0252."
+  }
+}

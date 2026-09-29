@@ -1,0 +1,67 @@
+{
+  "artifactKind": "a99_canonical_gold",
+  "schemaVersion": "a99-canonical-gold-v1",
+  "authorityId": "DOC-0264",
+  "documentId": "DOC-0264",
+  "sourceId": null,
+  "source": {
+    "fileName": "084_Luat_Chung_khoan_2019_EN.docx",
+    "mediaType": "DOCX",
+    "sourcePath": "todo10_8/heading_corpus_95_word/06_dich_song_ngu/084_Luat_Chung_khoan_2019_EN.docx",
+    "sourceSha256": "a69e55265f53b556367a82e2c06a29c2eaa7fd2e19784e3200bdfb3355c09c5e",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0264.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semantic": {
+    "headingSetExhaustive": true,
+    "approvedSemanticTotal": 159,
+    "semanticHeadingTotal": 159,
+    "materializedSemanticClaims": 0,
+    "claims": []
+  },
+  "occurrence": {
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "bindingCoordinateSystem": null,
+    "sourceUniverseSha256": null,
+    "unavailableReason": "no occurrence artifact describes this source under the current authority",
+    "claims": []
+  },
+  "capabilities": {
+    "semanticCountAuthoritative": true,
+    "semanticClaimsEvaluable": false,
+    "occurrenceEvaluable": false,
+    "characterSpanEvaluable": false,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0264.semantic-freeze.v1.json",
+      "sha256": "6be30be8845414d6060c69145f4327d03c8653a1d6d5e0c007f3ec64d1bbddfd",
+      "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "gold-correction:DOC-0264:source-fixed-in-place:2026-09-24",
+      "sha256": "5a225a1aa558923c3b5479506749071874b4a0fb04ebfeb454cf5fade7ffdb79",
+      "role": "GOLD_CORRECTION_PREDECESSOR"
+    },
+    {
+      "path": "eval/a99-closed-loop/generated-docx-v2/DOC-0264.conversion-manifest.v1.json",
+      "sha256": "1bf94aa46e72c910701bd616c06c2ee9123defa3086dca17d0cabe7631636a30",
+      "role": "SOURCE_REGENERATION"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

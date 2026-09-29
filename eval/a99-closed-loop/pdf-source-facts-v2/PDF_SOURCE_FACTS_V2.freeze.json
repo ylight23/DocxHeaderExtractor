@@ -1,0 +1,130 @@
+{
+  "artifactKind": "a99_pdf_source_facts_version_freeze",
+  "version": "PDF_SOURCE_FACTS_V2",
+  "previous": "PDF_SOURCE_FACTS_V1",
+  "decidedBy": "user, 2026-09-26: fix PDF_TEXT_MATRIX_TYPOGRAPHY_NOT_READ in the source-fact layer, no heading rule; SRC-054 stays the fresh held-out",
+  "definition": {
+    "size": "Letter.PointSize - the Tf operand scaled by the text matrix and the transformation matrix (V1: Letter.FontSize, the Tf operand)",
+    "weight": "FontDetails.IsBold (the font's declared weight) or, where it declares none, a weight word in the style part of the font name (V1: FontDetails.IsBold only)",
+    "provenance": "per line: nominal size, effective size, declared-bold ratio, name-bold ratio, derived-bold ratio, bold evidence source, font name",
+    "modelVisible": "style facts keep Bold / Italic / RelativeFontSize / LineCount, computed from V2, and add Typography { sourceFacts, effectivePointSize, fontName, fontBoldFlag, derivedBold, boldEvidenceSource }",
+    "unchanged": "glyph geometry: line membership, word gaps, segmentation, text projection - so every alias and text is the same under both versions",
+    "routing": "the production adapter reads PdfSourceFactsVersions.Current; ExtractLines and the builders default to V1, the version every frozen artifact was built with, and a replay names its version"
+  },
+  "parser": {
+    "package": "PdfPig",
+    "version": "0.1.15.0"
+  },
+  "definitionFiles": [
+    {
+      "path": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfLineExtraction.cs",
+      "sha256": "954cd9aae1323cd8edfe20fff3ec87bcf7762cf70afe42cc4bd5ce0d75cdedcf"
+    },
+    {
+      "path": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfCanonicalSourceUniverse.cs",
+      "sha256": "e763fe767330e2cddf9f1c358f0d4bcf4d38c5080ce324be36d48bc4ab2977cb"
+    }
+  ],
+  "testFiles": [
+    {
+      "path": "tests/DocxHeaderExtractor.Tests/PdfSourceFactsV2Tests.cs",
+      "sha256": "0fdd00f2d1e62e71369d2475df0bed53a2ffcbfd784b0a975dc049c2224ea270"
+    },
+    {
+      "path": "tests/DocxHeaderExtractor.Tests/PdfSourceFactsV2AuditTests.cs",
+      "sha256": "7a4f56855b893ffe5e91cf46ae2c3cd8ef44674fc8b7312f0a4936066a696dc6"
+    },
+    {
+      "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/PdfSourceFactsV2Evidence.cs",
+      "sha256": "4398af1373fb5a04aef62e28553fde5f0b2a91ca4068ded7cd52984692ec356f"
+    },
+    {
+      "path": "tests/DocxHeaderExtractor.Tests/PdfSourceFactsV2EvidenceTests.cs",
+      "sha256": "6046219ac63569759800d095dd6afe8ac385423ae28e6f431af95cf1101b6a14"
+    },
+    {
+      "path": "tests/DocxHeaderExtractor.Tests/PdfSourceFactsV2DiagnosticTests.cs",
+      "sha256": "725ae814554eadfc5f699cfe58596b8dbcd1b26c002218669783a571e2ac16cc"
+    }
+  ],
+  "contracts": {
+    "pdfSourceFactsV1": {
+      "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.freeze.json",
+      "sha256": "ee7c776988e35968915d5e5448223dfc3d64cec997d643d56ac9cb41f1690ac3",
+      "role": "replay"
+    },
+    "pdfSourceFactsV2": {
+      "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V2.freeze.json",
+      "sha256": "5587754ece1359a8f3b41c9f06d2d09815dbc7401cd7ba1b4ac0f59e1d0ffe30",
+      "role": "production"
+    }
+  },
+  "audit": {
+    "path": "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+    "sha256": "77525c123ce1d3f2cebcc83d43850428b80da5ee32f6d428685455e473fd6bb2",
+    "summary": {
+      "pdfs": 98,
+      "atomUniverseUnchanged": 98,
+      "typographyEquivalent": 34,
+      "boldByFontNameOnly": 7,
+      "sizeRead": 57,
+      "legacyUniverseChanged": 26,
+      "unreadable": 0
+    }
+  },
+  "diagnostic": {
+    "path": "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-diagnostic.v1.json",
+    "sha256": "abb02399c2a7cdc238e6252162593c30ad70a320d5d6ce9be54e5277b1bf1d4a"
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "name": "SRC-053 typography no longer flat",
+      "passed": true,
+      "evidence": "V1.2 over V2 facts on SRC-053: F1 0.9017 (development diagnostic; the held-out raw score stays F1 0)"
+    },
+    {
+      "gate": 2,
+      "name": "synthetic Tm-scaled PDF",
+      "passed": true,
+      "evidence": "PdfSourceFactsV2Tests: Tf 1 + Tm reads 1 / not bold under V1, 16 / bold (FONT_NAME) under V2, like the Tf-sized twin"
+    },
+    {
+      "gate": 3,
+      "name": "ordinary Tf-sized PDFs stay equivalent where expected",
+      "passed": true,
+      "evidence": "audit: equivalent wherever nothing scales the text; the small deltas on Tf-sized PDFs are text drawn in scaled graphics (chart labels and axis values), read at their drawn size"
+    },
+    {
+      "gate": 4,
+      "name": "all frozen PDFs audited",
+      "passed": true,
+      "evidence": "audit of every tracked PDF except the held-out SRC-054: atom universe unchanged on all; typography and legacy-universe deltas recorded per PDF"
+    },
+    {
+      "gate": 5,
+      "name": "no heading or Gold-specific rule",
+      "passed": true,
+      "evidence": "the change reads glyph facts only; A99_GENERIC_PIPELINE_HARDCODE_AUDIT_V1 code scan still passes; no threshold on size or weight decides anything"
+    },
+    {
+      "gate": 6,
+      "name": "V1 historical replay reproducible",
+      "passed": true,
+      "evidence": "frozen request plans, universes and V1.0-V1.2 runs replay under V1; the V1.2-over-facts entry point reproduces V1.2 exactly under V1 on SRC-029/041/042/044/053"
+    },
+    {
+      "gate": 7,
+      "name": "full suite green",
+      "passed": true,
+      "evidence": "GREEN (1487/1487 at d749464, with the audit, guard and diagnostic of 4c484bf); Release build 0 errors"
+    },
+    {
+      "gate": 8,
+      "name": "frozen before SRC-054",
+      "passed": true,
+      "evidence": "this artifact, committed before SRC-054's preregistration"
+    }
+  ],
+  "modelProviderVlmCalls": 0
+}

@@ -59,8 +59,8 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
             issues.Add(new("missing_source_file", "Outline thiếu tên file nguồn."));
         if (outline.ParagraphCount < 0)
             issues.Add(new("invalid_paragraph_count", "Số paragraph không hợp lệ."));
-        if (outline.CandidateCount < 0)
-            issues.Add(new("invalid_candidate_count", "Số ứng viên không hợp lệ."));
+        if (outline.SourceCount < 0)
+            issues.Add(new("invalid_source_count", "Số nguồn không hợp lệ."));
 
         var seen = new HashSet<(int Index, string Text, int SpanStart, int SpanEnd)>();
         var previous = -1;
@@ -130,26 +130,10 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
         if (source == title) return true;
         if (NormalizeTextLayoutTitle(source) == NormalizeTextLayoutTitle(title)) return true;
         if (CanonicalTitle(source) == CanonicalTitle(title)) return true;
-        if (heading.ConfidenceBasis == "book_toc_dictionary" &&
-            BookDictionaryTitleIsAnchored(source, title)) return true;
         if (TextLayoutSectionPageRx.Match(source) is not { Success: true } match) return false;
 
         var normalized = $"{match.Groups["marker"].Value.TrimEnd('.')} {match.Groups["title"].Value.Trim()}";
         return NormalizeTextLayoutTitle(normalized) == NormalizeTextLayoutTitle(title);
-    }
-
-    private static bool BookDictionaryTitleIsAnchored(string source, string title)
-    {
-        // A PDF-to-DOCX converter can split "Chapter 1." and "Linear maps" into adjacent
-        // paragraphs. The book TOC route has already grounded the marker and the title in order;
-        // writeback targets the title span while output retains the clean dictionary label.
-        var withoutMarker = Regex.Replace(
-            title,
-            @"^(?:Part\s+[IVXLC]+|Chapter\s+\d{1,2})\.\s*",
-            "",
-            RegexOptions.IgnoreCase);
-        return !string.Equals(withoutMarker, title, StringComparison.Ordinal) &&
-               CanonicalTitle(source) == CanonicalTitle(withoutMarker);
     }
 
     private static string NormalizeTextLayoutTitle(string text)

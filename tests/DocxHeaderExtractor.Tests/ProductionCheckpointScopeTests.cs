@@ -59,10 +59,10 @@ public sealed class ProductionCheckpointScopeTests
     public async Task Detached_writer_finishes_before_checkpoint_directory_is_removed()
     {
         await using var scope = ProductionCheckpointScope.Create();
-        await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, false, "test.pdf");
-        await checkpoint.RecordSpanBatchAsync(
-            [("b0", 1, "l0", (IReadOnlyList<string>)["l0"], new TextOffsetSpan(0, 1))],
-            null, CancellationToken.None);
+        await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, "test.pdf");
+        await checkpoint.RecordSelectionAsync(
+            [new PdfSelectedSourceIdentity("b0", 1, ["l0"], "b0", new TextOffsetSpan(0, 1))],
+            CancellationToken.None);
         var releaseWriter = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         var writerFault = new TaskCompletionSource<Exception?>(TaskCreationOptions.RunContinuationsAsynchronously);
 
@@ -71,9 +71,9 @@ public sealed class ProductionCheckpointScopeTests
             await releaseWriter.Task.ConfigureAwait(false);
             try
             {
-                await checkpoint.RecordSpanBatchAsync(
-                    [("b1", 1, "l1", (IReadOnlyList<string>)["l1"], new TextOffsetSpan(0, 1))],
-                    null, CancellationToken.None);
+                await checkpoint.RecordSelectionAsync(
+            [new PdfSelectedSourceIdentity("b1", 1, ["l1"], "b1", new TextOffsetSpan(0, 1))],
+            CancellationToken.None);
                 writerFault.SetResult(null);
             }
             catch (Exception ex)
@@ -100,16 +100,44 @@ public sealed class ProductionCheckpointScopeTests
     }
 
     [Fact]
+    public async Task Late_lane_completion_cannot_advance_a_checkpoint()
+    {
+        await using var scope = ProductionCheckpointScope.Create();
+        await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, "test.pdf");
+        var releaseWriter = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        var lane = await PdfLaneExecution.RunAsync(async (lease, _) =>
+        {
+            await releaseWriter.Task.ConfigureAwait(false);
+            await checkpoint.RecordSelectionAsync(
+            [new PdfSelectedSourceIdentity("late", 1, ["late-line"], "late", new TextOffsetSpan(2, 4))],
+            CancellationToken.None,
+                lease).ConfigureAwait(false);
+            return "late";
+        }, TimeSpan.FromMilliseconds(10), CancellationToken.None);
+
+        Assert.Equal(PdfLaneExecutionState.TimedOut, lane.State);
+        releaseWriter.SetResult();
+        await lane.DetachedTask!;
+
+        var checkpointText = File.Exists(scope.CheckpointPath)
+            ? await File.ReadAllTextAsync(scope.CheckpointPath)
+            : string.Empty;
+        Assert.DoesNotContain("late-line", checkpointText, StringComparison.Ordinal);
+        Assert.True(lane.Lease.LateCompletionObserved);
+    }
+
+    [Fact]
     public async Task Admitted_write_with_pre_cancelled_token_exits_and_drains()
     {
         await using var scope = ProductionCheckpointScope.Create();
-        await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, false, "test.pdf");
+        await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, "test.pdf");
         using var cancellation = new CancellationTokenSource();
         cancellation.Cancel();
 
-        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => checkpoint.RecordSpanBatchAsync(
-            [("b1", 1, "l1", (IReadOnlyList<string>)["l1"], new TextOffsetSpan(0, 1))],
-            null, cancellation.Token));
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => checkpoint.RecordSelectionAsync(
+            [new PdfSelectedSourceIdentity("b1", 1, ["l1"], "b1", new TextOffsetSpan(0, 1))],
+            cancellation.Token));
 
         await checkpoint.StopAcceptingWritesAndDrainAsync();
         await checkpoint.DisposeAsync();
@@ -122,11 +150,11 @@ public sealed class ProductionCheckpointScopeTests
     {
         await using var scope = ProductionCheckpointScope.Create();
         // The directory is a valid checkpoint parent, but cannot be opened as an append file.
-        await using var checkpoint = new PdfStageCheckpoint(scope.DirectoryPath, false, "test.pdf");
+        await using var checkpoint = new PdfStageCheckpoint(scope.DirectoryPath, "test.pdf");
 
-        await Assert.ThrowsAnyAsync<Exception>(() => checkpoint.RecordSpanBatchAsync(
-            [("b1", 1, "l1", (IReadOnlyList<string>)["l1"], new TextOffsetSpan(0, 1))],
-            null, CancellationToken.None));
+        await Assert.ThrowsAnyAsync<Exception>(() => checkpoint.RecordSelectionAsync(
+            [new PdfSelectedSourceIdentity("b1", 1, ["l1"], "b1", new TextOffsetSpan(0, 1))],
+            CancellationToken.None));
 
         var drain = checkpoint.StopAcceptingWritesAndDrainAsync();
         var completed = await Task.WhenAny(drain, Task.Delay(TimeSpan.FromSeconds(2)));

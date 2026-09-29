@@ -64,26 +64,6 @@ public sealed class PdfProductReplayDeterminismTests
         AssertChainIsStable(input);
     }
 
-    /// <summary>
-    /// The replay that matters for a restart: the authority is frozen to an artifact, reloaded, and
-    /// the whole chain re-run off the reloaded values. Projection alone is already locked for this;
-    /// this carries it through decisions and serialization, which is where a resumed run actually
-    /// produces its output.
-    /// </summary>
-    [Fact]
-    public void ChainReplaysIdenticallyFromAFrozenArtifact()
-    {
-        var input = Grounded();
-        var (_, _, live) = RunChain(input);
-
-        var row = PdfHierarchyFactsArtifact.BuildRow("doc.pdf", input.Sha, input.Facts, input.Structures, input.Groundings);
-        var replayed = JsonSerializer.Deserialize<PdfHierarchyFactsRow>(JsonSerializer.Serialize(row))!;
-        var (_, _, offline) = RunChain(new Input(
-            replayed.SourceDocumentSha256, replayed.ValidatedStructures, input.Facts, replayed.CanonicalGroundings));
-
-        AssertSameProduct(live, offline);
-    }
-
     private static void AssertChainIsStable(Input input)
     {
         var (firstFinal, firstDecisions, firstProduct) = RunChain(input);
@@ -114,7 +94,7 @@ public sealed class PdfProductReplayDeterminismTests
         RunChain(Input input)
     {
         var final = PdfFinalStructureProjection.Project(input.Sha, input.Structures, input.Facts, input.Groundings);
-        var decisions = PdfOutputDecisionPolicy.Decide(final);
+        var decisions = PdfOutputDecisions.Decide(final);
         return (final, decisions, PdfProductOutputSerializer.Serialize(final, decisions));
     }
 

@@ -1,0 +1,15 @@
+{
+  "document": "DOC-0001",
+  "recording": "DOC-0001.out.json",
+  "recordingSelection": "only recording available",
+  "sourcePath": "bench/01-style-chuan.docx",
+  "recordedByOldHarness": {
+    "blockDecisions": 6,
+    "grounded": 6,
+    "outputHeadings": 6
+  },
+  "note": "Recorded counts are shown for compatibility checking only. They come from an older harness and are NOT used as the before baseline.",
+  "responses": [
+    "{\n  \"headings\": [\n    {\n      \"sourceAlias\": \"S0001\",\n      \"isHeading\": true,\n      \"verbatimText\": \"Chương 1. Quy định chung\",\n      \"semanticRole\": \"heading\",\n      \"structuralType\": \"chapter\",\n      \"scope\": \"document_body\",\n      \"relationHints\": [\n        \"parent-node:ROOT\"\n      ],\n      \"occurrence\": 1\n    },\n    {\n      \"sourceAlias\": \"S0003\",\n      \"isHeading\": true,\n      \"verbatimText\": \"1.1. Phạm vi điều chỉnh\",\n      \"semanticRole\": \"heading\",\n      \"structuralType\": \"section\",\n      \"scope\": \"document_body\",\n      \"relationHints\": [\n        \"parent-node:S0001\"\n      ],\n      \"occurrence\": 1\n    },\n    {\n      \"sourceAlias\": \"S0005\",\n      \"isHeading\": true,\n      \"verbatimText\": \"1.2. Đối tượng áp dụng\",\n      \"semanticRole\": \"heading\",\n      \"structuralType\": \"section\",\n      \"scope\": \"document_body\",\n      \"relationHints\": [\n        \"parent-node:S0001\"\n      ],\n      \"occurrence\": 1\n    },\n    {\n      \"sourceAlias\": \"S0007\",\n      \"isHeading\": true,\n      \"verbatimText\": \"1.2.1. Cơ quan quản lý\",\n      \"semanticRole\": \"heading\",\n      \"structuralType\": \"subsection\",\n      \"scope\": \"document_body\",\n      \"relationHints\": [\n        \"parent-node:S0005\"\n      ],\n      \"occurrence\": 1\n    },\n    {\n      \"sourceAlias\": \"S0009\",\n      \"isHeading\": true,\n      \"verbatimText\": \"1.2.2. Đơn vị trực thuộc\",\n      \"semanticRole\": \"heading\",\n      \"structuralType\": \"subsection\",\n      \"scope\": \"document_body\",\n      \"relationHints\": [\n        \"parent-node:S0005\"\n      ],\n      \"occurrence\": 1\n    },\n    {\n      \"sourceAlias\": \"S0011\",\n      \"isHeading\": true,\n      \"verbatimText\": \"Chương 2. Tổ chức thực hiện\",\n      \"semanticRole\": \"heading\",\n      \"structuralType\": \"chapter\",\n      \"scope\": \"document_body\",\n      \"relationHints\": [\n        \"parent-node:ROOT\"\n      ],\n      \"occurrence\": 2\n    },\n    {\n      \"sourceAlias\": \"S0013\",\n      \"isHeading\": true,\n      \"verbatimText\": \"2.1. Phân công trách nhiệm\",\n      \"semanticRole\": \"heading\",\n      \"structuralType\": \"section\",\n      \"scope\": \"document_body\",\n      \"relationHints\": [\n        \"parent-node:S0011\"\n      ],\n      \"occurrence\": 1\n    }\n  ]\n}"
+  ]
+}

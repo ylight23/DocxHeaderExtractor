@@ -21,7 +21,7 @@ public sealed class A99StrictGoldV4Tests
 
         foreach (var id in ActiveIds)
         {
-            var path = Path.Combine(Root(), "eval", "a99-closed-loop", "strict-gold-v4", $"{id}.strict-gold-v4.json");
+            var path = Path.Combine(TestRepository.Root(), "eval", "a99-closed-loop", "strict-gold-v4", $"{id}.strict-gold-v4.json");
             Assert.True(File.Exists(path), id);
             using var artifact = JsonDocument.Parse(File.ReadAllText(path));
             var root = artifact.RootElement;
@@ -131,16 +131,6 @@ public sealed class A99StrictGoldV4Tests
         Assert.Equal("NOT_RUN", manifest.GetProperty("baseline").GetString());
     }
 
-    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), relativePath)));
+    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), relativePath)));
 
-    private static string Root()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "DocxHeaderExtractor.sln")))
-        {
-            directory = directory.Parent;
-        }
-
-        return directory?.FullName ?? throw new InvalidOperationException("Repository root not found.");
-    }
 }

@@ -1,0 +1,94 @@
+{
+  "artifactKind": "a99_direct_semantic_context_ablation_score_gold_r2_rescore",
+  "schemaVersion": "a99-direct-semantic-context-ablation-score-gold-r2-rescore-v1",
+  "documentId": "DOC-0252",
+  "lineage": "DIRECT_SEMANTIC_CONTEXT_ABLATION_V1",
+  "status": "RESCORED_OFFLINE_UNDER_GOLD_R2",
+  "supersedes": {
+    "artifact": "eval/a99-closed-loop/direct-semantic-context-ablation-score-v1/DOC-0252/direct-semantic-context-ablation-score.v1.json",
+    "commit": "cba024d8d89456344a7627632706b37c2f160ec0",
+    "note": "That artifact is HISTORICAL, immutable, and remains correct as a description of what was scored under Gold R1. It is not deleted or edited. This file is the CURRENT conclusion, scored under Gold R2."
+  },
+  "goldCorrection": "eval/a99-closed-loop/gold-corrections/DOC-0252-ITEM-505430BB-document-label-correction.v1.json",
+  "goldSha256Old": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+  "goldSha256New": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "rawTransportCapturesModified": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "scoringSource": "raw response UTF-8 bytes already SHA-verified in the R1 score (cba024d8), rescored offline against Gold R2's revised expected label for ITEM-505430BB only. No raw response was re-read; the per-item 'returned' values below are the same values cba024d8 already verified.",
+  "onlyChangedInput": "ITEM-505430BB expected label: NON_STRUCTURAL (R1) -> DOCUMENT_LABEL (R2). Every other item's expected label, and every raw returned value in every cell, is unchanged from cba024d8.",
+  "arms": [
+    {
+      "armId": "FULL_CONTEXT",
+      "F1": { "itemId": "ITEM-505430BB", "old": "0/3", "new": "3/3", "note": "Qwen returned DOCUMENT_LABEL in all 3 repeats (stable, per cba024d8's RepeatStability); this was wrong under R1 and is correct under R2." },
+      "Agenda": { "itemId": "ITEM-CCE2C592", "correct": "0/3", "note": "Unchanged. Not part of this correction." },
+      "F2": { "correct": "3/3", "note": "Unchanged." },
+      "F3": { "correct": "3/3", "note": "Unchanged." },
+      "structuralControls": { "correct": "39/42", "note": "Unchanged: ITEM-505430BB was never in the STRUCTURAL_UNIT bucket." },
+      "documentLabelControl": {
+        "old": "3/3 (1 item x 3 repeats: ITEM-AB89229E only)",
+        "new": "6/6 (2 items x 3 repeats: ITEM-AB89229E + ITEM-505430BB, both correct in every repeat)"
+      },
+      "confusionMatrix": {
+        "expected/actual": {
+          "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 39, "DOCUMENT_LABEL": 3, "NON_STRUCTURAL": 0 },
+          "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 6, "NON_STRUCTURAL": 0 },
+          "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+        },
+        "totalDecisions": 54, "correct": 51, "accuracy": 0.9444444444444444
+      }
+    },
+    {
+      "armId": "LOCAL_CONTEXT_RADIUS_3",
+      "F1": { "itemId": "ITEM-505430BB", "old": "0/3", "new": "3/3", "note": "Same raw returned values as FULL_CONTEXT (DOCUMENT_LABEL, stable 3/3); wrong under R1, correct under R2." },
+      "Agenda": { "itemId": "ITEM-CCE2C592", "correct": "0/3", "note": "Unchanged." },
+      "F2": { "correct": "3/3", "note": "Unchanged." },
+      "F3": { "correct": "3/3", "note": "Unchanged." },
+      "structuralControls": { "correct": "39/42", "note": "Unchanged." },
+      "documentLabelControl": {
+        "old": "3/3 (1 item x 3 repeats)",
+        "new": "6/6 (2 items x 3 repeats)"
+      },
+      "confusionMatrix": {
+        "expected/actual": {
+          "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 39, "DOCUMENT_LABEL": 3, "NON_STRUCTURAL": 0 },
+          "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 6, "NON_STRUCTURAL": 0 },
+          "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+        },
+        "totalDecisions": 54, "correct": 51, "accuracy": 0.9444444444444444
+      }
+    },
+    {
+      "armId": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "F1": { "itemId": "ITEM-505430BB", "old": "0/3", "new": "3/3", "note": "Same raw returned values as the other arms (DOCUMENT_LABEL, stable 3/3); wrong under R1, correct under R2." },
+      "Agenda": { "itemId": "ITEM-CCE2C592", "correct": "3/3", "note": "Unchanged: already correct under R1, and Agenda's Gold class did not move." },
+      "F2": { "correct": "3/3", "note": "Unchanged." },
+      "F3": { "correct": "3/3", "note": "Unchanged." },
+      "structuralControls": { "correct": "42/42", "note": "Unchanged." },
+      "documentLabelControl": {
+        "old": "3/3 (1 item x 3 repeats)",
+        "new": "6/6 (2 items x 3 repeats)"
+      },
+      "confusionMatrix": {
+        "expected/actual": {
+          "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 42, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 0 },
+          "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 6, "NON_STRUCTURAL": 0 },
+          "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+        },
+        "totalDecisions": 54, "correct": 54, "accuracy": 1.0
+      }
+    }
+  ],
+  "primaryClassification": "CONTEXT_TRADEOFF_OBSERVED",
+  "classificationDerivation": "Reapplying the R1 scorer's own decision rule (DirectSemanticContextAblationScoringTests.Classify) with F1 corrected: full.F1.Correct=3 (was 0), full.Agenda.Correct=0 (unchanged). Neither the 'both fixed by narrowing' nor the 'attractor persists everywhere' branch applies since F1 is now correct even at FULL_CONTEXT. The remaining branch applies: LOCAL_CONTEXT_RADIUS_3 matches FULL_CONTEXT on both F1 and Agenda, but MINIMAL_STRUCTURAL_CONTEXT_V1 diverges from FULL_CONTEXT on Agenda (3 vs 0) while matching on F1 (3 vs 3) -> narrow.Any(F1 or Agenda differs from full) is true, and every control (structural >=38, F2/F3 >=2, all document-label claims correct) holds in both narrow arms, so controlsStrong is true -> CONTEXT_TRADEOFF_OBSERVED. Note: the R1 scorer's own controlsStrong check used the literal 'DocumentLabelCorrect == 3', which assumed exactly one document-label claim; under R2 there are two (6 correct decisions across 3 repeats), so this rescore evaluates the equivalent generalized condition 'DocumentLabelCorrect == DocumentLabelTotal' instead. This is a pre-existing scorer assumption the correction exposed, not a new judgment call about the data.",
+  "interpretation": "Under Gold R2, Qwen's DOCUMENT_LABEL answer for ITEM-505430BB is correct in all three context arms, including FULL_CONTEXT - so the disambiguation this text needed does not depend on context composition at all. Agenda (ITEM-CCE2C592) is a separate, still-real phenomenon: Qwen calls it DOCUMENT_LABEL under FULL_CONTEXT and LOCAL_CONTEXT_RADIUS_3, and correctly STRUCTURAL_UNIT only under MINIMAL_STRUCTURAL_CONTEXT_V1, with every control intact in both narrow arms. Metadata disambiguation (F1) and hierarchy comprehension (Agenda) are different mechanisms, and only the second is context-sensitive on this document.",
+  "previousInterpretation": {
+    "classification": "CONTEXT_ABLATION_DOES_NOT_FIX_DOCUMENT_LABEL_ATTRACTOR",
+    "status": "SUPERSEDED_BY_GOLD_REVISION",
+    "note": "That classification treated F1 as a persistent model attractor/failure across every context arm. It depended on expected(F1) = NON_STRUCTURAL, which Gold R1 recorded incorrectly. It is not that the interpretation logic was wrong; the ground truth it was applied to was."
+  },
+  "f1FinalStatement": "Qwen3.7 Flash classified ITEM-505430BB as DOCUMENT_LABEL in every context arm and every repeat, which matches the revised, human-approved Gold. The prior appearance of a cross-arm F1 failure was caused by the R1 Gold decision, not by a model defect.",
+  "agendaFinalStatement": "Agenda (ITEM-CCE2C592) remains STRUCTURAL_UNIT under Gold, unaffected by this correction. Its context-dependent behavior (wrong under FULL_CONTEXT/LOCAL_CONTEXT_RADIUS_3, correct only under MINIMAL_STRUCTURAL_CONTEXT_V1) is a real, independent finding.",
+  "crossGenreGeneralizationEstablished": false,
+  "scope": "DOC-0252 only; not evidence about the remaining ~3955 semantic headings in the corpus."
+}

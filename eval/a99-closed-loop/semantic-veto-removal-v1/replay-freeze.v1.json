@@ -1,0 +1,125 @@
+{
+  "artifactKind": "SEMANTIC_VETO_REMOVAL_FREEZE",
+  "schemaVersion": "v1",
+  "documentId": "DOC-0256",
+  "fileName": "076_ICP_IACG08_Minutes_2023.docx",
+  "sourceSha256": "06aec4f8e9847544e61be3a8a44261bd6796ff7af024f482039cdcff662a1a89",
+  "route": "docx-canonical-vnext",
+  "fixCommit": "3886a5a",
+  "evidenceCommit": "5e67b8a",
+  "method": {
+    "kind": "OFFLINE_REPLAY",
+    "frozenSource": true,
+    "frozenProviderReplies": true,
+    "providerCallsThisRun": 0,
+    "callsBeyondRecording": 0,
+    "why": "A fresh provider call moves the model and the harness together. Holding the model output fixed is the only way to attribute a metric change to the harness."
+  },
+  "stageCounts": {
+    "before": {
+      "proposals": 23,
+      "validated": 20,
+      "canonical": 20,
+      "goldMatched": 17
+    },
+    "after": {
+      "proposals": 23,
+      "validated": 23,
+      "canonical": 23,
+      "goldMatched": 20
+    }
+  },
+  "delta": {
+    "recovered": [
+      {
+        "sourceId": "body[1]/tbl[2]/tr[1]/tc[1]/p[1]",
+        "text": "DAY 2: WEDNESDAY, NOVEMBER 1, 2023"
+      },
+      {
+        "sourceId": "body[1]/tbl[3]/tr[1]/tc[1]/p[1]",
+        "text": "DAY 3: THURSDAY, NOVEMBER 2, 2023"
+      },
+      {
+        "sourceId": "body[1]/tbl[4]/tr[1]/tc[1]/p[1]",
+        "text": "DAY 4: FRIDAY, NOVEMBER 3, 2023"
+      }
+    ],
+    "lost": [],
+    "newFalsePositives": []
+  },
+  "rootCause": {
+    "gate": "PdfProposalValidator.IsEligibleHeading",
+    "chain": [
+      "TableDepth>0 -> scope 'table'",
+      "appendix open -> StructuralScopeTracker rewrites to 'appendix_table'",
+      "DocumentDomainPolicy classifies appendix_table as TableTitle",
+      "TableTitle proposes outline exclusion",
+      "the predicate dropped the proposal before hierarchy resolution"
+    ],
+    "invisibility": "The route audit reported 23 validated structures against 20 emitted headings with no rejection recorded anywhere."
+  },
+  "scopeOfFix": {
+    "changed": [
+      "canonical DOCX route: source validity may suppress, a claim about meaning may not"
+    ],
+    "unchanged": [
+      "PdfSemanticRecoverySelector",
+      "PdfVisualTextRecovery",
+      "PdfProposalConflictResolver"
+    ],
+    "note": "The PDF components read the same ProposesOutlineExclusion field. Whether they veto a validated semantic proposal or only route recovery is a separate open task."
+  },
+  "limits": [
+    "Measured on one document. Removing the veto trades precision for recall; DOC-0256 carried only three table-scoped proposals and all three were correct.",
+    "Level and hierarchy accuracy unmeasured.",
+    "The Reasoning #3 placement pass never fired in this replay, so it is unverified offline.",
+    "Four false positives remain and none of them is harness-shaped.",
+    "Four further documents have usable recordings and matching gold (DOC-0001, DOC-0116, DOC-0252, DOC-0258); this fix is not yet generalised over them."
+  ],
+  "status": "FROZEN_CAUSAL_EVIDENCE",
+  "scoringAxis": {
+    "authorised": "semantic",
+    "goldDeclaration": "capabilities.occurrenceEvaluable = false, semanticEvaluable = true",
+    "join": "exact heading text, unique on the gold side and equal to semanticHeadingTotal",
+    "supersedes": "The occurrence-axis numbers first reported for this document. They are kept below under scoreOccurrenceAxisUnauthorised for traceability and must not be quoted."
+  },
+  "scoreOccurrenceAxisUnauthorised": {
+    "goldRows": 24,
+    "before": {
+      "recall": 0.6667,
+      "precision": 0.8,
+      "f1": 0.7273
+    },
+    "after": {
+      "recall": 0.7917,
+      "precision": 0.8261,
+      "f1": 0.8085
+    },
+    "note": "Identity only. Level and hierarchy accuracy were not measured by this replay.",
+    "status": "SUPERSEDED_UNAUTHORISED_AXIS"
+  },
+  "score": {
+    "goldSemanticRows": 24,
+    "before": {
+      "predicted": 20,
+      "tp": 17,
+      "fp": 3,
+      "fn": 7,
+      "precision": 0.85,
+      "recall": 0.7083,
+      "f1": 0.7727
+    },
+    "after": {
+      "predicted": 23,
+      "tp": 20,
+      "fp": 3,
+      "fn": 4,
+      "precision": 0.8696,
+      "recall": 0.8333,
+      "f1": 0.8511
+    },
+    "note": "Identity only. Level and hierarchy accuracy were not measured by this replay.",
+    "status": "OFFICIAL"
+  },
+  "crossDocumentEvidence": "cross-document-replay.v1.json"
+}

@@ -1,0 +1,946 @@
+{
+  "artifactKind": "a99_context_topology_disagreement_per_model_item_matrix",
+  "schemaVersion": "a99-context-topology-disagreement-per-model-item-matrix-v1",
+  "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "itemCount": 18,
+  "qwen": [
+    {
+      "itemId": "ITEM-024B8661",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-13ADC8F7",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-1D843A9F",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-2D78F82D",
+      "fullModal": "NON_STRUCTURAL",
+      "fullRepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "structuredV2Modal": "NON_STRUCTURAL",
+      "structuredV2RepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "minimalModal": "NON_STRUCTURAL",
+      "minimalRepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "NON_STRUCTURAL",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-2F026398",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-4C05B3C2",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-505430BB",
+      "fullModal": "DOCUMENT_LABEL",
+      "fullRepeatLabels": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "structuredV2Modal": "DOCUMENT_LABEL",
+      "structuredV2RepeatLabels": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "minimalModal": "DOCUMENT_LABEL",
+      "minimalRepeatLabels": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "DOCUMENT_LABEL",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-5348EA2B",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-5EFE8569",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-811FC894",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-82675EC0",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-959D3FCB",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-968E70AF",
+      "fullModal": "NON_STRUCTURAL",
+      "fullRepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "structuredV2Modal": "NON_STRUCTURAL",
+      "structuredV2RepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "minimalModal": "NON_STRUCTURAL",
+      "minimalRepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "NON_STRUCTURAL",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-AB89229E",
+      "fullModal": "DOCUMENT_LABEL",
+      "fullRepeatLabels": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "structuredV2Modal": "DOCUMENT_LABEL",
+      "structuredV2RepeatLabels": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "minimalModal": "DOCUMENT_LABEL",
+      "minimalRepeatLabels": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "DOCUMENT_LABEL",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-BAAD25EE",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-CCE2C592",
+      "fullModal": "DOCUMENT_LABEL",
+      "fullRepeatLabels": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "DOCUMENT_LABEL",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": true,
+      "repeatInstability": true,
+      "contextSensitivity": true,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": true,
+      "anyRepeatError": true
+    },
+    {
+      "itemId": "ITEM-E14B4B93",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-E96B316E",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    }
+  ],
+  "haiku": [
+    {
+      "itemId": "ITEM-024B8661",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-13ADC8F7",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-1D843A9F",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-2D78F82D",
+      "fullModal": "NON_STRUCTURAL",
+      "fullRepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "structuredV2Modal": "NON_STRUCTURAL",
+      "structuredV2RepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "minimalModal": "NON_STRUCTURAL",
+      "minimalRepeatLabels": [
+        "NON_STRUCTURAL"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "NON_STRUCTURAL",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-2F026398",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-4C05B3C2",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-505430BB",
+      "fullModal": "NON_STRUCTURAL",
+      "fullRepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "DOCUMENT_LABEL",
+      "structuredV2RepeatLabels": [
+        "NON_STRUCTURAL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "minimalModal": "DOCUMENT_LABEL",
+      "minimalRepeatLabels": [
+        "DOCUMENT_LABEL"
+      ],
+      "topologyDisagreement": true,
+      "repeatInstability": true,
+      "contextSensitivity": true,
+      "goldLabel": "DOCUMENT_LABEL",
+      "armModalError": true,
+      "anyRepeatError": true
+    },
+    {
+      "itemId": "ITEM-5348EA2B",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-5EFE8569",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-811FC894",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-82675EC0",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-959D3FCB",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-968E70AF",
+      "fullModal": "NON_STRUCTURAL",
+      "fullRepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "structuredV2Modal": "NON_STRUCTURAL",
+      "structuredV2RepeatLabels": [
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL",
+        "NON_STRUCTURAL"
+      ],
+      "minimalModal": "NON_STRUCTURAL",
+      "minimalRepeatLabels": [
+        "NON_STRUCTURAL"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "NON_STRUCTURAL",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-AB89229E",
+      "fullModal": "DOCUMENT_LABEL",
+      "fullRepeatLabels": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "structuredV2Modal": "DOCUMENT_LABEL",
+      "structuredV2RepeatLabels": [
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL",
+        "DOCUMENT_LABEL"
+      ],
+      "minimalModal": "DOCUMENT_LABEL",
+      "minimalRepeatLabels": [
+        "DOCUMENT_LABEL"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "DOCUMENT_LABEL",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-BAAD25EE",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-CCE2C592",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "NON_STRUCTURAL",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": true,
+      "contextSensitivity": true,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": true
+    },
+    {
+      "itemId": "ITEM-E14B4B93",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-E96B316E",
+      "fullModal": "STRUCTURAL_UNIT",
+      "fullRepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "structuredV2Modal": "STRUCTURAL_UNIT",
+      "structuredV2RepeatLabels": [
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT",
+        "STRUCTURAL_UNIT"
+      ],
+      "minimalModal": "STRUCTURAL_UNIT",
+      "minimalRepeatLabels": [
+        "STRUCTURAL_UNIT"
+      ],
+      "topologyDisagreement": false,
+      "repeatInstability": false,
+      "contextSensitivity": false,
+      "goldLabel": "STRUCTURAL_UNIT",
+      "armModalError": false,
+      "anyRepeatError": false
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "artifactKind": "a99_pdf_s2g_zero_provider_adoption_preflight",
+  "schemaVersion": "a99-pdf-s2g-zero-provider-adoption-preflight-v1",
+  "successorExperimentId": "DOC-0252-PDF-S2E-RUNTIME-B0-ADOPTION-V1",
+  "originalExperimentId": "DOC-0252-PDF-S2E-RUNTIME-B0",
+  "originalExecution": {
+    "status": "TRANSPORT_COMPLETE_AUTHORITY_MISMATCH",
+    "originalManifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+    "providerCalls": 29,
+    "repeats": 3,
+    "scored": false
+  },
+  "successorAdoption": {
+    "mode": "ZERO_PROVIDER_DETERMINISTIC_ADOPTION",
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "bundleCount": 3,
+    "all3BundlesMatchSuccessorAuthority": true,
+    "proposalMutation": false,
+    "sourceRebindingBeforeReplay": false,
+    "scoringPerformed": false
+  },
+  "checks": {
+    "authorityValidation": "PASS",
+    "sourceAwareValidation": "PASS",
+    "exactBinding": "PASS",
+    "hardBindingValidation": "PASS",
+    "identityHierarchy": "PASS",
+    "projectionMaterialization": "PASS",
+    "replayDeterminism": "PASS",
+    "goldIdentityPresent": true,
+    "evaluatorIdentityPresent": true,
+    "scoringInputsComplete": true
+  },
+  "replay": {
+    "entrypoint": "SemanticAuthorityReplay.Replay",
+    "classifier": null,
+    "providerTransport": false,
+    "modelTransport": false,
+    "repeats": ["r1", "r2", "r3"]
+  }
+}

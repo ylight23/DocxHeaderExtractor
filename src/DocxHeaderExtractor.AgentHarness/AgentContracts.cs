@@ -43,18 +43,7 @@ public sealed record DocumentAgentRequest(
 
     public bool WantsWriteback => !string.IsNullOrWhiteSpace(WritebackTargetPath);
 
-    /// <summary>Thư mục ghi partial key package; null nghĩa là không tạo package review.</summary>
-    public string? KeyPackageOutputDirectory { get; init; }
-
-    public int KeyPackageLimit { get; init; } = 30;
-
-    public int KeyPackageStart { get; init; }
-
-    public bool KeyPackageDistributedSample { get; init; } = true;
-
-    public bool WantsKeyPackage => !string.IsNullOrWhiteSpace(KeyPackageOutputDirectory);
-
-    public bool WantsAction => WantsWriteback || WantsKeyPackage;
+    public bool WantsAction => WantsWriteback;
 }
 
 /// <summary>Một lượt gọi tool. <paramref name="Feedback"/> chỉ khác null ở lượt sửa.</summary>
@@ -92,8 +81,8 @@ public sealed record DocumentAgentRunResult(
     IReadOnlyList<AgentRunEvent> Trace)
 {
     /// <summary>
-    /// Generic task envelope consumed by hosts. <see cref="Outline"/> remains as a compatibility
-    /// projection for existing callers while they migrate to this validated task result.
+    /// Generic task envelope consumed by hosts. <see cref="Outline"/> remains as the document-outline
+    /// projection for callers that still need that view beside the validated task result.
     /// </summary>
     public required GenericTaskResult<DocumentOutline> TaskResult { get; init; }
 

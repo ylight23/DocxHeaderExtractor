@@ -13,36 +13,9 @@ public static class RequestOptions
         provider = new InferenceProviderSelection();
         var o = new PipelineOptions();
 
-        o.Extraction.UseLexicalRules = !Flag(form, "structuralOnly");
-
-        // Cắt tiêu đề nằm LỌT GIỮA paragraph — cần cho tài liệu chuyển từ PDF, nơi cả trang bị gộp
-        // vào một <w:p>. Đo trên corpus 95 file: 83 file thuộc dạng này, và 4.590/6.858 mục (67%)
-        // có ranh giới heading nằm giữa đoạn (§45.2). Mặc định TẮT vì nó phá giả định "mỗi đoạn
-        // nhiều nhất một mục" mà mọi đáp án trong keys/ đang dựa vào.
-        o.Extraction.SplitMergedParagraphs = Flag(form, "splitMerged");
-
-        // Ba bộ dựng TẤT ĐỊNH — đọc một dữ kiện cấu trúc cho cả tài liệu, không điểm số, không
-        // ngưỡng. Chúng thay thế hẳn đường chấm điểm chứ không bổ sung vào nó, nên loại trừ nhau.
-        o.StyleDeclaredOutline = Flag(form, "styleOutline");
-        o.NumberingDeclaredOutline = Flag(form, "numberingOutline");
-        o.AdministrativeDeclaredOutline = Flag(form, "adminOutline");
-        o.AutoDetectDocumentMode = !form.ContainsKey("autoMode") || Flag(form, "autoMode");
-        if (Number(form, "threshold") is { } th) o.Extraction.CandidateThreshold = th;
-
         o.DisableLlm = Flag(form, "noLlm");
 
-        // Ba cờ này không phụ thuộc backend nên đặt một lần ở đây. Trước đây chúng được lặp lại ở
-        // cuối mỗi nhánh backend, và mỗi bản sao là một cơ hội để một nhánh lệch khỏi các nhánh kia.
-        //
-        // KHÔNG suy SkipStyledCandidates từ TrustStyles. Dòng cũ mã hoá đúng lập luận mà chính
-        // PipelineOptions.SkipStyledCandidates đã bác bỏ bằng số đo: "tin style thì khỏi hỏi model
-        // về chúng" chỉ đúng nếu câu trả lời của mô hình cố định, mà bỏ câu hỏi ra khỏi khối lại
-        // làm đổi thành phần khối và đổi câu trả lời cho các đoạn CÒN LẠI — precision 100% → 94,1%.
-        // Giao diện cũng không có ô nào cho cờ này, nên người dùng web không hề biết mình đang chạy
-        // ở chế độ đó. Để mặc định của core quyết định.
-        o.TrustStyles = !Flag(form, "noTrustStyles");
         o.ShowRawOutput = Flag(form, "showRaw");
-        o.TwoPass = !o.DisableLlm && Flag(form, "twoPass");
 
         if (o.DisableLlm) return o;
 
@@ -53,13 +26,9 @@ public static class RequestOptions
             _ => InferenceBackend.Local,
         };
 
-        // Cả hai backend RPC đều không bị VRAM local ràng buộc nên dùng profile 8K/5K đã đo cho
-        // Qwen. Thiếu dòng này thì ngân sách rơi về 2200 của bản local và tài liệu bị xé thành
-        // hàng chục khối — 13 ứng viên thành 27 lượt RPC.
         if (provider.Backend == InferenceBackend.OpenRouter)
         {
             provider.Remote = RemoteInferenceOptions.FromEnvironment("openrouter");
-            o.Chunking.UseRemoteProfile();
             if (string.IsNullOrWhiteSpace(provider.Remote.ApiKey))
                 problem = "Backend OpenRouter chưa được cấu hình OPENROUTER_API_KEY trên server.";
             return o;
@@ -80,7 +49,6 @@ public static class RequestOptions
                 return o;
             }
 
-            o.Chunking.UseRemoteProfile();
             return o;
         }
 
@@ -91,7 +59,7 @@ public static class RequestOptions
             if (first is null)
             {
                 problem = "Không tìm thấy file .gguf nào trong thư mục models. "
-                        + "Bật \"Chỉ dùng luật OpenXML\" để chạy không cần mô hình.";
+                        + "Dùng LM Studio hoặc OpenRouter, hoặc bật \"Không gọi mô hình\".";
                 return o;
             }
             model = first.Path;
@@ -105,21 +73,15 @@ public static class RequestOptions
 
             provider.LocalModel.ModelPath = model;
             if (Number(form, "ctx") is { } ctx and >= 1024)
+            {
                 provider.LocalModel.ContextSize = (uint)ctx;
-            else
-                provider.LocalModel.ContextSize = ModelCatalog.List().FirstOrDefault(m => m.Path == model)?.SuggestedCtx ?? 4096u;
-
-        if (Number(form, "chunkCandidates") is { } cc and >= 2 and <= 64)
-            o.Chunking.MaxCandidatesPerChunk = (int)cc;
+                provider.LocalModel.AutoContextSize = false;
+            }
 
         // Bản CPU bỏ qua giá trị này; bản dựng với -p:UseVulkan=true / -p:UseCuda=true thì
         // 0 nghĩa là vẫn chạy CPU, nên không truyền xuống là giao diện không bao giờ dùng GPU.
         if (Number(form, "gpuLayers") is { } gl and >= 0)
             provider.LocalModel.GpuLayerCount = (int)gl;
-
-        // Chốt profile ở server. Trình duyệt cũ có thể vẫn gửi 4096; không để request đi
-        // tới bước nạp model rồi mới vỡ vì tổng ngân sách lớn hơn context.
-        provider.LocalModel.ApplyRecommendedModelProfile(o.Chunking);
         return o;
     }
 

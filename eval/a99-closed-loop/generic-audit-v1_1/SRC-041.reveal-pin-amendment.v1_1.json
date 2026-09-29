@@ -1,0 +1,26 @@
+{
+  "artifactKind": "a99_reveal_pin_amendment",
+  "study": "SRC041_BLIND_GENERALIZATION_AUDIT_V1",
+  "amends": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_1/SRC-041.reveal-pin.v1_1.json",
+    "sha256": "0ad902482409dec8b4ca5f5265119c3d000681a21f092cac688796c99994a920",
+    "commit": "54be169"
+  },
+  "modelProviderVlmCalls": 0,
+  "defect": "the pin test re-froze the whole pin, including the hash of the whole Gold registry file; adding SRC-042's Gold changed that file, so the test failed although no SRC-041 fact changed",
+  "fix": "the pin test re-verifies every pinned SRC-041 fact field by field and treats gold.registry.sha256 and checkpoint.fullSuite as the corpus state at the reveal (RevealPin.Verify); the score harness accepts the harness named here",
+  "harnessBefore": {
+    "path": "tests/DocxHeaderExtractor.Tests/Src041BlindScoreTests.cs",
+    "sha256": "8590250ac76b96d8ef43a96f0ae3c1a9d3aab57b429b4a199248f094e73625b4",
+    "commit": "54be169"
+  },
+  "harnessAfter": {
+    "path": "tests/DocxHeaderExtractor.Tests/Src041BlindScoreTests.cs",
+    "sha256": "b9ad41f40465e9d3b196094fff7b22a60172af851912297de734f71166f11ae8"
+  },
+  "unchanged": [
+    "the pin artifact (54be169) and the raw held-out score (ba93900) - neither is rewritten",
+    "Score(): byte-identical to the pinned harness (checked against 54be169 when this amendment was written); The_committed_score_is_reproducible regenerates the committed score byte for byte",
+    "every pinned SRC-041 fact: Gold and registry-entry hash, source, engine identity, contract, scorer, pre-registration, proposals, computed checkpoint"
+  ]
+}

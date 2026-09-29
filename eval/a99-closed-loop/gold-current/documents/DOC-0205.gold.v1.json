@@ -1,0 +1,2192 @@
+{
+  "artifactKind": "a99_canonical_gold",
+  "schemaVersion": "a99-canonical-gold-v1",
+  "authorityId": "DOC-0205",
+  "documentId": "DOC-0205",
+  "sourceId": null,
+  "source": {
+    "fileName": "025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "mediaType": "DOCX",
+    "sourcePath": "todo10_8/generated-docx-v2/01_phap_quy/025_ND_47-2020_Chia_se_du_lieu_so.docx",
+    "sourceSha256": "65e8da60883c331e2ad490bea2df4d28d6f02a5bd249efb0defc998666268acf",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0205.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semantic": {
+    "headingSetExhaustive": true,
+    "approvedSemanticTotal": 72,
+    "semanticHeadingTotal": 72,
+    "materializedSemanticClaims": 72,
+    "claims": [
+      {
+        "sourceAlias": "S0005",
+        "verbatimText": "NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "DocumentTitle"
+      },
+      {
+        "sourceAlias": "S0014",
+        "verbatimText": "Chương I QUY ĐỊNH CHUNG",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter"
+      },
+      {
+        "sourceAlias": "S0016",
+        "verbatimText": "Điều 1. Phạm vi điều chỉnh",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0019",
+        "verbatimText": "Điều 2. Đối tượng áp dụng",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0021",
+        "verbatimText": "Điều 3. Giải thích từ ngữ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0033",
+        "verbatimText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0035",
+        "verbatimText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0044",
+        "verbatimText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0052",
+        "verbatimText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0060",
+        "verbatimText": "Điều 8. Các hành vi không được làm",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0066",
+        "verbatimText": "Chương II QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU, QUẢN TRỊ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC VÀ BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter"
+      },
+      {
+        "sourceAlias": "S0068",
+        "verbatimText": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section"
+      },
+      {
+        "sourceAlias": "S0069",
+        "verbatimText": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0073",
+        "verbatimText": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0080",
+        "verbatimText": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0094",
+        "verbatimText": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0108",
+        "verbatimText": "Điều 13. Cổng dữ liệu quốc gia",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0114",
+        "verbatimText": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section"
+      },
+      {
+        "sourceAlias": "S0115",
+        "verbatimText": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0124",
+        "verbatimText": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0127",
+        "verbatimText": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0142",
+        "verbatimText": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section"
+      },
+      {
+        "sourceAlias": "S0143",
+        "verbatimText": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0154",
+        "verbatimText": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0160",
+        "verbatimText": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0168",
+        "verbatimText": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0173",
+        "verbatimText": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0178",
+        "verbatimText": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section"
+      },
+      {
+        "sourceAlias": "S0179",
+        "verbatimText": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0182",
+        "verbatimText": "Điều 23. Phương thức chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0190",
+        "verbatimText": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0197",
+        "verbatimText": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0203",
+        "verbatimText": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0212",
+        "verbatimText": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0223",
+        "verbatimText": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0227",
+        "verbatimText": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0236",
+        "verbatimText": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0239",
+        "verbatimText": "Chương III THỰC HIỆN KẾT NỐI, CHIA SẺ, SỬ DỤNG DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter"
+      },
+      {
+        "sourceAlias": "S0241",
+        "verbatimText": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section"
+      },
+      {
+        "sourceAlias": "S0242",
+        "verbatimText": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0250",
+        "verbatimText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0257",
+        "verbatimText": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section"
+      },
+      {
+        "sourceAlias": "S0258",
+        "verbatimText": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0266",
+        "verbatimText": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0273",
+        "verbatimText": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0284",
+        "verbatimText": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section"
+      },
+      {
+        "sourceAlias": "S0285",
+        "verbatimText": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0291",
+        "verbatimText": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0297",
+        "verbatimText": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0310",
+        "verbatimText": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0312",
+        "verbatimText": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section"
+      },
+      {
+        "sourceAlias": "S0313",
+        "verbatimText": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0317",
+        "verbatimText": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0323",
+        "verbatimText": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0328",
+        "verbatimText": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0340",
+        "verbatimText": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0348",
+        "verbatimText": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0357",
+        "verbatimText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0361",
+        "verbatimText": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section"
+      },
+      {
+        "sourceAlias": "S0362",
+        "verbatimText": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0370",
+        "verbatimText": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0375",
+        "verbatimText": "Điều 49. Trình tự xử lý vướng mắc",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0381",
+        "verbatimText": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0388",
+        "verbatimText": "Chương IV QUYỀN, TRÁCH NHIỆM TRONG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter"
+      },
+      {
+        "sourceAlias": "S0390",
+        "verbatimText": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0404",
+        "verbatimText": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0413",
+        "verbatimText": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0432",
+        "verbatimText": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0437",
+        "verbatimText": "Chương V ĐIỀU KHOẢN THI HÀNH",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter"
+      },
+      {
+        "sourceAlias": "S0439",
+        "verbatimText": "Điều 55. Điều khoản chuyển tiếp",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0444",
+        "verbatimText": "Điều 56. Hiệu lực thi hành",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      },
+      {
+        "sourceAlias": "S0446",
+        "verbatimText": "Điều 57. Trách nhiệm thi hành",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article"
+      }
+    ]
+  },
+  "occurrence": {
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "bindingCoordinateSystem": "SOURCE_ALIAS_PLUS_UTF16_SPAN",
+    "sourceUniverseSha256": "09f6a243dca1ec6f3dde3cc66d5fa07c80d2134ea73ac2a5cb5a71df8c8299d7",
+    "unavailableReason": null,
+    "claims": [
+      {
+        "headingOrdinal": 0,
+        "sourceAlias": "S0005",
+        "sourceId": "body[1]/p[3]",
+        "exactText": "NGHỊ ĐỊNH Quản lý, kết nối và chia sẻ dữ liệu số của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "DocumentTitle",
+        "level": 1,
+        "utf16Span": null,
+        "parts": [
+          {
+            "sourceAlias": "S0005",
+            "sourceId": "body[1]/p[3]",
+            "utf16Span": {
+              "start": 0,
+              "end": 9
+            }
+          },
+          {
+            "sourceAlias": "S0006",
+            "sourceId": "body[1]/p[4]",
+            "utf16Span": {
+              "start": 0,
+              "end": 59
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 1,
+        "sourceAlias": "S0014",
+        "sourceId": "body[1]/p[14]",
+        "exactText": "Chương I QUY ĐỊNH CHUNG",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter",
+        "level": 2,
+        "utf16Span": null,
+        "parts": [
+          {
+            "sourceAlias": "S0014",
+            "sourceId": "body[1]/p[14]",
+            "utf16Span": {
+              "start": 0,
+              "end": 8
+            }
+          },
+          {
+            "sourceAlias": "S0015",
+            "sourceId": "body[1]/p[15]",
+            "utf16Span": {
+              "start": 0,
+              "end": 14
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 2,
+        "sourceAlias": "S0016",
+        "sourceId": "body[1]/p[17]",
+        "exactText": "Điều 1. Phạm vi điều chỉnh",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 26
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0016",
+            "sourceId": "body[1]/p[17]",
+            "utf16Span": {
+              "start": 0,
+              "end": 26
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 3,
+        "sourceAlias": "S0019",
+        "sourceId": "body[1]/p[20]",
+        "exactText": "Điều 2. Đối tượng áp dụng",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 25
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0019",
+            "sourceId": "body[1]/p[20]",
+            "utf16Span": {
+              "start": 0,
+              "end": 25
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 4,
+        "sourceAlias": "S0021",
+        "sourceId": "body[1]/p[22]",
+        "exactText": "Điều 3. Giải thích từ ngữ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 25
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0021",
+            "sourceId": "body[1]/p[22]",
+            "utf16Span": {
+              "start": 0,
+              "end": 25
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 5,
+        "sourceAlias": "S0033",
+        "sourceId": "body[1]/p[34]",
+        "exactText": "Điều 4. Giá trị pháp lý của dữ liệu được chia sẻ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 48
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0033",
+            "sourceId": "body[1]/p[34]",
+            "utf16Span": {
+              "start": 0,
+              "end": 48
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 6,
+        "sourceAlias": "S0035",
+        "sourceId": "body[1]/p[36]",
+        "exactText": "Điều 5. Nguyên tắc chung về quản lý, kết nối và chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 63
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0035",
+            "sourceId": "body[1]/p[36]",
+            "utf16Span": {
+              "start": 0,
+              "end": 63
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 7,
+        "sourceAlias": "S0044",
+        "sourceId": "body[1]/p[45]",
+        "exactText": "Điều 6. Thực hiện kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 42
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0044",
+            "sourceId": "body[1]/p[45]",
+            "utf16Span": {
+              "start": 0,
+              "end": 42
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 8,
+        "sourceAlias": "S0052",
+        "sourceId": "body[1]/p[53]",
+        "exactText": "Điều 7. Yêu cầu trong việc quản lý, kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 60
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0052",
+            "sourceId": "body[1]/p[53]",
+            "utf16Span": {
+              "start": 0,
+              "end": 60
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 9,
+        "sourceAlias": "S0060",
+        "sourceId": "body[1]/p[61]",
+        "exactText": "Điều 8. Các hành vi không được làm",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 34
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0060",
+            "sourceId": "body[1]/p[61]",
+            "utf16Span": {
+              "start": 0,
+              "end": 34
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 10,
+        "sourceAlias": "S0066",
+        "sourceId": "body[1]/p[68]",
+        "exactText": "Chương II QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU, QUẢN TRỊ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC VÀ BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter",
+        "level": 2,
+        "utf16Span": null,
+        "parts": [
+          {
+            "sourceAlias": "S0066",
+            "sourceId": "body[1]/p[68]",
+            "utf16Span": {
+              "start": 0,
+              "end": 9
+            }
+          },
+          {
+            "sourceAlias": "S0067",
+            "sourceId": "body[1]/p[69]",
+            "utf16Span": {
+              "start": 0,
+              "end": 125
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 11,
+        "sourceAlias": "S0068",
+        "sourceId": "body[1]/p[71]",
+        "exactText": "Mục 1. QUẢN LÝ DỮ LIỆU, CƠ SỞ DỮ LIỆU TRONG CƠ QUAN NHÀ NƯỚC",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section",
+        "level": 3,
+        "utf16Span": {
+          "start": 0,
+          "end": 60
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0068",
+            "sourceId": "body[1]/p[71]",
+            "utf16Span": {
+              "start": 0,
+              "end": 60
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 12,
+        "sourceAlias": "S0069",
+        "sourceId": "body[1]/p[73]",
+        "exactText": "Điều 9. Nguyên tắc quản lý dữ liệu, cơ sở dữ liệu trong cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 72
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0069",
+            "sourceId": "body[1]/p[73]",
+            "utf16Span": {
+              "start": 0,
+              "end": 72
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 13,
+        "sourceAlias": "S0073",
+        "sourceId": "body[1]/p[77]",
+        "exactText": "Điều 10. Tổ chức, quản lý dữ liệu, cơ sở dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 48
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0073",
+            "sourceId": "body[1]/p[77]",
+            "utf16Span": {
+              "start": 0,
+              "end": 48
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 14,
+        "sourceAlias": "S0080",
+        "sourceId": "body[1]/p[84]",
+        "exactText": "Điều 11. Cơ sở dữ liệu trong cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 45
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0080",
+            "sourceId": "body[1]/p[84]",
+            "utf16Span": {
+              "start": 0,
+              "end": 45
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 15,
+        "sourceAlias": "S0094",
+        "sourceId": "body[1]/p[98]",
+        "exactText": "Điều 12. Danh mục cơ sở dữ liệu quốc gia, duy trì danh mục cơ sở dữ liệu quốc gia",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 81
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0094",
+            "sourceId": "body[1]/p[98]",
+            "utf16Span": {
+              "start": 0,
+              "end": 81
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 16,
+        "sourceAlias": "S0108",
+        "sourceId": "body[1]/p[112]",
+        "exactText": "Điều 13. Cổng dữ liệu quốc gia",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 30
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0108",
+            "sourceId": "body[1]/p[112]",
+            "utf16Span": {
+              "start": 0,
+              "end": 30
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 17,
+        "sourceAlias": "S0114",
+        "sourceId": "body[1]/p[119]",
+        "exactText": "Mục 2. QUẢN TRỊ DỮ LIỆU, QUẢN TRỊ CHIA SẺ, KHAI THÁC DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section",
+        "level": 3,
+        "utf16Span": {
+          "start": 0,
+          "end": 60
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0114",
+            "sourceId": "body[1]/p[119]",
+            "utf16Span": {
+              "start": 0,
+              "end": 60
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 18,
+        "sourceAlias": "S0115",
+        "sourceId": "body[1]/p[121]",
+        "exactText": "Điều 14. Hoạt động quản trị dữ liệu, quản trị chia sẻ, khai thác dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 72
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0115",
+            "sourceId": "body[1]/p[121]",
+            "utf16Span": {
+              "start": 0,
+              "end": 72
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 19,
+        "sourceAlias": "S0124",
+        "sourceId": "body[1]/p[130]",
+        "exactText": "Điều 15. Thanh tra, kiểm tra, giám sát quá trình kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 73
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0124",
+            "sourceId": "body[1]/p[130]",
+            "utf16Span": {
+              "start": 0,
+              "end": 73
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 20,
+        "sourceAlias": "S0127",
+        "sourceId": "body[1]/p[133]",
+        "exactText": "Điều 16. Kiểm tra, đánh giá, duy trì dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 44
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0127",
+            "sourceId": "body[1]/p[133]",
+            "utf16Span": {
+              "start": 0,
+              "end": 44
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 21,
+        "sourceAlias": "S0142",
+        "sourceId": "body[1]/p[149]",
+        "exactText": "Mục 3. DỮ LIỆU MỞ CỦA CƠ QUAN NHÀ NƯỚC",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section",
+        "level": 3,
+        "utf16Span": {
+          "start": 0,
+          "end": 38
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0142",
+            "sourceId": "body[1]/p[149]",
+            "utf16Span": {
+              "start": 0,
+              "end": 38
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 22,
+        "sourceAlias": "S0143",
+        "sourceId": "body[1]/p[151]",
+        "exactText": "Điều 17. Nguyên tắc cung cấp dữ liệu mở của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 60
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0143",
+            "sourceId": "body[1]/p[151]",
+            "utf16Span": {
+              "start": 0,
+              "end": 60
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 23,
+        "sourceAlias": "S0154",
+        "sourceId": "body[1]/p[162]",
+        "exactText": "Điều 18. Quy định sử dụng dữ liệu mở của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 57
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0154",
+            "sourceId": "body[1]/p[162]",
+            "utf16Span": {
+              "start": 0,
+              "end": 57
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 24,
+        "sourceAlias": "S0160",
+        "sourceId": "body[1]/p[168]",
+        "exactText": "Điều 19. Kế hoạch và triển khai dữ liệu mở của các cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 67
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0160",
+            "sourceId": "body[1]/p[168]",
+            "utf16Span": {
+              "start": 0,
+              "end": 67
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 25,
+        "sourceAlias": "S0168",
+        "sourceId": "body[1]/p[176]",
+        "exactText": "Điều 20. Yêu cầu trong việc công bố dữ liệu mở của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 67
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0168",
+            "sourceId": "body[1]/p[176]",
+            "utf16Span": {
+              "start": 0,
+              "end": 67
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 26,
+        "sourceAlias": "S0173",
+        "sourceId": "body[1]/p[181]",
+        "exactText": "Điều 21. Phương thức, cách thức công bố dữ liệu mở của cơ quan nhà nước",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 71
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0173",
+            "sourceId": "body[1]/p[181]",
+            "utf16Span": {
+              "start": 0,
+              "end": 71
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 27,
+        "sourceAlias": "S0178",
+        "sourceId": "body[1]/p[187]",
+        "exactText": "Mục 4. BẢO ĐẢM KHẢ NĂNG SẴN SÀNG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section",
+        "level": 3,
+        "utf16Span": {
+          "start": 0,
+          "end": 57
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0178",
+            "sourceId": "body[1]/p[187]",
+            "utf16Span": {
+              "start": 0,
+              "end": 57
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 28,
+        "sourceAlias": "S0179",
+        "sourceId": "body[1]/p[189]",
+        "exactText": "Điều 22. Quy chế khai thác, sử dụng dữ liệu chia sẻ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 51
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0179",
+            "sourceId": "body[1]/p[189]",
+            "utf16Span": {
+              "start": 0,
+              "end": 51
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 29,
+        "sourceAlias": "S0182",
+        "sourceId": "body[1]/p[192]",
+        "exactText": "Điều 23. Phương thức chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 36
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0182",
+            "sourceId": "body[1]/p[192]",
+            "utf16Span": {
+              "start": 0,
+              "end": 36
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 30,
+        "sourceAlias": "S0190",
+        "sourceId": "body[1]/p[200]",
+        "exactText": "Điều 24. Dịch vụ chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 32
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0190",
+            "sourceId": "body[1]/p[200]",
+            "utf16Span": {
+              "start": 0,
+              "end": 32
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 31,
+        "sourceAlias": "S0197",
+        "sourceId": "body[1]/p[207]",
+        "exactText": "Điều 25. Công khai thông tin về dịch vụ chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 55
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0197",
+            "sourceId": "body[1]/p[207]",
+            "utf16Span": {
+              "start": 0,
+              "end": 55
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 32,
+        "sourceAlias": "S0203",
+        "sourceId": "body[1]/p[213]",
+        "exactText": "Điều 26. Hệ thống quản lý dịch vụ chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 49
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0203",
+            "sourceId": "body[1]/p[213]",
+            "utf16Span": {
+              "start": 0,
+              "end": 49
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 33,
+        "sourceAlias": "S0212",
+        "sourceId": "body[1]/p[222]",
+        "exactText": "Điều 27. Hạ tầng kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 41
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0212",
+            "sourceId": "body[1]/p[222]",
+            "utf16Span": {
+              "start": 0,
+              "end": 41
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 34,
+        "sourceAlias": "S0223",
+        "sourceId": "body[1]/p[233]",
+        "exactText": "Điều 28. Bảo đảm an toàn trong quá trình kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 65
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0223",
+            "sourceId": "body[1]/p[233]",
+            "utf16Span": {
+              "start": 0,
+              "end": 65
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 35,
+        "sourceAlias": "S0227",
+        "sourceId": "body[1]/p[237]",
+        "exactText": "Điều 29. Kinh phí bảo đảm kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 50
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0227",
+            "sourceId": "body[1]/p[237]",
+            "utf16Span": {
+              "start": 0,
+              "end": 50
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 36,
+        "sourceAlias": "S0236",
+        "sourceId": "body[1]/p[246]",
+        "exactText": "Điều 30. Nguồn nhân lực bảo đảm kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 56
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0236",
+            "sourceId": "body[1]/p[246]",
+            "utf16Span": {
+              "start": 0,
+              "end": 56
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 37,
+        "sourceAlias": "S0239",
+        "sourceId": "body[1]/p[250]",
+        "exactText": "Chương III THỰC HIỆN KẾT NỐI, CHIA SẺ, SỬ DỤNG DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter",
+        "level": 2,
+        "utf16Span": null,
+        "parts": [
+          {
+            "sourceAlias": "S0239",
+            "sourceId": "body[1]/p[250]",
+            "utf16Span": {
+              "start": 0,
+              "end": 10
+            }
+          },
+          {
+            "sourceAlias": "S0240",
+            "sourceId": "body[1]/p[251]",
+            "utf16Span": {
+              "start": 0,
+              "end": 43
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 38,
+        "sourceAlias": "S0241",
+        "sourceId": "body[1]/p[253]",
+        "exactText": "Mục 1. TỔ CHỨC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section",
+        "level": 3,
+        "utf16Span": {
+          "start": 0,
+          "end": 39
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0241",
+            "sourceId": "body[1]/p[253]",
+            "utf16Span": {
+              "start": 0,
+              "end": 39
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 39,
+        "sourceAlias": "S0242",
+        "sourceId": "body[1]/p[255]",
+        "exactText": "Điều 31. Kết nối, chia sẻ dữ liệu giữa các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 131
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0242",
+            "sourceId": "body[1]/p[255]",
+            "utf16Span": {
+              "start": 0,
+              "end": 131
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 40,
+        "sourceAlias": "S0250",
+        "sourceId": "body[1]/p[263]",
+        "exactText": "Điều 32. Kết nối, chia sẻ dữ liệu trong nội bộ của bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, các tỉnh, thành phố trực thuộc trung ương",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 139
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0250",
+            "sourceId": "body[1]/p[263]",
+            "utf16Span": {
+              "start": 0,
+              "end": 139
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 41,
+        "sourceAlias": "S0257",
+        "sourceId": "body[1]/p[271]",
+        "exactText": "Mục 2. CHIA SẺ DỮ LIỆU MẶC ĐỊNH",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section",
+        "level": 3,
+        "utf16Span": {
+          "start": 0,
+          "end": 31
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0257",
+            "sourceId": "body[1]/p[271]",
+            "utf16Span": {
+              "start": 0,
+              "end": 31
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 42,
+        "sourceAlias": "S0258",
+        "sourceId": "body[1]/p[273]",
+        "exactText": "Điều 33. Chuẩn bị và thực hiện cung cấp dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 47
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0258",
+            "sourceId": "body[1]/p[273]",
+            "utf16Span": {
+              "start": 0,
+              "end": 47
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 43,
+        "sourceAlias": "S0266",
+        "sourceId": "body[1]/p[281]",
+        "exactText": "Điều 34. Dữ liệu chia sẻ theo hình thức chia sẻ mặc định",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 56
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0266",
+            "sourceId": "body[1]/p[281]",
+            "utf16Span": {
+              "start": 0,
+              "end": 56
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 44,
+        "sourceAlias": "S0273",
+        "sourceId": "body[1]/p[288]",
+        "exactText": "Điều 35. Gửi yêu cầu kết nối, khai thác dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 47
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0273",
+            "sourceId": "body[1]/p[288]",
+            "utf16Span": {
+              "start": 0,
+              "end": 47
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 45,
+        "sourceAlias": "S0284",
+        "sourceId": "body[1]/p[300]",
+        "exactText": "Mục 3. CHIA SẺ DỮ LIỆU THEO YÊU CẦU ĐẶC THÙ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section",
+        "level": 3,
+        "utf16Span": {
+          "start": 0,
+          "end": 43
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0284",
+            "sourceId": "body[1]/p[300]",
+            "utf16Span": {
+              "start": 0,
+              "end": 43
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 46,
+        "sourceAlias": "S0285",
+        "sourceId": "body[1]/p[302]",
+        "exactText": "Điều 36. Nguyên tắc chia sẻ dữ liệu theo yêu cầu đặc thù",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 56
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0285",
+            "sourceId": "body[1]/p[302]",
+            "utf16Span": {
+              "start": 0,
+              "end": 56
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 47,
+        "sourceAlias": "S0291",
+        "sourceId": "body[1]/p[308]",
+        "exactText": "Điều 37. Trình tự chuẩn bị kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 51
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0291",
+            "sourceId": "body[1]/p[308]",
+            "utf16Span": {
+              "start": 0,
+              "end": 51
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 48,
+        "sourceAlias": "S0297",
+        "sourceId": "body[1]/p[314]",
+        "exactText": "Điều 38. Nội dung thống nhất chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 44
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0297",
+            "sourceId": "body[1]/p[314]",
+            "utf16Span": {
+              "start": 0,
+              "end": 44
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 49,
+        "sourceAlias": "S0310",
+        "sourceId": "body[1]/p[327]",
+        "exactText": "Điều 39. Thực hiện kết nối, chia sẻ, sử dụng dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 52
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0310",
+            "sourceId": "body[1]/p[327]",
+            "utf16Span": {
+              "start": 0,
+              "end": 52
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 50,
+        "sourceAlias": "S0312",
+        "sourceId": "body[1]/p[330]",
+        "exactText": "Mục 4. QUẢN LÝ KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section",
+        "level": 3,
+        "utf16Span": {
+          "start": 0,
+          "end": 39
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0312",
+            "sourceId": "body[1]/p[330]",
+            "utf16Span": {
+              "start": 0,
+              "end": 39
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 51,
+        "sourceAlias": "S0313",
+        "sourceId": "body[1]/p[332]",
+        "exactText": "Điều 40. Tài khoản và quản lý tài khoản kết nối",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 47
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0313",
+            "sourceId": "body[1]/p[332]",
+            "utf16Span": {
+              "start": 0,
+              "end": 47
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 52,
+        "sourceAlias": "S0317",
+        "sourceId": "body[1]/p[336]",
+        "exactText": "Điều 41. Thời hạn sử dụng dữ liệu sau khi khai thác",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 51
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0317",
+            "sourceId": "body[1]/p[336]",
+            "utf16Span": {
+              "start": 0,
+              "end": 51
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 53,
+        "sourceAlias": "S0323",
+        "sourceId": "body[1]/p[342]",
+        "exactText": "Điều 42. Lưu trữ dữ liệu khi kết nối, khai thác",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 47
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0323",
+            "sourceId": "body[1]/p[342]",
+            "utf16Span": {
+              "start": 0,
+              "end": 47
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 54,
+        "sourceAlias": "S0328",
+        "sourceId": "body[1]/p[347]",
+        "exactText": "Điều 43. Tạm ngừng kết nối, cung cấp dữ liệu trên môi trường mạng do cơ quan cung cấp",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 85
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0328",
+            "sourceId": "body[1]/p[347]",
+            "utf16Span": {
+              "start": 0,
+              "end": 85
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 55,
+        "sourceAlias": "S0340",
+        "sourceId": "body[1]/p[359]",
+        "exactText": "Điều 44. Chấm dứt kết nối, chia sẻ dữ liệu qua môi trường mạng",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 62
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0340",
+            "sourceId": "body[1]/p[359]",
+            "utf16Span": {
+              "start": 0,
+              "end": 62
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 56,
+        "sourceAlias": "S0348",
+        "sourceId": "body[1]/p[367]",
+        "exactText": "Điều 45. Lưu trữ nhật ký chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 40
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0348",
+            "sourceId": "body[1]/p[367]",
+            "utf16Span": {
+              "start": 0,
+              "end": 40
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 57,
+        "sourceAlias": "S0357",
+        "sourceId": "body[1]/p[376]",
+        "exactText": "Điều 46. Mô hình kết nối, chia sẻ dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 41
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0357",
+            "sourceId": "body[1]/p[376]",
+            "utf16Span": {
+              "start": 0,
+              "end": 41
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 58,
+        "sourceAlias": "S0361",
+        "sourceId": "body[1]/p[381]",
+        "exactText": "Mục 5. GIẢI QUYẾT VƯỚNG MẮC KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "section",
+        "level": 3,
+        "utf16Span": {
+          "start": 0,
+          "end": 52
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0361",
+            "sourceId": "body[1]/p[381]",
+            "utf16Span": {
+              "start": 0,
+              "end": 52
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 59,
+        "sourceAlias": "S0362",
+        "sourceId": "body[1]/p[383]",
+        "exactText": "Điều 47. Vướng mắc khi kết nối, chia sẻ và khai thác dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 60
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0362",
+            "sourceId": "body[1]/p[383]",
+            "utf16Span": {
+              "start": 0,
+              "end": 60
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 60,
+        "sourceAlias": "S0370",
+        "sourceId": "body[1]/p[391]",
+        "exactText": "Điều 48. Thẩm quyền tiếp nhận, giải quyết vướng mắc",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 51
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0370",
+            "sourceId": "body[1]/p[391]",
+            "utf16Span": {
+              "start": 0,
+              "end": 51
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 61,
+        "sourceAlias": "S0375",
+        "sourceId": "body[1]/p[396]",
+        "exactText": "Điều 49. Trình tự xử lý vướng mắc",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 33
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0375",
+            "sourceId": "body[1]/p[396]",
+            "utf16Span": {
+              "start": 0,
+              "end": 33
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 62,
+        "sourceAlias": "S0381",
+        "sourceId": "body[1]/p[402]",
+        "exactText": "Điều 50. Phương án giải quyết và triển khai tuân thủ phương án xử lý vướng mắc",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 78
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0381",
+            "sourceId": "body[1]/p[402]",
+            "utf16Span": {
+              "start": 0,
+              "end": 78
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 63,
+        "sourceAlias": "S0388",
+        "sourceId": "body[1]/p[410]",
+        "exactText": "Chương IV QUYỀN, TRÁCH NHIỆM TRONG KẾT NỐI, CHIA SẺ DỮ LIỆU",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter",
+        "level": 2,
+        "utf16Span": null,
+        "parts": [
+          {
+            "sourceAlias": "S0388",
+            "sourceId": "body[1]/p[410]",
+            "utf16Span": {
+              "start": 0,
+              "end": 9
+            }
+          },
+          {
+            "sourceAlias": "S0389",
+            "sourceId": "body[1]/p[411]",
+            "utf16Span": {
+              "start": 0,
+              "end": 49
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 64,
+        "sourceAlias": "S0390",
+        "sourceId": "body[1]/p[413]",
+        "exactText": "Điều 51. Quyền và trách nhiệm của cơ quan cung cấp dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 58
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0390",
+            "sourceId": "body[1]/p[413]",
+            "utf16Span": {
+              "start": 0,
+              "end": 58
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 65,
+        "sourceAlias": "S0404",
+        "sourceId": "body[1]/p[427]",
+        "exactText": "Điều 52. Quyền và trách nhiệm của tổ chức, cá nhân khai thác, sử dụng dữ liệu",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 77
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0404",
+            "sourceId": "body[1]/p[427]",
+            "utf16Span": {
+              "start": 0,
+              "end": 77
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 66,
+        "sourceAlias": "S0413",
+        "sourceId": "body[1]/p[436]",
+        "exactText": "Điều 53. Trách nhiệm của các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 74
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0413",
+            "sourceId": "body[1]/p[436]",
+            "utf16Span": {
+              "start": 0,
+              "end": 74
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 67,
+        "sourceAlias": "S0432",
+        "sourceId": "body[1]/p[455]",
+        "exactText": "Điều 54. Trách nhiệm của Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 82
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0432",
+            "sourceId": "body[1]/p[455]",
+            "utf16Span": {
+              "start": 0,
+              "end": 82
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 68,
+        "sourceAlias": "S0437",
+        "sourceId": "body[1]/p[461]",
+        "exactText": "Chương V ĐIỀU KHOẢN THI HÀNH",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "chapter",
+        "level": 2,
+        "utf16Span": null,
+        "parts": [
+          {
+            "sourceAlias": "S0437",
+            "sourceId": "body[1]/p[461]",
+            "utf16Span": {
+              "start": 0,
+              "end": 8
+            }
+          },
+          {
+            "sourceAlias": "S0438",
+            "sourceId": "body[1]/p[462]",
+            "utf16Span": {
+              "start": 0,
+              "end": 19
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 69,
+        "sourceAlias": "S0439",
+        "sourceId": "body[1]/p[464]",
+        "exactText": "Điều 55. Điều khoản chuyển tiếp",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 31
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0439",
+            "sourceId": "body[1]/p[464]",
+            "utf16Span": {
+              "start": 0,
+              "end": 31
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 70,
+        "sourceAlias": "S0444",
+        "sourceId": "body[1]/p[469]",
+        "exactText": "Điều 56. Hiệu lực thi hành",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 26
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0444",
+            "sourceId": "body[1]/p[469]",
+            "utf16Span": {
+              "start": 0,
+              "end": 26
+            }
+          }
+        ]
+      },
+      {
+        "headingOrdinal": 71,
+        "sourceAlias": "S0446",
+        "sourceId": "body[1]/p[471]",
+        "exactText": "Điều 57. Trách nhiệm thi hành",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": "article",
+        "level": 4,
+        "utf16Span": {
+          "start": 0,
+          "end": 29
+        },
+        "parts": [
+          {
+            "sourceAlias": "S0446",
+            "sourceId": "body[1]/p[471]",
+            "utf16Span": {
+              "start": 0,
+              "end": 29
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "capabilities": {
+    "semanticCountAuthoritative": true,
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0205.semantic-freeze.v1.json",
+      "sha256": "04cb3f98d10be9f4e9d0aa5b6ce2dcadf8d93f8eac64305507bafaa122262bc0",
+      "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0205.occurrence-gold.v1.json",
+      "sha256": "918606a929413df8468adc181f8325d6eaa466095191956dc898cbafd2577c5a",
+      "role": "OCCURRENCE_AUTHORITY"
+    },
+    {
+      "path": "gold-correction:DOC-0205:source-reconverted-from-original-doc:2026-09-24",
+      "sha256": "e3341c0871cbee542c2231b40aea81e56432993b2b2db1d9005bf786836acc00",
+      "role": "GOLD_CORRECTION_PREDECESSOR"
+    },
+    {
+      "path": "eval/a99-closed-loop/generated-docx-v2/DOC-0205.conversion-manifest.v1.json",
+      "sha256": "88beb76a3ce3b1b2a151fd29312e49891216b06cb5f83f562bad1048cce31286",
+      "role": "SOURCE_REGENERATION"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

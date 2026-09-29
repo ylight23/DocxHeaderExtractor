@@ -1,0 +1,1069 @@
+{
+  "artifactKind": "a99_structured_source_part_binding",
+  "schemaVersion": "a99-structured-source-part-binding-v1",
+  "capability": "STRUCTURED_SOURCE_PART_BINDING",
+  "authorityId": "DOC-0252",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "contract": {
+    "activeSemanticContractSha256": "91005fabc2e978d5ab4d900bc66ebeb27e563628056b3073cef22896687ac72e",
+    "multipartShadowContractSha256": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "shadowProtocolVersion": "a99-semantic-source-parts-v1",
+    "activeContractUnchanged": true,
+    "transportsUnderShadowContract": 0
+  },
+  "model": {
+    "identity": "An ordered tuple of harness-resolved coordinates, one per part: alias plus start and end. Never a joined string, and never anything the model wrote.",
+    "projectionIsNotIdentity": "Rendering joins parts for reading. It is derived from the identity and never replaces it, so two selections that read alike stay two claims.",
+    "hyphenAtARowBreak": "Kept. Nothing in the geometry separates a word broken at a line end from a compound that was already hyphenated, and keeping the character is the choice that can be undone.",
+    "localityIsHarnessOwned": "Adjacent parts must be the same atom, the next segment of a row, or the next row of a page. Block membership is neither required nor sufficient."
+  },
+  "atoms": {
+    "count": 650,
+    "addressing": "L{row}:S{segment} - a position that survives the document being rebuilt around it, unlike a running number.",
+    "first": [
+      {
+        "Alias": "L0000:S0",
+        "Page": 1,
+        "Text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+      },
+      {
+        "Alias": "L0001:S0",
+        "Page": 1,
+        "Text": "TECHNICAL ADVISORY GROUP"
+      },
+      {
+        "Alias": "L0002:S0",
+        "Page": 1,
+        "Text": "MARCH 7-8, 2025"
+      }
+    ]
+  },
+  "audit": {
+    "approvedHeadings": 41,
+    "sourceHeadingsRepresentable": 41,
+    "canonicalGoldDirectlyBindable": 25,
+    "goldTextMigrationRequired": 16,
+    "partCountsMeasuredOver": "the texts canonical Gold records today, one of which is known to be truncated",
+    "headings1Part": 41,
+    "headings2Parts": 0,
+    "headings3PlusParts": 0,
+    "maxPartsPerHeading": 1,
+    "headingsOverApprovedWording": {
+      "onePart": 40,
+      "twoParts": 1,
+      "maxParts": 2,
+      "differsFromRecordedText": [
+        "S0616#20"
+      ]
+    },
+    "rows": [
+      {
+        "claim": "S0001#0",
+        "goldText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0000:S0:0-47",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0000:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+        ],
+        "locality": [],
+        "projectedText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+      },
+      {
+        "claim": "S0006#1",
+        "goldText": "Session I: Welcome and meeting objectives",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0004:S0:0-41",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0004:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Session I: Welcome and meeting objectives"
+        ],
+        "locality": [],
+        "projectedText": "Session I: Welcome and meeting objectives"
+      },
+      {
+        "claim": "S0043#2",
+        "goldText": "Session II: Update on the ICP 2021 Cycle",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0025:S0:0-40",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0025:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Session II: Update on the ICP 2021 Cycle"
+        ],
+        "locality": [],
+        "projectedText": "Session II: Update on the ICP 2021 Cycle"
+      },
+      {
+        "claim": "S0043#3",
+        "goldText": "1 Global office update",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0026:S0:0-23",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0026:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "1. Global office update"
+        ],
+        "locality": [],
+        "projectedText": "1. Global office update"
+      },
+      {
+        "claim": "S0122#4",
+        "goldText": "2 Regional updates",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0078:S0:0-19",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0078:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "2. Regional updates"
+        ],
+        "locality": [],
+        "projectedText": "2. Regional updates"
+      },
+      {
+        "claim": "S0127#5",
+        "goldText": "Africa",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0081:S0:0-6",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0081:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Africa"
+        ],
+        "locality": [],
+        "projectedText": "Africa"
+      },
+      {
+        "claim": "S0141#6",
+        "goldText": "Asia and the Pacific",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0089:S0:0-20",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0089:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Asia and the Pacific"
+        ],
+        "locality": [],
+        "projectedText": "Asia and the Pacific"
+      },
+      {
+        "claim": "S0173#7",
+        "goldText": "Commonwealth of Independent States (CIS)",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0107:S0:0-40",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0107:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Commonwealth of Independent States (CIS)"
+        ],
+        "locality": [],
+        "projectedText": "Commonwealth of Independent States (CIS)"
+      },
+      {
+        "claim": "S0199#8",
+        "goldText": "Eurostat–OECD PPP Program",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0123:S0:0-25",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0123:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Eurostat–OECD PPP Program"
+        ],
+        "locality": [],
+        "projectedText": "Eurostat–OECD PPP Program"
+      },
+      {
+        "claim": "S0223#9",
+        "goldText": "Latin America and the Caribbean",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0137:S0:0-31",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0137:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Latin America and the Caribbean"
+        ],
+        "locality": [],
+        "projectedText": "Latin America and the Caribbean"
+      },
+      {
+        "claim": "S0244#10",
+        "goldText": "Western Asia",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0150:S0:0-12",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0150:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Western Asia"
+        ],
+        "locality": [],
+        "projectedText": "Western Asia"
+      },
+      {
+        "claim": "S0268#11",
+        "goldText": "Session III: Short- and Long-Term Research and Development Agenda",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0165:S0:0-65",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0165:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Session III: Short- and Long-Term Research and Development Agenda"
+        ],
+        "locality": [],
+        "projectedText": "Session III: Short- and Long-Term Research and Development Agenda"
+      },
+      {
+        "claim": "S0269#12",
+        "goldText": "1 Research Topics Emerging from the Previous ICP Cycles",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0166:S0:0-56",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0166:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "1. Research Topics Emerging from the Previous ICP Cycles"
+        ],
+        "locality": [],
+        "projectedText": "1. Research Topics Emerging from the Previous ICP Cycles"
+      },
+      {
+        "claim": "S0363#13",
+        "goldText": "2 Forthcoming Research Topics",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0219:S0:0-30",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0219:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "2. Forthcoming Research Topics"
+        ],
+        "locality": [],
+        "projectedText": "2. Forthcoming Research Topics"
+      },
+      {
+        "claim": "S0460#14",
+        "goldText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0271:S0:0-66",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0271:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Session IV: TAG Functioning and Terms of Reference for Task Forces"
+        ],
+        "locality": [],
+        "projectedText": "Session IV: TAG Functioning and Terms of Reference for Task Forces"
+      },
+      {
+        "claim": "S0460#15",
+        "goldText": "1 TAG Composition and Terms of Reference",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0272:S0:0-41",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0272:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "1. TAG Composition and Terms of Reference"
+        ],
+        "locality": [],
+        "projectedText": "1. TAG Composition and Terms of Reference"
+      },
+      {
+        "claim": "S0492#16",
+        "goldText": "2 Terms of Reference for a Task Force on Annual PPP Production",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0288:S0:0-63",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0288:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "2. Terms of Reference for a Task Force on Annual PPP Production"
+        ],
+        "locality": [],
+        "projectedText": "2. Terms of Reference for a Task Force on Annual PPP Production"
+      },
+      {
+        "claim": "S0541#17",
+        "goldText": "3 Terms of Reference for a Task Force on ICP Classification Update",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0315:S0:0-67",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0315:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "3. Terms of Reference for a Task Force on ICP Classification Update"
+        ],
+        "locality": [],
+        "projectedText": "3. Terms of Reference for a Task Force on ICP Classification Update"
+      },
+      {
+        "claim": "S0573#18",
+        "goldText": "Session V: Current Research",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0334:S0:0-27",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0334:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Session V: Current Research"
+        ],
+        "locality": [],
+        "projectedText": "Session V: Current Research"
+      },
+      {
+        "claim": "S0573#19",
+        "goldText": "1 The Treatment of Import and Export Prices in International Comparisons",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0335:S0:0-73",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0335:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "1. The Treatment of Import and Export Prices in International Comparisons"
+        ],
+        "locality": [],
+        "projectedText": "1. The Treatment of Import and Export Prices in International Comparisons"
+      },
+      {
+        "claim": "S0616#20",
+        "goldText": "2 A Survey Based Approach to Adjustment for Quality Differences in Services in International Price",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0359:S0:0-99",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0359:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price"
+        ],
+        "locality": [],
+        "projectedText": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price"
+      },
+      {
+        "claim": "S0649#21",
+        "goldText": "3 Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0377:S0:0-85",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0377:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)"
+        ],
+        "locality": [],
+        "projectedText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)"
+      },
+      {
+        "claim": "S0693#22",
+        "goldText": "4 Treatment of Negative Expenditures in ICP",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0400:S0:0-44",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0400:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "4. Treatment of Negative Expenditures in ICP"
+        ],
+        "locality": [],
+        "projectedText": "4. Treatment of Negative Expenditures in ICP"
+      },
+      {
+        "claim": "S0732#23",
+        "goldText": "5 Fine Tuning Global Linking Procedures",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0420:S0:0-40",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0420:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "5. Fine Tuning Global Linking Procedures"
+        ],
+        "locality": [],
+        "projectedText": "5. Fine Tuning Global Linking Procedures"
+      },
+      {
+        "claim": "S0818#24",
+        "goldText": "6 Improving Reliability of Price Comparisons",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0470:S0:0-45",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0470:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "6. Improving Reliability of Price Comparisons"
+        ],
+        "locality": [],
+        "projectedText": "6. Improving Reliability of Price Comparisons"
+      },
+      {
+        "claim": "S0893#25",
+        "goldText": "Session VI: Any Other Business",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0507:S0:0-30",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0507:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Session VI: Any Other Business"
+        ],
+        "locality": [],
+        "projectedText": "Session VI: Any Other Business"
+      },
+      {
+        "claim": "S0911#26",
+        "goldText": "Agenda",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0519:S0:0-6",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0519:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Agenda"
+        ],
+        "locality": [],
+        "projectedText": "Agenda"
+      },
+      {
+        "claim": "S0912#27",
+        "goldText": "DAY 1: Friday March 7 2025 | Chair: Paul SCHREYER",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0520:S0:0-51",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0520:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER"
+        ],
+        "locality": [],
+        "projectedText": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER"
+      },
+      {
+        "claim": "S0914#28",
+        "goldText": "SESSION I: Welcome and Opening Remarks",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0521:S0:0-38",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0521:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "SESSION I: Welcome and Opening Remarks"
+        ],
+        "locality": [],
+        "projectedText": "SESSION I: Welcome and Opening Remarks"
+      },
+      {
+        "claim": "S0917#29",
+        "goldText": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0523:S0:0-50",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0523:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "SESSION II: Update on the ICP 2021 and 2024 Cycles"
+        ],
+        "locality": [],
+        "projectedText": "SESSION II: Update on the ICP 2021 and 2024 Cycles"
+      },
+      {
+        "claim": "S0920#30",
+        "goldText": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0526:S0:0-65",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0526:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "SESSION III: Short- and Long-Term Research and Development Agenda"
+        ],
+        "locality": [],
+        "projectedText": "SESSION III: Short- and Long-Term Research and Development Agenda"
+      },
+      {
+        "claim": "S0925#31",
+        "goldText": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0531:S0:0-64",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0531:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "SESSION IV: TAG Functioning and Terms of Refence for Task Forces"
+        ],
+        "locality": [],
+        "projectedText": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces"
+      },
+      {
+        "claim": "S0930#32",
+        "goldText": "SESSION V: Current Research",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0536:S0:0-27",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0536:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "SESSION V: Current Research"
+        ],
+        "locality": [],
+        "projectedText": "SESSION V: Current Research"
+      },
+      {
+        "claim": "S0933#33",
+        "goldText": "DAY 2: Saturday March 8 2025 | Chair: Prasada RAO",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0539:S0:0-51",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0539:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO"
+        ],
+        "locality": [],
+        "projectedText": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO"
+      },
+      {
+        "claim": "S0935#34",
+        "goldText": "SESSION V: Current Research (Cont’d)",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0540:S0:0-36",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0540:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "SESSION V: Current Research (Cont’d)"
+        ],
+        "locality": [],
+        "projectedText": "SESSION V: Current Research (Cont’d)"
+      },
+      {
+        "claim": "S0946#35",
+        "goldText": "SESSION VI: Closing",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0553:S0:0-19",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0553:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "SESSION VI: Closing"
+        ],
+        "locality": [],
+        "projectedText": "SESSION VI: Closing"
+      },
+      {
+        "claim": "S0949#36",
+        "goldText": "Annex 2: List of Participants",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0556:S0:0-29",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0556:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "Annex 2: List of Participants"
+        ],
+        "locality": [],
+        "projectedText": "Annex 2: List of Participants"
+      },
+      {
+        "claim": "S0950#37",
+        "goldText": "ICP Technical Advisory Group members",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0557:S0:0-36",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0557:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "ICP Technical Advisory Group members"
+        ],
+        "locality": [],
+        "projectedText": "ICP Technical Advisory Group members"
+      },
+      {
+        "claim": "S0968#38",
+        "goldText": "ICP experts guest speakers and observers",
+        "canonicalGoldDirectlyBindable": false,
+        "canonicalGoldStatus": "TextNotInAtom",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": true,
+        "parts": 1,
+        "identity": "L0566:S0:0-42",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0566:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "ICP experts, guest speakers, and observers"
+        ],
+        "locality": [],
+        "projectedText": "ICP experts, guest speakers, and observers"
+      },
+      {
+        "claim": "S0987#39",
+        "goldText": "ICP Inter-Agency Coordination Group (IACG)",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0576:S0:0-42",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0576:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "ICP Inter-Agency Coordination Group (IACG)"
+        ],
+        "locality": [],
+        "projectedText": "ICP Inter-Agency Coordination Group (IACG)"
+      },
+      {
+        "claim": "S0994#40",
+        "goldText": "World Bank",
+        "canonicalGoldDirectlyBindable": true,
+        "canonicalGoldStatus": "Bound",
+        "sourceRepresentable": true,
+        "sourceStatus": "Bound",
+        "goldTextMigrationRequired": false,
+        "parts": 1,
+        "identity": "L0587:S0:0-10",
+        "sourceParts": [
+          {
+            "SourceAlias": "L0587:S0",
+            "SelectionMode": "WHOLE_ALIAS",
+            "VerbatimText": null
+          }
+        ],
+        "boundText": [
+          "World Bank"
+        ],
+        "locality": [],
+        "projectedText": "World Bank"
+      }
+    ]
+  },
+  "s0616": {
+    "note": "The approved wording, from the user's source re-audit. Bound from atoms with no block reconstruction anywhere in the path.",
+    "bound": true,
+    "status": "Bound",
+    "parts": 2,
+    "identity": "L0359:S0:0-99|L0360:S0:0-11",
+    "sourceParts": [
+      {
+        "SourceAlias": "L0359:S0",
+        "SelectionMode": "WHOLE_ALIAS",
+        "VerbatimText": null
+      },
+      {
+        "SourceAlias": "L0360:S0",
+        "SelectionMode": "WHOLE_ALIAS",
+        "VerbatimText": null
+      }
+    ],
+    "boundText": [
+      "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price",
+      "Comparisons"
+    ],
+    "locality": [
+      "NextRowCompatible"
+    ],
+    "projectedText": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons"
+  },
+  "blockIndependence": {
+    "note": "The binder takes atoms and a proposal. No block type appears in its signature, so a block boundary cannot authorize or refuse anything - and the case that used to be unbindable is the demonstration.",
+    "s0616PartsByActiveOccurrence": [
+      {
+        "Alias": "L0359:S0",
+        "activeOccurrence": "S0616",
+        "activeOccurrenceText": "2 A Survey Based Approach to Adjustment for Quality Differences in Services in International Price"
+      },
+      {
+        "Alias": "L0360:S0",
+        "activeOccurrence": "S0618",
+        "activeOccurrenceText": "Comparisons"
+      }
+    ],
+    "s0616CrossesAnActiveBlockBoundary": true
+  },
+  "correction": {
+    "what": "The boundary classifier used in the two previous shadow audits took a WHOLE_ALIAS claim's text from the occurrence it was being compared against, so 30 of the 41 claims were compared with themselves and could only come out EXACT.",
+    "effect": "EXACT 38 / NORMALIZATION_ONLY 3 in doc-0252-block-grouping-shadow.v1.json and doc-0252-visual-line-segment-shadow.v1.json is not a text-level measurement for those 30. FRAGMENTED and OVER_GROUPED are unaffected, being comparisons of visual-line sets rather than of strings.",
+    "settledHere": "This audit compares against Gold's stored text and against the source text separately, which is what the two numbers above report."
+  },
+  "corpus": {
+    "note": "Descriptive only. These are the chains the locality rule would admit, not headings.",
+    "documents": 83,
+    "atoms": 354129,
+    "adjacentPairsSameRow": 62420,
+    "adjacentPairsNextRow": 283268,
+    "partsEndingInAHyphen": 3173,
+    "maximalLocalChains": {
+      "length1": 44,
+      "length2": 69,
+      "length3": 48,
+      "length4Plus": 8286,
+      "longest": 322
+    }
+  }
+}

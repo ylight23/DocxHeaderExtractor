@@ -1,0 +1,79 @@
+{
+  "artifactKind": "a99_direct_semantic_probe_score_gold_r2_rescore",
+  "schemaVersion": "a99-direct-semantic-probe-score-gold-r2-rescore-v1",
+  "documentId": "DOC-0252",
+  "status": "RESCORED_OFFLINE_UNDER_GOLD_R2",
+  "supersedes": {
+    "artifact": "eval/a99-closed-loop/direct-semantic-discrimination-probe-score-v1/DOC-0252/direct-semantic-probe-score.v1.json",
+    "commit": "92ecfa09285a257460dbb89b8a77724e56f62daa",
+    "note": "That artifact is HISTORICAL, immutable, and remains a correct description of what was scored under Gold R1. It is not edited or deleted. This file is the CURRENT conclusion, scored under Gold R2, from the same raw responses (same 9 rawResponseSha256 values, same canonicalCohort)."
+  },
+  "goldCorrection": "eval/a99-closed-loop/gold-corrections/DOC-0252-ITEM-505430BB-document-label-correction.v1.json",
+  "goldSha256Old": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+  "goldSha256New": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "rawTransportCapturesModified": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "scoringSource": "raw response UTF-8 bytes already SHA-verified in the R1 score (92ecfa09), rescored offline against Gold R2's revised expected label for ITEM-505430BB only. No raw response was re-read; every 'Returned' value below is the same value 92ecfa09 already verified.",
+  "onlyChangedInput": "ITEM-505430BB expected label: NON_STRUCTURAL (R1) -> DOCUMENT_LABEL (R2). Every other item's expected label, and every raw returned value in every repeat, is unchanged from 92ecfa09.",
+  "primaryFamilies": {
+    "F1_NON_STRUCTURAL": {
+      "old": { "expected": "NON_STRUCTURAL", "correct": 0, "total": 3 },
+      "new": { "expected": "DOCUMENT_LABEL", "correct": 3, "total": 3 },
+      "returnedByRepeat": ["DOCUMENT_LABEL", "DOCUMENT_LABEL", "DOCUMENT_LABEL"],
+      "note": "Stable 3/3, unchanged raw answer; wrong under R1, correct under R2."
+    },
+    "F2_NON_STRUCTURAL": { "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "note": "Unchanged." },
+    "F3_NON_STRUCTURAL": { "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "note": "Unchanged." }
+  },
+  "goldStructuralControls": {
+    "correct": 39,
+    "total": 42,
+    "R1": 13,
+    "R2": 13,
+    "R3": 13,
+    "note": "Unchanged: ITEM-505430BB was never in this bucket.",
+    "incorrect": [
+      {
+        "claimIdentity": "L0519:S0:0-6",
+        "itemId": "ITEM-CCE2C592",
+        "expected": "STRUCTURAL_UNIT",
+        "returned": "DOCUMENT_LABEL",
+        "repeats": [1, 2, 3],
+        "note": "Agenda. Not touched by this correction, still wrong in every repeat of this full-context probe."
+      }
+    ]
+  },
+  "documentLabelControl": {
+    "old": { "correct": 3, "total": 3, "items": ["ITEM-AB89229E"] },
+    "new": { "correct": 6, "total": 6, "items": ["ITEM-AB89229E", "ITEM-505430BB"], "note": "Both correct in every repeat." }
+  },
+  "confusionMatrix": {
+    "expected/actual": {
+      "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 39, "DOCUMENT_LABEL": 3, "NON_STRUCTURAL": 0 },
+      "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 6, "NON_STRUCTURAL": 0 },
+      "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+    },
+    "totalDecisions": 54,
+    "correct": 51,
+    "accuracy": 0.9444444444444444,
+    "oldAccuracy": { "correct": 48, "total": 54, "accuracy": 0.8888888888888888 }
+  },
+  "directProbeClassification": "DIRECT_SEMANTIC_DISCRIMINATION_LIMIT_OBSERVED",
+  "classificationDerivation": "Same criterion the R1 artifact applied: a primary family with Correct < Total. Under R2, F1 and F2 and F3 are all 3/3; the only remaining failing item in the whole 54-decision cohort is ITEM-CCE2C592 (Agenda), which is in the STRUCTURAL_CONTROL family, not one of the three named F-families. The classification label is unchanged because a discrimination limit is still observed, but its scope has narrowed to exactly one item.",
+  "interpretation": "Under Gold R2, Qwen3.7 Flash's DOCUMENT_LABEL answer for ITEM-505430BB (F1) is correct in every repeat of this full-context probe - the model held the distinction the R1 scoring said it lacked. The one remaining failure in this probe is ITEM-CCE2C592 (Agenda): the model calls it DOCUMENT_LABEL instead of STRUCTURAL_UNIT in all 3 repeats, unaffected by this correction. This matches the FULL_CONTEXT arm of the context-ablation cohort's Gold-R2 rescore exactly (same item set, same raw answers, same single remaining failure), which is expected since this probe is that arm's origin.",
+  "previousInterpretation": {
+    "classification": "DIRECT_SEMANTIC_DISCRIMINATION_LIMIT_OBSERVED",
+    "interpretationText": "Qwen3.7 Flash shows a limit on this specific distinction under this policy/context; no broader model or document generalization is permitted.",
+    "status": "SUPERSEDED_BY_GOLD_REVISION",
+    "note": "The label string is identical, but its referent is not: under R1 this was read as a NON_STRUCTURAL/DOCUMENT_LABEL masthead-metadata limit (driven by F1's 0/3). That specific limit is retracted - it was a Gold R1 defect, not a model limit. What remains under R2 is a narrower, still-real limit confined to Agenda (a STRUCTURAL_UNIT/DOCUMENT_LABEL confusion on a short section heading), which the R1 artifact's own data already showed (CCE2C592's 3 failures were present in the original goldStructuralControls.incorrect list) but which the F1 failure was overshadowing in the interpretation text."
+  },
+  "f1FinalStatement": "Qwen3.7 Flash classified ITEM-505430BB as DOCUMENT_LABEL in every repeat of this full-context probe, which matches the revised, human-approved Gold. This is not a model correction; the Gold label was corrected.",
+  "agendaFinalStatement": "ITEM-CCE2C592 (Agenda) remains STRUCTURAL_UNIT under Gold, unaffected by this correction, and remains misclassified as DOCUMENT_LABEL in this full-context probe in all 3 repeats - consistent with the context-ablation cohort's FULL_CONTEXT/LOCAL_CONTEXT_RADIUS_3 arms, and with only MINIMAL_STRUCTURAL_CONTEXT_V1 recovering it.",
+  "physicalStage1MembershipOnly": {
+    "note": "Unchanged from the R1 artifact (F1: 3/3, F2: 3/3, F3: 1/3) - this is a different, separate open-set extraction lineage (Stage-1), not rescored here. See eval/a99-closed-loop/gold-corrections/DOC-0252-ITEM-505430BB-document-label-correction.v1.json's notRescored list for why Stage-1 stays pinned to R1."
+  },
+  "crossGenreSemanticCapabilityEstablished": false,
+  "secondModelCalls": 0,
+  "scope": "DOC-0252 only; not evidence about the remaining ~3955 semantic headings in the corpus."
+}

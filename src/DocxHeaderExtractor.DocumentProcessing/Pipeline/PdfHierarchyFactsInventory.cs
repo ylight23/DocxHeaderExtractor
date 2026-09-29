@@ -11,14 +11,14 @@ internal static class PdfHierarchyFactsInventory
 {
     internal static IReadOnlyList<PdfHierarchyFactAudit> Inspect(
         IReadOnlyList<PdfValidatedHeading> validated,
-        IReadOnlyDictionary<string, PdfCandidateContext> contexts)
+        IReadOnlyDictionary<string, PdfSemanticSourceContext> contexts)
     {
         var eligible = validated.Where(heading => contexts.ContainsKey(heading.SourceId))
             .OrderBy(heading => PositionOf(contexts[heading.SourceId]))
             .ToArray();
 
-        // Keep audit construction separate from relation lookup. The inventory is not allowed to
-        // reuse PdfHierarchyResolver, because doing so would make a resolver look like evidence.
+        // Keep audit construction separate from relation lookup. The inventory must not reuse a
+        // hierarchy resolver, because doing so would make a resolver look like evidence.
         var observed = new List<ObservedHeading>();
         var facts = new List<PdfHierarchyFactAudit>(eligible.Length);
         string? previousId = null;
@@ -28,17 +28,15 @@ internal static class PdfHierarchyFactsInventory
             var context = contexts[heading.SourceId];
             var source = context.Source;
             var marker = PdfMarkerFactsParser.Parse(source.RawText) ?? source.Marker;
-            var path = NumberingAudit.ParseArabicPath(source.RawText);
-            var parent = FindMarkerPrefixParent(observed, path, source.StructuralScope, context.DocumentRegime);
+            var path = PdfMarkerFactsParser.ArabicPath(source.RawText);
+            var parent = FindMarkerPrefixParent(observed, path);
             var hasResolvedRelation = path is { Length: 1 } || parent is not null;
             var parentResolution = parent is not null
-                ? "marker_prefix_parent_candidate"
+                ? "marker_prefix_parent_observed"
                 : "relationship_unresolved";
             var evidence = new List<string>
             {
                 "validated_source_span",
-                $"scope:{source.StructuralScope}",
-                $"regime:{context.DocumentRegime}",
                 previousId is null ? "source_order:first" : "source_order:previous_validated",
             };
             if (marker is { } value)
@@ -46,7 +44,7 @@ internal static class PdfHierarchyFactsInventory
                 evidence.Add($"marker:{value.Family}");
                 evidence.Add($"marker_depth:{value.Depth}");
             }
-            if (parent is not null) evidence.Add("marker_prefix_parent_candidate");
+            if (parent is not null) evidence.Add("marker_prefix_parent_observed");
             if (!hasResolvedRelation) evidence.Add("relationship_unresolved");
 
             // M8.1a source occurrence identity. TextOffsetSpan.End is exclusive: PdfProposalValidator
@@ -90,7 +88,7 @@ internal static class PdfHierarchyFactsInventory
                 Geometry = new PdfSourceGeometry(source.Left, source.TopY, source.Right, source.BottomY),
             };
             facts.Add(fact);
-            observed.Add(new ObservedHeading(fact.Id, path, source.StructuralScope, context.DocumentRegime));
+            observed.Add(new ObservedHeading(fact.Id, path));
             previousId = heading.SourceId;
         }
         return facts;
@@ -98,26 +96,22 @@ internal static class PdfHierarchyFactsInventory
 
     private static ObservedHeading? FindMarkerPrefixParent(
         IReadOnlyList<ObservedHeading> observed,
-        int[]? childPath,
-        string scope,
-        string regime)
+        int[]? childPath)
     {
         if (childPath is not { Length: >= 2 }) return null;
         var parentPath = childPath[..^1];
         for (var index = observed.Count - 1; index >= 0; index--)
         {
-            var candidate = observed[index];
-            if (!string.Equals(candidate.Scope, scope, StringComparison.Ordinal) ||
-                !string.Equals(candidate.Regime, regime, StringComparison.Ordinal)) continue;
-            if (candidate.Path is not null && candidate.Path.SequenceEqual(parentPath)) return candidate;
+            var observedHeading = observed[index];
+            if (observedHeading.Path is not null && observedHeading.Path.SequenceEqual(parentPath)) return observedHeading;
         }
         return null;
     }
 
-    private static (int Page, double InvertedY, string Id) PositionOf(PdfCandidateContext context) =>
+    private static (int Page, double InvertedY, string Id) PositionOf(PdfSemanticSourceContext context) =>
         (context.Source.Page, -context.Source.TopY, context.Source.SourceId);
 
-    private sealed record ObservedHeading(string Id, int[]? Path, string Scope, string Regime);
+    private sealed record ObservedHeading(string Id, int[]? Path);
 }
 
 /// <summary>Source-derived audit record, deliberately separate from <see cref="PdfValidatedStructure"/>.</summary>
@@ -132,7 +126,7 @@ public sealed record PdfHierarchyFactAudit(
     bool MarkerIsPath,
     string? MarkerPath,
     string? PreviousValidatedId,
-    string? MarkerPrefixParentCandidate,
+    string? MarkerPrefixParentId,
     int? ResolvedLevel,
     string ParentResolution,
     IReadOnlyList<string> Evidence)

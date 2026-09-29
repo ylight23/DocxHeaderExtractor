@@ -1,6 +1,9 @@
 # Legacy Reachability And Ownership Audit
 
-Status: audit-only. No production, test, route, or provider changes were made.
+Status: audit-only as written. No production, test, route, or provider changes were made **by the
+audit**. Later work did change what is reachable, and the rows below are corrected in place where
+that happened rather than left to describe a tree that no longer matches. Where a row records a
+classification that was true at the time, it says so.
 
 ## Scope
 
@@ -53,9 +56,20 @@ not make it runtime legacy.
 compatibility adapters may call it before normalized OOXML enters the canonical pipeline. It is an
 infrastructure input adapter, not a legacy authority route.
 
-`PdfLayoutEvidenceOutline` is normal-production reachable through the PDF authority path and is
-also exposed by diagnostic CLI commands. `PdfLegacyValidatedOutputPolicy`, hierarchy artifact
-evaluation, and shadow comparison are replay/diagnostic surfaces, not production authority.
+`PdfLayoutEvidenceOutline` **was** normal-production reachable through the PDF authority path when
+this audit was written. It no longer exists. The PDF authority path it served was entered only by a
+DOCX run discovering a same-named PDF on the filesystem, and that discovery was itself the defect:
+it let a file nobody uploaded take authority away from the file that was uploaded, with the winner
+depending on the process working directory. Routing now follows the uploaded file, so the lane had
+no caller and was deleted along with `PdfTextbookOutline`, the other PDF strategies,
+`PdfLegalTitleGrounder`, `PdfSemanticRecoverySelector`, `PdfVisualTextRecovery` and
+`PdfProposalConflictResolver`.
+
+A PDF upload is now extracted by `CanonicalSemanticPdfAuthorityAdapter`, which reads that PDF and
+nothing else and runs the same semantic stage as the DOCX lane.
+
+`PdfLegacyValidatedOutputPolicy`, hierarchy artifact evaluation, and shadow comparison remain
+replay/diagnostic surfaces, not production authority.
 
 ## C1 Legacy Test Mapping
 

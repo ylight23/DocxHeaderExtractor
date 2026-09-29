@@ -102,7 +102,7 @@ public static class AgentRunNarrator
     {
         HeadingSource.Style => "theo style Word",
         HeadingSource.Model => "do model xác nhận",
-        HeadingSource.Heuristic => "theo luật OpenXML",
+        HeadingSource.LocalRules => "theo luật OpenXML",
         HeadingSource.Structure => "cứu theo đánh số",
         HeadingSource.HumanCorrection => "người dùng đã sửa",
         _ => source.ToString(),

@@ -1,0 +1,32 @@
+{
+  "artifactKind": "a99_reveal_pin_amendment",
+  "study": "SRC054_BLIND_GENERALIZATION_AUDIT_V1",
+  "amends": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_2-pdf-facts-v2/SRC-054.reveal-pin.json",
+    "sha256": "363f94a3be020f8d27e0ff3e1658f3f061580638e90a235ed33279f61e3fec77",
+    "commit": "d33da0f"
+  },
+  "modelProviderVlmCalls": 0,
+  "cause": "Gold R2 (user-approved 2026-09-26) replaced the authored Gold file and its registry entry after the reveal",
+  "fix": "Gold R1 is kept byte for byte and the score harness reads it there; the pin test treats gold.registryGoldSha256 and harness.sha256 as the state at the reveal (RevealPin.Verify); the score harness accepts the harness named here",
+  "goldR1": {
+    "path": "eval/a99-closed-loop/gold-history/SRC-054.gold.r1.json",
+    "sha256": "82a904eefafa687537c08236ac70a177523b864d0829507524ffeccd6f8e5c56",
+    "pinnedAuthoredGoldSha256": "82a904eefafa687537c08236ac70a177523b864d0829507524ffeccd6f8e5c56"
+  },
+  "registryGoldSha256AtReveal": "36c3f7d96a1f5e3f70ca94bb118d08b421a1244e94e626739662e3c03f021e79",
+  "harnessBefore": {
+    "path": "tests/DocxHeaderExtractor.Tests/Src054BlindScoreTests.cs",
+    "sha256": "51e7a3231ba53878eb35d93acfde039e073d531eb95a0f181067a519872a3bbb",
+    "commit": "d33da0f"
+  },
+  "harnessAfter": {
+    "path": "tests/DocxHeaderExtractor.Tests/Src054BlindScoreTests.cs",
+    "sha256": "eb3f4d3402fa7cbaaa22ea567fb9b230d60fb658950e3cdcb5dabfa42a1597e7"
+  },
+  "unchanged": [
+    "the pin artifact (d33da0f) and the raw held-out score (912dcc7) - neither is rewritten",
+    "the Gold the score is computed against: R1, whose hash is the pinned authored-Gold hash",
+    "Score(): the same computation over the same bytes; The_committed_score_is_reproducible regenerates the committed score byte for byte"
+  ]
+}

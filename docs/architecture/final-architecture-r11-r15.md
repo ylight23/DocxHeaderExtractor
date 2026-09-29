@@ -91,10 +91,15 @@ Core does not reference that project. `SlimXmlChunker` remains model-input chunk
 
 ## R12 Enforcement
 
-`ArchitectureBoundaryGuards` provides a small dependency-free rule catalog and fail-closed helper
+`ArchitectureBoundaryGuards` provided a small dependency-free rule catalog and fail-closed helper
 methods for proposal validation, parser-owned source catalogs, and direct authority materialization.
-The later verification suite can inspect these declarations and source boundaries without a
+The later verification suite could inspect these declarations and source boundaries without a
 third-party architecture framework.
+
+The type was removed after this revision: no production path and no test ever called any of its
+three helpers, so the boundaries it described were being held by the code that owns them rather
+than by this catalog. The rules it listed are still the architecture; the unused enforcement helper
+is what went.
 
 The protected directions are:
 

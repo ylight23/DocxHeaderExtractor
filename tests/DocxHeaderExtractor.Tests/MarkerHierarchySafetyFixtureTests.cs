@@ -64,7 +64,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
     [InlineData("1 2 Some ordinary prose sentence continues here")]
     public void WeakNumericEvidenceWithoutObservedAncestorResolvesNoParent(string raw)
     {
-        var contexts = new Dictionary<string, PdfCandidateContext>(StringComparer.Ordinal)
+        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
         {
             ["only"] = Context("only", 1, 700, raw),
         };
@@ -72,7 +72,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
         var facts = PdfHierarchyFactsInventory.Inspect([Heading("only", raw)], contexts);
 
         var fact = Assert.Single(facts);
-        Assert.Null(fact.MarkerPrefixParentCandidate);
+        Assert.Null(fact.MarkerPrefixParentId);
         Assert.Equal("relationship_unresolved", fact.ParentResolution);
     }
 
@@ -82,7 +82,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
     {
         const string first = "4 3 Validation";
         const string second = "13 00 14 00 Lunch break";
-        var contexts = new Dictionary<string, PdfCandidateContext>(StringComparer.Ordinal)
+        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
         {
             ["a"] = Context("a", 1, 700, first),
             ["b"] = Context("b", 1, 680, second, scope: "table"),
@@ -94,7 +94,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
         Assert.Equal([first, second], facts.Select(fact => fact.SourceBlockText));
         Assert.Equal(["document_body", "table"], facts.Select(fact => fact.StructuralScope));
         Assert.All(facts, fact => Assert.Equal("document_body", fact.DocumentRegime));
-        Assert.All(facts, fact => Assert.Null(fact.MarkerPrefixParentCandidate));
+        Assert.All(facts, fact => Assert.Null(fact.MarkerPrefixParentId));
     }
 
     /// <summary>
@@ -106,26 +106,26 @@ public sealed class MarkerHierarchySafetyFixtureTests
     {
         const string parent = "4 Constructing Responses from Caches";
         const string child = "4 3 Validation";
-        var contexts = new Dictionary<string, PdfCandidateContext>(StringComparer.Ordinal)
+        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
         {
-            ["parent"] = Context("parent", 1, 700, parent, scope: "table_of_contents"),
+            ["parent"] = Context("parent", 1, 700, parent, scope: "reference_list"),
             ["child"] = Context("child", 2, 700, child),
         };
 
         var facts = PdfHierarchyFactsInventory.Inspect([Heading("parent", parent), Heading("child", child)], contexts);
 
         var resolved = facts.Single(fact => fact.Id == "child");
-        Assert.Null(resolved.MarkerPrefixParentCandidate);
+        Assert.Null(resolved.MarkerPrefixParentId);
         Assert.Equal("relationship_unresolved", resolved.ParentResolution);
     }
 
     private static PdfValidatedHeading Heading(string id, string text) =>
         new(id, new TextOffsetSpan(0, text.Length), PdfBlockRole.HeadingTopic, "document_body", "test");
 
-    private static PdfCandidateContext Context(string id, int page, double topY, string text,
+    private static PdfSemanticSourceContext Context(string id, int page, double topY, string text,
         string scope = "document_body")
     {
         var source = new PdfSourceFacts(id, text, page, 1, 72, topY, 400, topY - 12, scope, []);
-        return new PdfCandidateContext(source, [], [], [], "document_body", []);
+        return new PdfSemanticSourceContext(source, [], [], [], "document_body");
     }
 }

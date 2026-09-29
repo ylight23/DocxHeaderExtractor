@@ -1,0 +1,42 @@
+{
+  "artifactKind": "a99_pdf_s2e_provider_repeat_results",
+  "experimentId": "DOC-0252-PDF-S2E-RUNTIME-B0",
+  "manifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+  "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+  "providerCalls": 29,
+  "repeats": [
+    {
+      "repeat": 1,
+      "status": "SUCCEEDED",
+      "providerCalls": 9,
+      "replayBundle": "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-0da7345e2d99.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+      "manifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+      "emittedHeadings": 26,
+      "rawResponses": 9,
+      "providerCallsReported": 9
+    },
+    {
+      "repeat": 2,
+      "status": "SUCCEEDED",
+      "providerCalls": 10,
+      "replayBundle": "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-19cc50359418.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+      "manifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+      "emittedHeadings": 26,
+      "rawResponses": 9,
+      "providerCallsReported": 9
+    },
+    {
+      "repeat": 3,
+      "status": "SUCCEEDED",
+      "providerCalls": 10,
+      "replayBundle": "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-a3e7dc1ba574.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+      "manifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+      "emittedHeadings": 26,
+      "rawResponses": 9,
+      "providerCallsReported": 9
+    }
+  ]
+}

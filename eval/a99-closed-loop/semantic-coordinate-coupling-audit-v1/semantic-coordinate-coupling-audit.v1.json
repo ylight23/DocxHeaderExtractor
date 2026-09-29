@@ -1,0 +1,353 @@
+{
+  "artifactKind": "a99_semantic_coordinate_coupling_audit",
+  "schemaVersion": "a99-semantic-coordinate-coupling-audit-v1",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "mutations": "none - prompt, Gold, contract, binder and packing are all unchanged",
+  "frozenExperiment": {
+    "experimentId": "EXP_MASTHEAD_METADATA",
+    "result": "MIXED_INSUFFICIENT_AND_REGRESSIVE",
+    "mastheadTargetsStillEmitted": {
+      "programmeAndGroup": "L0513:S0|L0514:S0 - 2 of 3 repeats",
+      "meetingMode": "L0515:S0 - 3 of 3 repeats",
+      "dateVenueAddress": "L0516:S0|L0517:S0|L0518:S0 - 3 of 3 repeats"
+    },
+    "repeat1Pack5": {
+      "semanticallyProposed": 4,
+      "bound": 0,
+      "refused": 4,
+      "refusal": "UnexpectedVerbatimText"
+    },
+    "notReinterpreted": true
+  },
+  "promptResponsibilitySections": [
+    {
+      "section": "A_semantic_eligibility",
+      "influences": [
+        "isHeading",
+        "claim existence"
+      ],
+      "location": "opening paragraphs of the shared core"
+    },
+    {
+      "section": "B_role_ontology",
+      "influences": [
+        "semanticRole"
+      ],
+      "location": "implicit - the core names no closed role vocabulary, which is why replies carry 'heading', 'section', 'section-heading' and 'document-title' interchangeably"
+    },
+    {
+      "section": "C_relation_rules",
+      "influences": [
+        "relationHints",
+        "parent-node:ROOT/NONE/<alias>"
+      ],
+      "location": "the REQUIRED block, immediately before where the experiment clause was appended"
+    },
+    {
+      "section": "D_coordinate_rules",
+      "influences": [
+        "sourceParts",
+        "selectionMode",
+        "verbatimText",
+        "part order"
+      ],
+      "location": "the coordinate contract's own PromptClause, appended after the core"
+    },
+    {
+      "section": "E_response_format",
+      "influences": [
+        "overall JSON shape"
+      ],
+      "location": "the schema postfix and the provider's json_object mode"
+    }
+  ],
+  "experimentClausePlacement": {
+    "appendedTo": "the end of the shared core, after section C and before section D",
+    "adjacentInstructions": "the parent-node rules, including the sentence naming NONE for titles, subtitles, running headers and table labels",
+    "observedEffect": "the clause discussed a semantic category and the fields that moved were C's and D's"
+  },
+  "fieldOwnership": [
+    {
+      "field": "isHeading / claim existence",
+      "authority": "LLM_REQUIRED",
+      "reason": "whether text names a structural unit is meaning, which the source cannot settle"
+    },
+    {
+      "field": "semanticRole",
+      "authority": "LLM_REQUIRED",
+      "reason": "meaning, though currently unconstrained by any vocabulary"
+    },
+    {
+      "field": "relationHints / parent-node",
+      "authority": "LLM_REQUIRED",
+      "reason": "placement is a reading of the document, not a property of the atoms"
+    },
+    {
+      "field": "sourceAlias",
+      "authority": "LLM_REQUIRED",
+      "reason": "which occurrence is being named is the model's claim"
+    },
+    {
+      "field": "verbatimText",
+      "authority": "LLM_REQUIRED",
+      "reason": "the exact words claimed - this is how the model says how much of an atom it means"
+    },
+    {
+      "field": "selectionMode",
+      "authority": "HARNESS_DERIVABLE",
+      "reason": "given the alias and the quoted words, whether that is the whole atom or part of it is a fact about the source, and the harness holds the source"
+    },
+    {
+      "field": "part order",
+      "authority": "LLM_REQUIRED",
+      "reason": "the reading order of a wrapped heading is the claim's own shape"
+    },
+    {
+      "field": "occurrence / leftExactContext / rightExactContext",
+      "authority": "LLM_REQUIRED",
+      "reason": "disambiguation between repeats of the same text is a claim, not a lookup"
+    },
+    {
+      "field": "numeric offsets",
+      "authority": "HARNESS_REQUIRED",
+      "reason": "already the harness's, and the reason this contract exists"
+    }
+  ],
+  "selectionModeDerivability": {
+    "scope": "all 41 approved DOC-0252 claims",
+    "wholeAliasParts": 42,
+    "verbatimTextParts": 0,
+    "multiPartClaims": 1,
+    "partsWhereModeIsDerivableFromTheQuote": 42,
+    "counterexamples": [],
+    "rule": "quote equals the atom exactly -> WHOLE_ALIAS; quote is a proper substring -> VERBATIM_TEXT",
+    "caveat": "A quote occurring more than once inside its atom still needs occurrence or exact context to place it. Derivation settles the mode, not the position, and the fields that settle position already exist."
+  },
+  "refusedShapes": {
+    "cases": [
+      {
+        "alias": "L0400:S0",
+        "selectionMode": "WHOLE_ALIAS",
+        "quotedText": "4. Treatment of Negative Expenditures in ICP",
+        "atomText": "4. Treatment of Negative Expenditures in ICP",
+        "quotedEqualsWholeAtom": true,
+        "classification": "SEMANTICALLY_UNAMBIGUOUS_REDUNDANCY",
+        "canonicalizationWouldBeLossless": true,
+        "resolvedCoordinatesIfCanonicalized": "L0400:S0:0-44"
+      },
+      {
+        "alias": "L0420:S0",
+        "selectionMode": "WHOLE_ALIAS",
+        "quotedText": "5. Fine Tuning Global Linking Procedures",
+        "atomText": "5. Fine Tuning Global Linking Procedures",
+        "quotedEqualsWholeAtom": true,
+        "classification": "SEMANTICALLY_UNAMBIGUOUS_REDUNDANCY",
+        "canonicalizationWouldBeLossless": true,
+        "resolvedCoordinatesIfCanonicalized": "L0420:S0:0-40"
+      },
+      {
+        "alias": "L0470:S0",
+        "selectionMode": "WHOLE_ALIAS",
+        "quotedText": "6. Improving Reliability of Price Comparisons",
+        "atomText": "6. Improving Reliability of Price Comparisons",
+        "quotedEqualsWholeAtom": true,
+        "classification": "SEMANTICALLY_UNAMBIGUOUS_REDUNDANCY",
+        "canonicalizationWouldBeLossless": true,
+        "resolvedCoordinatesIfCanonicalized": "L0470:S0:0-45"
+      },
+      {
+        "alias": "L0507:S0",
+        "selectionMode": "WHOLE_ALIAS",
+        "quotedText": "Session VI: Any Other Business",
+        "atomText": "Session VI: Any Other Business",
+        "quotedEqualsWholeAtom": true,
+        "classification": "SEMANTICALLY_UNAMBIGUOUS_REDUNDANCY",
+        "canonicalizationWouldBeLossless": true,
+        "resolvedCoordinatesIfCanonicalized": "L0507:S0:0-30"
+      }
+    ],
+    "allLossless": true,
+    "reading": "Each refusal quoted exactly the atom it named. Under the rule the binder applies, the quote is forbidden; under the source, the quote and the mode say the same thing. The claim was never ambiguous - it was over-specified.",
+    "cautionAgainstSilentAcceptance": "Accepting WHOLE_ALIAS with any verbatimText would also accept a quote that does NOT match the atom, which is a real contract violation and would then bind to the whole atom regardless of what the model said it meant. Canonicalization has to compare the quote with the source, not ignore it."
+  },
+  "contractLayerConsistency": {
+    "contractLayerInconsistency": true,
+    "layers": [
+      {
+        "layer": "JSON schema shown to the model",
+        "verdict": "PERMITS",
+        "detail": "verbatimText is an unconditional property beside selectionMode; there is no if/then or oneOf tying them together, so the reply was schema-valid"
+      },
+      {
+        "layer": "CanonicalSemanticContractValidator.ValidateJson",
+        "verdict": "PERMITS",
+        "detail": "checks only for fabricated numeric coordinate fields"
+      },
+      {
+        "layer": "SemanticProposalDecoder.DecodeSourceParts",
+        "verdict": "PERMITS",
+        "detail": "requires sourceAlias and selectionMode; carries verbatimText through"
+      },
+      {
+        "layer": "SemanticCoordinateBinding.ValidateStructuredProposal",
+        "verdict": "PERMITS",
+        "detail": "checks alias existence, segment ownership and that the mode is one of the two"
+      },
+      {
+        "layer": "SemanticSourcePartBinder.Resolve",
+        "verdict": "REFUSES",
+        "detail": "UnexpectedVerbatimText - and the refusal is terminal: the claim is dropped and the evaluator sees a false negative"
+      }
+    ],
+    "consequence": "One rule is stated in exactly one place, and it is the last place. Four layers tell the model its reply is acceptable and the fifth discards it. Whatever is decided about ownership, this rule should be expressible where the reply is shaped - either the schema forbids the combination, or the harness canonicalizes it."
+  },
+  "relationPerturbation": {
+    "claims": [
+      {
+        "alias": "L0400:S0",
+        "baseline": {
+          "proposed": true,
+          "semanticRole": "heading",
+          "relationHints": [
+            "parent-node:ROOT"
+          ],
+          "selectionMode": "WHOLE_ALIAS",
+          "carriesVerbatimText": false
+        },
+        "experiment": {
+          "proposed": true,
+          "semanticRole": "heading",
+          "relationHints": [
+            "parent-node:NONE"
+          ],
+          "selectionMode": "WHOLE_ALIAS",
+          "carriesVerbatimText": true
+        }
+      },
+      {
+        "alias": "L0420:S0",
+        "baseline": {
+          "proposed": true,
+          "semanticRole": "heading",
+          "relationHints": [
+            "parent-node:ROOT"
+          ],
+          "selectionMode": "WHOLE_ALIAS",
+          "carriesVerbatimText": false
+        },
+        "experiment": {
+          "proposed": true,
+          "semanticRole": "heading",
+          "relationHints": [
+            "parent-node:NONE"
+          ],
+          "selectionMode": "WHOLE_ALIAS",
+          "carriesVerbatimText": true
+        }
+      },
+      {
+        "alias": "L0470:S0",
+        "baseline": {
+          "proposed": true,
+          "semanticRole": "heading",
+          "relationHints": [
+            "parent-node:ROOT"
+          ],
+          "selectionMode": "WHOLE_ALIAS",
+          "carriesVerbatimText": false
+        },
+        "experiment": {
+          "proposed": true,
+          "semanticRole": "heading",
+          "relationHints": [
+            "parent-node:NONE"
+          ],
+          "selectionMode": "WHOLE_ALIAS",
+          "carriesVerbatimText": true
+        }
+      },
+      {
+        "alias": "L0507:S0",
+        "baseline": {
+          "proposed": true,
+          "semanticRole": "heading",
+          "relationHints": [
+            "parent-node:ROOT"
+          ],
+          "selectionMode": "WHOLE_ALIAS",
+          "carriesVerbatimText": false
+        },
+        "experiment": {
+          "proposed": true,
+          "semanticRole": "heading",
+          "relationHints": [
+            "parent-node:NONE"
+          ],
+          "selectionMode": "WHOLE_ALIAS",
+          "carriesVerbatimText": true
+        }
+      }
+    ],
+    "membershipPerturbations": 0,
+    "relationOnlyPerturbations": 4,
+    "reading": "All four were proposed in both arms and all four name the same atom. What changed is the relation - ROOT under the baseline, NONE under the clause - and the part shape. The clause did not alter what the model considered a heading; it altered how it answered two other questions."
+  },
+  "noneTokenCoupling": {
+    "carriesSemanticAndRelationalMeaning": true,
+    "semanticSense": "an accepted heading that sits outside the section tree - a title, a running header, a table label",
+    "relationalSense": "this claim has no parent",
+    "evidence": "The prompt introduces NONE inside the relation block as one of three parent-node values, then immediately defines it by semantic category. A claim therefore reaches NONE either by being a certain kind of thing or by having nowhere to attach, and the reply cannot distinguish the two.",
+    "observedConsequence": "A clause arguing about which kinds of thing belong in the category moved genuine sections into it. Under one reading that is obedience, not error: if NONE means 'no parent', and the clause made the model less certain about what the annex's structure was, then NONE is where an uncertain placement goes.",
+    "unresolved": "Whether this is the cause cannot be established from one arm. It is a coupling that exists in the wording, and it is consistent with what was observed."
+  },
+  "architectureOptions": [
+    {
+      "option": "A_PROMPT_ONLY_REPAIR",
+      "change": "reword the masthead clause and move it out of the relation block",
+      "correctnessGain": "possible for the three masthead claims; nothing for the shape instability, which the prompt does not govern",
+      "compatibilityCost": "none - contract, binder and Gold untouched",
+      "migrationCost": "one prompt hash, one experiment",
+      "providerRebaseline": "the arm only; baselines keep their prompt",
+      "historicalReplay": "unaffected",
+      "risk": "the same class of failure can recur, because the reply can still be schema-valid and binder-invalid"
+    },
+    {
+      "option": "B_COORDINATE_CANONICALIZATION",
+      "change": "the model names an alias and quotes the words it means; the harness derives WHOLE_ALIAS or VERBATIM_TEXT by comparing the quote with the atom, and refuses only when the quote does not occur",
+      "correctnessGain": "removes an entire refusal class without accepting a wrong quote; the four lost headings would have bound",
+      "compatibilityCost": "selectionMode becomes derived rather than required - the schema and the coordinate prompt clause both change, so every structured request's bytes change",
+      "migrationCost": "contract hash, prompt hash, request bytes, provider-input plan",
+      "providerRebaseline": "required for the structured lane; captured replies remain decodable because a derived mode can be computed from what they already carry",
+      "historicalReplay": "preserved - existing captures carry alias and quote, which is what derivation needs",
+      "risk": "a quote that matches the atom in more than one place must still be disambiguated, which is what occurrence and the context fields already exist for"
+    },
+    {
+      "option": "C_SEPARATE_MEMBERSHIP_FROM_PLACEMENT",
+      "change": "membership and placement stop sharing a field and a vocabulary; NONE stops meaning both 'outside the tree by kind' and 'no parent'",
+      "correctnessGain": "a clause about categories could no longer move a section's placement, which is the perturbation actually observed",
+      "compatibilityCost": "relation vocabulary changes, so every reply shape and every frozen prompt/request hash changes; the hierarchy resolver reads these hints",
+      "migrationCost": "highest - prompt, schema, resolver, and the Gold that records roles",
+      "providerRebaseline": "required for both lanes",
+      "historicalReplay": "captured replies stay readable, but their relation values would need a documented mapping into the new vocabulary",
+      "risk": "largest surface changed on the evidence of one arm"
+    }
+  ],
+  "recommendation": {
+    "next": "B_COORDINATE_CANONICALIZATION",
+    "why": "It is the only option whose defect is already proven rather than hypothesised. Four approved headings were lost to it in this run, the same class cost nothing to detect and everything to diagnose, and the fix restores the architecture's own rule - the model says what it means, the harness decides coordinates. It is also the option that makes the next semantic experiment interpretable, because a semantic clause could no longer fail through a coordinate encoding.",
+    "notYetC": "The relation coupling is real in the wording but its causal role rests on one repeat. Establishing it deserves its own evidence, not a redesign carried in alongside B.",
+    "notA": "Rewording alone leaves the reply able to be valid everywhere except where it is finally read.",
+    "experimentsOnHold": [
+      "EXP_MASTHEAD_METADATA rerun - not recommended",
+      "EXP_BODY_PROPOSITION - not recommended yet",
+      "EXP_SCHEDULE_ITEM - not recommended yet"
+    ],
+    "reasonForHold": "Each would be measured through the same coordinate encoding that has now been shown able to discard a correct answer."
+  },
+  "providerAccounting": {
+    "remainingFromExperimentCap": 3,
+    "status": "UNUSED and UNAUTHORIZED - not transferable",
+    "callsThisTask": 0
+  }
+}

@@ -8,7 +8,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// canonical, so this layer only selects and reshapes what M9.1/M9.2 already decided.
 /// <para>
 /// It reads <see cref="PdfFinalStructure"/> and <see cref="PdfOutputDecision"/> and nothing else. It
-/// may not read <c>HeadingRecord</c> or the legacy policy to fill a field it lacks — a field this
+/// may not read <c>HeadingRecord</c> or an earlier policy layer to fill a field it lacks — a field this
 /// layer needs and the projection does not carry is a contract gap in M9.1, not something to recover
 /// here by re-matching a title, resolving a new parent, normalising scope/role, or inventing a style
 /// id the evidence never produced.
@@ -16,7 +16,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// <para>
 /// Only decisions with <see cref="PdfOutputDecision.Emit"/> set become a product record. A heading
 /// without a <see cref="DocxSourceAnchor"/> is never one of them: the emission invariant in
-/// <see cref="PdfOutputDecisionPolicy"/> already guarantees that, and this layer re-checks it rather
+/// <see cref="PdfOutputDecisions"/> already guarantees that, and this layer re-checks it rather
 /// than trusting it silently, because a record without a canonical occurrence cannot be written back.
 /// </para>
 /// </summary>

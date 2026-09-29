@@ -1,0 +1,193 @@
+{
+  "artifactKind": "a99_semantic_function_contract_design_freeze",
+  "study": "SEMANTIC_FUNCTION_CONTRACT_DESIGN_FREEZE_V1",
+  "status": "design_freeze_with_explicit_only_v4_transport_preflighted_not_provider_authorized",
+  "modelProviderCalls": 0,
+  "follows": {
+    "replay": "docs/accuracy/semantic-function-membership-replay-v1.md",
+    "conclusion": "single authority removes contradictions, but legacy semanticRole projection cannot distinguish navigation from region structure"
+  },
+  "primarySemanticFunction": {
+    "soleMembershipAuthority": true,
+    "closedVocabulary": [
+      "DOCUMENT_IDENTITY",
+      "REGION_STRUCTURE",
+      "NAVIGATION",
+      "PAGE_FURNITURE",
+      "OBJECT_CAPTION",
+      "TABLE_STRUCTURE",
+      "FOOTNOTE_OR_SOURCE",
+      "BODY_INFORMATION",
+      "METADATA"
+    ],
+    "membership": {
+      "members": [
+        "DOCUMENT_IDENTITY",
+        "REGION_STRUCTURE"
+      ],
+      "nonMembers": [
+        "NAVIGATION",
+        "PAGE_FURNITURE",
+        "OBJECT_CAPTION",
+        "TABLE_STRUCTURE",
+        "FOOTNOTE_OR_SOURCE",
+        "BODY_INFORMATION",
+        "METADATA"
+      ],
+      "unknownFailsClosed": true
+    },
+    "normativeDefinitions": [
+      {
+        "semanticFunction": "DOCUMENT_IDENTITY",
+        "member": true,
+        "definition": "Identifies the document, report, or artifact itself as its semantic title identity.",
+        "boundary": "Unlike METADATA, it is the title identity rather than a description of the artifact."
+      },
+      {
+        "semanticFunction": "REGION_STRUCTURE",
+        "member": true,
+        "definition": "Names or opens a semantic region whose subsequent content belongs beneath it.",
+        "boundary": "Unlike NAVIGATION, OBJECT_CAPTION, and TABLE_STRUCTURE, it opens a region rather than pointing elsewhere or describing an internal object/table part."
+      },
+      {
+        "semanticFunction": "NAVIGATION",
+        "member": false,
+        "definition": "Points to, lists, or leads to content elsewhere in the document.",
+        "boundary": "Unlike REGION_STRUCTURE, it does not open a region whose following content belongs beneath it."
+      },
+      {
+        "semanticFunction": "PAGE_FURNITURE",
+        "member": false,
+        "definition": "Serves repeated or page-positioned presentation, such as a running header, footer, or page number.",
+        "boundary": "Unlike REGION_STRUCTURE, its function is page presentation, not opening a content region."
+      },
+      {
+        "semanticFunction": "OBJECT_CAPTION",
+        "member": false,
+        "definition": "Names or describes an embedded visual, figure, listing, or other object whose scope is that object itself.",
+        "boundary": "Unlike REGION_STRUCTURE, it does not open a broader following content region."
+      },
+      {
+        "semanticFunction": "TABLE_STRUCTURE",
+        "member": false,
+        "definition": "Is a row, column, label, or header structure internal to a table.",
+        "boundary": "Unlike REGION_STRUCTURE, it is internal to the table rather than a heading outside or around it that opens a broader region."
+      },
+      {
+        "semanticFunction": "FOOTNOTE_OR_SOURCE",
+        "member": false,
+        "definition": "Is a footnote, citation, attribution, or source note that supports or qualifies other content.",
+        "boundary": "Unlike REGION_STRUCTURE, it does not establish a region for subsequent body content."
+      },
+      {
+        "semanticFunction": "BODY_INFORMATION",
+        "member": false,
+        "definition": "Is ordinary body information, such as prose, a statement, or a run-in fact, without a region-opening function.",
+        "boundary": "Unlike REGION_STRUCTURE, it conveys content but does not name or open the region containing it."
+      },
+      {
+        "semanticFunction": "METADATA",
+        "member": false,
+        "definition": "Describes the document, its provenance, status, date, audience, or other attributes without constituting its title identity.",
+        "boundary": "Unlike DOCUMENT_IDENTITY, it describes the artifact but is not the artifact's semantic title identity."
+      }
+    ],
+    "occurrenceNotString": "identical or overlapping text may have different functions at different source occurrences and contexts"
+  },
+  "membershipFirstArm": {
+    "modelVisibleOutput": [
+      "sourceParts",
+      "semanticFunction"
+    ],
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceParts": {
+          "type": "array",
+          "minItems": 1,
+          "description": "The existing source-coordinate tuple; its binder and canonicalization are unchanged by this design."
+        },
+        "semanticFunction": {
+          "type": "string",
+          "enum": [
+            "DOCUMENT_IDENTITY",
+            "REGION_STRUCTURE",
+            "NAVIGATION",
+            "PAGE_FURNITURE",
+            "OBJECT_CAPTION",
+            "TABLE_STRUCTURE",
+            "FOOTNOTE_OR_SOURCE",
+            "BODY_INFORMATION",
+            "METADATA"
+          ],
+          "description": "The sole authority from which membership is derived."
+        }
+      },
+      "required": [
+        "sourceParts",
+        "semanticFunction"
+      ]
+    },
+    "descriptiveAxesExcluded": [
+      "occurrenceRole",
+      "scope",
+      "titleRelation"
+    ],
+    "purpose": "isolate whether the model distinguishes REGION_STRUCTURE from NAVIGATION before hierarchy/descriptive axes add task complexity",
+    "executionAfterAuthorizationOnly": {
+      "requestVersion": "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY",
+      "model": "qwen/qwen3.7-flash",
+      "sourceFacts": "V3",
+      "packing": 120,
+      "sourceParts": "existing binder contract",
+      "cohort": [
+        "SRC-089",
+        "SRC-095"
+      ],
+      "gold": "unopened until raw predictions are persisted"
+    }
+  },
+  "targetArchitectureOnly": {
+    "possibleDescriptiveAxes": [
+      "occurrenceRole",
+      "scope",
+      "titleRelation"
+    ],
+    "membershipAuthority": false,
+    "cannotOverrideSemanticFunction": true,
+    "deferredUntil": "a later hierarchy-focused arm after membership is measured"
+  },
+  "deterministicProofs": [
+    "isHeading is absent and rejected as a field not in the contract",
+    "generic heading is not an enum value and fails closed",
+    "unknown semanticFunction fails closed",
+    "membership is derived only from semanticFunction",
+    "the first model-visible membership arm permits only sourceParts and semanticFunction; descriptive axes are rejected",
+    "all nine functions have normative definitions, including DOCUMENT_IDENTITY/METADATA, REGION_STRUCTURE/OBJECT_CAPTION, and REGION_STRUCTURE/TABLE_STRUCTURE boundaries",
+    "NAVIGATION, PAGE_FURNITURE, OBJECT_CAPTION, TABLE_STRUCTURE, FOOTNOTE_OR_SOURCE, BODY_INFORMATION and METADATA are nonmembers",
+    "the same words can be NAVIGATION in contents and REGION_STRUCTURE in body",
+    "sourceParts are preserved verbatim and the existing binder identity is unchanged",
+    "V2 remains production default and its committed raw run remains a historical input"
+  ],
+  "v2Immutability": {
+    "productionDefault": "V2_ATTENTION_FREE",
+    "requestVersions": [
+      "Unspecified",
+      "V1_ATTENTION_LEGACY",
+      "V2_ATTENTION_FREE",
+      "V3_ATTENTION_FREE_EXCLUSION_CONSISTENCY",
+      "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY"
+    ],
+    "structuredV1SchemaHash": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "rawRun": {
+      "path": "eval/a99-closed-loop/llm-semantic-pilot-v1/run.v1.json",
+      "sha256": "f27db57657ca42658c0a23dfe28cd6e33f822073e642e96e037b34fc45791468"
+    },
+    "v2CoordinatePreservedThroughDesign": {
+      "SourcePartsSha256": "f7732ddc8d818349fd8c418d9597e67ecfc3d3e8d97349bce6f547f41d6a696f",
+      "BoundIdentity": "L0002:S1:0-33"
+    }
+  },
+  "nextGate": "Do not send the explicit-only V4 transport until its frozen preflight is reviewed and provider authorization is explicit; the arm must use this closed vocabulary rather than project legacy semanticRole."
+}

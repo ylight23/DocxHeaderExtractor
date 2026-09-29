@@ -44,8 +44,8 @@ public sealed class AgentHarnessTests : IDisposable
 
         Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
         Assert.Equal(1, tool.Calls);
-        // skill contract + chọn tool + 5 guardrail + tool + 2 validator + gate
-        Assert.Equal(11, result.Steps);
+        // skill contract + chọn tool + 4 guardrail + tool + 2 validator + gate
+        Assert.Equal(10, result.Steps);
         Assert.Equal(0, result.RepairAttempts);
         Assert.Null(result.Writeback);
         Assert.Equal(result.Trace, observed);
@@ -378,8 +378,8 @@ public sealed class AgentHarnessTests : IDisposable
     }
 
     /// <summary>
-    /// <b>Mặt còn lại của cổng (§109 tầng 2).</b> Mục do đường HEURISTIC dựng mà thiếu bằng chứng
-    /// KHÔNG được chặn writeback: heuristic đoán, nhưng nó không ảo giác, và cổng này là cổng chống
+    /// <b>Mặt còn lại của cổng (§109 tầng 2).</b> Mục do đường LOCAL_RULES dựng mà thiếu bằng chứng
+    /// KHÔNG được chặn writeback: luật cục bộ đoán, nhưng nó không ảo giác, và cổng này là cổng chống
     /// ảo giác. Bản cũ đếm mọi nguồn nên chặn toàn-bộ-hoặc-không-gì theo tài liệu — đo trên corpus,
     /// 063 chặn 25/25, 030 chặn 12/12, 020 chặn 48/48, cả ba đều chạy <c>--no-llm</c> tức không có
     /// mô hình nào tham gia.
@@ -389,10 +389,10 @@ public sealed class AgentHarnessTests : IDisposable
     /// </para>
     /// </summary>
     [Fact]
-    public async Task Muc_heuristic_thieu_bang_chung_khong_chan_writeback()
+    public async Task Muc_local_rules_thieu_bang_chung_khong_chan_writeback()
     {
         using var tool = new FakeTool(Outline(
-            Heading(1, review: true, source: HeadingSource.Heuristic)));
+            Heading(1, review: true, source: HeadingSource.LocalRules)));
         using var action = new FakeActionTool();
         var harness = Harness(tool, actionTool: action);
 
@@ -570,7 +570,7 @@ public sealed class AgentHarnessTests : IDisposable
     /// <summary>
     /// <paramref name="review"/> dựng đúng ca mà cổng nhắm tới: mục DO MÔ HÌNH dựng mà thiếu bằng
     /// chứng, tức nghi ảo giác. Từ §109 tầng 2, cổng chỉ đếm mục nguồn <see cref="HeadingSource.Model"/>;
-    /// mục deterministic hay heuristic thiếu bằng chứng vẫn hạ tự tin nhưng không chặn writeback.
+    /// mục deterministic/local-rules thiếu bằng chứng vẫn hạ tự tin nhưng không chặn writeback.
     /// </summary>
     private static HeadingRecord Heading(
         int index, bool review = false, HeadingSource? source = null) => new()
@@ -589,7 +589,7 @@ public sealed class AgentHarnessTests : IDisposable
     {
         File = "synthetic.docx",
         ParagraphCount = 2,
-        CandidateCount = headings.Length,
+        SourceCount = headings.Length,
         Headings = headings,
     };
 

@@ -1,0 +1,2024 @@
+{
+  "artifactKind": "a99_openrouter_streaming_t4_t3b_reasoning_none_score",
+  "status": "T4_GOLD_SCORE_COMPLETE",
+  "study": "OPENROUTER_STREAMING_TRANSPORT_V1_REASONING_NONE",
+  "candidateId": "T3B_P05_STREAMING_REASONING_NONE_FULL_31_PACED",
+  "scoringAuthority": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3c-efficiency-heavy-leaf-audit.v1.json",
+  "scorer": {
+    "version": "SEMANTIC_FUNCTION_V4_EXACT_BIND_SCORER_V1",
+    "exactMatcher": "GENERIC_EXACT_SCORER_V1",
+    "sourceSha256": "db27b529db8ebdf604652cc5a8f37b08e51f329d4e5c272fe537eaa4690e428f",
+    "providerCallsDuringScoring": 0
+  },
+  "lineage": {
+    "t3bPreflight": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3b-p05-reasoning-none-full-cohort-preflight.v1.json",
+      "sha256": "e2d02d20d31ee5e353a2d533fb091e7a13d4e78efe7f4a5a8dc8a993c6e46776"
+    },
+    "t3bSummary": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3b-reasoning-none-combined-summary.v1.json",
+      "sha256": "8bfe3a2d891776d88d53e17feada514b067da52782637a19db4ed8422065a9a3"
+    },
+    "t3cAudit": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3c-efficiency-heavy-leaf-audit.v1.json",
+      "sha256": "dd101ec182aee5700865dd5b2543cfaffb1b769baff0c85647f8885dd3ca635b"
+    },
+    "p05MediumComparator": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/v4r2-p05-score.v1.json",
+      "sha256": "44522f639deddfdb1ca53231c78ea1155bf5ed0d9ac13cf0e625570666a49850"
+    }
+  },
+  "protocol": {
+    "semanticRequestHashesUnchangedFromP05": true,
+    "packing": "P05_RESOURCE_BOUNDED_SOURCE_PACKING_V1",
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoning": "none",
+    "stream": true,
+    "usageInclude": true,
+    "responseFormat": "json_object",
+    "goldOpenedAfterExecutionFreeze": true,
+    "providerCalls": 0,
+    "productionPromotion": false
+  },
+  "execution": {
+    "acceptedLeaves": 31,
+    "acceptedProviderCalls": 31,
+    "observedTransportRetryEvents": 3,
+    "observedTotalProviderAttemptsIncludingTransportErrors": 34,
+    "semanticRecoveryCalls": 0,
+    "mediumFallbackCalls": 0,
+    "totalPromptTokens": 608940,
+    "totalCompletionTokens": 46956,
+    "totalReasoningTokens": 0
+  },
+  "aggregateDeltaVsP05Medium": {
+    "none": {
+      "tp": 114,
+      "fp": 53,
+      "fn": 25,
+      "f1": 0.7451
+    },
+    "medium": {
+      "tp": 120,
+      "fp": 61,
+      "fn": 19,
+      "f1": 0.75
+    },
+    "delta": {
+      "tp": -6,
+      "fp": -8,
+      "fn": 6,
+      "f1": -0.0049
+    }
+  },
+  "documentDeltaVsP05Medium": [
+    {
+      "documentId": "SRC-089",
+      "none": {
+        "gold": 36,
+        "tp": 27,
+        "fp": 3,
+        "fn": 9,
+        "f1": 0.8182
+      },
+      "medium": {
+        "gold": 36,
+        "tp": 30,
+        "fp": 3,
+        "fn": 6,
+        "f1": 0.8696
+      },
+      "delta": {
+        "tp": -3,
+        "fp": 0,
+        "fn": 3,
+        "f1": -0.0514
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "none": {
+        "gold": 103,
+        "tp": 87,
+        "fp": 50,
+        "fn": 16,
+        "f1": 0.725
+      },
+      "medium": {
+        "gold": 103,
+        "tp": 90,
+        "fp": 58,
+        "fn": 13,
+        "f1": 0.7171
+      },
+      "delta": {
+        "tp": -3,
+        "fp": -8,
+        "fn": 3,
+        "f1": 0.0079
+      }
+    }
+  ],
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-089.gold.json",
+        "sha256": "c66cefb224bdd47a08e2374fdb0328dd97b1e520a48f4cdbaffed244ac833534",
+        "authorityId": "SRC-089",
+        "userFinalApproval": true
+      },
+      "rawCalls": 7,
+      "invalidResponses": 0,
+      "refusals": {
+        "OutOfSourceOrder": 1,
+        "OUT_OF_OWNED_SEGMENT": 9
+      },
+      "uniqueBoundDecisions": 38,
+      "uniqueMemberClaims": 30,
+      "headline": {
+        "goldClaims": 36,
+        "hypothesesListed": 30,
+        "TRUE": 30,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 27,
+        "falsePositives": 3,
+        "falseNegatives": 9,
+        "truePrecision": 0.9,
+        "trueRecall": 0.75,
+        "f1": 0.8182,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 7,
+        "partialOnly": 2,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 3,
+        "goldMultipartClaims": 18,
+        "exactMultipartMatches": 14,
+        "goldClaimsWithPartialPart": 1,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 27,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 2,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 7
+        }
+      },
+      "residuals": {
+        "goldNotEngineTrue": [
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+            "goldText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+            "engine": [
+              {
+                "Index": 0,
+                "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=DOCUMENT_IDENTITY"
+                ],
+                "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0109:S0:0-33",
+            "goldText": "1 . Conditions for establishment:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0117:S0:0-22",
+            "goldText": "2. Operation contents:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0246:S0:0-26",
+            "goldText": "1 . For publishing houses:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0249:S0:0-16",
+            "goldText": "2. For partners:",
+            "engine": []
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0382:S0:0-10|L0383:S0:0-45",
+            "goldText": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+            "engine": [
+              {
+                "Index": 20,
+                "Text": "Chapter IV",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L0382:S0:0-10",
+                "UnboundReason": null
+              },
+              {
+                "Index": 21,
+                "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L0383:S0:0-45",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0384:S0:0-71",
+            "goldText": "Article 17. Conditions for publishing and distribution ofe-publications",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0426:S0:0-96|L0427:S0:0-44",
+            "goldText": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe publishing and distribution ofe-publications",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0455:S0:0-90|L0456:S0:0-27",
+            "goldText": "Article 19. Classification ofe-publications and requirements on the contents and technical conditions ofe-publications",
+            "engine": []
+          }
+        ],
+        "nonGoldTrue": [
+          {
+            "hypothesis": {
+              "Index": 0,
+              "Text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=DOCUMENT_IDENTITY"
+              ],
+              "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 20,
+              "Text": "Chapter IV",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0382:S0:0-10",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 21,
+              "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0383:S0:0-45",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          }
+        ],
+        "nonGoldNeedsReview": []
+      },
+      "exactByGoldPattern": {
+        "ARTICLE_HEADING": {
+          "gold": 26,
+          "exact": 23
+        },
+        "S089_Q1_DECREE_TITLE_BLOCK": {
+          "gold": 1,
+          "exact": 0
+        },
+        "S089_Q2_CHAPTER_LABEL_OVER_TITLE": {
+          "gold": 5,
+          "exact": 4
+        },
+        "S089_Q3_COLON_CLAUSE_LABEL": {
+          "gold": 4,
+          "exact": 0
+        }
+      },
+      "src089": {
+        "articleExact": {
+          "gold": 26,
+          "exact": 23
+        },
+        "chapterExact": {
+          "gold": 5,
+          "exact": 4
+        },
+        "titleBlockExact": {
+          "gold": 1,
+          "exact": 0
+        },
+        "clauseLabelsExact": {
+          "gold": 4,
+          "exact": 0
+        }
+      },
+      "src095": null,
+      "byOrdinal": [
+        {
+          "ordinal": 1,
+          "DocumentId": "SRC-089",
+          "promptTokens": 19653,
+          "completionTokens": 789,
+          "reasoningTokens": 0,
+          "firstContentMs": 3494,
+          "wallClockMs": 9787,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 6,
+          "memberClaims": 6,
+          "truePositives": 5,
+          "falsePositives": 1,
+          "ownedGoldClaims": 1,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "014da482fbda3ceaab891bf0c29bfc9ccc45521db608d416ecfe36fad3df524f",
+          "providerEnvelopeHash": "1829d9e3f9e7b4e4c17cf4e1c0822cf55f1056f734abe7fc5b00eb0c19c2c637"
+        },
+        {
+          "ordinal": 2,
+          "DocumentId": "SRC-089",
+          "promptTokens": 19723,
+          "completionTokens": 703,
+          "reasoningTokens": 0,
+          "firstContentMs": 1938,
+          "wallClockMs": 7900,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 6,
+          "memberClaims": 6,
+          "truePositives": 6,
+          "falsePositives": 0,
+          "ownedGoldClaims": 4,
+          "falseNegativesByOwnedGold": 2,
+          "semanticRequestHash": "482d12e578dc9513e8267f706ae40b979f18d734634c19becd14c40dbc7457af",
+          "providerEnvelopeHash": "058f98ff7b970139cc21b280e193cfff54218a8c5c24b8ea204aa9e9ec805e3d"
+        },
+        {
+          "ordinal": 3,
+          "DocumentId": "SRC-089",
+          "promptTokens": 19671,
+          "completionTokens": 413,
+          "reasoningTokens": 0,
+          "firstContentMs": 3521,
+          "wallClockMs": 6867,
+          "transportRetries": 1,
+          "uniqueBoundDecisions": 4,
+          "memberClaims": 4,
+          "truePositives": 4,
+          "falsePositives": 0,
+          "ownedGoldClaims": 5,
+          "falseNegativesByOwnedGold": 2,
+          "semanticRequestHash": "78ad6f0ce8b31cfd5b16e0989ab3cfa299fdab163cfaa3988ca15bcdc8b71c83",
+          "providerEnvelopeHash": "3ea99521a02aa9a7900017419757f5d13040463d72b6fdf009e3b1c54905b07b"
+        },
+        {
+          "ordinal": 4,
+          "DocumentId": "SRC-089",
+          "promptTokens": 20156,
+          "completionTokens": 655,
+          "reasoningTokens": 0,
+          "firstContentMs": 1828,
+          "wallClockMs": 7609,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 4,
+          "memberClaims": 4,
+          "truePositives": 4,
+          "falsePositives": 0,
+          "ownedGoldClaims": 3,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "60306c578971dcc01c7d2eab0ba2de0639be82be88afce43d2c79ed7bdb67f4b",
+          "providerEnvelopeHash": "76bd355029ef50244e7b381f14d89bd7d9538a768a9e569500324876303251a7"
+        },
+        {
+          "ordinal": 5,
+          "DocumentId": "SRC-089",
+          "promptTokens": 20109,
+          "completionTokens": 491,
+          "reasoningTokens": 0,
+          "firstContentMs": 2273,
+          "wallClockMs": 6631,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 5,
+          "memberClaims": 2,
+          "truePositives": 0,
+          "falsePositives": 2,
+          "ownedGoldClaims": 1,
+          "falseNegativesByOwnedGold": 1,
+          "semanticRequestHash": "66a2a492d19a8e18e005ab62bf368706c278f00a31bb3cc6242ef1ec56a0a64d",
+          "providerEnvelopeHash": "98014e063cacb95cbc3cf22f319159ad8b233c757fc1823f5d4eaa2af8c21ba2"
+        },
+        {
+          "ordinal": 6,
+          "DocumentId": "SRC-089",
+          "promptTokens": 20396,
+          "completionTokens": 678,
+          "reasoningTokens": 0,
+          "firstContentMs": 1928,
+          "wallClockMs": 7464,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 8,
+          "memberClaims": 8,
+          "truePositives": 8,
+          "falsePositives": 0,
+          "ownedGoldClaims": 4,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "e367cac4711a0c7830b8076676083163f4f4bb7265921824a56f2b5875d07c9d",
+          "providerEnvelopeHash": "8a80a6b78d2e971dfa823162b3584ea44698ddb85c579073d57b4ceca50d56f4"
+        },
+        {
+          "ordinal": 7,
+          "DocumentId": "SRC-089",
+          "promptTokens": 1973,
+          "completionTokens": 388,
+          "reasoningTokens": 0,
+          "firstContentMs": 789,
+          "wallClockMs": 4439,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 5,
+          "memberClaims": 0,
+          "truePositives": 0,
+          "falsePositives": 0,
+          "ownedGoldClaims": 0,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "8a7600899cd7b7d93faa319c7ced8448e2956bf449fafbbf0865f69f02bd60ea",
+          "providerEnvelopeHash": "4851a654ec40ce4ec37f1030c83ed784ac36ace7c3137a8cce836b453568513c"
+        }
+      ],
+      "bySemanticFunction": [
+        {
+          "goldHeading": true,
+          "semanticFunction": "BODY_INFORMATION",
+          "occurrences": 3
+        },
+        {
+          "goldHeading": true,
+          "semanticFunction": "REGION_STRUCTURE",
+          "occurrences": 27
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "BODY_INFORMATION",
+          "occurrences": 1
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "DOCUMENT_IDENTITY",
+          "occurrences": 1
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "FOOTNOTE_OR_SOURCE",
+          "occurrences": 1
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "PAGE_FURNITURE",
+          "occurrences": 3
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "REGION_STRUCTURE",
+          "occurrences": 2
+        }
+      ],
+      "functionConfusionMatrix": {
+        "semanticFunctions": [
+          "DOCUMENT_IDENTITY",
+          "REGION_STRUCTURE",
+          "NAVIGATION",
+          "PAGE_FURNITURE",
+          "OBJECT_CAPTION",
+          "TABLE_STRUCTURE",
+          "FOOTNOTE_OR_SOURCE",
+          "BODY_INFORMATION",
+          "METADATA"
+        ],
+        "goldHeading": {
+          "DOCUMENT_IDENTITY": 0,
+          "REGION_STRUCTURE": 27,
+          "NAVIGATION": 0,
+          "PAGE_FURNITURE": 0,
+          "OBJECT_CAPTION": 0,
+          "TABLE_STRUCTURE": 0,
+          "FOOTNOTE_OR_SOURCE": 0,
+          "BODY_INFORMATION": 3,
+          "METADATA": 0
+        },
+        "nonGold": {
+          "DOCUMENT_IDENTITY": 1,
+          "REGION_STRUCTURE": 2,
+          "NAVIGATION": 0,
+          "PAGE_FURNITURE": 3,
+          "OBJECT_CAPTION": 0,
+          "TABLE_STRUCTURE": 0,
+          "FOOTNOTE_OR_SOURCE": 1,
+          "BODY_INFORMATION": 1,
+          "METADATA": 0
+        },
+        "goldUnemitted": 6
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-095.gold.json",
+        "sha256": "d8a6eafb63716f531463b74d25543e4d27b25965aac0d5d0e5fb25734027df18",
+        "authorityId": "SRC-095",
+        "userFinalApproval": true
+      },
+      "rawCalls": 24,
+      "invalidResponses": 0,
+      "refusals": {
+        "OUT_OF_OWNED_SEGMENT": 25,
+        "TextNotInAtom": 32,
+        "OutOfSourceOrder": 9
+      },
+      "uniqueBoundDecisions": 329,
+      "uniqueMemberClaims": 137,
+      "headline": {
+        "goldClaims": 103,
+        "hypothesesListed": 137,
+        "TRUE": 137,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 87,
+        "falsePositives": 50,
+        "falseNegatives": 16,
+        "truePrecision": 0.635,
+        "trueRecall": 0.8447,
+        "f1": 0.725,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 13,
+        "partialOnly": 3,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 3,
+        "goldMultipartClaims": 6,
+        "exactMultipartMatches": 5,
+        "goldClaimsWithPartialPart": 0,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 87,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 3,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 13
+        }
+      },
+      "residuals": {
+        "goldNotEngineTrue": [
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0008:S0:0-6",
+            "goldText": "HTTP/3",
+            "engine": [
+              {
+                "Index": 0,
+                "Text": "RFC 9114 HTTP/3",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=DOCUMENT_IDENTITY"
+                ],
+                "identity": "L0007:S0:0-8|L0008:S0:0-6",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0944:S0:0-4|L0944:S1:0-16",
+            "goldText": "7.2. Frame Deﬁnitions",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1050:S0:0-35",
+            "goldText": "7.2.4.1. Deﬁned SETTINGS Parameters",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1729:S0:0-32",
+            "goldText": "A.2.1. Prioritization Diﬀerences",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1736:S0:0-35",
+            "goldText": "A.2.2. Field Compression Diﬀerences",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1745:S0:0-30",
+            "goldText": "A.2.3. Flow-Control Diﬀerences",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1750:S0:0-45",
+            "goldText": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1761:S0:0-49",
+            "goldText": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1914:S0:0-1",
+            "goldText": "C",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1940:S0:0-1",
+            "goldText": "D",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1947:S0:0-1",
+            "goldText": "G",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1961:S0:0-1",
+            "goldText": "H",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2012:S0:0-1",
+            "goldText": "M",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2023:S0:0-1",
+            "goldText": "P",
+            "engine": []
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L2056:S0:0-1",
+            "goldText": "R",
+            "engine": [
+              {
+                "Index": 132,
+                "Text": "R request stream",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L2056:S0:0-1|L2057:S0:0-14",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L2063:S0:0-1",
+            "goldText": "S",
+            "engine": [
+              {
+                "Index": 133,
+                "Text": "S SETTINGS",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L2063:S0:0-1|L2064:S0:0-8",
+                "UnboundReason": null
+              }
+            ]
+          }
+        ],
+        "nonGoldTrue": [
+          {
+            "hypothesis": {
+              "Index": 0,
+              "Text": "RFC 9114 HTTP/3",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=DOCUMENT_IDENTITY"
+              ],
+              "identity": "L0007:S0:0-8|L0008:S0:0-6",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 5,
+              "Text": "10.3. Intermediary-Encapsulation Attacks",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0090:S0:0-40",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 6,
+              "Text": "10.4. Cacheability ofPushed Responses",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0091:S0:0-37",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 7,
+              "Text": "10.5. Denial-of-Service Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0092:S0:0-38",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 8,
+              "Text": "10.5.1. Limits on Field Section Size",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0093:S0:0-36",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 9,
+              "Text": "10.5.2. CONNECT Issues",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0096:S0:0-22",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 10,
+              "Text": "10.6. Use of Compression",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0097:S0:0-24",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 11,
+              "Text": "10.7. Padding and Traﬃc Analysis",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0098:S0:0-32",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 12,
+              "Text": "10.8. Frame Parsing",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0099:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 13,
+              "Text": "10.9. Early Data",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0100:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 14,
+              "Text": "10.10. Migration",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0101:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 15,
+              "Text": "10.11. Privacy Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0102:S0:0-29",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 16,
+              "Text": "11. IANA Considerations",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0103:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 17,
+              "Text": "11.2. New Registries",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0105:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 18,
+              "Text": "11.2.1. Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0106:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 19,
+              "Text": "11.2.2. Settings Parameters",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0107:S0:0-27",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 20,
+              "Text": "11.2.3. Error Codes",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0108:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 21,
+              "Text": "11.2.4. Stream Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0109:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 22,
+              "Text": "12. References",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0110:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 23,
+              "Text": "12.1. Normative References",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0111:S0:0-26",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 24,
+              "Text": "12.2. Informative References",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0112:S0:0-28",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 25,
+              "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0113:S0:0-56",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 26,
+              "Text": "A.1. Streams",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0114:S0:0-12",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 27,
+              "Text": "A.2. HTTP Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0115:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 28,
+              "Text": "A.2.1. Prioritization Diﬀerences",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0116:S0:0-32",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 29,
+              "Text": "A.2.2. Field Compression Diﬀerences",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0117:S0:0-35",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 30,
+              "Text": "A.2.3. Flow-Control Diﬀerences",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0118:S0:0-30",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 31,
+              "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0119:S0:0-45",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 32,
+              "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0120:S0:0-49",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 33,
+              "Text": "A.3. HTTP/2 SETTINGS Parameters",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0121:S0:0-31",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 34,
+              "Text": "A.4. HTTP/2 Error Codes",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0122:S0:0-23",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 35,
+              "Text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0123:S0:0-47",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 36,
+              "Text": "Acknowledgments",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0124:S0:0-15",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 37,
+              "Text": "Index",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0125:S0:0-5",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 75,
+              "Text": "Section Section 7.2.7",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0917:S4:0-7|L0918:S4:0-13",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 76,
+              "Text": "Section 7.2.8",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0919:S4:0-13",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 122,
+              "Text": "H3_REQUEST_CANCELLED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1990:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 123,
+              "Text": "H3_REQUEST_INCOMPLETE",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1994:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 124,
+              "Text": "H3_REQUEST_REJECTED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1997:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 125,
+              "Text": "H3_SETTINGS_ERROR Section 7.2.4, Paragraph 6; Section 7.2.4.1, Paragraph 5; Section 7.2.4.2, Paragraph 8; Section 7.2.4.2, Paragraph 8; Section 8.1; Table 4",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2001:S0:0-83|L2002:S0:0-72",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 126,
+              "Text": "H3_STREAM_CREATION_ERROR Section 6.1, Paragraph 3; Section 6.2, Paragraph 7; Section 6.2.1, Paragraph 2; Section 6.2.2, Paragraph 3; Section 8.1; Table 4",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2003:S0:0-76|L2004:S0:0-76",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 127,
+              "Text": "H3_VERSION_FALLBACK Section 8.1; Table 4; Appendix A.4, Paragraph 3.28.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2005:S0:0-72",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 128,
+              "Text": "HEADERS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2006:S0:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 129,
+              "Text": "MAX_PUSH_ID",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2019:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 130,
+              "Text": "push stream",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2035:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 131,
+              "Text": "PUSH_PROMISE",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2046:S0:0-12",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 132,
+              "Text": "R request stream",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2056:S0:0-1|L2057:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 133,
+              "Text": "S SETTINGS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2063:S0:0-1|L2064:S0:0-8",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 134,
+              "Text": "SETTINGS_MAX_FIELD_SECTION_SIZE Section 4.2.2, Paragraph 2; Section 7.2.4.1; Section 10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2072:S0:0-84|L2073:S0:0-51",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 135,
+              "Text": "stream error Section 2.2; Section 4.1.2, Paragraph 4; Section 4.4, Paragraph 10; Section 8; Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 4",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2074:S0:0-91|L2075:S0:0-85",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          }
+        ],
+        "nonGoldNeedsReview": []
+      },
+      "exactByGoldPattern": {
+        "MATTER_SECTION": {
+          "gold": 6,
+          "exact": 6
+        },
+        "NUMBERED_SECTION": {
+          "gold": 81,
+          "exact": 75
+        },
+        "NUMBERED_SECTION_SPLIT": {
+          "gold": 6,
+          "exact": 5
+        },
+        "S095_Q1_RFC_TITLE_BLOCK": {
+          "gold": 1,
+          "exact": 0
+        },
+        "S095_Q2_INDEX_GROUP_LETTER": {
+          "gold": 8,
+          "exact": 0
+        },
+        "TOC_OPENER": {
+          "gold": 1,
+          "exact": 1
+        }
+      },
+      "src089": null,
+      "src095": {
+        "falsePositiveFamilies": {
+          "REVIEWED_NON_HEADING:CONTENTS_ENTRY": 33,
+          "INDEX_ENTRY": 12,
+          "GOLD_HEADING_WRONG_EXTENT": 3,
+          "REVIEWED_NON_HEADING:TABLE_OR_REFERENCE_LABEL": 1,
+          "MODEL_ROLE_REGION_STRUCTURE": 1
+        },
+        "falsePositiveBreakdown": {
+          "contentsEntries": 33,
+          "indexEntries": 12,
+          "pageFurniture": 0,
+          "captions": 0,
+          "tableStructure": 1,
+          "goldHeadingWrongExtent": 3,
+          "other": 1
+        },
+        "numberedSectionRecall": {
+          "gold": 87,
+          "exact": 80,
+          "recall": 0.9195
+        },
+        "rfcTitleIdentifierExact": {
+          "gold": 1,
+          "exact": 0
+        },
+        "indexGroupLettersExact": {
+          "gold": 8,
+          "exact": 0
+        }
+      },
+      "byOrdinal": [
+        {
+          "ordinal": 8,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20064,
+          "completionTokens": 4473,
+          "reasoningTokens": 0,
+          "firstContentMs": 2153,
+          "wallClockMs": 35263,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 62,
+          "memberClaims": 5,
+          "truePositives": 4,
+          "falsePositives": 1,
+          "ownedGoldClaims": 5,
+          "falseNegativesByOwnedGold": 1,
+          "semanticRequestHash": "cae6332355c3f265cc97ab5016e302681f5cd45f6cabd29708f50a574f66cb5e",
+          "providerEnvelopeHash": "caff85ff124cb739224e3103c604351ed4ebb5792fe2f1f36a2b15acb2d91104"
+        },
+        {
+          "ordinal": 9,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20488,
+          "completionTokens": 2576,
+          "reasoningTokens": 0,
+          "firstContentMs": 1981,
+          "wallClockMs": 21810,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 38,
+          "memberClaims": 38,
+          "truePositives": 5,
+          "falsePositives": 33,
+          "ownedGoldClaims": 5,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "3dfd6cd8e167a0f389f72ed52e96e18afcd6cc89884dca955a03ab7895185b10",
+          "providerEnvelopeHash": "aa5285815bff9a793fd118631ab9a3588ee5732783da48eb2db901f4847730e8"
+        },
+        {
+          "ordinal": 10,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20110,
+          "completionTokens": 5797,
+          "reasoningTokens": 0,
+          "firstContentMs": 1907,
+          "wallClockMs": 45748,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 45,
+          "memberClaims": 4,
+          "truePositives": 4,
+          "falsePositives": 0,
+          "ownedGoldClaims": 4,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "d153ff4af0e5afaf0e48b20b3da36dbbe5556ac4d3d043d5b663df4dd5ae5f79",
+          "providerEnvelopeHash": "bad9270f1f49d9d758bad75fa159f71c6e3d10d9d76a7578f47d3ded25007695"
+        },
+        {
+          "ordinal": 11,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20374,
+          "completionTokens": 5273,
+          "reasoningTokens": 0,
+          "firstContentMs": 2167,
+          "wallClockMs": 43403,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 14,
+          "memberClaims": 5,
+          "truePositives": 5,
+          "falsePositives": 0,
+          "ownedGoldClaims": 5,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "3a3d909ef64cdb93d5bbd1a2aa2668aa023f5a458de0c79a2a9d4cefa58f275f",
+          "providerEnvelopeHash": "2d99a175c46550d860ef02b5d8653d4ec062ca7774282a5608d240fd87108562"
+        },
+        {
+          "ordinal": 12,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20300,
+          "completionTokens": 207,
+          "reasoningTokens": 0,
+          "firstContentMs": 1949,
+          "wallClockMs": 3702,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 3,
+          "memberClaims": 3,
+          "truePositives": 3,
+          "falsePositives": 0,
+          "ownedGoldClaims": 3,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "61ffa63281416b7a5154aa68deee93b97ccf5e95ab3b7364f2b833c837b016be",
+          "providerEnvelopeHash": "d2122313f5730b2353e98af592ca800764d5df4153af2e10ccfbb4cbc0ee249f"
+        },
+        {
+          "ordinal": 13,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20794,
+          "completionTokens": 398,
+          "reasoningTokens": 0,
+          "firstContentMs": 2217,
+          "wallClockMs": 5563,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 6,
+          "memberClaims": 6,
+          "truePositives": 6,
+          "falsePositives": 0,
+          "ownedGoldClaims": 6,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "1e036a1c0edb8081579384a37215a18fb53e427154c52837085113d7b69a2724",
+          "providerEnvelopeHash": "151001537885e45c15d8ab571b858ab603a775f04472f23c66f896fe1441128b"
+        },
+        {
+          "ordinal": 14,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20240,
+          "completionTokens": 225,
+          "reasoningTokens": 0,
+          "firstContentMs": 3527,
+          "wallClockMs": 5568,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 2,
+          "memberClaims": 2,
+          "truePositives": 2,
+          "falsePositives": 0,
+          "ownedGoldClaims": 1,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "ca0f9b3b6f8d659ed3d8163e07add568e0913300f3feb36b88b780c1b67d175b",
+          "providerEnvelopeHash": "d903620910566673b9feaab7b5ca88fd553256f3ad19bfe80d76374bf750354d"
+        },
+        {
+          "ordinal": 15,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20095,
+          "completionTokens": 256,
+          "reasoningTokens": 0,
+          "firstContentMs": 2580,
+          "wallClockMs": 5146,
+          "transportRetries": 1,
+          "uniqueBoundDecisions": 3,
+          "memberClaims": 3,
+          "truePositives": 3,
+          "falsePositives": 0,
+          "ownedGoldClaims": 3,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "acf2ff2362e3890fe6e79635a4573a45f6128a37226b0364307c916609fc761f",
+          "providerEnvelopeHash": "efe45fe4ec3bb5ce515157c23ba355d2079c80e7db4c394eac7cd2efc4d193de"
+        },
+        {
+          "ordinal": 16,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20195,
+          "completionTokens": 450,
+          "reasoningTokens": 0,
+          "firstContentMs": 2136,
+          "wallClockMs": 5913,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 6,
+          "memberClaims": 5,
+          "truePositives": 5,
+          "falsePositives": 0,
+          "ownedGoldClaims": 5,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "84fc81363e923719e3c6e713338de506321d828c272c25206c8223ed1a6f4790",
+          "providerEnvelopeHash": "085056b9939e62628acc5ebf3b1de0ac84f5a3c3690f0a9bfb882eb74af9fbc5"
+        },
+        {
+          "ordinal": 17,
+          "DocumentId": "SRC-095",
+          "promptTokens": 19694,
+          "completionTokens": 1544,
+          "reasoningTokens": 0,
+          "firstContentMs": 1832,
+          "wallClockMs": 13153,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 4,
+          "memberClaims": 4,
+          "truePositives": 4,
+          "falsePositives": 0,
+          "ownedGoldClaims": 4,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "5a94489dee7a26598e1351bd371396ad1658057488446ba3f0354d2fb7928fbc",
+          "providerEnvelopeHash": "bed45299d787e7ec0e562ec3d7394508ae134c00066e61539b3f0ea3d521f472"
+        },
+        {
+          "ordinal": 18,
+          "DocumentId": "SRC-095",
+          "promptTokens": 19778,
+          "completionTokens": 506,
+          "reasoningTokens": 0,
+          "firstContentMs": 1916,
+          "wallClockMs": 6005,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 6,
+          "memberClaims": 6,
+          "truePositives": 4,
+          "falsePositives": 2,
+          "ownedGoldClaims": 4,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "69c0635c447f697c75d7d760b4a1211013bafce6937194c1a2d9e4c6eeced0ea",
+          "providerEnvelopeHash": "bc31da429f842e6b2c9aa3618a015568077be81939499aba0ff4127a24226960"
+        },
+        {
+          "ordinal": 19,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20232,
+          "completionTokens": 205,
+          "reasoningTokens": 0,
+          "firstContentMs": 1933,
+          "wallClockMs": 3905,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 2,
+          "memberClaims": 2,
+          "truePositives": 2,
+          "falsePositives": 0,
+          "ownedGoldClaims": 3,
+          "falseNegativesByOwnedGold": 1,
+          "semanticRequestHash": "b3b2cc07863e394c032f15df289c5898ed62b98d027d7d24cf2651a73b5e0b3f",
+          "providerEnvelopeHash": "3e7a3a1de71492781d76275ef11bd3984df0bf41a207348e13b7839a451453a6"
+        },
+        {
+          "ordinal": 20,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20177,
+          "completionTokens": 328,
+          "reasoningTokens": 0,
+          "firstContentMs": 1878,
+          "wallClockMs": 4758,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 4,
+          "memberClaims": 4,
+          "truePositives": 4,
+          "falsePositives": 0,
+          "ownedGoldClaims": 4,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "7ccae4168547b543347bcace78f8212b4c42d0442bb247df8390ff13ff9b2e18",
+          "providerEnvelopeHash": "c19d3358c17b7c283a0185efb18cdbaca6fc7ab1692db3ac273c0db3a74abab1"
+        },
+        {
+          "ordinal": 21,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20021,
+          "completionTokens": 198,
+          "reasoningTokens": 0,
+          "firstContentMs": 1951,
+          "wallClockMs": 3779,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 3,
+          "memberClaims": 3,
+          "truePositives": 3,
+          "falsePositives": 0,
+          "ownedGoldClaims": 3,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "2c5deb37393fd5d9f77cd61fec0e055cdde37d6a124ef417a8ba06f9aa757547",
+          "providerEnvelopeHash": "3c6d902441b3c0905c272c1f6c743bb22b335f114daf5d46f04ce798e91e563c"
+        },
+        {
+          "ordinal": 22,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20327,
+          "completionTokens": 559,
+          "reasoningTokens": 0,
+          "firstContentMs": 2060,
+          "wallClockMs": 6357,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 8,
+          "memberClaims": 8,
+          "truePositives": 8,
+          "falsePositives": 0,
+          "ownedGoldClaims": 7,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "d0f1ef9297f083dcadbd775ac7da5b1d42122b296682de9fcd6c22aef8a45465",
+          "providerEnvelopeHash": "6a73be435b55bc1b27e243fa44c4d56564d00f6c51c4547a3b4da873181bdad9"
+        },
+        {
+          "ordinal": 23,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20173,
+          "completionTokens": 713,
+          "reasoningTokens": 0,
+          "firstContentMs": 1849,
+          "wallClockMs": 7615,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 9,
+          "memberClaims": 9,
+          "truePositives": 9,
+          "falsePositives": 0,
+          "ownedGoldClaims": 7,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "c4d6fafdabefe8120a48d14b8681a60dbb8f292fd5ac0b172b46f15a66d7dcfd",
+          "providerEnvelopeHash": "78eb0a15c0b82ae81cc09cc87045f5c4a80f03d2d57690d3f706210a961b4779"
+        },
+        {
+          "ordinal": 24,
+          "DocumentId": "SRC-095",
+          "promptTokens": 19655,
+          "completionTokens": 826,
+          "reasoningTokens": 0,
+          "firstContentMs": 2129,
+          "wallClockMs": 8342,
+          "transportRetries": 1,
+          "uniqueBoundDecisions": 3,
+          "memberClaims": 2,
+          "truePositives": 2,
+          "falsePositives": 0,
+          "ownedGoldClaims": 2,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "3bea63a1ab4acdffcdcfc97b552c70c41b70634d42c6bce5daffe72e2d49bdc2",
+          "providerEnvelopeHash": "178facd9881995cffcf38812bce7c385dd3a8d8848436e185a1619358bce470f"
+        },
+        {
+          "ordinal": 25,
+          "DocumentId": "SRC-095",
+          "promptTokens": 19324,
+          "completionTokens": 837,
+          "reasoningTokens": 0,
+          "firstContentMs": 1960,
+          "wallClockMs": 8860,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 4,
+          "memberClaims": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "ownedGoldClaims": 1,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "78d4b3124f500bcb760f185a87a289f88a6c6f52b31c871653b741e7222ecf0a",
+          "providerEnvelopeHash": "62fcf1810011f6d3340c23cf63fb24e7e2e1bdd943f5e3696a28c2155e9c0e29"
+        },
+        {
+          "ordinal": 26,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20210,
+          "completionTokens": 4803,
+          "reasoningTokens": 0,
+          "firstContentMs": 2571,
+          "wallClockMs": 42432,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 27,
+          "memberClaims": 3,
+          "truePositives": 3,
+          "falsePositives": 0,
+          "ownedGoldClaims": 2,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "d4fd0311674f6701aa9447f89e0e56cd72c34f13e13e117c43286f7cfdb480cb",
+          "providerEnvelopeHash": "006d9bfebc1956a4c2653fe0fa7b2889219af28d42ecc6671d3abac59d31d958"
+        },
+        {
+          "ordinal": 27,
+          "DocumentId": "SRC-095",
+          "promptTokens": 21244,
+          "completionTokens": 266,
+          "reasoningTokens": 0,
+          "firstContentMs": 2164,
+          "wallClockMs": 4532,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 4,
+          "memberClaims": 4,
+          "truePositives": 4,
+          "falsePositives": 0,
+          "ownedGoldClaims": 4,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "d16006fbe1fceabf0ca203d61da045ae89d5387882ecfe894e1c3306b4dd77c9",
+          "providerEnvelopeHash": "53a3a69b22593272170e4b0c6f855d25ce4658a5dfea35cdfa69d5031ce15e55"
+        },
+        {
+          "ordinal": 28,
+          "DocumentId": "SRC-095",
+          "promptTokens": 20407,
+          "completionTokens": 409,
+          "reasoningTokens": 0,
+          "firstContentMs": 2624,
+          "wallClockMs": 6127,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 1,
+          "memberClaims": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "ownedGoldClaims": 6,
+          "falseNegativesByOwnedGold": 5,
+          "semanticRequestHash": "46ecf33bc0ab5cf277086723bf06e7f6c3a0566b0f11c66135786bd6cddee9b1",
+          "providerEnvelopeHash": "6345a6aa5e5e8fdf178c2f6aa6c0b35ebb3749ddca01a6d3f6f94a8999a8f7a3"
+        },
+        {
+          "ordinal": 29,
+          "DocumentId": "SRC-095",
+          "promptTokens": 19982,
+          "completionTokens": 205,
+          "reasoningTokens": 0,
+          "firstContentMs": 2169,
+          "wallClockMs": 4119,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 3,
+          "memberClaims": 3,
+          "truePositives": 3,
+          "falsePositives": 0,
+          "ownedGoldClaims": 3,
+          "falseNegativesByOwnedGold": 0,
+          "semanticRequestHash": "db9853538fb3562b82fceb9344e83bb2ddc9f354b59487a988908e62f05ea0dd",
+          "providerEnvelopeHash": "9d119c1d851635f4c107e6eee463fe758b3177286b11c5f31046067fff4564d5"
+        },
+        {
+          "ordinal": 30,
+          "DocumentId": "SRC-095",
+          "promptTokens": 21787,
+          "completionTokens": 5761,
+          "reasoningTokens": 0,
+          "firstContentMs": 2418,
+          "wallClockMs": 47246,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 35,
+          "memberClaims": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "ownedGoldClaims": 5,
+          "falseNegativesByOwnedGold": 4,
+          "semanticRequestHash": "c0eab96cfdaf5757688c1d2570bdde2fec61e9f36c7e13e0df4e3c5007297a5e",
+          "providerEnvelopeHash": "cc22b90795a4baa551b5b53bd674320d106872b0ffd98e204d000b4e5dffe31b"
+        },
+        {
+          "ordinal": 31,
+          "DocumentId": "SRC-095",
+          "promptTokens": 21588,
+          "completionTokens": 6024,
+          "reasoningTokens": 0,
+          "firstContentMs": 2163,
+          "wallClockMs": 46425,
+          "transportRetries": 0,
+          "uniqueBoundDecisions": 37,
+          "memberClaims": 15,
+          "truePositives": 1,
+          "falsePositives": 14,
+          "ownedGoldClaims": 5,
+          "falseNegativesByOwnedGold": 4,
+          "semanticRequestHash": "ea67c04e83410f7d645340a752cbb36d1325de52c25ac612f0145c7323eeb46a",
+          "providerEnvelopeHash": "b26648504c132a7a7e97ececa577101e50a3c1d3de3f628561b629058d9f0e0a"
+        }
+      ],
+      "bySemanticFunction": [
+        {
+          "goldHeading": true,
+          "semanticFunction": "NAVIGATION",
+          "occurrences": 4
+        },
+        {
+          "goldHeading": true,
+          "semanticFunction": "REGION_STRUCTURE",
+          "occurrences": 87
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "BODY_INFORMATION",
+          "occurrences": 59
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "DOCUMENT_IDENTITY",
+          "occurrences": 1
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "FOOTNOTE_OR_SOURCE",
+          "occurrences": 5
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "NAVIGATION",
+          "occurrences": 88
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "OBJECT_CAPTION",
+          "occurrences": 5
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "PAGE_FURNITURE",
+          "occurrences": 29
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "REGION_STRUCTURE",
+          "occurrences": 49
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "TABLE_STRUCTURE",
+          "occurrences": 2
+        }
+      ],
+      "functionConfusionMatrix": {
+        "semanticFunctions": [
+          "DOCUMENT_IDENTITY",
+          "REGION_STRUCTURE",
+          "NAVIGATION",
+          "PAGE_FURNITURE",
+          "OBJECT_CAPTION",
+          "TABLE_STRUCTURE",
+          "FOOTNOTE_OR_SOURCE",
+          "BODY_INFORMATION",
+          "METADATA"
+        ],
+        "goldHeading": {
+          "DOCUMENT_IDENTITY": 0,
+          "REGION_STRUCTURE": 87,
+          "NAVIGATION": 4,
+          "PAGE_FURNITURE": 0,
+          "OBJECT_CAPTION": 0,
+          "TABLE_STRUCTURE": 0,
+          "FOOTNOTE_OR_SOURCE": 0,
+          "BODY_INFORMATION": 0,
+          "METADATA": 0
+        },
+        "nonGold": {
+          "DOCUMENT_IDENTITY": 1,
+          "REGION_STRUCTURE": 49,
+          "NAVIGATION": 88,
+          "PAGE_FURNITURE": 29,
+          "OBJECT_CAPTION": 5,
+          "TABLE_STRUCTURE": 2,
+          "FOOTNOTE_OR_SOURCE": 5,
+          "BODY_INFORMATION": 59,
+          "METADATA": 0
+        },
+        "goldUnemitted": 12
+      }
+    }
+  ],
+  "goldRead": true,
+  "providerCalls": 0,
+  "productionPromotion": false
+}

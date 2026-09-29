@@ -1,0 +1,36 @@
+{
+  "artifactKind": "a99_source_regeneration_manifest",
+  "schemaVersion": "a99-source-regeneration-manifest-v1",
+  "documentId": "DOC-0258",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "originalPdf": {
+    "path": "todo10_8/heading_corpus_100/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.pdf",
+    "sha256": "c3080d4d0c681aed636c860268eccc37b7ca0f0d2c9645f2469823e83ed92168"
+  },
+  "regeneratedDocx": {
+    "path": "todo10_8/generated-docx-v2/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+    "sha256": "e630588a9f42b7cdbe6245819c38d50309cc377e2ec292185926a4dc0badc369",
+    "paragraphs": 168
+  },
+  "supersedes": {
+    "path": "todo10_8/heading_corpus_95_word/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.docx",
+    "sha256": "7d4661e4f40cfb80cf3d1bb01d465842862d8a8ba54a6476d3e8fab8d8d95e30",
+    "producedBy": "pdf2docx"
+  },
+  "converter": {
+    "implementation": "tests/DocxHeaderExtractor.Tests/PdfLineDocxConverter.cs",
+    "reads": "PdfPig words; a word joins a line when its vertical centre is within half the page's median word height",
+    "carries": "words and bold runs only - no heading styles, no outline levels, no annotations",
+    "newParagraphWhen": [
+      "the page changes",
+      "the gap to the previous line exceeds 20pt (normal leading is ~13.5pt)",
+      "bold changes between lines",
+      "the line starts a list item (−, –, o)",
+      "the previous line ends more than 60pt short of the text block's right edge - unless both lines are centred (a wrapped title)"
+    ]
+  },
+  "reason": "The superseded conversion merged sixteen standalone label lines of the PDF into the text after them; this rebuild keeps each on its own paragraph.",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-24"
+}

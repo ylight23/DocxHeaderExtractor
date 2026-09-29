@@ -1,0 +1,74 @@
+{
+  "artifactKind": "a99_v4r2_p05_recovery_plan",
+  "artifactVersion": "v2",
+  "status": "FROZEN_PENDING_EXECUTION",
+  "experimentOnly": true,
+  "productionPromotion": false,
+  "goldRead": false,
+  "basis": {
+    "authorityCorrection": "eval/a99-closed-loop/request-architecture-v2/v4r2-p05-execution-authority-correction.v1.json",
+    "primaryRunId": "p05-provider-experiment-20260928T033919Z",
+    "pendingParentCount": 2,
+    "pendingParentOrdinals": [8, 30],
+    "failurePredicate": "HTTP_200 + completion saturation/truncated JSON + contract-invalid response"
+  },
+  "frozenPins": {
+    "candidateId": "P05",
+    "treatmentDelta": "PACKING_SHAPE_ONLY",
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "medium",
+    "responseFormat": "json_object",
+    "maxTokens": 12288,
+    "timeoutSeconds": 300,
+    "inputCeilingBytes": 90000,
+    "estimatedInputTokenCeiling": 28000,
+    "ownedCoreCeiling": 96,
+    "visibleSourceAtomsCeiling": 128,
+    "haloAtoms": 8,
+    "lossyTransforms": false,
+    "explicitCacheControl": false,
+    "strictJsonSchema": false
+  },
+  "recoveryPolicy": {
+    "pendingParents": 2,
+    "identicalRetryMaximumPerParent": 1,
+    "retryRequiresIdenticalSemanticRequestHash": true,
+    "retryRequiresIdenticalProviderEnvelopeHash": true,
+    "onRepeatedSaturation": "DETERMINISTIC_SOURCE_ORDER_MIDPOINT_SPLIT",
+    "successfulLeavesResent": false,
+    "maxAdaptiveChildCalls": 12,
+    "totalHardCallCap": 55,
+    "invalid200Handling": "bounded identical retry, then deterministic leaf split"
+  },
+  "parents": [
+    {
+      "parentOrdinal": 8,
+      "documentId": "SRC-089",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-008.request.json",
+      "responseFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-008.response.json",
+      "semanticRequestHash": "cae6332355c3f265cc97ab5016e302681f5cd45f6cabd29708f50a574f66cb5e",
+      "providerEnvelopeHash": "82e54d4b7739800e9933633cb81582e8bdef9b8bf8ea731f39f1fe42659513b7",
+      "ownedCount": 96,
+      "splitIndex": 48,
+      "retryKind": "IDENTICAL_RETRY"
+    },
+    {
+      "parentOrdinal": 30,
+      "documentId": "SRC-095",
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-030.request.json",
+      "responseFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-030.response.json",
+      "semanticRequestHash": "c0eab96cfdaf5757688c1d2570bdde2fec61e9f36c7e13e0df4e3c5007297a5e",
+      "providerEnvelopeHash": "e2134e76cceecd74e0de6e5277ec898819f8830051bc710c294b92adbf5478c3",
+      "ownedCount": 96,
+      "splitIndex": 48,
+      "retryKind": "IDENTICAL_RETRY"
+    }
+  ],
+  "ownershipInvariant": {
+    "parentOwnedEqualsChildUnion": true,
+    "childOwnedIntersectionIsEmpty": true,
+    "haloMayOverlap": true,
+    "ownershipMayNotOverlap": true
+  }
+}

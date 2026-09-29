@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.Application.Capabilities;
 
 namespace DocxHeaderExtractor.AgentHarness;
@@ -22,9 +23,22 @@ public interface IDocumentAgentGuardrail
         CancellationToken ct = default);
 }
 
-/// <summary>Chặn sớm đường dẫn không tồn tại hoặc định dạng mà pipeline không hỗ trợ.</summary>
+/// <summary>
+/// Chặn sớm đường dẫn không tồn tại hoặc định dạng mà pipeline không hỗ trợ.
+/// <para>
+/// Chấp nhận khi byte cho thấy một lane sở hữu định dạng này, hoặc khi phần mở rộng nằm trong danh
+/// sách vốn có. Trước đây guardrail chỉ nhìn phần mở rộng và không có <c>.pdf</c>, nên một tệp PDF
+/// bị chặn ở đây dù lane PDF đã rút trích được nó.
+/// </para>
+/// </summary>
 public sealed class InputDocumentGuardrail : IDocumentAgentGuardrail
 {
+    /// <summary>
+    /// Phần mở rộng vẫn được chấp nhận như trước. Giữ nguyên danh sách này thay vì thay thế bằng
+    /// phép dò byte: dò byte là để <em>mở thêm</em> đường cho định dạng mà lane sở hữu, không phải
+    /// để siết lại những gì guardrail này vốn cho qua. Byte không nhận dạng được mà phần mở rộng
+    /// hợp lệ vẫn đi tiếp và hỏng ở parser đúng như cũ — đó là câu hỏi khác.
+    /// </summary>
     private static readonly HashSet<string> SupportedExtensions =
         new(StringComparer.OrdinalIgnoreCase) { ".docx", ".docm", ".doc", ".rtf", ".odt" };
 
@@ -41,9 +55,15 @@ public sealed class InputDocumentGuardrail : IDocumentAgentGuardrail
         if (!File.Exists(path))
             return ValueTask.FromResult(AgentGuardrailDecision.Block(
                 "input_not_found", $"Không tìm thấy file: {Path.GetFileName(path)}"));
-        if (!SupportedExtensions.Contains(Path.GetExtension(path)))
+
+        // Byte trước, rồi mới tới tên. Một tệp PDF bị chặn ở đây dù lane PDF rút trích được nó, chỉ
+        // vì ".pdf" không có trong danh sách; và một tệp PDF đặt tên ".docx" thì lại được cho qua.
+        var detected = UploadedSourceDetector.Detect(path);
+        if (detected is not (SourceType.Docx or SourceType.Pdf) &&
+            !SupportedExtensions.Contains(Path.GetExtension(path)))
             return ValueTask.FromResult(AgentGuardrailDecision.Block(
-                "input_unsupported", $"Định dạng không được hỗ trợ: {Path.GetExtension(path)}"));
+                "input_unsupported",
+                $"Định dạng không được hỗ trợ: {Path.GetFileName(path)} không phải DOCX hay PDF."));
 
         return ValueTask.FromResult(AgentGuardrailDecision.Pass(
             "input_valid", $"Đầu vào hợp lệ: {Path.GetFileName(path)}"));
@@ -97,7 +117,7 @@ public sealed class WritebackTargetGuardrail : IDocumentAgentGuardrail
 
         if (!request.WantsWriteback)
         {
-            return ValueTask.FromResult(context.ActionTool is null || request.WantsKeyPackage
+            return ValueTask.FromResult(context.ActionTool is null
                 ? AgentGuardrailDecision.Pass("no_writeback", "Run không yêu cầu ghi outline vào tài liệu.")
                 : AgentGuardrailDecision.Block(
                     "writeback_target_missing",
@@ -133,62 +153,6 @@ public sealed class WritebackTargetGuardrail : IDocumentAgentGuardrail
 
         return ValueTask.FromResult(AgentGuardrailDecision.Pass(
             "writeback_target_valid", $"Đích ghi hợp lệ: {Path.GetFileName(target)}"));
-    }
-}
-
-/// <summary>
-/// Kiểm tra thư mục tạo partial key package. Package được phép tạo thư mục con cho từng tài liệu,
-/// nhưng thư mục cha phải rõ ràng và không được trỏ vào chính file nguồn.
-/// </summary>
-public sealed class KeyPackageTargetGuardrail : IDocumentAgentGuardrail
-{
-    public string Name => "key_package_target";
-
-    public ValueTask<AgentGuardrailDecision> EvaluateAsync(
-        DocumentAgentGuardrailContext context,
-        CancellationToken ct = default)
-    {
-        ct.ThrowIfCancellationRequested();
-        var request = context.Request;
-        if (!request.WantsKeyPackage)
-            return ValueTask.FromResult(AgentGuardrailDecision.Pass(
-                "no_key_package", "Run không yêu cầu tạo key package."));
-
-        if (context.ActionTool is null)
-            return ValueTask.FromResult(AgentGuardrailDecision.Block(
-                "key_package_tool_not_configured",
-                "Run yêu cầu tạo key package nhưng harness không được nạp tool phù hợp."));
-
-        if (request.KeyPackageLimit <= 0)
-            return ValueTask.FromResult(AgentGuardrailDecision.Block(
-                "key_package_limit_invalid", "KeyPackageLimit phải lớn hơn 0."));
-        if (request.KeyPackageStart < 0)
-            return ValueTask.FromResult(AgentGuardrailDecision.Block(
-                "key_package_start_invalid", "KeyPackageStart không được âm."));
-
-        var target = Path.GetFullPath(request.KeyPackageOutputDirectory!);
-        var source = File.Exists(request.InputPath)
-            ? Path.GetFullPath(request.InputPath)
-            : null;
-        if (source is not null && string.Equals(target, source, StringComparison.OrdinalIgnoreCase))
-            return ValueTask.FromResult(AgentGuardrailDecision.Block(
-                "key_package_overwrites_source",
-                "Thư mục key package trùng tài liệu nguồn; agent không được sửa file gốc."));
-
-        if (File.Exists(target))
-            return ValueTask.FromResult(AgentGuardrailDecision.Block(
-                "key_package_target_is_file",
-                $"Đích key package đang là file, cần thư mục: {Path.GetFileName(target)}"));
-
-        var parent = Path.GetDirectoryName(target);
-        if (!string.IsNullOrEmpty(parent) && !Directory.Exists(parent))
-            return ValueTask.FromResult(AgentGuardrailDecision.Block(
-                "key_package_parent_missing",
-                $"Thư mục cha của key package không tồn tại: {parent}"));
-
-        return ValueTask.FromResult(AgentGuardrailDecision.Pass(
-            "key_package_target_valid",
-            $"Thư mục key package hợp lệ: {target}"));
     }
 }
 

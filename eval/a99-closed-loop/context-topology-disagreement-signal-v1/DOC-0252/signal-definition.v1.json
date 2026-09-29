@@ -1,0 +1,28 @@
+{
+  "artifactKind": "a99_context_topology_disagreement_signal_definition",
+  "schemaVersion": "a99-context-topology-disagreement-signal-definition-v1",
+  "task": "CONTEXT_TOPOLOGY_DISAGREEMENT_SIGNAL_V1",
+  "purpose": "Evaluate whether semantic disagreement across multiple frozen, source-faithful context topologies can act as an offline signal for context-sensitive / hard semantic cases.",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "arms": [
+    "FULL_CONTEXT",
+    "FULL_STRUCTURED_CONTEXT_V2",
+    "MINIMAL_STRUCTURAL_CONTEXT_V1"
+  ],
+  "perArmRepresentation": "For every (model x item x arm): repeatLabels[], modalLabel (mode, ties broken by ordinal label ascending), unanimous (all repeats identical), repeatCount.",
+  "signalA_topologyDisagreement": "true iff the modal labels across FULL_CONTEXT, FULL_STRUCTURED_CONTEXT_V2 and MINIMAL_STRUCTURAL_CONTEXT_V1 are not all identical. Does not use Gold.",
+  "signalB_repeatInstability": "true iff at least one arm with more than one repeat is not unanimous across its own repeats. Does not use Gold. An arm with exactly one repeat (e.g. Haiku's MINIMAL) can never trigger this signal by itself.",
+  "signalC_contextSensitivity": "TOPOLOGY_DISAGREEMENT OR REPEAT_INSTABILITY. Frozen before any Gold-derived outcome is computed.",
+  "outcomeA_armModalError": "true iff at least one arm's modal label disagrees with Gold. Captures stable topology-level semantic error. Evaluation-only; never feeds the signal.",
+  "outcomeB_anyRepeatError": "true iff at least one individual repeat under any arm disagrees with Gold. Captures weaker stochastic instability too. Evaluation-only; never feeds the signal.",
+  "goldUsage": "Gold participates only in scoring (ArmModalError / AnyRepeatError), applied after BuildSignal already froze TopologyDisagreement / RepeatInstability / ContextSensitivity. BuildSignal's method signature carries no Gold parameter.",
+  "preRegisteredCases": {
+    "A": "CONTEXT_SENSITIVITY captures all ARM_MODAL_ERROR items with no stable-control flags -> qualitative support for CROSS_VIEW_SEMANTIC_INSTABILITY_AS_HARD_CASE_SIGNAL.",
+    "B": "Topology disagreement misses errors but repeat instability catches them -> context sensitivity requires both signals together.",
+    "C": "Many correct controls are flagged -> signal is sensitive but nonspecific.",
+    "D": "Known errors are not flagged -> disagreement signal is insufficient."
+  },
+  "scientificLimit": "Descriptive metrics only (DESCRIPTIVE_ONLY), N=18 with an extremely small effective positive count. No claim of validated detector performance. GENERALIZATION_ESTABLISHED = false regardless of outcome.",
+  "frozenBeforeScoring": true
+}

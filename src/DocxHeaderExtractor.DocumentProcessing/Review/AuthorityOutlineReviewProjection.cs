@@ -11,9 +11,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.Review;
 /// </summary>
 public static class AuthorityOutlineReviewProjection
 {
-    public static DocumentReviewResult ToReviewResult(DocumentOutline outline, SourceDocument source) =>
-        Project(outline, source);
-
     public static DocumentReviewResult Project(DocumentOutline outline, SourceDocument source)
     {
         ArgumentNullException.ThrowIfNull(outline);
@@ -61,7 +58,7 @@ public static class AuthorityOutlineReviewProjection
                 new ReviewTextOffsetSpan(span.Start, span.End),
                 Math.Clamp(heading.Confidence, 0d, 1d),
                 heading.DecisionStatus.ToString(),
-                Evidence(heading.Evidence),
+                [],
                 new HeadingProvenanceDto(
                     paragraph.SourceId,
                     source.SourceKind,
@@ -116,19 +113,5 @@ public static class AuthorityOutlineReviewProjection
                 StringComparison.Ordinal) >= 0)
             return null;
         return new ReviewTextOffsetSpan(first, first + heading.Text.Length);
-    }
-
-    private static IReadOnlyList<HeadingEvidenceDto> Evidence(HeadingEvidence? evidence)
-    {
-        if (evidence is null) return [];
-        return
-        [
-            new("numberingValid", evidence.NumberingValid.ToString(), "authority-outline"),
-            new("siblingSequenceValid", evidence.SiblingSequenceValid.ToString(), "authority-outline"),
-            new("formattingConsistent", evidence.FormattingConsistent.ToString(), "authority-outline"),
-            new("modelConfirmed", evidence.ModelConfirmed.ToString(), "authority-outline"),
-            new("treeValid", evidence.TreeValid.ToString(), "authority-outline"),
-            new("status", evidence.Status, "authority-outline"),
-        ];
     }
 }

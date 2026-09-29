@@ -1,0 +1,185 @@
+{
+  "artifactKind": "a99_second_model_minimal_replay_preflight",
+  "schemaVersion": "a99-second-model-minimal-replay-preflight-v1",
+  "documentId": "DOC-0252",
+  "currentBaseCommit": "cba024d8d89456344a7627632706b37c2f160ec0",
+  "qwenComparatorScoreCommit": "cba024d8d89456344a7627632706b37c2f160ec0",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+  "firstModel": "qwen/qwen3.7-flash",
+  "secondModelId": "openai/gpt-4.1",
+  "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+  "providerAuthorized": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "promptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+  "schemaSha256": "20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+  "contextPolicyHash": "0e2408334ca81e8db83b2211de0540e2d0d0f27e9cf6e52793c0bb190d814343",
+  "contextHashes": {
+    "PACK_001": "42f71bdff1307f9e6a28b600b74e50c642108571f38b18d2d94c4586fd95989e",
+    "PACK_005": "01885c30d97751c09f603e8c24e6d22fd0280f66283c2a6106a305ba693fdfac",
+    "PACK_006": "7b3c769ee3d506f8b82b96dc1e5382c1640574d3beae05f2cec155f5d1d6932b"
+  },
+  "qwenProviderInputHashes": {
+    "PACK_001": "6100103e77fd944a81ca1ccafe6da3580d675753d82a1a6c0b45d2b767ff5398",
+    "PACK_005": "a3c4b78a0349c5505cbfa8844e18be8eb3d87e4cd20b802f1368466d4fee6c10",
+    "PACK_006": "21a157554bf1c977f2cd9d6f92629384e5cb9afb550a9bae13ca4bb7a7094831"
+  },
+  "secondModelProviderInputHashes": {
+    "PACK_001": "21ae99ebb4a97695cf1223e66d7f8b88ad677b4245703488899191dd8e0f4876",
+    "PACK_005": "c3f9a0a0903e13c53d3411fa472644adc319799fb3b8ef78d8694c4fbd0b5085",
+    "PACK_006": "bd221f512aa8f6220711ccab193c3adce128bb87c7b6b7942a6490331a874b88"
+  },
+  "secondModelProviderInputPlanHash": "f8391efac23fda0f31a0e59e0323dec9c4e6f57790e2c6a88940494008bd2727",
+  "messageHashes": {
+    "PACK_001": "be6581b0a45486d9535a613c743f1d315a293c565510693aa3df446cc1cb3a5d",
+    "PACK_005": "a0d704e594aaaf0df71152c219ec7ee5212df311eae807b20c7f26052de339a8",
+    "PACK_006": "a4182a2d8472a30ff961e27c867aa29e38c3e30f7876ff41c2eb81d84dfd79b1"
+  },
+  "messageParity": {
+    "pack001": true,
+    "pack005": true,
+    "pack006": true,
+    "onlySemanticVariableChanged": "MODEL_ID",
+    "semanticMessagesByteIdenticalToQwen": true
+  },
+  "transport": {
+    "providerBackend": "OpenRouter",
+    "providerRoute": "OpenRouter",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "transportProtocol": "openai-chat-completions-v1",
+    "responseFormat": "json_object",
+    "temperature": 0,
+    "reasoning": "none",
+    "providerFallbacksAllowed": false,
+    "providerOptions": {
+      "order": [
+        "OpenAI"
+      ],
+      "zdr": false,
+      "data_collection": "deny",
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
+    "compatibilityValidatedOffline": true,
+    "transportDeltas": [
+      "model identity changes",
+      "provider-input identity includes model and routing object",
+      "provider fallback is explicitly disabled"
+    ]
+  },
+  "expectedItemCounts": {
+    "PACK_001": 38,
+    "PACK_005": 119,
+    "PACK_006": 57
+  },
+  "maxTokens": {
+    "PACK_001": 4960,
+    "PACK_005": 15328,
+    "PACK_006": 7392
+  },
+  "capture": {
+    "identitiesRequired": 9,
+    "identitiesFresh": 8,
+    "identitiesHistoricalAborted": 1,
+    "identitiesDistinct": true,
+    "identitiesAtomicallyReservable": true,
+    "permanentReservationsCreated": true,
+    "slots": [
+      {
+        "identity": "r1/PACK_001",
+        "repeat": 1,
+        "pack": "PACK_001",
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r1/PACK_001.capture-slot.v1.json",
+        "fresh": false
+      },
+      {
+        "identity": "r1/PACK_005",
+        "repeat": 1,
+        "pack": "PACK_005",
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r1/PACK_005.capture-slot.v1.json",
+        "fresh": true
+      },
+      {
+        "identity": "r1/PACK_006",
+        "repeat": 1,
+        "pack": "PACK_006",
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r1/PACK_006.capture-slot.v1.json",
+        "fresh": true
+      },
+      {
+        "identity": "r2/PACK_001",
+        "repeat": 2,
+        "pack": "PACK_001",
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r2/PACK_001.capture-slot.v1.json",
+        "fresh": true
+      },
+      {
+        "identity": "r2/PACK_005",
+        "repeat": 2,
+        "pack": "PACK_005",
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r2/PACK_005.capture-slot.v1.json",
+        "fresh": true
+      },
+      {
+        "identity": "r2/PACK_006",
+        "repeat": 2,
+        "pack": "PACK_006",
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r2/PACK_006.capture-slot.v1.json",
+        "fresh": true
+      },
+      {
+        "identity": "r3/PACK_001",
+        "repeat": 3,
+        "pack": "PACK_001",
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r3/PACK_001.capture-slot.v1.json",
+        "fresh": true
+      },
+      {
+        "identity": "r3/PACK_005",
+        "repeat": 3,
+        "pack": "PACK_005",
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r3/PACK_005.capture-slot.v1.json",
+        "fresh": true
+      },
+      {
+        "identity": "r3/PACK_006",
+        "repeat": 3,
+        "pack": "PACK_006",
+        "path": "eval/a99-closed-loop/direct-semantic-second-model-minimal-replay-v1/DOC-0252/r3/PACK_006.capture-slot.v1.json",
+        "fresh": true
+      }
+    ]
+  },
+  "lineage": {
+    "id": "SECOND_MODEL_MINIMAL_REPLAY_V1",
+    "state": "HISTORICAL_ABORTED",
+    "resumable": false,
+    "autoResumeAllowed": false,
+    "slotReuseAllowed": false,
+    "historicalAbortedIdentities": [
+      "r1/PACK_001"
+    ],
+    "failureCommit": "f17e6890e033fbe60e68c374fc24fcde5044a7c3",
+    "reason": "GPT-4.1 replay was superseded operationally by later internal Luna/Haiku work after r1/PACK_001's transport attempt failed (HTTP 404). No continuation or retry lineage is planned; the remaining 8 identities stay pre-run-fresh but are not scheduled to run."
+  },
+  "comparator": {
+    "f1": "0/3 DOCUMENT_LABEL; expected NON_STRUCTURAL",
+    "agenda": "3/3 STRUCTURAL_UNIT",
+    "f2": "3/3 NON_STRUCTURAL",
+    "f3": "3/3 NON_STRUCTURAL",
+    "structuralControls": "42/42",
+    "documentLabelControl": "3/3"
+  },
+  "primaryTarget": "F1_DOCUMENT_LABEL_ATTRACTOR",
+  "lifecycle": {
+    "noReserveAllUpfront": true,
+    "order": "authority -> messages -> model transport -> compatibility -> budget -> identity -> atomic reservation -> provider -> raw capture -> parse",
+    "noReplacementCalls": true,
+    "noSafetyMarginCalls": true,
+    "noAutomaticContinuation": true
+  },
+  "crossGenreGeneralizationEstablished": false,
+  "status": "SECOND_MODEL_MINIMAL_REPLAY_AUTHORIZATION_READY"
+}

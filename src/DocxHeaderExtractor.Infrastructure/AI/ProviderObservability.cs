@@ -15,7 +15,6 @@ public sealed record ProviderObservabilityOptions
     public required string RootDirectory { get; init; }
     public required string CampaignId { get; init; }
     public required string DocumentId { get; init; }
-    public string? StagePrefix { get; init; }
     public string? Provider { get; init; }
     public string? Model { get; init; }
     public int HeartbeatSeconds { get; init; } = 5;
@@ -29,7 +28,7 @@ public sealed record ProviderLogicalCallMetadata
     public required int RequestBytes { get; init; }
     public required int EstimatedInputTokens { get; init; }
     public required int MaxOutputTokens { get; init; }
-    public int CandidateCount { get; init; }
+    public int SourceItemCount { get; init; }
     public int CurrentNodeCount { get; init; }
     public int ContextItemCount { get; init; }
     public int ContextCharacterCount { get; init; }
@@ -75,7 +74,7 @@ public sealed class ProviderCallTelemetry : IDisposable
             requestBytes = metadata.RequestBytes,
             estimatedInputTokens = metadata.EstimatedInputTokens,
             maxOutputTokens = metadata.MaxOutputTokens,
-            candidateCount = metadata.CandidateCount,
+            sourceItemCount = metadata.SourceItemCount,
             currentNodeCount = metadata.CurrentNodeCount,
             contextItemCount = metadata.ContextItemCount,
             contextCharacterCount = metadata.ContextCharacterCount,
@@ -262,7 +261,6 @@ public sealed class ProviderCallTelemetry : IDisposable
         public void Event(string eventType, object? data = null) => _parent.Event(eventType, data);
         public void PersistRawResponse(string responseText) => _parent.WriteText($"response.raw.{Safe(AttemptId)}.txt", responseText);
         public void PersistParsed(object parsed) => _parent.WriteNew($"response.parsed.{Safe(AttemptId)}.json", parsed);
-        public void PersistBinding(object binding) => _parent.WriteNew($"response.binding.{Safe(AttemptId)}.json", binding);
         public void Complete(object? data = null)
         {
             if (_completed) return;

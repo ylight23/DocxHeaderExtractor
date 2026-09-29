@@ -1,0 +1,1252 @@
+{
+  "artifactKind": "a99_generic_audit_blind_score",
+  "study": "SRC089_BLIND_GENERALIZATION_AUDIT_V1",
+  "engine": "GENERIC_AUDIT_ENGINE_V1.4",
+  "role": "HELD_OUT - the measurement of GENERIC_AUDIT_ENGINE_V1.4 (the last development cycle) over PDF_SOURCE_FACTS_V3",
+  "scorer": "GENERIC_EXACT_SCORER_V1",
+  "pin": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_4-held-out/SRC-089.reveal-pin.json",
+    "sha256": "9531ec88111eb3017068475984b7b1d27cc2dc47fa39aa3c7afbe8a2cb2a56a1"
+  },
+  "proposals": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_4-held-out/SRC-089.proposals.json",
+    "sha256": "6a7579b89a8e4d7aa69478a9e34c885abb8edd1ebc13ccb36c1d6d03fad6c083",
+    "gitBlob": "05b8d504d0e1ce7be80dca39af096fc0417484b1"
+  },
+  "gold": {
+    "path": "eval/a99-closed-loop/gold/SRC-089.gold.json",
+    "sha256": "c66cefb224bdd47a08e2374fdb0328dd97b1e520a48f4cdbaffed244ac833534",
+    "claims": 36
+  },
+  "modelProviderVlmCalls": 0,
+  "headline": {
+    "goldClaims": 36,
+    "hypothesesListed": 54,
+    "TRUE": 13,
+    "NEEDS_REVIEW": 6,
+    "unbindable": 0,
+    "truePositives": 0,
+    "falsePositives": 13,
+    "falseNegatives": 36,
+    "truePrecision": 0,
+    "trueRecall": 0,
+    "f1": 0,
+    "needsReviewCaptureOfGold": 0,
+    "needsReviewCaptureIncludingPartial": 0,
+    "falseOnGold": 4,
+    "partialOnly": 32,
+    "reviewNoiseOutsideGold": 4,
+    "nonGoldReviewTouchingGold": 2,
+    "falsePositivesTouchingGold": 11,
+    "goldMultipartClaims": 18,
+    "exactMultipartMatches": 0,
+    "goldClaimsWithPartialPart": 1,
+    "exactMatchesWithPartialPart": 0,
+    "goldBuckets": {
+      "EXACT_TRUE": 0,
+      "EXACT_NEEDS_REVIEW": 0,
+      "EXACT_FALSE": 0,
+      "PARTIAL_TRUE": 6,
+      "PARTIAL_NEEDS_REVIEW": 0,
+      "PARTIAL_FALSE": 26,
+      "UNPROPOSED": 4
+    }
+  },
+  "axesOnTruePositives": {
+    "compared": 0,
+    "semanticFunctions": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "primaryFunction": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "scope": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "occurrenceRoles": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "titleRelation": {
+      "disagreements": 0,
+      "pairs": {}
+    },
+    "informationType": {
+      "disagreements": 0,
+      "pairs": {}
+    }
+  },
+  "residuals": {
+    "goldNotEngineTrue": [
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+        "goldText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+        "engine": [
+          {
+            "Index": 6,
+            "Text": "DECREE",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 1 body line(s) before a peer",
+              "followed by 7 lesser label(s) before a peer"
+            ],
+            "identity": "L0006:S0:0-6",
+            "UnboundReason": null
+          },
+          {
+            "Index": 7,
+            "Text": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "L0007:S0:0-65",
+            "UnboundReason": null
+          },
+          {
+            "Index": 8,
+            "Text": "THE PUBLICATION LAW (*)",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 1 body line(s) before a peer",
+              "followed by 4 lesser label(s) before a peer"
+            ],
+            "identity": "L0008:S0:0-23",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L0014:S0:0-9|L0015:S0:0-18",
+        "goldText": "Chapter I GENERAL PROVISIONS",
+        "engine": [
+          {
+            "Index": 14,
+            "Text": "Chapter I",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a numbered structural label: it opens its region even where a stronger label follows",
+              "numbered structural label shape"
+            ],
+            "identity": "L0014:S0:0-9",
+            "UnboundReason": null
+          },
+          {
+            "Index": 15,
+            "Text": "GENERAL PROVISIONS",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0015:S0:0-18",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0016:S0:0-56",
+        "goldText": "Article 1. Scope ofregulation and subjects ofapplication",
+        "engine": [
+          {
+            "Index": 16,
+            "Text": "Article 1.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0016:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0024:S0:0-89|L0025:S0:0-45",
+        "goldText": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities",
+        "engine": [
+          {
+            "Index": 17,
+            "Text": "Article 2.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0024:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0051:S0:0-95|L0052:S0:0-35",
+        "goldText": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities",
+        "engine": [
+          {
+            "Index": 18,
+            "Text": "Article 3.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0051:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0080:S0:0-90|L0081:S0:0-35",
+        "goldText": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state management ofpublication activities",
+        "engine": [
+          {
+            "Index": 19,
+            "Text": "Article 4.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0080:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0094:S0:0-70",
+        "goldText": "Article 5. Information and reporting regimes in publication activities",
+        "engine": [
+          {
+            "Index": 20,
+            "Text": "Article 5.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0094:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0106:S0:0-80|L0107:S0:0-88|L0108:S0:0-13",
+        "goldText": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based representative offices of foreign publishing houses and foreign publication distribution organizations",
+        "engine": [
+          {
+            "Index": 21,
+            "Text": "Article 6.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0106:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0109:S0:0-33",
+        "goldText": "1 . Conditions for establishment:",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0117:S0:0-22",
+        "goldText": "2. Operation contents:",
+        "engine": []
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0126:S0:0-86|L0127:S0:0-88|L0128:S0:0-13",
+        "goldText": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based representative offices of foreign publishing houses and foreign publication distribution organizations",
+        "engine": [
+          {
+            "Index": 22,
+            "Text": "Article 7.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 33 body line(s) before a peer"
+            ],
+            "identity": "L0126:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L0160:S0:0-10|L0161:S0:0-10",
+        "goldText": "Chapter II PUBLISHING",
+        "engine": [
+          {
+            "Index": 23,
+            "Text": "Chapter II",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a numbered structural label: it opens its region even where a stronger label follows",
+              "numbered structural label shape"
+            ],
+            "identity": "L0160:S0:0-10",
+            "UnboundReason": null
+          },
+          {
+            "Index": 24,
+            "Text": "PUBLISHING",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0161:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0162:S0:0-86",
+        "goldText": "Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses",
+        "engine": [
+          {
+            "Index": 25,
+            "Text": "Article 8.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0162:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0174:S0:0-89|L0175:S0:0-51",
+        "goldText": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors (directors) and editors-in-chiefofpublishing houses",
+        "engine": [
+          {
+            "Index": 26,
+            "Text": "Article 9.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0174:S0:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0195:S0:0-81",
+        "goldText": "Article 10. Publication registration and certification ofpublication registration",
+        "engine": [
+          {
+            "Index": 27,
+            "Text": "Article 10.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0195:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0243:S0:0-40",
+        "goldText": "Article 11. Joint publication activities",
+        "engine": [
+          {
+            "Index": 28,
+            "Text": "Article 11.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0243:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0246:S0:0-26",
+        "goldText": "1 . For publishing houses:",
+        "engine": []
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "L0249:S0:0-16",
+        "goldText": "2. For partners:",
+        "engine": []
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0260:S0:0-62",
+        "goldText": "Article 12. Licensing ofpublication ofnon-commercial documents",
+        "engine": [
+          {
+            "Index": 29,
+            "Text": "Article 12.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 23 body line(s) before a peer"
+            ],
+            "identity": "L0260:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L0284:S0:0-11|L0285:S0:0-41",
+        "goldText": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+        "engine": [
+          {
+            "Index": 30,
+            "Text": "Chapter III",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a numbered structural label: it opens its region even where a stronger label follows",
+              "numbered structural label shape"
+            ],
+            "identity": "L0284:S0:0-11",
+            "UnboundReason": null
+          },
+          {
+            "Index": 31,
+            "Text": "PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0285:S0:0-41",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0286:S0:0-89|L0287:S0:0-41",
+        "goldText": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of revocation ofpublication printing permits",
+        "engine": [
+          {
+            "Index": 32,
+            "Text": "Article 13.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0286:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0317:S0:0-81",
+        "goldText": "Article 14. Grant, re-grant and revocation ofpublication import business licenses",
+        "engine": [
+          {
+            "Index": 33,
+            "Text": "Article 14.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0317:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0350:S0:0-95",
+        "goldText": "Article 15. Refusal to certify the registration ofimport ofpublications for commercial purposes",
+        "engine": [
+          {
+            "Index": 34,
+            "Text": "Article 15.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 31 body line(s) before a peer"
+            ],
+            "identity": "L0350:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0359:S0:0-95",
+        "goldText": "Article 16. Responsibility ofpublication importers to appraise contents ofimported publications",
+        "engine": [
+          {
+            "Index": 35,
+            "Text": "Article 16.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 22 body line(s) before a peer"
+            ],
+            "identity": "L0359:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L0382:S0:0-10|L0383:S0:0-45",
+        "goldText": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+        "engine": [
+          {
+            "Index": 36,
+            "Text": "Chapter IV",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a numbered structural label: it opens its region even where a stronger label follows",
+              "numbered structural label shape"
+            ],
+            "identity": "L0382:S0:0-10",
+            "UnboundReason": null
+          },
+          {
+            "Index": 37,
+            "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0383:S0:0-45",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0384:S0:0-71",
+        "goldText": "Article 17. Conditions for publishing and distribution ofe-publications",
+        "engine": [
+          {
+            "Index": 38,
+            "Text": "Article 17.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0384:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0426:S0:0-96|L0427:S0:0-44",
+        "goldText": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe publishing and distribution ofe-publications",
+        "engine": [
+          {
+            "Index": 39,
+            "Text": "Article 18.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0426:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0455:S0:0-90|L0456:S0:0-27",
+        "goldText": "Article 19. Classification ofe-publications and requirements on the contents and technical conditions ofe-publications",
+        "engine": [
+          {
+            "Index": 40,
+            "Text": "Article 19.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0455:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0478:S0:0-59",
+        "goldText": "Article 20. Import ofe-publications for commercial purposes",
+        "engine": [
+          {
+            "Index": 41,
+            "Text": "Article 20.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0478:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0490:S0:0-36",
+        "goldText": "Article 21. Deposit ofe-publications",
+        "engine": [
+          {
+            "Index": 42,
+            "Text": "Article 21.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 40 body line(s) before a peer"
+            ],
+            "identity": "L0490:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0499:S0:0-92|L0500:S0:0-58",
+        "goldText": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals engaged in the publishing or distribution ofe-publications",
+        "engine": [
+          {
+            "Index": 43,
+            "Text": "Article 22.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 35 body line(s) before a peer"
+            ],
+            "identity": "L0499:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0522:S0:0-92|L0523:S0:0-12",
+        "goldText": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe- publications",
+        "engine": [
+          {
+            "Index": 44,
+            "Text": "Article 23.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 12 body line(s) before a peer"
+            ],
+            "identity": "L0522:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "L0535:S0:0-9|L0536:S0:0-25",
+        "goldText": "Chapter V IMPLEMENTATION PROVISIONS",
+        "engine": [
+          {
+            "Index": 45,
+            "Text": "Chapter V",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a numbered structural label: it opens its region even where a stronger label follows",
+              "numbered structural label shape"
+            ],
+            "identity": "L0535:S0:0-9",
+            "UnboundReason": null
+          },
+          {
+            "Index": 46,
+            "Text": "IMPLEMENTATION PROVISIONS",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 39 body line(s) before a peer"
+            ],
+            "identity": "L0536:S0:0-25",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0537:S0:0-18",
+        "goldText": "Article 24. Effect",
+        "engine": [
+          {
+            "Index": 47,
+            "Text": "Article 24.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 38 body line(s) before a peer"
+            ],
+            "identity": "L0537:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0555:S0:0-93|L0556:S0:0-12",
+        "goldText": "Article 25. Renewal oflicenses for publication activities and registration of distribution of publications",
+        "engine": [
+          {
+            "Index": 48,
+            "Text": "Article 25.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 20 body line(s) before a peer"
+            ],
+            "identity": "L0555:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_FALSE",
+        "goldIdentity": "L0572:S0:0-41",
+        "goldText": "Article 26. Implementation responsibility",
+        "engine": [
+          {
+            "Index": 49,
+            "Text": "Article 26.",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 3 body line(s) before a peer"
+            ],
+            "identity": "L0572:S0:0-11",
+            "UnboundReason": null
+          }
+        ]
+      }
+    ],
+    "nonGoldTrue": [
+      {
+        "hypothesis": {
+          "Index": 0,
+          "Text": "Unofficial Translation – For Reference Purposes Only",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 25 body line(s) before a peer",
+            "followed by 13 lesser label(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer",
+            "the document's most prominent setting, near its start",
+            "begins its page: an artifact boundary"
+          ],
+          "identity": "L0000:S0:0-24|L0001:S0:0-27",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 6,
+          "Text": "DECREE",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 7 lesser label(s) before a peer"
+          ],
+          "identity": "L0006:S0:0-6",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 14,
+          "Text": "Chapter I",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a numbered structural label: it opens its region even where a stronger label follows",
+            "numbered structural label shape"
+          ],
+          "identity": "L0014:S0:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 15,
+          "Text": "GENERAL PROVISIONS",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L0015:S0:0-18",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 23,
+          "Text": "Chapter II",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a numbered structural label: it opens its region even where a stronger label follows",
+            "numbered structural label shape"
+          ],
+          "identity": "L0160:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 24,
+          "Text": "PUBLISHING",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L0161:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 30,
+          "Text": "Chapter III",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a numbered structural label: it opens its region even where a stronger label follows",
+            "numbered structural label shape"
+          ],
+          "identity": "L0284:S0:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 31,
+          "Text": "PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L0285:S0:0-41",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 36,
+          "Text": "Chapter IV",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a numbered structural label: it opens its region even where a stronger label follows",
+            "numbered structural label shape"
+          ],
+          "identity": "L0382:S0:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 37,
+          "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 40 body line(s) before a peer"
+          ],
+          "identity": "L0383:S0:0-45",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 45,
+          "Text": "Chapter V",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a numbered structural label: it opens its region even where a stronger label follows",
+            "numbered structural label shape"
+          ],
+          "identity": "L0535:S0:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 46,
+          "Text": "IMPLEMENTATION PROVISIONS",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 39 body line(s) before a peer"
+          ],
+          "identity": "L0536:S0:0-25",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 52,
+          "Text": "Nguyen Tan Dung",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 lesser label(s) before a peer"
+          ],
+          "identity": "L0578:S0:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      }
+    ],
+    "nonGoldNeedsReview": [
+      {
+        "hypothesis": {
+          "Index": 1,
+          "Text": "THE GOVERNMENT",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0002:S0:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 5,
+          "Text": "No. 195/2013/ND-CP Hanoi, November 21, 2013",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0005:S0:0-43",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 7,
+          "Text": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0007:S0:0-65",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 8,
+          "Text": "THE PUBLICATION LAW (*)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer"
+          ],
+          "identity": "L0008:S0:0-23",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 50,
+          "Text": "ON BEHALF OF THE GOVERNMENT",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0576:S0:0-27",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 53,
+          "Text": "(*) Công Báo Nos 225-226 (25/02/2014)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "L0579:S0:0-37",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      }
+    ]
+  }
+}

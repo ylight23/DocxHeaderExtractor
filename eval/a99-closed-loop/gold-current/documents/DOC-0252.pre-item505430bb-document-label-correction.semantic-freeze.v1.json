@@ -1,0 +1,57 @@
+{
+  "artifactKind": "a99_canonical_semantic_freeze",
+  "schemaVersion": "a99-canonical-semantic-freeze-vnext-visual-unified-v1",
+  "authorityKey": "DOC-0252",
+  "fileName": "072_ICP_TAG_Minutes_Mar_2025.pdf",
+  "mediaType": "PDF",
+  "authoritySourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+  "sourcePath": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "registrySourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "authoritySourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "currentSourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceLineageVerified": true,
+  "sourceLineageStatus": "VERIFIED",
+  "semanticHeadingTotal": 41,
+  "status": "FROZEN_SEMANTIC_VNEXT",
+  "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+  "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+  "semanticMembership": "HEADING",
+  "promptAffectsSemanticTruth": false,
+  "repeatedOrContinuationMayBeHeading": true,
+  "newSemanticNodeRequiredForHeading": false,
+  "exactOccurrenceFreeze": true,
+  "bindingAllowed": true,
+  "modalityHints": {
+    "visualRecoveryRequired": false,
+    "visualAdjudicationAvailable": true,
+    "machineTextMayBeInsufficient": false
+  },
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": false,
+    "hierarchyEvaluable": false,
+    "visualBindingEvaluable": false
+  },
+  "sourceAliasPolicy": "PARSER_OWNED_DETERMINISTIC_TEXT_OR_VISUAL_ALIAS_CATALOG",
+  "occurrenceArtifact": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json",
+  "bindingArtifact": null,
+  "historicalArtifactsAreProvenanceOnly": true,
+  "authorityRecord": {
+    "key": "DOC-0252",
+    "fileName": "072_ICP_TAG_Minutes_Mar_2025.pdf",
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "semanticHeadingTotal": 41,
+    "status": "FROZEN_SEMANTIC_VNEXT",
+    "exactOccurrenceFreeze": true,
+    "notes": "Occurrence Gold was materialized from the human-owned DOC-0252 decision authority and reconciled independently with the approved semantic total.",
+    "userFinalApproval": true,
+    "finalAuthority": "USER",
+    "approvedAt": "2026-09-12"
+  },
+  "notes": [
+    "Semantic total is authoritative; no occurrence list or span was synthesized from the total.",
+    "Visual sources use VISUAL_REGION binding when exact occurrence authority is later materialized."
+  ]
+}

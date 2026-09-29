@@ -1,0 +1,134 @@
+{
+  "artifactKind": "a99_gold_authority_bridge",
+  "schemaVersion": "a99-gold-authority-bridge-v1",
+  "documentId": "DOC-0001",
+  "bridgeStatus": "CURRENT_AUTHORITY_EQUIVALENCE_VERIFIED",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "sourceUniverseSha256": "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba",
+  "currentAliasCount": 14,
+  "priorUserApproval": {
+    "semanticGold": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+    "semanticGoldSha256": "458f79568578cb2a49f99b987881835cd12dd87b8a69b4e3ee52ca09a139e0dc",
+    "policyVersion": "USER_PROMOTED_STRICT_GOLD_V4",
+    "finalAuthority": "USER",
+    "userFinalApproval": true,
+    "coverage": "EXHAUSTIVE",
+    "headingSetExhaustive": true,
+    "semanticHeadingTotal": 7
+  },
+  "priorOccurrenceEvidence": {
+    "artifact": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
+    "sha256": "a7e6cfef3fecc8aaa0ef69bdc7c36c9e172f7b2f9fe130af211b048bc24f0351",
+    "status": "PASS",
+    "materializedOccurrenceCount": 7,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true
+  },
+  "hierarchyEvidence": {
+    "manifest": "artifacts/authority-audit/strict-heading-canonical-hierarchy-gold-v1/DOC-0001/manifest.json",
+    "manifestSha256": "49ed3072d8a4e8aa14848bf501f42ad5205acfd199761ce87c070839dc015efc",
+    "validation": "artifacts/authority-audit/strict-heading-canonical-hierarchy-gold-v1/DOC-0001/validation.json",
+    "validationSha256": "b2fca394fb2575490214756576025b0b09aee0550d20363ea9620b0950d33f2e",
+    "approvedByUser": true,
+    "validatorStatus": "VALID"
+  },
+  "currentAuthority": {
+    "packet": "eval/a99-closed-loop/gold-adjudication-v3/DOC-0001/adjudication-packet.v1.json",
+    "packetSha256": "e6c525005c319d1dc0b3c861eea1706e1b11c46328b3538a12f37a01d1843131",
+    "packetStatus": "PENDING_HUMAN_REVIEW",
+    "runtimeEvaluator": "a99-pdf-gold-evaluator-v3-bound-occurrence-semantic-role",
+    "sourceUniverseProducer": "OpenXmlDocumentSource.Read + DocumentSourceCatalogBuilder.FromSourceDocument",
+    "sourceUniverseHashSchema": "a99-docx-runtime-source-universe-v1"
+  },
+  "historicalMigrationReviewRequiredOverridesLaterApproval": false,
+  "freshSemanticApprovalInS2M": false,
+  "matches": [
+    {
+      "headingOrdinal": 0,
+      "approvedExactText": "Chương 1. Quy định chung",
+      "oldSourceId": "body[1]/p[1]",
+      "oldExactSpan": { "start": 0, "end": 24 },
+      "currentSourceAlias": "S0001",
+      "currentSourceId": "body[1]/p[1]",
+      "currentExactText": "Chương 1. Quy định chung",
+      "currentExactUtf16Span": { "start": 0, "end": 24 },
+      "matchStatus": "EXACT_AUTHORITY_EQUIVALENT"
+    },
+    {
+      "headingOrdinal": 1,
+      "approvedExactText": "1.1. Phạm vi điều chỉnh",
+      "oldSourceId": "body[1]/p[3]",
+      "oldExactSpan": { "start": 0, "end": 23 },
+      "currentSourceAlias": "S0003",
+      "currentSourceId": "body[1]/p[3]",
+      "currentExactText": "1.1. Phạm vi điều chỉnh",
+      "currentExactUtf16Span": { "start": 0, "end": 23 },
+      "matchStatus": "EXACT_AUTHORITY_EQUIVALENT"
+    },
+    {
+      "headingOrdinal": 2,
+      "approvedExactText": "1.2. Đối tượng áp dụng",
+      "oldSourceId": "body[1]/p[5]",
+      "oldExactSpan": { "start": 0, "end": 22 },
+      "currentSourceAlias": "S0005",
+      "currentSourceId": "body[1]/p[5]",
+      "currentExactText": "1.2. Đối tượng áp dụng",
+      "currentExactUtf16Span": { "start": 0, "end": 22 },
+      "matchStatus": "EXACT_AUTHORITY_EQUIVALENT"
+    },
+    {
+      "headingOrdinal": 3,
+      "approvedExactText": "1.2.1. Cơ quan quản lý",
+      "oldSourceId": "body[1]/p[7]",
+      "oldExactSpan": { "start": 0, "end": 22 },
+      "currentSourceAlias": "S0007",
+      "currentSourceId": "body[1]/p[7]",
+      "currentExactText": "1.2.1. Cơ quan quản lý",
+      "currentExactUtf16Span": { "start": 0, "end": 22 },
+      "matchStatus": "EXACT_AUTHORITY_EQUIVALENT"
+    },
+    {
+      "headingOrdinal": 4,
+      "approvedExactText": "1.2.2. Đơn vị trực thuộc",
+      "oldSourceId": "body[1]/p[9]",
+      "oldExactSpan": { "start": 0, "end": 24 },
+      "currentSourceAlias": "S0009",
+      "currentSourceId": "body[1]/p[9]",
+      "currentExactText": "1.2.2. Đơn vị trực thuộc",
+      "currentExactUtf16Span": { "start": 0, "end": 24 },
+      "matchStatus": "EXACT_AUTHORITY_EQUIVALENT"
+    },
+    {
+      "headingOrdinal": 5,
+      "approvedExactText": "Chương 2. Tổ chức thực hiện",
+      "oldSourceId": "body[1]/p[11]",
+      "oldExactSpan": { "start": 0, "end": 27 },
+      "currentSourceAlias": "S0011",
+      "currentSourceId": "body[1]/p[11]",
+      "currentExactText": "Chương 2. Tổ chức thực hiện",
+      "currentExactUtf16Span": { "start": 0, "end": 27 },
+      "matchStatus": "EXACT_AUTHORITY_EQUIVALENT"
+    },
+    {
+      "headingOrdinal": 6,
+      "approvedExactText": "2.1. Phân công trách nhiệm",
+      "oldSourceId": "body[1]/p[13]",
+      "oldExactSpan": { "start": 0, "end": 26 },
+      "currentSourceAlias": "S0013",
+      "currentSourceId": "body[1]/p[13]",
+      "currentExactText": "2.1. Phân công trách nhiệm",
+      "currentExactUtf16Span": { "start": 0, "end": 26 },
+      "matchStatus": "EXACT_AUTHORITY_EQUIVALENT"
+    }
+  ],
+  "counts": {
+    "approvedHeadings": 7,
+    "exactAuthorityEquivalent": 7,
+    "ambiguous": 0,
+    "boundaryChanged": 0,
+    "textChanged": 0,
+    "notFound": 0
+  },
+  "modelCalls": 0,
+  "providerCalls": 0
+}

@@ -1,5 +1,8 @@
 # Source-tree hygiene ledger
 
+> Historical record. Several components named below were deleted on 2026-09-18; see
+> [pdf-lane-removal.md](pdf-lane-removal.md). This file is left as written.
+
 Baseline: `main@5678b454dc28c8bab811c5ce35a789d540fa82be`
 
 This is the complete production C# inventory used before normalization. `KEEP` means the current path is semantically bounded; rows marked `MOVE_AND_RENAME` are the first cleanup targets. Caller evidence is the repository-wide compile/reference audit (`rg` plus project references); no behavior change is implied by naming work.

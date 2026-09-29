@@ -1,0 +1,547 @@
+using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using DocxHeaderExtractor.Core.Models;
+
+const string Root = "eval/a99-closed-loop/production-rebaseline-v1";
+const string PreflightPath = Root + "/production-rebaseline-preflight.v1.json";
+const int ProviderDeadlineSeconds = 300;
+
+// Authorization gate: the provider run happens only when explicitly enabled.
+if (Environment.GetEnvironmentVariable("A99_PROD_REBASELINE_RUN") is not ("1" or "true" or "TRUE"))
+    throw new InvalidOperationException("A99_PROD_REBASELINE_RUN authorization gate is not enabled.");
+var expectedPreflightSha = Environment.GetEnvironmentVariable("A99_PROD_REBASELINE_PREFLIGHT_SHA")
+    ?? throw new InvalidOperationException("A99_PROD_REBASELINE_PREFLIGHT_SHA is required.");
+
+var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+if (string.IsNullOrWhiteSpace(apiKey)) throw new InvalidOperationException("OPENROUTER_API_KEY is absent.");
+
+var repository = FindRepository();
+var preflightFullPath = Path.Combine(repository, PreflightPath.Replace('/', Path.DirectorySeparatorChar));
+var preflightSha = Sha256Bytes(await File.ReadAllBytesAsync(preflightFullPath));
+if (!StringComparer.OrdinalIgnoreCase.Equals(preflightSha, expectedPreflightSha))
+    throw new InvalidOperationException($"Preflight SHA mismatch: {preflightSha}");
+
+using var preflight = JsonDocument.Parse(await File.ReadAllTextAsync(preflightFullPath));
+if (preflight.RootElement.GetProperty("goldRead").GetBoolean())
+    throw new InvalidOperationException("Preflight declares goldRead=true.");
+var planned = LoadPlanned(preflight.RootElement);
+if (planned.Length != preflight.RootElement.GetProperty("actualLeafCount").GetInt32())
+    throw new InvalidOperationException("Planned leaf count differs from the frozen actualLeafCount.");
+
+// Verify every planned request BEFORE the first provider call: nothing is sent unless all match.
+foreach (var item in planned) VerifyPlanned(item);
+
+var runId = $"run-{DateTimeOffset.UtcNow:yyyyMMddTHHmmssZ}";
+var runDir = Path.Combine(repository, Root.Replace('/', Path.DirectorySeparatorChar), runId);
+Directory.CreateDirectory(runDir);
+
+var rows = new List<ResultRow>();
+var transportRetries = 0;
+using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+var totalWatch = Stopwatch.StartNew();
+
+foreach (var item in planned)
+{
+    var result = await RunWithTransportRetriesAsync(item);
+    rows.Add(result);
+    Console.WriteLine(JsonSerializer.Serialize(new
+    {
+        ordinal = result.Ordinal,
+        result.State,
+        result.FailureClass,
+        result.FinishReason,
+        result.ProviderTransportWallClockMs,
+        result.TotalWallClockMs,
+        result.ContractValidAfterReassembly,
+        result.CompletionTokens,
+        result.ReasoningTokens
+    }));
+    if (item.Ordinal != planned[^1].Ordinal)
+        await Task.Delay(TimeSpan.FromMilliseconds(PacingMs()));
+}
+
+totalWatch.Stop();
+var manifest = new
+{
+    artifactKind = "a99_pdf_production_rebaseline_run",
+    runId,
+    status = rows.All(x => x.ContractValidAfterReassembly) ? "ALL_LEAVES_CONTRACT_VALID" : "HAS_FAILED_OR_INVALID_LEAVES",
+    frozenPreflight = new { path = PreflightPath, sha256 = preflightSha },
+    providerCalls = rows.Count + transportRetries,
+    primaryProviderCalls = rows.Count,
+    transportRetryCalls = transportRetries,
+    semanticRecoveryCalls = 0,
+    mediumFallbackCalls = 0,
+    goldRead = false,
+    productionChanged = false,
+    pins = new
+    {
+        model = "qwen/qwen3.7-flash",
+        providerRoute = "Alibaba",
+        allowFallbacks = false,
+        reasoningEffort = "none",
+        responseFormat = "json_object",
+        stream = true,
+        usage = new { include = true },
+        cacheControl = (string?)null,
+        sessionId = (string?)null,
+        responseCache = "disabled"
+    },
+    durationMs = totalWatch.ElapsedMilliseconds,
+    summary = new
+    {
+        contractValid = rows.Count(x => x.ContractValidAfterReassembly),
+        failedOrInvalid = rows.Count(x => !x.ContractValidAfterReassembly),
+        finishLength = rows.Count(x => x.FinishReason == "length"),
+        transportFailures = rows.Count(x => !string.IsNullOrWhiteSpace(x.FailureClass) && !x.FailureClass.Contains("CONTRACT", StringComparison.OrdinalIgnoreCase)),
+        totalCompletionTokens = rows.Sum(x => x.CompletionTokens ?? 0),
+        totalReasoningTokens = rows.Sum(x => x.ReasoningTokens ?? 0),
+        totalPromptTokens = rows.Sum(x => x.PromptTokens ?? 0),
+        totalCachedTokens = rows.Sum(x => x.CachedTokens ?? 0)
+    },
+    rows
+};
+var manifestPath = Path.Combine(runDir, "run-manifest.json");
+await File.WriteAllTextAsync(manifestPath, JsonSerializer.Serialize(manifest, JsonOptions()), new UTF8Encoding(false));
+Console.WriteLine(JsonSerializer.Serialize(new
+{
+    runId,
+    runDir,
+    manifest = manifestPath,
+    status = manifest.status,
+    providerCalls = rows.Count,
+    contractValid = rows.Count(x => x.ContractValidAfterReassembly),
+    retryableOrInvalid = rows.Count(x => !x.ContractValidAfterReassembly),
+    totalCompletionTokens = rows.Sum(x => x.CompletionTokens ?? 0),
+    totalReasoningTokens = rows.Sum(x => x.ReasoningTokens ?? 0),
+    durationMs = totalWatch.ElapsedMilliseconds
+}, JsonOptions()));
+
+PlannedRequest[] LoadPlanned(JsonElement root) =>
+    root.GetProperty("leaves").EnumerateArray().Select(x => new PlannedRequest(
+        x.GetProperty("ordinal").GetInt32(),
+        x.GetProperty("documentId").GetString()!,
+        x.GetProperty("semanticRequestHash").GetString()!,
+        x.GetProperty("providerEnvelopeHash").GetString()!,
+        x.GetProperty("primaryInputBytes").GetInt32(),
+        x.GetProperty("requestBodySha256").GetString()!,
+        x.GetProperty("maxTokens").GetInt32(),
+        x.GetProperty("requestFile").GetString()!)).ToArray();
+
+void VerifyPlanned(PlannedRequest item)
+{
+    var path = Path.Combine(repository, Root.Replace('/', Path.DirectorySeparatorChar), item.RequestFile.Replace('/', Path.DirectorySeparatorChar));
+    var bytes = File.ReadAllBytes(path);
+    if (bytes.Length != item.InputBytes) throw new InvalidOperationException($"leaf {item.Ordinal}: primaryInputBytes mismatch {bytes.Length}");
+    if (!StringComparer.OrdinalIgnoreCase.Equals(Sha256Bytes(bytes), item.RequestBodySha256)) throw new InvalidOperationException($"leaf {item.Ordinal}: request body sha mismatch");
+    using var body = JsonDocument.Parse(bytes);
+    var root = body.RootElement;
+    var messages = root.GetProperty("messages").EnumerateArray().ToArray();
+    string Message(string role) => messages.First(m => m.GetProperty("role").GetString() == role).GetProperty("content").GetString()!;
+    var semantic = Sha256Bytes(Encoding.UTF8.GetBytes(Message("system").ReplaceLineEndings("\n") + "\n" + Message("user").ReplaceLineEndings("\n")));
+    if (!StringComparer.OrdinalIgnoreCase.Equals(semantic, item.SemanticRequestHash)) throw new InvalidOperationException($"leaf {item.Ordinal}: semanticRequestHash mismatch");
+    var maxTokens = root.GetProperty("max_tokens").GetInt32();
+    if (maxTokens != item.MaxTokens) throw new InvalidOperationException($"leaf {item.Ordinal}: max_tokens mismatch");
+    // Pins, read from the bytes that will be sent.
+    if (root.GetProperty("model").GetString() != "qwen/qwen3.7-flash" ||
+        root.GetProperty("reasoning").GetProperty("effort").GetString() != "none" ||
+        !root.GetProperty("stream").GetBoolean() ||
+        !root.GetProperty("usage").GetProperty("include").GetBoolean() ||
+        root.GetProperty("response_format").GetProperty("type").GetString() != "json_object" ||
+        root.GetProperty("provider").GetProperty("allow_fallbacks").GetBoolean() ||
+        root.GetProperty("provider").GetProperty("order")[0].GetString() != "Alibaba")
+        throw new InvalidOperationException($"leaf {item.Ordinal}: pinned envelope differs");
+    var envelope = "{\"providerRoute\":\"Alibaba\",\"model\":\"qwen/qwen3.7-flash\",\"reasoningEffort\":\"none\"," +
+        "\"responseFormat\":\"json_object\",\"explicitCacheControl\":null,\"stream\":true,\"usage\":{\"include\":true}," +
+        "\"openRouterResponseCache\":\"disabled\",\"maxTokens\":" + maxTokens + ",\"semanticRequestHash\":\"" + semantic + "\"}";
+    if (!StringComparer.OrdinalIgnoreCase.Equals(Sha256Bytes(Encoding.UTF8.GetBytes(envelope)), item.ProviderEnvelopeHash))
+        throw new InvalidOperationException($"leaf {item.Ordinal}: providerEnvelopeHash mismatch");
+}
+
+int PacingMs()
+{
+    return int.TryParse(Environment.GetEnvironmentVariable("A99_PROD_REBASELINE_PACING_MS"), out var value)
+        ? Math.Max(0, value)
+        : 2500;
+}
+
+async Task<ResultRow> RunWithTransportRetriesAsync(PlannedRequest item)
+{
+    var max429 = int.TryParse((string?)null, out var m429) ? m429 : 2;
+    var maxOther = int.TryParse((string?)null, out var m5xx) ? m5xx : 2;
+    var attempt = 1;
+    while (true)
+    {
+        var result = await RunOneAsync(item, attempt);
+        var max = result.HttpStatus == 429 ? max429 : maxOther;
+        var retryable = result.HttpStatus == 429 || result.HttpStatus is 502 or 503 or 504 || result.FailureClass is "FAILED_RETRYABLE_INTERRUPTED_STREAM" or "FAILED_RETRYABLE_TIMEOUT";
+        if (!retryable || result.ContractValidAfterReassembly || attempt > max) return result;
+        var delayMs = BackoffMs(item.Ordinal, attempt, result.HttpStatus);
+        await File.AppendAllTextAsync(Path.Combine(runDir, "transport-retries.jsonl"),
+            JsonSerializer.Serialize(new { item.Ordinal, attempt, result.HttpStatus, result.FailureClass, delayMs, retryReason = result.HttpStatus == 429 ? "HTTP_429" : "TRANSPORT" }) + Environment.NewLine,
+            new UTF8Encoding(false));
+        await Task.Delay(TimeSpan.FromMilliseconds(delayMs));
+        transportRetries++;
+        attempt++;
+    }
+}
+
+int BackoffMs(int ordinal, int attempt, int status)
+{
+    var baseMs = status == 429 ? 10_000 : 5_000;
+    var jitter = (ordinal * 997 + attempt * 101) % 750;
+    return Math.Min(60_000, baseMs * (int)Math.Pow(2, attempt - 1) + jitter);
+}
+
+async Task<ResultRow> RunOneAsync(PlannedRequest item, int attempt)
+{
+    var sourceStem = $"leaf-{item.Ordinal:000}";
+    var callStem = attempt == 1 ? sourceStem : $"{sourceStem}-transport-retry-{attempt - 1:000}";
+    var requestSourcePath = Path.Combine(repository, Root.Replace('/', Path.DirectorySeparatorChar), item.RequestFile.Replace('/', Path.DirectorySeparatorChar));
+    var requestBytes = await File.ReadAllBytesAsync(requestSourcePath);
+    if (!StringComparer.OrdinalIgnoreCase.Equals(Sha256Bytes(requestBytes), item.RequestBodySha256))
+        throw new InvalidOperationException($"leaf {item.Ordinal}: request body changed after verification");
+    var requestJson = Encoding.UTF8.GetString(requestBytes);
+    var requestOut = Path.Combine(runDir, $"{callStem}.request.json");
+    await File.WriteAllBytesAsync(requestOut, requestBytes);
+
+    var networkPath = Path.Combine(runDir, $"{callStem}.network-chunks.jsonl");
+    var ssePath = Path.Combine(runDir, $"{callStem}.sse-events.jsonl");
+    var reassembledPath = Path.Combine(runDir, $"{callStem}.reassembled-response.json");
+    var contentPath = Path.Combine(runDir, $"{callStem}.content.json");
+
+    var telemetry = new StreamingTelemetry();
+    var failureClass = "";
+    var httpStatus = 0;
+    var httpReason = "";
+    var finishReason = "";
+    var nativeFinishReason = "";
+    var doneObserved = false;
+    var streamLevelError = false;
+    var terminalModelEventObserved = false;
+    var contentBuffer = new StringBuilder();
+    var reasoningBuffer = new StringBuilder();
+    JsonElement? usageElement = null;
+    var networkChunkCount = 0;
+    var providerWatch = Stopwatch.StartNew();
+    var total = Stopwatch.StartNew();
+
+    using var request = new HttpRequestMessage(HttpMethod.Post, "https://openrouter.ai/api/v1/chat/completions")
+    {
+        Content = new ByteArrayContent(requestBytes) { Headers = { ContentType = new MediaTypeHeaderValue("application/json") { CharSet = "utf-8" } } }
+    };
+    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+    request.Headers.TryAddWithoutValidation("X-Title", "DocxHeaderExtractor production re-baseline");
+
+    try
+    {
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(ProviderDeadlineSeconds));
+        telemetry.T0RequestSentUtc = DateTimeOffset.UtcNow;
+        using var response = await http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, deadline.Token);
+        telemetry.THeadersReceivedMs = providerWatch.ElapsedMilliseconds;
+        httpStatus = (int)response.StatusCode;
+        httpReason = response.ReasonPhrase ?? "";
+        if (!response.IsSuccessStatusCode)
+        {
+            failureClass = "HTTP_PROVIDER_ERROR";
+            var errorText = await response.Content.ReadAsStringAsync(deadline.Token);
+            await File.WriteAllTextAsync(Path.Combine(runDir, $"{callStem}.http-error.txt"), errorText, new UTF8Encoding(false));
+        }
+        else
+        {
+            await using var stream = await response.Content.ReadAsStreamAsync(deadline.Token);
+            await using var networkWriter = new StreamWriter(networkPath, false, new UTF8Encoding(false));
+            await using var sseWriter = new StreamWriter(ssePath, false, new UTF8Encoding(false));
+            var decoder = Encoding.UTF8.GetDecoder();
+            var bytes = new byte[8192];
+            var chars = new char[8192];
+            var textBuffer = new StringBuilder();
+            var eventLines = new List<string>();
+
+            while (true)
+            {
+                var read = await stream.ReadAsync(bytes, deadline.Token);
+                if (read == 0) break;
+                networkChunkCount++;
+                telemetry.FirstByteLatencyMs ??= providerWatch.ElapsedMilliseconds;
+                await networkWriter.WriteLineAsync(JsonSerializer.Serialize(new { ordinal = networkChunkCount, elapsedMs = providerWatch.ElapsedMilliseconds, byteCount = read, base64 = Convert.ToBase64String(bytes.AsSpan(0, read)) }));
+                var charCount = decoder.GetChars(bytes, 0, read, chars, 0, false);
+                textBuffer.Append(chars, 0, charCount);
+                await DrainLinesAsync(textBuffer, eventLines, sseWriter);
+            }
+            var finalChars = decoder.GetChars(Array.Empty<byte>(), 0, 0, chars, 0, true);
+            if (finalChars > 0) textBuffer.Append(chars, 0, finalChars);
+            await DrainLinesAsync(textBuffer, eventLines, sseWriter, flushRemainder: true);
+            if (eventLines.Count > 0)
+            {
+                streamLevelError = true;
+                failureClass = "FAILED_RETRYABLE_INCOMPLETE_STREAM";
+            }
+        }
+    }
+    catch (OperationCanceledException) { failureClass = "FAILED_RETRYABLE_TIMEOUT"; }
+    catch (JsonException) { failureClass = "FAILED_RETRYABLE_MALFORMED_SSE"; }
+    catch (IOException) { failureClass = "FAILED_RETRYABLE_INTERRUPTED_STREAM"; }
+
+    telemetry.ProviderTransportWallClockMs = providerWatch.ElapsedMilliseconds;
+    providerWatch.Stop();
+    var transportComplete = string.IsNullOrEmpty(failureClass) && !streamLevelError && terminalModelEventObserved && doneObserved;
+    if (string.IsNullOrEmpty(failureClass) && !transportComplete) failureClass = "FAILED_RETRYABLE_INCOMPLETE_STREAM";
+
+    var parseWatch = Stopwatch.StartNew();
+    var localJsonValid = false;
+    var contractValid = false;
+    var issueCodes = Array.Empty<string>();
+    var headings = 0;
+    if (transportComplete)
+    {
+        try
+        {
+            using var contentDoc = JsonDocument.Parse(contentBuffer.ToString());
+            localJsonValid = true;
+            var issues = SemanticFunctionMembershipContractV1.ValidateJson(contentDoc.RootElement).ToArray();
+            issueCodes = issues.Select(x => x.Code).Distinct().ToArray();
+            contractValid = issues.Length == 0;
+            if (contentDoc.RootElement.TryGetProperty("headings", out var h) && h.ValueKind == JsonValueKind.Array) headings = h.GetArrayLength();
+            await File.WriteAllTextAsync(contentPath, contentBuffer.ToString(), new UTF8Encoding(false));
+            if (!contractValid) failureClass = "CONTRACT_INVALID_AFTER_REASSEMBLY";
+        }
+        catch (JsonException) { failureClass = "TERMINAL_EVENT_BUT_INVALID_LOCAL_JSON"; }
+    }
+    parseWatch.Stop();
+    total.Stop();
+
+    var usage = UsageSummary.From(usageElement);
+    var reassembled = new
+    {
+        id = $"stream-reassembled-{callStem}",
+        choices = new[] { new { index = 0, finish_reason = EmptyToNull(finishReason), native_finish_reason = EmptyToNull(nativeFinishReason), message = new { role = "assistant", reasoning = reasoningBuffer.ToString(), content = contentBuffer.ToString() } } },
+        usage = usage.Raw
+    };
+    await File.WriteAllTextAsync(reassembledPath, JsonSerializer.Serialize(reassembled, JsonOptions()), new UTF8Encoding(false));
+
+    return new ResultRow(
+        item.Ordinal,
+        item.DocumentId,
+        item.SemanticRequestHash,
+        item.ProviderEnvelopeHash,
+        item.InputBytes,
+        item.MaxTokens,
+        httpStatus,
+        httpReason,
+        contractValid ? "CONTRACT_VALID" : "FAILED_OR_INVALID",
+        failureClass,
+        transportComplete,
+        doneObserved,
+        terminalModelEventObserved,
+        finishReason,
+        nativeFinishReason,
+        networkChunkCount,
+        telemetry.SseEventCount,
+        telemetry.ReasoningChunkCount,
+        telemetry.ContentChunkCount,
+        telemetry.THeadersReceivedMs,
+        telemetry.FirstByteLatencyMs,
+        telemetry.FirstModelEventLatencyMs,
+        telemetry.TimeToFirstReasoningChunkMs,
+        telemetry.TimeToFirstContentChunkMs,
+        telemetry.TimeToTerminalEventMs,
+        telemetry.ProviderTransportWallClockMs,
+        parseWatch.ElapsedMilliseconds,
+        total.ElapsedMilliseconds,
+        usage.PromptTokens,
+        usage.CachedTokens,
+        usage.CompletionTokens,
+        usage.ReasoningTokens,
+        localJsonValid,
+        contractValid,
+        headings,
+        issueCodes,
+        Path.GetFileName(requestOut),
+        Path.GetFileName(ssePath),
+        Path.GetFileName(reassembledPath));
+
+    async Task DrainLinesAsync(StringBuilder textBuffer, List<string> eventLines, StreamWriter sseWriter, bool flushRemainder = false)
+    {
+        while (true)
+        {
+            var text = textBuffer.ToString();
+            var idx = text.IndexOf('\n');
+            if (idx < 0)
+            {
+                if (flushRemainder && text.Length > 0)
+                {
+                    textBuffer.Clear();
+                    await ProcessLineAsync(text.TrimEnd('\r'), eventLines, sseWriter);
+                }
+                return;
+            }
+            var line = text[..idx].TrimEnd('\r');
+            textBuffer.Remove(0, idx + 1);
+            await ProcessLineAsync(line, eventLines, sseWriter);
+        }
+    }
+
+    async Task ProcessLineAsync(string line, List<string> eventLines, StreamWriter sseWriter)
+    {
+        if (line.Length == 0)
+        {
+            if (eventLines.Count > 0) await ProcessEventAsync(eventLines, sseWriter);
+            eventLines.Clear();
+            return;
+        }
+        if (line.StartsWith(':')) return;
+        eventLines.Add(line);
+    }
+
+    async Task ProcessEventAsync(List<string> lines, StreamWriter sseWriter)
+    {
+        var dataLines = lines.Where(x => x.StartsWith("data:", StringComparison.Ordinal)).Select(x => x[5..].TrimStart()).ToArray();
+        if (dataLines.Length == 0) return;
+        var data = string.Join("\n", dataLines);
+        telemetry.SseEventCount++;
+        telemetry.TimeToFirstSseEventMs ??= providerWatch.ElapsedMilliseconds;
+        await sseWriter.WriteLineAsync(JsonSerializer.Serialize(new { ordinal = telemetry.SseEventCount, elapsedMs = providerWatch.ElapsedMilliseconds, data }));
+        if (data == "[DONE]")
+        {
+            doneObserved = true;
+            telemetry.TDoneMs = providerWatch.ElapsedMilliseconds;
+            return;
+        }
+        using var doc = JsonDocument.Parse(data);
+        var root = doc.RootElement;
+        if (root.TryGetProperty("error", out _))
+        {
+            streamLevelError = true;
+            failureClass = "HTTP_PROVIDER_ERROR";
+        }
+        if (root.TryGetProperty("usage", out var usage))
+        {
+            usageElement = usage.Clone();
+            telemetry.TUsageMs = providerWatch.ElapsedMilliseconds;
+        }
+        if (!root.TryGetProperty("choices", out var choices) || choices.ValueKind != JsonValueKind.Array || choices.GetArrayLength() == 0) return;
+        telemetry.FirstModelEventLatencyMs ??= providerWatch.ElapsedMilliseconds;
+        var choice = choices[0];
+        if (choice.TryGetProperty("finish_reason", out var finish) && finish.ValueKind != JsonValueKind.Null)
+        {
+            finishReason = finish.GetString() ?? "";
+            terminalModelEventObserved = !string.IsNullOrWhiteSpace(finishReason);
+            telemetry.TimeToTerminalEventMs = providerWatch.ElapsedMilliseconds;
+        }
+        if (choice.TryGetProperty("native_finish_reason", out var nativeFinish) && nativeFinish.ValueKind != JsonValueKind.Null)
+            nativeFinishReason = nativeFinish.GetString() ?? "";
+        if (!choice.TryGetProperty("delta", out var delta)) return;
+        var reasoning = ExtractString(delta, "reasoning") ?? ExtractString(delta, "reasoning_content");
+        if (!string.IsNullOrEmpty(reasoning))
+        {
+            reasoningBuffer.Append(reasoning);
+            telemetry.ReasoningChunkCount++;
+            telemetry.TimeToFirstReasoningChunkMs ??= providerWatch.ElapsedMilliseconds;
+        }
+        var content = ExtractString(delta, "content");
+        if (!string.IsNullOrEmpty(content))
+        {
+            contentBuffer.Append(content);
+            telemetry.ContentChunkCount++;
+            telemetry.TimeToFirstContentChunkMs ??= providerWatch.ElapsedMilliseconds;
+        }
+    }
+}
+
+static string? ExtractString(JsonElement element, string property) =>
+    element.TryGetProperty(property, out var value) && value.ValueKind == JsonValueKind.String ? value.GetString() : null;
+static string? EmptyToNull(string value) => string.IsNullOrWhiteSpace(value) ? null : value;
+static string FindRepository()
+{
+    var dir = new DirectoryInfo(AppContext.BaseDirectory);
+    while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln"))) dir = dir.Parent;
+    return dir?.FullName ?? throw new DirectoryNotFoundException("Repository root not found.");
+}
+static string Sha256Bytes(byte[] bytes) => Convert.ToHexStringLower(SHA256.HashData(bytes));
+static JsonSerializerOptions JsonOptions() => new() { WriteIndented = true };
+
+sealed record PlannedRequest(int Ordinal, string DocumentId, string SemanticRequestHash, string ProviderEnvelopeHash, int InputBytes, string RequestBodySha256, int MaxTokens, string RequestFile);
+
+sealed record ResultRow(
+    int Ordinal,
+    string DocumentId,
+    string SemanticRequestHash,
+    string ProviderEnvelopeHash,
+    int InputBytes,
+    int MaxTokens,
+    int HttpStatus,
+    string HttpReason,
+    string State,
+    string FailureClass,
+    bool TransportComplete,
+    bool DoneObserved,
+    bool TerminalModelEventObserved,
+    string FinishReason,
+    string NativeFinishReason,
+    int NetworkChunkCount,
+    int SseEventCount,
+    int ReasoningChunkCount,
+    int ContentChunkCount,
+    long? THeadersReceivedMs,
+    long? FirstByteLatencyMs,
+    long? FirstModelEventLatencyMs,
+    long? TimeToFirstReasoningChunkMs,
+    long? TimeToFirstContentChunkMs,
+    long? TimeToTerminalEventMs,
+    long ProviderTransportWallClockMs,
+    long PostTransportParseDurationMs,
+    long TotalWallClockMs,
+    int? PromptTokens,
+    int? CachedTokens,
+    int? CompletionTokens,
+    int? ReasoningTokens,
+    bool LocalJsonValid,
+    bool ContractValidAfterReassembly,
+    int Headings,
+    string[] IssueCodes,
+    string RequestFile,
+    string SseEventsFile,
+    string ReassembledResponseFile);
+
+sealed class StreamingTelemetry
+{
+    public DateTimeOffset T0RequestSentUtc { get; set; }
+    public long? THeadersReceivedMs { get; set; }
+    public long? FirstByteLatencyMs { get; set; }
+    public long? FirstModelEventLatencyMs { get; set; }
+    public long? TimeToFirstSseEventMs { get; set; }
+    public long? TimeToFirstReasoningChunkMs { get; set; }
+    public long? TimeToFirstContentChunkMs { get; set; }
+    public long? TimeToTerminalEventMs { get; set; }
+    public long? TUsageMs { get; set; }
+    public long? TDoneMs { get; set; }
+    public long ProviderTransportWallClockMs { get; set; }
+    public int SseEventCount { get; set; }
+    public int ReasoningChunkCount { get; set; }
+    public int ContentChunkCount { get; set; }
+}
+
+sealed record UsageSummary(JsonElement? Raw, int? PromptTokens, int? CachedTokens, int? CompletionTokens, int? ReasoningTokens)
+{
+    public static UsageSummary From(JsonElement? usage)
+    {
+        if (usage is null) return new UsageSummary(null, null, null, null, null);
+        var root = usage.Value;
+        var prompt = IntProp(root, "prompt_tokens");
+        var completion = IntProp(root, "completion_tokens");
+        int? cached = null;
+        int? reasoning = null;
+        if (root.TryGetProperty("prompt_tokens_details", out var promptDetails))
+            cached = IntProp(promptDetails, "cached_tokens");
+        if (root.TryGetProperty("completion_tokens_details", out var completionDetails))
+            reasoning = IntProp(completionDetails, "reasoning_tokens");
+        return new UsageSummary(root.Clone(), prompt, cached, completion, reasoning);
+    }
+    private static int? IntProp(JsonElement element, string name) =>
+        element.TryGetProperty(name, out var value) && value.TryGetInt32(out var result) ? result : null;
+}

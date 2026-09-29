@@ -1,0 +1,112 @@
+{
+  "artifactKind": "A99_S2E_RUNTIME_DERIVED_PREFLIGHT",
+  "schemaVersion": "a99-pdf-runtime-derived-preflight-v1",
+  "experimentId": "DOC-0252-PDF-S2E-RUNTIME-B0",
+  "documentId": "DOC-0252",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "source": {
+    "file": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "parserLines": 1065,
+    "aliases": 1013
+  },
+  "authority": {
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "aliasCatalogHash": "867a2dd5cccf46984a1b282e7a69916dbececb1f3a35da2e5b1e7f6379774305",
+    "semanticContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+    "promptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+    "goldSha256": "2ebbc6b8af28dec38514d0b53aa36599a00ca86e87af050bfb3008b98bef6d31",
+    "goldHeadingClaims": 41,
+    "goldCompatible": true
+  },
+  "manifest": {
+    "path": "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/experiment-manifest.v1.json",
+    "hash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb"
+  },
+  "replayCapture": {
+    "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "requireReplayBundle": true,
+    "artifactRoot": "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252",
+    "oneBundlePerDocumentRepeat": true
+  },
+  "segmentation": {
+    "ownedPerSegment": 120,
+    "visibleMargin": 20,
+    "segments": 9,
+    "ownedTotal": 1013,
+    "ownedDistinct": 1013,
+    "visibleTotal": 1333
+  },
+  "request": {
+    "systemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+    "userPayloadSha256": [
+      "e3bddbe9b074fe203249a52e8497a215c75d9a044dcae420107b53aa57dc7010",
+      "8468fb223a10e015ddddebd45b3ae073e5aaa62c1f1b5ea0d8d4ece55086c1f2",
+      "acc0f9f04c56f2ecb2e723e56273e985f6c1b6843112a060763a48d4a4fd7f01",
+      "a720e12069c119ee6e7f6014f19c3c322cac3680ec8872bae95d549e1f5a2d5f",
+      "36d852a38b29ea4cdd0b574ded450ec1645ecb37ca2b1e1168cc07999e6a404d",
+      "6166d16762e544854bb1fbc758a6b375bbd6f72d54d67330ac310b84e65b5c0e",
+      "d7aa8f4dbdc366b18b44a598c292a6fb4c394b796311404551a0e355ec55cc28",
+      "624c64a07ac97adeb61318b5d6788d5ea3b981017957d888d05a9b6dd5cba536",
+      "14dda86b057ac85332b21013222b89387051a5f051d393d6d8cde97ce17a9f3a"
+    ],
+    "maxRequestBytes": 40930,
+    "estimatedMaximumInputTokens": 10232,
+    "estimatedInputTokens": [
+      9513,
+      9885,
+      9784,
+      9829,
+      9853,
+      9899,
+      9902,
+      10232,
+      4574
+    ],
+    "estimatedTotalInputTokens": 83471,
+    "requestBytes": [
+      38057,
+      39542,
+      39141,
+      39319,
+      39417,
+      39600,
+      39611,
+      40930,
+      18300
+    ],
+    "expectedItemCount": [
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      53
+    ]
+  },
+  "callPlan": {
+    "repeatCount": 3,
+    "primarySemanticCallsPerRepeat": 9,
+    "placementAllowancePerRepeat": 1,
+    "maximumCallsPerRepeat": 10,
+    "totalProviderCallsPlanned": 30
+  },
+  "cost": {
+    "status": "COST_UNKNOWN",
+    "pricing": null,
+    "note": "No authoritative model price was used or fetched during offline preflight.",
+    "estimatedMaximumInputTokensPerPrimaryRequest": 10232
+  },
+  "previousAttempt": {
+    "status": "ABORTED_AUTHORITY_MISMATCH",
+    "providerCalls": 9,
+    "publishedReplayBundles": 0,
+    "authorityHash": "5dd617b27d7c1479f81fb41468076b5f6ba826a7d86cc9a04f6dfa0fa624c3ec",
+    "manifestHash": "fb62c1c696b4c30f0b71aed2e39f296ece3934c5870982fdc0e19bc62d64189c"
+  }
+}

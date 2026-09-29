@@ -1,0 +1,1475 @@
+{
+  "artifactKind": "a99_generic_audit_proposals",
+  "study": "SRC089_BLIND_GENERALIZATION_AUDIT_V1",
+  "engineIdentity": {
+    "engine": {
+      "engine": "GENERIC_AUDIT_ENGINE_V1.4",
+      "sourceFacts": "PDF_SOURCE_FACTS_V3",
+      "files": [
+        {
+          "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_4/SourceEvidence.cs",
+          "sha256": "39e7c0dfc8466e69ca1b0282b39540d9a75f51419cf9a5477324aea790b30b6b"
+        },
+        {
+          "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_4/SemanticAuditEngine.cs",
+          "sha256": "86072621f88205d7a034c7e579fae6411837f56ecc8969341bf34e3531cc8935"
+        }
+      ],
+      "constants": {
+        "largerThanBodyRatio": 1.08,
+        "bodySizeToleranceRatio": 0.97,
+        "shortLabelMaxWords": 20,
+        "compositeMaxParts": 6,
+        "furnitureMinPages": 3,
+        "furnitureMinBandShare": 0.8,
+        "navigationRunMin": 3,
+        "lineGapMaxFontRatio": 1.8,
+        "sameSizeRatioTolerance": 0.02,
+        "bracketSpanMaxLines": 15,
+        "formMinFillInFields": 2,
+        "averageCharWidthFontRatio": 0.5,
+        "centredMarginToleranceRatio": 0.05,
+        "columnGutterFontRatio": 1,
+        "figureRegionMaxLines": 60,
+        "layoutLabelMaxWords": 8,
+        "proseMinWords": 8,
+        "leadColumnGapFontRatio": 3,
+        "centredWrapMinFillRatio": 0.75,
+        "addressLineMaxWords": 8
+      },
+      "ontology": "OCCURRENCE_SEMANTIC_AXES_V3"
+    },
+    "engineFreeze": {
+      "path": "eval/a99-closed-loop/generic-audit-v1_4/GENERIC_AUDIT_ENGINE_V1.4.freeze.json",
+      "sha256": "40261d2ce686400b3103bd94ccc7fcc8a6ec8dec8bcd287196e2cbeaa53f4c4b"
+    },
+    "factsFreeze": {
+      "path": "eval/a99-closed-loop/pdf-source-facts-v3/PDF_SOURCE_FACTS_V3.freeze.json",
+      "sha256": "19fd455302e3631d9f11f0c3485e9eb5bae0530f6cd7e19f1e5597278d0450e4"
+    }
+  },
+  "preregistrationSha256": "875b6af72260e1985dc03ae459a6f6be085a57f5125a9f115a09e9cab7f2ed64",
+  "documentId": "SRC-089",
+  "role": "HELD_OUT (blind)",
+  "source": {
+    "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+    "sha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+    "media": "PDF"
+  },
+  "modelCalls": 0,
+  "goldReadBeforeFreeze": false,
+  "counts": {
+    "hypotheses": 580,
+    "byProposal": {
+      "FALSE": 561,
+      "NEEDS_REVIEW": 6,
+      "TRUE": 13
+    }
+  },
+  "hypotheses": [
+    {
+      "Parts": [
+        {
+          "Alias": "L0000:S0",
+          "Verbatim": null
+        },
+        {
+          "Alias": "L0001:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "Unofficial Translation – For Reference Purposes Only",
+      "SemanticFunctions": [
+        "IDENTITY"
+      ],
+      "PrimaryFunction": "IDENTITY",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 25 body line(s) before a peer",
+        "followed by 13 lesser label(s) before a peer",
+        "followed by 2 table/figure item(s) before a peer",
+        "the document's most prominent setting, near its start",
+        "begins its page: an artifact boundary"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2122
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0002:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "THE GOVERNMENT",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "LOCAL_LABEL"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ],
+      "ProposedIsHeading": "NEEDS_REVIEW",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0002:S1",
+          "Verbatim": null
+        },
+        {
+          "Alias": "L0003:S1",
+          "Verbatim": null
+        }
+      ],
+      "Text": "THE SOCIALIST REPUBLIC OF VIETNAM Independence – Freedom – Happiness",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 1 table/figure item(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0003:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "-------",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": "QUANTITY",
+      "Evidence": [
+        "set apart strongly from the body text"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0004:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "---------------",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": "QUANTITY",
+      "Evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 lesser label(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0005:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "No. 195/2013/ND-CP Hanoi, November 21, 2013",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "LOCAL_LABEL"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ],
+      "ProposedIsHeading": "NEEDS_REVIEW",
+      "Prominence": 1101
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0006:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "DECREE",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 7 lesser label(s) before a peer"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0007:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "LOCAL_LABEL"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ],
+      "ProposedIsHeading": "NEEDS_REVIEW",
+      "Prominence": 1102
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0008:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "THE PUBLICATION LAW (*)",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer"
+      ],
+      "ProposedIsHeading": "NEEDS_REVIEW",
+      "Prominence": 1102
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0009:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "Pursuant to the December 25, 2001 Law on Organization ofthe Government;",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "NOTE",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart weakly from the body text",
+        "one line of a multi-line italic block that reads as prose"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 1101
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0010:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "Pursuant to the November 20, 2012 Publication Law;",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "NOTE",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart weakly from the body text",
+        "one line of a multi-line italic block that reads as prose"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 1101
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0011:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "At theproposal ofthe Minister ofInformation and Communications,",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "NOTE",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart weakly from the body text",
+        "one line of a multi-line italic block that reads as prose"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 1101
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0012:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "The Governmentpromulgates the Decree detailing a number ofarticles of, and measuresfor",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "NOTE",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "one line of a multi-line italic block that reads as prose"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 1101
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0013:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "implementing, the Publication Law.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "NOTE",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart weakly from the body text",
+        "one line of a multi-line italic block that reads as prose"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 1101
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0014:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "Chapter I",
+      "SemanticFunctions": [
+        "STRUCTURE",
+        "IDENTITY"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "a numbered structural label: it opens its region even where a stronger label follows",
+        "numbered structural label shape"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0015:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "GENERAL PROVISIONS",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0016:S0",
+          "Verbatim": "Article 1."
+        }
+      ],
+      "Text": "Article 1.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0024:S0",
+          "Verbatim": "Article 2."
+        }
+      ],
+      "Text": "Article 2.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0051:S0",
+          "Verbatim": "Article 3."
+        }
+      ],
+      "Text": "Article 3.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0080:S0",
+          "Verbatim": "Article 4."
+        }
+      ],
+      "Text": "Article 4.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0094:S0",
+          "Verbatim": "Article 5."
+        }
+      ],
+      "Text": "Article 5.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0106:S0",
+          "Verbatim": "Article 6."
+        }
+      ],
+      "Text": "Article 6.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0126:S0",
+          "Verbatim": "Article 7."
+        }
+      ],
+      "Text": "Article 7.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 33 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0160:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "Chapter II",
+      "SemanticFunctions": [
+        "STRUCTURE",
+        "IDENTITY"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "a numbered structural label: it opens its region even where a stronger label follows",
+        "numbered structural label shape"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0161:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "PUBLISHING",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0162:S0",
+          "Verbatim": "Article 8."
+        }
+      ],
+      "Text": "Article 8.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0174:S0",
+          "Verbatim": "Article 9."
+        }
+      ],
+      "Text": "Article 9.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0195:S0",
+          "Verbatim": "Article 10."
+        }
+      ],
+      "Text": "Article 10.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0243:S0",
+          "Verbatim": "Article 11."
+        }
+      ],
+      "Text": "Article 11.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0260:S0",
+          "Verbatim": "Article 12."
+        }
+      ],
+      "Text": "Article 12.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 23 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0284:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "Chapter III",
+      "SemanticFunctions": [
+        "STRUCTURE",
+        "IDENTITY"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "a numbered structural label: it opens its region even where a stronger label follows",
+        "numbered structural label shape"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0285:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0286:S0",
+          "Verbatim": "Article 13."
+        }
+      ],
+      "Text": "Article 13.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0317:S0",
+          "Verbatim": "Article 14."
+        }
+      ],
+      "Text": "Article 14.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0350:S0",
+          "Verbatim": "Article 15."
+        }
+      ],
+      "Text": "Article 15.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 31 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0359:S0",
+          "Verbatim": "Article 16."
+        }
+      ],
+      "Text": "Article 16.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 22 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0382:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "Chapter IV",
+      "SemanticFunctions": [
+        "STRUCTURE",
+        "IDENTITY"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "a numbered structural label: it opens its region even where a stronger label follows",
+        "numbered structural label shape"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0383:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0384:S0",
+          "Verbatim": "Article 17."
+        }
+      ],
+      "Text": "Article 17.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0426:S0",
+          "Verbatim": "Article 18."
+        }
+      ],
+      "Text": "Article 18.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0455:S0",
+          "Verbatim": "Article 19."
+        }
+      ],
+      "Text": "Article 19.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0478:S0",
+          "Verbatim": "Article 20."
+        }
+      ],
+      "Text": "Article 20.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0490:S0",
+          "Verbatim": "Article 21."
+        }
+      ],
+      "Text": "Article 21.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 40 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0499:S0",
+          "Verbatim": "Article 22."
+        }
+      ],
+      "Text": "Article 22.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 35 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0522:S0",
+          "Verbatim": "Article 23."
+        }
+      ],
+      "Text": "Article 23.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 12 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0535:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "Chapter V",
+      "SemanticFunctions": [
+        "STRUCTURE",
+        "IDENTITY"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "a numbered structural label: it opens its region even where a stronger label follows",
+        "numbered structural label shape"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0536:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "IMPLEMENTATION PROVISIONS",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "followed by 39 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0537:S0",
+          "Verbatim": "Article 24."
+        }
+      ],
+      "Text": "Article 24.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 38 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0555:S0",
+          "Verbatim": "Article 25."
+        }
+      ],
+      "Text": "Article 25.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 20 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0572:S0",
+          "Verbatim": "Article 26."
+        }
+      ],
+      "Text": "Article 26.",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "BODY_CONTENT"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "the label is the lead of a line that continues as body text",
+        "followed by 3 body line(s) before a peer"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0576:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "ON BEHALF OF THE GOVERNMENT",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "LOCAL_LABEL"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ],
+      "ProposedIsHeading": "NEEDS_REVIEW",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0577:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "PRIME MINISTER",
+      "SemanticFunctions": [
+        "INFORMATION"
+      ],
+      "PrimaryFunction": "INFORMATION",
+      "Scope": "DOCUMENT",
+      "OccurrenceRoles": [
+        "METADATA"
+      ],
+      "TitleRelation": "NONE",
+      "InformationType": "AUTHORSHIP_METADATA",
+      "Evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 lesser label(s) before a peer",
+        "set right of the page centre over short lines at its own left edge: a letterhead or address block"
+      ],
+      "ProposedIsHeading": "FALSE",
+      "Prominence": 2106
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0578:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "Nguyen Tan Dung",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "REGION_OPENER"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 lesser label(s) before a peer"
+      ],
+      "ProposedIsHeading": "TRUE",
+      "Prominence": 2104
+    },
+    {
+      "Parts": [
+        {
+          "Alias": "L0579:S0",
+          "Verbatim": null
+        }
+      ],
+      "Text": "(*) Công Báo Nos 225-226 (25/02/2014)",
+      "SemanticFunctions": [
+        "STRUCTURE"
+      ],
+      "PrimaryFunction": "STRUCTURE",
+      "Scope": "SECTION",
+      "OccurrenceRoles": [
+        "LOCAL_LABEL"
+      ],
+      "TitleRelation": "TITLE",
+      "InformationType": null,
+      "Evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ],
+      "ProposedIsHeading": "NEEDS_REVIEW",
+      "Prominence": 1101
+    }
+  ]
+}

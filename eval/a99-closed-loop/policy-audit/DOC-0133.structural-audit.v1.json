@@ -1,0 +1,3489 @@
+{
+  "artifactKind": "a99_structural_heading_audit",
+  "documentId": "DOC-0133",
+  "policy": "FINANCIAL_PROCUREMENT_HEADING_POLICY_V1",
+  "policyAddendum": "eval/a99-closed-loop/policy/financial-occurrence-distinctions.v1.json",
+  "ontology": "OCCURRENCE_SEMANTIC_AXES_V2",
+  "source": {
+    "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/048_IBRD_Financial_Statements_March_2025.pdf",
+    "sha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12"
+  },
+  "modelEvidence": {
+    "path": "eval/a99-closed-loop/scaleup-real-harness-v1/DOC-0133/pdf-structured-r1.v1.json",
+    "sha256": "d4e44ae54f346cb12e99b85f5519f969fb12d7ee9ccb8e3e6d1b9bc8d3494742"
+  },
+  "modelCalls": 0,
+  "goldWritten": false,
+  "summary": {
+    "SOURCE_OCCURRENCES_REVIEWED": 5174,
+    "STRUCTURAL_CANDIDATES": 99,
+    "IDENTITY_CANDIDATES": 13,
+    "INFORMATION_REGION_OPENERS": 0,
+    "TABLE_CAPTIONS": 75,
+    "TABLE_ROW_LABELS": 778,
+    "TABLE_COLUMN_HEADERS": 611,
+    "REPEATED_HEADERS": 95,
+    "FOOTNOTES": 65,
+    "OTHER_NON_HEADINGS": 3435,
+    "otherBreakdown": {
+      "bodyText": 974,
+      "tableValues": 2369,
+      "navigation": 84,
+      "metadata": 7,
+      "other": 1
+    },
+    "OLD_GOLD_TOTAL": 123,
+    "MODEL_PROPOSALS": 851,
+    "CLEAR_HEADING": 112,
+    "CLEAR_NON_HEADING": 5059,
+    "AMBIGUOUS": 0,
+    "PROPOSED_FINAL_TOTAL": 112,
+    "PROPOSED_FINAL_RANGE": {
+      "min": 112,
+      "max": 112
+    },
+    "GOLD_WRITE": false,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "Non-heading categories are descriptive (font, margin, row and segment evidence). Heading membership: 92 clear by the document's type hierarchy plus the seven patterns the user decided occurrence by occurrence on 2026-09-25. Old Gold 123 is a count with no items, so no item-level KEEP/REMOVE against it exists."
+  },
+  "headingsByPattern": {
+    "EMBEDDED_REPORT": 1,
+    "NOTES_PART": 1,
+    "NOTE_SUBHEADING": 14,
+    "NOTE_TITLE": 12,
+    "P1_COVER_TITLE_BLOCK": 1,
+    "P2_PART_TITLE_BLOCK": 1,
+    "P4_PART_TITLE_ON_CONTENTS_PAGE": 1,
+    "P6_MINOR_LOCAL_HEADING": 1,
+    "P7_NOTE_LOCAL_LABEL": 16,
+    "SECTION_14PT": 5,
+    "STATEMENT_TITLE": 5,
+    "SUBSECTION_11PT_BOLD": 22,
+    "SUBSECTION_11PT_REGULAR": 17,
+    "SUBSECTION_12PT": 11,
+    "TOC_OPENER": 4
+  },
+  "userDecidedPatterns": [
+    {
+      "pattern": "P1_COVER_TITLE_BLOCK",
+      "items": [
+        {
+          "Aliases": [
+            "L0000:S0",
+            "L0001:S0"
+          ],
+          "Text": "International Bank forReconstruction and Development",
+          "Verdict": "NON_HEADING",
+          "Reason": "user decision 2026-09-25: issuer above the cover title",
+          "axes": {
+            "semanticFunctions": [
+              "INFORMATION"
+            ],
+            "primaryFunction": "INFORMATION",
+            "scope": "DOCUMENT",
+            "occurrenceRoles": [
+              "METADATA"
+            ],
+            "titleRelation": "NONE",
+            "repeatStatus": "FIRST",
+            "informationType": "ISSUER_METADATA"
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0"
+          ],
+          "Text": "Management’s Discussion & Analysis and Condensed Quarterly Financial Statements",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: the cover title, one claim of three lines",
+          "axes": {
+            "semanticFunctions": [
+              "IDENTITY"
+            ],
+            "primaryFunction": "IDENTITY",
+            "scope": "DOCUMENT",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L0005:S0"
+          ],
+          "Text": "March 31, 2025",
+          "Verdict": "NON_HEADING",
+          "Reason": "user decision 2026-09-25: reporting date under the cover title",
+          "axes": {
+            "semanticFunctions": [
+              "INFORMATION"
+            ],
+            "primaryFunction": "INFORMATION",
+            "scope": "DOCUMENT",
+            "occurrenceRoles": [
+              "METADATA"
+            ],
+            "titleRelation": "NONE",
+            "repeatStatus": "FIRST",
+            "informationType": "TEMPORAL_METADATA"
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L0006:S0"
+          ],
+          "Text": "(Unaudited)",
+          "Verdict": "NON_HEADING",
+          "Reason": "user decision 2026-09-25: audit status under the cover title",
+          "axes": {
+            "semanticFunctions": [
+              "INFORMATION"
+            ],
+            "primaryFunction": "INFORMATION",
+            "scope": "DOCUMENT",
+            "occurrenceRoles": [
+              "METADATA"
+            ],
+            "titleRelation": "NONE",
+            "repeatStatus": "FIRST",
+            "informationType": "STATUS_METADATA"
+          },
+          "proposedByModel": true
+        }
+      ]
+    },
+    {
+      "pattern": "P2_PART_TITLE_BLOCK",
+      "items": [
+        {
+          "Aliases": [
+            "L1048:S0",
+            "L1049:S0"
+          ],
+          "Text": "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT (IBRD)",
+          "Verdict": "NON_HEADING",
+          "Reason": "user decision 2026-09-25: issuer/context label above the contents",
+          "axes": {
+            "semanticFunctions": [
+              "INFORMATION"
+            ],
+            "primaryFunction": "INFORMATION",
+            "scope": "DOCUMENT_PART",
+            "occurrenceRoles": [
+              "METADATA"
+            ],
+            "titleRelation": "NONE",
+            "repeatStatus": "FIRST",
+            "informationType": "ISSUER_METADATA"
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1051:S0"
+          ],
+          "Text": "March 31, 2025",
+          "Verdict": "NON_HEADING",
+          "Reason": "user decision 2026-09-25: period date on the contents page",
+          "axes": {
+            "semanticFunctions": [
+              "INFORMATION"
+            ],
+            "primaryFunction": "INFORMATION",
+            "scope": "DOCUMENT_PART",
+            "occurrenceRoles": [
+              "METADATA"
+            ],
+            "titleRelation": "NONE",
+            "repeatStatus": "REPEATED",
+            "informationType": "TEMPORAL_METADATA"
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1052:S0"
+          ],
+          "Text": "CONDENSED QUARTERLY FINANCIAL STATEMENTS (UNAUDITED)",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: opens the navigation group of the statements, notes and report; not an ordinary contents entry",
+          "axes": {
+            "semanticFunctions": [
+              "IDENTITY",
+              "STRUCTURE"
+            ],
+            "primaryFunction": "IDENTITY",
+            "scope": "DOCUMENT_PART",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        }
+      ]
+    },
+    {
+      "pattern": "P3_HEADING_SIZED_CAPTION",
+      "items": [
+        {
+          "Aliases": [
+            "L0051:S0"
+          ],
+          "Text": "Table 1: Selected Financial Data",
+          "Verdict": "NON_HEADING",
+          "Reason": "user decision 2026-09-25: 12pt caption; a unit line and table data follow",
+          "axes": {
+            "semanticFunctions": [
+              "IDENTITY"
+            ],
+            "primaryFunction": "IDENTITY",
+            "scope": "TABLE",
+            "occurrenceRoles": [
+              "CAPTION"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": false
+        }
+      ]
+    },
+    {
+      "pattern": "P4_PART_TITLE_ON_CONTENTS_PAGE",
+      "items": [
+        {
+          "Aliases": [
+            "L0007:S0"
+          ],
+          "Text": "Management’s Discussion and Analysis",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: part title opening the MD&A contents page, not a running header",
+          "axes": {
+            "semanticFunctions": [
+              "IDENTITY"
+            ],
+            "primaryFunction": "IDENTITY",
+            "scope": "DOCUMENT_PART",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        }
+      ]
+    },
+    {
+      "pattern": "P5_UNNUMBERED_TABLE_TITLE",
+      "items": [
+        {
+          "Aliases": [
+            "L0655:S0"
+          ],
+          "Text": "Changes in Surplus",
+          "Verdict": "NON_HEADING",
+          "Reason": "user decision 2026-09-25: names the small table directly below it",
+          "axes": {
+            "semanticFunctions": [
+              "IDENTITY"
+            ],
+            "primaryFunction": "IDENTITY",
+            "scope": "TABLE",
+            "occurrenceRoles": [
+              "CAPTION"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        }
+      ]
+    },
+    {
+      "pattern": "P6_MINOR_LOCAL_HEADING",
+      "items": [
+        {
+          "Aliases": [
+            "L1978:S0"
+          ],
+          "Text": "Pension and Other Postretirement Benefits",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: 10pt bold standalone label opening a narrative paragraph inside Note H",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        }
+      ]
+    },
+    {
+      "pattern": "P7_NOTE_LOCAL_LABEL",
+      "items": [
+        {
+          "Aliases": [
+            "L1250:S0"
+          ],
+          "Text": "EvaluatedAccountingStandards:",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1259:S0"
+          ],
+          "Text": "AccountingStandards UnderEvaluation:",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1284:S0"
+          ],
+          "Text": "AccountingforBorrowings atAmortized Cost",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1400:S0"
+          ],
+          "Text": "SwapAgreements",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1423:S0"
+          ],
+          "Text": "SecuritiesLending",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1640:S0"
+          ],
+          "Text": "Guaranteesprovided",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1666:S0"
+          ],
+          "Text": "Guarantees received",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1930:S0"
+          ],
+          "Text": "Expenses",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L1935:S0"
+          ],
+          "Text": "Revenue",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L2024:S0"
+          ],
+          "Text": "Duefrom banks",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L2027:S0"
+          ],
+          "Text": "Loans andLoan commitments",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L2032:S0"
+          ],
+          "Text": "Investmentsecurities",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L2045:S0",
+            "L2046:S0"
+          ],
+          "Text": "Securities purchased under resale agreements, Securities sold under repurchase agreements, and Securities lent undersecurities lendingagreements",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label of two lines opening its paragraph inside Note J",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L2048:S0"
+          ],
+          "Text": "Borrowings",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L2068:S0"
+          ],
+          "Text": "Derivative instruments",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        },
+        {
+          "Aliases": [
+            "L2078:S0"
+          ],
+          "Text": "Valuation adjustments onfairvalue option electedliabilities",
+          "Verdict": "HEADING",
+          "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+          "axes": {
+            "semanticFunctions": [
+              "STRUCTURE"
+            ],
+            "primaryFunction": "STRUCTURE",
+            "scope": "SECTION",
+            "occurrenceRoles": [
+              "REGION_OPENER"
+            ],
+            "titleRelation": "TITLE",
+            "repeatStatus": "FIRST",
+            "informationType": null
+          },
+          "proposedByModel": true
+        }
+      ]
+    }
+  ],
+  "modelCrossCheck": {
+    "distinctProposals": 851,
+    "byCategoryOfFirstAtom": {
+      "BODY_TEXT": 20,
+      "FOOTNOTE": 13,
+      "HEADING_CANDIDATE": 110,
+      "METADATA": 5,
+      "NAVIGATION": 15,
+      "OTHER_NON_HEADING": 1,
+      "REPEATED_HEADER": 48,
+      "TABLE_CAPTION": 68,
+      "TABLE_COLUMN_HEADER": 151,
+      "TABLE_ROW_LABEL": 404,
+      "TABLE_VALUE": 16
+    },
+    "clearHeadingsProposed": 111,
+    "clearHeadingsMissed": [
+      {
+        "alias": "L0823:S0",
+        "Text": "Credit enhancement arrangements",
+        "Pattern": "SUBSECTION_11PT_REGULAR"
+      }
+    ]
+  },
+  "headings": [
+    {
+      "Aliases": [
+        "L0002:S0",
+        "L0003:S0",
+        "L0004:S0"
+      ],
+      "Text": "Management’s Discussion & Analysis and Condensed Quarterly Financial Statements",
+      "Pattern": "P1_COVER_TITLE_BLOCK",
+      "Reason": "user decision 2026-09-25: the cover title, one claim of three lines",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0007:S0"
+      ],
+      "Text": "Management’s Discussion and Analysis",
+      "Pattern": "P4_PART_TITLE_ON_CONTENTS_PAGE",
+      "Reason": "user decision 2026-09-25: part title opening the MD&A contents page, not a running header",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT_PART",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0008:S0"
+      ],
+      "Text": "Contents",
+      "Pattern": "TOC_OPENER",
+      "Reason": "opens a contents list",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "TOC",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0017:S0"
+      ],
+      "Text": "Tables",
+      "Pattern": "TOC_OPENER",
+      "Reason": "opens a contents list",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "TOC",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0032:S0"
+      ],
+      "Text": "Figures",
+      "Pattern": "TOC_OPENER",
+      "Reason": "opens a contents list",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "TOC",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0045:S0"
+      ],
+      "Text": "Section I: Executive Summary",
+      "Pattern": "SECTION_14PT",
+      "Reason": "14pt bold MD&A section",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0102:S0"
+      ],
+      "Text": "Summary Financial Results",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0103:S0"
+      ],
+      "Text": "Net Income",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0111:S0"
+      ],
+      "Text": "Allocable Income",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0131:S0"
+      ],
+      "Text": "Lending Operations",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0152:S0"
+      ],
+      "Text": "Net Investment Portfolio",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0178:S0"
+      ],
+      "Text": "Equity-to-Loans Ratio",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0197:S0"
+      ],
+      "Text": "Section II: Overview",
+      "Pattern": "SECTION_14PT",
+      "Reason": "14pt bold MD&A section",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0213:S0"
+      ],
+      "Text": "Financial Business Model",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0250:S0"
+      ],
+      "Text": "Financial Performance",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0260:S0"
+      ],
+      "Text": "Basis of Reporting",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0270:S0"
+      ],
+      "Text": "Allocable Income",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "REPEATED",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0293:S0"
+      ],
+      "Text": "Section III: Financial Results",
+      "Pattern": "SECTION_14PT",
+      "Reason": "14pt bold MD&A section",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0294:S0"
+      ],
+      "Text": "Financial Results and Portfolio Performance",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0354:S0"
+      ],
+      "Text": "Net Income",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "REPEATED",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0362:S0"
+      ],
+      "Text": "Results from Lending activities",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0363:S0"
+      ],
+      "Text": "Loan InterestRevenue",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0399:S0"
+      ],
+      "Text": "Provision for losses on loans and other exposures",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0458:S0"
+      ],
+      "Text": "Climate ResilientDebt Clause (CRDC)",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0469:S0"
+      ],
+      "Text": "Results from Investing Activities",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0470:S0"
+      ],
+      "Text": "Net InvestmentPortfolio",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "REPEATED",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0476:S0"
+      ],
+      "Text": "Net InvestmentRevenue",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0499:S0"
+      ],
+      "Text": "Results from Borrowing Activities",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0522:S0"
+      ],
+      "Text": "Net Other Revenue",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0538:S0"
+      ],
+      "Text": "Net Non-Interest Expenses",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0584:S0"
+      ],
+      "Text": "Unrealized mark-to-market gains and losses on non-trading portfolios",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0601:S0"
+      ],
+      "Text": "Loan Portfolio",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0610:S0"
+      ],
+      "Text": "OtherALM Portfolio",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0616:S0"
+      ],
+      "Text": "Borrowing Portfolio",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0632:S0"
+      ],
+      "Text": "Board ofGovernors-approved Transfers and Allocations",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0665:S0"
+      ],
+      "Text": "Section IV: Risk Management",
+      "Pattern": "SECTION_14PT",
+      "Reason": "14pt bold MD&A section",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0666:S0"
+      ],
+      "Text": "Risk Governance",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0672:S0"
+      ],
+      "Text": "Risk Oversight and Coverage",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0683:S0"
+      ],
+      "Text": "Management of IBRD’s Risks",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0698:S0"
+      ],
+      "Text": "Capital Adequacy",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0794:S0"
+      ],
+      "Text": "Credit Risk",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0799:S0"
+      ],
+      "Text": "Country Credit Risk",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0823:S0"
+      ],
+      "Text": "Credit enhancement arrangements",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0860:S0"
+      ],
+      "Text": "Portfolio Concentration Risk",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0872:S0"
+      ],
+      "Text": "AccumulatedProvision forLosses on Loans and OtherExposures",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0885:S0"
+      ],
+      "Text": "Counterparty Credit Risk",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0887:S0"
+      ],
+      "Text": "Commercial Counterparty CreditRisk",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0925:S0"
+      ],
+      "Text": "Non-Commercial Counterparty CreditRisk",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0947:S0"
+      ],
+      "Text": "Changes in Credit Spreads",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0965:S0"
+      ],
+      "Text": "Market Risk",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0968:S0"
+      ],
+      "Text": "Interest Rate Risk",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0974:S0"
+      ],
+      "Text": "Loans to borrowingcountries",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0976:S0"
+      ],
+      "Text": "LiquidAssetPortfolio",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0986:S0"
+      ],
+      "Text": "Fixed SpreadLoan Refinancing Risk",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0992:S0"
+      ],
+      "Text": "OtherInterestRate Risks",
+      "Pattern": "SUBSECTION_11PT_REGULAR",
+      "Reason": "11pt regular standalone line over body text: the MD&A's lowest heading level",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L0997:S0"
+      ],
+      "Text": "Exchange Rate Risk",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1010:S0"
+      ],
+      "Text": "Liquidity Risk",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1029:S0"
+      ],
+      "Text": "Operational Risk",
+      "Pattern": "SUBSECTION_11PT_BOLD",
+      "Reason": "11pt bold MD&A sub-subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1041:S0"
+      ],
+      "Text": "Section V: Governance",
+      "Pattern": "SECTION_14PT",
+      "Reason": "14pt bold MD&A section",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1042:S0"
+      ],
+      "Text": "Senior Management Changes",
+      "Pattern": "SUBSECTION_12PT",
+      "Reason": "12pt bold MD&A subsection",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1050:S0"
+      ],
+      "Text": "CONTENTS",
+      "Pattern": "TOC_OPENER",
+      "Reason": "opens the statements' contents list",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "TOC",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "REPEATED",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1052:S0"
+      ],
+      "Text": "CONDENSED QUARTERLY FINANCIAL STATEMENTS (UNAUDITED)",
+      "Pattern": "P2_PART_TITLE_BLOCK",
+      "Reason": "user decision 2026-09-25: opens the navigation group of the statements, notes and report; not an ordinary contents entry",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "DOCUMENT_PART",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1061:S0"
+      ],
+      "Text": "CONDENSED BALANCE SHEETS",
+      "Pattern": "STATEMENT_TITLE",
+      "Reason": "14pt title of a financial statement",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "FINANCIAL_STATEMENT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1119:S0"
+      ],
+      "Text": "CONDENSED STATEMENTS OF INCOME",
+      "Pattern": "STATEMENT_TITLE",
+      "Reason": "14pt title of a financial statement",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "FINANCIAL_STATEMENT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1154:S0"
+      ],
+      "Text": "CONDENSED STATEMENTS OF COMPREHENSIVE INCOME",
+      "Pattern": "STATEMENT_TITLE",
+      "Reason": "14pt title of a financial statement",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "FINANCIAL_STATEMENT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1171:S0"
+      ],
+      "Text": "CONDENSED STATEMENTS OF CHANGES IN RETAINED EARNINGS",
+      "Pattern": "STATEMENT_TITLE",
+      "Reason": "14pt title of a financial statement",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "FINANCIAL_STATEMENT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1181:S0"
+      ],
+      "Text": "CONDENSED STATEMENTS OF CASH FLOWS",
+      "Pattern": "STATEMENT_TITLE",
+      "Reason": "14pt title of a financial statement",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "FINANCIAL_STATEMENT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1232:S0"
+      ],
+      "Text": "NOTES TO CONDENSED QUARTERLY FINANCIAL STATEMENTS",
+      "Pattern": "NOTES_PART",
+      "Reason": "opens the notes",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY",
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "DOCUMENT_PART",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1233:S0"
+      ],
+      "Text": "NOTE A—SUMMARY OF SIGNIFICANT ACCOUNTING AND RELATED POLICIES",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1234:S0"
+      ],
+      "Text": "Basis ofPreparation",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1249:S0"
+      ],
+      "Text": "Accounting and Reporting Developments",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1250:S0"
+      ],
+      "Text": "EvaluatedAccountingStandards:",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1259:S0"
+      ],
+      "Text": "AccountingStandards UnderEvaluation:",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1284:S0"
+      ],
+      "Text": "AccountingforBorrowings atAmortized Cost",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1300:S0"
+      ],
+      "Text": "NOTE B—CAPITAL STOCK",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1329:S0"
+      ],
+      "Text": "NOTE C—INVESTMENTS",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1393:S0"
+      ],
+      "Text": "Commercial Credit Risk",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1400:S0"
+      ],
+      "Text": "SwapAgreements",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1423:S0"
+      ],
+      "Text": "SecuritiesLending",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1456:S0"
+      ],
+      "Text": "NOTE D—LOANS AND OTHER EXPOSURES",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1471:S0"
+      ],
+      "Text": "Credit Quality ofSovereign Exposures",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1493:S0"
+      ],
+      "Text": "Overdue Amounts",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1580:S0"
+      ],
+      "Text": "Accumulated Provision for Losses on Loans and Other Exposures",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "REPEATED",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1639:S0"
+      ],
+      "Text": "Guarantees",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1640:S0"
+      ],
+      "Text": "Guaranteesprovided",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1666:S0"
+      ],
+      "Text": "Guarantees received",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1672:S0"
+      ],
+      "Text": "Waivers ofLoan Charges",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1679:S0"
+      ],
+      "Text": "Concentration risk",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1705:S0"
+      ],
+      "Text": "NOTE E—BORROWINGS",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1732:S0"
+      ],
+      "Text": "NOTE F—DERIVATIVE INSTRUMENTS",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1753:S0"
+      ],
+      "Text": "Offsetting assets and liabilities",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1864:S0"
+      ],
+      "Text": "NOTE G—RETAINED EARNINGS, ALLOCATIONS AND TRANSFERS",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1904:S0"
+      ],
+      "Text": "NOTE H—TRANSACTIONS WITH AFFILIATED ORGANIZATIONS",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1926:S0"
+      ],
+      "Text": "Loans and Other Exposures",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1929:S0"
+      ],
+      "Text": "Administrative Services",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1930:S0"
+      ],
+      "Text": "Expenses",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1935:S0"
+      ],
+      "Text": "Revenue",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1973:S0"
+      ],
+      "Text": "Investments",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1978:S0"
+      ],
+      "Text": "Pension and Other Postretirement Benefits",
+      "Pattern": "P6_MINOR_LOCAL_HEADING",
+      "Reason": "user decision 2026-09-25: 10pt bold standalone label opening a narrative paragraph inside Note H",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L1984:S0"
+      ],
+      "Text": "NOTE I—ACCUMULATED OTHER COMPREHENSIVE INCOME",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2020:S0"
+      ],
+      "Text": "NOTE J— FAIR VALUE DISCLOSURES",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2021:S0"
+      ],
+      "Text": "Valuation Methods and Assumptions",
+      "Pattern": "NOTE_SUBHEADING",
+      "Reason": "11pt bold sub-heading inside a note",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2024:S0"
+      ],
+      "Text": "Duefrom banks",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2027:S0"
+      ],
+      "Text": "Loans andLoan commitments",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2032:S0"
+      ],
+      "Text": "Investmentsecurities",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2045:S0",
+        "L2046:S0"
+      ],
+      "Text": "Securities purchased under resale agreements, Securities sold under repurchase agreements, and Securities lent undersecurities lendingagreements",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label of two lines opening its paragraph inside Note J",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2048:S0"
+      ],
+      "Text": "Borrowings",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2068:S0"
+      ],
+      "Text": "Derivative instruments",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2078:S0"
+      ],
+      "Text": "Valuation adjustments onfairvalue option electedliabilities",
+      "Pattern": "P7_NOTE_LOCAL_LABEL",
+      "Reason": "user decision 2026-09-25: standalone label at the margin opening the prose or data below it",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "SECTION",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2421:S0"
+      ],
+      "Text": "NOTE K—PENSION AND OTHER POSTRETIREMENT BENEFITS",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2489:S0"
+      ],
+      "Text": "NOTE L—CONTINGENCIES",
+      "Pattern": "NOTE_TITLE",
+      "Reason": "11pt bold note title",
+      "axes": {
+        "semanticFunctions": [
+          "STRUCTURE",
+          "IDENTITY"
+        ],
+        "primaryFunction": "STRUCTURE",
+        "scope": "NOTE",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    },
+    {
+      "Aliases": [
+        "L2495:S0"
+      ],
+      "Text": "INDEPENDENTAUDITOR'S REVIEW REPORT",
+      "Pattern": "EMBEDDED_REPORT",
+      "Reason": "the review report's title",
+      "axes": {
+        "semanticFunctions": [
+          "IDENTITY"
+        ],
+        "primaryFunction": "IDENTITY",
+        "scope": "EMBEDDED_ARTIFACT",
+        "occurrenceRoles": [
+          "REGION_OPENER"
+        ],
+        "titleRelation": "TITLE",
+        "repeatStatus": "FIRST",
+        "informationType": null
+      }
+    }
+  ],
+  "nonHeadingSamples": {
+    "BODY_TEXT": [
+      {
+        "alias": "L0046:S0",
+        "page": 4,
+        "text": "This Management’s Discussion and Analysis (MD&A) reflects the results of the International Bank for"
+      },
+      {
+        "alias": "L0047:S0",
+        "page": 4,
+        "text": "Reconstruction and Development’s (IBRD’s) financial performance for the nine months ended March 31, 2025"
+      },
+      {
+        "alias": "L0048:S0",
+        "page": 4,
+        "text": "(FY25 YTD). This document should be read in conjunction with IBRD’s Financial Statements and MD&A for the"
+      },
+      {
+        "alias": "L0049:S0",
+        "page": 4,
+        "text": "fiscal year ended June 30, 2024 (FY24). IBRD undertakes no obligation to update any forward-looking statements."
+      },
+      {
+        "alias": "L0050:S0",
+        "page": 4,
+        "text": "Certainreclassifications ofprioryears’ informationhave beenmade to conformwiththe currentyear’s presentation."
+      },
+      {
+        "alias": "L0082:S0",
+        "page": 5,
+        "text": "IBRD's mission is to end extreme poverty and boost shared prosperity on a livable planet by providing countries"
+      },
+      {
+        "alias": "L0083:S0",
+        "page": 5,
+        "text": "with loans, guarantees, advisory services, analytical support and otherproducts."
+      },
+      {
+        "alias": "L0084:S0",
+        "page": 5,
+        "text": "IBRD and its affiliated institutions seek to help countries in reducing poverty and inequality, and achieve"
+      }
+    ],
+    "FOOTNOTE": [
+      {
+        "alias": "L0075:S0",
+        "page": 4,
+        "text": "a. Commitments that have been approved by the Executive Directors (referred to as “the Board” in this document) and are net of"
+      },
+      {
+        "alias": "L0077:S0",
+        "page": 4,
+        "text": "b. For the composition of the net investment portfolio, see Notes to the Condensed Quarterly Financial Statements, Note C -"
+      },
+      {
+        "alias": "L0079:S0",
+        "page": 4,
+        "text": "c. Includes associated derivatives."
+      },
+      {
+        "alias": "L0320:S0",
+        "page": 11,
+        "text": "a. Includes related derivatives."
+      },
+      {
+        "alias": "L0321:S0",
+        "page": 11,
+        "text": "b. Includes unrealized mark-to-market gains (losses) on the Investments-trading portfolio, except forward contracts related to"
+      },
+      {
+        "alias": "L0323:S0",
+        "page": 11,
+        "text": "c. Adjusted to exclude amounts reclassified to realizedgains (losses)."
+      },
+      {
+        "alias": "L0324:S0",
+        "page": 11,
+        "text": "d. Adjustment to pension accounting expense to arrive at pension plan contributions. Pension plan and PCRF contributions were"
+      },
+      {
+        "alias": "L0339:S0",
+        "page": 11,
+        "text": "a. The fair value ofIBRD’s loans was $269,084 million as ofMarch 31, 2025 ($257,415 million – June 30, 2024)."
+      }
+    ],
+    "METADATA": [
+      {
+        "alias": "L0000:S0",
+        "page": 1,
+        "text": "International Bank forReconstruction and"
+      },
+      {
+        "alias": "L0001:S0",
+        "page": 1,
+        "text": "Development"
+      },
+      {
+        "alias": "L0005:S0",
+        "page": 1,
+        "text": "March 31, 2025"
+      },
+      {
+        "alias": "L0006:S0",
+        "page": 1,
+        "text": "(Unaudited)"
+      },
+      {
+        "alias": "L1048:S0",
+        "page": 31,
+        "text": "INTERNATIONAL BANK FOR RECONSTRUCTION AND DEVELOPMENT"
+      },
+      {
+        "alias": "L1049:S0",
+        "page": 31,
+        "text": "(IBRD)"
+      },
+      {
+        "alias": "L1051:S0",
+        "page": 31,
+        "text": "March 31, 2025"
+      }
+    ],
+    "NAVIGATION": [
+      {
+        "alias": "L0009:S0",
+        "page": 3,
+        "text": "Section I: Executive Summary"
+      },
+      {
+        "alias": "L0009:S1",
+        "page": 3,
+        "text": "Summary Financial Results"
+      },
+      {
+        "alias": "L0009:S2",
+        "page": 3,
+        "text": "4"
+      },
+      {
+        "alias": "L0010:S0",
+        "page": 3,
+        "text": "Section II: Overview"
+      },
+      {
+        "alias": "L0010:S1",
+        "page": 3,
+        "text": "Financial Business Model"
+      },
+      {
+        "alias": "L0010:S2",
+        "page": 3,
+        "text": "6"
+      },
+      {
+        "alias": "L0011:S0",
+        "page": 3,
+        "text": "Basis of Reporting"
+      },
+      {
+        "alias": "L0011:S1",
+        "page": 3,
+        "text": "7"
+      }
+    ],
+    "OTHER_NON_HEADING": [
+      {
+        "alias": "L0807:S0",
+        "page": 23,
+        "text": "TopTen Country Exposuresᵃ"
+      }
+    ],
+    "REPEATED_HEADER": [
+      {
+        "alias": "L0043:S0",
+        "page": 3,
+        "text": "IBRD Management's Discussion and Analysis: March 31, 2025 1"
+      },
+      {
+        "alias": "L0044:S0",
+        "page": 4,
+        "text": "Management’s Discussion and Analysis Section I: Executive Summary"
+      },
+      {
+        "alias": "L0080:S0",
+        "page": 4,
+        "text": "2 IBRD Management's Discussion and Analysis: March 31, 2025"
+      },
+      {
+        "alias": "L0081:S0",
+        "page": 5,
+        "text": "Management’s Discussion and Analysis Section I: Executive Summary"
+      },
+      {
+        "alias": "L0100:S0",
+        "page": 5,
+        "text": "IBRD Management's Discussion and Analysis: March 31, 2025 3"
+      },
+      {
+        "alias": "L0101:S0",
+        "page": 6,
+        "text": "Management’s Discussion and Analysis Section I: Executive Summary"
+      },
+      {
+        "alias": "L0150:S0",
+        "page": 6,
+        "text": "4 IBRD Management's Discussion and Analysis: March 31, 2025"
+      },
+      {
+        "alias": "L0151:S0",
+        "page": 7,
+        "text": "Management’s Discussion and Analysis Section I: Executive Summary"
+      }
+    ],
+    "TABLE_CAPTION": [
+      {
+        "alias": "L0051:S0",
+        "page": 4,
+        "text": "Table 1: Selected Financial Data"
+      },
+      {
+        "alias": "L0259:S0",
+        "page": 9,
+        "text": "Figure 1: Sources and Uses of Revenue"
+      },
+      {
+        "alias": "L0297:S0",
+        "page": 11,
+        "text": "Table 2: Condensed Statements of Income"
+      },
+      {
+        "alias": "L0326:S0",
+        "page": 11,
+        "text": "Table 3: Condensed Balance Sheets"
+      },
+      {
+        "alias": "L0368:S0",
+        "page": 12,
+        "text": "Figure 2: Loans interest revenue and funding cost"
+      },
+      {
+        "alias": "L0368:S1",
+        "page": 12,
+        "text": "Figure 3: Loan interest revenue, net offunding"
+      },
+      {
+        "alias": "L0369:S0",
+        "page": 12,
+        "text": "(including related derivatives)"
+      },
+      {
+        "alias": "L0369:S1",
+        "page": 12,
+        "text": "costs ᵃ"
+      }
+    ],
+    "TABLE_COLUMN_HEADER": [
+      {
+        "alias": "L0052:S0",
+        "page": 4,
+        "text": "In millions ofU.S. dollars, exceptratios which are in percentages"
+      },
+      {
+        "alias": "L0053:S0",
+        "page": 4,
+        "text": "As ofand forthe"
+      },
+      {
+        "alias": "L0054:S0",
+        "page": 4,
+        "text": "As ofand forthe nine months"
+      },
+      {
+        "alias": "L0054:S1",
+        "page": 4,
+        "text": "fiscalyearended"
+      },
+      {
+        "alias": "L0055:S0",
+        "page": 4,
+        "text": "ended March 31,"
+      },
+      {
+        "alias": "L0055:S1",
+        "page": 4,
+        "text": "June 30,"
+      },
+      {
+        "alias": "L0120:S0",
+        "page": 6,
+        "text": "In millions ofU.S. dollars - YTD"
+      },
+      {
+        "alias": "L0121:S0",
+        "page": 6,
+        "text": "Allocable Income"
+      }
+    ],
+    "TABLE_ROW_LABEL": [
+      {
+        "alias": "L0057:S0",
+        "page": 4,
+        "text": "Lending Highlights (Section III)"
+      },
+      {
+        "alias": "L0058:S0",
+        "page": 4,
+        "text": "Loans and Guarantees"
+      },
+      {
+        "alias": "L0059:S0",
+        "page": 4,
+        "text": "Net commitments a"
+      },
+      {
+        "alias": "L0060:S0",
+        "page": 4,
+        "text": "Gross disbursements"
+      },
+      {
+        "alias": "L0061:S0",
+        "page": 4,
+        "text": "Net disbursements"
+      },
+      {
+        "alias": "L0062:S0",
+        "page": 4,
+        "text": "Income Statement (Section III)"
+      },
+      {
+        "alias": "L0063:S0",
+        "page": 4,
+        "text": "Board of Governors-approved and other transfers"
+      },
+      {
+        "alias": "L0064:S0",
+        "page": 4,
+        "text": "Net income"
+      }
+    ],
+    "TABLE_VALUE": [
+      {
+        "alias": "L0056:S0",
+        "page": 4,
+        "text": "2025 2024"
+      },
+      {
+        "alias": "L0056:S1",
+        "page": 4,
+        "text": "2024"
+      },
+      {
+        "alias": "L0059:S1",
+        "page": 4,
+        "text": "$"
+      },
+      {
+        "alias": "L0059:S2",
+        "page": 4,
+        "text": "27,723"
+      },
+      {
+        "alias": "L0059:S3",
+        "page": 4,
+        "text": "$"
+      },
+      {
+        "alias": "L0059:S4",
+        "page": 4,
+        "text": "24,767"
+      },
+      {
+        "alias": "L0059:S5",
+        "page": 4,
+        "text": "$"
+      },
+      {
+        "alias": "L0059:S6",
+        "page": 4,
+        "text": "37,568"
+      }
+    ]
+  }
+}

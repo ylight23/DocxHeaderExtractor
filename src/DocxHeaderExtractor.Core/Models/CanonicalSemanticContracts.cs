@@ -50,7 +50,15 @@ public sealed record CanonicalSemanticProposal(
     [property: JsonPropertyName("occurrence")] int? Occurrence = null,
     [property: JsonPropertyName("leftExactContext")] string? LeftExactContext = null,
     [property: JsonPropertyName("rightExactContext")] string? RightExactContext = null,
-    [property: JsonPropertyName("selectionMode")] string? SelectionMode = null);
+    [property: JsonPropertyName("selectionMode")] string? SelectionMode = null,
+    // The complete ordered tuple a structured-coordinate contract's reply carries, and the only
+    // thing that identifies such a claim: a heading occupying part of one atom and a heading
+    // spanning two are different claims that no scalar alias can tell apart. Null for contracts
+    // that do not issue this shape, and omitted from serialization when null so every artifact
+    // written under the earlier shape keeps its bytes.
+    [property: JsonPropertyName("sourceParts")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    IReadOnlyList<SemanticSourcePart>? SourceParts = null);
 
 public static class CanonicalSemanticSelectionMode
 {
@@ -338,7 +346,7 @@ public static class CanonicalSemanticExactBinder
             return ordinal >= 1 && ordinal <= positions.Count ? positions[ordinal - 1] : null;
         if (proposal.LeftExactContext is null && proposal.RightExactContext is null)
             return null;
-        return positions.Where(position =>
+        var matchingPositions = positions.Where(position =>
         {
             var left = proposal.LeftExactContext is null ||
                 (position >= proposal.LeftExactContext.Length &&
@@ -348,7 +356,8 @@ public static class CanonicalSemanticExactBinder
                 (end + proposal.RightExactContext.Length <= source.Length &&
                  source.Substring(end, proposal.RightExactContext.Length) == proposal.RightExactContext);
             return left && right;
-        }).Select(position => (int?)position).FirstOrDefault();
+        }).ToArray();
+        return matchingPositions.Length == 1 ? matchingPositions[0] : null;
     }
 }
 
@@ -389,7 +398,12 @@ public sealed record CanonicalSemanticGraph(
 /// Global semantic resolution after binding. Repeated display headings remain occurrences even
 /// when they share one semantic node; the outline projection is the only collapsing step.
 /// </summary>
-public static class CanonicalSemanticGraphResolver
+/// <summary>
+/// Resolves semantic identity after exact source binding. Explicit same-node and continuation
+/// hints are semantic identity decisions; physical occurrences remain distinct without them.
+/// Hierarchy consumes the resulting identity key but does not redefine this rule.
+/// </summary>
+public static class CanonicalSemanticIdentityResolver
 {
     /// <summary>
     /// Visual identity is anchored to parser/render-owned physical evidence. Text, role, and
@@ -399,6 +413,18 @@ public static class CanonicalSemanticGraphResolver
     public static string CreatePhysicalNodeId(CanonicalSemanticVisualBinding binding) =>
         $"visual-node:{binding.PageId}:{binding.ImageSha256}:{binding.RegionSha256}";
 
+    /// <summary>Stable identity key shared by text graph resolution and hierarchy diagnostics.</summary>
+    public static string CreateNodeKey(CanonicalSemanticBoundHeading item)
+    {
+        ArgumentNullException.ThrowIfNull(item);
+        var sameNodeHint = item.RelationHints.FirstOrDefault(hint =>
+            hint.StartsWith("same-node:", StringComparison.Ordinal) ||
+            hint.StartsWith("continuation-node:", StringComparison.Ordinal));
+        return sameNodeHint is not null
+            ? $"explicit:{sameNodeHint}"
+            : $"physical:{item.SourceId}:{item.Start}:{item.End}:{item.Alias}";
+    }
+
     public static CanonicalSemanticGraph Resolve(IReadOnlyList<CanonicalSemanticBoundHeading> bound)
     {
         ArgumentNullException.ThrowIfNull(bound);
@@ -407,16 +433,12 @@ public static class CanonicalSemanticGraphResolver
         var occurrences = new List<CanonicalSemanticGraphOccurrence>(ordered.Length);
         foreach (var (item, index) in ordered.Select((item, index) => (item, index)))
         {
-            // Text/role alone is not a semantic identity. Explicit structural context keeps
-            // same-label headings in different sections distinct while preserving repeats that
-            // genuinely share the same resolved context.
+            // Text/role alone is never a semantic identity. A node is shared only when the
+            // semantic model supplied an explicit same-node/continuation relation; otherwise
+            // each exact physical occurrence remains its own semantic node.
             var parentHint = item.RelationHints.FirstOrDefault(hint =>
                 hint.StartsWith("parent-node:", StringComparison.Ordinal));
-            var scope = item.Scope.Contains("continuation", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(item.Scope, "document_body", StringComparison.OrdinalIgnoreCase)
-                ? string.Empty
-                : item.Scope;
-            var nodeKey = $"{item.Text}\u001f{item.SemanticRole}\u001f{item.StructuralType}\u001f{scope}\u001f{parentHint}";
+            var nodeKey = CreateNodeKey(item);
             if (!nodes.TryGetValue(nodeKey, out var nodeId))
             {
                 nodeId = $"semantic-node:{nodes.Count + 1:0000}";
@@ -454,6 +476,19 @@ public static class CanonicalSemanticGraphResolver
             .ToArray();
         return new CanonicalSemanticGraph(occurrences, projection);
     }
+}
+
+/// <summary>
+/// Backwards-compatible facade for callers that still use the earlier graph name. The implementation
+/// and identity ownership live in <see cref="CanonicalSemanticIdentityResolver"/>.
+/// </summary>
+public static class CanonicalSemanticGraphResolver
+{
+    public static string CreatePhysicalNodeId(CanonicalSemanticVisualBinding binding) =>
+        CanonicalSemanticIdentityResolver.CreatePhysicalNodeId(binding);
+
+    public static CanonicalSemanticGraph Resolve(IReadOnlyList<CanonicalSemanticBoundHeading> bound) =>
+        CanonicalSemanticIdentityResolver.Resolve(bound);
 }
 
 public static class CanonicalSemanticSourceHash

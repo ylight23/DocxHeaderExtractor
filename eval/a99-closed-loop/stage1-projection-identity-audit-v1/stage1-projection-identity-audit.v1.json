@@ -1,0 +1,362 @@
+{
+  "artifactKind": "a99_stage1_projection_identity_audit",
+  "schemaVersion": "a99-stage1-projection-identity-audit-v1",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "projectionInvariant": {
+    "statement": "Stage1AcceptedClaims == CurrentV2BoundClaims, per repeat, both directions.",
+    "lossless": true,
+    "scoresReproduced": true,
+    "noFilteringBy": [
+      "relation",
+      "ROOT/NONE",
+      "semanticRole",
+      "membership disposition",
+      "masthead policy",
+      "structural placement"
+    ],
+    "why": "A projection that dropped a claim would improve false-positive counts by discarding evidence rather than by fixing anything, and the feasibility proof would then be a policy change in disguise.",
+    "rows": [
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 1,
+        "currentBoundClaims": 18,
+        "projectedAcceptedClaims": 18,
+        "lossless": true,
+        "lostByProjection": [],
+        "gainedByProjection": [],
+        "projectedScore": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "historicalScore": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "scoreMatches": true,
+        "documentLabels": 0,
+        "structuralUnits": 18,
+        "mastheadFamilyClaims": 3
+      },
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 2,
+        "currentBoundClaims": 18,
+        "projectedAcceptedClaims": 18,
+        "lossless": true,
+        "lostByProjection": [],
+        "gainedByProjection": [],
+        "projectedScore": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "historicalScore": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "scoreMatches": true,
+        "documentLabels": 0,
+        "structuralUnits": 18,
+        "mastheadFamilyClaims": 3
+      },
+      {
+        "arm": "STRUCTURED_V2_TARGET_BASELINE",
+        "repeat": 3,
+        "currentBoundClaims": 20,
+        "projectedAcceptedClaims": 20,
+        "lossless": true,
+        "lostByProjection": [],
+        "gainedByProjection": [],
+        "projectedScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "historicalScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "scoreMatches": true,
+        "documentLabels": 0,
+        "structuralUnits": 20,
+        "mastheadFamilyClaims": 4
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 1,
+        "currentBoundClaims": 20,
+        "projectedAcceptedClaims": 20,
+        "lossless": true,
+        "lostByProjection": [],
+        "gainedByProjection": [],
+        "projectedScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "historicalScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "scoreMatches": true,
+        "documentLabels": 0,
+        "structuralUnits": 20,
+        "mastheadFamilyClaims": 5
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 2,
+        "currentBoundClaims": 20,
+        "projectedAcceptedClaims": 20,
+        "lossless": true,
+        "lostByProjection": [],
+        "gainedByProjection": [],
+        "projectedScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "historicalScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "scoreMatches": true,
+        "documentLabels": 0,
+        "structuralUnits": 20,
+        "mastheadFamilyClaims": 5
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_V2",
+        "repeat": 3,
+        "currentBoundClaims": 18,
+        "projectedAcceptedClaims": 18,
+        "lossless": true,
+        "lostByProjection": [],
+        "gainedByProjection": [],
+        "projectedScore": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "historicalScore": {
+          "tp": 14,
+          "fp": 4,
+          "fn": 0
+        },
+        "scoreMatches": true,
+        "documentLabels": 0,
+        "structuralUnits": 18,
+        "mastheadFamilyClaims": 3
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 1,
+        "currentBoundClaims": 20,
+        "projectedAcceptedClaims": 20,
+        "lossless": true,
+        "lostByProjection": [],
+        "gainedByProjection": [],
+        "projectedScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "historicalScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "scoreMatches": true,
+        "documentLabels": 0,
+        "structuralUnits": 20,
+        "mastheadFamilyClaims": 5
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 2,
+        "currentBoundClaims": 17,
+        "projectedAcceptedClaims": 17,
+        "lossless": true,
+        "lostByProjection": [],
+        "gainedByProjection": [],
+        "projectedScore": {
+          "tp": 14,
+          "fp": 3,
+          "fn": 0
+        },
+        "historicalScore": {
+          "tp": 14,
+          "fp": 3,
+          "fn": 0
+        },
+        "scoreMatches": true,
+        "documentLabels": 0,
+        "structuralUnits": 17,
+        "mastheadFamilyClaims": 2
+      },
+      {
+        "arm": "EXP_MASTHEAD_METADATA_E2_V2",
+        "repeat": 3,
+        "currentBoundClaims": 20,
+        "projectedAcceptedClaims": 20,
+        "lossless": true,
+        "lostByProjection": [],
+        "gainedByProjection": [],
+        "projectedScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "historicalScore": {
+          "tp": 14,
+          "fp": 6,
+          "fn": 0
+        },
+        "scoreMatches": true,
+        "documentLabels": 0,
+        "structuralUnits": 20,
+        "mastheadFamilyClaims": 5
+      }
+    ]
+  },
+  "designArtifactCorrection": {
+    "claim": "The design artifact's doc0252Projection reported 14 TP / 4 FP / 0 FN.",
+    "scope": "That figure is the baseline r1 repeat only, and the artifact labels it as such. It was restated without that scope in the accompanying report, where it reads as a claim about all nine repeats. It is not one: false positives range from 3 to 6.",
+    "corrected": "Per-repeat scores are recorded in full above.",
+    "historicalArtifactsRewritten": false
+  },
+  "stage1Independence": {
+    "relationFieldsRequired": false,
+    "semanticRoleRequired": false,
+    "method": "Every repeat was projected twice - once from the full reply and once with relationHints, parent-node, ROOT, NONE and semanticRole removed before projection - and the accepted identity sets were compared."
+  },
+  "membershipDisposition": {
+    "values": [
+      "DOCUMENT_LABEL",
+      "STRUCTURAL_UNIT"
+    ],
+    "usedToDiscardHistoricalClaims": false,
+    "rule": "Every bound v2 claim projects to an accepted Stage-1 claim first; the disposition classifies the accepted set afterwards. The new ontology is never used to retroactively improve an old false-positive count."
+  },
+  "claimIdentity": {
+    "authority": {
+      "algorithm": "SHA-256",
+      "bits": 256,
+      "namespaceInput": [
+        "domain separator: a99-semantic-membership-claim-v1",
+        "document source sha256",
+        "ordered sequence of (sourceAlias, startUtf16, endUtf16)"
+      ],
+      "canonicalEncoding": "each field length-prefixed and unit-separated, so no alias or offset sequence can be re-parsed as a different tuple",
+      "properties": [
+        "deterministic",
+        "source-coordinate derived",
+        "ordered multi-part sensitive",
+        "no normalized-text dependence",
+        "no relation dependence",
+        "no semanticRole dependence",
+        "no pack or repeat dependence",
+        "document-namespaced"
+      ]
+    },
+    "display": {
+      "form": "C + first 8 hex of the authority id",
+      "authoritative": false,
+      "observedDisplayCollisionsInThisCorpus": 0,
+      "rule": "A display id is for logs and UI. It is never accepted as an identity without resolving it to an authority id, and its absence of collisions in one small corpus is not evidence that it is safe."
+    },
+    "supersedes": "The design artifact proposed C + 8 hex as the authority id. That is 32 bits, where birthday collisions become likely in the thousands of claims - and this corpus is 3955 approved headings before any false positive is counted.",
+    "collisionPolicy": {
+      "state": "AUTHORITY_CLAIM_ID_COLLISION",
+      "behaviour": "fail closed; never silently merge two different coordinate tuples",
+      "rationale": "A cryptographic id makes collision improbable, not impossible, and the cost of the check is nothing next to merging two claims."
+    }
+  },
+  "identityProof": {
+    "totalProjectedClaims": 171,
+    "uniqueCoordinateIdentities": 23,
+    "uniqueAuthorityClaimIds": 23,
+    "claimIdCollisions": 0,
+    "stableAcrossRepeats": true,
+    "repeats": 9
+  },
+  "multiPartProof": {
+    "identity": "L0359:S0:0-99|L0360:S0:0-11",
+    "authorityClaimId": "C:482d787d768dd3e5a117cfb1e715d1edc75c3f1218d14dd91b8d71646ba3df40",
+    "displayClaimId": "C482D787D",
+    "orderSensitive": true,
+    "reversedProducesDifferentId": true,
+    "documentNamespaced": true,
+    "normalizedTextJoinForbidden": true
+  },
+  "stage1Evaluator": {
+    "consumes": [
+      "accepted bound ClaimIds",
+      "Gold membership authority"
+    ],
+    "metrics": [
+      "TP",
+      "FP",
+      "FN"
+    ],
+    "separately": [
+      "NOT_PROPOSED",
+      "PROPOSED_BUT_REFUSED",
+      "BOUND"
+    ],
+    "relationCanAffectScore": false,
+    "why": "The evaluator never sees a relation field, so a placement error cannot be counted as a membership miss and a membership error cannot be hidden by placement."
+  },
+  "firstProviderExperiment": {
+    "id": "PHYSICAL_STAGE1_MEMBERSHIP_ONLY",
+    "packs": [
+      "PACK_005",
+      "PACK_006"
+    ],
+    "repeats": 3,
+    "stage1Calls": 6,
+    "stage2Calls": 0,
+    "sequence": "source evidence -> Stage-1 provider call -> harness bind -> immutable membership -> stop and score. No Stage-2 request exists.",
+    "question": "Does removing placement from the model's available task change semantic membership behaviour?",
+    "whyStrongerThanTwoStage": "Asking the placement question at all, even in a later call, leaves open whether the membership result depended on it. Not creating the request is a cleaner intervention than creating it and ignoring it - and it costs 6 calls instead of 9 or 12.",
+    "comparator": {
+      "arm": "STRUCTURED_V2_TARGET_BASELINE",
+      "mastheadFamilies": "F1 3/3, F2 3/3, F3 3/3 present",
+      "gold": "14/14 bound each repeat",
+      "measured": [
+        "Gold membership",
+        "masthead family presence",
+        "other false-positive identities",
+        "grounding refusals"
+      ],
+      "noRelationMetricExists": true
+    },
+    "interpretation": {
+      "ifMastheadPersists": "TWO_STAGE_SEPARATION_DOES_NOT_FIX_MEMBERSHIP_POLICY - the architecture remains right for isolation and correctness, but the masthead problem lives inside Stage 1 and no amount of separation will move it.",
+      "ifMastheadContracts": "PHYSICAL_TASK_SEPARATION_AFFECTS_MEMBERSHIP - then Stage 2 is worth introducing, in its own experiment."
+    }
+  },
+  "stage2": {
+    "deferred": true,
+    "batchingPolicy": "DEFERRED",
+    "why": "Document-batched placement changes the context relative to per-pack execution, which is a semantic decision. It should not be settled before Stage-1 behaviour is measured."
+  },
+  "architecturalConclusion": {
+    "recommendedSuccessorDesign": "OPTION_B",
+    "unchanged": true,
+    "note": "This audit tested the projection and the identity, not the architecture. Nothing here falsifies the physical two-call recommendation; the first experiment under it is simply narrower than first proposed."
+  },
+  "limitations": {
+    "singleDocument": "DOC-0252",
+    "materializedGold": "48 / 3955",
+    "crossGenreGeneralization": "NOT_ESTABLISHED",
+    "identityCorpusSize": "Collision freedom here is over a few hundred projected claims. It demonstrates determinism and stability, not the collision resistance of the hash, which rests on SHA-256 rather than on this measurement."
+  }
+}

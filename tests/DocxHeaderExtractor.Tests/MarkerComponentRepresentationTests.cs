@@ -69,7 +69,7 @@ public sealed class MarkerComponentRepresentationTests
     public void RecoveredComponentsDoNotCreateAncestryOnTheirOwn()
     {
         var texts = new[] { "4 Constructing Responses", "4 3 Validation", "4 3 2 Sending a Validation Request" };
-        var contexts = new Dictionary<string, PdfCandidateContext>(StringComparer.Ordinal);
+        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal);
         var headings = new List<PdfValidatedHeading>();
         for (var index = 0; index < texts.Length; index++)
         {
@@ -81,7 +81,7 @@ public sealed class MarkerComponentRepresentationTests
 
         var facts = PdfHierarchyFactsInventory.Inspect(headings, contexts);
 
-        Assert.All(facts, fact => Assert.Null(fact.MarkerPrefixParentCandidate));
+        Assert.All(facts, fact => Assert.Null(fact.MarkerPrefixParentId));
         Assert.All(facts, fact => Assert.Equal("relationship_unresolved", fact.ParentResolution));
     }
 
@@ -90,7 +90,7 @@ public sealed class MarkerComponentRepresentationTests
     public void AuditExposesCompleteComponentsAlongsideStrictPath()
     {
         const string text = "4 3 2 Sending a Validation Request";
-        var contexts = new Dictionary<string, PdfCandidateContext>(StringComparer.Ordinal)
+        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
         {
             ["only"] = Context("only", 1, 700, text),
         };
@@ -105,9 +105,9 @@ public sealed class MarkerComponentRepresentationTests
         Assert.Equal(text, fact.SourceBlockText);
     }
 
-    private static PdfCandidateContext Context(string id, int page, double topY, string text)
+    private static PdfSemanticSourceContext Context(string id, int page, double topY, string text)
     {
         var source = new PdfSourceFacts(id, text, page, 1, 72, topY, 400, topY - 12, "document_body", []);
-        return new PdfCandidateContext(source, [], [], [], "document_body", []);
+        return new PdfSemanticSourceContext(source, [], [], [], "document_body");
     }
 }

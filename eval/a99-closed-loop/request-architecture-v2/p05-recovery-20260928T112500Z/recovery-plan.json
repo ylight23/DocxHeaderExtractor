@@ -1,0 +1,83 @@
+{
+  "artifactKind": "a99_v4r2_p05_recovery_plan",
+  "status": "FROZEN_PENDING_EXECUTION",
+  "experimentOnly": true,
+  "productionPromotion": false,
+  "goldRead": false,
+  "basis": {
+    "primaryRunId": "p05-provider-experiment-20260928T033919Z",
+    "primaryManifest": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/run-manifest.json",
+    "failedParentCount": 2,
+    "failurePredicate": "HTTP_200 + finish_reason=length + content=null + completion_tokens=12288"
+  },
+  "frozenPins": {
+    "candidateId": "P05",
+    "treatmentDelta": "PACKING_SHAPE_ONLY",
+    "model": "qwen/qwen3.7-flash",
+    "providerRoute": "Alibaba",
+    "reasoningEffort": "medium",
+    "responseFormat": "json_object",
+    "maxTokens": 12288,
+    "timeoutSeconds": 300,
+    "inputCeilingBytes": 90000,
+    "estimatedInputTokenCeiling": 28000,
+    "ownedCoreCeiling": 96,
+    "visibleSourceAtomsCeiling": 128,
+    "haloAtoms": 8,
+    "lossyTransforms": false,
+    "explicitCacheControl": false,
+    "strictJsonSchema": false
+  },
+  "recoveryPolicy": {
+    "pendingParents": 2,
+    "identicalRetryMaximumPerParent": 1,
+    "retryRequiresIdenticalSemanticRequestHash": true,
+    "retryRequiresIdenticalProviderEnvelopeHash": true,
+    "onRepeatedSaturation": "DETERMINISTIC_SOURCE_ORDER_MIDPOINT_SPLIT",
+    "successfulLeavesResent": false,
+    "maxAdaptiveChildCalls": 12,
+    "totalHardCallCap": 55,
+    "invalid200Handling": "bounded identical retry, then deterministic leaf split"
+  },
+  "parents": [
+    {
+      "parentOrdinal": 21,
+      "documentId": "SRC-095",
+      "documentPackOrdinal": 14,
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-021.request.json",
+      "responseFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-021.response.json",
+      "semanticRequestHash": "2c5deb37393fd5d9f77cd61fec0e055cdde37d6a124ef417a8ba06f9aa757547",
+      "providerEnvelopeHash": "d17fe28312d0a730119511e80a83671a081bb14d15b66832f0e9fbf07c74e6e2",
+      "ownedCount": 96,
+      "splitIndex": 48,
+      "firstOwnedAlias": "L1192:S0",
+      "leftLastOwnedAlias": "L1237:S0",
+      "rightFirstOwnedAlias": "L1238:S0",
+      "lastOwnedAlias": "L1280:S0",
+      "childOwnedCounts": [48, 48]
+    },
+    {
+      "parentOrdinal": 24,
+      "documentId": "SRC-095",
+      "documentPackOrdinal": 17,
+      "requestFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-024.request.json",
+      "responseFile": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-024.response.json",
+      "semanticRequestHash": "3bea63a1ab4acdffcdcfc97b552c70c41b70634d42c6bce5daffe72e2d49bdc2",
+      "providerEnvelopeHash": "b2371892ccb425aa3b75016d8fecd1f761422cb2f3578049eb91587e42e3b6b0",
+      "ownedCount": 96,
+      "splitIndex": 48,
+      "firstOwnedAlias": "L1467:S0",
+      "leftLastOwnedAlias": "L1498:S2",
+      "rightFirstOwnedAlias": "L1499:S0",
+      "lastOwnedAlias": "L1529:S0",
+      "childOwnedCounts": [48, 48]
+    }
+  ],
+  "ownershipInvariant": {
+    "parentOwnedEqualsChildUnion": true,
+    "childOwnedIntersectionIsEmpty": true,
+    "haloMayOverlap": true,
+    "ownershipMayNotOverlap": true,
+    "goldRead": false
+  }
+}

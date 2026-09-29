@@ -16,3 +16,10 @@ the canonical semantic boundary.
 with authority and current repository hash `f7a09e...`. The prior PDF metadata was a type/path
 misattribution; the semantic total 831 is retained and no exact occurrence list is synthesized
 from that total. Exact occurrence freeze remains a separate, later authority step.
+
+## Status: NON_CANONICAL_PROVENANCE_ONLY
+
+The semantic freezes here are the source this repository derived its canonical Gold from, and
+they remain the record of what a user approved. They are no longer an active scoring authority.
+Resolve Gold through `eval/a99-closed-loop/gold-current/registry.v1.json`; reading these files
+directly is how two tasks end up disagreeing about the same document.

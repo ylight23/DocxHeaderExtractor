@@ -1,3 +1,30 @@
+# Freeze artifacts are written by tests and read back by tests, so what checkout puts in the
+# working tree must be exactly what a regeneration writes. Left to core.autocrlf, checkout produced
+# CRLF on Windows while the writer produced LF; Git then reported the file modified to avoid
+# overwriting local work, and `git checkout` and `git bisect` aborted on a clean green run. The
+# content was never in question - `git diff` was empty - so pinning the checkout is the fix, not
+# changing what the artifacts say.
+# Kept to the directories a test regenerates. A wider rule reaches artifacts whose recorded hash
+# was taken over a checkout rather than over the committed bytes, and changing what checkout
+# produces would silently redefine whether those still verify - a separate question, not this one.
+/eval/a99-closed-loop/pdf-canary-072/** text eol=lf
+/eval/a99-closed-loop/docx-i8-doc0256/** text eol=lf
+/eval/a99-closed-loop/semantic-conflict-frozen-replay/** text eol=lf
+/eval/verification/** text eol=lf
+/eval/a99-closed-loop/pdf-gold-doc0252/** text eol=lf
+/eval/a99-closed-loop/gold-current/** text eol=lf
+# One file rather than the directory: its neighbours in representation/ predate this rule and no
+# test regenerates them, so widening it would change what their checkout produces to answer a
+# question nobody asked.
+/eval/a99-closed-loop/representation/doc-0252-source-occurrence-boundary.v1.json text eol=lf
+/eval/a99-closed-loop/representation/doc-0252-visual-line-shadow.v1.json text eol=lf
+/eval/a99-closed-loop/representation/doc-0252-block-grouping-shadow.v1.json text eol=lf
+/eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json text eol=lf
+/eval/a99-closed-loop/representation/visual-line-segment-adjudication.v1.json text eol=lf
+/eval/a99-closed-loop/representation/doc-0252-structured-source-parts.v1.json text eol=lf
+/eval/a99-closed-loop/representation/doc-0252-segment-evidence-authority.v1.json text eol=lf
+/eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.occurrence-gold.v1.json text eol=lf
+
 # These benchmark artifacts are bound by raw SHA-256 in N12/N14. Keep their Git blobs byte-identical
 # in every checkout; their .json extension does not grant Git permission to rewrite line endings.
 /eval/benchmark-n0/silver-labels/*.json -text

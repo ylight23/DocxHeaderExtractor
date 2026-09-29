@@ -1,0 +1,165 @@
+{
+  "artifactKind": "a99_occurrence_ontology",
+  "ontologyId": "OCCURRENCE_SEMANTIC_AXES_V1",
+  "status": "FROZEN",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-24",
+  "axes": [
+    {
+      "axis": "semanticFunctions",
+      "values": {
+        "IDENTITY": "says what this is: identifies the semantic artifact or unit the reader is entering",
+        "STRUCTURE": "says where the following content sits: organizes hierarchy inside an artifact already identified",
+        "INFORMATION": "says something about the artifact or its context: date, place, version, author, status, figures"
+      },
+      "cardinality": "one or more, with one primaryFunction; an occurrence can carry several (\"Agenda\" is IDENTITY of the embedded agenda and STRUCTURE of the meeting document)"
+    },
+    {
+      "axis": "scope",
+      "values": [
+        "DOCUMENT",
+        "DOCUMENT_PART",
+        "EMBEDDED_ARTIFACT",
+        "SECTION",
+        "CLAUSE",
+        "FORM",
+        "FORM_FIELD",
+        "TABLE",
+        "LIST",
+        "TOC",
+        "EVENT",
+        "REVISION_ENTRY",
+        "NOTE"
+      ],
+      "cardinality": "the object the occurrence is about; open-ended"
+    },
+    {
+      "axis": "occurrenceRole",
+      "values": [
+        "REGION_OPENER",
+        "LOCAL_LABEL",
+        "CAPTION",
+        "FIELD_LABEL",
+        "METADATA",
+        "NAVIGATION",
+        "BODY_CONTENT",
+        "PAGE_FURNITURE",
+        "SUBTITLE",
+        "REPEATED_TITLE"
+      ],
+      "cardinality": "how it behaves in the layout; SUBTITLE qualifies an adjacent opener, REPEATED_TITLE restates an identity already opened"
+    },
+    {
+      "axis": "informationType",
+      "values": [
+        "TEMPORAL_METADATA",
+        "LOCATION",
+        "VERSION",
+        "AUTHOR",
+        "STATUS",
+        "QUANTITY"
+      ],
+      "cardinality": "only when INFORMATION is among the functions"
+    },
+    {
+      "axis": "isHeading",
+      "values": [
+        "true",
+        "false"
+      ],
+      "cardinality": "decided last, by policy and the human reviewer - never implied by a function alone"
+    }
+  ],
+  "order": [
+    "What does it say? (semanticFunctions)",
+    "What object is it about? (scope)",
+    "How does it behave in the layout? (occurrenceRole)",
+    "Only then: is this occurrence a heading? (isHeading)"
+  ],
+  "principles": [
+    "Semantic function is not heading status: IDENTITY of a TABLE in a CAPTION role is not a heading.",
+    "METADATA is not an absolute non-heading: INFORMATION in a REGION_OPENER role can open a region (a revision date over its revision note).",
+    "The LLM proposes axes; the harness/policy layer decides or checks isHeading, canonical role, hierarchy and projection."
+  ],
+  "examples": [
+    {
+      "text": "MINUTES OF ...",
+      "semanticFunctions": [
+        "IDENTITY"
+      ],
+      "scope": "DOCUMENT",
+      "occurrenceRole": "REGION_OPENER",
+      "isHeading": true
+    },
+    {
+      "text": "SESSION III",
+      "semanticFunctions": [
+        "STRUCTURE"
+      ],
+      "scope": "SECTION",
+      "occurrenceRole": "REGION_OPENER",
+      "isHeading": true
+    },
+    {
+      "text": "March 7–8, 2025",
+      "semanticFunctions": [
+        "INFORMATION"
+      ],
+      "scope": "EVENT",
+      "occurrenceRole": "METADATA",
+      "isHeading": false
+    },
+    {
+      "text": "Agenda",
+      "semanticFunctions": [
+        "IDENTITY",
+        "STRUCTURE"
+      ],
+      "scope": "EMBEDDED_ARTIFACT",
+      "occurrenceRole": "REGION_OPENER",
+      "isHeading": true
+    },
+    {
+      "text": "Date: (day month year)",
+      "semanticFunctions": [
+        "INFORMATION"
+      ],
+      "scope": "FORM_FIELD",
+      "occurrenceRole": "FIELD_LABEL",
+      "isHeading": false
+    },
+    {
+      "text": "Table A. Local Currency",
+      "semanticFunctions": [
+        "IDENTITY"
+      ],
+      "scope": "TABLE",
+      "occurrenceRole": "CAPTION",
+      "isHeading": false
+    },
+    {
+      "text": "Part C – Fraud and Corruption",
+      "semanticFunctions": [
+        "IDENTITY",
+        "STRUCTURE"
+      ],
+      "scope": "DOCUMENT_PART",
+      "occurrenceRole": "REGION_OPENER",
+      "isHeading": true
+    }
+  ],
+  "legacyProjection": {
+    "mapping": {
+      "IDENTITY": "DOCUMENT_LABEL",
+      "STRUCTURE": "STRUCTURAL_UNIT",
+      "INFORMATION": "NON_STRUCTURAL"
+    },
+    "lossy": true,
+    "lostDistinctions": [
+      "INFORMATION + REGION_OPENER",
+      "IDENTITY + STRUCTURE",
+      "IDENTITY + CAPTION"
+    ]
+  },
+  "modelContractChanged": false
+}

@@ -66,8 +66,8 @@ public static class AgentSkillLoader
 
         foreach (var root in Roots())
         {
-            var candidate = System.IO.Path.Combine(root, DefaultRelativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
-            if (File.Exists(candidate)) return System.IO.Path.GetFullPath(candidate);
+            var skillPath = System.IO.Path.Combine(root, DefaultRelativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
+            if (File.Exists(skillPath)) return System.IO.Path.GetFullPath(skillPath);
         }
 
         return null;

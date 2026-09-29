@@ -1,0 +1,113 @@
+{
+  "artifactKind": "a99_generic_audit_reveal_pin",
+  "study": "SRC054_BLIND_GENERALIZATION_AUDIT_V1",
+  "checkpoint": {
+    "goldClaims": 296,
+    "bind": "296/296",
+    "duplicateIdentities": 0,
+    "sharedCharacters": 0,
+    "sourceHash": "PASS",
+    "hierarchyEvaluable": false,
+    "engineProposalsOpened": "NO",
+    "modelProviderCalls": 0,
+    "fullSuite": "GREEN (1496/1496 at 3d52729)",
+    "releaseBuild": "0 errors",
+    "gitDiffCheck": "PASS"
+  },
+  "gold": {
+    "commit": "3d52729",
+    "path": "eval/a99-closed-loop/gold/SRC-054.gold.json",
+    "authoredGoldSha256": "82a904eefafa687537c08236ac70a177523b864d0829507524ffeccd6f8e5c56",
+    "registryGoldSha256": "36c3f7d96a1f5e3f70ca94bb118d08b421a1244e94e626739662e3c03f021e79",
+    "registry": {
+      "path": "eval/a99-closed-loop/gold-current/registry.v1.json",
+      "sha256": "07100954da3e00218cb3a1311b66b255a1dd1637867eabf3bf9bda844cc6309b",
+      "commit": "cbf3d9a"
+    }
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/054_IBRD_Information_Statement_FY25.pdf",
+    "sha256": "02c949f22700a2ba84c0f9719c8c2e9d1ffff407cc5d21c89d34bc660cd480ac"
+  },
+  "engine": {
+    "commit": "ad44d78 (logic) + e69819b (PDF_SOURCE_FACTS_V2)",
+    "identity": {
+      "engine": "GENERIC_AUDIT_ENGINE_V1.2 over PDF_SOURCE_FACTS_V2",
+      "logic": {
+        "engine": "GENERIC_AUDIT_ENGINE_V1.2",
+        "files": [
+          {
+            "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_2/SourceEvidence.cs",
+            "sha256": "1945b0766345a86b298b5ccdca3f2b24adbb8e4099f3d5fcc443dabf26ea6074"
+          },
+          {
+            "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_2/SemanticAuditEngine.cs",
+            "sha256": "acc6c21438846a7363733fb78100151eb49d5fe711b999b995924878984f744d"
+          }
+        ],
+        "constants": {
+          "largerThanBodyRatio": 1.08,
+          "bodySizeToleranceRatio": 0.97,
+          "shortLabelMaxWords": 20,
+          "compositeMaxParts": 6,
+          "furnitureMinPages": 3,
+          "furnitureMinBandShare": 0.8,
+          "navigationRunMin": 3,
+          "lineGapMaxFontRatio": 1.8,
+          "sameSizeRatioTolerance": 0.02,
+          "bracketSpanMaxLines": 15,
+          "formMinFillInFields": 2,
+          "averageCharWidthFontRatio": 0.5,
+          "centredMarginToleranceRatio": 0.05,
+          "columnGutterFontRatio": 1,
+          "figureRegionMaxLines": 60
+        },
+        "ontology": "OCCURRENCE_SEMANTIC_AXES_V3"
+      },
+      "sourceFacts": {
+        "version": "PDF_SOURCE_FACTS_V2",
+        "freeze": {
+          "path": "eval/a99-closed-loop/pdf-source-facts-v2/PDF_SOURCE_FACTS_V2.freeze.json",
+          "sha256": "802bc69865fc4c581ec963ff9b20853f272c50ba625608a33961df5aa940ad05"
+        },
+        "evidenceEntryPoint": {
+          "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/PdfSourceFactsV2Evidence.cs",
+          "sha256": "4398af1373fb5a04aef62e28553fde5f0b2a91ca4068ded7cd52984692ec356f"
+        }
+      }
+    }
+  },
+  "engineMatchesPreregistration": true,
+  "requestContract": {
+    "requestVersion": "V2_ATTENTION_FREE over PDF_SOURCE_FACTS_V2",
+    "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V2.freeze.json",
+    "sha256": "5587754ece1359a8f3b41c9f06d2d09815dbc7401cd7ba1b4ac0f59e1d0ffe30"
+  },
+  "scorer": {
+    "id": "GENERIC_EXACT_SCORER_V1",
+    "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_1/ExactScorer.cs",
+    "sha256": "4790a2bf1b9ab57924005633e38f2cabe1f477e38b726ed09205907451e65d71"
+  },
+  "harness": {
+    "path": "tests/DocxHeaderExtractor.Tests/Src054BlindScoreTests.cs",
+    "sha256": "51e7a3231ba53878eb35d93acfde039e073d531eb95a0f181067a519872a3bbb"
+  },
+  "preregistration": {
+    "commit": "6182a81",
+    "sha256": "6639c8b99e243ff706d71c5fab90d15d523685fd6ab3af6bda5fec320f5c6137"
+  },
+  "packingPolicy": "FIXED_OWNED_COUNT_120 (default); COHERENT_REGION_SEGMENTATION_V1 not selected",
+  "proposals": {
+    "commit": "44b88f4",
+    "path": "eval/a99-closed-loop/generic-audit-v1_2-pdf-facts-v2/SRC-054.proposals.json",
+    "sha256": "f7f2c46738be0f355bedab87a8b89ef83a96abafabfb116e07c435c8254623a7",
+    "gitBlob": "c72a0e668e3a26cac467ddb1a293d0ea9ba883fc",
+    "contentRead": false
+  },
+  "rules": [
+    "reveal once; the raw score is committed as written, a bad result included",
+    "residuals are classified afterwards; V1.2 is not changed and this baseline is not rewritten",
+    "a Gold error found later becomes a new Gold revision; this score stays against the Gold pinned here",
+    "only then: the historical 316 delta audit, and the cross-document synthesis"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "a99-structured-evidence-context-v2-transport-capture-v1",
+  "cell": "FULL_STRUCTURED_CONTEXT_V2/r1/PACK_001",
+  "arm": "FULL_STRUCTURED_CONTEXT_V2",
+  "repeat": 1,
+  "pack": "PACK_001",
+  "model": "qwen/qwen3.7-flash",
+  "providerRoute": "OpenRouter",
+  "systemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+  "providerInputHash": "aeccd12bf7eb251ed65f188941d912983e805aa86559a9817f8668469274a653",
+  "responseFormat": "json_object",
+  "expectedItemCount": 1,
+  "maxTokens": 256,
+  "itemIds": [
+    "ITEM-AB89229E"
+  ],
+  "transportCaptureStatus": "TRANSPORT_CAPTURE_COMPLETE",
+  "rawResponseCaptured": true,
+  "rawResponseSha256": "38c82c3e360263379d0e9b480d2a238000bc73ae9df3e9bc3cbeac69add69242",
+  "rawResponseBytes": 470,
+  "rawResponseUtf8Base64": "ewogICJkZWNpc2lvbnMiOiBbCiAgICB7CiAgICAgICJpdGVtSWQiOiAiSVRFTS1BQjg5MjI5RSIsCiAgICAgICJjbGFzc2lmaWNhdGlvbiI6ICJET0NVTUVOVF9MQUJFTCIsCiAgICAgICJyZWFzb25Db2RlIjogIlRoZSBzcGFuICdNSU5VVEVTIE9GIFRIRSBJTlRFUk5BVElPTkFMIENPTVBBUklTT04gUFJPR1JBTScgc2VydmVzIGFzIHRoZSB0aXRsZSBvZiB0aGUgZW50aXJlIGRvY3VtZW50LiBJdCBpZGVudGlmaWVzIHRoZSBkb2N1bWVudCBhcyBhIHdob2xlIHJhdGhlciB0aGFuIG9wZW5pbmcgYSBzcGVjaWZpYyBzdHJ1Y3R1cmFsIHVuaXQgd2l0aGluIGl0IChzdWNoIGFzIGEgc2Vzc2lvbiBvciBzZWN0aW9uKS4gU3Vic2VxdWVudCBsaW5lcyBwcm92aWRlIHRoZSBzcGVjaWZpYyBncm91cCwgZGF0ZSwgYW5kIGxvY2F0aW9uLCB3aGljaCBhcmUgcGFydCBvZiB0aGUgaGVhZGVyL3RpdGxlIGJsb2NrLiIKICAgIH0KICBdCn0=",
+  "parseStatus": "OK",
+  "contractStatus": "PASS",
+  "fault": null
+}

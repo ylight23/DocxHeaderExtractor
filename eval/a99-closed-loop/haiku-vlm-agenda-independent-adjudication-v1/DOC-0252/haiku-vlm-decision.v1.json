@@ -1,0 +1,30 @@
+{
+  "artifactKind": "a99_haiku_vlm_agenda_independent_adjudication_decision",
+  "schemaVersion": "a99-haiku-vlm-agenda-independent-adjudication-decision-v1",
+  "task": "HAIKU_VLM_AGENDA_INDEPENDENT_ADJUDICATION_V1",
+  "model": "Haiku",
+  "modality": "vision (rendered PDF page image, read via file tool, no OpenRouter transport)",
+  "targetItemId": "ITEM-CCE2C592",
+  "targetText": "Agenda",
+  "imagePath": "eval/a99-closed-loop/haiku-vlm-agenda-independent-adjudication-v1/DOC-0252/agenda-page-render.png",
+  "imageSha256": "01647edab38a9212854e0180c1196442cf14e5f2d52641e497ab76f98a52b02f",
+  "repeats": 1,
+  "blindProtocol": {
+    "goldVisible": false,
+    "qwenResultVisible": false,
+    "previousHaikuTextResultsVisible": false,
+    "textAdjudicatorResultVisible": false,
+    "previousVlmResultVisible": false,
+    "pooledVoteVisible": false,
+    "correctnessLanguageUsed": false,
+    "diagnosticHistoryVisible": false,
+    "questionBalancedAcrossThreeClasses": true
+  },
+  "rawResponse": {
+    "semanticFunction": "STRUCTURE",
+    "resolved": true,
+    "visualEvidence": "The word 'Agenda' appears centered on the page, positioned between the document's introductory metadata block (meeting title, date, location) above and the day-by-day session structure below. It functions as a heading/divider that marks the transition from introductory information to the organized agenda content that follows. The positioning and spacing show it serves to introduce and organize where the subsequent structured content (days, sessions, and timed items) belongs within the already-identified meeting document artifact."
+  },
+  "modelCalls": 1,
+  "providerCalls": 0
+}

@@ -1,0 +1,150 @@
+{
+  "task": "HAIKU_CONTEXT_ABLATION_CONFIRMATION_V1",
+  "model": "Haiku",
+  "arms": [
+    {
+      "arm": "FULL_CONTEXT",
+      "repeat": 1,
+      "decisions": [
+        { "itemId": "ITEM-AB89229E", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-BAAD25EE", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-1D843A9F", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-82675EC0", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-024B8661", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-505430BB", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-2D78F82D", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-968E70AF", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-CCE2C592", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5348EA2B", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5EFE8569", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2F026398", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E96B316E", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-13ADC8F7", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-811FC894", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-4C05B3C2", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-959D3FCB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E14B4B93", "label": "STRUCTURAL_UNIT" }
+      ]
+    },
+    {
+      "arm": "FULL_CONTEXT",
+      "repeat": 2,
+      "decisions": [
+        { "itemId": "ITEM-AB89229E", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-BAAD25EE", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-1D843A9F", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-82675EC0", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-024B8661", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-505430BB", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-2D78F82D", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-968E70AF", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-CCE2C592", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5348EA2B", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5EFE8569", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2F026398", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E96B316E", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-13ADC8F7", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-811FC894", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-4C05B3C2", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-959D3FCB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E14B4B93", "label": "STRUCTURAL_UNIT" }
+      ]
+    },
+    {
+      "arm": "FULL_CONTEXT",
+      "repeat": 3,
+      "decisions": [
+        { "itemId": "ITEM-AB89229E", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-BAAD25EE", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-1D843A9F", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-82675EC0", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-024B8661", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-505430BB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2D78F82D", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-968E70AF", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-CCE2C592", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5348EA2B", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5EFE8569", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2F026398", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E96B316E", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-13ADC8F7", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-811FC894", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-4C05B3C2", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-959D3FCB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E14B4B93", "label": "STRUCTURAL_UNIT" }
+      ]
+    },
+    {
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 1,
+      "decisions": [
+        { "itemId": "ITEM-AB89229E", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-BAAD25EE", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-1D843A9F", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-82675EC0", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-024B8661", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-505430BB", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-2D78F82D", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-968E70AF", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-CCE2C592", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5348EA2B", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5EFE8569", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2F026398", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E96B316E", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-13ADC8F7", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-811FC894", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-4C05B3C2", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-959D3FCB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E14B4B93", "label": "STRUCTURAL_UNIT" }
+      ]
+    },
+    {
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 2,
+      "decisions": [
+        { "itemId": "ITEM-AB89229E", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-BAAD25EE", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-1D843A9F", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-82675EC0", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-024B8661", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-505430BB", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-2D78F82D", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-968E70AF", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-CCE2C592", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5348EA2B", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5EFE8569", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2F026398", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E96B316E", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-13ADC8F7", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-811FC894", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-4C05B3C2", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-959D3FCB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E14B4B93", "label": "STRUCTURAL_UNIT" }
+      ]
+    },
+    {
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 3,
+      "decisions": [
+        { "itemId": "ITEM-AB89229E", "label": "DOCUMENT_LABEL" },
+        { "itemId": "ITEM-BAAD25EE", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-1D843A9F", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-82675EC0", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-024B8661", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-505430BB", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-2D78F82D", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-968E70AF", "label": "NON_STRUCTURAL" },
+        { "itemId": "ITEM-CCE2C592", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5348EA2B", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-5EFE8569", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-2F026398", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E96B316E", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-13ADC8F7", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-811FC894", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-4C05B3C2", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-959D3FCB", "label": "STRUCTURAL_UNIT" },
+        { "itemId": "ITEM-E14B4B93", "label": "STRUCTURAL_UNIT" }
+      ]
+    }
+  ]
+}

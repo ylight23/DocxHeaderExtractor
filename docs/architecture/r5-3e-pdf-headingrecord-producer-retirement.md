@@ -1,5 +1,8 @@
 # R5-3E - PDF HeadingRecord producer contract retirement
 
+> Historical record. Several components named below were deleted on 2026-09-18; see
+> [pdf-lane-removal.md](pdf-lane-removal.md). This file is left as written.
+
 ## Status
 
 R5-3E = PASS

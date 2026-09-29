@@ -1,0 +1,4753 @@
+{
+  "artifactKind": "a99_pdf_visual_line_segment_shadow",
+  "schemaVersion": "a99-pdf-visual-line-segment-shadow-v1",
+  "intervention": "PDF_VISUAL_LINE_SEGMENT_AUTHORITY",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "rule": {
+    "statement": "A row is divided where a gap much wider than the page's own word space sits in a corridor that a neighbouring row also leaves open while carrying text on both sides of it.",
+    "candidateGapFactor": 3,
+    "neighbourWindow": 2,
+    "corridorSupportRatio": 0.5,
+    "supportingRowsRequired": 1,
+    "whyNotGapAlone": "A wide gap is not evidence of a second region. Tab-aligned metadata, a folio beside a running header, a justified last line and a signature line all leave one. What separates two regions is whitespace that persists across rows with text on both sides of it.",
+    "riskCensusIsNotASplitRule": "The corpus count of rows with a jump over three line-heights is a risk census. It is reported beside the number actually divided, and the two are not the same measurement."
+  },
+  "lineage": {
+    "activeAuthorityMoved": false,
+    "activeRuntimeUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "lineFixedShadowSha256": "911c86211ac121659da81471a223df0126f7eefd2be90d3fe5ca4348f1c40204",
+    "blockFixedShadowSha256": "3113d17f11be3209e3fd97d9aa50ec071aef07e0cb3458f21512c6cd4de6d410",
+    "lineSegmentShadowSha256": "3b351411e1c773d14bf534f19c4ae721612716a4561396c757bc3ac35ed8b05c"
+  },
+  "doc0252": {
+    "visualRows": 598,
+    "visualLineSegments": 650,
+    "occurrences": 467,
+    "lineAtomCatalogUnits": 650,
+    "boundary": {
+      "EXACT_SOURCE_BOUNDARY": 38,
+      "NORMALIZATION_ONLY": 3
+    },
+    "fullyRepresentable": 41,
+    "notRepresentable": [],
+    "headingsNotFound": [],
+    "claims": [
+      {
+        "claim": "S0001#0",
+        "sourceAlias": "S0001",
+        "occurrenceIndex": 0,
+        "page": 1,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "occurrenceText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "M I N UTES OF TH E I NTE RNATIONAL COM PARISON PROG RAM"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0006#1",
+        "sourceAlias": "S0006",
+        "occurrenceIndex": 4,
+        "page": 1,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Session I: Welcome and meeting objectives",
+        "occurrenceText": "Session I: Welcome and meeting objectives",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Session I : Welcome a nd meeting objectives"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0043#2",
+        "sourceAlias": "S0043",
+        "occurrenceIndex": 12,
+        "page": 1,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Session II: Update on the ICP 2021 Cycle",
+        "occurrenceText": "Session II: Update on the ICP 2021 Cycle",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Session I I : U pdate on the ICP 2021 Cycle"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0043#3",
+        "sourceAlias": "S0043",
+        "occurrenceIndex": 13,
+        "page": 1,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "NORMALIZATION_ONLY",
+        "fullyRepresentable": true,
+        "goldText": "1 Global office update",
+        "occurrenceText": "1. Global office update",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "1. G loba l office u pdate"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0122#4",
+        "sourceAlias": "S0122",
+        "occurrenceIndex": 43,
+        "page": 3,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "2. Regional updates",
+        "occurrenceText": "2. Regional updates",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "2. Regiona l u pdates"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0127#5",
+        "sourceAlias": "S0127",
+        "occurrenceIndex": 46,
+        "page": 3,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Africa",
+        "occurrenceText": "Africa",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Africa"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0141#6",
+        "sourceAlias": "S0141",
+        "occurrenceIndex": 51,
+        "page": 3,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Asia and the Pacific",
+        "occurrenceText": "Asia and the Pacific",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Asia a n d the Pa cific"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0173#7",
+        "sourceAlias": "S0173",
+        "occurrenceIndex": 63,
+        "page": 3,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Commonwealth of Independent States (CIS)",
+        "occurrenceText": "Commonwealth of Independent States (CIS)",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Co m m o nwea lth of I n de pe nde nt States (CI S)"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0199#8",
+        "sourceAlias": "S0199",
+        "occurrenceIndex": 75,
+        "page": 4,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Eurostat–OECD PPP Program",
+        "occurrenceText": "Eurostat–OECD PPP Program",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "E u rostat–O ECD P P P P rogra m"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0223#9",
+        "sourceAlias": "S0223",
+        "occurrenceIndex": 83,
+        "page": 4,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Latin America and the Caribbean",
+        "occurrenceText": "Latin America and the Caribbean",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Lati n Am e rica a n d the Ca ri bbea n"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0244#10",
+        "sourceAlias": "S0244",
+        "occurrenceIndex": 93,
+        "page": 4,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Western Asia",
+        "occurrenceText": "Western Asia",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Weste rn Asia"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0268#11",
+        "sourceAlias": "S0268",
+        "occurrenceIndex": 106,
+        "page": 5,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Session III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceText": "Session III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Session I I I : Short- a nd Long-Term Resea rch a nd Development Agenda"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0269#12",
+        "sourceAlias": "S0269",
+        "occurrenceIndex": 107,
+        "page": 5,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "1. Research Topics Emerging from the Previous ICP Cycles",
+        "occurrenceText": "1. Research Topics Emerging from the Previous ICP Cycles",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "1. Resea rch Topics Emerging from the Previous ICP Cycles"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0363#13",
+        "sourceAlias": "S0363",
+        "occurrenceIndex": 135,
+        "page": 6,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "2. Forthcoming Research Topics",
+        "occurrenceText": "2. Forthcoming Research Topics",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "2. Forthcom ing Resea rch Topics"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0460#14",
+        "sourceAlias": "S0460",
+        "occurrenceIndex": 169,
+        "page": 7,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "occurrenceText": "Session IV: TAG Functioning and Terms of Reference for Task Forces",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Session IV: TAG Fu nction ing a nd Terms of Reference for Task Forces"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0460#15",
+        "sourceAlias": "S0460",
+        "occurrenceIndex": 170,
+        "page": 7,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "NORMALIZATION_ONLY",
+        "fullyRepresentable": true,
+        "goldText": "1 TAG Composition and Terms of Reference",
+        "occurrenceText": "1. TAG Composition and Terms of Reference",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "1. TAG Com position a nd Terms of Reference"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0492#16",
+        "sourceAlias": "S0492",
+        "occurrenceIndex": 180,
+        "page": 7,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "2. Terms of Reference for a Task Force on Annual PPP Production",
+        "occurrenceText": "2. Terms of Reference for a Task Force on Annual PPP Production",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "2. Terms of Reference for a Task Force on An n ua l PPP Production"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0541#17",
+        "sourceAlias": "S0541",
+        "occurrenceIndex": 203,
+        "page": 8,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "3. Terms of Reference for a Task Force on ICP Classification Update",
+        "occurrenceText": "3. Terms of Reference for a Task Force on ICP Classification Update",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "3. Terms of Reference for a Task Force on ICP Classification U pdate"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0573#18",
+        "sourceAlias": "S0573",
+        "occurrenceIndex": 214,
+        "page": 8,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Session V: Current Research",
+        "occurrenceText": "Session V: Current Research",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Session V: Cu rrent Resea rch"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0573#19",
+        "sourceAlias": "S0573",
+        "occurrenceIndex": 215,
+        "page": 8,
+        "selectionMode": "VERBATIM_TEXT",
+        "boundary": "NORMALIZATION_ONLY",
+        "fullyRepresentable": true,
+        "goldText": "1 The Treatment of Import and Export Prices in International Comparisons",
+        "occurrenceText": "1. The Treatment of Import and Export Prices in International Comparisons",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "1. The Treatment of I m port and Export Prices in I nternationa l Com pa risons"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0616#20",
+        "sourceAlias": "S0616",
+        "occurrenceIndex": 233,
+        "page": 9,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "occurrenceText": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons",
+        "occurrenceLineCount": 2,
+        "headingVisualLines": [
+          "2. A Su rvey Based Approach to Adjustment for Qua lity Differences in Services in I nternationa l Price",
+          "Com pa risons"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0649#21",
+        "sourceAlias": "S0649",
+        "occurrenceIndex": 245,
+        "page": 9,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "occurrenceText": "3. Treatment of Scanner (Transaction) Data in the European Comparison Programme (ECP)",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "3. Treatment of Sca n ner (Transaction) Data in the Eu ropea n Com pa rison Progra mme (ECP)"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0693#22",
+        "sourceAlias": "S0693",
+        "occurrenceIndex": 262,
+        "page": 10,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "4. Treatment of Negative Expenditures in ICP",
+        "occurrenceText": "4. Treatment of Negative Expenditures in ICP",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "4. Treatment of Negative Expenditu res in ICP"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0732#23",
+        "sourceAlias": "S0732",
+        "occurrenceIndex": 272,
+        "page": 10,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "5. Fine Tuning Global Linking Procedures",
+        "occurrenceText": "5. Fine Tuning Global Linking Procedures",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "5. Fine Tu ning Globa l Lin king Procedu res"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0818#24",
+        "sourceAlias": "S0818",
+        "occurrenceIndex": 307,
+        "page": 12,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "6. Improving Reliability of Price Comparisons",
+        "occurrenceText": "6. Improving Reliability of Price Comparisons",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "6. I m proving Relia bility of Price Com pa risons"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0893#25",
+        "sourceAlias": "S0893",
+        "occurrenceIndex": 332,
+        "page": 12,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Session VI: Any Other Business",
+        "occurrenceText": "Session VI: Any Other Business",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Session VI : Any Other Bu siness"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0911#26",
+        "sourceAlias": "S0911",
+        "occurrenceIndex": 341,
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Agenda",
+        "occurrenceText": "Agenda",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "Agenda"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0912#27",
+        "sourceAlias": "S0912",
+        "occurrenceIndex": 342,
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+        "occurrenceText": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "DAY 1 : Friday, Ma rch 7, 2025 | Cha ir: Pa u l SCH REYER"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0914#28",
+        "sourceAlias": "S0914",
+        "occurrenceIndex": 343,
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "SESSION I: Welcome and Opening Remarks",
+        "occurrenceText": "SESSION I: Welcome and Opening Remarks",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "SESSION I : Welcome a nd Opening Rema rks"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0917#29",
+        "sourceAlias": "S0917",
+        "occurrenceIndex": 346,
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "occurrenceText": "SESSION II: Update on the ICP 2021 and 2024 Cycles",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "SESSION I I : U pdate on the ICP 202 1 a nd 2024 Cycles"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0920#30",
+        "sourceAlias": "S0920",
+        "occurrenceIndex": 350,
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceText": "SESSION III: Short- and Long-Term Research and Development Agenda",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "SESSION I I I : Short- a nd Long-Term Resea rch a nd Development Agenda"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0925#31",
+        "sourceAlias": "S0925",
+        "occurrenceIndex": 358,
+        "page": 13,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+        "occurrenceText": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "SESSION IV: TAG Fu nctioning a nd Terms of Refence for Task Forces"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0930#32",
+        "sourceAlias": "S0930",
+        "occurrenceIndex": 365,
+        "page": 14,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "SESSION V: Current Research",
+        "occurrenceText": "SESSION V: Current Research",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "SESSION V: Cu rrent Research"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0933#33",
+        "sourceAlias": "S0933",
+        "occurrenceIndex": 369,
+        "page": 14,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+        "occurrenceText": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "DAY 2 : Satu rday, Ma rch 8, 2025 | Cha ir: Prasada RAO"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0935#34",
+        "sourceAlias": "S0935",
+        "occurrenceIndex": 370,
+        "page": 14,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "SESSION V: Current Research (Cont’d)",
+        "occurrenceText": "SESSION V: Current Research (Cont’d)",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "SESSION V: Cu rrent Resea rch (Cont’d)"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0946#35",
+        "sourceAlias": "S0946",
+        "occurrenceIndex": 391,
+        "page": 14,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "SESSION VI: Closing",
+        "occurrenceText": "SESSION VI: Closing",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "SESSION VI : Closing"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0949#36",
+        "sourceAlias": "S0949",
+        "occurrenceIndex": 394,
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "Annex 2: List of Participants",
+        "occurrenceText": "Annex 2: List of Participants",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "An nex 2: List of Pa rticipa nts"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0950#37",
+        "sourceAlias": "S0950",
+        "occurrenceIndex": 395,
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "ICP Technical Advisory Group members",
+        "occurrenceText": "ICP Technical Advisory Group members",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "ICP Technical Advisory Grou p mem bers"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0968#38",
+        "sourceAlias": "S0968",
+        "occurrenceIndex": 412,
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "ICP experts, guest speakers, and observers",
+        "occurrenceText": "ICP experts, guest speakers, and observers",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "ICP experts, guest spea kers, a nd observers"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0987#39",
+        "sourceAlias": "S0987",
+        "occurrenceIndex": 430,
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "ICP Inter-Agency Coordination Group (IACG)",
+        "occurrenceText": "ICP Inter-Agency Coordination Group (IACG)",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "ICP I nter-Agency Coordination G rou p (IACG)"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      },
+      {
+        "claim": "S0994#40",
+        "sourceAlias": "S0994",
+        "occurrenceIndex": 447,
+        "page": 15,
+        "selectionMode": "WHOLE_ALIAS",
+        "boundary": "EXACT_SOURCE_BOUNDARY",
+        "fullyRepresentable": true,
+        "goldText": "World Bank",
+        "occurrenceText": "World Bank",
+        "occurrenceLineCount": 1,
+        "headingVisualLines": [
+          "World Ba n k"
+        ],
+        "extraVisualLinesInOccurrence": [],
+        "foreignOccurrencesOnHeadingLine": []
+      }
+    ]
+  },
+  "corpus": {
+    "documents": 83,
+    "unreadableDocuments": 0,
+    "visualRows": 291709,
+    "totalSegments": 354129,
+    "rowsWith1Segment": 262641,
+    "rowsWith2Segments": 16196,
+    "rowsWith3PlusSegments": 12872,
+    "documentsWithMultiSegmentRows": 69,
+    "riskRowsWithGapOver3LineHeights": 34084,
+    "riskRowsActuallyDivided": 21058,
+    "note": "The two risk numbers are not the same measurement. The first counts rows with wide whitespace; the second counts rows the corridor rule divided.",
+    "dividedSamples": [
+      {
+        "caseId": "001_Bo_luat_Dan_su_91-2015-QH13.pdf|p1|712.9",
+        "page": 1,
+        "rowText": "QUỐC HỘI  CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "segments": [
+          {
+            "text": "QUỐC HỘI",
+            "left": 119.5,
+            "right": 181.2
+          },
+          {
+            "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+            "left": 247,
+            "right": 496.6
+          }
+        ]
+      },
+      {
+        "caseId": "001_Bo_luat_Dan_su_91-2015-QH13.pdf|p1|697.9",
+        "page": 1,
+        "rowText": "--------  Độc lập - Tự do - Hạnh phúc",
+        "segments": [
+          {
+            "text": "--------",
+            "left": 134.6,
+            "right": 165.9
+          },
+          {
+            "text": "Độc lập - Tự do - Hạnh phúc",
+            "left": 298.5,
+            "right": 445
+          }
+        ]
+      },
+      {
+        "caseId": "003_Luat_Doanh_nghiep_59-2020-QH14.pdf|p1|712.9",
+        "page": 1,
+        "rowText": "QUỐC HỘI  CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "segments": [
+          {
+            "text": "QUỐC HỘI",
+            "left": 119.5,
+            "right": 181.2
+          },
+          {
+            "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+            "left": 247,
+            "right": 496.6
+          }
+        ]
+      },
+      {
+        "caseId": "003_Luat_Doanh_nghiep_59-2020-QH14.pdf|p1|697.9",
+        "page": 1,
+        "rowText": "-------  Độc lập - Tự do - Hạnh phúc",
+        "segments": [
+          {
+            "text": "-------",
+            "left": 136.6,
+            "right": 163.9
+          },
+          {
+            "text": "Độc lập - Tự do - Hạnh phúc",
+            "left": 298.5,
+            "right": 445
+          }
+        ]
+      },
+      {
+        "caseId": "004_Luat_Dau_tu_61-2020-QH14_EN.pdf|p1|784.5",
+        "page": 1,
+        "rowText": "THE NATIONAL  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE NATIONAL",
+            "left": 122.2,
+            "right": 221.9
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 271.2,
+            "right": 529.6
+          }
+        ]
+      },
+      {
+        "caseId": "004_Luat_Dau_tu_61-2020-QH14_EN.pdf|p1|769.7",
+        "page": 1,
+        "rowText": "ASSEMBLY  Independence - Freedom - Happiness",
+        "segments": [
+          {
+            "text": "ASSEMBLY",
+            "left": 136.3,
+            "right": 207.5
+          },
+          {
+            "text": "Independence - Freedom - Happiness",
+            "left": 297.4,
+            "right": 503.2
+          }
+        ]
+      },
+      {
+        "caseId": "005_Luat_Dau_thau_22-2023-QH15_EN.pdf|p1|719.3",
+        "page": 1,
+        "rowText": "THE NATIONAL  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE NATIONAL",
+            "left": 111.3,
+            "right": 210.1
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 265.8,
+            "right": 523.4
+          }
+        ]
+      },
+      {
+        "caseId": "005_Luat_Dau_thau_22-2023-QH15_EN.pdf|p1|704.4",
+        "page": 1,
+        "rowText": "ASSEMBLY  Independence - Freedom - Happiness",
+        "segments": [
+          {
+            "text": "ASSEMBLY",
+            "left": 125.3,
+            "right": 195.3
+          },
+          {
+            "text": "Independence - Freedom - Happiness",
+            "left": 291.6,
+            "right": 497.2
+          }
+        ]
+      },
+      {
+        "caseId": "012_Luat_Ke_toan_hop_nhat_2026.pdf|p39|402.4",
+        "page": 39,
+        "rowText": "VĂN PHÒNG QUỐC HỘI  XÁC THỰC VĂN BẢN HỢP NHẤT",
+        "segments": [
+          {
+            "text": "VĂN PHÒNG QUỐC HỘI",
+            "left": 104.6,
+            "right": 265.6
+          },
+          {
+            "text": "XÁC THỰC VĂN BẢN HỢP NHẤT",
+            "left": 309.3,
+            "right": 528.7
+          }
+        ]
+      },
+      {
+        "caseId": "012_Luat_Ke_toan_hop_nhat_2026.pdf|p39|380.0",
+        "page": 39,
+        "rowText": "Số: 41/VBHN-VPQH  Hà Nội, ngày 16 tháng 3 năm 2026",
+        "segments": [
+          {
+            "text": "Số: 41/VBHN-VPQH",
+            "left": 124.9,
+            "right": 246.3
+          },
+          {
+            "text": "Hà Nội, ngày 16 tháng 3 năm 2026",
+            "left": 320.1,
+            "right": 518.2
+          }
+        ]
+      },
+      {
+        "caseId": "013_Luat_Quan_ly_thue_38-2019-QH14.pdf|p1|738.9",
+        "page": 1,
+        "rowText": "QUỐC HỘI  CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT",
+        "segments": [
+          {
+            "text": "QUỐC HỘI",
+            "left": 125,
+            "right": 191.7
+          },
+          {
+            "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT",
+            "left": 263.1,
+            "right": 499
+          }
+        ]
+      },
+      {
+        "caseId": "015_Luat_Cac_to_chuc_tin_dung_32-2024-QH15.pdf|p1|712.9",
+        "page": 1,
+        "rowText": "QUỐC HỘI  CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "segments": [
+          {
+            "text": "QUỐC HỘI",
+            "left": 126.3,
+            "right": 187.9
+          },
+          {
+            "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+            "left": 271.7,
+            "right": 521.3
+          }
+        ]
+      },
+      {
+        "caseId": "015_Luat_Cac_to_chuc_tin_dung_32-2024-QH15.pdf|p1|697.9",
+        "page": 1,
+        "rowText": "-------  Độc lập - Tự do - Hạnh phúc",
+        "segments": [
+          {
+            "text": "-------",
+            "left": 143.3,
+            "right": 170.7
+          },
+          {
+            "text": "Độc lập - Tự do - Hạnh phúc",
+            "left": 323.1,
+            "right": 469.5
+          }
+        ]
+      },
+      {
+        "caseId": "017_ND_123-2020_Hoa_don_chung_tu.pdf|p1|725.8",
+        "page": 1,
+        "rowText": "CHÍNH PHỦ  CỘNG HÒAXÃ HỘI CHỦ NGHĨAVIỆT NAM",
+        "segments": [
+          {
+            "text": "CHÍNH PHỦ",
+            "left": 92.8,
+            "right": 146.5
+          },
+          {
+            "text": "CỘNG HÒAXÃ HỘI CHỦ NGHĨAVIỆT NAM",
+            "left": 304.3,
+            "right": 503.5
+          }
+        ]
+      },
+      {
+        "caseId": "017_ND_123-2020_Hoa_don_chung_tu.pdf|p1|709.8",
+        "page": 1,
+        "rowText": "_________  Độc lập - Tự do - Hạnh phúc",
+        "segments": [
+          {
+            "text": "_________",
+            "left": 94.9,
+            "right": 144.7
+          },
+          {
+            "text": "Độc lập - Tự do - Hạnh phúc",
+            "left": 337.7,
+            "right": 470.1
+          }
+        ]
+      },
+      {
+        "caseId": "018_ND_70-2025_Sua_doi_hoa_don_EN.pdf|p1|761.7",
+        "page": 1,
+        "rowText": "THE GOVERNMENT  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE GOVERNMENT",
+            "left": 96.9,
+            "right": 222.6
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 256.4,
+            "right": 514.8
+          }
+        ]
+      },
+      {
+        "caseId": "018_ND_70-2025_Sua_doi_hoa_don_EN.pdf|p1|745.4",
+        "page": 1,
+        "rowText": "_______  Independence - Freedom - Happiness",
+        "segments": [
+          {
+            "text": "_______",
+            "left": 144.8,
+            "right": 174.7
+          },
+          {
+            "text": "Independence - Freedom - Happiness",
+            "left": 282.4,
+            "right": 488.2
+          }
+        ]
+      },
+      {
+        "caseId": "019_TT_200-2014_Che_do_ke_toan_DN.pdf|p1|671.7",
+        "page": 1,
+        "rowText": "BỘ TÀI CHÍNH  CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "segments": [
+          {
+            "text": "BỘ TÀI CHÍNH",
+            "left": 98.1,
+            "right": 190
+          },
+          {
+            "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+            "left": 249,
+            "right": 519.4
+          }
+        ]
+      },
+      {
+        "caseId": "019_TT_200-2014_Che_do_ke_toan_DN.pdf|p1|626.9",
+        "page": 1,
+        "rowText": "Số: 200/20 1 4/TT-BTC  Hà Nội, ngày 22 tháng 12 năm 2014",
+        "segments": [
+          {
+            "text": "Số: 200/20 1 4/TT-BTC",
+            "left": 85.4,
+            "right": 202.8
+          },
+          {
+            "text": "Hà Nội, ngày 22 tháng 12 năm 2014",
+            "left": 290.4,
+            "right": 480.4
+          }
+        ]
+      },
+      {
+        "caseId": "020_TT_133-2016_Che_do_ke_toan_SME.pdf|p19|296.6",
+        "page": 19,
+        "rowText": "khođầukỳ  trongkỳ",
+        "segments": [
+          {
+            "text": "khođầukỳ",
+            "left": 266.5,
+            "right": 305.8
+          },
+          {
+            "text": "trongkỳ",
+            "left": 428.6,
+            "right": 457.7
+          }
+        ]
+      },
+      {
+        "caseId": "020_TT_133-2016_Che_do_ke_toan_SME.pdf|p19|263.6",
+        "page": 19,
+        "rowText": "dùngtrongkỳ dùngtrongkỳ  vàgiáhạchtoáncủaNVL(1)",
+        "segments": [
+          {
+            "text": "dùngtrongkỳ dùngtrongkỳ",
+            "left": 116.7,
+            "right": 310.3
+          },
+          {
+            "text": "vàgiáhạchtoáncủaNVL(1)",
+            "left": 389.9,
+            "right": 495.7
+          }
+        ]
+      },
+      {
+        "caseId": "024_ND_15-2020_Xu_phat_BC_VT_CNTT.pdf|p85|758.6",
+        "page": 85,
+        "rowText": "-Thủtướng, các PhóThủtướng Chính phủ;  TM.CHÍNH PHỦ",
+        "segments": [
+          {
+            "text": "-Thủtướng, các PhóThủtướng Chính phủ;",
+            "left": 88.2,
+            "right": 259.5
+          },
+          {
+            "text": "TM.CHÍNH PHỦ",
+            "left": 436.8,
+            "right": 505.2
+          }
+        ]
+      },
+      {
+        "caseId": "028_WB_RFB_Works_Without_Prequal_2017.pdf|p8|117.9",
+        "page": 8,
+        "rowText": "1  IBRD and IDA are generally called the World Bank. Since the procurement requirements for IBRD and IDA",
+        "segments": [
+          {
+            "text": "1",
+            "left": 72.8,
+            "right": 74.5
+          },
+          {
+            "text": "IBRD and IDA are generally called the World Bank. Since the procurement requirements for IBRD and IDA",
+            "left": 90.3,
+            "right": 539.6
+          }
+        ]
+      },
+      {
+        "caseId": "028_WB_RFB_Works_Without_Prequal_2017.pdf|p10|633.8",
+        "page": 10,
+        "rowText": "Section V -  Eligible Countries",
+        "segments": [
+          {
+            "text": "Section V -",
+            "left": 72.6,
+            "right": 127.7
+          },
+          {
+            "text": "Eligible Countries",
+            "left": 144.3,
+            "right": 236.6
+          }
+        ]
+      },
+      {
+        "caseId": "029_WB_RFP_Works_DesignBuild_2021.pdf|p1|704.4",
+        "page": 1,
+        "rowText": "S T AN D A RD  P RO C U RE M E N T",
+        "segments": [
+          {
+            "text": "S T AN D A RD",
+            "left": 84.1,
+            "right": 254
+          },
+          {
+            "text": "P RO C U RE M E N T",
+            "left": 270.2,
+            "right": 514.9
+          }
+        ]
+      },
+      {
+        "caseId": "029_WB_RFP_Works_DesignBuild_2021.pdf|p8|129.8",
+        "page": 8,
+        "rowText": "2  Insert if applicable: “This contract will be jointly financed by [insert name of cofinancing agency]. Procurement",
+        "segments": [
+          {
+            "text": "2",
+            "left": 72.2,
+            "right": 75
+          },
+          {
+            "text": "Insert if applicable: “This contract will be jointly financed by [insert name of cofinancing agency]. Procurement",
+            "left": 90.3,
+            "right": 540
+          }
+        ]
+      },
+      {
+        "caseId": "030_WB_RFP_Consulting_Services_2019.pdf|p9|689.6",
+        "page": 9,
+        "rowText": "S E L E C T I O N O F  C O N S U L T A N T S",
+        "segments": [
+          {
+            "text": "S E L E C T I O N O F",
+            "left": 122,
+            "right": 303.2
+          },
+          {
+            "text": "C O N S U L T A N T S",
+            "left": 317.7,
+            "right": 500.1
+          }
+        ]
+      },
+      {
+        "caseId": "030_WB_RFP_Consulting_Services_2019.pdf|p17|456.4",
+        "page": 17,
+        "rowText": "(c) “Bank” means the International Bank  for",
+        "segments": [
+          {
+            "text": "(c) “Bank” means the International Bank",
+            "left": 243.8,
+            "right": 498.7
+          },
+          {
+            "text": "for",
+            "left": 514.9,
+            "right": 528.5
+          }
+        ]
+      },
+      {
+        "caseId": "032_WB_Plant_TwoStage_2020.pdf|p8|130.4",
+        "page": 8,
+        "rowText": "1  Substitute “contracts” where Proposals are called concurrently for multiple contracts. Add a new para. 3 and renumber paras 3 - 8 as follows:",
+        "segments": [
+          {
+            "text": "1",
+            "left": 72.6,
+            "right": 73.9
+          },
+          {
+            "text": "Substitute “contracts” where Proposals are called concurrently for multiple contracts. Add a new para. 3 and renumber paras 3 - 8 as follows:",
+            "left": 90.5,
+            "right": 527.4
+          }
+        ]
+      },
+      {
+        "caseId": "032_WB_Plant_TwoStage_2020.pdf|p8|109.8",
+        "page": 8,
+        "rowText": "2  Insert ifapplicable: “This contract will bejointly financed by [insert name ofcofinancing agency]. Procurement process will be governed by the",
+        "segments": [
+          {
+            "text": "2",
+            "left": 72.1,
+            "right": 74.3
+          },
+          {
+            "text": "Insert ifapplicable: “This contract will bejointly financed by [insert name ofcofinancing agency]. Procurement process will be governed by the",
+            "left": 90.2,
+            "right": 537.8
+          }
+        ]
+      },
+      {
+        "caseId": "034_WB_Plant_Without_Prequal_2016.pdf|p7|131.3",
+        "page": 7,
+        "rowText": "1  IBRD and IDA are generally called the World Bank. Since the procurement requirements for IBRD and IDA",
+        "segments": [
+          {
+            "text": "1",
+            "left": 90.8,
+            "right": 92.5
+          },
+          {
+            "text": "IBRD and IDA are generally called the World Bank. Since the procurement requirements for IBRD and IDA",
+            "left": 96.5,
+            "right": 540
+          }
+        ]
+      },
+      {
+        "caseId": "034_WB_Plant_Without_Prequal_2016.pdf|p9|113.2",
+        "page": 9,
+        "rowText": "(a)  substantially responsive to the bidding document, and",
+        "segments": [
+          {
+            "text": "(a)",
+            "left": 162.5,
+            "right": 174.8
+          },
+          {
+            "text": "substantially responsive to the bidding document, and",
+            "left": 198.6,
+            "right": 456.3
+          }
+        ]
+      },
+      {
+        "caseId": "035_WB_EPC_Turnkey_SingleStage_2021.pdf|p9|177.8",
+        "page": 9,
+        "rowText": "1  Substitute “contracts” where Proposals are called concurrently for multiple contracts. Add a new para. 3 and",
+        "segments": [
+          {
+            "text": "1",
+            "left": 72.8,
+            "right": 74.5
+          },
+          {
+            "text": "Substitute “contracts” where Proposals are called concurrently for multiple contracts. Add a new para. 3 and",
+            "left": 90.6,
+            "right": 540
+          }
+        ]
+      },
+      {
+        "caseId": "035_WB_EPC_Turnkey_SingleStage_2021.pdf|p9|141.2",
+        "page": 9,
+        "rowText": "2  Insert if applicable: “This contract will be jointly financed by [insert name of cofinancing agency]. Procurement",
+        "segments": [
+          {
+            "text": "2",
+            "left": 72.2,
+            "right": 75
+          },
+          {
+            "text": "Insert if applicable: “This contract will be jointly financed by [insert name of cofinancing agency]. Procurement",
+            "left": 90.3,
+            "right": 540
+          }
+        ]
+      },
+      {
+        "caseId": "041_IBRD_Financial_Statements_June_2025.pdf|p3|711.9",
+        "page": 3,
+        "rowText": "Section I : Overview Introduction  4",
+        "segments": [
+          {
+            "text": "Section I : Overview Introduction",
+            "left": 75,
+            "right": 305.6
+          },
+          {
+            "text": "4",
+            "left": 529.3,
+            "right": 533.2
+          }
+        ]
+      },
+      {
+        "caseId": "041_IBRD_Financial_Statements_June_2025.pdf|p3|700.7",
+        "page": 3,
+        "rowText": "Financial Business Model  4",
+        "segments": [
+          {
+            "text": "Financial Business Model",
+            "left": 265,
+            "right": 354.4
+          },
+          {
+            "text": "4",
+            "left": 529.3,
+            "right": 533.2
+          }
+        ]
+      },
+      {
+        "caseId": "042_IDA_Financial_Statements_June_2025.pdf|p3|691.1",
+        "page": 3,
+        "rowText": "Section I: Overview IDA Replenishment  4",
+        "segments": [
+          {
+            "text": "Section I: Overview IDA Replenishment",
+            "left": 74.9,
+            "right": 373.2
+          },
+          {
+            "text": "4",
+            "left": 533,
+            "right": 537
+          }
+        ]
+      },
+      {
+        "caseId": "042_IDA_Financial_Statements_June_2025.pdf|p3|679.1",
+        "page": 3,
+        "rowText": "Twentieth Replenishment of Resources (IDA20)  4",
+        "segments": [
+          {
+            "text": "Twentieth Replenishment of Resources (IDA20)",
+            "left": 305.1,
+            "right": 473.4
+          },
+          {
+            "text": "4",
+            "left": 533,
+            "right": 537
+          }
+        ]
+      },
+      {
+        "caseId": "043_IBRD_Financial_Statements_June_2024.pdf|p3|711.8",
+        "page": 3,
+        "rowText": "Section I : Executive Summary  Summary Financial Results  6",
+        "segments": [
+          {
+            "text": "Section I : Executive Summary",
+            "left": 75,
+            "right": 181.2
+          },
+          {
+            "text": "Summary Financial Results",
+            "left": 264.7,
+            "right": 361.4
+          },
+          {
+            "text": "6",
+            "left": 529.5,
+            "right": 533.3
+          }
+        ]
+      },
+      {
+        "caseId": "043_IBRD_Financial_Statements_June_2024.pdf|p3|694.7",
+        "page": 3,
+        "rowText": "Section I I : Overview  Introduction  8",
+        "segments": [
+          {
+            "text": "Section I I : Overview",
+            "left": 75,
+            "right": 145.7
+          },
+          {
+            "text": "Introduction",
+            "left": 265.1,
+            "right": 305.6
+          },
+          {
+            "text": "8",
+            "left": 529.5,
+            "right": 533.3
+          }
+        ]
+      },
+      {
+        "caseId": "044_IDA_Financial_Statements_June_2024.pdf|p3|691.0",
+        "page": 3,
+        "rowText": "Section I: Executive Summary  Summary of Financial Results  5",
+        "segments": [
+          {
+            "text": "Section I: Executive Summary",
+            "left": 74.9,
+            "right": 188.7
+          },
+          {
+            "text": "Summary of Financial Results",
+            "left": 305.2,
+            "right": 410.7
+          },
+          {
+            "text": "5",
+            "left": 533.3,
+            "right": 537.1
+          }
+        ]
+      },
+      {
+        "caseId": "044_IDA_Financial_Statements_June_2024.pdf|p3|667.1",
+        "page": 3,
+        "rowText": "Section II: Overview  IDA Replenishment  7",
+        "segments": [
+          {
+            "text": "Section II: Overview",
+            "left": 74.9,
+            "right": 150.6
+          },
+          {
+            "text": "IDA Replenishment",
+            "left": 305.6,
+            "right": 373.2
+          },
+          {
+            "text": "7",
+            "left": 533.3,
+            "right": 537
+          }
+        ]
+      },
+      {
+        "caseId": "045_IBRD_Financial_Statements_June_2023.pdf|p3|747.4",
+        "page": 3,
+        "rowText": "Management’s Discussion and Analysis  Section I: Executive Summary",
+        "segments": [
+          {
+            "text": "Management’s Discussion and Analysis",
+            "left": 78,
+            "right": 248
+          },
+          {
+            "text": "Section I: Executive Summary",
+            "left": 275.8,
+            "right": 408.6
+          }
+        ]
+      },
+      {
+        "caseId": "045_IBRD_Financial_Statements_June_2023.pdf|p3|711.8",
+        "page": 3,
+        "rowText": "Section I : Executive Summary  Summary Financial Results  4",
+        "segments": [
+          {
+            "text": "Section I : Executive Summary",
+            "left": 75,
+            "right": 181.2
+          },
+          {
+            "text": "Summary Financial Results",
+            "left": 279,
+            "right": 375.6
+          },
+          {
+            "text": "4",
+            "left": 533,
+            "right": 537
+          }
+        ]
+      },
+      {
+        "caseId": "046_IBRD_Financial_Statements_September_2024.pdf|p3|699.2",
+        "page": 3,
+        "rowText": "Section I: Executive Summary  Summary Financial Results  4",
+        "segments": [
+          {
+            "text": "Section I: Executive Summary",
+            "left": 75.1,
+            "right": 207.8
+          },
+          {
+            "text": "Summary Financial Results",
+            "left": 286.6,
+            "right": 407.4
+          },
+          {
+            "text": "4",
+            "left": 531.2,
+            "right": 536.1
+          }
+        ]
+      },
+      {
+        "caseId": "046_IBRD_Financial_Statements_September_2024.pdf|p3|685.0",
+        "page": 3,
+        "rowText": "Section I I: Overview  Financial Business Model  6",
+        "segments": [
+          {
+            "text": "Section I I: Overview",
+            "left": 75.1,
+            "right": 163.4
+          },
+          {
+            "text": "Financial Business Model",
+            "left": 287,
+            "right": 398.8
+          },
+          {
+            "text": "6",
+            "left": 531.4,
+            "right": 536.2
+          }
+        ]
+      },
+      {
+        "caseId": "047_IBRD_Financial_Statements_December_2024.pdf|p3|699.2",
+        "page": 3,
+        "rowText": "Section I: Executive Summary  Summary Financial Results  4",
+        "segments": [
+          {
+            "text": "Section I: Executive Summary",
+            "left": 75.1,
+            "right": 207.8
+          },
+          {
+            "text": "Summary Financial Results",
+            "left": 286.6,
+            "right": 407.4
+          },
+          {
+            "text": "4",
+            "left": 531.2,
+            "right": 536.1
+          }
+        ]
+      },
+      {
+        "caseId": "047_IBRD_Financial_Statements_December_2024.pdf|p3|685.0",
+        "page": 3,
+        "rowText": "Section I I: Overview  Financial Business Model  6",
+        "segments": [
+          {
+            "text": "Section I I: Overview",
+            "left": 75.1,
+            "right": 163.4
+          },
+          {
+            "text": "Financial Business Model",
+            "left": 287,
+            "right": 398.8
+          },
+          {
+            "text": "6",
+            "left": 531.4,
+            "right": 536.2
+          }
+        ]
+      },
+      {
+        "caseId": "048_IBRD_Financial_Statements_March_2025.pdf|p3|699.2",
+        "page": 3,
+        "rowText": "Section I: Executive Summary  Summary Financial Results  4",
+        "segments": [
+          {
+            "text": "Section I: Executive Summary",
+            "left": 75.1,
+            "right": 207.8
+          },
+          {
+            "text": "Summary Financial Results",
+            "left": 286.6,
+            "right": 407.4
+          },
+          {
+            "text": "4",
+            "left": 531.2,
+            "right": 536.1
+          }
+        ]
+      },
+      {
+        "caseId": "048_IBRD_Financial_Statements_March_2025.pdf|p3|685.0",
+        "page": 3,
+        "rowText": "Section I I: Overview  Financial Business Model  6",
+        "segments": [
+          {
+            "text": "Section I I: Overview",
+            "left": 75.1,
+            "right": 163.4
+          },
+          {
+            "text": "Financial Business Model",
+            "left": 287,
+            "right": 398.8
+          },
+          {
+            "text": "6",
+            "left": 531.4,
+            "right": 536.2
+          }
+        ]
+      },
+      {
+        "caseId": "049_IDA_Financial_Statements_September_2024.pdf|p3|704.6",
+        "page": 3,
+        "rowText": "Section I: Executive Summary  Summary of Financial Results  4",
+        "segments": [
+          {
+            "text": "Section I: Executive Summary",
+            "left": 75.1,
+            "right": 207.8
+          },
+          {
+            "text": "Summary of Financial Results",
+            "left": 266.3,
+            "right": 398.2
+          },
+          {
+            "text": "4",
+            "left": 531.9,
+            "right": 536.9
+          }
+        ]
+      },
+      {
+        "caseId": "049_IDA_Financial_Statements_September_2024.pdf|p3|690.4",
+        "page": 3,
+        "rowText": "Section I I: Overview  IDA Replenishment  6",
+        "segments": [
+          {
+            "text": "Section I I: Overview",
+            "left": 75.1,
+            "right": 163.4
+          },
+          {
+            "text": "IDA Replenishment",
+            "left": 266.8,
+            "right": 351.4
+          },
+          {
+            "text": "6",
+            "left": 532.2,
+            "right": 536.9
+          }
+        ]
+      },
+      {
+        "caseId": "050_IDA_Financial_Statements_March_2025.pdf|p3|704.6",
+        "page": 3,
+        "rowText": "Section I: Executive Summary  Summary of Financial Results  4",
+        "segments": [
+          {
+            "text": "Section I: Executive Summary",
+            "left": 75.1,
+            "right": 207.8
+          },
+          {
+            "text": "Summary of Financial Results",
+            "left": 266.3,
+            "right": 398.2
+          },
+          {
+            "text": "4",
+            "left": 531.9,
+            "right": 536.9
+          }
+        ]
+      },
+      {
+        "caseId": "050_IDA_Financial_Statements_March_2025.pdf|p3|690.4",
+        "page": 3,
+        "rowText": "Section I I: Overview  IDA Replenishment  6",
+        "segments": [
+          {
+            "text": "Section I I: Overview",
+            "left": 75.1,
+            "right": 163.4
+          },
+          {
+            "text": "IDA Replenishment",
+            "left": 266.8,
+            "right": 351.4
+          },
+          {
+            "text": "6",
+            "left": 532.2,
+            "right": 536.9
+          }
+        ]
+      },
+      {
+        "caseId": "051_WBG_Trust_Fund_FIS_June_2024.pdf|p5|695.8",
+        "page": 5,
+        "rowText": "Contributions  Investment Income  Disbursements  Fund Balance",
+        "segments": [
+          {
+            "text": "Contributions",
+            "left": 229.4,
+            "right": 280.7
+          },
+          {
+            "text": "Investment Income",
+            "left": 301.7,
+            "right": 374
+          },
+          {
+            "text": "Disbursements",
+            "left": 386,
+            "right": 441.7
+          },
+          {
+            "text": "Fund Balance",
+            "left": 462.1,
+            "right": 511.9
+          }
+        ]
+      },
+      {
+        "caseId": "051_WBG_Trust_Fund_FIS_June_2024.pdf|p5|678.0",
+        "page": 5,
+        "rowText": "2024 $6,890  $851  $9,797  $13,626",
+        "segments": [
+          {
+            "text": "2024 $6,890",
+            "left": 94,
+            "right": 272.1
+          },
+          {
+            "text": "$851",
+            "left": 324.1,
+            "right": 344
+          },
+          {
+            "text": "$9,797",
+            "left": 394,
+            "right": 422.1
+          },
+          {
+            "text": "$13,626",
+            "left": 465,
+            "right": 498.3
+          }
+        ]
+      },
+      {
+        "caseId": "052_WBG_Trust_Fund_FIS_December_2025.pdf|p3|592.0",
+        "page": 3,
+        "rowText": "AAAAACCCCCCCCBBDDDDTAWGCUIRoEGBFFRDFPPFGTRWOE-GCITSIFPAADFFRRPFIRAAAAACCCCCCCCBBDDDDfffgsooooaaellheeiiiigggrrssivvmmnmnnmrniieiiihcceittseekttcsfaappaaatrraauulloaEttoooanRolllBlWeeElltxtcuppifilDPaasauseeUtnmmCIueCttcesnkrcrwdnaiehbssktvoeevvuOintaeleitAeemnntitcednfttlshfnRofGmgodtinIFPSepAmcnerriiaeusotmenffDecaimrrruarltaeiuneilcpnnVeestnrvGaecitnnitoetFcerrrtc2inouulPee,oeT.wcan0sIpPtnrTdrtuumtrtsrhenserueesetrRsninrt&FadstauteFhtFenSuniiiopednncnsryadvan&ilccAeePsgarritcnueltruRraellaRteiosnesarch  OHIIIIIIILLLLMMMMMMACBDDFFCDEPTNCFSRAABDIMNPGRFCGIHIPDMSTSDAATFF  OHIIIIIIILLLLMMMMMMmnnnnnDaeeietvtttttoooiuuAtgapheeeeedaaidrllnsaelnttdrrrrrtlbCeeettiinnnnnglrl-llhAymrselaaaaaaeVadDi,smPttttttgoeiMeEPeiiiiiNciooooooensvnaelerauraotnnnnnaesrtBFtirinfaaaaatrPllncarkooaeiTlllllrIgaaectceplntCBDFFiirtinvksooeAauliiFaeedienneidntsngudvnnyaadstdNenetaeCktnnfSrSdnomnlntocceufopechcrodeeuneteypcyfernhdoncumPCFtRCtiroarAoraeieaiScGptfrelncieiprrueuTstliiotoiclbsatrtaAnfaryablrotasesaenifrttsomnsoairoContfunreceelncinIiertmmatiFotAamoiunotgfnueneaIdnnnCnivzcdheayasDtnitoemgvneeenlotpDmisepnuttes",
+        "segments": [
+          {
+            "text": "AAAAACCCCCCCCBBDDDDTAWGCUIRoEGBFFRDFPPFGTRWOE-GCITSIFPAADFFRRPFIRAAAAACCCCCCCCBBDDDDfffgsooooaaellheeiiiigggrrssivvmmnmnnmrniieiiihcceittseekttcsfaappaaatrraauulloaEttoooanRolllBlWeeElltxtcuppifilDPaasauseeUtnmmCIueCttcesnkrcrwdnaiehbssktvoeevvuOintaeleitAeemnntitcednfttlshfnRofGmgodtinIFPSepAmcnerriiaeusotmenffDecaimrrruarltaeiuneilcpnnVeestnrvGaecitnnitoetFcerrrtc2inouulPee,oeT.wcan0sIpPtnrTdrtuumtrtsrhenserueesetrRsninrt&FadstauteFhtFenSuniiiopednncnsryadvan&ilccAeePsgarritcnueltruRraellaRteiosnesarch",
+            "left": 90.7,
+            "right": 268.4
+          },
+          {
+            "text": "OHIIIIIIILLLLMMMMMMACBDDFFCDEPTNCFSRAABDIMNPGRFCGIHIPDMSTSDAATFF",
+            "left": 302.4,
+            "right": 321.1
+          },
+          {
+            "text": "OHIIIIIIILLLLMMMMMMmnnnnnDaeeietvtttttoooiuuAtgapheeeeedaaidrllnsaelnttdrrrrrtlbCeeettiinnnnnglrl-llhAymrselaaaaaaeVadDi,smPttttttgoeiMeEPeiiiiiNciooooooensvnaelerauraotnnnnnaesrtBFtirinfaaaaatrPllncarkooaeiTlllllrIgaaectceplntCBDFFiirtinvksooeAauliiFaeedienneidntsngudvnnyaadstdNenetaeCktnnfSrSdnomnlntocceufopechcrodeeuneteypcyfernhdoncumPCFtRCtiroarAoraeieaiScGptfrelncieiprrueuTstliiotoiclbsatrtaAnfaryablrotasesaenifrttsomnsoairoContfunreceelncinIiertmmatiFotAamoiunotgfnueneaIdnnnCnivzcdheayasDtnitoemgvneeenlotpDmisepnuttes",
+            "left": 341.6,
+            "right": 495.5
+          }
+        ]
+      },
+      {
+        "caseId": "052_WBG_Trust_Fund_FIS_December_2025.pdf|p3|436.9",
+        "page": 3,
+        "rowText": "GGEEEEEEEEEFFFFFFFFYSSCOOTTHIASCCDENCEFV-/TAXCMIUPRRFFBCTETTFAUIIPSEPGGEEEEEEEEEFFFFFFFFaiiu.rrrxxaduunnnrlsOnaeeottcevnseeurrcageeeeooi.btedicrralRrninnggppaisanA-Solltc.ddiyyeelTttatYnSsiHCaeeiyaaEt.tSoaimaeI,aeddinlannle.oinnanSedCmlnvIcTTaddndCr.ninoditaeennrtoUotoEICinoetgd,rrnnmrfxkfemmenrgNltrTmMPRinmmarFcaaTTraCteeiutaueitrcnfcessoadunsnsanitesomnftdirlaitnaiivauFsAcogFpdFoerulrInysoecaFsrVlR/itemrcaFC-aaeisiEouelfsrnIiuytlnpBtonteoyrdRtuonsArDIcpnceseveasaessinssatItmUnaidnnnpcilSBoeetlnmruPeeernongEgttcirhnoaegnmnoEimnngtyitUykTraruinsteFFuIFnd  TTTVSSSSSSUUUUUPPPRTTAACDFFRSEPEPSFKRRTAFCTENNTTULRRLF2NLFFDP.ET0F  TTTTVSSSSSSUUUUPPPRtocihhaerrrrReinrknnaooceuaooubTnncriigensadttpaltarrddiAieeltttdhpsiuineneiPcnddaTTiuncFg-,AaemretgDulreeeSUKRonlysiCinvsorrtRitceinFmmmanlVaedinoeisedEtgmPoibirlSeeRxcTCdilrTerraaeiseeeneeeooesrTtfftvcgumlt,mnneePirleusaiascutrFRotpntAyeleusoeenoFtfscUtlrdiNcataurtoeiaanFodciennvnouirnveitddtey,lnnteinsrPtPdLrcybryrFayoye,afnjopcReLdariocelrTitwcteryoedanrndsieentsgrusEcatminoidsnsRaioensndpsoRnesfoermTrustFund",
+        "segments": [
+          {
+            "text": "GGEEEEEEEEEFFFFFFFFYSSCOOTTHIASCCDENCEFV-/TAXCMIUPRRFFBCTETTFAUIIPSEPGGEEEEEEEEEFFFFFFFFaiiu.rrrxxaduunnnrlsOnaeeottcevnseeurrcageeeeooi.btedicrralRrninnggppaisanA-Solltc.ddiyyeelTttatYnSsiHCaeeiyaaEt.tSoaimaeI,aeddinlannle.oinnanSedCmlnvIcTTaddndCr.ninoditaeennrtoUotoEICinoetgd,rrnnmrfxkfemmenrgNltrTmMPRinmmarFcaaTTraCteeiutaueitrcnfcessoadunsnsanitesomnftdirlaitnaiivauFsAcogFpdFoerulrInysoecaFsrVlR/itemrcaFC-aaeisiEouelfsrnIiuytlnpBtonteoyrdRtuonsArDIcpnceseveasaessinssatItmUnaidnnnpcilSBoeetlnmruPeeernongEgttcirhnoaegnmnoEimnngtyitUykTraruinsteFFuIFnd",
+            "left": 90.8,
+            "right": 285.5
+          },
+          {
+            "text": "TTTVSSSSSSUUUUUPPPRTTAACDFFRSEPEPSFKRRTAFCTENNTTULRRLF2NLFFDP.ET0F",
+            "left": 302.2,
+            "right": 322.8
+          },
+          {
+            "text": "TTTTVSSSSSSUUUUPPPRtocihhaerrrrReinrknnaooceuaooubTnncriigensadttpaltarrddiAieeltttdhpsiuineneiPcnddaTTiuncFg-,AaemretgDulreeeSUKRonlysiCinvsorrtRitceinFmmmanlVaedinoeisedEtgmPoibirlSeeRxcTCdilrTerraaeiseeeneeeooesrTtfftvcgumlt,mnneePirleusaiascutrFRotpntAyeleusoeenoFtfscUtlrdiNcataurtoeiaanFodciennvnouirnveitddtey,lnnteinsrPtPdLrcybryrFayoye,afnjopcReLdariocelrTitwcteryoedanrndsieentsgrusEcatminoidsnsRaioensndpsoRnesfoermTrustFund",
+            "left": 341.3,
+            "right": 510.1
+          }
+        ]
+      },
+      {
+        "caseId": "053_IDA_Information_Statement_FY25.pdf|p1|651.8",
+        "page": 1,
+        "rowText": "DEVE L O P M E  N",
+        "segments": [
+          {
+            "text": "DEVE L O P M E",
+            "left": 278,
+            "right": 331.2
+          },
+          {
+            "text": "N",
+            "left": 335.4,
+            "right": 336.2
+          }
+        ]
+      },
+      {
+        "caseId": "053_IDA_Information_Statement_FY25.pdf|p1|639.4",
+        "page": 1,
+        "rowText": "L  T",
+        "segments": [
+          {
+            "text": "L",
+            "left": 268.5,
+            "right": 274.9
+          },
+          {
+            "text": "T",
+            "left": 341,
+            "right": 340
+          }
+        ]
+      },
+      {
+        "caseId": "054_IBRD_Information_Statement_FY25.pdf|p1|201.2",
+        "page": 1,
+        "rowText": "The Information  Statement is  also  available on  IBRD’ s Investor  Relations website at",
+        "segments": [
+          {
+            "text": "The Information",
+            "left": 83.2,
+            "right": 158.4
+          },
+          {
+            "text": "Statement is",
+            "left": 171.3,
+            "right": 229.4
+          },
+          {
+            "text": "also",
+            "left": 242.3,
+            "right": 257.8
+          },
+          {
+            "text": "available on",
+            "left": 270.6,
+            "right": 328.5
+          },
+          {
+            "text": "IBRD’ s Investor",
+            "left": 340.9,
+            "right": 416.8
+          },
+          {
+            "text": "Relations website at",
+            "left": 429.2,
+            "right": 529
+          }
+        ]
+      },
+      {
+        "caseId": "054_IBRD_Information_Statement_FY25.pdf|p6|655.0",
+        "page": 6,
+        "rowText": "Si m pl ified Balance Sheet  Reven ue  Fu nding  Net I nterest",
+        "segments": [
+          {
+            "text": "Si m pl ified Balance Sheet",
+            "left": 86.5,
+            "right": 201
+          },
+          {
+            "text": "Reven ue",
+            "left": 227.8,
+            "right": 266.8
+          },
+          {
+            "text": "Fu nding",
+            "left": 297.5,
+            "right": 334
+          },
+          {
+            "text": "Net I nterest",
+            "left": 361,
+            "right": 413.1
+          }
+        ]
+      },
+      {
+        "caseId": "055_IDA_External_Review_FY25.pdf|p3|228.3",
+        "page": 3,
+        "rowText": "IDA IDA  Commitments Disbursements",
+        "segments": [
+          {
+            "text": "IDA IDA",
+            "left": 441.5,
+            "right": 535.8
+          },
+          {
+            "text": "Commitments Disbursements",
+            "left": 574.4,
+            "right": 720.6
+          }
+        ]
+      },
+      {
+        "caseId": "055_IDA_External_Review_FY25.pdf|p3|215.3",
+        "page": 3,
+        "rowText": "Approval  Cumulative  Cumulative",
+        "segments": [
+          {
+            "text": "Approval",
+            "left": 296.8,
+            "right": 337.5
+          },
+          {
+            "text": "Cumulative",
+            "left": 423,
+            "right": 474.7
+          },
+          {
+            "text": "Cumulative",
+            "left": 501.9,
+            "right": 553.7
+          }
+        ]
+      },
+      {
+        "caseId": "056_OpenStax_Business_Law_I_Essentials.pdf|p4|225.5",
+        "page": 4,
+        "rowText": "B&W PAPE RBACK BOO K ISBN-1 3  978-1 -975076-62-7",
+        "segments": [
+          {
+            "text": "B&W PAPE RBACK BOO K ISBN-1 3",
+            "left": 78.1,
+            "right": 218.9
+          },
+          {
+            "text": "978-1 -975076-62-7",
+            "left": 276.5,
+            "right": 354.5
+          }
+        ]
+      },
+      {
+        "caseId": "056_OpenStax_Business_Law_I_Essentials.pdf|p4|213.9",
+        "page": 4,
+        "rowText": "DIGITAL VE RSIO N ISBN-1 3  978-1 -9471 72-78-4",
+        "segments": [
+          {
+            "text": "DIGITAL VE RSIO N ISBN-1 3",
+            "left": 78.1,
+            "right": 192.8
+          },
+          {
+            "text": "978-1 -9471 72-78-4",
+            "left": 276.5,
+            "right": 354.6
+          }
+        ]
+      },
+      {
+        "caseId": "057_Quantitative_Methods_in_Finance_Lecture_Notes.pdf|p1|593.7",
+        "page": 1,
+        "rowText": "62  Perdre un bonheur rêvé, renoncer à tout un avenir, est une",
+        "segments": [
+          {
+            "text": "62",
+            "left": 18.3,
+            "right": 32.3
+          },
+          {
+            "text": "Perdre un bonheur rêvé, renoncer à tout un avenir, est une",
+            "left": 252.8,
+            "right": 509.6
+          }
+        ]
+      },
+      {
+        "caseId": "057_Quantitative_Methods_in_Finance_Lecture_Notes.pdf|p1|573.7",
+        "page": 1,
+        "rowText": "02  souffrance plus aiguë que celle causée par la ruine d’une",
+        "segments": [
+          {
+            "text": "02",
+            "left": 18.5,
+            "right": 32.3
+          },
+          {
+            "text": "souffrance plus aiguë que celle causée par la ruine d’une",
+            "left": 252.8,
+            "right": 495.9
+          }
+        ]
+      },
+      {
+        "caseId": "058_Machine_Learning_Lecture_Note.pdf|p1|415.2",
+        "page": 1,
+        "rowText": "sc  Kyunghyun Cho",
+        "segments": [
+          {
+            "text": "sc",
+            "left": 22.8,
+            "right": 32.2
+          },
+          {
+            "text": "Kyunghyun Cho",
+            "left": 237.1,
+            "right": 320.5
+          }
+        ]
+      },
+      {
+        "caseId": "058_Machine_Learning_Lecture_Note.pdf|p1|403.8",
+        "page": 1,
+        "rowText": "[  New York University & Genentech",
+        "segments": [
+          {
+            "text": "[",
+            "left": 18.8,
+            "right": 35.1
+          },
+          {
+            "text": "New York University & Genentech",
+            "left": 190.5,
+            "right": 367.1
+          }
+        ]
+      },
+      {
+        "caseId": "059_Lectures_on_Statistics_in_Theory.pdf|p1|593.0",
+        "page": 1,
+        "rowText": "42  Dept. of Physics and Astronomy",
+        "segments": [
+          {
+            "text": "42",
+            "left": 18.5,
+            "right": 32
+          },
+          {
+            "text": "Dept. of Physics and Astronomy",
+            "left": 206.6,
+            "right": 405.7
+          }
+        ]
+      },
+      {
+        "caseId": "059_Lectures_on_Statistics_in_Theory.pdf|p1|573.1",
+        "page": 1,
+        "rowText": "02  University of California, Los Angeles",
+        "segments": [
+          {
+            "text": "02",
+            "left": 18.5,
+            "right": 32.3
+          },
+          {
+            "text": "University of California, Los Angeles",
+            "left": 193.6,
+            "right": 418.5
+          }
+        ]
+      },
+      {
+        "caseId": "060_Elements_of_Linear_Algebra_Lecture_Notes.pdf|p1|552.4",
+        "page": 1,
+        "rowText": "na  The West University of Timi¸soara,",
+        "segments": [
+          {
+            "text": "na",
+            "left": 22.8,
+            "right": 32.2
+          },
+          {
+            "text": "The West University of Timi¸soara,",
+            "left": 218,
+            "right": 394.6
+          }
+        ]
+      },
+      {
+        "caseId": "060_Elements_of_Linear_Algebra_Lecture_Notes.pdf|p1|539.1",
+        "page": 1,
+        "rowText": "J  V. Parvan Ave. 4, RO-1900 Timi¸soara",
+        "segments": [
+          {
+            "text": "J",
+            "left": 18.8,
+            "right": 32.3
+          },
+          {
+            "text": "V. Parvan Ave. 4, RO-1900 Timi¸soara",
+            "left": 207.9,
+            "right": 406.3
+          }
+        ]
+      },
+      {
+        "caseId": "061_Introduction_to_Business_Mathematics.pdf|p1|600.1",
+        "page": 1,
+        "rowText": "51  Lecture notes for the Bachelor degree programmes",
+        "segments": [
+          {
+            "text": "51",
+            "left": 18.2,
+            "right": 32.3
+          },
+          {
+            "text": "Lecture notes for the Bachelor degree programmes",
+            "left": 184.6,
+            "right": 426.9
+          }
+        ]
+      },
+      {
+        "caseId": "061_Introduction_to_Business_Mathematics.pdf|p1|580.2",
+        "page": 1,
+        "rowText": "02  IB/IMC/IMA/ITM/IEVM/ACM/IEM/IMM",
+        "segments": [
+          {
+            "text": "02",
+            "left": 18.5,
+            "right": 32.3
+          },
+          {
+            "text": "IB/IMC/IMA/ITM/IEVM/ACM/IEM/IMM",
+            "left": 202.4,
+            "right": 409.7
+          }
+        ]
+      },
+      {
+        "caseId": "062_Lectures_on_Probability_Theory.pdf|p5|649.3",
+        "page": 5,
+        "rowText": "Abstract  3",
+        "segments": [
+          {
+            "text": "Abstract",
+            "left": 72.3,
+            "right": 112.7
+          },
+          {
+            "text": "3",
+            "left": 518.3,
+            "right": 522.8
+          }
+        ]
+      },
+      {
+        "caseId": "062_Lectures_on_Probability_Theory.pdf|p5|621.3",
+        "page": 5,
+        "rowText": "Part 1. The Modern Probability Language  9",
+        "segments": [
+          {
+            "text": "Part 1. The Modern Probability Language",
+            "left": 72.4,
+            "right": 311.1
+          },
+          {
+            "text": "9",
+            "left": 518.3,
+            "right": 522.8
+          }
+        ]
+      },
+      {
+        "caseId": "063_Advanced_Linear_Algebra.pdf|p5|541.6",
+        "page": 5,
+        "rowText": "Preface  3",
+        "segments": [
+          {
+            "text": "Preface",
+            "left": 70.5,
+            "right": 107.2
+          },
+          {
+            "text": "3",
+            "left": 518.2,
+            "right": 523
+          }
+        ]
+      },
+      {
+        "caseId": "063_Advanced_Linear_Algebra.pdf|p5|513.7",
+        "page": 5,
+        "rowText": "Part I. Linear algebra  9",
+        "segments": [
+          {
+            "text": "Part I. Linear algebra",
+            "left": 70.4,
+            "right": 205.1
+          },
+          {
+            "text": "9",
+            "left": 518.2,
+            "right": 523
+          }
+        ]
+      },
+      {
+        "caseId": "064_Machine_Learning_with_Neural_Networks.pdf|p7|630.6",
+        "page": 7,
+        "rowText": "Acknowledgements  v",
+        "segments": [
+          {
+            "text": "Acknowledgements",
+            "left": 98.9,
+            "right": 201
+          },
+          {
+            "text": "v",
+            "left": 506.9,
+            "right": 513.1
+          }
+        ]
+      },
+      {
+        "caseId": "064_Machine_Learning_with_Neural_Networks.pdf|p7|604.8",
+        "page": 7,
+        "rowText": "Contents  vii",
+        "segments": [
+          {
+            "text": "Contents",
+            "left": 99.7,
+            "right": 146.7
+          },
+          {
+            "text": "vii",
+            "left": 499.8,
+            "right": 512.7
+          }
+        ]
+      },
+      {
+        "caseId": "065_Numerical_Linear_Algebra_Lecture_Notes.pdf|p1|489.3",
+        "page": 1,
+        "rowText": "[m1.1 Existence and uniqueness . . . . . . . . . . . . . . . . . . . . . . . . . . . .  3",
+        "segments": [
+          {
+            "text": "[m1.1 Existence and uniqueness . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+            "left": 76.4,
+            "right": 497.3
+          },
+          {
+            "text": "3",
+            "left": 522.4,
+            "right": 527.3
+          }
+        ]
+      },
+      {
+        "caseId": "065_Numerical_Linear_Algebra_Lecture_Notes.pdf|p1|471.1",
+        "page": 1,
+        "rowText": "1.2 Normal equations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  4",
+        "segments": [
+          {
+            "text": "1.2 Normal equations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+            "left": 86.2,
+            "right": 497.3
+          },
+          {
+            "text": "4",
+            "left": 522.2,
+            "right": 527.4
+          }
+        ]
+      },
+      {
+        "caseId": "066_Linear_Neural_Networks_Lecture_Notes.pdf|p1|549.2",
+        "page": 1,
+        "rowText": "02  course in Princeton University on the mathematical understanding of deep learning. They",
+        "segments": [
+          {
+            "text": "02",
+            "left": 18.5,
+            "right": 32.3
+          },
+          {
+            "text": "course in Princeton University on the mathematical understanding of deep learning. They",
+            "left": 126.2,
+            "right": 486.3
+          }
+        ]
+      },
+      {
+        "caseId": "066_Linear_Neural_Networks_Lecture_Notes.pdf|p1|524.2",
+        "page": 1,
+        "rowText": "ov  a fundamental model in the study of optimization and generalization in deep learning.",
+        "segments": [
+          {
+            "text": "ov",
+            "left": 22.8,
+            "right": 32.3
+          },
+          {
+            "text": "a fundamental model in the study of optimization and generalization in deep learning.",
+            "left": 126.2,
+            "right": 487.1
+          }
+        ]
+      },
+      {
+        "caseId": "067_Algorithms_for_Massive_Data_Lecture_Notes.pdf|p1|343.5",
+        "page": 1,
+        "rowText": "57  Ca’ Foscari University of Venice",
+        "segments": [
+          {
+            "text": "57",
+            "left": 18.2,
+            "right": 32.3
+          },
+          {
+            "text": "Ca’ Foscari University of Venice",
+            "left": 224.6,
+            "right": 387.8
+          }
+        ]
+      },
+      {
+        "caseId": "067_Algorithms_for_Massive_Data_Lecture_Notes.pdf|p3|129.7",
+        "page": 3,
+        "rowText": "5 Exercises  114",
+        "segments": [
+          {
+            "text": "5 Exercises",
+            "left": 85.6,
+            "right": 145.7
+          },
+          {
+            "text": "114",
+            "left": 510.6,
+            "right": 526.6
+          }
+        ]
+      },
+      {
+        "caseId": "068_SDEs_for_Finance_Course_Notes.pdf|p1|555.9",
+        "page": 1,
+        "rowText": "02  Introduction to Stochastic Diﬀerential",
+        "segments": [
+          {
+            "text": "02",
+            "left": 18.5,
+            "right": 32.3
+          },
+          {
+            "text": "Introduction to Stochastic Diﬀerential",
+            "left": 93.8,
+            "right": 481.6
+          }
+        ]
+      },
+      {
+        "caseId": "068_SDEs_for_Finance_Course_Notes.pdf|p1|526.9",
+        "page": 1,
+        "rowText": "Jna  Equations (SDEs) for Finance",
+        "segments": [
+          {
+            "text": "Jna",
+            "left": 18.8,
+            "right": 32.3
+          },
+          {
+            "text": "Equations (SDEs) for Finance",
+            "left": 136,
+            "right": 439.4
+          }
+        ]
+      },
+      {
+        "caseId": "069_Course_in_Dynamic_Optimization.pdf|p1|504.2",
+        "page": 1,
+        "rowText": "01  These lecture notes are derived from a graduate-level course in dynamic optimization,",
+        "segments": [
+          {
+            "text": "01",
+            "left": 18.5,
+            "right": 32.3
+          },
+          {
+            "text": "These lecture notes are derived from a graduate-level course in dynamic optimization,",
+            "left": 99.7,
+            "right": 511.9
+          }
+        ]
+      },
+      {
+        "caseId": "069_Course_in_Dynamic_Optimization.pdf|p1|480.3",
+        "page": 1,
+        "rowText": "]  offering an introduction to techniques and models extensively used in management sci-",
+        "segments": [
+          {
+            "text": "]",
+            "left": 18.8,
+            "right": 35.1
+          },
+          {
+            "text": "offering an introduction to techniques and models extensively used in management sci-",
+            "left": 99.6,
+            "right": 512.1
+          }
+        ]
+      },
+      {
+        "caseId": "070_Lectures_on_Optimization_Yale.pdf|p1|471.2",
+        "page": 1,
+        "rowText": "1.1 Overview of the course . . . . . . . . . . . . . . . . . . . . . . . . . . . .  3",
+        "segments": [
+          {
+            "text": "1.1 Overview of the course . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+            "left": 110.8,
+            "right": 492.7
+          },
+          {
+            "text": "3",
+            "left": 515.2,
+            "right": 519.6
+          }
+        ]
+      },
+      {
+        "caseId": "070_Lectures_on_Optimization_Yale.pdf|p1|457.4",
+        "page": 1,
+        "rowText": "1.2 Preliminaries on convexity and smoothness . . . . . . . . . . . . . . . . .  7",
+        "segments": [
+          {
+            "text": "1.2 Preliminaries on convexity and smoothness . . . . . . . . . . . . . . . . .",
+            "left": 110.8,
+            "right": 492.7
+          },
+          {
+            "text": "7",
+            "left": 515.3,
+            "right": 519.7
+          }
+        ]
+      },
+      {
+        "caseId": "071_ICP_IACG_Minutes_Oct_2025.pdf|p22|641.1",
+        "page": 22,
+        "rowText": "09:00 – 09:30  Welcome and opening remarks",
+        "segments": [
+          {
+            "text": "09:00 – 09:30",
+            "left": 93.9,
+            "right": 154.5
+          },
+          {
+            "text": "Welcome and opening remarks",
+            "left": 180.3,
+            "right": 322.2
+          }
+        ]
+      },
+      {
+        "caseId": "071_ICP_IACG_Minutes_Oct_2025.pdf|p22|602.3",
+        "page": 22,
+        "rowText": "09:30 – 10:00  D1.00 - Introduction of the Development Economics Data Group Survey",
+        "segments": [
+          {
+            "text": "09:30 – 10:00",
+            "left": 93.9,
+            "right": 154.5
+          },
+          {
+            "text": "D1.00 - Introduction of the Development Economics Data Group Survey",
+            "left": 180.8,
+            "right": 518.3
+          }
+        ]
+      },
+      {
+        "caseId": "072_ICP_TAG_Minutes_Mar_2025.pdf|p2|333.0",
+        "page": 2,
+        "rowText": "-  Pa rtici patio n is expected to expa n d to cove r m o re eco n o m ies i n a l m ost a l l regio ns, with the Pa cific",
+        "segments": [
+          {
+            "text": "-",
+            "left": 83.6,
+            "right": 86.3
+          },
+          {
+            "text": "Pa rtici patio n is expected to expa n d to cove r m o re eco n o m ies i n a l m ost a l l regio ns, with the Pa cific",
+            "left": 102,
+            "right": 546.8
+          }
+        ]
+      },
+      {
+        "caseId": "072_ICP_TAG_Minutes_Mar_2025.pdf|p2|298.0",
+        "page": 2,
+        "rowText": "-  A n ew m ode rn clo u d- a n d S M DX-ba sed syste m fo r the co l lectio n a n d va l idatio n of p rice data a n d the",
+        "segments": [
+          {
+            "text": "-",
+            "left": 83.6,
+            "right": 86.3
+          },
+          {
+            "text": "A n ew m ode rn clo u d- a n d S M DX-ba sed syste m fo r the co l lectio n a n d va l idatio n of p rice data a n d the",
+            "left": 101.2,
+            "right": 546.6
+          }
+        ]
+      },
+      {
+        "caseId": "075_FORTIS_GC_Minutes_Nov21_2024.pdf|p1|221.5",
+        "page": 1,
+        "rowText": "-  For the Funding Request Template, language will be proposed by Ukraine on the process",
+        "segments": [
+          {
+            "text": "-",
+            "left": 90.5,
+            "right": 93.5
+          },
+          {
+            "text": "For the Funding Request Template, language will be proposed by Ukraine on the process",
+            "left": 108.2,
+            "right": 539.5
+          }
+        ]
+      },
+      {
+        "caseId": "075_FORTIS_GC_Minutes_Nov21_2024.pdf|p1|191.7",
+        "page": 1,
+        "rowText": "-  For the Financial Procedures Agreement template, language in sections 4. 1 (a) and 4.7 is",
+        "segments": [
+          {
+            "text": "-",
+            "left": 90.5,
+            "right": 93.5
+          },
+          {
+            "text": "For the Financial Procedures Agreement template, language in sections 4. 1 (a) and 4.7 is",
+            "left": 108.2,
+            "right": 539.5
+          }
+        ]
+      },
+      {
+        "caseId": "076_ICP_IACG08_Minutes_2023.pdf|p5|564.9",
+        "page": 5,
+        "rowText": "–  The n u m be r of pa rtici pati ng eco no m ies fo r the I CP 202 1 cycle is co nsiste nt with p revio u s cycles .",
+        "segments": [
+          {
+            "text": "–",
+            "left": 89.9,
+            "right": 95.5
+          },
+          {
+            "text": "The n u m be r of pa rtici pati ng eco no m ies fo r the I CP 202 1 cycle is co nsiste nt with p revio u s cycles .",
+            "left": 108.1,
+            "right": 535.8
+          }
+        ]
+      },
+      {
+        "caseId": "076_ICP_IACG08_Minutes_2023.pdf|p5|551.5",
+        "page": 5,
+        "rowText": "–  The regio ns fa ced va rio u s cha l le nges a risi ng fro m COVI D- 19, the wa r i n U kra i n e, a n d the crisis i n",
+        "segments": [
+          {
+            "text": "–",
+            "left": 89.9,
+            "right": 95.5
+          },
+          {
+            "text": "The regio ns fa ced va rio u s cha l le nges a risi ng fro m COVI D- 19, the wa r i n U kra i n e, a n d the crisis i n",
+            "left": 108.1,
+            "right": 539.3
+          }
+        ]
+      },
+      {
+        "caseId": "077_ICP_TAG_Minutes_Nov_2023.pdf|p2|675.6",
+        "page": 2,
+        "rowText": "–  The n u m be r of pa rtici pati ng eco no m ies fo r the I CP 202 1 cycle is co nsiste nt with p revio u s cycles .",
+        "segments": [
+          {
+            "text": "–",
+            "left": 89.9,
+            "right": 95.5
+          },
+          {
+            "text": "The n u m be r of pa rtici pati ng eco no m ies fo r the I CP 202 1 cycle is co nsiste nt with p revio u s cycles .",
+            "left": 108.1,
+            "right": 535.8
+          }
+        ]
+      },
+      {
+        "caseId": "077_ICP_TAG_Minutes_Nov_2023.pdf|p2|656.2",
+        "page": 2,
+        "rowText": "–  The regio ns fa ced va rio u s cha l le nges a risi ng fro m COVI D- 19, the wa r i n U kra i n e, a n d the crisis i n",
+        "segments": [
+          {
+            "text": "–",
+            "left": 89.9,
+            "right": 95.5
+          },
+          {
+            "text": "The regio ns fa ced va rio u s cha l le nges a risi ng fro m COVI D- 19, the wa r i n U kra i n e, a n d the crisis i n",
+            "left": 108.1,
+            "right": 539.3
+          }
+        ]
+      },
+      {
+        "caseId": "078_ICP_IACG07_Minutes_May_2023.pdf|p5|711.8",
+        "page": 5,
+        "rowText": "−  B H gra p hs : B H CVs; Co u ntry p rice leve l i n dexes (P LI s) a n d re lated regio n a l ave rages a n d regio n a l",
+        "segments": [
+          {
+            "text": "−",
+            "left": 90,
+            "right": 95.7
+          },
+          {
+            "text": "B H gra p hs : B H CVs; Co u ntry p rice leve l i n dexes (P LI s) a n d re lated regio n a l ave rages a n d regio n a l",
+            "left": 108.9,
+            "right": 539.3
+          }
+        ]
+      },
+      {
+        "caseId": "078_ICP_IACG07_Minutes_May_2023.pdf|p5|684.4",
+        "page": 5,
+        "rowText": "−  Ite m gra p hs : Ite m CVs, co u ntry ave rage p rices i n U S do l la rs, a n d regio n a l ave rages a n d regio n a l",
+        "segments": [
+          {
+            "text": "−",
+            "left": 90,
+            "right": 95.7
+          },
+          {
+            "text": "Ite m gra p hs : Ite m CVs, co u ntry ave rage p rices i n U S do l la rs, a n d regio n a l ave rages a n d regio n a l",
+            "left": 108.9,
+            "right": 539.3
+          }
+        ]
+      },
+      {
+        "caseId": "079_ICP_TAG_Minutes_Apr_2024.pdf|p5|447.8",
+        "page": 5,
+        "rowText": "–  World Bank press release, blog, and social media",
+        "segments": [
+          {
+            "text": "–",
+            "left": 89.9,
+            "right": 95.6
+          },
+          {
+            "text": "World Bank press release, blog, and social media",
+            "left": 108.3,
+            "right": 325.2
+          }
+        ]
+      },
+      {
+        "caseId": "079_ICP_TAG_Minutes_Apr_2024.pdf|p5|434.3",
+        "page": 5,
+        "rowText": "–  FAQ, factsheets, and results highlights",
+        "segments": [
+          {
+            "text": "–",
+            "left": 89.9,
+            "right": 95.6
+          },
+          {
+            "text": "FAQ, factsheets, and results highlights",
+            "left": 108.9,
+            "right": 277.8
+          }
+        ]
+      },
+      {
+        "caseId": "080_ICP_Governing_Board_Minutes_Feb_2023.pdf|p2|188.2",
+        "page": 2,
+        "rowText": "-  the progress made with the ICP 2021 cycle, despite the Covid-19 pandemic and the",
+        "segments": [
+          {
+            "text": "-",
+            "left": 101.1,
+            "right": 104
+          },
+          {
+            "text": "the progress made with the ICP 2021 cycle, despite the Covid-19 pandemic and the",
+            "left": 119.3,
+            "right": 493.8
+          }
+        ]
+      },
+      {
+        "caseId": "080_ICP_Governing_Board_Minutes_Feb_2023.pdf|p2|160.0",
+        "page": 2,
+        "rowText": "-  the need to identify a new approach to link the CIS region into the global set ofICP",
+        "segments": [
+          {
+            "text": "-",
+            "left": 101.1,
+            "right": 104
+          },
+          {
+            "text": "the need to identify a new approach to link the CIS region into the global set ofICP",
+            "left": 119.3,
+            "right": 494.7
+          }
+        ]
+      },
+      {
+        "caseId": "081_Luat_Doanh_nghiep_2020_EN.pdf|p1|762.7",
+        "page": 1,
+        "rowText": "THE NATIONAL  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE NATIONAL",
+            "left": 111,
+            "right": 212.4
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 253.3,
+            "right": 518.4
+          }
+        ]
+      },
+      {
+        "caseId": "081_Luat_Doanh_nghiep_2020_EN.pdf|p62|110.9",
+        "page": 62,
+        "rowText": "development orientation, approval of annual financial  statements,",
+        "segments": [
+          {
+            "text": "development orientation, approval of annual financial",
+            "left": 72.5,
+            "right": 443.9
+          },
+          {
+            "text": "statements,",
+            "left": 462.6,
+            "right": 522.2
+          }
+        ]
+      },
+      {
+        "caseId": "083_Luat_An_ninh_mang_2018_EN.pdf|p1|751.4",
+        "page": 1,
+        "rowText": "THE PRESIDENT  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE PRESIDENT",
+            "left": 134.5,
+            "right": 230.7
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 290,
+            "right": 528.6
+          }
+        ]
+      },
+      {
+        "caseId": "083_Luat_An_ninh_mang_2018_EN.pdf|p2|751.4",
+        "page": 2,
+        "rowText": "THE NATIONAL  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE NATIONAL",
+            "left": 139.3,
+            "right": 231.5
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 292,
+            "right": 530.6
+          }
+        ]
+      },
+      {
+        "caseId": "085_Luat_Nha_o_2023_EN.pdf|p1|790.8",
+        "page": 1,
+        "rowText": "THE NATIONAL  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE NATIONAL",
+            "left": 105.5,
+            "right": 205.2
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 264.5,
+            "right": 522.9
+          }
+        ]
+      },
+      {
+        "caseId": "085_Luat_Nha_o_2023_EN.pdf|p1|775.9",
+        "page": 1,
+        "rowText": "ASSEMBLY  Independence - Freedom - Happiness",
+        "segments": [
+          {
+            "text": "ASSEMBLY",
+            "left": 119.8,
+            "right": 190.9
+          },
+          {
+            "text": "Independence - Freedom - Happiness",
+            "left": 290.7,
+            "right": 496.4
+          }
+        ]
+      },
+      {
+        "caseId": "086_Luat_Dau_tu_2020_EN_alt.pdf|p1|688.9",
+        "page": 1,
+        "rowText": "THE PRESIDENT  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE PRESIDENT",
+            "left": 104.9,
+            "right": 208.9
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 261,
+            "right": 519.4
+          }
+        ]
+      },
+      {
+        "caseId": "086_Luat_Dau_tu_2020_EN_alt.pdf|p2|689.0",
+        "page": 2,
+        "rowText": "THE NATIONAL  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE NATIONAL",
+            "left": 104.8,
+            "right": 204.5
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 260.9,
+            "right": 519.3
+          }
+        ]
+      },
+      {
+        "caseId": "087_ND_53-2022_An_ninh_mang_EN.pdf|p1|780.1",
+        "page": 1,
+        "rowText": "THE GOVERNMENT  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE GOVERNMENT",
+            "left": 79.9,
+            "right": 205.7
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 239,
+            "right": 497.4
+          }
+        ]
+      },
+      {
+        "caseId": "087_ND_53-2022_An_ninh_mang_EN.pdf|p1|758.4",
+        "page": 1,
+        "rowText": "__________  Independence - Freedom - Happiness",
+        "segments": [
+          {
+            "text": "__________",
+            "left": 110.2,
+            "right": 175.3
+          },
+          {
+            "text": "Independence - Freedom - Happiness",
+            "left": 265.3,
+            "right": 471
+          }
+        ]
+      },
+      {
+        "caseId": "088_ND_69-2018_Ngoai_thuong_EN.pdf|p1|706.8",
+        "page": 1,
+        "rowText": "THE GOVERNMENT  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE GOVERNMENT",
+            "left": 92.1,
+            "right": 208.3
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 252.4,
+            "right": 491.2
+          }
+        ]
+      },
+      {
+        "caseId": "088_ND_69-2018_Ngoai_thuong_EN.pdf|p1|691.8",
+        "page": 1,
+        "rowText": "-------  Independence – Freedom – Happiness",
+        "segments": [
+          {
+            "text": "-------",
+            "left": 136.6,
+            "right": 163.9
+          },
+          {
+            "text": "Independence – Freedom – Happiness",
+            "left": 274.6,
+            "right": 468.6
+          }
+        ]
+      },
+      {
+        "caseId": "089_ND_195-2013_Luat_Xuat_ban_EN.pdf|p1|706.8",
+        "page": 1,
+        "rowText": "THE GOVERNMENT  THE SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "THE GOVERNMENT",
+            "left": 92.1,
+            "right": 208.3
+          },
+          {
+            "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 256.2,
+            "right": 487.3
+          }
+        ]
+      },
+      {
+        "caseId": "089_ND_195-2013_Luat_Xuat_ban_EN.pdf|p1|691.8",
+        "page": 1,
+        "rowText": "-------  Independence – Freedom – Happiness",
+        "segments": [
+          {
+            "text": "-------",
+            "left": 136.6,
+            "right": 163.9
+          },
+          {
+            "text": "Independence – Freedom – Happiness",
+            "left": 274.4,
+            "right": 468.6
+          }
+        ]
+      },
+      {
+        "caseId": "090_ND_155-2018_Sua_doi_Bo_Y_te_EN.pdf|p1|706.8",
+        "page": 1,
+        "rowText": "GOVERNMENT  SOCIALIST REPUBLIC OF VIETNAM",
+        "segments": [
+          {
+            "text": "GOVERNMENT",
+            "left": 106.4,
+            "right": 194.2
+          },
+          {
+            "text": "SOCIALIST REPUBLIC OF VIETNAM",
+            "left": 266.8,
+            "right": 476.9
+          }
+        ]
+      },
+      {
+        "caseId": "090_ND_155-2018_Sua_doi_Bo_Y_te_EN.pdf|p1|691.8",
+        "page": 1,
+        "rowText": "--------  Independence - Freedom - Happiness",
+        "segments": [
+          {
+            "text": "--------",
+            "left": 134.6,
+            "right": 165.8
+          },
+          {
+            "text": "Independence - Freedom - Happiness",
+            "left": 276.6,
+            "right": 466.7
+          }
+        ]
+      },
+      {
+        "caseId": "091_RFC9110_HTTP_Semantics.pdf|p1|757.0",
+        "page": 1,
+        "rowText": "Stream:  Internet Engineering Task Force (IETF)",
+        "segments": [
+          {
+            "text": "Stream:",
+            "left": 71.3,
+            "right": 103.5
+          },
+          {
+            "text": "Internet Engineering Task Force (IETF)",
+            "left": 152.2,
+            "right": 315
+          }
+        ]
+      },
+      {
+        "caseId": "091_RFC9110_HTTP_Semantics.pdf|p1|745.2",
+        "page": 1,
+        "rowText": "RFC:  9 1 1 0",
+        "segments": [
+          {
+            "text": "RFC:",
+            "left": 71.2,
+            "right": 89.3
+          },
+          {
+            "text": "9 1 1 0",
+            "left": 152.4,
+            "right": 172.3
+          }
+        ]
+      },
+      {
+        "caseId": "092_RFC9111_HTTP_Caching.pdf|p1|757.0",
+        "page": 1,
+        "rowText": "Stream:  Internet Engineering Task Force (IETF)",
+        "segments": [
+          {
+            "text": "Stream:",
+            "left": 71.3,
+            "right": 103.5
+          },
+          {
+            "text": "Internet Engineering Task Force (IETF)",
+            "left": 152.2,
+            "right": 315
+          }
+        ]
+      },
+      {
+        "caseId": "092_RFC9111_HTTP_Caching.pdf|p1|745.2",
+        "page": 1,
+        "rowText": "RFC:  9 1 1 1",
+        "segments": [
+          {
+            "text": "RFC:",
+            "left": 71.2,
+            "right": 89.3
+          },
+          {
+            "text": "9 1 1 1",
+            "left": 152.4,
+            "right": 171.9
+          }
+        ]
+      },
+      {
+        "caseId": "093_RFC9112_HTTP_1_1.pdf|p1|757.0",
+        "page": 1,
+        "rowText": "Stream:  Internet Engineering Task Force (IETF)",
+        "segments": [
+          {
+            "text": "Stream:",
+            "left": 71.3,
+            "right": 103.5
+          },
+          {
+            "text": "Internet Engineering Task Force (IETF)",
+            "left": 152.2,
+            "right": 315
+          }
+        ]
+      },
+      {
+        "caseId": "093_RFC9112_HTTP_1_1.pdf|p1|745.2",
+        "page": 1,
+        "rowText": "RFC:  9 1 1 2",
+        "segments": [
+          {
+            "text": "RFC:",
+            "left": 71.2,
+            "right": 89.3
+          },
+          {
+            "text": "9 1 1 2",
+            "left": 152.4,
+            "right": 172.1
+          }
+        ]
+      },
+      {
+        "caseId": "094_RFC9113_HTTP_2.pdf|p1|757.0",
+        "page": 1,
+        "rowText": "Stream:  Internet Engineering Task Force (IETF)",
+        "segments": [
+          {
+            "text": "Stream:",
+            "left": 71.3,
+            "right": 103.5
+          },
+          {
+            "text": "Internet Engineering Task Force (IETF)",
+            "left": 152.2,
+            "right": 315
+          }
+        ]
+      },
+      {
+        "caseId": "094_RFC9113_HTTP_2.pdf|p1|745.2",
+        "page": 1,
+        "rowText": "RFC:  9 1 1 3",
+        "segments": [
+          {
+            "text": "RFC:",
+            "left": 71.2,
+            "right": 89.3
+          },
+          {
+            "text": "9 1 1 3",
+            "left": 152.4,
+            "right": 172.2
+          }
+        ]
+      },
+      {
+        "caseId": "095_RFC9114_HTTP_3.pdf|p1|757.0",
+        "page": 1,
+        "rowText": "Stream:  Internet Engineering Task Force (IETF)",
+        "segments": [
+          {
+            "text": "Stream:",
+            "left": 71.3,
+            "right": 103.5
+          },
+          {
+            "text": "Internet Engineering Task Force (IETF)",
+            "left": 152.2,
+            "right": 315
+          }
+        ]
+      },
+      {
+        "caseId": "095_RFC9114_HTTP_3.pdf|p1|745.2",
+        "page": 1,
+        "rowText": "RFC:  9 1 14",
+        "segments": [
+          {
+            "text": "RFC:",
+            "left": 71.2,
+            "right": 89.3
+          },
+          {
+            "text": "9 1 14",
+            "left": 152.4,
+            "right": 172.6
+          }
+        ]
+      }
+    ],
+    "wideButUndividedSamples": [
+      {
+        "caseId": "004_Luat_Dau_tu_61-2020-QH14_EN.pdf|p19|469.1",
+        "page": 19,
+        "rowText": "the law on land; m.vn",
+        "segments": [
+          {
+            "text": "the law on land; m.vn",
+            "left": 85.2,
+            "right": 444.5
+          }
+        ]
+      },
+      {
+        "caseId": "004_Luat_Dau_tu_61-2020-QH14_EN.pdf|p59|699.4",
+        "page": 59,
+        "rowText": "No. SECTORS AND TRADES",
+        "segments": [
+          {
+            "text": "No. SECTORS AND TRADES",
+            "left": 95,
+            "right": 411.6
+          }
+        ]
+      },
+      {
+        "caseId": "005_Luat_Dau_thau_22-2023-QH15_EN.pdf|p21|445.7",
+        "page": 21,
+        "rowText": "bidding activities ; m.vn",
+        "segments": [
+          {
+            "text": "bidding activities ; m.vn",
+            "left": 72,
+            "right": 452.9
+          }
+        ]
+      },
+      {
+        "caseId": "005_Luat_Dau_thau_22-2023-QH15_EN.pdf|p52|445.1",
+        "page": 52,
+        "rowText": "relevant laws . m.vn",
+        "segments": [
+          {
+            "text": "relevant laws . m.vn",
+            "left": 72.1,
+            "right": 452.9
+          }
+        ]
+      },
+      {
+        "caseId": "006_Luat_Dat_dai_31-2024-QH15.pdf|p1|781.7",
+        "page": 1,
+        "rowText": "CÔNG BÁO/Số 3 63 + 3 64/Ngày 0 1 -3 -2024 3",
+        "segments": [
+          {
+            "text": "CÔNG BÁO/Số 3 63 + 3 64/Ngày 0 1 -3 -2024 3",
+            "left": 174.6,
+            "right": 530.6
+          }
+        ]
+      },
+      {
+        "caseId": "006_Luat_Dat_dai_31-2024-QH15.pdf|p1|746.3",
+        "page": 1,
+        "rowText": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "segments": [
+          {
+            "text": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+            "left": 109.8,
+            "right": 528
+          }
+        ]
+      },
+      {
+        "caseId": "007_Luat_Nha_o_27-2023-QH15.pdf|p1|781.7",
+        "page": 1,
+        "rowText": "CÔNG BÁO/Số 3 7 + 3 8/Ngày 08-0 1 -2024 3",
+        "segments": [
+          {
+            "text": "CÔNG BÁO/Số 3 7 + 3 8/Ngày 08-0 1 -2024 3",
+            "left": 178,
+            "right": 530.6
+          }
+        ]
+      },
+      {
+        "caseId": "007_Luat_Nha_o_27-2023-QH15.pdf|p1|746.7",
+        "page": 1,
+        "rowText": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "segments": [
+          {
+            "text": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+            "left": 108.9,
+            "right": 519.4
+          }
+        ]
+      },
+      {
+        "caseId": "008_Luat_Kinh_doanh_BDS_29-2023-QH15.pdf|p1|781.5",
+        "page": 1,
+        "rowText": "CÔNG BÁO/Số 43 + 44/Ngày 08-0 1 -2024 2 1",
+        "segments": [
+          {
+            "text": "CÔNG BÁO/Số 43 + 44/Ngày 08-0 1 -2024 2 1",
+            "left": 178.1,
+            "right": 530.2
+          }
+        ]
+      },
+      {
+        "caseId": "008_Luat_Kinh_doanh_BDS_29-2023-QH15.pdf|p1|750.0",
+        "page": 1,
+        "rowText": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "segments": [
+          {
+            "text": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+            "left": 106.6,
+            "right": 514.2
+          }
+        ]
+      },
+      {
+        "caseId": "009_Luat_Giao_dich_dien_tu_20-2023-QH15.pdf|p1|781.5",
+        "page": 1,
+        "rowText": "4 CÔNG BÁO/Số 867 + 868/Ngày 30-7-2023",
+        "segments": [
+          {
+            "text": "4 CÔNG BÁO/Số 867 + 868/Ngày 30-7-2023",
+            "left": 64.3,
+            "right": 420.7
+          }
+        ]
+      },
+      {
+        "caseId": "009_Luat_Giao_dich_dien_tu_20-2023-QH15.pdf|p1|748.4",
+        "page": 1,
+        "rowText": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "segments": [
+          {
+            "text": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+            "left": 109.4,
+            "right": 527.8
+          }
+        ]
+      },
+      {
+        "caseId": "010_Luat_An_ninh_mang_24-2018-QH14.pdf|p1|781.7",
+        "page": 1,
+        "rowText": "42 CÔNG BÁO/Số 775 + 776/Ngày 1 4-7-20 1 8",
+        "segments": [
+          {
+            "text": "42 CÔNG BÁO/Số 775 + 776/Ngày 1 4-7-20 1 8",
+            "left": 64.3,
+            "right": 421
+          }
+        ]
+      },
+      {
+        "caseId": "010_Luat_An_ninh_mang_24-2018-QH14.pdf|p1|750.0",
+        "page": 1,
+        "rowText": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "segments": [
+          {
+            "text": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+            "left": 107.9,
+            "right": 515.5
+          }
+        ]
+      },
+      {
+        "caseId": "012_Luat_Ke_toan_hop_nhat_2026.pdf|p1|797.5",
+        "page": 1,
+        "rowText": "CÔNG BÁO/Số 172/Ngày 3 1-03-2026 73",
+        "segments": [
+          {
+            "text": "CÔNG BÁO/Số 172/Ngày 3 1-03-2026 73",
+            "left": 203,
+            "right": 537.7
+          }
+        ]
+      },
+      {
+        "caseId": "012_Luat_Ke_toan_hop_nhat_2026.pdf|p2|797.5",
+        "page": 2,
+        "rowText": "CÔNG BÁO/Số 172/Ngày 3 1-03-2026 74",
+        "segments": [
+          {
+            "text": "CÔNG BÁO/Số 172/Ngày 3 1-03-2026 74",
+            "left": 203,
+            "right": 538.4
+          }
+        ]
+      },
+      {
+        "caseId": "013_Luat_Quan_ly_thue_38-2019-QH14.pdf|p1|718.6",
+        "page": 1,
+        "rowText": "-------- NAM",
+        "segments": [
+          {
+            "text": "-------- NAM",
+            "left": 141.3,
+            "right": 396.3
+          }
+        ]
+      },
+      {
+        "caseId": "013_Luat_Quan_ly_thue_38-2019-QH14.pdf|p1|648.7",
+        "page": 1,
+        "rowText": "Luật số: 38/2019/QH14 Hà Nội, ngày 13 tháng 6 năm 2019",
+        "segments": [
+          {
+            "text": "Luật số: 38/2019/QH14 Hà Nội, ngày 13 tháng 6 năm 2019",
+            "left": 96.8,
+            "right": 512.1
+          }
+        ]
+      },
+      {
+        "caseId": "017_ND_123-2020_Hoa_don_chung_tu.pdf|p38|633.1",
+        "page": 38,
+        "rowText": "- Văn phòng Chủ tịch nước; Nguyễn Xuân Phúc",
+        "segments": [
+          {
+            "text": "- Văn phòng Chủ tịch nước; Nguyễn Xuân Phúc",
+            "left": 26.4,
+            "right": 527
+          }
+        ]
+      },
+      {
+        "caseId": "017_ND_123-2020_Hoa_don_chung_tu.pdf|p38|295.6",
+        "page": 38,
+        "rowText": "Mẫu số Tên hồ sơ, mẫu biểu Điều, Chương có liên",
+        "segments": [
+          {
+            "text": "Mẫu số Tên hồ sơ, mẫu biểu Điều, Chương có liên",
+            "left": 73.7,
+            "right": 576
+          }
+        ]
+      },
+      {
+        "caseId": "018_ND_70-2025_Sua_doi_hoa_don_EN.pdf|p29|470.1",
+        "page": 29,
+        "rowText": "a) Obligations: m.vn",
+        "segments": [
+          {
+            "text": "a) Obligations: m.vn",
+            "left": 108.5,
+            "right": 444.6
+          }
+        ]
+      },
+      {
+        "caseId": "018_ND_70-2025_Sua_doi_hoa_don_EN.pdf|p41|468.4",
+        "page": 41,
+        "rowText": "the information user.” m.vn",
+        "segments": [
+          {
+            "text": "the information user.” m.vn",
+            "left": 72.2,
+            "right": 444.6
+          }
+        ]
+      },
+      {
+        "caseId": "019_TT_200-2014_Che_do_ke_toan_DN.pdf|p1|782.3",
+        "page": 1,
+        "rowText": "2 CÔNG BÁO/Số 279 + 280/Ngày 28-02-20 1 5",
+        "segments": [
+          {
+            "text": "2 CÔNG BÁO/Số 279 + 280/Ngày 28-02-20 1 5",
+            "left": 64.4,
+            "right": 415.4
+          }
+        ]
+      },
+      {
+        "caseId": "019_TT_200-2014_Che_do_ke_toan_DN.pdf|p2|782.3",
+        "page": 2,
+        "rowText": "CÔNG BÁO/Số 279 + 280/Ngày 28-02-20 1 5 3",
+        "segments": [
+          {
+            "text": "CÔNG BÁO/Số 279 + 280/Ngày 28-02-20 1 5 3",
+            "left": 180.1,
+            "right": 530.8
+          }
+        ]
+      },
+      {
+        "caseId": "020_TT_133-2016_Che_do_ke_toan_SME.pdf|p1|804.7",
+        "page": 1,
+        "rowText": "BỘ TÀICHÍNH CỘNGHÒAXÃHỘICHỦNGHĨAVIỆTNAM",
+        "segments": [
+          {
+            "text": "BỘ TÀICHÍNH CỘNGHÒAXÃHỘICHỦNGHĨAVIỆTNAM",
+            "left": 126.8,
+            "right": 465.5
+          }
+        ]
+      },
+      {
+        "caseId": "020_TT_133-2016_Che_do_ke_toan_SME.pdf|p1|789.4",
+        "page": 1,
+        "rowText": "------- Độclập-Tựdo -Hạnhphúc",
+        "segments": [
+          {
+            "text": "------- Độclập-Tựdo -Hạnhphúc",
+            "left": 149.4,
+            "right": 425.8
+          }
+        ]
+      },
+      {
+        "caseId": "024_ND_15-2020_Xu_phat_BC_VT_CNTT.pdf|p1|805.1",
+        "page": 1,
+        "rowText": "CHÍNH PHỦ CỘNG HÒAXÃHỘICHỦ NGHĨAVIỆT NAM",
+        "segments": [
+          {
+            "text": "CHÍNH PHỦ CỘNG HÒAXÃHỘICHỦ NGHĨAVIỆT NAM",
+            "left": 147.2,
+            "right": 472.2
+          }
+        ]
+      },
+      {
+        "caseId": "024_ND_15-2020_Xu_phat_BC_VT_CNTT.pdf|p1|781.3",
+        "page": 1,
+        "rowText": "-------------- Độclập-Tựdo-Hạnhphúc",
+        "segments": [
+          {
+            "text": "-------------- Độclập-Tựdo-Hạnhphúc",
+            "left": 151.2,
+            "right": 442.9
+          }
+        ]
+      },
+      {
+        "caseId": "028_WB_RFB_Works_Without_Prequal_2017.pdf|p15|749.6",
+        "page": 15,
+        "rowText": "Part 1 – Bidding Procedures 3",
+        "segments": [
+          {
+            "text": "Part 1 – Bidding Procedures 3",
+            "left": 72.2,
+            "right": 557.2
+          }
+        ]
+      },
+      {
+        "caseId": "028_WB_RFB_Works_Without_Prequal_2017.pdf|p16|749.6",
+        "page": 16,
+        "rowText": "Section I – Instructions to Bidders (ITB) 4",
+        "segments": [
+          {
+            "text": "Section I – Instructions to Bidders (ITB) 4",
+            "left": 72.6,
+            "right": 557.7
+          }
+        ]
+      },
+      {
+        "caseId": "029_WB_RFP_Works_DesignBuild_2021.pdf|p14|749.2",
+        "page": 14,
+        "rowText": "Section I - Instructions to Proposers (ITP) 2",
+        "segments": [
+          {
+            "text": "Section I - Instructions to Proposers (ITP) 2",
+            "left": 72.6,
+            "right": 539.6
+          }
+        ]
+      },
+      {
+        "caseId": "029_WB_RFP_Works_DesignBuild_2021.pdf|p15|749.2",
+        "page": 15,
+        "rowText": "Section I - Instructions to Proposers (ITP) 3",
+        "segments": [
+          {
+            "text": "Section I - Instructions to Proposers (ITP) 3",
+            "left": 72.6,
+            "right": 539.2
+          }
+        ]
+      },
+      {
+        "caseId": "030_WB_RFP_Consulting_Services_2019.pdf|p7|749.3",
+        "page": 7,
+        "rowText": "SPD Summary vii",
+        "segments": [
+          {
+            "text": "SPD Summary vii",
+            "left": 72.6,
+            "right": 521.9
+          }
+        ]
+      },
+      {
+        "caseId": "030_WB_RFP_Consulting_Services_2019.pdf|p8|749.4",
+        "page": 8,
+        "rowText": "SPD Summary viii",
+        "segments": [
+          {
+            "text": "SPD Summary viii",
+            "left": 72.6,
+            "right": 535.4
+          }
+        ]
+      },
+      {
+        "caseId": "032_WB_Plant_TwoStage_2020.pdf|p16|749.2",
+        "page": 16,
+        "rowText": "Section I – Instructions to Proposers (ITP) 4",
+        "segments": [
+          {
+            "text": "Section I – Instructions to Proposers (ITP) 4",
+            "left": 72.6,
+            "right": 539.7
+          }
+        ]
+      },
+      {
+        "caseId": "032_WB_Plant_TwoStage_2020.pdf|p17|749.2",
+        "page": 17,
+        "rowText": "Section I – Instructions to Proposers (ITP) 5",
+        "segments": [
+          {
+            "text": "Section I – Instructions to Proposers (ITP) 5",
+            "left": 72.6,
+            "right": 539.4
+          }
+        ]
+      },
+      {
+        "caseId": "034_WB_Plant_Without_Prequal_2016.pdf|p11|328.4",
+        "page": 11,
+        "rowText": "1 2",
+        "segments": [
+          {
+            "text": "1 2",
+            "left": 264.8,
+            "right": 540.4
+          }
+        ]
+      },
+      {
+        "caseId": "034_WB_Plant_Without_Prequal_2016.pdf|p21|749.6",
+        "page": 21,
+        "rowText": "Section I – Instructions to Bidders (ITB) 5",
+        "segments": [
+          {
+            "text": "Section I – Instructions to Bidders (ITB) 5",
+            "left": 90.6,
+            "right": 539.4
+          }
+        ]
+      },
+      {
+        "caseId": "035_WB_EPC_Turnkey_SingleStage_2021.pdf|p16|749.2",
+        "page": 16,
+        "rowText": "Section I - Instructions to Proposers (ITP) 4",
+        "segments": [
+          {
+            "text": "Section I - Instructions to Proposers (ITP) 4",
+            "left": 72.6,
+            "right": 539.7
+          }
+        ]
+      },
+      {
+        "caseId": "035_WB_EPC_Turnkey_SingleStage_2021.pdf|p17|749.2",
+        "page": 17,
+        "rowText": "Section I - Instructions to Proposers (ITP) 5",
+        "segments": [
+          {
+            "text": "Section I - Instructions to Proposers (ITP) 5",
+            "left": 72.6,
+            "right": 539.4
+          }
+        ]
+      },
+      {
+        "caseId": "041_IBRD_Financial_Statements_June_2025.pdf|p6|763.7",
+        "page": 6,
+        "rowText": "Management’s Discussion and Analysis Section I : Overview",
+        "segments": [
+          {
+            "text": "Management’s Discussion and Analysis Section I : Overview",
+            "left": 75.3,
+            "right": 350.1
+          }
+        ]
+      },
+      {
+        "caseId": "041_IBRD_Financial_Statements_June_2025.pdf|p7|763.7",
+        "page": 7,
+        "rowText": "Management’s Discussion and Analysis Section I : Overview",
+        "segments": [
+          {
+            "text": "Management’s Discussion and Analysis Section I : Overview",
+            "left": 75.3,
+            "right": 350.1
+          }
+        ]
+      },
+      {
+        "caseId": "042_IDA_Financial_Statements_June_2025.pdf|p4|41.1",
+        "page": 4,
+        "rowText": "2 IDA Management's Discussion and Analysis: June 30, 2025",
+        "segments": [
+          {
+            "text": "2 IDA Management's Discussion and Analysis: June 30, 2025",
+            "left": 72.3,
+            "right": 370.6
+          }
+        ]
+      },
+      {
+        "caseId": "042_IDA_Financial_Statements_June_2025.pdf|p6|763.8",
+        "page": 6,
+        "rowText": "Management’s Discussion and Analysis Section I : Overview",
+        "segments": [
+          {
+            "text": "Management’s Discussion and Analysis Section I : Overview",
+            "left": 75.3,
+            "right": 350.1
+          }
+        ]
+      },
+      {
+        "caseId": "043_IBRD_Financial_Statements_June_2024.pdf|p6|576.4",
+        "page": 6,
+        "rowText": "2024 2023 2022",
+        "segments": [
+          {
+            "text": "2024 2023 2022",
+            "left": 312.7,
+            "right": 508.3
+          }
+        ]
+      },
+      {
+        "caseId": "043_IBRD_Financial_Statements_June_2024.pdf|p9|716.0",
+        "page": 9,
+        "rowText": "Net Investment Portfolio In billions of U.S. dollars",
+        "segments": [
+          {
+            "text": "Net Investment Portfolio In billions of U.S. dollars",
+            "left": 72.2,
+            "right": 409.8
+          }
+        ]
+      },
+      {
+        "caseId": "044_IDA_Financial_Statements_June_2024.pdf|p5|561.5",
+        "page": 5,
+        "rowText": "2024 2023 2022",
+        "segments": [
+          {
+            "text": "2024 2023 2022",
+            "left": 358.9,
+            "right": 516.6
+          }
+        ]
+      },
+      {
+        "caseId": "044_IDA_Financial_Statements_June_2024.pdf|p5|47.6",
+        "page": 5,
+        "rowText": "IDA Management's Discussion and Analysis: June 30, 2024 3",
+        "segments": [
+          {
+            "text": "IDA Management's Discussion and Analysis: June 30, 2024 3",
+            "left": 237.3,
+            "right": 536.9
+          }
+        ]
+      },
+      {
+        "caseId": "045_IBRD_Financial_Statements_June_2023.pdf|p4|593.4",
+        "page": 4,
+        "rowText": "2023 2022 2021",
+        "segments": [
+          {
+            "text": "2023 2022 2021",
+            "left": 313,
+            "right": 508.1
+          }
+        ]
+      },
+      {
+        "caseId": "045_IBRD_Financial_Statements_June_2023.pdf|p7|716.0",
+        "page": 7,
+        "rowText": "Net Investment Portfolio In billions of U.S. dollars",
+        "segments": [
+          {
+            "text": "Net Investment Portfolio In billions of U.S. dollars",
+            "left": 72.2,
+            "right": 409.8
+          }
+        ]
+      },
+      {
+        "caseId": "046_IBRD_Financial_Statements_September_2024.pdf|p7|442.8",
+        "page": 7,
+        "rowText": "requirements. 140",
+        "segments": [
+          {
+            "text": "requirements. 140",
+            "left": 72.1,
+            "right": 346.9
+          }
+        ]
+      },
+      {
+        "caseId": "046_IBRD_Financial_Statements_September_2024.pdf|p12|248.2",
+        "page": 12,
+        "rowText": "0 0",
+        "segments": [
+          {
+            "text": "0 0",
+            "left": 97.9,
+            "right": 342.4
+          }
+        ]
+      },
+      {
+        "caseId": "047_IBRD_Financial_Statements_December_2024.pdf|p7|540.9",
+        "page": 7,
+        "rowText": "Borrowing Portfolio In billions of U.S. dollars",
+        "segments": [
+          {
+            "text": "Borrowing Portfolio In billions of U.S. dollars",
+            "left": 72.2,
+            "right": 418.8
+          }
+        ]
+      },
+      {
+        "caseId": "047_IBRD_Financial_Statements_December_2024.pdf|p12|310.4",
+        "page": 12,
+        "rowText": "10,000 3,000",
+        "segments": [
+          {
+            "text": "10,000 3,000",
+            "left": 83,
+            "right": 342.4
+          }
+        ]
+      },
+      {
+        "caseId": "048_IBRD_Financial_Statements_March_2025.pdf|p7|540.9",
+        "page": 7,
+        "rowText": "Borrowing Portfolio In billions of U.S. dollars",
+        "segments": [
+          {
+            "text": "Borrowing Portfolio In billions of U.S. dollars",
+            "left": 72.2,
+            "right": 418.8
+          }
+        ]
+      },
+      {
+        "caseId": "048_IBRD_Financial_Statements_March_2025.pdf|p7|449.0",
+        "page": 7,
+        "rowText": "satisfied liquidity requirements. 70",
+        "segments": [
+          {
+            "text": "satisfied liquidity requirements. 70",
+            "left": 72.5,
+            "right": 346.9
+          }
+        ]
+      },
+      {
+        "caseId": "049_IDA_Financial_Statements_September_2024.pdf|p4|575.9",
+        "page": 4,
+        "rowText": "2024 2023 2024",
+        "segments": [
+          {
+            "text": "2024 2023 2024",
+            "left": 355.5,
+            "right": 500.1
+          }
+        ]
+      },
+      {
+        "caseId": "049_IDA_Financial_Statements_September_2024.pdf|p5|26.7",
+        "page": 5,
+        "rowText": "IDA Management's Discussion and Analysis: September 30, 2024 3",
+        "segments": [
+          {
+            "text": "IDA Management's Discussion and Analysis: September 30, 2024 3",
+            "left": 177.6,
+            "right": 536.9
+          }
+        ]
+      },
+      {
+        "caseId": "050_IDA_Financial_Statements_March_2025.pdf|p4|575.9",
+        "page": 4,
+        "rowText": "2025 2024 2024",
+        "segments": [
+          {
+            "text": "2025 2024 2024",
+            "left": 355.5,
+            "right": 500.1
+          }
+        ]
+      },
+      {
+        "caseId": "050_IDA_Financial_Statements_March_2025.pdf|p5|26.7",
+        "page": 5,
+        "rowText": "IDA Management's Discussion and Analysis: March 31 , 2025 3",
+        "segments": [
+          {
+            "text": "IDA Management's Discussion and Analysis: March 31 , 2025 3",
+            "left": 177.6,
+            "right": 536.9
+          }
+        ]
+      },
+      {
+        "caseId": "052_WBG_Trust_Fund_FIS_December_2025.pdf|p7|662.3",
+        "page": 7,
+        "rowText": "YTD FY26 $5,804 $1,208 $4,715 $45,640",
+        "segments": [
+          {
+            "text": "YTD FY26 $5,804 $1,208 $4,715 $45,640",
+            "left": 89.5,
+            "right": 502.4
+          }
+        ]
+      },
+      {
+        "caseId": "052_WBG_Trust_Fund_FIS_December_2025.pdf|p7|621.5",
+        "page": 7,
+        "rowText": "YoY change % 79% 37% 3% 1%",
+        "segments": [
+          {
+            "text": "YoY change % 79% 37% 3% 1%",
+            "left": 89.5,
+            "right": 496.3
+          }
+        ]
+      },
+      {
+        "caseId": "053_IDA_Information_Statement_FY25.pdf|p7|561.0",
+        "page": 7,
+        "rowText": "2025 2024 2023",
+        "segments": [
+          {
+            "text": "2025 2024 2023",
+            "left": 415.1,
+            "right": 524.7
+          }
+        ]
+      },
+      {
+        "caseId": "053_IDA_Information_Statement_FY25.pdf|p8|691.6",
+        "page": 8,
+        "rowText": "Net Loss In millions of U. S. dollars",
+        "segments": [
+          {
+            "text": "Net Loss In millions of U. S. dollars",
+            "left": 78.2,
+            "right": 444.8
+          }
+        ]
+      },
+      {
+        "caseId": "054_IBRD_Information_Statement_FY25.pdf|p6|681.3",
+        "page": 6,
+        "rowText": "Sou rces Uses",
+        "segments": [
+          {
+            "text": "Sou rces Uses",
+            "left": 302.3,
+            "right": 510.7
+          }
+        ]
+      },
+      {
+        "caseId": "054_IBRD_Information_Statement_FY25.pdf|p6|535.0",
+        "page": 6,
+        "rowText": "- = Reserves",
+        "segments": [
+          {
+            "text": "- = Reserves",
+            "left": 276.3,
+            "right": 516.3
+          }
+        ]
+      },
+      {
+        "caseId": "055_IDA_External_Review_FY25.pdf|p3|234.1",
+        "page": 3,
+        "rowText": "IDA Net IDA Gross",
+        "segments": [
+          {
+            "text": "IDA Net IDA Gross",
+            "left": 590.3,
+            "right": 708.4
+          }
+        ]
+      },
+      {
+        "caseId": "055_IDA_External_Review_FY25.pdf|p3|124.3",
+        "page": 3,
+        "rowText": "2 P1 78775 EMERGENCY RESPONSE 2022 Afghanistan 1 60.00 65.68 1 60.00 65.68",
+        "segments": [
+          {
+            "text": "2 P1 78775 EMERGENCY RESPONSE 2022 Afghanistan 1 60.00 65.68 1 60.00 65.68",
+            "left": 85.8,
+            "right": 697.8
+          }
+        ]
+      },
+      {
+        "caseId": "056_OpenStax_Business_Law_I_Essentials.pdf|p51|572.5",
+        "page": 51,
+        "rowText": "Regulation of The courts in the United States",
+        "segments": [
+          {
+            "text": "Regulation of The courts in the United States",
+            "left": 79.9,
+            "right": 530.9
+          }
+        ]
+      },
+      {
+        "caseId": "056_OpenStax_Business_Law_I_Essentials.pdf|p51|491.2",
+        "page": 51,
+        "rowText": "commerce economic enterprise.”",
+        "segments": [
+          {
+            "text": "commerce economic enterprise.”",
+            "left": 79.5,
+            "right": 493.8
+          }
+        ]
+      },
+      {
+        "caseId": "057_Quantitative_Methods_in_Finance_Lecture_Notes.pdf|p2|737.6",
+        "page": 2,
+        "rowText": "1 Introduction 15",
+        "segments": [
+          {
+            "text": "1 Introduction 15",
+            "left": 72.9,
+            "right": 522.7
+          }
+        ]
+      },
+      {
+        "caseId": "057_Quantitative_Methods_in_Finance_Lecture_Notes.pdf|p2|645.4",
+        "page": 2,
+        "rowText": "2 Projects and evaluation 17",
+        "segments": [
+          {
+            "text": "2 Projects and evaluation 17",
+            "left": 72.5,
+            "right": 522.8
+          }
+        ]
+      },
+      {
+        "caseId": "058_Machine_Learning_Lecture_Note.pdf|p1|464.4",
+        "page": 1,
+        "rowText": "] Machine Learning: a Lecture Note",
+        "segments": [
+          {
+            "text": "] Machine Learning: a Lecture Note",
+            "left": 18.8,
+            "right": 396.6
+          }
+        ]
+      },
+      {
+        "caseId": "058_Machine_Learning_Lecture_Note.pdf|p3|518.7",
+        "page": 3,
+        "rowText": "1 An Energy Function 1",
+        "segments": [
+          {
+            "text": "1 An Energy Function 1",
+            "left": 107.7,
+            "right": 449.8
+          }
+        ]
+      },
+      {
+        "caseId": "059_Lectures_on_Statistics_in_Theory.pdf|p1|469.8",
+        "page": 1,
+        "rowText": "a- Abstract",
+        "segments": [
+          {
+            "text": "a- Abstract",
+            "left": 22.8,
+            "right": 329.3
+          }
+        ]
+      },
+      {
+        "caseId": "059_Lectures_on_Statistics_in_Theory.pdf|p2|589.6",
+        "page": 2,
+        "rowText": "3 Probability 9",
+        "segments": [
+          {
+            "text": "3 Probability 9",
+            "left": 72.6,
+            "right": 539.4
+          }
+        ]
+      },
+      {
+        "caseId": "060_Elements_of_Linear_Algebra_Lecture_Notes.pdf|p1|596.5",
+        "page": 1,
+        "rowText": "61 Lecture notes",
+        "segments": [
+          {
+            "text": "61 Lecture notes",
+            "left": 18.3,
+            "right": 339.7
+          }
+        ]
+      },
+      {
+        "caseId": "060_Elements_of_Linear_Algebra_Lecture_Notes.pdf|p1|479.3",
+        "page": 1,
+        "rowText": "H. Abstract",
+        "segments": [
+          {
+            "text": "H. Abstract",
+            "left": 18.8,
+            "right": 325.2
+          }
+        ]
+      },
+      {
+        "caseId": "061_Introduction_to_Business_Mathematics.pdf|p1|536.4",
+        "page": 1,
+        "rowText": "S Module",
+        "segments": [
+          {
+            "text": "S Module",
+            "left": 18.5,
+            "right": 324.4
+          }
+        ]
+      },
+      {
+        "caseId": "061_Introduction_to_Business_Mathematics.pdf|p4|434.5",
+        "page": 4,
+        "rowText": "2 Matrices 11",
+        "segments": [
+          {
+            "text": "2 Matrices 11",
+            "left": 72.2,
+            "right": 539
+          }
+        ]
+      },
+      {
+        "caseId": "062_Lectures_on_Probability_Theory.pdf|p12|786.5",
+        "page": 12,
+        "rowText": "12 INTRODUCTION",
+        "segments": [
+          {
+            "text": "12 INTRODUCTION",
+            "left": 72.8,
+            "right": 331.8
+          }
+        ]
+      },
+      {
+        "caseId": "062_Lectures_on_Probability_Theory.pdf|p12|668.1",
+        "page": 12,
+        "rowText": "X − 1 \uF8EE \uF8F9",
+        "segments": [
+          {
+            "text": "X − 1 \uF8EE \uF8F9",
+            "left": 167.9,
+            "right": 430.7
+          }
+        ]
+      },
+      {
+        "caseId": "063_Advanced_Linear_Algebra.pdf|p1|586.8",
+        "page": 1,
+        "rowText": "6 Teo Banica",
+        "segments": [
+          {
+            "text": "6 Teo Banica",
+            "left": 18.3,
+            "right": 343.2
+          }
+        ]
+      },
+      {
+        "caseId": "063_Advanced_Linear_Algebra.pdf|p1|538.1",
+        "page": 1,
+        "rowText": "2 Cergy-Pontoise, France. teo . banica@gmail . com",
+        "segments": [
+          {
+            "text": "2 Cergy-Pontoise, France. teo . banica@gmail . com",
+            "left": 18.5,
+            "right": 351.8
+          }
+        ]
+      },
+      {
+        "caseId": "064_Machine_Learning_with_Neural_Networks.pdf|p7|313.6",
+        "page": 7,
+        "rowText": "3 Stochastic Hopﬁeld networks 32",
+        "segments": [
+          {
+            "text": "3 Stochastic Hopﬁeld networks 32",
+            "left": 99.5,
+            "right": 512.6
+          }
+        ]
+      },
+      {
+        "caseId": "064_Machine_Learning_with_Neural_Networks.pdf|p7|171.8",
+        "page": 7,
+        "rowText": "4 The Boltzmann distribution 50",
+        "segments": [
+          {
+            "text": "4 The Boltzmann distribution 50",
+            "left": 99.4,
+            "right": 512.5
+          }
+        ]
+      },
+      {
+        "caseId": "065_Numerical_Linear_Algebra_Lecture_Notes.pdf|p1|675.8",
+        "page": 1,
+        "rowText": "42 Least Squares, QR and SVD",
+        "segments": [
+          {
+            "text": "42 Least Squares, QR and SVD",
+            "left": 76.1,
+            "right": 390.2
+          }
+        ]
+      },
+      {
+        "caseId": "065_Numerical_Linear_Algebra_Lecture_Notes.pdf|p1|584.8",
+        "page": 1,
+        "rowText": "82 September 1, 2023",
+        "segments": [
+          {
+            "text": "82 September 1, 2023",
+            "left": 76.1,
+            "right": 352.4
+          }
+        ]
+      },
+      {
+        "caseId": "066_Linear_Neural_Networks_Lecture_Notes.pdf|p2|383.3",
+        "page": 2,
+        "rowText": "ϕ : Rd1 × d0 × Rd2 × d1 × · · · × Rdn × dn − 1 → R , (1)",
+        "segments": [
+          {
+            "text": "ϕ : Rd1 × d0 × Rd2 × d1 × · · · × Rdn × dn − 1 → R , (1)",
+            "left": 211.6,
+            "right": 522.2
+          }
+        ]
+      },
+      {
+        "caseId": "066_Linear_Neural_Networks_Lecture_Notes.pdf|p3|305.9",
+        "page": 3,
+        "rowText": "⊤ ⊤",
+        "segments": [
+          {
+            "text": "⊤ ⊤",
+            "left": 300.6,
+            "right": 379
+          }
+        ]
+      },
+      {
+        "caseId": "067_Algorithms_for_Massive_Data_Lecture_Notes.pdf|p1|430.2",
+        "page": 1,
+        "rowText": "Ds. CM0622 - Algorithms for Massive Data",
+        "segments": [
+          {
+            "text": "Ds. CM0622 - Algorithms for Massive Data",
+            "left": 18.8,
+            "right": 502.2
+          }
+        ]
+      },
+      {
+        "caseId": "067_Algorithms_for_Massive_Data_Lecture_Notes.pdf|p1|271.8",
+        "page": 1,
+        "rowText": "2: Version: February 27, 2026",
+        "segments": [
+          {
+            "text": "2: Version: February 27, 2026",
+            "left": 18.5,
+            "right": 374.7
+          }
+        ]
+      },
+      {
+        "caseId": "068_SDEs_for_Finance_Course_Notes.pdf|p2|547.1",
+        "page": 2,
+        "rowText": "1 Financial Introduction 4",
+        "segments": [
+          {
+            "text": "1 Financial Introduction 4",
+            "left": 111.1,
+            "right": 538.2
+          }
+        ]
+      },
+      {
+        "caseId": "068_SDEs_for_Finance_Course_Notes.pdf|p2|454.2",
+        "page": 2,
+        "rowText": "2 Brownian Motion & Stochastic Calculus 12",
+        "segments": [
+          {
+            "text": "2 Brownian Motion & Stochastic Calculus 12",
+            "left": 110.8,
+            "right": 537.9
+          }
+        ]
+      },
+      {
+        "caseId": "069_Course_in_Dynamic_Optimization.pdf|p1|583.2",
+        "page": 1,
+        "rowText": "42 October 11, 2024",
+        "segments": [
+          {
+            "text": "42 October 11, 2024",
+            "left": 18.5,
+            "right": 349.4
+          }
+        ]
+      },
+      {
+        "caseId": "069_Course_in_Dynamic_Optimization.pdf|p4|679.0",
+        "page": 4,
+        "rowText": "1 Lecture 1: Introduction, Metric Spaces, Probability Spaces 6",
+        "segments": [
+          {
+            "text": "1 Lecture 1: Introduction, Metric Spaces, Probability Spaces 6",
+            "left": 72.9,
+            "right": 539.5
+          }
+        ]
+      },
+      {
+        "caseId": "070_Lectures_on_Optimization_Yale.pdf|p1|567.4",
+        "page": 1,
+        "rowText": "62 May 11, 2026",
+        "segments": [
+          {
+            "text": "62 May 11, 2026",
+            "left": 18.3,
+            "right": 343.5
+          }
+        ]
+      },
+      {
+        "caseId": "070_Lectures_on_Optimization_Yale.pdf|p1|487.1",
+        "page": 1,
+        "rowText": "1 Introduction and basics of convex functions 3",
+        "segments": [
+          {
+            "text": "1 Introduction and basics of convex functions 3",
+            "left": 92.9,
+            "right": 519.6
+          }
+        ]
+      },
+      {
+        "caseId": "072_ICP_TAG_Minutes_Mar_2025.pdf|p13|129.4",
+        "page": 13,
+        "rowText": "14:00 – 14: 15 TAG Com position a nd Terms of Reference [TAG Co-Chairs]",
+        "segments": [
+          {
+            "text": "14:00 – 14: 15 TAG Com position a nd Terms of Reference [TAG Co-Chairs]",
+            "left": 72.8,
+            "right": 443.3
+          }
+        ]
+      },
+      {
+        "caseId": "072_ICP_TAG_Minutes_Mar_2025.pdf|p14|354.5",
+        "page": 14,
+        "rowText": "14:00 – 15 :00 I m proving Relia bility of Price Com parisons",
+        "segments": [
+          {
+            "text": "14:00 – 15 :00 I m proving Relia bility of Price Com parisons",
+            "left": 72.9,
+            "right": 370.9
+          }
+        ]
+      },
+      {
+        "caseId": "076_ICP_IACG08_Minutes_2023.pdf|p11|89.6",
+        "page": 11,
+        "rowText": "12 : 00 – 13 :00 Lu n ch",
+        "segments": [
+          {
+            "text": "12 : 00 – 13 :00 Lu n ch",
+            "left": 72.9,
+            "right": 205.9
+          }
+        ]
+      },
+      {
+        "caseId": "076_ICP_IACG08_Minutes_2023.pdf|p12|698.2",
+        "page": 12,
+        "rowText": "13 :00 – 14:00 Pla n ning for the ICP 2024 cycle",
+        "segments": [
+          {
+            "text": "13 :00 – 14:00 Pla n ning for the ICP 2024 cycle",
+            "left": 72.8,
+            "right": 319.9
+          }
+        ]
+      },
+      {
+        "caseId": "078_ICP_IACG07_Minutes_May_2023.pdf|p10|511.3",
+        "page": 10,
+        "rowText": "13 :00 – 14:00 G loba l u pdates on the ICP 202 1 cycle im plementation",
+        "segments": [
+          {
+            "text": "13 :00 – 14:00 G loba l u pdates on the ICP 202 1 cycle im plementation",
+            "left": 72.8,
+            "right": 423.8
+          }
+        ]
+      },
+      {
+        "caseId": "080_ICP_Governing_Board_Minutes_Feb_2023.pdf|p6|591.9",
+        "page": 6,
+        "rowText": "Finland (Co-Chair) Markus Sovala, Director General, Statistics Finland, Co-Chair",
+        "segments": [
+          {
+            "text": "Finland (Co-Chair) Markus Sovala, Director General, Statistics Finland, Co-Chair",
+            "left": 78.4,
+            "right": 543.5
+          }
+        ]
+      },
+      {
+        "caseId": "080_ICP_Governing_Board_Minutes_Feb_2023.pdf|p6|534.7",
+        "page": 6,
+        "rowText": "Malaysia Mohd Uzir Mahidin, Chief Statistician, Department of Statistics",
+        "segments": [
+          {
+            "text": "Malaysia Mohd Uzir Mahidin, Chief Statistician, Department of Statistics",
+            "left": 78.4,
+            "right": 551.4
+          }
+        ]
+      },
+      {
+        "caseId": "081_Luat_Doanh_nghiep_2020_EN.pdf|p1|742.0",
+        "page": 1,
+        "rowText": "ASSEMBLY Independence-Freedom-Happiness",
+        "segments": [
+          {
+            "text": "ASSEMBLY Independence-Freedom-Happiness",
+            "left": 126.2,
+            "right": 483.3
+          }
+        ]
+      },
+      {
+        "caseId": "081_Luat_Doanh_nghiep_2020_EN.pdf|p32|448.7",
+        "page": 32,
+        "rowText": "danger. ietna",
+        "segments": [
+          {
+            "text": "danger. ietna",
+            "left": 72.5,
+            "right": 369.4
+          }
+        ]
+      },
+      {
+        "caseId": "083_Luat_An_ninh_mang_2018_EN.pdf|p1|706.3",
+        "page": 1,
+        "rowText": "No. 06/2018/L-CTN Hanoi, June 25, 2018",
+        "segments": [
+          {
+            "text": "No. 06/2018/L-CTN Hanoi, June 25, 2018",
+            "left": 128.2,
+            "right": 465.1
+          }
+        ]
+      },
+      {
+        "caseId": "083_Luat_An_ninh_mang_2018_EN.pdf|p1|42.0",
+        "page": 1,
+        "rowText": "\uF0D3 Vietnam Law & Legal Forum 1",
+        "segments": [
+          {
+            "text": "\uF0D3 Vietnam Law & Legal Forum 1",
+            "left": 233.1,
+            "right": 522.8
+          }
+        ]
+      },
+      {
+        "caseId": "085_Luat_Nha_o_2023_EN.pdf|p15|437.2",
+        "page": 15,
+        "rowText": "certificates; atVie",
+        "segments": [
+          {
+            "text": "certificates; atVie",
+            "left": 65.3,
+            "right": 321
+          }
+        ]
+      },
+      {
+        "caseId": "085_Luat_Nha_o_2023_EN.pdf|p17|449.0",
+        "page": 17,
+        "rowText": "contents: ietna",
+        "segments": [
+          {
+            "text": "contents: ietna",
+            "left": 65.3,
+            "right": 369.5
+          }
+        ]
+      },
+      {
+        "caseId": "086_Luat_Dau_tu_2020_EN_alt.pdf|p1|646.5",
+        "page": 1,
+        "rowText": "No. 07/2020/L-CTN Hanoi, July 1, 2020",
+        "segments": [
+          {
+            "text": "No. 07/2020/L-CTN Hanoi, July 1, 2020",
+            "left": 98.4,
+            "right": 445.5
+          }
+        ]
+      },
+      {
+        "caseId": "086_Luat_Dau_tu_2020_EN_alt.pdf|p1|42.2",
+        "page": 1,
+        "rowText": "\uF0D3 Vietnam Law & Legal Forum 1",
+        "segments": [
+          {
+            "text": "\uF0D3 Vietnam Law & Legal Forum 1",
+            "left": 229.5,
+            "right": 541.8
+          }
+        ]
+      },
+      {
+        "caseId": "087_ND_53-2022_An_ninh_mang_EN.pdf|p34|539.0",
+        "page": 34,
+        "rowText": "3 4",
+        "segments": [
+          {
+            "text": "3 4",
+            "left": 122.3,
+            "right": 427.6
+          }
+        ]
+      },
+      {
+        "caseId": "087_ND_53-2022_An_ninh_mang_EN.pdf|p36|404.3",
+        "page": 36,
+        "rowText": "Information system Result",
+        "segments": [
+          {
+            "text": "Information system Result",
+            "left": 127.7,
+            "right": 404.8
+          }
+        ]
+      },
+      {
+        "caseId": "088_ND_69-2018_Ngoai_thuong_EN.pdf|p1|658.7",
+        "page": 1,
+        "rowText": "No . 69/20 1 8/ND-CP Hanoi, May 15, 2018",
+        "segments": [
+          {
+            "text": "No . 69/20 1 8/ND-CP Hanoi, May 15, 2018",
+            "left": 100.4,
+            "right": 503.7
+          }
+        ]
+      },
+      {
+        "caseId": "088_ND_69-2018_Ngoai_thuong_EN.pdf|p47|552.6",
+        "page": 47,
+        "rowText": "No. Description ministerial-level",
+        "segments": [
+          {
+            "text": "No. Description ministerial-level",
+            "left": 76,
+            "right": 528.3
+          }
+        ]
+      },
+      {
+        "caseId": "089_ND_195-2013_Luat_Xuat_ban_EN.pdf|p1|658.7",
+        "page": 1,
+        "rowText": "No . 1 95/20 1 3/ND-CP Hanoi, November 21, 2013",
+        "segments": [
+          {
+            "text": "No . 1 95/20 1 3/ND-CP Hanoi, November 21, 2013",
+            "left": 97.4,
+            "right": 503.4
+          }
+        ]
+      },
+      {
+        "caseId": "090_ND_155-2018_Sua_doi_Bo_Y_te_EN.pdf|p1|658.7",
+        "page": 1,
+        "rowText": "No . 1 55/20 1 8/ND-CP Hanoi, November 12, 2018",
+        "segments": [
+          {
+            "text": "No . 1 55/20 1 8/ND-CP Hanoi, November 12, 2018",
+            "left": 97.4,
+            "right": 503.9
+          }
+        ]
+      },
+      {
+        "caseId": "091_RFC9110_HTTP_Semantics.pdf|p1|646.8",
+        "page": 1,
+        "rowText": "Adobe Fastly greenbytes",
+        "segments": [
+          {
+            "text": "Adobe Fastly greenbytes",
+            "left": 151.4,
+            "right": 371.1
+          }
+        ]
+      },
+      {
+        "caseId": "091_RFC9110_HTTP_Semantics.pdf|p1|110.7",
+        "page": 1,
+        "rowText": "Fielding, et al. Standards Track Page 1",
+        "segments": [
+          {
+            "text": "Fielding, et al. Standards Track Page 1",
+            "left": 56.6,
+            "right": 538.1
+          }
+        ]
+      },
+      {
+        "caseId": "092_RFC9111_HTTP_Caching.pdf|p1|659.0",
+        "page": 1,
+        "rowText": "Adobe Fastly greenbytes",
+        "segments": [
+          {
+            "text": "Adobe Fastly greenbytes",
+            "left": 151.4,
+            "right": 371.1
+          }
+        ]
+      },
+      {
+        "caseId": "092_RFC9111_HTTP_Caching.pdf|p1|110.7",
+        "page": 1,
+        "rowText": "Fielding, et al. Standards Track Page 1",
+        "segments": [
+          {
+            "text": "Fielding, et al. Standards Track Page 1",
+            "left": 56.6,
+            "right": 538.1
+          }
+        ]
+      },
+      {
+        "caseId": "093_RFC9112_HTTP_1_1.pdf|p1|659.0",
+        "page": 1,
+        "rowText": "Adobe Fastly greenbytes",
+        "segments": [
+          {
+            "text": "Adobe Fastly greenbytes",
+            "left": 151.4,
+            "right": 371.1
+          }
+        ]
+      },
+      {
+        "caseId": "093_RFC9112_HTTP_1_1.pdf|p1|110.7",
+        "page": 1,
+        "rowText": "Fielding, et al. Standards Track Page 1",
+        "segments": [
+          {
+            "text": "Fielding, et al. Standards Track Page 1",
+            "left": 56.6,
+            "right": 538.1
+          }
+        ]
+      },
+      {
+        "caseId": "094_RFC9113_HTTP_2.pdf|p1|671.3",
+        "page": 1,
+        "rowText": "Mozilla Apple Inc.",
+        "segments": [
+          {
+            "text": "Mozilla Apple Inc.",
+            "left": 151.7,
+            "right": 277.8
+          }
+        ]
+      },
+      {
+        "caseId": "094_RFC9113_HTTP_2.pdf|p1|110.8",
+        "page": 1,
+        "rowText": "Thomson & Benﬁeld Standards Track Page 1",
+        "segments": [
+          {
+            "text": "Thomson & Benﬁeld Standards Track Page 1",
+            "left": 56.4,
+            "right": 538.1
+          }
+        ]
+      },
+      {
+        "caseId": "095_RFC9114_HTTP_3.pdf|p1|110.8",
+        "page": 1,
+        "rowText": "Bishop Standards Track Page 1",
+        "segments": [
+          {
+            "text": "Bishop Standards Track Page 1",
+            "left": 56.6,
+            "right": 538.1
+          }
+        ]
+      },
+      {
+        "caseId": "095_RFC9114_HTTP_3.pdf|p2|799.4",
+        "page": 2,
+        "rowText": "RFC 9 1 14 HTTP/3 June 202 2",
+        "segments": [
+          {
+            "text": "RFC 9 1 14 HTTP/3 June 202 2",
+            "left": 56.6,
+            "right": 538.2
+          }
+        ]
+      }
+    ]
+  }
+}

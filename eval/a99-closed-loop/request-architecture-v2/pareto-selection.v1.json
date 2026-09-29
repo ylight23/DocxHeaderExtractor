@@ -1,0 +1,111 @@
+{
+  "artifactKind": "a99_request_v2_pareto_selection",
+  "frontier": [
+    {
+      "id": "P01",
+      "requestCount": 2884,
+      "totalInputBytes": 11947828,
+      "maxRequestBytes": 4497,
+      "p95RequestBytes": 4373,
+      "repeatedContextBytes": 2820857,
+      "contextToOwnedRatio": 7.986130374479889
+    },
+    {
+      "id": "P03",
+      "requestCount": 87,
+      "totalInputBytes": 2254509,
+      "maxRequestBytes": 26629,
+      "p95RequestBytes": 26556,
+      "repeatedContextBytes": 83653,
+      "contextToOwnedRatio": 0.23578363384188628
+    },
+    {
+      "id": "P09",
+      "requestCount": 54,
+      "totalInputBytes": 2241428,
+      "maxRequestBytes": 42908,
+      "p95RequestBytes": 42857,
+      "repeatedContextBytes": 151819,
+      "contextToOwnedRatio": 0.42995839112343964
+    },
+    {
+      "id": "P04",
+      "requestCount": 42,
+      "totalInputBytes": 2138548,
+      "maxRequestBytes": 52460,
+      "p95RequestBytes": 52373,
+      "repeatedContextBytes": 79287,
+      "contextToOwnedRatio": 0.22191400832177532
+    },
+    {
+      "id": "P05",
+      "requestCount": 31,
+      "totalInputBytes": 2087258,
+      "maxRequestBytes": 71592,
+      "p95RequestBytes": 71267,
+      "repeatedContextBytes": 55444,
+      "contextToOwnedRatio": 0.16019417475728157
+    },
+    {
+      "id": "P07",
+      "requestCount": 28,
+      "totalInputBytes": 2101543,
+      "maxRequestBytes": 84583,
+      "p95RequestBytes": 84159,
+      "repeatedContextBytes": 77004,
+      "contextToOwnedRatio": 0.21636615811373092
+    },
+    {
+      "id": "P06",
+      "requestCount": 27,
+      "totalInputBytes": 2070677,
+      "maxRequestBytes": 86814,
+      "p95RequestBytes": 86619,
+      "repeatedContextBytes": 48841,
+      "contextToOwnedRatio": 0.13869625520110956
+    }
+  ],
+  "selected": [
+    {
+      "label": "SMALL",
+      "candidate": {
+        "id": "P05",
+        "requestCount": 31,
+        "totalInputBytes": 2087258,
+        "maxRequestBytes": 71592,
+        "p95RequestBytes": 71267,
+        "repeatedContextBytes": 55444,
+        "contextToOwnedRatio": 0.16019417475728157
+      }
+    },
+    {
+      "label": "BALANCED",
+      "candidate": {
+        "id": "P07",
+        "requestCount": 28,
+        "totalInputBytes": 2101543,
+        "maxRequestBytes": 84583,
+        "p95RequestBytes": 84159,
+        "repeatedContextBytes": 77004,
+        "contextToOwnedRatio": 0.21636615811373092
+      }
+    },
+    {
+      "label": "LARGE",
+      "candidate": {
+        "id": "P06",
+        "requestCount": 27,
+        "totalInputBytes": 2070677,
+        "maxRequestBytes": 86814,
+        "p95RequestBytes": 86619,
+        "repeatedContextBytes": 48841,
+        "contextToOwnedRatio": 0.13869625520110956
+      }
+    }
+  ],
+  "currentResourceCandidate": "P08",
+  "preferredProviderCandidate": null,
+  "providerTreatment": "defer: P06 lowers tail and total serialized input versus the 25-call baseline but increases calls; keep all three review points pending Release validation and explicit authorization",
+  "providerCalls": 0,
+  "goldRead": false
+}

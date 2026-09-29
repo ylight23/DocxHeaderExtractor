@@ -1,0 +1,184 @@
+{
+  "artifactKind": "a99_context_topology_disagreement_cross_model_signal_score",
+  "schemaVersion": "a99-context-topology-disagreement-cross-model-signal-score-v1",
+  "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "itemCount": 18,
+  "combined": [
+    {
+      "itemId": "ITEM-024B8661",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-13ADC8F7",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-1D843A9F",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-2D78F82D",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-2F026398",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-4C05B3C2",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-505430BB",
+      "anyModelTopologyDisagreement": true,
+      "anyModelRepeatInstability": true,
+      "anyModelContextSensitivity": true,
+      "anyModelArmModalError": true,
+      "anyModelAnyRepeatError": true
+    },
+    {
+      "itemId": "ITEM-5348EA2B",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-5EFE8569",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-811FC894",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-82675EC0",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-959D3FCB",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-968E70AF",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-AB89229E",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-BAAD25EE",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-CCE2C592",
+      "anyModelTopologyDisagreement": true,
+      "anyModelRepeatInstability": true,
+      "anyModelContextSensitivity": true,
+      "anyModelArmModalError": true,
+      "anyModelAnyRepeatError": true
+    },
+    {
+      "itemId": "ITEM-E14B4B93",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    },
+    {
+      "itemId": "ITEM-E96B316E",
+      "anyModelTopologyDisagreement": false,
+      "anyModelRepeatInstability": false,
+      "anyModelContextSensitivity": false,
+      "anyModelArmModalError": false,
+      "anyModelAnyRepeatError": false
+    }
+  ],
+  "contextSensitivityVsArmModalError": {
+    "tp": 2,
+    "fp": 0,
+    "tn": 16,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "specificity": 1,
+    "note": "DESCRIPTIVE_ONLY - N is too small (18 items, at most 2 known positives) to claim validated detector performance."
+  },
+  "contextSensitivityVsAnyRepeatError": {
+    "tp": 2,
+    "fp": 0,
+    "tn": 16,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1,
+    "specificity": 1,
+    "note": "DESCRIPTIVE_ONLY - N is too small (18 items, at most 2 known positives) to claim validated detector performance."
+  },
+  "contextSensitivityItems": [
+    "ITEM-505430BB",
+    "ITEM-CCE2C592"
+  ],
+  "errorItems": [
+    "ITEM-505430BB",
+    "ITEM-CCE2C592"
+  ],
+  "f1SignalResult": "topologyDisagreement=True, repeatInstability=True, contextSensitivity=True, armModalError=True, anyRepeatError=True",
+  "agendaSignalResult": "topologyDisagreement=True, repeatInstability=True, contextSensitivity=True, armModalError=True, anyRepeatError=True",
+  "stableControlFalsePositives": [],
+  "generalizationEstablished": false
+}

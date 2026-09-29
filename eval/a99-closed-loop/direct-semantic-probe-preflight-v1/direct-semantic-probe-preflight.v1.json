@@ -1,0 +1,474 @@
+{
+  "artifactKind": "a99_direct_semantic_probe_preflight",
+  "schemaVersion": "a99-direct-semantic-probe-preflight-v1",
+  "probeId": "DIRECT_SEMANTIC_DISCRIMINATION",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "providerAuthorized": false,
+  "diagnosticOnly": true,
+  "productionBehaviour": false,
+  "productionRecallGateIntroduced": false,
+  "priorResult": {
+    "experiment": "PHYSICAL_STAGE1_MEMBERSHIP_ONLY",
+    "classification": "TWO_STAGE_SEPARATION_DOES_NOT_FIX_MEMBERSHIP_POLICY",
+    "gold": "14/14 bound x 3 repeats",
+    "familyPresence": {
+      "f1": "3/3",
+      "f2": "3/3",
+      "f3": "1/3"
+    },
+    "frozen": true
+  },
+  "question": {
+    "h1": "The model holds the distinction but over-admits title-like spans when asked to list every heading in an open set.",
+    "h2": "The model does not hold the distinction, and fails it even when asked directly about one named span.",
+    "whyStageOneCannotAnswerIt": "Stage 1 removed placement and role but was still an open-set extraction task, so over-admission and misclassification produce the same observable output.",
+    "onlyIntendedChange": "open-set extraction -> closed semantic decision over a named span"
+  },
+  "contract": {
+    "labels": [
+      "STRUCTURAL_UNIT",
+      "DOCUMENT_LABEL",
+      "NON_STRUCTURAL"
+    ],
+    "definitions": {
+      "STRUCTURAL_UNIT": "The span opens or names a distinct structural unit in this document at this location.",
+      "DOCUMENT_LABEL": "The span is an accepted document-level label or title, but is not a structural tree unit.",
+      "NON_STRUCTURAL": "The span identifies or describes content, an event, an organisation, a venue, a date, a meeting mode, participants or other material, but does not itself open or name an accepted structural unit."
+    },
+    "reasonCodeScored": false,
+    "freeTextDeterminesScoring": false,
+    "schemaSha256": "20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+    "promptSha256": "57797bdced0e9918607cbf0a55239a746303d2445c103c4e8cb27012cd9b2fd8",
+    "forbiddenFields": [
+      "parent-node",
+      "ROOT",
+      "NONE",
+      "semanticRole",
+      "selectionMode",
+      "offsets",
+      "hierarchy"
+    ]
+  },
+  "items": {
+    "total": 18,
+    "negatives": 3,
+    "positives": 14,
+    "documentLabelControls": 1,
+    "expectedLabelsShownToModel": false,
+    "metadataShapedPositiveControls": 2,
+    "controlSelectionNote": "The positive controls are every Gold claim the Stage-1 packs own, not a chosen subset. Several of them look like the metadata this probe calls non-structural - a day banner carrying a date and a chair's name - and they are approved Gold. A probe that excluded them would be easy and would prove nothing.",
+    "rows": [
+      {
+        "ItemId": "ITEM-AB89229E",
+        "Identity": "L0000:S0:0-47",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+        "ExpectedLabel": "DOCUMENT_LABEL",
+        "goldRole": "DocumentTitle",
+        "text": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+      },
+      {
+        "ItemId": "ITEM-BAAD25EE",
+        "Identity": "L0400:S0:0-44",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "AgendaItem",
+        "text": "4. Treatment of Negative Expenditures in ICP"
+      },
+      {
+        "ItemId": "ITEM-1D843A9F",
+        "Identity": "L0420:S0:0-40",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "AgendaItem",
+        "text": "5. Fine Tuning Global Linking Procedures"
+      },
+      {
+        "ItemId": "ITEM-82675EC0",
+        "Identity": "L0470:S0:0-45",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "AgendaItem",
+        "text": "6. Improving Reliability of Price Comparisons"
+      },
+      {
+        "ItemId": "ITEM-024B8661",
+        "Identity": "L0507:S0:0-30",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "Session VI: Any Other Business"
+      },
+      {
+        "ItemId": "ITEM-505430BB",
+        "Identity": "L0513:S0:0-38|L0514:S0:0-30",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "ExpectedLabel": "NON_STRUCTURAL",
+        "goldRole": "masthead-family-F1",
+        "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)"
+      },
+      {
+        "ItemId": "ITEM-2D78F82D",
+        "Identity": "L0515:S0:0-14",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "NON_STRUCTURAL",
+        "goldRole": "masthead-family-F2",
+        "text": "Hybrid Meeting"
+      },
+      {
+        "ItemId": "ITEM-968E70AF",
+        "Identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "NON_STRUCTURAL",
+        "goldRole": "masthead-family-F3",
+        "text": "March 7-8, 2025 Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 1010"
+      },
+      {
+        "ItemId": "ITEM-CCE2C592",
+        "Identity": "L0519:S0:0-6",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "SectionHeading",
+        "text": "Agenda"
+      },
+      {
+        "ItemId": "ITEM-5348EA2B",
+        "Identity": "L0520:S0:0-51",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "DAY 1: Friday, March 7, 2025 | Chair: Paul SCHREYER"
+      },
+      {
+        "ItemId": "ITEM-5EFE8569",
+        "Identity": "L0521:S0:0-38",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "SESSION I: Welcome and Opening Remarks"
+      },
+      {
+        "ItemId": "ITEM-2F026398",
+        "Identity": "L0523:S0:0-50",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "SESSION II: Update on the ICP 2021 and 2024 Cycles"
+      },
+      {
+        "ItemId": "ITEM-E96B316E",
+        "Identity": "L0526:S0:0-65",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "SESSION III: Short- and Long-Term Research and Development Agenda"
+      },
+      {
+        "ItemId": "ITEM-13ADC8F7",
+        "Identity": "L0531:S0:0-64",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "SESSION IV: TAG Functioning and Terms of Refence for Task Forces"
+      },
+      {
+        "ItemId": "ITEM-811FC894",
+        "Identity": "L0536:S0:0-27",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "SESSION V: Current Research"
+      },
+      {
+        "ItemId": "ITEM-4C05B3C2",
+        "Identity": "L0539:S0:0-51",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "DAY 2: Saturday, March 8, 2025 | Chair: Prasada RAO"
+      },
+      {
+        "ItemId": "ITEM-959D3FCB",
+        "Identity": "L0540:S0:0-36",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "SESSION V: Current Research (Cont’d)"
+      },
+      {
+        "ItemId": "ITEM-E14B4B93",
+        "Identity": "L0553:S0:0-19",
+        "PackId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "ExpectedLabel": "STRUCTURAL_UNIT",
+        "goldRole": "MeetingSection",
+        "text": "SESSION VI: Closing"
+      }
+    ]
+  },
+  "documentLabelControl": {
+    "identity": "L0000:S0:0-47",
+    "pack": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+    "inStageOnePacks": false,
+    "handling": "Declared as its own call with its own pack context, per the rule against silently broadening pack scope. Its context could not be moved into a Stage-1 pack without changing the question it answers.",
+    "whyItMatters": "The model called the meeting-mode masthead a document title under the baseline. Whether it can tell that span from the document's actual title is the sharpest form of the question this probe asks."
+  },
+  "callPlan": {
+    "repeats": 3,
+    "callsPerRepeat": 3,
+    "proposedProviderCalls": 9,
+    "notSixBecause": "The document-label control needs its own pack context, so a repeat is three calls rather than two. Batching it into a Stage-1 pack would change the context the decision depends on.",
+    "calls": [
+      {
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+        "items": 1,
+        "negatives": 0,
+        "positives": 0,
+        "documentLabels": 1,
+        "evidencePacketSha256": "0f535d879d0c85a314557a0d973c780d4ee48b835a66a22e8212ebec75517bb0",
+        "requestSha256": "392226eb55c3b153320032cca0a7520f6e3023de7e2d0ccc4563e1e31254388d",
+        "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+        "expectedItemCount": 38,
+        "maxTokens": 4960
+      },
+      {
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "items": 5,
+        "negatives": 1,
+        "positives": 4,
+        "documentLabels": 0,
+        "evidencePacketSha256": "6d682ce4b02fdec8d596882eaf4464c1f489cb3bcd757cf84c24ccdf6b909517",
+        "requestSha256": "901a4ce79b658d299f78fc490bcd8da8261d0b09c9f62ee88056dc3135f535b1",
+        "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+        "expectedItemCount": 119,
+        "maxTokens": 15328
+      },
+      {
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "items": 12,
+        "negatives": 2,
+        "positives": 10,
+        "documentLabels": 0,
+        "evidencePacketSha256": "a8cf4a707dc963a34aba9b1afe853cb3fdb951576b124de412c073a03441e7c0",
+        "requestSha256": "0ebfe742827798e5486a317de74fd3253d2b6b14a194f8e542ad8cf5b7fac51d",
+        "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+        "expectedItemCount": 57,
+        "maxTokens": 7392
+      }
+    ],
+    "pack001ProviderInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+    "pack005ProviderInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+    "pack006ProviderInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+    "providerModelInputPlanSha256": "3e3048d63575c4ac6281c5e95480752e3b1144bf52be004de291899bb084c64d",
+    "repeatIdenticalProviderInputs": true,
+    "planHashUnchangedSincePreflight": true
+  },
+  "transportCallAuthority": {
+    "model": "qwen/qwen3.7-flash",
+    "temperature": 0,
+    "reasoningEffort": "none",
+    "responseFormat": "json_object",
+    "maxOutputTokens": 32768,
+    "perCall": [
+      {
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+        "expectedItemCount": 38,
+        "maxTokens": 4960
+      },
+      {
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+        "expectedItemCount": 119,
+        "maxTokens": 15328
+      },
+      {
+        "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+        "expectedItemCount": 57,
+        "maxTokens": 7392
+      }
+    ],
+    "derivedFrom": "OpenRouterHeaderExtractor.BoundaryOutputBudgetFor, the production formula, rather than restated here",
+    "aboveTruncationFloor": true
+  },
+  "capture": {
+    "replayComplete": true,
+    "reservationBeforeFirstCall": true,
+    "rawPersistedBeforeParse": true,
+    "onParseFailure": {
+      "rawResponseCaptured": true,
+      "parseStatus": "FAILED",
+      "semanticScoring": "STOP"
+    },
+    "identities": {
+      "required": 9,
+      "fresh": true,
+      "atomicallyReservable": true,
+      "perContextPerRepeat": true,
+      "slots": [
+        {
+          "identity": "PACK_001:r1",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+          "repeat": 1,
+          "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
+        },
+        {
+          "identity": "PACK_001:r2",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+          "repeat": 2,
+          "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
+        },
+        {
+          "identity": "PACK_001:r3",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_001",
+          "repeat": 3,
+          "providerInputSha256": "237d0f455589073c1ebb0a7a9ff75da73c59ac1b3525d07129d11c39f1e998c4",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
+        },
+        {
+          "identity": "PACK_005:r1",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+          "repeat": 1,
+          "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
+        },
+        {
+          "identity": "PACK_005:r2",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+          "repeat": 2,
+          "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
+        },
+        {
+          "identity": "PACK_005:r3",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+          "repeat": 3,
+          "providerInputSha256": "7c17de36a5465625256d2722c9ce2e9f68f9adbdb10eaf6c5769497eb33c99b5",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
+        },
+        {
+          "identity": "PACK_006:r1",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+          "repeat": 1,
+          "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
+        },
+        {
+          "identity": "PACK_006:r2",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+          "repeat": 2,
+          "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
+        },
+        {
+          "identity": "PACK_006:r3",
+          "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+          "repeat": 3,
+          "providerInputSha256": "e815f2299583a5e1126ceb794006a347efd50b71f46c34097c3f8316d320669f",
+          "fresh": true,
+          "reserved": false,
+          "atomicallyReservable": true,
+          "observedNow": {
+            "fresh": false,
+            "reservable": false
+          }
+        }
+      ],
+      "note": "Nine identities, not three: each context is its own call and therefore its own slot. Reservability is proven by performing an exclusive create and removing it, not inferred from a file being absent."
+    }
+  },
+  "metrics": {
+    "perItemPerRepeat": [
+      "expected class",
+      "returned class",
+      "correct"
+    ],
+    "aggregates": [
+      "MASTHEAD_NEGATIVE_ACCURACY",
+      "GOLD_POSITIVE_ACCURACY"
+    ],
+    "perFamily": [
+      "F1 correct / 3",
+      "F2 correct / 3",
+      "F3 correct / 3"
+    ]
+  },
+  "predeclaredInterpretation": [
+    {
+      "outcome": "A",
+      "condition": "the masthead families answer NON_STRUCTURAL and the Gold controls answer STRUCTURAL_UNIT",
+      "classification": "DIRECT_SEMANTIC_CAPABILITY_PRESENT",
+      "meaning": "The model holds the distinction when asked. What remains is the open-set membership formulation, not basic semantic capability."
+    },
+    {
+      "outcome": "B",
+      "condition": "F1 and F2 stay STRUCTURAL_UNIT or DOCUMENT_LABEL while the Gold controls are correct",
+      "classification": "DIRECT_SEMANTIC_DISCRIMINATION_LIMIT_OBSERVED",
+      "meaning": "This model, under this policy, fails the distinction in a direct task.",
+      "doNotGeneralize": "to language models in general"
+    },
+    {
+      "outcome": "C",
+      "condition": "the Gold controls also regress heavily",
+      "classification": "PROBE_CONTRACT_OR_CONTEXT_INVALID",
+      "meaning": "The instrument is wrong. No inference about the model is permitted."
+    }
+  ],
+  "secondModel": {
+    "deferred": true,
+    "note": "If outcome B occurs, the same frozen probe could be replayed byte-identically against a different model to separate a limitation of this model from ambiguity in the task. Not now, and not part of this authorization."
+  },
+  "limitations": {
+    "singleDocument": "DOC-0252",
+    "materializedGold": "48 / 3955",
+    "crossGenreSemanticCapabilityEstablished": false,
+    "note": "Naming frozen spans to a model is acceptable here only because this measures capability rather than producing output. It is not a production candidate gate and authorizes none."
+  }
+}

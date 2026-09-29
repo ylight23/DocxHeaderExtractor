@@ -4,7 +4,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// M9.1 materialization. It projects what the pipeline already validated into the shape a product
-/// can consume, and nothing more: it runs no model, produces no candidate, resolves no hierarchy,
+/// can consume, and nothing more: it runs no model, creates no source occurrence, resolves no hierarchy,
 /// performs no matching, and never invents a relation the evidence does not carry.
 /// <para>
 /// Identity is canonical, not observational. For a DOCX product the document is the authority and
@@ -19,7 +19,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </para>
 /// <para>
 /// This is not the output policy. Deciding which validated facts a particular product emits belongs
-/// to <see cref="PdfOutputDecisionPolicy"/>, so every validated heading is materialized here —
+/// to <see cref="PdfOutputDecisions"/>, so every validated heading is materialized here —
 /// including roles a given product will later drop — and the policy layer keeps something complete
 /// to filter.
 /// </para>
@@ -71,7 +71,7 @@ public static class PdfFinalStructureProjection
                 new PdfEvidenceAnchor(fact.Page, fact.Id, new PdfTextSpan(fact.HeadingSpan.Start, fact.HeadingSpan.End),
                     fact.HeadingText, fact.LineIds),
                 text,
-                structure.DomainRole.ToString(),
+                "Heading",
                 structure.StructuralScope,
                 structure.Decision,
                 groundingStatus,
@@ -81,14 +81,7 @@ public static class PdfFinalStructureProjection
                 levelReason,
                 parentReason,
                 "validated",
-                grounding?.ParagraphText ?? fact.SourceBlockText)
-            {
-                // Rehydrate the proposal for legacy serialized facts that predate the explicit
-                // evidence field. New producer output already carries this value from the source
-                // detector; the fallback does not create or validate a structural element.
-                DomainExclusionProposed = structure.DomainExclusionProposed ||
-                    DocumentDomainPolicy.EvidenceForRole(structure.DomainRole, "legacy-domain-fact").ProposesOutlineExclusion,
-            });
+                grounding?.ParagraphText ?? fact.SourceBlockText));
         }
 
         return new PdfFinalStructure(
@@ -213,9 +206,4 @@ public sealed record PdfFinalHeading(
     [property: JsonPropertyName("authority")] string Authority,
     // Additive in schema v2: old artifacts simply omit this field; new products use it to preserve
     // the canonical paragraph when the heading span starts after offset zero.
-    [property: JsonPropertyName("sourceText")] string SourceText)
-{
-    /// <summary>Domain detector evidence used by product policy; excluded from serialized output.</summary>
-    [JsonIgnore]
-    public bool DomainExclusionProposed { get; init; }
-}
+    [property: JsonPropertyName("sourceText")] string SourceText);

@@ -1,0 +1,21 @@
+{
+  "artifactKind": "a99_source_regeneration_manifest",
+  "schemaVersion": "a99-source-regeneration-manifest-v1",
+  "documentId": "SRC-029",
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "source": {
+    "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+    "sha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+    "mediaType": "PDF"
+  },
+  "removed": {
+    "path": "todo10_8/heading_corpus_95_word/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.docx",
+    "sha256": "475f76a5d3915f4ceb13d6a6bae5fac0485e66fade6c36ddd927cddaadd0fe9e",
+    "producedBy": "pdf2docx",
+    "defect": "the ITP margin column's clause names interleaved with clause bodies (\"31. Evaluation of 31.1 The Employer's evaluation ... Technical out as ...\")"
+  },
+  "whyNotReconverted": "PdfLineDocxConverter splits small capitals (\"S ECTION I - I NSTRUCTIONS\") and interleaves the margin column the same way; the PDF lane's visual-line segments keep each margin line as its own atom (\"22. Submission,\" / \"Sealing and\" / \"Marking of\" / \"Proposals\")",
+  "approvedBy": "USER",
+  "approvedAt": "2026-09-24"
+}

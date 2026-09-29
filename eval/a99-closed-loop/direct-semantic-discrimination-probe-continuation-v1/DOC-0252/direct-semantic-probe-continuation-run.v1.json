@@ -1,0 +1,182 @@
+{
+  "artifactKind": "a99_direct_semantic_probe_continuation_run",
+  "schemaVersion": "a99-direct-semantic-probe-continuation-run-v1",
+  "lineage": "direct-semantic-discrimination-probe-continuation-v1",
+  "supersedesAuthorization": "prior continuation authorization",
+  "providerAuthorized": true,
+  "documentId": "DOC-0252",
+  "promptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+  "schemaSha256": "20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+  "providerInputPlanSha256": "a792fb0f03b2c6c16facecba5485ed48dc7742610f7542e0936ca88ecd59243b",
+  "requiredCells": [
+    "r3:PACK_005",
+    "r3:PACK_006"
+  ],
+  "proposedProviderCalls": 2,
+  "actualProviderCalls": 2,
+  "successfulContinuationCells": 2,
+  "replacementCalls": 0,
+  "safetyMarginCalls": 0,
+  "secondModelReplay": 0,
+  "stage1TransportCalls": 0,
+  "stage2Calls": 0,
+  "placementCalls": 0,
+  "halted": null,
+  "reservations": [
+    {
+      "identity": "r3:PACK_005",
+      "slot": "PACK_005.capture-slot.v1.json"
+    },
+    {
+      "identity": "r3:PACK_006",
+      "slot": "PACK_006.capture-slot.v1.json"
+    }
+  ],
+  "results": [
+    {
+      "repeat": 3,
+      "pack": "PACK_005",
+      "decisions": [
+        {
+          "itemId": "ITEM-BAAD25EE",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-1D843A9F",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-82675EC0",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-024B8661",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-505430BB",
+          "classification": "DOCUMENT_LABEL"
+        }
+      ],
+      "rawResponseSha256": "e13ec722a374639b7b5be0ed25288846dfc9f7c4565da26f00a927cd86166cb4"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "decisions": [
+        {
+          "itemId": "ITEM-2D78F82D",
+          "classification": "NON_STRUCTURAL"
+        },
+        {
+          "itemId": "ITEM-968E70AF",
+          "classification": "NON_STRUCTURAL"
+        },
+        {
+          "itemId": "ITEM-CCE2C592",
+          "classification": "DOCUMENT_LABEL"
+        },
+        {
+          "itemId": "ITEM-5348EA2B",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-5EFE8569",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-2F026398",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-E96B316E",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-13ADC8F7",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-811FC894",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-4C05B3C2",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-959D3FCB",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-E14B4B93",
+          "classification": "STRUCTURAL_UNIT"
+        }
+      ],
+      "rawResponseSha256": "3bc9296a7c1ad344fe9f313f93df725855886b81c6e09121bf70b5d9c30056cd"
+    }
+  ],
+  "callLedger": [
+    {
+      "Ordinal": 1,
+      "DocumentId": "DOC-0252",
+      "Repeat": 3,
+      "Stage": "direct-semantic-probe-continuation",
+      "SystemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+      "RequestSha256": "901a4ce79b658d299f78fc490bcd8da8261d0b09c9f62ee88056dc3135f535b1",
+      "ResponseSha256": "e13ec722a374639b7b5be0ed25288846dfc9f7c4565da26f00a927cd86166cb4",
+      "RequestChars": 46601,
+      "ResponseChars": 1420,
+      "ElapsedMs": 5143
+    },
+    {
+      "Ordinal": 2,
+      "DocumentId": "DOC-0252",
+      "Repeat": 3,
+      "Stage": "direct-semantic-probe-continuation",
+      "SystemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+      "RequestSha256": "0ebfe742827798e5486a317de74fd3253d2b6b14a194f8e542ad8cf5b7fac51d",
+      "ResponseSha256": "3bc9296a7c1ad344fe9f313f93df725855886b81c6e09121bf70b5d9c30056cd",
+      "RequestChars": 23536,
+      "ResponseChars": 2985,
+      "ElapsedMs": 9083
+    }
+  ],
+  "priorLineage": {
+    "successfulCells": 7,
+    "failedCells": 1,
+    "attemptedCells": 8,
+    "reservationsPreserved": true
+  },
+  "gates": [
+    "head: MATCH expected=d74f14d8deeacbb65ee6afbdb9affe5e66c5a0f2 actual=d74f14d8deeacbb65ee6afbdb9affe5e66c5a0f2",
+    "sourceHash: MATCH expected=a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61 actual=a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverse: MATCH expected=2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f actual=2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "goldHash: MATCH expected=e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e actual=e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "schemaHash: MATCH expected=20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9 actual=20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+    "promptHash: MATCH expected=5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387 actual=5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+    "priorSuccessfulCells: MATCH expected=7 actual=7",
+    "priorFailedCells: MATCH expected=1 actual=1",
+    "priorAttemptedCells: MATCH expected=8 actual=8",
+    "requiredContinuationCells: MATCH expected=2 actual=2",
+    "requiredIdentities: MATCH expected=r3:PACK_005,r3:PACK_006 actual=r3:PACK_005,r3:PACK_006",
+    "priorReservedSlots: MATCH expected=9 actual=9",
+    "priorRootUntouched: MATCH expected=true actual=true",
+    "r3:PACK_005:providerInput: MATCH expected=8ce58a9c478f481f6d021f83b2e849953f1d5b1e378186405d7dd4d5fb555866 actual=8ce58a9c478f481f6d021f83b2e849953f1d5b1e378186405d7dd4d5fb555866",
+    "r3:PACK_005:expectedItemCount: MATCH expected=119 actual=119",
+    "r3:PACK_005:maxTokens: MATCH expected=15328 actual=15328",
+    "r3:PACK_005:compatibility: MATCH expected=true actual=true",
+    "r3:PACK_006:providerInput: MATCH expected=127573c38acfbcaca27dd713a9054cd627a02ac8e3469c0c538f9e1f6b3e86fd actual=127573c38acfbcaca27dd713a9054cd627a02ac8e3469c0c538f9e1f6b3e86fd",
+    "r3:PACK_006:expectedItemCount: MATCH expected=57 actual=57",
+    "r3:PACK_006:maxTokens: MATCH expected=7392 actual=7392",
+    "r3:PACK_006:compatibility: MATCH expected=true actual=true",
+    "providerInputPlan: MATCH expected=a792fb0f03b2c6c16facecba5485ed48dc7742610f7542e0936ca88ecd59243b actual=a792fb0f03b2c6c16facecba5485ed48dc7742610f7542e0936ca88ecd59243b",
+    "continuationCalls: MATCH expected=2 actual=2",
+    "pack001Calls: MATCH expected=0 actual=0",
+    "replacementCalls: MATCH expected=0 actual=0",
+    "safetyMarginCalls: MATCH expected=0 actual=0",
+    "secondModelReplay: MATCH expected=0 actual=0",
+    "stage1TransportCalls: MATCH expected=0 actual=0",
+    "stage2Calls: MATCH expected=0 actual=0"
+  ]
+}

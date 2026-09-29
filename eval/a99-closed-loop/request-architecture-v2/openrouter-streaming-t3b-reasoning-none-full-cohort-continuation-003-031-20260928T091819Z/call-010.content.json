@@ -1,0 +1,696 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0185:S0",
+          "verbatimText": "2.1. Document Organization"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0186:S0",
+          "verbatimText": "The following sections provide a detailed overview ofthe lifecycle of an HTTP/3 connection:"
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0187:S0",
+          "verbatimText": "• \"Connection Setup and Management\" (Section 3) covers how an HTTP/3 endpoint is"
+        },
+        {
+          "sourceAlias": "L0188:S0",
+          "verbatimText": "discovered and an HTTP/3 connection is established."
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0189:S0",
+          "verbatimText": "• \"Expressing HTTP Semantics in HTTP/3\" (Section 4) describes how HTTP semantics are"
+        },
+        {
+          "sourceAlias": "L0190:S0",
+          "verbatimText": "expressed using frames."
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0191:S0",
+          "verbatimText": "• \"Connection Closure\" (Section 5) describes how HTTP/3 connections are terminated, either"
+        },
+        {
+          "sourceAlias": "L0192:S0",
+          "verbatimText": "gracefully or abruptly."
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0193:S0",
+          "verbatimText": "The details ofthe wire protocol and interactions with the transport are described in subsequent"
+        },
+        {
+          "sourceAlias": "L0194:S0",
+          "verbatimText": "sections:"
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0195:S0",
+          "verbatimText": "• \"Stream Mapping and Usage\" (Section 6) describes the way QUIC streams are used."
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0196:S0",
+          "verbatimText": "• \"HTTP Framing Layer\" (Section 7) describes the frames used on most streams."
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0197:S0",
+          "verbatimText": "Bishop Standards Track Page 6"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0198:S0",
+          "verbatimText": "RFC 9114 HTTP/3 June 2022"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0199:S0",
+          "verbatimText": "• \"Error Handling\" (Section 8) describes how error conditions are handled and expressed,"
+        },
+        {
+          "sourceAlias": "L0200:S0",
+          "verbatimText": "either on a particular stream or for the connection as a whole."
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0201:S0",
+          "verbatimText": "Additional resources are provided in the final sections:"
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0202:S0",
+          "verbatimText": "• \"Extensions to HTTP/3\" (Section 9) describes how new capabilities can be added in future"
+        },
+        {
+          "sourceAlias": "L0203:S0",
+          "verbatimText": "documents."
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0204:S0",
+          "verbatimText": "• A more detailed comparison between HTTP/2 and HTTP/3 can be found in Appendix A."
+        }
+      ],
+      "semanticFunction": "NAVIGATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0205:S0",
+          "verbatimText": "2.2. Conventions and Terminology"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0206:S0",
+          "verbatimText": "The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\","
+        },
+        {
+          "sourceAlias": "L0207:S0",
+          "verbatimText": "\"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be"
+        },
+        {
+          "sourceAlias": "L0208:S0",
+          "verbatimText": "interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all"
+        },
+        {
+          "sourceAlias": "L0209:S0",
+          "verbatimText": "capitals, as shown here."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0210:S0",
+          "verbatimText": "This document uses the variable-length integer encoding from [QUIC-TRANSPORT]."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0211:S0",
+          "verbatimText": "The following terms are used:"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0212:S0",
+          "verbatimText": "abort:"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0212:S1",
+          "verbatimText": "An abrupt termination of a connection or stream, possibly due to an error condition."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0213:S0",
+          "verbatimText": "client:"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0213:S1",
+          "verbatimText": "The endpoint that initiates an HTTP/3 connection. Clients send HTTP requests and"
+        },
+        {
+          "sourceAlias": "L0214:S0",
+          "verbatimText": "receive HTTP responses."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0215:S0",
+          "verbatimText": "connection: A transport-layer connection between two endpoints using QUIC as the transport"
+        },
+        {
+          "sourceAlias": "L0216:S0",
+          "verbatimText": "protocol."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0217:S0",
+          "verbatimText": "connection error: An error that affects the entire HTTP/3 connection."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0218:S0",
+          "verbatimText": "endpoint: Either the client or server ofthe connection."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0219:S0",
+          "verbatimText": "frame: The smallest unit of communication on a stream in HTTP/3, consisting of a header and a"
+        },
+        {
+          "sourceAlias": "L0220:S0",
+          "verbatimText": "variable-length sequence ofbytes structured according to the frame type."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0221:S0",
+          "verbatimText": "Protocol elements called \"frames\" exist in both this document and [QUIC-TRANSPORT]. Where"
+        },
+        {
+          "sourceAlias": "L0222:S0",
+          "verbatimText": "frames from [QUIC-TRANSPORT] are referenced, the frame name will be prefaced with \"QUIC\"."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0223:S0",
+          "verbatimText": "For example, \"QUIC CONNECTION_CLOSE frames\". References without this preface refer to"
+        },
+        {
+          "sourceAlias": "L0224:S0",
+          "verbatimText": "frames defined in Section 7.2."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0225:S0",
+          "verbatimText": "HTTP/3 connection: A QUIC connection where the negotiated application protocol is HTTP/3."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0226:S0",
+          "verbatimText": "peer: An endpoint. When discussing a particular endpoint, \"peer\" refers to the endpoint that is"
+        },
+        {
+          "sourceAlias": "L0227:S0",
+          "verbatimText": "remote to the primary subject of discussion."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0228:S0",
+          "verbatimText": "receiver:"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0228:S1",
+          "verbatimText": "An endpoint that is receiving frames."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0229:S0",
+          "verbatimText": "sender:"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0229:S1",
+          "verbatimText": "An endpoint that is transmitting frames."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0230:S0",
+          "verbatimText": "Bishop Standards Track Page 7"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0231:S0",
+          "verbatimText": "RFC 9114 HTTP/3 June 2022"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0232:S0",
+          "verbatimText": "server:"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0232:S1",
+          "verbatimText": "The endpoint that accepts an HTTP/3 connection. Servers receive HTTP requests and"
+        },
+        {
+          "sourceAlias": "L0233:S0",
+          "verbatimText": "send HTTP responses."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0234:S0",
+          "verbatimText": "stream:"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0234:S1",
+          "verbatimText": "A bidirectional or unidirectional bytestream provided by the QUIC transport. All"
+        },
+        {
+          "sourceAlias": "L0235:S0",
+          "verbatimText": "streams within an HTTP/3 connection can be considered \"HTTP/3 streams\", but multiple"
+        },
+        {
+          "sourceAlias": "L0236:S0",
+          "verbatimText": "stream types are defined within HTTP/3."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0237:S0",
+          "verbatimText": "stream error: An application-level error on the individual stream."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0238:S0",
+          "verbatimText": "The term \"content\" is defined in Section 6.4 of [HTTP]."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0239:S0",
+          "verbatimText": "Finally, the terms \"resource\", \"message\", \"user agent\", \"origin server\", \"gateway\", \"intermediary\","
+        },
+        {
+          "sourceAlias": "L0240:S0",
+          "verbatimText": "\"proxy\", and \"tunnel\" are defined in Section 3 of [HTTP]."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0241:S0",
+          "verbatimText": "Packet diagrams in this document use the format defined in Section 1.3 of [QUIC-TRANSPORT] to"
+        },
+        {
+          "sourceAlias": "L0242:S0",
+          "verbatimText": "illustrate the order and size offields."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0243:S0",
+          "verbatimText": "3. Connection Setup and Management"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0244:S0",
+          "verbatimText": "3.1. Discovering an HTTP/3 Endpoint"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0245:S0",
+          "verbatimText": "HTTP relies on the notion of an authoritative response: a response that has been determined to"
+        },
+        {
+          "sourceAlias": "L0246:S0",
+          "verbatimText": "be the most appropriate response for that request given the state ofthe target resource at the time"
+        },
+        {
+          "sourceAlias": "L0247:S0",
+          "verbatimText": "ofresponse message origination by (or at the direction of) the origin server identified within the"
+        },
+        {
+          "sourceAlias": "L0248:S0",
+          "verbatimText": "target URI. Locating an authoritative server for an HTTP URI is discussed in Section 4.3 of [HTTP]."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0249:S0",
+          "verbatimText": "The \"https\" scheme associates authority with possession of a certificate that the client considers"
+        },
+        {
+          "sourceAlias": "L0250:S0",
+          "verbatimText": "to be trustworthy for the host identified by the authority component ofthe URI. Upon receiving a"
+        },
+        {
+          "sourceAlias": "L0251:S0",
+          "verbatimText": "server certificate in the TLS handshake, the client MUST verify that the certificate is an acceptable"
+        },
+        {
+          "sourceAlias": "L0252:S0",
+          "verbatimText": "match for the URI's origin server using the process described in Section 4.3.4 of [HTTP]. Ifthe"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0253:S0",
+          "verbatimText": "certificate cannot be verified with respect to the URI's origin server, the client MUST NOT consider"
+        },
+        {
+          "sourceAlias": "L0254:S0",
+          "verbatimText": "the server authoritative for that origin."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0255:S0",
+          "verbatimText": "A client MAY attempt access to a resource with an \"https\" URI by resolving the host identifier to an"
+        },
+        {
+          "sourceAlias": "L0256:S0",
+          "verbatimText": "IP address, establishing a QUIC connection to that address on the indicated port (including"
+        },
+        {
+          "sourceAlias": "L0257:S0",
+          "verbatimText": "validation ofthe server certificate as described above), and sending an HTTP/3 request message"
+        },
+        {
+          "sourceAlias": "L0258:S0",
+          "verbatimText": "targeting the URI to the server over that secured connection. Unless some other mechanism is"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0259:S0",
+          "verbatimText": "used to select HTTP/3, the token \"h3\" is used in the Application-Layer Protocol Negotiation (ALPN;"
+        },
+        {
+          "sourceAlias": "L0260:S0",
+          "verbatimText": "see [RFC7301]) extension during the TLS handshake."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0261:S0",
+          "verbatimText": "Connectivity problems (e.g., blocking UDP) can result in a failure to establish a QUIC connection;"
+        },
+        {
+          "sourceAlias": "L0262:S0",
+          "verbatimText": "clients SHOULD attempt to use TCP-based versions ofHTTP in this case."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0263:S0",
+          "verbatimText": "Servers MAY serve HTTP/3 on any UDP port; an alternative service advertisement always includes"
+        },
+        {
+          "sourceAlias": "L0264:S0",
+          "verbatimText": "an explicit port, and URIs contain either an explicit port or a default port associated with the"
+        },
+        {
+          "sourceAlias": "L0265:S0",
+          "verbatimText": "scheme."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0266:S0",
+          "verbatimText": "Bishop Standards Track Page 8"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0267:S0",
+          "verbatimText": "RFC 9114 HTTP/3 June 2022"
+        }
+      ],
+      "semanticFunction": "PAGE_FURNITURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0268:S0",
+          "verbatimText": "3.1.1. HTTP Alternative Services"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0269:S0",
+          "verbatimText": "An HTTP origin can advertise the availability of an equivalent HTTP/3 endpoint via the Alt-Svc"
+        },
+        {
+          "sourceAlias": "L0270:S0",
+          "verbatimText": "HTTP response header field or the HTTP/2 ALTSVC frame ([ALTSVC]) using the \"h3\" ALPN token."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0271:S0",
+          "verbatimText": "For example, an origin could indicate in an HTTP response that HTTP/3 was available on UDP"
+        },
+        {
+          "sourceAlias": "L0272:S0",
+          "verbatimText": "port 50781 at the same hostname by including the following header field:"
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0273:S0",
+          "verbatimText": "Alt - Svc : h3 = \" : 50781 \""
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0274:S0",
+          "verbatimText": "On receipt of an Alt-Svc record indicating HTTP/3 support, a client MAY attempt to establish a"
+        },
+        {
+          "sourceAlias": "L0275:S0",
+          "verbatimText": "QUIC connection to the indicated host and port; ifthis connection is successful, the client can"
+        },
+        {
+          "sourceAlias": "L0276:S0",
+          "verbatimText": "send HTTP requests using the mapping described in this document."
+        }
+      ],
+      "semanticFunction": "BODY_INFORMATION"
+    }
+  ]
+}

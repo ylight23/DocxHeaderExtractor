@@ -49,6 +49,5 @@ public sealed class StructuralContextEnrichmentCleanCompletionTests
         Assert.True(root.GetProperty("goldFirewall").GetString() == "PASS");
     }
 
-    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(), relativePath.Replace('/', Path.DirectorySeparatorChar))));
-    private static string Root() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../.."));
+    private static JsonDocument Load(string relativePath) => JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), relativePath.Replace('/', Path.DirectorySeparatorChar))));
 }

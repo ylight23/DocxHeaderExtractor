@@ -202,7 +202,6 @@ public sealed class CanonicalSemanticVisualRecoveryTests
             "OTHER_STRUCTURAL_LABEL", "Heading", "footer");
 
         Assert.False(CanonicalSemanticVisualBindingValidator.IsValid(heading, occurrences));
-        Assert.True(SemanticCandidatePolicy.CanAcceptVisualOccurrence("V0001", []));
         Assert.Empty(CanonicalSemanticVisualBinder.Bind([], occurrences));
     }
 
@@ -246,9 +245,9 @@ public sealed class CanonicalSemanticVisualRecoveryTests
             textProposals,
             "source-hash",
             pages,
-            [], [], [], [],
-            blocks,
-            visualProposals));
+            [], [], [],
+            VisualBlocks: blocks,
+            VisualProposals: visualProposals));
     }
 
     private static CanonicalSemanticGraph Graph(params CanonicalSemanticProposal[] proposals)

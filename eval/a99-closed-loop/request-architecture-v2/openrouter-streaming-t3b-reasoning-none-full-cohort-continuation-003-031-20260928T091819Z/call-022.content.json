@@ -1,0 +1,80 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1294:S0",
+          "verbatimText": "10. Security Considerations"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1298:S0",
+          "verbatimText": "10.1. Server Authority"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1301:S0",
+          "verbatimText": "10.2. Cross-Protocol Attacks"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1308:S0",
+          "verbatimText": "10.3. Intermediary-Encapsulation Attacks"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1320:S0",
+          "verbatimText": "10.4."
+        },
+        {
+          "sourceAlias": "L1320:S1",
+          "verbatimText": "Cacheability of Pushed Responses"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1333:S0",
+          "verbatimText": "10.5. Denial-of-Service Considerations"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1357:S0",
+          "verbatimText": "10.5.1. Limits on Field Section Size"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1374:S0",
+          "verbatimText": "10.5.2. CONNECT Issues"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    }
+  ]
+}

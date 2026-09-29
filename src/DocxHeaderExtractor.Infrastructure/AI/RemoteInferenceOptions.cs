@@ -13,8 +13,26 @@ public sealed class RemoteInferenceOptions
     public string ApiKey { get; set; } = "";
     public string Model { get; set; } = DefaultModel;
     public int ContextSize { get; set; } = 32768;
-    public int MaxOutputTokens { get; set; } = 768;
-    public int MissingIdRetries { get; set; } = 2;
+    /// <summary>
+    /// Ceiling only: every caller sizes its own budget from how many source items the request
+    /// asks about and clamps by this value. 768 was tuned for the legacy boundary protocol and
+    /// truncated the canonical semantic contract, whose reply carries one object per owned
+    /// occurrence.
+    /// </summary>
+    public int MaxOutputTokens { get; set; } = 32768;
+
+    /// <summary>
+    /// Sent as <c>provider.zdr</c>. It must be written explicitly: omitting the field makes
+    /// OpenRouter inherit the account's privacy default, and an account set to Zero-Data-Retention
+    /// then rejects every endpoint of the controlled models (qwen3.7-flash is served only by
+    /// Alibaba, which is not ZDR-certified) with a 404 before the request reaches a model.
+    /// <para>
+    /// Default false: the retained guarantee is <c>data_collection=deny</c>, which forbids the
+    /// provider from training on the data but does not promise deletion once the reply is sent.
+    /// Set true only when every model in use has a ZDR-certified endpoint.
+    /// </para>
+    /// </summary>
+    public bool RequireZeroDataRetention { get; set; }
     public int RequestTimeoutSeconds { get; set; } = 90;
     public int TransientRequestRetries { get; set; } = 2;
     public int MaxParallelRequests { get; set; } = 1;
@@ -24,12 +42,12 @@ public sealed class RemoteInferenceOptions
     /// serving route with fallbacks disabled. Null preserves the existing automatic routing
     /// policy. This is intentionally an infrastructure option, never a semantic prompt input.</summary>
     public string? OpenRouterProviderRoute { get; set; }
-    /// <summary>Campaign-scoped exception for public benchmark documents. Default false keeps
-    /// the normal OpenRouter zero-data-retention policy unchanged.</summary>
-    public bool OpenRouterAllowNonZdrPublicBenchmark { get; set; }
-    /// <summary>Optional A/B control override. Null uses the provider-reported reasoning
-    /// ceiling; false sends the explicit reasoning.enabled=false control.</summary>
-    public bool? OpenRouterReasoningEnabledOverride { get; set; }
+    /// <summary>
+    /// Exact OpenRouter reasoning envelope value. The production default is <c>none</c> and is
+    /// intentionally unchanged. A causal reasoning arm must opt in explicitly and pin the
+    /// resulting execution fingerprint before transport.
+    /// </summary>
+    public string OpenRouterReasoningEffort { get; set; } = "none";
     /// <summary>Optional execution-only telemetry. Null preserves the normal production path.</summary>
     public ProviderObservabilityOptions? Observability { get; set; }
     public Action<string>? DebugLog { get; set; }
@@ -43,10 +61,11 @@ public sealed class RemoteInferenceOptions
         if (!Endpoint.AbsolutePath.EndsWith("/v1/chat/completions", StringComparison.OrdinalIgnoreCase))
             throw new InvalidOperationException("Inference endpoint phải kết thúc bằng /v1/chat/completions.");
         if (ContextSize is < 1024 or > 1_048_576) throw new InvalidOperationException("ContextSize phải nằm trong khoảng 1024..1048576.");
-        if (MissingIdRetries is < 0 or > 5) throw new InvalidOperationException("MissingIdRetries phải nằm trong khoảng 0..5.");
         if (RequestTimeoutSeconds is < 10 or > 600) throw new InvalidOperationException("RequestTimeoutSeconds phải nằm trong khoảng 10..600.");
         if (TransientRequestRetries is < 0 or > 4) throw new InvalidOperationException("TransientRequestRetries phải nằm trong khoảng 0..4.");
         if (MaxParallelRequests is < 1 or > 16) throw new InvalidOperationException("MaxParallelRequests phải nằm trong khoảng 1..16.");
+        if (OpenRouterReasoningEffort is not ("none" or "low" or "medium" or "high"))
+            throw new InvalidOperationException("OpenRouterReasoningEffort phải là none, low, medium hoặc high.");
     }
 
     public static RemoteInferenceOptions FromEnvironment(string profile = "openrouter")

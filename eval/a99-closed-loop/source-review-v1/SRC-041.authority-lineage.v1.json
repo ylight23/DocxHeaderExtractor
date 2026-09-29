@@ -1,0 +1,73 @@
+{
+  "artifactKind": "a99_gold_authority_lineage",
+  "authorityId": "SRC-041",
+  "modelProviderVlmCalls": 0,
+  "previousSemanticAuthority": {
+    "source": "original PDF (the same bytes as the current authority)",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+    "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+    "total": 297,
+    "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "exactOccurrenceFreeze": false,
+    "occurrenceList": false,
+    "occurrenceIdentities": "UNAVAILABLE",
+    "exactSpans": "UNAVAILABLE",
+    "status": "SUPERSEDED",
+    "role": "provenance_only",
+    "artifact": {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-041.semantic-freeze.v1.json",
+      "sha256": "b438f4dcdc20bda88f2f74f2ab66ebb49980d9ededf8b23b4725f61edf7f640d"
+    }
+  },
+  "supersededBecause": "the current authority names every occurrence and binds each one exactly to the source, independently of the engine and of the previous count; the previous authority is a total without occurrence identities",
+  "historicalAuthorityDelta": {
+    "HISTORICAL_AUTHORITY_DELTA": -17,
+    "CAUSE": "UNRESOLVED",
+    "meaning": "a difference between two authorities over the same PDF; not evidence that the current Gold misses any occurrence",
+    "followUp": "SRC041_HISTORICAL_297_DELTA_AUDIT_V1, only after the Gold and the raw blind score are committed: source-level evidence only, never engine predictions; if the previous review left no occurrence notes, the exact delta is not recoverable",
+    "goldRevisionRule": "a Gold error found later becomes a new Gold revision with its own provenance; the blind score stays scored against the Gold frozen at the reveal"
+  },
+  "currentCanonicalAuthority": {
+    "source": "original PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+    "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+    "total": 280,
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "hierarchyEvaluable": false,
+    "membershipDecision": {
+      "decidedBy": "USER",
+      "decidedAt": "2026-09-25",
+      "review": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-041.source-review.v1.json",
+        "sha256": "e0dc8e12a054354bfdeb35fae4076fed7a17a1eb8e60ee7a63d798449c187b24"
+      },
+      "reviewItems": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-041/review-items.json",
+        "sha256": "aab34d18cf39ca210a6fae939c1b9bd7ae987d82281466703c1577f4637f5295"
+      }
+    },
+    "engineProposalsRead": false,
+    "status": "CURRENT_OCCURRENCE_LEVEL_AUTHORITY"
+  },
+  "erratum": {
+    "affected": [
+      {
+        "path": "eval/a99-closed-loop/generic-audit-v1_1/SRC-041.preregistration.v1_1.json",
+        "field": "sourceNote",
+        "commit": "35a2040"
+      },
+      {
+        "path": "tests/DocxHeaderExtractor.Tests/Src041SourceReviewTests.cs",
+        "field": "summary comment",
+        "commit": "614c8fc"
+      }
+    ],
+    "statedThen": "SRC-041's Gold file holds only a count-only total recorded on a retired pdf2docx DOCX",
+    "correction": "the count-only total (297) was a user-approved source-only review of this same original PDF (2026-09-12) with no occurrence list; no DOCX was involved",
+    "effect": "none on the study: the total was neither engine input nor target, and neither the review nor the decisions read it. The pre-registration is not rewritten; this lineage records the correction"
+  }
+}

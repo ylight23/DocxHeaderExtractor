@@ -1,0 +1,588 @@
+{
+  "artifactKind": "a99_pdf_segment_evidence_authority",
+  "schemaVersion": "a99-pdf-segment-evidence-authority-v1",
+  "capability": "SEGMENT_ATOM_SOURCE_AND_MODEL_EVIDENCE",
+  "authorityId": "DOC-0252",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "active": false,
+  "providerAuthorized": false,
+  "canonicalGoldMigrated": false,
+  "note": "This is what a migration would switch to, measured before switching. The active lane still builds its universe from parser blocks.",
+  "whyFourHashes": "A universe hash says what a coordinate is. It does not say what the model is told about it, nor how that is cut into requests. All three can change while the first stays still, which is how a preflight comes back green over an input nobody checked.",
+  "lineage": {
+    "note": "Where this candidate sits. Canonical Gold was frozen against the active universe, which is still what production builds; nothing here has replaced it.",
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "goldFrozenAgainstSourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "activeRuntimeSourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "candidateReplacesActive": false
+  },
+  "hashes": {
+    "sourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "modelVisibleEvidenceSha256": "5a2ab0477ee9c31648f7862b077a4c92fab070ecde1446321123c63c7637687f",
+    "callPlanSha256": "e532682353ca2ea0c73ec660baedb880fdfdafa9a5de7a6e61b242ddbdb648ed",
+    "producers": {
+      "sourceAliasUniverse": "PdfStructuredSourceAuthorityBuilder.Build -> PdfSegmentAtomCatalog.FromSegments, schema a99-pdf-segment-atom-universe-v1",
+      "modelVisibleEvidence": "PdfStructuredSourceAuthorityBuilder.Visible over PdfCanonicalSourceUniverseBuilder.EvidenceOf, schema a99-pdf-model-visible-evidence-v1",
+      "callPlan": "PdfStructuredSourceAuthorityBuilder.Partition, OwnedPerSegment 120 and VisibleMargin 20, schema a99-pdf-context-pack-plan-v1"
+    }
+  },
+  "requestAuthorityCorrection": {
+    "note": "PdfStructuredSourceAuthorityBuilder used to compute a fourth hash here, over a request format it invented for measurement. It disagreed with CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.InferAsync - same evidence, same six calls, different bytes - because it was never checked against production until a routing preflight built the real request and compared it. Discovered at PROVIDER_CALLS = 0.",
+    "predecessorRequestPlanSha256": "97952bd190c4ffffb77f30e12924efaf648c92d840228169a0c9adec74dd6d1d",
+    "predecessorStatus": "SYNTHETIC_REQUEST_SERIALIZATION_NOT_PROVIDER_BOUND",
+    "rootCause": "SCHEMA_SERIALIZED_INSIDE_JSON_IN_MEASUREMENT_HELPER_INSTEAD_OF_CANONICAL_POSTFIX_USED_BY_INFERASYNC. The predecessor also omitted the layout-block label InferAsync's own evidence shaping did not yet attach for this contract - a second, smaller finding surfaced by the same check, corrected in the same change that added CanonicalSemanticRequestComposer.",
+    "unchangedAuthorityDimensions": [
+      "SOURCE_ALIAS",
+      "MODEL_VISIBLE_EVIDENCE",
+      "CALL_PARTITION",
+      "GOLD",
+      "PROMPT",
+      "CONTRACT"
+    ],
+    "successorProviderModelInputPlanSha256": "a73e9e3c1fbeb4a83f1937e864fb310e4a0402b993252b82bb6a741ce4ff7dc3",
+    "successorProducer": "CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.ComposeRequests -> CanonicalSemanticRequestComposer.Compose, the same path InferAsync sends to a classifier",
+    "integrationProof": "recording.Requests (captured through a real InferAsync call, transport-free) equals ComposedRequests (the dry-run producer) byte for byte, both asserted above before this artifact is written.",
+    "predecessorNotMalicious": "A measurement artifact with narrower semantics than its name implied, not bad data: the source/evidence/partition dimensions it stood beside were, and remain, correct."
+  },
+  "terminology": {
+    "blockDiagnosticSha256": "3b351411e1c773d14bf534f19c4ae721612716a4561396c757bc3ac35ed8b05c",
+    "blockDiagnosticMeaning": "467 coordinate units: ContinuationV2 blocks over V3 segment lines. Named lineSegmentShadowSha256 in the step that produced it, which is what sent the previous migration at the wrong target. It is a diagnostic, never an atom universe.",
+    "candidateSegmentSha256": "86cad7d6b7a52391b4361ea1ad402774fa4bccf6af5570e3705f7582a6893c79",
+    "candidateSegmentMeaning": "The 650 atoms serialized through the generic alias catalog, which renumbers them S0001..S0650.",
+    "candidateHashMatch": false,
+    "whyTheCandidateDiffers": "The rows are the same and the addressing is not. The atoms are named L{row}:S{segment}, which is what the binder resolved and what the validated S0616 proof cites; the candidate renamed them to running numbers. Only the sourceAlias field differs.",
+    "retiredAliasSample": [
+      "S0001",
+      "S0002",
+      "S0003"
+    ],
+    "atomAliasSample": [
+      "L0000:S0",
+      "L0001:S0",
+      "L0002:S0"
+    ],
+    "retiredSchemeStatus": "The builder that could produce it has been removed. The comparison it supported was made once, recorded here, and is not re-derived: a seam kept only to demonstrate a naming difference is a second address for the same coordinates waiting to be used.",
+    "retiredSchemeSameRowsAndText": true
+  },
+  "counts": {
+    "segmentAtoms": 650,
+    "modelVisibleEvidenceUnits": 650,
+    "atomsWithEvidence": 650,
+    "atomsWithLayoutBlockLabel": 650,
+    "emptyEvidenceFromIdMismatch": 0,
+    "distinctLayoutBlocks": 467,
+    "contextPacks": 6,
+    "primaryCallsPerRepeat": 6,
+    "totalPrimaryCallsForThreeRepeats": 18
+  },
+  "packs": [
+    {
+      "Index": 0,
+      "owned": 120,
+      "visible": 140,
+      "firstOwned": "L0000:S0",
+      "lastOwned": "L0117:S0",
+      "requestSha256": "5b323e5ddd2e39fb5a7f2668b807f0c295834984a3e4788c5d18276d40b298c9",
+      "requestChars": 43306
+    },
+    {
+      "Index": 1,
+      "owned": 120,
+      "visible": 160,
+      "firstOwned": "L0118:S0",
+      "lastOwned": "L0237:S0",
+      "requestSha256": "e6c6e4f9297ad9f4c6edcb6095d30f8939cec97c4d6da6bb5954bfbd84cf121a",
+      "requestChars": 46946
+    },
+    {
+      "Index": 2,
+      "owned": 120,
+      "visible": 160,
+      "firstOwned": "L0238:S0",
+      "lastOwned": "L0357:S0",
+      "requestSha256": "e6e072509ba30a6204ea75a598767366fb9f937077b3a34ce8a1ccaeaea1b4a2",
+      "requestChars": 47662
+    },
+    {
+      "Index": 3,
+      "owned": 120,
+      "visible": 160,
+      "firstOwned": "L0358:S0",
+      "lastOwned": "L0477:S0",
+      "requestSha256": "b6467169d7c2429ccd937c28d549d89e310bfeb7da2b42c11c40e8fb99205c49",
+      "requestChars": 48234
+    },
+    {
+      "Index": 4,
+      "owned": 120,
+      "visible": 160,
+      "firstOwned": "L0478:S0",
+      "lastOwned": "L0570:S0",
+      "requestSha256": "bf534e718ab97b8f44c53b9371afd426818456d54266a6bfafe284fd449ef5b3",
+      "requestChars": 42381
+    },
+    {
+      "Index": 5,
+      "owned": 50,
+      "visible": 70,
+      "firstOwned": "L0570:S1",
+      "lastOwned": "L0597:S0",
+      "requestSha256": "1bbff0fcf6676f4ae1375edce2c39e785b00b5fdfe959945fdb665edc6d5e7fb",
+      "requestChars": 16046
+    }
+  ],
+  "contract": {
+    "activeSemanticContractSha256": "91005fabc2e978d5ab4d900bc66ebeb27e563628056b3073cef22896687ac72e",
+    "shadowStructuredContractSha256": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "requestsCarryShadowSchema": true,
+    "activeContractSwitched": false,
+    "promptTemplateChanged": false,
+    "promptTemplateNote": "The active DOCX/legacy-PDF prompt template is untouched here. This artifact predates the structured PDF prompt clause, which the coordinate contract now supplies separately (SemanticCoordinateContract.PdfStructuredSourceParts.PromptClause); that activation is recorded where it happened, not restated here."
+  },
+  "representability": {
+    "approvedHeadings": 41,
+    "sourceHeadingsRepresentable": 41,
+    "headings1Part": 41,
+    "headings2Parts": 0,
+    "headings3PlusParts": 0,
+    "note": "Measured over the texts canonical Gold records today. Sixteen of them still carry punctuation the old line reconstruction dropped; that debt was migrated in DOC-0252's structured Gold, not here.",
+    "claims": [
+      {
+        "claim": "S0001#0",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0000:S0:0-47",
+        "packs": [
+          0
+        ]
+      },
+      {
+        "claim": "S0006#1",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0004:S0:0-41",
+        "packs": [
+          0
+        ]
+      },
+      {
+        "claim": "S0043#2",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0025:S0:0-40",
+        "packs": [
+          0
+        ]
+      },
+      {
+        "claim": "S0043#3",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0026:S0:0-23",
+        "packs": [
+          0
+        ]
+      },
+      {
+        "claim": "S0122#4",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0078:S0:0-19",
+        "packs": [
+          0
+        ]
+      },
+      {
+        "claim": "S0127#5",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0081:S0:0-6",
+        "packs": [
+          0
+        ]
+      },
+      {
+        "claim": "S0141#6",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0089:S0:0-20",
+        "packs": [
+          0
+        ]
+      },
+      {
+        "claim": "S0173#7",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0107:S0:0-40",
+        "packs": [
+          0
+        ]
+      },
+      {
+        "claim": "S0199#8",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0123:S0:0-25",
+        "packs": [
+          1
+        ]
+      },
+      {
+        "claim": "S0223#9",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0137:S0:0-31",
+        "packs": [
+          1
+        ]
+      },
+      {
+        "claim": "S0244#10",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0150:S0:0-12",
+        "packs": [
+          1
+        ]
+      },
+      {
+        "claim": "S0268#11",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0165:S0:0-65",
+        "packs": [
+          1
+        ]
+      },
+      {
+        "claim": "S0269#12",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0166:S0:0-56",
+        "packs": [
+          1
+        ]
+      },
+      {
+        "claim": "S0363#13",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0219:S0:0-30",
+        "packs": [
+          1
+        ]
+      },
+      {
+        "claim": "S0460#14",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0271:S0:0-66",
+        "packs": [
+          2
+        ]
+      },
+      {
+        "claim": "S0460#15",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0272:S0:0-41",
+        "packs": [
+          2
+        ]
+      },
+      {
+        "claim": "S0492#16",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0288:S0:0-63",
+        "packs": [
+          2
+        ]
+      },
+      {
+        "claim": "S0541#17",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0315:S0:0-67",
+        "packs": [
+          2
+        ]
+      },
+      {
+        "claim": "S0573#18",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0334:S0:0-27",
+        "packs": [
+          2
+        ]
+      },
+      {
+        "claim": "S0573#19",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0335:S0:0-73",
+        "packs": [
+          2
+        ]
+      },
+      {
+        "claim": "S0616#20",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0359:S0:0-99",
+        "packs": [
+          3
+        ]
+      },
+      {
+        "claim": "S0649#21",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0377:S0:0-85",
+        "packs": [
+          3
+        ]
+      },
+      {
+        "claim": "S0693#22",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0400:S0:0-44",
+        "packs": [
+          3
+        ]
+      },
+      {
+        "claim": "S0732#23",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0420:S0:0-40",
+        "packs": [
+          3
+        ]
+      },
+      {
+        "claim": "S0818#24",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0470:S0:0-45",
+        "packs": [
+          3
+        ]
+      },
+      {
+        "claim": "S0893#25",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0507:S0:0-30",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0911#26",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0519:S0:0-6",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0912#27",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0520:S0:0-51",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0914#28",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0521:S0:0-38",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0917#29",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0523:S0:0-50",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0920#30",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0526:S0:0-65",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0925#31",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0531:S0:0-64",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0930#32",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0536:S0:0-27",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0933#33",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0539:S0:0-51",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0935#34",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0540:S0:0-36",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0946#35",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0553:S0:0-19",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0949#36",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0556:S0:0-29",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0950#37",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0557:S0:0-36",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0968#38",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0566:S0:0-42",
+        "packs": [
+          4
+        ]
+      },
+      {
+        "claim": "S0987#39",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0576:S0:0-42",
+        "packs": [
+          5
+        ]
+      },
+      {
+        "claim": "S0994#40",
+        "representable": true,
+        "status": "Bound",
+        "parts": 1,
+        "identity": "L0587:S0:0-10",
+        "packs": [
+          5
+        ]
+      }
+    ]
+  },
+  "s0616": {
+    "note": "The heading that no single occurrence could hold under block authority. Both atoms reach the model and the binder resolves them; the layout blocks they sit in differ and are not consulted.",
+    "atom1": {
+      "Alias": "L0359:S0",
+      "Text": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price",
+      "pack": 3,
+      "layoutBlock": "b234"
+    },
+    "atom2": {
+      "Alias": "L0360:S0",
+      "Text": "Comparisons",
+      "pack": 3,
+      "layoutBlock": "b234"
+    },
+    "sameLayoutBlockUnderCandidateGrouping": true,
+    "bindingIsTheSameUnderEitherGrouping": true,
+    "bothVisibleToTheModel": true,
+    "blockRequiredForBinding": false,
+    "bound": true,
+    "identity": "L0359:S0:0-99|L0360:S0:0-11",
+    "locality": [
+      "NextRowCompatible"
+    ],
+    "projectedText": "2. A Survey Based Approach to Adjustment for Quality Differences in Services in International Price Comparisons"
+  }
+}

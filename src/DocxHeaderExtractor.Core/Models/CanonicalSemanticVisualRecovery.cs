@@ -204,16 +204,6 @@ public static class CanonicalSemanticVisualBinder
 /// <summary>Explicit union boundary: text uses the existing UTF-16 binder; visual uses region identity.</summary>
 public static class ModalityAwareExactBinder
 {
-    public static IReadOnlyList<CanonicalSemanticBoundHeading> BindText(
-        IReadOnlyList<CanonicalSemanticProposal> proposals,
-        IReadOnlyList<SemanticSourceAlias> aliases,
-        out IReadOnlyList<CanonicalSemanticBindingObservation> observations) =>
-        CanonicalSemanticExactBinder.Bind(proposals, aliases, out observations);
-
-    public static IReadOnlyList<CanonicalSemanticVisualBoundHeading> BindVisual(
-        IReadOnlyList<CanonicalSemanticVisualProposal> proposals,
-        IReadOnlyList<CanonicalSemanticVisualOccurrence> occurrences) =>
-        CanonicalSemanticVisualBinder.Bind(proposals, occurrences);
 }
 
 public static class CanonicalSemanticVisualBindingValidator
@@ -278,17 +268,17 @@ public static class CanonicalSemanticCrossModalReconciler
             }
 
             var orderedText = groups.SelectMany(group => group.Text)
-                .OrderBy(candidate => candidate.PageId, StringComparer.Ordinal)
-                .ThenBy(candidate => candidate.Start)
+                .OrderBy(textBinding => textBinding.PageId, StringComparer.Ordinal)
+                .ThenBy(textBinding => textBinding.Start)
                 .ToArray();
             var sequence = FindCompatibleTextSequence(orderedText, item);
             if (sequence.Count > 0)
             {
                 var target = groups.Single(group => group.Text.Contains(sequence[0]));
-                foreach (var candidate in sequence.Skip(1))
+                foreach (var textBinding in sequence.Skip(1))
                 {
-                    var owner = groups.Single(group => group.Text.Contains(candidate));
-                    target.Text.Add(candidate);
+                    var owner = groups.Single(group => group.Text.Contains(textBinding));
+                    target.Text.Add(textBinding);
                     if (!ReferenceEquals(owner, target)) groups.Remove(owner);
                 }
                 target.Visual.Add(item);
@@ -315,9 +305,9 @@ public static class CanonicalSemanticCrossModalReconciler
             var sequence = new List<CanonicalSemanticTextEvidenceBinding>();
             for (var end = start; end < text.Count; end++)
             {
-                var candidate = text[end];
-                if (!SamePhysicalRegion(candidate, visual)) break;
-                sequence.Add(candidate);
+                var textBinding = text[end];
+                if (!SamePhysicalRegion(textBinding, visual)) break;
+                sequence.Add(textBinding);
                 var joined = string.Concat(sequence.Select(item => item.Text));
                 if (CompatibleTranscript(joined, visual.RecoveredTranscript)) return sequence;
                 if (!NormalizeTranscript(visual.RecoveredTranscript).StartsWith(

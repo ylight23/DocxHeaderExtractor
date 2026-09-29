@@ -1,0 +1,27 @@
+{
+  "artifactKind": "a99_pdf_source_facts_freeze_amendment",
+  "amends": {
+    "path": "eval/a99-closed-loop/pdf-source-facts-v2/PDF_SOURCE_FACTS_V2.freeze.json",
+    "sha256": "802bc69865fc4c581ec963ff9b20853f272c50ba625608a33961df5aa940ad05",
+    "commit": "e69819b"
+  },
+  "cause": "PDF_SOURCE_FACTS_V3 is added to the same two definition files, so their bytes can no longer be V2's",
+  "definitionFilesAtFreeze": [
+    {
+      "path": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfLineExtraction.cs",
+      "sha256": "954cd9aae1323cd8edfe20fff3ec87bcf7762cf70afe42cc4bd5ce0d75cdedcf"
+    },
+    {
+      "path": "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfCanonicalSourceUniverse.cs",
+      "sha256": "e763fe767330e2cddf9f1c358f0d4bcf4d38c5080ce324be36d48bc4ab2977cb"
+    }
+  ],
+  "v2HeldByBehaviour": [
+    "PdfSourceFactsV2Tests: matrix-scaled type flat under V1, drawn size and derived weight under V2, text and geometry unchanged",
+    "MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V2.freeze.json: the exact provider input plan of the structured 072 PDF under V2",
+    "Src054BlindGeneralizationTests.Blind_src054: V1.2 over V2 reproduces SRC-054's committed blind proposals",
+    "PdfSourceFactsV3Tests.V2_is_unchanged_by_v3: V2 still reports the mean of the glyphs' effective sizes"
+  ],
+  "unchanged": "the V2 freeze artifact, the audit, the diagnostic and every V2 result; nothing is regenerated",
+  "modelProviderVlmCalls": 0
+}

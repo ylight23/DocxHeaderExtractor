@@ -1,0 +1,97 @@
+{
+  "artifactKind": "a99_semantic_control_ceiling_residual_causal_audit",
+  "study": "A99_SEMANTIC_CONTROL_CEILING_STUDY",
+  "sourceScore": {
+    "path": "eval/a99-closed-loop/semantic-function-single-authority-v4/score.v1.json",
+    "sha256": "80a59f98c3447ad38df85510b90818780eba0af3aa949299853f01af52baece3"
+  },
+  "goldAuthorities": {
+    "SRC-089": "c66cefb224bdd47a08e2374fdb0328dd97b1e520a48f4cdbaffed244ac833534",
+    "SRC-095": "d8a6eafb63716f531463b74d25543e4d27b25965aac0d5d0e5fb25734027df18"
+  },
+  "classificationPolicy": {
+    "CLAIM_EXTENT_ERROR": "The emitted occurrence overlaps a Gold occurrence but has a different extent, or Gold is partial against an emitted split/merged extent.",
+    "MODEL_SEMANTIC_MISCLASSIFICATION": "The ontology can express the Gold occurrence, but the model omitted it or emitted a non-Gold semantic function/occurrence.",
+    "ONTOLOGY_GAP": "Reserved for a source truth that cannot be represented by the current closed vocabulary without loss; no residual met this criterion.",
+    "CONTEXT_INSUFFICIENT": "Reserved for evidence that the required source context was absent from the model-visible packet; not inferred from omission alone.",
+    "SOURCE_REPRESENTATION_ERROR": "No residual assigned: sourceParts and source identity remained bindable.",
+    "BINDER_ERROR": "No residual assigned: exact binding produced no unbindable candidate.",
+    "GOLD_OR_DEFINITION_AMBIGUITY": "No residual assigned: no Gold authority ambiguity was evidenced by this score.",
+    "primaryClassOnly": true
+  },
+  "summary": {
+    "ONTOLOGY_GAP": 0,
+    "MODEL_SEMANTIC_MISCLASSIFICATION": 34,
+    "CONTEXT_INSUFFICIENT": 0,
+    "CLAIM_EXTENT_ERROR": 18,
+    "SOURCE_REPRESENTATION_ERROR": 0,
+    "BINDER_ERROR": 0,
+    "GOLD_OR_DEFINITION_AMBIGUITY": 0,
+    "residualsClassified": 52,
+    "residualsExpected": 52
+  },
+  "documents": {
+    "SRC-089": {
+      "modelSemanticMisclassification": [
+        "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+        "L0109:S0:0-33",
+        "L0117:S0:0-22",
+        "L0246:S0:0-26",
+        "L0249:S0:0-16"
+      ],
+      "claimExtentError": [
+        "L0014:S0:0-9|L0015:S0:0-18",
+        "L0382:S0:0-10|L0383:S0:0-45",
+        "L0014:S0:0-9",
+        "L0015:S0:0-18",
+        "L0382:S0:0-10",
+        "L0383:S0:0-45"
+      ],
+      "notes": "Five Gold occurrences were absent although REGION_STRUCTURE/DOCUMENT_IDENTITY can express them; the two Chapter Gold entries and four emitted Chapter parts are extent mismatches."
+    },
+    "SRC-095": {
+      "modelSemanticMisclassification": [
+        "L1050:S0:0-35",
+        "L1729:S0:0-32",
+        "L1736:S0:0-35",
+        "L1745:S0:0-30",
+        "L1750:S0:0-45",
+        "L1761:S0:0-49",
+        "L1914:S0:0-1",
+        "L1940:S0:0-1",
+        "L2063:S0:0-1",
+        "L1964:S0:0-16",
+        "L1966:S0:0-17",
+        "L1968:S0:0-14",
+        "L1970:S0:0-19",
+        "L1977:S0:0-25",
+        "L1979:S0:0-11",
+        "L1983:S0:0-17",
+        "L1984:S0:0-16",
+        "L1986:S0:0-19",
+        "L1987:S0:0-11",
+        "L1990:S0:0-20",
+        "L1994:S0:0-21",
+        "L1997:S0:0-19",
+        "L2001:S0:0-17",
+        "L2003:S0:0-24",
+        "L2005:S0:0-19",
+        "L2006:S0:0-7",
+        "L2019:S0:0-11",
+        "L2035:S0:0-11",
+        "L2046:S0:0-12"
+      ],
+      "claimExtentError": [
+        "L0008:S0:0-6",
+        "L0007:S0:0-8|L0008:S0:0-6",
+        "L1947:S0:0-1|L1948:S0:0-6",
+        "L1961:S0:0-1|L1962:S0:0-25",
+        "L2012:S0:0-1|L2013:S0:0-9",
+        "L2023:S0:0-1|L2024:S0:0-7",
+        "L2056:S0:0-1|L2057:S0:0-14"
+      ],
+      "notes": "The 20 INDEX_ENTRY false positives are model REGION_STRUCTURE decisions for index navigation entries; the six remaining false positives overlap Gold but have wrong extents. Index-group letters remain representable as REGION_STRUCTURE, so their omission is not an ontology gap."
+    }
+  },
+  "conclusion": "The frozen residuals support model semantic classification and claim extent/context work, not an ontology expansion. In particular, the current ontology can represent NAVIGATION and REGION_STRUCTURE; no residual requires a new semanticFunction."
+}

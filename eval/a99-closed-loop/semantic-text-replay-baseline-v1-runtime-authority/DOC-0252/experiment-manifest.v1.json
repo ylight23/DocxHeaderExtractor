@@ -1,0 +1,54 @@
+{
+  "manifestHash": "7c48d54c94e4ab60f022a2e5104b44eefb5e4639ac9aea31e8842abeda183cfb",
+  "semanticContractHash": "abc8bb1f767e7556f121ed4a1f708ed60bd97502ca420e399ce7af26711e6e53",
+  "manifest": {
+    "schemaVersion": "a99-pdf-experiment-manifest-v1",
+    "experimentId": "DOC-0252-PDF-S2E-RUNTIME-B0",
+    "documentId": "DOC-0252",
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverseSha256": "cb3c9af67a7f17fd9560b56cf23bb9648a9fcfe3ea4eb5d333ac7282176bfc66",
+    "occurrenceGold": {
+      "artifactPath": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json",
+      "artifactSha256": "2ebbc6b8af28dec38514d0b53aa36599a00ca86e87af050bfb3008b98bef6d31",
+      "headingClaimCount": 41,
+      "occurrenceEvaluable": true
+    },
+    "semanticAuthority": {
+      "artifactPath": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0252.semantic-freeze.v1.json",
+      "artifactSha256": "abf7da69b0ddfd1663165798a8c0064229e0c2c623ad1a2cc9c09d7550e77624",
+      "semanticHeadingTotal": 41
+    },
+    "model": {
+      "providerIdentifier": "OpenRouter",
+      "modelIdentifier": "qwen/qwen3.7-flash",
+      "transportProtocol": "openai-chat-completions-v1"
+    },
+    "prompt": {
+      "profileVersion": "canonical-semantic-shared-b0-v1",
+      "promptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8"
+    },
+    "sourcePacket": {
+      "schemaVersion": "a99-pdf-canonical-request-packet-v1",
+      "packetSha256": "1fef20eb21eda3c98130663eddee8012a58b96f7af07b8927974a98d2a35485d"
+    },
+    "routing": {
+      "enabledStages": [
+        "primary-semantic-proposal",
+        "unresolved-placement-retry"
+      ],
+      "retryPolicyIdentity": "unresolved-placement-only-v1",
+      "visualRecoveryEnabled": false,
+      "semanticAdjudicationEnabled": false,
+      "globalReopenEnabled": false,
+      "placementRetryEnabled": true
+    },
+    "budget": {
+      "maximumProviderCalls": 10
+    },
+    "evaluator": {
+      "occurrenceEvaluatorContractVersion": "a99-pdf-gold-evaluator-v2-semantic-role",
+      "semanticRoleEvaluationEnabled": true,
+      "hierarchyEvaluationMode": "NOT_ADJUDICATED"
+    }
+  }
+}

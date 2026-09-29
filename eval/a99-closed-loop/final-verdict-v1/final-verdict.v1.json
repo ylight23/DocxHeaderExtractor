@@ -1,0 +1,95 @@
+{
+  "artifactKind": "a99_generic_audit_final_verdict",
+  "decidedBy": "the protocol the user set on 2026-09-26: V1.4 the last development cycle; SRC-089 the last held-out; a gate failing on real generalization gaps goes to the verdict with its limitation stated",
+  "modelProviderVlmCalls": 0,
+  "inputs": {
+    "summary": {
+      "path": "eval/a99-closed-loop/final-verdict-v1/cross-document-summary.v1.json",
+      "sha256": "3801f912d73d506ac161278aa63af3c0b91f07ae9c80d7d392b92205877653c1"
+    },
+    "hierarchy": {
+      "path": "eval/a99-closed-loop/final-verdict-v1/hierarchy-evaluation.v1.json",
+      "sha256": "706a3a0ed587397aaaabc66b29ea4ceab9eff6e1a2d159c31c61008282cd0742"
+    }
+  },
+  "verdict": "NOT_GENERALIZED",
+  "statement": "the generic heading audit does not generalize across document genres. It is accurate inside the family it was developed on - financial statements whose headings are typographically marked (held-out F1 0.94 to 0.98) - and every new genre found conventions it did not read: body-size table labels (0.80), RFC numbering and back matter (0.91), decree articles bold only on their number (0). Hierarchy was never measurable",
+  "findings": [
+    {
+      "id": "F1",
+      "finding": "within-family accuracy",
+      "evidence": [
+        {
+          "Id": "SRC-041",
+          "f1": 0.9445
+        },
+        {
+          "Id": "SRC-042",
+          "f1": 0.9782
+        },
+        {
+          "Id": "SRC-044",
+          "f1": 0.9824
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "finding": "no generalization to new genres: each held-out of a new kind exposed new generic gaps (bucket B_NEW) that the previous development could not have seen",
+      "evidence": [
+        {
+          "Id": "SRC-029",
+          "Genre": "procurement (standard bidding document)",
+          "f1": 0.3008
+        },
+        {
+          "Id": "SRC-054",
+          "Genre": "financial (information statement)",
+          "f1": 0.7993
+        },
+        {
+          "Id": "SRC-095",
+          "Genre": "technical standard (RFC)",
+          "f1": 0.9128
+        },
+        {
+          "Id": "SRC-089",
+          "Genre": "legal (decree, translated)",
+          "f1": 0
+        }
+      ]
+    },
+    {
+      "id": "F3",
+      "finding": "the ontology held: no held-out residual since V1.1 needed a new semantic category (C = 0); one document-specific residual (D) in the V1.1 held-out, none after",
+      "evidence": "bucketsTotal in the summary"
+    },
+    {
+      "id": "F4",
+      "finding": "the source-fact layer can invalidate a measurement: SRC-053 read size 1 and no bold on every atom under PDF_SOURCE_FACTS_V1 (raw F1 0, kept); V2 and V3 fixed it and V3 read SRC-089 correctly",
+      "evidence": "SRC-053 classification; PDF_SOURCE_FACTS_V2/V3 freezes; SRC-089 measurementValidity"
+    },
+    {
+      "id": "F5",
+      "finding": "where the engine fails it mostly finds the heading's place but not its extent - a number without its title, a heading's lines apart - and it rarely invents headings: precision stayed at or above 0.96 on every valid held-out since V1.2 except SRC-054 (0.78, body-size tables) and SRC-089 (0 exact matches, 32 of 36 Gold headings found partially)",
+      "evidence": "per held-out headline and goldBuckets"
+    },
+    {
+      "id": "F6",
+      "finding": "hierarchy is NOT_EVALUABLE: no level or parent is emitted and no occurrence Gold declares a hierarchy",
+      "evidence": "hierarchy-evaluation.v1.json"
+    }
+  ],
+  "limitations": [
+    "eight held-outs, five of one family; each engine version met one or two held-outs; the reviewer who wrote the source-only Golds also designed the engine (not double-blind); every Gold decision without precedent was the user's",
+    "micro totals across the chain mix engine versions and are a summary of the study, not the accuracy of V1.4",
+    "V1.4's development fit is measured on documents it was developed on",
+    "occurrence membership and semantic axes only; no hierarchy, no visual binding"
+  ],
+  "notClaimed": [
+    "99% accuracy",
+    "cross-genre generalization",
+    "hierarchy accuracy",
+    "production readiness beyond a review-assisted audit of marked financial documents"
+  ]
+}

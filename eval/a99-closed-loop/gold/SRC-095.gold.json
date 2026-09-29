@@ -1,0 +1,4748 @@
+{
+  "schemaVersion": "a99-gold-authored-v1",
+  "authorityId": "SRC-095",
+  "source": {
+    "fileName": "095_RFC9114_HTTP_3.pdf",
+    "mediaType": "PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+    "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_ADJUDICATED_STRUCTURAL_AUDIT",
+    "approvedAt": "2026-09-26",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/source-review-v1/SRC-095.source-review.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semanticHeadingTotal": 103,
+  "declaredCapabilities": {
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "occurrence": {
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "claims": [
+      {
+        "approvedWording": "HTTP/3",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0008:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0008:S0:0-6",
+        "projectedText": "HTTP/3",
+        "boundParts": [
+          {
+            "sourceAlias": "L0008:S0",
+            "page": 1,
+            "row": 8,
+            "utf16Span": {
+              "start": 0,
+              "end": 6
+            },
+            "text": "HTTP/3",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY"
+          ],
+          "primaryFunction": "IDENTITY",
+          "scope": "DOCUMENT",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "S095_Q1_RFC_TITLE_BLOCK",
+        "evidence": "user decision 2026-09-26 (S095_Q1): 'HTTP/3' is the document title: IDENTITY / DOCUMENT / TITLE"
+      },
+      {
+        "approvedWording": "Abstract",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0009:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0009:S0:0-8",
+        "projectedText": "Abstract",
+        "boundParts": [
+          {
+            "sourceAlias": "L0009:S0",
+            "page": 1,
+            "row": 9,
+            "utf16Span": {
+              "start": 0,
+              "end": 8
+            },
+            "text": "Abstract",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "MATTER_SECTION",
+        "evidence": "14.4pt bold section title of the front or back matter over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "Status ofThis Memo",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0015:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0015:S0:0-18",
+        "projectedText": "Status ofThis Memo",
+        "boundParts": [
+          {
+            "sourceAlias": "L0015:S0",
+            "page": 1,
+            "row": 15,
+            "utf16Span": {
+              "start": 0,
+              "end": 18
+            },
+            "text": "Status ofThis Memo",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "MATTER_SECTION",
+        "evidence": "14.4pt bold section title of the front or back matter over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "Copyright Notice",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0023:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0023:S0:0-16",
+        "projectedText": "Copyright Notice",
+        "boundParts": [
+          {
+            "sourceAlias": "L0023:S0",
+            "page": 1,
+            "row": 23,
+            "utf16Span": {
+              "start": 0,
+              "end": 16
+            },
+            "text": "Copyright Notice",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "MATTER_SECTION",
+        "evidence": "14.4pt bold section title of the front or back matter over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "Table of Contents",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0034:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0034:S0:0-17",
+        "projectedText": "Table of Contents",
+        "boundParts": [
+          {
+            "sourceAlias": "L0034:S0",
+            "page": 2,
+            "row": 34,
+            "utf16Span": {
+              "start": 0,
+              "end": 17
+            },
+            "text": "Table of Contents",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "IDENTITY",
+          "scope": "TOC",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "TOC_OPENER",
+        "evidence": "opens the contents list: precedent SRC-041 (user-decided 2026-09-25)"
+      },
+      {
+        "approvedWording": "1. Introduction",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0129:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0129:S0:0-15",
+        "projectedText": "1. Introduction",
+        "boundParts": [
+          {
+            "sourceAlias": "L0129:S0",
+            "page": 5,
+            "row": 129,
+            "utf16Span": {
+              "start": 0,
+              "end": 15
+            },
+            "text": "1. Introduction",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "1.1. Prior Versions of HTTP",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0134:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0134:S0:0-27",
+        "projectedText": "1.1. Prior Versions of HTTP",
+        "boundParts": [
+          {
+            "sourceAlias": "L0134:S0",
+            "page": 5,
+            "row": 134,
+            "utf16Span": {
+              "start": 0,
+              "end": 27
+            },
+            "text": "1.1. Prior Versions of HTTP",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "1.2. Delegation to QUIC",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0146:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0146:S0:0-23",
+        "projectedText": "1.2. Delegation to QUIC",
+        "boundParts": [
+          {
+            "sourceAlias": "L0146:S0",
+            "page": 5,
+            "row": 146,
+            "utf16Span": {
+              "start": 0,
+              "end": 23
+            },
+            "text": "1.2. Delegation to QUIC",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "2. HTTP/3 Protocol Overview",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0162:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0162:S0:0-27",
+        "projectedText": "2. HTTP/3 Protocol Overview",
+        "boundParts": [
+          {
+            "sourceAlias": "L0162:S0",
+            "page": 6,
+            "row": 162,
+            "utf16Span": {
+              "start": 0,
+              "end": 27
+            },
+            "text": "2. HTTP/3 Protocol Overview",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "2.1. Document Organization",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0185:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0185:S0:0-26",
+        "projectedText": "2.1. Document Organization",
+        "boundParts": [
+          {
+            "sourceAlias": "L0185:S0",
+            "page": 6,
+            "row": 185,
+            "utf16Span": {
+              "start": 0,
+              "end": 26
+            },
+            "text": "2.1. Document Organization",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "2.2. Conventions and Terminology",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0205:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0205:S0:0-32",
+        "projectedText": "2.2. Conventions and Terminology",
+        "boundParts": [
+          {
+            "sourceAlias": "L0205:S0",
+            "page": 7,
+            "row": 205,
+            "utf16Span": {
+              "start": 0,
+              "end": 32
+            },
+            "text": "2.2. Conventions and Terminology",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "3. Connection Setup and Management",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0243:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0243:S0:0-34",
+        "projectedText": "3. Connection Setup and Management",
+        "boundParts": [
+          {
+            "sourceAlias": "L0243:S0",
+            "page": 8,
+            "row": 243,
+            "utf16Span": {
+              "start": 0,
+              "end": 34
+            },
+            "text": "3. Connection Setup and Management",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "3.1. Discovering an HTTP/3 Endpoint",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0244:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0244:S0:0-35",
+        "projectedText": "3.1. Discovering an HTTP/3 Endpoint",
+        "boundParts": [
+          {
+            "sourceAlias": "L0244:S0",
+            "page": 8,
+            "row": 244,
+            "utf16Span": {
+              "start": 0,
+              "end": 35
+            },
+            "text": "3.1. Discovering an HTTP/3 Endpoint",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "3.1.1. HTTP Alternative Services",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0268:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0268:S0:0-32",
+        "projectedText": "3.1.1. HTTP Alternative Services",
+        "boundParts": [
+          {
+            "sourceAlias": "L0268:S0",
+            "page": 9,
+            "row": 268,
+            "utf16Span": {
+              "start": 0,
+              "end": 32
+            },
+            "text": "3.1.1. HTTP Alternative Services",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "3.1.2. Other Schemes",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0277:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0277:S0:0-20",
+        "projectedText": "3.1.2. Other Schemes",
+        "boundParts": [
+          {
+            "sourceAlias": "L0277:S0",
+            "page": 9,
+            "row": 277,
+            "utf16Span": {
+              "start": 0,
+              "end": 20
+            },
+            "text": "3.1.2. Other Schemes",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "3.2. Connection Establishment",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0288:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0288:S0:0-29",
+        "projectedText": "3.2. Connection Establishment",
+        "boundParts": [
+          {
+            "sourceAlias": "L0288:S0",
+            "page": 9,
+            "row": 288,
+            "utf16Span": {
+              "start": 0,
+              "end": 29
+            },
+            "text": "3.2. Connection Establishment",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "3.3. Connection Reuse",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0305:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0305:S0:0-21",
+        "projectedText": "3.3. Connection Reuse",
+        "boundParts": [
+          {
+            "sourceAlias": "L0305:S0",
+            "page": 10,
+            "row": 305,
+            "utf16Span": {
+              "start": 0,
+              "end": 21
+            },
+            "text": "3.3. Connection Reuse",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4. Expressing HTTP Semantics in HTTP/3",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0335:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0335:S0:0-38",
+        "projectedText": "4. Expressing HTTP Semantics in HTTP/3",
+        "boundParts": [
+          {
+            "sourceAlias": "L0335:S0",
+            "page": 10,
+            "row": 335,
+            "utf16Span": {
+              "start": 0,
+              "end": 38
+            },
+            "text": "4. Expressing HTTP Semantics in HTTP/3",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.1. HTTP Message Framing",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0336:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0336:S0:0-25",
+        "projectedText": "4.1. HTTP Message Framing",
+        "boundParts": [
+          {
+            "sourceAlias": "L0336:S0",
+            "page": 10,
+            "row": 336,
+            "utf16Span": {
+              "start": 0,
+              "end": 25
+            },
+            "text": "4.1. HTTP Message Framing",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.1.1. Request Cancellation and Rejection",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0396:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0396:S0:0-41",
+        "projectedText": "4.1.1. Request Cancellation and Rejection",
+        "boundParts": [
+          {
+            "sourceAlias": "L0396:S0",
+            "page": 12,
+            "row": 396,
+            "utf16Span": {
+              "start": 0,
+              "end": 41
+            },
+            "text": "4.1.1. Request Cancellation and Rejection",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.1.2. Malformed Requests and Responses",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0428:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0428:S0:0-39",
+        "projectedText": "4.1.2. Malformed Requests and Responses",
+        "boundParts": [
+          {
+            "sourceAlias": "L0428:S0",
+            "page": 13,
+            "row": 428,
+            "utf16Span": {
+              "start": 0,
+              "end": 39
+            },
+            "text": "4.1.2. Malformed Requests and Responses",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.2. HTTP Fields",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0451:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0451:S0:0-16",
+        "projectedText": "4.2. HTTP Fields",
+        "boundParts": [
+          {
+            "sourceAlias": "L0451:S0",
+            "page": 13,
+            "row": 451,
+            "utf16Span": {
+              "start": 0,
+              "end": 16
+            },
+            "text": "4.2. HTTP Fields",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.2.1. Field Compression",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0472:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0472:S0:0-24",
+        "projectedText": "4.2.1. Field Compression",
+        "boundParts": [
+          {
+            "sourceAlias": "L0472:S0",
+            "page": 14,
+            "row": 472,
+            "utf16Span": {
+              "start": 0,
+              "end": 24
+            },
+            "text": "4.2.1. Field Compression",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.2.2. Header Size Constraints",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0483:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0483:S0:0-30",
+        "projectedText": "4.2.2. Header Size Constraints",
+        "boundParts": [
+          {
+            "sourceAlias": "L0483:S0",
+            "page": 14,
+            "row": 483,
+            "utf16Span": {
+              "start": 0,
+              "end": 30
+            },
+            "text": "4.2.2. Header Size Constraints",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.3. HTTP Control Data",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0497:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0497:S0:0-22",
+        "projectedText": "4.3. HTTP Control Data",
+        "boundParts": [
+          {
+            "sourceAlias": "L0497:S0",
+            "page": 14,
+            "row": 497,
+            "utf16Span": {
+              "start": 0,
+              "end": 22
+            },
+            "text": "4.3. HTTP Control Data",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.3.1. Request Pseudo-Header Fields",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0514:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0514:S0:0-35",
+        "projectedText": "4.3.1. Request Pseudo-Header Fields",
+        "boundParts": [
+          {
+            "sourceAlias": "L0514:S0",
+            "page": 15,
+            "row": 514,
+            "utf16Span": {
+              "start": 0,
+              "end": 35
+            },
+            "text": "4.3.1. Request Pseudo-Header Fields",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.3.2. Response Pseudo-Header Fields",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0551:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0551:S0:0-36",
+        "projectedText": "4.3.2. Response Pseudo-Header Fields",
+        "boundParts": [
+          {
+            "sourceAlias": "L0551:S0",
+            "page": 16,
+            "row": 551,
+            "utf16Span": {
+              "start": 0,
+              "end": 36
+            },
+            "text": "4.3.2. Response Pseudo-Header Fields",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.4. The CONNECT Method",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0557:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0557:S0:0-23",
+        "projectedText": "4.4. The CONNECT Method",
+        "boundParts": [
+          {
+            "sourceAlias": "L0557:S0",
+            "page": 16,
+            "row": 557,
+            "utf16Span": {
+              "start": 0,
+              "end": 23
+            },
+            "text": "4.4. The CONNECT Method",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.5. HTTP Upgrade",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0605:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0605:S0:0-17",
+        "projectedText": "4.5. HTTP Upgrade",
+        "boundParts": [
+          {
+            "sourceAlias": "L0605:S0",
+            "page": 17,
+            "row": 605,
+            "utf16Span": {
+              "start": 0,
+              "end": 17
+            },
+            "text": "4.5. HTTP Upgrade",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "4.6. Server Push",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0608:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          },
+          {
+            "sourceAlias": "L0608:S1",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0608:S0:0-4|L0608:S1:0-11",
+        "projectedText": "4.6. Server Push",
+        "boundParts": [
+          {
+            "sourceAlias": "L0608:S0",
+            "page": 17,
+            "row": 608,
+            "utf16Span": {
+              "start": 0,
+              "end": 4
+            },
+            "text": "4.6.",
+            "localityFromPrevious": null
+          },
+          {
+            "sourceAlias": "L0608:S1",
+            "page": 17,
+            "row": 608,
+            "utf16Span": {
+              "start": 0,
+              "end": 11
+            },
+            "text": "Server Push",
+            "localityFromPrevious": "SameRowNextSegment"
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [
+            "L0608:S1"
+          ],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION_SPLIT",
+        "evidence": "a section number and its title set apart in two segments of one row: one heading of two parts: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "5. Connection Closure",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0674:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0674:S0:0-21",
+        "projectedText": "5. Connection Closure",
+        "boundParts": [
+          {
+            "sourceAlias": "L0674:S0",
+            "page": 19,
+            "row": 674,
+            "utf16Span": {
+              "start": 0,
+              "end": 21
+            },
+            "text": "5. Connection Closure",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "5.1. Idle Connections",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0677:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0677:S0:0-21",
+        "projectedText": "5.1. Idle Connections",
+        "boundParts": [
+          {
+            "sourceAlias": "L0677:S0",
+            "page": 19,
+            "row": 677,
+            "utf16Span": {
+              "start": 0,
+              "end": 21
+            },
+            "text": "5.1. Idle Connections",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "5.2. Connection Shutdown",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0693:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0693:S0:0-24",
+        "projectedText": "5.2. Connection Shutdown",
+        "boundParts": [
+          {
+            "sourceAlias": "L0693:S0",
+            "page": 20,
+            "row": 693,
+            "utf16Span": {
+              "start": 0,
+              "end": 24
+            },
+            "text": "5.2. Connection Shutdown",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "5.3. Immediate Application Closure",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0760:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0760:S0:0-34",
+        "projectedText": "5.3. Immediate Application Closure",
+        "boundParts": [
+          {
+            "sourceAlias": "L0760:S0",
+            "page": 21,
+            "row": 760,
+            "utf16Span": {
+              "start": 0,
+              "end": 34
+            },
+            "text": "5.3. Immediate Application Closure",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "5.4. Transport Closure",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0773:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0773:S0:0-22",
+        "projectedText": "5.4. Transport Closure",
+        "boundParts": [
+          {
+            "sourceAlias": "L0773:S0",
+            "page": 22,
+            "row": 773,
+            "utf16Span": {
+              "start": 0,
+              "end": 22
+            },
+            "text": "5.4. Transport Closure",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "6. Stream Mapping and Usage",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0779:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0779:S0:0-27",
+        "projectedText": "6. Stream Mapping and Usage",
+        "boundParts": [
+          {
+            "sourceAlias": "L0779:S0",
+            "page": 22,
+            "row": 779,
+            "utf16Span": {
+              "start": 0,
+              "end": 27
+            },
+            "text": "6. Stream Mapping and Usage",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "6.1. Bidirectional Streams",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0793:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0793:S0:0-26",
+        "projectedText": "6.1. Bidirectional Streams",
+        "boundParts": [
+          {
+            "sourceAlias": "L0793:S0",
+            "page": 22,
+            "row": 793,
+            "utf16Span": {
+              "start": 0,
+              "end": 26
+            },
+            "text": "6.1. Bidirectional Streams",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "6.2. Unidirectional Streams",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0808:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0808:S0:0-27",
+        "projectedText": "6.2. Unidirectional Streams",
+        "boundParts": [
+          {
+            "sourceAlias": "L0808:S0",
+            "page": 23,
+            "row": 808,
+            "utf16Span": {
+              "start": 0,
+              "end": 27
+            },
+            "text": "6.2. Unidirectional Streams",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "6.2.1. Control Streams",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0852:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0852:S0:0-22",
+        "projectedText": "6.2.1. Control Streams",
+        "boundParts": [
+          {
+            "sourceAlias": "L0852:S0",
+            "page": 24,
+            "row": 852,
+            "utf16Span": {
+              "start": 0,
+              "end": 22
+            },
+            "text": "6.2.1. Control Streams",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "6.2.2. Push Streams",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0870:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0870:S0:0-19",
+        "projectedText": "6.2.2. Push Streams",
+        "boundParts": [
+          {
+            "sourceAlias": "L0870:S0",
+            "page": 24,
+            "row": 870,
+            "utf16Span": {
+              "start": 0,
+              "end": 19
+            },
+            "text": "6.2.2. Push Streams",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "6.2.3. Reserved Stream Types",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0893:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0893:S0:0-28",
+        "projectedText": "6.2.3. Reserved Stream Types",
+        "boundParts": [
+          {
+            "sourceAlias": "L0893:S0",
+            "page": 25,
+            "row": 893,
+            "utf16Span": {
+              "start": 0,
+              "end": 28
+            },
+            "text": "6.2.3. Reserved Stream Types",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7. HTTP Framing Layer",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0903:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0903:S0:0-21",
+        "projectedText": "7. HTTP Framing Layer",
+        "boundParts": [
+          {
+            "sourceAlias": "L0903:S0",
+            "page": 25,
+            "row": 903,
+            "utf16Span": {
+              "start": 0,
+              "end": 21
+            },
+            "text": "7. HTTP Framing Layer",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.1. Frame Layout",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0924:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0924:S0:0-17",
+        "projectedText": "7.1. Frame Layout",
+        "boundParts": [
+          {
+            "sourceAlias": "L0924:S0",
+            "page": 26,
+            "row": 924,
+            "utf16Span": {
+              "start": 0,
+              "end": 17
+            },
+            "text": "7.1. Frame Layout",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2. Frame Deﬁnitions",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0944:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          },
+          {
+            "sourceAlias": "L0944:S1",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0944:S0:0-4|L0944:S1:0-16",
+        "projectedText": "7.2. Frame Deﬁnitions",
+        "boundParts": [
+          {
+            "sourceAlias": "L0944:S0",
+            "page": 26,
+            "row": 944,
+            "utf16Span": {
+              "start": 0,
+              "end": 4
+            },
+            "text": "7.2.",
+            "localityFromPrevious": null
+          },
+          {
+            "sourceAlias": "L0944:S1",
+            "page": 26,
+            "row": 944,
+            "utf16Span": {
+              "start": 0,
+              "end": 16
+            },
+            "text": "Frame Deﬁnitions",
+            "localityFromPrevious": "SameRowNextSegment"
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [
+            "L0944:S1"
+          ],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION_SPLIT",
+        "evidence": "a section number and its title set apart in two segments of one row: one heading of two parts: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.1. DATA",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0945:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0945:S0:0-11",
+        "projectedText": "7.2.1. DATA",
+        "boundParts": [
+          {
+            "sourceAlias": "L0945:S0",
+            "page": 26,
+            "row": 945,
+            "utf16Span": {
+              "start": 0,
+              "end": 11
+            },
+            "text": "7.2.1. DATA",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.2. HEADERS",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0959:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0959:S0:0-14",
+        "projectedText": "7.2.2. HEADERS",
+        "boundParts": [
+          {
+            "sourceAlias": "L0959:S0",
+            "page": 27,
+            "row": 959,
+            "utf16Span": {
+              "start": 0,
+              "end": 14
+            },
+            "text": "7.2.2. HEADERS",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.3. CANCEL_PUSH",
+        "sourceParts": [
+          {
+            "sourceAlias": "L0971:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L0971:S0:0-18",
+        "projectedText": "7.2.3. CANCEL_PUSH",
+        "boundParts": [
+          {
+            "sourceAlias": "L0971:S0",
+            "page": 27,
+            "row": 971,
+            "utf16Span": {
+              "start": 0,
+              "end": 18
+            },
+            "text": "7.2.3. CANCEL_PUSH",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.4. SETTINGS",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1011:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1011:S0:0-15",
+        "projectedText": "7.2.4. SETTINGS",
+        "boundParts": [
+          {
+            "sourceAlias": "L1011:S0",
+            "page": 28,
+            "row": 1011,
+            "utf16Span": {
+              "start": 0,
+              "end": 15
+            },
+            "text": "7.2.4. SETTINGS",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.4.1. Deﬁned SETTINGS Parameters",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1050:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1050:S0:0-35",
+        "projectedText": "7.2.4.1. Deﬁned SETTINGS Parameters",
+        "boundParts": [
+          {
+            "sourceAlias": "L1050:S0",
+            "page": 29,
+            "row": 1050,
+            "utf16Span": {
+              "start": 0,
+              "end": 35
+            },
+            "text": "7.2.4.1. Deﬁned SETTINGS Parameters",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 4) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.4.2. Initialization",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1066:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1066:S0:0-23",
+        "projectedText": "7.2.4.2. Initialization",
+        "boundParts": [
+          {
+            "sourceAlias": "L1066:S0",
+            "page": 30,
+            "row": 1066,
+            "utf16Span": {
+              "start": 0,
+              "end": 23
+            },
+            "text": "7.2.4.2. Initialization",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 4) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.5. PUSH_PROMISE",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1105:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1105:S0:0-19",
+        "projectedText": "7.2.5. PUSH_PROMISE",
+        "boundParts": [
+          {
+            "sourceAlias": "L1105:S0",
+            "page": 31,
+            "row": 1105,
+            "utf16Span": {
+              "start": 0,
+              "end": 19
+            },
+            "text": "7.2.5. PUSH_PROMISE",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.6. GOAWAY",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1143:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1143:S0:0-13",
+        "projectedText": "7.2.6. GOAWAY",
+        "boundParts": [
+          {
+            "sourceAlias": "L1143:S0",
+            "page": 32,
+            "row": 1143,
+            "utf16Span": {
+              "start": 0,
+              "end": 13
+            },
+            "text": "7.2.6. GOAWAY",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.7. MAX_PUSH_ID",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1164:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1164:S0:0-18",
+        "projectedText": "7.2.7. MAX_PUSH_ID",
+        "boundParts": [
+          {
+            "sourceAlias": "L1164:S0",
+            "page": 32,
+            "row": 1164,
+            "utf16Span": {
+              "start": 0,
+              "end": 18
+            },
+            "text": "7.2.7. MAX_PUSH_ID",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "7.2.8. Reserved Frame Types",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1189:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1189:S0:0-27",
+        "projectedText": "7.2.8. Reserved Frame Types",
+        "boundParts": [
+          {
+            "sourceAlias": "L1189:S0",
+            "page": 33,
+            "row": 1189,
+            "utf16Span": {
+              "start": 0,
+              "end": 27
+            },
+            "text": "7.2.8. Reserved Frame Types",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "8. Error Handling",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1199:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1199:S0:0-17",
+        "projectedText": "8. Error Handling",
+        "boundParts": [
+          {
+            "sourceAlias": "L1199:S0",
+            "page": 33,
+            "row": 1199,
+            "utf16Span": {
+              "start": 0,
+              "end": 17
+            },
+            "text": "8. Error Handling",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "8.1. HTTP/3 Error Codes",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1223:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1223:S0:0-23",
+        "projectedText": "8.1. HTTP/3 Error Codes",
+        "boundParts": [
+          {
+            "sourceAlias": "L1223:S0",
+            "page": 34,
+            "row": 1223,
+            "utf16Span": {
+              "start": 0,
+              "end": 23
+            },
+            "text": "8.1. HTTP/3 Error Codes",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "9. Extensions to HTTP/3",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1265:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1265:S0:0-23",
+        "projectedText": "9. Extensions to HTTP/3",
+        "boundParts": [
+          {
+            "sourceAlias": "L1265:S0",
+            "page": 35,
+            "row": 1265,
+            "utf16Span": {
+              "start": 0,
+              "end": 23
+            },
+            "text": "9. Extensions to HTTP/3",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10. Security Considerations",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1294:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1294:S0:0-27",
+        "projectedText": "10. Security Considerations",
+        "boundParts": [
+          {
+            "sourceAlias": "L1294:S0",
+            "page": 36,
+            "row": 1294,
+            "utf16Span": {
+              "start": 0,
+              "end": 27
+            },
+            "text": "10. Security Considerations",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.1. Server Authority",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1298:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1298:S0:0-22",
+        "projectedText": "10.1. Server Authority",
+        "boundParts": [
+          {
+            "sourceAlias": "L1298:S0",
+            "page": 36,
+            "row": 1298,
+            "utf16Span": {
+              "start": 0,
+              "end": 22
+            },
+            "text": "10.1. Server Authority",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.2. Cross-Protocol Attacks",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1301:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1301:S0:0-28",
+        "projectedText": "10.2. Cross-Protocol Attacks",
+        "boundParts": [
+          {
+            "sourceAlias": "L1301:S0",
+            "page": 36,
+            "row": 1301,
+            "utf16Span": {
+              "start": 0,
+              "end": 28
+            },
+            "text": "10.2. Cross-Protocol Attacks",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.3. Intermediary-Encapsulation Attacks",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1308:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1308:S0:0-40",
+        "projectedText": "10.3. Intermediary-Encapsulation Attacks",
+        "boundParts": [
+          {
+            "sourceAlias": "L1308:S0",
+            "page": 36,
+            "row": 1308,
+            "utf16Span": {
+              "start": 0,
+              "end": 40
+            },
+            "text": "10.3. Intermediary-Encapsulation Attacks",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.4. Cacheability of Pushed Responses",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1320:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          },
+          {
+            "sourceAlias": "L1320:S1",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1320:S0:0-5|L1320:S1:0-32",
+        "projectedText": "10.4. Cacheability of Pushed Responses",
+        "boundParts": [
+          {
+            "sourceAlias": "L1320:S0",
+            "page": 37,
+            "row": 1320,
+            "utf16Span": {
+              "start": 0,
+              "end": 5
+            },
+            "text": "10.4.",
+            "localityFromPrevious": null
+          },
+          {
+            "sourceAlias": "L1320:S1",
+            "page": 37,
+            "row": 1320,
+            "utf16Span": {
+              "start": 0,
+              "end": 32
+            },
+            "text": "Cacheability of Pushed Responses",
+            "localityFromPrevious": "SameRowNextSegment"
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [
+            "L1320:S1"
+          ],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION_SPLIT",
+        "evidence": "a section number and its title set apart in two segments of one row: one heading of two parts: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.5. Denial-of-Service Considerations",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1333:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1333:S0:0-38",
+        "projectedText": "10.5. Denial-of-Service Considerations",
+        "boundParts": [
+          {
+            "sourceAlias": "L1333:S0",
+            "page": 37,
+            "row": 1333,
+            "utf16Span": {
+              "start": 0,
+              "end": 38
+            },
+            "text": "10.5. Denial-of-Service Considerations",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.5.1. Limits on Field Section Size",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1357:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1357:S0:0-36",
+        "projectedText": "10.5.1. Limits on Field Section Size",
+        "boundParts": [
+          {
+            "sourceAlias": "L1357:S0",
+            "page": 38,
+            "row": 1357,
+            "utf16Span": {
+              "start": 0,
+              "end": 36
+            },
+            "text": "10.5.1. Limits on Field Section Size",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.5.2. CONNECT Issues",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1374:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1374:S0:0-22",
+        "projectedText": "10.5.2. CONNECT Issues",
+        "boundParts": [
+          {
+            "sourceAlias": "L1374:S0",
+            "page": 38,
+            "row": 1374,
+            "utf16Span": {
+              "start": 0,
+              "end": 22
+            },
+            "text": "10.5.2. CONNECT Issues",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.6. Use of Compression",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1383:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1383:S0:0-24",
+        "projectedText": "10.6. Use of Compression",
+        "boundParts": [
+          {
+            "sourceAlias": "L1383:S0",
+            "page": 38,
+            "row": 1383,
+            "utf16Span": {
+              "start": 0,
+              "end": 24
+            },
+            "text": "10.6. Use of Compression",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.7. Padding and Traﬃc Analysis",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1399:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1399:S0:0-32",
+        "projectedText": "10.7. Padding and Traﬃc Analysis",
+        "boundParts": [
+          {
+            "sourceAlias": "L1399:S0",
+            "page": 39,
+            "row": 1399,
+            "utf16Span": {
+              "start": 0,
+              "end": 32
+            },
+            "text": "10.7. Padding and Traﬃc Analysis",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.8. Frame Parsing",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1424:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1424:S0:0-19",
+        "projectedText": "10.8. Frame Parsing",
+        "boundParts": [
+          {
+            "sourceAlias": "L1424:S0",
+            "page": 39,
+            "row": 1424,
+            "utf16Span": {
+              "start": 0,
+              "end": 19
+            },
+            "text": "10.8. Frame Parsing",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.9. Early Data",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1431:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          },
+          {
+            "sourceAlias": "L1431:S1",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1431:S0:0-5|L1431:S1:0-10",
+        "projectedText": "10.9. Early Data",
+        "boundParts": [
+          {
+            "sourceAlias": "L1431:S0",
+            "page": 40,
+            "row": 1431,
+            "utf16Span": {
+              "start": 0,
+              "end": 5
+            },
+            "text": "10.9.",
+            "localityFromPrevious": null
+          },
+          {
+            "sourceAlias": "L1431:S1",
+            "page": 40,
+            "row": 1431,
+            "utf16Span": {
+              "start": 0,
+              "end": 10
+            },
+            "text": "Early Data",
+            "localityFromPrevious": "SameRowNextSegment"
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [
+            "L1431:S1"
+          ],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION_SPLIT",
+        "evidence": "a section number and its title set apart in two segments of one row: one heading of two parts: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.10. Migration",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1436:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1436:S0:0-16",
+        "projectedText": "10.10. Migration",
+        "boundParts": [
+          {
+            "sourceAlias": "L1436:S0",
+            "page": 40,
+            "row": 1436,
+            "utf16Span": {
+              "start": 0,
+              "end": 16
+            },
+            "text": "10.10. Migration",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "10.11. Privacy Considerations",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1442:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1442:S0:0-29",
+        "projectedText": "10.11. Privacy Considerations",
+        "boundParts": [
+          {
+            "sourceAlias": "L1442:S0",
+            "page": 40,
+            "row": 1442,
+            "utf16Span": {
+              "start": 0,
+              "end": 29
+            },
+            "text": "10.11. Privacy Considerations",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "11. IANA Considerations",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1453:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1453:S0:0-23",
+        "projectedText": "11. IANA Considerations",
+        "boundParts": [
+          {
+            "sourceAlias": "L1453:S0",
+            "page": 40,
+            "row": 1453,
+            "utf16Span": {
+              "start": 0,
+              "end": 23
+            },
+            "text": "11. IANA Considerations",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "11.1. Registration of HTTP/3 Identiﬁcation String",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1456:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1456:S0:0-49",
+        "projectedText": "11.1. Registration of HTTP/3 Identiﬁcation String",
+        "boundParts": [
+          {
+            "sourceAlias": "L1456:S0",
+            "page": 40,
+            "row": 1456,
+            "utf16Span": {
+              "start": 0,
+              "end": 49
+            },
+            "text": "11.1. Registration of HTTP/3 Identiﬁcation String",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "11.2. New Registries",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1465:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          },
+          {
+            "sourceAlias": "L1465:S1",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1465:S0:0-5|L1465:S1:0-14",
+        "projectedText": "11.2. New Registries",
+        "boundParts": [
+          {
+            "sourceAlias": "L1465:S0",
+            "page": 41,
+            "row": 1465,
+            "utf16Span": {
+              "start": 0,
+              "end": 5
+            },
+            "text": "11.2.",
+            "localityFromPrevious": null
+          },
+          {
+            "sourceAlias": "L1465:S1",
+            "page": 41,
+            "row": 1465,
+            "utf16Span": {
+              "start": 0,
+              "end": 14
+            },
+            "text": "New Registries",
+            "localityFromPrevious": "SameRowNextSegment"
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [
+            "L1465:S1"
+          ],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION_SPLIT",
+        "evidence": "a section number and its title set apart in two segments of one row: one heading of two parts: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "11.2.1. Frame Types",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1472:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1472:S0:0-19",
+        "projectedText": "11.2.1. Frame Types",
+        "boundParts": [
+          {
+            "sourceAlias": "L1472:S0",
+            "page": 41,
+            "row": 1472,
+            "utf16Span": {
+              "start": 0,
+              "end": 19
+            },
+            "text": "11.2.1. Frame Types",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "11.2.2. Settings Parameters",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1508:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1508:S0:0-27",
+        "projectedText": "11.2.2. Settings Parameters",
+        "boundParts": [
+          {
+            "sourceAlias": "L1508:S0",
+            "page": 42,
+            "row": 1508,
+            "utf16Span": {
+              "start": 0,
+              "end": 27
+            },
+            "text": "11.2.2. Settings Parameters",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "11.2.3. Error Codes",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1540:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1540:S0:0-19",
+        "projectedText": "11.2.3. Error Codes",
+        "boundParts": [
+          {
+            "sourceAlias": "L1540:S0",
+            "page": 43,
+            "row": 1540,
+            "utf16Span": {
+              "start": 0,
+              "end": 19
+            },
+            "text": "11.2.3. Error Codes",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "11.2.4. Stream Types",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1591:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1591:S0:0-20",
+        "projectedText": "11.2.4. Stream Types",
+        "boundParts": [
+          {
+            "sourceAlias": "L1591:S0",
+            "page": 45,
+            "row": 1591,
+            "utf16Span": {
+              "start": 0,
+              "end": 20
+            },
+            "text": "11.2.4. Stream Types",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "12. References",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1612:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1612:S0:0-14",
+        "projectedText": "12. References",
+        "boundParts": [
+          {
+            "sourceAlias": "L1612:S0",
+            "page": 45,
+            "row": 1612,
+            "utf16Span": {
+              "start": 0,
+              "end": 14
+            },
+            "text": "12. References",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "12.1. Normative References",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1613:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          },
+          {
+            "sourceAlias": "L1613:S1",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1613:S0:0-5|L1613:S1:0-20",
+        "projectedText": "12.1. Normative References",
+        "boundParts": [
+          {
+            "sourceAlias": "L1613:S0",
+            "page": 45,
+            "row": 1613,
+            "utf16Span": {
+              "start": 0,
+              "end": 5
+            },
+            "text": "12.1.",
+            "localityFromPrevious": null
+          },
+          {
+            "sourceAlias": "L1613:S1",
+            "page": 45,
+            "row": 1613,
+            "utf16Span": {
+              "start": 0,
+              "end": 20
+            },
+            "text": "Normative References",
+            "localityFromPrevious": "SameRowNextSegment"
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [
+            "L1613:S1"
+          ],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION_SPLIT",
+        "evidence": "a section number and its title set apart in two segments of one row: one heading of two parts: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "12.2. Informative References",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1655:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1655:S0:0-28",
+        "projectedText": "12.2. Informative References",
+        "boundParts": [
+          {
+            "sourceAlias": "L1655:S0",
+            "page": 46,
+            "row": 1655,
+            "utf16Span": {
+              "start": 0,
+              "end": 28
+            },
+            "text": "12.2. Informative References",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "Appendix A. Considerations for Transitioning from HTTP/2",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1677:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1677:S0:0-56",
+        "projectedText": "Appendix A. Considerations for Transitioning from HTTP/2",
+        "boundParts": [
+          {
+            "sourceAlias": "L1677:S0",
+            "page": 47,
+            "row": 1677,
+            "utf16Span": {
+              "start": 0,
+              "end": 56
+            },
+            "text": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (14.4pt bold, level 1) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.1. Streams",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1688:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1688:S0:0-12",
+        "projectedText": "A.1. Streams",
+        "boundParts": [
+          {
+            "sourceAlias": "L1688:S0",
+            "page": 47,
+            "row": 1688,
+            "utf16Span": {
+              "start": 0,
+              "end": 12
+            },
+            "text": "A.1. Streams",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.2. HTTP Frame Types",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1710:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1710:S0:0-21",
+        "projectedText": "A.2. HTTP Frame Types",
+        "boundParts": [
+          {
+            "sourceAlias": "L1710:S0",
+            "page": 48,
+            "row": 1710,
+            "utf16Span": {
+              "start": 0,
+              "end": 21
+            },
+            "text": "A.2. HTTP Frame Types",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.2.1. Prioritization Diﬀerences",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1729:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1729:S0:0-32",
+        "projectedText": "A.2.1. Prioritization Diﬀerences",
+        "boundParts": [
+          {
+            "sourceAlias": "L1729:S0",
+            "page": 48,
+            "row": 1729,
+            "utf16Span": {
+              "start": 0,
+              "end": 32
+            },
+            "text": "A.2.1. Prioritization Diﬀerences",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.2.2. Field Compression Diﬀerences",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1736:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1736:S0:0-35",
+        "projectedText": "A.2.2. Field Compression Diﬀerences",
+        "boundParts": [
+          {
+            "sourceAlias": "L1736:S0",
+            "page": 49,
+            "row": 1736,
+            "utf16Span": {
+              "start": 0,
+              "end": 35
+            },
+            "text": "A.2.2. Field Compression Diﬀerences",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.2.3. Flow-Control Diﬀerences",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1745:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1745:S0:0-30",
+        "projectedText": "A.2.3. Flow-Control Diﬀerences",
+        "boundParts": [
+          {
+            "sourceAlias": "L1745:S0",
+            "page": 49,
+            "row": 1745,
+            "utf16Span": {
+              "start": 0,
+              "end": 30
+            },
+            "text": "A.2.3. Flow-Control Diﬀerences",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1750:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1750:S0:0-45",
+        "projectedText": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+        "boundParts": [
+          {
+            "sourceAlias": "L1750:S0",
+            "page": 49,
+            "row": 1750,
+            "utf16Span": {
+              "start": 0,
+              "end": 45
+            },
+            "text": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1761:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1761:S0:0-49",
+        "projectedText": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+        "boundParts": [
+          {
+            "sourceAlias": "L1761:S0",
+            "page": 49,
+            "row": 1761,
+            "utf16Span": {
+              "start": 0,
+              "end": 49
+            },
+            "text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.3. HTTP/2 SETTINGS Parameters",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1787:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1787:S0:0-31",
+        "projectedText": "A.3. HTTP/2 SETTINGS Parameters",
+        "boundParts": [
+          {
+            "sourceAlias": "L1787:S0",
+            "page": 50,
+            "row": 1787,
+            "utf16Span": {
+              "start": 0,
+              "end": 31
+            },
+            "text": "A.3. HTTP/2 SETTINGS Parameters",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.4. HTTP/2 Error Codes",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1827:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1827:S0:0-23",
+        "projectedText": "A.4. HTTP/2 Error Codes",
+        "boundParts": [
+          {
+            "sourceAlias": "L1827:S0",
+            "page": 51,
+            "row": 1827,
+            "utf16Span": {
+              "start": 0,
+              "end": 23
+            },
+            "text": "A.4. HTTP/2 Error Codes",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (12pt bold, level 2) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1856:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1856:S0:0-46",
+        "projectedText": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors",
+        "boundParts": [
+          {
+            "sourceAlias": "L1856:S0",
+            "page": 52,
+            "row": 1856,
+            "utf16Span": {
+              "start": 0,
+              "end": 46
+            },
+            "text": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "NUMBERED_SECTION",
+        "evidence": "numbered section heading (10pt bold, level 3) over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "Acknowledgments",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1878:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1878:S0:0-15",
+        "projectedText": "Acknowledgments",
+        "boundParts": [
+          {
+            "sourceAlias": "L1878:S0",
+            "page": 53,
+            "row": 1878,
+            "utf16Span": {
+              "start": 0,
+              "end": 15
+            },
+            "text": "Acknowledgments",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "MATTER_SECTION",
+        "evidence": "14.4pt bold section title of the front or back matter over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "Index",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1912:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1912:S0:0-5",
+        "projectedText": "Index",
+        "boundParts": [
+          {
+            "sourceAlias": "L1912:S0",
+            "page": 54,
+            "row": 1912,
+            "utf16Span": {
+              "start": 0,
+              "end": 5
+            },
+            "text": "Index",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "MATTER_SECTION",
+        "evidence": "14.4pt bold section title of the front or back matter over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      },
+      {
+        "approvedWording": "C",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1914:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1914:S0:0-1",
+        "projectedText": "C",
+        "boundParts": [
+          {
+            "sourceAlias": "L1914:S0",
+            "page": 54,
+            "row": 1914,
+            "utf16Span": {
+              "start": 0,
+              "end": 1
+            },
+            "text": "C",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "TOC",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "S095_Q2_INDEX_GROUP_LETTER",
+        "evidence": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label"
+      },
+      {
+        "approvedWording": "D",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1940:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1940:S0:0-1",
+        "projectedText": "D",
+        "boundParts": [
+          {
+            "sourceAlias": "L1940:S0",
+            "page": 54,
+            "row": 1940,
+            "utf16Span": {
+              "start": 0,
+              "end": 1
+            },
+            "text": "D",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "TOC",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "S095_Q2_INDEX_GROUP_LETTER",
+        "evidence": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label"
+      },
+      {
+        "approvedWording": "G",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1947:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1947:S0:0-1",
+        "projectedText": "G",
+        "boundParts": [
+          {
+            "sourceAlias": "L1947:S0",
+            "page": 54,
+            "row": 1947,
+            "utf16Span": {
+              "start": 0,
+              "end": 1
+            },
+            "text": "G",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "TOC",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "S095_Q2_INDEX_GROUP_LETTER",
+        "evidence": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label"
+      },
+      {
+        "approvedWording": "H",
+        "sourceParts": [
+          {
+            "sourceAlias": "L1961:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L1961:S0:0-1",
+        "projectedText": "H",
+        "boundParts": [
+          {
+            "sourceAlias": "L1961:S0",
+            "page": 55,
+            "row": 1961,
+            "utf16Span": {
+              "start": 0,
+              "end": 1
+            },
+            "text": "H",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "TOC",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "S095_Q2_INDEX_GROUP_LETTER",
+        "evidence": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label"
+      },
+      {
+        "approvedWording": "M",
+        "sourceParts": [
+          {
+            "sourceAlias": "L2012:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L2012:S0:0-1",
+        "projectedText": "M",
+        "boundParts": [
+          {
+            "sourceAlias": "L2012:S0",
+            "page": 56,
+            "row": 2012,
+            "utf16Span": {
+              "start": 0,
+              "end": 1
+            },
+            "text": "M",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "TOC",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "S095_Q2_INDEX_GROUP_LETTER",
+        "evidence": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label"
+      },
+      {
+        "approvedWording": "P",
+        "sourceParts": [
+          {
+            "sourceAlias": "L2023:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L2023:S0:0-1",
+        "projectedText": "P",
+        "boundParts": [
+          {
+            "sourceAlias": "L2023:S0",
+            "page": 56,
+            "row": 2023,
+            "utf16Span": {
+              "start": 0,
+              "end": 1
+            },
+            "text": "P",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "TOC",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "S095_Q2_INDEX_GROUP_LETTER",
+        "evidence": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label"
+      },
+      {
+        "approvedWording": "R",
+        "sourceParts": [
+          {
+            "sourceAlias": "L2056:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L2056:S0:0-1",
+        "projectedText": "R",
+        "boundParts": [
+          {
+            "sourceAlias": "L2056:S0",
+            "page": 57,
+            "row": 2056,
+            "utf16Span": {
+              "start": 0,
+              "end": 1
+            },
+            "text": "R",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "TOC",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "S095_Q2_INDEX_GROUP_LETTER",
+        "evidence": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label"
+      },
+      {
+        "approvedWording": "S",
+        "sourceParts": [
+          {
+            "sourceAlias": "L2063:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L2063:S0:0-1",
+        "projectedText": "S",
+        "boundParts": [
+          {
+            "sourceAlias": "L2063:S0",
+            "page": 57,
+            "row": 2063,
+            "utf16Span": {
+              "start": 0,
+              "end": 1
+            },
+            "text": "S",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "TOC",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "S095_Q2_INDEX_GROUP_LETTER",
+        "evidence": "user decision 2026-09-26 (S095_Q2, TRUE): a single letter opening its own group of indented index entries, like the SRC-041 A5 contents group label"
+      },
+      {
+        "approvedWording": "Author's Address",
+        "sourceParts": [
+          {
+            "sourceAlias": "L2076:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          }
+        ],
+        "semanticRole": null,
+        "identity": "L2076:S0:0-16",
+        "projectedText": "Author's Address",
+        "boundParts": [
+          {
+            "sourceAlias": "L2076:S0",
+            "page": 57,
+            "row": 2076,
+            "utf16Span": {
+              "start": 0,
+              "end": 16
+            },
+            "text": "Author's Address",
+            "localityFromPrevious": null
+          }
+        ],
+        "semanticAxes": {
+          "semanticFunctions": [
+            "IDENTITY",
+            "STRUCTURE"
+          ],
+          "primaryFunction": "STRUCTURE",
+          "scope": "SECTION",
+          "occurrenceRoles": [
+            "REGION_OPENER"
+          ],
+          "titleRelation": "TITLE",
+          "titlePartAliases": [],
+          "informationType": null
+        },
+        "pattern": "MATTER_SECTION",
+        "evidence": "14.4pt bold section title of the front or back matter over its own text: FINANCIAL_PROCUREMENT_HEADING_POLICY_V1 (its general definition: part / section / subsection / appendix headings)"
+      }
+    ]
+  },
+  "occurrenceUnavailableReason": null,
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-095.source-review.v1.json",
+      "sha256": "f81367050ddd2e1beef4c64c2982b638a459afe6b441bbd92c27b66df70d55b8",
+      "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json",
+      "sha256": "1c9b660edbdde08596dc767e6ca9de5657d5b77c229336be1d69141d074a60ac",
+      "role": "SOURCE_REVIEW_ITEMS"
+    },
+    {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-095.authority-lineage.v1.json",
+      "sha256": "1b07361ee340e79eb5860f60a8541c822c65594270a406802fdba55cb96fdf50",
+      "role": "AUTHORITY_LINEAGE"
+    },
+    {
+      "path": "eval/a99-closed-loop/policy/financial-procurement-heading-policy.v1.json",
+      "sha256": "5872f16c779ded317e115ff6dd425b0851a7e1c39f3a4335f921735f9188e2ca",
+      "role": "HEADING_POLICY"
+    },
+    {
+      "path": "eval/a99-closed-loop/policy/financial-occurrence-distinctions.v1.json",
+      "sha256": "f78c4fc8ebebd3b92d406b8ea1c3e6dadf4a29bc0078e75191425a5d29d5f5ef",
+      "role": "HEADING_POLICY_ADDENDUM"
+    },
+    {
+      "path": "eval/a99-closed-loop/policy/occurrence-semantic-axes.v3.json",
+      "sha256": "23c916df45a1deb7d985c34dff1efc6de2ccc1a6d512b7500d92d59c963b81f6",
+      "role": "OCCURRENCE_ONTOLOGY"
+    },
+    {
+      "path": "eval/a99-closed-loop/policy/occurrence-classification-principles.v1.json",
+      "sha256": "6c3d2b2c94b5da13c1d3f499c522b52d4ffeec76660ad8c5558b05e7b095719a",
+      "role": "CLASSIFICATION_PRINCIPLES"
+    }
+  ]
+}

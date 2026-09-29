@@ -37,7 +37,7 @@ public sealed record SourceReference(
     [property: JsonPropertyName("sourceOrdinal")] int SourceOrdinal,
     [property: JsonPropertyName("span")] StructuralSpan Span)
 {
-    /// <summary>Optional stable source identity retained for compatibility projections.</summary>
+/// <summary>Optional stable source identity retained for outline projections.</summary>
     [JsonPropertyName("stableId")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? StableId { get; init; }
@@ -49,13 +49,13 @@ public sealed record ProposedSourceReference(
     [property: JsonPropertyName("span")] StructuralSpan Span);
 
 /// <summary>
-/// A parser/deterministic candidate. Its source facts and observed spans are authority inputs; a
-/// proposal may refer to this candidate but cannot replace its source facts.
+/// A parser/deterministic source occurrence. Its source facts and observed spans are authority
+/// inputs; a proposal may refer to this routing id but cannot replace its source facts.
 /// </summary>
-public sealed record StructuralCandidate
+public sealed record StructuralSourceOccurrence
 {
-    [JsonPropertyName("candidateId")]
-    public required string CandidateId { get; init; }
+    [JsonPropertyName("sourceOccurrenceId")]
+    public required string SourceOccurrenceId { get; init; }
 
     [JsonIgnore]
     public required IReadOnlyList<SourceFacts> ObservedSourceFacts { get; init; }
@@ -73,13 +73,13 @@ public sealed record StructuralCandidate
 }
 
 /// <summary>
-/// Untrusted structural proposal. CandidateId is a routing key; type, role, proposed span,
-/// parent, and level remain subject to validation against the candidate's observed facts.
+/// Untrusted structural proposal. SourceOccurrenceId is the source occurrence routing key; type, role,
+/// proposed span, parent, and level remain subject to validation against observed source facts.
 /// </summary>
 public sealed record StructuralProposal
 {
-    [JsonPropertyName("candidateId")]
-    public required string CandidateId { get; init; }
+    [JsonPropertyName("sourceOccurrenceId")]
+    public required string SourceOccurrenceId { get; init; }
 
     [JsonPropertyName("type")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -108,7 +108,7 @@ public sealed record StructuralDecision(
     [property: JsonPropertyName("disputed")] bool Disputed = false);
 
 public sealed record StructuralValidation(
-    [property: JsonPropertyName("candidateGrounded")] bool CandidateGrounded,
+    [property: JsonPropertyName("sourceOccurrenceGrounded")] bool SourceOccurrenceGrounded,
     [property: JsonPropertyName("sourceFactsPresent")] bool SourceFactsPresent,
     [property: JsonPropertyName("proposedSpanValid")] bool ProposedSpanValid,
     [property: JsonPropertyName("sourceSelectionValid")] bool SourceSelectionValid,
@@ -124,37 +124,39 @@ public sealed record StructuralValidation(
 }
 
 /// <summary>
-/// Compatibility payload used only while the existing HeadingRecord API remains public. It keeps
+/// Outline payload used only while the existing HeadingRecord API remains public. It keeps
 /// projection details out of generic validation logic while allowing a lossless heading projection.
 /// </summary>
 public sealed record StructuralProjectionMetadata
 {
-    /// <summary>Legacy output identity when it differs from the generic source identity.</summary>
-    public string? CompatibilitySourceId { get; init; }
-    /// <summary>Legacy heading index when it differs from the generic source ordinal.</summary>
-    public int? CompatibilitySourceOrdinal { get; init; }
-    /// <summary>Legacy heading stable identity when it differs from the generic source identity.</summary>
-    public string? CompatibilityStableId { get; init; }
-    /// <summary>Legacy heading span when it differs from the validated source span.</summary>
-    public StructuralSpan? CompatibilityHeadingSpan { get; init; }
-    /// <summary>Legacy heading text when the generic source unit contains a wider observed block.</summary>
-    public string? CompatibilityText { get; init; }
-    /// <summary>Legacy output level, including an intentional null value.</summary>
+    /// <summary>Outline output identity when it differs from the generic source identity.</summary>
+    public string? OutlineSourceId { get; init; }
+    /// <summary>Outline heading index when it differs from the generic source ordinal.</summary>
+    public int? OutlineSourceOrdinal { get; init; }
+    /// <summary>Outline heading stable identity when it differs from the generic source identity.</summary>
+    public string? OutlineStableId { get; init; }
+    /// <summary>Outline heading span when it differs from the validated source span.</summary>
+    public StructuralSpan? OutlineHeadingSpan { get; init; }
+    /// <summary>Outline heading text when the generic source unit contains a wider observed block.</summary>
+    public string? OutlineText { get; init; }
+    /// <summary>Outline output level, including an intentional null value.</summary>
     [JsonIgnore]
-    public int? CompatibilityLevel { get; init; }
-    /// <summary>Whether the compatibility level should override the generic structural level.</summary>
+    public int? OutlineLevel { get; init; }
+    /// <summary>Whether the outline level should override the generic structural level.</summary>
     [JsonIgnore]
-    public bool CompatibilityLevelIsSet { get; init; }
+    public bool OutlineLevelIsSet { get; init; }
+    /// <summary>
+    /// Why this heading has, or does not have, a level. "model-out-of-hierarchy" is a decision —
+    /// a title or running header that holds no position in the section tree — while "unresolved"
+    /// is the absence of one and belongs in a review queue. Both end with a null level, so the
+    /// reason is the only thing that tells them apart.
+    /// </summary>
+    public string? HierarchyResolution { get; init; }
     public string? OriginalText { get; init; }
     public string? InlineBody { get; init; }
     public StructuralSpan? InlineBodySpan { get; init; }
     public string? BoundarySource { get; init; }
     public string? StyleId { get; init; }
-    public bool ModelConfirmed { get; init; }
-    public bool CriticConfirmed { get; init; }
-    public string? AcceptanceSignature { get; init; }
-    public int CalibrationSamples { get; init; }
-    public HeadingEvidence? Evidence { get; init; }
 }
 
 /// <summary>Source-grounded structural element consumed by relations and downstream projections.</summary>
@@ -313,7 +315,7 @@ public sealed class ValidatedStructure
         var parentByChild = Relations
             .Where(relation => relation.Type == StructuralRelationType.ParentChild)
             .ToDictionary(relation => relation.ToId, relation => relation.FromId, StringComparer.Ordinal);
-        // ParentId is a compatibility view. It is always projected from the validated graph.
+        // ParentId is an outline view. It is always projected from the validated graph.
         Elements = materialized.Select(element => element with
         {
             ParentId = parentByChild.GetValueOrDefault(element.Id),
@@ -328,7 +330,7 @@ public sealed class ValidatedStructure
 
     /// <summary>
     /// Elements that the existing document-outline contract can represent. Title and Subtitle are
-    /// intentionally included so the compatibility projection does not silently drop them while
+    /// intentionally included so the outline projection does not silently drop them while
     /// the generic taxonomy remains closed to the initial three element types.
     /// </summary>
     public IReadOnlyList<ValidatedStructuralElement> OutlineElements =>

@@ -1,0 +1,378 @@
+{
+  "artifactKind": "a99_direct_semantic_probe_retry_run",
+  "schemaVersion": "a99-direct-semantic-probe-retry-run-v1",
+  "lineage": "direct-semantic-discrimination-probe-retry-v1",
+  "approval": "explicit-user-authorization, DOC-0252, 3 contexts, 3 repeats, exactly 9 calls",
+  "providerAuthorized": true,
+  "documentId": "DOC-0252",
+  "promptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+  "schemaSha256": "20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+  "providerInputPlanSha256": "a792fb0f03b2c6c16facecba5485ed48dc7742610f7542e0936ca88ecd59243b",
+  "proposedProviderCalls": 9,
+  "actualProviderCalls": 7,
+  "replacementCalls": 0,
+  "safetyMarginCalls": 0,
+  "secondModelReplay": 0,
+  "stage1TransportCalls": 0,
+  "stage2Calls": 0,
+  "placementCalls": 0,
+  "halted": "r3 PACK_005: HttpRequestException: OpenRouter trả 429 Too Many Requests: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Alibaba\",\"is_byok\":false,\"provider_error_code\":\"insufficient_quota\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a…",
+  "reservations": [
+    {
+      "identity": "PACK_001:r1",
+      "slot": "PACK_001.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_005:r1",
+      "slot": "PACK_005.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_006:r1",
+      "slot": "PACK_006.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_001:r2",
+      "slot": "PACK_001.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_005:r2",
+      "slot": "PACK_005.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_006:r2",
+      "slot": "PACK_006.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_001:r3",
+      "slot": "PACK_001.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_005:r3",
+      "slot": "PACK_005.capture-slot.v1.json"
+    },
+    {
+      "identity": "PACK_006:r3",
+      "slot": "PACK_006.capture-slot.v1.json"
+    }
+  ],
+  "results": [
+    {
+      "repeat": 1,
+      "pack": "PACK_001",
+      "decisions": [
+        {
+          "itemId": "ITEM-AB89229E",
+          "classification": "DOCUMENT_LABEL"
+        }
+      ],
+      "rawResponseSha256": "f6dbb2d8aa1f31752d9e7dbe711e76d9bf490902d8089f07ef06f73474a7c4fe"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_005",
+      "decisions": [
+        {
+          "itemId": "ITEM-BAAD25EE",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-1D843A9F",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-82675EC0",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-024B8661",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-505430BB",
+          "classification": "DOCUMENT_LABEL"
+        }
+      ],
+      "rawResponseSha256": "fb208641935655434c97629cae58d79fad73db961b07b34f3fd7767fc48fef1a"
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "decisions": [
+        {
+          "itemId": "ITEM-2D78F82D",
+          "classification": "NON_STRUCTURAL"
+        },
+        {
+          "itemId": "ITEM-968E70AF",
+          "classification": "NON_STRUCTURAL"
+        },
+        {
+          "itemId": "ITEM-CCE2C592",
+          "classification": "DOCUMENT_LABEL"
+        },
+        {
+          "itemId": "ITEM-5348EA2B",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-5EFE8569",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-2F026398",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-E96B316E",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-13ADC8F7",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-811FC894",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-4C05B3C2",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-959D3FCB",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-E14B4B93",
+          "classification": "STRUCTURAL_UNIT"
+        }
+      ],
+      "rawResponseSha256": "62b72e6cd83884e78aa13e62bcc20117d894c173433ea85cf26eb4c37526066b"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_001",
+      "decisions": [
+        {
+          "itemId": "ITEM-AB89229E",
+          "classification": "DOCUMENT_LABEL"
+        }
+      ],
+      "rawResponseSha256": "2f2ee0e41d19013abf5b33e861e1e73bea2636d507e6ce0b1494b2a7a73c9cf1"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_005",
+      "decisions": [
+        {
+          "itemId": "ITEM-BAAD25EE",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-1D843A9F",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-82675EC0",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-024B8661",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-505430BB",
+          "classification": "DOCUMENT_LABEL"
+        }
+      ],
+      "rawResponseSha256": "8fa998aaba01647acfbf200c197994dcaff9a23a945c73cfbdfa6f231a3f3da5"
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "decisions": [
+        {
+          "itemId": "ITEM-2D78F82D",
+          "classification": "NON_STRUCTURAL"
+        },
+        {
+          "itemId": "ITEM-968E70AF",
+          "classification": "NON_STRUCTURAL"
+        },
+        {
+          "itemId": "ITEM-CCE2C592",
+          "classification": "DOCUMENT_LABEL"
+        },
+        {
+          "itemId": "ITEM-5348EA2B",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-5EFE8569",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-2F026398",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-E96B316E",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-13ADC8F7",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-811FC894",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-4C05B3C2",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-959D3FCB",
+          "classification": "STRUCTURAL_UNIT"
+        },
+        {
+          "itemId": "ITEM-E14B4B93",
+          "classification": "STRUCTURAL_UNIT"
+        }
+      ],
+      "rawResponseSha256": "b9c2f98f50387e676e048eff71f7774047ac7b9daa708ddf5295cc5122c758c7"
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_001",
+      "decisions": [
+        {
+          "itemId": "ITEM-AB89229E",
+          "classification": "DOCUMENT_LABEL"
+        }
+      ],
+      "rawResponseSha256": "5242483cb02829cd0f227ee57e6b51babb5d2989482d54351f06a32ac76e0a00"
+    }
+  ],
+  "callLedger": [
+    {
+      "Ordinal": 1,
+      "DocumentId": "DOC-0252",
+      "Repeat": 1,
+      "Stage": "direct-semantic-probe-retry",
+      "SystemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+      "RequestSha256": "392226eb55c3b153320032cca0a7520f6e3023de7e2d0ccc4563e1e31254388d",
+      "ResponseSha256": "f6dbb2d8aa1f31752d9e7dbe711e76d9bf490902d8089f07ef06f73474a7c4fe",
+      "RequestChars": 16609,
+      "ResponseChars": 400,
+      "ElapsedMs": 2648
+    },
+    {
+      "Ordinal": 2,
+      "DocumentId": "DOC-0252",
+      "Repeat": 1,
+      "Stage": "direct-semantic-probe-retry",
+      "SystemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+      "RequestSha256": "901a4ce79b658d299f78fc490bcd8da8261d0b09c9f62ee88056dc3135f535b1",
+      "ResponseSha256": "fb208641935655434c97629cae58d79fad73db961b07b34f3fd7767fc48fef1a",
+      "RequestChars": 46601,
+      "ResponseChars": 1487,
+      "ElapsedMs": 4882
+    },
+    {
+      "Ordinal": 3,
+      "DocumentId": "DOC-0252",
+      "Repeat": 1,
+      "Stage": "direct-semantic-probe-retry",
+      "SystemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+      "RequestSha256": "0ebfe742827798e5486a317de74fd3253d2b6b14a194f8e542ad8cf5b7fac51d",
+      "ResponseSha256": "62b72e6cd83884e78aa13e62bcc20117d894c173433ea85cf26eb4c37526066b",
+      "RequestChars": 23536,
+      "ResponseChars": 2703,
+      "ElapsedMs": 8114
+    },
+    {
+      "Ordinal": 4,
+      "DocumentId": "DOC-0252",
+      "Repeat": 2,
+      "Stage": "direct-semantic-probe-retry",
+      "SystemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+      "RequestSha256": "392226eb55c3b153320032cca0a7520f6e3023de7e2d0ccc4563e1e31254388d",
+      "ResponseSha256": "2f2ee0e41d19013abf5b33e861e1e73bea2636d507e6ce0b1494b2a7a73c9cf1",
+      "RequestChars": 16609,
+      "ResponseChars": 330,
+      "ElapsedMs": 1496
+    },
+    {
+      "Ordinal": 5,
+      "DocumentId": "DOC-0252",
+      "Repeat": 2,
+      "Stage": "direct-semantic-probe-retry",
+      "SystemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+      "RequestSha256": "901a4ce79b658d299f78fc490bcd8da8261d0b09c9f62ee88056dc3135f535b1",
+      "ResponseSha256": "8fa998aaba01647acfbf200c197994dcaff9a23a945c73cfbdfa6f231a3f3da5",
+      "RequestChars": 46601,
+      "ResponseChars": 1498,
+      "ElapsedMs": 4972
+    },
+    {
+      "Ordinal": 6,
+      "DocumentId": "DOC-0252",
+      "Repeat": 2,
+      "Stage": "direct-semantic-probe-retry",
+      "SystemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+      "RequestSha256": "0ebfe742827798e5486a317de74fd3253d2b6b14a194f8e542ad8cf5b7fac51d",
+      "ResponseSha256": "b9c2f98f50387e676e048eff71f7774047ac7b9daa708ddf5295cc5122c758c7",
+      "RequestChars": 23536,
+      "ResponseChars": 2955,
+      "ElapsedMs": 8519
+    },
+    {
+      "Ordinal": 7,
+      "DocumentId": "DOC-0252",
+      "Repeat": 3,
+      "Stage": "direct-semantic-probe-retry",
+      "SystemPromptSha256": "5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+      "RequestSha256": "392226eb55c3b153320032cca0a7520f6e3023de7e2d0ccc4563e1e31254388d",
+      "ResponseSha256": "5242483cb02829cd0f227ee57e6b51babb5d2989482d54351f06a32ac76e0a00",
+      "RequestChars": 16609,
+      "ResponseChars": 369,
+      "ElapsedMs": 1534
+    }
+  ],
+  "oldRejectedLineage": {
+    "preserved": true,
+    "providerHttpAttempts": 1,
+    "modelGenerations": 0,
+    "billedProviderCalls": 0
+  },
+  "gates": [
+    "head: MATCH expected=d74f14d8deeacbb65ee6afbdb9affe5e66c5a0f2 actual=d74f14d8deeacbb65ee6afbdb9affe5e66c5a0f2",
+    "sourceHash: MATCH expected=a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61 actual=a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverse: MATCH expected=2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f actual=2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "goldHash: MATCH expected=e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e actual=e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "schemaHash: MATCH expected=20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9 actual=20f937f19ef560380f9ec7f76ad43fa8dec4442dafdd9c404eb6c258e14295b9",
+    "promptHash: MATCH expected=5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387 actual=5e8d393c7e78af28a9695011e63cb4bad00505467532bdcf14582e551aa2a387",
+    "contexts: MATCH expected=3 actual=3",
+    "PACK_001:providerInput: MATCH expected=22d3bbe551900fd0e47f0144054e66c16ef12b03f030540c34b9856886450d37 actual=22d3bbe551900fd0e47f0144054e66c16ef12b03f030540c34b9856886450d37",
+    "PACK_001:expectedItemCount: MATCH expected=38 actual=38",
+    "PACK_001:maxTokens: MATCH expected=4960 actual=4960",
+    "PACK_001:compatibility: MATCH expected=true actual=true",
+    "PACK_005:providerInput: MATCH expected=8ce58a9c478f481f6d021f83b2e849953f1d5b1e378186405d7dd4d5fb555866 actual=8ce58a9c478f481f6d021f83b2e849953f1d5b1e378186405d7dd4d5fb555866",
+    "PACK_005:expectedItemCount: MATCH expected=119 actual=119",
+    "PACK_005:maxTokens: MATCH expected=15328 actual=15328",
+    "PACK_005:compatibility: MATCH expected=true actual=true",
+    "PACK_006:providerInput: MATCH expected=127573c38acfbcaca27dd713a9054cd627a02ac8e3469c0c538f9e1f6b3e86fd actual=127573c38acfbcaca27dd713a9054cd627a02ac8e3469c0c538f9e1f6b3e86fd",
+    "PACK_006:expectedItemCount: MATCH expected=57 actual=57",
+    "PACK_006:maxTokens: MATCH expected=7392 actual=7392",
+    "PACK_006:compatibility: MATCH expected=true actual=true",
+    "providerInputPlan: MATCH expected=a792fb0f03b2c6c16facecba5485ed48dc7742610f7542e0936ca88ecd59243b actual=a792fb0f03b2c6c16facecba5485ed48dc7742610f7542e0936ca88ecd59243b",
+    "repeats: MATCH expected=3 actual=3",
+    "authorizedCalls: MATCH expected=9 actual=9",
+    "replacementCalls: MATCH expected=0 actual=0",
+    "safetyMarginCalls: MATCH expected=0 actual=0",
+    "secondModelReplay: MATCH expected=0 actual=0",
+    "stage1TransportCalls: MATCH expected=0 actual=0",
+    "stage2Calls: MATCH expected=0 actual=0"
+  ]
+}

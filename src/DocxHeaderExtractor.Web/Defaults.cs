@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Chunking;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
@@ -7,38 +6,23 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 namespace DocxHeaderExtractor.Web;
 
 /// <summary>
-/// Giá trị mặc định đọc thẳng từ <see cref="LocalModelOptions"/> và <see cref="ExtractionOptions"/>,
+/// Giá trị mặc định đọc thẳng từ Core và môi trường server,
 /// để giao diện không tự chép hằng số rồi lệch khỏi CLI khi Core đổi.
 /// </summary>
 public sealed record Defaults(
-    int ChunkTokens,
-    int ChunkCandidates,
-    double Threshold,
-    bool StructuralOnly,
     int GpuLayers,
     bool GpuBackend,
     bool OpenRouterAvailable,
     string OpenRouterModel,
     string LmStudioEndpoint,
     string LmStudioModel,
-    int LmStudioContextSize,
-    bool AutoDetectMode)
+    int LmStudioContextSize)
 {
     public static Defaults Current()
     {
-        var llama = new LocalModelOptions();
-        var chunking = new ChunkingOptions();
-        var extraction = new ExtractionOptions();
         var gpu = HasGpuBackend();
         var lmStudio = RemoteInferenceOptions.FromEnvironment("lmstudio");
         return new Defaults(
-            ChunkTokens: chunking.TokenBudget,
-            // 6 là mức cân bằng giữa số request và độ chính xác ID/cấp trên Qwen 7B.
-            ChunkCandidates: chunking.MaxCandidatesPerChunk,
-            Threshold: extraction.CandidateThreshold,
-            // Đo được: bật luật từ ngữ không đổi kết quả trên cả hai bộ test, nhưng luật loại
-            // chú thích có thể chém nhầm tiêu đề dạng "Bảng 2 cột dữ liệu" mà không cho gỡ.
-            StructuralOnly: true,
             // Mặc định bảo thủ cho GPU 4 GB: Qwen 7B Q4 không vừa nếu offload 99 lớp, Vulkan sẽ
             // tràn sang shared RAM và chậm dần. Máy 8 GB+ có thể đặt DHX_GPU_LAYERS=99.
             GpuLayers: gpu ? GpuLayersFromEnvironment(defaultValue: 20) : 0,
@@ -47,8 +31,7 @@ public sealed record Defaults(
             OpenRouterModel: Environment.GetEnvironmentVariable("OPENROUTER_MODEL") ?? RemoteInferenceOptions.DefaultModel,
             LmStudioEndpoint: lmStudio.Endpoint.GetLeftPart(UriPartial.Authority),
             LmStudioModel: lmStudio.Model,
-            LmStudioContextSize: lmStudio.ContextSize,
-            AutoDetectMode: new PipelineOptions().AutoDetectDocumentMode);
+            LmStudioContextSize: lmStudio.ContextSize);
     }
 
     private static int GpuLayersFromEnvironment(int defaultValue) =>

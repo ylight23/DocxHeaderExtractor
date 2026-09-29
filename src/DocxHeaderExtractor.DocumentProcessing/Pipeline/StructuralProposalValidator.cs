@@ -10,20 +10,20 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 public static class StructuralProposalValidator
 {
     public static StructuralValidation Validate(
-        StructuralCandidate? candidate,
+        StructuralSourceOccurrence? sourceOccurrence,
         StructuralProposal proposal,
         IReadOnlySet<string>? knownStructuralElementIds = null)
     {
         ArgumentNullException.ThrowIfNull(proposal);
-        var candidateGrounded = candidate is not null &&
-            string.Equals(candidate.CandidateId, proposal.CandidateId, StringComparison.Ordinal);
-        var sourceFactsPresent = candidate?.ObservedSourceFacts is { Count: > 0 };
-        var validatedSources = candidateGrounded && sourceFactsPresent
-            ? SelectValidatedSources(candidate!, proposal)
+        var sourceGrounded = sourceOccurrence is not null &&
+            string.Equals(sourceOccurrence.SourceOccurrenceId, proposal.SourceOccurrenceId, StringComparison.Ordinal);
+        var sourceFactsPresent = sourceOccurrence?.ObservedSourceFacts is { Count: > 0 };
+        var validatedSources = sourceGrounded && sourceFactsPresent
+            ? SelectValidatedSources(sourceOccurrence!, proposal)
             : [];
         var proposedSpanValid = proposal.ProposedSources is null ||
-            candidateGrounded && sourceFactsPresent && validatedSources.Count == proposal.ProposedSources.Count;
-        var sourceSelectionValid = candidateGrounded && sourceFactsPresent && validatedSources.Count > 0 &&
+            sourceGrounded && sourceFactsPresent && validatedSources.Count == proposal.ProposedSources.Count;
+        var sourceSelectionValid = sourceGrounded && sourceFactsPresent && validatedSources.Count > 0 &&
             validatedSources.Select(source => source.SourceId).Distinct(StringComparer.Ordinal).Count() ==
             validatedSources.Count;
         var typeValid = Enum.IsDefined(proposal.Type);
@@ -31,7 +31,7 @@ public static class StructuralProposalValidator
         var levelValid = proposal.ProposedLevel is null or >= 1 and <= 9;
         var parentValid = proposal.ProposedParentId is null || knownStructuralElementIds is null ||
             knownStructuralElementIds.Contains(proposal.ProposedParentId);
-        var reason = !candidateGrounded ? "candidate-not-grounded"
+        var reason = !sourceGrounded ? "source-occurrence-not-grounded"
             : !sourceFactsPresent ? "source-facts-missing"
             : !proposedSpanValid ? "invalid-proposed-sources"
             : !sourceSelectionValid ? "invalid-proposed-sources"
@@ -41,28 +41,28 @@ public static class StructuralProposalValidator
             : !parentValid ? "structural-parent-not-grounded"
             : null;
         return new StructuralValidation(
-            candidateGrounded, sourceFactsPresent, proposedSpanValid, sourceSelectionValid,
+            sourceGrounded, sourceFactsPresent, proposedSpanValid, sourceSelectionValid,
             validatedSources.Count, typeValid, levelValid, parentValid, reason, typeRoleValid);
     }
 
     public static ValidatedStructuralElement? Materialize(
-        StructuralCandidate candidate,
+        StructuralSourceOccurrence sourceOccurrence,
         StructuralProposal proposal,
         string structuralElementId,
         StructuralDecision decision,
         IReadOnlySet<string>? knownStructuralElementIds = null,
         StructuralProjectionMetadata? projectionMetadata = null)
     {
-        ArgumentNullException.ThrowIfNull(candidate);
+        ArgumentNullException.ThrowIfNull(sourceOccurrence);
         ArgumentException.ThrowIfNullOrWhiteSpace(structuralElementId);
         ArgumentNullException.ThrowIfNull(decision);
-        var validation = Validate(candidate, proposal, knownStructuralElementIds);
+        var validation = Validate(sourceOccurrence, proposal, knownStructuralElementIds);
         if (!validation.Accepted) return null;
 
-        var sources = SelectValidatedSources(candidate, proposal);
+        var sources = SelectValidatedSources(sourceOccurrence, proposal);
         var text = string.Join(" ", sources.Select(source =>
         {
-            var facts = candidate.ObservedSourceFacts.First(item => item.SourceId == source.SourceId);
+            var facts = sourceOccurrence.ObservedSourceFacts.First(item => item.SourceId == source.SourceId);
             return facts.RawText[source.Span.Start..source.Span.End];
         }));
         return new ValidatedStructuralElement
@@ -81,17 +81,17 @@ public static class StructuralProposalValidator
     }
 
     private static IReadOnlyList<SourceReference> SelectValidatedSources(
-        StructuralCandidate candidate,
+        StructuralSourceOccurrence sourceOccurrence,
         StructuralProposal proposal)
     {
         if (proposal.ProposedSources is null)
         {
-            var observed = candidate.ObservedSources;
+            var observed = sourceOccurrence.ObservedSources;
             return observed.Select(source => source.SourceId).Distinct(StringComparer.Ordinal).Count() ==
                 observed.Count ? observed : [];
         }
 
-        var observedById = candidate.ObservedSourceFacts
+        var observedById = sourceOccurrence.ObservedSourceFacts
             .ToDictionary(source => source.SourceId, StringComparer.Ordinal);
         if (proposal.ProposedSources.Count == 0 ||
             proposal.ProposedSources.Select(source => source.SourceId).Distinct(StringComparer.Ordinal).Count() !=

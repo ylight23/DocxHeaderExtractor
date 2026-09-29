@@ -2,7 +2,7 @@ namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
 /// The executable vNext orchestration boundary. Evidence preparation and model inference are
-/// supplied by the caller; this entry point owns the order of modality profiling, attention,
+/// supplied by the caller; this entry point owns the order of modality profiling,
 /// context packing, semantic validation, binding, reconciliation, graph resolution, and
 /// projection. Gold is intentionally absent from this contract.
 /// </summary>
@@ -11,7 +11,6 @@ public sealed record CanonicalSemanticProductionInput(
     IReadOnlyList<CanonicalSemanticProposal>? SemanticProposals,
     string SourceSha256,
     IReadOnlyList<CanonicalSemanticPageEvidence> Pages,
-    IReadOnlyList<SemanticCandidateAttentionHint> CandidateHints,
     IReadOnlyList<string> TargetEvidence,
     IReadOnlyList<string> LocalContext,
     IReadOnlyList<string> GlobalContext,
@@ -20,29 +19,94 @@ public sealed record CanonicalSemanticProductionInput(
     IReadOnlyList<CanonicalSemanticVisualPageEvidence>? VisualPages = null,
     string? ExpectedSourceSha256 = null,
     string? DocumentId = null,
-    IReadOnlyList<CanonicalSemanticSourceEvidence>? SourceEvidence = null);
+    IReadOnlyList<CanonicalSemanticSourceEvidence>? SourceEvidence = null)
+{
+    /// <summary>Aliases visible to this execution segment. Null means the complete source set.</summary>
+    public IReadOnlySet<string>? OwnedAliases { get; init; }
+
+    /// <summary>Explicit global semantic conflicts supplied by a resolver; never inferred here.</summary>
+    public IReadOnlyList<CanonicalSemanticGlobalConflict> GlobalConflicts { get; init; } = [];
+
+    /// <summary>Parser-owned source-universe identity when the route has one.</summary>
+    public string? SourceUniverseSha256 { get; init; }
+
+    /// <summary>
+    /// Optional experiment-owned capture metadata. When present, the production entry point
+    /// freezes parsed proposals before source-aware validation; persistence remains outside Core.
+    /// </summary>
+    public SemanticAuthorityCaptureMetadata? ReplayCapture { get; init; }
+
+    /// <summary>
+    /// The layout label beside each source id, when the lane's atoms are finer than its layout
+    /// blocks. Null for a lane that has no such distinction - DOCX paragraphs are their own layout
+    /// unit, so there is nothing to label them with.
+    /// <para>
+    /// A label, never a coordinate: it travels beside <see cref="SourceEvidence"/> rather than
+    /// inside it, so a source id remains addressable by its own alias whether or not this map is
+    /// present, and no evidence-shaping code has to know why the map exists to use it correctly.
+    /// </para>
+    /// </summary>
+    public IReadOnlyDictionary<string, string>? LayoutBlockBySourceId { get; init; }
+
+    /// <summary>
+    /// The coordinate contract this lane is running under. Null keeps the alias-span behaviour every
+    /// caller had before contracts became selectable, so a lane that does not supply one is not
+    /// choosing a default - it is unchanged.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public SemanticCoordinateContract? CoordinateContract { get; init; }
+
+    /// <summary>
+    /// The source aliases the lane itself issued, when its addressing is not the running
+    /// <c>S0001..</c> numbering derived from a catalog. A structured PDF addresses atoms as
+    /// <c>L{row}:S{segment}</c>, and re-deriving aliases from its catalog would renumber them into
+    /// a scheme the model was never shown and Gold does not record.
+    /// </summary>
+    public IReadOnlyList<SemanticSourceAlias>? SourceAliases { get; init; }
+
+    /// <summary>
+    /// The coordinate atoms a structured binding resolves against. Null for lanes whose coordinate
+    /// system has no atoms below the alias.
+    /// </summary>
+    public IReadOnlyList<SemanticSourceAtom>? SourceAtoms { get; init; }
+
+    /// <summary>The binding this lane's contract owns; alias-span when no contract was supplied.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public SemanticCoordinateBinding Binding => CoordinateContract?.Binding ?? SemanticCoordinateBinding.AliasSpan;
+
+    /// <summary>The lane's own aliases, or the catalog-derived ones when it issued none.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public IReadOnlyList<SemanticSourceAlias> Aliases =>
+        SourceAliases ?? SemanticSourceAliasCatalog.FromCatalog(SourceCatalog);
+}
 
 /// <summary>Compact parser-owned evidence attached to one canonical source occurrence. It contains
-/// observations only; it does not contain candidate gating, Gold, hierarchy, or model decisions.</summary>
+/// observations only; it does not contain pre-semantic salience gates, Gold, hierarchy, or model decisions.</summary>
 public sealed record CanonicalSemanticSourceEvidence(
     string SourceAlias,
     string SourceId,
     int SourceOrdinal,
     string ExactSourceText,
     string StructuralScope,
-    int TableDepth,
-    int SectionIndex,
-    bool InContentControl,
-    bool InTableOfContents,
     IReadOnlyList<string> ContainerFacts,
     object StyleFacts,
     object NumberingFacts,
     IReadOnlyList<object> RunFormattingFacts,
-    IReadOnlyList<string> MarkerFacts,
     IReadOnlyList<string> ObservedEvidence,
     IReadOnlyList<string> LocalBefore,
-    IReadOnlyList<string> LocalAfter,
-    SemanticCandidateAttentionHint CandidateAttention);
+    IReadOnlyList<string> LocalAfter)
+{
+    /// <summary>
+    /// Where the occurrence physically sits, as the V2 request shows it: observable measurements only,
+    /// never a reading of what the occurrence is. Null when the lane has nothing to report here.
+    /// <para>
+    /// This replaces <see cref="StructuralScope"/> in what the
+    /// model sees. Those are the harness's own conclusions ("running page artifact", "table of
+    /// contents") about the very question the model is asked, so they stay internal.
+    /// </para>
+    /// </summary>
+    public object? LocationFacts { get; init; }
+}
 
 public sealed record CanonicalSemanticInferenceTelemetry(
     string? ActualProvider = null,
@@ -53,7 +117,27 @@ public sealed record CanonicalSemanticInferenceTelemetry(
 
 public sealed record CanonicalSemanticTextInferenceResult(
     IReadOnlyList<CanonicalSemanticProposal> Proposals,
-    CanonicalSemanticInferenceTelemetry Telemetry);
+    CanonicalSemanticInferenceTelemetry Telemetry)
+{
+    /// <summary>Provider/parser contract issues captured before any binder is allowed to run.</summary>
+    public IReadOnlyList<SemanticContractIssue> ContractIssues { get; init; } = [];
+
+    /// <summary>
+    /// All proposals parsed from model JSON, before segment ownership filtering. Null is retained
+    /// for older custom test models that predate replay capture.
+    /// </summary>
+    public IReadOnlyList<CanonicalSemanticProposal>? ParsedProposals { get; init; }
+
+    /// <summary>Hash of the ordered raw model responses used for this inference.</summary>
+    public string? RawModelResponseHash { get; init; }
+
+    /// <summary>
+    /// Replay-complete transport evidence. A provider-backed result must carry one entry per
+    /// successful semantic call so the capture boundary can persist the exact request/response
+    /// bytes before downstream binding or scoring.
+    /// </summary>
+    public IReadOnlyList<SemanticAuthorityTransportCall> TransportCalls { get; init; } = [];
+}
 
 public interface ICanonicalSemanticTextModel
 {
@@ -79,10 +163,13 @@ public interface ICanonicalSemanticVisualModel
         CancellationToken cancellationToken = default);
 }
 
+// ICanonicalSemanticAdjudicationModel is declared with the control plane that drives it, in
+// CanonicalSemanticClosedLoopControlPlane. Both sides of this merge had added the same interface
+// independently, character for character; the copy that lives beside its caller is the one kept.
+
 public sealed record CanonicalSemanticProductionResult(
     CanonicalSemanticModalityProfile ModalityProfile,
     SemanticContextPacket ContextPacket,
-    IReadOnlyList<SemanticCandidateAttentionHint> CandidateHints,
     CanonicalSemanticPipelineResult TextPipeline,
     IReadOnlyList<CanonicalSemanticVisualOccurrence> VisualOccurrences,
     IReadOnlyList<CanonicalSemanticVisualBoundHeading> VisualHeadings,
@@ -132,6 +219,23 @@ public sealed record CanonicalSemanticProductionResult(
 
     public IReadOnlyList<CanonicalSemanticGraphOccurrence> Projection =>
         CanonicalGraph.OutlineProjection;
+
+    public IReadOnlyList<SemanticContractIssue> ContractIssues { get; init; } = [];
+    public int ContractValidProposalCount { get; init; }
+    public int ContractInvalidProposalCount { get; init; }
+    public int SemanticAdjudicationCalls { get; init; }
+    public int ResolvedConflictCount { get; init; }
+    public int UnresolvedConflictCount { get; init; }
+    public int InvalidAdjudicationCount { get; init; }
+    public int GlobalReopenCalls { get; init; }
+    public int PrimaryTextModelCalls => TextModelCalls;
+    public int TotalModelCalls => TextModelCalls + VisualModelCalls + SemanticAdjudicationCalls + GlobalReopenCalls;
+
+    /// <summary>Immutable proposal capture made before source-aware validation, when requested.</summary>
+    public SemanticAuthorityReplayBundle? ReplayBundle { get; init; }
+
+    /// <summary>Transport evidence paired with <see cref="ReplayBundle"/>.</summary>
+    public IReadOnlyList<SemanticAuthorityTransportCall> TransportCalls { get; init; } = [];
 }
 
 public static class CanonicalSemanticProductionEntryPoint
@@ -139,10 +243,22 @@ public static class CanonicalSemanticProductionEntryPoint
     public static CanonicalSemanticProductionResult Run(CanonicalSemanticProductionInput input)
     {
         ArgumentNullException.ThrowIfNull(input);
+        if (input.ReplayCapture is not null)
+            throw new InvalidOperationException("REPLAY_CAPTURE_REQUIRES_ASYNC_INFERENCE");
         if (input.SemanticProposals is null)
             throw new InvalidOperationException("LIVE_INFERENCE_REQUIRES_RUN_ASYNC");
-        return RunPostInference(input, input.SemanticProposals, input.VisualProposals ?? [],
-            new(), new(), 0, 0);
+        var aliases = input.Aliases;
+        var validation = input.Binding.ValidateProposals(
+            input.SemanticProposals, aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal), input.OwnedAliases);
+        var normalization = SemanticConflictNormalizer.Normalize(validation.ValidProposals, aliases);
+        var result = RunPostInference(input, normalization.BindingReadyProposals, input.SemanticProposals,
+            input.VisualProposals ?? [], normalization, new(), new(), 0, 0, validation, 0, 0, 0, 0, 0);
+        return result with
+        {
+            ContractIssues = validation.Issues,
+            ContractValidProposalCount = validation.ValidProposals.Count,
+            ContractInvalidProposalCount = input.SemanticProposals.Count - validation.ValidProposals.Count,
+        };
     }
 
     public static async Task<CanonicalSemanticProductionResult> RunAsync(
@@ -150,21 +266,56 @@ public static class CanonicalSemanticProductionEntryPoint
         ICanonicalSemanticTextModel textModel,
         ICanonicalSemanticVisualModel? visualModel = null,
         string requestId = "canonical-semantic-production",
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default,
+        ICanonicalSemanticAdjudicationModel? adjudicationModel = null,
+        ICanonicalSemanticAdjudicationModel? globalReopenModel = null)
     {
         ArgumentNullException.ThrowIfNull(input);
         ArgumentNullException.ThrowIfNull(textModel);
         var pages = input.Pages ?? throw new ArgumentNullException(nameof(input.Pages));
         var profile = ModalityProfiler.Profile(pages);
-        var aliases = SemanticSourceAliasCatalog.FromCatalog(input.SourceCatalog);
-
-        // Candidate hints are attention metadata only. Every owned alias remains eligible.
-        foreach (var alias in aliases)
-            _ = SemanticCandidatePolicy.CanAcceptOwnedOccurrence(alias.Alias, input.CandidateHints);
+        var aliases = input.Aliases;
 
         var context = SemanticContextPacker.Pack(
             input.TargetEvidence, input.LocalContext, input.GlobalContext);
         var textInference = await textModel.InferAsync(input, context, requestId, cancellationToken);
+        var captureProposals = textInference.ParsedProposals ?? textInference.Proposals;
+        var replayBundle = input.ReplayCapture is null
+            ? null
+            : CreateReplayBundle(input, aliases, textInference, captureProposals);
+        var primaryValidation = input.Binding.ValidateProposals(
+            textInference.Proposals,
+            aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal),
+            input.OwnedAliases);
+        var allContractIssues = (textInference.ContractIssues ?? [])
+            .Concat(primaryValidation.Issues)
+            .ToArray();
+        var normalization = SemanticConflictNormalizer.Normalize(primaryValidation.ValidProposals, aliases);
+        var detectedGlobalConflicts = CanonicalSemanticGlobalConflictDetector.Detect(
+            primaryValidation.ValidProposals, aliases, normalization.Conflicts);
+        var globalConflicts = input.GlobalConflicts
+            .Concat(detectedGlobalConflicts)
+            .GroupBy(item => item.ConflictId, StringComparer.Ordinal)
+            .Select(group => group.First())
+            .ToArray();
+        var adjudication = await ResolveConflictsAsync(
+            normalization, aliases, input, context, adjudicationModel, requestId, cancellationToken);
+        var globalReopen = await CanonicalSemanticGlobalReopenCoordinator.ResolveAsync(
+            globalConflicts, aliases, globalReopenModel, requestId, cancellationToken: cancellationToken);
+        var globalValidation = input.Binding.ValidateProposals(
+            globalReopen.AcceptedAlternatives,
+            aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal),
+            input.OwnedAliases);
+        allContractIssues = allContractIssues.Concat(globalValidation.Issues).ToArray();
+        var bindingReady = adjudication.BindingReadyProposals.ToList();
+        foreach (var accepted in globalValidation.ValidProposals)
+        {
+            var acceptedIdentity = CanonicalSemanticGlobalConflictDetector.PhysicalIdentity(accepted, aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal));
+            bindingReady.RemoveAll(existing => string.Equals(
+                CanonicalSemanticGlobalConflictDetector.PhysicalIdentity(existing, aliases.ToDictionary(item => item.Alias, StringComparer.Ordinal)),
+                acceptedIdentity, StringComparison.Ordinal));
+            bindingReady.Add(accepted);
+        }
         var visualBlocks = input.VisualBlocks is { Count: > 0 }
             ? VisualRecovery.Recover(input.VisualBlocks)
             : [];
@@ -176,33 +327,82 @@ public static class CanonicalSemanticProductionEntryPoint
             visualInference = await visualModel.InferAsync(
                 input, context, visualBlocks, requestId + ":visual", cancellationToken);
         }
-        var visualInput = visualInference.Blocks.Count > 0
-            ? input with { VisualBlocks = visualInference.Blocks }
-            : input;
-        return RunPostInference(visualInput with { SemanticProposals = textInference.Proposals },
-            textInference.Proposals, visualInference.Proposals,
+        var visualInput = input with { GlobalConflicts = globalConflicts };
+        if (visualInference.Blocks.Count > 0)
+            visualInput = visualInput with { VisualBlocks = visualInference.Blocks };
+        var result = RunPostInference(visualInput with { SemanticProposals = bindingReady },
+            bindingReady, textInference.Proposals, visualInference.Proposals, normalization,
             textInference.Telemetry, visualInference.Telemetry, 1,
-            profile.Pages.Any(page => page.UseVisualRecovery) ? 1 : 0);
+            profile.Pages.Any(page => page.UseVisualRecovery) ? 1 : 0,
+            primaryValidation, adjudication.AdjudicationCalls,
+            adjudication.ResolvedCount, adjudication.UnresolvedCount, adjudication.InvalidCount,
+            globalReopen.ReopenCalls);
+        return result with
+        {
+            ContractIssues = allContractIssues,
+            ContractValidProposalCount = primaryValidation.ValidProposals.Count,
+            ContractInvalidProposalCount = textInference.Proposals.Count - primaryValidation.ValidProposals.Count,
+            ReplayBundle = replayBundle,
+            TransportCalls = textInference.TransportCalls,
+        };
+    }
+
+    private static SemanticAuthorityReplayBundle CreateReplayBundle(
+        CanonicalSemanticProductionInput input,
+        IReadOnlyList<SemanticSourceAlias> aliases,
+        CanonicalSemanticTextInferenceResult textInference,
+        IReadOnlyList<CanonicalSemanticProposal> captureProposals)
+    {
+        var capture = input.ReplayCapture!;
+        if (string.IsNullOrWhiteSpace(textInference.RawModelResponseHash))
+            throw new InvalidOperationException("REPLAY_CAPTURE_RAW_RESPONSE_HASH_MISSING");
+        if (input.SourceUniverseSha256 is not null &&
+            !string.Equals(input.SourceUniverseSha256, capture.SourceUniverseHash, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException("REPLAY_CAPTURE_SOURCE_UNIVERSE_HASH_MISMATCH");
+        return SemanticAuthorityReplayBundleFactory.Create(
+            input.DocumentId ?? throw new InvalidOperationException("REPLAY_CAPTURE_DOCUMENT_ID_MISSING"),
+            capture.SourceType,
+            input.SourceSha256,
+            input.SourceUniverseSha256 ?? capture.SourceUniverseHash,
+            aliases,
+            capture.ModelIdentity,
+            capture.ModelRoute,
+            capture.PromptHash,
+            textInference.RawModelResponseHash,
+            captureProposals,
+            capture.GoldId,
+            capture.GoldHash,
+            capture.EvaluatorIdentity,
+            capture.ManifestHash,
+            capture.RunId,
+            capture.Commit,
+            capture.CreatedAt) with { RequestVersion = capture.RequestVersion };
     }
 
     private static CanonicalSemanticProductionResult RunPostInference(
         CanonicalSemanticProductionInput input,
         IReadOnlyList<CanonicalSemanticProposal> semanticProposals,
+        IReadOnlyList<CanonicalSemanticProposal> rawModelProposals,
         IReadOnlyList<CanonicalSemanticVisualProposal> visualProposals,
+        SemanticConflictNormalizationResult normalization,
         CanonicalSemanticInferenceTelemetry textTelemetry,
         CanonicalSemanticInferenceTelemetry visualTelemetry,
         int textModelCalls,
-        int visualModelCalls)
+        int visualModelCalls,
+        SemanticProposalValidationSummary validation,
+        int adjudicationCalls,
+        int resolvedConflictCount,
+        int unresolvedConflictCount,
+        int invalidAdjudicationCount,
+        int globalReopenCalls)
     {
         var pages = input.Pages ?? throw new ArgumentNullException(nameof(input.Pages));
         var profile = ModalityProfiler.Profile(pages);
-        var aliases = SemanticSourceAliasCatalog.FromCatalog(input.SourceCatalog);
-        foreach (var alias in aliases)
-            _ = SemanticCandidatePolicy.CanAcceptOwnedOccurrence(alias.Alias, input.CandidateHints);
+        var aliases = input.Aliases;
         var context = SemanticContextPacker.Pack(input.TargetEvidence, input.LocalContext, input.GlobalContext);
-        var normalization = SemanticConflictNormalizer.Normalize(semanticProposals, aliases);
-        var text = CanonicalSemanticPipeline.Run(input.SourceCatalog, normalization.BindingReadyProposals,
-            input.SourceSha256, input.ExpectedSourceSha256);
+        var text = CanonicalSemanticPipeline.RunAliases(aliases, semanticProposals,
+            input.SourceSha256, input.ExpectedSourceSha256, input.OwnedAliases,
+            input.Binding, input.SourceAtoms);
 
         var visualOccurrences = input.VisualBlocks is { Count: > 0 }
             ? VisualRecovery.Recover(input.VisualBlocks)
@@ -229,35 +429,100 @@ public static class CanonicalSemanticProductionEntryPoint
 
         var ledger = new[]
         {
-            new SemanticTransitionLedgerEntry("SOURCE_IDENTITY", "PRESERVED", aliases.Count, aliases.Count),
-            new SemanticTransitionLedgerEntry("MODALITY_PROFILER", "PRESERVED", pages.Count, profile.Pages.Count),
-            new SemanticTransitionLedgerEntry("SOURCE_EVIDENCE", "PRESERVED", aliases.Count, aliases.Count),
-            new SemanticTransitionLedgerEntry("CANDIDATE_ATTENTION", "PRESERVED", aliases.Count, aliases.Count),
-            new SemanticTransitionLedgerEntry("CONTEXT_PACKING", "PRESERVED", context.VisibleEvidence.Count, context.VisibleEvidence.Count),
+            new SemanticTransitionLedgerEntry("SOURCE_IDENTITY", "COMPLETED", aliases.Count, aliases.Count),
+            new SemanticTransitionLedgerEntry("MODALITY_PROFILE", "COMPLETED", pages.Count, profile.Pages.Count),
+            new SemanticTransitionLedgerEntry("SOURCE_EVIDENCE", "COMPLETED", aliases.Count, aliases.Count),
+            new SemanticTransitionLedgerEntry("CONTEXT_PACKING", "COMPLETED", context.VisibleEvidence.Count, context.VisibleEvidence.Count),
+            new SemanticTransitionLedgerEntry("PRIMARY_SEMANTIC_INFERENCE", textModelCalls > 0 ? "COMPLETED" : "SKIPPED_PRECOMPUTED", 0, rawModelProposals.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_CONTRACT_VALIDATION", validation.Issues.Count == 0 ? "COMPLETED" : "PARTIAL_INVALID_PROPOSALS", rawModelProposals.Count, validation.ValidProposals.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_CONFLICT_NORMALIZATION", "COMPLETED", normalization.SemanticProposalInputCount, normalization.NormalizedProposals.Count),
             new SemanticTransitionLedgerEntry("SEMANTIC_CONFLICT_CHECK",
                 normalization.Conflicts.Count > 0
                     ? "CONFLICTS_WITHHELD"
                     : normalization.AttributeConflicts.Count > 0
-                        ? "ATTRIBUTE_CONFLICTS_BINDABLE"
-                        : "PRESERVED",
+                        ? "ATTRIBUTE_CONFLICTS_WITHHELD"
+                        : "NO_CONFLICT",
                 normalization.SemanticProposalInputCount,
                 normalization.BindingReadyProposals.Count,
                 normalization.Conflicts.Count > 0 ? "OCCURRENCE_OR_BINDING_CONFLICT" : null),
-            new SemanticTransitionLedgerEntry("SEMANTIC_CONTRACT", "PRESERVED", semanticProposals.Count, semanticProposals.Count),
-            new SemanticTransitionLedgerEntry("TEXT_UTF16_BINDING", "PRESERVED", normalization.BindingReadyProposals.Count, text.BoundHeadings.Count),
-            new SemanticTransitionLedgerEntry("VISUAL_RECOVERY", "PRESERVED", input.VisualBlocks?.Count ?? 0, visualOccurrences.Count),
-            new SemanticTransitionLedgerEntry("VISUAL_REGION_BINDING", "PRESERVED", visualProposals.Count, visualHeadings.Count),
-            new SemanticTransitionLedgerEntry("CROSS_MODAL_RECONCILIATION", "PRESERVED", textEvidence.Length + visualEvidence.Length, unified.Count),
-            new SemanticTransitionLedgerEntry("GLOBAL_RESOLUTION", "PRESERVED", text.BoundHeadings.Count + visualHeadings.Count, canonicalGraph.Occurrences.Count),
-            new SemanticTransitionLedgerEntry("CANONICAL_GRAPH", "PRESERVED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
-            new SemanticTransitionLedgerEntry("SEMANTIC_BOUNDARY", "PRESERVED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
-            new SemanticTransitionLedgerEntry("TASK_PROJECTION", "PRESERVED", canonicalGraph.Occurrences.Count, canonicalGraph.OutlineProjection.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_ADJUDICATION", adjudicationCalls > 0 ? "COMPLETED" : normalization.Conflicts.Count + normalization.AttributeConflicts.Count > 0 ? "SKIPPED_NO_ADJUDICATOR" : "SKIPPED_NO_CONFLICT", normalization.Conflicts.Count + normalization.AttributeConflicts.Count, resolvedConflictCount),
+            new SemanticTransitionLedgerEntry("TEXT_EXACT_BINDING", "COMPLETED", semanticProposals.Count, text.BoundHeadings.Count),
+            new SemanticTransitionLedgerEntry("HARD_BINDING_VALIDATION", text.BindingFailureCount == 0 ? "COMPLETED" : "COMPLETED_WITH_REJECTIONS", text.BindingObservations.Count, text.BoundHeadings.Count),
+            new SemanticTransitionLedgerEntry("VISUAL_RECOVERY", input.VisualBlocks?.Count > 0 ? "COMPLETED" : "SKIPPED_NO_VISUAL_RECOVERY", input.VisualBlocks?.Count ?? 0, visualOccurrences.Count),
+            new SemanticTransitionLedgerEntry("VISUAL_SEMANTIC_INFERENCE", visualModelCalls > 0 ? "COMPLETED" : "SKIPPED_NO_VISUAL_RECOVERY", visualProposals.Count, visualProposals.Count),
+            new SemanticTransitionLedgerEntry("VISUAL_REGION_BINDING", visualProposals.Count > 0 ? "COMPLETED" : "SKIPPED_NO_VISUAL_RECOVERY", visualProposals.Count, visualHeadings.Count),
+            new SemanticTransitionLedgerEntry("CROSS_MODAL_RECONCILIATION", "COMPLETED", textEvidence.Length + visualEvidence.Length, unified.Count),
+            new SemanticTransitionLedgerEntry("GLOBAL_RESOLUTION", "COMPLETED", text.BoundHeadings.Count + visualHeadings.Count, canonicalGraph.Occurrences.Count),
+            new SemanticTransitionLedgerEntry("GLOBAL_SEMANTIC_REOPEN", globalReopenCalls > 0 ? "COMPLETED" : "SKIPPED_NO_CONFLICT", input.GlobalConflicts.Count, globalReopenCalls),
+            new SemanticTransitionLedgerEntry("CANONICAL_GRAPH", "COMPLETED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
+            new SemanticTransitionLedgerEntry("SEMANTIC_BOUNDARY", "COMPLETED", canonicalGraph.Occurrences.Count, canonicalGraph.Occurrences.Count),
+            new SemanticTransitionLedgerEntry("TASK_PROJECTION", "COMPLETED", canonicalGraph.Occurrences.Count, canonicalGraph.OutlineProjection.Count),
         };
 
-        return new(profile, context, input.CandidateHints, text,
-            visualOccurrences, visualHeadings, unified, ledger, semanticProposals,
+        return new(profile, context, text,
+            visualOccurrences, visualHeadings, unified, ledger, rawModelProposals,
             textTelemetry, visualTelemetry, textModelCalls, visualModelCalls)
-        { CanonicalGraph = canonicalGraph, ConflictNormalization = normalization };
+        { CanonicalGraph = canonicalGraph, ConflictNormalization = normalization,
+          SemanticAdjudicationCalls = adjudicationCalls,
+          ResolvedConflictCount = resolvedConflictCount,
+          UnresolvedConflictCount = unresolvedConflictCount,
+          InvalidAdjudicationCount = invalidAdjudicationCount,
+          GlobalReopenCalls = globalReopenCalls,
+          ContractValidProposalCount = validation.ValidProposals.Count,
+          ContractInvalidProposalCount = validation.Issues.Count == 0 ? 0 : semanticProposals.Count - validation.ValidProposals.Count };
+    }
+
+    private sealed record AdjudicationResolution(
+        IReadOnlyList<CanonicalSemanticProposal> BindingReadyProposals,
+        int AdjudicationCalls,
+        int ResolvedCount,
+        int UnresolvedCount,
+        int InvalidCount);
+
+    /// <summary>
+    /// Production adapter over the one adjudication owner.
+    /// <para>
+    /// It prepares this path's context and maps the result onto the production shape. The algorithm
+    /// - which conflicts to open, what to accept, what to withhold - belongs to
+    /// <see cref="CanonicalSemanticClosedLoopControlPlane"/>, and there is no second copy of it
+    /// here. If this method ever loops over conflicts again, the duplicate owner has come back.
+    /// </para>
+    /// <para>
+    /// Normalization has already happened once, before contract validation filtered the proposals,
+    /// and the result is passed through rather than recomputed.
+    /// </para>
+    /// </summary>
+    private static async Task<AdjudicationResolution> ResolveConflictsAsync(
+        SemanticConflictNormalizationResult normalization,
+        IReadOnlyList<SemanticSourceAlias> aliases,
+        CanonicalSemanticProductionInput input,
+        SemanticContextPacket context,
+        ICanonicalSemanticAdjudicationModel? adjudicationModel,
+        string requestId,
+        CancellationToken cancellationToken)
+    {
+        var conflictCount = normalization.Conflicts.Count + normalization.AttributeConflicts.Count;
+
+        // No adjudicator, or nothing to adjudicate: no provider call is spent, and every conflict
+        // stays unresolved rather than being quietly treated as settled.
+        if (adjudicationModel is null || conflictCount == 0)
+            return new(normalization.BindingReadyProposals.ToList(), 0, 0, conflictCount, 0);
+
+        var adjudicated = await CanonicalSemanticClosedLoopControlPlane.AdjudicateAsync(
+            normalization,
+            aliases,
+            adjudicationModel,
+            context.LocalContext,
+            input.GlobalContext,
+            requestId,
+            cancellationToken);
+
+        return new(
+            adjudicated.BindingReadyProposals,
+            adjudicated.ModelCalls,
+            adjudicated.BindingReadyProposals.Count - normalization.BindingReadyProposals.Count,
+            adjudicated.UnresolvedCaseIds.Count,
+            adjudicated.InvalidCaseIds.Count);
     }
 
     private static CanonicalSemanticGraph CombineGraphs(
@@ -292,7 +557,7 @@ public static class CanonicalSemanticProductionEntryPoint
             var pageNumber = ParsePage(binding.PageId);
             var occurrence = new CanonicalSemanticGraphOccurrence(
                 $"visual-occurrence:{occurrences.Count + 1:0000}",
-                CanonicalSemanticGraphResolver.CreatePhysicalNodeId(binding),
+                CanonicalSemanticIdentityResolver.CreatePhysicalNodeId(binding),
                 binding.VisualAlias, $"visual:{binding.PageId}", pageNumber,
                 binding.RecoveredTranscript, heading.SemanticRole, heading.StructuralType,
                 heading.Scope, binding.BlockOrdinal, binding.BlockOrdinal, "PRIMARY", null)

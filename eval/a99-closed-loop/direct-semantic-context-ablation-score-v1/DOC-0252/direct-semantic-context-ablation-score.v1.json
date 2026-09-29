@@ -1,0 +1,2297 @@
+{
+  "artifactKind": "a99_direct_semantic_context_ablation_score",
+  "schemaVersion": "a99-direct-semantic-context-ablation-score-v1",
+  "documentId": "DOC-0252",
+  "lineage": "DIRECT_SEMANTIC_CONTEXT_ABLATION_V1",
+  "runnerCommit": "fe9f2b88e751e4315b459d89791f0b7e2b1f1ef1",
+  "captureCommit": "9cae02c",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+  "model": "qwen/qwen3.7-flash",
+  "transportProviderCalls": 27,
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "captureRoot": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252",
+  "cohortComplete": true,
+  "usableSemanticCells": 27,
+  "validity": "CONTEXT_ABLATION_VALID",
+  "duplicateSemanticCellIdentities": 0,
+  "missingSemanticCellIdentities": 0,
+  "rawShaParity": true,
+  "authorityMetadataMismatch": 0,
+  "onlyContextChanged": true,
+  "authority": {
+    "fullPlanHash": "a792fb0f03b2c6c16facecba5485ed48dc7742610f7542e0936ca88ecd59243b",
+    "localPlanHash": "303cf743b89b88ba0f85bb1e2f20e15e482d9b2d2aa27fd4a815462bb48e09bf",
+    "minimalPlanHash": "297387401a96bbc8f5f800456b6e4d9f579a1b04cfef92ffca574deff885cf68",
+    "expectedLabelsProviderVisible": false,
+    "modelIdentical": true,
+    "promptIdentical": true,
+    "schemaIdentical": true,
+    "itemIdsIdentical": true,
+    "ownershipIdentical": true,
+    "transportSettingsIdentical": true
+  },
+  "cohort": [
+    {
+      "cell": "FULL_CONTEXT/r1/PACK_001",
+      "arm": "FULL_CONTEXT",
+      "repeat": 1,
+      "pack": "PACK_001",
+      "RawResponseSha256": "89869999b1f14dda39a3054b6403682b822d1f16b991fa88bad7c5021d0d0070",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\full-context/r1/PACK_001.transport-capture.v1.json"
+    },
+    {
+      "cell": "FULL_CONTEXT/r1/PACK_005",
+      "arm": "FULL_CONTEXT",
+      "repeat": 1,
+      "pack": "PACK_005",
+      "RawResponseSha256": "7c3697f559fa60f92ec89d4d0ae8563771bad8e07983dff475224488fec50424",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\full-context/r1/PACK_005.transport-capture.v1.json"
+    },
+    {
+      "cell": "FULL_CONTEXT/r1/PACK_006",
+      "arm": "FULL_CONTEXT",
+      "repeat": 1,
+      "pack": "PACK_006",
+      "RawResponseSha256": "ae870788e7ef30a547948ec667e9488be46c7fe0119abf63fe06bff82ec522ad",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\full-context/r1/PACK_006.transport-capture.v1.json"
+    },
+    {
+      "cell": "FULL_CONTEXT/r2/PACK_001",
+      "arm": "FULL_CONTEXT",
+      "repeat": 2,
+      "pack": "PACK_001",
+      "RawResponseSha256": "89869999b1f14dda39a3054b6403682b822d1f16b991fa88bad7c5021d0d0070",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\full-context/r2/PACK_001.transport-capture.v1.json"
+    },
+    {
+      "cell": "FULL_CONTEXT/r2/PACK_005",
+      "arm": "FULL_CONTEXT",
+      "repeat": 2,
+      "pack": "PACK_005",
+      "RawResponseSha256": "e3fd444a670d248d4fa7d27b9f7ecaf37be479a727d7fb39528b2347b301ea35",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\full-context/r2/PACK_005.transport-capture.v1.json"
+    },
+    {
+      "cell": "FULL_CONTEXT/r2/PACK_006",
+      "arm": "FULL_CONTEXT",
+      "repeat": 2,
+      "pack": "PACK_006",
+      "RawResponseSha256": "73722d55a68aa5550b0004beed38d180ffae6d4dba7554da59128b435e7c5118",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\full-context/r2/PACK_006.transport-capture.v1.json"
+    },
+    {
+      "cell": "FULL_CONTEXT/r3/PACK_001",
+      "arm": "FULL_CONTEXT",
+      "repeat": 3,
+      "pack": "PACK_001",
+      "RawResponseSha256": "a792c8f8524e5aa989d9cc26601677f00eb52159a9f6f6ffe21f28e43d10e340",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\full-context/r3/PACK_001.transport-capture.v1.json"
+    },
+    {
+      "cell": "FULL_CONTEXT/r3/PACK_005",
+      "arm": "FULL_CONTEXT",
+      "repeat": 3,
+      "pack": "PACK_005",
+      "RawResponseSha256": "8758e77bbcc14d87a77abe1da2e69741ad64d57a8f0fca8ee1918e2c2827180e",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\full-context/r3/PACK_005.transport-capture.v1.json"
+    },
+    {
+      "cell": "FULL_CONTEXT/r3/PACK_006",
+      "arm": "FULL_CONTEXT",
+      "repeat": 3,
+      "pack": "PACK_006",
+      "RawResponseSha256": "0dd430b3108076ef9411e2e6bb5d40ca212a484251224aa3a830fa4cdfe99058",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\full-context/r3/PACK_006.transport-capture.v1.json"
+    },
+    {
+      "cell": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_001",
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 1,
+      "pack": "PACK_001",
+      "RawResponseSha256": "6ecc5648a7704a95349c4847ad81f3ea98213e11688bd51c48fe581f290c5bfb",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\local-context-radius-3/r1/PACK_001.transport-capture.v1.json"
+    },
+    {
+      "cell": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_005",
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 1,
+      "pack": "PACK_005",
+      "RawResponseSha256": "2b7ef7a01bf83d8108d173960cc7009201537a9d212a45818b39a57f8a6ff6ef",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\local-context-radius-3/r1/PACK_005.transport-capture.v1.json"
+    },
+    {
+      "cell": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_006",
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 1,
+      "pack": "PACK_006",
+      "RawResponseSha256": "bbbadab5afa16724a53c9905db926efb5ea629bccd63a7e52c409d3ccc641bbe",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\local-context-radius-3/r1/PACK_006.transport-capture.v1.json"
+    },
+    {
+      "cell": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_001",
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 2,
+      "pack": "PACK_001",
+      "RawResponseSha256": "6ecc5648a7704a95349c4847ad81f3ea98213e11688bd51c48fe581f290c5bfb",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\local-context-radius-3/r2/PACK_001.transport-capture.v1.json"
+    },
+    {
+      "cell": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_005",
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 2,
+      "pack": "PACK_005",
+      "RawResponseSha256": "a52dfd589a55c1ada1db98b92e8088f44e34a94624ababa64cd6d29693e63689",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\local-context-radius-3/r2/PACK_005.transport-capture.v1.json"
+    },
+    {
+      "cell": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_006",
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 2,
+      "pack": "PACK_006",
+      "RawResponseSha256": "c79e1f1420a4e91d28ca5d56e0e2c2522628de8908523db6fec7fe7ed97246b3",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\local-context-radius-3/r2/PACK_006.transport-capture.v1.json"
+    },
+    {
+      "cell": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_001",
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 3,
+      "pack": "PACK_001",
+      "RawResponseSha256": "f339939be85552e9d0d38d2eac53b61d41086ca088be2957b72f88a923471150",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\local-context-radius-3/r3/PACK_001.transport-capture.v1.json"
+    },
+    {
+      "cell": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_005",
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 3,
+      "pack": "PACK_005",
+      "RawResponseSha256": "56f441a5e7381b7c5e930d8f75db5c9de1edd49a51b4962636048664c44b111f",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\local-context-radius-3/r3/PACK_005.transport-capture.v1.json"
+    },
+    {
+      "cell": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_006",
+      "arm": "LOCAL_CONTEXT_RADIUS_3",
+      "repeat": 3,
+      "pack": "PACK_006",
+      "RawResponseSha256": "165ae42cb7c2c1748ab7d84c81d594e1f8ade09b2e1a902655af9d8c6ef12966",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\local-context-radius-3/r3/PACK_006.transport-capture.v1.json"
+    },
+    {
+      "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r1/PACK_001",
+      "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "repeat": 1,
+      "pack": "PACK_001",
+      "RawResponseSha256": "ab249681fe1abeedcba5eaf460c42e85e83d30b1312741cd0cdd861655b89b78",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\minimal-structural-context-v1/r1/PACK_001.transport-capture.v1.json"
+    },
+    {
+      "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r1/PACK_005",
+      "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "repeat": 1,
+      "pack": "PACK_005",
+      "RawResponseSha256": "85155a86a606101662bf508603012641299f0f989a5374bc0283dca00ad593ef",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\minimal-structural-context-v1/r1/PACK_005.transport-capture.v1.json"
+    },
+    {
+      "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r1/PACK_006",
+      "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "repeat": 1,
+      "pack": "PACK_006",
+      "RawResponseSha256": "a45ab446087149a5f0de41ea0bd81c58a0cfbddf3e05756a1d17d3d08aed69d9",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\minimal-structural-context-v1/r1/PACK_006.transport-capture.v1.json"
+    },
+    {
+      "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r2/PACK_001",
+      "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "repeat": 2,
+      "pack": "PACK_001",
+      "RawResponseSha256": "a82b93ed02c986de8d173c7466e8279a36d986c21d799910757cfb0961d9f721",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\minimal-structural-context-v1/r2/PACK_001.transport-capture.v1.json"
+    },
+    {
+      "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r2/PACK_005",
+      "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "repeat": 2,
+      "pack": "PACK_005",
+      "RawResponseSha256": "ce186c78828abae830ef782520408d5aa0bc1510514f9d62f68cd2918673b024",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\minimal-structural-context-v1/r2/PACK_005.transport-capture.v1.json"
+    },
+    {
+      "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r2/PACK_006",
+      "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "repeat": 2,
+      "pack": "PACK_006",
+      "RawResponseSha256": "b82440b14350a144d39a2a9020b92f8ca03dbc6f35ef89647f1be10672eaa5dc",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\minimal-structural-context-v1/r2/PACK_006.transport-capture.v1.json"
+    },
+    {
+      "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r3/PACK_001",
+      "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "repeat": 3,
+      "pack": "PACK_001",
+      "RawResponseSha256": "fd158c25b9c52878eec0aab80f2cd09db8331ad36990a3956ac0b6f2cb603c92",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\minimal-structural-context-v1/r3/PACK_001.transport-capture.v1.json"
+    },
+    {
+      "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r3/PACK_005",
+      "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "repeat": 3,
+      "pack": "PACK_005",
+      "RawResponseSha256": "f231fdcc3cc5dc3849b1d0a463a17422374481654db4d30fed19e79b4536d068",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\minimal-structural-context-v1/r3/PACK_005.transport-capture.v1.json"
+    },
+    {
+      "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r3/PACK_006",
+      "arm": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "repeat": 3,
+      "pack": "PACK_006",
+      "RawResponseSha256": "3e182708c4b024e72deff889620e2444a5efaef95057d3db6d82dda5b01ca124",
+      "rawResponseCaptured": true,
+      "rawShaValid": true,
+      "requestAuthorityVerified": true,
+      "capturePath": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252\\minimal-structural-context-v1/r3/PACK_006.transport-capture.v1.json"
+    }
+  ],
+  "itemContractErrors": {
+    "missingItem": 0,
+    "duplicateItem": 0,
+    "unknownItemId": 0,
+    "invalidLabel": 0,
+    "details": []
+  },
+  "arms": [
+    {
+      "ArmId": "FULL_CONTEXT",
+      "F1": {
+        "Correct": 0,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "NON_STRUCTURAL",
+            "correct": false
+          },
+          {
+            "repeat": 2,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "NON_STRUCTURAL",
+            "correct": false
+          },
+          {
+            "repeat": 3,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "NON_STRUCTURAL",
+            "correct": false
+          }
+        ]
+      },
+      "Agenda": {
+        "Correct": 0,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "STRUCTURAL_UNIT",
+            "correct": false
+          },
+          {
+            "repeat": 2,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "STRUCTURAL_UNIT",
+            "correct": false
+          },
+          {
+            "repeat": 3,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "STRUCTURAL_UNIT",
+            "correct": false
+          }
+        ]
+      },
+      "F2": {
+        "Correct": 3,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 2,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 3,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          }
+        ]
+      },
+      "F3": {
+        "Correct": 3,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 2,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 3,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          }
+        ]
+      },
+      "StructuralCorrect": 39,
+      "StructuralTotal": 42,
+      "StructuralByRepeat": {
+        "R1": 13,
+        "R2": 13,
+        "R3": 13
+      },
+      "StructuralFailures": [
+        {
+          "claimIdentity": "L0519:S0:0-6",
+          "itemId": "ITEM-CCE2C592",
+          "expected": "STRUCTURAL_UNIT",
+          "returned": "DOCUMENT_LABEL",
+          "repeat": 1,
+          "cell": "FULL_CONTEXT/r1/PACK_006"
+        },
+        {
+          "claimIdentity": "L0519:S0:0-6",
+          "itemId": "ITEM-CCE2C592",
+          "expected": "STRUCTURAL_UNIT",
+          "returned": "DOCUMENT_LABEL",
+          "repeat": 2,
+          "cell": "FULL_CONTEXT/r2/PACK_006"
+        },
+        {
+          "claimIdentity": "L0519:S0:0-6",
+          "itemId": "ITEM-CCE2C592",
+          "expected": "STRUCTURAL_UNIT",
+          "returned": "DOCUMENT_LABEL",
+          "repeat": 3,
+          "cell": "FULL_CONTEXT/r3/PACK_006"
+        }
+      ],
+      "DocumentLabelCorrect": 3,
+      "DocumentLabelTotal": 3,
+      "DocumentLabelReturnedByRepeat": [
+        {
+          "repeat": 1,
+          "returned": "DOCUMENT_LABEL"
+        },
+        {
+          "repeat": 2,
+          "returned": "DOCUMENT_LABEL"
+        },
+        {
+          "repeat": 3,
+          "returned": "DOCUMENT_LABEL"
+        }
+      ],
+      "ConfusionMatrix": {
+        "STRUCTURAL_UNIT": {
+          "STRUCTURAL_UNIT": 39,
+          "DOCUMENT_LABEL": 3,
+          "NON_STRUCTURAL": 0
+        },
+        "DOCUMENT_LABEL": {
+          "STRUCTURAL_UNIT": 0,
+          "DOCUMENT_LABEL": 3,
+          "NON_STRUCTURAL": 0
+        },
+        "NON_STRUCTURAL": {
+          "STRUCTURAL_UNIT": 0,
+          "DOCUMENT_LABEL": 3,
+          "NON_STRUCTURAL": 6
+        }
+      },
+      "RepeatStability": [
+        {
+          "itemId": "ITEM-AB89229E",
+          "identity": "L0000:S0:0-47",
+          "expected": "DOCUMENT_LABEL",
+          "returnedByArmAndRepeat": [
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-BAAD25EE",
+          "identity": "L0400:S0:0-44",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-1D843A9F",
+          "identity": "L0420:S0:0-40",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-82675EC0",
+          "identity": "L0470:S0:0-45",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-024B8661",
+          "identity": "L0507:S0:0-30",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-505430BB",
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "expected": "NON_STRUCTURAL",
+          "returnedByArmAndRepeat": [
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-2D78F82D",
+          "identity": "L0515:S0:0-14",
+          "expected": "NON_STRUCTURAL",
+          "returnedByArmAndRepeat": [
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-968E70AF",
+          "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+          "expected": "NON_STRUCTURAL",
+          "returnedByArmAndRepeat": [
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-CCE2C592",
+          "identity": "L0519:S0:0-6",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-5348EA2B",
+          "identity": "L0520:S0:0-51",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-5EFE8569",
+          "identity": "L0521:S0:0-38",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-2F026398",
+          "identity": "L0523:S0:0-50",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-E96B316E",
+          "identity": "L0526:S0:0-65",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-13ADC8F7",
+          "identity": "L0531:S0:0-64",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-811FC894",
+          "identity": "L0536:S0:0-27",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-4C05B3C2",
+          "identity": "L0539:S0:0-51",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-959D3FCB",
+          "identity": "L0540:S0:0-36",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-E14B4B93",
+          "identity": "L0553:S0:0-19",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        }
+      ],
+      "RawResponseHashes": [
+        {
+          "cell": "FULL_CONTEXT/r1/PACK_001",
+          "RawResponseSha256": "89869999b1f14dda39a3054b6403682b822d1f16b991fa88bad7c5021d0d0070"
+        },
+        {
+          "cell": "FULL_CONTEXT/r1/PACK_005",
+          "RawResponseSha256": "7c3697f559fa60f92ec89d4d0ae8563771bad8e07983dff475224488fec50424"
+        },
+        {
+          "cell": "FULL_CONTEXT/r1/PACK_006",
+          "RawResponseSha256": "ae870788e7ef30a547948ec667e9488be46c7fe0119abf63fe06bff82ec522ad"
+        },
+        {
+          "cell": "FULL_CONTEXT/r2/PACK_001",
+          "RawResponseSha256": "89869999b1f14dda39a3054b6403682b822d1f16b991fa88bad7c5021d0d0070"
+        },
+        {
+          "cell": "FULL_CONTEXT/r2/PACK_005",
+          "RawResponseSha256": "e3fd444a670d248d4fa7d27b9f7ecaf37be479a727d7fb39528b2347b301ea35"
+        },
+        {
+          "cell": "FULL_CONTEXT/r2/PACK_006",
+          "RawResponseSha256": "73722d55a68aa5550b0004beed38d180ffae6d4dba7554da59128b435e7c5118"
+        },
+        {
+          "cell": "FULL_CONTEXT/r3/PACK_001",
+          "RawResponseSha256": "a792c8f8524e5aa989d9cc26601677f00eb52159a9f6f6ffe21f28e43d10e340"
+        },
+        {
+          "cell": "FULL_CONTEXT/r3/PACK_005",
+          "RawResponseSha256": "8758e77bbcc14d87a77abe1da2e69741ad64d57a8f0fca8ee1918e2c2827180e"
+        },
+        {
+          "cell": "FULL_CONTEXT/r3/PACK_006",
+          "RawResponseSha256": "0dd430b3108076ef9411e2e6bb5d40ca212a484251224aa3a830fa4cdfe99058"
+        }
+      ]
+    },
+    {
+      "ArmId": "LOCAL_CONTEXT_RADIUS_3",
+      "F1": {
+        "Correct": 0,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "NON_STRUCTURAL",
+            "correct": false
+          },
+          {
+            "repeat": 2,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "NON_STRUCTURAL",
+            "correct": false
+          },
+          {
+            "repeat": 3,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "NON_STRUCTURAL",
+            "correct": false
+          }
+        ]
+      },
+      "Agenda": {
+        "Correct": 0,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "STRUCTURAL_UNIT",
+            "correct": false
+          },
+          {
+            "repeat": 2,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "STRUCTURAL_UNIT",
+            "correct": false
+          },
+          {
+            "repeat": 3,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "STRUCTURAL_UNIT",
+            "correct": false
+          }
+        ]
+      },
+      "F2": {
+        "Correct": 3,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 2,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 3,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          }
+        ]
+      },
+      "F3": {
+        "Correct": 3,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 2,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 3,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          }
+        ]
+      },
+      "StructuralCorrect": 39,
+      "StructuralTotal": 42,
+      "StructuralByRepeat": {
+        "R1": 13,
+        "R2": 13,
+        "R3": 13
+      },
+      "StructuralFailures": [
+        {
+          "claimIdentity": "L0519:S0:0-6",
+          "itemId": "ITEM-CCE2C592",
+          "expected": "STRUCTURAL_UNIT",
+          "returned": "DOCUMENT_LABEL",
+          "repeat": 1,
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_006"
+        },
+        {
+          "claimIdentity": "L0519:S0:0-6",
+          "itemId": "ITEM-CCE2C592",
+          "expected": "STRUCTURAL_UNIT",
+          "returned": "DOCUMENT_LABEL",
+          "repeat": 2,
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_006"
+        },
+        {
+          "claimIdentity": "L0519:S0:0-6",
+          "itemId": "ITEM-CCE2C592",
+          "expected": "STRUCTURAL_UNIT",
+          "returned": "DOCUMENT_LABEL",
+          "repeat": 3,
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_006"
+        }
+      ],
+      "DocumentLabelCorrect": 3,
+      "DocumentLabelTotal": 3,
+      "DocumentLabelReturnedByRepeat": [
+        {
+          "repeat": 1,
+          "returned": "DOCUMENT_LABEL"
+        },
+        {
+          "repeat": 2,
+          "returned": "DOCUMENT_LABEL"
+        },
+        {
+          "repeat": 3,
+          "returned": "DOCUMENT_LABEL"
+        }
+      ],
+      "ConfusionMatrix": {
+        "STRUCTURAL_UNIT": {
+          "STRUCTURAL_UNIT": 39,
+          "DOCUMENT_LABEL": 3,
+          "NON_STRUCTURAL": 0
+        },
+        "DOCUMENT_LABEL": {
+          "STRUCTURAL_UNIT": 0,
+          "DOCUMENT_LABEL": 3,
+          "NON_STRUCTURAL": 0
+        },
+        "NON_STRUCTURAL": {
+          "STRUCTURAL_UNIT": 0,
+          "DOCUMENT_LABEL": 3,
+          "NON_STRUCTURAL": 6
+        }
+      },
+      "RepeatStability": [
+        {
+          "itemId": "ITEM-AB89229E",
+          "identity": "L0000:S0:0-47",
+          "expected": "DOCUMENT_LABEL",
+          "returnedByArmAndRepeat": [
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-BAAD25EE",
+          "identity": "L0400:S0:0-44",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-1D843A9F",
+          "identity": "L0420:S0:0-40",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-82675EC0",
+          "identity": "L0470:S0:0-45",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-024B8661",
+          "identity": "L0507:S0:0-30",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-505430BB",
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "expected": "NON_STRUCTURAL",
+          "returnedByArmAndRepeat": [
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-2D78F82D",
+          "identity": "L0515:S0:0-14",
+          "expected": "NON_STRUCTURAL",
+          "returnedByArmAndRepeat": [
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-968E70AF",
+          "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+          "expected": "NON_STRUCTURAL",
+          "returnedByArmAndRepeat": [
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-CCE2C592",
+          "identity": "L0519:S0:0-6",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-5348EA2B",
+          "identity": "L0520:S0:0-51",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-5EFE8569",
+          "identity": "L0521:S0:0-38",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-2F026398",
+          "identity": "L0523:S0:0-50",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-E96B316E",
+          "identity": "L0526:S0:0-65",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-13ADC8F7",
+          "identity": "L0531:S0:0-64",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-811FC894",
+          "identity": "L0536:S0:0-27",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-4C05B3C2",
+          "identity": "L0539:S0:0-51",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-959D3FCB",
+          "identity": "L0540:S0:0-36",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-E14B4B93",
+          "identity": "L0553:S0:0-19",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        }
+      ],
+      "RawResponseHashes": [
+        {
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_001",
+          "RawResponseSha256": "6ecc5648a7704a95349c4847ad81f3ea98213e11688bd51c48fe581f290c5bfb"
+        },
+        {
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_005",
+          "RawResponseSha256": "2b7ef7a01bf83d8108d173960cc7009201537a9d212a45818b39a57f8a6ff6ef"
+        },
+        {
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r1/PACK_006",
+          "RawResponseSha256": "bbbadab5afa16724a53c9905db926efb5ea629bccd63a7e52c409d3ccc641bbe"
+        },
+        {
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_001",
+          "RawResponseSha256": "6ecc5648a7704a95349c4847ad81f3ea98213e11688bd51c48fe581f290c5bfb"
+        },
+        {
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_005",
+          "RawResponseSha256": "a52dfd589a55c1ada1db98b92e8088f44e34a94624ababa64cd6d29693e63689"
+        },
+        {
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r2/PACK_006",
+          "RawResponseSha256": "c79e1f1420a4e91d28ca5d56e0e2c2522628de8908523db6fec7fe7ed97246b3"
+        },
+        {
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_001",
+          "RawResponseSha256": "f339939be85552e9d0d38d2eac53b61d41086ca088be2957b72f88a923471150"
+        },
+        {
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_005",
+          "RawResponseSha256": "56f441a5e7381b7c5e930d8f75db5c9de1edd49a51b4962636048664c44b111f"
+        },
+        {
+          "cell": "LOCAL_CONTEXT_RADIUS_3/r3/PACK_006",
+          "RawResponseSha256": "165ae42cb7c2c1748ab7d84c81d594e1f8ade09b2e1a902655af9d8c6ef12966"
+        }
+      ]
+    },
+    {
+      "ArmId": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "F1": {
+        "Correct": 0,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "NON_STRUCTURAL",
+            "correct": false
+          },
+          {
+            "repeat": 2,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "NON_STRUCTURAL",
+            "correct": false
+          },
+          {
+            "repeat": 3,
+            "returned": "DOCUMENT_LABEL",
+            "expected": "NON_STRUCTURAL",
+            "correct": false
+          }
+        ]
+      },
+      "Agenda": {
+        "Correct": 3,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "STRUCTURAL_UNIT",
+            "expected": "STRUCTURAL_UNIT",
+            "correct": true
+          },
+          {
+            "repeat": 2,
+            "returned": "STRUCTURAL_UNIT",
+            "expected": "STRUCTURAL_UNIT",
+            "correct": true
+          },
+          {
+            "repeat": 3,
+            "returned": "STRUCTURAL_UNIT",
+            "expected": "STRUCTURAL_UNIT",
+            "correct": true
+          }
+        ]
+      },
+      "F2": {
+        "Correct": 3,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 2,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 3,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          }
+        ]
+      },
+      "F3": {
+        "Correct": 3,
+        "ReturnedByRepeat": [
+          {
+            "repeat": 1,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 2,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          },
+          {
+            "repeat": 3,
+            "returned": "NON_STRUCTURAL",
+            "expected": "NON_STRUCTURAL",
+            "correct": true
+          }
+        ]
+      },
+      "StructuralCorrect": 42,
+      "StructuralTotal": 42,
+      "StructuralByRepeat": {
+        "R1": 14,
+        "R2": 14,
+        "R3": 14
+      },
+      "StructuralFailures": [],
+      "DocumentLabelCorrect": 3,
+      "DocumentLabelTotal": 3,
+      "DocumentLabelReturnedByRepeat": [
+        {
+          "repeat": 1,
+          "returned": "DOCUMENT_LABEL"
+        },
+        {
+          "repeat": 2,
+          "returned": "DOCUMENT_LABEL"
+        },
+        {
+          "repeat": 3,
+          "returned": "DOCUMENT_LABEL"
+        }
+      ],
+      "ConfusionMatrix": {
+        "STRUCTURAL_UNIT": {
+          "STRUCTURAL_UNIT": 42,
+          "DOCUMENT_LABEL": 0,
+          "NON_STRUCTURAL": 0
+        },
+        "DOCUMENT_LABEL": {
+          "STRUCTURAL_UNIT": 0,
+          "DOCUMENT_LABEL": 3,
+          "NON_STRUCTURAL": 0
+        },
+        "NON_STRUCTURAL": {
+          "STRUCTURAL_UNIT": 0,
+          "DOCUMENT_LABEL": 3,
+          "NON_STRUCTURAL": 6
+        }
+      },
+      "RepeatStability": [
+        {
+          "itemId": "ITEM-AB89229E",
+          "identity": "L0000:S0:0-47",
+          "expected": "DOCUMENT_LABEL",
+          "returnedByArmAndRepeat": [
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-BAAD25EE",
+          "identity": "L0400:S0:0-44",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-1D843A9F",
+          "identity": "L0420:S0:0-40",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-82675EC0",
+          "identity": "L0470:S0:0-45",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-024B8661",
+          "identity": "L0507:S0:0-30",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-505430BB",
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "expected": "NON_STRUCTURAL",
+          "returnedByArmAndRepeat": [
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL",
+            "DOCUMENT_LABEL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-2D78F82D",
+          "identity": "L0515:S0:0-14",
+          "expected": "NON_STRUCTURAL",
+          "returnedByArmAndRepeat": [
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-968E70AF",
+          "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+          "expected": "NON_STRUCTURAL",
+          "returnedByArmAndRepeat": [
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL",
+            "NON_STRUCTURAL"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-CCE2C592",
+          "identity": "L0519:S0:0-6",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-5348EA2B",
+          "identity": "L0520:S0:0-51",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-5EFE8569",
+          "identity": "L0521:S0:0-38",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-2F026398",
+          "identity": "L0523:S0:0-50",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-E96B316E",
+          "identity": "L0526:S0:0-65",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-13ADC8F7",
+          "identity": "L0531:S0:0-64",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-811FC894",
+          "identity": "L0536:S0:0-27",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-4C05B3C2",
+          "identity": "L0539:S0:0-51",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-959D3FCB",
+          "identity": "L0540:S0:0-36",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        },
+        {
+          "itemId": "ITEM-E14B4B93",
+          "identity": "L0553:S0:0-19",
+          "expected": "STRUCTURAL_UNIT",
+          "returnedByArmAndRepeat": [
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT",
+            "STRUCTURAL_UNIT"
+          ],
+          "stability": "STABLE_3_OF_3"
+        }
+      ],
+      "RawResponseHashes": [
+        {
+          "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r1/PACK_001",
+          "RawResponseSha256": "ab249681fe1abeedcba5eaf460c42e85e83d30b1312741cd0cdd861655b89b78"
+        },
+        {
+          "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r1/PACK_005",
+          "RawResponseSha256": "85155a86a606101662bf508603012641299f0f989a5374bc0283dca00ad593ef"
+        },
+        {
+          "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r1/PACK_006",
+          "RawResponseSha256": "a45ab446087149a5f0de41ea0bd81c58a0cfbddf3e05756a1d17d3d08aed69d9"
+        },
+        {
+          "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r2/PACK_001",
+          "RawResponseSha256": "a82b93ed02c986de8d173c7466e8279a36d986c21d799910757cfb0961d9f721"
+        },
+        {
+          "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r2/PACK_005",
+          "RawResponseSha256": "ce186c78828abae830ef782520408d5aa0bc1510514f9d62f68cd2918673b024"
+        },
+        {
+          "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r2/PACK_006",
+          "RawResponseSha256": "b82440b14350a144d39a2a9020b92f8ca03dbc6f35ef89647f1be10672eaa5dc"
+        },
+        {
+          "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r3/PACK_001",
+          "RawResponseSha256": "fd158c25b9c52878eec0aab80f2cd09db8331ad36990a3956ac0b6f2cb603c92"
+        },
+        {
+          "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r3/PACK_005",
+          "RawResponseSha256": "f231fdcc3cc5dc3849b1d0a463a17422374481654db4d30fed19e79b4536d068"
+        },
+        {
+          "cell": "MINIMAL_STRUCTURAL_CONTEXT_V1/r3/PACK_006",
+          "RawResponseSha256": "3e182708c4b024e72deff889620e2444a5efaef95057d3db6d82dda5b01ca124"
+        }
+      ]
+    }
+  ],
+  "armDeltaTable": [
+    {
+      "metric": "FULL_CONTEXT",
+      "F1": "0/3",
+      "Agenda": "0/3",
+      "F2": "3/3",
+      "F3": "3/3",
+      "structuralControls": "39/42",
+      "documentLabelControl": "3/3"
+    },
+    {
+      "metric": "LOCAL_CONTEXT_RADIUS_3",
+      "F1": "0/3",
+      "Agenda": "0/3",
+      "F2": "3/3",
+      "F3": "3/3",
+      "structuralControls": "39/42",
+      "documentLabelControl": "3/3"
+    },
+    {
+      "metric": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+      "F1": "0/3",
+      "Agenda": "3/3",
+      "F2": "3/3",
+      "F3": "3/3",
+      "structuralControls": "42/42",
+      "documentLabelControl": "3/3"
+    }
+  ],
+  "confusionMatrices": {
+    "FULL_CONTEXT": {
+      "STRUCTURAL_UNIT": {
+        "STRUCTURAL_UNIT": 39,
+        "DOCUMENT_LABEL": 3,
+        "NON_STRUCTURAL": 0
+      },
+      "DOCUMENT_LABEL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 3,
+        "NON_STRUCTURAL": 0
+      },
+      "NON_STRUCTURAL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 3,
+        "NON_STRUCTURAL": 6
+      }
+    },
+    "LOCAL_CONTEXT_RADIUS_3": {
+      "STRUCTURAL_UNIT": {
+        "STRUCTURAL_UNIT": 39,
+        "DOCUMENT_LABEL": 3,
+        "NON_STRUCTURAL": 0
+      },
+      "DOCUMENT_LABEL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 3,
+        "NON_STRUCTURAL": 0
+      },
+      "NON_STRUCTURAL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 3,
+        "NON_STRUCTURAL": 6
+      }
+    },
+    "MINIMAL_STRUCTURAL_CONTEXT_V1": {
+      "STRUCTURAL_UNIT": {
+        "STRUCTURAL_UNIT": 42,
+        "DOCUMENT_LABEL": 0,
+        "NON_STRUCTURAL": 0
+      },
+      "DOCUMENT_LABEL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 3,
+        "NON_STRUCTURAL": 0
+      },
+      "NON_STRUCTURAL": {
+        "STRUCTURAL_UNIT": 0,
+        "DOCUMENT_LABEL": 3,
+        "NON_STRUCTURAL": 6
+      }
+    }
+  },
+  "repeatStability": {
+    "FULL_CONTEXT": [
+      {
+        "itemId": "ITEM-AB89229E",
+        "identity": "L0000:S0:0-47",
+        "expected": "DOCUMENT_LABEL",
+        "returnedByArmAndRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-BAAD25EE",
+        "identity": "L0400:S0:0-44",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-1D843A9F",
+        "identity": "L0420:S0:0-40",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-82675EC0",
+        "identity": "L0470:S0:0-45",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-024B8661",
+        "identity": "L0507:S0:0-30",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-505430BB",
+        "identity": "L0513:S0:0-38|L0514:S0:0-30",
+        "expected": "NON_STRUCTURAL",
+        "returnedByArmAndRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-2D78F82D",
+        "identity": "L0515:S0:0-14",
+        "expected": "NON_STRUCTURAL",
+        "returnedByArmAndRepeat": [
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-968E70AF",
+        "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+        "expected": "NON_STRUCTURAL",
+        "returnedByArmAndRepeat": [
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-CCE2C592",
+        "identity": "L0519:S0:0-6",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-5348EA2B",
+        "identity": "L0520:S0:0-51",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-5EFE8569",
+        "identity": "L0521:S0:0-38",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-2F026398",
+        "identity": "L0523:S0:0-50",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-E96B316E",
+        "identity": "L0526:S0:0-65",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-13ADC8F7",
+        "identity": "L0531:S0:0-64",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-811FC894",
+        "identity": "L0536:S0:0-27",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-4C05B3C2",
+        "identity": "L0539:S0:0-51",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-959D3FCB",
+        "identity": "L0540:S0:0-36",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-E14B4B93",
+        "identity": "L0553:S0:0-19",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      }
+    ],
+    "LOCAL_CONTEXT_RADIUS_3": [
+      {
+        "itemId": "ITEM-AB89229E",
+        "identity": "L0000:S0:0-47",
+        "expected": "DOCUMENT_LABEL",
+        "returnedByArmAndRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-BAAD25EE",
+        "identity": "L0400:S0:0-44",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-1D843A9F",
+        "identity": "L0420:S0:0-40",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-82675EC0",
+        "identity": "L0470:S0:0-45",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-024B8661",
+        "identity": "L0507:S0:0-30",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-505430BB",
+        "identity": "L0513:S0:0-38|L0514:S0:0-30",
+        "expected": "NON_STRUCTURAL",
+        "returnedByArmAndRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-2D78F82D",
+        "identity": "L0515:S0:0-14",
+        "expected": "NON_STRUCTURAL",
+        "returnedByArmAndRepeat": [
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-968E70AF",
+        "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+        "expected": "NON_STRUCTURAL",
+        "returnedByArmAndRepeat": [
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-CCE2C592",
+        "identity": "L0519:S0:0-6",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-5348EA2B",
+        "identity": "L0520:S0:0-51",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-5EFE8569",
+        "identity": "L0521:S0:0-38",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-2F026398",
+        "identity": "L0523:S0:0-50",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-E96B316E",
+        "identity": "L0526:S0:0-65",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-13ADC8F7",
+        "identity": "L0531:S0:0-64",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-811FC894",
+        "identity": "L0536:S0:0-27",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-4C05B3C2",
+        "identity": "L0539:S0:0-51",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-959D3FCB",
+        "identity": "L0540:S0:0-36",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-E14B4B93",
+        "identity": "L0553:S0:0-19",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      }
+    ],
+    "MINIMAL_STRUCTURAL_CONTEXT_V1": [
+      {
+        "itemId": "ITEM-AB89229E",
+        "identity": "L0000:S0:0-47",
+        "expected": "DOCUMENT_LABEL",
+        "returnedByArmAndRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-BAAD25EE",
+        "identity": "L0400:S0:0-44",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-1D843A9F",
+        "identity": "L0420:S0:0-40",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-82675EC0",
+        "identity": "L0470:S0:0-45",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-024B8661",
+        "identity": "L0507:S0:0-30",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-505430BB",
+        "identity": "L0513:S0:0-38|L0514:S0:0-30",
+        "expected": "NON_STRUCTURAL",
+        "returnedByArmAndRepeat": [
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL",
+          "DOCUMENT_LABEL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-2D78F82D",
+        "identity": "L0515:S0:0-14",
+        "expected": "NON_STRUCTURAL",
+        "returnedByArmAndRepeat": [
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-968E70AF",
+        "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+        "expected": "NON_STRUCTURAL",
+        "returnedByArmAndRepeat": [
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL",
+          "NON_STRUCTURAL"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-CCE2C592",
+        "identity": "L0519:S0:0-6",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-5348EA2B",
+        "identity": "L0520:S0:0-51",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-5EFE8569",
+        "identity": "L0521:S0:0-38",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-2F026398",
+        "identity": "L0523:S0:0-50",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-E96B316E",
+        "identity": "L0526:S0:0-65",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-13ADC8F7",
+        "identity": "L0531:S0:0-64",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-811FC894",
+        "identity": "L0536:S0:0-27",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-4C05B3C2",
+        "identity": "L0539:S0:0-51",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-959D3FCB",
+        "identity": "L0540:S0:0-36",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      },
+      {
+        "itemId": "ITEM-E14B4B93",
+        "identity": "L0553:S0:0-19",
+        "expected": "STRUCTURAL_UNIT",
+        "returnedByArmAndRepeat": [
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT",
+          "STRUCTURAL_UNIT"
+        ],
+        "stability": "STABLE_3_OF_3"
+      }
+    ]
+  },
+  "rawResponseHashVariance": {
+    "FULL_CONTEXT": {
+      "PACK_001": {
+        "hashesByRepeat": {
+          "r1": "89869999b1f14dda39a3054b6403682b822d1f16b991fa88bad7c5021d0d0070",
+          "r2": "89869999b1f14dda39a3054b6403682b822d1f16b991fa88bad7c5021d0d0070",
+          "r3": "a792c8f8524e5aa989d9cc26601677f00eb52159a9f6f6ffe21f28e43d10e340"
+        },
+        "distinctHashCount": 2
+      },
+      "PACK_005": {
+        "hashesByRepeat": {
+          "r1": "7c3697f559fa60f92ec89d4d0ae8563771bad8e07983dff475224488fec50424",
+          "r2": "e3fd444a670d248d4fa7d27b9f7ecaf37be479a727d7fb39528b2347b301ea35",
+          "r3": "8758e77bbcc14d87a77abe1da2e69741ad64d57a8f0fca8ee1918e2c2827180e"
+        },
+        "distinctHashCount": 3
+      },
+      "PACK_006": {
+        "hashesByRepeat": {
+          "r1": "ae870788e7ef30a547948ec667e9488be46c7fe0119abf63fe06bff82ec522ad",
+          "r2": "73722d55a68aa5550b0004beed38d180ffae6d4dba7554da59128b435e7c5118",
+          "r3": "0dd430b3108076ef9411e2e6bb5d40ca212a484251224aa3a830fa4cdfe99058"
+        },
+        "distinctHashCount": 3
+      }
+    },
+    "LOCAL_CONTEXT_RADIUS_3": {
+      "PACK_001": {
+        "hashesByRepeat": {
+          "r1": "6ecc5648a7704a95349c4847ad81f3ea98213e11688bd51c48fe581f290c5bfb",
+          "r2": "6ecc5648a7704a95349c4847ad81f3ea98213e11688bd51c48fe581f290c5bfb",
+          "r3": "f339939be85552e9d0d38d2eac53b61d41086ca088be2957b72f88a923471150"
+        },
+        "distinctHashCount": 2
+      },
+      "PACK_005": {
+        "hashesByRepeat": {
+          "r1": "2b7ef7a01bf83d8108d173960cc7009201537a9d212a45818b39a57f8a6ff6ef",
+          "r2": "a52dfd589a55c1ada1db98b92e8088f44e34a94624ababa64cd6d29693e63689",
+          "r3": "56f441a5e7381b7c5e930d8f75db5c9de1edd49a51b4962636048664c44b111f"
+        },
+        "distinctHashCount": 3
+      },
+      "PACK_006": {
+        "hashesByRepeat": {
+          "r1": "bbbadab5afa16724a53c9905db926efb5ea629bccd63a7e52c409d3ccc641bbe",
+          "r2": "c79e1f1420a4e91d28ca5d56e0e2c2522628de8908523db6fec7fe7ed97246b3",
+          "r3": "165ae42cb7c2c1748ab7d84c81d594e1f8ade09b2e1a902655af9d8c6ef12966"
+        },
+        "distinctHashCount": 3
+      }
+    },
+    "MINIMAL_STRUCTURAL_CONTEXT_V1": {
+      "PACK_001": {
+        "hashesByRepeat": {
+          "r1": "ab249681fe1abeedcba5eaf460c42e85e83d30b1312741cd0cdd861655b89b78",
+          "r2": "a82b93ed02c986de8d173c7466e8279a36d986c21d799910757cfb0961d9f721",
+          "r3": "fd158c25b9c52878eec0aab80f2cd09db8331ad36990a3956ac0b6f2cb603c92"
+        },
+        "distinctHashCount": 3
+      },
+      "PACK_005": {
+        "hashesByRepeat": {
+          "r1": "85155a86a606101662bf508603012641299f0f989a5374bc0283dca00ad593ef",
+          "r2": "ce186c78828abae830ef782520408d5aa0bc1510514f9d62f68cd2918673b024",
+          "r3": "f231fdcc3cc5dc3849b1d0a463a17422374481654db4d30fed19e79b4536d068"
+        },
+        "distinctHashCount": 3
+      },
+      "PACK_006": {
+        "hashesByRepeat": {
+          "r1": "a45ab446087149a5f0de41ea0bd81c58a0cfbddf3e05756a1d17d3d08aed69d9",
+          "r2": "b82440b14350a144d39a2a9020b92f8ca03dbc6f35ef89647f1be10672eaa5dc",
+          "r3": "3e182708c4b024e72deff889620e2444a5efaef95057d3db6d82dda5b01ca124"
+        },
+        "distinctHashCount": 3
+      }
+    }
+  },
+  "historicalComparator": {
+    "fullStyle": {
+      "F1": "DOCUMENT_LABEL 3/3; 0/3 correct",
+      "Agenda": "DOCUMENT_LABEL 3/3; 0/3 correct",
+      "F2": "3/3 correct",
+      "F3": "3/3 correct",
+      "structural": "39/42; 13/14 each repeat",
+      "documentLabel": "3/3"
+    },
+    "role": "historical comparator only; new FULL_CONTEXT is the within-experiment control"
+  },
+  "primaryClassification": "CONTEXT_TRADEOFF_OBSERVED",
+  "interpretation": "Context narrowing changes the two primary targets differently; metadata disambiguation and hierarchy comprehension must remain separate mechanisms.",
+  "materializedGold": "48/3955",
+  "crossGenreGeneralizationEstablished": false,
+  "scoringSource": "raw response UTF-8 bytes after SHA verification; no copied summary used",
+  "productionPolicyChanged": false
+}

@@ -1,0 +1,176 @@
+{
+  "artifactKind": "a99_canonical_gold",
+  "schemaVersion": "a99-canonical-gold-v1",
+  "authorityId": "DOC-0001",
+  "documentId": "DOC-0001",
+  "sourceId": null,
+  "source": {
+    "fileName": "01-style-chuan.docx",
+    "mediaType": "DOCX",
+    "sourcePath": "bench/01-style-chuan.docx",
+    "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-12",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0001.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semantic": {
+    "headingSetExhaustive": true,
+    "approvedSemanticTotal": 7,
+    "semanticHeadingTotal": 7,
+    "materializedSemanticClaims": 7,
+    "claims": [
+      {
+        "sourceAlias": "S0001",
+        "verbatimText": "Chương 1. Quy định chung",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0003",
+        "verbatimText": "1.1. Phạm vi điều chỉnh",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0005",
+        "verbatimText": "1.2. Đối tượng áp dụng",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0007",
+        "verbatimText": "1.2.1. Cơ quan quản lý",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0009",
+        "verbatimText": "1.2.2. Đơn vị trực thuộc",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0011",
+        "verbatimText": "Chương 2. Tổ chức thực hiện",
+        "selectionMode": null,
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0013",
+        "verbatimText": "2.1. Phân công trách nhiệm",
+        "selectionMode": null,
+        "semanticRole": null
+      }
+    ]
+  },
+  "occurrence": {
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "bindingCoordinateSystem": "SOURCE_ALIAS_PLUS_UTF16_SPAN",
+    "sourceUniverseSha256": "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba",
+    "unavailableReason": null,
+    "claims": [
+      {
+        "headingOrdinal": 0,
+        "sourceAlias": "S0001",
+        "sourceId": "body[1]/p[1]",
+        "exactText": "Chương 1. Quy định chung",
+        "utf16Span": {
+          "start": 0,
+          "end": 24
+        }
+      },
+      {
+        "headingOrdinal": 1,
+        "sourceAlias": "S0003",
+        "sourceId": "body[1]/p[3]",
+        "exactText": "1.1. Phạm vi điều chỉnh",
+        "utf16Span": {
+          "start": 0,
+          "end": 23
+        }
+      },
+      {
+        "headingOrdinal": 2,
+        "sourceAlias": "S0005",
+        "sourceId": "body[1]/p[5]",
+        "exactText": "1.2. Đối tượng áp dụng",
+        "utf16Span": {
+          "start": 0,
+          "end": 22
+        }
+      },
+      {
+        "headingOrdinal": 3,
+        "sourceAlias": "S0007",
+        "sourceId": "body[1]/p[7]",
+        "exactText": "1.2.1. Cơ quan quản lý",
+        "utf16Span": {
+          "start": 0,
+          "end": 22
+        }
+      },
+      {
+        "headingOrdinal": 4,
+        "sourceAlias": "S0009",
+        "sourceId": "body[1]/p[9]",
+        "exactText": "1.2.2. Đơn vị trực thuộc",
+        "utf16Span": {
+          "start": 0,
+          "end": 24
+        }
+      },
+      {
+        "headingOrdinal": 5,
+        "sourceAlias": "S0011",
+        "sourceId": "body[1]/p[11]",
+        "exactText": "Chương 2. Tổ chức thực hiện",
+        "utf16Span": {
+          "start": 0,
+          "end": 27
+        }
+      },
+      {
+        "headingOrdinal": 6,
+        "sourceAlias": "S0013",
+        "sourceId": "body[1]/p[13]",
+        "exactText": "2.1. Phân công trách nhiệm",
+        "utf16Span": {
+          "start": 0,
+          "end": 26
+        }
+      }
+    ]
+  },
+  "capabilities": {
+    "semanticCountAuthoritative": true,
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0001.semantic-freeze.v1.json",
+      "sha256": "d21037e6e1754547f7f4ec58bfa978b694339296d9ffc140ec05616160f09186",
+      "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0001.occurrence-gold.v1.json",
+      "sha256": "caf6e4e450926fab3172b4d437ae6e1994a69a5915d688b14f6604a36040eb13",
+      "role": "OCCURRENCE_AUTHORITY"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

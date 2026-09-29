@@ -1,0 +1,23 @@
+{
+  "artifactKind": "a99_context_topology_disagreement_interpretation",
+  "schemaVersion": "a99-context-topology-disagreement-interpretation-v1",
+  "preRegisteredCaseSelected": "A",
+  "classification": "CROSS_VIEW_SEMANTIC_INSTABILITY_AS_HARD_CASE_SIGNAL",
+  "derivation": {
+    "sensitivityCapturesAllModalErrors": true,
+    "noStableControlFlagged": true,
+    "topologyAloneCatchesAllModalErrors": true,
+    "repeatInstabilityCatchesRemainder": true,
+    "manyControlsFlagged": false,
+    "missedKnownErrors": false
+  },
+  "narrative": "On this frozen 18-item DOC-0252 cohort, CONTEXT_SENSITIVITY (topology disagreement OR within-arm repeat instability) flags exactly the two items independently known to be context-sensitive across this whole ablation lineage - ITEM-505430BB (F1) and ITEM-CCE2C592 (Agenda) - and no other item, for either model. Topology disagreement (comparing only modal labels across arms) alone is not sufficient: Haiku's Agenda case has an identical modal label (STRUCTURAL_UNIT) in every one of the three arms, so it would be invisible to a majority-label-only comparison, yet its FULL_STRUCTURED_CONTEXT_V2 repeats are not unanimous (2/3 STRUCTURAL_UNIT, 1/3 NON_STRUCTURAL) - repeat instability is what surfaces it. This is exactly the scenario the composite CONTEXT_SENSITIVITY signal (OR of both components) was defined to avoid missing, and it does not need Gold or a model-reported confidence score to do it.",
+  "allowedStatement": "On this frozen 18-item DOC-0252 cohort, the signal perfectly separated the observed context-sensitive cases from stable controls.",
+  "disallowedStatements": [
+    "precision = 100% validated",
+    "recall = 100% validated",
+    "hard-case detector proven"
+  ],
+  "generalizationEstablished": false,
+  "scope": "DOC-0252 only, one document, two models, three frozen context topologies, N=18 items with 2 known positives. Not evidence about the remaining corpus or about other models/topologies."
+}

@@ -1,0 +1,94 @@
+{
+  "artifactKind": "PDF_LANE_COMPANION_DISCOVERY_AUDIT",
+  "schemaVersion": "v1",
+  "id": "S2b",
+  "severity": "HIGH",
+  "criterion": "For an uploaded PDF, can the PDF lane complete from that PDF alone?",
+  "classes": {
+    "A": "needs the uploaded PDF itself -> change the API to take an explicit PDF path or source",
+    "B": "looks for a sidecar because of the legacy DOCX workflow -> legacy dependency",
+    "C": "corpus or eval discovery -> must leave production",
+    "D": "genuinely needs a companion file -> the caller must pass it explicitly; never scan the filesystem"
+  },
+  "hardRule": "No production lane may walk up from the current working directory, rewrite a corpus path segment, or do a recursive filename match to find an input.",
+  "discoveryHelper": {
+    "name": "PdfTextbookOutline.FindSiblingPdf",
+    "behaviour": [
+      "Path.ChangeExtension(inputPath, .pdf)",
+      "rewrites /heading_corpus_95_word/ to /heading_corpus_100/",
+      "walks up from Directory.GetCurrentDirectory() and recursively searches todo10_8/heading_corpus_100 by filename"
+    ],
+    "assessment": "Branches two and three are class C by construction: they encode an evaluation dataset layout and depend on the process working directory. They cannot stay in a production path under any classification of the call site."
+  },
+  "callSitesToClassify": [
+    {
+      "file": "Pipeline/PdfLegalTitleGrounder.cs",
+      "line": 24,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfBoldLabelOutline.cs",
+      "line": 56,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfBookmarkOutline.cs",
+      "line": 34,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfFinancialReportOutline.cs",
+      "line": 33,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfLayoutEvidenceOutline.cs",
+      "line": 146,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfLayoutEvidenceOutline.cs",
+      "line": 178,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfLayoutEvidenceOutline.cs",
+      "line": 212,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfLayoutEvidenceOutline.cs",
+      "line": 1168,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfLayoutEvidenceOutline.cs",
+      "line": 1208,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfTaggedEvidenceOutline.cs",
+      "line": 21,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfTextbookOutline.cs",
+      "line": 62,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Pipeline/Strategies/PdfTocDictionaryOutline.cs",
+      "line": 35,
+      "status": "UNCLASSIFIED"
+    },
+    {
+      "file": "Repair/CorruptParagraphVisualVerifier.cs",
+      "line": 81,
+      "status": "UNCLASSIFIED",
+      "note": "Documents the limitation openly in its own summary, so it is a known class D or B rather than a hidden one."
+    }
+  ],
+  "currentState": "None removed. Removing them without classifying each one would break a lane whose contract has not been restated.",
+  "blocksFeature": "An uploaded PDF cannot be extracted until at least the PdfLayoutEvidenceOutline entry points accept an explicit PDF source. PdfCanonicalSourceExtractorNotWired records that dependency at the dispatcher rather than hiding it behind an unsupported-format error.",
+  "status": "CRITERIA_SET_NOT_CLASSIFIED"
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "ATTEMPT_STARTED",
+  "timestamp": "2026-09-27T03:25:26.4312818\u002B00:00",
+  "campaignId": "LLM_SEMANTIC_PILOT_V1",
+  "documentId": "SRC-095",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-6799eb9c8d7e4b6190ab0b73dfe6b116",
+  "callOrdinal": 10,
+  "attemptId": "boundary-cut-fa48002754de480f86b1952fa150a36e",
+  "requestHash": "d31a414fa1f8f89201b218d48734efdf708d8d768737b7c3a48421ce7e3a0c06",
+  "requestBytes": 140317,
+  "estimatedInputTokens": 22542,
+  "maxOutputTokens": 15456,
+  "attemptStartedAt": "2026-09-27T03:25:26.4262716+00:00",
+  "attemptDeadlineAt": "2026-09-27T03:26:56.4262716+00:00"
+}

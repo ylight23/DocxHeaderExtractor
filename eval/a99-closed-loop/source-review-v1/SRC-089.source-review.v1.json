@@ -1,0 +1,106 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC089_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+      "sha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "goldFileRead": false,
+    "countOnlyTotalUsed": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; its blind proposals were committed before the review and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-089/review_tool.py",
+      "sha256": "25539afa58db352c5e9cea135650a4c1ea995dc8b5c347d0d68859c4279b30ef"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-089/atom-layout-facts.tsv",
+      "sha256": "ae3dc7a83742eb29164b7906757062c7fe25b6226775c610d13b5cf59ccfebd1"
+    },
+    "atomGlyphFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-089/atom-glyph-facts.tsv",
+      "sha256": "3c7b4f6b08efecd5de8dfc0b3bc18715d876c087a6eaa5feeeada0e076960a0c",
+      "writer": "ScaleUpSurveyDiagnosticTests.Dump_pdf_atom_glyph_facts"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-089/review-items.json",
+      "sha256": "85deee1dfebc0010addb317e9e323b85c4468aae0e7c1278629a1a86a0f8a9fc"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 582,
+    "CLEAR_HEADING": 36,
+    "CLEAR_NON_HEADING_SET_APART": 8,
+    "AMBIGUOUS": 0,
+    "PROPOSED_RANGE": {
+      "min": 36,
+      "max": 36
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells and rows, chart values, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 1,
+      "nonHeadings": 6,
+      "ambiguous": 0
+    },
+    {
+      "section": "BODY",
+      "headings": 35,
+      "nonHeadings": 0,
+      "ambiguous": 0
+    },
+    {
+      "section": "BACK",
+      "headings": 0,
+      "nonHeadings": 2,
+      "ambiguous": 0
+    }
+  ],
+  "headingsByPattern": {
+    "ARTICLE_HEADING": 26,
+    "S089_Q1_DECREE_TITLE_BLOCK": 1,
+    "S089_Q2_CHAPTER_LABEL_OVER_TITLE": 5,
+    "S089_Q3_COLON_CLAUSE_LABEL": 4
+  },
+  "nonHeadingsByPattern": {
+    "FOOTNOTE": 1,
+    "ISSUER_HEADER": 1,
+    "NATIONAL_HEADER": 1,
+    "NUMBER_AND_DATE": 1,
+    "RULE_LINE": 2,
+    "SIGNATURE_BLOCK": 1,
+    "TRANSLATION_NOTICE": 1
+  },
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-27",
+    "membershipTotal": 36,
+    "arithmetic": "26 articles + 1 S089_Q1 title + 5 S089_Q2 chapters + 4 S089_Q3 clause labels = 36",
+    "principle": "CLASSIFY OCCURRENCES, NOT STRINGS",
+    "patterns": [
+      {
+        "pattern": "S089_Q1_DECREE_TITLE_BLOCK",
+        "decision": "one title of three lines ('DECREE' + 'DETAILING ... IMPLEMENTING,' + 'THE PUBLICATION LAW'), the footnote mark '(*)' excluded: IDENTITY / DOCUMENT / TITLE"
+      },
+      {
+        "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+        "decision": "one claim of two parts per chapter: the label 'Chapter N' and its title line (5 claims)"
+      },
+      {
+        "pattern": "S089_Q3_COLON_CLAUSE_LABEL",
+        "decision": "TRUE x4: a numbered clause that is only a short noun phrase ending in a colon is a sub-heading of its article (not the reviewer's proposal)"
+      }
+    ]
+  },
+  "bindingFailures": []
+}

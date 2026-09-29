@@ -1,0 +1,104 @@
+{
+  "artifactKind": "a99_pdf_targeted_packing_experiment_run",
+  "schemaVersion": "a99-pdf-targeted-packing-experiment-run-v1",
+  "experimentId": "A99-S2C-TARGETED-PACKING-DOC-0252",
+  "documentId": "DOC-0252",
+  "commit": "fff9a49f7540ab7da968b99e0b48440b9da8d515",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "goldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+  "promptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+  "coordinateContractSha256": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+  "packingPolicyId": "COHERENT_REGION_SEGMENTATION_V1",
+  "packingPolicyVersion": "a99-coherent-region-segmentation-v1",
+  "targetPackIds": [
+    "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+    "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+    "COHERENT_REGION_SEGMENTATION_V1:PACK_007"
+  ],
+  "targetCallPlanHash": "f48345682885647d33749597a0dbb293024d4e255f300ed571c3fdf7948994fe",
+  "targetProviderModelInputPlanHash": "b82868e9aecd086c00b00a7433cc0d48409576db54fb4c5097717451358036db",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "OpenRouter",
+  "repeats": 3,
+  "primarySemanticCalls": 9,
+  "placementCalls": 0,
+  "providerCalls": 9,
+  "modelCalls": 9,
+  "hardCap": 12,
+  "preflightArtifactSha256": "8c6a8f315e1702c4951d0da6f28873bbf3fcb90e12ad4e57a4233f3dbd280e23",
+  "runs": [
+    {
+      "repeat": 1,
+      "calls": 3,
+      "placementCalls": 0,
+      "requestHashes": [
+        "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      ],
+      "responseHashes": [
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "375c3e16cd0610bac050063fe9b58077130a2cfaf1e2d14c05be1a85807bde54",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ],
+      "responseChars": [
+        1687,
+        3846,
+        1109
+      ],
+      "replayBundleHash": "c84e0ef6ea9e9c5da55c3a871a4cd0b97e572267a88341369641b6e4093dbbdd",
+      "replayArtifact": "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\structured-context-packing-experiment-v1\\DOC-0252\\r1\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-8460aef056bf.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "proposalCount": 23,
+      "emittedCount": 23
+    },
+    {
+      "repeat": 2,
+      "calls": 3,
+      "placementCalls": 0,
+      "requestHashes": [
+        "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      ],
+      "responseHashes": [
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "375c3e16cd0610bac050063fe9b58077130a2cfaf1e2d14c05be1a85807bde54",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ],
+      "responseChars": [
+        1687,
+        3846,
+        1109
+      ],
+      "replayBundleHash": "c84e0ef6ea9e9c5da55c3a871a4cd0b97e572267a88341369641b6e4093dbbdd",
+      "replayArtifact": "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\structured-context-packing-experiment-v1\\DOC-0252\\r2\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-8460aef056bf.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "proposalCount": 23,
+      "emittedCount": 23
+    },
+    {
+      "repeat": 3,
+      "calls": 3,
+      "placementCalls": 0,
+      "requestHashes": [
+        "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+        "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+        "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055"
+      ],
+      "responseHashes": [
+        "0b7d66121e8a952b6a48fba7272a00a23aabd48ed19bc4b5dc22a261a29b312a",
+        "375c3e16cd0610bac050063fe9b58077130a2cfaf1e2d14c05be1a85807bde54",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ],
+      "responseChars": [
+        1687,
+        3846,
+        1109
+      ],
+      "replayBundleHash": "b435866aca9ddcc88d1c6573f88c91cbbe1c8b4ced06b34988bb1173b42fb495",
+      "replayArtifact": "C:\\DocxHeaderExtractor-a99-closed-loop\\eval\\a99-closed-loop\\structured-context-packing-experiment-v1\\DOC-0252\\r3\\072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-426e3e1c8616.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+      "proposalCount": 23,
+      "emittedCount": 23
+    }
+  ]
+}

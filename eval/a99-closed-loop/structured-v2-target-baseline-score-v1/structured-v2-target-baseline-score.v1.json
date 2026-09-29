@@ -1,0 +1,255 @@
+{
+  "artifactKind": "a99_structured_v2_target_baseline_score",
+  "schemaVersion": "a99-structured-v2-target-baseline-score-v1",
+  "baselineId": "STRUCTURED_V2_TARGET_BASELINE",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "scoredFrom": "transport captures; the captures are the authority and were not modified",
+  "authority": {
+    "goldSha256": "e0001e940bc71c78d0dc2c8df44434f49421ff97679f1f968b192e98a05dd66e",
+    "protocolVersion": "a99-semantic-source-parts-v2",
+    "contractSha256": "565bdc87749a1ce1246238cacd1eb7d550a19939dc9e42d23e76ab3a46a8b0ea",
+    "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+    "targetPacks": [
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "COHERENT_REGION_SEGMENTATION_V1:PACK_006"
+    ],
+    "targetGoldCount": 14,
+    "repeats": 3,
+    "primaryProviderCalls": 6
+  },
+  "outcomeClasses": {
+    "definition": {
+      "NOT_PROPOSED": "the model never named this Gold claim - a semantic miss",
+      "REFUSED_ON_SHAPE": "the model named it but the harness would not accept the coordinates",
+      "BOUND": "resolved to exact harness-owned coordinates"
+    },
+    "neverSummed": "These three are different failures with different remedies and are not merged."
+  },
+  "integrity": {
+    "unexpectedVerbatimText": 0,
+    "structurallyUnreachable": true,
+    "note": "Under v2 no reply can state a selection mode, so this refusal class cannot be reached. A non-zero count would be a contract or runtime integrity defect, not a semantic miss."
+  },
+  "perRepeat": [
+    {
+      "repeat": 1,
+      "tp": 14,
+      "fp": 4,
+      "fn": 0,
+      "refusedOnShape": 0
+    },
+    {
+      "repeat": 2,
+      "tp": 14,
+      "fp": 4,
+      "fn": 0,
+      "refusedOnShape": 1
+    },
+    {
+      "repeat": 3,
+      "tp": 14,
+      "fp": 6,
+      "fn": 0,
+      "refusedOnShape": 0
+    }
+  ],
+  "refusalReasons": {
+    "TextNotInAtom": 1
+  },
+  "semanticRoles": {
+    "document-subtitle": 2,
+    "document-title": 3,
+    "document_title": 1,
+    "heading": 9,
+    "not-heading:body_text": 1,
+    "section": 20,
+    "section-header": 2,
+    "section-heading": 15,
+    "section_heading": 4,
+    "subtitle": 1
+  },
+  "relationHints": {
+    "parent-node:L0520:S0": 10,
+    "parent-node:L0539:S0": 6,
+    "parent-node:NONE": 16,
+    "parent-node:ROOT": 17,
+    "parent-node:parent-node:L0520:S0": 5,
+    "parent-node:parent-node:L0539:S0": 3
+  },
+  "cells": [
+    {
+      "repeat": 1,
+      "pack": "PACK_005",
+      "rawEntries": 6,
+      "claimedNotHeading": 1,
+      "goldInPack": 4,
+      "tp": 4,
+      "fp": 1,
+      "fn": 0,
+      "refusedOnShape": 0,
+      "responseSha256": "b4a1a196cf762a4f1a7d59ba9f42eed0300d12631580d3a9b518c8cca9bdaa1e",
+      "falsePositives": [
+        {
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "role": "document_title",
+          "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)"
+        }
+      ],
+      "refusals": [],
+      "notBound": []
+    },
+    {
+      "repeat": 1,
+      "pack": "PACK_006",
+      "rawEntries": 13,
+      "claimedNotHeading": 0,
+      "goldInPack": 10,
+      "tp": 10,
+      "fp": 3,
+      "fn": 0,
+      "refusedOnShape": 0,
+      "responseSha256": "8ca0639c5aa3ab963bb463ab0c8f9528243774e36a7008fb86e161d88d1f0f46",
+      "falsePositives": [
+        {
+          "identity": "L0515:S0:0-14",
+          "role": "document-title",
+          "text": "Hybrid Meeting"
+        },
+        {
+          "identity": "L0516:S0:0-15",
+          "role": "subtitle",
+          "text": "March 7-8, 2025"
+        },
+        {
+          "identity": "L0550:S0:0-56",
+          "role": "section-heading",
+          "text": "14:00 – 15:00 Improving Reliability of Price Comparisons"
+        }
+      ],
+      "refusals": [],
+      "notBound": []
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_005",
+      "rawEntries": 6,
+      "claimedNotHeading": 0,
+      "goldInPack": 4,
+      "tp": 4,
+      "fp": 1,
+      "fn": 0,
+      "refusedOnShape": 1,
+      "responseSha256": "2360406c3e7aba99be18a2809b923dc02d8cb465215c74ef6996e1386aa7c6f3",
+      "falsePositives": [
+        {
+          "identity": "L0513:S0:0-38|L0514:S0:0-30",
+          "role": "heading",
+          "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)"
+        }
+      ],
+      "refusals": [
+        {
+          "reason": "TextNotInAtom",
+          "alias": "L0396:S0",
+          "detail": "the quoted text does not occur in 'L0396:S0'"
+        }
+      ],
+      "notBound": []
+    },
+    {
+      "repeat": 2,
+      "pack": "PACK_006",
+      "rawEntries": 13,
+      "claimedNotHeading": 0,
+      "goldInPack": 10,
+      "tp": 10,
+      "fp": 3,
+      "fn": 0,
+      "refusedOnShape": 0,
+      "responseSha256": "65127db32e43eb2b2e9b2a33fa7ab830e7dd1339f4610f2a1c60ee2e4790a9ae",
+      "falsePositives": [
+        {
+          "identity": "L0515:S0:0-14",
+          "role": "document-title",
+          "text": "Hybrid Meeting"
+        },
+        {
+          "identity": "L0516:S0:0-15",
+          "role": "document-subtitle",
+          "text": "March 7-8, 2025"
+        },
+        {
+          "identity": "L0550:S0:0-56",
+          "role": "section",
+          "text": "14:00 – 15:00 Improving Reliability of Price Comparisons"
+        }
+      ],
+      "refusals": [],
+      "notBound": []
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_005",
+      "rawEntries": 7,
+      "claimedNotHeading": 0,
+      "goldInPack": 4,
+      "tp": 4,
+      "fp": 3,
+      "fn": 0,
+      "refusedOnShape": 0,
+      "responseSha256": "ce54c5a86813be7b526b2a49f54ccf767ef3510a7498ebb06c894fd87ae65003",
+      "falsePositives": [
+        {
+          "identity": "L0396:S0:0-93",
+          "role": "heading",
+          "text": "definitions and discounts, and requires traditional price collection to continue in parallel."
+        },
+        {
+          "identity": "L0513:S0:0-38",
+          "role": "heading",
+          "text": "International Comparison Program (ICP)"
+        },
+        {
+          "identity": "L0514:S0:0-30",
+          "role": "heading",
+          "text": "TECHNICAL ADVISORY GROUP (TAG)"
+        }
+      ],
+      "refusals": [],
+      "notBound": []
+    },
+    {
+      "repeat": 3,
+      "pack": "PACK_006",
+      "rawEntries": 13,
+      "claimedNotHeading": 0,
+      "goldInPack": 10,
+      "tp": 10,
+      "fp": 3,
+      "fn": 0,
+      "refusedOnShape": 0,
+      "responseSha256": "598e73ff4fb22cee91e52e25ca1e1d854410f266b65f731659e41fce7c9146e6",
+      "falsePositives": [
+        {
+          "identity": "L0515:S0:0-14",
+          "role": "document-title",
+          "text": "Hybrid Meeting"
+        },
+        {
+          "identity": "L0516:S0:0-15",
+          "role": "document-subtitle",
+          "text": "March 7-8, 2025"
+        },
+        {
+          "identity": "L0550:S0:0-56",
+          "role": "section",
+          "text": "14:00 – 15:00 Improving Reliability of Price Comparisons"
+        }
+      ],
+      "refusals": [],
+      "notBound": []
+    }
+  ],
+  "purpose": "A comparator, not a hypothesis test. This baseline cannot pass or fail; it records how the provider behaves under v2 so a later arm differs by exactly one clause."
+}

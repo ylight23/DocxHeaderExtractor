@@ -1,0 +1,149 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC053_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+      "sha256": "6d3cd46d6297031fd3fd4c2afd066f8d947f18d55ef1418a185e5ef9e0a344da"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "goldFileRead": false,
+    "countOnlyTotalUsed": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; its blind proposals were committed before the review and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-053/review_tool.py",
+      "sha256": "6580df3defcee21b597bc67505dfbfdd6f844bf22a72988a41743a2e825ea34c"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-053/atom-layout-facts.tsv",
+      "sha256": "6374053a2468fc0439ae1fafbee1cc360f368647cdc26e14484faada32a1a036"
+    },
+    "atomGlyphFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-053/atom-glyph-facts.tsv",
+      "sha256": "9113855f771b1489fea0cbebb850ace068386d4a720a04602b5bb7791d1ccb46",
+      "writer": "ScaleUpSurveyDiagnosticTests.Dump_pdf_atom_glyph_facts"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-053/review-items.json",
+      "sha256": "9907501e6bb3e331200175c1b37131d718cb9293c5bbf6c22fefffddf293274e"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 8966,
+    "CLEAR_HEADING": 271,
+    "CLEAR_NON_HEADING_SET_APART": 254,
+    "AMBIGUOUS": 0,
+    "PROPOSED_RANGE": {
+      "min": 271,
+      "max": 271
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells and rows, chart values, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 8,
+      "nonHeadings": 5,
+      "ambiguous": 0
+    },
+    {
+      "section": "MDA",
+      "headings": 150,
+      "nonHeadings": 109,
+      "ambiguous": 0
+    },
+    {
+      "section": "NOTES",
+      "headings": 80,
+      "nonHeadings": 73,
+      "ambiguous": 0
+    },
+    {
+      "section": "FS_PART",
+      "headings": 17,
+      "nonHeadings": 8,
+      "ambiguous": 0
+    },
+    {
+      "section": "STATEMENTS",
+      "headings": 14,
+      "nonHeadings": 58,
+      "ambiguous": 0
+    },
+    {
+      "section": "BACK",
+      "headings": 2,
+      "nonHeadings": 1,
+      "ambiguous": 0
+    }
+  ],
+  "headingsByPattern": {
+    "A2_PRECEDENT_REPEATED_TITLE": 7,
+    "A5_PRECEDENT_CONTENTS_GROUP_LABEL": 1,
+    "EMBEDDED_REPORT": 4,
+    "FRONT_SECTION_TITLE": 2,
+    "FS_SUBHEADING": 11,
+    "MDA_SECTION_TITLE": 18,
+    "MDA_SUBHEADING": 134,
+    "NOTES_PART": 1,
+    "NOTE_SUBHEADING": 65,
+    "NOTE_TITLE": 14,
+    "PART_TITLE_BLOCK": 1,
+    "S053_Q1_BACK_COVER_TITLE_BLOCK": 1,
+    "S053_Q2_ITALIC_STANDALONE_LABEL": 3,
+    "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER": 1,
+    "STATEMENT_TITLE": 7,
+    "TOC_OPENER": 1
+  },
+  "nonHeadingsByPattern": {
+    "CAPTION_CONTINUATION": 3,
+    "CHART_OR_TABLE_INTERNAL": 118,
+    "CONTENTS_ENTRY": 3,
+    "COVER_BLOCK": 2,
+    "NUMBERED_CAPTION": 95,
+    "PAGE_NOTICE": 1,
+    "PART_TITLE_BLOCK": 2,
+    "QUALIFICATION_NOTE": 2,
+    "RUN_IN_LEAD": 1,
+    "S042_A1_PRECEDENT_BOX_TITLE": 1,
+    "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER": 1,
+    "S053_Q4_BULLETED_LABEL_OVER_SUBLIST": 1,
+    "SECTION_SUBTITLE": 1,
+    "SIGNATURE": 2,
+    "STATEMENT_FOOTER": 7,
+    "STATEMENT_SUBTITLE": 14
+  },
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-26",
+    "membershipTotal": 271,
+    "arithmetic": "266 clear + 1 S053_Q1 + 3 S053_Q2 + 1 S053_Q3 + 0 S053_Q4 = 271",
+    "principle": "CLASSIFY OCCURRENCES, NOT STRINGS",
+    "patterns": [
+      {
+        "pattern": "S053_Q1_BACK_COVER_TITLE_BLOCK",
+        "decision": "TRUE x1: 'Information Statement' atop the back cover is a display-title occurrence of the document; repetition does not decide heading status (the reviewer had recommended FALSE)"
+      },
+      {
+        "pattern": "S053_Q2_ITALIC_STANDALONE_LABEL",
+        "decision": "TRUE x3: italic, not bold, standalone labels at the margin over their own prose are headings one level below their parent; function decides, not weight"
+      },
+      {
+        "pattern": "S053_Q3_COVER_TITLE_ABOVE_LARGER_ISSUER",
+        "decision": "title only: 'Information Statement' is the cover's one-line title claim; the larger issuer name below it is ISSUER_METADATA, as in the SRC-042 precedent"
+      },
+      {
+        "pattern": "S053_Q4_BULLETED_LABEL_OVER_SUBLIST",
+        "decision": "FALSE x1: '• Other Adjustments:' is a list item among list items; its enumerated sub-list is the item's own content"
+      }
+    ]
+  },
+  "bindingFailures": []
+}

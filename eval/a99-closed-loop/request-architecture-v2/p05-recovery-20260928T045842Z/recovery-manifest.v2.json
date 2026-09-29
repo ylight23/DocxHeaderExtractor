@@ -1,0 +1,66 @@
+{
+  "artifactKind": "a99_v4r2_p05_recovery_manifest",
+  "artifactVersion": "v2",
+  "status": "COMPLETE_SOURCE_COVERAGE",
+  "experimentOnly": true,
+  "productionPromotion": false,
+  "goldRead": false,
+  "supersedesForAuthority": "recovery-manifest.json",
+  "runId": "p05-recovery-20260928T045842Z",
+  "recoveryPlan": "eval/a99-closed-loop/request-architecture-v2/p05-recovery-20260928T122000Z/recovery-plan.json",
+  "pendingParentsAtStart": [8, 30],
+  "pendingParentsAfterRecovery": [],
+  "identicalRetryAttempts": 2,
+  "adaptiveChildCalls": 2,
+  "calls": 4,
+  "successfulContractValidLeaves": 3,
+  "failedRetryableAttempts": 1,
+  "acceptedParentCoverage": "2/2 pending parents; 31/31 overall parent ownership sets",
+  "acceptedLineage": {
+    "ordinal8": {
+      "mode": "IDENTICAL_RETRY",
+      "acceptedResponse": "attempts/parent-008-retry-001.response.json",
+      "semanticRequestHash": "cae6332355c3f265cc97ab5016e302681f5cd45f6cabd29708f50a574f66cb5e",
+      "firstContractValidResponseInLineage": true
+    },
+    "ordinal30": {
+      "mode": "ADAPTIVE_CHILD_SPLIT",
+      "rejectedRetry": "attempts/parent-030-retry-001.response.json",
+      "acceptedResponses": [
+        {
+          "response": "attempts/parent-030-child-A.response.json",
+          "semanticRequestHash": "0493f6f7c40b1414d88c80ca6162cee6e9865b2a1d316c46efd94a74e8d9d3b1",
+          "providerEnvelopeHash": "12a72879a5b5811f207b1573064d90894e323c7be35c56fa79923c963db4b976",
+          "ownedCount": 48
+        },
+        {
+          "response": "attempts/parent-030-child-B.response.json",
+          "semanticRequestHash": "bb2ee9406d8b2267dd8bc27ad0a213a76a2d4df57416c6a1776d2b63ad2fa88a",
+          "providerEnvelopeHash": "132e2a067bbb77811df8c64a74cace38fe054ee992f8c71d2907cb0e61b38ec7",
+          "ownedCount": 48
+        }
+      ],
+      "childOwnedCounts": [48, 48],
+      "parentOwnedEqualsChildUnion": true,
+      "childOwnedIntersectionIsEmpty": true,
+      "firstContractValidResponsePerChildLineage": true
+    }
+  },
+  "totals": {
+    "inputBytes": 226345,
+    "completionTokens": 38009
+  },
+  "ownershipInvariant": {
+    "successfulLeavesResent": false,
+    "parentOwnedEqualsChildUnion": true,
+    "childOwnedIntersectionIsEmpty": true,
+    "haloMayOverlap": true,
+    "ownershipMayNotOverlap": true
+  },
+  "scoringGate": {
+    "goldRead": false,
+    "providerCallsDuringScoring": 0,
+    "score": "NONE",
+    "productionPromotion": false
+  }
+}

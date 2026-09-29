@@ -1,0 +1,38 @@
+{
+  "id": "stream-reassembled-leaf-003",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "reasoning": "",
+        "content": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0195:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 10. Publication registration and certification ofpublication registration\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0243:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 11. Joint publication activities\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0260:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 12. Licensing ofpublication ofnon-commercial documents\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0284:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Chapter III\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0285:S0\u0022,\n          \u0022verbatimText\u0022: \u0022PRINTING AND DISTRIBUTION OF PUBLICATIONS\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L0286:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L0287:S0\u0022,\n          \u0022verbatimText\u0022: \u0022revocation ofpublication printing permits\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    }\n  ]\n}"
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 21409,
+    "completion_tokens": 413,
+    "total_tokens": 21822,
+    "cost": 0.00069596,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00069596,
+      "upstream_inference_prompt_cost": 0.00064227,
+      "upstream_inference_completions_cost": 0.00005369
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

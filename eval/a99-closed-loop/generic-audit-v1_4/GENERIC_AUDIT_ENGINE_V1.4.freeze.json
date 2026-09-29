@@ -1,0 +1,178 @@
+{
+  "artifactKind": "a99_generic_audit_engine_freeze",
+  "engineIdentity": {
+    "engine": "GENERIC_AUDIT_ENGINE_V1.4",
+    "sourceFacts": "PDF_SOURCE_FACTS_V3",
+    "files": [
+      {
+        "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_4/SourceEvidence.cs",
+        "sha256": "39e7c0dfc8466e69ca1b0282b39540d9a75f51419cf9a5477324aea790b30b6b"
+      },
+      {
+        "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_4/SemanticAuditEngine.cs",
+        "sha256": "86072621f88205d7a034c7e579fae6411837f56ecc8969341bf34e3531cc8935"
+      }
+    ],
+    "constants": {
+      "largerThanBodyRatio": 1.08,
+      "bodySizeToleranceRatio": 0.97,
+      "shortLabelMaxWords": 20,
+      "compositeMaxParts": 6,
+      "furnitureMinPages": 3,
+      "furnitureMinBandShare": 0.8,
+      "navigationRunMin": 3,
+      "lineGapMaxFontRatio": 1.8,
+      "sameSizeRatioTolerance": 0.02,
+      "bracketSpanMaxLines": 15,
+      "formMinFillInFields": 2,
+      "averageCharWidthFontRatio": 0.5,
+      "centredMarginToleranceRatio": 0.05,
+      "columnGutterFontRatio": 1,
+      "figureRegionMaxLines": 60,
+      "layoutLabelMaxWords": 8,
+      "proseMinWords": 8,
+      "leadColumnGapFontRatio": 3,
+      "centredWrapMinFillRatio": 0.75,
+      "addressLineMaxWords": 8
+    },
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3"
+  },
+  "sourceFacts": {
+    "path": "eval/a99-closed-loop/pdf-source-facts-v3/PDF_SOURCE_FACTS_V3.freeze.json",
+    "sha256": "19fd455302e3631d9f11f0c3485e9eb5bae0530f6cd7e19f1e5597278d0450e4",
+    "status": "PDF_SOURCE_FACTS_V3, unchanged"
+  },
+  "decidedBy": "user, 2026-09-26: fix first - V1.4 fixes only the five generic families SRC-095 classified as B_NEW (c587694); the seven A cases (index group letters) stay in review; no text, document, Gold count or page special case; the last development cycle before the final verdict",
+  "gaps": [
+    "23 an assembled label is judged whole: a section number set apart from its title in its own segment is a part of the label - for the figures-only test, for the region scan (the next such row is a peer), and for the furniture test (such a number at a page's foot is no page number)",
+    "24 cross-reference lists: a line of references separated by semicolons is no caption, no contents line (its last number is a label's) and no label, even where a bold reference begins it",
+    "25 contact blocks: a short unnumbered label directly under a stronger label, over nothing but short lines among them a contact line, names an address block: metadata"
+  ],
+  "families": [
+    {
+      "family": "SPLIT_NUMBERED_HEADING",
+      "gap": 23
+    },
+    {
+      "family": "INDEX_LOCATOR_WRAP",
+      "gap": 24
+    },
+    {
+      "family": "INDEX_ENTRY_VS_TOC_POINTER",
+      "gap": 24
+    },
+    {
+      "family": "CROSS_REFERENCE_VS_HEADING",
+      "gap": 24
+    },
+    {
+      "family": "AUTHOR_CONTACT_BLOCK",
+      "gap": 25
+    }
+  ],
+  "leftToReviewByDesign": [
+    "labels no glyph fact sets apart whose heading status is a meaning decision (SRC-095 index group letters, S095_Q2) keep the review fail-safe",
+    "an identically set label directly under another (sibling or child) keeps the review fail-safe",
+    "italic labels and colon-ended labels (meaning decisions, bucket A)"
+  ],
+  "development": {
+    "role": "DEVELOPMENT - every document here was developed on or revealed (SRC-095 since c587694); nothing is a generalization result",
+    "gold": "each document's current authored Gold; SRC-044 R2 (203) and SRC-054 R3 (298), user-approved 2026-09-26 (cb9420c) before V1.4 was scored",
+    "rows": [
+      {
+        "documentId": "DOC-0123",
+        "v1_3_overFactsV3": 0.9032,
+        "v1_4_overFactsV3": 0.9032,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/DOC-0123.dev-score.v1_4.json",
+          "sha256": "9028609e31224208cca6159209166cb0a267f3072d19e48bca97d27745060040"
+        }
+      },
+      {
+        "documentId": "DOC-0133",
+        "v1_3_overFactsV3": 0.9082,
+        "v1_4_overFactsV3": 0.9082,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/DOC-0133.dev-score.v1_4.json",
+          "sha256": "dfb7f8fd2459498566444e2800464cd1955d9086bb5239e5a0dea139668ae6fc"
+        }
+      },
+      {
+        "documentId": "SRC-029",
+        "v1_3_overFactsV3": 0.7829,
+        "v1_4_overFactsV3": 0.7829,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-029.dev-score.v1_4.json",
+          "sha256": "e3b264d79394d051c49204afbeceba18c819cdbb012d692f03b9474d123a57eb"
+        }
+      },
+      {
+        "documentId": "SRC-041",
+        "v1_3_overFactsV3": 0.9782,
+        "v1_4_overFactsV3": 0.9782,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-041.dev-score.v1_4.json",
+          "sha256": "11b32e87346ff22ae43d8fb0a0095f130411ebd9a1dc3b0f84ac626db3ad6e45"
+        }
+      },
+      {
+        "documentId": "SRC-042",
+        "v1_3_overFactsV3": 0.9782,
+        "v1_4_overFactsV3": 0.9782,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-042.dev-score.v1_4.json",
+          "sha256": "82e239665658c31d79ad76ba3ca4f1283d2009862fc8af40cd7b9cc889e448d6"
+        }
+      },
+      {
+        "documentId": "SRC-044",
+        "v1_3_overFactsV3": 0.9825,
+        "v1_4_overFactsV3": 0.9825,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-044.dev-score.v1_4.json",
+          "sha256": "5e8d7482b4ab1828ee94b56f258b0dfa8ba53cda21d809e5034ca335d5bdf9f1"
+        }
+      },
+      {
+        "documentId": "SRC-053",
+        "v1_3_overFactsV3": 0.9248,
+        "v1_4_overFactsV3": 0.9248,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-053.dev-score.v1_4.json",
+          "sha256": "57eec2c4aab3b1f2a358ce12ba243299f273948f8598b8d2f80a899d8777646d"
+        }
+      },
+      {
+        "documentId": "SRC-054",
+        "v1_3_overFactsV3": 0.9187,
+        "v1_4_overFactsV3": 0.9187,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-054.dev-score.v1_4.json",
+          "sha256": "f0f45ab310fbeaf8ad86506cb2eefeca2acaef49a5529dea542149a737978402"
+        }
+      },
+      {
+        "documentId": "SRC-095",
+        "v1_3_overFactsV3": 0.9128,
+        "v1_4_overFactsV3": 0.9596,
+        "artifact": {
+          "path": "eval/a99-closed-loop/generic-audit-v1_4/SRC-095.dev-score.v1_4.json",
+          "sha256": "bbd500d9c1260dbe549468611574ec15ed8b35e7aa8fea575d69d54d783e2c7e"
+        }
+      }
+    ],
+    "noRegression": "V1.4 is at or above V1.3 on every development document (asserted above)"
+  },
+  "heldOut": {
+    "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+    "sha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+    "status": "chosen by the user before this freeze; no Gold, count or occurrence list of this PDF exists; its headings were not inspected",
+    "exposure": [
+      "the PDF_SOURCE_FACTS_V3 audit (81bcb33) covered it as one of 98 PDFs: atom universe unchanged, 582 lines, median size 12, 47 lines with bold evidence - read once, to check that the facts can represent it (not an SRC-053-type source)",
+      "converted DOCX copies of the same text were DEV items of earlier LLM campaigns (DOC-0079, DOC-0269); no engine version ever ran on them",
+      "a count is listed beside its name in handoff.md (origin unknown); it is neither engine input nor target",
+      "an outline JSON of it exists (todo10_8/outline_json); it is not opened"
+    ]
+  },
+  "modelProviderVlmCalls": 0
+}

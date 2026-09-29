@@ -1,0 +1,557 @@
+{
+  "artifactKind": "a99_doc0252_targeted_packing_rerun_v2_score",
+  "schemaVersion": "a99-doc0252-targeted-packing-rerun-v2-score-v1",
+  "scoredFrom": "persisted transport capture raw response bytes",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "additionalProviderCallsDuringScoring": 0,
+  "evaluatorId": "a99-pdf-gold-evaluator-v4-structured-source-parts-semantic-role",
+  "authority": {
+    "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+    "sourceUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "promptSha256": "2207221eb8782c13296023aefe5b3cfe9a771eba652f029745948e2534fe580e",
+    "structuredContractSha256": "69b99b9099b964a5cf5985b8ec618db49c8ee5c3fa8a2bb8f69993cdc2e24f6f",
+    "goldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+    "manifestSha256": "fb62c1c696b4c30f0b71aed2e39f296ece3934c5870982fdc0e19bc62d64189c",
+    "packingPolicy": "COHERENT_REGION_SEGMENTATION_V1",
+    "transportCaptureHashesRecomputed": true,
+    "captureHashes": [
+      {
+        "Repeat": 1,
+        "CaptureHash": "486215798ef2a93e366f4ecbd1db275c27cb056e8ce18da426ea50151a77e00c"
+      },
+      {
+        "Repeat": 2,
+        "CaptureHash": "f57e6c47d35e09c138d3d03e2796a4bbb2b1b81e7f6cd18fb86e6fec2b5a44d7"
+      },
+      {
+        "Repeat": 3,
+        "CaptureHash": "89c0f304a6739dea1835004239edd8d81c1ca39b36e96cd784e386d113164450"
+      }
+    ]
+  },
+  "requestEquivalence": {
+    "PACK_005": {
+      "hash": "21d4edc1895351d81c1fb79a072f7e863b0c321ad98012aab39a1977798c13da",
+      "identicalAcrossRepeats": true
+    },
+    "PACK_006": {
+      "hash": "3a7f173d774f9ae594344c82f1954098812a01af19227a76234c5419b4d16f96",
+      "identicalAcrossRepeats": true
+    },
+    "PACK_007": {
+      "hash": "cedecb1b8241abc4e08fdb4c089da0ca38550c8350d600de9f6392598533a055",
+      "identicalAcrossRepeats": true
+    }
+  },
+  "rawResponseVariance": {
+    "PACK_005": {
+      "hashes": [
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e"
+      ],
+      "distinct": 1,
+      "identicalAcrossRepeats": true
+    },
+    "PACK_006": {
+      "hashes": [
+        "71487c62426098ad06eff774564ed644d095f47b2f279cbf86a2cf26ba5e0d4b",
+        "89c62ce564f051c3c58f45c39a34f0a89faf5ce8570610df7ed72f6abaecfb9c",
+        "13ea14774d9e13eb5bb62b9a75a2bc9076ec0efd7eaabdbcafa0099c62d769a4"
+      ],
+      "distinct": 3,
+      "identicalAcrossRepeats": false
+    },
+    "PACK_007": {
+      "hashes": [
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ],
+      "distinct": 1,
+      "identicalAcrossRepeats": true
+    }
+  },
+  "replayBundleParity": [
+    {
+      "repeat": 1,
+      "regenerated": 23,
+      "bundled": 23,
+      "equal": true
+    },
+    {
+      "repeat": 2,
+      "regenerated": 23,
+      "bundled": 23,
+      "equal": true
+    },
+    {
+      "repeat": 3,
+      "regenerated": 23,
+      "bundled": 23,
+      "equal": true
+    }
+  ],
+  "targetGold": {
+    "total": 18,
+    "byPack": {
+      "PACK_005": 4,
+      "PACK_006": 10,
+      "PACK_007": 4
+    },
+    "note": "Derived from the production partition and frozen Gold identities; Gold outside packs 5-7 is not counted as a false negative of a three-pack experiment."
+  },
+  "perCell": [
+    {
+      "pack": "PACK_005",
+      "Repeat": 1,
+      "rawObjects": 6,
+      "decodedHeadings": 6,
+      "bound": 6,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 4,
+      "falsePositive": 2,
+      "falseNegative": 0,
+      "precision": 0.6667,
+      "recall": 1,
+      "f1": 0.8,
+      "responseBytes": 1687,
+      "rawResponseSha256": "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e"
+    },
+    {
+      "pack": "PACK_005",
+      "Repeat": 2,
+      "rawObjects": 6,
+      "decodedHeadings": 6,
+      "bound": 6,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 4,
+      "falsePositive": 2,
+      "falseNegative": 0,
+      "precision": 0.6667,
+      "recall": 1,
+      "f1": 0.8,
+      "responseBytes": 1687,
+      "rawResponseSha256": "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e"
+    },
+    {
+      "pack": "PACK_005",
+      "Repeat": 3,
+      "rawObjects": 6,
+      "decodedHeadings": 6,
+      "bound": 6,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 4,
+      "falsePositive": 2,
+      "falseNegative": 0,
+      "precision": 0.6667,
+      "recall": 1,
+      "f1": 0.8,
+      "responseBytes": 1687,
+      "rawResponseSha256": "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e"
+    },
+    {
+      "pack": "PACK_006",
+      "Repeat": 1,
+      "rawObjects": 13,
+      "decodedHeadings": 13,
+      "bound": 13,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 9,
+      "falsePositive": 4,
+      "falseNegative": 1,
+      "precision": 0.6923,
+      "recall": 0.9,
+      "f1": 0.7826,
+      "responseBytes": 3726,
+      "rawResponseSha256": "71487c62426098ad06eff774564ed644d095f47b2f279cbf86a2cf26ba5e0d4b"
+    },
+    {
+      "pack": "PACK_006",
+      "Repeat": 2,
+      "rawObjects": 13,
+      "decodedHeadings": 13,
+      "bound": 13,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 9,
+      "falsePositive": 4,
+      "falseNegative": 1,
+      "precision": 0.6923,
+      "recall": 0.9,
+      "f1": 0.7826,
+      "responseBytes": 3750,
+      "rawResponseSha256": "89c62ce564f051c3c58f45c39a34f0a89faf5ce8570610df7ed72f6abaecfb9c"
+    },
+    {
+      "pack": "PACK_006",
+      "Repeat": 3,
+      "rawObjects": 13,
+      "decodedHeadings": 13,
+      "bound": 13,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 9,
+      "falsePositive": 4,
+      "falseNegative": 1,
+      "precision": 0.6923,
+      "recall": 0.9,
+      "f1": 0.7826,
+      "responseBytes": 3798,
+      "rawResponseSha256": "13ea14774d9e13eb5bb62b9a75a2bc9076ec0efd7eaabdbcafa0099c62d769a4"
+    },
+    {
+      "pack": "PACK_007",
+      "Repeat": 1,
+      "rawObjects": 4,
+      "decodedHeadings": 4,
+      "bound": 4,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 3,
+      "falsePositive": 1,
+      "falseNegative": 1,
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1": 0.75,
+      "responseBytes": 1109,
+      "rawResponseSha256": "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+    },
+    {
+      "pack": "PACK_007",
+      "Repeat": 2,
+      "rawObjects": 4,
+      "decodedHeadings": 4,
+      "bound": 4,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 3,
+      "falsePositive": 1,
+      "falseNegative": 1,
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1": 0.75,
+      "responseBytes": 1109,
+      "rawResponseSha256": "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+    },
+    {
+      "pack": "PACK_007",
+      "Repeat": 3,
+      "rawObjects": 4,
+      "decodedHeadings": 4,
+      "bound": 4,
+      "rejected": 0,
+      "rejectionReasons": [],
+      "truePositive": 3,
+      "falsePositive": 1,
+      "falseNegative": 1,
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1": 0.75,
+      "responseBytes": 1109,
+      "rawResponseSha256": "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+    }
+  ],
+  "perRepeat": [
+    {
+      "repeat": 1,
+      "bound": 23,
+      "truePositive": 16,
+      "falsePositive": 7,
+      "falseNegative": 2,
+      "precision": 0.6957,
+      "recall": 0.8889,
+      "f1": 0.7805
+    },
+    {
+      "repeat": 2,
+      "bound": 23,
+      "truePositive": 16,
+      "falsePositive": 7,
+      "falseNegative": 2,
+      "precision": 0.6957,
+      "recall": 0.8889,
+      "f1": 0.7805
+    },
+    {
+      "repeat": 3,
+      "bound": 23,
+      "truePositive": 16,
+      "falsePositive": 7,
+      "falseNegative": 2,
+      "precision": 0.6957,
+      "recall": 0.8889,
+      "f1": 0.7805
+    }
+  ],
+  "micro": {
+    "truePositive": 48,
+    "falsePositive": 21,
+    "falseNegative": 6,
+    "precision": 0.6957,
+    "recall": 0.8889,
+    "f1": 0.7805
+  },
+  "stability": [
+    {
+      "pack": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "rawResponseHashes": [
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e",
+        "282d0d6a322446bad54acd01ac73d0f5d0d90ce02bbfc01eb0da33f18a38ad5e"
+      ],
+      "rawResponseIdentical": true,
+      "boundCounts": [
+        6,
+        6,
+        6
+      ],
+      "boundAllThree": 6,
+      "boundR1Only": 0,
+      "boundR2Only": 0,
+      "boundR3Only": 0,
+      "membershipIdentical": true,
+      "falsePositiveAllThree": 2,
+      "falsePositiveCounts": [
+        2,
+        2,
+        2
+      ],
+      "claimsWithDifferingMetadata": 0,
+      "varianceClass": "NO_VARIANCE"
+    },
+    {
+      "pack": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+      "rawResponseHashes": [
+        "71487c62426098ad06eff774564ed644d095f47b2f279cbf86a2cf26ba5e0d4b",
+        "89c62ce564f051c3c58f45c39a34f0a89faf5ce8570610df7ed72f6abaecfb9c",
+        "13ea14774d9e13eb5bb62b9a75a2bc9076ec0efd7eaabdbcafa0099c62d769a4"
+      ],
+      "rawResponseIdentical": false,
+      "boundCounts": [
+        13,
+        13,
+        13
+      ],
+      "boundAllThree": 13,
+      "boundR1Only": 0,
+      "boundR2Only": 0,
+      "boundR3Only": 0,
+      "membershipIdentical": true,
+      "falsePositiveAllThree": 4,
+      "falsePositiveCounts": [
+        4,
+        4,
+        4
+      ],
+      "claimsWithDifferingMetadata": 6,
+      "varianceClass": "METADATA_ONLY_VARIANCE"
+    },
+    {
+      "pack": "COHERENT_REGION_SEGMENTATION_V1:PACK_007",
+      "rawResponseHashes": [
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02",
+        "4b580862084376e80810aa0c456e5b028dfbd72b32224f41d38bdc127088eb02"
+      ],
+      "rawResponseIdentical": true,
+      "boundCounts": [
+        4,
+        4,
+        4
+      ],
+      "boundAllThree": 4,
+      "boundR1Only": 0,
+      "boundR2Only": 0,
+      "boundR3Only": 0,
+      "membershipIdentical": true,
+      "falsePositiveAllThree": 1,
+      "falsePositiveCounts": [
+        1,
+        1,
+        1
+      ],
+      "claimsWithDifferingMetadata": 0,
+      "varianceClass": "NO_VARIANCE"
+    }
+  ],
+  "oldRegionComparison": {
+    "note": "The fixed-120 pack 5 owned a source region that the coherent partition splits across three packs. Restricting v2 claims to that same region is the like-for-like comparison.",
+    "oldRegionAtoms": 120,
+    "oldRegionGoldClaims": 14,
+    "v2": [
+      {
+        "repeat": 1,
+        "bound": 18,
+        "truePositive": 13,
+        "falsePositive": 5
+      },
+      {
+        "repeat": 2,
+        "bound": 18,
+        "truePositive": 13,
+        "falsePositive": 5
+      },
+      {
+        "repeat": 3,
+        "bound": 18,
+        "truePositive": 13,
+        "falsePositive": 5
+      }
+    ],
+    "fixed120Pack5": {
+      "repeat1": {
+        "rawObjects": 15,
+        "bound": 15,
+        "truePositive": 11,
+        "falsePositive": 4
+      },
+      "repeat2": {
+        "rawObjects": 80,
+        "bound": 79,
+        "truePositive": 13,
+        "falsePositive": 66
+      },
+      "repeat3": {
+        "rawObjects": 16,
+        "bound": 16,
+        "truePositive": 12,
+        "falsePositive": 4
+      },
+      "boundRange": 64,
+      "rawObjectRange": 65,
+      "falsePositiveRange": 62
+    }
+  },
+  "oldFalsePositiveReEmission": {
+    "oldRepeat2Total": 73,
+    "reEmittedByRepeat": {
+      "repeat1": 4,
+      "repeat2": 4,
+      "repeat3": 4
+    },
+    "reEmittedInAllThree": 4,
+    "byPriorTaxonomy": {
+      "OTHER_TITLE_LIKE_ROW": 3,
+      "AGENDA_TIME_SLOT_WITH_TITLE": 1
+    },
+    "notReEmitted": 69
+  },
+  "residualFalsePositives": {
+    "perRepeat": [
+      7,
+      7,
+      7
+    ],
+    "stableAcrossAllThree": 7,
+    "identities": [
+      {
+        "identity": "L0396:S0:0-93",
+        "text": "definitions and discounts, and requires traditional price collection to continue in parallel.",
+        "previouslySeenInFixed120Repeat2": false,
+        "priorTaxonomy": "(new in v2)",
+        "boundaryVariantOfGoldClaim": null
+      },
+      {
+        "identity": "L0513:S0:0-38|L0514:S0:0-30",
+        "text": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
+        "previouslySeenInFixed120Repeat2": false,
+        "priorTaxonomy": "(new in v2)",
+        "boundaryVariantOfGoldClaim": null
+      },
+      {
+        "identity": "L0515:S0:0-14",
+        "text": "Hybrid Meeting",
+        "previouslySeenInFixed120Repeat2": true,
+        "priorTaxonomy": "OTHER_TITLE_LIKE_ROW",
+        "boundaryVariantOfGoldClaim": null
+      },
+      {
+        "identity": "L0516:S0:0-15|L0517:S0:0-22|L0518:S0:0-32",
+        "text": "March 7-8, 2025 Bamboo Room, Ease 1345 1345 6th Ave, New York, NY 10105",
+        "previouslySeenInFixed120Repeat2": false,
+        "priorTaxonomy": "(new in v2)",
+        "boundaryVariantOfGoldClaim": null
+      },
+      {
+        "identity": "L0540:S0:0-36",
+        "text": "SESSION V: Current Research (Cont’d)",
+        "previouslySeenInFixed120Repeat2": true,
+        "priorTaxonomy": "OTHER_TITLE_LIKE_ROW",
+        "boundaryVariantOfGoldClaim": "L0540:S0:0-35"
+      },
+      {
+        "identity": "L0550:S0:0-56",
+        "text": "14:00 – 15:00 Improving Reliability of Price Comparisons",
+        "previouslySeenInFixed120Repeat2": true,
+        "priorTaxonomy": "AGENDA_TIME_SLOT_WITH_TITLE",
+        "boundaryVariantOfGoldClaim": null
+      },
+      {
+        "identity": "L0576:S0:0-42",
+        "text": "ICP Inter-Agency Coordination Group (IACG)",
+        "previouslySeenInFixed120Repeat2": true,
+        "priorTaxonomy": "OTHER_TITLE_LIKE_ROW",
+        "boundaryVariantOfGoldClaim": "L0576:S0:0-41"
+      }
+    ],
+    "boundaryVariantsOfGold": 2,
+    "boundaryVariantNote": "A false positive that names the same atoms as a Gold claim and differs only in where the selection ends. Reported apart because it is not an invented heading: it is the same heading with a different boundary, and the matching Gold claim is counted as a false negative in the same repeat. Gold is not modified here."
+  },
+  "variance": {
+    "fixed120Pack5BoundRange": 64,
+    "fixed120Pack5FalsePositiveRange": 62,
+    "v2TargetBoundRange": 0,
+    "v2TargetFalsePositiveRange": 0,
+    "v2PerPackBoundRange": {
+      "PACK_005": 0,
+      "PACK_006": 0,
+      "PACK_007": 0
+    }
+  },
+  "v1Comparison": {
+    "available": true,
+    "v1Artifact": "eval/a99-closed-loop/structured-context-packing-experiment-v1/DOC-0252/targeted-packing-score-and-causal-compare.v1.json",
+    "v2PerRepeat": [
+      {
+        "Tp": 16,
+        "Fp": 7,
+        "Fn": 2
+      },
+      {
+        "Tp": 16,
+        "Fp": 7,
+        "Fn": 2
+      },
+      {
+        "Tp": 16,
+        "Fp": 7,
+        "Fn": 2
+      }
+    ],
+    "note": "v1 and v2 are separate provider runs of the same partition; raw bytes are not expected to match. What is compared is whether the same partition produces the same scored outcome."
+  },
+  "causal": {
+    "packingVarianceResolved": true,
+    "residualSemanticBiasRemains": true,
+    "classification": "PACKING_HYPOTHESIS_SUPPORTED",
+    "evidence": [
+      "request bytes identical across repeats for all three packs, recomputed from the capture",
+      "no successor pack reproduces the fixed-120 pack's claim-count explosion",
+      "pack 6 returned three different raw responses and bound to the same identity set",
+      "residual false positives are stable across repeats rather than repeat-specific"
+    ]
+  },
+  "providerAccounting": {
+    "callsAlreadySpent": 9,
+    "hardCap": 12,
+    "unusedCapacity": 3,
+    "additionalDuringScoring": 0,
+    "authorizedForMore": false
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "artifactKind": "a99_structured_evidence_context_experiment_design",
+  "schemaVersion": "a99-structured-evidence-context-experiment-design-v1",
+  "documentId": "DOC-0252",
+  "experiment": "STRUCTURED_EVIDENCE_CONTEXT_V1",
+  "goal": "Test whether organizing the exact same FULL context into deterministic source/layout regions improves semantic-role classification compared with flat FULL context, holding content amount constant and varying only context organization.",
+  "arms": [
+    {
+      "id": "FULL_CONTEXT",
+      "role": "existing comparison arm",
+      "contentSource": "eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full-context (frozen, unmodified, read-only)"
+    },
+    {
+      "id": "FULL_STRUCTURED_CONTEXT_V1",
+      "role": "new arm",
+      "contentSource": "identical atoms to FULL_CONTEXT, grouped into deterministic layout regions"
+    }
+  ],
+  "referenceArmOnly": "MINIMAL_STRUCTURAL_CONTEXT_V1",
+  "hypothesis": "Structured presentation (grouping source atoms into deterministic layout regions) reduces semantic-scope interference relative to flat FULL_CONTEXT presentation, for the same content.",
+  "hypothesisStatus": "PRE_REGISTERED_NOT_YET_TESTED",
+  "preRegisteredBefore": "any provider execution of FULL_STRUCTURED_CONTEXT_V1",
+  "contentInvariant": "CONTENT AMOUNT = constant; only CONTEXT ORGANIZATION varies",
+  "groupingSignal": "the existing layout block id already recorded per atom in the frozen capture (\"block\": \"b307\", etc. - production layout-parser output), grouped by maximal contiguous run in canonical source order. Purely coordinate/layout-derived; regions are never semantically classified.",
+  "forbiddenRegionLabels": [
+    "DOCUMENT_HEADER",
+    "DOCUMENT_LABEL_REGION",
+    "METADATA_REGION",
+    "STRUCTURAL_REGION",
+    "HEADING_REGION"
+  ],
+  "regionIdScheme": "neutral sequential ids: R001, R002, R003, ...",
+  "labelContract": [
+    "STRUCTURAL_UNIT",
+    "DOCUMENT_LABEL",
+    "NON_STRUCTURAL"
+  ],
+  "itemCohort": "the same 18-item cohort already used by the direct semantic probe and the Haiku blind confirmation; not added to or removed from in V1",
+  "productionPolicyChanged": false,
+  "modelCalls": 0,
+  "providerCalls": 0,
+  "providerExecutionAuthorized": false
+}

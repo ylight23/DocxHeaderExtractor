@@ -1,0 +1,796 @@
+{
+  "artifactKind": "a99_source_evidence_profile",
+  "study": "SRC029_BLIND_GENERALIZATION_AUDIT_V1",
+  "source": {
+    "path": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+    "sha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c"
+  },
+  "media": "PDF",
+  "occurrences": 7794,
+  "pages": 229,
+  "body": {
+    "fontSize": 12,
+    "bold": false,
+    "italic": false
+  },
+  "typographyClusters": [
+    {
+      "fontSize": 12,
+      "bold": false,
+      "italic": false,
+      "occurrences": 4887,
+      "meanWords": 6.9
+    },
+    {
+      "fontSize": 12,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1068,
+      "meanWords": 4.8
+    },
+    {
+      "fontSize": 12,
+      "bold": true,
+      "italic": false,
+      "occurrences": 804,
+      "meanWords": 2.5
+    },
+    {
+      "fontSize": 10,
+      "bold": false,
+      "italic": false,
+      "occurrences": 264,
+      "meanWords": 6.3
+    },
+    {
+      "fontSize": 12,
+      "bold": true,
+      "italic": true,
+      "occurrences": 208,
+      "meanWords": 5.4
+    },
+    {
+      "fontSize": 11,
+      "bold": false,
+      "italic": false,
+      "occurrences": 94,
+      "meanWords": 6.5
+    },
+    {
+      "fontSize": 18,
+      "bold": true,
+      "italic": false,
+      "occurrences": 80,
+      "meanWords": 3.5
+    },
+    {
+      "fontSize": 10,
+      "bold": false,
+      "italic": true,
+      "occurrences": 46,
+      "meanWords": 9.4
+    },
+    {
+      "fontSize": 9,
+      "bold": false,
+      "italic": false,
+      "occurrences": 38,
+      "meanWords": 12.7
+    },
+    {
+      "fontSize": 11.9,
+      "bold": false,
+      "italic": false,
+      "occurrences": 35,
+      "meanWords": 9.4
+    },
+    {
+      "fontSize": 16,
+      "bold": true,
+      "italic": false,
+      "occurrences": 29,
+      "meanWords": 3.7
+    },
+    {
+      "fontSize": 14,
+      "bold": true,
+      "italic": false,
+      "occurrences": 25,
+      "meanWords": 3.8
+    },
+    {
+      "fontSize": 11,
+      "bold": true,
+      "italic": false,
+      "occurrences": 18,
+      "meanWords": 3.4
+    },
+    {
+      "fontSize": 11,
+      "bold": false,
+      "italic": true,
+      "occurrences": 15,
+      "meanWords": 4.1
+    },
+    {
+      "fontSize": 8,
+      "bold": false,
+      "italic": false,
+      "occurrences": 14,
+      "meanWords": 1.1
+    },
+    {
+      "fontSize": 6.5,
+      "bold": false,
+      "italic": false,
+      "occurrences": 12,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 9,
+      "bold": true,
+      "italic": false,
+      "occurrences": 10,
+      "meanWords": 1.1
+    },
+    {
+      "fontSize": 14,
+      "bold": false,
+      "italic": false,
+      "occurrences": 10,
+      "meanWords": 2.4
+    },
+    {
+      "fontSize": 11.5,
+      "bold": false,
+      "italic": true,
+      "occurrences": 7,
+      "meanWords": 2.1
+    },
+    {
+      "fontSize": 14,
+      "bold": false,
+      "italic": true,
+      "occurrences": 7,
+      "meanWords": 5
+    },
+    {
+      "fontSize": 13.5,
+      "bold": true,
+      "italic": false,
+      "occurrences": 7,
+      "meanWords": 4.4
+    },
+    {
+      "fontSize": 11.6,
+      "bold": false,
+      "italic": false,
+      "occurrences": 7,
+      "meanWords": 7.4
+    },
+    {
+      "fontSize": 11,
+      "bold": true,
+      "italic": true,
+      "occurrences": 6,
+      "meanWords": 5.7
+    },
+    {
+      "fontSize": 26,
+      "bold": true,
+      "italic": false,
+      "occurrences": 5,
+      "meanWords": 1.4
+    },
+    {
+      "fontSize": 11.9,
+      "bold": false,
+      "italic": true,
+      "occurrences": 5,
+      "meanWords": 6.2
+    },
+    {
+      "fontSize": 10,
+      "bold": true,
+      "italic": false,
+      "occurrences": 5,
+      "meanWords": 10.4
+    },
+    {
+      "fontSize": 42,
+      "bold": true,
+      "italic": false,
+      "occurrences": 4,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 22,
+      "bold": true,
+      "italic": false,
+      "occurrences": 4,
+      "meanWords": 2.2
+    },
+    {
+      "fontSize": 24,
+      "bold": true,
+      "italic": false,
+      "occurrences": 4,
+      "meanWords": 1.5
+    },
+    {
+      "fontSize": 9.9,
+      "bold": false,
+      "italic": true,
+      "occurrences": 4,
+      "meanWords": 12
+    },
+    {
+      "fontSize": 16,
+      "bold": false,
+      "italic": false,
+      "occurrences": 3,
+      "meanWords": 4.3
+    },
+    {
+      "fontSize": 13.8,
+      "bold": true,
+      "italic": false,
+      "occurrences": 3,
+      "meanWords": 4.3
+    },
+    {
+      "fontSize": 13.6,
+      "bold": true,
+      "italic": false,
+      "occurrences": 3,
+      "meanWords": 4.3
+    },
+    {
+      "fontSize": 13.7,
+      "bold": true,
+      "italic": false,
+      "occurrences": 3,
+      "meanWords": 3
+    },
+    {
+      "fontSize": 11.8,
+      "bold": false,
+      "italic": false,
+      "occurrences": 3,
+      "meanWords": 5.3
+    },
+    {
+      "fontSize": 12.1,
+      "bold": false,
+      "italic": true,
+      "occurrences": 3,
+      "meanWords": 11.3
+    },
+    {
+      "fontSize": 8.9,
+      "bold": false,
+      "italic": false,
+      "occurrences": 3,
+      "meanWords": 15.7
+    },
+    {
+      "fontSize": 9.9,
+      "bold": false,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 14.5
+    },
+    {
+      "fontSize": 18.7,
+      "bold": true,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 5
+    },
+    {
+      "fontSize": 15,
+      "bold": true,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 3
+    },
+    {
+      "fontSize": 13.4,
+      "bold": true,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 6.5
+    },
+    {
+      "fontSize": 11.4,
+      "bold": false,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 5
+    },
+    {
+      "fontSize": 14.1,
+      "bold": true,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 5
+    },
+    {
+      "fontSize": 7,
+      "bold": false,
+      "italic": true,
+      "occurrences": 2,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 7,
+      "bold": false,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 9.4,
+      "bold": false,
+      "italic": true,
+      "occurrences": 2,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 7.3,
+      "bold": false,
+      "italic": true,
+      "occurrences": 2,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 11.2,
+      "bold": false,
+      "italic": false,
+      "occurrences": 2,
+      "meanWords": 5
+    },
+    {
+      "fontSize": 11.4,
+      "bold": false,
+      "italic": true,
+      "occurrences": 2,
+      "meanWords": 4.5
+    },
+    {
+      "fontSize": 12.1,
+      "bold": true,
+      "italic": true,
+      "occurrences": 2,
+      "meanWords": 6
+    },
+    {
+      "fontSize": 14.3,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 7
+    },
+    {
+      "fontSize": 11.6,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 22,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 4
+    },
+    {
+      "fontSize": 15.1,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 4
+    },
+    {
+      "fontSize": 13.9,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 4
+    },
+    {
+      "fontSize": 12.1,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 5
+    },
+    {
+      "fontSize": 10.3,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 5
+    },
+    {
+      "fontSize": 10.6,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 6
+    },
+    {
+      "fontSize": 9.4,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 9.2,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 9.6,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 8.8,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 11.5,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 12
+    },
+    {
+      "fontSize": 11.7,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 11.8,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 4
+    },
+    {
+      "fontSize": 16.5,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 16.8,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 17,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 11.1,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 13
+    },
+    {
+      "fontSize": 18.9,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 18.2,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 2
+    },
+    {
+      "fontSize": 11.3,
+      "bold": false,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 7
+    },
+    {
+      "fontSize": 11.6,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 3
+    },
+    {
+      "fontSize": 8,
+      "bold": true,
+      "italic": false,
+      "occurrences": 1,
+      "meanWords": 1
+    },
+    {
+      "fontSize": 12.7,
+      "bold": false,
+      "italic": true,
+      "occurrences": 1,
+      "meanWords": 4
+    }
+  ],
+  "repeatedTexts": [
+    {
+      "key": "sub-clause#.#",
+      "Count": 69,
+      "Pages": 31,
+      "bandShare": 0.01
+    },
+    {
+      "key": "#.",
+      "Count": 68,
+      "Pages": 15,
+      "bandShare": 0.03
+    },
+    {
+      "key": "sectionix–particularconditions(pc)#",
+      "Count": 64,
+      "Pages": 64,
+      "bandShare": 1
+    },
+    {
+      "key": "sectioniv-proposalforms#",
+      "Count": 57,
+      "Pages": 57,
+      "bandShare": 1
+    },
+    {
+      "key": "#.#",
+      "Count": 50,
+      "Pages": 17,
+      "bandShare": 0.06
+    },
+    {
+      "key": "•",
+      "Count": 35,
+      "Pages": 9,
+      "bandShare": 0.06
+    },
+    {
+      "key": "sectioni-instructionstoproposers(itp)#",
+      "Count": 33,
+      "Pages": 33,
+      "bandShare": 1
+    },
+    {
+      "key": "#",
+      "Count": 31,
+      "Pages": 12,
+      "bandShare": 0.23
+    },
+    {
+      "key": "sub-clause#.#.#",
+      "Count": 24,
+      "Pages": 9,
+      "bandShare": 0
+    },
+    {
+      "key": "sectionx–contractforms#",
+      "Count": 20,
+      "Pages": 20,
+      "bandShare": 1
+    },
+    {
+      "key": "(b)",
+      "Count": 19,
+      "Pages": 18,
+      "bandShare": 0
+    },
+    {
+      "key": "(a)",
+      "Count": 17,
+      "Pages": 16,
+      "bandShare": 0
+    },
+    {
+      "key": "sectionvii–employer’srequirements#",
+      "Count": 16,
+      "Pages": 16,
+      "bandShare": 0.94
+    },
+    {
+      "key": "[insert",
+      "Count": 13,
+      "Pages": 4,
+      "bandShare": 0
+    },
+    {
+      "key": "sectionii-proposaldatasheet(pds)#",
+      "Count": 11,
+      "Pages": 11,
+      "bandShare": 1
+    },
+    {
+      "key": "*",
+      "Count": 11,
+      "Pages": 3,
+      "bandShare": 0
+    },
+    {
+      "key": "(c)",
+      "Count": 10,
+      "Pages": 9,
+      "bandShare": 0.1
+    },
+    {
+      "key": "proposals",
+      "Count": 10,
+      "Pages": 8,
+      "bandShare": 0.1
+    },
+    {
+      "key": "________________________________________________________________",
+      "Count": 10,
+      "Pages": 3,
+      "bandShare": 0.1
+    },
+    {
+      "key": "amount",
+      "Count": 10,
+      "Pages": 8,
+      "bandShare": 0
+    },
+    {
+      "key": "score]",
+      "Count": 10,
+      "Pages": 1,
+      "bandShare": 0
+    },
+    {
+      "key": "(i)",
+      "Count": 9,
+      "Pages": 8,
+      "bandShare": 0.11
+    },
+    {
+      "key": "itp#.#",
+      "Count": 8,
+      "Pages": 5,
+      "bandShare": 0
+    },
+    {
+      "key": "proposal",
+      "Count": 7,
+      "Pages": 6,
+      "bandShare": 0
+    },
+    {
+      "key": "(d)",
+      "Count": 7,
+      "Pages": 7,
+      "bandShare": 0
+    },
+    {
+      "key": "(f)",
+      "Count": 7,
+      "Pages": 7,
+      "bandShare": 0
+    },
+    {
+      "key": "or",
+      "Count": 7,
+      "Pages": 6,
+      "bandShare": 0.14
+    },
+    {
+      "key": "(ii)",
+      "Count": 7,
+      "Pages": 6,
+      "bandShare": 0.29
+    },
+    {
+      "key": "sectioniii–evaluationandqualificationcriteria#",
+      "Count": 7,
+      "Pages": 7,
+      "bandShare": 1
+    },
+    {
+      "key": "\uF0A8",
+      "Count": 7,
+      "Pages": 3,
+      "bandShare": 0
+    },
+    {
+      "key": "and",
+      "Count": 6,
+      "Pages": 6,
+      "bandShare": 0.17
+    },
+    {
+      "key": "following:",
+      "Count": 6,
+      "Pages": 5,
+      "bandShare": 0
+    },
+    {
+      "key": "particularconditions",
+      "Count": 6,
+      "Pages": 6,
+      "bandShare": 0
+    },
+    {
+      "key": "contract.",
+      "Count": 6,
+      "Pages": 6,
+      "bandShare": 0.5
+    },
+    {
+      "key": "#.#.#",
+      "Count": 6,
+      "Pages": 1,
+      "bandShare": 0.17
+    },
+    {
+      "key": "(h)",
+      "Count": 5,
+      "Pages": 5,
+      "bandShare": 0.2
+    },
+    {
+      "key": "proposer’s",
+      "Count": 5,
+      "Pages": 3,
+      "bandShare": 0
+    },
+    {
+      "key": "etc.",
+      "Count": 5,
+      "Pages": 4,
+      "bandShare": 0.2
+    },
+    {
+      "key": "address:",
+      "Count": 5,
+      "Pages": 5,
+      "bandShare": 0
+    },
+    {
+      "key": "contractidentification",
+      "Count": 5,
+      "Pages": 4,
+      "bandShare": 0
+    }
+  ],
+  "lexicalShapes": {
+    "figuresOnly": 181,
+    "dates": 3,
+    "numberedCaptions": 10,
+    "structuralLabels": 1028,
+    "fillInFields": 635,
+    "bracketedNotes": 203,
+    "trailingPageNumbers": 383
+  },
+  "multiSegmentRows": 1946,
+  "rowsWithFigures": 157
+}

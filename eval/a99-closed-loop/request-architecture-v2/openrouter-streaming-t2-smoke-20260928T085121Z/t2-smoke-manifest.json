@@ -1,0 +1,85 @@
+{
+  "artifactKind": "a99_openrouter_streaming_transport_t2_smoke_result",
+  "runId": "openrouter-streaming-t2-smoke-20260928T085121Z",
+  "status": "T2_SMOKE_PASS",
+  "dependsOn": {
+    "t1Preflight": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-transport-v1.preflight.json",
+    "t1PreflightSha256": "8b425880218b81fafde8737c856a6fd0a8cb6ee62a05be690259637e16635785",
+    "t2Qualification": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-transport-t2-live-qualification.v1.json"
+  },
+  "smokeSelection": {
+    "canonicalOrdinal": 1,
+    "semanticRequestHash": "014da482fbda3ceaab891bf0c29bfc9ccc45521db608d416ecfe36fad3df524f",
+    "sourceRequest": "eval/a99-closed-loop/request-architecture-v2/p05-provider-experiment-20260928T033919Z/call-001.request.json"
+  },
+  "providerCalls": 1,
+  "goldRead": false,
+  "productionChanged": false,
+  "rebaselineP05OrT1": false,
+  "request": {
+    "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t2-smoke-20260928T085121Z/smoke-ordinal-001.request.json",
+    "sha256": "eeb2a8dcfc5739155f30b41e6f738b7bacb43cc3aee5b88616e05c7b050e639d",
+    "wire": {
+      "stream": true,
+      "usage": {
+        "include": true
+      },
+      "session_id": null,
+      "cache_control": null,
+      "stream_options": null,
+      "responseCache": "disabled"
+    }
+  },
+  "http": {
+    "status": 200,
+    "reason": "OK"
+  },
+  "transport": {
+    "transportComplete": true,
+    "doneObserved": true,
+    "terminalModelEventObserved": true,
+    "streamLevelError": false,
+    "failureClass": "",
+    "finishReason": "stop",
+    "nativeFinishReason": "stop",
+    "networkChunkCount": 1031,
+    "sseEventCount": 2207,
+    "reasoningChunkCount": 2025,
+    "contentChunkCount": 179
+  },
+  "telemetry": {
+    "T0RequestSentUtc": "2026-09-28T08:51:22.058071+00:00",
+    "tHeadersReceivedMs": 3188,
+    "firstByteLatencyMs": 3195,
+    "firstModelEventLatencyMs": 3354,
+    "timeToFirstSseEventMs": 3342,
+    "timeToFirstReasoningChunkMs": 3355,
+    "timeToFirstContentChunkMs": 70331,
+    "timeToTerminalEventMs": 75573,
+    "terminalEventLatencyMs": 75573,
+    "transportDurationMs": 75581,
+    "providerTransportWallClockMs": 75581,
+    "postTransportParseDurationMs": 11,
+    "totalWallClockMs": 75593,
+    "tUsageMs": 75573,
+    "tDoneMs": 75574
+  },
+  "usage": {
+    "promptTokens": 19651,
+    "cachedTokens": 0,
+    "completionTokens": 8064,
+    "reasoningTokens": 7393
+  },
+  "validation": {
+    "localJsonValid": true,
+    "contractValidAfterReassembly": true,
+    "headings": 9,
+    "issueCodes": []
+  },
+  "files": {
+    "rawNetworkChunks": "smoke-ordinal-001.network-chunks.jsonl",
+    "rawSseEvents": "smoke-ordinal-001.sse-events.jsonl",
+    "reassembledResponse": "smoke-ordinal-001.reassembled-response.json",
+    "contentJson": "smoke-ordinal-001.content.json"
+  }
+}

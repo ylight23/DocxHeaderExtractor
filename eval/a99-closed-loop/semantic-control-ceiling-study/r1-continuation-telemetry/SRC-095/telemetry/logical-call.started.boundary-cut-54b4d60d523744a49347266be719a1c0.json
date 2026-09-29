@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "LOGICAL_CALL_STARTED",
+  "timestamp": "2026-09-27T16:20:41.9600780\u002B00:00",
+  "campaignId": "A99_SEMANTIC_CONTROL_CEILING_R1_CONTINUATION",
+  "documentId": "SRC-095",
+  "stage": "BOUNDARY_CUT",
+  "logicalCallId": "boundary-cut-54b4d60d523744a49347266be719a1c0",
+  "callOrdinal": 13,
+  "requestHash": "ece7c4f958ec96b7f29eea0776fee1205c5c4d7fbdd6cabf4a18c8474edc5f8f",
+  "requestBytes": 139055,
+  "estimatedInputTokens": 22250,
+  "maxOutputTokens": 15456,
+  "candidateCount": 1,
+  "currentNodeCount": 0,
+  "contextItemCount": 1,
+  "contextCharacterCount": 87388,
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash"
+}

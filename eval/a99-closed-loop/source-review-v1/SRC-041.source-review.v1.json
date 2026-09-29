@@ -1,0 +1,130 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC041_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+      "sha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "goldFileRead": false,
+    "countOnlyTotalUsed": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; its blind proposals were committed before the review (10b3317) and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-041/review_tool.py",
+      "sha256": "72afc23afe8435aa609b8d4c1403979c9976e183961066e01f8a93e180aac743"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-041/atom-layout-facts.tsv",
+      "sha256": "c3edcc3abff721a317e2311fb9c8fd0afc548dcad72536508cbd3b486b8a9953"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-041/review-items.json",
+      "sha256": "aab34d18cf39ca210a6fae939c1b9bd7ae987d82281466703c1577f4637f5295"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 10443,
+    "CLEAR_HEADING": 280,
+    "CLEAR_NON_HEADING_SET_APART": 199,
+    "AMBIGUOUS": 0,
+    "PROPOSED_RANGE": {
+      "min": 280,
+      "max": 280
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells and rows, chart values, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 7,
+      "nonHeadings": 4,
+      "ambiguous": 0
+    },
+    {
+      "section": "MDA",
+      "headings": 155,
+      "nonHeadings": 99,
+      "ambiguous": 0
+    },
+    {
+      "section": "NOTES",
+      "headings": 100,
+      "nonHeadings": 69,
+      "ambiguous": 0
+    },
+    {
+      "section": "FS_PART",
+      "headings": 7,
+      "nonHeadings": 15,
+      "ambiguous": 0
+    },
+    {
+      "section": "STATEMENTS",
+      "headings": 11,
+      "nonHeadings": 12,
+      "ambiguous": 0
+    }
+  ],
+  "headingsByPattern": {
+    "APPENDIX_TITLE": 1,
+    "COVER_BLOCK": 1,
+    "EMBEDDED_REPORT": 3,
+    "ITALIC_LOCAL_LABEL": 10,
+    "MDA_SECTION_TITLE": 14,
+    "MDA_SUBHEADING": 133,
+    "NOTES_PART": 1,
+    "NOTE_SUBHEADING": 81,
+    "NOTE_TITLE": 15,
+    "PART_TITLE_BLOCK": 2,
+    "S041_A2_CONTINUED_TITLE": 5,
+    "S041_A3_PART_LABEL_ON_CONTENTS_PAGE": 1,
+    "S041_A5_CONTENTS_GROUP_LABEL": 1,
+    "STATEMENT_TITLE": 7,
+    "TOC_OPENER": 5
+  },
+  "nonHeadingsByPattern": {
+    "CAPTION_CONTINUATION": 5,
+    "CHART_OR_TABLE_INTERNAL": 30,
+    "CONTENTS_ENTRY": 11,
+    "COVER_BLOCK": 2,
+    "NUMBERED_CAPTION": 132,
+    "PART_TITLE_BLOCK": 4,
+    "RUNNING_HEADER": 2,
+    "S041_A4_APPENDIX_TABLE_TITLE": 1,
+    "STATEMENT_SUBTITLE": 12
+  },
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-25",
+    "membershipTotal": 280,
+    "arithmetic": "273 clear + 5 A2 + 1 A3 + 0 A4 + 1 A5 = 280",
+    "principle": "CLASSIFY OCCURRENCES, NOT STRINGS",
+    "patterns": [
+      {
+        "pattern": "S041_A2_CONTINUED_TITLE",
+        "decision": "TRUE x5: real display-title occurrences of a continuing statement or report; REPEAT / CONTINUATION is derived later by identity resolution (semantic claims -> identity resolution -> semanticNodeId -> PRIMARY / REPEAT / CONTINUATION) and does not affect isHeading; no repeatStatus is written"
+      },
+      {
+        "pattern": "S041_A3_PART_LABEL_ON_CONTENTS_PAGE",
+        "decision": "TRUE x1: this occurrence opens the MD&A part and its contents region; the same text atop p4-p5 is a different occurrence (running header, FALSE). Repetition elsewhere does not make this one page furniture"
+      },
+      {
+        "pattern": "S041_A4_APPENDIX_TABLE_TITLE",
+        "decision": "FALSE x1: its scope covers only the list/object directly below it and opens no independent region - an ordinary local object title, equivalent to a caption. A decision on this occurrence's scope, not a rule that titles over lists are false"
+      },
+      {
+        "pattern": "S041_A5_CONTENTS_GROUP_LABEL",
+        "decision": "TRUE x1: not a navigation entry pointing elsewhere; it opens a sub-group of two indented contents entries, like the Tables / Figures / Boxes openers"
+      }
+    ]
+  },
+  "bindingFailures": []
+}

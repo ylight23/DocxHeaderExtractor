@@ -1,0 +1,121 @@
+{
+  "artifactKind": "a99_pilot_real_harness_run",
+  "documentId": "DOC-0255",
+  "sourcePath": "todo10_8/generated-docx-v2/05_bien_ban_hop/075_FORTIS_GC_Minutes_Nov21_2024.docx",
+  "sourceSha256": "3dde848f456267ed7890390e2b0331b801ca25e60a6a8f3e33fe1c4c2d819cc5",
+  "model": "qwen/qwen3.7-flash",
+  "lane": "docx",
+  "placement": false,
+  "repeat": "3",
+  "providerCallsMade": 1,
+  "failure": null,
+  "reason": "docx-canonical-vnext-semantic-authority",
+  "elementCount": 15,
+  "elements": [
+    {
+      "text": "MEETING MINUTES",
+      "sourceIds": [
+        "body[1]/p[1]"
+      ]
+    },
+    {
+      "text": "Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+      "sourceIds": [
+        "body[1]/p[2]"
+      ]
+    },
+    {
+      "text": "Date: November 21, 2024",
+      "sourceIds": [
+        "body[1]/p[3]"
+      ]
+    },
+    {
+      "text": "Opening:",
+      "sourceIds": [
+        "body[1]/p[4]"
+      ]
+    },
+    {
+      "text": "Present:",
+      "sourceIds": [
+        "body[1]/p[6]"
+      ]
+    },
+    {
+      "text": "Item 1: Document Approval.",
+      "sourceIds": [
+        "body[1]/p[12]"
+      ]
+    },
+    {
+      "text": "Item 2: Operating Context.",
+      "sourceIds": [
+        "body[1]/p[21]"
+      ]
+    },
+    {
+      "text": "Item 3: Strategic Directions.",
+      "sourceIds": [
+        "body[1]/p[22]"
+      ]
+    },
+    {
+      "text": "Item 4: Work Plan, Budget, and Fees.",
+      "sourceIds": [
+        "body[1]/p[26]"
+      ]
+    },
+    {
+      "text": "Item 5: Communications Strategy.",
+      "sourceIds": [
+        "body[1]/p[27]"
+      ]
+    },
+    {
+      "text": "Item 6: Appointment of the Chair.",
+      "sourceIds": [
+        "body[1]/p[28]"
+      ]
+    },
+    {
+      "text": "Attachment:Agreed Agenda",
+      "sourceIds": [
+        "body[1]/p[30]"
+      ]
+    },
+    {
+      "text": "AGENDA for FIRST MEETING",
+      "sourceIds": [
+        "body[1]/p[31]"
+      ]
+    },
+    {
+      "text": "Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+      "sourceIds": [
+        "body[1]/p[32]"
+      ]
+    },
+    {
+      "text": "Agenda Items",
+      "sourceIds": [
+        "body[1]/p[33]"
+      ]
+    }
+  ],
+  "ledger": [
+    {
+      "Ordinal": 1,
+      "DocumentId": "DOC-0255",
+      "Repeat": 0,
+      "Stage": "semantic-docx",
+      "SystemPromptSha256": "8b056f1722b356dd9e836908b8d05ad0850353a06fbc0a4aa39db568fd47f0a8",
+      "RequestSha256": "f69e25f086d9dbc7a0916c8bee55f8563387cf340ffc2e41e4a070769d529ec0",
+      "ResponseSha256": "78d75b6e986e88840c74eccd9c606d6e7b409dc1742a3a859fd8a12d3d1547f1",
+      "RequestChars": 23303,
+      "ResponseChars": 4602,
+      "ElapsedMs": 14414,
+      "RawResponse": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceAlias\u0022: \u0022S0001\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022MEETING MINUTES\u0022,\n      \u0022semanticRole\u0022: \u0022title\u0022,\n      \u0022structuralType\u0022: \u0022document_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0002\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)\u0022,\n      \u0022semanticRole\u0022: \u0022subtitle\u0022,\n      \u0022structuralType\u0022: \u0022document_subtitle\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0003\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Date: November 21, 2024\u0022,\n      \u0022semanticRole\u0022: \u0022label\u0022,\n      \u0022structuralType\u0022: \u0022form_label\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0004\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Opening:\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0006\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Present:\u0022,\n      \u0022semanticRole\u0022: \u0022list_header\u0022,\n      \u0022structuralType\u0022: \u0022list_header\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:S0004\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0012\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Item 1: Document Approval.\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0021\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Item 2: Operating Context.\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0022\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Item 3: Strategic Directions.\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0026\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Item 4: Work Plan, Budget, and Fees.\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0027\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Item 5: Communications Strategy.\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0028\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Item 6: Appointment of the Chair.\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0030\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Attachment:Agreed Agenda\u0022,\n      \u0022semanticRole\u0022: \u0022figure_label\u0022,\n      \u0022structuralType\u0022: \u0022figure_label\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0031\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022AGENDA for FIRST MEETING\u0022,\n      \u0022semanticRole\u0022: \u0022title\u0022,\n      \u0022structuralType\u0022: \u0022document_title\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0032\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)\u0022,\n      \u0022semanticRole\u0022: \u0022subtitle\u0022,\n      \u0022structuralType\u0022: \u0022document_subtitle\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:NONE\u0022\n      ]\n    },\n    {\n      \u0022sourceAlias\u0022: \u0022S0033\u0022,\n      \u0022isHeading\u0022: true,\n      \u0022verbatimText\u0022: \u0022Agenda Items\u0022,\n      \u0022semanticRole\u0022: \u0022section_heading\u0022,\n      \u0022structuralType\u0022: \u0022section_heading\u0022,\n      \u0022scope\u0022: \u0022document_body\u0022,\n      \u0022relationHints\u0022: [\n        \u0022parent-node:ROOT\u0022\n      ]\n    }\n  ]\n}"
+    }
+  ]
+}

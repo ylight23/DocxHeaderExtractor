@@ -47,13 +47,6 @@ internal sealed class ProductionCheckpointScope : IAsyncDisposable
         return ValueTask.CompletedTask;
     }
 
-    internal async Task WaitForCleanupAsync()
-    {
-        if (_detachedTasks.Count > 0)
-            await Task.WhenAll(_detachedTasks).ConfigureAwait(false);
-        CleanupNow();
-    }
-
     private async Task CleanupAfterDetachedWorkAsync(IReadOnlyList<Task> detachedTasks)
     {
         try

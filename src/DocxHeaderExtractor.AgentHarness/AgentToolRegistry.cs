@@ -83,11 +83,7 @@ public sealed class AgentToolRegistry : IAgentToolRegistry
                 ? "chỉ một tool phân tích được đăng ký"
                 : $"{permittedCount}/{_extraction.Count} tool hợp lệ, lấy mức rủi ro thấp nhất";
 
-        var wantsAction = request.WantsWriteback
-            ? "ghi outline"
-            : request.WantsKeyPackage
-                ? "tạo key package"
-                : null;
+        var wantsAction = request.WantsWriteback ? "ghi outline" : null;
         var action = wantsAction is not null
             ? _actions.FirstOrDefault(a => a.CanExecute(request)) is { } chosenAction
                 ? $" + {chosenAction.Descriptor.Name}"

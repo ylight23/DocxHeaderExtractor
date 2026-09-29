@@ -1,0 +1,113 @@
+{
+  "artifactKind": "a99_occurrence_baseline_score",
+  "schemaVersion": "a99-occurrence-baseline-score-v1",
+  "experimentId": "A99-S2P-STRUCTURED-BASELINE-V1",
+  "scoredFrom": "persisted provider responses (raw-responses.v1.json)",
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "evaluatorId": "a99-pdf-gold-evaluator-v4-structured-source-parts-semantic-role",
+  "authorityProfile": "STRUCTURED_SOURCE_PARTS",
+  "correction": {
+    "predecessorScoreStatus": "INVALIDATED_BY_STRUCTURED_PROPOSAL_MATERIALIZATION_DEFECT",
+    "rootCause": "STRUCTURED_CONTRACT_EMITS_SOURCEPARTS_BUT_LEGACY_PARSER_REQUIRED_TOP_LEVEL_SOURCEALIAS",
+    "note": "The run recorded 0 proposals for DOC-0252 in all three repeats. The model had answered in the shape the structured contract asked for; the engine decoded every reply with the alias-scalar contract's parser, which requires a top-level sourceAlias, and dropped each entry as unreadable. Decoding is now owned by the contract that issued the schema, and these are the same replies read correctly.",
+    "rawProviderResponsesChanged": false,
+    "providerCallsAdded": 0,
+    "providerRunReused": true,
+    "rawResponsesSha256": "c1122ec1361c7e2895e95261b7c83dd27e4c25933397987ecc4be490833b5df6"
+  },
+  "doc0252": {
+    "goldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+    "goldClaims": 41,
+    "sourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+    "repeats": [
+      {
+        "repeat": 1,
+        "rawResponses": 6,
+        "validatedResponses": 6,
+        "headingProposals": 45,
+        "nonHeadingProposals": 0,
+        "materializationFailures": 0,
+        "bound": 45,
+        "rejected": 0,
+        "rejectionReasons": {},
+        "truePositive": 35,
+        "falsePositive": 10,
+        "falseNegative": 6,
+        "precision": 0.7778,
+        "recall": 0.8537,
+        "f1": 0.814
+      },
+      {
+        "repeat": 2,
+        "rawResponses": 6,
+        "validatedResponses": 6,
+        "headingProposals": 111,
+        "nonHeadingProposals": 0,
+        "materializationFailures": 0,
+        "bound": 110,
+        "rejected": 1,
+        "rejectionReasons": {
+          "OutOfOwnedSegment": 1
+        },
+        "truePositive": 37,
+        "falsePositive": 73,
+        "falseNegative": 4,
+        "precision": 0.3364,
+        "recall": 0.9024,
+        "f1": 0.4901
+      },
+      {
+        "repeat": 3,
+        "rawResponses": 6,
+        "validatedResponses": 6,
+        "headingProposals": 47,
+        "nonHeadingProposals": 0,
+        "materializationFailures": 0,
+        "bound": 47,
+        "rejected": 0,
+        "rejectionReasons": {},
+        "truePositive": 36,
+        "falsePositive": 11,
+        "falseNegative": 5,
+        "precision": 0.766,
+        "recall": 0.878,
+        "f1": 0.8182
+      }
+    ],
+    "micro": {
+      "truePositive": 108,
+      "falsePositive": 94,
+      "falseNegative": 15,
+      "precision": 0.5347,
+      "recall": 0.878,
+      "f1": 0.6646
+    }
+  },
+  "doc0001": {
+    "goldClaims": 7,
+    "repeats": [
+      {
+        "repeat": 1,
+        "headingProposals": 7,
+        "materializationFailures": 0,
+        "goldAliasesMatched": 7,
+        "goldClaims": 7
+      },
+      {
+        "repeat": 2,
+        "headingProposals": 7,
+        "materializationFailures": 0,
+        "goldAliasesMatched": 7,
+        "goldClaims": 7
+      },
+      {
+        "repeat": 3,
+        "headingProposals": 7,
+        "materializationFailures": 0,
+        "goldAliasesMatched": 7,
+        "goldClaims": 7
+      }
+    ]
+  }
+}

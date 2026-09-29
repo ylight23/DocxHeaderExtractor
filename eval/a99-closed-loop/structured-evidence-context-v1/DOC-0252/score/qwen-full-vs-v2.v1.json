@@ -1,0 +1,60 @@
+{
+  "artifactKind": "a99_structured_evidence_context_v2_qwen_score",
+  "schemaVersion": "a99-structured-evidence-context-v2-qwen-score-v1",
+  "documentId": "DOC-0252",
+  "model": "qwen/qwen3.7-flash",
+  "task": "STRUCTURED_EVIDENCE_CONTEXT_V2_EXECUTION",
+  "executionCandidateAuthority": "eval/a99-closed-loop/structured-evidence-context-v2/DOC-0252/execution-candidate.v1.json",
+  "goldSha256": "2ab040e93a06d6c8afa1e6b3daf97350bea7cec45477f8bb23b607abee4c313e",
+  "goldRevision": "R2",
+  "scoringModelCalls": 0,
+  "scoringProviderCalls": 0,
+  "status": "SCORED_OFFLINE",
+  "baseline": {
+    "arm": "FULL_CONTEXT",
+    "note": "Not rerun. Existing frozen Qwen response bytes read from eval/a99-closed-loop/direct-semantic-context-ablation-v1/DOC-0252/full-context/r{1,2,3}, same source already scored in gold-r2-rescore/direct-semantic-context-ablation-score-gold-r2.v1.json.",
+    "F1": { "itemId": "ITEM-505430BB", "expected": "DOCUMENT_LABEL", "correct": 3, "total": 3 },
+    "Agenda": { "itemId": "ITEM-CCE2C592", "expected": "STRUCTURAL_UNIT", "correct": 0, "total": 3, "returnedByRepeat": ["DOCUMENT_LABEL", "DOCUMENT_LABEL", "DOCUMENT_LABEL"] },
+    "F2": { "itemId": "ITEM-2D78F82D", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3 },
+    "F3": { "itemId": "ITEM-968E70AF", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3 },
+    "structuralControls": { "correct": 39, "total": 42 },
+    "documentLabelControl": { "correct": 6, "total": 6 },
+    "confusionMatrix": {
+      "expected/actual": {
+        "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 39, "DOCUMENT_LABEL": 3, "NON_STRUCTURAL": 0 },
+        "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 6, "NON_STRUCTURAL": 0 },
+        "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+      },
+      "totalDecisions": 54, "correct": 51, "accuracy": 0.9444444444444444
+    }
+  },
+  "treatment": {
+    "arm": "FULL_STRUCTURED_CONTEXT_V2",
+    "evidenceRoot": "eval/a99-closed-loop/structured-evidence-context-v1/DOC-0252/execution/qwen/full-structured-context-v2",
+    "note": "New real execution, 9 calls (3 packs x 3 repeats), transportCaptureStatus=TRANSPORT_CAPTURE_COMPLETE and contractStatus=PASS on all 9 captures.",
+    "F1": { "itemId": "ITEM-505430BB", "expected": "DOCUMENT_LABEL", "correct": 3, "total": 3, "returnedByRepeat": ["DOCUMENT_LABEL", "DOCUMENT_LABEL", "DOCUMENT_LABEL"], "delta": "unchanged (already correct under FULL_CONTEXT)" },
+    "Agenda": { "itemId": "ITEM-CCE2C592", "expected": "STRUCTURAL_UNIT", "correct": 2, "total": 3, "returnedByRepeat": ["DOCUMENT_LABEL", "STRUCTURAL_UNIT", "STRUCTURAL_UNIT"], "delta": "IMPROVED: 0/3 -> 2/3" },
+    "F2": { "itemId": "ITEM-2D78F82D", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "delta": "unchanged" },
+    "F3": { "itemId": "ITEM-968E70AF", "expected": "NON_STRUCTURAL", "correct": 3, "total": 3, "delta": "unchanged" },
+    "structuralControls": { "correct": 41, "total": 42, "delta": "IMPROVED: 39/42 -> 41/42 (driven entirely by Agenda; the other 13 structural items were already 39/39 and remain 39/39)" },
+    "documentLabelControl": { "correct": 6, "total": 6, "delta": "unchanged" },
+    "confusionMatrix": {
+      "expected/actual": {
+        "STRUCTURAL_UNIT": { "STRUCTURAL_UNIT": 41, "DOCUMENT_LABEL": 1, "NON_STRUCTURAL": 0 },
+        "DOCUMENT_LABEL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 6, "NON_STRUCTURAL": 0 },
+        "NON_STRUCTURAL": { "STRUCTURAL_UNIT": 0, "DOCUMENT_LABEL": 0, "NON_STRUCTURAL": 6 }
+      },
+      "totalDecisions": 54, "correct": 53, "accuracy": 0.9814814814814815
+    }
+  },
+  "controlRegressions": [],
+  "controlImprovements": [
+    { "itemId": "ITEM-CCE2C592", "control": "Agenda / structuralControls", "from": "0/3", "to": "2/3" }
+  ],
+  "otherSixteenItemsCheck": "All 16 non-F1/non-Agenda items returned identical labels in every repeat under FULL_STRUCTURED_CONTEXT_V2 as under FULL_CONTEXT (verified item-by-item, all 48 decisions match). No new regression or new instability anywhere outside Agenda.",
+  "summary": "For Qwen, structured V2 presentation improves the previously-broken Agenda control (0/3 -> 2/3, still not fully stable) while leaving the already-correct F1 and every other of the 16 remaining controls unchanged. No regression observed for this model.",
+  "rawResponseModified": false,
+  "goldModified": false,
+  "crossGenreGeneralizationEstablished": false,
+  "scope": "DOC-0252 only, one document, one model (Qwen). Not evidence about the remaining corpus."
+}

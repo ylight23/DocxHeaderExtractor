@@ -1,0 +1,76 @@
+{
+  "artifactKind": "SEGMENT_BOUNDARY_INCONSISTENCY_TRACE",
+  "schemaVersion": "v1",
+  "documentId": "DOC-0256",
+  "subject": "DAY 1 omitted while DAY 2/3/4 proposed",
+  "method": "The real request packets were captured from the offline replay, not reconstructed. No provider call.",
+  "segmentation": {
+    "ownedPerSegment": 120,
+    "visibleMargin": 20,
+    "segment0": {
+      "owned": 120,
+      "range": "S0001..S0120",
+      "visible": "S0001..S0140",
+      "proposals": 19
+    },
+    "segment1": {
+      "owned": 105,
+      "range": "S0121..S0225",
+      "visible": "S0101..S0225",
+      "proposals": 4
+    }
+  },
+  "perEntryEvidence": {
+    "identical": true,
+    "compared": [
+      "scope",
+      "tableDepth",
+      "inTableOfContents",
+      "style.StyleId",
+      "style.Bold",
+      "numbering",
+      "markers",
+      "attention"
+    ],
+    "value": {
+      "scope": "table",
+      "tableDepth": 1,
+      "styleBold": true,
+      "markers": [
+        "marker-family:labelled",
+        "marker-signature:Labelled(day):1",
+        "marker-depth:1",
+        "marker-is-path:false"
+      ],
+      "attention": true
+    },
+    "conclusion": "DAY 1 and DAY 2/3/4 carry byte-identical evidence shape. The asymmetry is not in the per-entry facts."
+  },
+  "positionHypothesisRejected": {
+    "claim": "DAY 1 sits at the tail of its segment and so lacks forward structural evidence.",
+    "measured": "S0088 is owned entry 88 of 120, 73 percent through segment 0, with 32 owned entries after it.",
+    "verdict": "REJECTED - position alone does not explain the omission."
+  },
+  "mechanismFound": {
+    "observation": [
+      "The last proposal of segment 0 is S0087 Annex 1: Meeting Agenda, structuralType appendix, immediately preceding S0088 DAY 1.",
+      "After proposing the annex, segment 0 proposed nothing for the remaining 32 owned entries - the whole agenda table, DAY 1 included.",
+      "Segment 1 begins inside that same annex. Its visible window starts at S0101, so S0087 is NOT visible to it.",
+      "With no annex heading in view, segment 1 treated the DAY rows as the structure of the region and proposed DAY 2, DAY 3, DAY 4.",
+      "Both segments agree that the agenda time and session rows are not headings. The DAY row is the only disagreement."
+    ],
+    "cause": "The annex was split across two requests and the governing structural ancestor was not carried into the second. The two halves of one container were framed differently, so one semantic family received two answers.",
+    "class": "CONTEXT_PACKING_SYMMETRY_DEFECT",
+    "notModelOmission": "The model demonstrably understands the DAY family - it proposed three of them in the segment that lacked the annex frame."
+  },
+  "fixDirection": {
+    "proposed": "The visible window is chosen by positional margin only. A segment that continues inside a structural container should also be shown the governing ancestor of its first owned entry, so a container never presents two different frames to two requests.",
+    "notProposed": [
+      "an omission-review pass",
+      "a second model call",
+      "any DAY-specific or table-specific rule"
+    ],
+    "evaluationConstraint": "Changing the packet invalidates this recording. The change cannot be scored offline; it needs a fresh provider run, which is currently gated."
+  },
+  "status": "DIAGNOSED_NOT_FIXED"
+}

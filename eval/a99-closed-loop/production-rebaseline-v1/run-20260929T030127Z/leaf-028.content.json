@@ -1,0 +1,67 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1710:S0",
+          "verbatimText": "A.2. HTTP Frame Types"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1729:S0",
+          "verbatimText": "A.2.1. Prioritization Differences"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1736:S0",
+          "verbatimText": "A.2.2. Field Compression Differences"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1745:S0",
+          "verbatimText": "A.2.3. Flow-Control Differences"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1750:S0",
+          "verbatimText": "A.2.4. Guidance for New Frame Type Definitions"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1761:S0",
+          "verbatimText": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1787:S0",
+          "verbatimText": "A.3. HTTP/2 SETTINGS Parameters"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    }
+  ]
+}

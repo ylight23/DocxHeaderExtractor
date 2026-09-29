@@ -1,0 +1,484 @@
+{
+  "artifactKind": "a99_canonical_gold",
+  "schemaVersion": "a99-canonical-gold-v1",
+  "authorityId": "DOC-0259",
+  "documentId": "DOC-0259",
+  "sourceId": null,
+  "source": {
+    "fileName": "079_ICP_TAG_Minutes_Apr_2024.docx",
+    "mediaType": "DOCX",
+    "sourcePath": "todo10_8/generated-docx-v2/05_bien_ban_hop/079_ICP_TAG_Minutes_Apr_2024.docx",
+    "sourceSha256": "b1af73ad0f471af9e29f6f7ac964436d3d4d19b58215a6a07c11aaa8cb58a2b7",
+    "sourceLineageStatus": "VERIFIED"
+  },
+  "approval": {
+    "authority": "USER",
+    "userFinalApproval": true,
+    "approvalBasis": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "approvedAt": "2026-09-24",
+    "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+    "semanticTruthReusedFrom": [
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0259.semantic-freeze.v1.json"
+    ],
+    "reReviewedDuringConsolidation": false
+  },
+  "semantic": {
+    "headingSetExhaustive": true,
+    "approvedSemanticTotal": 20,
+    "semanticHeadingTotal": 20,
+    "materializedSemanticClaims": 20,
+    "claims": [
+      {
+        "sourceAlias": "S0001",
+        "verbatimText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0002",
+        "verbatimText": "TECHNICAL ADVISORY GROUP",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0005",
+        "verbatimText": "Welcome and meeting objectives",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0009",
+        "verbatimText": "Session I: ICP 2021 cycle results",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0010",
+        "verbatimText": "ICP 2021 results and forecasts",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0027",
+        "verbatimText": "Revised ICP 2017 results",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0033",
+        "verbatimText": "Revised ICP 2017 – ICP 2021 PPP time series",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0038",
+        "verbatimText": "Revised ICP 2017 and ICP 2021 non-benchmark country estimates",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0043",
+        "verbatimText": "Session II: Closing",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0044",
+        "verbatimText": "Next steps, any other business, and closing remarks",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0058",
+        "verbatimText": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0061",
+        "verbatimText": "Agenda",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0062",
+        "verbatimText": "Tuesday, April 30, 2024",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0064",
+        "verbatimText": "SESSION I: ICP 2021 cycle results",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0069",
+        "verbatimText": "SESSION II: Closing",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0072",
+        "verbatimText": "Annex 2: List of Participants",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0073",
+        "verbatimText": "ICP Technical Advisory Group members",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0079",
+        "verbatimText": "ICP experts, guest speakers, and observers",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0083",
+        "verbatimText": "ICP Inter-Agency Coordination Group (IACG)",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      },
+      {
+        "sourceAlias": "S0091",
+        "verbatimText": "World Bank",
+        "selectionMode": "WHOLE_ALIAS",
+        "semanticRole": null
+      }
+    ]
+  },
+  "occurrence": {
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "bindingCoordinateSystem": "SOURCE_ALIAS_PLUS_UTF16_SPAN",
+    "sourceUniverseSha256": "93c7d732eb32fb96c981b5a13cbf6eb87f8112a4fa0d966e7ad94853cd3eba0d",
+    "unavailableReason": null,
+    "claims": [
+      {
+        "headingOrdinal": 0,
+        "sourceAlias": "S0001",
+        "sourceId": "body[1]/p[1]",
+        "exactText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 47
+        },
+        "evidence": "model 3/3 DOCUMENT_LABEL"
+      },
+      {
+        "headingOrdinal": 1,
+        "sourceAlias": "S0002",
+        "sourceId": "body[1]/p[2]",
+        "exactText": "TECHNICAL ADVISORY GROUP",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 24
+        },
+        "evidence": "model 3/3 DOCUMENT_LABEL"
+      },
+      {
+        "headingOrdinal": 2,
+        "sourceAlias": "S0005",
+        "sourceId": "body[1]/p[5]",
+        "exactText": "Welcome and meeting objectives",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 30
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 3,
+        "sourceAlias": "S0009",
+        "sourceId": "body[1]/p[9]",
+        "exactText": "Session I: ICP 2021 cycle results",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 33
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 4,
+        "sourceAlias": "S0010",
+        "sourceId": "body[1]/p[10]",
+        "exactText": "ICP 2021 results and forecasts",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 30
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 5,
+        "sourceAlias": "S0027",
+        "sourceId": "body[1]/p[27]",
+        "exactText": "Revised ICP 2017 results",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 24
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 6,
+        "sourceAlias": "S0033",
+        "sourceId": "body[1]/p[33]",
+        "exactText": "Revised ICP 2017 – ICP 2021 PPP time series",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 43
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 7,
+        "sourceAlias": "S0038",
+        "sourceId": "body[1]/p[38]",
+        "exactText": "Revised ICP 2017 and ICP 2021 non-benchmark country estimates",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 61
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 8,
+        "sourceAlias": "S0043",
+        "sourceId": "body[1]/p[43]",
+        "exactText": "Session II: Closing",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 19
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 9,
+        "sourceAlias": "S0044",
+        "sourceId": "body[1]/p[44]",
+        "exactText": "Next steps, any other business, and closing remarks",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 51
+        },
+        "evidence": "model 3/3 STRUCTURAL"
+      },
+      {
+        "headingOrdinal": 10,
+        "sourceAlias": "S0058",
+        "sourceId": "body[1]/p[58]",
+        "exactText": "International Comparison Program (ICP) TECHNICAL ADVISORY GROUP (TAG)",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 69
+        },
+        "evidence": "model 3/3 DOCUMENT_LABEL"
+      },
+      {
+        "headingOrdinal": 11,
+        "sourceAlias": "S0061",
+        "sourceId": "body[1]/p[61]",
+        "exactText": "Agenda",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 6
+        },
+        "evidence": "model 3/3"
+      },
+      {
+        "headingOrdinal": 12,
+        "sourceAlias": "S0062",
+        "sourceId": "body[1]/p[62]",
+        "exactText": "Tuesday, April 30, 2024",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 23
+        },
+        "evidence": "model 3/3 (2 STRUCTURAL, 1 DOCUMENT_LABEL)"
+      },
+      {
+        "headingOrdinal": 13,
+        "sourceAlias": "S0064",
+        "sourceId": "body[1]/p[64]",
+        "exactText": "SESSION I: ICP 2021 cycle results",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 33
+        },
+        "evidence": "kept: bold agenda session row, model 0/3"
+      },
+      {
+        "headingOrdinal": 14,
+        "sourceAlias": "S0069",
+        "sourceId": "body[1]/p[69]",
+        "exactText": "SESSION II: Closing",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 19
+        },
+        "evidence": "kept: bold agenda session row, model 0/3"
+      },
+      {
+        "headingOrdinal": 15,
+        "sourceAlias": "S0072",
+        "sourceId": "body[1]/p[72]",
+        "exactText": "Annex 2: List of Participants",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 29
+        },
+        "evidence": "model 3/3"
+      },
+      {
+        "headingOrdinal": 16,
+        "sourceAlias": "S0073",
+        "sourceId": "body[1]/p[73]",
+        "exactText": "ICP Technical Advisory Group members",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 36
+        },
+        "evidence": "model 3/3"
+      },
+      {
+        "headingOrdinal": 17,
+        "sourceAlias": "S0079",
+        "sourceId": "body[1]/p[79]",
+        "exactText": "ICP experts, guest speakers, and observers",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 42
+        },
+        "evidence": "model 3/3"
+      },
+      {
+        "headingOrdinal": 18,
+        "sourceAlias": "S0083",
+        "sourceId": "body[1]/p[83]",
+        "exactText": "ICP Inter-Agency Coordination Group (IACG)",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 42
+        },
+        "evidence": "model 3/3"
+      },
+      {
+        "headingOrdinal": 19,
+        "sourceAlias": "S0091",
+        "sourceId": "body[1]/p[91]",
+        "exactText": "World Bank",
+        "selectionMode": "WHOLE_ALIAS",
+        "verbatimText": null,
+        "semanticRole": null,
+        "utf16Span": {
+          "start": 0,
+          "end": 10
+        },
+        "evidence": "model 3/3"
+      }
+    ]
+  },
+  "capabilities": {
+    "semanticCountAuthoritative": true,
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false
+  },
+  "provenance": [
+    {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0259.semantic-freeze.v1.json",
+      "sha256": "9cc80245a102d4c1aec22bb40853859547ffef768bc2f342f67eae3e3385e06f",
+      "role": "SEMANTIC_AUTHORITY"
+    },
+    {
+      "path": "gold-correction:DOC-0259:itemised-total-18-to-20:2026-09-24",
+      "sha256": "9a13cba09da87488b3dc78c485fd0f4636a3cd4b3bea236cd08520b5fcedd12a",
+      "role": "GOLD_CORRECTION_PREDECESSOR"
+    },
+    {
+      "path": "eval/a99-closed-loop/generated-docx-v2/DOC-0259.conversion-manifest.v1.json",
+      "sha256": "2f257c116468e6dd200812a253a0ce94fc97b7a615e0cfcfe83199d3bc2ffe15",
+      "role": "SOURCE_REGENERATION"
+    },
+    {
+      "path": "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0259/docx-r1.v1.json",
+      "sha256": "c4b62f7b299abc6b6894dadda446a0d468220d6be0c73f0e9148051db947951e",
+      "role": "PILOT_EVIDENCE"
+    },
+    {
+      "path": "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0259/docx-r2.v1.json",
+      "sha256": "7e8d3d3c5d2d8e627ed025e32261cbcd03dbc05e91a4fcbebbcfc7cd56501f23",
+      "role": "PILOT_EVIDENCE"
+    },
+    {
+      "path": "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0259/docx-r3.v1.json",
+      "sha256": "bd3c5ff4cb97cdd738ed80f2f5ee859957858a0d77219172679c1ad84d8af8b3",
+      "role": "PILOT_EVIDENCE"
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0
+}

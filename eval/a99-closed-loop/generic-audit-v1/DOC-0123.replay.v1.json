@@ -1,0 +1,2181 @@
+{
+  "artifactKind": "a99_generic_audit_replay",
+  "engine": "GENERIC_AUDIT_ENGINE_V1",
+  "documentId": "DOC-0123",
+  "proposalsSha256": "a8d4730e84f809023b453160d4e6e2264c6028d76144a5dba9bbca1a85eb8cb1",
+  "goldTotal": 359,
+  "membership": {
+    "truePositives": 329,
+    "falsePositives": 18,
+    "falseNegativesProposedForReview": 24,
+    "falseNegativesProposedFalse": 6,
+    "nonGoldProposedForReview": 118,
+    "exactCompositeMatches": 319,
+    "compositeMismatches": [
+      {
+        "goldAliases": [
+          "S0073",
+          "S0074",
+          "S0075",
+          "S0076"
+        ],
+        "engineAliases": [
+          "S0073",
+          "S0074"
+        ],
+        "goldText": "Request for Proposals Works (Design and Build) (After Initial Selection)",
+        "engineText": "Request for Proposals Works"
+      },
+      {
+        "goldAliases": [
+          "S0104",
+          "S0105",
+          "S0106",
+          "S0107"
+        ],
+        "engineAliases": [
+          "S0104",
+          "S0105"
+        ],
+        "goldText": "Request for Proposals Works Design and Build (Single-Stage RFP after Initial Selection)",
+        "engineText": "Request for Proposals Works"
+      },
+      {
+        "goldAliases": [
+          "S1007"
+        ],
+        "engineAliases": [
+          "S1007",
+          "S1008"
+        ],
+        "goldText": "Appendix to Proposal",
+        "engineText": "Appendix to Proposal Schedule of Cost Indexation"
+      },
+      {
+        "goldAliases": [
+          "S1008"
+        ],
+        "engineAliases": [
+          "S1007",
+          "S1008"
+        ],
+        "goldText": "Schedule of Cost Indexation",
+        "engineText": "Appendix to Proposal Schedule of Cost Indexation"
+      },
+      {
+        "goldAliases": [
+          "S1380",
+          "S1381"
+        ],
+        "engineAliases": [
+          "S1380"
+        ],
+        "goldText": "ATTACHMENT 1 TO THE CODE OF CONDUCT FORM BEHAVIORS CONSTITUTING SEXUAL EXPLOITATION AND ABUSE (SEA) AND BEHAVIORS CONSTITUTING SEXUAL HARASSMENT (SH",
+        "engineText": "ATTACHMENT 1 TO THE CODE OF CONDUCT FORM"
+      },
+      {
+        "goldAliases": [
+          "S1440"
+        ],
+        "engineAliases": [
+          "S1440",
+          "S1441"
+        ],
+        "goldText": "Resume and Declaration",
+        "engineText": "Resume and Declaration Contractor’s Representative and Key Personnel"
+      },
+      {
+        "goldAliases": [
+          "S1441"
+        ],
+        "engineAliases": [
+          "S1440",
+          "S1441"
+        ],
+        "goldText": "Contractor’s Representative and Key Personnel",
+        "engineText": "Resume and Declaration Contractor’s Representative and Key Personnel"
+      },
+      {
+        "goldAliases": [
+          "S3169",
+          "S3170"
+        ],
+        "engineAliases": [
+          "S3169"
+        ],
+        "goldText": "Environmental and Social (ES ) Performance Security ES Demand Guarantee",
+        "engineText": "Environmental and Social (ES ) Performance Security"
+      },
+      {
+        "goldAliases": [
+          "S3183",
+          "S3184"
+        ],
+        "engineAliases": [
+          "S3183"
+        ],
+        "goldText": "Advance Payment Security Demand Guarantee",
+        "engineText": "Advance Payment Security"
+      },
+      {
+        "goldAliases": [
+          "S3200",
+          "S3201"
+        ],
+        "engineAliases": [
+          "S3200"
+        ],
+        "goldText": "Retention Money Security Demand Guarantee",
+        "engineText": "Retention Money Security"
+      }
+    ]
+  },
+  "axisDisagreementsOnTruePositives": {
+    "primaryFunction": 55,
+    "scope": 170,
+    "roles": 0,
+    "scopePairs": {
+      "CLAUSE <- engine SECTION": 100,
+      "DOCUMENT <- engine SECTION": 4,
+      "DOCUMENT_PART <- engine SECTION": 10,
+      "EMBEDDED_ARTIFACT <- engine SECTION": 3,
+      "FORM <- engine SECTION": 44,
+      "FORM <- engine TOC": 5,
+      "SECTION <- engine DOCUMENT": 2,
+      "SECTION <- engine TOC": 2
+    }
+  },
+  "genericity": {
+    "documentIdReferences": 0,
+    "sourcePathOrGoldReferences": 0,
+    "absoluteTypographyOrPageGates": 0,
+    "literalTextComparisonsInEngine": 0,
+    "regexInEngine": 0,
+    "literalTextOutsideLexicalShapes": 0,
+    "goldTotalLiterals": 0,
+    "lexicalShapes": [
+      "IsFiguresOnly",
+      "IsBuiltInContentsStyle",
+      "IsDate",
+      "IsNumberedCaption",
+      "IsStructuralLabel",
+      "IsBareStructuralLabel",
+      "IsFillInField",
+      "IsBracketedNote",
+      "IsFootnoteLead",
+      "IsParentheticalStatus",
+      "HasTrailingPageNumber",
+      "EndsSentence",
+      "EndsWithColon"
+    ],
+    "modelCalls": 0
+  },
+  "falseNegativesForReview": [
+    {
+      "goldText": "STANDARD PROCUREMENT DOCUMENT Request for Proposals Works Design and Build (Single-Stage Request for Proposals, after Initial Selection)",
+      "engineText": "STANDARD PROCUREMENT DOCUMENT",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "March 2025",
+      "engineText": "March 2025",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "date shape",
+        "stands alone over its own prose"
+      ]
+    },
+    {
+      "goldText": "July 2023",
+      "engineText": "July 2023",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "date shape",
+        "stands alone over its own prose"
+      ]
+    },
+    {
+      "goldText": "January 2021",
+      "engineText": "January 2021",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "date shape",
+        "stands alone over its own prose"
+      ]
+    },
+    {
+      "goldText": "December 2019",
+      "engineText": "December 2019",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "date shape",
+        "stands alone over its own prose"
+      ]
+    },
+    {
+      "goldText": "Notice of Request for Proposals",
+      "engineText": "Notice of Request for Proposals",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Technical Part",
+      "engineText": "Technical Part",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Financial Part",
+      "engineText": "Financial Part",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Proposal Forms",
+      "engineText": "Proposal Forms",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Examples of sexual harassment in a work context",
+      "engineText": "Examples of sexual harassment in a work context",
+      "engineRoles": [
+        "REGION_OPENER"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 4 body line(s) before a peer"
+      ]
+    },
+    {
+      "goldText": "Personnel",
+      "engineText": "Personnel",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Subcontractors",
+      "engineText": "Subcontractors",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Section VII. Employer’s Requirements",
+      "engineText": "Section VII. Employer’s Requirements",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Employer’s Requirements",
+      "engineText": "Employer’s Requirements",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Drawings",
+      "engineText": "Drawings Supplementary Information",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "one label over 2 source occurrences",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Supplementary Information",
+      "engineText": "Drawings Supplementary Information",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "one label over 2 source occurrences",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Appendix- General Conditions of DAAB Agreement",
+      "engineText": "Appendix- General Conditions of DAAB Agreement",
+      "engineRoles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 13 body line(s) before a peer",
+        "followed by 8 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "goldText": "Definitions",
+      "engineText": "Definitions",
+      "engineRoles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 13 body line(s) before a peer",
+        "followed by 7 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "goldText": "General provisions",
+      "engineText": "General provisions",
+      "engineRoles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 12 body line(s) before a peer",
+        "followed by 6 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "goldText": "Warranties",
+      "engineText": "Warranties",
+      "engineRoles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 12 body line(s) before a peer",
+        "followed by 4 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "goldText": "Part D- Environmental and Social (ES)",
+      "engineText": "Part D- Environmental and Social (ES)",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Metrics for regular reporting:",
+      "engineText": "Metrics for regular reporting:",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Particular Conditions",
+      "engineText": "Particular Conditions",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "goldText": "Section X - Contract Forms",
+      "engineText": "Section X - Contract Forms",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    }
+  ],
+  "falseNegativesProposedFalseItems": [
+    {
+      "goldText": "Table of Content",
+      "engineText": "Table of Content",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 13 body line(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "Table of Content",
+      "engineText": "Table of Content",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 40 body line(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "Table of Forms",
+      "engineText": "Table of Forms",
+      "engineRoles": [
+        "NAVIGATION"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 37 body line(s) before a peer",
+        "followed by 3 table/figure item(s) before a peer",
+        "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+      ]
+    },
+    {
+      "goldText": "1. Purpose",
+      "engineText": null,
+      "engineRoles": null,
+      "engineEvidence": null
+    },
+    {
+      "goldText": "SEA and/or SH Declaration",
+      "engineText": "SEA and/or SH Declaration",
+      "engineRoles": [
+        "LOCAL_LABEL"
+      ],
+      "engineEvidence": [
+        "set apart weakly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 10 table/figure item(s) before a peer",
+        "inside a table or a row of figures"
+      ]
+    },
+    {
+      "goldText": "Other Proposers",
+      "engineText": "Other Proposers [INSTRUCTIONS: insert names of all Proposers that submitted a Proposal, Proposal prices as read out and evaluated, technical and combined scores.]",
+      "engineRoles": [
+        "BODY_CONTENT"
+      ],
+      "engineEvidence": [
+        "set apart strongly from the body text",
+        "followed by 31 table/figure item(s) before a peer"
+      ]
+    }
+  ],
+  "falsePositives": [
+    {
+      "text": "PART 1 Request for Proposal Procedures",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "numbered structural label shape"
+      ]
+    },
+    {
+      "text": "PART 2 Employer’s Requirements",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 8 table/figure item(s) before a peer",
+        "numbered structural label shape"
+      ]
+    },
+    {
+      "text": "PART 3 Conditions of Contract and Contract Forms",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 7 table/figure item(s) before a peer",
+        "numbered structural label shape"
+      ]
+    },
+    {
+      "text": "sign the Contract in accordance with ITP 53; or",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 13 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 3 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "sign the Contract in accordance with ITP 53; or",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 9 body line(s) before a peer",
+        "followed by 2 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "affect in any substantial way the scope, quality, or performance of the Works specified in the Contract; or",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 17 body line(s) before a peer",
+        "followed by 3 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Or",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "X = weight for Cost as specified in the PDS",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "Sample Schedule of Priced Activities Table",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Sample Schedule of Priced Sub-activities Table",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 11 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Form PER -1",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 19 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Form PER-2:",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 6 body line(s) before a peer",
+        "followed by 7 lesser label(s) before a peer",
+        "followed by 27 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "FIDIC code: ISBN13: 978-2-88432-082-5",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "followed by 6 lesser label(s) before a peer",
+        "followed by 31 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Sub-Clause 1.1.91 to 1.1.96 are added after Sub-Clause 1.1.90",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 15 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 24 table/figure item(s) before a peer",
+        "numbered structural label shape"
+      ]
+    },
+    {
+      "text": "Sub-Clause 4.18 Protection of the Environment is replaced with:",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 24 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "numbered structural label shape"
+      ]
+    },
+    {
+      "text": "The Sub-Clause is replaced with the following:",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 23 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "OR",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 14 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer"
+      ]
+    },
+    {
+      "text": "OR",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 11 body line(s) before a peer"
+      ]
+    }
+  ],
+  "nonGoldForReview": [
+    {
+      "text": "March 2025",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "date shape",
+        "stands alone over its own prose"
+      ]
+    },
+    {
+      "text": "Chief Procurement Officer The World Bank",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "http://www.worldbank.org",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "To: [Proposer’s name and address]",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "if a Proposer withdraws its Proposal prior to the expiry date of the Proposal validity specified by the Proposer on the Letter of Proposal or any extended date provided by the Proposer ; or if the successful Proposer fails to:",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 9 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 2 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP Reference",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 19 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 1.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 19 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 2.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 18 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 17 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 1.3 (a)",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 19 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "“Electronic – Procurement System",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 20 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 4.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 21 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 4.5",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 21 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 7.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 22 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 14 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 7.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 26 body line(s) before a peer",
+        "followed by 14 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 7.4",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 26 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 11.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 28 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 9 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 12.2(k)",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 28 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 9 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Code of Conduct for Contractor’s Personnel (ES)",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 27 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 10 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 12.3 (e)",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 27 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 10 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 14.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 27 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 10 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 15.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 26 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 11 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "and/or",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 26 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 11 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 15.3",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 23 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 16.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 22 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Alternative A (Proposers to quote entirely in local currency):",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 22 body line(s) before a peer",
+        "followed by 5 lesser label(s) before a peer",
+        "followed by 13 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Alternative B (Proposers allowed to quote in local and foreign currencies):",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 22 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 14 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 19",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 21 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 22.1(b)",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 8 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 23.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 8 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 31.2",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 15 body line(s) before a peer",
+        "followed by 10 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Code of Conduct",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 9 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Work Program",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 9 lesser label(s) before a peer",
+        "followed by 15 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Risk assessment and proposed management plan",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 8 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "ITP 34.1",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 16 body line(s) before a peer",
+        "followed by 8 lesser label(s) before a peer",
+        "followed by 16 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "a. High/Substantial Procurement Risk and High Value between 50% to 80%",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "and",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "`",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 5 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "If not applicable state ‘Not Applicable’",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 4 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "INSTRUCTIONS TO PROPOSERS",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 28 body line(s) before a peer",
+        "followed by 7 lesser label(s) before a peer",
+        "followed by 5 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "ENCLOSURE(S):",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "INSTRUCTIONS TO PROPOSERS",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 4 lesser label(s) before a peer"
+      ]
+    },
+    {
+      "text": "ENCLOSURE(S):",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "where:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 9 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Table B. Foreign Currency (FC)",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 18 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "Table: Alternative A",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 1 body line(s) before a peer",
+        "followed by 24 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "(C) [sum]",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 2 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 5 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "(E) [sum]",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 2 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 2 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "If not already stated in the Contract Data, this section may include:",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Table of Instalments",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Currencies of payment, Applicable exchange rates, Plant and Materials- If GC Sub-Clause 14.5 applies:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 3 source occurrences",
+        "followed by 3 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Design Proposal",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Construction Management Strategy",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Method Statements for construction activities",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Sustainable Procurement Proposal",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Code of Conduct for Contractor’s Personnel (ES)",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Work Program",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Contractor’s Personnel Organization Chart",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Risk Assessment and Proposed Management Plan",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Contractor’s Equipment",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Subcontractors",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Others",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Examples:",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "foundation excavation; erection of steel structures; prevention of Sexual Exploitation, and Abuse (SEA); management of traffic including construction traffic",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 4 source occurrences",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Note to the Employer:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "FOR CONTRACTOR’S PERSONNEL:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 7 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Form EQU",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Commitment",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 3 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Details",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 2 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Commitment to duration of contract:",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 1 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Time commitment:",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "Countersignature of authorized representative of the Proposer:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Form ELI 1.1",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Form ELI 1.2",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Form CON – 2",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Form CON – 3",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Form CON – 4",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "(a) have not been subject to disqualification by the Bank for non-compliance with SEA/ SH obligations",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 7 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer",
+        "followed by 7 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "Form CCC",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Form FIN 3.3",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Beneficiary:",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Request for Proposals No:",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Date:",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "PROPOSAL GUARANTEE No.:",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Guarantor:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Alternative No.:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 15 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "4.23 (c)",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 4 body line(s) before a peer",
+        "followed by 3 lesser label(s) before a peer",
+        "followed by 12 table/figure item(s) before a peer"
+      ]
+    },
+    {
+      "text": "The Employer shall specify, as applicable, Biodiversity Conservation and Sustainable Management of Living Natural Resources (see ESF - ESS6 and relevant guidance notes). This includes, as applicable: invasive alien species: managing the risk of invasive alien species during the execution of the Works; sustainable management of living natural resources; and",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 3 source occurrences",
+        "followed by 2 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "In preparing detailed specifications for ES requirements, the specialists should refer to and consider: relevant project reports consent/permit conditions required standards including World Bank Group EHS Guidelines",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 3 source occurrences",
+        "followed by 1 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "relevant international conventions or treaties etc., national legal and/or regulatory requirements and standards (where these represent higher standards than the WBG EHS Guidelines) relevant international standards e.g. WHO Guidelines for Safe Use of Pesticides relevant sector standards e.g. EU Council Directive 91/271/EEC Concerning Urban Waste Water Treatment",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 3 source occurrences",
+        "followed by 4 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "The information may include:",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Topographic survey",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Environmental and social baseline data",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Ground investigation data",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Ground condition information",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Utility records",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Land ownership information",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Details of known accommodation works requirements",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 1 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "Statuary planning and zoning constraints",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Orders consents permits, licenses and compliance requirements",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "As built records of existing infrastructure",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Details of any risks or hazards",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Any other physical constraints",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "*These percentages shall also be applied to each half of the Retention Money under Sub-Clause 14.9",
+      "roles": [
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "a peer or stronger label follows directly: opens nothing"
+      ]
+    },
+    {
+      "text": "Table: Summary of Milestones (if any)",
+      "roles": [
+        "CAPTION",
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 8 table/figure item(s) before a peer",
+        "numbered caption shape",
+        "but prose, not a table or figure, follows it"
+      ]
+    },
+    {
+      "text": "The first paragraph is replaced with the following:",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 27 body line(s) before a peer",
+        "followed by 1 lesser label(s) before a peer",
+        "followed by 12 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "The following Sub-Clauses 6.13 to 6.27 are added after Sub-clause 6.12",
+      "roles": [
+        "REGION_OPENER",
+        "LOCAL_LABEL"
+      ],
+      "evidence": [
+        "set apart strongly from the body text",
+        "followed by 20 body line(s) before a peer",
+        "followed by 20 table/figure item(s) before a peer",
+        "inside a table or a row of figures",
+        "yet opens prose, not table rows"
+      ]
+    },
+    {
+      "text": "environmental incidents or non-compliances with contract requirements, including contamination, pollution or damage to ground or water supplies; health and safety incidents, accidents, injuries that require treatment and all fatalities; interactions with regulators: identify agency, dates, subjects, outcomes (report the negative if none); status of all permits and agreements:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 4 source occurrences",
+        "followed by 6 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "health and safety supervision:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 2 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "worker accommodations:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "gender (for expats and locals separately): number of female workers, percentage of workforce, gender issues raised and dealt with (cross-reference grievances or other sections as needed); training:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 4 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "environmental and social supervision:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 6 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "l. Traffic, road safety and vehicles/equipment:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "Environmental mitigations and issues (what has been done):",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 8 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "compliance:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    },
+    {
+      "text": "directly or indirectly holding 25% or more of the shares directly or indirectly holding 25% or more of the voting rights",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 1 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "INSTRUCTIONS TO PROPOSERS: DELETE THIS BOX ONCE YOU HAVE COMPLETED THE FORM",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 5 body line(s) before a peer",
+        "followed by 2 lesser label(s) before a peer"
+      ]
+    },
+    {
+      "text": "directly or indirectly holding 25% or more of the shares directly or indirectly holding 25% or more of the voting rights",
+      "roles": [
+        "REGION_OPENER"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "one label over 2 source occurrences",
+        "followed by 3 body line(s) before a peer"
+      ]
+    },
+    {
+      "text": "(ii) We declare that there is no Beneficial Owner meeting one or more of the following conditions:",
+      "roles": [
+        "REGION_OPENER",
+        "FIELD_LABEL"
+      ],
+      "evidence": [
+        "set apart weakly from the body text",
+        "followed by 3 body line(s) before a peer",
+        "colon-ended label"
+      ]
+    }
+  ]
+}

@@ -18,7 +18,6 @@
     <ProjectReference Include="..\DocxHeaderExtractor.DocumentProcessing\DocxHeaderExtractor.DocumentProcessing.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Infrastructure\DocxHeaderExtractor.Infrastructure.csproj" />
     <!-- Explicit evaluation boundary: only the CLI's eval commands reference this project. -->
-    <ProjectReference Include="..\DocxHeaderExtractor.Eval\DocxHeaderExtractor.Eval.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,2366 @@
+{
+  "artifactKind": "a99_openrouter_streaming_t5a_regression_localization",
+  "status": "T5A_PROVIDER_FREE_REGRESSION_LOCALIZATION_COMPLETE",
+  "candidate": "T3B_P05_STREAMING_REASONING_NONE_VS_V4R2_P05_MEDIUM",
+  "providerCalls": 0,
+  "goldRead": true,
+  "productionPromotion": false,
+  "runtimeRuleStatus": "DIAGNOSTIC_ONLY_GOLD_DEPENDENT_NOT_A_RUNTIME_TRIGGER",
+  "lineage": {
+    "t3c": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3c-efficiency-heavy-leaf-audit.v1.json",
+      "sha256": "dd101ec182aee5700865dd5b2543cfaffb1b769baff0c85647f8885dd3ca635b"
+    },
+    "p05Manifest": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/v4r2-p05-accepted-response-manifest.v1.json",
+      "sha256": "e92fd7ef4bfd8c6bfa31f332762ee0c35f6c7d1b74265e4d77838c79f5863952"
+    }
+  },
+  "methodology": {
+    "parentOrdinalAggregation": "adaptive children aggregate to parent ordinal",
+    "ownerAssignment": "whole-owned-alias identity mapping; multipart/unassigned identities are reported by scorer authority",
+    "metric": "netGain = TP_gain - max(FP_delta,0)",
+    "extraCompletionTokensAvailable": false
+  },
+  "summary": {
+    "ordinals": 31,
+    "benefitFromMedium": 4,
+    "neutral": 26,
+    "harmedByMedium": 1
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "goldClaims": 36,
+      "noneHeadline": {
+        "Tp": 27,
+        "Fp": 3,
+        "Fn": 9,
+        "MemberClaims": 30
+      },
+      "mediumHeadline": {
+        "Tp": 30,
+        "Fp": 3,
+        "Fn": 6,
+        "MemberClaims": 33
+      },
+      "byOrdinal": [
+        {
+          "ordinal": 1,
+          "documentId": "SRC-089",
+          "none": {
+            "Tp": 5,
+            "Fp": 1,
+            "Fn": 0,
+            "MemberClaims": 6
+          },
+          "medium": {
+            "Tp": 5,
+            "Fp": 1,
+            "Fn": 0,
+            "MemberClaims": 6
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 104,
+            "primaryInputBytes": 70123,
+            "promptTokens": 19653,
+            "completionTokens": 789,
+            "reasoningTokens": 0,
+            "claimCount": 8,
+            "memberClaimCount": 8,
+            "memberClaimRate": 1,
+            "firstContentMs": 3494,
+            "wallClockMs": 9787,
+            "semanticRequestHash": "014da482fbda3ceaab891bf0c29bfc9ccc45521db608d416ecfe36fad3df524f"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 2,
+          "documentId": "SRC-089",
+          "none": {
+            "Tp": 6,
+            "Fp": 0,
+            "Fn": 2,
+            "MemberClaims": 6
+          },
+          "medium": {
+            "Tp": 6,
+            "Fp": 0,
+            "Fn": 2,
+            "MemberClaims": 6
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 70540,
+            "promptTokens": 19723,
+            "completionTokens": 703,
+            "reasoningTokens": 0,
+            "claimCount": 7,
+            "memberClaimCount": 7,
+            "memberClaimRate": 1,
+            "firstContentMs": 1938,
+            "wallClockMs": 7900,
+            "semanticRequestHash": "482d12e578dc9513e8267f706ae40b979f18d734634c19becd14c40dbc7457af"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 3,
+          "documentId": "SRC-089",
+          "none": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 2,
+            "MemberClaims": 4
+          },
+          "medium": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 2,
+            "MemberClaims": 4
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 70026,
+            "promptTokens": 19671,
+            "completionTokens": 413,
+            "reasoningTokens": 0,
+            "claimCount": 5,
+            "memberClaimCount": 5,
+            "memberClaimRate": 1,
+            "firstContentMs": 3521,
+            "wallClockMs": 6867,
+            "semanticRequestHash": "78ad6f0ce8b31cfd5b16e0989ab3cfa299fdab163cfaa3988ca15bcdc8b71c83"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 4,
+          "documentId": "SRC-089",
+          "none": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "medium": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 71267,
+            "promptTokens": 20156,
+            "completionTokens": 655,
+            "reasoningTokens": 0,
+            "claimCount": 9,
+            "memberClaimCount": 9,
+            "memberClaimRate": 1,
+            "firstContentMs": 1828,
+            "wallClockMs": 7609,
+            "semanticRequestHash": "60306c578971dcc01c7d2eab0ba2de0639be82be88afce43d2c79ed7bdb67f4b"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 5,
+          "documentId": "SRC-089",
+          "none": {
+            "Tp": 0,
+            "Fp": 2,
+            "Fn": 1,
+            "MemberClaims": 2
+          },
+          "medium": {
+            "Tp": 3,
+            "Fp": 2,
+            "Fn": 0,
+            "MemberClaims": 5
+          },
+          "delta": {
+            "tpGain": 3,
+            "fpDelta": 0,
+            "fnRecovered": 1,
+            "netGain": 3
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 70788,
+            "promptTokens": 20109,
+            "completionTokens": 491,
+            "reasoningTokens": 0,
+            "claimCount": 6,
+            "memberClaimCount": 6,
+            "memberClaimRate": 1,
+            "firstContentMs": 2273,
+            "wallClockMs": 6631,
+            "semanticRequestHash": "66a2a492d19a8e18e005ab62bf368706c278f00a31bb3cc6242ef1ec56a0a64d"
+          },
+          "classification": "BENEFIT_FROM_MEDIUM"
+        },
+        {
+          "ordinal": 6,
+          "documentId": "SRC-089",
+          "none": {
+            "Tp": 8,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 8
+          },
+          "medium": {
+            "Tp": 8,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 8
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 110,
+            "primaryInputBytes": 70731,
+            "promptTokens": 20396,
+            "completionTokens": 678,
+            "reasoningTokens": 0,
+            "claimCount": 8,
+            "memberClaimCount": 8,
+            "memberClaimRate": 1,
+            "firstContentMs": 1928,
+            "wallClockMs": 7464,
+            "semanticRequestHash": "e367cac4711a0c7830b8076676083163f4f4bb7265921824a56f2b5875d07c9d"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 7,
+          "documentId": "SRC-089",
+          "none": {
+            "Tp": 0,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 0
+          },
+          "medium": {
+            "Tp": 0,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 0
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 6,
+            "visibleAtomCount": 14,
+            "primaryInputBytes": 7330,
+            "promptTokens": 1973,
+            "completionTokens": 388,
+            "reasoningTokens": 0,
+            "claimCount": 5,
+            "memberClaimCount": 5,
+            "memberClaimRate": 1,
+            "firstContentMs": 789,
+            "wallClockMs": 4439,
+            "semanticRequestHash": "8a7600899cd7b7d93faa319c7ced8448e2956bf449fafbbf0865f69f02bd60ea"
+          },
+          "classification": "NEUTRAL"
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "goldClaims": 103,
+      "noneHeadline": {
+        "Tp": 87,
+        "Fp": 50,
+        "Fn": 16,
+        "MemberClaims": 137
+      },
+      "mediumHeadline": {
+        "Tp": 90,
+        "Fp": 58,
+        "Fn": 13,
+        "MemberClaims": 148
+      },
+      "byOrdinal": [
+        {
+          "ordinal": 8,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 4,
+            "Fp": 1,
+            "Fn": 1,
+            "MemberClaims": 5
+          },
+          "medium": {
+            "Tp": 4,
+            "Fp": 1,
+            "Fn": 1,
+            "MemberClaims": 5
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 104,
+            "primaryInputBytes": 69299,
+            "promptTokens": 20064,
+            "completionTokens": 4473,
+            "reasoningTokens": 0,
+            "claimCount": 70,
+            "memberClaimCount": 70,
+            "memberClaimRate": 1,
+            "firstContentMs": 2153,
+            "wallClockMs": 35263,
+            "semanticRequestHash": "cae6332355c3f265cc97ab5016e302681f5cd45f6cabd29708f50a574f66cb5e"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 9,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 5,
+            "Fp": 33,
+            "Fn": 0,
+            "MemberClaims": 38
+          },
+          "medium": {
+            "Tp": 5,
+            "Fp": 29,
+            "Fn": 0,
+            "MemberClaims": 34
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": -4,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 70717,
+            "promptTokens": 20488,
+            "completionTokens": 2576,
+            "reasoningTokens": 0,
+            "claimCount": 40,
+            "memberClaimCount": 40,
+            "memberClaimRate": 1,
+            "firstContentMs": 1981,
+            "wallClockMs": 21810,
+            "semanticRequestHash": "3dfd6cd8e167a0f389f72ed52e96e18afcd6cc89884dca955a03ab7895185b10"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 10,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "medium": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 68752,
+            "promptTokens": 20110,
+            "completionTokens": 5797,
+            "reasoningTokens": 0,
+            "claimCount": 60,
+            "memberClaimCount": 60,
+            "memberClaimRate": 1,
+            "firstContentMs": 1907,
+            "wallClockMs": 45748,
+            "semanticRequestHash": "d153ff4af0e5afaf0e48b20b3da36dbbe5556ac4d3d043d5b663df4dd5ae5f79"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 11,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 5,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 5
+          },
+          "medium": {
+            "Tp": 5,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 5
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 70521,
+            "promptTokens": 20374,
+            "completionTokens": 5273,
+            "reasoningTokens": 0,
+            "claimCount": 15,
+            "memberClaimCount": 15,
+            "memberClaimRate": 1,
+            "firstContentMs": 2167,
+            "wallClockMs": 43403,
+            "semanticRequestHash": "3a3d909ef64cdb93d5bbd1a2aa2668aa023f5a458de0c79a2a9d4cefa58f275f"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 12,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "medium": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 69936,
+            "promptTokens": 20300,
+            "completionTokens": 207,
+            "reasoningTokens": 0,
+            "claimCount": 3,
+            "memberClaimCount": 3,
+            "memberClaimRate": 1,
+            "firstContentMs": 1949,
+            "wallClockMs": 3702,
+            "semanticRequestHash": "61ffa63281416b7a5154aa68deee93b97ccf5e95ab3b7364f2b833c837b016be"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 13,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 6,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 6
+          },
+          "medium": {
+            "Tp": 6,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 6
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 70269,
+            "promptTokens": 20794,
+            "completionTokens": 398,
+            "reasoningTokens": 0,
+            "claimCount": 6,
+            "memberClaimCount": 6,
+            "memberClaimRate": 1,
+            "firstContentMs": 2217,
+            "wallClockMs": 5563,
+            "semanticRequestHash": "1e036a1c0edb8081579384a37215a18fb53e427154c52837085113d7b69a2724"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 14,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 2,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 2
+          },
+          "medium": {
+            "Tp": 2,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 2
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 69801,
+            "promptTokens": 20240,
+            "completionTokens": 225,
+            "reasoningTokens": 0,
+            "claimCount": 3,
+            "memberClaimCount": 3,
+            "memberClaimRate": 1,
+            "firstContentMs": 3527,
+            "wallClockMs": 5568,
+            "semanticRequestHash": "ca0f9b3b6f8d659ed3d8163e07add568e0913300f3feb36b88b780c1b67d175b"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 15,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "medium": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 69733,
+            "promptTokens": 20095,
+            "completionTokens": 256,
+            "reasoningTokens": 0,
+            "claimCount": 4,
+            "memberClaimCount": 4,
+            "memberClaimRate": 1,
+            "firstContentMs": 2580,
+            "wallClockMs": 5146,
+            "semanticRequestHash": "acf2ff2362e3890fe6e79635a4573a45f6128a37226b0364307c916609fc761f"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 16,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 5,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 5
+          },
+          "medium": {
+            "Tp": 5,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 5
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 70048,
+            "promptTokens": 20195,
+            "completionTokens": 450,
+            "reasoningTokens": 0,
+            "claimCount": 7,
+            "memberClaimCount": 7,
+            "memberClaimRate": 1,
+            "firstContentMs": 2136,
+            "wallClockMs": 5913,
+            "semanticRequestHash": "84fc81363e923719e3c6e713338de506321d828c272c25206c8223ed1a6f4790"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 17,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "medium": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 67241,
+            "promptTokens": 19694,
+            "completionTokens": 1544,
+            "reasoningTokens": 0,
+            "claimCount": 11,
+            "memberClaimCount": 11,
+            "memberClaimRate": 1,
+            "firstContentMs": 1832,
+            "wallClockMs": 13153,
+            "semanticRequestHash": "5a94489dee7a26598e1351bd371396ad1658057488446ba3f0354d2fb7928fbc"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 18,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 4,
+            "Fp": 2,
+            "Fn": 0,
+            "MemberClaims": 6
+          },
+          "medium": {
+            "Tp": 5,
+            "Fp": 2,
+            "Fn": 0,
+            "MemberClaims": 7
+          },
+          "delta": {
+            "tpGain": 1,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 1
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 67025,
+            "promptTokens": 19778,
+            "completionTokens": 506,
+            "reasoningTokens": 0,
+            "claimCount": 7,
+            "memberClaimCount": 7,
+            "memberClaimRate": 1,
+            "firstContentMs": 1916,
+            "wallClockMs": 6005,
+            "semanticRequestHash": "69c0635c447f697c75d7d760b4a1211013bafce6937194c1a2d9e4c6eeced0ea"
+          },
+          "classification": "BENEFIT_FROM_MEDIUM"
+        },
+        {
+          "ordinal": 19,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 2,
+            "Fp": 0,
+            "Fn": 1,
+            "MemberClaims": 2
+          },
+          "medium": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "delta": {
+            "tpGain": 1,
+            "fpDelta": 0,
+            "fnRecovered": 1,
+            "netGain": 1
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 69355,
+            "promptTokens": 20232,
+            "completionTokens": 205,
+            "reasoningTokens": 0,
+            "claimCount": 3,
+            "memberClaimCount": 3,
+            "memberClaimRate": 1,
+            "firstContentMs": 1933,
+            "wallClockMs": 3905,
+            "semanticRequestHash": "b3b2cc07863e394c032f15df289c5898ed62b98d027d7d24cf2651a73b5e0b3f"
+          },
+          "classification": "BENEFIT_FROM_MEDIUM"
+        },
+        {
+          "ordinal": 20,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "medium": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 69068,
+            "promptTokens": 20177,
+            "completionTokens": 328,
+            "reasoningTokens": 0,
+            "claimCount": 5,
+            "memberClaimCount": 5,
+            "memberClaimRate": 1,
+            "firstContentMs": 1878,
+            "wallClockMs": 4758,
+            "semanticRequestHash": "7ccae4168547b543347bcace78f8212b4c42d0442bb247df8390ff13ff9b2e18"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 21,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "medium": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 68668,
+            "promptTokens": 20021,
+            "completionTokens": 198,
+            "reasoningTokens": 0,
+            "claimCount": 3,
+            "memberClaimCount": 3,
+            "memberClaimRate": 1,
+            "firstContentMs": 1951,
+            "wallClockMs": 3779,
+            "semanticRequestHash": "2c5deb37393fd5d9f77cd61fec0e055cdde37d6a124ef417a8ba06f9aa757547"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 22,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 8,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 8
+          },
+          "medium": {
+            "Tp": 8,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 8
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 70330,
+            "promptTokens": 20327,
+            "completionTokens": 559,
+            "reasoningTokens": 0,
+            "claimCount": 8,
+            "memberClaimCount": 8,
+            "memberClaimRate": 1,
+            "firstContentMs": 2060,
+            "wallClockMs": 6357,
+            "semanticRequestHash": "d0f1ef9297f083dcadbd775ac7da5b1d42122b296682de9fcd6c22aef8a45465"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 23,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 9,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 9
+          },
+          "medium": {
+            "Tp": 9,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 9
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 69535,
+            "promptTokens": 20173,
+            "completionTokens": 713,
+            "reasoningTokens": 0,
+            "claimCount": 10,
+            "memberClaimCount": 10,
+            "memberClaimRate": 1,
+            "firstContentMs": 1849,
+            "wallClockMs": 7615,
+            "semanticRequestHash": "c4d6fafdabefe8120a48d14b8681a60dbb8f292fd5ac0b172b46f15a66d7dcfd"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 24,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 2,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 2
+          },
+          "medium": {
+            "Tp": 2,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 2
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 66272,
+            "promptTokens": 19655,
+            "completionTokens": 826,
+            "reasoningTokens": 0,
+            "claimCount": 8,
+            "memberClaimCount": 8,
+            "memberClaimRate": 1,
+            "firstContentMs": 2129,
+            "wallClockMs": 8342,
+            "semanticRequestHash": "3bea63a1ab4acdffcdcfc97b552c70c41b70634d42c6bce5daffe72e2d49bdc2"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 25,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 1,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 1
+          },
+          "medium": {
+            "Tp": 1,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 1
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 64855,
+            "promptTokens": 19324,
+            "completionTokens": 837,
+            "reasoningTokens": 0,
+            "claimCount": 7,
+            "memberClaimCount": 7,
+            "memberClaimRate": 1,
+            "firstContentMs": 1960,
+            "wallClockMs": 8860,
+            "semanticRequestHash": "78d4b3124f500bcb760f185a87a289f88a6c6f52b31c871653b741e7222ecf0a"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 26,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "medium": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 66607,
+            "promptTokens": 20210,
+            "completionTokens": 4803,
+            "reasoningTokens": 0,
+            "claimCount": 34,
+            "memberClaimCount": 34,
+            "memberClaimRate": 1,
+            "firstContentMs": 2571,
+            "wallClockMs": 42432,
+            "semanticRequestHash": "d4fd0311674f6701aa9447f89e0e56cd72c34f13e13e117c43286f7cfdb480cb"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 27,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "medium": {
+            "Tp": 4,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 4
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 69074,
+            "promptTokens": 21244,
+            "completionTokens": 266,
+            "reasoningTokens": 0,
+            "claimCount": 4,
+            "memberClaimCount": 4,
+            "memberClaimRate": 1,
+            "firstContentMs": 2164,
+            "wallClockMs": 4532,
+            "semanticRequestHash": "d16006fbe1fceabf0ca203d61da045ae89d5387882ecfe894e1c3306b4dd77c9"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 28,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 1,
+            "Fp": 0,
+            "Fn": 5,
+            "MemberClaims": 1
+          },
+          "medium": {
+            "Tp": 2,
+            "Fp": 0,
+            "Fn": 4,
+            "MemberClaims": 2
+          },
+          "delta": {
+            "tpGain": 1,
+            "fpDelta": 0,
+            "fnRecovered": 1,
+            "netGain": 1
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 69377,
+            "promptTokens": 20407,
+            "completionTokens": 409,
+            "reasoningTokens": 0,
+            "claimCount": 6,
+            "memberClaimCount": 6,
+            "memberClaimRate": 1,
+            "firstContentMs": 2624,
+            "wallClockMs": 6127,
+            "semanticRequestHash": "46ecf33bc0ab5cf277086723bf06e7f6c3a0566b0f11c66135786bd6cddee9b1"
+          },
+          "classification": "BENEFIT_FROM_MEDIUM"
+        },
+        {
+          "ordinal": 29,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "medium": {
+            "Tp": 3,
+            "Fp": 0,
+            "Fn": 0,
+            "MemberClaims": 3
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 67220,
+            "promptTokens": 19982,
+            "completionTokens": 205,
+            "reasoningTokens": 0,
+            "claimCount": 3,
+            "memberClaimCount": 3,
+            "memberClaimRate": 1,
+            "firstContentMs": 2169,
+            "wallClockMs": 4119,
+            "semanticRequestHash": "db9853538fb3562b82fceb9344e83bb2ddc9f354b59487a988908e62f05ea0dd"
+          },
+          "classification": "NEUTRAL"
+        },
+        {
+          "ordinal": 30,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 1,
+            "Fp": 0,
+            "Fn": 4,
+            "MemberClaims": 1
+          },
+          "medium": {
+            "Tp": 1,
+            "Fp": 12,
+            "Fn": 4,
+            "MemberClaims": 13
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 12,
+            "fnRecovered": 0,
+            "netGain": -12
+          },
+          "features": {
+            "ownedAliasCount": 96,
+            "visibleAtomCount": 112,
+            "primaryInputBytes": 71592,
+            "promptTokens": 21787,
+            "completionTokens": 5761,
+            "reasoningTokens": 0,
+            "claimCount": 40,
+            "memberClaimCount": 40,
+            "memberClaimRate": 1,
+            "firstContentMs": 2418,
+            "wallClockMs": 47246,
+            "semanticRequestHash": "c0eab96cfdaf5757688c1d2570bdde2fec61e9f36c7e13e0df4e3c5007297a5e"
+          },
+          "classification": "HARMED_BY_MEDIUM"
+        },
+        {
+          "ordinal": 31,
+          "documentId": "SRC-095",
+          "none": {
+            "Tp": 1,
+            "Fp": 14,
+            "Fn": 4,
+            "MemberClaims": 15
+          },
+          "medium": {
+            "Tp": 1,
+            "Fp": 14,
+            "Fn": 4,
+            "MemberClaims": 15
+          },
+          "delta": {
+            "tpGain": 0,
+            "fpDelta": 0,
+            "fnRecovered": 0,
+            "netGain": 0
+          },
+          "features": {
+            "ownedAliasCount": 94,
+            "visibleAtomCount": 102,
+            "primaryInputBytes": 71158,
+            "promptTokens": 21588,
+            "completionTokens": 6024,
+            "reasoningTokens": 0,
+            "claimCount": 38,
+            "memberClaimCount": 38,
+            "memberClaimRate": 1,
+            "firstContentMs": 2163,
+            "wallClockMs": 46425,
+            "semanticRequestHash": "ea67c04e83410f7d645340a752cbb36d1325de52c25ac612f0145c7323eeb46a"
+          },
+          "classification": "NEUTRAL"
+        }
+      ]
+    }
+  ],
+  "ranking": [
+    {
+      "ordinal": 5,
+      "documentId": "SRC-089",
+      "none": {
+        "Tp": 0,
+        "Fp": 2,
+        "Fn": 1,
+        "MemberClaims": 2
+      },
+      "medium": {
+        "Tp": 3,
+        "Fp": 2,
+        "Fn": 0,
+        "MemberClaims": 5
+      },
+      "delta": {
+        "tpGain": 3,
+        "fpDelta": 0,
+        "fnRecovered": 1,
+        "netGain": 3
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 70788,
+        "promptTokens": 20109,
+        "completionTokens": 491,
+        "reasoningTokens": 0,
+        "claimCount": 6,
+        "memberClaimCount": 6,
+        "memberClaimRate": 1,
+        "firstContentMs": 2273,
+        "wallClockMs": 6631,
+        "semanticRequestHash": "66a2a492d19a8e18e005ab62bf368706c278f00a31bb3cc6242ef1ec56a0a64d"
+      },
+      "classification": "BENEFIT_FROM_MEDIUM"
+    },
+    {
+      "ordinal": 18,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 4,
+        "Fp": 2,
+        "Fn": 0,
+        "MemberClaims": 6
+      },
+      "medium": {
+        "Tp": 5,
+        "Fp": 2,
+        "Fn": 0,
+        "MemberClaims": 7
+      },
+      "delta": {
+        "tpGain": 1,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 1
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 67025,
+        "promptTokens": 19778,
+        "completionTokens": 506,
+        "reasoningTokens": 0,
+        "claimCount": 7,
+        "memberClaimCount": 7,
+        "memberClaimRate": 1,
+        "firstContentMs": 1916,
+        "wallClockMs": 6005,
+        "semanticRequestHash": "69c0635c447f697c75d7d760b4a1211013bafce6937194c1a2d9e4c6eeced0ea"
+      },
+      "classification": "BENEFIT_FROM_MEDIUM"
+    },
+    {
+      "ordinal": 19,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 2,
+        "Fp": 0,
+        "Fn": 1,
+        "MemberClaims": 2
+      },
+      "medium": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "delta": {
+        "tpGain": 1,
+        "fpDelta": 0,
+        "fnRecovered": 1,
+        "netGain": 1
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 69355,
+        "promptTokens": 20232,
+        "completionTokens": 205,
+        "reasoningTokens": 0,
+        "claimCount": 3,
+        "memberClaimCount": 3,
+        "memberClaimRate": 1,
+        "firstContentMs": 1933,
+        "wallClockMs": 3905,
+        "semanticRequestHash": "b3b2cc07863e394c032f15df289c5898ed62b98d027d7d24cf2651a73b5e0b3f"
+      },
+      "classification": "BENEFIT_FROM_MEDIUM"
+    },
+    {
+      "ordinal": 28,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 1,
+        "Fp": 0,
+        "Fn": 5,
+        "MemberClaims": 1
+      },
+      "medium": {
+        "Tp": 2,
+        "Fp": 0,
+        "Fn": 4,
+        "MemberClaims": 2
+      },
+      "delta": {
+        "tpGain": 1,
+        "fpDelta": 0,
+        "fnRecovered": 1,
+        "netGain": 1
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 69377,
+        "promptTokens": 20407,
+        "completionTokens": 409,
+        "reasoningTokens": 0,
+        "claimCount": 6,
+        "memberClaimCount": 6,
+        "memberClaimRate": 1,
+        "firstContentMs": 2624,
+        "wallClockMs": 6127,
+        "semanticRequestHash": "46ecf33bc0ab5cf277086723bf06e7f6c3a0566b0f11c66135786bd6cddee9b1"
+      },
+      "classification": "BENEFIT_FROM_MEDIUM"
+    },
+    {
+      "ordinal": 1,
+      "documentId": "SRC-089",
+      "none": {
+        "Tp": 5,
+        "Fp": 1,
+        "Fn": 0,
+        "MemberClaims": 6
+      },
+      "medium": {
+        "Tp": 5,
+        "Fp": 1,
+        "Fn": 0,
+        "MemberClaims": 6
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 104,
+        "primaryInputBytes": 70123,
+        "promptTokens": 19653,
+        "completionTokens": 789,
+        "reasoningTokens": 0,
+        "claimCount": 8,
+        "memberClaimCount": 8,
+        "memberClaimRate": 1,
+        "firstContentMs": 3494,
+        "wallClockMs": 9787,
+        "semanticRequestHash": "014da482fbda3ceaab891bf0c29bfc9ccc45521db608d416ecfe36fad3df524f"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 2,
+      "documentId": "SRC-089",
+      "none": {
+        "Tp": 6,
+        "Fp": 0,
+        "Fn": 2,
+        "MemberClaims": 6
+      },
+      "medium": {
+        "Tp": 6,
+        "Fp": 0,
+        "Fn": 2,
+        "MemberClaims": 6
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 70540,
+        "promptTokens": 19723,
+        "completionTokens": 703,
+        "reasoningTokens": 0,
+        "claimCount": 7,
+        "memberClaimCount": 7,
+        "memberClaimRate": 1,
+        "firstContentMs": 1938,
+        "wallClockMs": 7900,
+        "semanticRequestHash": "482d12e578dc9513e8267f706ae40b979f18d734634c19becd14c40dbc7457af"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 3,
+      "documentId": "SRC-089",
+      "none": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 2,
+        "MemberClaims": 4
+      },
+      "medium": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 2,
+        "MemberClaims": 4
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 70026,
+        "promptTokens": 19671,
+        "completionTokens": 413,
+        "reasoningTokens": 0,
+        "claimCount": 5,
+        "memberClaimCount": 5,
+        "memberClaimRate": 1,
+        "firstContentMs": 3521,
+        "wallClockMs": 6867,
+        "semanticRequestHash": "78ad6f0ce8b31cfd5b16e0989ab3cfa299fdab163cfaa3988ca15bcdc8b71c83"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 4,
+      "documentId": "SRC-089",
+      "none": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "medium": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 71267,
+        "promptTokens": 20156,
+        "completionTokens": 655,
+        "reasoningTokens": 0,
+        "claimCount": 9,
+        "memberClaimCount": 9,
+        "memberClaimRate": 1,
+        "firstContentMs": 1828,
+        "wallClockMs": 7609,
+        "semanticRequestHash": "60306c578971dcc01c7d2eab0ba2de0639be82be88afce43d2c79ed7bdb67f4b"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 6,
+      "documentId": "SRC-089",
+      "none": {
+        "Tp": 8,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 8
+      },
+      "medium": {
+        "Tp": 8,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 8
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 110,
+        "primaryInputBytes": 70731,
+        "promptTokens": 20396,
+        "completionTokens": 678,
+        "reasoningTokens": 0,
+        "claimCount": 8,
+        "memberClaimCount": 8,
+        "memberClaimRate": 1,
+        "firstContentMs": 1928,
+        "wallClockMs": 7464,
+        "semanticRequestHash": "e367cac4711a0c7830b8076676083163f4f4bb7265921824a56f2b5875d07c9d"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 7,
+      "documentId": "SRC-089",
+      "none": {
+        "Tp": 0,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 0
+      },
+      "medium": {
+        "Tp": 0,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 0
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 6,
+        "visibleAtomCount": 14,
+        "primaryInputBytes": 7330,
+        "promptTokens": 1973,
+        "completionTokens": 388,
+        "reasoningTokens": 0,
+        "claimCount": 5,
+        "memberClaimCount": 5,
+        "memberClaimRate": 1,
+        "firstContentMs": 789,
+        "wallClockMs": 4439,
+        "semanticRequestHash": "8a7600899cd7b7d93faa319c7ced8448e2956bf449fafbbf0865f69f02bd60ea"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 8,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 4,
+        "Fp": 1,
+        "Fn": 1,
+        "MemberClaims": 5
+      },
+      "medium": {
+        "Tp": 4,
+        "Fp": 1,
+        "Fn": 1,
+        "MemberClaims": 5
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 104,
+        "primaryInputBytes": 69299,
+        "promptTokens": 20064,
+        "completionTokens": 4473,
+        "reasoningTokens": 0,
+        "claimCount": 70,
+        "memberClaimCount": 70,
+        "memberClaimRate": 1,
+        "firstContentMs": 2153,
+        "wallClockMs": 35263,
+        "semanticRequestHash": "cae6332355c3f265cc97ab5016e302681f5cd45f6cabd29708f50a574f66cb5e"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 9,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 5,
+        "Fp": 33,
+        "Fn": 0,
+        "MemberClaims": 38
+      },
+      "medium": {
+        "Tp": 5,
+        "Fp": 29,
+        "Fn": 0,
+        "MemberClaims": 34
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": -4,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 70717,
+        "promptTokens": 20488,
+        "completionTokens": 2576,
+        "reasoningTokens": 0,
+        "claimCount": 40,
+        "memberClaimCount": 40,
+        "memberClaimRate": 1,
+        "firstContentMs": 1981,
+        "wallClockMs": 21810,
+        "semanticRequestHash": "3dfd6cd8e167a0f389f72ed52e96e18afcd6cc89884dca955a03ab7895185b10"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 10,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "medium": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 68752,
+        "promptTokens": 20110,
+        "completionTokens": 5797,
+        "reasoningTokens": 0,
+        "claimCount": 60,
+        "memberClaimCount": 60,
+        "memberClaimRate": 1,
+        "firstContentMs": 1907,
+        "wallClockMs": 45748,
+        "semanticRequestHash": "d153ff4af0e5afaf0e48b20b3da36dbbe5556ac4d3d043d5b663df4dd5ae5f79"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 11,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 5,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 5
+      },
+      "medium": {
+        "Tp": 5,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 5
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 70521,
+        "promptTokens": 20374,
+        "completionTokens": 5273,
+        "reasoningTokens": 0,
+        "claimCount": 15,
+        "memberClaimCount": 15,
+        "memberClaimRate": 1,
+        "firstContentMs": 2167,
+        "wallClockMs": 43403,
+        "semanticRequestHash": "3a3d909ef64cdb93d5bbd1a2aa2668aa023f5a458de0c79a2a9d4cefa58f275f"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 12,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "medium": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 69936,
+        "promptTokens": 20300,
+        "completionTokens": 207,
+        "reasoningTokens": 0,
+        "claimCount": 3,
+        "memberClaimCount": 3,
+        "memberClaimRate": 1,
+        "firstContentMs": 1949,
+        "wallClockMs": 3702,
+        "semanticRequestHash": "61ffa63281416b7a5154aa68deee93b97ccf5e95ab3b7364f2b833c837b016be"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 13,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 6,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 6
+      },
+      "medium": {
+        "Tp": 6,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 6
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 70269,
+        "promptTokens": 20794,
+        "completionTokens": 398,
+        "reasoningTokens": 0,
+        "claimCount": 6,
+        "memberClaimCount": 6,
+        "memberClaimRate": 1,
+        "firstContentMs": 2217,
+        "wallClockMs": 5563,
+        "semanticRequestHash": "1e036a1c0edb8081579384a37215a18fb53e427154c52837085113d7b69a2724"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 14,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 2,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 2
+      },
+      "medium": {
+        "Tp": 2,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 2
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 69801,
+        "promptTokens": 20240,
+        "completionTokens": 225,
+        "reasoningTokens": 0,
+        "claimCount": 3,
+        "memberClaimCount": 3,
+        "memberClaimRate": 1,
+        "firstContentMs": 3527,
+        "wallClockMs": 5568,
+        "semanticRequestHash": "ca0f9b3b6f8d659ed3d8163e07add568e0913300f3feb36b88b780c1b67d175b"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 15,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "medium": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 69733,
+        "promptTokens": 20095,
+        "completionTokens": 256,
+        "reasoningTokens": 0,
+        "claimCount": 4,
+        "memberClaimCount": 4,
+        "memberClaimRate": 1,
+        "firstContentMs": 2580,
+        "wallClockMs": 5146,
+        "semanticRequestHash": "acf2ff2362e3890fe6e79635a4573a45f6128a37226b0364307c916609fc761f"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 16,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 5,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 5
+      },
+      "medium": {
+        "Tp": 5,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 5
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 70048,
+        "promptTokens": 20195,
+        "completionTokens": 450,
+        "reasoningTokens": 0,
+        "claimCount": 7,
+        "memberClaimCount": 7,
+        "memberClaimRate": 1,
+        "firstContentMs": 2136,
+        "wallClockMs": 5913,
+        "semanticRequestHash": "84fc81363e923719e3c6e713338de506321d828c272c25206c8223ed1a6f4790"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 17,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "medium": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 67241,
+        "promptTokens": 19694,
+        "completionTokens": 1544,
+        "reasoningTokens": 0,
+        "claimCount": 11,
+        "memberClaimCount": 11,
+        "memberClaimRate": 1,
+        "firstContentMs": 1832,
+        "wallClockMs": 13153,
+        "semanticRequestHash": "5a94489dee7a26598e1351bd371396ad1658057488446ba3f0354d2fb7928fbc"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 20,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "medium": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 69068,
+        "promptTokens": 20177,
+        "completionTokens": 328,
+        "reasoningTokens": 0,
+        "claimCount": 5,
+        "memberClaimCount": 5,
+        "memberClaimRate": 1,
+        "firstContentMs": 1878,
+        "wallClockMs": 4758,
+        "semanticRequestHash": "7ccae4168547b543347bcace78f8212b4c42d0442bb247df8390ff13ff9b2e18"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 21,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "medium": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 68668,
+        "promptTokens": 20021,
+        "completionTokens": 198,
+        "reasoningTokens": 0,
+        "claimCount": 3,
+        "memberClaimCount": 3,
+        "memberClaimRate": 1,
+        "firstContentMs": 1951,
+        "wallClockMs": 3779,
+        "semanticRequestHash": "2c5deb37393fd5d9f77cd61fec0e055cdde37d6a124ef417a8ba06f9aa757547"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 22,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 8,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 8
+      },
+      "medium": {
+        "Tp": 8,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 8
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 70330,
+        "promptTokens": 20327,
+        "completionTokens": 559,
+        "reasoningTokens": 0,
+        "claimCount": 8,
+        "memberClaimCount": 8,
+        "memberClaimRate": 1,
+        "firstContentMs": 2060,
+        "wallClockMs": 6357,
+        "semanticRequestHash": "d0f1ef9297f083dcadbd775ac7da5b1d42122b296682de9fcd6c22aef8a45465"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 23,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 9,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 9
+      },
+      "medium": {
+        "Tp": 9,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 9
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 69535,
+        "promptTokens": 20173,
+        "completionTokens": 713,
+        "reasoningTokens": 0,
+        "claimCount": 10,
+        "memberClaimCount": 10,
+        "memberClaimRate": 1,
+        "firstContentMs": 1849,
+        "wallClockMs": 7615,
+        "semanticRequestHash": "c4d6fafdabefe8120a48d14b8681a60dbb8f292fd5ac0b172b46f15a66d7dcfd"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 24,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 2,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 2
+      },
+      "medium": {
+        "Tp": 2,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 2
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 66272,
+        "promptTokens": 19655,
+        "completionTokens": 826,
+        "reasoningTokens": 0,
+        "claimCount": 8,
+        "memberClaimCount": 8,
+        "memberClaimRate": 1,
+        "firstContentMs": 2129,
+        "wallClockMs": 8342,
+        "semanticRequestHash": "3bea63a1ab4acdffcdcfc97b552c70c41b70634d42c6bce5daffe72e2d49bdc2"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 25,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 1,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 1
+      },
+      "medium": {
+        "Tp": 1,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 1
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 64855,
+        "promptTokens": 19324,
+        "completionTokens": 837,
+        "reasoningTokens": 0,
+        "claimCount": 7,
+        "memberClaimCount": 7,
+        "memberClaimRate": 1,
+        "firstContentMs": 1960,
+        "wallClockMs": 8860,
+        "semanticRequestHash": "78d4b3124f500bcb760f185a87a289f88a6c6f52b31c871653b741e7222ecf0a"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 26,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "medium": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 66607,
+        "promptTokens": 20210,
+        "completionTokens": 4803,
+        "reasoningTokens": 0,
+        "claimCount": 34,
+        "memberClaimCount": 34,
+        "memberClaimRate": 1,
+        "firstContentMs": 2571,
+        "wallClockMs": 42432,
+        "semanticRequestHash": "d4fd0311674f6701aa9447f89e0e56cd72c34f13e13e117c43286f7cfdb480cb"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 27,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "medium": {
+        "Tp": 4,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 4
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 69074,
+        "promptTokens": 21244,
+        "completionTokens": 266,
+        "reasoningTokens": 0,
+        "claimCount": 4,
+        "memberClaimCount": 4,
+        "memberClaimRate": 1,
+        "firstContentMs": 2164,
+        "wallClockMs": 4532,
+        "semanticRequestHash": "d16006fbe1fceabf0ca203d61da045ae89d5387882ecfe894e1c3306b4dd77c9"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 29,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "medium": {
+        "Tp": 3,
+        "Fp": 0,
+        "Fn": 0,
+        "MemberClaims": 3
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 67220,
+        "promptTokens": 19982,
+        "completionTokens": 205,
+        "reasoningTokens": 0,
+        "claimCount": 3,
+        "memberClaimCount": 3,
+        "memberClaimRate": 1,
+        "firstContentMs": 2169,
+        "wallClockMs": 4119,
+        "semanticRequestHash": "db9853538fb3562b82fceb9344e83bb2ddc9f354b59487a988908e62f05ea0dd"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 31,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 1,
+        "Fp": 14,
+        "Fn": 4,
+        "MemberClaims": 15
+      },
+      "medium": {
+        "Tp": 1,
+        "Fp": 14,
+        "Fn": 4,
+        "MemberClaims": 15
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 0,
+        "fnRecovered": 0,
+        "netGain": 0
+      },
+      "features": {
+        "ownedAliasCount": 94,
+        "visibleAtomCount": 102,
+        "primaryInputBytes": 71158,
+        "promptTokens": 21588,
+        "completionTokens": 6024,
+        "reasoningTokens": 0,
+        "claimCount": 38,
+        "memberClaimCount": 38,
+        "memberClaimRate": 1,
+        "firstContentMs": 2163,
+        "wallClockMs": 46425,
+        "semanticRequestHash": "ea67c04e83410f7d645340a752cbb36d1325de52c25ac612f0145c7323eeb46a"
+      },
+      "classification": "NEUTRAL"
+    },
+    {
+      "ordinal": 30,
+      "documentId": "SRC-095",
+      "none": {
+        "Tp": 1,
+        "Fp": 0,
+        "Fn": 4,
+        "MemberClaims": 1
+      },
+      "medium": {
+        "Tp": 1,
+        "Fp": 12,
+        "Fn": 4,
+        "MemberClaims": 13
+      },
+      "delta": {
+        "tpGain": 0,
+        "fpDelta": 12,
+        "fnRecovered": 0,
+        "netGain": -12
+      },
+      "features": {
+        "ownedAliasCount": 96,
+        "visibleAtomCount": 112,
+        "primaryInputBytes": 71592,
+        "promptTokens": 21787,
+        "completionTokens": 5761,
+        "reasoningTokens": 0,
+        "claimCount": 40,
+        "memberClaimCount": 40,
+        "memberClaimRate": 1,
+        "firstContentMs": 2418,
+        "wallClockMs": 47246,
+        "semanticRequestHash": "c0eab96cfdaf5757688c1d2570bdde2fec61e9f36c7e13e0df4e3c5007297a5e"
+      },
+      "classification": "HARMED_BY_MEDIUM"
+    }
+  ],
+  "interpretation": "T5A localizes where medium changes scored outcomes; it does not establish a pre-Gold escalation signal. Do not use ordinal, document ID, or Gold residual identity as runtime logic. T5B must test generic observable predictors."
+}

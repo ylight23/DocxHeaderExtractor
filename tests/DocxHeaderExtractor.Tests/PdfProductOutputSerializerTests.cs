@@ -14,14 +14,29 @@ public sealed class PdfProductOutputSerializerTests
     [Fact]
     public void OnlyEmitTrueDecisionsAreSerialized()
     {
+        // The non-emitted case has to be a source-validity failure. A scope or role heuristic no
+        // longer suppresses a heading: that would let a pattern match overrule the model on what a
+        // heading means, which measurably deleted headings the model had identified correctly.
+        var structure = Project(
+            (Structure("b1"), "1 Introduction"),
+            (Structure("b2") with { Decision = "binding_failed" }, "4 3 Validation"));
+
+        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisions.Decide(structure));
+
+        var heading = Assert.Single(output.Headings);
+        Assert.Equal("1 Introduction", heading.Text);
+    }
+
+    [Fact]
+    public void A_scope_heuristic_no_longer_removes_a_model_heading()
+    {
         var structure = Project(
             (Structure("b1"), "1 Introduction"),
             (Structure("b2") with { StructuralScope = "appendix_table" }, "4 3 Validation"));
 
-        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisionPolicy.Decide(structure));
+        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisions.Decide(structure));
 
-        var heading = Assert.Single(output.Headings);
-        Assert.Equal("1 Introduction", heading.Text);
+        Assert.Equal(2, output.Headings.Count);
     }
 
     /// <summary>
@@ -49,7 +64,7 @@ public sealed class PdfProductOutputSerializerTests
             "4.3 Cache-Control and the rest of the paragraph");
         var structure = PdfFinalStructureProjection.Project("sha", [Structure("b1")], [fact], [grounding]);
 
-        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisionPolicy.Decide(structure));
+        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisions.Decide(structure));
 
         var heading = Assert.Single(output.Headings);
         Assert.Equal("4.3 Cache-Control", heading.Text);
@@ -62,7 +77,7 @@ public sealed class PdfProductOutputSerializerTests
     {
         var structure = Project(("b2", 1, "2 Overview"), ("b1", 0, "1 Introduction"));
 
-        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisionPolicy.Decide(structure));
+        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisions.Decide(structure));
 
         Assert.Equal(structure.Headings.Select(h => h.Id), output.Headings.Select(h => h.Id));
     }
@@ -72,7 +87,7 @@ public sealed class PdfProductOutputSerializerTests
     {
         var structure = Project(("b1", 0, "Topic without a marker"));
 
-        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisionPolicy.Decide(structure));
+        var output = PdfProductOutputSerializer.Serialize(structure, PdfOutputDecisions.Decide(structure));
 
         var heading = Assert.Single(output.Headings);
         Assert.Null(heading.Level);
@@ -84,7 +99,7 @@ public sealed class PdfProductOutputSerializerTests
     {
         var structure = Project(("b1", 0, "Topic without a marker"));
 
-        var decisions = PdfOutputDecisionPolicy.Decide(structure);
+        var decisions = PdfOutputDecisions.Decide(structure);
         var output = PdfProductOutputSerializer.Serialize(structure, decisions);
 
         var decision = Assert.Single(decisions);
@@ -97,7 +112,7 @@ public sealed class PdfProductOutputSerializerTests
     public void SerializationIsDeterministicOnTheSameFrozenInput()
     {
         var structure = Project(("b1", 0, "1 Introduction"), ("b2", 1, "2 Overview"));
-        var decisions = PdfOutputDecisionPolicy.Decide(structure);
+        var decisions = PdfOutputDecisions.Decide(structure);
 
         var first = PdfProductOutputSerializer.Serialize(structure, decisions);
         var second = PdfProductOutputSerializer.Serialize(structure, decisions);

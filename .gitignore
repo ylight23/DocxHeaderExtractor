@@ -58,3 +58,8 @@ bench/09-dien-mat-di.key
 # Bản kết xuất outline — sinh lại được bằng `dhx extract`, không đưa vào repo
 outline_out/
 outline_llm/
+
+# Cấu hình agent cục bộ. Nó thuộc về máy đang làm việc, không thuộc về mã nguồn:
+# skills và worktrees khác nhau giữa các máy, và worktrees còn chứa bản sao repo.
+.claude/
+.agents/

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "a99-stage1-membership-capture-reservation-v1",
+  "status": "CAPTURE_SLOT_RESERVED",
+  "experimentId": "PHYSICAL_STAGE1_MEMBERSHIP_ONLY",
+  "repeat": 1,
+  "protocol": "a99-semantic-membership-v1",
+  "schemaSha256": "baac47daadb1047e843b1358f7a37dfe3d0736c1130672829efc7beb80b48ff2",
+  "promptSha256": "433b134d428bd9053157ea6bb5efab253de3f46fb8da19bc0d3e8fa16d453766",
+  "calls": [
+    {
+      "ordinal": 1,
+      "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_005",
+      "requestSha256": "a0735a5b48b30673d9bc379a3bd29ebc650a671ab4155b1ecc77bcb754d76e2b"
+    },
+    {
+      "ordinal": 2,
+      "packId": "COHERENT_REGION_SEGMENTATION_V1:PACK_006",
+      "requestSha256": "2763fd6b44cebd061d76d0d758c29d8eedb5ed5709b70a3fb99891c5942673f0"
+    }
+  ]
+}

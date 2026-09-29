@@ -1,0 +1,1497 @@
+{
+  "artifactKind": "a99_openrouter_streaming_t5b_escalation_signal",
+  "status": "T5B_PROVIDER_FREE_SIGNAL_DERIVATION_COMPLETE",
+  "providerCalls": 0,
+  "goldRead": true,
+  "goldUsedAsPolicyInput": false,
+  "productionPromotion": false,
+  "lineage": {
+    "t3c": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t3c-efficiency-heavy-leaf-audit.v1.json",
+      "sha256": "dd101ec182aee5700865dd5b2543cfaffb1b769baff0c85647f8885dd3ca635b"
+    },
+    "t5a": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/openrouter-streaming-t5a-selective-medium-regression-localization.v1.json",
+      "sha256": "a935db93e87a06bec09af3169ecaaea54463765244ad6dc0c4eb11a9a11f7145"
+    },
+    "p05Manifest": {
+      "path": "eval/a99-closed-loop/request-architecture-v2/v4r2-p05-accepted-response-manifest.v1.json",
+      "sha256": "e92fd7ef4bfd8c6bfa31f332762ee0c35f6c7d1b74265e4d77838c79f5863952"
+    }
+  },
+  "methodology": {
+    "signals": "computed from the request's owned aliases and the none reply through the production decoder + canonicalizer + binder; Gold opened only for scoring",
+    "repairVariant": "BOUNDARY_WHITESPACE_WHOLE_ATOM: a quote refused as TEXT_NOT_IN_ATOM whose Trim() equals the named atom's text byte-exactly is treated as the whole atom; any other refused quote stays refused",
+    "goldOwnership": "multipart-aware: Gold identity owned by the leaf owning its first alias (T5A dropped multipart identities from per-ordinal FN)",
+    "replay": "medium arm is the already-accepted P05 reasoning-medium response for the same parent ordinal; spliced per policy, no new calls",
+    "gate": "aggregate F1 >= P05-medium-all; SRC-089 F1 within 0.02 of medium; SRC-095 F1 within 0.01 of none-strict; escalated share <= 0.30"
+  },
+  "cohort": {
+    "leaves": 31,
+    "noneCompletionTokens": 46956,
+    "mediumCompletionTokens": 222303
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "goldClaims": 36,
+      "crossLeafGoldIdentities": 0,
+      "unownedGoldIdentities": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "goldClaims": 103,
+      "crossLeafGoldIdentities": 0,
+      "unownedGoldIdentities": 0
+    }
+  ],
+  "policies": [
+    {
+      "policy": "P0_NONE_STRICT",
+      "aggregate": {
+        "Tp": 110,
+        "Fp": 51,
+        "Fn": 29,
+        "Precision": 0.6832,
+        "Recall": 0.7914,
+        "F1": 0.7333
+      },
+      "byDocument": {
+        "SRC-089": {
+          "Tp": 23,
+          "Fp": 3,
+          "Fn": 13,
+          "Precision": 0.8846,
+          "Recall": 0.6389,
+          "F1": 0.7419
+        },
+        "SRC-095": {
+          "Tp": 87,
+          "Fp": 48,
+          "Fn": 16,
+          "Precision": 0.6444,
+          "Recall": 0.8447,
+          "F1": 0.7311
+        }
+      },
+      "escalatedLeaves": 0,
+      "escalatedShareOfCohort": 0,
+      "extraMediumCompletionTokens": 0,
+      "passesGate": false
+    },
+    {
+      "policy": "P1_MEDIUM_STRICT_ALL",
+      "aggregate": {
+        "Tp": 120,
+        "Fp": 61,
+        "Fn": 19,
+        "Precision": 0.663,
+        "Recall": 0.8633,
+        "F1": 0.75
+      },
+      "byDocument": {
+        "SRC-089": {
+          "Tp": 30,
+          "Fp": 3,
+          "Fn": 6,
+          "Precision": 0.9091,
+          "Recall": 0.8333,
+          "F1": 0.8696
+        },
+        "SRC-095": {
+          "Tp": 90,
+          "Fp": 58,
+          "Fn": 13,
+          "Precision": 0.6081,
+          "Recall": 0.8738,
+          "F1": 0.7171
+        }
+      },
+      "escalatedLeaves": 31,
+      "escalatedShareOfCohort": 1,
+      "extraMediumCompletionTokens": 222303,
+      "passesGate": false
+    },
+    {
+      "policy": "P2_NONE_BOUNDARY_WS_REPAIR",
+      "aggregate": {
+        "Tp": 114,
+        "Fp": 53,
+        "Fn": 25,
+        "Precision": 0.6826,
+        "Recall": 0.8201,
+        "F1": 0.7451
+      },
+      "byDocument": {
+        "SRC-089": {
+          "Tp": 27,
+          "Fp": 3,
+          "Fn": 9,
+          "Precision": 0.9,
+          "Recall": 0.75,
+          "F1": 0.8182
+        },
+        "SRC-095": {
+          "Tp": 87,
+          "Fp": 50,
+          "Fn": 16,
+          "Precision": 0.635,
+          "Recall": 0.8447,
+          "F1": 0.725
+        }
+      },
+      "escalatedLeaves": 0,
+      "escalatedShareOfCohort": 0,
+      "extraMediumCompletionTokens": 0,
+      "passesGate": false
+    },
+    {
+      "policy": "P3_ESCALATE_ON_ANY_NONE_REFUSAL",
+      "aggregate": {
+        "Tp": 117,
+        "Fp": 49,
+        "Fn": 22,
+        "Precision": 0.7048,
+        "Recall": 0.8417,
+        "F1": 0.7672
+      },
+      "byDocument": {
+        "SRC-089": {
+          "Tp": 27,
+          "Fp": 3,
+          "Fn": 9,
+          "Precision": 0.9,
+          "Recall": 0.75,
+          "F1": 0.8182
+        },
+        "SRC-095": {
+          "Tp": 90,
+          "Fp": 46,
+          "Fn": 13,
+          "Precision": 0.6618,
+          "Recall": 0.8738,
+          "F1": 0.7531
+        }
+      },
+      "escalatedLeaves": 15,
+      "escalatedShareOfCohort": 0.4839,
+      "extraMediumCompletionTokens": 103238,
+      "passesGate": false
+    },
+    {
+      "policy": "P4_WS_REPAIR_THEN_ESCALATE_ON_RESIDUAL_REFUSAL",
+      "aggregate": {
+        "Tp": 117,
+        "Fp": 49,
+        "Fn": 22,
+        "Precision": 0.7048,
+        "Recall": 0.8417,
+        "F1": 0.7672
+      },
+      "byDocument": {
+        "SRC-089": {
+          "Tp": 27,
+          "Fp": 3,
+          "Fn": 9,
+          "Precision": 0.9,
+          "Recall": 0.75,
+          "F1": 0.8182
+        },
+        "SRC-095": {
+          "Tp": 90,
+          "Fp": 46,
+          "Fn": 13,
+          "Precision": 0.6618,
+          "Recall": 0.8738,
+          "F1": 0.7531
+        }
+      },
+      "escalatedLeaves": 15,
+      "escalatedShareOfCohort": 0.4839,
+      "extraMediumCompletionTokens": 103238,
+      "passesGate": false
+    },
+    {
+      "policy": "P5_MEDIUM_WS_REPAIR_ALL",
+      "aggregate": {
+        "Tp": 120,
+        "Fp": 61,
+        "Fn": 19,
+        "Precision": 0.663,
+        "Recall": 0.8633,
+        "F1": 0.75
+      },
+      "byDocument": {
+        "SRC-089": {
+          "Tp": 30,
+          "Fp": 3,
+          "Fn": 6,
+          "Precision": 0.9091,
+          "Recall": 0.8333,
+          "F1": 0.8696
+        },
+        "SRC-095": {
+          "Tp": 90,
+          "Fp": 58,
+          "Fn": 13,
+          "Precision": 0.6081,
+          "Recall": 0.8738,
+          "F1": 0.7171
+        }
+      },
+      "escalatedLeaves": 31,
+      "escalatedShareOfCohort": 1,
+      "extraMediumCompletionTokens": 222303,
+      "passesGate": false
+    },
+    {
+      "policy": "P6_ESCALATE_ON_OWNED_ALIAS_REFUSAL",
+      "aggregate": {
+        "Tp": 117,
+        "Fp": 49,
+        "Fn": 22,
+        "Precision": 0.7048,
+        "Recall": 0.8417,
+        "F1": 0.7672
+      },
+      "byDocument": {
+        "SRC-089": {
+          "Tp": 27,
+          "Fp": 3,
+          "Fn": 9,
+          "Precision": 0.9,
+          "Recall": 0.75,
+          "F1": 0.8182
+        },
+        "SRC-095": {
+          "Tp": 90,
+          "Fp": 46,
+          "Fn": 13,
+          "Precision": 0.6618,
+          "Recall": 0.8738,
+          "F1": 0.7531
+        }
+      },
+      "escalatedLeaves": 6,
+      "escalatedShareOfCohort": 0.1935,
+      "extraMediumCompletionTokens": 40640,
+      "passesGate": false
+    },
+    {
+      "policy": "P7_WS_REPAIR_THEN_ESCALATE_ON_RESIDUAL_OWNED_REFUSAL",
+      "aggregate": {
+        "Tp": 117,
+        "Fp": 49,
+        "Fn": 22,
+        "Precision": 0.7048,
+        "Recall": 0.8417,
+        "F1": 0.7672
+      },
+      "byDocument": {
+        "SRC-089": {
+          "Tp": 27,
+          "Fp": 3,
+          "Fn": 9,
+          "Precision": 0.9,
+          "Recall": 0.75,
+          "F1": 0.8182
+        },
+        "SRC-095": {
+          "Tp": 90,
+          "Fp": 46,
+          "Fn": 13,
+          "Precision": 0.6618,
+          "Recall": 0.8738,
+          "F1": 0.7531
+        }
+      },
+      "escalatedLeaves": 5,
+      "escalatedShareOfCohort": 0.1613,
+      "extraMediumCompletionTokens": 35502,
+      "passesGate": false
+    },
+    {
+      "policy": "X8_EXPLORATORY_P6_PLUS_LOW_EMISSION_LE2_GOLD_INFORMED",
+      "aggregate": {
+        "Tp": 120,
+        "Fp": 61,
+        "Fn": 19,
+        "Precision": 0.663,
+        "Recall": 0.8633,
+        "F1": 0.75
+      },
+      "byDocument": {
+        "SRC-089": {
+          "Tp": 30,
+          "Fp": 3,
+          "Fn": 6,
+          "Precision": 0.9091,
+          "Recall": 0.8333,
+          "F1": 0.8696
+        },
+        "SRC-095": {
+          "Tp": 90,
+          "Fp": 58,
+          "Fn": 13,
+          "Precision": 0.6081,
+          "Recall": 0.8738,
+          "F1": 0.7171
+        }
+      },
+      "escalatedLeaves": 10,
+      "escalatedShareOfCohort": 0.3226,
+      "extraMediumCompletionTokens": 80429,
+      "passesGate": false
+    }
+  ],
+  "perOrdinal": [
+    {
+      "documentId": "SRC-089",
+      "ordinal": 1,
+      "noneEmittedMemberClaims": 8,
+      "noneRefusedMemberClaims": 2,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "BIND_OutOfSourceOrder": 1,
+        "NOT_OWNED": 1
+      },
+      "noneRefusalRate": 0.25,
+      "noneCompletionTokens": 789,
+      "mediumCompletionTokens": 7811,
+      "mediumRefusedMemberClaims": 2,
+      "noneStrict": {
+        "tp": 5,
+        "fp": 1,
+        "fn": 1,
+        "ownedGold": 6
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 5,
+        "fp": 1,
+        "fn": 1,
+        "ownedGold": 6
+      },
+      "mediumStrict": {
+        "tp": 5,
+        "fp": 1,
+        "fn": 1,
+        "ownedGold": 6
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 5,
+        "fp": 1,
+        "fn": 1,
+        "ownedGold": 6
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "ordinal": 2,
+      "noneEmittedMemberClaims": 7,
+      "noneRefusedMemberClaims": 5,
+      "noneRefusedWhitespaceOnly": 4,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 1,
+        "TextNotInAtom": 4
+      },
+      "noneRefusalRate": 0.7143,
+      "noneCompletionTokens": 703,
+      "mediumCompletionTokens": 5138,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 6,
+        "ownedGold": 8
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 2,
+        "ownedGold": 8
+      },
+      "mediumStrict": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 2,
+        "ownedGold": 8
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 2,
+        "ownedGold": 8
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "ordinal": 3,
+      "noneEmittedMemberClaims": 5,
+      "noneRefusedMemberClaims": 1,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 1
+      },
+      "noneRefusalRate": 0.2,
+      "noneCompletionTokens": 413,
+      "mediumCompletionTokens": 3414,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 2,
+        "ownedGold": 6
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 2,
+        "ownedGold": 6
+      },
+      "mediumStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 2,
+        "ownedGold": 6
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 2,
+        "ownedGold": 6
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "ordinal": 4,
+      "noneEmittedMemberClaims": 9,
+      "noneRefusedMemberClaims": 5,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 5
+      },
+      "noneRefusalRate": 0.5556,
+      "noneCompletionTokens": 655,
+      "mediumCompletionTokens": 5029,
+      "mediumRefusedMemberClaims": 5,
+      "noneStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "ordinal": 5,
+      "noneEmittedMemberClaims": 2,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 491,
+      "mediumCompletionTokens": 10808,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 4,
+        "ownedGold": 4
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 4,
+        "ownedGold": 4
+      },
+      "mediumStrict": {
+        "tp": 3,
+        "fp": 2,
+        "fn": 1,
+        "ownedGold": 4
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 2,
+        "fn": 1,
+        "ownedGold": 4
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "ordinal": 6,
+      "noneEmittedMemberClaims": 8,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 678,
+      "mediumCompletionTokens": 4950,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 8
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 8
+      },
+      "mediumStrict": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 8
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 8
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "ordinal": 7,
+      "noneEmittedMemberClaims": 0,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 388,
+      "mediumCompletionTokens": 4501,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 0
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 0
+      },
+      "mediumStrict": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 0
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 0
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 8,
+      "noneEmittedMemberClaims": 5,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 4473,
+      "mediumCompletionTokens": 8857,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 4,
+        "fp": 1,
+        "fn": 1,
+        "ownedGold": 5
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 1,
+        "fn": 1,
+        "ownedGold": 5
+      },
+      "mediumStrict": {
+        "tp": 4,
+        "fp": 1,
+        "fn": 1,
+        "ownedGold": 5
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 1,
+        "fn": 1,
+        "ownedGold": 5
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 9,
+      "noneEmittedMemberClaims": 40,
+      "noneRefusedMemberClaims": 2,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "TextNotInAtom": 2
+      },
+      "noneRefusalRate": 0.05,
+      "noneCompletionTokens": 2576,
+      "mediumCompletionTokens": 8519,
+      "mediumRefusedMemberClaims": 6,
+      "noneStrict": {
+        "tp": 5,
+        "fp": 33,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 5,
+        "fp": 33,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "mediumStrict": {
+        "tp": 5,
+        "fp": 29,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 5,
+        "fp": 29,
+        "fn": 0,
+        "ownedGold": 5
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 10,
+      "noneEmittedMemberClaims": 5,
+      "noneRefusedMemberClaims": 1,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 1
+      },
+      "noneRefusalRate": 0.2,
+      "noneCompletionTokens": 5797,
+      "mediumCompletionTokens": 6655,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 11,
+      "noneEmittedMemberClaims": 5,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 5273,
+      "mediumCompletionTokens": 6052,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "mediumStrict": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 5
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 12,
+      "noneEmittedMemberClaims": 3,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 207,
+      "mediumCompletionTokens": 9142,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 13,
+      "noneEmittedMemberClaims": 6,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 398,
+      "mediumCompletionTokens": 4275,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 6
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 6
+      },
+      "mediumStrict": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 6
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 6
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 14,
+      "noneEmittedMemberClaims": 3,
+      "noneRefusedMemberClaims": 1,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 1
+      },
+      "noneRefusalRate": 0.3333,
+      "noneCompletionTokens": 225,
+      "mediumCompletionTokens": 5077,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 2
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 2
+      },
+      "mediumStrict": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 2
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 2
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 15,
+      "noneEmittedMemberClaims": 4,
+      "noneRefusedMemberClaims": 1,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 1
+      },
+      "noneRefusalRate": 0.25,
+      "noneCompletionTokens": 256,
+      "mediumCompletionTokens": 4174,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 16,
+      "noneEmittedMemberClaims": 6,
+      "noneRefusedMemberClaims": 1,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 1
+      },
+      "noneRefusalRate": 0.1667,
+      "noneCompletionTokens": 450,
+      "mediumCompletionTokens": 7009,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "mediumStrict": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 5
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 17,
+      "noneEmittedMemberClaims": 4,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 1544,
+      "mediumCompletionTokens": 9285,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 18,
+      "noneEmittedMemberClaims": 7,
+      "noneRefusedMemberClaims": 3,
+      "noneRefusedWhitespaceOnly": 2,
+      "noneRefusalStatuses": {
+        "TextNotInAtom": 3
+      },
+      "noneRefusalRate": 0.4286,
+      "noneCompletionTokens": 506,
+      "mediumCompletionTokens": 5353,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 1,
+        "ownedGold": 5
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 2,
+        "fn": 1,
+        "ownedGold": 5
+      },
+      "mediumStrict": {
+        "tp": 5,
+        "fp": 2,
+        "fn": 0,
+        "ownedGold": 5
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 5,
+        "fp": 2,
+        "fn": 0,
+        "ownedGold": 5
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 19,
+      "noneEmittedMemberClaims": 3,
+      "noneRefusedMemberClaims": 1,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "TextNotInAtom": 1
+      },
+      "noneRefusalRate": 0.3333,
+      "noneCompletionTokens": 205,
+      "mediumCompletionTokens": 6177,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 1,
+        "ownedGold": 3
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 1,
+        "ownedGold": 3
+      },
+      "mediumStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 20,
+      "noneEmittedMemberClaims": 5,
+      "noneRefusedMemberClaims": 1,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 1
+      },
+      "noneRefusalRate": 0.2,
+      "noneCompletionTokens": 328,
+      "mediumCompletionTokens": 11416,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 21,
+      "noneEmittedMemberClaims": 3,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 198,
+      "mediumCompletionTokens": 9606,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 22,
+      "noneEmittedMemberClaims": 8,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 559,
+      "mediumCompletionTokens": 7234,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 8
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 8
+      },
+      "mediumStrict": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 8
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 8
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 23,
+      "noneEmittedMemberClaims": 10,
+      "noneRefusedMemberClaims": 1,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 1
+      },
+      "noneRefusalRate": 0.1,
+      "noneCompletionTokens": 713,
+      "mediumCompletionTokens": 11548,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 9
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 9
+      },
+      "mediumStrict": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 9
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 9,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 9
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 24,
+      "noneEmittedMemberClaims": 3,
+      "noneRefusedMemberClaims": 1,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "NOT_OWNED": 1
+      },
+      "noneRefusalRate": 0.3333,
+      "noneCompletionTokens": 826,
+      "mediumCompletionTokens": 8276,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 2
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 2
+      },
+      "mediumStrict": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 2
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 2
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 25,
+      "noneEmittedMemberClaims": 1,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 837,
+      "mediumCompletionTokens": 7614,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 1
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 1
+      },
+      "mediumStrict": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 1
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 1
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 26,
+      "noneEmittedMemberClaims": 3,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 4803,
+      "mediumCompletionTokens": 5164,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 27,
+      "noneEmittedMemberClaims": 4,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 266,
+      "mediumCompletionTokens": 4484,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumStrict": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 4
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 28,
+      "noneEmittedMemberClaims": 6,
+      "noneRefusedMemberClaims": 5,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {
+        "TextNotInAtom": 5
+      },
+      "noneRefusalRate": 0.8333,
+      "noneCompletionTokens": 409,
+      "mediumCompletionTokens": 7642,
+      "mediumRefusedMemberClaims": 5,
+      "noneStrict": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 5,
+        "ownedGold": 6
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 5,
+        "ownedGold": 6
+      },
+      "mediumStrict": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 4,
+        "ownedGold": 6
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 4,
+        "ownedGold": 6
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 29,
+      "noneEmittedMemberClaims": 3,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 205,
+      "mediumCompletionTokens": 3610,
+      "mediumRefusedMemberClaims": 0,
+      "noneStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumStrict": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "ownedGold": 3
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 30,
+      "noneEmittedMemberClaims": 1,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 5761,
+      "mediumCompletionTokens": 16866,
+      "mediumRefusedMemberClaims": 1,
+      "noneStrict": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 4,
+        "ownedGold": 5
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 4,
+        "ownedGold": 5
+      },
+      "mediumStrict": {
+        "tp": 1,
+        "fp": 12,
+        "fn": 4,
+        "ownedGold": 5
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 1,
+        "fp": 12,
+        "fn": 4,
+        "ownedGold": 5
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "ordinal": 31,
+      "noneEmittedMemberClaims": 15,
+      "noneRefusedMemberClaims": 0,
+      "noneRefusedWhitespaceOnly": 0,
+      "noneRefusalStatuses": {},
+      "noneRefusalRate": 0,
+      "noneCompletionTokens": 6024,
+      "mediumCompletionTokens": 6617,
+      "mediumRefusedMemberClaims": 4,
+      "noneStrict": {
+        "tp": 1,
+        "fp": 14,
+        "fn": 4,
+        "ownedGold": 5
+      },
+      "noneWhitespaceRepaired": {
+        "tp": 1,
+        "fp": 14,
+        "fn": 4,
+        "ownedGold": 5
+      },
+      "mediumStrict": {
+        "tp": 1,
+        "fp": 14,
+        "fn": 4,
+        "ownedGold": 5
+      },
+      "mediumWhitespaceRepaired": {
+        "tp": 1,
+        "fp": 14,
+        "fn": 4,
+        "ownedGold": 5
+      }
+    }
+  ]
+}

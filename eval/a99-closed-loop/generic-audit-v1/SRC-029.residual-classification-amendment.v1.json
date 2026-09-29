@@ -1,0 +1,20 @@
+{
+  "artifactKind": "a99_generic_audit_residual_classification_amendment",
+  "study": "SRC029_BLIND_GENERALIZATION_AUDIT_V1",
+  "amends": {
+    "path": "eval/a99-closed-loop/generic-audit-v1/SRC-029.residual-classification.v1.json",
+    "sha256": "0a6ff77b9bcee4d750c1b8bde05df97dc9048e5dba9977c5deafb1e9ada1a12f",
+    "finding": "axisFindings[repeatStatus]"
+  },
+  "decidedBy": "USER",
+  "decidedAt": "2026-09-25",
+  "previousBucket": "C",
+  "cause": "RESPONSIBILITY_PLACEMENT_ERROR",
+  "reason": "a repeat relation was inferred per occurrence, from lexical recurrence, before semantic identity existed. Under OCCURRENCE_SEMANTIC_AXES_V3 repeatStatus is no semantic axis: PRIMARY / REPEAT / CONTINUATION is derived between canonical claims after identity resolution. Not an ontology gap and not fixed by teaching the engine which occurrences may anchor a repeat",
+  "ontology": {
+    "path": "eval/a99-closed-loop/policy/occurrence-semantic-axes.v3.json",
+    "sha256": "23c916df45a1deb7d985c34dff1efc6de2ccc1a6d512b7500d92d59c963b81f6"
+  },
+  "engineConsequence": "V1.1 proposes no repeatStatus",
+  "ontologyGapsAfterAmendment": 0
+}

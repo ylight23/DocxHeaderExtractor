@@ -1,0 +1,115 @@
+{
+  "artifactKind": "a99_generic_audit_reveal_pin",
+  "study": "SRC089_BLIND_GENERALIZATION_AUDIT_V1",
+  "checkpoint": {
+    "goldClaims": 36,
+    "bind": "36/36",
+    "duplicateIdentities": 0,
+    "sharedCharacters": 0,
+    "sourceHash": "PASS",
+    "hierarchyEvaluable": false,
+    "engineProposalsOpened": "NO",
+    "modelProviderCalls": 0,
+    "fullSuite": "GREEN (1593/1593 at 730dd32)",
+    "releaseBuild": "0 errors",
+    "gitDiffCheck": "PASS"
+  },
+  "gold": {
+    "commit": "730dd32",
+    "path": "eval/a99-closed-loop/gold/SRC-089.gold.json",
+    "authoredGoldSha256": "c66cefb224bdd47a08e2374fdb0328dd97b1e520a48f4cdbaffed244ac833534",
+    "registryGoldSha256": "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7",
+    "registry": {
+      "path": "eval/a99-closed-loop/gold-current/registry.v1.json",
+      "sha256": "f615775cad1885cb1e1170d8850fb85fc480ecb7fc4a32519855072075a60f20",
+      "commit": "98aa9b9"
+    }
+  },
+  "source": {
+    "path": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+    "sha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
+  },
+  "engine": {
+    "commit": "84c69da (V1.4 frozen over PDF_SOURCE_FACTS_V3)",
+    "identity": {
+      "engine": {
+        "engine": "GENERIC_AUDIT_ENGINE_V1.4",
+        "sourceFacts": "PDF_SOURCE_FACTS_V3",
+        "files": [
+          {
+            "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_4/SourceEvidence.cs",
+            "sha256": "39e7c0dfc8466e69ca1b0282b39540d9a75f51419cf9a5477324aea790b30b6b"
+          },
+          {
+            "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_4/SemanticAuditEngine.cs",
+            "sha256": "86072621f88205d7a034c7e579fae6411837f56ecc8969341bf34e3531cc8935"
+          }
+        ],
+        "constants": {
+          "largerThanBodyRatio": 1.08,
+          "bodySizeToleranceRatio": 0.97,
+          "shortLabelMaxWords": 20,
+          "compositeMaxParts": 6,
+          "furnitureMinPages": 3,
+          "furnitureMinBandShare": 0.8,
+          "navigationRunMin": 3,
+          "lineGapMaxFontRatio": 1.8,
+          "sameSizeRatioTolerance": 0.02,
+          "bracketSpanMaxLines": 15,
+          "formMinFillInFields": 2,
+          "averageCharWidthFontRatio": 0.5,
+          "centredMarginToleranceRatio": 0.05,
+          "columnGutterFontRatio": 1,
+          "figureRegionMaxLines": 60,
+          "layoutLabelMaxWords": 8,
+          "proseMinWords": 8,
+          "leadColumnGapFontRatio": 3,
+          "centredWrapMinFillRatio": 0.75,
+          "addressLineMaxWords": 8
+        },
+        "ontology": "OCCURRENCE_SEMANTIC_AXES_V3"
+      },
+      "engineFreeze": {
+        "path": "eval/a99-closed-loop/generic-audit-v1_4/GENERIC_AUDIT_ENGINE_V1.4.freeze.json",
+        "sha256": "40261d2ce686400b3103bd94ccc7fcc8a6ec8dec8bcd287196e2cbeaa53f4c4b"
+      },
+      "factsFreeze": {
+        "path": "eval/a99-closed-loop/pdf-source-facts-v3/PDF_SOURCE_FACTS_V3.freeze.json",
+        "sha256": "19fd455302e3631d9f11f0c3485e9eb5bae0530f6cd7e19f1e5597278d0450e4"
+      }
+    }
+  },
+  "engineMatchesPreregistration": true,
+  "requestContract": {
+    "requestVersion": "V2_ATTENTION_FREE over PDF_SOURCE_FACTS_V3",
+    "path": "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V3.freeze.json",
+    "sha256": "875f44a7371991c6823b24ad4012f95f8d098e1347f92d79e2b4d49b4a568dc6"
+  },
+  "scorer": {
+    "id": "GENERIC_EXACT_SCORER_V1",
+    "path": "tests/DocxHeaderExtractor.Tests/GenericAudit/V1_1/ExactScorer.cs",
+    "sha256": "4790a2bf1b9ab57924005633e38f2cabe1f477e38b726ed09205907451e65d71"
+  },
+  "harness": {
+    "path": "tests/DocxHeaderExtractor.Tests/Src089BlindScoreTests.cs",
+    "sha256": "7251f6c3dbb0e1bd6b20379152732809cd7cd73494d0bf9ad5f44093488292a1"
+  },
+  "preregistration": {
+    "commit": "b187bc7",
+    "sha256": "875b6af72260e1985dc03ae459a6f6be085a57f5125a9f115a09e9cab7f2ed64"
+  },
+  "packingPolicy": "FIXED_OWNED_COUNT_120 (default); COHERENT_REGION_SEGMENTATION_V1 not selected",
+  "proposals": {
+    "commit": "78df425",
+    "path": "eval/a99-closed-loop/generic-audit-v1_4-held-out/SRC-089.proposals.json",
+    "sha256": "6a7579b89a8e4d7aa69478a9e34c885abb8edd1ebc13ccb36c1d6d03fad6c083",
+    "gitBlob": "05b8d504d0e1ce7be80dca39af096fc0417484b1",
+    "contentRead": false
+  },
+  "rules": [
+    "reveal once; the raw score is committed as written, a bad result included",
+    "residuals are classified afterwards; V1.4 and PDF_SOURCE_FACTS_V3 are not changed and this baseline is not rewritten",
+    "a Gold error found later becomes a new Gold revision; this score stays against the Gold pinned here",
+    "only then: the cross-document summary, the hierarchy evaluation and the final pipeline verdict"
+  ]
+}

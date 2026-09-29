@@ -1,0 +1,168 @@
+{
+  "artifactKind": "a99_pdf_occurrence_gold",
+  "schemaVersion": "a99-pdf-occurrence-gold-v1",
+  "documentId": "DOC-0001",
+  "sourcePath": "bench/01-style-chuan.docx",
+  "sourceSha256": "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14",
+  "sourceUniverseSha256": "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba",
+  "semanticHeadingTotal": 7,
+  "semanticHeadingTotalAuthority": {
+    "authority": "USER_APPROVED_SEMANTIC_TOTAL",
+    "decidedAt": "2026-09-12",
+    "reviewer": "USER",
+    "sourceUniverseSha256": null
+  },
+  "occurrenceAuthority": {
+    "authority": "PRIOR_USER_APPROVED_OCCURRENCE_MATERIALIZATION",
+    "decidedAt": "EXISTING_STRICT_GOLD_OCCURRENCE_V1",
+    "reviewer": "USER_APPROVED_PROVENANCE",
+    "sourceUniverseSha256": "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba"
+  },
+  "finalAuthority": "PROMOTED_FROM_PRIOR_USER_APPROVAL",
+  "capabilities": {
+    "semanticEvaluable": true,
+    "occurrenceEvaluable": true,
+    "hierarchyEvaluable": false
+  },
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "semanticTruthReusedFromPriorUserApproval": true,
+  "currentAuthorityBridgeVerified": true,
+  "freshSemanticApprovalInS2M": false,
+  "headings": [
+    {
+      "sourceAlias": "S0001",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "heading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0003",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "heading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0005",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "heading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0007",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "heading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0009",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "heading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0011",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "heading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    },
+    {
+      "sourceAlias": "S0013",
+      "selectionMode": "WHOLE_ALIAS",
+      "semanticRole": "heading",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null,
+      "parentSourceAlias": null
+    }
+  ],
+  "boundOccurrences": [
+    {
+      "headingOrdinal": 0,
+      "sourceAlias": "S0001",
+      "sourceId": "body[1]/p[1]",
+      "exactText": "Chương 1. Quy định chung",
+      "utf16Span": { "start": 0, "end": 24 }
+    },
+    {
+      "headingOrdinal": 1,
+      "sourceAlias": "S0003",
+      "sourceId": "body[1]/p[3]",
+      "exactText": "1.1. Phạm vi điều chỉnh",
+      "utf16Span": { "start": 0, "end": 23 }
+    },
+    {
+      "headingOrdinal": 2,
+      "sourceAlias": "S0005",
+      "sourceId": "body[1]/p[5]",
+      "exactText": "1.2. Đối tượng áp dụng",
+      "utf16Span": { "start": 0, "end": 22 }
+    },
+    {
+      "headingOrdinal": 3,
+      "sourceAlias": "S0007",
+      "sourceId": "body[1]/p[7]",
+      "exactText": "1.2.1. Cơ quan quản lý",
+      "utf16Span": { "start": 0, "end": 22 }
+    },
+    {
+      "headingOrdinal": 4,
+      "sourceAlias": "S0009",
+      "sourceId": "body[1]/p[9]",
+      "exactText": "1.2.2. Đơn vị trực thuộc",
+      "utf16Span": { "start": 0, "end": 24 }
+    },
+    {
+      "headingOrdinal": 5,
+      "sourceAlias": "S0011",
+      "sourceId": "body[1]/p[11]",
+      "exactText": "Chương 2. Tổ chức thực hiện",
+      "utf16Span": { "start": 0, "end": 27 }
+    },
+    {
+      "headingOrdinal": 6,
+      "sourceAlias": "S0013",
+      "sourceId": "body[1]/p[13]",
+      "exactText": "2.1. Phân công trách nhiệm",
+      "utf16Span": { "start": 0, "end": 26 }
+    }
+  ],
+  "promotionProvenance": {
+    "priorSemanticGold": "eval/a99-closed-loop/strict-gold-v4/DOC-0001.strict-gold-v4.json",
+    "priorSemanticGoldSha256": "458f79568578cb2a49f99b987881835cd12dd87b8a69b4e3ee52ca09a139e0dc",
+    "priorOccurrenceMaterialization": "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0001.occurrence-gold-v1.json",
+    "priorOccurrenceMaterializationSha256": "a7e6cfef3fecc8aaa0ef69bdc7c36c9e172f7b2f9fe130af211b048bc24f0351",
+    "hierarchyAuthority": "artifacts/authority-audit/strict-heading-canonical-hierarchy-gold-v1/DOC-0001/manifest.json",
+    "hierarchyAuthoritySha256": "49ed3072d8a4e8aa14848bf501f42ad5205acfd199761ce87c070839dc015efc",
+    "approvalAuthority": "USER_APPROVAL_IN_CONVERSATION",
+    "historicalMigrationReviewRequiredOverridesLaterApproval": false,
+    "s2lPacketStatusPreserved": "PENDING_HUMAN_REVIEW",
+    "s2lPacketWasNotMutated": true,
+    "currentAuthorityBridge": "eval/a99-closed-loop/gold-adjudication-v3/DOC-0001/authority-bridge.v1.json"
+  }
+}

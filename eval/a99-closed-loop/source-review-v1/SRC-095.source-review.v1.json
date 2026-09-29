@@ -1,0 +1,102 @@
+{
+  "artifactKind": "a99_source_only_gold_review",
+  "study": "SRC095_SOURCE_ONLY_GOLD_REVIEW_V1",
+  "protocol": {
+    "authoritativeSource": {
+      "path": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+      "sha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84"
+    },
+    "modelProviderVlmCalls": 0,
+    "engineProposalsRead": false,
+    "goldFileRead": false,
+    "countOnlyTotalUsed": false,
+    "oldDocxOccurrencesUsed": false,
+    "goldWritten": false,
+    "independence": "the reviewer designed the engine; its blind proposals were committed before the review and not opened; not a double-blind annotation"
+  },
+  "inputs": {
+    "reviewTool": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-095/review_tool.py",
+      "sha256": "daa81d60964f14e0dce0dad8e916ebeb860e4b530060f6e861579f9c0f9b39dc"
+    },
+    "atomLayoutFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-095/atom-layout-facts.tsv",
+      "sha256": "25d75996c821460aeb04fd742da3bfddff57e9b2889e96cd9310e2934495520b"
+    },
+    "atomGlyphFacts": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-095/atom-glyph-facts.tsv",
+      "sha256": "a99b47973894c8273bb3c7fe835090624c61ec4f8837d1dc66969f1f8e92af2d",
+      "writer": "ScaleUpSurveyDiagnosticTests.Dump_pdf_atom_glyph_facts"
+    },
+    "reviewItems": {
+      "path": "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json",
+      "sha256": "1c9b660edbdde08596dc767e6ca9de5657d5b77c229336be1d69141d074a60ac"
+    }
+  },
+  "summary": {
+    "SOURCE_OCCURRENCES": 2302,
+    "CLEAR_HEADING": 103,
+    "CLEAR_NON_HEADING_SET_APART": 141,
+    "AMBIGUOUS": 0,
+    "PROPOSED_RANGE": {
+      "min": 103,
+      "max": 103
+    },
+    "BINDING_FAILURES": 0,
+    "USER_APPROVAL_REQUIRED": true,
+    "note": "every other atom is a non-heading by the reviewer's reading (body, table cells and rows, chart values, notes, contents entries, page furniture); only set-apart non-headings are listed"
+  },
+  "bySection": [
+    {
+      "section": "FRONT",
+      "headings": 5,
+      "nonHeadings": 88,
+      "ambiguous": 0
+    },
+    {
+      "section": "BACK",
+      "headings": 11,
+      "nonHeadings": 1,
+      "ambiguous": 0
+    },
+    {
+      "section": "BODY",
+      "headings": 87,
+      "nonHeadings": 52,
+      "ambiguous": 0
+    }
+  ],
+  "headingsByPattern": {
+    "MATTER_SECTION": 6,
+    "NUMBERED_SECTION": 81,
+    "NUMBERED_SECTION_SPLIT": 6,
+    "S095_Q1_RFC_TITLE_BLOCK": 1,
+    "S095_Q2_INDEX_GROUP_LETTER": 8,
+    "TOC_OPENER": 1
+  },
+  "nonHeadingsByPattern": {
+    "AUTHOR_LINE": 1,
+    "BOILERPLATE_EMPHASIS": 2,
+    "CONTENTS_ENTRY": 87,
+    "S095_Q1_RFC_TITLE_BLOCK": 1,
+    "TABLE_OR_REFERENCE_LABEL": 50
+  },
+  "ambiguous": [],
+  "userDecisions": {
+    "decidedAt": "2026-09-26",
+    "membershipTotal": 103,
+    "arithmetic": "94 clear + 1 S095_Q1 (HTTP/3) + 8 S095_Q2 = 103",
+    "principle": "CLASSIFY OCCURRENCES, NOT STRINGS",
+    "patterns": [
+      {
+        "pattern": "S095_Q1_RFC_TITLE_BLOCK",
+        "decision": "'RFC 9114': isHeading false, METADATA / DOCUMENT_IDENTIFIER. 'HTTP/3': isHeading true, IDENTITY / DOCUMENT / TITLE. (DOCUMENT_IDENTIFIER is the user's term; the V3 informationType list does not contain it - the open vocabulary item the ontology already records)"
+      },
+      {
+        "pattern": "S095_Q2_INDEX_GROUP_LETTER",
+        "decision": "TRUE x8: each index group letter opens its own group of indented entries, like the SRC-041 A5 contents group label"
+      }
+    ]
+  },
+  "bindingFailures": []
+}

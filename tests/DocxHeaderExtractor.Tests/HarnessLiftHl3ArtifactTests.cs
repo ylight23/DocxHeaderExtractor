@@ -50,12 +50,19 @@ public sealed class HarnessLiftHl3ArtifactTests
     [Fact]
     public void Frozen_hl2_inputs_match_the_recorded_sha256_values()
     {
+        // Canonical text, not raw bytes. These were recorded over a Windows working tree, which is
+        // the CRLF rendering of LF blobs, so the audit verified only on that one checkout - see
+        // CanonicalArtifactHash.
         using var document = Read("hl3-measurement-semantics-audit.v1.json");
+        Assert.Equal(
+            CanonicalArtifactHash.Contract,
+            document.RootElement.GetProperty(CanonicalArtifactHash.ContractField).GetString());
         var hashes = document.RootElement.GetProperty("frozenInputSha256");
+        Assert.NotEmpty(hashes.EnumerateObject());
         foreach (var property in hashes.EnumerateObject())
         {
             var path = Path.Combine(RepositoryRoot(), property.Name.Replace('/', Path.DirectorySeparatorChar));
-            Assert.Equal(property.Value.GetString(), Sha256(path));
+            Assert.Equal(property.Value.GetString(), CanonicalArtifactHash.OfTextFile(path));
         }
     }
 
@@ -93,11 +100,5 @@ public sealed class HarnessLiftHl3ArtifactTests
             directory = directory.Parent;
         }
         throw new DirectoryNotFoundException("HL3 artifact tests require a repository root.");
-    }
-
-    private static string Sha256(string path)
-    {
-        using var stream = File.OpenRead(path);
-        return Convert.ToHexString(SHA256.HashData(stream)).ToLowerInvariant();
     }
 }

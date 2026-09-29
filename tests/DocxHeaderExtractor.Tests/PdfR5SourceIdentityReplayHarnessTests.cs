@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
 /// R5-3D1 replay harness. Cross-revision joins use page plus the ordered exact PDF line identities.
-/// Candidate ids are retained only as run-local diagnostics and are never serialized as replay
+/// Route block ids are retained only as run-local diagnostics and are never serialized as replay
 /// identity. This stays in the test/evaluation boundary so adding the harness cannot change the
 /// production authority path.
 /// </summary>
@@ -174,11 +174,11 @@ public sealed class PdfR5SourceIdentityReplayHarnessTests
             : throw new InvalidOperationException("R5_3D1_MISSING_ENV:" + key);
 
     [Fact]
-    public void SourceIdentityKeyIgnoresRunLocalCandidateIdButPreservesLineOrder()
+    public void SourceIdentityKeyIgnoresRunLocalRouteBlockIdButPreservesLineOrder()
     {
-        var first = SourceEntry("candidate-a", 3, ["line-1", "line-2"], "Heading");
-        var second = SourceEntry("candidate-z", 3, ["line-1", "line-2"], "Heading");
-        var reversed = SourceEntry("candidate-z", 3, ["line-2", "line-1"], "Heading");
+        var first = SourceEntry("route-block-a", 3, ["line-1", "line-2"], "Heading");
+        var second = SourceEntry("route-block-z", 3, ["line-1", "line-2"], "Heading");
+        var reversed = SourceEntry("route-block-z", 3, ["line-2", "line-1"], "Heading");
 
         Assert.Equal(first.Key, second.Key);
         Assert.NotEqual(first.Key, reversed.Key);
@@ -203,17 +203,17 @@ public sealed class PdfR5SourceIdentityReplayHarnessTests
     {
         var audit = new RouteExecutionAudit(
             "test", 1, 1, 1, 1,
-            [new RouteBlockAudit("candidate-1", 2, "1 Scope")],
-            [new RouteBlockAudit("candidate-1", 2, "1 Scope")], [],
-            [new RouteBlockDecisionAudit("candidate-1", "HeadingTopic", .91, "role")],
-            ["candidate-1"], [], ["candidate-1"])
+            [new RouteBlockAudit("route-block-1", 2, "1 Scope")],
+            [new RouteBlockAudit("route-block-1", 2, "1 Scope")], [],
+            [new RouteBlockDecisionAudit("route-block-1", "HeadingTopic", .91, "role")],
+            ["route-block-1"], [], ["route-block-1"])
         {
             SelectedSourceIdentities = [new PdfSelectedSourceIdentity(
-                "candidate-1", 2, ["source-line-1"], "1 Scope", new TextOffsetSpan(0, 7))],
+                "route-block-1", 2, ["source-line-1"], "1 Scope", new TextOffsetSpan(0, 7))],
             ValidatedStructures = [new PdfValidatedStructure(
-                "candidate-1", 1, null, "unresolved", "requires_review")],
+                "route-block-1", 1, null, "unresolved", "requires_review")],
             HierarchyProposals = [new PdfHierarchyProposalAudit(
-                "candidate-1", null, null, "unresolved")],
+                "route-block-1", null, null, "unresolved")],
         };
 
         var result = PdfR5ReplayHarness.Build(audit, "baseline", "doc", "docx-sha", "pdf-sha");
@@ -223,7 +223,7 @@ public sealed class PdfR5SourceIdentityReplayHarnessTests
         Assert.Equal("2|source-line-1", fixture.SelectedSources.Single().Key.Value);
         Assert.Equal("2|source-line-1", fixture.SemanticProposals.Single().Source.Value);
         Assert.Equal("2|source-line-1", fixture.HierarchyProposals.Single().Source.Value);
-        Assert.DoesNotContain("candidate-1", JsonSerializer.Serialize(fixture, JsonOptions));
+        Assert.DoesNotContain("route-block-1", JsonSerializer.Serialize(fixture, JsonOptions));
     }
 
     [Fact]
@@ -233,8 +233,8 @@ public sealed class PdfR5SourceIdentityReplayHarnessTests
         try
         {
             File.WriteAllText(path, """
-                {"lane":"selection","payload":{"selected":[{"candidateIdDiagnostic":"candidate-1","page":2,"sourceLineIds":["source-line-1"],"sourceText":"1 Scope"}]}}
-                {"lane":"span","payload":{"blocks":[{"id":"candidate-1","page":2,"lineIds":["source-line-1"],"resolved":true,"start":0,"end":7}]}}
+                {"lane":"selection","payload":{"selected":[{"routeBlockIdDiagnostic":"route-block-1","page":2,"sourceLineIds":["source-line-1"],"sourceText":"1 Scope"}]}}
+                {"lane":"span","payload":{"blocks":[{"id":"route-block-1","page":2,"lineIds":["source-line-1"],"resolved":true,"start":0,"end":7}]}}
                 """);
 
             var result = PdfR5ReplayHarness.ReadCheckpoint(path);
@@ -259,10 +259,10 @@ public sealed class PdfR5SourceIdentityReplayHarnessTests
             new Dictionary<string, string>(StringComparer.Ordinal)));
     }
 
-    private static PdfReplaySourceEntry SourceEntry(string candidateId, int page, IReadOnlyList<string> lines, string text) =>
+    private static PdfReplaySourceEntry SourceEntry(string routeBlockId, int page, IReadOnlyList<string> lines, string text) =>
         new(new PdfReplaySourceKey(page, lines), text,
             Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text))).ToLowerInvariant(),
-            new TextOffsetSpan(0, text.Length), candidateId);
+            new TextOffsetSpan(0, text.Length), routeBlockId);
 
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web)
     {
@@ -357,8 +357,8 @@ internal static class PdfR5ReplayHarness
         {
             using var document = JsonDocument.Parse(File.ReadAllText(manifestPath));
             var item = document.RootElement.TryGetProperty("items", out var items)
-                ? items.EnumerateArray().FirstOrDefault(candidate =>
-                    candidate.TryGetProperty("id", out var id) && id.GetString() == documentId)
+                ? items.EnumerateArray().FirstOrDefault(entry =>
+                    entry.TryGetProperty("id", out var id) && id.GetString() == documentId)
                 : default;
             if (item.ValueKind == JsonValueKind.Undefined) return ["CORPUS_DOCUMENT_MISSING:" + documentId];
             var errors = new List<string>();
@@ -401,13 +401,13 @@ internal static class PdfR5ReplayHarness
     {
         var errors = new List<string>();
         var sources = new List<PdfReplaySourceEntry>();
-        var byCandidate = new Dictionary<string, PdfReplaySourceEntry>(StringComparer.Ordinal);
+        var byRouteBlock = new Dictionary<string, PdfReplaySourceEntry>(StringComparer.Ordinal);
         foreach (var selected in audit.SelectedSourceIdentities)
         {
             if (selected.Page < 1 || selected.SourceLineIds.Count == 0 ||
                 selected.SourceLineIds.Any(string.IsNullOrWhiteSpace))
             {
-                errors.Add($"INVALID_SELECTED_SOURCE:{selected.CandidateIdDiagnostic}");
+                errors.Add($"INVALID_SELECTED_SOURCE:{selected.RouteBlockIdDiagnostic}");
                 continue;
             }
 
@@ -416,14 +416,14 @@ internal static class PdfR5ReplayHarness
                 selected.SourceText,
                 Sha256(selected.SourceText),
                 selected.SourceSpan,
-                selected.CandidateIdDiagnostic);
+                selected.RouteBlockIdDiagnostic);
             if (string.IsNullOrEmpty(selected.SourceText))
-                errors.Add($"EMPTY_SELECTED_SOURCE_TEXT:{selected.CandidateIdDiagnostic}");
+                errors.Add($"EMPTY_SELECTED_SOURCE_TEXT:{selected.RouteBlockIdDiagnostic}");
             if (selected.SourceSpan is { } sourceSpan &&
                 (sourceSpan.Start < 0 || sourceSpan.End < sourceSpan.Start || sourceSpan.End > selected.SourceText.Length))
-                errors.Add($"INVALID_SELECTED_SOURCE_SPAN:{selected.CandidateIdDiagnostic}");
-            if (!byCandidate.TryAdd(selected.CandidateIdDiagnostic, entry))
-                errors.Add($"DUPLICATE_CANDIDATE_ID:{selected.CandidateIdDiagnostic}");
+                errors.Add($"INVALID_SELECTED_SOURCE_SPAN:{selected.RouteBlockIdDiagnostic}");
+            if (!byRouteBlock.TryAdd(selected.RouteBlockIdDiagnostic, entry))
+                errors.Add($"DUPLICATE_ROUTE_BLOCK_ID:{selected.RouteBlockIdDiagnostic}");
             else if (sources.Any(existing => existing.Key == entry.Key))
                 errors.Add($"DUPLICATE_SOURCE_IDENTITY:{entry.Key.Value}");
             else
@@ -433,7 +433,7 @@ internal static class PdfR5ReplayHarness
         var semantic = new List<PdfReplaySemanticProposal>();
         foreach (var decision in audit.BlockDecisions)
         {
-            if (!byCandidate.TryGetValue(decision.Id, out var source))
+            if (!byRouteBlock.TryGetValue(decision.Id, out var source))
             {
                 errors.Add($"SEMANTIC_UNJOINED:{decision.Id}");
                 continue;
@@ -451,15 +451,15 @@ internal static class PdfR5ReplayHarness
             .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
         foreach (var structure in audit.ValidatedStructures)
         {
-            if (!byCandidate.TryGetValue(structure.SourceId, out var source))
+            if (!byRouteBlock.TryGetValue(structure.SourceId, out var source))
             {
                 errors.Add($"HIERARCHY_UNJOINED:{structure.SourceId}");
                 continue;
             }
 
             proposalById.TryGetValue(structure.SourceId, out var proposal);
-            PdfReplaySourceKey? proposedParent = ResolveParent(proposal?.ProposedParentId, byCandidate, errors, "PROPOSED_PARENT");
-            PdfReplaySourceKey? resolvedParent = ResolveParent(structure.ParentId, byCandidate, errors, "RESOLVED_PARENT");
+            PdfReplaySourceKey? proposedParent = ResolveParent(proposal?.ProposedParentId, byRouteBlock, errors, "PROPOSED_PARENT");
+            PdfReplaySourceKey? resolvedParent = ResolveParent(structure.ParentId, byRouteBlock, errors, "RESOLVED_PARENT");
             hierarchy.Add(new PdfReplayHierarchyProposal(
                 source.Key, structure.Level, proposedParent, resolvedParent,
                 proposal?.Resolution ?? structure.ParentResolution));
@@ -486,7 +486,7 @@ internal static class PdfR5ReplayHarness
     public static CheckpointReplayResult ReadCheckpoint(string path)
     {
         var errors = new List<string>();
-        var selectedByCandidate = new Dictionary<string, PdfReplaySourceEntry>(StringComparer.Ordinal);
+        var selectedByRouteBlock = new Dictionary<string, PdfReplaySourceEntry>(StringComparer.Ordinal);
         var selectedByKey = new Dictionary<PdfReplaySourceKey, PdfReplaySourceEntry>();
         var semanticProposals = new List<PdfReplaySemanticProposal>();
         var spanProposals = new List<PdfReplaySpanProposal>();
@@ -505,42 +505,42 @@ internal static class PdfR5ReplayHarness
                 {
                     foreach (var item in Array(payload, "selected"))
                     {
-                        var candidate = String(item, "candidateIdDiagnostic");
+                        var routeBlockId = String(item, "routeBlockIdDiagnostic");
                         var source = new PdfReplaySourceEntry(
                             new PdfReplaySourceKey(Int(item, "page"), Strings(item, "sourceLineIds")),
                             String(item, "sourceText"),
                             Sha256(String(item, "sourceText")),
                             Span(item, "sourceSpan"),
-                            candidate);
+                            routeBlockId);
                         if (source.Key.Page < 1 || source.Key.LineIds.Count == 0 ||
                             source.Key.LineIds.Any(string.IsNullOrWhiteSpace))
                         {
-                            errors.Add("INVALID_CHECKPOINT_SOURCE:" + candidate);
+                            errors.Add("INVALID_CHECKPOINT_SOURCE:" + routeBlockId);
                         }
-                        else if (!selectedByCandidate.TryAdd(candidate, source))
-                            errors.Add("DUPLICATE_CHECKPOINT_CANDIDATE:" + candidate);
+                        else if (!selectedByRouteBlock.TryAdd(routeBlockId, source))
+                            errors.Add("DUPLICATE_CHECKPOINT_ROUTE_BLOCK:" + routeBlockId);
                         else if (!selectedByKey.TryAdd(source.Key, source))
                             errors.Add("DUPLICATE_CHECKPOINT_SOURCE_IDENTITY:" + source.Key.Value);
                         else if (source.SourceSpan is { } sourceSpan &&
                                  (sourceSpan.Start < 0 || sourceSpan.End < sourceSpan.Start ||
                                   sourceSpan.End > source.SourceText.Length))
-                            errors.Add("INVALID_CHECKPOINT_SOURCE_SPAN:" + candidate);
+                            errors.Add("INVALID_CHECKPOINT_SOURCE_SPAN:" + routeBlockId);
                     }
                 }
                 else if (lane == "semantic")
                 {
                     foreach (var item in Array(payload, "blocks"))
                     {
-                        var candidate = String(item, "id");
-                        if (!selectedByCandidate.TryGetValue(candidate, out var source))
+                        var routeBlockId = String(item, "id");
+                        if (!selectedByRouteBlock.TryGetValue(routeBlockId, out var source))
                         {
-                            errors.Add("SEMANTIC_CHECKPOINT_UNJOINED:" + candidate);
+                            errors.Add("SEMANTIC_CHECKPOINT_UNJOINED:" + routeBlockId);
                             continue;
                         }
                         var lineIds = Strings(item, "lineIds");
                         if (!source.Key.LineIds.SequenceEqual(lineIds, StringComparer.Ordinal))
                         {
-                            errors.Add("SEMANTIC_SOURCE_IDENTITY_MISMATCH:" + candidate);
+                            errors.Add("SEMANTIC_SOURCE_IDENTITY_MISMATCH:" + routeBlockId);
                             continue;
                         }
                         semanticProposals.Add(new PdfReplaySemanticProposal(
@@ -552,23 +552,23 @@ internal static class PdfR5ReplayHarness
                     foreach (var item in Array(payload, "blocks"))
                     {
                         if (!Bool(item, "resolved")) continue;
-                        var candidate = String(item, "id");
-                        if (!selectedByCandidate.TryGetValue(candidate, out var source))
+                        var routeBlockId = String(item, "id");
+                        if (!selectedByRouteBlock.TryGetValue(routeBlockId, out var source))
                         {
-                            errors.Add("SPAN_UNJOINED:" + candidate);
+                            errors.Add("SPAN_UNJOINED:" + routeBlockId);
                             continue;
                         }
                         var lineIds = Strings(item, "lineIds");
                         if (!source.Key.LineIds.SequenceEqual(lineIds, StringComparer.Ordinal))
                         {
-                            errors.Add("SPAN_SOURCE_IDENTITY_MISMATCH:" + candidate);
+                            errors.Add("SPAN_SOURCE_IDENTITY_MISMATCH:" + routeBlockId);
                             continue;
                         }
                         var start = Int(item, "start");
                         var end = Int(item, "end");
                         if (start < 0 || end < start || end > source.SourceText.Length)
                         {
-                            errors.Add("INVALID_CHECKPOINT_SPAN:" + candidate);
+                            errors.Add("INVALID_CHECKPOINT_SPAN:" + routeBlockId);
                             continue;
                         }
                         spanProposals.Add(new PdfReplaySpanProposal(
@@ -618,14 +618,14 @@ internal static class PdfR5ReplayHarness
     }
 
     private static PdfReplaySourceKey? ResolveParent(
-        string? candidateId,
-        IReadOnlyDictionary<string, PdfReplaySourceEntry> byCandidate,
+        string? routeBlockId,
+        IReadOnlyDictionary<string, PdfReplaySourceEntry> byRouteBlock,
         ICollection<string> errors,
         string stage)
     {
-        if (candidateId is null) return null;
-        if (byCandidate.TryGetValue(candidateId, out var source)) return source.Key;
-        errors.Add($"{stage}_UNJOINED:{candidateId}");
+        if (routeBlockId is null) return null;
+        if (byRouteBlock.TryGetValue(routeBlockId, out var source)) return source.Key;
+        errors.Add($"{stage}_UNJOINED:{routeBlockId}");
         return null;
     }
 
@@ -666,11 +666,11 @@ internal static class PdfR5ReplayHarness
             return true;
         if (value.ValueKind == JsonValueKind.Object)
         {
-            foreach (var candidate in value.EnumerateObject())
+            foreach (var propertyEntry in value.EnumerateObject())
             {
-                if (string.Equals(candidate.Name, property, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(propertyEntry.Name, property, StringComparison.OrdinalIgnoreCase))
                 {
-                    result = candidate.Value;
+                    result = propertyEntry.Value;
                     return true;
                 }
             }
@@ -708,7 +708,7 @@ internal sealed record PdfReplaySourceEntry(
     string SourceText,
     string SourceTextSha256,
     TextOffsetSpan? SourceSpan,
-    [property: JsonIgnore] string CandidateIdDiagnostic);
+    [property: JsonIgnore] string RouteBlockIdDiagnostic);
 
 internal sealed record PdfReplaySemanticProposal(
     PdfReplaySourceKey Source,

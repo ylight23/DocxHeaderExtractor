@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
-/// Immutable source-only view of a document. It deliberately contains no candidate, policy,
+/// Immutable source-only view of a document. It deliberately contains no routing policy,
 /// proposal, or validated hierarchy state.
 /// </summary>
 public sealed record SourceDocument
@@ -31,7 +31,11 @@ public sealed record SourceParagraph
     public required SourceStyleFacts Style { get; init; }
     public required SourceNumberingFacts Numbering { get; init; }
     public required SourceLayoutFacts Layout { get; init; }
-    public bool InTableOfContents { get; init; }
+
+    /// <summary>
+    /// The bookmark name of every internal hyperlink in the paragraph, as written in the OOXML.
+    /// </summary>
+    public IReadOnlyList<string> HyperlinkAnchors { get; init; } = [];
 }
 
 /// <summary>Formatting span over normalized source text, retaining run-level provenance.</summary>
@@ -51,8 +55,6 @@ public sealed record SourceStyleFacts
 {
     public string? StyleId { get; init; }
     public string? StyleName { get; init; }
-    /// <summary>Built-in Word heading level derived only from resolved style identity; not a heading decision.</summary>
-    public int? BuiltInHeadingStyleLevel { get; init; }
     public int? OutlineLevel { get; init; }
     public bool Bold { get; init; }
     public bool Italic { get; init; }
@@ -69,16 +71,11 @@ public sealed record SourceNumberingFacts
     public int? NumberingLevel { get; init; }
     public string? NumberLabel { get; init; }
     public string? NumberingFormat { get; init; }
-    /// <summary>Heading level only when the OOXML list level is explicitly linked to a heading style.</summary>
-    public int? NumberingStyleHeadingLevel { get; init; }
 }
 
 /// <summary>Source layout/containment facts. It contains no table or heading policy result.</summary>
 public sealed record SourceLayoutFacts
 {
-    public bool InContentControl { get; init; }
     public bool KeepNext { get; init; }
     public bool PageBreakBefore { get; init; }
-    public int TableDepth { get; init; }
-    public int SectionIndex { get; init; }
 }

@@ -1,0 +1,4789 @@
+{
+  "artifactKind": "a99_generic_audit_engine_comparison",
+  "scorer": "GENERIC_EXACT_SCORER_V1",
+  "documentId": "DOC-0123",
+  "role": "CALIBRATION",
+  "gold": {
+    "path": "eval/a99-closed-loop/gold/DOC-0123.gold.json",
+    "sha256": "ec584141e26767460480fd72d485f0d69470bbb5176127176534466d506bca0b",
+    "claims": 359
+  },
+  "proposals": {
+    "v1_1": {
+      "path": "eval/a99-closed-loop/generic-audit-v1_1/DOC-0123.proposals.v1_1.json",
+      "sha256": "c4b7a682768118e37a8b11d0b460df9367a0ad3295cd196664404cf04a017401"
+    },
+    "v1_2": {
+      "path": "eval/a99-closed-loop/generic-audit-v1_2/DOC-0123.proposals.v1_2.json",
+      "sha256": "d3ae51661b12b8999deed68158524fbe1c017b3b03f5ae4f7425a04946e3053e"
+    }
+  },
+  "modelProviderVlmCalls": 0,
+  "v1_1": {
+    "headline": {
+      "goldClaims": 359,
+      "hypothesesListed": 1311,
+      "TRUE": 352,
+      "NEEDS_REVIEW": 152,
+      "unbindable": 0,
+      "truePositives": 321,
+      "falsePositives": 31,
+      "falseNegatives": 38,
+      "truePrecision": 0.9119,
+      "trueRecall": 0.8942,
+      "f1": 0.903,
+      "needsReviewCaptureOfGold": 0.5,
+      "needsReviewCaptureIncludingPartial": 0.5526,
+      "falseOnGold": 6,
+      "partialOnly": 13,
+      "reviewNoiseOutsideGold": 130,
+      "nonGoldReviewTouchingGold": 3,
+      "falsePositivesTouchingGold": 13,
+      "goldMultipartClaims": 103,
+      "exactMultipartMatches": 96,
+      "goldClaimsWithPartialPart": 2,
+      "exactMatchesWithPartialPart": 2,
+      "goldBuckets": {
+        "EXACT_TRUE": 321,
+        "EXACT_NEEDS_REVIEW": 19,
+        "EXACT_FALSE": 5,
+        "PARTIAL_TRUE": 11,
+        "PARTIAL_NEEDS_REVIEW": 2,
+        "PARTIAL_FALSE": 0,
+        "UNPROPOSED": 1
+      }
+    },
+    "axesOnTruePositives": {
+      "compared": 321,
+      "semanticFunctions": {
+        "disagreements": 181,
+        "pairs": {
+          "gold STRUCTURE <- engine IDENTITY+STRUCTURE": 136,
+          "gold IDENTITY+STRUCTURE <- engine STRUCTURE": 38,
+          "gold IDENTITY <- engine STRUCTURE": 5,
+          "gold STRUCTURE <- engine IDENTITY": 2
+        }
+      },
+      "primaryFunction": {
+        "disagreements": 49,
+        "pairs": {
+          "gold IDENTITY <- engine STRUCTURE": 43,
+          "gold STRUCTURE <- engine IDENTITY": 6
+        }
+      },
+      "scope": {
+        "disagreements": 164,
+        "pairs": {
+          "gold CLAUSE <- engine SECTION": 100,
+          "gold FORM <- engine SECTION": 38,
+          "gold DOCUMENT_PART <- engine SECTION": 11,
+          "gold FORM <- engine TOC": 4,
+          "gold DOCUMENT <- engine SECTION": 3,
+          "gold EMBEDDED_ARTIFACT <- engine SECTION": 2,
+          "gold SECTION <- engine DOCUMENT": 2,
+          "gold SECTION <- engine FORM": 2,
+          "gold SECTION <- engine TOC": 2
+        }
+      },
+      "occurrenceRoles": {
+        "disagreements": 0,
+        "pairs": {}
+      },
+      "titleRelation": {
+        "disagreements": 0,
+        "pairs": {}
+      },
+      "informationType": {
+        "disagreements": 0,
+        "pairs": {}
+      }
+    }
+  },
+  "v1_2": {
+    "headline": {
+      "goldClaims": 359,
+      "hypothesesListed": 1311,
+      "TRUE": 354,
+      "NEEDS_REVIEW": 167,
+      "unbindable": 0,
+      "truePositives": 322,
+      "falsePositives": 32,
+      "falseNegatives": 37,
+      "truePrecision": 0.9096,
+      "trueRecall": 0.8969,
+      "f1": 0.9032,
+      "needsReviewCaptureOfGold": 0.5135,
+      "needsReviewCaptureIncludingPartial": 0.5676,
+      "falseOnGold": 5,
+      "partialOnly": 13,
+      "reviewNoiseOutsideGold": 145,
+      "nonGoldReviewTouchingGold": 3,
+      "falsePositivesTouchingGold": 14,
+      "goldMultipartClaims": 103,
+      "exactMultipartMatches": 96,
+      "goldClaimsWithPartialPart": 2,
+      "exactMatchesWithPartialPart": 2,
+      "goldBuckets": {
+        "EXACT_TRUE": 322,
+        "EXACT_NEEDS_REVIEW": 19,
+        "EXACT_FALSE": 4,
+        "PARTIAL_TRUE": 11,
+        "PARTIAL_NEEDS_REVIEW": 2,
+        "PARTIAL_FALSE": 0,
+        "UNPROPOSED": 1
+      }
+    },
+    "axesOnTruePositives": {
+      "compared": 322,
+      "semanticFunctions": {
+        "disagreements": 185,
+        "pairs": {
+          "gold STRUCTURE <- engine IDENTITY+STRUCTURE": 136,
+          "gold IDENTITY+STRUCTURE <- engine STRUCTURE": 42,
+          "gold IDENTITY <- engine STRUCTURE": 5,
+          "gold STRUCTURE <- engine IDENTITY": 2
+        }
+      },
+      "primaryFunction": {
+        "disagreements": 52,
+        "pairs": {
+          "gold IDENTITY <- engine STRUCTURE": 47,
+          "gold STRUCTURE <- engine IDENTITY": 5
+        }
+      },
+      "scope": {
+        "disagreements": 163,
+        "pairs": {
+          "gold CLAUSE <- engine SECTION": 100,
+          "gold FORM <- engine SECTION": 42,
+          "gold DOCUMENT_PART <- engine SECTION": 11,
+          "gold DOCUMENT <- engine SECTION": 3,
+          "gold EMBEDDED_ARTIFACT <- engine SECTION": 2,
+          "gold SECTION <- engine DOCUMENT": 2,
+          "gold SECTION <- engine FORM": 2,
+          "gold SECTION <- engine TOC": 1
+        }
+      },
+      "occurrenceRoles": {
+        "disagreements": 0,
+        "pairs": {}
+      },
+      "titleRelation": {
+        "disagreements": 0,
+        "pairs": {}
+      },
+      "informationType": {
+        "disagreements": 0,
+        "pairs": {}
+      }
+    }
+  },
+  "changedClaims": [
+    {
+      "goldText": "Table of Content",
+      "v1_1": "EXACT_FALSE",
+      "v1_2": "EXACT_TRUE",
+      "regression": false,
+      "v1_2Engine": [
+        {
+          "Text": "Table of Content",
+          "state": "TRUE",
+          "evidence": [
+            "set apart strongly from the body text",
+            "opens a run of contents entries"
+          ]
+        }
+      ]
+    }
+  ],
+  "v1_2Residuals": {
+    "goldNotEngineTrue": [
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S0001:0-29|S0002:0-21|S0003:0-5|S0004:0-16|S0005:0-61",
+        "goldText": "STANDARD PROCUREMENT DOCUMENT Request for Proposals Works Design and Build (Single-Stage Request for Proposals, after Initial Selection)",
+        "engine": [
+          {
+            "Index": 0,
+            "Text": "STANDARD PROCUREMENT DOCUMENT",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S0001:0-29",
+            "UnboundReason": null
+          },
+          {
+            "Index": 1,
+            "Text": "Request for Proposals Works",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 2 body line(s) before a peer",
+              "followed by 5 lesser label(s) before a peer"
+            ],
+            "identity": "S0002:0-21|S0003:0-5",
+            "UnboundReason": null
+          },
+          {
+            "Index": 2,
+            "Text": "Design and Build",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 2 body line(s) before a peer",
+              "followed by 4 lesser label(s) before a peer"
+            ],
+            "identity": "S0004:0-16",
+            "UnboundReason": null
+          },
+          {
+            "Index": 3,
+            "Text": "(Single-Stage Request for Proposals, after Initial Selection)",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 1 lesser label(s) before a peer",
+              "whole occurrence in brackets: an editorial note"
+            ],
+            "identity": "S0005:0-61",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S0012:0-10",
+        "goldText": "March 2025",
+        "engine": [
+          {
+            "Index": 8,
+            "Text": "March 2025",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 1 body line(s) before a peer",
+              "date shape",
+              "stands alone over its own prose"
+            ],
+            "identity": "S0012:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S0014:0-9",
+        "goldText": "July 2023",
+        "engine": [
+          {
+            "Index": 9,
+            "Text": "July 2023",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 4 body line(s) before a peer",
+              "date shape",
+              "stands alone over its own prose"
+            ],
+            "identity": "S0014:0-9",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S0019:0-12",
+        "goldText": "January 2021",
+        "engine": [
+          {
+            "Index": 11,
+            "Text": "January 2021",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 1 body line(s) before a peer",
+              "date shape",
+              "stands alone over its own prose"
+            ],
+            "identity": "S0019:0-12",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S0021:0-13",
+        "goldText": "December 2019",
+        "engine": [
+          {
+            "Index": 13,
+            "Text": "December 2019",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 1 body line(s) before a peer",
+              "date shape",
+              "stands alone over its own prose"
+            ],
+            "identity": "S0021:0-13",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S0072:0-31",
+        "goldText": "Notice of Request for Proposals",
+        "engine": [
+          {
+            "Index": 38,
+            "Text": "Notice of Request for Proposals",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S0072:0-31",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S0073:0-21|S0074:0-5|S0075:0-18|S0076:0-25",
+        "goldText": "Request for Proposals Works (Design and Build) (After Initial Selection)",
+        "engine": [
+          {
+            "Index": 39,
+            "Text": "Request for Proposals Works",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 10 body line(s) before a peer",
+              "followed by 19 lesser label(s) before a peer",
+              "its region holds 23 fill-in field(s)"
+            ],
+            "identity": "S0073:0-21|S0074:0-5",
+            "UnboundReason": null
+          },
+          {
+            "Index": 40,
+            "Text": "(Design and Build)",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 10 body line(s) before a peer",
+              "followed by 18 lesser label(s) before a peer",
+              "whole occurrence in brackets: an editorial note"
+            ],
+            "identity": "S0075:0-18",
+            "UnboundReason": null
+          },
+          {
+            "Index": 41,
+            "Text": "(After Initial Selection)",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 10 body line(s) before a peer",
+              "followed by 17 lesser label(s) before a peer",
+              "whole occurrence in brackets: an editorial note"
+            ],
+            "identity": "S0076:0-25",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S0104:0-21|S0105:0-5|S0106:0-16|S0107:0-42",
+        "goldText": "Request for Proposals Works Design and Build (Single-Stage RFP after Initial Selection)",
+        "engine": [
+          {
+            "Index": 60,
+            "Text": "Request for Proposals Works",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 25 body line(s) before a peer",
+              "followed by 15 lesser label(s) before a peer",
+              "its region holds 8 fill-in field(s)"
+            ],
+            "identity": "S0104:0-21|S0105:0-5",
+            "UnboundReason": null
+          },
+          {
+            "Index": 61,
+            "Text": "Design and Build",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 1 lesser label(s) before a peer"
+            ],
+            "identity": "S0106:0-16",
+            "UnboundReason": null
+          },
+          {
+            "Index": 62,
+            "Text": "(Single-Stage RFP after Initial Selection)",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "whole occurrence in brackets: an editorial note"
+            ],
+            "identity": "S0107:0-42",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "S0117:0-16",
+        "goldText": "Table of Content",
+        "engine": [
+          {
+            "Index": 71,
+            "Text": "Table of Content",
+            "state": "FALSE",
+            "Roles": [
+              "NAVIGATION"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 13 body line(s) before a peer",
+              "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+            ],
+            "identity": "S0117:0-16",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S0768:0-14",
+        "goldText": "Technical Part",
+        "engine": [
+          {
+            "Index": 307,
+            "Text": "Technical Part",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S0768:0-14",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S0831:0-14",
+        "goldText": "Financial Part",
+        "engine": [
+          {
+            "Index": 341,
+            "Text": "Financial Part",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S0831:0-14",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "S0876:0-14",
+        "goldText": "Table of Forms",
+        "engine": [
+          {
+            "Index": 366,
+            "Text": "Table of Forms",
+            "state": "FALSE",
+            "Roles": [
+              "NAVIGATION"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 37 body line(s) before a peer",
+              "followed by 3 table/figure item(s) before a peer",
+              "contents-list entry: its text reappears elsewhere as the occurrence it points to"
+            ],
+            "identity": "S0876:0-14",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S0924:0-14",
+        "goldText": "Proposal Forms",
+        "engine": [
+          {
+            "Index": 367,
+            "Text": "Proposal Forms",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S0924:0-14",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S1007:0-20",
+        "goldText": "Appendix to Proposal",
+        "engine": [
+          {
+            "Index": 405,
+            "Text": "Appendix to Proposal Schedule of Cost Indexation",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 13 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "its region holds 1 fill-in field(s)"
+            ],
+            "identity": "S1007:0-20|S1008:0-27",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S1008:0-27",
+        "goldText": "Schedule of Cost Indexation",
+        "engine": [
+          {
+            "Index": 405,
+            "Text": "Appendix to Proposal Schedule of Cost Indexation",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 13 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "its region holds 1 fill-in field(s)"
+            ],
+            "identity": "S1007:0-20|S1008:0-27",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S1380:0-40|S1381:0-107",
+        "goldText": "ATTACHMENT 1 TO THE CODE OF CONDUCT FORM BEHAVIORS CONSTITUTING SEXUAL EXPLOITATION AND ABUSE (SEA) AND BEHAVIORS CONSTITUTING SEXUAL HARASSMENT (SH",
+        "engine": [
+          {
+            "Index": 563,
+            "Text": "ATTACHMENT 1 TO THE CODE OF CONDUCT FORM",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 11 body line(s) before a peer",
+              "followed by 2 lesser label(s) before a peer",
+              "numbered structural label shape"
+            ],
+            "identity": "S1380:0-40",
+            "UnboundReason": null
+          },
+          {
+            "Index": 564,
+            "Text": "BEHAVIORS CONSTITUTING SEXUAL EXPLOITATION AND ABUSE (SEA) AND BEHAVIORS CONSTITUTING SEXUAL HARASSMENT (SH",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 11 body line(s) before a peer",
+              "followed by 1 lesser label(s) before a peer"
+            ],
+            "identity": "S1381:0-107",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S1389:0-47",
+        "goldText": "Examples of sexual harassment in a work context",
+        "engine": [
+          {
+            "Index": 566,
+            "Text": "Examples of sexual harassment in a work context",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 4 body line(s) before a peer"
+            ],
+            "identity": "S1389:0-47",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S1412:0-9",
+        "goldText": "Personnel",
+        "engine": [
+          {
+            "Index": 574,
+            "Text": "Personnel",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S1412:0-9",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S1440:0-22",
+        "goldText": "Resume and Declaration",
+        "engine": [
+          {
+            "Index": 598,
+            "Text": "Resume and Declaration Contractor’s Representative and Key Personnel",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 7 body line(s) before a peer",
+              "followed by 6 lesser label(s) before a peer",
+              "followed by 27 table/figure item(s) before a peer",
+              "its region holds 3 fill-in field(s)"
+            ],
+            "identity": "S1440:0-22|S1441:0-45",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S1441:0-45",
+        "goldText": "Contractor’s Representative and Key Personnel",
+        "engine": [
+          {
+            "Index": 598,
+            "Text": "Resume and Declaration Contractor’s Representative and Key Personnel",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "followed by 7 body line(s) before a peer",
+              "followed by 6 lesser label(s) before a peer",
+              "followed by 27 table/figure item(s) before a peer",
+              "its region holds 3 fill-in field(s)"
+            ],
+            "identity": "S1440:0-22|S1441:0-45",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S1487:0-14",
+        "goldText": "Subcontractors",
+        "engine": [
+          {
+            "Index": 630,
+            "Text": "Subcontractors",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S1487:0-14",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S1750:0-23",
+        "goldText": "Employer’s Requirements",
+        "engine": [
+          {
+            "Index": 741,
+            "Text": "Employer’s Requirements",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S1750:0-23",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_NEEDS_REVIEW",
+        "goldIdentity": "S1992:0-8",
+        "goldText": "Drawings",
+        "engine": [
+          {
+            "Index": 961,
+            "Text": "Drawings Supplementary Information",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S1992:0-8|S1993:0-25",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_NEEDS_REVIEW",
+        "goldIdentity": "S1993:0-25",
+        "goldText": "Supplementary Information",
+        "engine": [
+          {
+            "Index": 961,
+            "Text": "Drawings Supplementary Information",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "one label over 2 source occurrences",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S1992:0-8|S1993:0-25",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S2823:0-46",
+        "goldText": "Appendix- General Conditions of DAAB Agreement",
+        "engine": [
+          {
+            "Index": 1142,
+            "Text": "Appendix- General Conditions of DAAB Agreement",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 13 body line(s) before a peer",
+              "followed by 8 table/figure item(s) before a peer",
+              "inside a table or a row of figures",
+              "yet opens prose, not table rows"
+            ],
+            "identity": "S2823:0-46",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S2824:0-11",
+        "goldText": "Definitions",
+        "engine": [
+          {
+            "Index": 1143,
+            "Text": "Definitions",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 13 body line(s) before a peer",
+              "followed by 7 table/figure item(s) before a peer",
+              "inside a table or a row of figures",
+              "yet opens prose, not table rows"
+            ],
+            "identity": "S2824:0-11",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S2826:0-18",
+        "goldText": "General provisions",
+        "engine": [
+          {
+            "Index": 1144,
+            "Text": "General provisions",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 12 body line(s) before a peer",
+              "followed by 6 table/figure item(s) before a peer",
+              "inside a table or a row of figures",
+              "yet opens prose, not table rows"
+            ],
+            "identity": "S2826:0-18",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S2828:0-10",
+        "goldText": "Warranties",
+        "engine": [
+          {
+            "Index": 1145,
+            "Text": "Warranties",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 12 body line(s) before a peer",
+              "followed by 4 table/figure item(s) before a peer",
+              "inside a table or a row of figures",
+              "yet opens prose, not table rows"
+            ],
+            "identity": "S2828:0-10",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "UNPROPOSED",
+        "goldIdentity": "S2848:0-10",
+        "goldText": "1. Purpose",
+        "engine": []
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "S2869:0-30",
+        "goldText": "Metrics for regular reporting:",
+        "engine": [
+          {
+            "Index": 1156,
+            "Text": "Metrics for regular reporting:",
+            "state": "FALSE",
+            "Roles": [
+              "BODY_CONTENT"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "one line of a multi-line italic block that reads as prose"
+            ],
+            "identity": "S2869:0-30",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S2920:0-21",
+        "goldText": "Particular Conditions",
+        "engine": [
+          {
+            "Index": 1167,
+            "Text": "Particular Conditions",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "a peer or stronger label follows directly: opens nothing"
+            ],
+            "identity": "S2920:0-21",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_FALSE",
+        "goldIdentity": "S2924:0-25",
+        "goldText": "SEA and/or SH Declaration",
+        "engine": [
+          {
+            "Index": 1170,
+            "Text": "SEA and/or SH Declaration",
+            "state": "FALSE",
+            "Roles": [
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart weakly from the body text",
+              "followed by 16 body line(s) before a peer",
+              "followed by 2 lesser label(s) before a peer",
+              "followed by 10 table/figure item(s) before a peer",
+              "inside a table or a row of figures"
+            ],
+            "identity": "S2924:0-25",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S2992:0-15",
+        "goldText": "Other Proposers",
+        "engine": [
+          {
+            "Index": 1198,
+            "Text": "Other Proposers",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 31 table/figure item(s) before a peer",
+              "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+            ],
+            "identity": "S2992:0-15",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "EXACT_NEEDS_REVIEW",
+        "goldIdentity": "S3024:0-43",
+        "goldText": "Reason/s why your Proposal was unsuccessful",
+        "engine": [
+          {
+            "Index": 1218,
+            "Text": "Reason/s why your Proposal was unsuccessful",
+            "state": "NEEDS_REVIEW",
+            "Roles": [
+              "REGION_OPENER",
+              "LOCAL_LABEL"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "the label is the lead of a line that continues as body text",
+              "followed by 25 body line(s) before a peer",
+              "followed by 7 lesser label(s) before a peer",
+              "followed by 8 table/figure item(s) before a peer",
+              "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+            ],
+            "identity": "S3024:0-43",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S3169:0-51|S3170:0-19",
+        "goldText": "Environmental and Social (ES ) Performance Security ES Demand Guarantee",
+        "engine": [
+          {
+            "Index": 1284,
+            "Text": "Environmental and Social (ES ) Performance Security",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 9 body line(s) before a peer",
+              "followed by 4 lesser label(s) before a peer",
+              "its region holds 7 fill-in field(s)"
+            ],
+            "identity": "S3169:0-51",
+            "UnboundReason": null
+          },
+          {
+            "Index": 1285,
+            "Text": "ES Demand Guarantee",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 9 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "its region holds 7 fill-in field(s)"
+            ],
+            "identity": "S3170:0-19",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S3183:0-24|S3184:0-16",
+        "goldText": "Advance Payment Security Demand Guarantee",
+        "engine": [
+          {
+            "Index": 1293,
+            "Text": "Advance Payment Security",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 22 body line(s) before a peer",
+              "followed by 9 lesser label(s) before a peer",
+              "its region holds 19 fill-in field(s)"
+            ],
+            "identity": "S3183:0-24",
+            "UnboundReason": null
+          },
+          {
+            "Index": 1294,
+            "Text": "Demand Guarantee",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 12 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "its region holds 10 fill-in field(s)"
+            ],
+            "identity": "S3184:0-16",
+            "UnboundReason": null
+          }
+        ]
+      },
+      {
+        "bucket": "PARTIAL_TRUE",
+        "goldIdentity": "S3200:0-24|S3201:0-16",
+        "goldText": "Retention Money Security Demand Guarantee",
+        "engine": [
+          {
+            "Index": 1302,
+            "Text": "Retention Money Security",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 10 body line(s) before a peer",
+              "followed by 4 lesser label(s) before a peer",
+              "its region holds 9 fill-in field(s)"
+            ],
+            "identity": "S3200:0-24",
+            "UnboundReason": null
+          },
+          {
+            "Index": 1303,
+            "Text": "Demand Guarantee",
+            "state": "TRUE",
+            "Roles": [
+              "REGION_OPENER"
+            ],
+            "Evidence": [
+              "set apart strongly from the body text",
+              "followed by 10 body line(s) before a peer",
+              "followed by 3 lesser label(s) before a peer",
+              "its region holds 9 fill-in field(s)"
+            ],
+            "identity": "S3201:0-16",
+            "UnboundReason": null
+          }
+        ]
+      }
+    ],
+    "nonGoldTrue": [
+      {
+        "hypothesis": {
+          "Index": 1,
+          "Text": "Request for Proposals Works",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 2 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer"
+          ],
+          "identity": "S0002:0-21|S0003:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 2,
+          "Text": "Design and Build",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer"
+          ],
+          "identity": "S0004:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 39,
+          "Text": "Request for Proposals Works",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 10 body line(s) before a peer",
+            "followed by 19 lesser label(s) before a peer",
+            "its region holds 23 fill-in field(s)"
+          ],
+          "identity": "S0073:0-21|S0074:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 60,
+          "Text": "Request for Proposals Works",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 25 body line(s) before a peer",
+            "followed by 15 lesser label(s) before a peer",
+            "its region holds 8 fill-in field(s)"
+          ],
+          "identity": "S0104:0-21|S0105:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 61,
+          "Text": "Design and Build",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 lesser label(s) before a peer"
+          ],
+          "identity": "S0106:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 93,
+          "Text": "PART 1 Request for Proposal Procedures",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "numbered structural label shape"
+          ],
+          "identity": "S0248:0-38",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 94,
+          "Text": "PART 2 Employer’s Requirements",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 8 table/figure item(s) before a peer",
+            "numbered structural label shape"
+          ],
+          "identity": "S0255:0-30",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 95,
+          "Text": "PART 3 Conditions of Contract and Contract Forms",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 7 table/figure item(s) before a peer",
+            "numbered structural label shape"
+          ],
+          "identity": "S0257:0-48",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 116,
+          "Text": "sign the Contract in accordance with ITP 53; or",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 13 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer"
+          ],
+          "identity": "S0349:0-47",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 119,
+          "Text": "sign the Contract in accordance with ITP 53; or",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer"
+          ],
+          "identity": "S0355:0-47",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 137,
+          "Text": "affect in any substantial way the scope, quality, or performance of the Works specified in the Contract; or",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 17 body line(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer"
+          ],
+          "identity": "S0415:0-107",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 348,
+          "Text": "Or",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "its region holds 1 fill-in field(s)"
+          ],
+          "identity": "S0843:0-2",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 360,
+          "Text": "X = weight for Cost as specified in the PDS",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer"
+          ],
+          "identity": "S0867:0-43",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 405,
+          "Text": "Appendix to Proposal Schedule of Cost Indexation",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 13 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "its region holds 1 fill-in field(s)"
+          ],
+          "identity": "S1007:0-20|S1008:0-27",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 454,
+          "Text": "Sample Schedule of Priced Activities Table",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 13 table/figure item(s) before a peer",
+            "its region holds 1 fill-in field(s)"
+          ],
+          "identity": "S1109:0-42",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 460,
+          "Text": "Sample Schedule of Priced Sub-activities Table",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 11 table/figure item(s) before a peer",
+            "its region holds 2 fill-in field(s)"
+          ],
+          "identity": "S1125:0-46",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 563,
+          "Text": "ATTACHMENT 1 TO THE CODE OF CONDUCT FORM",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 11 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "numbered structural label shape"
+          ],
+          "identity": "S1380:0-40",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 575,
+          "Text": "Form PER -1",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 19 table/figure item(s) before a peer"
+          ],
+          "identity": "S1413:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 597,
+          "Text": "Form PER-2:",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 7 lesser label(s) before a peer",
+            "followed by 27 table/figure item(s) before a peer",
+            "its region holds 2 fill-in field(s)"
+          ],
+          "identity": "S1439:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 598,
+          "Text": "Resume and Declaration Contractor’s Representative and Key Personnel",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 7 body line(s) before a peer",
+            "followed by 6 lesser label(s) before a peer",
+            "followed by 27 table/figure item(s) before a peer",
+            "its region holds 3 fill-in field(s)"
+          ],
+          "identity": "S1440:0-22|S1441:0-45",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 965,
+          "Text": "FIDIC code: ISBN13: 978-2-88432-082-5",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 6 lesser label(s) before a peer",
+            "followed by 31 table/figure item(s) before a peer",
+            "its region holds 2 fill-in field(s)"
+          ],
+          "identity": "S2006:0-37",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1018,
+          "Text": "Sub-Clause 1.1.91 to 1.1.96 are added after Sub-Clause 1.1.90",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 15 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer",
+            "numbered structural label shape"
+          ],
+          "identity": "S2270:0-61",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1058,
+          "Text": "Sub-Clause 4.18 Protection of the Environment is replaced with:",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 24 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "numbered structural label shape"
+          ],
+          "identity": "S2458:0-63",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1061,
+          "Text": "The Sub-Clause is replaced with the following:",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 23 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer"
+          ],
+          "identity": "S2475:0-46",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1260,
+          "Text": "OR",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 14 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "its region holds 5 fill-in field(s)"
+          ],
+          "identity": "S3092:0-2",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1262,
+          "Text": "OR",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 11 body line(s) before a peer",
+            "its region holds 5 fill-in field(s)"
+          ],
+          "identity": "S3097:0-2",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1284,
+          "Text": "Environmental and Social (ES ) Performance Security",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "its region holds 7 fill-in field(s)"
+          ],
+          "identity": "S3169:0-51",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 1285,
+          "Text": "ES Demand Guarantee",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "its region holds 7 fill-in field(s)"
+          ],
+          "identity": "S3170:0-19",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 1293,
+          "Text": "Advance Payment Security",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 22 body line(s) before a peer",
+            "followed by 9 lesser label(s) before a peer",
+            "its region holds 19 fill-in field(s)"
+          ],
+          "identity": "S3183:0-24",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 1294,
+          "Text": "Demand Guarantee",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 12 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "its region holds 10 fill-in field(s)"
+          ],
+          "identity": "S3184:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 1302,
+          "Text": "Retention Money Security",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "its region holds 9 fill-in field(s)"
+          ],
+          "identity": "S3200:0-24",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 1303,
+          "Text": "Demand Guarantee",
+          "state": "TRUE",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "its region holds 9 fill-in field(s)"
+          ],
+          "identity": "S3201:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      }
+    ],
+    "nonGoldNeedsReview": [
+      {
+        "hypothesis": {
+          "Index": 0,
+          "Text": "STANDARD PROCUREMENT DOCUMENT",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S0001:0-29",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 6,
+          "Text": "March 2025",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "date shape",
+            "stands alone over its own prose"
+          ],
+          "identity": "S0008:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 15,
+          "Text": "Chief Procurement Officer The World Bank",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "one label over 2 source occurrences",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S0037:0-25|S0038:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 17,
+          "Text": "http://www.worldbank.org",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S0041:0-24",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 42,
+          "Text": "Employer:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0077:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 43,
+          "Text": "Project:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0078:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 44,
+          "Text": "Contract title:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 14 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0079:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 45,
+          "Text": "Country:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 13 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0080:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 46,
+          "Text": "Loan No. /Credit No. / Grant No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 12 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0081:0-33",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 47,
+          "Text": "RFP No:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 11 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0082:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 48,
+          "Text": "Issued on:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 10 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0083:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 49,
+          "Text": "To: [Proposer’s name and address]",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer"
+          ],
+          "identity": "S0084:0-33",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 64,
+          "Text": "Employer:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0110:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 65,
+          "Text": "Project:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0111:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 66,
+          "Text": "Contract title:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 13 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0112:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 67,
+          "Text": "Country:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 13 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0113:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 68,
+          "Text": "Loan No. /Credit No. / Grant No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 13 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0114:0-33",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 69,
+          "Text": "RFP No:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 13 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0115:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 70,
+          "Text": "Issued on:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 13 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0116:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 118,
+          "Text": "if a Proposer withdraws its Proposal prior to the expiry date of the Proposal validity specified by the Proposer on the Letter of Proposal or any extended date provided by the Proposer ; or if the successful Proposer fails to:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "followed by 9 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0353:0-189|S0354:0-36",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 174,
+          "Text": "ITP Reference",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 19 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0545:0-13",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 176,
+          "Text": "ITP 1.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 19 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0547:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 178,
+          "Text": "ITP 2.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 18 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 17 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0554:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 179,
+          "Text": "ITP 1.3 (a)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 19 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0557:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 181,
+          "Text": "“Electronic – Procurement System",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 20 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0559:0-32",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 183,
+          "Text": "ITP 4.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 21 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0564:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 184,
+          "Text": "ITP 4.5",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 21 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0566:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 186,
+          "Text": "ITP 7.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 22 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 14 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0569:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 195,
+          "Text": "ITP 7.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 26 body line(s) before a peer",
+            "followed by 14 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0582:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 196,
+          "Text": "ITP 7.4",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 26 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 13 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0584:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 199,
+          "Text": "ITP 11.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 28 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 9 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0592:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 202,
+          "Text": "“In addition, the RFP Document is translated into the",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 28 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 9 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0595:0-53",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 204,
+          "Text": "ITP 12.2(k)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 28 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 9 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0599:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 206,
+          "Text": "Code of Conduct for Contractor’s Personnel (ES)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 27 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 10 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0602:0-47",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 208,
+          "Text": "ITP 12.3 (e)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 27 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 10 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0605:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 210,
+          "Text": "ITP 14.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 27 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 10 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0608:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 212,
+          "Text": "ITP 15.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 26 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 11 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0611:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 214,
+          "Text": "and/or",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 26 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 11 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0614:0-6",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 217,
+          "Text": "ITP 15.3",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 23 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 13 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0619:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 218,
+          "Text": "ITP 16.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 22 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 13 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0621:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 219,
+          "Text": "Alternative A (Proposers to quote entirely in local currency):",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 22 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 13 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0623:0-62",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 220,
+          "Text": "Alternative B (Proposers allowed to quote in local and foreign currencies):",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 22 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 14 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0626:0-75",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 221,
+          "Text": "ITP 19",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 21 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0630:0-6",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 233,
+          "Text": "ITP 22.1(b)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 8 lesser label(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0650:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 234,
+          "Text": "ITP 23.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 8 lesser label(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0652:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 235,
+          "Text": "For Proposal submission purposes only, the Employer’s address is :",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 15 body line(s) before a peer",
+            "followed by 8 lesser label(s) before a peer",
+            "followed by 17 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0653:0-66",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 239,
+          "Text": "Date:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 13 body line(s) before a peer",
+            "followed by 9 lesser label(s) before a peer",
+            "followed by 18 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0661:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 248,
+          "Text": "Date:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 14 body line(s) before a peer",
+            "followed by 9 lesser label(s) before a peer",
+            "followed by 17 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0676:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 253,
+          "Text": "ITP 31.2",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 15 body line(s) before a peer",
+            "followed by 10 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0683:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 264,
+          "Text": "Code of Conduct",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 9 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0697:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 265,
+          "Text": "Work Program",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 9 lesser label(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0698:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 267,
+          "Text": "Risk assessment and proposed management plan",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 8 lesser label(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0700:0-44",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 275,
+          "Text": "ITP 34.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 16 body line(s) before a peer",
+            "followed by 8 lesser label(s) before a peer",
+            "followed by 16 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S0708:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 301,
+          "Text": "Employer:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 3 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0750:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 340,
+          "Text": "and",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S0830:0-3",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 359,
+          "Text": "`",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer"
+          ],
+          "identity": "S0861:0-1",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 362,
+          "Text": "If not applicable state ‘Not Applicable’",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 4 body line(s) before a peer"
+          ],
+          "identity": "S0870:0-40",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 375,
+          "Text": "RFP No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 26 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 5 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0932:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 379,
+          "Text": "Sexual Exploitation and Abuse (SEA) and/or Sexual Harassment (SH):",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 17 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 5 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0943:0-66",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 385,
+          "Text": "Date signed",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0965:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 386,
+          "Text": "ENCLOSURE(S):",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S0968:0-13",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 394,
+          "Text": "RFP No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S0976:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 403,
+          "Text": "Date signed",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S1003:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 404,
+          "Text": "ENCLOSURE(S):",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1006:0-13",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 410,
+          "Text": "where:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 9 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S1015:0-6",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 421,
+          "Text": "Table B. Foreign Currency (FC)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 18 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "S1046:0-30",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 422,
+          "Text": "State type:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 18 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S1047:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 432,
+          "Text": "Table: Alternative A",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 24 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "S1068:0-20",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 433,
+          "Text": "For",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 24 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S1069:0-3",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 521,
+          "Text": "Design Proposal",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1267:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 522,
+          "Text": "Construction Management Strategy",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1268:0-32",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 523,
+          "Text": "Method Statements for construction activities",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1269:0-45",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 524,
+          "Text": "Sustainable Procurement Proposal",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1270:0-32",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 525,
+          "Text": "Code of Conduct for Contractor’s Personnel (ES)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1271:0-47",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 526,
+          "Text": "Work Program",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1272:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 527,
+          "Text": "Contractor’s Personnel Organization Chart",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1273:0-41",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 528,
+          "Text": "Risk Assessment and Proposed Management Plan",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1274:0-44",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 529,
+          "Text": "Contractor’s Equipment",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1275:0-22",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 530,
+          "Text": "Subcontractors",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1276:0-14",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 531,
+          "Text": "Others",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1277:0-6",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 561,
+          "Text": "FOR CONTRACTOR’S PERSONNEL:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S1372:0-27",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 562,
+          "Text": "ATTACHMENT 1:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1379:0-13",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 564,
+          "Text": "BEHAVIORS CONSTITUTING SEXUAL EXPLOITATION AND ABUSE (SEA) AND BEHAVIORS CONSTITUTING SEXUAL HARASSMENT (SH",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 11 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer"
+          ],
+          "identity": "S1381:0-107",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 572,
+          "Text": "Form EQU",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1409:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 600,
+          "Text": "Position",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 22 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S1443:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 608,
+          "Text": "Language proficiency:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 1 body line(s) before a peer",
+            "followed by 15 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S1451:0-21",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 622,
+          "Text": "Commitment",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S1471:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 623,
+          "Text": "Details",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 2 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S1472:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 624,
+          "Text": "Commitment to duration of contract:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 1 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S1473:0-35",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 626,
+          "Text": "Time commitment:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S1475:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 628,
+          "Text": "Name of Key Personnel:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 2 body line(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S1481:0-22",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 629,
+          "Text": "Countersignature of authorized representative of the Proposer:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S1484:0-62",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 634,
+          "Text": "Form ELI 1.1",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1494:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 636,
+          "Text": "Form ELI 1.2",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1517:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 638,
+          "Text": "Form CON – 2",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1536:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 667,
+          "Text": "Form CON – 3",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1587:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 706,
+          "Text": "Form CON – 4",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1631:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 710,
+          "Text": "(a) have not been subject to disqualification by the Bank for non-compliance with SEA/ SH obligations",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 7 table/figure item(s) before a peer"
+          ],
+          "identity": "S1638:0-101",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 713,
+          "Text": "Form CCC",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1655:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 716,
+          "Text": "Form FIN 3.3",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1669:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 721,
+          "Text": "Beneficiary:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1681:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 722,
+          "Text": "Request for Proposals No:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1682:0-25",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 723,
+          "Text": "Date:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1683:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 724,
+          "Text": "PROPOSAL GUARANTEE No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1684:0-23",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 725,
+          "Text": "Guarantor:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S1685:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 728,
+          "Text": "Alternative No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 15 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S1698:0-16",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 733,
+          "Text": "Under ITP 4.8(b) and ITP 5.1:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S1718:0-29",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 961,
+          "Text": "Drawings Supplementary Information",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "one label over 2 source occurrences",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S1992:0-8|S1993:0-25",
+          "UnboundReason": null
+        },
+        "touchesGold": true
+      },
+      {
+        "hypothesis": {
+          "Index": 1005,
+          "Text": "*These percentages shall also be applied to each half of the Retention Money under Sub-Clause 14.9",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "a peer or stronger label follows directly: opens nothing"
+          ],
+          "identity": "S2238:0-98",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1006,
+          "Text": "Table: Summary of Milestones (if any)",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "CAPTION",
+            "REGION_OPENER"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 8 table/figure item(s) before a peer",
+            "numbered caption shape",
+            "but prose, not a table or figure, follows it"
+          ],
+          "identity": "S2239:0-37",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1063,
+          "Text": "The first paragraph is replaced with the following:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 27 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "followed by 12 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S2485:0-51",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1080,
+          "Text": "The following Sub-Clauses 6.13 to 6.27 are added after Sub-clause 6.12",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "followed by 20 body line(s) before a peer",
+            "followed by 20 table/figure item(s) before a peer",
+            "inside a table or a row of figures",
+            "yet opens prose, not table rows"
+          ],
+          "identity": "S2577:0-70",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1158,
+          "Text": "health and safety supervision:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 2 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S2880:0-30",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1159,
+          "Text": "worker accommodations:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S2883:0-22",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1162,
+          "Text": "environmental and social supervision:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 6 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S2894:0-37",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1164,
+          "Text": "l. Traffic, road safety and vehicles/equipment:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 3 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S2901:0-47",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1165,
+          "Text": "Environmental mitigations and issues (what has been done):",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 8 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S2905:0-58",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1166,
+          "Text": "compliance:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "FIELD_LABEL"
+          ],
+          "Evidence": [
+            "set apart weakly from the body text",
+            "followed by 5 body line(s) before a peer",
+            "colon-ended label"
+          ],
+          "identity": "S2914:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1178,
+          "Text": "Address:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S2968:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1179,
+          "Text": "Telephone/Fax numbers:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 3 body line(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S2969:0-22",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1183,
+          "Text": "Employer:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S2974:0-9",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1184,
+          "Text": "Project:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S2975:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1185,
+          "Text": "Contract title:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 5 lesser label(s) before a peer",
+            "followed by 31 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S2976:0-15",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1186,
+          "Text": "Country:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 4 lesser label(s) before a peer",
+            "followed by 32 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S2977:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1187,
+          "Text": "Loan No. /Credit No. / Grant No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 4 body line(s) before a peer",
+            "followed by 3 lesser label(s) before a peer",
+            "followed by 33 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S2978:0-33",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1188,
+          "Text": "RFP No:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 3 body line(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S2979:0-7",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1221,
+          "Text": "DEADLINE: The deadline to request a debriefing expires at midnight on",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 5 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 3 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3027:0-69",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1228,
+          "Text": "DEADLINE: The deadline for submitting a Procurement-related Complaint challenging the decision to award the contract expires on midnight,",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 2 lesser label(s) before a peer",
+            "followed by 5 table/figure item(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3039:0-137",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1235,
+          "Text": "DEADLINE: The Standstill Period is due to end at midnight on",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 9 body line(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3055:0-60",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1252,
+          "Text": "RFP No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 1 body line(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3078:0-8",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1254,
+          "Text": "To:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 2 body line(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3080:0-3",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1268,
+          "Text": "Date signed",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 2 body line(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3106:0-11",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1277,
+          "Text": "Beneficiary:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3141:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1278,
+          "Text": "Date:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3142:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1279,
+          "Text": "PERFORMANCE GUARANTEE No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3143:0-26",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1280,
+          "Text": "Guarantor:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3144:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1287,
+          "Text": "Beneficiary:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3172:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1288,
+          "Text": "Date:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3173:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1289,
+          "Text": "ES PERFORMANCE GUARANTEE No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3174:0-29",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1290,
+          "Text": "Guarantor:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 6 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3175:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1296,
+          "Text": "Beneficiary:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 12 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3186:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1297,
+          "Text": "Date:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 11 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3187:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1298,
+          "Text": "ADVANCE PAYMENT GUARANTEE No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3188:0-30",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1299,
+          "Text": "Guarantor:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3189:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1305,
+          "Text": "Beneficiary:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 10 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3203:0-12",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1306,
+          "Text": "Date:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 9 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3204:0-5",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1307,
+          "Text": "RETENTION MONEY GUARANTEE No.:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 8 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3205:0-30",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      },
+      {
+        "hypothesis": {
+          "Index": 1308,
+          "Text": "Guarantor:",
+          "state": "NEEDS_REVIEW",
+          "Roles": [
+            "REGION_OPENER",
+            "LOCAL_LABEL"
+          ],
+          "Evidence": [
+            "set apart strongly from the body text",
+            "the label is the lead of a line that continues as body text",
+            "followed by 7 body line(s) before a peer",
+            "followed by 1 lesser label(s) before a peer",
+            "an unnumbered lead followed by a bracketed instruction: a label or a reference, for review"
+          ],
+          "identity": "S3206:0-10",
+          "UnboundReason": null
+        },
+        "touchesGold": false
+      }
+    ]
+  }
+}

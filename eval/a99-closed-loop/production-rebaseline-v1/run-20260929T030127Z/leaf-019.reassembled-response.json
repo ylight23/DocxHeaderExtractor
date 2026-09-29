@@ -1,0 +1,38 @@
+{
+  "id": "stream-reassembled-leaf-019",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "reasoning": "",
+        "content": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1011:S0\u0022,\n          \u0022verbatimText\u0022: \u00227.2.4. SETTINGS\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1050:S0\u0022,\n          \u0022verbatimText\u0022: \u00227.2.4.1. De\\uFB01ned SETTINGS Parameters\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1066:S0\u0022,\n          \u0022verbatimText\u0022: \u00227.2.4.2. Initialization\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    }\n  ]\n}"
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 22548,
+    "completion_tokens": 210,
+    "total_tokens": 22758,
+    "cost": 0.00070374,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00070374,
+      "upstream_inference_prompt_cost": 0.00067644,
+      "upstream_inference_completions_cost": 0.0000273
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

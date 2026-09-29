@@ -1,0 +1,1064 @@
+{
+  "artifactKind": "a99_semantic_function_v4_exact_bind_score",
+  "study": "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY",
+  "scorer": {
+    "version": "SEMANTIC_FUNCTION_V4_EXACT_BIND_SCORER_V1",
+    "sourceSha256": "bffd451923bd5c1f48fe7796c6ef9786d9bed70a30fafeae8d9ada6ffe24a63c",
+    "exactMatcher": "GENERIC_EXACT_SCORER_V1"
+  },
+  "modelProviderCalls": 0,
+  "combinedManifest": {
+    "path": "eval/a99-closed-loop/semantic-function-single-authority-v4/combined-run-manifest.v1.json",
+    "sha256": "95ce19bf446b38f5e94ca78d4ac67abf1d8ceb8308061d515f9822451d4ea1b2",
+    "status": "COMPLETE_25_OF_25"
+  },
+  "rawLineage": {
+    "preflightSha256": "6041ef4f4f5ab7d22d8c4af915b07118e0c127959a1d4788f24d97d5a165e0b3",
+    "attempt1Sha256": "0d88b25e6d38dc5a4e219d14dc815ad8940a58484d59ddf74fb6818cba17a2c1",
+    "continuationSha256": "5610b677040c64bb2c6652fdb8cf034e6c3d1e4818f05f3f824a8c8c0db5df3c"
+  },
+  "protocol": {
+    "requestVersion": "V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY",
+    "promptSha256": "e996bef4346efff9b0544f34777192d5b59c7e7f75a749dbf91cbe9f0d5df93b",
+    "schemaSha256": "7d8ae805c0373dad3795d819cd5b0229b9421c28600d5d6b001e818f839225db",
+    "factsVersion": "V3_RobustGlyphStatistics",
+    "packing": "FIXED_OWNED_COUNT_120",
+    "model": "qwen/qwen3.7-flash"
+  },
+  "invariants": {
+    "sourcePartsMutated": false,
+    "claimsMergedOrSplit": false,
+    "legacySemanticRoleUsed": false,
+    "heuristicOrPostFilterUsed": false,
+    "documentSpecificMembershipRuleUsed": false,
+    "taxonomyChangedAfterGold": false
+  },
+  "baselineV2": {
+    "SRC_089": {
+      "f1": 0.7567,
+      "articles": "23/26",
+      "chapters": "5/5"
+    },
+    "SRC_095": {
+      "f1": 0.5266,
+      "recall": 0.9126,
+      "tocFalsePositives": 87
+    }
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-089.gold.json",
+        "sha256": "c66cefb224bdd47a08e2374fdb0328dd97b1e520a48f4cdbaffed244ac833534",
+        "authorityId": "SRC-089",
+        "userFinalApproval": true
+      },
+      "rawCalls": 5,
+      "invalidResponses": 0,
+      "refusals": {
+        "OutOfSourceOrder": 1,
+        "TextNotInAtom": 2,
+        "OUT_OF_OWNED_SEGMENT": 10
+      },
+      "uniqueBoundDecisions": 81,
+      "uniqueMemberClaims": 33,
+      "headline": {
+        "goldClaims": 36,
+        "hypothesesListed": 33,
+        "TRUE": 33,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 29,
+        "falsePositives": 4,
+        "falseNegatives": 7,
+        "truePrecision": 0.8788,
+        "trueRecall": 0.8056,
+        "f1": 0.8406,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 5,
+        "partialOnly": 2,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 4,
+        "goldMultipartClaims": 18,
+        "exactMultipartMatches": 15,
+        "goldClaimsWithPartialPart": 1,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 29,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 2,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 5
+        }
+      },
+      "residuals": {
+        "goldNotEngineTrue": [
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+            "goldText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+            "engine": []
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0014:S0:0-9|L0015:S0:0-18",
+            "goldText": "Chapter I GENERAL PROVISIONS",
+            "engine": [
+              {
+                "Index": 0,
+                "Text": "Chapter I",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L0014:S0:0-9",
+                "UnboundReason": null
+              },
+              {
+                "Index": 1,
+                "Text": "GENERAL PROVISIONS",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L0015:S0:0-18",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0109:S0:0-33",
+            "goldText": "1 . Conditions for establishment:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0117:S0:0-22",
+            "goldText": "2. Operation contents:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0246:S0:0-26",
+            "goldText": "1 . For publishing houses:",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L0249:S0:0-16",
+            "goldText": "2. For partners:",
+            "engine": []
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0382:S0:0-10|L0383:S0:0-45",
+            "goldText": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+            "engine": [
+              {
+                "Index": 20,
+                "Text": "Chapter IV",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L0382:S0:0-10",
+                "UnboundReason": null
+              },
+              {
+                "Index": 21,
+                "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L0383:S0:0-45",
+                "UnboundReason": null
+              }
+            ]
+          }
+        ],
+        "nonGoldTrue": [
+          {
+            "hypothesis": {
+              "Index": 0,
+              "Text": "Chapter I",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0014:S0:0-9",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 1,
+              "Text": "GENERAL PROVISIONS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0015:S0:0-18",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 20,
+              "Text": "Chapter IV",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0382:S0:0-10",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 21,
+              "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L0383:S0:0-45",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          }
+        ],
+        "nonGoldNeedsReview": []
+      },
+      "exactByGoldPattern": {
+        "ARTICLE_HEADING": {
+          "gold": 26,
+          "exact": 26
+        },
+        "S089_Q1_DECREE_TITLE_BLOCK": {
+          "gold": 1,
+          "exact": 0
+        },
+        "S089_Q2_CHAPTER_LABEL_OVER_TITLE": {
+          "gold": 5,
+          "exact": 3
+        },
+        "S089_Q3_COLON_CLAUSE_LABEL": {
+          "gold": 4,
+          "exact": 0
+        }
+      },
+      "src089": {
+        "articleExact": {
+          "gold": 26,
+          "exact": 26
+        },
+        "chapterExact": {
+          "gold": 5,
+          "exact": 3
+        },
+        "titleBlockExact": {
+          "gold": 1,
+          "exact": 0
+        },
+        "clauseLabelsExact": {
+          "gold": 4,
+          "exact": 0
+        }
+      },
+      "src095": null,
+      "functionConfusion": [
+        {
+          "goldHeading": true,
+          "semanticFunction": "REGION_STRUCTURE",
+          "occurrences": 29
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "BODY_INFORMATION",
+          "occurrences": 47
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "METADATA",
+          "occurrences": 1
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "REGION_STRUCTURE",
+          "occurrences": 4
+        }
+      ],
+      "functionConfusionMatrix": {
+        "semanticFunctions": [
+          "DOCUMENT_IDENTITY",
+          "REGION_STRUCTURE",
+          "NAVIGATION",
+          "PAGE_FURNITURE",
+          "OBJECT_CAPTION",
+          "TABLE_STRUCTURE",
+          "FOOTNOTE_OR_SOURCE",
+          "BODY_INFORMATION",
+          "METADATA"
+        ],
+        "goldHeading": {
+          "DOCUMENT_IDENTITY": 0,
+          "REGION_STRUCTURE": 29,
+          "NAVIGATION": 0,
+          "PAGE_FURNITURE": 0,
+          "OBJECT_CAPTION": 0,
+          "TABLE_STRUCTURE": 0,
+          "FOOTNOTE_OR_SOURCE": 0,
+          "BODY_INFORMATION": 0,
+          "METADATA": 0
+        },
+        "nonGold": {
+          "DOCUMENT_IDENTITY": 0,
+          "REGION_STRUCTURE": 4,
+          "NAVIGATION": 0,
+          "PAGE_FURNITURE": 0,
+          "OBJECT_CAPTION": 0,
+          "TABLE_STRUCTURE": 0,
+          "FOOTNOTE_OR_SOURCE": 0,
+          "BODY_INFORMATION": 47,
+          "METADATA": 1
+        },
+        "goldUnemitted": 7
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "gold": {
+        "path": "eval/a99-closed-loop/gold/SRC-095.gold.json",
+        "sha256": "d8a6eafb63716f531463b74d25543e4d27b25965aac0d5d0e5fb25734027df18",
+        "authorityId": "SRC-095",
+        "userFinalApproval": true
+      },
+      "rawCalls": 20,
+      "invalidResponses": 0,
+      "refusals": {
+        "OUT_OF_OWNED_SEGMENT": 41,
+        "OutOfSourceOrder": 1,
+        "TextNotInAtom": 10
+      },
+      "uniqueBoundDecisions": 232,
+      "uniqueMemberClaims": 114,
+      "headline": {
+        "goldClaims": 103,
+        "hypothesesListed": 114,
+        "TRUE": 114,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 88,
+        "falsePositives": 26,
+        "falseNegatives": 15,
+        "truePrecision": 0.7719,
+        "trueRecall": 0.8544,
+        "f1": 0.8111,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 9,
+        "partialOnly": 6,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 6,
+        "goldMultipartClaims": 6,
+        "exactMultipartMatches": 6,
+        "goldClaimsWithPartialPart": 0,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 88,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 6,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 9
+        }
+      },
+      "residuals": {
+        "goldNotEngineTrue": [
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L0008:S0:0-6",
+            "goldText": "HTTP/3",
+            "engine": [
+              {
+                "Index": 0,
+                "Text": "RFC 9114 HTTP/3",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=DOCUMENT_IDENTITY"
+                ],
+                "identity": "L0007:S0:0-8|L0008:S0:0-6",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1050:S0:0-35",
+            "goldText": "7.2.4.1. Deﬁned SETTINGS Parameters",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1729:S0:0-32",
+            "goldText": "A.2.1. Prioritization Diﬀerences",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1736:S0:0-35",
+            "goldText": "A.2.2. Field Compression Diﬀerences",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1745:S0:0-30",
+            "goldText": "A.2.3. Flow-Control Diﬀerences",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1750:S0:0-45",
+            "goldText": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1761:S0:0-49",
+            "goldText": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1914:S0:0-1",
+            "goldText": "C",
+            "engine": []
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L1940:S0:0-1",
+            "goldText": "D",
+            "engine": []
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L1947:S0:0-1",
+            "goldText": "G",
+            "engine": [
+              {
+                "Index": 88,
+                "Text": "G GOAWAY",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L1947:S0:0-1|L1948:S0:0-6",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L1961:S0:0-1",
+            "goldText": "H",
+            "engine": [
+              {
+                "Index": 89,
+                "Text": "H H3_CLOSED_CRITICAL_STREAM",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L1961:S0:0-1|L1962:S0:0-25",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L2012:S0:0-1",
+            "goldText": "M",
+            "engine": [
+              {
+                "Index": 107,
+                "Text": "M malformed",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L2012:S0:0-1|L2013:S0:0-9",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L2023:S0:0-1",
+            "goldText": "P",
+            "engine": [
+              {
+                "Index": 109,
+                "Text": "P push ID",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L2023:S0:0-1|L2024:S0:0-7",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "PARTIAL_TRUE",
+            "goldIdentity": "L2056:S0:0-1",
+            "goldText": "R",
+            "engine": [
+              {
+                "Index": 112,
+                "Text": "R request stream",
+                "state": "TRUE",
+                "Roles": [],
+                "Evidence": [
+                  "semanticFunction=REGION_STRUCTURE"
+                ],
+                "identity": "L2056:S0:0-1|L2057:S0:0-14",
+                "UnboundReason": null
+              }
+            ]
+          },
+          {
+            "bucket": "UNPROPOSED",
+            "goldIdentity": "L2063:S0:0-1",
+            "goldText": "S",
+            "engine": []
+          }
+        ],
+        "nonGoldTrue": [
+          {
+            "hypothesis": {
+              "Index": 0,
+              "Text": "RFC 9114 HTTP/3",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=DOCUMENT_IDENTITY"
+              ],
+              "identity": "L0007:S0:0-8|L0008:S0:0-6",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 88,
+              "Text": "G GOAWAY",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1947:S0:0-1|L1948:S0:0-6",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 89,
+              "Text": "H H3_CLOSED_CRITICAL_STREAM",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1961:S0:0-1|L1962:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 90,
+              "Text": "H3_CONNECT_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1964:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 91,
+              "Text": "H3_EXCESSIVE_LOAD",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1966:S0:0-17",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 92,
+              "Text": "H3_FRAME_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1968:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 93,
+              "Text": "H3_FRAME_UNEXPECTED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1970:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 94,
+              "Text": "H3_GENERAL_PROTOCOL_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1977:S0:0-25",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 95,
+              "Text": "H3_ID_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1979:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 96,
+              "Text": "H3_INTERNAL_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1983:S0:0-17",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 97,
+              "Text": "H3_MESSAGE_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1984:S0:0-16",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 98,
+              "Text": "H3_MISSING_SETTINGS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1986:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 99,
+              "Text": "H3_NO_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1987:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 100,
+              "Text": "H3_REQUEST_CANCELLED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1990:S0:0-20",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 101,
+              "Text": "H3_REQUEST_INCOMPLETE",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1994:S0:0-21",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 102,
+              "Text": "H3_REQUEST_REJECTED",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L1997:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 103,
+              "Text": "H3_SETTINGS_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2001:S0:0-17",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 104,
+              "Text": "H3_STREAM_CREATION_ERROR",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2003:S0:0-24",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 105,
+              "Text": "H3_VERSION_FALLBACK",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2005:S0:0-19",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 106,
+              "Text": "HEADERS",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2006:S0:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 107,
+              "Text": "M malformed",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2012:S0:0-1|L2013:S0:0-9",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 108,
+              "Text": "MAX_PUSH_ID",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2019:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 109,
+              "Text": "P push ID",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2023:S0:0-1|L2024:S0:0-7",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          },
+          {
+            "hypothesis": {
+              "Index": 110,
+              "Text": "push stream",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2035:S0:0-11",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 111,
+              "Text": "PUSH_PROMISE",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2046:S0:0-12",
+              "UnboundReason": null
+            },
+            "touchesGold": false
+          },
+          {
+            "hypothesis": {
+              "Index": 112,
+              "Text": "R request stream",
+              "state": "TRUE",
+              "Roles": [],
+              "Evidence": [
+                "semanticFunction=REGION_STRUCTURE"
+              ],
+              "identity": "L2056:S0:0-1|L2057:S0:0-14",
+              "UnboundReason": null
+            },
+            "touchesGold": true
+          }
+        ],
+        "nonGoldNeedsReview": []
+      },
+      "exactByGoldPattern": {
+        "MATTER_SECTION": {
+          "gold": 6,
+          "exact": 6
+        },
+        "NUMBERED_SECTION": {
+          "gold": 81,
+          "exact": 75
+        },
+        "NUMBERED_SECTION_SPLIT": {
+          "gold": 6,
+          "exact": 6
+        },
+        "S095_Q1_RFC_TITLE_BLOCK": {
+          "gold": 1,
+          "exact": 0
+        },
+        "S095_Q2_INDEX_GROUP_LETTER": {
+          "gold": 8,
+          "exact": 0
+        },
+        "TOC_OPENER": {
+          "gold": 1,
+          "exact": 1
+        }
+      },
+      "src089": null,
+      "src095": {
+        "falsePositiveFamilies": {
+          "INDEX_ENTRY": 20,
+          "GOLD_HEADING_WRONG_EXTENT": 6
+        },
+        "falsePositiveBreakdown": {
+          "contentsEntries": 0,
+          "indexEntries": 20,
+          "pageFurniture": 0,
+          "captions": 0,
+          "tableStructure": 0,
+          "goldHeadingWrongExtent": 6,
+          "other": 0
+        },
+        "numberedSectionRecall": {
+          "gold": 87,
+          "exact": 81,
+          "recall": 0.931
+        },
+        "rfcTitleIdentifierExact": {
+          "gold": 1,
+          "exact": 0
+        },
+        "indexGroupLettersExact": {
+          "gold": 8,
+          "exact": 0
+        }
+      },
+      "functionConfusion": [
+        {
+          "goldHeading": true,
+          "semanticFunction": "REGION_STRUCTURE",
+          "occurrences": 88
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "BODY_INFORMATION",
+          "occurrences": 4
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "DOCUMENT_IDENTITY",
+          "occurrences": 1
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "NAVIGATION",
+          "occurrences": 79
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "OBJECT_CAPTION",
+          "occurrences": 9
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "PAGE_FURNITURE",
+          "occurrences": 22
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "REGION_STRUCTURE",
+          "occurrences": 25
+        },
+        {
+          "goldHeading": false,
+          "semanticFunction": "TABLE_STRUCTURE",
+          "occurrences": 4
+        }
+      ],
+      "functionConfusionMatrix": {
+        "semanticFunctions": [
+          "DOCUMENT_IDENTITY",
+          "REGION_STRUCTURE",
+          "NAVIGATION",
+          "PAGE_FURNITURE",
+          "OBJECT_CAPTION",
+          "TABLE_STRUCTURE",
+          "FOOTNOTE_OR_SOURCE",
+          "BODY_INFORMATION",
+          "METADATA"
+        ],
+        "goldHeading": {
+          "DOCUMENT_IDENTITY": 0,
+          "REGION_STRUCTURE": 88,
+          "NAVIGATION": 0,
+          "PAGE_FURNITURE": 0,
+          "OBJECT_CAPTION": 0,
+          "TABLE_STRUCTURE": 0,
+          "FOOTNOTE_OR_SOURCE": 0,
+          "BODY_INFORMATION": 0,
+          "METADATA": 0
+        },
+        "nonGold": {
+          "DOCUMENT_IDENTITY": 1,
+          "REGION_STRUCTURE": 25,
+          "NAVIGATION": 79,
+          "PAGE_FURNITURE": 22,
+          "OBJECT_CAPTION": 9,
+          "TABLE_STRUCTURE": 4,
+          "FOOTNOTE_OR_SOURCE": 0,
+          "BODY_INFORMATION": 4,
+          "METADATA": 0
+        },
+        "goldUnemitted": 15
+      }
+    }
+  ]
+}

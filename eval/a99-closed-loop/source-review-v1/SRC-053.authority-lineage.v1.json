@@ -1,0 +1,56 @@
+{
+  "artifactKind": "a99_gold_authority_lineage",
+  "authorityId": "SRC-053",
+  "modelProviderVlmCalls": 0,
+  "previousSemanticAuthority": {
+    "source": "original PDF (the same bytes as the current authority)",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+    "sourceSha256": "6d3cd46d6297031fd3fd4c2afd066f8d947f18d55ef1418a185e5ef9e0a344da",
+    "total": 277,
+    "finalAuthority": "USER_APPROVED_SOURCE_ONLY_REVIEW",
+    "exactOccurrenceFreeze": false,
+    "occurrenceList": false,
+    "occurrenceIdentities": "UNAVAILABLE",
+    "exactSpans": "UNAVAILABLE",
+    "status": "SUPERSEDED",
+    "role": "provenance_only",
+    "artifact": {
+      "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-053.semantic-freeze.v1.json",
+      "sha256": "2d52f7de7940ad6756291f049a57fafb1dc858a1dd6d22128bb52d01f79e7eb9"
+    }
+  },
+  "supersededBecause": "the current authority names every occurrence and binds each one exactly to the source, independently of the engine and of the previous count; the previous authority is a total without occurrence identities",
+  "historicalAuthorityDelta": {
+    "HISTORICAL_AUTHORITY_DELTA": -6,
+    "CAUSE": "UNRESOLVED",
+    "meaning": "a difference between two authorities over the same PDF; not evidence that the current Gold misses any occurrence",
+    "followUp": "a historical delta audit only after the Gold and the raw blind score are committed: source-level evidence only, never engine predictions; the previous review's own record names the 6 occurrences its re-audit added (all repeated '(Continued)' statement titles, which the current Gold contains)",
+    "goldRevisionRule": "a Gold error found later becomes a new Gold revision with its own provenance; the blind score stays scored against the Gold frozen at the reveal"
+  },
+  "currentCanonicalAuthority": {
+    "source": "original PDF",
+    "sourcePath": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+    "sourceSha256": "6d3cd46d6297031fd3fd4c2afd066f8d947f18d55ef1418a185e5ef9e0a344da",
+    "total": 271,
+    "coordinateSystem": "STRUCTURED_SOURCE_PARTS",
+    "ontology": "OCCURRENCE_SEMANTIC_AXES_V3",
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "hierarchyEvaluable": false,
+    "membershipDecision": {
+      "decidedBy": "USER",
+      "decidedAt": "2026-09-26",
+      "review": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-053.source-review.v1.json",
+        "sha256": "e57e75e9253b16ff6cd8ae83c21684bf0f85aba1a1570ab4a8346398ccbc034e"
+      },
+      "reviewItems": {
+        "path": "eval/a99-closed-loop/source-review-v1/SRC-053/review-items.json",
+        "sha256": "9907501e6bb3e331200175c1b37131d718cb9293c5bbf6c22fefffddf293274e"
+      }
+    },
+    "engineProposalsRead": false,
+    "status": "CURRENT_OCCURRENCE_LEVEL_AUTHORITY"
+  }
+}

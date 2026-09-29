@@ -1,0 +1,309 @@
+{
+  "artifactKind": "a99_generic_audit_residual_classification",
+  "study": "SRC041_BLIND_GENERALIZATION_AUDIT_V1",
+  "rawScore": {
+    "path": "eval/a99-closed-loop/generic-audit-v1_1/SRC-041.blind-score.v1_1.json",
+    "sha256": "a20fb7d2e4cdbe02e17ad7ec271b8b0933f5e5945a9301274439192c9d9910ae",
+    "commit": "ba93900"
+  },
+  "modelProviderVlmCalls": 0,
+  "status": "reviewer proposals for the user to confirm or overrule, cause by cause; the raw score is not edited and V1.1 is not changed",
+  "residuals": {
+    "goldNotEngineTrue": 16,
+    "nonGoldTrue": 15
+  },
+  "byBucket": {
+    "A": {
+      "goldNotEngineTrue": 9,
+      "nonGoldTrue": 1
+    },
+    "B_KNOWN_B1": {
+      "goldNotEngineTrue": 1,
+      "nonGoldTrue": 0
+    },
+    "B_NEW": {
+      "goldNotEngineTrue": 6,
+      "nonGoldTrue": 13
+    },
+    "C": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 0
+    },
+    "D": {
+      "goldNotEngineTrue": 0,
+      "nonGoldTrue": 1
+    }
+  },
+  "byCause": [
+    {
+      "cause": "FURNITURE_RULE_IGNORES_PROMINENCE",
+      "bucket": "B_NEW",
+      "Reason": "a statement title carried to the top of each page of its statement repeats in the top band on 3+ pages, and the furniture rule calls it page furniture whatever its size; at 16pt against a 10pt body it is a continued title, not a running header",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 4,
+      "goldBuckets": {
+        "PARTIAL_FALSE": 3,
+        "PARTIAL_TRUE": 1
+      },
+      "nonGoldTrue": 1,
+      "items": [
+        "L3526:S0:0-29|L3527:S0:0-29",
+        "L3585:S0:0-29|L3586:S0:0-41",
+        "L3644:S0:0-29|L3645:S0:0-41",
+        "L3703:S0:0-29|L3704:S0:0-41",
+        "L3527:S0:0-29"
+      ]
+    },
+    {
+      "cause": "TWO_SEGMENT_ROW_CHART_PANEL",
+      "bucket": "B_NEW",
+      "Reason": "gap 5 makes each segment of a two-segment row stand alone in its column; a chart or diagram panel beside the text (panel titles, node labels) is not a column of text, and its bold labels become standalone headings",
+      "introducedByV1_1": true,
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 7,
+      "items": [
+        "L0379:S1:0-3",
+        "L0389:S1:0-21",
+        "L0401:S1:0-10",
+        "L0416:S1:0-21",
+        "L0546:S1:0-15",
+        "L1815:S1:0-3",
+        "L1820:S1:0-3"
+      ]
+    },
+    {
+      "cause": "CHART_INTERNAL_LABEL",
+      "bucket": "B_NEW",
+      "Reason": "a set-apart label inside a chart (series legend, axis labels, a panel title set larger than the body): the engine has no figure-region evidence, and the principles make chart-internal labels false whatever their type",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 4,
+      "items": [
+        "L0229:S0:0-12",
+        "L0362:S0:0-24",
+        "L2105:S0:0-24",
+        "L2490:S0:0-49"
+      ]
+    },
+    {
+      "cause": "CAPTION_CONTINUATION_LINE",
+      "bucket": "B_NEW",
+      "Reason": "the wrapped second line of a numbered figure caption is judged alone: the caption shape is matched on its first line only",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L1655:S0:0-18"
+      ]
+    },
+    {
+      "cause": "LIST_ENTRY_CHAIN",
+      "bucket": "B_NEW",
+      "Reason": "gap 1 follows a label down its column and, where another column bounds it (here the contents page numbers), takes each same-set line below as a wrap; a contents sub-list opener was joined to the complete entries under it",
+      "introducedByV1_1": true,
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "PARTIAL_NEEDS_REVIEW": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L3169:S0:0-25"
+      ]
+    },
+    {
+      "cause": "COVER_TITLE_DELIBERATE_BREAKS",
+      "bucket": "B_NEW",
+      "Reason": "a centred cover title set in three lines by design, the middle one a single connective word; the fit test ends the claim at the short line, which fits, although the break is typographic",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "PARTIAL_NEEDS_REVIEW": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L0002:S0:0-34|L0003:S0:0-3|L0004:S0:0-20"
+      ]
+    },
+    {
+      "cause": "REPEATED_TITLE_READ_AS_POINTER",
+      "bucket": "B_KNOWN_B1",
+      "Reason": "the report title's text recurs later (on a continuation page) at equal prominence, so the contents logic reads the first occurrence as a pointer to it - the B1 mechanism (repeated text turns a heading into a navigation entry), here on a report title rather than a contents opener",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_FALSE": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L3182:S0:0-27"
+      ]
+    },
+    {
+      "cause": "COLON_ENDED_LABEL_OVER_PROSE",
+      "bucket": "A",
+      "Reason": "a colon-ended standalone label over prose is a heading or a field label by meaning; the engine sends it to review by design, and the fail-safe held for all seven",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 7,
+      "goldBuckets": {
+        "EXACT_NEEDS_REVIEW": 7
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L0816:S0:0-56",
+        "L1822:S0:0-26",
+        "L1848:S0:0-28",
+        "L2514:S0:0-29",
+        "L2517:S0:0-22",
+        "L4248:S0:0-31",
+        "L4264:S0:0-38"
+      ]
+    },
+    {
+      "cause": "CONTINUED_TITLE_OVER_IMAGE_PAGE",
+      "bucket": "A",
+      "Reason": "a report title repeated on a later page whose body is an image: nothing below it is text, so the engine cannot see a region; the user decided it is a heading (A2). Sent to review",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_NEEDS_REVIEW": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L3185:S0:0-27"
+      ]
+    },
+    {
+      "cause": "OCCURRENCE_VS_RUNNING_HEADER",
+      "bucket": "A",
+      "Reason": "the same text, type and position tops pages 3, 4 and 5; only the first occurrence opens the part (user decision A3). Source evidence is identical across the three; the region role is the meaning decision",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 1,
+      "goldBuckets": {
+        "EXACT_FALSE": 1
+      },
+      "nonGoldTrue": 0,
+      "items": [
+        "L0006:S0:0-36"
+      ]
+    },
+    {
+      "cause": "LIST_TITLE_SCOPE",
+      "bucket": "A",
+      "Reason": "a 14pt title whose scope is the country list below it (user decision A4: an ordinary local object title, false); the engine has no evidence of that scope",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L3139:S0:0-64"
+      ]
+    },
+    {
+      "cause": "UNPREFIXED_TABLE_PART_LABEL",
+      "bucket": "D",
+      "Reason": "'K8.1' - the only one of twelve table-continuation labels in this PDF set without the word 'Table'; the other eleven match the caption shape. A typesetting slip of this document",
+      "introducedByV1_1": false,
+      "goldNotEngineTrue": 0,
+      "goldBuckets": {},
+      "nonGoldTrue": 1,
+      "items": [
+        "L5818:S0:0-4"
+      ]
+    }
+  ],
+  "knownGapsRecurring": [
+    {
+      "id": "B1",
+      "cases": 1,
+      "note": "on a report title whose text recurs on its continuation page"
+    }
+  ],
+  "knownGapsNotObserved": [
+    "B2",
+    "B4",
+    "K1 cross-page titles",
+    "K2 stacked cover titles of different sizes",
+    "K3 connective lines",
+    "K4 DOCX page breaks",
+    "K5 FORM without fill-ins"
+  ],
+  "introducedByV1_1": {
+    "causes": [
+      "TWO_SEGMENT_ROW_CHART_PANEL",
+      "LIST_ENTRY_CHAIN"
+    ],
+    "goldNotEngineTrue": 1,
+    "nonGoldTrue": 7,
+    "note": "side effects of V1.1's own mechanisms (gap 5 two-segment rows; gap 1 column chain beside a bounding column) - recorded, not fixed here"
+  },
+  "ontologyGaps": 0,
+  "documentSpecificExceptions": [
+    {
+      "cause": "UNPREFIXED_TABLE_PART_LABEL",
+      "Reason": "'K8.1' - the only one of twelve table-continuation labels in this PDF set without the word 'Table'; the other eleven match the caption shape. A typesetting slip of this document",
+      "items": [
+        "L5818:S0:0-4"
+      ]
+    }
+  ],
+  "axisFindings": [
+    {
+      "axis": "scope / primaryFunction / semanticFunctions",
+      "bucket": "A (pre-registered)",
+      "finding": "on exact matches the engine says SECTION / STRUCTURE where Gold says NOTE (15), FINANCIAL_STATEMENT (7), DOCUMENT_PART (4), TOC (3); pre-registered as meaning decisions the engine has no evidence for. occurrenceRoles, titleRelation and informationType agree on every exact match"
+    }
+  ],
+  "reviewNoiseProfile": {
+    "note": "NEEDS_REVIEW outside Gold that touches no Gold claim; it never counts as a heading and costs reviewer time only",
+    "total": 360,
+    "byEvidence": [
+      {
+        "evidence": "(set apart only)",
+        "count": 105
+      },
+      {
+        "evidence": "numbered caption shape + but prose, not a table or figure, follows it",
+        "count": 102
+      },
+      {
+        "evidence": "a peer or stronger label follows directly: opens nothing",
+        "count": 73
+      },
+      {
+        "evidence": "one label over 2 source occurrences",
+        "count": 47
+      },
+      {
+        "evidence": "colon-ended label",
+        "count": 11
+      },
+      {
+        "evidence": "one label over 2 source occurrences + a peer or stronger label follows directly: opens nothing",
+        "count": 6
+      },
+      {
+        "evidence": "date shape + stands alone over its own prose",
+        "count": 5
+      },
+      {
+        "evidence": "one label over 2 source occurrences + numbered caption shape + but prose, not a table or figure, follows it",
+        "count": 4
+      },
+      {
+        "evidence": "one label over 3 source occurrences",
+        "count": 4
+      },
+      {
+        "evidence": "one label over 2 source occurrences + the label is the lead of a line that continues as body text",
+        "count": 2
+      },
+      {
+        "evidence": "one label over 2 source occurrences + colon-ended label",
+        "count": 1
+      }
+    ]
+  }
+}

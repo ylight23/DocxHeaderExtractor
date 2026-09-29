@@ -1,0 +1,53 @@
+{
+  "artifactKind": "a99_v4r3_fixed120_semantic_pack_equivalence",
+  "status": "PASS",
+  "task": "Verify V4R3 reuses the historical fixed-120 packing algorithm while rebuilding the matched medium-reasoning provider envelope.",
+  "providerCalls": 0,
+  "goldRead": false,
+  "controlPreflight": {
+    "path": "eval/a99-closed-loop/request-architecture-v2/v4r3-fixed120-medium-matched-control-preflight.v1.json",
+    "sha256": "5D67BDA939C2F6399DCBC0108A091855662BDEC1D790EB0859D8BBC617BB04B5"
+  },
+  "historicalPackingSource": {
+    "path": "eval/a99-closed-loop/request-architecture-v2/baseline-request-census.v1.json",
+    "sha256": "590a786513cba9803a2dcb8bbde39865973d0bddb7135f055812d26c39048fb3",
+    "policy": "FIXED_OWNED_COUNT_120",
+    "ownedPerFullRequest": 120,
+    "visibleAtomsMaximum": 160,
+    "haloAtoms": 20
+  },
+  "checks": {
+    "requestCount": 25,
+    "semanticRequestContentExactMatch": true,
+    "sourceOwnershipAndPackBoundariesExactMatch": true,
+    "inputByteCountsExactMatch": true,
+    "oldRawProviderEnvelopeReused": false,
+    "newMatchedEnvelope": {
+      "model": "qwen/qwen3.7-flash",
+      "providerRoute": "Alibaba",
+      "reasoningEffort": "medium",
+      "maxTokens": 12288,
+      "timeoutSeconds": 300,
+      "responseFormat": "json_object",
+      "explicitCacheControl": false,
+      "strictJsonSchema": false,
+      "lossyTransforms": false
+    }
+  },
+  "aggregate": {
+    "SRC-089": {
+      "requests": 5,
+      "inputBytes": 435490,
+      "ownedAtoms": 582
+    },
+    "SRC-095": {
+      "requests": 20,
+      "inputBytes": 1694184,
+      "ownedAtoms": 2302
+    },
+    "totalInputBytes": 2129674,
+    "maxRequestBytes": 93856,
+    "maxEstimatedInputTokens": 15643
+  },
+  "comparisonInterpretation": "V4R3 semantic request content is the fixed-120 control; only the provider execution envelope is rebuilt with the P05-matched medium configuration."
+}

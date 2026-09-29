@@ -3,7 +3,7 @@ using DocxHeaderExtractor.Application.Tasks;
 namespace DocxHeaderExtractor.AgentHarness;
 
 /// <summary>
-/// Compatibility adapter from the existing DOCX host request to the generic application request.
+/// Adapter from the DOCX host request to the generic application request.
 /// The locator is opaque to Application; local file access remains an outer-boundary concern.
 /// </summary>
 internal static class GenericTaskRequestAdapter
