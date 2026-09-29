@@ -177,6 +177,11 @@ public sealed class V5ArchitectureTests
         var claim = Assert.Single(result.State.Claims);
         Assert.Equal(ClaimResolutionState.RESOLVED, claim.State);
         Assert.Equal(2, result.SemanticModelCalls);
+        var provenance = Assert.Single(result.Provenance);
+        Assert.Equal(claim.ClaimId, provenance.ClaimId);
+        Assert.NotNull(provenance.ModelRequestHash);
+        Assert.NotNull(provenance.ModelResponseHash);
+        Assert.Equal("v5-exact-source-parts-1", provenance.BinderVersion);
     }
 
     private static DocumentTaskContract Contract() => new(
