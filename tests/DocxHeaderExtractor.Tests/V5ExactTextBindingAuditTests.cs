@@ -10,6 +10,13 @@ namespace DocxHeaderExtractor.Tests;
 /// Decomposes the 160 exact-text-binding refusals from the real 31-pack cohort at commit 3a4f69a,
 /// offline, from the frozen provider responses alone. Never calls a provider, never reads Gold, never
 /// touches the frozen raw cohort artifacts - it only reads them and writes a separate diagnosis file.
+/// <para>
+/// v1 (commit 94526c1, <c>diagnosis/exact-text-binding-audit.v1.json</c>) checked multi-atom spans
+/// before same-atom mechanical equivalence, so a same-atom spacing/Unicode/punctuation difference with
+/// a following visible atom present was misclassified as MULTI_ATOM_OVERQUOTE. v1's artifact is kept
+/// as a frozen historical record of that bug, never overwritten; this writes v2 with the corrected
+/// precedence (<see cref="V5ExactTextBindingAnalyzer"/>).
+/// </para>
 /// </summary>
 public sealed class V5ExactTextBindingAuditTests
 {
@@ -17,7 +24,7 @@ public sealed class V5ExactTextBindingAuditTests
     private const string SourceCommit = "3a4f69a194f1e0a4598bda8c5eeed06b7c57bb40";
 
     [Fact]
-    public void Decompose_the_cohorts_exact_text_binding_refusals_offline()
+    public void Decompose_the_cohorts_exact_text_binding_refusals_offline_v2()
     {
         var contract = DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
         var cohort = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{CohortRoot}/preflight/cohort.v1.json"))).RootElement;
@@ -112,17 +119,19 @@ public sealed class V5ExactTextBindingAuditTests
             }
         }
 
-        // Sanity: ownership/refinement/duplicate refusals are a separate concern from this audit and
-        // are known to be zero of these families among the 160 (confirmed by the frozen cohort result).
+        // Invariants that must NOT move: only classification changed, not which parts succeed or fail.
         Assert.Equal(0, unknownAliasRefusals);
         Assert.Equal(0, sourceOrderRefusals);
-        // The authoritative, claim-level count matches the frozen cohort-result.v1.json exactly.
         Assert.Equal(160, claimLevelExactTextRefusals);
-        // The part-level count can exceed it: a claim whose subject AND object both fail contributes
-        // one claim-level refusal but two part-level failure rows, by design (never merged).
-        Assert.True(partLevelExactTextRefusals >= claimLevelExactTextRefusals,
-            $"expected at least as many part-level failures ({partLevelExactTextRefusals}) as claim-level refusals ({claimLevelExactTextRefusals})");
+        Assert.Equal(169, partLevelExactTextRefusals);
         Assert.Equal(partLevelExactTextRefusals, failureRows.Count);
+
+        // ROBUST_TO_DIAGNOSIS_FIX: these come entirely from successfully bound parts and never touch
+        // the failure classifier this fix corrects.
+        Assert.Equal(534, successfulVerbatimParts);
+        var robustToFix = usageCounts.GetValueOrDefault(V5SourcePartUsage.VERBATIM_REDUNDANT_WHOLE_ATOM_QUOTE) == 502 &&
+            usageCounts.GetValueOrDefault(V5SourcePartUsage.VERBATIM_NECESSARY_SUBSTRING) == 32;
+        Assert.True(robustToFix, "the whole-atom-redundant/necessary-substring split should be unaffected by the failure-classifier fix");
 
         var uniqueFailedParts = failureRows.Select(r => (r.SourceAlias, r.VerbatimText)).Distinct().Count();
         var uniqueAliasesAffected = failureRows.Select(r => r.SourceAlias).Distinct(StringComparer.Ordinal).Count();
@@ -135,11 +144,14 @@ public sealed class V5ExactTextBindingAuditTests
         Dictionary<string, int> TaxonomyReport() => Enum.GetValues<V5ExactTextFailureCategory>()
             .ToDictionary(c => c.ToString(), c => taxonomy.GetValueOrDefault(c), StringComparer.Ordinal);
 
-        var wouldBindAsWholeAlias = failureRows.Count(r => r.Counterfactuals.WouldBindAsWholeAlias);
-        var wouldBindWithExactMultipart = failureRows.Count(r => r.Counterfactuals.WouldBindWithExactMultipart);
+        var namedAliasSyntacticallyBindable = failureRows.Count(r => r.Counterfactuals.NamedAliasWouldSyntacticallyBind);
+        var wholeAliasSameSelectionSafe = failureRows.Count(r => r.Counterfactuals.WholeAliasRepresentsSameObservedSelection == true);
+        var trueMultipartSpans = failureRows.Count(r => r.Counterfactuals.MultipartSpanExplainsQuote);
+        var multipartAliasSequenceWouldBind = failureRows.Count(r => r.Counterfactuals.MultipartAliasSequenceWouldBind);
+        var sameAtomNormalizationFailures = failureRows.Count(r => r.Counterfactuals.SameAtom.AnyMechanicalMatch);
         var wouldBindWithExistingDisambiguation = failureRows.Count(r => r.Counterfactuals.WouldBindWithExistingDisambiguation);
-        var whitespaceOnly = failureRows.Count(r => r.Counterfactuals.WouldMatchAfterWhitespaceCollapse || r.Counterfactuals.WouldMatchAfterWhitespaceRemoval);
-        var unicodeOnly = failureRows.Count(r => r.Counterfactuals.WouldMatchAfterNfc || r.Counterfactuals.WouldMatchAfterNfkc);
+        var whitespaceOnly = failureRows.Count(r => r.Counterfactuals.SameAtom.WhitespaceCollapse || r.Counterfactuals.SameAtom.WhitespaceRemoval);
+        var unicodeOnly = failureRows.Count(r => r.Counterfactuals.SameAtom.Nfc || r.Counterfactuals.SameAtom.Nfkc);
 
         var topPacks = failureRows.GroupBy(r => (r.DocumentId, r.PackId)).OrderByDescending(g => g.Count()).Take(5)
             .Select(g => new { documentId = g.Key.DocumentId, packId = g.Key.PackId, refusalCount = g.Count() }).ToArray();
@@ -148,7 +160,8 @@ public sealed class V5ExactTextBindingAuditTests
 
         var report = new
         {
-            schemaVersion = "v5-exact-text-binding-audit-v1",
+            schemaVersion = "v5-exact-text-binding-audit-v2",
+            supersedesDiagnosisVersion = "v1 (frozen, historical, known classifier bug - see class doc)",
             sourceCohortCommit = SourceCommit,
             providerCalls = 0,
             goldRead = false,
@@ -167,8 +180,11 @@ public sealed class V5ExactTextBindingAuditTests
 
             counterfactual = new
             {
-                wouldBindAsWholeAlias,
-                wouldBindWithExactMultipart,
+                namedAliasSyntacticallyBindable,
+                wholeAliasSameSelectionSafe,
+                trueMultipartSpans,
+                multipartAliasSequenceWouldBind,
+                sameAtomNormalizationFailures,
                 wouldBindWithExistingDisambiguation,
                 whitespaceOnly,
                 unicodeOnly,
@@ -183,6 +199,7 @@ public sealed class V5ExactTextBindingAuditTests
                 successfulVerbatimParts,
                 refusedVerbatimParts,
                 usageBreakdown = Enum.GetValues<V5SourcePartUsage>().ToDictionary(u => u.ToString(), u => usageCounts.GetValueOrDefault(u), StringComparer.Ordinal),
+                robustToDiagnosisFix = robustToFix,
             },
 
             concentration = new { topPacksByRefusalCount = topPacks, topAliasesByRefusalCount = topAliases },
@@ -200,10 +217,16 @@ public sealed class V5ExactTextBindingAuditTests
             }).ToArray(),
         };
 
-        var path = TestRepository.Path($"{CohortRoot}/diagnosis/exact-text-binding-audit.v1.json");
+        var path = TestRepository.Path($"{CohortRoot}/diagnosis/exact-text-binding-audit.v2.json");
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         var bytes = JsonSerializer.SerializeToUtf8Bytes(report, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(path, Encoding.UTF8.GetString(bytes) + Environment.NewLine, new UTF8Encoding(false));
+
+        // v1 stays frozen: this test must never write to the v1 path.
+        Assert.False(File.Exists(TestRepository.Path($"{CohortRoot}/diagnosis/exact-text-binding-audit.v1.json")) &&
+            new FileInfo(TestRepository.Path($"{CohortRoot}/diagnosis/exact-text-binding-audit.v1.json")).LastWriteTimeUtc >
+            new FileInfo(TestRepository.Path($"{CohortRoot}/diagnosis/exact-text-binding-audit.v2.json")).LastWriteTimeUtc,
+            "v1 must not have been touched by this run");
 
         // Determinism: re-running the same offline analysis over the same frozen inputs reproduces the same bytes.
         var repeatBytes = JsonSerializer.SerializeToUtf8Bytes(report, new JsonSerializerOptions { WriteIndented = true });
@@ -220,6 +243,7 @@ public sealed class V5ExactTextBindingAuditTests
             "L1", "-------", null, null, null, "'L1' does not contain that text", atoms, Visible(atoms));
         Assert.Equal(V5ExactTextFailureCategory.WRONG_ALIAS_TEXT, row.Category);
         Assert.Equal(V5ExactTextFaultDomain.MODEL_REFERENCE, row.FaultDomain);
+        Assert.False(row.Counterfactuals.WholeAliasRepresentsSameObservedSelection);
         Assert.Contains("L2", row.DiagnosticReason);
     }
 
@@ -233,8 +257,45 @@ public sealed class V5ExactTextBindingAuditTests
         var row = V5ExactTextBindingAnalyzer.Analyze("DOC", "PACK", 1, "STRUCTURAL_REGION", "subject", 0,
             "L1", quote, null, null, null, "'L1' does not contain that text", atoms, Visible(atoms));
         Assert.Equal(V5ExactTextFailureCategory.MULTI_ATOM_OVERQUOTE, row.Category);
-        Assert.Equal(["L1", "L2"], row.Counterfactuals.ExactMultipartAliasSequence);
-        Assert.True(row.Counterfactuals.WouldBindWithExactMultipart);
+        Assert.Equal(["L1", "L2"], row.Counterfactuals.MinimalAliasSequence);
+        Assert.True(row.Counterfactuals.LaterAtomContribution);
+        Assert.True(row.Counterfactuals.MultipartSpanExplainsQuote);
+        Assert.True(row.Counterfactuals.MultipartAliasSequenceWouldBind);
+    }
+
+    [Fact]
+    public void Same_atom_spacing_difference_with_a_following_atom_present_is_not_misclassified_as_multi_atom()
+    {
+        // The exact bug v1 had: a same-atom-only spacing difference must not be shadowed by an
+        // incidental multi-atom substring match just because a following atom happens to exist.
+        var atoms = Atoms(
+            ("L1", "S1", "Article 1. Scope ofregulation and subjects ofapplication"),
+            ("L2", "S2", "1. This Decree details ..."));
+        var row = V5ExactTextBindingAnalyzer.Analyze("DOC", "PACK", 1, "STRUCTURAL_REGION", "subject", 0,
+            "L1", "Article 1. Scope of regulation and subjects of application", null, null, null,
+            "'L1' does not contain that text", atoms, Visible(atoms));
+        Assert.Equal(V5ExactTextFailureCategory.EXTRACTION_SPACING_DIFFERENCE, row.Category);
+        Assert.True(row.Counterfactuals.SameAtom.WhitespaceRemoval);
+        Assert.False(row.Counterfactuals.MultipartSpanExplainsQuote);
+        Assert.Null(row.Counterfactuals.MinimalAliasSequence);
+    }
+
+    [Fact]
+    public void A_genuine_multi_atom_span_with_an_independent_spacing_difference_still_classifies_as_multi_atom()
+    {
+        // The compound real-world case: the first atom's own text has a spacing artifact AND the
+        // quote genuinely continues into a second atom. Same-atom checks correctly fail (the atom
+        // alone, however normalized, is shorter than the quote), so multi-atom search still fires.
+        var atoms = Atoms(
+            ("L1", "S1", "Article 2. Tasks and powers ofthe Ministry ... in performing"),
+            ("L2", "S2", "the state management ofpublication activities"));
+        var quote = "Article 2. Tasks and powers of the Ministry ... in performing the state management of publication activities";
+        var row = V5ExactTextBindingAnalyzer.Analyze("DOC", "PACK", 1, "STRUCTURAL_REGION", "subject", 0,
+            "L1", quote, null, null, null, "'L1' does not contain that text", atoms, Visible(atoms));
+        Assert.Equal(V5ExactTextFailureCategory.MULTI_ATOM_OVERQUOTE, row.Category);
+        Assert.Equal(["L1", "L2"], row.Counterfactuals.MinimalAliasSequence);
+        Assert.True(row.Counterfactuals.LaterAtomContribution);
+        Assert.True(row.Counterfactuals.MultipartSpanExplainsQuote);
     }
 
     [Fact]
@@ -247,6 +308,7 @@ public sealed class V5ExactTextBindingAuditTests
         Assert.Equal(V5ExactTextFailureCategory.EXTRACTION_SPACING_DIFFERENCE, row.Category);
         Assert.Equal(V5ExactTextFaultDomain.SOURCE_REPRESENTATION, row.FaultDomain);
         Assert.True(row.Counterfactuals.WouldMatchAfterWhitespaceRemoval);
+        Assert.True(row.Counterfactuals.WholeAliasRepresentsSameObservedSelection);
     }
 
     [Fact]
@@ -268,6 +330,7 @@ public sealed class V5ExactTextBindingAuditTests
             "L1", "Completely unrelated sentence about something else entirely", null, null, null,
             "'L1' does not contain that text", atoms, Visible(atoms));
         Assert.Equal(V5ExactTextFailureCategory.COMPLETELY_WRONG_TEXT, row.Category);
+        Assert.False(row.Counterfactuals.WholeAliasRepresentsSameObservedSelection);
     }
 
     [Fact]
