@@ -9,16 +9,22 @@ public sealed class DocumentKnowledgeState
     public DocumentKnowledgeState(
         UniversalEvidenceGraph evidenceGraph,
         IEnumerable<BoundSemanticClaim> claims,
-        IEnumerable<KnowledgeValidationIssue>? conflicts = null)
+        IEnumerable<KnowledgeValidationIssue>? conflicts = null,
+        IEnumerable<ClaimProvenance>? evidenceProvenance = null,
+        IReadOnlyDictionary<string, ProjectionResult>? projectionState = null)
     {
         EvidenceGraph = evidenceGraph ?? throw new ArgumentNullException(nameof(evidenceGraph));
         Claims = new ReadOnlyCollection<BoundSemanticClaim>((claims ?? throw new ArgumentNullException(nameof(claims))).ToArray());
         Conflicts = new ReadOnlyCollection<KnowledgeValidationIssue>((conflicts ?? []).ToArray());
+        EvidenceProvenance = new ReadOnlyCollection<ClaimProvenance>((evidenceProvenance ?? []).ToArray());
+        ProjectionState = projectionState ?? new Dictionary<string, ProjectionResult>(StringComparer.Ordinal);
     }
 
     public UniversalEvidenceGraph EvidenceGraph { get; }
     public IReadOnlyList<BoundSemanticClaim> Claims { get; }
     public IReadOnlyList<KnowledgeValidationIssue> Conflicts { get; }
+    public IReadOnlyList<ClaimProvenance> EvidenceProvenance { get; }
+    public IReadOnlyDictionary<string, ProjectionResult> ProjectionState { get; }
     public IReadOnlyList<BoundSemanticClaim> OpenClaims => Claims.Where(item => item.State == ClaimResolutionState.OPEN).ToArray();
     public IReadOnlyList<BoundSemanticClaim> ResolvedClaims => Claims.Where(item => item.State == ClaimResolutionState.RESOLVED).ToArray();
 }

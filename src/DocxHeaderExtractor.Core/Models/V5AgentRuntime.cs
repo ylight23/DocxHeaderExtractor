@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.V5;
@@ -53,7 +54,10 @@ public sealed record DocumentAgentExecutionResult(
     bool BudgetExhausted,
     int SemanticModelCalls,
     int RetrievalRounds,
-    int VisualCalls);
+    int VisualCalls)
+{
+    public IReadOnlyList<ClaimProvenance> Provenance { get; init; } = [];
+}
 
 /// <summary>Provider-neutral deterministic workflow. It owns transitions, not semantic judgement.</summary>
 public sealed class DocumentAgentRuntime
@@ -96,6 +100,7 @@ public sealed class DocumentAgentRuntime
         var allConflicts = new List<KnowledgeValidationIssue>();
         var retrieved = new List<EvidenceCandidate>();
         var workingGraph = evidenceGraph;
+        var hashesByClaim = new Dictionary<string, (string Request, string Response)>(StringComparer.Ordinal);
         var semanticCalls = 0;
         var retrievalRounds = 0;
         var visualCalls = 0;
@@ -104,13 +109,22 @@ public sealed class DocumentAgentRuntime
         {
             cancellationToken.ThrowIfCancellationRequested();
             if (ElapsedSeconds(started) > budget.MaxWallClockSeconds)
-                return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace, true, semanticCalls, retrievalRounds, visualCalls);
+                return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace, true, semanticCalls, retrievalRounds,
+                    visualCalls, contract, retrieved, hashesByClaim, _reasoner.Identity);
 
             if (semanticCalls >= budget.MaxSemanticModelCalls)
                 break;
             Mark(semanticCalls == 0 ? AgentStage.INITIAL_REASONING : AgentStage.REVALIDATE, $"semantic-call={semanticCalls + 1}");
-            var response = await _reasoner.ReasonAsync(
-                new SemanticReasoningContext(contract, workingGraph, retrieved, semanticCalls), cancellationToken);
+            var context = new SemanticReasoningContext(contract, workingGraph, retrieved, semanticCalls);
+            var requestHash = Hashing.Sha256(JsonSerializer.Serialize(new
+            {
+                contract = contract.Hash(),
+                graph = workingGraph.Hash(),
+                call = semanticCalls,
+                retrieved,
+            }, CanonicalJson.Options));
+            var response = await _reasoner.ReasonAsync(context, cancellationToken);
+            var responseHash = Hashing.Sha256(JsonSerializer.Serialize(response, CanonicalJson.Options));
             var contractIssues = SemanticClaimContract.Validate(response, contract);
             if (contractIssues.Count > 0)
             {
@@ -118,7 +132,11 @@ public sealed class DocumentAgentRuntime
                 break;
             }
             var binding = ExactClaimBinder.Bind(response.Claims, atoms);
-            foreach (var claim in binding.Bound) allClaims[claim.ClaimId] = claim;
+            foreach (var claim in binding.Bound)
+            {
+                allClaims[claim.ClaimId] = claim;
+                hashesByClaim[claim.ClaimId] = (requestHash, responseHash);
+            }
             allConflicts.AddRange(binding.Refusals.Select(item => new KnowledgeValidationIssue("CLAIM_BINDING", item.Key, item.Value)));
             semanticCalls++;
 
@@ -174,8 +192,9 @@ public sealed class DocumentAgentRuntime
         allConflicts.AddRange(finalIssues);
         Mark(AgentStage.PROJECT, "projection-input-frozen");
         Mark(AgentStage.COMPLETE, allConflicts.Count == 0 ? "resolved" : "completed-with-open-or-conflicted-claims");
-        return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace, semanticCalls >= budget.MaxSemanticModelCalls && finalState.OpenClaims.Count > 0,
-            semanticCalls, retrievalRounds, visualCalls);
+        return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace,
+            semanticCalls >= budget.MaxSemanticModelCalls && finalState.OpenClaims.Count > 0,
+            semanticCalls, retrievalRounds, visualCalls, contract, retrieved, hashesByClaim, _reasoner.Identity);
     }
 
     private static DocumentAgentExecutionResult Finish(
@@ -186,14 +205,45 @@ public sealed class DocumentAgentRuntime
         bool exhausted,
         int semanticCalls,
         int retrievalRounds,
-        int visualCalls) => new(
-            new DocumentKnowledgeState(graph, claims, conflicts),
-            AgentStage.COMPLETE,
-            trace,
-            exhausted,
-            semanticCalls,
-            retrievalRounds,
-            visualCalls);
+        int visualCalls,
+        DocumentTaskContract contract,
+        IReadOnlyList<EvidenceCandidate> retrieved,
+        IReadOnlyDictionary<string, (string Request, string Response)> hashesByClaim,
+        string modelIdentity)
+    {
+        var contractHash = contract.Hash();
+        var graphHash = graph.Hash();
+        var provenance = claims.Select(claim =>
+        {
+            var evidenceIds = graph.Nodes
+                .Where(node => claim.Subject.Parts.Any(part => part.Alias == node.SourceAlias))
+                .Select(node => node.EvidenceId)
+                .Distinct(StringComparer.Ordinal)
+                .ToArray();
+            var hashes = hashesByClaim.GetValueOrDefault(claim.ClaimId);
+            return new ClaimProvenance(
+                claim.ClaimId,
+                contractHash,
+                graphHash,
+                evidenceIds,
+                hashes.Request,
+                hashes.Response,
+                null,
+                modelIdentity,
+                "v5-exact-source-parts-1",
+                "v5-knowledge-validator-1",
+                retrieved.Select(item => item.EvidenceId).Distinct(StringComparer.Ordinal).ToArray(),
+                [],
+                claim.State,
+                contract.Projections.Select(item => item.Name).ToArray());
+        }).ToArray();
+        var state = new DocumentKnowledgeState(graph, claims, conflicts, provenance);
+        return new DocumentAgentExecutionResult(state, AgentStage.COMPLETE, trace, exhausted,
+            semanticCalls, retrievalRounds, visualCalls)
+        {
+            Provenance = provenance,
+        };
+    }
 
     private static double ElapsedSeconds(long started) => (Stopwatch.GetTimestamp() - started) / (double)Stopwatch.Frequency;
 }
