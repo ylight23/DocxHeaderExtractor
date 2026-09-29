@@ -26,12 +26,6 @@ internal enum SemanticRequestVersion
     /// </summary>
     V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY = 4,
 
-    /// <summary>
-    /// Not yet sent by any lane. Recognized so <see cref="SemanticRelationGraphContractV1"/> and its
-    /// binder/merger/projections can be developed and tested against a real version identity before
-    /// <see cref="SemanticRequestVersions.Pdf"/> is ever changed to point at it.
-    /// </summary>
-    V5_SEMANTIC_RELATION_GRAPH = 5,
 }
 
 internal static class SemanticRequestVersions
@@ -46,8 +40,7 @@ internal static class SemanticRequestVersions
     public static SemanticRequestVersion Require(SemanticRequestVersion version) => version switch
     {
         SemanticRequestVersion.V2_ATTENTION_FREE
-            or SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY
-            or SemanticRequestVersion.V5_SEMANTIC_RELATION_GRAPH => version,
+            or SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY => version,
         _ => throw new InvalidOperationException($"SEMANTIC_REQUEST_VERSION_UNKNOWN:{version}"),
     };
 }
