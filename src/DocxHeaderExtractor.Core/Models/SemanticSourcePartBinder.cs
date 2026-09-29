@@ -26,6 +26,19 @@ namespace DocxHeaderExtractor.Core.Models;
 /// </summary>
 public static class SemanticSourcePartBinder
 {
+    /// <summary>
+    /// Generic V5 entry point. The source-parts binder predates the claim graph, but its exact
+    /// coordinate rules are intentionally reusable for every source-backed endpoint. This
+    /// overload keeps the generic path independent of the legacy heading proposal shape.
+    /// </summary>
+    public static SemanticSourcePartsBinding Bind(
+        IReadOnlyList<SemanticSourceAtom> atoms,
+        IReadOnlyList<SemanticSourcePart> sourceParts)
+    {
+        ArgumentNullException.ThrowIfNull(sourceParts);
+        return BindCore(atoms, sourceParts);
+    }
+
     public static SemanticSourcePartsBinding Bind(
         IReadOnlyList<SemanticSourceAtom> atoms,
         SemanticSourcePartsProposal proposal)
@@ -33,17 +46,26 @@ public static class SemanticSourcePartBinder
         ArgumentNullException.ThrowIfNull(atoms);
         ArgumentNullException.ThrowIfNull(proposal);
 
-        if (proposal.SourceParts is null || proposal.SourceParts.Count == 0)
+        return BindCore(atoms, proposal.SourceParts);
+    }
+
+    private static SemanticSourcePartsBinding BindCore(
+        IReadOnlyList<SemanticSourceAtom> atoms,
+        IReadOnlyList<SemanticSourcePart> sourceParts)
+    {
+        ArgumentNullException.ThrowIfNull(atoms);
+
+        if (sourceParts is null || sourceParts.Count == 0)
             return Refuse(SemanticSourcePartsStatus.NoParts, "a claim must name at least one source part");
 
         var byAlias = new Dictionary<string, SemanticSourceAtom>(StringComparer.Ordinal);
         foreach (var atom in atoms) byAlias.TryAdd(atom.Alias, atom);
 
-        var bound = new List<BoundSourcePart>(proposal.SourceParts.Count);
+        var bound = new List<BoundSourcePart>(sourceParts.Count);
         SemanticSourceAtom? previousAtom = null;
         var previousEnd = 0;
 
-        foreach (var part in proposal.SourceParts)
+        foreach (var part in sourceParts)
         {
             if (!byAlias.TryGetValue(part.SourceAlias ?? string.Empty, out var atom))
                 return Refuse(SemanticSourcePartsStatus.UnknownAlias, $"'{part.SourceAlias}' is not an atom in this source");
