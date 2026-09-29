@@ -1,0 +1,220 @@
+{
+  "schemaVersion": "v5-provider-cohort-31-environment-v1",
+  "fingerprint": {
+    "executionSourceHead": "f99c288baba9d03f324680cdf8052e91ab810133",
+    "sourceTreeCleanOutsideArtifacts": true,
+    "os": {
+      "description": "Ubuntu 24.04.4 LTS",
+      "prettyName": "Ubuntu 24.04.4 LTS",
+      "osArchitecture": "X64",
+      "processArchitecture": "X64",
+      "runtimeIdentifier": "linux-x64"
+    },
+    "dotnet": {
+      "framework": ".NET 9.0.20",
+      "runtimeVersion": "9.0.20",
+      "sdkVersion": "10.0.112",
+      "coreLibSha256": "0d22ff7e23067143cd2c76098f93d7caf3d3f28d509e11834cd8be8cdb451ab8",
+      "runtimeDirectory": "/usr/lib/dotnet/shared/Microsoft.NETCore.App/9.0.20"
+    },
+    "packages": {
+      "pdfPig": [
+        {
+          "name": "UglyToad.PdfPig",
+          "version": "0.1.15.0",
+          "informationalVersion": "0.1.15\u002Bf131f642976936e06ee91cb19d3ed728f9dd18b6",
+          "sha256": "d6aa1d42b9b324e59b1e0800e51bdf471b82fb5b2e8ec8efe6d43ba9bf199251"
+        },
+        {
+          "name": "UglyToad.PdfPig.Core",
+          "version": "0.1.15.0",
+          "informationalVersion": "0.1.15\u002Bf131f642976936e06ee91cb19d3ed728f9dd18b6",
+          "sha256": "b416a728a382f4e63e164caa9405664d3b4c9ab3cb3d2efa92b183981e1ec8f4"
+        },
+        {
+          "name": "UglyToad.PdfPig.Fonts",
+          "version": "0.1.15.0",
+          "informationalVersion": "0.1.15\u002Bf131f642976936e06ee91cb19d3ed728f9dd18b6",
+          "sha256": "c6b5e61da965a6bb4eb4dcc38baea581fa88dc6ad58f9e73651bd98d1bf89231"
+        },
+        {
+          "name": "UglyToad.PdfPig.Tokenization",
+          "version": "0.1.15.0",
+          "informationalVersion": "0.1.15\u002Bf131f642976936e06ee91cb19d3ed728f9dd18b6",
+          "sha256": "af80fe541bd79237a790ff8e904daee47ac0460de12ad102a06247519d777902"
+        },
+        {
+          "name": "UglyToad.PdfPig.Tokens",
+          "version": "0.1.15.0",
+          "informationalVersion": "0.1.15\u002Bf131f642976936e06ee91cb19d3ed728f9dd18b6",
+          "sha256": "f0c6e3ecc190d32569b86bbe9d707d67cc2355e5e32e5ffa38908dbb2c341bdb"
+        }
+      ]
+    },
+    "culture": {
+      "currentCulture": "",
+      "currentUICulture": "",
+      "invariantGlobalization": false,
+      "LANG": null,
+      "LC_ALL": null
+    },
+    "timeZone": {
+      "id": "Etc/UTC",
+      "influencesHashedBytes": false
+    },
+    "fonts": {
+      "searchRoots": [
+        "/usr/share/fonts",
+        "/usr/local/share/fonts",
+        "/root/.fonts",
+        "/root/.local/share/fonts"
+      ],
+      "fontFileCount": 69,
+      "inventorySha256": "a96d0ea260874d40e708255ca59cfd0e0f7fe26c7163ff479edfd29f20a2d875",
+      "referencedByInputs": [
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPS-ItalicMT",
+        "TimesNewRomanPS-BoldItalicMT"
+      ],
+      "relevant": [
+        {
+          "path": "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+          "sha256": "9e66c25e20868756bf12eb24a520a4552727c9cd108f577f7ae33e3c0110e39c",
+          "bytes": 370196
+        },
+        {
+          "path": "/usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf",
+          "sha256": "379010e87421a883f7bbfa7936d23dfe0257a54ce850819b74556e9f2c615a8a",
+          "bytes": 376892
+        },
+        {
+          "path": "/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf",
+          "sha256": "eaeaf7f2b12544ecde64290c1fa7ec403ff70fd58b313637b265400b20249242",
+          "bytes": 375760
+        },
+        {
+          "path": "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+          "sha256": "705903ae1382f0150f115d6f10a30f5b2f3d6ade649c474afe6366c39174fb65",
+          "bytes": 393692
+        },
+        {
+          "path": "/usr/share/fonts/truetype/msttcorefonts/times.ttf",
+          "sha256": "4e98adeff8ccc8ef4e3ece8d4547e288ff85fdc9c7ca711a4599c234874bbe86",
+          "bytes": 330412
+        },
+        {
+          "path": "/usr/share/fonts/truetype/msttcorefonts/timesbd.ttf",
+          "sha256": "4357b63cef20c01661a53c5dae70ffd20cb4765503aaed6d38b17a57c5a90bff",
+          "bytes": 333900
+        },
+        {
+          "path": "/usr/share/fonts/truetype/msttcorefonts/timesbi.ttf",
+          "sha256": "192e1b0d18e90334e999a99f8c32808d6a2e74b3698b8cd90c943c2249a46549",
+          "bytes": 238612
+        },
+        {
+          "path": "/usr/share/fonts/truetype/msttcorefonts/timesi.ttf",
+          "sha256": "c25ae529b4cecdbca148b6ccb862ee0abad770af8b1fd29c8dba619d1b8da78a",
+          "bytes": 247092
+        }
+      ]
+    },
+    "parser": {
+      "sourceAuthority": "PdfStructuredSourceAuthorityBuilder (a99-pdf-segment-atom-universe-v1 / a99-pdf-model-visible-evidence-v2)",
+      "packingPolicy": "RESOURCE_BOUNDED_SOURCE_PACKING_V1",
+      "protocolVersion": "v5-source-backed-claim-2.1",
+      "composerVersion": "v5-semantic-request-composer-2.1"
+    }
+  },
+  "determinism": {
+    "independentPreflightRuns": 2,
+    "byteIdentical": true,
+    "filesCompared": 33,
+    "cohortSha256": "b02ea6cc29167b4668e4d6ca876910af850f1204f6d020bc745df0ffc959c26d",
+    "bodiesSha256": "db20ce39fc09aac2b49afed71d2cafabdc51302962245665196d04804e14d64a"
+  },
+  "priorReferenceParity": {
+    "reference": "artifacts/v5-provider-canary-current/preflight.json \u002B canary-result.v1.json (captured at 966c16a on the original environment)",
+    "parity": false,
+    "documents": [
+      {
+        "documentId": "SRC-089",
+        "referenceSourceUniverseHash": "1e3452c468403c1b90348fdbbb7445fe7c93c45e09fa5bd2ce2c8d7b9a01c601",
+        "sourceUniverseHash": "7c3b1090b448aac34344c90fb879a5fa60367ee7ed8ef9a0a64197db8cd4c03a",
+        "equal": false,
+        "atomDiff": {
+          "available": true,
+          "referenceAtoms": 582,
+          "atoms": 582,
+          "aliasSetEqual": true,
+          "differingAtoms": 2,
+          "differing": [
+            {
+              "alias": "L0001:S0",
+              "referenceSourceId": "1|730.6337622070314|387.48|559.0120546875|For Reference Purposes Only",
+              "sourceId": "1|730.6337622070314|387.0275390625|559.0394765625|For Reference Purposes Only",
+              "textEqual": true
+            },
+            {
+              "alias": "L0012:S0",
+              "referenceSourceId": "1|457.8619058388165|72.837890625|518.097421875|The Government promulgates the Decree detailing a number ofarticles of, and measures for",
+              "sourceId": "1|457.8619058388165|72.837890625|518.073984375|The Government promulgates the Decree detailing a number ofarticles of, and measures for",
+              "textEqual": true
+            }
+          ]
+        }
+      },
+      {
+        "documentId": "SRC-095",
+        "referenceSourceUniverseHash": "7c27a48f3399cfb97ba93b1f488623bfc71b13d0a0e13b2a1b75fef37939476e",
+        "sourceUniverseHash": "7c27a48f3399cfb97ba93b1f488623bfc71b13d0a0e13b2a1b75fef37939476e",
+        "equal": true,
+        "atomDiff": {
+          "available": true,
+          "referenceAtoms": 2302,
+          "atoms": 2302,
+          "aliasSetEqual": true,
+          "differingAtoms": 0,
+          "differing": []
+        }
+      }
+    ],
+    "canaryPacks": [
+      {
+        "documentId": "SRC-089",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "referenceProviderRequestHash": "70d08d91e19c7602cff2ab8fa801c9c73ab036bdd7ff720fb7cca3a8b29a6623",
+        "providerRequestHash": "87dd114dd3037c6c55d674c1b24064dd390c2ca1ee535510fc1a16ce203f517b",
+        "equal": false
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "referenceProviderRequestHash": "fa7f708efbe8e8ca50c45a50ed230298eba32301c76dc24a3ec8fd1badc88baa",
+        "providerRequestHash": "fa7f708efbe8e8ca50c45a50ed230298eba32301c76dc24a3ec8fd1badc88baa",
+        "equal": true
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "referenceProviderRequestHash": "411f762a40e6169555a8c0176a32cece650e925550de5555cb484805699af3df",
+        "providerRequestHash": "411f762a40e6169555a8c0176a32cece650e925550de5555cb484805699af3df",
+        "equal": true
+      }
+    ]
+  },
+  "baseline": "REBASELINED_PROVIDER_FREE_ON_THIS_PINNED_ENVIRONMENT",
+  "baselineReason": "The prior frozen references (3-pack canary preflight) were produced on a different extraction environment; this environment does not reproduce SRC-089 byte for byte, so it is used only against its own two independent, byte-identical preflight runs and never mixed with the old hashes.",
+  "environmentParity": true,
+  "environmentParityDefinition": "The authoritative gate is hash equality, not font or OS identity: a provider run is allowed only where a fresh rebuild reproduces every documents[].sourceUniverseHash/sourceTextSha256/pdfSha256, every rows[].semanticRequestHash and providerRequestHash, and every body byte in bodies/. The fingerprint is provenance; a fingerprint difference is reported but only a hash difference blocks.",
+  "deterministicSerializationAssumptions": [
+    "System.Text.Json with the repository\u0027s CanonicalJson options; no culture-sensitive formatting in any hashed bytes",
+    "PdfPig text extraction depends on system fonts for non-embedded fonts (SRC-089 references TimesNewRomanPSMT without embedding it); source atom bounding-box coordinates are part of each sourceId and so of every hash",
+    "local time zone is not an input to any hashed bytes; it is recorded as provenance only",
+    "font files are never committed; their hashes are recorded here"
+  ],
+  "providerCalls": 0,
+  "goldRead": false,
+  "providerExecutionAuthorized": false
+}
