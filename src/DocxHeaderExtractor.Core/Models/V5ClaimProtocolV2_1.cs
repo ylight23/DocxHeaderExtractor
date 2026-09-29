@@ -471,6 +471,46 @@ public static class SemanticClaimResponseCodecV2_1
 }
 
 /// <summary>
+/// One predicate's or relation's arity, generated deterministically from the task contract so the
+/// model does not have to infer unary-vs-relation shape from the separate Predicates/Relations lists.
+/// A real canary found a unary predicate carrying an object on every one of 58 claims; the contract
+/// distinction existed but was not structurally explicit in the wire.
+/// </summary>
+public sealed record V5ClaimShapeV2_1(
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("kind")] string Kind,
+    [property: JsonPropertyName("valueAllowed")] bool ValueAllowed,
+    [property: JsonPropertyName("objectAllowed")] bool ObjectAllowed,
+    [property: JsonPropertyName("resolvedObjectRequired")] bool ResolvedObjectRequired);
+
+/// <summary>
+/// Generates <see cref="V5ClaimShapeV2_1"/> from a <see cref="DocumentTaskContract"/>. Mirrors exactly
+/// the arity <see cref="SemanticClaimContractV2_1.Validate"/> already enforces - a unary predicate
+/// never carries an object, a relation never carries a value and requires an object once RESOLVED -
+/// so this never becomes a second, drifting source of truth. Carries no document-specific vocabulary:
+/// the contract's own predicate and relation names are the only input.
+/// </summary>
+public static class V5ClaimShapesV2_1
+{
+    public const string Unary = "UNARY";
+    public const string Relation = "RELATION";
+
+    public static IReadOnlyList<V5ClaimShapeV2_1> Generate(DocumentTaskContract contract)
+    {
+        ArgumentNullException.ThrowIfNull(contract);
+        contract.Validate();
+        var unary = contract.Predicates.Select(item =>
+            new V5ClaimShapeV2_1(item.Name, Unary, ValueAllowed: true, ObjectAllowed: false, ResolvedObjectRequired: false));
+        var relation = contract.Relations.Select(item =>
+            new V5ClaimShapeV2_1(item.Name, Relation, ValueAllowed: false, ObjectAllowed: true, ResolvedObjectRequired: true));
+        return unary.Concat(relation).OrderBy(item => item.Name, StringComparer.Ordinal).ToArray();
+    }
+
+    public static string Hash(DocumentTaskContract contract) =>
+        Hashing.Sha256(JsonSerializer.Serialize(Generate(contract), CanonicalJson.Options));
+}
+
+/// <summary>
 /// Hard-pins a future canary to exactly three requests and requires an explicit authorization flag
 /// before anything may be allowed to call a provider. It never performs a network call itself and
 /// never falls back to the full cohort. The 3-call authorization behind commit 72bb954 is historical

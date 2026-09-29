@@ -99,8 +99,12 @@ public static class V5PdfPreflightBuilder
         var requests = packs.Select(pack =>
         {
             var (ownedAliases, visibleAliases, owned, visible) = ResolvePack(pack, byAlias);
+            // Disjoint by construction: visible always contains owned plus halo (the packing
+            // policy's margin), so contextOnly is exactly the halo, never an owned alias.
+            var ownedSet = ownedAliases.ToHashSet(StringComparer.Ordinal);
+            var contextOnly = visible.Where(node => !ownedSet.Contains(node.SourceAlias)).ToArray();
             var composed = V5SemanticRequestComposerV2_1.Compose(contract,
-                new V5EvidencePacket(owned, visible, [], [], [], []));
+                new V5EvidencePacketV2_1(owned, contextOnly, [], [], [], []));
             var maxTokens = V5SemanticCompletionBudget.Compute(
                 ownedAliases.Length, visibleAliases.Length, composed.Utf8Bytes, ProviderMaxCompletionTokensCeiling);
             var body = V5ProviderRequestBodyV2_1.Build(V5SystemPromptV2_1.Text, composed.Prompt, maxTokens, providerEnvelope);

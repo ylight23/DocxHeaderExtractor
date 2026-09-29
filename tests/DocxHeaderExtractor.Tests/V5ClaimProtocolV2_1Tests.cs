@@ -389,5 +389,5 @@ public sealed class V5ClaimProtocolV2_1Tests
         "retain-open",
         new ExecutionBudget(MaxSemanticModelCalls: 1));
 
-    private static V5EvidencePacket Packet() => new([], [], [], [], [], []);
+    private static V5EvidencePacketV2_1 Packet() => new([], [], [], [], [], []);
 }
