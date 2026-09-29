@@ -147,6 +147,19 @@ public sealed class V5ArchitectureTests
         Assert.Equal(64, preflight.Hash().Length);
     }
 
+    [Fact]
+    public async Task V5_entrypoint_normalizes_source_catalog_without_heading_semantics()
+    {
+        var catalog = new DocumentSourceCatalog([
+            new DocumentSourceUnit("S1", 1, "Alpha", new SourceAnchor { SourceType = "DOCX", ParagraphIndex = 1 }, new StructuralSpan(0, 5)),
+            new DocumentSourceUnit("S2", 2, "Beta", new SourceAnchor { SourceType = "PDF", Page = 1 }, new StructuralSpan(0, 4)),
+        ]);
+        var result = await new DocxHeaderExtractor.DocumentProcessing.Pipeline.V5DocumentAgentEntryPoint()
+            .RunAsync(catalog, Contract(), new NoopReasoner());
+        Assert.Equal(AgentStage.COMPLETE, result.TerminalStage);
+        Assert.Equal(1, result.Trace.Count(item => item.Stage == AgentStage.OBSERVE));
+    }
+
     private static DocumentTaskContract Contract() => new(
         V5Protocol.TaskContractVersion,
         "generic-document-task",
@@ -177,5 +190,13 @@ public sealed class V5ArchitectureTests
 
         public ProjectionResult Project(DocumentKnowledgeState state, DocumentTaskContract contract) =>
             new(Name, projector(state), state.Claims.Select(claim => claim.ClaimId).ToArray(), []);
+    }
+
+    private sealed class NoopReasoner : ISemanticReasoner
+    {
+        public string Identity => "test-noop";
+
+        public ValueTask<SemanticClaimResponse> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken) =>
+            ValueTask.FromResult(new SemanticClaimResponse([]));
     }
 }
