@@ -1,0 +1,2387 @@
+{
+  "schemaVersion": "v5-gold-offline-score-v1",
+  "sourceCohortCommit": "3a4f69a194f1e0a4598bda8c5eeed06b7c57bb40",
+  "providerCalls": 0,
+  "goldRead": true,
+  "note": "Scores only the three unary occurrence predicates (DOCUMENT_IDENTITY, STRUCTURAL_REGION, NAVIGATION_REPRESENTATION) against canonical occurrence Gold, by exact identity match (alias:start-end per part, in source order) - Gold has no notion of which one a heading occurrence is, only that it is one. PARENT_OF/REFERENCES/SAME_ENTITY/CONTINUES have no Gold-side relation or hierarchy data for SRC-089/SRC-095 and are reported as NOT_EVALUABLE, never as a fabricated score.",
+  "totalBoundClaims": 1203,
+  "boundByPredicate": {
+    "DOCUMENT_IDENTITY": 17,
+    "STRUCTURAL_REGION": 313,
+    "PARENT_OF": 180,
+    "REFERENCES": 55,
+    "CONTINUES": 354,
+    "NAVIGATION_REPRESENTATION": 284
+  },
+  "occurrencePredicatesScored": [
+    "DOCUMENT_IDENTITY",
+    "STRUCTURAL_REGION",
+    "NAVIGATION_REPRESENTATION"
+  ],
+  "occurrenceScored": {
+    "documents": [
+      {
+        "authorityId": "SRC-089",
+        "goldSha256": "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7",
+        "semanticHeadingTotal": 36,
+        "materializedSemanticClaims": 36,
+        "predictedOccurrenceClaims": 45,
+        "truePositive": 13,
+        "falsePositive": 32,
+        "falseNegative": 23,
+        "precision": 0.2889,
+        "recall": 0.3611,
+        "f1": 0.321,
+        "missed": [
+          {
+            "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+            "wording": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW"
+          },
+          {
+            "identity": "L0014:S0:0-9|L0015:S0:0-18",
+            "wording": "Chapter I GENERAL PROVISIONS"
+          },
+          {
+            "identity": "L0016:S0:0-56",
+            "wording": "Article 1. Scope ofregulation and subjects ofapplication"
+          },
+          {
+            "identity": "L0024:S0:0-89|L0025:S0:0-45",
+            "wording": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities"
+          },
+          {
+            "identity": "L0051:S0:0-95|L0052:S0:0-35",
+            "wording": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities"
+          },
+          {
+            "identity": "L0080:S0:0-90|L0081:S0:0-35",
+            "wording": "Article 4. Tasks and powers ofprovincial-level People\u2019s Committees in performing the state management ofpublication activities"
+          },
+          {
+            "identity": "L0106:S0:0-80|L0107:S0:0-88|L0108:S0:0-13",
+            "wording": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based representative offices of foreign publishing houses and foreign publication distribution organizations"
+          },
+          {
+            "identity": "L0109:S0:0-33",
+            "wording": "1 . Conditions for establishment:"
+          },
+          {
+            "identity": "L0117:S0:0-22",
+            "wording": "2. Operation contents:"
+          },
+          {
+            "identity": "L0126:S0:0-86|L0127:S0:0-88|L0128:S0:0-13",
+            "wording": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based representative offices of foreign publishing houses and foreign publication distribution organizations"
+          },
+          {
+            "identity": "L0160:S0:0-10|L0161:S0:0-10",
+            "wording": "Chapter II PUBLISHING"
+          },
+          {
+            "identity": "L0174:S0:0-89|L0175:S0:0-51",
+            "wording": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors (directors) and editors-in-chiefofpublishing houses"
+          },
+          {
+            "identity": "L0246:S0:0-26",
+            "wording": "1 . For publishing houses:"
+          },
+          {
+            "identity": "L0249:S0:0-16",
+            "wording": "2. For partners:"
+          },
+          {
+            "identity": "L0284:S0:0-11|L0285:S0:0-41",
+            "wording": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS"
+          },
+          {
+            "identity": "L0286:S0:0-89|L0287:S0:0-41",
+            "wording": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of revocation ofpublication printing permits"
+          },
+          {
+            "identity": "L0382:S0:0-10|L0383:S0:0-45",
+            "wording": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS"
+          },
+          {
+            "identity": "L0426:S0:0-96|L0427:S0:0-44",
+            "wording": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe publishing and distribution ofe-publications"
+          },
+          {
+            "identity": "L0455:S0:0-90|L0456:S0:0-27",
+            "wording": "Article 19. Classification ofe-publications and requirements on the contents and technical conditions ofe-publications"
+          },
+          {
+            "identity": "L0499:S0:0-92|L0500:S0:0-58",
+            "wording": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals engaged in the publishing or distribution ofe-publications"
+          },
+          {
+            "identity": "L0522:S0:0-92|L0523:S0:0-12",
+            "wording": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe- publications"
+          },
+          {
+            "identity": "L0535:S0:0-9|L0536:S0:0-25",
+            "wording": "Chapter V IMPLEMENTATION PROVISIONS"
+          },
+          {
+            "identity": "L0555:S0:0-93|L0556:S0:0-12",
+            "wording": "Article 25. Renewal oflicenses for publication activities and registration of distribution of publications"
+          }
+        ],
+        "spurious": [
+          {
+            "identity": "L0002:S0:0-14|L0002:S1:0-33",
+            "text": "THE GOVERNMENT"
+          },
+          {
+            "identity": "L0014:S0:0-9",
+            "text": "Chapter I"
+          },
+          {
+            "identity": "L0015:S0:0-18",
+            "text": "GENERAL PROVISIONS"
+          },
+          {
+            "identity": "L0106:S0:0-80",
+            "text": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based"
+          },
+          {
+            "identity": "L0126:S0:0-86",
+            "text": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based"
+          },
+          {
+            "identity": "L0174:S0:0-89",
+            "text": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors"
+          },
+          {
+            "identity": "L0160:S0:0-10",
+            "text": "Chapter II"
+          },
+          {
+            "identity": "L0284:S0:0-11",
+            "text": "Chapter III"
+          },
+          {
+            "identity": "L0285:S0:0-41",
+            "text": "PRINTING AND DISTRIBUTION OF PUBLICATIONS"
+          },
+          {
+            "identity": "L0286:S0:0-89",
+            "text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of"
+          },
+          {
+            "identity": "L0382:S0:0-10",
+            "text": "Chapter IV"
+          },
+          {
+            "identity": "L0383:S0:0-45",
+            "text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS"
+          },
+          {
+            "identity": "L0405:S0:0-87",
+            "text": "2. Criteria for technical personnel who operate and manage the process ofpublishing and"
+          },
+          {
+            "identity": "L0412:S0:0-98",
+            "text": "3. The technical measures prescribed at Point b, Clause 1, and Point b, Clause 2, Article 45 ofthe"
+          },
+          {
+            "identity": "L0421:S0:0-95",
+            "text": "4. The Vietnam\u2019s domain name prescribed at Point c, Clause 1, and Point c, Clause 2, Article 45"
+          },
+          {
+            "identity": "L0423:S0:0-89",
+            "text": "5. The Minister ofInformation and Communications shall specify appropriate conditions for"
+          },
+          {
+            "identity": "L0426:S0:0-96",
+            "text": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe"
+          },
+          {
+            "identity": "L0428:S0:0-83",
+            "text": "1 . The appraisal ofe-publication publishing or distribution schemes is as follows:"
+          },
+          {
+            "identity": "L0436:S0:0-93",
+            "text": "2. The registration ofthe publishing and distribution ofe-publications prescribed at Point d,"
+          },
+          {
+            "identity": "L0452:S0:0-88",
+            "text": "3. The Minister ofInformation and Communications shall provide forms ofthe e-publication"
+          },
+          {
+            "identity": "L0455:S0:0-90",
+            "text": "Article 19. Classification ofe-publications and requirements on the contents and technical"
+          },
+          {
+            "identity": "L0457:S0:0-55",
+            "text": "1 . E-publications are divided into 2 (two) categories:"
+          },
+          {
+            "identity": "L0462:S0:0-96",
+            "text": "2. Requirements on the contents and technical conditions ofe-publications prescribed at Point a,"
+          },
+          {
+            "identity": "L0472:S0:0-96",
+            "text": "3. Requirements on the contents and technical conditions ofe-publications prescribed at Point b,"
+          },
+          {
+            "identity": "L0499:S0:0-92",
+            "text": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals"
+          },
+          {
+            "identity": "L0522:S0:0-92",
+            "text": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe-"
+          },
+          {
+            "identity": "L0535:S0:0-9",
+            "text": "Chapter V"
+          },
+          {
+            "identity": "L0555:S0:0-93",
+            "text": "Article 25. Renewal oflicenses for publication activities and registration of distribution of"
+          },
+          {
+            "identity": "L0576:S0:0-27",
+            "text": "ON BEHALF OF THE GOVERNMENT"
+          },
+          {
+            "identity": "L0577:S0:0-14",
+            "text": "PRIME MINISTER"
+          },
+          {
+            "identity": "L0578:S0:0-15",
+            "text": "Nguyen Tan Dung"
+          },
+          {
+            "identity": "L0579:S0:0-37",
+            "text": "(*) C\u00F4ng B\u00E1o Nos 225-226 (25/02/2014)"
+          }
+        ]
+      },
+      {
+        "authorityId": "SRC-095",
+        "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+        "semanticHeadingTotal": 103,
+        "materializedSemanticClaims": 103,
+        "predictedOccurrenceClaims": 556,
+        "truePositive": 69,
+        "falsePositive": 487,
+        "falseNegative": 34,
+        "precision": 0.1241,
+        "recall": 0.6699,
+        "f1": 0.2094,
+        "missed": [
+          {
+            "identity": "L0015:S0:0-18",
+            "wording": "Status ofThis Memo"
+          },
+          {
+            "identity": "L0134:S0:0-27",
+            "wording": "1.1. Prior Versions of HTTP"
+          },
+          {
+            "identity": "L0146:S0:0-23",
+            "wording": "1.2. Delegation to QUIC"
+          },
+          {
+            "identity": "L0185:S0:0-26",
+            "wording": "2.1. Document Organization"
+          },
+          {
+            "identity": "L0205:S0:0-32",
+            "wording": "2.2. Conventions and Terminology"
+          },
+          {
+            "identity": "L0244:S0:0-35",
+            "wording": "3.1. Discovering an HTTP/3 Endpoint"
+          },
+          {
+            "identity": "L0605:S0:0-17",
+            "wording": "4.5. HTTP Upgrade"
+          },
+          {
+            "identity": "L0608:S0:0-4|L0608:S1:0-11",
+            "wording": "4.6. Server Push"
+          },
+          {
+            "identity": "L1189:S0:0-27",
+            "wording": "7.2.8. Reserved Frame Types"
+          },
+          {
+            "identity": "L1298:S0:0-22",
+            "wording": "10.1. Server Authority"
+          },
+          {
+            "identity": "L1301:S0:0-28",
+            "wording": "10.2. Cross-Protocol Attacks"
+          },
+          {
+            "identity": "L1308:S0:0-40",
+            "wording": "10.3. Intermediary-Encapsulation Attacks"
+          },
+          {
+            "identity": "L1320:S0:0-5|L1320:S1:0-32",
+            "wording": "10.4. Cacheability of Pushed Responses"
+          },
+          {
+            "identity": "L1333:S0:0-38",
+            "wording": "10.5. Denial-of-Service Considerations"
+          },
+          {
+            "identity": "L1357:S0:0-36",
+            "wording": "10.5.1. Limits on Field Section Size"
+          },
+          {
+            "identity": "L1374:S0:0-22",
+            "wording": "10.5.2. CONNECT Issues"
+          },
+          {
+            "identity": "L1399:S0:0-32",
+            "wording": "10.7. Padding and Tra\uFB03c Analysis"
+          },
+          {
+            "identity": "L1431:S0:0-5|L1431:S1:0-10",
+            "wording": "10.9. Early Data"
+          },
+          {
+            "identity": "L1456:S0:0-49",
+            "wording": "11.1. Registration of HTTP/3 Identi\uFB01cation String"
+          },
+          {
+            "identity": "L1465:S0:0-5|L1465:S1:0-14",
+            "wording": "11.2. New Registries"
+          },
+          {
+            "identity": "L1472:S0:0-19",
+            "wording": "11.2.1. Frame Types"
+          },
+          {
+            "identity": "L1540:S0:0-19",
+            "wording": "11.2.3. Error Codes"
+          },
+          {
+            "identity": "L1613:S0:0-5|L1613:S1:0-20",
+            "wording": "12.1. Normative References"
+          },
+          {
+            "identity": "L1688:S0:0-12",
+            "wording": "A.1. Streams"
+          },
+          {
+            "identity": "L1710:S0:0-21",
+            "wording": "A.2. HTTP Frame Types"
+          },
+          {
+            "identity": "L1856:S0:0-46",
+            "wording": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors"
+          },
+          {
+            "identity": "L1914:S0:0-1",
+            "wording": "C"
+          },
+          {
+            "identity": "L1940:S0:0-1",
+            "wording": "D"
+          },
+          {
+            "identity": "L1947:S0:0-1",
+            "wording": "G"
+          },
+          {
+            "identity": "L1961:S0:0-1",
+            "wording": "H"
+          },
+          {
+            "identity": "L2012:S0:0-1",
+            "wording": "M"
+          },
+          {
+            "identity": "L2023:S0:0-1",
+            "wording": "P"
+          },
+          {
+            "identity": "L2056:S0:0-1",
+            "wording": "R"
+          },
+          {
+            "identity": "L2063:S0:0-1",
+            "wording": "S"
+          }
+        ],
+        "spurious": [
+          {
+            "identity": "L0007:S0:0-8",
+            "text": "RFC 9114"
+          },
+          {
+            "identity": "L0000:S0:0-7",
+            "text": "Stream:"
+          },
+          {
+            "identity": "L0001:S0:0-4",
+            "text": "RFC:"
+          },
+          {
+            "identity": "L0002:S0:0-9",
+            "text": "Category:"
+          },
+          {
+            "identity": "L0003:S0:0-10",
+            "text": "Published:"
+          },
+          {
+            "identity": "L0005:S0:0-7",
+            "text": "Author:"
+          },
+          {
+            "identity": "L0035:S0:0-15",
+            "text": "1. Introduction"
+          },
+          {
+            "identity": "L0038:S0:0-27",
+            "text": "2. HTTP/3 Protocol Overview"
+          },
+          {
+            "identity": "L0041:S0:0-34",
+            "text": "3. Connection Setup and Management"
+          },
+          {
+            "identity": "L0047:S0:0-38",
+            "text": "4. Expressing HTTP Semantics in HTTP/3"
+          },
+          {
+            "identity": "L0060:S0:0-21",
+            "text": "5. Connection Closure"
+          },
+          {
+            "identity": "L0067:S0:0-27",
+            "text": "6. Stream Mapping and Usage"
+          },
+          {
+            "identity": "L0073:S0:0-21",
+            "text": "7. HTTP Framing Layer"
+          },
+          {
+            "identity": "L0084:S0:0-17",
+            "text": "8. Error Handling"
+          },
+          {
+            "identity": "L0086:S0:0-23",
+            "text": "9. Extensions to HTTP/3"
+          },
+          {
+            "identity": "L0087:S0:0-27",
+            "text": "10. Security Considerations"
+          },
+          {
+            "identity": "L0090:S0:0-40",
+            "text": "10.3. Intermediary-Encapsulation Attacks"
+          },
+          {
+            "identity": "L0092:S0:0-38",
+            "text": "10.5. Denial-of-Service Considerations"
+          },
+          {
+            "identity": "L0097:S0:0-24",
+            "text": "10.6. Use of Compression"
+          },
+          {
+            "identity": "L0099:S0:0-19",
+            "text": "10.8. Frame Parsing"
+          },
+          {
+            "identity": "L0100:S0:0-16",
+            "text": "10.9. Early Data"
+          },
+          {
+            "identity": "L0101:S0:0-16",
+            "text": "10.10. Migration"
+          },
+          {
+            "identity": "L0102:S0:0-29",
+            "text": "10.11. Privacy Considerations"
+          },
+          {
+            "identity": "L0103:S0:0-23",
+            "text": "11. IANA Considerations"
+          },
+          {
+            "identity": "L0110:S0:0-14",
+            "text": "12. References"
+          },
+          {
+            "identity": "L0113:S0:0-56",
+            "text": "Appendix A. Considerations for Transitioning from HTTP/2"
+          },
+          {
+            "identity": "L0124:S0:0-15",
+            "text": "Acknowledgments"
+          },
+          {
+            "identity": "L0125:S0:0-5",
+            "text": "Index"
+          },
+          {
+            "identity": "L0127:S0:0-25",
+            "text": "RFC 9114 HTTP/3 June 2022"
+          },
+          {
+            "identity": "L0229:S0:0-7",
+            "text": "sender:"
+          },
+          {
+            "identity": "L0232:S0:0-7",
+            "text": "server:"
+          },
+          {
+            "identity": "L0276:S0:0-64",
+            "text": "send HTTP requests using the mapping described in this document."
+          },
+          {
+            "identity": "L0278:S0:0-93",
+            "text": "Although HTTP is independent ofthe transport protocol, the \u0022http\u0022 scheme associates authority"
+          },
+          {
+            "identity": "L0279:S0:0-94",
+            "text": "with the ability to receive TCP connections on the indicated port ofwhatever host is identi\uFB01ed"
+          },
+          {
+            "identity": "L0280:S0:0-90",
+            "text": "within the authority component. Because HTTP/3 does not use TCP, HTTP/3 cannot be used for"
+          },
+          {
+            "identity": "L0281:S0:0-93",
+            "text": "direct access to the authoritative server for a resource identi\uFB01ed by an \u0022http\u0022 URI. However,"
+          },
+          {
+            "identity": "L0282:S0:0-95",
+            "text": "protocol extensions such as [ALTSVC] permit the authoritative server to identify other services"
+          },
+          {
+            "identity": "L0283:S0:0-68",
+            "text": "that are also authoritative and that might be reachable over HTTP/3."
+          },
+          {
+            "identity": "L0284:S0:0-94",
+            "text": "Prior to making requests for an origin whose scheme is not \u0022https\u0022, the client MUST ensure the"
+          },
+          {
+            "identity": "L0285:S0:0-98",
+            "text": "server is willing to serve that scheme. For origins whose scheme is \u0022http\u0022, an experimental method"
+          },
+          {
+            "identity": "L0286:S0:0-90",
+            "text": "to accomplish this is described in [RFC8164]. Other mechanisms might be de\uFB01ned for various"
+          },
+          {
+            "identity": "L0287:S0:0-22",
+            "text": "schemes in the future."
+          },
+          {
+            "identity": "L0289:S0:0-92",
+            "text": "HTTP/3 relies on QUIC version 1 as the underlying transport. The use of other QUIC transport"
+          },
+          {
+            "identity": "L0290:S0:0-59",
+            "text": "versions with HTTP/3 MAY be de\uFB01ned by future speci\uFB01cations."
+          },
+          {
+            "identity": "L0291:S0:0-93",
+            "text": "QUIC version 1 uses TLS version 1.3 or greater as its handshake protocol. HTTP/3 clients MUST"
+          },
+          {
+            "identity": "L0292:S0:0-93",
+            "text": "support a mechanism to indicate the target host to the server during the TLS handshake. Ifthe"
+          },
+          {
+            "identity": "L0293:S0:0-85",
+            "text": "server is identi\uFB01ed by a domain name ([DNS-TERMS]), clients MUST send the Server Name"
+          },
+          {
+            "identity": "L0294:S0:0-96",
+            "text": "Indication (SNI; [RFC6066]) TLS extension unless an alternative mechanism to indicate the target"
+          },
+          {
+            "identity": "L0295:S0:0-13",
+            "text": "host is used."
+          },
+          {
+            "identity": "L0296:S0:0-84",
+            "text": "QUIC connections are established as described in [QUIC-TRANSPORT]. During connection"
+          },
+          {
+            "identity": "L0297:S0:0-86",
+            "text": "establishment, HTTP/3 support is indicated by selecting the ALPN token \u0022h3\u0022 in the TLS"
+          },
+          {
+            "identity": "L0298:S0:0-93",
+            "text": "handshake. Support for other application-layer protocols MAY be o\uFB00ered in the same handshake."
+          },
+          {
+            "identity": "L0299:S0:0-97",
+            "text": "While connection-level options pertaining to the core QUIC protocol are set in the initial crypto"
+          },
+          {
+            "identity": "L0300:S0:0-88",
+            "text": "handshake, settings speci\uFB01c to HTTP/3 are conveyed in the SETTINGS frame. After the QUIC"
+          },
+          {
+            "identity": "L0301:S0:0-94",
+            "text": "connection is established, a SETTINGS frame MUST be sent by each endpoint as the initial frame"
+          },
+          {
+            "identity": "L0302:S0:0-39",
+            "text": "oftheir respective HTTP control stream."
+          },
+          {
+            "identity": "L0303:S0:0-29",
+            "text": "Bishop Standards Track Page 9"
+          },
+          {
+            "identity": "L0304:S0:0-25",
+            "text": "RFC 9114 HTTP/3 June 2022"
+          },
+          {
+            "identity": "L0306:S0:0-96",
+            "text": "HTTP/3 connections are persistent across multiple requests. For best performance, it is expected"
+          },
+          {
+            "identity": "L0307:S0:0-97",
+            "text": "that clients will not close connections until it is determined that no further communication with"
+          },
+          {
+            "identity": "L0308:S0:0-93",
+            "text": "a server is necessary (for example, when a user navigates away from a particular web page) or"
+          },
+          {
+            "identity": "L0309:S0:0-39",
+            "text": "until the server closes the connection."
+          },
+          {
+            "identity": "L0310:S0:0-94",
+            "text": "Once a connection to a server endpoint exists, this connection MAY be reused for requests with"
+          },
+          {
+            "identity": "L0311:S0:0-91",
+            "text": "multiple di\uFB00erent URI authority components. To use an existing connection for a new origin,"
+          },
+          {
+            "identity": "L0312:S0:0-96",
+            "text": "clients MUST validate the certi\uFB01cate presented by the server for the new origin server using the"
+          },
+          {
+            "identity": "L0313:S0:0-102",
+            "text": "process described in Section 4.3.4 of [HTTP]. This implies that clients will need to retain the server"
+          },
+          {
+            "identity": "L0314:S0:0-98",
+            "text": "certi\uFB01cate and any additional information needed to verify that certi\uFB01cate; clients that do not do"
+          },
+          {
+            "identity": "L0315:S0:0-65",
+            "text": "so will be unable to reuse the connection for additional origins."
+          },
+          {
+            "identity": "L0316:S0:0-95",
+            "text": "Ifthe certi\uFB01cate is not acceptable with regard to the new origin for any reason, the connection"
+          },
+          {
+            "identity": "L0317:S0:0-87",
+            "text": "MUST NOT be reused and a new connection SHOULD be established for the new origin. Ifthe"
+          },
+          {
+            "identity": "L0318:S0:0-96",
+            "text": "reason the certi\uFB01cate cannot be veri\uFB01ed might apply to other origins already associated with the"
+          },
+          {
+            "identity": "L0319:S0:0-98",
+            "text": "connection, the client SHOULD revalidate the server certi\uFB01cate for those origins. For instance, if"
+          },
+          {
+            "identity": "L0320:S0:0-98",
+            "text": "validation of a certi\uFB01cate fails because the certi\uFB01cate has expired or been revoked, this might be"
+          },
+          {
+            "identity": "L0321:S0:0-95",
+            "text": "used to invalidate all other origins for which that certi\uFB01cate was used to establish authority."
+          },
+          {
+            "identity": "L0322:S0:0-91",
+            "text": "Clients SHOULD NOT open more than one HTTP/3 connection to a given IP address and UDP port,"
+          },
+          {
+            "identity": "L0323:S0:0-89",
+            "text": "where the IP address and port might be derived from a URI, a selected alternative service"
+          },
+          {
+            "identity": "L0324:S0:0-92",
+            "text": "([ALTSVC]), a con\uFB01gured proxy, or name resolution of any ofthese. A client MAY open multiple"
+          },
+          {
+            "identity": "L0325:S0:0-86",
+            "text": "HTTP/3 connections to the same IP address and UDP port using di\uFB00erent transport or TLS"
+          },
+          {
+            "identity": "L0326:S0:0-88",
+            "text": "con\uFB01gurations but SHOULD avoid creating multiple connections with the same con\uFB01guration."
+          },
+          {
+            "identity": "L0327:S0:0-90",
+            "text": "Servers are encouraged to maintain open HTTP/3 connections for as long as possible but are"
+          },
+          {
+            "identity": "L0328:S0:0-94",
+            "text": "permitted to terminate idle connections ifnecessary. When either endpoint chooses to close the"
+          },
+          {
+            "identity": "L0329:S0:0-92",
+            "text": "HTTP/3 connection, the terminating endpoint SHOULD \uFB01rst send a GOAWAY frame (Section 5.2) so"
+          },
+          {
+            "identity": "L0330:S0:0-93",
+            "text": "that both endpoints can reliably determine whether previously sent frames have been processed"
+          },
+          {
+            "identity": "L0331:S0:0-67",
+            "text": "and gracefully complete or terminate any necessary remaining tasks."
+          },
+          {
+            "identity": "L0332:S0:0-91",
+            "text": "A server that does not wish clients to reuse HTTP/3 connections for a particular origin can"
+          },
+          {
+            "identity": "L0333:S0:0-97",
+            "text": "indicate that it is not authoritative for a request by sending a 421 (Misdirected Request) status"
+          },
+          {
+            "identity": "L0334:S0:0-59",
+            "text": "code in response to the request; see Section 7.4 of [HTTP]."
+          },
+          {
+            "identity": "L0337:S0:0-98",
+            "text": "A client sends an HTTP request on a request stream, which is a client-initiated bidirectional QUIC"
+          },
+          {
+            "identity": "L0338:S0:0-99",
+            "text": "stream; see Section 6.1. A client MUST send only a single request on a given stream. A server sends"
+          },
+          {
+            "identity": "L0339:S0:0-91",
+            "text": "zero or more interim HTTP responses on the same stream as the request, followed by a single"
+          },
+          {
+            "identity": "L0340:S0:0-95",
+            "text": "\uFB01nal HTTP response, as detailed below. See Section 15 of [HTTP] for a description ofinterim and"
+          },
+          {
+            "identity": "L0341:S0:0-20",
+            "text": "\uFB01nal HTTP responses."
+          },
+          {
+            "identity": "L0342:S0:0-30",
+            "text": "Bishop Standards Track Page 10"
+          },
+          {
+            "identity": "L0343:S0:0-25",
+            "text": "RFC 9114 HTTP/3 June 2022"
+          },
+          {
+            "identity": "L0344:S0:0-96",
+            "text": "Pushed responses are sent on a server-initiated unidirectional QUIC stream; see Section 6.2.2. A"
+          },
+          {
+            "identity": "L0345:S0:0-93",
+            "text": "server sends zero or more interim HTTP responses, followed by a single \uFB01nal HTTP response, in"
+          },
+          {
+            "identity": "L0346:S0:0-88",
+            "text": "the same manner as a standard response. Push is described in more detail in Section 4.6."
+          },
+          {
+            "identity": "L0347:S0:0-88",
+            "text": "On a given stream, receipt ofmultiple requests or receipt of an additional HTTP response"
+          },
+          {
+            "identity": "L0348:S0:0-60",
+            "text": "following a \uFB01nal HTTP response MUST be treated as malformed."
+          },
+          {
+            "identity": "L0349:S0:0-50",
+            "text": "An HTTP message (request or response) consists of:"
+          },
+          {
+            "identity": "L0350:S0:0-86",
+            "text": "1. the header section, including message control data, sent as a single HEADERS frame,"
+          },
+          {
+            "identity": "L0351:S0:0-74",
+            "text": "2. optionally, the content, ifpresent, sent as a series ofDATA frames, and"
+          },
+          {
+            "identity": "L0352:S0:0-78",
+            "text": "3. optionally, the trailer section, ifpresent, sent as a single HEADERS frame."
+          },
+          {
+            "identity": "L0353:S0:0-91",
+            "text": "Header and trailer sections are described in Sections 6.3 and 6.5 of [HTTP]; the content is"
+          },
+          {
+            "identity": "L0354:S0:0-35",
+            "text": "described in Section 6.4 of [HTTP]."
+          },
+          {
+            "identity": "L0355:S0:0-84",
+            "text": "Receipt of an invalid sequence offrames MUST be treated as a connection error oftype"
+          },
+          {
+            "identity": "L0356:S0:0-79",
+            "text": "H3_FRAME_UNEXPECTED. In particular, a DATA frame before any HEADERS frame, or a"
+          },
+          {
+            "identity": "L0357:S0:0-90",
+            "text": "HEADERS or DATA frame after the trailing HEADERS frame, is considered invalid. Other frame"
+          },
+          {
+            "identity": "L0358:S0:0-97",
+            "text": "types, especially unknown frame types, might be permitted subject to their own rules; see Section"
+          },
+          {
+            "identity": "L0359:S0:0-2",
+            "text": "9."
+          },
+          {
+            "identity": "L0360:S0:0-88",
+            "text": "A server MAY send one or more PUSH_PROMISE frames before, after, or interleaved with the"
+          },
+          {
+            "identity": "L0361:S0:0-88",
+            "text": "frames of a response message. These PUSH_PROMISE frames are not part ofthe response; see"
+          },
+          {
+            "identity": "L0362:S0:0-93",
+            "text": "Section 4.6 for more details. PUSH_PROMISE frames are not permitted on push streams; a pushed"
+          },
+          {
+            "identity": "L0363:S0:0-87",
+            "text": "response that includes PUSH_PROMISE frames MUST be treated as a connection error oftype"
+          },
+          {
+            "identity": "L0364:S0:0-20",
+            "text": "H3_FRAME_UNEXPECTED."
+          },
+          {
+            "identity": "L0365:S0:0-94",
+            "text": "Frames ofunknown types (Section 9), including reserved frames (Section 7.2.8) MAY be sent on a"
+          },
+          {
+            "identity": "L0366:S0:0-97",
+            "text": "request or push stream before, after, or interleaved with other frames described in this section."
+          },
+          {
+            "identity": "L0367:S0:0-87",
+            "text": "The HEADERS and PUSH_PROMISE frames might reference updates to the QPACK dynamic table."
+          },
+          {
+            "identity": "L0368:S0:0-91",
+            "text": "While these updates are not directly part ofthe message exchange, they must be received and"
+          },
+          {
+            "identity": "L0369:S0:0-79",
+            "text": "processed before the message can be consumed. See Section 4.2 for more details."
+          },
+          {
+            "identity": "L0370:S0:0-95",
+            "text": "Transfer codings (see Section 7 of [HTTP/1.1]) are not de\uFB01ned for HTTP/3; the Transfer-Encoding"
+          },
+          {
+            "identity": "L0371:S0:0-29",
+            "text": "header \uFB01eld MUST NOT be used."
+          },
+          {
+            "identity": "L0452:S0:0-96",
+            "text": "HTTP messages carry metadata as a series ofkey-value pairs called \u0022HTTP \uFB01elds\u0022; see Sections 6.3"
+          },
+          {
+            "identity": "L0454:S0:0-94",
+            "text": "(HTTP) Field Name Registry\u0022 maintained at \u003Chttps://www.iana.org/assignments/http-\uFB01elds/\u003E. Like"
+          },
+          {
+            "identity": "L0458:S0:0-95",
+            "text": "and values are discussed in more detail in Section 5.1 of [HTTP]. Characters in \uFB01eld names MUST"
+          },
+          {
+            "identity": "L0439:S0:0-95",
+            "text": "\uFB01eld (Section 8.6 of [HTTP]) is malformed ifthe value ofthe Content-Length header \uFB01eld does not"
+          },
+          {
+            "identity": "L0404:S0:0-78",
+            "text": "reading on the receiving parts ofstreams; see Section 2.4 of [QUIC-TRANSPORT]."
+          },
+          {
+            "identity": "L0608:S1:0-11",
+            "text": "Server Push"
+          },
+          {
+            "identity": "L0606:S0:0-85",
+            "text": "HTTP/3 does not support the HTTP Upgrade mechanism (Section 7.8 of [HTTP]) or the 101"
+          },
+          {
+            "identity": "L0603:S0:0-101",
+            "text": "restrict its use to a set ofknown ports or a list ofsafe request targets; see Section 9.3.6 of [HTTP]"
+          },
+          {
+            "identity": "L0696:S0:0-81",
+            "text": "connection by sending a GOAWAY frame. The GOAWAY frame contains an identi\uFB01er that"
+          },
+          {
+            "identity": "L0764:S0:0-93",
+            "text": "the connection is being closed. See Section 8 for error codes that can be used when closing a"
+          },
+          {
+            "identity": "L0772:S0:0-59",
+            "text": "connection is closed; see Section 10.2 of [QUIC-TRANSPORT]."
+          },
+          {
+            "identity": "L0788:S0:0-75",
+            "text": "server. For more detail on QUIC streams, see Section 2 of [QUIC-TRANSPORT]."
+          },
+          {
+            "identity": "L0816:S0:0-94",
+            "text": "Two stream types are de\uFB01ned in this document: control streams (Section 6.2.1) and push streams"
+          },
+          {
+            "identity": "L0817:S0:0-93",
+            "text": "(Section 6.2.2). [QPACK] de\uFB01nes two additional stream types. Other stream types can be de\uFB01ned"
+          },
+          {
+            "identity": "L0818:S0:0-96",
+            "text": "by extensions to HTTP/3; see Section 9 for more details. Some stream types are reserved (Section"
+          },
+          {
+            "identity": "L0819:S0:0-7",
+            "text": "6.2.3)."
+          },
+          {
+            "identity": "L0839:S0:0-87",
+            "text": "processing. Ifreading is aborted, the recipient SHOULD use the H3_STREAM_CREATION_ERROR"
+          },
+          {
+            "identity": "L0853:S0:0-54",
+            "text": "A control stream is indicated by a stream type of0x00."
+          },
+          {
+            "identity": "L0873:S0:0-50",
+            "text": "A push stream is indicated by a stream type of0x01"
+          },
+          {
+            "identity": "L0917:S0:0-5",
+            "text": "Frame"
+          },
+          {
+            "identity": "L0921:S0:0-93",
+            "text": "The SETTINGS frame can only occur as the \uFB01rst frame of a Control stream; this is indicated in"
+          },
+          {
+            "identity": "L0931:S0:0-29",
+            "text": "Figure 3: HTTP/3 Frame Format"
+          },
+          {
+            "identity": "L0958:S0:0-20",
+            "text": "Figure 4: DATA Frame"
+          },
+          {
+            "identity": "L0967:S0:0-22",
+            "text": "Figure 5: HEADERSFrame"
+          },
+          {
+            "identity": "L1003:S0:0-94",
+            "text": "The CANCEL_PUSH frame carries a push ID encoded as a variable-length integer. The Push ID \uFB01eld"
+          },
+          {
+            "identity": "L1005:S0:0-97|L1006:S0:0-49",
+            "text": "received that references a push ID greater than currently allowed on the connection, this MUST be"
+          },
+          {
+            "identity": "L1007:S0:0-95|L1008:S0:0-80|L1009:S0:0-88|L1010:S0:0-62",
+            "text": "Ifthe client receives a CANCEL_PUSH frame, that frame might identify a push ID that has not yet"
+          },
+          {
+            "identity": "L1012:S0:0-87|L1013:S0:0-91|L1014:S0:0-89|L1015:S0:0-76",
+            "text": "The SETTINGS frame (type=0x04) conveys con\uFB01guration parameters that a\uFB00ect how endpoints"
+          },
+          {
+            "identity": "L1016:S0:0-85",
+            "text": "SETTINGS frames always apply to an entire HTTP/3 connection, never a single stream. A"
+          },
+          {
+            "identity": "L1017:S0:0-96|L1018:S0:0-94|L1019:S0:0-76|L1020:S0:0-20",
+            "text": "SETTINGS frame MUST be sent as the \uFB01rst frame of each control stream (see Section 6.2.1) by each"
+          },
+          {
+            "identity": "L1021:S0:0-92|L1022:S0:0-91|L1023:S0:0-33",
+            "text": "SETTINGS frames MUST NOT be sent on any stream other than the control stream. If an endpoint"
+          },
+          {
+            "identity": "L1026:S0:0-93|L1027:S0:0-96|L1028:S0:0-96|L1029:S0:0-92|L1030:S0:0-69",
+            "text": "SETTINGS parameters are not negotiated; they describe characteristics ofthe sending peer that"
+          },
+          {
+            "identity": "L1031:S0:0-92|L1032:S0:0-95|L1033:S0:0-19",
+            "text": "Di\uFB00erent values for the same parameter can be advertised by each peer. For example, a client"
+          },
+          {
+            "identity": "L1034:S0:0-90|L1035:S0:0-83|L1036:S0:0-18",
+            "text": "The same setting identi\uFB01er MUST NOT occur more than once in the SETTINGS frame. A receiver"
+          },
+          {
+            "identity": "L1037:S0:0-91|L1038:S0:0-82",
+            "text": "The payload of a SETTINGS frame consists ofzero or more parameters. Each parameter consists"
+          },
+          {
+            "identity": "L1048:S0:0-23",
+            "text": "Figure 7: SETTINGSFrame"
+          },
+          {
+            "identity": "L1049:S0:0-85",
+            "text": "An implementation MUST ignore any parameter with an identi\uFB01er it does not understand."
+          },
+          {
+            "identity": "L1051:S0:0-44",
+            "text": "The following settings are de\uFB01ned in HTTP/3:"
+          },
+          {
+            "identity": "L1052:S0:0-93|L1053:S0:0-6",
+            "text": "SETTINGS_MAX_FIELD_SECTION_SIZE (0x06): The default value is unlimited. See Section 4.2.2 for"
+          },
+          {
+            "identity": "L1054:S0:0-90|L1055:S0:0-94|L1056:S0:0-91|L1057:S0:0-75|L1058:S0:0-87|L1059:S0:0-23",
+            "text": "Setting identi\uFB01ers ofthe format 0x1 f * N \u002B 0x2 1 for non-negative integer values of N are"
+          },
+          {
+            "identity": "L1062:S0:0-94|L1063:S0:0-93|L1064:S0:0-71",
+            "text": "Setting identi\uFB01ers that were de\uFB01ned in [HTTP/2] where there is no corresponding HTTP/3 setting"
+          },
+          {
+            "identity": "L1065:S0:0-90",
+            "text": "Additional settings can be de\uFB01ned by extensions to HTTP/3; see Section 9 for more details."
+          },
+          {
+            "identity": "L1067:S0:0-90|L1068:S0:0-44",
+            "text": "An HTTP implementation MUST NOT send frames or requests that would be invalid based on its"
+          },
+          {
+            "identity": "L1069:S0:0-93|L1070:S0:0-94|L1071:S0:0-95|L1072:S0:0-92|L1073:S0:0-95|L1074:S0:0-60",
+            "text": "All settings begin at an initial value. Each endpoint SHOULD use these initial values to send"
+          },
+          {
+            "identity": "L1075:S0:0-75",
+            "text": "For servers, the initial value of each client setting is the default value."
+          },
+          {
+            "identity": "L1076:S0:0-98|L1077:S0:0-92|L1078:S0:0-88|L1079:S0:0-92|L1080:S0:0-91|L1081:S0:0-8",
+            "text": "For clients using a 1-RTT QUIC connection, the initial value of each server setting is the default"
+          },
+          {
+            "identity": "L1082:S0:0-97|L1083:S0:0-97|L1084:S0:0-92|L1085:S0:0-98|L1086:S0:0-97",
+            "text": "When a 0-RTT QUIC connection is being used, the initial value of each server setting is the value"
+          },
+          {
+            "identity": "L1087:S0:0-79",
+            "text": "Once a server has provided new settings, clients MUST comply with those values."
+          },
+          {
+            "identity": "L1088:S0:0-96|L1089:S0:0-93|L1090:S0:0-87|L1091:S0:0-95|L1092:S0:0-89|L1093:S0:0-63",
+            "text": "A server can remember the settings that it advertised or store an integrity-protected copy ofthe"
+          },
+          {
+            "identity": "L1094:S0:0-96|L1095:S0:0-94",
+            "text": "A server MAY accept 0-RTT and subsequently provide di\uFB00erent settings in its SETTINGS frame. If0-"
+          },
+          {
+            "identity": "L1226:S0:0-86",
+            "text": "H3_NO_ERROR (0x0100): No error. This is used when the connection or stream needs to be"
+          },
+          {
+            "identity": "L1228:S0:0-85",
+            "text": "H3_GENERAL_PROTOCOL_ERROR (0x0101): Peer violated protocol requirements in a way that"
+          },
+          {
+            "identity": "L1231:S0:0-77",
+            "text": "H3_INTERNAL_ERROR (0x0102): An internal error has occurred in the HTTP stack."
+          },
+          {
+            "identity": "L1232:S0:0-34",
+            "text": "H3_STREAM_CREATION_ERROR (0x0103):"
+          },
+          {
+            "identity": "L1234:S0:0-35",
+            "text": "H3_CLOSED_CRITICAL_STREAM (0x0104):"
+          },
+          {
+            "identity": "L1236:S0:0-88",
+            "text": "H3_FRAME_UNEXPECTED (0x0105): A frame was received that was not permitted in the current"
+          },
+          {
+            "identity": "L1238:S0:0-93",
+            "text": "H3_FRAME_ERROR (0x0106): A frame that fails to satisfy layout requirements or with an invalid"
+          },
+          {
+            "identity": "L1240:S0:0-93",
+            "text": "H3_EXCESSIVE_LOAD (0x0107): The endpoint detected that its peer is exhibiting a behavior that"
+          },
+          {
+            "identity": "L1242:S0:0-93",
+            "text": "H3_ID_ERROR (0x0108): A stream ID or push ID was used incorrectly, such as exceeding a limit,"
+          },
+          {
+            "identity": "L1244:S0:0-27",
+            "text": "H3_SETTINGS_ERROR (0x0109):"
+          },
+          {
+            "identity": "L1248:S0:0-29",
+            "text": "H3_MISSING_SETTINGS (0x010a):"
+          },
+          {
+            "identity": "L1250:S0:0-29",
+            "text": "H3_REQUEST_REJECTED (0x010b):"
+          },
+          {
+            "identity": "L1252:S0:0-89",
+            "text": "H3_REQUEST_CANCELLED (0x010c): The request or its response (including pushed response) is"
+          },
+          {
+            "identity": "L1254:S0:0-89",
+            "text": "H3_REQUEST_INCOMPLETE (0x010d): The client\u0027s stream terminated without containing a fully"
+          },
+          {
+            "identity": "L1256:S0:0-26",
+            "text": "H3_MESSAGE_ERROR (0x010e):"
+          },
+          {
+            "identity": "L1257:S0:0-26",
+            "text": "H3_CONNECT_ERROR (0x010f):"
+          },
+          {
+            "identity": "L1259:S0:0-87",
+            "text": "H3_VERSION_FALLBACK (0x0110): The requested operation cannot be served over HTTP/3. The"
+          },
+          {
+            "identity": "L1289:S0:0-95",
+            "text": "This document does not mandate a speci\uFB01c method for negotiating the use of an extension, but it"
+          },
+          {
+            "identity": "L1295:S0:0-85",
+            "text": "The security considerations ofHTTP/3 should be comparable to those ofHTTP/2 with TLS."
+          },
+          {
+            "identity": "L1302:S0:0-89",
+            "text": "The use ofALPN in the TLS and QUIC handshakes establishes the target application protocol"
+          },
+          {
+            "identity": "L1309:S0:0-91",
+            "text": "The HTTP/3 \uFB01eld encoding allows the expression ofnames that are not valid \uFB01eld names in the"
+          },
+          {
+            "identity": "L1321:S0:0-96",
+            "text": "Pushed responses do not have an explicit request from the client; the request is provided by the"
+          },
+          {
+            "identity": "L1334:S0:0-89",
+            "text": "An HTTP/3 connection can demand a greater commitment ofresources to operate than an HTTP/"
+          },
+          {
+            "identity": "L1358:S0:0-90",
+            "text": "A large \uFB01eld section (Section 4.1) can cause an implementation to commit a large amount of"
+          },
+          {
+            "identity": "L1375:S0:0-87",
+            "text": "The CONNECT method can be used to create disproportionate load on a proxy, since stream"
+          },
+          {
+            "identity": "L1431:S1:0-10",
+            "text": "Early Data"
+          },
+          {
+            "identity": "L1465:S1:0-14",
+            "text": "New Registries"
+          },
+          {
+            "identity": "L1389:S0:0-8",
+            "text": "[BREACH]"
+          },
+          {
+            "identity": "L1398:S0:82-89",
+            "text": "[QPACK]"
+          },
+          {
+            "identity": "L1458:S0:72-81",
+            "text": "[RFC7301]"
+          },
+          {
+            "identity": "L1468:S0:0-96",
+            "text": "Section 22.1.1 of [QUIC-TRANSPORT]. These registries are collected under the \u0022Hypertext Transfer"
+          },
+          {
+            "identity": "L1469:S0:0-37",
+            "text": "Protocol version 3 (HTTP/3)\u0022 heading."
+          },
+          {
+            "identity": "L1473:S0:0-90",
+            "text": "This document establishes a registry for HTTP/3 frame type codes. The \u0022HTTP/3 Frame Types\u0022"
+          },
+          {
+            "identity": "L1489:S0:0-10",
+            "text": "Frame Type"
+          },
+          {
+            "identity": "L1490:S0:0-4",
+            "text": "DATA"
+          },
+          {
+            "identity": "L1490:S1:0-4",
+            "text": "0x00"
+          },
+          {
+            "identity": "L1490:S2:0-13",
+            "text": "Section 7.2.1"
+          },
+          {
+            "identity": "L1491:S0:0-7",
+            "text": "HEADERS"
+          },
+          {
+            "identity": "L1491:S1:0-4",
+            "text": "0x01"
+          },
+          {
+            "identity": "L1491:S2:0-13",
+            "text": "Section 7.2.2"
+          },
+          {
+            "identity": "L1492:S0:0-8",
+            "text": "Reserved"
+          },
+          {
+            "identity": "L1492:S1:0-4",
+            "text": "0x02"
+          },
+          {
+            "identity": "L1493:S0:0-11",
+            "text": "CANCEL_PUSH"
+          },
+          {
+            "identity": "L1493:S1:0-4",
+            "text": "0x03"
+          },
+          {
+            "identity": "L1493:S2:0-13",
+            "text": "Section 7.2.3"
+          },
+          {
+            "identity": "L1494:S0:0-8",
+            "text": "SETTINGS"
+          },
+          {
+            "identity": "L1494:S1:0-4",
+            "text": "0x04"
+          },
+          {
+            "identity": "L1494:S2:0-13",
+            "text": "Section 7.2.4"
+          },
+          {
+            "identity": "L1498:S0:0-12",
+            "text": "PUSH_PROMISE"
+          },
+          {
+            "identity": "L1498:S1:0-4",
+            "text": "0x05"
+          },
+          {
+            "identity": "L1498:S2:0-13",
+            "text": "Section 7.2.5"
+          },
+          {
+            "identity": "L1500:S0:0-6",
+            "text": "GOAWAY"
+          },
+          {
+            "identity": "L1500:S1:0-4",
+            "text": "0x07"
+          },
+          {
+            "identity": "L1500:S2:0-13",
+            "text": "Section 7.2.6"
+          },
+          {
+            "identity": "L1503:S0:0-11",
+            "text": "MAX_PUSH_ID"
+          },
+          {
+            "identity": "L1503:S1:0-4",
+            "text": "0x0d"
+          },
+          {
+            "identity": "L1503:S2:0-13",
+            "text": "Section 7.2.7"
+          },
+          {
+            "identity": "L1509:S0:0-98",
+            "text": "This document establishes a registry for HTTP/3 settings. The \u0022HTTP/3 Settings\u0022 registry governs a"
+          },
+          {
+            "identity": "L1521:S0:0-85",
+            "text": "Setting Name: A symbolic name for the setting. Specifying a setting name is optional."
+          },
+          {
+            "identity": "L1524:S0:0-55",
+            "text": "The entries in Table 3 are registered by this document."
+          },
+          {
+            "identity": "L1525:S0:0-12",
+            "text": "Setting Name"
+          },
+          {
+            "identity": "L1526:S0:0-8",
+            "text": "Reserved"
+          },
+          {
+            "identity": "L1526:S1:0-4",
+            "text": "0x00"
+          },
+          {
+            "identity": "L1526:S2:0-13",
+            "text": "This document"
+          },
+          {
+            "identity": "L1526:S3:0-3",
+            "text": "N/A"
+          },
+          {
+            "identity": "L1535:S0:0-31",
+            "text": "Table 3: InitialHTTP/3 Settings"
+          },
+          {
+            "identity": "L1529:S1:0-5",
+            "text": "Value"
+          },
+          {
+            "identity": "L1529:S2:0-12",
+            "text": "Speci\uFB01cation"
+          },
+          {
+            "identity": "L1529:S3:0-7",
+            "text": "Default"
+          },
+          {
+            "identity": "L1534:S1:0-4",
+            "text": "0x06"
+          },
+          {
+            "identity": "L1534:S2:0-15",
+            "text": "Section 7.2.4.1"
+          },
+          {
+            "identity": "L1534:S3:0-9",
+            "text": "Unlimited"
+          },
+          {
+            "identity": "L1558:S0:0-4",
+            "text": "Name"
+          },
+          {
+            "identity": "L1558:S1:0-5",
+            "text": "Value"
+          },
+          {
+            "identity": "L1558:S2:0-11",
+            "text": "Description"
+          },
+          {
+            "identity": "L1558:S3:0-12",
+            "text": "Speci\uFB01cation"
+          },
+          {
+            "identity": "L1559:S1:0-6",
+            "text": "0x0100"
+          },
+          {
+            "identity": "L1559:S2:0-8",
+            "text": "No error"
+          },
+          {
+            "identity": "L1559:S3:0-11",
+            "text": "Section 8.1"
+          },
+          {
+            "identity": "L1562:S0:0-4",
+            "text": "Name"
+          },
+          {
+            "identity": "L1562:S1:0-5",
+            "text": "Value"
+          },
+          {
+            "identity": "L1562:S2:0-11",
+            "text": "Description"
+          },
+          {
+            "identity": "L1562:S3:0-12",
+            "text": "Speci\uFB01cation"
+          },
+          {
+            "identity": "L1563:S1:0-6",
+            "text": "0x0101"
+          },
+          {
+            "identity": "L1563:S2:0-22",
+            "text": "General protocol error"
+          },
+          {
+            "identity": "L1563:S3:0-11",
+            "text": "Section 8.1"
+          },
+          {
+            "identity": "L1564:S1:0-6",
+            "text": "0x0102"
+          },
+          {
+            "identity": "L1564:S2:0-14",
+            "text": "Internal error"
+          },
+          {
+            "identity": "L1564:S3:0-11",
+            "text": "Section 8.1"
+          },
+          {
+            "identity": "L1565:S1:0-6",
+            "text": "0x0103"
+          },
+          {
+            "identity": "L1565:S2:0-21",
+            "text": "Stream creation error"
+          },
+          {
+            "identity": "L1565:S3:0-11",
+            "text": "Section 8.1"
+          },
+          {
+            "identity": "L1566:S1:0-6",
+            "text": "0x0104"
+          },
+          {
+            "identity": "L1566:S2:0-26",
+            "text": "Critical stream was closed"
+          },
+          {
+            "identity": "L1566:S3:0-11",
+            "text": "Section 8.1"
+          },
+          {
+            "identity": "L1567:S1:0-6",
+            "text": "0x0105"
+          },
+          {
+            "identity": "L1567:S2:0-26",
+            "text": "Frame not permitted in the"
+          },
+          {
+            "identity": "L1567:S3:0-11",
+            "text": "Section 8.1"
+          },
+          {
+            "identity": "L1569:S1:0-6",
+            "text": "0x0106"
+          },
+          {
+            "identity": "L1569:S2:0-29",
+            "text": "Frame violated layout or size"
+          },
+          {
+            "identity": "L1569:S3:0-11",
+            "text": "Section 8.1"
+          },
+          {
+            "identity": "L1571:S1:0-6",
+            "text": "0x0107"
+          },
+          {
+            "identity": "L1571:S2:0-25",
+            "text": "Peer generating excessive"
+          },
+          {
+            "identity": "L1571:S3:0-11",
+            "text": "Section 8.1"
+          },
+          {
+            "identity": "L1589:S0:0-30",
+            "text": "Bishop Standards Track Page 44"
+          },
+          {
+            "identity": "L1573:S1:0-6",
+            "text": "0x0108"
+          },
+          {
+            "identity": "L1573:S2:0-21",
+            "text": "An identi\uFB01er was used"
+          },
+          {
+            "identity": "L1574:S0:0-11",
+            "text": "incorrectly"
+          },
+          {
+            "identity": "L1575:S0:0-17",
+            "text": "H3_SETTINGS_ERROR"
+          },
+          {
+            "identity": "L1575:S1:0-6",
+            "text": "0x0109"
+          },
+          {
+            "identity": "L1575:S2:0-24",
+            "text": "SETTINGS frame contained"
+          },
+          {
+            "identity": "L1576:S0:0-14",
+            "text": "invalid values"
+          },
+          {
+            "identity": "L1577:S0:0-19",
+            "text": "H3_MISSING_SETTINGS"
+          },
+          {
+            "identity": "L1577:S1:0-6",
+            "text": "0x010a"
+          },
+          {
+            "identity": "L1577:S2:0-26",
+            "text": "No SETTINGS frame received"
+          },
+          {
+            "identity": "L1578:S0:0-19",
+            "text": "H3_REQUEST_REJECTED"
+          },
+          {
+            "identity": "L1578:S1:0-6",
+            "text": "0x010b"
+          },
+          {
+            "identity": "L1578:S2:0-21",
+            "text": "Request not processed"
+          },
+          {
+            "identity": "L1579:S0:0-20",
+            "text": "H3_REQUEST_CANCELLED"
+          },
+          {
+            "identity": "L1579:S1:0-6",
+            "text": "0x010c"
+          },
+          {
+            "identity": "L1579:S2:0-21",
+            "text": "Data no longer needed"
+          },
+          {
+            "identity": "L1580:S0:0-21",
+            "text": "H3_REQUEST_INCOMPLETE"
+          },
+          {
+            "identity": "L1580:S1:0-6",
+            "text": "0x010d"
+          },
+          {
+            "identity": "L1580:S2:0-23",
+            "text": "Stream terminated early"
+          },
+          {
+            "identity": "L1581:S0:0-16",
+            "text": "H3_MESSAGE_ERROR"
+          },
+          {
+            "identity": "L1581:S1:0-6",
+            "text": "0x010e"
+          },
+          {
+            "identity": "L1581:S2:0-17",
+            "text": "Malformed message"
+          },
+          {
+            "identity": "L1582:S0:0-16",
+            "text": "H3_CONNECT_ERROR"
+          },
+          {
+            "identity": "L1582:S1:0-6",
+            "text": "0x010f"
+          },
+          {
+            "identity": "L1582:S2:0-21",
+            "text": "TCP reset or error on"
+          },
+          {
+            "identity": "L1583:S0:0-15",
+            "text": "CONNECT request"
+          },
+          {
+            "identity": "L1584:S0:0-19",
+            "text": "H3_VERSION_FALLBACK"
+          },
+          {
+            "identity": "L1584:S1:0-6",
+            "text": "0x0110"
+          },
+          {
+            "identity": "L1584:S2:0-19",
+            "text": "Retry over HTTP/1.1"
+          },
+          {
+            "identity": "L1585:S0:0-34",
+            "text": "Table 4: InitialHTTP/3 Error Codes"
+          },
+          {
+            "identity": "L1586:S0:0-93",
+            "text": "Each code ofthe format 0x1 f * N \u002B 0x2 1 for non-negative integer values of N (that is, 0x21,"
+          },
+          {
+            "identity": "L1587:S0:0-87",
+            "text": "0x40, ..., through 0x3\uFB00\uFB00\uFB00\uFB00\uFB00\uFB00\uFB00e) MUST NOT be assigned by IANA and MUST NOT appear in the"
+          },
+          {
+            "identity": "L1588:S0:0-27",
+            "text": "listing of assigned values."
+          },
+          {
+            "identity": "L1592:S0:0-95",
+            "text": "This document establishes a registry for HTTP/3 unidirectional stream types. The \u0022HTTP/3 Stream"
+          },
+          {
+            "identity": "L1593:S0:0-99",
+            "text": "Types\u0022 registry governs a 62-bit space. This registry follows the QUIC registry policy; see Section"
+          },
+          {
+            "identity": "L1594:S0:0-98",
+            "text": "11.2. Permanent registrations in this registry are assigned using the Speci\uFB01cation Required policy"
+          },
+          {
+            "identity": "L1595:S0:0-91",
+            "text": "([RFC8126]), except for values between 0x00 and 0x3f (in hexadecimal; inclusive), which are"
+          },
+          {
+            "identity": "L1596:S0:0-97",
+            "text": "assigned using Standards Action or IESG Approval as de\uFB01ned in Sections 4.9 and 4.10 of [RFC8126]."
+          },
+          {
+            "identity": "L1597:S0:0-98",
+            "text": "In addition to common \uFB01elds as described in Section 11.2, permanent registrations in this registry"
+          },
+          {
+            "identity": "L1598:S0:0-33",
+            "text": "MUST include the following \uFB01elds:"
+          },
+          {
+            "identity": "L1599:S0:0-49",
+            "text": "Stream Type: A name or label for the stream type."
+          },
+          {
+            "identity": "L1600:S0:0-92",
+            "text": "Sender: Which endpoint on an HTTP/3 connection may initiate a stream ofthis type. Values are"
+          },
+          {
+            "identity": "L1601:S0:0-30",
+            "text": "\u0022Client\u0022, \u0022Server\u0022, or \u0022Both\u0022."
+          },
+          {
+            "identity": "L1602:S0:0-87",
+            "text": "Speci\uFB01cations for permanent registrations MUST include a description ofthe stream type,"
+          },
+          {
+            "identity": "L1603:S0:0-57",
+            "text": "including the layout and semantics ofthe stream contents."
+          },
+          {
+            "identity": "L1604:S0:0-55",
+            "text": "The entries in Table 5 are registered by this document."
+          },
+          {
+            "identity": "L1605:S0:0-11",
+            "text": "Stream Type"
+          },
+          {
+            "identity": "L1605:S1:0-5",
+            "text": "Value"
+          },
+          {
+            "identity": "L1605:S2:0-12",
+            "text": "Speci\uFB01cation"
+          },
+          {
+            "identity": "L1605:S3:0-6",
+            "text": "Sender"
+          },
+          {
+            "identity": "L1606:S0:0-14",
+            "text": "Control Stream"
+          },
+          {
+            "identity": "L1606:S1:0-4",
+            "text": "0x00"
+          },
+          {
+            "identity": "L1606:S3:0-4",
+            "text": "Both"
+          },
+          {
+            "identity": "L1607:S0:0-11",
+            "text": "Push Stream"
+          },
+          {
+            "identity": "L1607:S1:0-4",
+            "text": "0x01"
+          },
+          {
+            "identity": "L1607:S3:0-6",
+            "text": "Server"
+          },
+          {
+            "identity": "L1608:S0:0-29",
+            "text": "Table 5: Initial Stream Types"
+          },
+          {
+            "identity": "L1609:S0:0-93",
+            "text": "Each code ofthe format 0x1 f * N \u002B 0x2 1 for non-negative integer values of N (that is, 0x21,"
+          },
+          {
+            "identity": "L1610:S0:0-87",
+            "text": "0x40, ..., through 0x3\uFB00\uFB00\uFB00\uFB00\uFB00\uFB00\uFB00e) MUST NOT be assigned by IANA and MUST NOT appear in the"
+          },
+          {
+            "identity": "L1611:S0:0-27",
+            "text": "listing of assigned values."
+          },
+          {
+            "identity": "L1613:S0:0-5",
+            "text": "12.1."
+          },
+          {
+            "identity": "L1613:S1:0-20",
+            "text": "Normative References"
+          },
+          {
+            "identity": "L1614:S0:0-8",
+            "text": "[ALTSVC]"
+          },
+          {
+            "identity": "L1614:S1:0-77",
+            "text": "Nottingham, M., McManus, P., and J. Reschke, \u0022HTTP Alternative Services\u0022, RFC"
+          },
+          {
+            "identity": "L1615:S0:0-82",
+            "text": "7838, DOI 10.17487/RFC7838, April 2016, \u003Chttps://www.rfc-editor.org/info/rfc7838\u003E."
+          },
+          {
+            "identity": "L1616:S0:0-9",
+            "text": "[COOKIES]"
+          },
+          {
+            "identity": "L1616:S1:0-69",
+            "text": "Barth, A., \u0022HTTP State Management Mechanism\u0022, RFC 6265, DOI 10.17487/"
+          },
+          {
+            "identity": "L1617:S0:0-63",
+            "text": "RFC6265, April 2011, \u003Chttps://www.rfc-editor.org/info/rfc6265\u003E."
+          },
+          {
+            "identity": "L1618:S0:0-6",
+            "text": "[HTTP]"
+          },
+          {
+            "identity": "L1618:S1:0-82",
+            "text": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \u0022HTTP Semantics\u0022, STD"
+          },
+          {
+            "identity": "L1619:S0:0-80",
+            "text": "97, RFC 9110, DOI 10.17487/RFC9110, June 2022, \u003Chttps://www.rfc-editor.org/info/"
+          },
+          {
+            "identity": "L1620:S0:0-9",
+            "text": "rfc9110\u003E."
+          },
+          {
+            "identity": "L1622:S0:0-25",
+            "text": "RFC 9114 HTTP/3 June 2022"
+          },
+          {
+            "identity": "L1623:S0:0-14",
+            "text": "[HTTP-CACHING]"
+          },
+          {
+            "identity": "L1623:S1:0-80",
+            "text": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \u0022HTTP Caching\u0022, STD"
+          },
+          {
+            "identity": "L1624:S0:0-80",
+            "text": "98, RFC 9111, DOI 10.17487/RFC9111, June 2022, \u003Chttps://www.rfc-editor.org/info/"
+          },
+          {
+            "identity": "L1625:S0:0-9",
+            "text": "rfc9111\u003E."
+          },
+          {
+            "identity": "L1626:S0:0-86",
+            "text": "[HTTP-REPLAY] Thomson, M., Nottingham, M., and W. Tarreau, \u0022Using Early Data in HTTP\u0022,"
+          },
+          {
+            "identity": "L1627:S0:0-76",
+            "text": "RFC 8470, DOI 10.17487/RFC8470, September 2018, \u003Chttps://www.rfc-editor.org/"
+          },
+          {
+            "identity": "L1628:S0:0-14",
+            "text": "info/rfc8470\u003E."
+          },
+          {
+            "identity": "L1656:S0:0-87",
+            "text": "[BREACH] Gluck, Y., Harris, N., and A. Prado, \u0022BREACH: Reviving the CRIME Attack\u0022, July"
+          },
+          {
+            "identity": "L1833:S0:0-44",
+            "text": "NO_ERROR (0x00): H3_NO_ERROR in Section 8.1."
+          },
+          {
+            "identity": "L1838:S0:0-56",
+            "text": "INTERNAL_ERROR (0x02): H3_INTERNAL_ERROR in Section 8.1."
+          },
+          {
+            "identity": "L1839:S0:0-26",
+            "text": "FLOW_CONTROL_ERROR (0x03):"
+          },
+          {
+            "identity": "L1840:S0:0-24",
+            "text": "SETTINGS_TIMEOUT (0x04):"
+          },
+          {
+            "identity": "L1843:S0:0-21",
+            "text": "STREAM_CLOSED (0x05):"
+          },
+          {
+            "identity": "L1843:S1:0-53",
+            "text": "Not applicable, since QUIC handles stream management."
+          },
+          {
+            "identity": "L1844:S0:0-24",
+            "text": "FRAME_SIZE_ERROR (0x06):"
+          },
+          {
+            "identity": "L1848:S0:0-51",
+            "text": "CANCEL (0x08): H3_REQUEST_CANCELLED in Section 8.1."
+          },
+          {
+            "identity": "L1849:S0:0-25",
+            "text": "COMPRESSION_ERROR (0x09):"
+          },
+          {
+            "identity": "L1850:S0:0-54",
+            "text": "CONNECT_ERROR (0x0a): H3_CONNECT_ERROR in Section 8.1."
+          },
+          {
+            "identity": "L1851:S0:0-25",
+            "text": "ENHANCE_YOUR_CALM (0x0b):"
+          },
+          {
+            "identity": "L1851:S1:0-33",
+            "text": "H3_EXCESSIVE_LOAD in Section 8.1."
+          },
+          {
+            "identity": "L1852:S0:0-27",
+            "text": "INADEQUATE_SECURITY (0x0c):"
+          },
+          {
+            "identity": "L1854:S0:0-61",
+            "text": "HTTP_1_1_REQUIRED (0x0d): H3_VERSION_FALLBACK in Section 8.1."
+          },
+          {
+            "identity": "L1862:S0:0-93",
+            "text": "an HTTP status code such as 502 (Bad Gateway), which is suitable for a broad class of errors."
+          },
+          {
+            "identity": "L1870:S0:0-40",
+            "text": "H3_REQUEST_CANCELLED; see Section 4.1.1."
+          },
+          {
+            "identity": "L1875:S0:0-63",
+            "text": "connection for what might be a temporary or intermittent error."
+          },
+          {
+            "identity": "L1882:S0:0-87",
+            "text": "Among others, the following people provided substantial contributions to this document:"
+          },
+          {
+            "identity": "L1883:S0:0-12",
+            "text": "\u2022 Bence Beky"
+          },
+          {
+            "identity": "L1884:S0:0-15",
+            "text": "\u2022 Daan De Meyer"
+          },
+          {
+            "identity": "L1885:S0:0-13",
+            "text": "\u2022 Martin Duke"
+          },
+          {
+            "identity": "L1886:S0:0-14",
+            "text": "\u2022 Roy Fielding"
+          },
+          {
+            "identity": "L1887:S0:0-15",
+            "text": "\u2022 Alan Frindell"
+          },
+          {
+            "identity": "L1888:S0:0-20",
+            "text": "\u2022 Alessandro Ghedini"
+          },
+          {
+            "identity": "L1889:S0:0-13",
+            "text": "\u2022 Nick Harper"
+          },
+          {
+            "identity": "L1890:S0:0-15",
+            "text": "\u2022 Ryan Hamilton"
+          },
+          {
+            "identity": "L1891:S0:0-19",
+            "text": "\u2022 Christian Huitema"
+          },
+          {
+            "identity": "L1892:S0:0-16",
+            "text": "\u2022 Subodh Iyengar"
+          },
+          {
+            "identity": "L1893:S0:0-12",
+            "text": "\u2022 Robin Marx"
+          },
+          {
+            "identity": "L1894:S0:0-17",
+            "text": "\u2022 Patrick McManus"
+          },
+          {
+            "identity": "L1895:S0:0-16",
+            "text": "\u2022 Luca Niccolini"
+          },
+          {
+            "identity": "L1915:S0:0-84",
+            "text": "CANCEL_PUSH Section 2, Paragraph 5; Section 4.6, Paragraph 6; Section 4.6, Paragraph"
+          },
+          {
+            "identity": "L1918:S0:0-16",
+            "text": "connection error"
+          },
+          {
+            "identity": "L1932:S0:0-14",
+            "text": "control stream"
+          },
+          {
+            "identity": "L1941:S0:0-4",
+            "text": "DATA"
+          },
+          {
+            "identity": "L1948:S0:0-6",
+            "text": "GOAWAY"
+          },
+          {
+            "identity": "L1962:S0:0-75",
+            "text": "H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4;"
+          },
+          {
+            "identity": "L1964:S0:0-16",
+            "text": "H3_CONNECT_ERROR"
+          },
+          {
+            "identity": "L1966:S0:0-17",
+            "text": "H3_EXCESSIVE_LOAD"
+          },
+          {
+            "identity": "L1968:S0:0-85",
+            "text": "H3_FRAME_ERROR Section 7.1, Paragraph 5; Section 7.1, Paragraph 6; Section 8.1; Table"
+          },
+          {
+            "identity": "L1970:S0:0-19",
+            "text": "H3_FRAME_UNEXPECTED"
+          },
+          {
+            "identity": "L1977:S0:0-75",
+            "text": "H3_GENERAL_PROTOCOL_ERROR Section 7.2.5, Paragraph 6; Section 8.1; Table 4;"
+          },
+          {
+            "identity": "L1979:S0:0-11",
+            "text": "H3_ID_ERROR"
+          },
+          {
+            "identity": "L1983:S0:0-17",
+            "text": "H3_INTERNAL_ERROR"
+          },
+          {
+            "identity": "L1984:S0:0-16",
+            "text": "H3_MESSAGE_ERROR"
+          },
+          {
+            "identity": "L1986:S0:0-68",
+            "text": "H3_MISSING_SETTINGS Section 6.2.1, Paragraph 2; Section 8.1; Table 4"
+          },
+          {
+            "identity": "L1987:S0:0-80",
+            "text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,"
+          },
+          {
+            "identity": "L1910:S0:0-30",
+            "text": "Bishop Standards Track Page 53"
+          },
+          {
+            "identity": "L1911:S0:0-25",
+            "text": "RFC 9114 HTTP/3 June 2022"
+          },
+          {
+            "identity": "L1995:S0:0-30",
+            "text": "Bishop Standards Track Page 55"
+          },
+          {
+            "identity": "L1988:S0:0-88",
+            "text": "Paragraph 2; Section 8, Paragraph 5; Section 8.1; Section 8.1, Paragraph 3; Section 8.1,"
+          },
+          {
+            "identity": "L1990:S0:0-20",
+            "text": "H3_REQUEST_CANCELLED"
+          },
+          {
+            "identity": "L1994:S0:0-21",
+            "text": "H3_REQUEST_INCOMPLETE"
+          },
+          {
+            "identity": "L1997:S0:0-19",
+            "text": "H3_REQUEST_REJECTED"
+          },
+          {
+            "identity": "L2001:S0:0-17",
+            "text": "H3_SETTINGS_ERROR"
+          },
+          {
+            "identity": "L2003:S0:0-24",
+            "text": "H3_STREAM_CREATION_ERROR"
+          },
+          {
+            "identity": "L2005:S0:0-19",
+            "text": "H3_VERSION_FALLBACK"
+          },
+          {
+            "identity": "L2006:S0:0-7",
+            "text": "HEADERS"
+          },
+          {
+            "identity": "L2013:S0:0-9",
+            "text": "malformed"
+          },
+          {
+            "identity": "L2019:S0:0-11",
+            "text": "MAX_PUSH_ID"
+          },
+          {
+            "identity": "L2024:S0:0-7",
+            "text": "push ID"
+          },
+          {
+            "identity": "L2035:S0:0-11",
+            "text": "push stream"
+          },
+          {
+            "identity": "L2046:S0:0-12",
+            "text": "PUSH_PROMISE"
+          },
+          {
+            "identity": "L2057:S0:0-14",
+            "text": "request stream"
+          },
+          {
+            "identity": "L2064:S0:0-8",
+            "text": "SETTINGS"
+          },
+          {
+            "identity": "L2072:S0:0-31",
+            "text": "SETTINGS_MAX_FIELD_SECTION_SIZE"
+          },
+          {
+            "identity": "L2074:S0:0-12",
+            "text": "stream error"
+          },
+          {
+            "identity": "L1991:S0:0-82",
+            "text": "Section 4.1.1, Paragraph 4; Section 4.1.1, Paragraph 5; Section 4.6, Paragraph 14;"
+          },
+          {
+            "identity": "L1992:S0:0-89",
+            "text": "Section 7.2.3, Paragraph 3; Section 7.2.3, Paragraph 4; Section 8.1; Table 4; Appendix A."
+          },
+          {
+            "identity": "L1993:S0:0-48",
+            "text": "4, Paragraph 3.18.1; Appendix A.4.1, Paragraph 3"
+          },
+          {
+            "identity": "L1994:S1:0-47",
+            "text": "Section 4.1, Paragraph 14; Section 8.1; Table 4"
+          },
+          {
+            "identity": "L1998:S0:0-83",
+            "text": "Section 4.1.1, Paragraph 3; Section 4.1.1, Paragraph 4; Section 4.1.1, Paragraph 5;"
+          },
+          {
+            "identity": "L1999:S0:0-81",
+            "text": "Section 4.1.1, Paragraph 5; Section 8.1; Table 4; Appendix A.4, Paragraph 3.16.1;"
+          },
+          {
+            "identity": "L2000:S0:0-27",
+            "text": "Appendix A.4.1, Paragraph 3"
+          },
+          {
+            "identity": "L2002:S0:0-72",
+            "text": "7.2.4.2, Paragraph 8; Section 7.2.4.2, Paragraph 8; Section 8.1; Table 4"
+          },
+          {
+            "identity": "L2004:S0:0-76",
+            "text": "Section 6.2.1, Paragraph 2; Section 6.2.2, Paragraph 3; Section 8.1; Table 4"
+          },
+          {
+            "identity": "L2007:S0:0-88",
+            "text": "Section 2, Paragraph 3; Section 4.1, Paragraph 5, Item 1; Section 4.1, Paragraph 5, Item"
+          },
+          {
+            "identity": "L2008:S0:0-88",
+            "text": "3; Section 4.1, Paragraph 7; Section 4.1, Paragraph 7; Section 4.1, Paragraph 7; Section"
+          },
+          {
+            "identity": "L2009:S0:0-88",
+            "text": "4.1, Paragraph 10; Section 4.4, Paragraph 6; Section 4.6, Paragraph 12; Table 1; Section"
+          },
+          {
+            "identity": "L2010:S0:0-84",
+            "text": "7.2.2; Section 9, Paragraph 5; Table 2; Appendix A.2.1, Paragraph 1; Appendix A.2.5;"
+          },
+          {
+            "identity": "L2011:S0:0-65",
+            "text": "Appendix A.2.5, Paragraph 1.4.1; Appendix A.2.5, Paragraph 1.20.1"
+          },
+          {
+            "identity": "L2015:S0:0-88",
+            "text": "3; Section 4.2, Paragraph 5; Section 4.3, Paragraph 3; Section 4.3, Paragraph 4; Section"
+          },
+          {
+            "identity": "L2016:S0:0-86",
+            "text": "4.3.1, Paragraph 5; Section 4.3.2, Paragraph 1; Section 4.4, Paragraph 5; Section 8.1,"
+          },
+          {
+            "identity": "L2017:S0:0-87",
+            "text": "Paragraph 2.30.1; Section 10.3, Paragraph 1; Section 10.3, Paragraph 2; Section 10.5.1,"
+          },
+          {
+            "identity": "L2020:S0:0-88",
+            "text": "Section 2, Paragraph 5; Section 4.6, Paragraph 3; Section 4.6, Paragraph 3; Section 4.6,"
+          },
+          {
+            "identity": "L2021:S0:0-83",
+            "text": "Paragraph 3; Section 4.6, Paragraph 3; Table 1; Section 7.2.5, Paragraph 5; Section"
+          },
+          {
+            "identity": "L2022:S0:0-73",
+            "text": "7.2. 7; Table 2; Appendix A.1, Paragraph 4; Appendix A.3, Paragraph 4.4.1"
+          },
+          {
+            "identity": "L2026:S0:0-83",
+            "text": "Paragraph 9; Section 6.2.2, Paragraph 2; Section 6.2.2, Paragraph 6; Section 6.2.2,"
+          },
+          {
+            "identity": "L2027:S0:0-83",
+            "text": "Paragraph 6; Section 7.2.3, Paragraph 1; Section 7.2.3, Paragraph 7; Section 7.2.3,"
+          },
+          {
+            "identity": "L2028:S0:0-83",
+            "text": "Paragraph 7; Section 7.2.3, Paragraph 8; Section 7.2.3, Paragraph 8; Section 7.2.5,"
+          },
+          {
+            "identity": "L2029:S0:0-87",
+            "text": "Paragraph 4.2.1; Section 7.2.5, Paragraph 5; Section 7.2.5, Paragraph 5; Section 7.2.5,"
+          },
+          {
+            "identity": "L2030:S0:0-83",
+            "text": "Paragraph 6; Section 7.2.5, Paragraph 6; Section 7.2.5, Paragraph 7; Section 7.2.5,"
+          },
+          {
+            "identity": "L2031:S0:0-83",
+            "text": "Paragraph 7; Section 7.2.5, Paragraph 7; Section 7.2.6, Paragraph 4; Section 7.2.7,"
+          },
+          {
+            "identity": "L2032:S0:0-83",
+            "text": "Paragraph 1; Section 7.2.7, Paragraph 4; Section 7.2.7, Paragraph 4; Section 7.2.7,"
+          },
+          {
+            "identity": "L2033:S0:0-87",
+            "text": "Paragraph 6; Section 7.2.7, Paragraph 6; Section 8.1, Paragraph 2.18.1; Appendix A.2.5,"
+          },
+          {
+            "identity": "L2034:S0:0-50",
+            "text": "Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.16.1"
+          },
+          {
+            "identity": "L2036:S0:0-90",
+            "text": "Section 4.1, Paragraph 8; Section 4.1, Paragraph 9; Section 4.6, Paragraph 3; Section 4.6,"
+          },
+          {
+            "identity": "L2037:S0:0-78",
+            "text": "Paragraph 5; Section 4.6, Paragraph 5; Section 4.6, Paragraph 13; Section 4.6,"
+          },
+          {
+            "identity": "L2038:S0:0-81",
+            "text": "Paragraph 13; Section 4.6, Paragraph 13; Section 6.2, Paragraph 3; Section 6.2.2;"
+          },
+          {
+            "identity": "L2039:S0:0-87",
+            "text": "Section 7, Paragraph 1; Section 7.2.2, Paragraph 3; Section 7.2.3, Paragraph 1; Section"
+          },
+          {
+            "identity": "L2042:S0:0-90",
+            "text": "7.2.3, Paragraph 2; Section 7.2.3, Paragraph 2; Section 7.2.3, Paragraph 2; Section 7.2.3,"
+          },
+          {
+            "identity": "L2043:S0:0-83",
+            "text": "Paragraph 2; Section 7.2.3, Paragraph 3; Section 7.2.3, Paragraph 4; Section 7.2.3,"
+          },
+          {
+            "identity": "L2044:S0:0-87",
+            "text": "Paragraph 4; Section 7.2.3, Paragraph 4; Section 7.2.5, Paragraph 4.2.1; Section 7.2.7,"
+          },
+          {
+            "identity": "L2045:S0:0-45",
+            "text": "Paragraph 1; Appendix A.2.5, Paragraph 1.12.1"
+          },
+          {
+            "identity": "L2047:S0:0-88",
+            "text": "Section 2, Paragraph 5; Section 4.1, Paragraph 8; Section 4.1, Paragraph 8; Section 4.1,"
+          },
+          {
+            "identity": "L2048:S0:0-78",
+            "text": "Paragraph 8; Section 4.1, Paragraph 8; Section 4.1, Paragraph 10; Section 4.6,"
+          },
+          {
+            "identity": "L2049:S0:0-79",
+            "text": "Paragraph 4; Section 4.6, Paragraph 10; Section 4.6, Paragraph 11; Section 4.6,"
+          },
+          {
+            "identity": "L2050:S0:0-80",
+            "text": "Paragraph 11; Section 4.6, Paragraph 12; Section 4.6, Paragraph 12; Section 4.6,"
+          },
+          {
+            "identity": "L2051:S0:0-84",
+            "text": "Paragraph 13; Section 4.6, Paragraph 13; Section 4.6, Paragraph 13; Table 1; Section"
+          },
+          {
+            "identity": "L2052:S0:0-90",
+            "text": "7.2.3, Paragraph 8; Section 7.2.3, Paragraph 8; Section 7.2.5; Section 7.2.7, Paragraph 1;"
+          },
+          {
+            "identity": "L2053:S0:0-87",
+            "text": "Section 10.4, Paragraph 1; Section 10.5, Paragraph 2; Table 2; Appendix A.2.5; Appendix"
+          },
+          {
+            "identity": "L2054:S0:0-84",
+            "text": "A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph"
+          },
+          {
+            "identity": "L2055:S0:0-6",
+            "text": "1.20.1"
+          },
+          {
+            "identity": "L2058:S0:0-87",
+            "text": "Section 4.1, Paragraph 1; Section 4.1, Paragraph 15; Section 4.1, Paragraph 15; Section"
+          },
+          {
+            "identity": "L2059:S0:0-86",
+            "text": "4.1.1, Paragraph 1; Section 4.1.1, Paragraph 5; Section 4.4, Paragraph 5; Section 4.4,"
+          },
+          {
+            "identity": "L2060:S0:0-87",
+            "text": "Paragraph 9; Section 4.6, Paragraph 4; Section 4.6, Paragraph 4; Section 4.6, Paragraph"
+          },
+          {
+            "identity": "L2062:S0:0-39",
+            "text": "Paragraph 3; Section 7.2.5, Paragraph 1"
+          },
+          {
+            "identity": "L2065:S0:0-88",
+            "text": "Section 3.2, Paragraph 4; Section 3.2, Paragraph 4; Section 6.2.1, Paragraph 2; Table 1;"
+          },
+          {
+            "identity": "L2066:S0:0-82",
+            "text": "Section 7, Paragraph 3; Section 7.2.4; Section 8.1, Paragraph 2.20.1; Section 8.1,"
+          },
+          {
+            "identity": "L2067:S0:0-86",
+            "text": "Paragraph 2.22.1; Section 9, Paragraph 4; Section 10.5, Paragraph 4; Table 2; Table 4;"
+          },
+          {
+            "identity": "L2068:S0:0-85",
+            "text": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;"
+          },
+          {
+            "identity": "L2069:S0:0-81",
+            "text": "Appendix A.3, Paragraph 3; Appendix A.3, Paragraph 4.4.1; Appendix A.3, Paragraph"
+          },
+          {
+            "identity": "L2070:S0:0-83",
+            "text": "4.6.1; Appendix A.3, Paragraph 4.8.1; Appendix A.3, Paragraph 4.10.1; Appendix A.4,"
+          },
+          {
+            "identity": "L2071:S0:0-16",
+            "text": "Paragraph 3.10.1"
+          },
+          {
+            "identity": "L2073:S0:0-51",
+            "text": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1"
+          },
+          {
+            "identity": "L2075:S0:0-85",
+            "text": "Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 4"
+          },
+          {
+            "identity": "L2077:S0:0-20",
+            "text": "Mike Bishop (editor)"
+          },
+          {
+            "identity": "L2078:S0:0-6",
+            "text": "Akamai"
+          },
+          {
+            "identity": "L2079:S0:0-27",
+            "text": "Email: mbishop@evequefou.be"
+          }
+        ]
+      }
+    ],
+    "micro": {
+      "truePositive": 82,
+      "falsePositive": 519,
+      "falseNegative": 57,
+      "precision": 0.1364,
+      "recall": 0.5899,
+      "f1": 0.2216
+    }
+  },
+  "relationPredicatesNotEvaluable": {
+    "reason": "canonical Gold for SRC-089/SRC-095 carries heading occurrences only; no relation/hierarchy axis is registered evaluable",
+    "predicates": [
+      "PARENT_OF",
+      "REFERENCES",
+      "SAME_ENTITY",
+      "CONTINUES"
+    ],
+    "boundClaimCounts": {
+      "PARENT_OF": 180,
+      "REFERENCES": 55,
+      "SAME_ENTITY": 0,
+      "CONTINUES": 354
+    },
+    "totalRelationClaimsNotScored": 589
+  }
+}
