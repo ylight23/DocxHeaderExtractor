@@ -32,6 +32,10 @@ internal static class Program
         if (args.Contains("--remediation-canary"))
             return await RemediationCanary.RunAsync(LocateRepoRoot(), args);
 
+        // The frozen qwen3.8-27b:free strict-schema model-capability canary has its own gate and sentinel; see Qwen38FreeCanary.
+        if (args.Contains("--qwen38-free-canary"))
+            return await Qwen38FreeCanary.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "v5-model-capability-preflight-v2",
+  "supersedes": "capability-preflight.v1.json (a4d8a02) - v1 is kept as historical record, not deleted",
+  "supersedeReason": "v1 conflated OpenRouter's supported_parameters CAPABILITY LABEL ('structured_outputs') with the actual WIRE FIELD NAME a request must send ('response_format'). OpenRouter's own model catalog and Structured Outputs documentation describe 'structured_outputs' as a filterable capability identifier (e.g. supported_parameters=structured_outputs finds models that accept response_format.type=json_schema); the request itself is always sent as response_format regardless of which capability label the catalog uses to describe support for it. v1's inference - 'response_format absent from supported_parameters therefore the endpoint rejects the response_format field' - does not follow from that semantics and is withdrawn.",
+  "requestedModel": "qwen/qwen3.8-27b:free",
+  "actualEndpoint": {
+    "providerName": "ModelRun",
+    "tag": "modelrun/fp4",
+    "routingOrderValueToUse": "modelrun",
+    "onlyOneEndpointForThisSlug": true,
+    "supportedParameters": [
+      "reasoning", "include_reasoning", "max_tokens", "temperature", "presence_penalty",
+      "repetition_penalty", "frequency_penalty", "stop", "top_p",
+      "structured_outputs", "tools", "tool_choice", "reasoning_effort"
+    ]
+  },
+  "correctedCapabilityReading": {
+    "structuredOutputsCapabilityLabel": "SUPPORTED",
+    "responseFormatWireField": "ELIGIBLE_FOR_PREFLIGHT - the correct request shape per OpenRouter's Structured Outputs guide is response_format: { type: \"json_schema\", json_schema: { name, strict: true, schema } }, sent regardless of the capability-label naming quirk",
+    "strictJsonSchemaAcceptance": "UNVERIFIED_UNTIL_REQUEST_ACCEPTED - metadata confirms the capability LABEL, not which JSON-Schema keyword subset ModelRun's backend actually honors (oneOf, additionalProperties:false, enum, nested required, etc.). This is not re-litigated as blocked; it is carried forward as an explicit unverified flag through preflight and only resolved by whether the real request is accepted once authorized.",
+    "streamAndUsageInclude": "not distinguishable from supported_parameters alone; carried as unverified the same way",
+    "reasoningNone": "supported_parameters lists reasoning/reasoning_effort/include_reasoning; reasoning={effort:\"none\"} is the same shape already used for qwen3.7-flash and is expected to work",
+    "requireParametersTrueAllowFallbacksFalse": "compatible with routing: exactly one provider (ModelRun) serves this slug, so require_parameters=true has nothing else to fall back past, and allow_fallbacks=false is a no-op safety net rather than a live constraint"
+  },
+  "verdict": "PROCEED_TO_PROVIDER_FREE_SCHEMA_FREEZE",
+  "verdictSequence": [
+    "CAPABILITY_PREFLIGHT_V1_INVALID",
+    "STRUCTURED_OUTPUT_SUPPORTED (capability label)",
+    "PROCEED_TO_PROVIDER_FREE_SCHEMA_FREEZE",
+    "STOP_BEFORE_INFERENCE"
+  ],
+  "providerCalls": 0,
+  "goldRead": false,
+  "note": "This correction itself makes no provider call. The strict-schema acceptance question is answered empirically only once a separate, explicit authorization opens the 3-call gate (V5CanaryGate) after the preflight below is frozen - not by this file."
+}
