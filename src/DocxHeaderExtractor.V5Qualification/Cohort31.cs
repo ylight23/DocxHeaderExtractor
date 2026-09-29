@@ -43,13 +43,14 @@ internal static class Cohort31
         string? Arg(string name) => args.FirstOrDefault(a => a.StartsWith(name + "=", StringComparison.Ordinal))?[(name.Length + 1)..];
         if (args.Contains("--cohort31-preflight"))
             return Preflight(root, Arg("--out") ?? throw new ArgumentException("--out=DIR is required"));
+        var cohortRoot = Arg("--cohort-root") ?? CohortRoot;
         if (args.Contains("--cohort31-seal"))
             return Seal(root, Arg("--run-a") ?? throw new ArgumentException("--run-a=DIR is required"),
-                Arg("--run-b") ?? throw new ArgumentException("--run-b=DIR is required"));
+                Arg("--run-b") ?? throw new ArgumentException("--run-b=DIR is required"), cohortRoot);
         if (args.Contains("--cohort31-qualify"))
-            return Qualify(root);
+            return Qualify(root, cohortRoot);
         if (args.Contains("--cohort31-execute"))
-            return await ExecuteAsync(root, Arg("--confirm-cohort31") == ConfirmSentinel);
+            return await ExecuteAsync(root, Arg("--confirm-cohort31") == ConfirmSentinel, cohortRoot);
         throw new ArgumentException("unknown cohort31 mode");
     }
 
@@ -126,8 +127,9 @@ internal static class Cohort31
 
     // ---------------------------------------------------------------- seal (provider-free)
 
-    private static int Seal(string root, string runA, string runB)
+    private static int Seal(string root, string runA, string runB, string cohortRoot)
     {
+        var preflightDir = cohortRoot + "/preflight";
         var filesA = RelativeFiles(runA);
         var filesB = RelativeFiles(runB);
         if (!filesA.Keys.SequenceEqual(filesB.Keys, StringComparer.Ordinal))
@@ -144,9 +146,9 @@ internal static class Cohort31
             fingerprint["executionSourceHead"]?.GetValue<string>() != Git(root, "rev-parse HEAD"))
             return Fail("cohort31 seal: preflight was not taken from the current, clean, committed source head");
 
-        var target = Path.Combine(root, PreflightDir);
+        var target = Path.Combine(root, preflightDir);
         if (Directory.Exists(target))
-            return Fail($"cohort31 seal: {PreflightDir} already exists; a frozen cohort is never overwritten");
+            return Fail($"cohort31 seal: {preflightDir} already exists; a frozen cohort is never overwritten");
         Directory.CreateDirectory(Path.Combine(target, "bodies"));
         foreach (var relative in filesA.Keys.Where(key => key != "fingerprint.v1.json"))
             File.Copy(Path.Combine(runA, relative), Path.Combine(target, relative));
@@ -188,7 +190,7 @@ internal static class Cohort31
             goldRead = false,
             providerExecutionAuthorized = false,
         });
-        Console.WriteLine($"cohort31 sealed into {PreflightDir}: files={filesA.Count} byteIdentical=true providerCalls=0");
+        Console.WriteLine($"cohort31 sealed into {preflightDir}: files={filesA.Count} byteIdentical=true providerCalls=0");
         return 0;
     }
 
@@ -347,10 +349,12 @@ internal static class Cohort31
 
     // ---------------------------------------------------------------- execute (the only provider path)
 
-    private static async Task<int> ExecuteAsync(string root, bool authorized)
+    private static async Task<int> ExecuteAsync(string root, bool authorized, string cohortRoot)
     {
-        var cohortPath = Path.Combine(root, PreflightDir, "cohort.v1.json");
-        var environmentPath = Path.Combine(root, PreflightDir, "environment.v1.json");
+        var preflightDir = cohortRoot + "/preflight";
+        var providerDir = cohortRoot + "/provider";
+        var cohortPath = Path.Combine(root, preflightDir, "cohort.v1.json");
+        var environmentPath = Path.Combine(root, preflightDir, "environment.v1.json");
         if (!File.Exists(cohortPath) || !File.Exists(environmentPath))
             return Fail("cohort31 execute: no frozen preflight");
         var environment = JsonNode.Parse(File.ReadAllText(environmentPath))!;
@@ -373,7 +377,7 @@ internal static class Cohort31
             return Fail("cohort31 execute: rebuilt cohort differs from the frozen cohort - environment parity FAILED, no call made");
         foreach (var row in rebuilt.Rows)
         {
-            var frozenBody = File.ReadAllBytes(Path.Combine(root, PreflightDir, "bodies", BodyFileName(row)));
+            var frozenBody = File.ReadAllBytes(Path.Combine(root, preflightDir, "bodies", BodyFileName(row)));
             if (!frozenBody.AsSpan().SequenceEqual(row.ProviderBody) ||
                 V5CohortPreflightBuilder.Sha256(frozenBody) != row.ProviderRequestHash)
                 return Fail($"cohort31 execute: body {row.Ordinal} differs from the frozen body - no call made");
@@ -389,9 +393,9 @@ internal static class Cohort31
         var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
         if (string.IsNullOrWhiteSpace(apiKey))
             return Fail("OPENROUTER_API_KEY is not set. Refusing to run.");
-        var providerRoot = Path.Combine(root, ProviderDir);
+        var providerRoot = Path.Combine(root, providerDir);
         if (Directory.Exists(providerRoot))
-            return Fail($"cohort31 execute: {ProviderDir} already exists; a cohort is executed exactly once");
+            return Fail($"cohort31 execute: {providerDir} already exists; a cohort is executed exactly once");
         Directory.CreateDirectory(providerRoot);
 
         var executionHead = Git(root, "rev-parse HEAD");
@@ -492,8 +496,8 @@ internal static class Cohort31
             transportAggregate = V5CohortTransportAggregate.From(transport, wall.Elapsed.TotalMilliseconds),
             calls = transport,
         });
-        Console.WriteLine($"cohort31 execute: raw provider artifacts frozen under {ProviderDir}");
-        return Qualify(root);
+        Console.WriteLine($"cohort31 execute: raw provider artifacts frozen under {providerDir}");
+        return Qualify(root, cohortRoot);
     }
 
     private static string ExtractUserMessage(byte[] body)
@@ -579,12 +583,13 @@ internal static class Cohort31
 
     // ---------------------------------------------------------------- qualify (provider-free)
 
-    private static int Qualify(string root)
+    private static int Qualify(string root, string cohortRoot)
     {
-        var providerRoot = Path.Combine(root, ProviderDir);
+        var preflightDir = cohortRoot + "/preflight";
+        var providerRoot = Path.Combine(root, cohortRoot + "/provider");
         if (!File.Exists(Path.Combine(providerRoot, "run-manifest.v1.json")))
             return Fail("cohort31 qualify: no frozen provider run");
-        var cohort = JsonNode.Parse(File.ReadAllText(Path.Combine(root, PreflightDir, "cohort.v1.json")))!;
+        var cohort = JsonNode.Parse(File.ReadAllText(Path.Combine(root, preflightDir, "cohort.v1.json")))!;
         var contract = DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
         var atomsByDoc = V5CohortPreflightBuilder.Documents.ToDictionary(
             item => item.DocumentId,
@@ -629,7 +634,7 @@ internal static class Cohort31
         }
 
         var manifest = JsonNode.Parse(File.ReadAllText(Path.Combine(providerRoot, "run-manifest.v1.json")))!;
-        WriteJson(Path.Combine(root, CohortRoot, "cohort-result.v1.json"), new
+        WriteJson(Path.Combine(root, cohortRoot, "cohort-result.v1.json"), new
         {
             schemaVersion = "v5-provider-cohort-31-result-v1",
             purpose = "MEASUREMENT_NOT_PROMOTION",
@@ -640,7 +645,7 @@ internal static class Cohort31
             binding = V5QualificationAggregate.From(qualifications),
             packs,
         });
-        Console.WriteLine($"cohort31 qualify: wrote {CohortRoot}/cohort-result.v1.json (provider-free, goldRead=false)");
+        Console.WriteLine($"cohort31 qualify: wrote {cohortRoot}/cohort-result.v1.json (provider-free, goldRead=false)");
         return 0;
     }
 
