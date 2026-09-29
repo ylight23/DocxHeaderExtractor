@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "v5-source-selection-remediation-counterfactual-v1",
+  "sourceCohortCommit": "3a4f69a194f1e0a4598bda8c5eeed06b7c57bb40",
+  "providerCalls": 0,
+  "goldRead": false,
+  "note": "representation opportunity over the frozen cohort, not a prediction of future model behavior",
+  "claimLevelExactTextRefusals": 160,
+  "partLevelExactTextFailures": 169,
+  "classA_redundantSuccessfulWholeAtomQuotes": {
+    "removable": 502,
+    "of": 502
+  },
+  "classB_failedSameAtomWholeSelectionsAliasOnlyRepresentable": 110,
+  "classC_trueMultipartMechanicallyRepresentable": {
+    "verified": 20,
+    "of": 20
+  },
+  "z_remainingExactTextFailuresNotSolvedByWirePolicy": {
+    "count": 39,
+    "byCategory": {
+      "COMPLETELY_WRONG_TEXT": 2,
+      "WRONG_ALIAS_TEXT": 1,
+      "PARTIAL_PARAPHRASE_OR_REWRITE": 25,
+      "PUNCTUATION_DIFFERENCE": 3,
+      "EXTRACTION_SPACING_DIFFERENCE": 2,
+      "REPEATED_SUBSTRING_WITHOUT_DISAMBIGUATION": 1,
+      "OTHER": 5
+    },
+    "rows": [
+      {
+        "documentId": "SRC-089",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "sourceAlias": "L0005:S0",
+        "category": "COMPLETELY_WRONG_TEXT"
+      },
+      {
+        "documentId": "SRC-089",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "sourceAlias": "L0007:S0",
+        "category": "WRONG_ALIAS_TEXT"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "sourceAlias": "L0012:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "sourceAlias": "L0012:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "sourceAlias": "L0104:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "sourceAlias": "L0104:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "sourceAlias": "L0104:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "sourceAlias": "L0187:S0",
+        "category": "PUNCTUATION_DIFFERENCE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "sourceAlias": "L0189:S0",
+        "category": "PUNCTUATION_DIFFERENCE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "sourceAlias": "L0191:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "sourceAlias": "L0195:S0",
+        "category": "PUNCTUATION_DIFFERENCE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "sourceAlias": "L0196:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "sourceAlias": "L0199:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "sourceAlias": "L0202:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "sourceAlias": "L0204:S0",
+        "category": "EXTRACTION_SPACING_DIFFERENCE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "sourceAlias": "L0855:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "sourceAlias": "L0873:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "sourceAlias": "L0904:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "sourceAlias": "L0894:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "sourceAlias": "L1385:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "sourceAlias": "L1433:S0",
+        "category": "REPEATED_SUBSTRING_WITHOUT_DISAMBIGUATION"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+        "sourceAlias": "L1467:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+        "sourceAlias": "L1467:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+        "sourceAlias": "L1467:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "sourceAlias": "L1690:S0",
+        "category": "EXTRACTION_SPACING_DIFFERENCE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "sourceAlias": "L1637:S1",
+        "category": "COMPLETELY_WRONG_TEXT"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "sourceAlias": "L1665:S1",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1807:S1",
+        "category": "OTHER"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1811:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1811:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1814:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1814:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1821:S0",
+        "category": "OTHER"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1821:S0",
+        "category": "OTHER"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1831:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1834:S0",
+        "category": "OTHER"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1852:S1",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1871:S0",
+        "category": "OTHER"
+      },
+      {
+        "documentId": "SRC-095",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "sourceAlias": "L1896:S0",
+        "category": "PARTIAL_PARAPHRASE_OR_REWRITE"
+      }
+    ]
+  }
+}
