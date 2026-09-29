@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class V5ProviderRequestBodyV2_1Tests
 {
-    private static V5ProviderEnvelope Envelope() => new("qwen/qwen3.7-flash", "Alibaba", "none", true, "json_object", 300)
+    private static V5ProviderEnvelope Envelope() => new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
     {
         UsageInclude = true,
     };

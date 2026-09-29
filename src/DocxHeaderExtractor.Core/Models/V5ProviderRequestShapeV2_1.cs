@@ -33,7 +33,7 @@ public sealed record ProviderStructuredOutputCapabilities(
 public static class ProviderStructuredOutputRegistry
 {
     public static ProviderStructuredOutputCapabilities QwenFlashAlibaba { get; } =
-        new("Alibaba", "qwen/qwen3.7-flash", JsonSchemaStrictSupported: false, JsonObjectSupported: true,
+        new("alibaba", "qwen/qwen3.7-flash", JsonSchemaStrictSupported: false, JsonObjectSupported: true,
             EvidenceSource: "explicit-preflight-registration; strict support unverified");
 }
 

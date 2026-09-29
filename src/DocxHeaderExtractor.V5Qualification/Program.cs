@@ -29,7 +29,7 @@ internal static class Program
 
         var root = LocateRepoRoot();
         var contract = DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
-        var envelope = new V5ProviderEnvelope("qwen/qwen3.7-flash", "Alibaba", "none", true, "json_object", 300)
+        var envelope = new V5ProviderEnvelope("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
         {
             UsageInclude = true,
         };

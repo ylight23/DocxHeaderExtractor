@@ -219,7 +219,7 @@ public sealed class V5EvidenceWireV2_1Tests
             TestRepository.Path(SourcePdfCorpus.Src095), "SRC-095", Contract(),
             V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, Envelope());
 
-    private static V5ProviderEnvelope Envelope() => new("qwen/qwen3.7-flash", "Alibaba", "none", true, "json_object", 300)
+    private static V5ProviderEnvelope Envelope() => new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
     {
         UsageInclude = true,
     };

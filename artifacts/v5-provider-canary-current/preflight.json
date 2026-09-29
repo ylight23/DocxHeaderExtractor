@@ -1,6 +1,6 @@
 {
   "schemaVersion": "v5-provider-canary-preflight-v1",
-  "head": "aea5130212071119c66e085f7ed686c2870021e8",
+  "head": "e7954c2cb060173b850090b40856b8dc2eb9af84",
   "protocolVersion": "v5-source-backed-claim-2.1",
   "composerVersion": "v5-semantic-request-composer-2.1",
   "schemaHash": "1e15deffb7aa8af6b6bab490017f5cc524093c9e7229dc5f9d4e7b0737765d2f",
@@ -26,9 +26,9 @@
     25088
   ],
   "providerRequestHashes": [
-    "35cca1dda4b299294dc4166d894884be7ad3450bb9b643385381c31021c91955",
-    "c848309287e65cfbce351e3b4e16d3bac860cad2d018562a553d4292ec511008",
-    "b96a642ce25e1d2a6a09d7706a7872050c2bd725c7053e4c02b9514cdb831332"
+    "70d08d91e19c7602cff2ab8fa801c9c73ab036bdd7ff720fb7cca3a8b29a6623",
+    "fa7f708efbe8e8ca50c45a50ed230298eba32301c76dc24a3ec8fd1badc88baa",
+    "411f762a40e6169555a8c0176a32cece650e925550de5555cb484805699af3df"
   ],
   "providerRequestBytes": [
     105411,
@@ -47,7 +47,7 @@
   },
   "providerEnvelope": {
     "Model": "qwen/qwen3.7-flash",
-    "Provider": "Alibaba",
+    "Provider": "alibaba",
     "Reasoning": "none",
     "Streaming": true,
     "ResponseFormat": "json_object",

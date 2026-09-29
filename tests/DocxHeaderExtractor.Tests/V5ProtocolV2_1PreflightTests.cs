@@ -28,7 +28,7 @@ public sealed class V5ProtocolV2_1PreflightTests
                 id,
                 DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create(),
                 SemanticEvidencePackingPolicies.PdfResourceBoundedP05.PolicyId,
-                new V5ProviderEnvelope("qwen/qwen3.7-flash", "Alibaba", "none", true, "json_object", 300));
+                new V5ProviderEnvelope("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300));
             built.Preflight.Validate();
             Assert.Equal(0, built.Preflight.ProviderCalls);
             Assert.False(built.Preflight.GoldRead);
@@ -53,7 +53,7 @@ public sealed class V5ProtocolV2_1PreflightTests
     public void Select_three_packs_deterministically_for_a_wire_contract_only_canary()
     {
         var contract = DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
-        var envelope = new V5ProviderEnvelope("qwen/qwen3.7-flash", "Alibaba", "none", true, "json_object", 300)
+        var envelope = new V5ProviderEnvelope("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
         {
             UsageInclude = true,
         };
