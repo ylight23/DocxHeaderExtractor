@@ -1,3 +1,4 @@
+using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
 
@@ -111,6 +112,39 @@ public sealed class V5ArchitectureTests
         ]);
         var result = Assert.Single(projection.Project(state, Contract()).Where(item => item.ProjectionName == "knowledge-state"));
         Assert.Equal(0, Assert.IsType<int>(result.Payload));
+    }
+
+    [Fact]
+    public void Task_compiler_selects_declared_projections_without_inventing_vocabulary()
+    {
+        var compiled = new DeterministicTaskCompiler().Compile(
+            new TaskGoal("outline-task", "Project a validated outline", ["knowledge-state"]), Contract());
+        Assert.Equal("outline-task", compiled.TaskId);
+        Assert.Single(compiled.Projections);
+        Assert.Throws<InvalidOperationException>(() => new DeterministicTaskCompiler().Compile(
+            new TaskGoal("bad", "bad", ["invented-projection"]), Contract()));
+    }
+
+    [Fact]
+    public void Claim_codec_rejects_coordinates_and_unknown_fields()
+    {
+        using var document = JsonDocument.Parse("""
+            {"claims":[{"claimId":"c1","subject":{"sourceParts":[{"sourceAlias":"A1","start":0}]},"predicate":"DESCRIBES","state":"RESOLVED"}]}
+            """);
+        Assert.Throws<InvalidOperationException>(() => SemanticClaimResponseCodec.Parse(document.RootElement, Contract()));
+    }
+
+    [Fact]
+    public void Preflight_builder_freezes_hashes_without_provider_calls()
+    {
+        var graph = EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha")]);
+        var preflight = V5ProviderPreflightBuilder.Build(
+            "production", graph, Contract(), "stable prompt", "RESOURCE_BOUNDED", ["request-1"],
+            new V5ProviderEnvelope("model", "provider", "none", true, "json_object", 300));
+        Assert.Equal(1, preflight.PlannedProviderCalls);
+        Assert.Equal(0, preflight.ProviderCalls);
+        Assert.False(preflight.GoldRead);
+        Assert.Equal(64, preflight.Hash().Length);
     }
 
     private static DocumentTaskContract Contract() => new(

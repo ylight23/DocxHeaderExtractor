@@ -56,6 +56,27 @@ public sealed class InMemoryEvidenceRetriever : IEvidenceRetriever
     }
 }
 
+/// <summary>Evidence-only graph traversal; traversed edges never become accepted semantic claims.</summary>
+public sealed class GraphNeighborhoodEvidenceRetriever : IEvidenceRetriever
+{
+    public IReadOnlyList<EvidenceCandidate> Retrieve(EvidenceRetrievalRequest request, UniversalEvidenceGraph graph)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(graph);
+        var origin = graph.Nodes.FirstOrDefault(node => node.EvidenceId == request.OriginatingEvidenceId)?.EvidenceId;
+        if (origin is null) return [];
+        var neighbors = graph.Relations
+            .Where(edge => edge.FromEvidenceId == origin || edge.ToEvidenceId == origin)
+            .Select(edge => edge.FromEvidenceId == origin ? edge.ToEvidenceId : edge.FromEvidenceId)
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(id => id, StringComparer.Ordinal)
+            .Take(Math.Max(0, request.MaxResults))
+            .Select((id, index) => new EvidenceCandidate(id, index + 1, "GRAPH_NEIGHBORHOOD", "factual-evidence-edge"))
+            .ToArray();
+        return neighbors;
+    }
+}
+
 public sealed record EvidencePlanAction(
     string ClaimId,
     EvidenceNeed Need,

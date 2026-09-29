@@ -152,6 +152,60 @@ public static class SemanticClaimContract
     }
 }
 
+/// <summary>Strict decoder for model JSON. Unknown fields and parser-owned coordinates fail closed.</summary>
+public static class SemanticClaimResponseCodec
+{
+    private static readonly HashSet<string> ResponseFields = ["claims"];
+    private static readonly HashSet<string> ClaimFields = ["claimId", "subject", "predicate", "value", "object", "state", "evidenceNeeds"];
+    private static readonly HashSet<string> EndpointFields = ["sourceParts"];
+    private static readonly HashSet<string> PartFields = ["sourceAlias", "verbatimText", "occurrence", "leftExactContext", "rightExactContext"];
+
+    public static SemanticClaimResponse Parse(JsonElement payload, DocumentTaskContract contract)
+    {
+        if (payload.ValueKind != JsonValueKind.Object) throw new InvalidOperationException("claim-payload-not-object");
+        EnsureFields(payload, ResponseFields, "response");
+        if (!payload.TryGetProperty("claims", out var claims) || claims.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("claims-array-missing");
+        foreach (var claim in claims.EnumerateArray())
+        {
+            EnsureFields(claim, ClaimFields, "claim");
+            EnsureEndpoint(claim, "subject");
+            if (claim.TryGetProperty("object", out var target) && target.ValueKind != JsonValueKind.Null)
+                EnsureEndpoint(target, "object");
+        }
+        var options = new JsonSerializerOptions(CanonicalJson.Options)
+        {
+            Converters = { new JsonStringEnumConverter() },
+        };
+        var response = payload.Deserialize<SemanticClaimResponse>(options)
+            ?? throw new InvalidOperationException("claim-payload-empty");
+        var issues = SemanticClaimContract.Validate(response, contract);
+        if (issues.Count > 0) throw new InvalidOperationException(string.Join(",", issues));
+        return response;
+    }
+
+    private static void EnsureEndpoint(JsonElement claim, string property)
+    {
+        if (!claim.TryGetProperty(property, out var endpoint) || endpoint.ValueKind != JsonValueKind.Object)
+        {
+            if (property == "subject") throw new InvalidOperationException("claim-subject-missing");
+            return;
+        }
+        EnsureFields(endpoint, EndpointFields, property);
+        if (!endpoint.TryGetProperty("sourceParts", out var parts) || parts.ValueKind != JsonValueKind.Array || parts.GetArrayLength() == 0)
+            throw new InvalidOperationException($"{property}-parts-missing");
+        foreach (var part in parts.EnumerateArray()) EnsureFields(part, PartFields, "source-part");
+    }
+
+    private static void EnsureFields(JsonElement element, IReadOnlySet<string> allowed, string path)
+    {
+        if (element.ValueKind != JsonValueKind.Object) throw new InvalidOperationException($"{path}-not-object");
+        foreach (var property in element.EnumerateObject())
+            if (!allowed.Contains(property.Name))
+                throw new InvalidOperationException($"{path}-field-not-in-contract:{property.Name}");
+    }
+}
+
 internal static class Hashing
 {
     internal static string Sha256(string text) => Convert.ToHexStringLower(

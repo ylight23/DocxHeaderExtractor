@@ -71,6 +71,47 @@ public sealed record V5ProviderPreflight(
     }
 }
 
+public static class V5ProviderPreflightBuilder
+{
+    public static V5ProviderPreflight Build(
+        string productionSourceSha,
+        UniversalEvidenceGraph sourceUniverse,
+        DocumentTaskContract contract,
+        string prompt,
+        string packingPolicy,
+        IReadOnlyList<string> requestPayloads,
+        V5ProviderEnvelope providerEnvelope)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(productionSourceSha);
+        ArgumentNullException.ThrowIfNull(sourceUniverse);
+        ArgumentNullException.ThrowIfNull(contract);
+        ArgumentException.ThrowIfNullOrWhiteSpace(prompt);
+        ArgumentException.ThrowIfNullOrWhiteSpace(packingPolicy);
+        ArgumentNullException.ThrowIfNull(requestPayloads);
+        ArgumentNullException.ThrowIfNull(providerEnvelope);
+        contract.Validate();
+        var promptHash = Hashing.Sha256(prompt.ReplaceLineEndings("\n"));
+        var requestHashes = requestPayloads.Select(payload => Hashing.Sha256(payload)).ToArray();
+        var requestBytes = requestPayloads.Select(payload => System.Text.Encoding.UTF8.GetByteCount(payload)).ToArray();
+        var preflight = new V5ProviderPreflight(
+            productionSourceSha,
+            sourceUniverse.Hash(),
+            contract.Hash(),
+            SemanticClaimContract.SchemaHash(),
+            promptHash,
+            packingPolicy,
+            requestPayloads.Count,
+            requestBytes,
+            requestHashes,
+            providerEnvelope,
+            requestPayloads.Count,
+            GoldRead: false,
+            ProviderCalls: 0);
+        preflight.Validate();
+        return preflight;
+    }
+}
+
 public sealed record GenericEvaluationMetrics(
     int GroundedClaims,
     int InvalidClaims,

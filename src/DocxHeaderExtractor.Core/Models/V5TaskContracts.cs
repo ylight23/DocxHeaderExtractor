@@ -56,6 +56,38 @@ public sealed record ExecutionBudget(
     }
 }
 
+public sealed record TaskGoal(string TaskId, string Description, IReadOnlyList<string> RequestedProjections);
+
+public interface ITaskCompiler
+{
+    DocumentTaskContract Compile(TaskGoal goal, DocumentTaskContract vocabulary);
+}
+
+/// <summary>
+/// Provider/model-independent compiler. It only selects an already declared contract vocabulary;
+/// it never invents predicates or a document-domain ontology from prose.
+/// </summary>
+public sealed class DeterministicTaskCompiler : ITaskCompiler
+{
+    public DocumentTaskContract Compile(TaskGoal goal, DocumentTaskContract vocabulary)
+    {
+        ArgumentNullException.ThrowIfNull(goal);
+        ArgumentNullException.ThrowIfNull(vocabulary);
+        vocabulary.Validate();
+        if (string.IsNullOrWhiteSpace(goal.TaskId) || string.IsNullOrWhiteSpace(goal.Description))
+            throw new InvalidOperationException("task-goal-identity-missing");
+        var requested = goal.RequestedProjections.ToHashSet(StringComparer.Ordinal);
+        if (requested.Any(name => vocabulary.Projections.All(item => item.Name != name)))
+            throw new InvalidOperationException("task-goal-projection-not-declared");
+        return vocabulary with
+        {
+            TaskId = goal.TaskId,
+            Description = goal.Description,
+            Projections = vocabulary.Projections.Where(item => requested.Count == 0 || requested.Contains(item.Name)).ToArray(),
+        };
+    }
+}
+
 public sealed record SemanticPredicateDefinition(
     [property: JsonPropertyName("name")] string Name,
     [property: JsonPropertyName("description")] string Description,
