@@ -7,8 +7,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// "Chapter IV" - and reduces it to a comparable signature.
 /// <para>
 /// This is parser evidence about shape, never a claim that the text is a heading. It survived the
-/// removal of the legacy PDF lane because the live DOCX path uses it for candidate context,
-/// ranking and marker hierarchy; leaving it inside a deleted strategy would have made those three
+/// removal of the old PDF lane because the live DOCX path uses it for semantic source context
+/// and marker hierarchy; leaving it inside a deleted strategy would have made those consumers
 /// depend on a file that no longer had a reason to exist.
 /// </para>
 /// </summary>

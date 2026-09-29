@@ -18,9 +18,7 @@ public sealed record ResolvedStyle(
     double? FontSizePt,
     string? Alignment,
     bool KeepNext,
-    bool PageBreakBefore,
-    int? NumberingId,
-    int? NumberingLevel);
+    bool PageBreakBefore);
 
 /// <summary>
 /// Đọc styles.xml, giải quyết kế thừa basedOn và docDefaults, có cache theo styleId.
@@ -73,7 +71,7 @@ public sealed class StyleResolver
         if (chain.Count == 0)
         {
             var empty = new ResolvedStyle(styleId, null, null, false, false, false, false,
-                DefaultFontSizePt, null, false, false, null, null);
+                DefaultFontSizePt, null, false, false);
             return _cache[styleId] = empty;
         }
 
@@ -83,7 +81,6 @@ public sealed class StyleResolver
         double? size = DefaultFontSizePt;
         string? align = null;
         bool keepNext = false, pageBreak = false;
-        int? numId = null, numLvl = null;
 
         foreach (var st in chain)
         {
@@ -94,8 +91,6 @@ public sealed class StyleResolver
             if (pPr?.Justification?.Val is { } j) align = j.InnerText;
             if (OnOff(pPr?.KeepNext) is { } kn) keepNext = kn;
             if (OnOff(pPr?.PageBreakBefore) is { } pb) pageBreak = pb;
-            if (pPr?.NumberingProperties?.NumberingId?.Val is { } nid) numId = nid.Value;
-            if (pPr?.NumberingProperties?.NumberingLevelReference?.Val is { } nlv) numLvl = nlv.Value;
 
             if (OnOff(rPr?.Bold) is { } b) bold = b;
             if (OnOff(rPr?.Italic) is { } i) italic = i;
@@ -108,7 +103,7 @@ public sealed class StyleResolver
         name = chain[^1].StyleName?.Val?.Value;
 
         var resolved = new ResolvedStyle(styleId, name, outline, bold, italic, underline, caps,
-            size, align, keepNext, pageBreak, numId, numLvl);
+            size, align, keepNext, pageBreak);
         return _cache[styleId] = resolved;
     }
 

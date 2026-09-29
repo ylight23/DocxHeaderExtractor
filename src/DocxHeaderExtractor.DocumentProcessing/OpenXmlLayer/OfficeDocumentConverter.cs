@@ -4,12 +4,12 @@ using System.Runtime.Versioning;
 namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>
-/// OpenXML SDK chỉ đọc được định dạng OOXML (.docx). File .doc là định dạng nhị phân CFB đời cũ,
-/// nên phải chuyển đổi trước. Ưu tiên LibreOffice (không cần Word), sau đó tới Word COM.
+/// OpenXML SDK chỉ đọc được định dạng OOXML (.docx/.docm). Các định dạng nhập khác như .doc,
+/// .rtf và .odt phải được chuyển đổi trước. Ưu tiên LibreOffice (không cần Word), sau đó tới Word COM.
 /// </summary>
-public static class LegacyDocConverter
+public static class OfficeDocumentConverter
 {
-    private static readonly string[] LibreOfficeCandidates =
+    private static readonly string[] LibreOfficeExecutableNames =
     [
         @"C:\Program Files\LibreOffice\program\soffice.exe",
         @"C:\Program Files (x86)\LibreOffice\program\soffice.exe",
@@ -49,7 +49,7 @@ public static class LegacyDocConverter
         throw new InvalidOperationException(
             $"""
              Không chuyển đổi được '{Path.GetFileName(path)}' sang .docx.
-             OpenXML SDK không đọc trực tiếp được định dạng .doc nhị phân.
+             OpenXML SDK không đọc trực tiếp được định dạng này.
              Hãy cài LibreOffice (soffice) hoặc Microsoft Word, hoặc tự lưu file sang .docx.
              """);
     }
@@ -97,7 +97,7 @@ public static class LegacyDocConverter
 
     private static string? FindLibreOffice()
     {
-        foreach (var c in LibreOfficeCandidates)
+        foreach (var c in LibreOfficeExecutableNames)
             if (File.Exists(c)) return c;
 
         var pathVar = Environment.GetEnvironmentVariable("PATH") ?? "";

@@ -4,8 +4,8 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
-/// Compatibility projection from generic structural authority to the existing heading output.
-/// It performs no candidate selection, matching, validation, or hierarchy inference.
+/// Outline projection from generic structural authority to the existing heading output.
+/// It performs no source selection, matching, validation, or hierarchy inference.
 /// </summary>
 public static class HeadingOutlineProjection
 {
@@ -19,17 +19,14 @@ public static class HeadingOutlineProjection
         {
             File = template.File,
             ParagraphCount = template.ParagraphCount,
-            CandidateCount = template.CandidateCount,
+            SourceCount = template.SourceCount,
             Headings = Project(structure),
             ElapsedMs = template.ElapsedMs,
             Model = template.Model,
-            DocumentMode = template.DocumentMode,
             DeterministicRoute = template.DeterministicRoute,
             RouteAudit = template.RouteAudit,
-            Diagnostics = template.Diagnostics,
             Provenance = template.Provenance,
             ProductOutput = template.ProductOutput,
-            DecisionAudit = template.DecisionAudit,
             Outcome = template.Outcome,
         };
     }
@@ -59,14 +56,14 @@ public static class HeadingOutlineProjection
 
         return new HeadingRecord
         {
-            Index = metadata?.CompatibilitySourceOrdinal ?? source.SourceOrdinal,
-            StableId = metadata?.CompatibilityStableId ?? source.StableId ?? source.SourceId,
-            SourceId = metadata?.CompatibilitySourceId ?? source.SourceId,
-            Level = metadata?.CompatibilityLevelIsSet == true ? metadata.CompatibilityLevel : element.Level,
-            Text = metadata?.CompatibilityText ?? element.Text,
+            Index = metadata?.OutlineSourceOrdinal ?? source.SourceOrdinal,
+            StableId = metadata?.OutlineStableId ?? source.StableId ?? source.SourceId,
+            SourceId = metadata?.OutlineSourceId ?? source.SourceId,
+            Level = metadata?.OutlineLevelIsSet == true ? metadata.OutlineLevel : element.Level,
+            Text = metadata?.OutlineText ?? element.Text,
             OriginalText = metadata?.OriginalText,
-            HeadingSpan = metadata?.CompatibilityHeadingSpan is { } compatibilitySpan
-                ? new TextOffsetSpan(compatibilitySpan.Start, compatibilitySpan.End)
+            HeadingSpan = metadata?.OutlineHeadingSpan is { } outlineSpan
+                ? new TextOffsetSpan(outlineSpan.Start, outlineSpan.End)
                 : new TextOffsetSpan(source.Span.Start, source.Span.End),
             InlineBody = metadata?.InlineBody,
             InlineBodySpan = metadata?.InlineBodySpan is { } bodySpan
@@ -77,13 +74,8 @@ public static class HeadingOutlineProjection
             StyleId = metadata?.StyleId,
             Source = ParseSource(element.Decision.Origin),
             Confidence = element.Decision.Confidence,
-            ModelConfirmed = metadata?.ModelConfirmed ?? false,
-            CriticConfirmed = metadata?.CriticConfirmed ?? false,
             DecisionStatus = ParseStatus(element.Decision.Status),
             ConfidenceBasis = element.Decision.ConfidenceBasis,
-            AcceptanceSignature = metadata?.AcceptanceSignature,
-            CalibrationSamples = metadata?.CalibrationSamples ?? 0,
-            Evidence = metadata?.Evidence,
             Disputed = element.Decision.Disputed,
         };
     }
@@ -94,13 +86,12 @@ public static class HeadingOutlineProjection
         "model" => HeadingSource.Model,
         "structure" => HeadingSource.Structure,
         "human" or "humancorrection" => HeadingSource.HumanCorrection,
-        _ => HeadingSource.Heuristic,
+        _ => HeadingSource.LocalRules,
     };
 
     private static HeadingDecisionStatus ParseStatus(string value) => value.ToLowerInvariant() switch
     {
         "autoacceptedevidence" => HeadingDecisionStatus.AutoAcceptedEvidence,
-        "autoacceptedcalibrated" => HeadingDecisionStatus.AutoAcceptedCalibrated,
         "humanverified" => HeadingDecisionStatus.HumanVerified,
         _ => HeadingDecisionStatus.RequiresReview,
     };

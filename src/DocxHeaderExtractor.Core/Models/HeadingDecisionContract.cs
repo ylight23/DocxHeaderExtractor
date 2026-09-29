@@ -1,7 +1,7 @@
 namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
-/// Immutable parser/render facts for one candidate. Model calls may read these facts but must not
+/// Immutable parser/render facts for one source occurrence. Model calls may read these facts but must not
 /// create or alter them; downstream output is built only after a separate validation pass.
 /// </summary>
 public sealed record SourceFacts
@@ -72,7 +72,6 @@ public enum ObservedEvidenceKind
     FontSize,
     Alignment,
     TableMembership,
-    ContentControl,
     LineBreak,
     PageBreakBefore,
     KeepNext,
@@ -102,53 +101,6 @@ public enum ProposedRole
     BodyText,
     Metadata,
     Unknown,
-}
-
-public enum SemanticEvidenceTag { OpensContent, TopicPhrase, SiblingSymmetry, SignatureBlock, ListContinuation }
-
-public enum VisualEvidenceTag
-{
-    StandaloneLine,
-    CenterAligned,
-    LeftIndentLevel1,
-    LeftIndentLevel2,
-    FontLargerThanBody,
-    BoldDominant,
-    WhitespaceBefore,
-    WhitespaceAfter,
-    TableGridContext,
-    SignatureRegion,
-    RepeatedRunningHeader,
-}
-
-public sealed record HeadingValidation(
-    bool SourceGrounded,
-    bool SpanValid,
-    bool EvidenceValid,
-    bool MarkerValid,
-    bool MarkerSequenceValid,
-    bool HierarchyValid,
-    bool ParentValid,
-    string? ParentResolution = null,
-    bool ParserBoundaryValid = true);
-
-/// <summary>The only heading contract that downstream writeback/output may consume.</summary>
-public sealed record ValidatedHeading
-{
-    public required string Id { get; init; }
-    public required string SourceId { get; init; }
-    public required ProposedRole Role { get; init; }
-    public required SourceTextSpan HeadingSpan { get; init; }
-    public required int Level { get; init; }
-    public string? ParentId { get; init; }
-    public required HeadingValidation Validation { get; init; }
-    public double? Confidence { get; init; }
-    public IReadOnlyList<ObservedEvidence> SourceEvidence { get; init; } = [];
-    public IReadOnlyList<SemanticEvidenceTag> SemanticEvidence { get; init; } = [];
-    public IReadOnlyList<VisualEvidenceTag> VisualEvidence { get; init; } = [];
-    public string Status { get; init; } = "validated";
-    public string? DiagnosticReason { get; init; }
-    public string Provenance { get; init; } = "source-facts-validator";
 }
 
 /// <summary>

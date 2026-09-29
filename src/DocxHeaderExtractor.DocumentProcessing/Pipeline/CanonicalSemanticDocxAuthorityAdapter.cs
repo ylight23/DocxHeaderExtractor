@@ -3,35 +3,33 @@ using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Policy;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
-/// Compatibility transport adapter for the normal DOCX route. The legacy classifier is only a
+/// Transport adapter for the normal DOCX route. The classifier is only a
 /// provider transport seam; semantic output crosses into the Core vNext contract before binding,
 /// graph resolution, or projection. It never supplies coordinates or hierarchy truth.
 /// </summary>
 internal static class CanonicalSemanticDocxAuthorityAdapter
 {
     public static async Task<StructuralAuthorityResult> RunAsync(
-        DocxPolicyState policyState,
-        DocumentModeReport mode,
+        SourceDocument sourceDocument,
         IHeaderClassifier? transport,
         CancellationToken cancellationToken,
         CanonicalSemanticExperiment? experiment = null,
         SemanticAuthorityReplayCaptureRequest? replayCapture = null)
     {
-        ArgumentNullException.ThrowIfNull(policyState);
-        var source = DocxAuthorityPipeline.BuildForAudit(policyState, mode);
+        ArgumentNullException.ThrowIfNull(sourceDocument);
+        var source = DocxAuthorityPipeline.BuildForAudit(sourceDocument);
         if (source.Blocks.Count == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "empty-docx-source");
 
-        var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(policyState.Source);
+        var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
         var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog).ToArray();
         var aliasesBySourceId = aliases
             .ToDictionary(item => item.SourceId, StringComparer.Ordinal);
-        var sourceHash = CanonicalSemanticSourceHash.Compute(policyState.Source.SourcePath);
+        var sourceHash = CanonicalSemanticSourceHash.Compute(sourceDocument.SourcePath);
         var evidence = source.Contexts.Values
             .OrderBy(item => item.Source.SourceOrdinal)
             .Select(item => EvidenceOf(item, aliasesBySourceId[item.Source.SourceId].Alias))
@@ -45,12 +43,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                     Profile = replayCapture.Metadata.Profile ?? "DOCX_ALIAS_SPAN",
                     PackingPolicy = replayCapture.Metadata.PackingPolicy ?? "FIXED_OWNED_COUNT_120",
                     RepeatIdentity = replayCapture.Metadata.RepeatIdentity ?? replayCapture.Metadata.RunId,
-                    // Named from V2 onward; a V1 replay stays exactly as it was captured.
                     RequestVersion = SemanticRequestVersions.Require(
-                        (experiment ?? CanonicalSemanticExperiment.Baseline).RequestVersion) is var version &&
-                        version != SemanticRequestVersion.V1_ATTENTION_LEGACY
-                            ? version.ToString()
-                            : replayCapture.Metadata.RequestVersion,
+                        (experiment ?? CanonicalSemanticExperiment.Baseline).RequestVersion).ToString(),
                 },
             };
 
@@ -59,11 +53,10 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             null,
             sourceHash,
             [new CanonicalSemanticPageEvidence("DOCX", true, 0, "docx-source")],
-            evidence.Select(item => item.CandidateAttention).ToArray(),
             evidence.Select(item => $"[{item.SourceAlias}] {item.ExactSourceText}").ToArray(),
             [],
             evidence.SelectMany(item => item.LocalBefore.Concat(item.LocalAfter)).ToArray(),
-            DocumentId: policyState.Source.DocumentId,
+            DocumentId: sourceDocument.DocumentId,
             SourceEvidence: evidence)
         {
             ExpectedSourceSha256 = sourceHash,
@@ -75,18 +68,20 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel? canonicalModel = null;
         if (transport is null)
         {
-            result = CanonicalSemanticProductionEntryPoint.Run(
-                input with { SemanticProposals = DeterministicProposals(policyState, source, aliasesBySourceId) });
+            // No model, no semantic claims: the harness does not declare headings from style,
+            // outline level or numbering on its own. Same as the PDF lane.
+            result = CanonicalSemanticProductionEntryPoint.Run(input with { SemanticProposals = [] });
         }
         else
         {
             canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
                 transport,
                 SemanticCoordinateContract.DocxAliasSpan,
+                SemanticEvidencePackingPolicies.FixedOwnedCount120,
                 experiment ?? CanonicalSemanticExperiment.Baseline);
             result = await CanonicalSemanticProductionEntryPoint.RunAsync(
                 input, canonicalModel,
-                requestId: $"docx:{policyState.Source.DocumentId}",
+                requestId: $"docx:{sourceDocument.DocumentId}",
                 cancellationToken: cancellationToken);
         }
 
@@ -124,9 +119,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 return new PdfValidatedStructure(
                     item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review")
                 {
-                    DomainRole = facts.DomainRole,
                     StructuralScope = facts.StructuralScope,
-                    DomainExclusionProposed = facts.DomainEvidence.ProposesOutlineExclusion,
                 };
             }, StringComparer.Ordinal);
         var hierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, source.ModelContexts);
@@ -176,14 +169,14 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             ModelRequests = result.PrimaryTextModelCalls == 0
                 ? []
                 : [new RouteModelRequestAudit(
-                    $"docx:{policyState.Source.DocumentId}:primary",
+                    $"docx:{sourceDocument.DocumentId}:primary",
                     "canonical-primary-semantic",
                     source.Blocks.Select(block => block.Id).ToArray(),
                     true,
                     canonicalModel?.RawResponses.Count > 0,
                     canonicalModel?.RawResponses.Count > 0 ? "complete" : "failed")],
-            CandidateStageTraces = source.Contexts.Values.Select(context =>
-                new PdfCandidateStageTrace(
+            SourceStageTraces = source.Contexts.Values.Select(context =>
+                new PdfSemanticSourceStageTrace(
                     context.Source.SourceId,
                     context.Scope,
                     context.Source.SourceId is not null && validated.Any(item => item.SourceId == context.Source.SourceId)
@@ -236,27 +229,6 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         };
     }
 
-    private static IReadOnlyList<CanonicalSemanticProposal> DeterministicProposals(
-        DocxPolicyState policyState,
-        DocxAuthoritySource source,
-        IReadOnlyDictionary<string, SemanticSourceAlias> aliasesBySourceId) =>
-        source.Contexts.Values
-            .Where(context => context.Paragraph.HasBuiltInHeadingStyle ||
-                context.Source.Style.OutlineLevel is >= 0 and <= 8 ||
-                context.Paragraph.NumberingStyleLevel is >= 1 and <= 9)
-            .Select(context =>
-            {
-                var alias = aliasesBySourceId[context.Source.SourceId];
-                return new CanonicalSemanticProposal(
-                    alias.Alias,
-                    true,
-                    alias.Text,
-                    SemanticRole: "SECTION",
-                    StructuralType: "Heading",
-                    Scope: context.Scope,
-                    SelectionMode: CanonicalSemanticSelectionMode.WholeAlias);
-            }).ToArray();
-
     /// <summary>
     /// Numbering/marker observations handed to the model as evidence. They carry no hierarchy
     /// authority here: the model decides parent relations, the harness derives level from them.
@@ -265,7 +237,6 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         DocxAuthorityContext context,
         string alias)
     {
-        var paragraph = context.Paragraph;
         var source = context.Source;
         return new CanonicalSemanticSourceEvidence(
             alias,
@@ -273,24 +244,16 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             source.SourceOrdinal,
             source.Text,
             context.Scope,
-            source.Layout.TableDepth,
-            source.Layout.SectionIndex,
-            source.Layout.InContentControl,
-            source.InTableOfContents,
-            ["docx-parser-source", $"scope:{context.Scope}"],
+            ["docx-parser-source"],
             new { source.Style.StyleId, source.Style.StyleName, source.Style.OutlineLevel, source.Style.Bold },
             new { source.Numbering.NumberingId, source.Numbering.NumberingLevel, source.Numbering.NumberLabel },
             source.TextSpans.Select(span => (object)new { span.Start, span.End, span.Bold, span.Italic, span.Underline }).ToArray(),
-            CanonicalSemanticEngine.MarkerFactsOf(context.ModelContext.Source),
-            [paragraph.IsCandidate ? "candidate-attention" : "source-visible"],
+            context.ModelContext.Source.ObservedEvidence,
             context.ModelContext.PreviousBlocks,
-            context.ModelContext.NextBlocks,
-            new SemanticCandidateAttentionHint(alias, paragraph.IsCandidate, paragraph.IsCandidate ? "policy-candidate" : "policy-non-candidate"))
+            context.ModelContext.NextBlocks)
         {
-            ActiveStructuralAncestors = context.ModelContext.ActiveHeadingStack,
-            // Raw OOXML: the bookmarks this paragraph links to. Replaces the "table_of_contents" scope
-            // and the TOC flag in the V2 request - the model reads a "_Toc" anchor, the style name and
-            // the trailing page number itself, rather than being told the harness's conclusion.
+            // Raw OOXML: the bookmarks this paragraph links to. The model reads anchors, style name
+            // and trailing page number itself, rather than being told a navigation-list conclusion.
             LocationFacts = source.HyperlinkAnchors.Count == 0
                 ? null
                 : new { hyperlinkAnchors = source.HyperlinkAnchors },

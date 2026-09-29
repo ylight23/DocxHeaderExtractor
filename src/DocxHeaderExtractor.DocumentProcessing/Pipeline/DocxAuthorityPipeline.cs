@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
@@ -13,54 +12,39 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 internal static class DocxAuthorityPipeline
 {
-    internal static DocxAuthoritySource BuildForAudit(DocxPolicyState policyState, DocumentModeReport mode) =>
-        Build(policyState.Source,
-            policyState.Paragraphs.ToDictionary<DocxPolicyParagraph, string, IPolicyParagraph>(p => p.Source.SourceId, p => p),
-            mode, (id, text) => PdfMarkerFactsParser.Parse(text));
+    internal static DocxAuthoritySource BuildForAudit(SourceDocument source) =>
+        Build(source, (id, text) => PdfMarkerFactsParser.Parse(text));
 
     public static async Task<StructuralAuthorityResult> RunAsync(
-        DocxPolicyState policyState,
-        DocumentModeReport mode,
+        SourceDocument source,
         IHeaderClassifier? analyst,
         CancellationToken ct = default) =>
-        await CanonicalSemanticDocxAuthorityAdapter.RunAsync(policyState, mode, analyst, ct);
+        await CanonicalSemanticDocxAuthorityAdapter.RunAsync(source, analyst, ct);
 
     private static DocxAuthoritySource Build(
         SourceDocument sourceDocument,
-        IReadOnlyDictionary<string, IPolicyParagraph> policyParagraphs,
-        DocumentModeReport mode,
         Func<string, string, PdfMarkerFact?> markerFor)
     {
-        var compatibilityById = policyParagraphs;
         var paragraphs = sourceDocument.Paragraphs
-            .Where(source => compatibilityById.ContainsKey(source.SourceId))
-            .Select(source => (Source: source, Compatibility: compatibilityById[source.SourceId]))
-            .Where(item => item.Compatibility.Role != ParagraphRole.Empty &&
-                !string.IsNullOrWhiteSpace(item.Source.Text))
-            .OrderBy(item => item.Source.SourceOrdinal)
+            .Where(source => !string.IsNullOrWhiteSpace(source.Text))
+            .OrderBy(source => source.SourceOrdinal)
             .ToArray();
+        const string regime = "document_body";
         var result = new Dictionary<string, DocxAuthorityContext>(StringComparer.Ordinal);
-        var modelContexts = new Dictionary<string, PdfCandidateContext>(StringComparer.Ordinal);
+        var modelContexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal);
         var blocks = new List<PdfSemanticBlock>(paragraphs.Length);
-        var activeStack = new List<string>();
-        var scopeTracker = new StructuralScopeTracker();
         for (var index = 0; index < paragraphs.Length; index++)
         {
-            var sourceParagraph = paragraphs[index].Source;
-            var paragraph = paragraphs[index].Compatibility;
+            var sourceParagraph = paragraphs[index];
             var id = sourceParagraph.SourceId;
-            var scope = ScopeOf(sourceParagraph, paragraph);
+            const string scope = "document_body";
             var marker = markerFor(id, sourceParagraph.Text);
             var evidence = new List<string>
             {
                 sourceParagraph.Text.Length <= 180 ? "short_source_paragraph" : "long_source_paragraph",
                 marker is null ? "no_marker" : $"marker:{marker.Value.Family}",
             };
-            if (sourceParagraph.Layout.TableDepth > 0) evidence.Add("table_like");
-            if (paragraph.InTableOfContents) evidence.Add("toc_entry");
-            if (paragraph.HasBuiltInHeadingStyle) evidence.Add("built_in_heading_style");
             if (sourceParagraph.Style.OutlineLevel is >= 0 and <= 8) evidence.Add($"outline_level:{sourceParagraph.Style.OutlineLevel.Value}");
-            if (paragraph.NumberingStyleLevel is >= 1 and <= 9) evidence.Add($"numbering_style_level:{paragraph.NumberingStyleLevel.Value}");
             var facts = new PdfSourceFacts(id, sourceParagraph.Text, 0, 1, 0, -sourceParagraph.SourceOrdinal, 0, -sourceParagraph.SourceOrdinal,
                 scope, evidence)
             {
@@ -68,44 +52,31 @@ internal static class DocxAuthorityPipeline
                 LineIds = [sourceParagraph.SourceId],
                 EvidenceDetails = evidence.Select(item => new PdfObservedEvidence(item, "true",
                     item.StartsWith("marker:", StringComparison.Ordinal) ? "marker_parser" :
-                    item is "built_in_heading_style" || item.StartsWith("outline_level:", StringComparison.Ordinal) ||
-                    item.StartsWith("numbering_style_level:", StringComparison.Ordinal) ? "ooxml_parser" : "docx_parser")).ToArray(),
+                    item.StartsWith("outline_level:", StringComparison.Ordinal) ? "ooxml_parser" : "docx_parser")).ToArray(),
             };
-            facts = scopeTracker.Apply(facts);
-            var domainEvidence = DocumentDomainPolicy.Observe(facts, mode.Mode.ToString());
-            facts = facts with { DomainRole = domainEvidence.Role, DomainEvidence = domainEvidence };
-            var previous = paragraphs.Take(index).TakeLast(3).Select(item => Excerpt(item.Source.Text)).ToArray();
-            var next = paragraphs.Skip(index + 1).Take(3).Select(item => Excerpt(item.Source.Text)).ToArray();
-            var parents = paragraphs.Take(index).TakeLast(8).Select(item => item.Source.SourceId).ToArray();
-            var modelContext = new PdfCandidateContext(facts, previous, next, parents, mode.Mode.ToString(), activeStack.TakeLast(4).ToArray());
-            var context = new DocxAuthorityContext(sourceParagraph, paragraph, scope, modelContext);
+            var previous = paragraphs.Take(index).TakeLast(3).Select(item => Excerpt(item.Text)).ToArray();
+            var next = paragraphs.Skip(index + 1).Take(3).Select(item => Excerpt(item.Text)).ToArray();
+            var parents = paragraphs.Take(index).TakeLast(8).Select(item => item.SourceId).ToArray();
+            var modelContext = new PdfSemanticSourceContext(facts, previous, next, parents, regime);
+            var context = new DocxAuthorityContext(sourceParagraph, scope, modelContext);
             result.Add(id, context);
             modelContexts.Add(id, modelContext);
             var line = new PdfLine(0, -sourceParagraph.SourceOrdinal, sourceParagraph.Style.FontSizePt ?? 11, sourceParagraph.Text,
                 sourceParagraph.Style.Bold ? 1 : 0, "", sourceParagraph.Style.Italic ? 1 : 0, 0, 1, sourceParagraph.Style.StyleName ?? "docx", "docx");
             blocks.Add(new PdfSemanticBlock(id, [line], PdfStyleClusterProfile.StyleOf(line), 0,
                 -sourceParagraph.SourceOrdinal, -sourceParagraph.SourceOrdinal, 0, 1, sourceParagraph.Text));
-            if (scope == "document_body" && marker is not null)
-                activeStack.Add($"{id}: {Excerpt(sourceParagraph.Text)}");
         }
         return new DocxAuthoritySource(blocks, result, modelContexts);
     }
-
-    private static string ScopeOf(SourceParagraph source, IPolicyParagraph compatibility) =>
-        compatibility.InTableOfContents ? "table_of_contents" :
-        source.Layout.TableDepth > 0 ? "table" :
-        PdfStructuralScopeDetector.IsFormalSyntax(source.Text) ? "code_or_grammar" :
-        "document_body";
 
     private static string Excerpt(string text) => text.Length <= 180 ? text : text[..180];
 }
 internal sealed record DocxAuthorityContext(
     SourceParagraph Source,
-    IPolicyParagraph Paragraph,
     string Scope,
-    PdfCandidateContext ModelContext);
+    PdfSemanticSourceContext ModelContext);
 
 internal sealed record DocxAuthoritySource(
     IReadOnlyList<PdfSemanticBlock> Blocks,
     IReadOnlyDictionary<string, DocxAuthorityContext> Contexts,
-    IReadOnlyDictionary<string, PdfCandidateContext> ModelContexts);
+    IReadOnlyDictionary<string, PdfSemanticSourceContext> ModelContexts);

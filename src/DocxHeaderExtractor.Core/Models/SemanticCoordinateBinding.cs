@@ -32,7 +32,7 @@ public sealed record SemanticCoordinateBinding(
     Func<SemanticCoordinateBindingRequest, SemanticCoordinateBindingOutcome> Bind)
 {
     /// <summary>
-    /// One alias, one exact selection inside it - the DOCX paragraph and the legacy PDF occurrence.
+    /// One alias, one exact selection inside it - the DOCX paragraph.
     /// Unchanged: it is the existing validator and the existing exact binder, reached through this
     /// seam rather than called directly, so that adding a second coordinate system could not change
     /// what the first one does.

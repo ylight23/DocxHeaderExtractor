@@ -1,6 +1,4 @@
 using System.Security.Cryptography;
-using DocxHeaderExtractor.DocumentProcessing.Features;
-using DocxHeaderExtractor.DocumentProcessing.Policy;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Core.Models;
@@ -12,7 +10,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// <summary>
 /// The single normal extraction orchestrator. Source adapters may differ, but every accepted
 /// heading crosses the same proposal, source-grounding, validation, structure, and product stages.
-/// Legacy extraction is intentionally not used here.
+/// Earlier direct-extraction paths are intentionally not used here.
 /// </summary>
 public sealed class AuthorityExtractionPipeline : IDisposable
 {
@@ -61,7 +59,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         CancellationToken ct = default)
     {
         var execution = await ExecuteDocumentAsync(inputPath, quarantinedIndexes, ct);
-        return execution.CompatibilityOutline;
+        return execution.Outline;
     }
 
     public async Task<DocumentExtractionResult> RunDocumentAsync(
@@ -94,21 +92,13 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             throw new NotSupportedException(
                 $"AuthorityExtractionPipeline nhận đầu vào OOXML đã chuẩn hoá (.docx/.docm); " +
                 $"tệp được tải lên được nhận dạng là {uploadedType}. " +
-                "compatibility adapter phải chuyển đổi định dạng đời cũ trước khi gọi pipeline.");
+                "source adapter phải chuyển đổi định dạng không phải OOXML trước khi gọi pipeline.");
 
         var started = Environment.TickCount64;
         var sourceDocument = new OpenXmlDocumentSource().Read(inputPath);
-            var structuralFeatures = NumberingStyleFeatures.FromSourceDocument(sourceDocument);
-            var derivedFeatures = new DocumentFeatureDeriver().Derive(sourceDocument);
-            var policyState = DocxPolicyStateBuilder.Build(
-                sourceDocument, structuralFeatures, derivedFeatures, _options.Extraction);
-            var mode = DocumentModeClassifier.Measure(policyState.Paragraphs.Cast<IPolicyParagraph>().ToArray());
-            var diagnostics = _options.EnableDocumentDiagnostics
-                ? (_options.DocumentDiagnosticsAnalyzer ?? DocumentDiagnosticRunner.Analyze)(policyState, mode)
-                : null;
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
             var authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(
-                policyState, mode, analyst, ct, replayCapture: _options.ReplayCapture);
+                sourceDocument, analyst, ct, replayCapture: _options.ReplayCapture);
             authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
             var audit = authority.Audit;
             const string route = "docx-canonical-vnext";
@@ -120,7 +110,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             if (audit is not null)
             {
                 var finalStructure = BuildFinalStructure(inputPath, audit, authority.Structure);
-                var decisions = PdfOutputDecisionPolicy.Decide(finalStructure);
+                var decisions = PdfOutputDecisions.Decide(finalStructure);
                 product = PdfProductOutputSerializer.Serialize(finalStructure, decisions);
                 structural = new StructuralMaterializationResult(
                     authority.Structure,
@@ -167,24 +157,21 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                     route,
                     "docx-source-document",
                     _options.DisableLlm ? 0 : audit?.RawAnalystResponses.Count ?? 0));
-            var compatibilityOutline = new DocumentOutline
+            var outline = new DocumentOutline
             {
                 File = Path.GetFileName(inputPath),
                 ParagraphCount = sourceDocument.Paragraphs.Count,
-                CandidateCount = audit?.CandidatesSelected ?? 0,
+                SourceCount = audit?.SourceBlocksSelected ?? 0,
                 Headings = headings,
                 ProductOutput = product,
                 ElapsedMs = Environment.TickCount64 - started,
                 Model = analyst?.ModelName,
-                DocumentMode = mode,
                 DeterministicRoute = route,
                 RouteAudit = audit,
-                Diagnostics = diagnostics,
-                DecisionAudit = null,
                 Provenance = BuildProvenance(audit,
                     !_options.DisableLlm && (_analystFactory?.SendsDataExternally ?? _classifierSendsDataExternally)),
             };
-            return new AuthorityPipelineExecutionResult(extractionResult, compatibilityOutline);
+            return new AuthorityPipelineExecutionResult(extractionResult, outline);
     }
 
     private async Task<IHeaderClassifier> GetAnalystAsync(CancellationToken ct)
@@ -208,7 +195,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         DocumentSourceCatalog sourceCatalog,
         RouteExecutionAudit audit)
     {
-        var candidateIds = audit.CandidateBlocks
+        var routedSourceIds = audit.SourceBlocks
             .Select(block => block.Id)
             .ToHashSet(StringComparer.Ordinal);
         return sourceCatalog.Units
@@ -216,7 +203,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 unit.SourceId,
                 unit.SourceId,
                 "DOCX_SOURCE_PARAGRAPH",
-                candidateIds.Contains(unit.SourceId) ? unit.SourceId : null,
+                routedSourceIds.Contains(unit.SourceId) ? unit.SourceId : null,
                 "PARSER_OWNED_LINEAGE"))
             .ToArray();
     }
@@ -283,7 +270,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             passes.Add(new("heading-span", audit.SpanLane.Completed, audit.SpanLane.Scheduled, sentDataExternally));
         if (audit.HierarchyProposals.Count > 0)
             passes.Add(new("semantic-hierarchy", audit.HierarchyProposals.Count, audit.HierarchyProposals.Count, sentDataExternally));
-        passes.Add(new("source-facts", 1, audit.CandidatesAvailable, false));
+        passes.Add(new("source-facts", 1, audit.SourceBlocksAvailable, false));
         passes.Add(new("proposal-validation", 1, audit.BlockDecisions.Count, false));
         passes.Add(new("deterministic-hierarchy", 1, audit.ValidatedStructures.Count, false));
         passes.Add(new("output-policy", 1, audit.ValidatedStructures.Count, false));

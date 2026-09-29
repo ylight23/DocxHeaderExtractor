@@ -3,15 +3,15 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
-/// <summary>Auditable losses for a bounded route, especially PDF candidate/LLM/grounding pipelines.</summary>
+/// <summary>Auditable losses for a bounded route, especially PDF source/LLM/grounding pipelines.</summary>
 public sealed record RouteExecutionAudit(
     [property: JsonPropertyName("summary")] string Summary,
-    [property: JsonPropertyName("candidatesAvailable")] int CandidatesAvailable,
-    [property: JsonPropertyName("candidatesSelected")] int CandidatesSelected,
-    [property: JsonPropertyName("candidatePagesAvailable")] int CandidatePagesAvailable,
-    [property: JsonPropertyName("candidatePagesSelected")] int CandidatePagesSelected,
-    [property: JsonPropertyName("candidateBlocks")] IReadOnlyList<RouteBlockAudit> CandidateBlocks,
-    [property: JsonPropertyName("selectedCandidateBlocks")] IReadOnlyList<RouteBlockAudit> SelectedCandidateBlocks,
+    [property: JsonPropertyName("sourceBlocksAvailable")] int SourceBlocksAvailable,
+    [property: JsonPropertyName("sourceBlocksSelected")] int SourceBlocksSelected,
+    [property: JsonPropertyName("sourcePagesAvailable")] int SourcePagesAvailable,
+    [property: JsonPropertyName("sourcePagesSelected")] int SourcePagesSelected,
+    [property: JsonPropertyName("sourceBlocks")] IReadOnlyList<RouteBlockAudit> SourceBlocks,
+    [property: JsonPropertyName("selectedSourceBlocks")] IReadOnlyList<RouteBlockAudit> SelectedSourceBlocks,
     [property: JsonPropertyName("budgetExcluded")] IReadOnlyList<RouteBlockAudit> BudgetExcluded,
     [property: JsonPropertyName("blockDecisions")] IReadOnlyList<RouteBlockDecisionAudit> BlockDecisions,
     [property: JsonPropertyName("groundedBlockIds")] IReadOnlyList<string> GroundedBlockIds,
@@ -34,7 +34,7 @@ public sealed record RouteExecutionAudit(
     [JsonIgnore]
     public IReadOnlyList<RouteOccurrenceTrace> OccurrenceTraces { get; init; } = [];
 
-    /// <summary>Source identities selected before any provider execution; candidate id is diagnostic only.</summary>
+    /// <summary>Source identities selected before any provider execution; route-local id is diagnostic only.</summary>
     [JsonPropertyName("selectedSourceIdentities")]
     public IReadOnlyList<PdfSelectedSourceIdentity> SelectedSourceIdentities { get; init; } = [];
 
@@ -45,9 +45,9 @@ public sealed record RouteExecutionAudit(
     [JsonPropertyName("modelInputContracts")]
     public IReadOnlyList<string> ModelInputContracts { get; init; } = [];
 
-    /// <summary>Per-candidate source/model/validation trace for PDF-first audit routes.</summary>
-    [JsonPropertyName("candidateStageTraces")]
-    public IReadOnlyList<PdfCandidateStageTrace> CandidateStageTraces { get; init; } = [];
+    /// <summary>Per-source source/model/validation trace for PDF-first audit routes.</summary>
+    [JsonPropertyName("sourceStageTraces")]
+    public IReadOnlyList<PdfSemanticSourceStageTrace> SourceStageTraces { get; init; } = [];
 
     [JsonPropertyName("validatedStructures")]
     public IReadOnlyList<PdfValidatedStructure> ValidatedStructures { get; init; } = [];
@@ -96,7 +96,7 @@ public sealed record RouteExecutionAudit(
 }
 
 public sealed record PdfSelectedSourceIdentity(
-    [property: JsonPropertyName("candidateIdDiagnostic")] string CandidateIdDiagnostic,
+    [property: JsonPropertyName("routeBlockIdDiagnostic")] string RouteBlockIdDiagnostic,
     [property: JsonPropertyName("page")] int Page,
     [property: JsonPropertyName("sourceLineIds")] IReadOnlyList<string> SourceLineIds,
     [property: JsonPropertyName("sourceText")] string SourceText,
@@ -106,13 +106,13 @@ public sealed record RouteSourceRepresentation(
     [property: JsonPropertyName("sourceId")] string SourceId,
     [property: JsonPropertyName("representationId")] string RepresentationId,
     [property: JsonPropertyName("representationKind")] string RepresentationKind,
-    [property: JsonPropertyName("candidateId")] string? CandidateId,
+    [property: JsonPropertyName("routeBlockId")] string? RouteBlockId,
     [property: JsonPropertyName("lineageMethod")] string LineageMethod);
 
 public sealed record RouteModelRequestAudit(
     [property: JsonPropertyName("requestId")] string RequestId,
     [property: JsonPropertyName("stage")] string Stage,
-    [property: JsonPropertyName("candidateIds")] IReadOnlyList<string> CandidateIds,
+    [property: JsonPropertyName("routeBlockIds")] IReadOnlyList<string> RouteBlockIds,
     [property: JsonPropertyName("providerCallAttempted")] bool ProviderCallAttempted,
     [property: JsonPropertyName("responseObserved")] bool ResponseObserved,
     [property: JsonPropertyName("status")] string Status);
@@ -128,10 +128,10 @@ public sealed record RouteOccurrenceTrace
     [JsonPropertyName("sourceSpan")] public required TextOffsetSpan SourceSpan { get; init; }
     [JsonPropertyName("representationId")] public string? RepresentationId { get; init; }
     [JsonPropertyName("representationKind")] public string? RepresentationKind { get; init; }
-    [JsonPropertyName("candidateId")] public string? CandidateId { get; init; }
+    [JsonPropertyName("routeBlockId")] public string? RouteBlockId { get; init; }
     [JsonPropertyName("routeOwner")] public required string RouteOwner { get; init; }
-    [JsonPropertyName("candidateConstructed")] public bool? CandidateConstructed { get; init; }
-    [JsonPropertyName("candidateSelected")] public bool? CandidateSelected { get; init; }
+    [JsonPropertyName("routeBlockConstructed")] public bool? RouteBlockConstructed { get; init; }
+    [JsonPropertyName("routeBlockSelected")] public bool? RouteBlockSelected { get; init; }
     [JsonPropertyName("modelRequestIds")] public IReadOnlyList<string> ModelRequestIds { get; init; } = [];
     [JsonPropertyName("modelRequestMembership")] public required string ModelRequestMembership { get; init; }
     [JsonPropertyName("modelProposalPresent")] public bool? ModelProposalPresent { get; init; }

@@ -31,9 +31,9 @@ public static class ApprovedWritebackExecutor
             .Where(item => item.IncludeInWriteback)
             .Select(item =>
             {
-                var paragraph = source.Paragraphs.FirstOrDefault(candidate =>
-                    string.Equals(candidate.SourceId, item.SourceId, StringComparison.Ordinal) &&
-                    candidate.SourceOrdinal == item.SourceOrdinal);
+                var paragraph = source.Paragraphs.FirstOrDefault(paragraph =>
+                    string.Equals(paragraph.SourceId, item.SourceId, StringComparison.Ordinal) &&
+                    paragraph.SourceOrdinal == item.SourceOrdinal);
                 if (paragraph is null || !string.Equals(paragraph.Text, item.SourceText, StringComparison.Ordinal))
                     throw new InvalidOperationException($"writeback-source-mismatch:{item.HeadingId}");
                 if (item.Span.Start < 0 || item.Span.End <= item.Span.Start ||
@@ -61,7 +61,7 @@ public static class ApprovedWritebackExecutor
         {
             File = Path.GetFileName(sourceDocxPath),
             ParagraphCount = source.Paragraphs.Count,
-            CandidateCount = headings.Length,
+            SourceCount = headings.Length,
             Headings = headings,
         };
         return OutlineWriteback.Apply(

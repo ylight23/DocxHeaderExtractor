@@ -23,10 +23,6 @@ internal sealed record PdfSemanticBlock(
     /// <summary>What the model is shown and what the binder binds against.</summary>
     public string VerbatimText => Projection.VerbatimText;
     public string DisplayText => PdfTextUtilities.HeadingReadable(Text);
-    public string CanonicalText => string.Concat(Lines.Select(line => line.CanonicalMatchText ??
-        PdfTextUtilities.CanonicalForMatch(line.Text)));
-    public bool HasKerningJoinEvidence => Lines.Any(line => line.MatchText is not null &&
-        !string.Equals(line.MatchText, PdfTextUtilities.Readable(line.Text), StringComparison.Ordinal));
 }
 
 internal sealed record PdfSemanticBlockSummary(
@@ -34,21 +30,6 @@ internal sealed record PdfSemanticBlockSummary(
     int SingleLineBlocks,
     int MultiLineBlocks,
     int MaxLinesPerBlock);
-
-/// <summary>How consecutive lines are judged to continue one another.</summary>
-internal enum PdfBlockGrouping
-{
-    /// <summary>
-    /// An absolute 22pt ceiling on the vertical gap. The behaviour every frozen source universe
-    /// was built with, and the active default until a migration says otherwise.
-    /// </summary>
-    LegacyV1,
-
-    /// <summary>
-    /// The gap measured against the document's own line pitch. See <see cref="PdfLinePitch"/>.
-    /// </summary>
-    ContinuationV2,
-}
 
 /// <summary>
 /// The distance between consecutive lines of one paragraph, measured from the document itself.
@@ -131,44 +112,33 @@ internal static class PdfLinePitch
 internal static class PdfSemanticBlockGrouper
 {
     /// <summary>
-    /// Groups parser lines into the occurrences the model reasons over.
+    /// Groups parser lines into layout blocks by geometry alone (line pitch, alignment, font).
     /// <para>
-    /// Risk classification - a page number, a repeated running header, a table-like line - travels
-    /// through grouping as data and is never re-derived here. With
-    /// <paramref name="includeRiskLines"/> it keeps the line in the source universe, which is the
-    /// point: attention, routing and evidence may use the classification, but it must not delete
-    /// source text. It must equally not deform it. A risk line sits in its own occurrence and never
-    /// fuses with a clean neighbour, because geometry and font alone will happily merge a running
-    /// header into the heading beneath it, and the result would be a source occurrence whose text
-    /// no heading actually has - an artificial partial-span problem manufactured by the harness.
+    /// A block is only a label beside each per-line atom; it never changes which text an atom has.
+    /// No line classification (running header, page number, table row) takes part: that reading
+    /// belongs to the model.
     /// </para>
     /// </summary>
     public static IReadOnlyList<PdfSemanticBlock> Build(
         IReadOnlyList<PdfLineBlockAnnotation> annotations,
         int maxLinesPerBlock = 4,
-        bool allowSemicolonContinuation = false,
-        bool includeRiskLines = false,
-        PdfBlockGrouping grouping = PdfBlockGrouping.LegacyV1)
+        bool allowSemicolonContinuation = false)
     {
         // Measured over every line the document has, not only the ones grouping will consider, so
         // the leading does not change depending on which lines a caller filtered out.
-        var ceiling = grouping == PdfBlockGrouping.ContinuationV2
-            ? PdfLinePitch.ContinuationCeiling(annotations.Select(item => item.Line).ToArray())
-            : (double?)null;
+        var ceiling = PdfLinePitch.ContinuationCeiling(annotations.Select(item => item.Line).ToArray());
 
-        var candidates = annotations
-            .Where(a => includeRiskLines || !a.ExcludeFromCandidateGrouping)
+        var sourceRows = annotations
             .OrderBy(a => a.Line.Page)
             .ThenByDescending(a => a.Line.Y)
             .ThenBy(a => a.Line.Left)
             .ToList();
 
         var blocks = new List<List<PdfLineBlockAnnotation>>();
-        foreach (var annotation in candidates)
+        foreach (var annotation in sourceRows)
         {
             var current = blocks.LastOrDefault();
             if (current is not null &&
-                !IsRisk(current[^1]) && !IsRisk(annotation) &&
                 CanMerge(current.Select(item => item.Line).ToArray(), annotation.Line,
                     maxLinesPerBlock, allowSemicolonContinuation, ceiling))
             {
@@ -202,14 +172,6 @@ internal static class PdfSemanticBlockGrouper
         }).ToList();
     }
 
-    /// <summary>
-    /// Read from the annotation the filter produced, never recomputed. A second derivation here
-    /// could disagree with the first, and then the block boundary and the evidence attached to it
-    /// would be describing different things.
-    /// </summary>
-    private static bool IsRisk(PdfLineBlockAnnotation annotation) =>
-        annotation.PageNumber || annotation.Repeated || annotation.HeaderFooterZone || annotation.TableLike;
-
     public static PdfSemanticBlockSummary Summarize(IReadOnlyList<PdfSemanticBlock> blocks) =>
         new(
             blocks.Count,
@@ -222,25 +184,18 @@ internal static class PdfSemanticBlockGrouper
         PdfLine next,
         int maxLinesPerBlock,
         bool allowSemicolonContinuation,
-        double? continuationCeiling = null)
+        double continuationCeiling)
     {
         if (current.Count >= maxLinesPerBlock) return false;
         var previous = current[^1];
         if (previous.Page != next.Page) return false;
         if (previous.Y - next.Y <= 0) return false;
 
-        if (continuationCeiling is { } ceiling)
-        {
-            // The gap has to look like this document's leading. Without that, the only thing
-            // stopping a heading from absorbing the paragraph below it is an absolute ceiling set
-            // wide enough to clear a paragraph break at body size.
-            if (PdfLinePitch.NormalizedGap(previous, next) is not { } normalized) return false;
-            if (normalized > ceiling) return false;
-        }
-        else if (previous.Y - next.Y > 22)
-        {
-            return false;
-        }
+        // The gap has to look like this document's leading. Without that, the only thing stopping a
+        // heading from absorbing the paragraph below it is an absolute ceiling set wide enough to
+        // clear a paragraph break at body size.
+        if (PdfLinePitch.NormalizedGap(previous, next) is not { } normalized) return false;
+        if (normalized > continuationCeiling) return false;
 
         if (Math.Abs(previous.Left - next.Left) > 24) return false;
         if (Math.Abs(previous.FontSize - next.FontSize) > 1.1) return false;

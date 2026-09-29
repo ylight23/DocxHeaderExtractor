@@ -9,8 +9,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// comparison in particular would merge a running header with the heading it sits above.
 /// </para>
 /// <para>
-/// Extracted when the legacy PDF lane was deleted. It was the only part of that lane's provenance
-/// record the canonical PDF lane still needed - the rest described candidate windows, which the
+/// Extracted when the earlier PDF lane was removed. It was the only part of that lane's provenance
+/// record the canonical PDF lane still needed - the rest described source windows, which the
 /// source-universe design no longer has.
 /// </para>
 /// </summary>

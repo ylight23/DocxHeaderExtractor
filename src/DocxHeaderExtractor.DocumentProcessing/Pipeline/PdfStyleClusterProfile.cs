@@ -2,86 +2,17 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Learns the visual style baseline of a PDF from the PDF itself. The body baseline is the
-/// style cluster that carries the most readable characters; heading candidates are styles that
+/// style cluster that carries the most readable characters; distinctive styles are styles that
 /// consistently differ from that baseline. Callers provide document-specific semantic predicates,
 /// but the style/baseline measurement is shared across PDF routes.
 /// </summary>
 internal sealed record PdfStyleClusterProfile(
     PdfStyleKey BodyStyle,
     IReadOnlyList<PdfStyleClusterStats> Clusters,
-    IReadOnlySet<PdfStyleKey> CandidateStyles,
+    IReadOnlySet<PdfStyleKey> DistinctiveStyles,
     IReadOnlySet<PdfStyleKey> TitleStyles,
     IReadOnlySet<PdfStyleKey> GroupStyles)
 {
-    public static PdfStyleClusterProfile Learn(
-        IReadOnlyList<PdfLine> lines,
-        Func<PdfLine, bool>? titleLike = null,
-        Func<PdfLine, bool>? groupLike = null,
-        double fontSizeBucket = 0.5)
-    {
-        var readable = lines
-            .Where(l => !string.IsNullOrWhiteSpace(l.Text))
-            .ToList();
-
-        var styleGroups = readable
-            .GroupBy(l => StyleOf(l, fontSizeBucket))
-            .Select(g => new PdfStyleClusterStats(
-                g.Key,
-                g.Sum(l => PdfTextUtilities.Readable(l.Text).Length),
-                g.Count(),
-                g.Select(l => l.Page).Distinct().Count(),
-                titleLike is null ? 0 : g.Count(titleLike),
-                groupLike is null ? 0 : g.Count(groupLike),
-                g.Average(l => l.FontSize),
-                g.Average(l => l.BoldRatio)))
-            .OrderByDescending(g => g.Characters)
-            .ToList();
-
-        var bodyStyle = styleGroups.FirstOrDefault()?.Style ?? new PdfStyleKey(0, "", "");
-        var pages = readable.Select(l => l.Page).Distinct().Count();
-        var minimumClusterLines = Math.Max(3, (int)Math.Ceiling(pages * 0.10));
-
-        var candidates = styleGroups
-            .Where(s => s.Style != bodyStyle && s.Lines >= minimumClusterLines)
-            .Select(s => s.Style)
-            .ToHashSet();
-
-        var groupStyles = styleGroups
-            .Where(s => candidates.Contains(s.Style) &&
-                        s.GroupLikeLines >= Math.Max(2, s.Lines / 4) &&
-                        s.TitleLikeLines >= s.GroupLikeLines)
-            .Select(s => s.Style)
-            .ToHashSet();
-
-        var titleStyles = styleGroups
-            .Where(s => candidates.Contains(s.Style) &&
-                        s.TitleLikeLines >= Math.Max(3, s.Lines / 3) &&
-                        !groupStyles.Contains(s.Style))
-            .Select(s => s.Style)
-            .ToHashSet();
-
-        return new PdfStyleClusterProfile(bodyStyle, styleGroups, candidates, titleStyles, groupStyles);
-    }
-
-    public bool HasHeadingStyles => TitleStyles.Count > 0 || GroupStyles.Count > 0;
-
-    public bool IsCandidateStyle(PdfLine line) => CandidateStyles.Contains(StyleOf(line));
-
-    public bool IsLikelyGroupStyle(PdfLine line)
-    {
-        var style = StyleOf(line);
-        return GroupStyles.Contains(style) ||
-               (CandidateStyles.Contains(style) && !TitleStyles.Contains(style));
-    }
-
-    public bool IsLikelyTitleStyle(PdfLine line) => TitleStyles.Contains(StyleOf(line));
-
-    public PdfStyleClusterStats? ClusterOf(PdfLine line)
-    {
-        var style = StyleOf(line);
-        return Clusters.FirstOrDefault(c => c.Style == style);
-    }
-
     public static PdfStyleKey StyleOf(PdfLine line, double fontSizeBucket = 0.5)
     {
         var bucket = fontSizeBucket <= 0 ? line.FontSize : Math.Round(line.FontSize / fontSizeBucket) * fontSizeBucket;

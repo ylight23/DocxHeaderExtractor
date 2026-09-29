@@ -2,7 +2,7 @@ namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
 /// The executable vNext orchestration boundary. Evidence preparation and model inference are
-/// supplied by the caller; this entry point owns the order of modality profiling, attention,
+/// supplied by the caller; this entry point owns the order of modality profiling,
 /// context packing, semantic validation, binding, reconciliation, graph resolution, and
 /// projection. Gold is intentionally absent from this contract.
 /// </summary>
@@ -11,7 +11,6 @@ public sealed record CanonicalSemanticProductionInput(
     IReadOnlyList<CanonicalSemanticProposal>? SemanticProposals,
     string SourceSha256,
     IReadOnlyList<CanonicalSemanticPageEvidence> Pages,
-    IReadOnlyList<SemanticCandidateAttentionHint> CandidateHints,
     IReadOnlyList<string> TargetEvidence,
     IReadOnlyList<string> LocalContext,
     IReadOnlyList<string> GlobalContext,
@@ -39,8 +38,8 @@ public sealed record CanonicalSemanticProductionInput(
 
     /// <summary>
     /// The layout label beside each source id, when the lane's atoms are finer than its layout
-    /// blocks. Null for every lane that has no such distinction - DOCX paragraphs and legacy PDF
-    /// occurrences are their own layout unit, so there is nothing to label them with.
+    /// blocks. Null for a lane that has no such distinction - DOCX paragraphs are their own layout
+    /// unit, so there is nothing to label them with.
     /// <para>
     /// A label, never a coordinate: it travels beside <see cref="SourceEvidence"/> rather than
     /// inside it, so a source id remains addressable by its own alias whether or not this map is
@@ -82,47 +81,26 @@ public sealed record CanonicalSemanticProductionInput(
 }
 
 /// <summary>Compact parser-owned evidence attached to one canonical source occurrence. It contains
-/// observations only; it does not contain candidate gating, Gold, hierarchy, or model decisions.</summary>
+/// observations only; it does not contain pre-semantic salience gates, Gold, hierarchy, or model decisions.</summary>
 public sealed record CanonicalSemanticSourceEvidence(
     string SourceAlias,
     string SourceId,
     int SourceOrdinal,
     string ExactSourceText,
     string StructuralScope,
-    /// <summary>
-    /// Nesting depth inside a table, or null where the source format has no such concept.
-    /// <para>
-    /// Null is not zero. Zero is a measurement - "this occurrence was examined and found outside
-    /// any table" - and a PDF cannot make it: it has no nested-table structure to be at depth zero
-    /// of. Reporting zero would hand the model a fact nothing established, so the field is omitted
-    /// from the request entirely instead.
-    /// </para>
-    /// </summary>
-    int? TableDepth,
-    int SectionIndex,
-    bool InContentControl,
-    bool InTableOfContents,
     IReadOnlyList<string> ContainerFacts,
     object StyleFacts,
     object NumberingFacts,
     IReadOnlyList<object> RunFormattingFacts,
-    IReadOnlyList<string> MarkerFacts,
     IReadOnlyList<string> ObservedEvidence,
     IReadOnlyList<string> LocalBefore,
-    IReadOnlyList<string> LocalAfter,
-    SemanticCandidateAttentionHint CandidateAttention)
+    IReadOnlyList<string> LocalAfter)
 {
-    /// <summary>
-    /// Structural state already open at this occurrence, from parser-owned marker evidence.
-    /// Context only: it reports what a reader would already have seen, never who anything parents to.
-    /// </summary>
-    public IReadOnlyList<string> ActiveStructuralAncestors { get; init; } = [];
-
     /// <summary>
     /// Where the occurrence physically sits, as the V2 request shows it: observable measurements only,
     /// never a reading of what the occurrence is. Null when the lane has nothing to report here.
     /// <para>
-    /// This replaces <see cref="StructuralScope"/> and <see cref="InTableOfContents"/> in what the
+    /// This replaces <see cref="StructuralScope"/> in what the
     /// model sees. Those are the harness's own conclusions ("running page artifact", "table of
     /// contents") about the very question the model is asked, so they stay internal.
     /// </para>
@@ -146,7 +124,7 @@ public sealed record CanonicalSemanticTextInferenceResult(
 
     /// <summary>
     /// All proposals parsed from model JSON, before segment ownership filtering. Null is retained
-    /// for compatibility with custom test models that predate replay capture.
+    /// for older custom test models that predate replay capture.
     /// </summary>
     public IReadOnlyList<CanonicalSemanticProposal>? ParsedProposals { get; init; }
 
@@ -192,7 +170,6 @@ public interface ICanonicalSemanticVisualModel
 public sealed record CanonicalSemanticProductionResult(
     CanonicalSemanticModalityProfile ModalityProfile,
     SemanticContextPacket ContextPacket,
-    IReadOnlyList<SemanticCandidateAttentionHint> CandidateHints,
     CanonicalSemanticPipelineResult TextPipeline,
     IReadOnlyList<CanonicalSemanticVisualOccurrence> VisualOccurrences,
     IReadOnlyList<CanonicalSemanticVisualBoundHeading> VisualHeadings,
@@ -298,10 +275,6 @@ public static class CanonicalSemanticProductionEntryPoint
         var pages = input.Pages ?? throw new ArgumentNullException(nameof(input.Pages));
         var profile = ModalityProfiler.Profile(pages);
         var aliases = input.Aliases;
-
-        // Candidate hints are attention metadata only. Every owned alias remains eligible.
-        foreach (var alias in aliases)
-            _ = SemanticCandidatePolicy.CanAcceptOwnedOccurrence(alias.Alias, input.CandidateHints);
 
         var context = SemanticContextPacker.Pack(
             input.TargetEvidence, input.LocalContext, input.GlobalContext);
@@ -426,8 +399,6 @@ public static class CanonicalSemanticProductionEntryPoint
         var pages = input.Pages ?? throw new ArgumentNullException(nameof(input.Pages));
         var profile = ModalityProfiler.Profile(pages);
         var aliases = input.Aliases;
-        foreach (var alias in aliases)
-            _ = SemanticCandidatePolicy.CanAcceptOwnedOccurrence(alias.Alias, input.CandidateHints);
         var context = SemanticContextPacker.Pack(input.TargetEvidence, input.LocalContext, input.GlobalContext);
         var text = CanonicalSemanticPipeline.RunAliases(aliases, semanticProposals,
             input.SourceSha256, input.ExpectedSourceSha256, input.OwnedAliases,
@@ -461,7 +432,6 @@ public static class CanonicalSemanticProductionEntryPoint
             new SemanticTransitionLedgerEntry("SOURCE_IDENTITY", "COMPLETED", aliases.Count, aliases.Count),
             new SemanticTransitionLedgerEntry("MODALITY_PROFILE", "COMPLETED", pages.Count, profile.Pages.Count),
             new SemanticTransitionLedgerEntry("SOURCE_EVIDENCE", "COMPLETED", aliases.Count, aliases.Count),
-            new SemanticTransitionLedgerEntry("CANDIDATE_ATTENTION", "ATTENTION_ONLY", aliases.Count, aliases.Count),
             new SemanticTransitionLedgerEntry("CONTEXT_PACKING", "COMPLETED", context.VisibleEvidence.Count, context.VisibleEvidence.Count),
             new SemanticTransitionLedgerEntry("PRIMARY_SEMANTIC_INFERENCE", textModelCalls > 0 ? "COMPLETED" : "SKIPPED_PRECOMPUTED", 0, rawModelProposals.Count),
             new SemanticTransitionLedgerEntry("SEMANTIC_CONTRACT_VALIDATION", validation.Issues.Count == 0 ? "COMPLETED" : "PARTIAL_INVALID_PROPOSALS", rawModelProposals.Count, validation.ValidProposals.Count),
@@ -489,7 +459,7 @@ public static class CanonicalSemanticProductionEntryPoint
             new SemanticTransitionLedgerEntry("TASK_PROJECTION", "COMPLETED", canonicalGraph.Occurrences.Count, canonicalGraph.OutlineProjection.Count),
         };
 
-        return new(profile, context, input.CandidateHints, text,
+        return new(profile, context, text,
             visualOccurrences, visualHeadings, unified, ledger, rawModelProposals,
             textTelemetry, visualTelemetry, textModelCalls, visualModelCalls)
         { CanonicalGraph = canonicalGraph, ConflictNormalization = normalization,

@@ -1,3 +1,4 @@
+using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -28,32 +29,51 @@ internal interface ISemanticEvidencePackingPolicy
 }
 
 /// <summary>
-/// The two approved packing policies. The default is deliberately the historical fixed-120
-/// policy, so adding the seam cannot silently activate an experiment.
+/// The packing policies, one per lane. There is no shared default: each lane names the policy it
+/// sends under, so a lane can never silently inherit another lane's request shape.
 /// </summary>
 internal static class SemanticEvidencePackingPolicies
 {
     internal const int OwnedPerPack = 120;
     internal const int VisibleMargin = 20;
-    internal const int MinimumCoherentRun = VisibleMargin;
 
     internal const string FixedOwnedCount120Id = "FIXED_OWNED_COUNT_120";
-    internal const string CoherentRegionSegmentationV1Id = "COHERENT_REGION_SEGMENTATION_V1";
+    internal const string ResourceBoundedSourcePackingV1Id = "RESOURCE_BOUNDED_SOURCE_PACKING_V1";
 
+    internal sealed record ResourcePackingBudget(
+        int MaxSerializedInputBytes,
+        int MaxEstimatedInputTokens,
+        int MaxVisibleAtoms,
+        int MaxOwnedAtoms,
+        int HaloAtoms,
+        int ReservedCompletionTokens);
+
+    /// <summary>
+    /// P05, the budget every scored PDF V4 run was sent under (V4R2 P05 medium, T3B none):
+    /// 90,000 serialized input bytes, 28,000 estimated input tokens, 128 visible atoms,
+    /// 96 owned atoms, 8 halo atoms, 12,288 reserved completion tokens.
+    /// </summary>
+    internal static ResourcePackingBudget PdfP05Budget { get; } =
+        new(90_000, 28_000, 128, 96, 8, 12_288);
+
+    /// <summary>The DOCX lane's policy.</summary>
     internal static ISemanticEvidencePackingPolicy FixedOwnedCount120 { get; } =
         new FixedOwnedCount120PackingPolicy();
 
-    internal static ISemanticEvidencePackingPolicy CoherentRegionSegmentationV1 { get; } =
-        new CoherentRegionSegmentationV1PackingPolicy();
+    /// <summary>The PDF lane's policy.</summary>
+    internal static ISemanticEvidencePackingPolicy PdfResourceBoundedP05 { get; } =
+        CreateResourceBounded(PdfP05Budget);
 
-    internal static ISemanticEvidencePackingPolicy Default => FixedOwnedCount120;
-
-    internal static ISemanticEvidencePackingPolicy Resolve(string policyId) => policyId switch
+    /// <summary>A resource-bounded policy under another budget - for a named packing experiment only.</summary>
+    internal static ISemanticEvidencePackingPolicy CreateResourceBounded(ResourcePackingBudget budget)
     {
-        FixedOwnedCount120Id => FixedOwnedCount120,
-        CoherentRegionSegmentationV1Id => CoherentRegionSegmentationV1,
-        _ => throw new InvalidOperationException($"Unknown semantic evidence packing policy: {policyId}"),
-    };
+        ArgumentNullException.ThrowIfNull(budget);
+        if (budget.MaxSerializedInputBytes <= 0 || budget.MaxEstimatedInputTokens <= 0 ||
+            budget.MaxVisibleAtoms <= 0 || budget.MaxOwnedAtoms <= 0 || budget.HaloAtoms < 0 ||
+            budget.ReservedCompletionTokens < 0)
+            throw new ArgumentOutOfRangeException(nameof(budget));
+        return new ResourceBoundedSourcePackingPolicy(budget);
+    }
 
     private sealed class FixedOwnedCount120PackingPolicy : ISemanticEvidencePackingPolicy
     {
@@ -66,51 +86,86 @@ internal static class SemanticEvidencePackingPolicies
             Partition(evidence, SegmentBoundaries(evidence.Count), PolicyId);
     }
 
-    private sealed class CoherentRegionSegmentationV1PackingPolicy : ISemanticEvidencePackingPolicy
+    /// <summary>
+    /// The PDF packer.  Its stopping condition is serialized source-evidence bytes,
+    /// estimated tokens, visible atoms and a reserved completion ceiling -- never a heading
+    /// predicate, salience score, Gold fact, or a fixed owned-item count.  The estimator is
+    /// intentionally conservative and deterministic; the preflight additionally records the
+    /// bytes from the real request composer, which is the value a provider experiment must pin.
+    /// </summary>
+    private sealed class ResourceBoundedSourcePackingPolicy : ISemanticEvidencePackingPolicy
     {
-        public string PolicyId => CoherentRegionSegmentationV1Id;
-        public string PolicyVersion => "a99-coherent-region-segmentation-v1";
+        private const int StaticEnvelopeBytes = 24_000;
+        private readonly ResourcePackingBudget _budget;
+
+        public ResourceBoundedSourcePackingPolicy(ResourcePackingBudget budget) => _budget = budget;
+
+        public string PolicyId => ResourceBoundedSourcePackingV1Id;
+        public string PolicyVersion => "a99-resource-bounded-source-packing-v1";
 
         public IReadOnlyList<SemanticEvidencePack> BuildPacks(
             IReadOnlyList<CanonicalSemanticSourceEvidence> evidence,
             IReadOnlyDictionary<string, string>? layoutBlockBySourceId)
         {
             ArgumentNullException.ThrowIfNull(evidence);
-            if (layoutBlockBySourceId is null)
-                throw new InvalidOperationException("COHERENT_PACKING_LAYOUT_METADATA_REQUIRED");
-
-            var blockCounts = evidence
-                .Select(item => layoutBlockBySourceId.TryGetValue(item.SourceId, out var block)
-                    ? block
-                    : throw new InvalidOperationException("COHERENT_PACKING_LAYOUT_BLOCK_MISSING"))
-                .GroupBy(block => block, StringComparer.Ordinal)
-                .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
-
-            var keys = evidence.Select(item =>
+            var packs = new List<SemanticEvidencePack>();
+            for (var start = 0; start < evidence.Count;)
             {
-                var block = layoutBlockBySourceId[item.SourceId];
-                var rowRegime = blockCounts[block] == 1;
-                var annex = item.StructuralScope.StartsWith("appendix", StringComparison.Ordinal);
-                return $"{(rowRegime ? "ROW" : "FLOW")}/{(annex ? "ANNEX" : "MAIN")}";
-            }).ToArray();
+                var endExclusive = start;
+                var ownedBytes = StaticEnvelopeBytes;
+                while (endExclusive < evidence.Count)
+                {
+                    var nextSourceBytes = SourceWireBytes(evidence[endExclusive]);
+                    var projectedOwnedCount = endExclusive - start + 1;
+                    var visibleCount = Math.Min(evidence.Count, endExclusive + 1 + _budget.HaloAtoms) -
+                        Math.Max(0, start - _budget.HaloAtoms);
+                    var projectedBytes = ownedBytes + nextSourceBytes;
+                    var projectedTokens = EstimateTokens(projectedBytes);
+                    // A single exceptionally large atom is still owned once: rejecting it would
+                    // violate exact-once conservation.  All following packs again obey bounds.
+                    if (endExclusive > start &&
+                        (projectedBytes > _budget.MaxSerializedInputBytes ||
+                         projectedTokens + _budget.ReservedCompletionTokens > _budget.MaxEstimatedInputTokens ||
+                         visibleCount > _budget.MaxVisibleAtoms ||
+                         projectedOwnedCount > _budget.MaxOwnedAtoms))
+                        break;
 
-            var segments = new List<(int Start, int End, string Key)>();
-            for (var index = 0; index < keys.Length;)
-            {
-                var end = index;
-                while (end < keys.Length && keys[end] == keys[index])
-                    end++;
+                    ownedBytes = projectedBytes;
+                    endExclusive++;
+                }
 
-                if (segments.Count > 0 && end - index < MinimumCoherentRun)
-                    segments[^1] = segments[^1] with { End = end - 1 };
-                else
-                    segments.Add((index, end - 1, keys[index]));
-
-                index = end;
+                var visibleFrom = Math.Max(0, start - _budget.HaloAtoms);
+                var visibleTo = Math.Min(evidence.Count, endExclusive + _budget.HaloAtoms);
+                var owned = evidence.Skip(start).Take(endExclusive - start).ToArray();
+                var visible = evidence.Skip(visibleFrom).Take(visibleTo - visibleFrom).ToArray();
+                packs.Add(new SemanticEvidencePack(
+                    $"{PolicyId}:PACK_{packs.Count + 1:000}", packs.Count + 1, owned, visible)
+                {
+                    RegionKey = "SOURCE_ORDER_LEFT_HALO_OWNED_CORE_RIGHT_HALO",
+                });
+                start = endExclusive;
             }
 
-            return Partition(evidence, segments, PolicyId);
+            AssertConservation(evidence, packs);
+            return packs;
         }
+
+        private static int SourceWireBytes(CanonicalSemanticSourceEvidence item)
+        {
+            // This is a serialization of observable source facts, not a semantic ranking feature.
+            // It deliberately includes the raw source text verbatim and is stable across machines.
+            var bytes = JsonSerializer.SerializeToUtf8Bytes(new
+            {
+                alias = item.SourceAlias,
+                text = item.ExactSourceText,
+                style = item.StyleFacts,
+                numbering = item.NumberingFacts,
+                location = item.LocationFacts,
+            });
+            return bytes.Length;
+        }
+
+        private static int EstimateTokens(int bytes) => (int)Math.Ceiling(bytes / 6.0);
     }
 
     private static IReadOnlyList<(int Start, int End, string Key)> SegmentBoundaries(int count)
@@ -148,6 +203,15 @@ internal static class SemanticEvidencePackingPolicies
             }
         }
 
+        AssertConservation(evidence, packs);
+
+        return packs;
+    }
+
+    private static void AssertConservation(
+        IReadOnlyList<CanonicalSemanticSourceEvidence> evidence,
+        IReadOnlyList<SemanticEvidencePack> packs)
+    {
         var ownedItems = packs.SelectMany(pack => pack.Owned).ToArray();
         if (ownedItems.Length != evidence.Count ||
             ownedItems.Select(item => item.SourceId).Distinct(StringComparer.Ordinal).Count() != evidence.Count ||
@@ -157,6 +221,5 @@ internal static class SemanticEvidencePackingPolicies
             throw new InvalidOperationException("SEMANTIC_PACKING_SOURCE_CONSERVATION_FAILED");
         }
 
-        return packs;
     }
 }

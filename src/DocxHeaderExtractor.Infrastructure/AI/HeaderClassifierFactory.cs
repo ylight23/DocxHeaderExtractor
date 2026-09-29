@@ -20,10 +20,6 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(options);
-        _selection.LocalModel.ChunkTokenBudget = options.Chunking.TokenBudget;
-        if (_selection.Backend == InferenceBackend.Local && !string.IsNullOrWhiteSpace(_selection.LocalModel.ModelPath))
-            _selection.LocalModel.ApplyRecommendedModelProfile(options.Chunking);
-
         return _selection.Backend switch
         {
             InferenceBackend.OpenRouter => OpenRouterHeaderExtractor.CreateOwned(_selection.Remote),

@@ -73,7 +73,6 @@ public enum SemanticSourceLocality
     /// <summary>A later page - a title continued over a page break. Valid when the part is named explicitly.</summary>
     CrossPage,
 }
-
 public enum SemanticSourcePartsStatus
 {
     Bound,
@@ -121,83 +120,4 @@ public sealed record SemanticSourcePartsBinding(
     /// </summary>
     public string Identity =>
         string.Join("|", Parts.Select(part => $"{part.Alias}:{part.Start}-{part.End}"));
-}
-
-/// <summary>
-/// The structured source-part contract, named for the capability rather than for a phase.
-/// <para>
-/// A shadow of <see cref="CanonicalSemanticContract"/>, with its own protocol version and its own
-/// hash. Nothing transports under it; it exists so the coordinate model can be settled before any
-/// authority is migrated onto it.
-/// </para>
-/// </summary>
-public static class SemanticSourcePartsContract
-{
-    public const string ProtocolVersion = "a99-semantic-source-parts-v1";
-
-    /// <summary>Schema shown to the model. Coordinates are absent here for the same reason as before.</summary>
-    public static object Schema() => new
-    {
-        type = "object",
-        additionalProperties = false,
-        properties = new
-        {
-            headings = new
-            {
-                type = "array",
-                items = new
-                {
-                    type = "object",
-                    additionalProperties = false,
-                    properties = new
-                    {
-                        isHeading = new { type = "boolean" },
-                        semanticRole = new { type = "string" },
-                        relationHints = new { type = "array", items = new { type = "string" } },
-                        sourceParts = new
-                        {
-                            type = "array",
-                            minItems = 1,
-                            items = new
-                            {
-                                type = "object",
-                                additionalProperties = false,
-                                properties = new
-                                {
-                                    sourceAlias = new { type = "string", minLength = 1 },
-                                    selectionMode = new
-                                    {
-                                        type = "string",
-                                        @enum = new[]
-                                        {
-                                            CanonicalSemanticSelectionMode.VerbatimText,
-                                            CanonicalSemanticSelectionMode.WholeAlias,
-                                        },
-                                    },
-                                    verbatimText = new { type = "string" },
-                                    occurrence = new { type = "integer", minimum = 1 },
-                                    leftExactContext = new { type = "string" },
-                                    rightExactContext = new { type = "string" },
-                                },
-                                required = new[] { "sourceAlias", "selectionMode" },
-                            },
-                        },
-                    },
-                    required = new[] { "sourceParts", "isHeading" },
-                },
-            },
-        },
-        required = new[] { "headings" },
-    };
-
-    public static string SchemaHash()
-    {
-        var json = JsonSerializer.Serialize(Schema(), new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-        });
-        return Convert.ToHexStringLower(
-            SHA256.HashData(Encoding.UTF8.GetBytes(json.ReplaceLineEndings("\n"))));
-    }
 }

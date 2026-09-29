@@ -8,7 +8,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 internal static class PdfSemanticProposalBinder
 {
     public static IReadOnlyList<PdfValidatedHeading> BindAndValidate(
-        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
+        IReadOnlyDictionary<string, PdfSemanticSourceContext> contexts,
         IReadOnlyList<PdfBlockDecision> decisions)
     {
         ArgumentNullException.ThrowIfNull(contexts);
@@ -16,8 +16,8 @@ internal static class PdfSemanticProposalBinder
         return PdfProposalValidator.Validate(contexts, decisions);
     }
 
-    public static IReadOnlyList<PdfCandidateStageTrace> Trace(
-        IReadOnlyDictionary<string, PdfCandidateContext> contexts,
+    public static IReadOnlyList<PdfSemanticSourceStageTrace> Trace(
+        IReadOnlyDictionary<string, PdfSemanticSourceContext> contexts,
         IReadOnlyList<PdfBlockDecision> decisions)
     {
         ArgumentNullException.ThrowIfNull(contexts);

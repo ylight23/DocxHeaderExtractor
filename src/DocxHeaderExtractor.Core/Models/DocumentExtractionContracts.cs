@@ -62,7 +62,7 @@ public sealed record DocumentChunk(
     [property: JsonPropertyName("text")] string Text,
     [property: JsonPropertyName("tokenEstimate")] int TokenEstimate);
 
-/// <summary>Deterministic generic extraction envelope. Heading output is a later compatibility projection.</summary>
+/// <summary>Deterministic generic extraction envelope. Heading output is a later outline projection.</summary>
 public sealed record DocumentExtractionResult(
     [property: JsonPropertyName("documentIdentity")] DocumentIdentity DocumentIdentity,
     [property: JsonPropertyName("sourceCatalog")] DocumentSourceCatalog SourceCatalog,
@@ -93,7 +93,4 @@ public static class ExecutionContracts
 
     /// <summary>Authority was the uploaded PDF, extracted from that PDF alone.</summary>
     public const string ExplicitUploadedPdfCanonical = "EXPLICIT_UPLOADED_PDF_CANONICAL";
-
-    /// <summary>Authority came from a PDF found beside the input or in a corpus directory.</summary>
-    public const string LegacyAutoDiscoveredPdfRoute = "LEGACY_AUTO_DISCOVERED_PDF_ROUTE";
 }

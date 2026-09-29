@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json;
 
 namespace DocxHeaderExtractor.Core.Models;
@@ -27,61 +25,6 @@ public static class SemanticContextPacker
             targetEvidence.Where(item => item is not null).ToArray(),
             localContext.Where(item => item is not null).ToArray(),
             globalContext.Where(item => item is not null).ToArray());
-    }
-}
-
-/// <summary>Attention-only candidate metadata. A miss never makes an owned source ineligible.</summary>
-public sealed record SemanticCandidateAttentionHint(string SourceAlias, bool HeuristicMatch, string? Reason = null);
-
-public static class SemanticCandidatePolicy
-{
-    public static bool CanAcceptOwnedOccurrence(string sourceAlias, IReadOnlyCollection<SemanticCandidateAttentionHint> hints)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(sourceAlias);
-        ArgumentNullException.ThrowIfNull(hints);
-        // Hints influence routing only. Semantic discovery always retains the owned occurrence.
-        return true;
-    }
-
-    public static bool CanAcceptVisualOccurrence(string visualAlias, IReadOnlyCollection<SemanticCandidateAttentionHint> hints)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(visualAlias);
-        ArgumentNullException.ThrowIfNull(hints);
-        return true;
-    }
-}
-
-public sealed record SemanticVisualEvidence(string SourceAlias, string EvidenceId, string EvidenceKind);
-
-/// <summary>Optional visual evidence route; implementations are explicitly outside the exact binder.</summary>
-public interface ISemanticVisualEvidenceProvider
-{
-    ValueTask<IReadOnlyList<SemanticVisualEvidence>> ResolveAsync(
-        IReadOnlyList<SemanticSourceAlias> aliases,
-        CancellationToken cancellationToken = default);
-}
-
-public static class SemanticVisualEscalation
-{
-    public static bool IsOptional => true;
-}
-
-/// <summary>Stable graph-cache identity. User task wording is intentionally not an input.</summary>
-public static class CanonicalSemanticGraphCacheKey
-{
-    public static string Create(
-        string sourceSha256,
-        string semanticSchemaVersion,
-        string modelVersion,
-        string extractorVersion)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(sourceSha256);
-        ArgumentException.ThrowIfNullOrWhiteSpace(semanticSchemaVersion);
-        ArgumentException.ThrowIfNullOrWhiteSpace(modelVersion);
-        ArgumentException.ThrowIfNullOrWhiteSpace(extractorVersion);
-        var canonical = string.Join("\n", sourceSha256.Trim().ToLowerInvariant(), semanticSchemaVersion,
-            modelVersion, extractorVersion);
-        return Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(canonical))).ToLowerInvariant();
     }
 }
 
@@ -309,39 +252,9 @@ public static class CanonicalSemanticHardBindingValidator
     }
 }
 
-public sealed record SemanticIntent(string ProjectionId, bool CollapseRepeatedNodes);
-
-/// <summary>Task intent and projection are downstream of the canonical graph.</summary>
-public static class CanonicalSemanticProjection
-{
-    public static SemanticIntent NormalizeIntent(string? userRequest) =>
-        new(string.IsNullOrWhiteSpace(userRequest) ? "main-document-outline" : "main-document-outline", true);
-
-    public static IReadOnlyList<CanonicalSemanticGraphOccurrence> Project(
-        CanonicalSemanticGraph graph,
-        SemanticIntent intent)
-    {
-        ArgumentNullException.ThrowIfNull(graph);
-        ArgumentNullException.ThrowIfNull(intent);
-        if (!intent.CollapseRepeatedNodes) return graph.Occurrences.ToArray();
-        return graph.Occurrences
-            .GroupBy(item => item.SemanticNodeId, StringComparer.Ordinal)
-            .Select(group => group.First())
-            .OrderBy(item => item.SourceOrdinal).ThenBy(item => item.Start)
-            .ToArray();
-    }
-}
-
 public sealed record SemanticTransitionLedgerEntry(
     string Stage,
     string Status,
     int InputCount,
     int OutputCount,
     string? FirstLossCode = null);
-
-public static class SemanticTransitionLedger
-{
-    public static SemanticTransitionLedgerEntry FirstLoss(
-        string stage, int inputCount, int outputCount, string? code) =>
-        new(stage, outputCount < inputCount ? "LOSS_OBSERVED" : "COMPLETED", inputCount, outputCount, code);
-}

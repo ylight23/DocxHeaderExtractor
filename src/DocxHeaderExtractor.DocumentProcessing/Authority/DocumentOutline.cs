@@ -13,8 +13,8 @@ public enum HeadingSource
     /// <summary>Do mô hình LLM xác nhận từ tập ứng viên.</summary>
     Model,
 
-    /// <summary>Heuristic giữ lại khi chạy chế độ --no-llm.</summary>
-    Heuristic,
+    /// <summary>Luật cục bộ giữ lại khi chạy chế độ --no-llm.</summary>
+    LocalRules,
 
     /// <summary>
     /// Mô hình đã loại, nhưng đánh số của tài liệu khẳng định nó là em kế tiếp của một heading
@@ -31,7 +31,6 @@ public enum HeadingDecisionStatus
 {
     RequiresReview,
     AutoAcceptedEvidence,
-    AutoAcceptedCalibrated,
     HumanVerified,
 }
 
@@ -116,31 +115,12 @@ public sealed class HeadingRecord
     [JsonPropertyName("confidence")]
     public double Confidence { get; set; }
 
-    /// <summary>Model đã xác nhận lại một heading do Structure phục hồi.</summary>
-    [JsonPropertyName("modelConfirmed")]
-    public bool ModelConfirmed { get; set; }
-
-    /// <summary>Lượt phản biện độc lập vẫn xác nhận heading model-only có evidence yếu.</summary>
-    [JsonPropertyName("criticConfirmed")]
-    public bool CriticConfirmed { get; set; }
-
     [JsonPropertyName("decisionStatus")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public HeadingDecisionStatus DecisionStatus { get; set; } = HeadingDecisionStatus.RequiresReview;
 
     [JsonPropertyName("confidenceBasis")]
     public string ConfidenceBasis { get; set; } = "evidence_not_calibrated";
-
-    [JsonPropertyName("acceptanceSignature")]
-    public string? AcceptanceSignature { get; set; }
-
-    [JsonPropertyName("calibrationSamples")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public int CalibrationSamples { get; set; }
-
-    [JsonPropertyName("evidence")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public HeadingEvidence? Evidence { get; set; }
 
     /// <summary>
     /// Đoạn đáng ngờ: hai lượt quét cho kết quả khác nhau (mô hình không ổn định tại đây), hoặc
@@ -184,8 +164,8 @@ public sealed class DocumentOutline
     [JsonPropertyName("paragraphCount")]
     public int ParagraphCount { get; init; }
 
-    [JsonPropertyName("candidateCount")]
-    public int CandidateCount { get; init; }
+    [JsonPropertyName("sourceCount")]
+    public int SourceCount { get; init; }
 
     [JsonPropertyName("headings")]
     public required IReadOnlyList<HeadingRecord> Headings { get; init; }
@@ -196,11 +176,6 @@ public sealed class DocumentOutline
     [JsonPropertyName("model")]
     public string? Model { get; set; }
 
-    /// <summary>Mode tài liệu đo từ chính OpenXML/text, dùng để giải thích đường deterministic đã chọn.</summary>
-    [JsonPropertyName("documentMode")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public DocumentModeReport? DocumentMode { get; init; }
-
     /// <summary>Đường dựng outline tất định đã dùng, nếu mode đủ rõ để không cần LLM.</summary>
     [JsonPropertyName("deterministicRoute")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
@@ -208,19 +183,11 @@ public sealed class DocumentOutline
 
     /// <summary>
     /// Route-specific evidence summary. This is deliberately separate from document diagnostics so
-    /// a bounded PDF/LLM route can disclose its candidate coverage and grounding losses.
+    /// a bounded PDF/LLM route can disclose its source coverage and grounding losses.
     /// </summary>
     [JsonPropertyName("routeAudit")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public RouteExecutionAudit? RouteAudit { get; init; }
-
-    /// <summary>
-    /// Audit tự động của tầng code-first: đo tín hiệu tài liệu, chạy candidate deterministic trong
-    /// sandbox và ghi lý do pass/fail. LLM chỉ nên phân tích report này, không tự chọn output.
-    /// </summary>
-    [JsonPropertyName("diagnostics")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public DocumentDiagnosticReport? Diagnostics { get; init; }
 
     /// <summary>Bản ghi các lượt hỏi mô hình đã chạy thật; null khi chạy <c>--no-llm</c>.</summary>
     [JsonPropertyName("provenance")]
@@ -246,62 +213,10 @@ public sealed class DocumentOutline
 
     [JsonPropertyName("autoAcceptedCount")]
     public int AutoAcceptedCount => Headings.Count(h => h.DecisionStatus is
-        HeadingDecisionStatus.AutoAcceptedEvidence or HeadingDecisionStatus.AutoAcceptedCalibrated or
-        HeadingDecisionStatus.HumanVerified);
-
-    /// <summary>
-    /// Tách lý do auto-accept để không đọc nhầm route deterministic declared thành bucket precision
-    /// đã được holdout chứng minh.
-    /// </summary>
-    [JsonPropertyName("decisionAudit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public PrecisionDecisionAudit? DecisionAudit { get; init; }
+        HeadingDecisionStatus.AutoAcceptedEvidence or HeadingDecisionStatus.HumanVerified);
 
     /// <summary>Terminal disposition; a non-empty heading list alone is never a promotion signal.</summary>
     [JsonPropertyName("outcome")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public OutlineOutcome? Outcome { get; init; }
 }
-
-public sealed record PrecisionDecisionAudit(
-    [property: JsonPropertyName("autoAcceptedTotal")] int AutoAcceptedTotal,
-    [property: JsonPropertyName("autoAcceptedCalibrated")] int AutoAcceptedCalibrated,
-    [property: JsonPropertyName("autoAcceptedDeterministic")] int AutoAcceptedDeterministic,
-    [property: JsonPropertyName("autoAcceptedUncalibratedEvidence")] int AutoAcceptedUncalibratedEvidence,
-    [property: JsonPropertyName("humanVerified")] int HumanVerified,
-    [property: JsonPropertyName("requiresReview")] int RequiresReview,
-    [property: JsonPropertyName("byConfidenceBasis")] IReadOnlyDictionary<string, int> ByConfidenceBasis);
-
-public sealed record DocumentDiagnosticReport(
-    [property: JsonPropertyName("status")] string Status,
-    [property: JsonPropertyName("reason")] string Reason,
-    [property: JsonPropertyName("style")] StyleSignalDiagnostic Style,
-    [property: JsonPropertyName("layout")] LayoutSignalDiagnostic Layout,
-    [property: JsonPropertyName("candidates")] IReadOnlyList<OutlineCandidateDiagnostic> Candidates);
-
-public sealed record StyleSignalDiagnostic(
-    [property: JsonPropertyName("styledCount")] int StyledCount,
-    [property: JsonPropertyName("suspectRatio")] double SuspectRatio,
-    [property: JsonPropertyName("density")] double Density,
-    [property: JsonPropertyName("distinctLevels")] int DistinctLevels,
-    [property: JsonPropertyName("numberedDisagreeRatio")] double NumberedDisagreeRatio,
-    [property: JsonPropertyName("selectionTrusted")] bool SelectionTrusted,
-    [property: JsonPropertyName("levelTrusted")] bool LevelTrusted,
-    [property: JsonPropertyName("mixed")] bool Mixed);
-
-public sealed record LayoutSignalDiagnostic(
-    [property: JsonPropertyName("mergedParagraphs")] int MergedParagraphs,
-    [property: JsonPropertyName("mergedMarkers")] int MergedMarkers,
-    [property: JsonPropertyName("tableOfContentsParagraphs")] int TableOfContentsParagraphs,
-    [property: JsonPropertyName("typedNumberSegments")] int TypedNumberSegments);
-
-public sealed record OutlineCandidateDiagnostic(
-    [property: JsonPropertyName("route")] string Route,
-    [property: JsonPropertyName("accepted")] bool Accepted,
-    [property: JsonPropertyName("reason")] string Reason,
-    [property: JsonPropertyName("headingCount")] int HeadingCount,
-    [property: JsonPropertyName("duplicateRate")] double DuplicateRate,
-    [property: JsonPropertyName("titlePollutionRate")] double TitlePollutionRate,
-    [property: JsonPropertyName("levelJumpRate")] double LevelJumpRate,
-    [property: JsonPropertyName("bodyAnchorRatio")] double? BodyAnchorRatio = null,
-    [property: JsonPropertyName("tocCoverage")] double? TocCoverage = null);

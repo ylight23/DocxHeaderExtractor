@@ -6,7 +6,9 @@ using DocxHeaderExtractor.DocumentProcessing.Inference;
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
-/// The PDF lane. Same semantic stage as the DOCX lane, different source parser.
+/// The PDF lane: structured segment atoms, the V4 semantic-function request, the
+/// <see cref="SemanticCoordinateContract.PdfSemanticFunctionMembershipV1"/> contract and P05
+/// resource-bounded packing. One path; there is no alternative PDF authority to fall back to.
 /// <para>
 /// A PDF upload is extracted from that PDF and nothing else. It never consults a DOCX, and its
 /// result is not reconciled with one: two uploads are two documents, and merging them is something
@@ -21,55 +23,45 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 internal static class CanonicalSemanticPdfAuthorityAdapter
 {
+    /// <summary>What the lane records as its authority in replay metadata.</summary>
+    internal const string AuthorityId = "STRUCTURED_SOURCE_PARTS";
+
+    /// <summary>The one request this lane sends: no experiment arm, the PDF request version.</summary>
+    internal static CanonicalSemanticExperiment Request { get; } =
+        CanonicalSemanticExperiment.Baseline with { RequestVersion = SemanticRequestVersions.Pdf };
+
+    /// <param name="packingPolicy">
+    /// Null in production (P05). A named packing experiment passes its challenger policy here; it
+    /// must also be declared by <paramref name="experimentGate"/>.
+    /// </param>
     public static async Task<StructuralAuthorityResult> RunAsync(
         string pdfPath,
         IHeaderClassifier? transport,
         CancellationToken cancellationToken,
-        CanonicalSemanticExperiment? experiment = null,
         SemanticLaneOptions? semanticLaneOptions = null,
         SemanticAuthorityReplayCaptureRequest? replayCapture = null,
         PdfExperimentExecutionGate? experimentGate = null,
-        PdfSemanticAuthorityProfile? profile = null,
         ISemanticEvidencePackingPolicy? packingPolicy = null,
         IReadOnlySet<string>? selectedPackIds = null,
-        bool runPlacement = true,
-        PdfSourceFactsVersion? sourceFacts = null)
+        bool runPlacement = true)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
-        // Production reads the current typography facts. A replay of a request frozen under an earlier
-        // version names that version; nothing here infers it from the document.
-        var facts = sourceFacts ?? PdfSourceFactsVersions.Current;
-
-        // No document-id, filename, or Gold-derived branching here: the profile is an explicit
-        // caller-supplied value, and ordinary production traffic never supplies one, which is what
-        // keeps every existing PDF upload on LegacyOccurrence without this file knowing it exists.
-        var effectiveProfile = profile ?? PdfSemanticAuthorityProfile.LegacyOccurrence;
-        var effectivePackingPolicy = packingPolicy ?? SemanticEvidencePackingPolicies.Default;
+        var effectivePackingPolicy = packingPolicy ?? SemanticEvidencePackingPolicies.PdfResourceBoundedP05;
         replayCapture = replayCapture is null
             ? null
             : replayCapture with
             {
                 Metadata = replayCapture.Metadata with
                 {
-                    Profile = effectiveProfile.ProfileId,
+                    Profile = AuthorityId,
                     PackingPolicy = effectivePackingPolicy.PolicyId,
                     RepeatIdentity = replayCapture.Metadata.RepeatIdentity ?? replayCapture.Metadata.RunId,
                 },
             };
-        // Keyed on what the profile declares it reads, not on which profile it is. Switching on the
-        // identity made the source universe a fact stated outside the bundle, so a profile that named
-        // itself anything else silently got the legacy universe - and, with coherent packing, failed
-        // on absent layout metadata rather than on the mismatch that caused it.
-        IPdfSemanticSourceAuthority universe = effectiveProfile.SourceAuthorityId switch
-        {
-            PdfSemanticAuthorityProfile.StructuredAtomSourceAuthority =>
-                PdfStructuredSourceAuthorityBuilder.Build(pdfPath, facts),
-            _ => PdfCanonicalSourceUniverseBuilder.Build(pdfPath, facts),
-        };
+        IPdfSemanticSourceAuthority universe = PdfStructuredSourceAuthorityBuilder.Build(pdfPath);
         experimentGate?.EnsureLiveSourceUniverse(universe.SourceUniverseSha256);
         experimentGate?.EnsureLiveSemanticContract();
-        experimentGate?.EnsureLiveAuthorityProfile(effectiveProfile.ProfileId);
         experimentGate?.EnsureLivePackingPolicy(effectivePackingPolicy.PolicyId);
         if (replayCapture is not null &&
             !string.Equals(replayCapture.Metadata.SourceUniverseHash, universe.SourceUniverseSha256,
@@ -83,11 +75,10 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         var scope = ProductionCheckpointScope.Create();
         var checkpoint = new PdfStageCheckpoint(
             scope.CheckpointPath,
-            resume: false,
             Path.GetFileNameWithoutExtension(pdfPath));
         var execution = await PdfLaneExecution.RunAsync(
             (lease, ct) => RunSemanticCoreAsync(
-                pdfPath, universe, transport, experiment, effectiveProfile, replayCapture,
+                pdfPath, universe, transport, replayCapture,
                 effectivePackingPolicy, selectedPackIds, runPlacement, lease, checkpoint, ct),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
             cancellationToken).ConfigureAwait(false);
@@ -120,22 +111,16 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         string pdfPath,
         IPdfSemanticSourceAuthority universe,
         IHeaderClassifier? transport,
-        CanonicalSemanticExperiment? experiment,
-        PdfSemanticAuthorityProfile profile,
         SemanticAuthorityReplayCaptureRequest? replayCapture,
-        ISemanticEvidencePackingPolicy? packingPolicy,
+        ISemanticEvidencePackingPolicy packingPolicy,
         IReadOnlySet<string>? selectedPackIds,
         bool runPlacement,
         PdfLaneExecutionLease lease,
         PdfStageCheckpoint checkpoint,
         CancellationToken cancellationToken)
     {
-        var activeExperiment = experiment ?? CanonicalSemanticExperiment.Baseline;
-        var activeContract = activeExperiment.RequestVersion == SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY
-            ? profile.SourceAuthorityId == PdfSemanticAuthorityProfile.StructuredAtomSourceAuthority
-                ? SemanticCoordinateContract.PdfSemanticFunctionMembershipV1
-                : throw new InvalidOperationException("V4_SEMANTIC_FUNCTION_REQUIRES_STRUCTURED_SOURCE_PARTS")
-            : profile.Contract;
+        var activeExperiment = Request;
+        var activeContract = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1;
         var input = universe.CreateProductionInput(Path.GetFileNameWithoutExtension(pdfPath)) with
         {
             ReplayCapture = replayCapture?.Metadata,
@@ -160,8 +145,8 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             canonicalModel = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
                 new LeaseBoundHeaderClassifier(transport, lease),
                 activeContract,
-                activeExperiment,
                 packingPolicy,
+                activeExperiment,
                 selectedPackIds);
             if (replayCapture is not null)
             {
@@ -183,15 +168,13 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
                             System.Text.Encoding.UTF8.GetByteCount(requestPayload));
                     })
                     .ToArray();
-                // Every run from V2 onward names the request version it sent; a V1 replay stays exactly
-                // as it was captured, identified by its prompt hash.
-                var requestVersion = SemanticRequestVersions.Require(
-                    activeExperiment.RequestVersion);
-                if (requestVersion != SemanticRequestVersion.V1_ATTENTION_LEGACY)
-                    replayCapture = replayCapture with
+                replayCapture = replayCapture with
+                {
+                    Metadata = replayCapture.Metadata with
                     {
-                        Metadata = replayCapture.Metadata with { RequestVersion = requestVersion.ToString() },
-                    };
+                        RequestVersion = SemanticRequestVersions.Require(activeExperiment.RequestVersion).ToString(),
+                    },
+                };
                 replayCapture = replayCapture.Reserve(
                     input.DocumentId ?? throw new InvalidOperationException("REPLAY_CAPTURE_DOCUMENT_ID_MISSING"),
                     input.SourceSha256,
@@ -236,9 +219,7 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
             return new PdfValidatedStructure(
                 item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review")
             {
-                DomainRole = facts.DomainRole,
                 StructuralScope = facts.StructuralScope,
-                DomainExclusionProposed = facts.DomainEvidence.ProposesOutlineExclusion,
             };
         }, StringComparer.Ordinal);
 
@@ -338,24 +319,6 @@ internal static class CanonicalSemanticPdfAuthorityAdapter
         public int ContextSize => _inner.ContextSize;
         public string RuntimeDescription => _inner.RuntimeDescription;
         public int SharedPrefixTokens => _inner.SharedPrefixTokens;
-
-        public Task<ChunkResult> ClassifyAsync(
-            string chunkXml,
-            IReadOnlyList<int> allowedIndexes,
-            CancellationToken ct = default) =>
-            StartAndObserve(() => _inner.ClassifyAsync(chunkXml, allowedIndexes, ct));
-
-        public Task<ChunkResult> CritiqueAsync(
-            string chunkXml,
-            IReadOnlyList<int> allowedIndexes,
-            CancellationToken ct = default) =>
-            StartAndObserve(() => _inner.CritiqueAsync(chunkXml, allowedIndexes, ct));
-
-        public Task<ChunkResult> ClassifyHierarchyAsync(
-            IReadOnlyList<HierarchyItem> context,
-            IReadOnlyList<HierarchyItem> headings,
-            CancellationToken ct = default) =>
-            StartAndObserve(() => _inner.ClassifyHierarchyAsync(context, headings, ct));
 
         public Task<string> BoundaryCutAsync(
             string systemPrompt,

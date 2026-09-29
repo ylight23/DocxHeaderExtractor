@@ -91,76 +91,9 @@ public sealed record SemanticCoordinateContract(
         SemanticCoordinateBinding.AliasSpan);
 
     /// <summary>
-    /// PDF, unmigrated documents: alias plus a selection mode over the occurrence it names.
-    /// The legacy occurrence authority's contract - unchanged, and still the default for any PDF
-    /// whose authority profile has not declared the structured successor.
+    /// PDF: structured source parts over segment atoms, one closed semantic function per claim, with
+    /// membership derived by the harness. The only PDF contract.
     /// </summary>
-    public static readonly SemanticCoordinateContract PdfAliasSelection = new(
-        "SOURCE_ALIAS_PLUS_SELECTION_MODE",
-        CanonicalSemanticContract.ProtocolVersion,
-        CanonicalSemanticContract.Schema,
-        CanonicalSemanticContractValidator.ValidateJson,
-        SemanticProposalDecoder.DecodeAliasScalar,
-        SemanticCoordinateBinding.AliasSpan);
-
-    /// <summary>
-    /// PDF, migrated documents only: an ordered list of exact selections over visual-segment
-    /// atoms. Not activated for the PDF lane as a whole - routing to this contract is a property
-    /// of the document's declared authority profile, never of it being a PDF.
-    /// </summary>
-    public static readonly SemanticCoordinateContract PdfStructuredSourceParts = new(
-        "STRUCTURED_SOURCE_PART_TUPLE",
-        SemanticSourcePartsContract.ProtocolVersion,
-        SemanticSourcePartsContract.Schema,
-        CanonicalSemanticContractValidator.ValidateJson,
-        SemanticProposalDecoder.DecodeSourceParts,
-        SemanticCoordinateBinding.SourceParts)
-    {
-        PromptClause = PdfStructuredSourcePartsPromptClause.Text,
-    };
-
-    /// <summary>
-    /// PDF, structured successor: the same coordinate system with the selection mode taken back.
-    /// <para>
-    /// v1 asked the model to declare WHOLE_ALIAS or VERBATIM_TEXT beside the alias and the quote.
-    /// That is a comparison against the source, not a judgement about meaning, and a reply could be
-    /// valid at every layer and still be refused by the binder for getting it wrong - which cost
-    /// four approved headings in one measured run. Here the model names an occurrence and quotes
-    /// the words when it means part of one; the harness derives the rest.
-    /// </para>
-    /// <para>
-    /// v1 remains, unchanged and still the authority for every run captured under it.
-    /// </para>
-    /// </summary>
-    public static readonly SemanticCoordinateContract PdfStructuredSourcePartsV2 = new(
-        "STRUCTURED_SOURCE_PART_TUPLE",
-        SemanticSourcePartsContractV2.ProtocolVersion,
-        SemanticSourcePartsContractV2.Schema,
-        CanonicalSemanticContractValidator.ValidateJson,
-        SemanticSourcePartsV2.Decode,
-        SemanticSourcePartsV2.Binding)
-    {
-        PromptClause = PdfStructuredSourcePartsV2PromptClause.Text,
-    };
-
-    /// <summary>
-    /// Stage 1: membership only. The same coordinate system and the same binder as the structured
-    /// contracts, because the source-grounding seam is not what this changes - what changes is that
-    /// the reply has no field for a role or a relation, so the model is never told the placement
-    /// question exists.
-    /// </summary>
-    public static readonly SemanticCoordinateContract PdfSemanticMembershipV1 = new(
-        "STRUCTURED_SOURCE_PART_TUPLE",
-        SemanticMembershipContractV1.ProtocolVersion,
-        SemanticMembershipContractV1.Schema,
-        SemanticMembershipV1.ValidateJson,
-        SemanticMembershipV1.DecodeEntry,
-        SemanticMembershipV1.Binding)
-    {
-        PromptClause = SemanticMembershipV1PromptClause.Text,
-    };
-
-    /// <summary>Experimental V4: closed semantic function with membership derived by the harness.</summary>
     public static readonly SemanticCoordinateContract PdfSemanticFunctionMembershipV1 = new(
         "STRUCTURED_SOURCE_PART_TUPLE",
         SemanticFunctionMembershipContractV1.ProtocolVersion,

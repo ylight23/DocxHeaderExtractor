@@ -3,7 +3,6 @@ using DocxHeaderExtractor.DocumentProcessing.Chunking;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Policy;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -11,23 +10,11 @@ public sealed class PipelineOptions
 {
     public ExtractionOptions Extraction { get; set; } = new();
 
-    /// <summary>
-    /// Cách cắt khối — thuộc pipeline, không thuộc provider/runtime.
-    /// </summary>
+    /// <summary>Kích thước chunk đầu ra — thuộc pipeline, không thuộc provider/runtime.</summary>
     public ChunkingOptions Chunking { get; set; } = new();
 
     /// <summary>Bỏ qua LLM, chỉ dùng luật (nhanh, để đối chiếu).</summary>
     public bool DisableLlm { get; set; }
-
-    /// <summary>
-    /// Chạy bộ chẩn đoán candidate legacy và đính kèm <see cref="DocumentDiagnosticReport"/> vào
-    /// outline. Tắt mặc định: normal canonical extraction không cần chạy các strategy chẩn đoán.
-    /// Repair/diagnostic entrypoints phải bật cờ này một cách tường minh.
-    /// </summary>
-    public bool EnableDocumentDiagnostics { get; set; }
-
-    /// <summary>Test seam for proving explicit diagnostic reachability without timing assumptions.</summary>
-    internal Func<DocxPolicyState, DocumentModeReport, DocumentDiagnosticReport>? DocumentDiagnosticsAnalyzer { get; set; }
 
     /// <summary>
     /// Optional fail-closed gate for an explicitly frozen PDF provider experiment. Null preserves
@@ -41,247 +28,12 @@ public sealed class PipelineOptions
     /// </summary>
     public SemanticAuthorityReplayCaptureRequest? ReplayCapture { get; set; }
 
-    /// <summary>
-    /// Which PDF coordinate authority the semantic core reads: <c>LEGACY_OCCURRENCE</c> (parser
-    /// blocks) or <c>STRUCTURED_SOURCE_PARTS</c> (segment atoms). Internal - no public host adds a
-    /// setting for this. Null keeps every existing caller on ordinary production behaviour;
-    /// <see cref="CanonicalSemanticPdfAuthorityAdapter"/> is where the default
-    /// (<c>PdfSemanticAuthorityProfile.LegacyOccurrence</c>) is applied, so this field is never
-    /// independently defaulted in more than one place.
-    /// </summary>
-    internal PdfSemanticAuthorityProfile? PdfAuthorityProfile { get; set; }
-
-    /// <summary>Luôn giữ đoạn có style heading kể cả khi mô hình bỏ sót.</summary>
-    public bool TrustStyles { get; set; } = true;
-
-    /// <summary>
-    /// Không hỏi mô hình về đoạn đã có style heading / <c>w:outlineLvl</c> — chúng vẫn nằm trong
-    /// XML làm ngữ cảnh, chỉ là không bị hỏi.
-    /// <para>
-    /// MẶC ĐỊNH TẮT — nghe thì có vẻ miễn phí nhưng ĐO ĐƯỢC LÀ KHÔNG. Lập luận "câu trả lời cho
-    /// nhóm có style không đổi được kết quả vì TrustStyles khôi phục hết" chỉ đúng khi câu trả
-    /// lời của mô hình là cố định. Thực tế bỏ 32 câu hỏi ra khỏi khối làm đổi thành phần khối,
-    /// và mô hình trả lời những đoạn CÒN LẠI khác đi: trên tài liệu thật, precision tụt từ 100%
-    /// xuống 94,1% (nhận nhầm hai ô tiêu đề bảng) để đổi lấy 24% thời gian.
-    /// Tiêu đề có style nằm xen kẽ đóng vai trò neo cho chuỗi sinh tự hồi quy.
-    /// </para>
-    /// </summary>
-    public bool SkipStyledCandidates { get; set; }
-
-    /// <summary>
-    /// Bật luật R1 của spec filter OOXML: đoạn mang style Heading built-in, ngoài bảng/textbox,
-    /// ngắn và không kết thúc bằng dấu chấm câu thì gán thẳng heading + cấp với confidence 1.0 và
-    /// KHÔNG đi qua mô hình. Xem <see cref="OoxmlStyleAutoAssign"/>.
-    /// <para>MẶC ĐỊNH TẮT — cờ này tồn tại để có số cho chính nó, không phải để dùng.</para>
-    /// </summary>
-    public bool StyleAutoAssign { get; set; }
-
-    /// <summary>
-    /// Đoạn có <c>w:outlineLvl</c> thì lấy cấp từ đó, không dùng cấp mô hình đoán.
-    /// outlineLvl là đặc tả OOXML do chính người soạn đặt — chính xác hơn mọi suy luận.
-    /// </summary>
-    public bool LevelFromOutline { get; set; } = true;
-
-    /// <summary>
-    /// Quét hai lượt với cách cắt khối khác nhau rồi đối chiếu. Grammar liệt kê buộc mô hình
-    /// sinh một chữ số cho mỗi ứng viên theo thứ tự, nên một dãy 0 kéo chữ số sau nó về 0 —
-    /// lỗi bám theo vị trí trong khối. Đổi mép khối thì mỗi ứng viên rơi vào lân cận khác;
-    /// chỗ nào hai lượt lệch nhau là chỗ mô hình lung lay, đánh dấu để trọng tài xem lại.
-    /// </summary>
-    public bool TwoPass { get; set; }
-
-    /// <summary>
-    /// Mang khung outline đã dựng được sang khối sau. Khối 1 chốt "Chương 1"; khối 2 nhận lại khung
-    /// đó rồi mới quyết định "1.1" đứng ở cấp nào; khối 3 nhận cả hai. Nhằm đúng cơ chế hỏng đã đo
-    /// hai lần (§4.1, §21): đổi thành phần khối là lật câu trả lời cho cả mục không liên quan, vì
-    /// mỗi khối tự quyết cấp trong ngữ cảnh riêng của nó mà không biết phần trước đã dựng gì.
-    /// <para>
-    /// Giá phải trả: lượt phân loại buộc phải TUẦN TỰ — view của khối i chỉ dựng được sau khi khối
-    /// i-1 trả kết quả. Mất khả năng gửi song song, nên chỉ có nghĩa với backend RPC khi người dùng
-    /// chấp nhận đánh đổi. Model local vốn đã tuần tự (<see cref="ChunkParallelism"/>) nên không mất gì.
-    /// </para>
-    /// </summary>
-    public bool RollingOutline { get; set; }
-
-    /// <summary>
-    /// Outline = ĐÚNG các đoạn mang style Heading của Word, cấp suy từ ký hiệu đánh số. Không gọi
-    /// mô hình. Đây là định nghĩa outline do người dùng xác nhận — xem
-    /// <see cref="StyleDeclaredOutline"/> và §41.
-    /// </summary>
-    public bool StyleDeclaredOutline { get; set; }
-
-    /// <summary>
-    /// Outline theo DANH SÁCH ĐA CẤP của Word: chọn theo <c>numPr</c>, cấp = <c>ilvl + 1</c>, cộng
-    /// từ khoá cấu trúc cho phần không đánh số. Chế độ <c>numpr-driven</c> của spec §4.3 — dùng khi
-    /// style của tài liệu không tin được. Xem <see cref="StyleDeclaredOutline.BuildFromNumbering"/>.
-    /// </summary>
-    public bool NumberingDeclaredOutline { get; set; }
-
-    /// <summary>
-    /// Dựng outline tất định cho văn bản hành chính Việt Nam (<c>I.</c>/<c>1.</c>/<c>a)</c>), khi
-    /// tài liệu không có style, không <c>numPr</c>, không mục lục. Xem
-    /// <see cref="AdministrativeOutline"/>.
-    /// </summary>
-    public bool AdministrativeDeclaredOutline { get; set; }
-
-    /// <summary>
-    /// Tự đo chế độ tài liệu và chọn bộ dựng tất định tương ứng khi chưa có override thủ công.
-    /// Manual flags vẫn thắng để người dùng benchmark từng đường riêng.
-    /// </summary>
-    /// <summary>
-    /// Tự chọn bộ dựng tất định theo chế độ tài liệu đo được.
-    /// <para>
-    /// <b>MẶC ĐỊNH BẬT — nhưng chỉ áp cho tài liệu có ĐOẠN GỘP</b> (xem <c>CoDoanGop</c>). Chốt đó
-    /// là thứ làm cho nó an toàn; không có chốt thì bật hay tắt đều sai, và §100 đã chọn sai một
-    /// lần vì chỉ nhìn bench.
-    /// </para>
-    /// <para>
-    /// Đo trên <b>cả ba</b> bộ có đáp án, auto-mode kèm chốt tốt hơn hoặc bằng ở mọi bộ:
-    /// </para>
-    /// <list type="table">
-    /// <item><term>bench (7 tài liệu Word gốc)</term><description>F1 96% → <b>98,6%</b> · P 92,3% → <b>100%</b> · tuyệt đối 6/7 giữ nguyên</description></item>
-    /// <item><term>5 đáp án người kiểm (PDF→DOCX)</term><description>đúng cấp <b>6,5% → 100%</b> · đúng cha 60,9% → 100%</description></item>
-    /// <item><term>14 đáp án (gồm toc-derived WB)</term><description>tuyệt đối <b>0/14 → 8/14</b> · Nav 61,7% → 80,6%</description></item>
-    /// </list>
-    /// <para>
-    /// Không có chốt thì bench tụt 6/7 → 2/7. Tắt hẳn thì nhóm PDF mất đúng cấp (6,5%) và WB mất
-    /// toàn bộ (0/14). Ba bộ nói ngược nhau vì tiêu đề sống ở chỗ khác nhau — chốt đoạn gộp đọc
-    /// đúng khác biệt đó.
-    /// </para>
-    /// <para>Tắt bằng <c>--no-auto-mode</c> để đối chứng.</para>
-    /// </summary>
-    public bool AutoDetectDocumentMode { get; set; } = true;
-
-    /// <summary>
-    /// Dùng PDF cùng stem như nguồn layout PHỤ cho nhóm typed textbook khi DOCX không có tín hiệu
-    /// khai báo mạnh. PDF không thắng outlineLvl/style; nó chỉ cứu tài liệu PDF→DOCX text-layout
-    /// mất ranh giới title/body. Xem handoff 2026-08-14, prototype OpenStax 056.
-    /// </summary>
-    public bool PdfTextbookFallback { get; set; } = true;
-
-    /// <summary>
-    /// Route PDF chung, không phụ thuộc ngôn ngữ hay thể loại: đo baseline layout, lọc header/footer
-    /// và bảng, gom block theo style rồi grounding về DOCX. Chỉ nhận outline thưa; tín hiệu quá dày
-    /// bị coi là content/table index và nhường cho tầng analyst hoặc route có evidence mạnh hơn.
-    /// </summary>
-    public bool PdfLayoutEvidenceFallback { get; set; }
-
-    /// <summary>
-    /// Slow lane for PDF layout candidates. The model sees at most 40 blocks that survived the
-    /// deterministic line/table/repeat filters and is retained only as a compatibility option.
-    /// Disabled by default until measured on keys.
-    /// </summary>
-    public bool PdfLayoutAnalystFallback { get; set; }
-
-    /// <summary>
-    /// Canonical authority execution following the 9B contract: source retrieval, model proposal,
-    /// source-pointer validation, and canonical product output. DOCX and PDF use the same authority
-    /// boundary; their adapters only differ in how source facts are built. Legacy selectors remain
-    /// available to explicit diagnostic/evaluation callers, but normal extraction must not fall
-    /// through to them after this route is entered.
-    /// </summary>
-    public bool PdfFirstValidatedFallback { get; set; } = true;
-
-    /// <summary>
-    /// Optional bounded smoke budget for the explicit PDF-first route. Zero means no candidate is
-    /// dropped; a positive value is diagnostics only and must not be used for recall claims.
-    /// </summary>
-    public int PdfFirstAnalystBlocks { get; set; }
-
-    /// <summary>Visual SourceFacts sent to the fallback; zero is lossless and screens every region.</summary>
-    public int PdfFirstVisualRegions { get; set; }
-
-    /// <summary>
-    /// Dùng PDF cùng stem làm nguồn BOLD-RUN-ĐẦU-DÒNG cho nhóm biên bản/minutes ngắn khi DOCX rớt
-    /// toàn bộ định dạng ký tự (không "b"/"br" nào còn, kể cả thân bài thật). Xem
-    /// <see cref="PdfBoldLabelOutline"/>.
-    /// <para>
-    /// <b>MẶC ĐỊNH BẬT từ §103.</b> Trước đây tắt vì "chưa đo qua toàn corpus" — nay đã đo, trên
-    /// cả bốn bộ có đáp án:
-    /// </para>
-    /// <list type="table">
-    /// <item><term>2 đáp án người kiểm nhóm biên bản</term><description>Nav <b>0% → 100%</b> · tuyệt đối <b>0/2 → 2/2</b></description></item>
-    /// <item><term>bench · 5 đáp án người · 9 đáp án mục lục</term><description>KHÔNG ĐỔI một chữ số</description></item>
-    /// </list>
-    /// <para>
-    /// Không hồi quy ở đâu vì <see cref="PdfBoldLabelOutline.TryBuild"/> tự loại: cần một PDF cùng
-    /// stem, và chỉ chạy khi DOCX đã mất sạch định dạng ký tự. Tài liệu không thoả trả về
-    /// <c>no-pdf</c> hoặc bỏ qua, nên nó bất động ở mọi nhóm khác.
-    /// </para>
-    /// </summary>
-    public bool PdfBoldLabelFallback { get; set; } = true;
-
-    /// <summary>
-    /// Đọc JSON sidecar Docling do người gọi chỉ định rồi align ngược về DOCX. Tắt mặc định: corpus
-    /// không có sidecar thật để hiệu chuẩn, nên đây là adapter sandbox/explicit-input chứ không phải
-    /// một PDF route production. DOCX vẫn là nguồn anchor/writeback.
-    /// </summary>
-    public bool DoclingSidecarFallback { get; set; }
-
-    /// <summary>
-    /// JSON Docling chỉ định tường minh cho một lượt chạy.
-    /// </summary>
-    public string? DoclingJsonPath { get; set; }
-
-    /// <summary>
-    /// Fallback thứ ba cho <c>FormatDriven</c>, KHÔNG cần PDF: mã phiên kiểu "D1.00 - Title" (World
-    /// Bank ICP IACG minutes, nhóm 071/076-079 — <see cref="PdfBoldLabelOutline"/> không kích hoạt
-    /// vì DOCX không còn bold nào để đọc, nhưng mã phiên vẫn còn nguyên là TEXT). Xem
-    /// <see cref="SessionCodeOutline"/>. Mặc định TẮT — mới cài, chưa đo qua toàn corpus.
-    /// </summary>
-    public bool SessionCodeFallback { get; set; }
-
     /// <summary>Ghi XML tinh gọn từ canonical model ra file để debug/đối chiếu source.</summary>
     public string? DumpXmlPath { get; set; }
 
-    /// <summary>In nguyên văn đầu ra của mô hình cho từng khối (debug prompt/grammar).</summary>
+    /// <summary>In nguyên văn request/response của mô hình (debug).</summary>
     public bool ShowRawOutput { get; set; }
 
-    /// <summary>
-    /// Chỉ bật để audit/thu thập nhãn: gửi mọi paragraph không rỗng cho model. Mặc định pipeline
-    /// production chỉ hỏi các ứng viên mơ hồ; style/rule và hậu kiểm cấu trúc xử lý phần chắc chắn.
-    /// </summary>
-    public bool ReviewAllParagraphs { get; set; }
-
     public Action<string>? Log { get; set; }
-
-    /// <summary>JSONL correction đã được người dùng sửa thật sự; null thì không dùng memory.</summary>
-    public string? CorrectionMemoryPath { get; set; }
-
-    /// <summary>
-    /// Phản biện MỌI heading do model/style đề xuất, không cần dấu hiệu gì.
-    /// <para>
-    /// MẶC ĐỊNH TẮT. Bật lên là hỏi lại theo lịch chứ không theo bằng chứng, và cái giá đã đo
-    /// được: trên công văn 344 đoạn, lượt critic chạy 6 khối mất khoảng 37 phút rồi kết luận
-    /// "giữ 14, bác 0" — không đổi một mục nào. Khi tắt, critic chỉ nhận hai nhóm: mục bằng chứng
-    /// yếu theo <see cref="HeadingClassificationProposalCriticGate"/>, và mục nằm trong khối mà mô hình có dấu hiệu
-    /// trôi (bịa chỉ số, hoặc sập về một cấp duy nhất).
-    /// </para>
-    /// <para>Giữ lại làm công tắc cho lúc cần siết precision bằng mọi giá, ví dụ khi hiệu chuẩn.</para>
-    /// </summary>
-    public bool HighPrecisionMode { get; set; }
-
-    /// <summary>Ngưỡng precision mong muốn cho selective auto-accept.</summary>
-    public double TargetPrecision { get; set; } = 0.93;
-
-    /// <summary>Số dự đoán holdout tối thiểu trong đúng evidence bucket.</summary>
-    public int MinimumCalibrationSamples { get; set; } = 52;
-
-    /// <summary>
-    /// Ngưỡng điểm heuristic dưới đó model-only heading phải đi qua critic. Đây là policy có thể
-    /// hiệu chuẩn, không phải chân lý cố định; đưa vào configuration signature của calibration.
-    /// </summary>
-    public double ModelCriticWeakEvidenceThreshold { get; set; } = 0.70;
-
-    /// <summary>
-    /// Fallback confidence theo số evidence checks đã qua khi chưa có holdout bucket đo được.
-    /// Index 0..5 tương ứng 0/5..5/5. Khi có calibration profile, Wilson lower bound của bucket
-    /// thắng bảng này.
-    /// </summary>
-    public double[] EvidenceConfidenceTiers { get; set; } = [0.50, 0.60, 0.70, 0.80, 0.85, 0.95];
-
-    /// <summary>Profile sinh từ `dhx eval ... --calibration-out`; null = evidence chưa calibration.</summary>
-    public string? CalibrationProfilePath { get; set; } =
-        Environment.GetEnvironmentVariable("DHX_CALIBRATION_PROFILE");
 
 }

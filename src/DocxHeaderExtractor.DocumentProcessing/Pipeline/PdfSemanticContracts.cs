@@ -50,9 +50,4 @@ public sealed record SemanticLaneOptions(
     public static readonly SemanticLaneOptions Default = new(
         TimeSpan.FromSeconds(90), TimeSpan.FromSeconds(120), TimeSpan.FromMinutes(5));
 
-    public TimeSpan RemainingOr(TimeSpan requested)
-    {
-        if (DeadlineUtc is not { } deadline) return requested;
-        return TimeSpan.FromTicks(Math.Max(0, Math.Min(requested.Ticks, (deadline - DateTimeOffset.UtcNow).Ticks)));
-    }
 }

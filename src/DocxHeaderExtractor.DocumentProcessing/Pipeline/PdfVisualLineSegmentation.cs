@@ -25,13 +25,13 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 internal static class PdfVisualRegion
 {
-    /// <summary>How many ordinary word spaces wide a gap must be before it is even a candidate.</summary>
-    public const double CandidateGapFactor = 3.0;
+    /// <summary>How many ordinary word spaces wide a gap must be before it is considered for a cut.</summary>
+    public const double MinimumCutGapFactor = 3.0;
 
     /// <summary>How far above and below to look for a row that keeps the same corridor open.</summary>
     public const int NeighbourWindow = 2;
 
-    /// <summary>How much of the candidate corridor a neighbour must also leave clear.</summary>
+    /// <summary>How much of the proposed corridor a neighbour must also leave clear.</summary>
     public const double CorridorSupportRatio = 0.5;
 
     /// <summary>Neighbouring rows that must agree, besides the row holding the gap.</summary>
@@ -64,7 +64,7 @@ internal static class PdfVisualRegion
                 var from = glyphs[index].Right;
                 var to = glyphs[index + 1].Left;
                 var width = to - from;
-                if (width < CandidateGapFactor * wordGap) continue;
+                if (width < MinimumCutGapFactor * wordGap) continue;
 
                 var middle = (from + to) / 2;
                 var supporting = 0;
@@ -117,12 +117,12 @@ internal static class PdfVisualRegion
     /// at all. Taken from the page rather than from a constant, because a gap only means something
     /// next to the spacing the document itself uses.
     /// </summary>
-    public static double WordGap(IReadOnlyList<double> candidateGaps)
+    public static double WordGap(IReadOnlyList<double> observedGaps)
     {
-        ArgumentNullException.ThrowIfNull(candidateGaps);
-        if (candidateGaps.Count == 0) return 0;
+        ArgumentNullException.ThrowIfNull(observedGaps);
+        if (observedGaps.Count == 0) return 0;
 
-        var sorted = candidateGaps.Order().ToArray();
+        var sorted = observedGaps.Order().ToArray();
         return sorted[sorted.Length / 2];
     }
 }

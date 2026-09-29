@@ -51,7 +51,7 @@ public static class SemanticConflictNormalizer
 
         var byAlias = aliases.ToDictionary(alias => alias.Alias, StringComparer.Ordinal);
         var grouped = proposals
-            .Select((proposal, index) => new Candidate(
+            .Select((proposal, index) => new ProposalEnvelope(
                 proposal,
                 index,
                 PhysicalIdentity(proposal, byAlias),
@@ -70,8 +70,8 @@ public static class SemanticConflictNormalizer
         {
             var alternatives = group
                 .GroupBy(item => item.SemanticFingerprint, StringComparer.Ordinal)
-                .Select(item => item.OrderBy(candidate => JsonSerializer.Serialize(candidate.Proposal), StringComparer.Ordinal)
-                    .ThenBy(candidate => candidate.InputIndex)
+                .Select(item => item.OrderBy(alternative => JsonSerializer.Serialize(alternative.Proposal), StringComparer.Ordinal)
+                    .ThenBy(alternative => alternative.InputIndex)
                     .First())
                 .OrderBy(item => item.SemanticFingerprint, StringComparer.Ordinal)
                 .ThenBy(item => JsonSerializer.Serialize(item.Proposal), StringComparer.Ordinal)
@@ -223,7 +223,7 @@ public static class SemanticConflictNormalizer
         hint.StartsWith("parent-node:", StringComparison.OrdinalIgnoreCase) ||
         hint.StartsWith("sibling-node:", StringComparison.OrdinalIgnoreCase);
 
-    private sealed record Candidate(
+    private sealed record ProposalEnvelope(
         CanonicalSemanticProposal Proposal,
         int InputIndex,
         string PhysicalIdentity,

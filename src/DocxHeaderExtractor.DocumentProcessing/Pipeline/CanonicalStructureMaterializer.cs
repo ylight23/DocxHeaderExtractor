@@ -77,9 +77,9 @@ internal static class CanonicalStructureMaterializer
             var claimFacts = item.Parts is { Count: > 1 } parts
                 ? parts.Select(part => FactsFor(occurrences[part.SourceId])).ToArray()
                 : [sourceFacts];
-            var candidate = new StructuralCandidate
+            var sourceOccurrence = new StructuralSourceOccurrence
             {
-                CandidateId = item.SourceId,
+                SourceOccurrenceId = item.SourceId,
                 ObservedSourceFacts = claimFacts,
             };
             // Two different states both end without a level, and the reason is kept because they
@@ -92,7 +92,7 @@ internal static class CanonicalStructureMaterializer
             var derivedLevel = placed ? hierarchy.Level : (int?)null;
             var proposal = new StructuralProposal
             {
-                CandidateId = item.SourceId,
+                SourceOccurrenceId = item.SourceId,
                 Type = StructuralElementType.Heading,
                 Role = ProposedRole.HeadingTopic,
                 ProposedSources = item.Parts is { Count: > 1 } claimParts
@@ -111,16 +111,16 @@ internal static class CanonicalStructureMaterializer
                 "structure", nameof(HeadingDecisionStatus.RequiresReview), 0,
                 "docx-authority-validated-review");
             var element = StructuralProposalValidator.Materialize(
-                candidate, proposal, elementIdBySourceId[item.SourceId], decision,
+                sourceOccurrence, proposal, elementIdBySourceId[item.SourceId], decision,
                 elementIdBySourceId.Values.ToHashSet(StringComparer.Ordinal),
                 new StructuralProjectionMetadata
                 {
-                    CompatibilitySourceId = sourceParagraph.SourceId,
+                    OutlineSourceId = sourceParagraph.SourceId,
                     // Declaring the level "set" while leaving it null made the projection prefer
                     // that null over the materialized element level, so this route emitted headings
                     // with no level at all whatever the resolver decided.
-                    CompatibilityLevelIsSet = true,
-                    CompatibilityLevel = derivedLevel,
+                    OutlineLevelIsSet = true,
+                    OutlineLevel = derivedLevel,
                     HierarchyResolution = hierarchy.ParentResolution,
                     OriginalText = sourceParagraph.Text,
                     BoundarySource = "docx-source-pointer-span",

@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.DocumentProcessing.Review;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
@@ -63,58 +62,6 @@ public sealed class ReviewBundle
         return bundle;
     }
 
-    public static ReviewBundle Load(string path) => Parse(File.ReadAllText(path));
-
-    public string ToJson() => JsonSerializer.Serialize(this, JsonOptions);
-
-    /// <summary>Chỉ sinh key khi người duyệt đã xác nhận từng paragraph.</summary>
-    public string ToAnswerKeyText()
-    {
-        EnsureComplete();
-        var sb = new StringBuilder();
-        sb.Append("# ").AppendLine(Path.GetFileNameWithoutExtension(SourceFile));
-        sb.AppendLine("# @<stable-id> <cấp> — sinh từ review đã duyệt; ổn định khi index thay đổi");
-        foreach (var row in Rows.Where(r => r.CorrectedLevel > 0).OrderBy(r => r.StableId, StringComparer.Ordinal))
-            sb.Append('@').Append(row.StableId).Append(' ').Append(row.CorrectedLevel!.Value)
-                .Append("   # ").AppendLine(row.Text);
-        return sb.ToString();
-    }
-
-    /// <summary>
-    /// JSONL nhãn vàng cho fine-tuning/evaluation. Giữ cả nhãn 0 để mô hình học phân biệt non-heading.
-    /// </summary>
-    public string ToTrainingJsonl()
-    {
-        EnsureComplete();
-        var sb = new StringBuilder();
-        foreach (var row in Rows.OrderBy(r => r.Index))
-        {
-            var item = new
-            {
-                document = SourceFile,
-                stableId = row.StableId,
-                index = row.Index,
-                text = row.Text,
-                predictedLevel = row.PredictedLevel,
-                label = row.CorrectedLevel!.Value,
-            };
-            // JSONL phải đúng một object trên một dòng; không dùng serializer pretty-print của file review.
-            sb.AppendLine(JsonSerializer.Serialize(item, JsonLineOptions));
-        }
-        return sb.ToString();
-    }
-
-    public void EnsureComplete()
-    {
-        var unreviewed = Rows.Where(r => r.CorrectedLevel is null).Take(8).ToList();
-        if (unreviewed.Count == 0) return;
-
-        var preview = string.Join(", ", unreviewed.Select(r => $"{r.Index} ({r.StableId})"));
-        throw new InvalidOperationException(
-            $"Chưa xác nhận tất cả paragraph. Còn ít nhất: {preview}. " +
-            "Chọn 0 cho non-heading hoặc 1..9 cho heading trước khi tạo key.");
-    }
-
     private static void Validate(ReviewBundle bundle)
     {
         if (!string.Equals(bundle.FormatVersion, Format, StringComparison.Ordinal))
@@ -142,12 +89,6 @@ public sealed class ReviewBundle
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         WriteIndented = true,
-        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-    };
-
-    private static readonly JsonSerializerOptions JsonLineOptions = new()
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 }

@@ -40,46 +40,28 @@ internal sealed record PdfLine(
 }
 
 /// <summary>
-/// Which typography facts a PDF line reports. Only the facts differ between versions: glyph geometry -
-/// line membership, word gaps, segmentation - is the same under both, so the text and the atom universe
-/// of a PDF do not depend on this choice.
+/// The typography facts a PDF line reports. One version: the id travels in every request's style
+/// facts, so it stays named rather than implied.
 /// </summary>
 internal enum PdfSourceFactsVersion
 {
     /// <summary>
-    /// PDF_SOURCE_FACTS_V1: size is the Tf operand (<c>Letter.FontSize</c>), weight only the font's
-    /// declared flag (<c>FontDetails.IsBold</c>). Every source universe and request frozen before
-    /// PDF_SOURCE_FACTS_V2 was built with it, and replays of them must keep using it.
-    /// </summary>
-    V1_NominalFontSize,
-
-    /// <summary>
-    /// PDF_SOURCE_FACTS_V2: size is the glyph's effective point size (<c>Letter.PointSize</c> - the Tf
-    /// operand scaled by the text matrix), weight the declared flag or, where the font declares none, the
-    /// style its name states. A producer that sets type as Tf 1 and scales by Tm reports every glyph at
-    /// size 1 under V1; V2 reads the size it is drawn at.
-    /// </summary>
-    V2_EffectivePointSize,
-
-    /// <summary>
-    /// PDF_SOURCE_FACTS_V3: V2's per-glyph readings, summarized robustly. A line's size is its dominant effective
-    /// size - the size carrying most of its characters - not their mean: a title set in simulated small caps
-    /// (initials 18pt, the rest 13.5pt) is 13.5 on every line, where V2's mean made two lines of one title read
-    /// as different sizes. The line also reports the median, minimum and maximum size, its dominant font and its
-    /// bold and italic glyph ratios, so nothing the mean used to blur is lost. Weight is V2's.
+    /// PDF_SOURCE_FACTS_V3: per-glyph effective point sizes summarized robustly. A line's size is its
+    /// dominant effective size - the size carrying most of its characters - not their mean. The line
+    /// also reports the median, minimum and maximum size, its dominant font and its bold and italic
+    /// glyph ratios. Weight is the font's declared flag or, where the font declares none, the style
+    /// its name states.
     /// </summary>
     V3_RobustGlyphStatistics,
 }
 
 internal static class PdfSourceFactsVersions
 {
-    /// <summary>The version production builds with.</summary>
+    /// <summary>The version every PDF is built with.</summary>
     public const PdfSourceFactsVersion Current = PdfSourceFactsVersion.V3_RobustGlyphStatistics;
 
     public static string Id(PdfSourceFactsVersion version) => version switch
     {
-        PdfSourceFactsVersion.V1_NominalFontSize => "PDF_SOURCE_FACTS_V1",
-        PdfSourceFactsVersion.V2_EffectivePointSize => "PDF_SOURCE_FACTS_V2",
         PdfSourceFactsVersion.V3_RobustGlyphStatistics => "PDF_SOURCE_FACTS_V3",
         _ => throw new ArgumentOutOfRangeException(nameof(version)),
     };
@@ -167,27 +149,6 @@ internal sealed record PdfGlyphStatistics(
             characters.Count(c => c.Bold) / (double)characters.Count,
             characters.Count(c => c.Italic) / (double)characters.Count);
     }
-}
-
-/// <summary>How glyphs are gathered into a line.</summary>
-internal enum PdfLineGrouping
-{
-    /// <summary>
-    /// Proximity of vertical midpoints. The behaviour every frozen source universe was built with,
-    /// and the active default until a migration says otherwise.
-    /// </summary>
-    MidpointV1,
-
-    /// <summary>
-    /// Baseline compatibility plus vertical overlap. See <see cref="PdfVisualLineBucket"/>.
-    /// </summary>
-    VisualLineV2,
-
-    /// <summary>
-    /// <see cref="VisualLineV2"/>'s rows, then cut where a vertical corridor divides one row into
-    /// separate regions. See <see cref="PdfVisualRegion"/>.
-    /// </summary>
-    VisualLineSegmentV3,
 }
 
 /// <summary>
@@ -324,18 +285,14 @@ internal sealed class PdfVisualLineBucket
 
 internal static class PdfLineExtraction
 {
-    /// <param name="facts">
-    /// Which typography facts the lines report. It changes <see cref="PdfLine.FontSize"/>,
-    /// <see cref="PdfLine.BoldRatio"/> and <see cref="PdfLine.LeadingBoldPrefix"/> only: the grouping
-    /// below measures glyphs by their nominal size under every version, so text and geometry are fixed.
-    /// Like <paramref name="grouping"/>, the default is what every frozen artifact was built with; the
-    /// production builders pass <see cref="PdfSourceFactsVersions.Current"/>.
-    /// </param>
-    public static IReadOnlyList<PdfLine> ExtractLines(
-        PdfDocument doc,
-        PdfLineGrouping grouping = PdfLineGrouping.MidpointV1,
-        PdfSourceFactsVersion facts = PdfSourceFactsVersion.V1_NominalFontSize)
+    /// <summary>
+    /// Glyphs gathered into visual lines by baseline and vertical overlap, each row then cut where a
+    /// vertical corridor divides it into separate regions; typography under
+    /// <see cref="PdfSourceFactsVersions.Current"/>.
+    /// </summary>
+    public static IReadOnlyList<PdfLine> ExtractLines(PdfDocument doc)
     {
+        const PdfSourceFactsVersion facts = PdfSourceFactsVersions.Current;
         var lines = new List<PdfLine>();
         foreach (var page in doc.GetPages())
         {
@@ -346,47 +303,13 @@ internal static class PdfLineExtraction
             // one document cannot produce two universes. V1 keeps the midpoint order its tolerance
             // is measured against, down to the tie-breaks, because every frozen universe hash was
             // taken over exactly this sequence.
-            var byBaseline = grouping is PdfLineGrouping.VisualLineV2 or PdfLineGrouping.VisualLineSegmentV3;
-            IReadOnlyList<Letter> letters = byBaseline
-                ? visible
-                    .OrderByDescending(l => l.StartBaseLine.Y)
-                    .ThenBy(l => l.BoundingBox.Left)
-                    .ThenBy(l => l.Value, StringComparer.Ordinal)
-                    .ToList()
-                : visible
-                    .OrderByDescending(MidY)
-                    .ThenBy(l => l.BoundingBox.Left)
-                    .ToList();
+            IReadOnlyList<Letter> letters = visible
+                .OrderByDescending(l => l.StartBaseLine.Y)
+                .ThenBy(l => l.BoundingBox.Left)
+                .ThenBy(l => l.Value, StringComparer.Ordinal)
+                .ToList();
 
-            var buckets = new List<IReadOnlyList<Letter>>();
-            if (byBaseline)
-            {
-                buckets.AddRange(PdfVisualLineBucket.Split(letters, PdfVisualLineBucket.Of));
-            }
-            else
-            {
-                List<Letter>? current = null;
-                double currentY = 0;
-                foreach (var letter in letters)
-                {
-                    var y = MidY(letter);
-                    var tolerance = Math.Max(1.5, Math.Max(letter.FontSize, letter.BoundingBox.Height) * 0.30);
-                    if (current is null || Math.Abs(currentY - y) > tolerance)
-                    {
-                        current = [];
-                        buckets.Add(current);
-                        currentY = y;
-                    }
-                    else
-                    {
-                        currentY = ((currentY * current.Count) + y) / (current.Count + 1);
-                    }
-                    current.Add(letter);
-                }
-            }
-
-            if (grouping == PdfLineGrouping.VisualLineSegmentV3)
-                buckets = Segment(buckets, page);
+            var buckets = Segment(PdfVisualLineBucket.Split(letters, PdfVisualLineBucket.Of).ToList(), page);
 
             foreach (var bucket in buckets)
             {
@@ -476,14 +399,8 @@ internal static class PdfLineExtraction
                 {
                     Glyphs = PdfGlyphStatistics.Of(glyphCharacters),
                 };
-                var effective = facts is PdfSourceFactsVersion.V2_EffectivePointSize or PdfSourceFactsVersion.V3_RobustGlyphStatistics;
-                if (effective) boldFlags = derivedFlags;
-                var size = facts switch
-                {
-                    PdfSourceFactsVersion.V3_RobustGlyphStatistics => typography.Glyphs!.DominantPointSize,
-                    PdfSourceFactsVersion.V2_EffectivePointSize => typography.EffectivePointSize,
-                    _ => typography.NominalFontSize,
-                };
+                boldFlags = derivedFlags;
+                var size = typography.Glyphs!.DominantPointSize;
 
                 var boldRatio = Ratio(boldFlags);
                 var italicRatio = italicFlags.Count == 0 ? 0.0 : italicFlags.Count(b => b) / (double)italicFlags.Count;

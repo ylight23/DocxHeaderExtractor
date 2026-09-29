@@ -4,7 +4,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
 /// <summary>
 /// Materializes an evaluation-safe occurrence trace from explicit route telemetry. This builder
-/// never joins by text: a source occurrence is connected to a candidate only through the route's
+/// never joins by text: a source occurrence is connected to a route representation only through the route's
 /// declared source representation map.
 /// </summary>
 public static class RouteOccurrenceTraceBuilder
@@ -30,15 +30,15 @@ public static class RouteOccurrenceTraceBuilder
         var representations = audit.SourceRepresentations
             .GroupBy(item => item.SourceId, StringComparer.Ordinal)
             .ToDictionary(group => group.Key, group => group.Single(), StringComparer.Ordinal);
-        var candidates = audit.CandidateBlocks
+        var routeBlocks = audit.SourceBlocks
             .Select(item => item.Id)
             .ToHashSet(StringComparer.Ordinal);
-        var selected = audit.SelectedCandidateBlocks
+        var selectedRouteBlocks = audit.SelectedSourceBlocks
             .Select(item => item.Id)
             .ToHashSet(StringComparer.Ordinal);
-        var requestsByCandidate = audit.ModelRequests
-            .SelectMany(request => request.CandidateIds.Select(candidateId => (candidateId, request.RequestId)))
-            .GroupBy(item => item.candidateId, StringComparer.Ordinal)
+        var requestsByRouteBlock = audit.ModelRequests
+            .SelectMany(request => request.RouteBlockIds.Select(routeBlockId => (routeBlockId, request.RequestId)))
+            .GroupBy(item => item.routeBlockId, StringComparer.Ordinal)
             .ToDictionary(
                 group => group.Key,
                 group => group.Select(item => item.RequestId).Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToArray(),
@@ -46,7 +46,7 @@ public static class RouteOccurrenceTraceBuilder
         var decisions = audit.BlockDecisions
             .GroupBy(item => item.Id, StringComparer.Ordinal)
             .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
-        var validations = audit.CandidateStageTraces
+        var validations = audit.SourceStageTraces
             .GroupBy(item => item.Id, StringComparer.Ordinal)
             .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
         var markerFacts = audit.HierarchyFacts
@@ -67,20 +67,20 @@ public static class RouteOccurrenceTraceBuilder
             .Select(unit =>
             {
                 representations.TryGetValue(unit.SourceId, out var representation);
-                var candidateId = representation?.CandidateId;
-                var requestIds = candidateId is not null && requestsByCandidate.TryGetValue(candidateId, out var ids)
+                var routeBlockId = representation?.RouteBlockId;
+                var requestIds = routeBlockId is not null && requestsByRouteBlock.TryGetValue(routeBlockId, out var ids)
                     ? ids
                     : [];
-                decisions.TryGetValue(candidateId ?? string.Empty, out var decision);
-                validations.TryGetValue(candidateId ?? string.Empty, out var validation);
+                decisions.TryGetValue(routeBlockId ?? string.Empty, out var decision);
+                validations.TryGetValue(routeBlockId ?? string.Empty, out var validation);
                 markerFacts.TryGetValue(unit.SourceId, out var marker);
                 structuralFacts.TryGetValue(unit.SourceId, out var structural);
                 elementsBySource.TryGetValue(unit.SourceId, out var element);
                 var finalParent = element?.ParentId is { } parentId && elementsById.TryGetValue(parentId, out var parent)
                     ? parent.Sources.FirstOrDefault()?.SourceId ?? parent.Id
                     : null;
-                var candidateConstructed = candidateId is not null && candidates.Contains(candidateId);
-                var candidateSelected = candidateId is not null && selected.Contains(candidateId);
+                var routeBlockConstructed = routeBlockId is not null && routeBlocks.Contains(routeBlockId);
+                var routeBlockSelected = routeBlockId is not null && selectedRouteBlocks.Contains(routeBlockId);
 
                 return new RouteOccurrenceTrace
                 {
@@ -93,13 +93,13 @@ public static class RouteOccurrenceTraceBuilder
                     SourceSpan = ToTextSpan(unit.SourceSpan),
                     RepresentationId = representation?.RepresentationId,
                     RepresentationKind = representation?.RepresentationKind,
-                    CandidateId = candidateId,
+                    RouteBlockId = routeBlockId,
                     RouteOwner = requestIds.Length > 0 ? "SEMANTIC_MODEL_ROUTE" : routeOwner,
-                    CandidateConstructed = representation is null ? null : candidateConstructed,
-                    CandidateSelected = representation is null ? null : candidateSelected,
+                    RouteBlockConstructed = representation is null ? null : routeBlockConstructed,
+                    RouteBlockSelected = representation is null ? null : routeBlockSelected,
                     ModelRequestIds = requestIds,
                     ModelRequestMembership = representation is null ? "UNKNOWN" :
-                        requestIds.Length > 0 ? "EXACT_CANDIDATE_ID" : "NOT_REQUESTED",
+                        requestIds.Length > 0 ? "EXACT_ROUTE_BLOCK_ID" : "NOT_REQUESTED",
                     ModelProposalPresent = requestIds.Length == 0 ? null : decision is not null,
                     ModelRole = requestIds.Length == 0 ? null : decision?.SemanticRole,
                     ModelParent = requestIds.Length == 0 ? null : decision?.ProposedParentId,

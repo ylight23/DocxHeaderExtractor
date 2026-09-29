@@ -16,8 +16,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 public sealed class OpenXmlDocumentSource
 {
     private static readonly Regex WhitespaceRx = new(@"\s+", RegexOptions.Compiled);
-    private static readonly Regex TrailingPageNumberRx = new(@"^(?<title>.*\S)\s+(?<page>\d{1,4})$", RegexOptions.Compiled);
-    private const int MinTypedTableOfContentsRunLength = 3;
     private readonly ExtractionOptions _options;
 
     public OpenXmlDocumentSource(ExtractionOptions? options = null) => _options = options ?? new ExtractionOptions();
@@ -39,7 +37,6 @@ public sealed class OpenXmlDocumentSource
         }
 
         NumberingResolver.Apply(main, paragraphs);
-        MarkTypedTableOfContentsRuns(paragraphs);
         var headers = new List<string>();
         var footers = new List<string>();
         if (_options.IncludePageHeadersFooters)
@@ -88,7 +85,6 @@ public sealed class OpenXmlDocumentSource
             SourceSegments = built.Sources,
             StyleId = styleId,
             StyleName = style?.Name,
-            BuiltInHeadingStyleLevel = BuiltInHeadingStyleIdentity.LevelFromResolvedStyle(style?.Name, styleId),
             OutlineLevel = properties?.OutlineLevel?.Val?.Value ?? style?.OutlineLevel,
             Bold = bold,
             Italic = italic,
@@ -96,14 +92,10 @@ public sealed class OpenXmlDocumentSource
             AllCaps = caps,
             FontSizePt = size,
             Alignment = properties?.Justification?.Val?.InnerText ?? style?.Alignment,
-            NumberingId = numbering?.NumberingId?.Val?.Value ?? style?.NumberingId,
-            NumberingLevel = numbering?.NumberingLevelReference?.Val?.Value ?? style?.NumberingLevel,
+            NumberingId = numbering?.NumberingId?.Val?.Value,
+            NumberingLevel = numbering?.NumberingLevelReference?.Val?.Value,
             KeepNext = StyleResolver.OnOff(properties?.KeepNext) ?? style?.KeepNext ?? false,
             PageBreakBefore = StyleResolver.OnOff(properties?.PageBreakBefore) ?? style?.PageBreakBefore ?? false,
-            InContentControl = paragraph.Ancestors<SdtElement>().Any(),
-            TableDepth = walked.TableDepth,
-            SectionIndex = walked.SectionIndex,
-            InTableOfContents = IsTableOfContentsEntry(paragraph, style?.Name ?? styleId),
             HyperlinkAnchors = HyperlinkAnchorsOf(paragraph),
         };
     }
@@ -120,7 +112,6 @@ public sealed class OpenXmlDocumentSource
         {
             StyleId = paragraph.StyleId,
             StyleName = paragraph.StyleName,
-            BuiltInHeadingStyleLevel = paragraph.BuiltInHeadingStyleLevel,
             OutlineLevel = paragraph.OutlineLevel,
             Bold = paragraph.Bold,
             Italic = paragraph.Italic,
@@ -135,17 +126,12 @@ public sealed class OpenXmlDocumentSource
             NumberingLevel = paragraph.NumberingLevel,
             NumberLabel = paragraph.NumberLabel,
             NumberingFormat = paragraph.NumberingFormat,
-            NumberingStyleHeadingLevel = paragraph.NumberingStyleLevel,
         },
         Layout = new SourceLayoutFacts
         {
-            InContentControl = paragraph.InContentControl,
             KeepNext = paragraph.KeepNext,
             PageBreakBefore = paragraph.PageBreakBefore,
-            TableDepth = paragraph.TableDepth,
-            SectionIndex = paragraph.SectionIndex,
         },
-        InTableOfContents = paragraph.InTableOfContents,
         HyperlinkAnchors = paragraph.HyperlinkAnchors,
     };
 
@@ -156,58 +142,6 @@ public sealed class OpenXmlDocumentSource
             .Where(anchor => !string.IsNullOrEmpty(anchor))
             .Cast<string>()
             .ToArray();
-
-    private static bool IsTableOfContentsEntry(Paragraph paragraph, string? styleName)
-    {
-        if (styleName is not null)
-        {
-            var normalized = styleName.Replace(" ", "");
-            if (normalized.StartsWith("toc", StringComparison.OrdinalIgnoreCase) &&
-                !normalized.StartsWith("tocheading", StringComparison.OrdinalIgnoreCase)) return true;
-        }
-        return paragraph.Descendants<Hyperlink>().Any(link =>
-        {
-            var anchor = link.Anchor?.Value;
-            return anchor is not null && (anchor.StartsWith("_Toc", StringComparison.OrdinalIgnoreCase) ||
-                                          anchor.StartsWith("_heading", StringComparison.OrdinalIgnoreCase));
-        });
-    }
-
-    // Preserve the legacy source fact for manually typed TOCs. A single numbered title is
-    // insufficient; only a monotonic run is accepted, with a new run after a page reset.
-    private static void MarkTypedTableOfContentsRuns(List<OpenXmlSourceParagraph> paragraphs)
-    {
-        var run = new List<OpenXmlSourceParagraph>();
-        var pages = new List<int>();
-
-        void Flush()
-        {
-            if (run.Count >= MinTypedTableOfContentsRunLength)
-                foreach (var paragraph in run) paragraph.InTableOfContents = true;
-            run.Clear();
-            pages.Clear();
-        }
-
-        foreach (var paragraph in paragraphs)
-        {
-            if (string.IsNullOrWhiteSpace(paragraph.Text) || paragraph.TableDepth > 0 || paragraph.NumberingId is not null)
-            {
-                Flush();
-                continue;
-            }
-
-            var match = TrailingPageNumberRx.Match(paragraph.Text.Trim());
-            if (!match.Success || !int.TryParse(match.Groups["page"].Value, out var page))
-            {
-                Flush();
-                continue;
-            }
-            if (pages.Count > 0 && page < pages[^1]) Flush();
-            run.Add(paragraph);
-            pages.Add(page);
-        }
-        Flush();
-    }
 
     private readonly record struct RunFormat(bool? Bold, bool? Italic, bool? Underline, bool? Caps, double? FontSizePt);
 
@@ -349,7 +283,6 @@ internal sealed class OpenXmlSourceParagraph
     public IReadOnlyList<SourceSegment> SourceSegments { get; init; } = [];
     public string? StyleId { get; init; }
     public string? StyleName { get; init; }
-    public int? BuiltInHeadingStyleLevel { get; init; }
     public int? OutlineLevel { get; init; }
     public bool Bold { get; init; }
     public bool Italic { get; init; }
@@ -361,12 +294,7 @@ internal sealed class OpenXmlSourceParagraph
     public int? NumberingLevel { get; init; }
     public string? NumberLabel { get; set; }
     public string? NumberingFormat { get; set; }
-    public int? NumberingStyleLevel { get; set; }
-    public bool InContentControl { get; init; }
     public bool KeepNext { get; init; }
     public bool PageBreakBefore { get; init; }
-    public int TableDepth { get; init; }
-    public int SectionIndex { get; init; }
-    public bool InTableOfContents { get; set; }
     public IReadOnlyList<string> HyperlinkAnchors { get; init; } = [];
 }

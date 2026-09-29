@@ -55,7 +55,7 @@ public sealed record CanonicalSemanticProposal(
     // thing that identifies such a claim: a heading occupying part of one atom and a heading
     // spanning two are different claims that no scalar alias can tell apart. Null for contracts
     // that do not issue this shape, and omitted from serialization when null so every artifact
-    // written under the legacy shape keeps its bytes.
+    // written under the earlier shape keeps its bytes.
     [property: JsonPropertyName("sourceParts")]
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     IReadOnlyList<SemanticSourcePart>? SourceParts = null);
@@ -479,7 +479,7 @@ public static class CanonicalSemanticIdentityResolver
 }
 
 /// <summary>
-/// Compatibility facade for callers that still use the pre-P3c graph name. The implementation
+/// Backwards-compatible facade for callers that still use the earlier graph name. The implementation
 /// and identity ownership live in <see cref="CanonicalSemanticIdentityResolver"/>.
 /// </summary>
 public static class CanonicalSemanticGraphResolver

@@ -88,8 +88,7 @@ public static class PdfCanonicalExtraction
                 file.LocalPath, gated ?? used, ct,
                 semanticLaneOptions: semanticLaneOptions,
                 replayCapture: options.ReplayCapture,
-                experimentGate: options.ExperimentGate,
-                profile: options.PdfAuthorityProfile);
+                experimentGate: options.ExperimentGate);
         }
         finally
         {
@@ -135,11 +134,8 @@ public static class PdfCanonicalExtraction
     }
 
     /// <summary>
-    /// The compatibility outline for a PDF run.
+    /// The outline output for a PDF run.
     /// <para>
-    /// Fields a PDF has no equivalent for are left absent rather than filled with a DOCX-shaped
-    /// answer: <c>DocumentMode</c> and <c>Diagnostics</c> are measurements over OOXML paragraphs and
-    /// styles, and a zeroed report would read as "measured and found nothing".
     /// <c>ParagraphCount</c> is the source occurrence count, which is the same thing this field
     /// means on the DOCX side - how many source units the document was found to have.
     /// </para>
@@ -159,7 +155,7 @@ public static class PdfCanonicalExtraction
         {
             var final = AuthorityExtractionPipeline.BuildFinalStructure(
                 file.LocalPath, audit, authority.Structure);
-            product = PdfProductOutputSerializer.Serialize(final, PdfOutputDecisionPolicy.Decide(final));
+            product = PdfProductOutputSerializer.Serialize(final, PdfOutputDecisions.Decide(final));
         }
 
         return new DocumentOutline
@@ -169,7 +165,7 @@ public static class PdfCanonicalExtraction
             // exactly the kind of quiet divergence this work is removing.
             File = Path.GetFileName(file.LocalPath),
             ParagraphCount = catalog.Units.Count,
-            CandidateCount = audit?.CandidatesSelected ?? 0,
+            SourceCount = audit?.SourceBlocksSelected ?? 0,
             Headings = HeadingOutlineProjection.Project(
                 authority.Structure,
                 authority.EmittedElementIds ?? authority.Structure.Elements
@@ -179,7 +175,6 @@ public static class PdfCanonicalExtraction
             Model = analyst?.ModelName,
             DeterministicRoute = "pdf-canonical-vnext",
             RouteAudit = audit,
-            DecisionAudit = null,
             Provenance = AuthorityExtractionPipeline.BuildProvenance(
                 audit, !options.DisableLlm && analystSendsDataExternally),
         };
